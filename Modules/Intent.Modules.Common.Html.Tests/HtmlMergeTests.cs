@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.Html.Tests
     public class HtmlMergeTests
     {
         [Fact]
-        public void Test1()
+        public void OverwritesManagedElements()
         {
             var merger = new HtmlWeavingMerger();
             var result = merger.Merge(HtmlFileWithManagedButtons, HtmlFileWithManagedDifferentButtons);
@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.Html.Tests
         }
 
         [Fact]
-        public void Test2()
+        public void AddsNewElementsToEmptyContainer()
         {
             var merger = new HtmlWeavingMerger();
             var result = merger.Merge(HtmlFileWithMergedContainerOnly, HtmlFileWithManagedButtons);
@@ -44,6 +44,69 @@ namespace Intent.Modules.Common.Html.Tests
             var merger = new HtmlWeavingMerger();
             var result = merger.Merge(HtmlFileWithDeepMergedElement, HtmlFileWithDeepMergedElementWithTwoButtons);
             Assert.Equal(HtmlFileWithDeepMergedElementWithTwoButtons, result);
+        }
+
+
+        [Fact]
+        public void RemovesElementsFromBasicDeepMergedNode()
+        {
+            var merger = new HtmlWeavingMerger();
+            var result = merger.Merge(HtmlFileWithDeepManagedElementWithThreeButtons, HtmlFileWithDeepManagedElement);
+            Assert.Equal(HtmlFileWithDeepManagedElement, result);
+        }
+
+        [Fact]
+        public void InsertElementInCorrectOrder()
+        {
+            var merger = new HtmlWeavingMerger();
+            var result = merger.Merge(HtmlFileWithDeepManagedElementWithTwoButtons, HtmlFileWithDeepManagedElementWithThreeButtons);
+            Assert.Equal(HtmlFileWithDeepManagedElementWithThreeButtons, result);
+        }
+
+        [Fact]
+        public void InsertElementInCorrectOrderSimple()
+        {
+            var merger = new HtmlWeavingMerger();
+            var result = merger.Merge(@"
+<div intent-manage="""">
+  <span id=""1"">1</span>
+  <span id=""4"">4</span>
+</div>", @"
+<div intent-manage="""">
+  <span id=""1"">1</span>
+  <span id=""2"">2</span>
+  <span id=""3"">3</span>
+  <span id=""4"">4</span>
+</div>");
+            Assert.Equal(@"
+<div intent-manage="""">
+  <span id=""1"">1</span>
+  <span id=""2"">2</span>
+  <span id=""3"">3</span>
+  <span id=""4"">4</span>
+</div>", result);
+        }
+
+        [Fact]
+        public void RemovesCorrectElementsBasedOnId()
+        {
+            var merger = new HtmlWeavingMerger();
+            var result = merger.Merge(@"
+<div intent-manage="""">
+  <span id=""1"">1</span>
+  <span id=""2"">2</span>
+  <span id=""3"">3</span>
+  <span id=""4"">4</span>
+</div>", @"
+<div intent-manage="""">
+  <span id=""1"">1</span>
+  <span id=""4"">4</span>
+</div>");
+            Assert.Equal(@"
+<div intent-manage="""">
+  <span id=""1"">1</span>
+  <span id=""4"">4</span>
+</div>", result);
         }
 
         [Fact]
@@ -103,7 +166,7 @@ namespace Intent.Modules.Common.Html.Tests
     <div class=""row"" intent-manage=""buttons-identifier"">
       <div class=""col"">
         <div>
-          <button type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
+          <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
         </div>
       </div>
     </div>
@@ -113,7 +176,7 @@ namespace Intent.Modules.Common.Html.Tests
     <div class=""row"">
       <div class=""col"">
         <div>
-          <button type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add User</button>
+          <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
         </div>
       </div>
     </div>
@@ -124,7 +187,18 @@ namespace Intent.Modules.Common.Html.Tests
     <div class=""row"">
       <div class=""col"">
         <div intent-merge=""container"">
-          <button type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
+          <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
+        </div>
+      </div>
+    </div>
+  </div>";
+
+        public static string HtmlFileWithDeepManagedElement = @"
+  <div class=""container-fluid"">
+    <div class=""row"">
+      <div class=""col"">
+        <div intent-manage=""container"">
+          <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
         </div>
       </div>
     </div>
@@ -135,8 +209,33 @@ namespace Intent.Modules.Common.Html.Tests
     <div class=""row"">
       <div class=""col"">
         <div intent-merge=""container"">
-          <button type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
-          <button type=""button"" class=""btn btn-warning"" (click)=""delete()"">Delete Customer</button>
+          <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
+          <button id=""delete-customer"" type=""button"" class=""btn btn-warning"" (click)=""delete()"">Delete Customer</button>
+        </div>
+      </div>
+    </div>
+  </div>";
+
+        public static string HtmlFileWithDeepManagedElementWithTwoButtons = @"
+  <div class=""container-fluid"">
+    <div class=""row"">
+      <div class=""col"">
+        <div intent-manage=""container"">
+          <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
+          <button id=""delete-customer"" type=""button"" class=""btn btn-warning"" (click)=""delete()"">Delete Customer</button>
+        </div>
+      </div>
+    </div>
+  </div>";
+
+        public static string HtmlFileWithDeepManagedElementWithThreeButtons = @"
+  <div class=""container-fluid"">
+    <div class=""row"">
+      <div class=""col"">
+        <div intent-manage=""container"">
+          <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add</button>
+          <button id=""cancel"" type=""button"" class=""btn btn-warning"" (click)=""doSomeSpecial()"">Something Special?</button>
+          <button id=""delete-customer"" type=""button"" class=""btn btn-warning"" (click)=""delete()"">Delete Customer</button>
         </div>
       </div>
     </div>
