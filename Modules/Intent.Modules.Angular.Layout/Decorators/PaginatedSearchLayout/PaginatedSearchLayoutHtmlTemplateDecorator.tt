@@ -6,21 +6,27 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
+<#@ import namespace="Intent.Modules.Angular.Layout.Api" #>
 <!--IntentManaged-->
 <div class="container-fluid">
+<#  foreach(var control in View.InternalElement.ChildElements) { 
+        switch(control.SpecializationType) {#>
+<#          case TableModel.SpecializationType: {
+                var model = new TableModel(control);
+                if (!model.IsValid()) break;#>
   <div class="row">
     <div class="col">
       <table class="table table-hover">
         <thead class="thead-dark">
           <tr>
-<# foreach(var field in DataModel.ChildElements) { #>
+<# foreach(var field in model.DataModel.ChildElements) { #>
             <th><#= field.Name.ToPascalCase() #></th>
 <# } #>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of <#= PaginationModel.Name #>?.items" class="clickable">
-<# foreach(var field in DataModel.ChildElements) { #>
+          <tr *ngFor="let item of <#= model.DataModelPath #>" class="clickable">
+<# foreach(var field in model.DataModel.ChildElements) { #>
             <td>{{item.<#= field.Name #>}}</td>
 <# } #>
           </tr>
@@ -28,9 +34,16 @@
       </table>
     </div>
   </div>
+<#          } break; #>
+<#          case PaginationModel.SpecializationType: {
+                var model = new PaginationModel(control);
+                if (!model.IsValid()) break;#>
   <div class="row">
     <div class="col">
-      <pagination [totalItems]="<#= PaginationModel.Name #>?.totalItems" [(ngModel)]="<#= PaginationModel.Name #>.pageNumber" (pageChanged)="pageChanged($event)"></pagination>
+      <pagination [totalItems]="<#= model.DataModelPath #>?.<#= model.TotalItemsPath #>" [(ngModel)]="<#= model.DataModelPath #>.<#= model.PageNumberPath #>" (pageChanged)="pageChanged($event)"></pagination>
     </div>
   </div>
+<#          } break; #>
+<#      }
+    }#>
 </div>

@@ -24,7 +24,7 @@
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
-        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
@@ -70,9 +70,9 @@
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="3d66a766-e5bb-4034-88cf-25223eddac5a" type="Element Mapping">
+        <childElement id="7c808d5d-c6b5-4478-8df0-a95dc939ef11" type="Element Mapping">
           <name>NewElementMapping</name>
-          <display>[mapping]: Component -&gt; (Traverse)</display>
+          <display>[mapping]: Component Model -&gt; Table</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
@@ -84,86 +84,22 @@
             <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
-                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="e302d9ca-268e-4a98-ad8d-4434aefb9903" isActive="true" />
                 <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="b1c481e1-e91e-4c29-9817-00ab9cad4b6b" isActive="true" />
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="356fbe17-bc63-4e16-b915-feefbc063cbe" isActive="true" />
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
                 <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
-          <childElements>
-            <childElement id="196a7913-fd7f-4b47-a697-279827bdbbec" type="Element Mapping">
-              <name>NewElementMapping</name>
-              <display>[mapping]: Component Model -&gt; (Traverse)</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <isMapped>false</isMapped>
-              <parentFolderId>3d66a766-e5bb-4034-88cf-25223eddac5a</parentFolderId>
-              <literals />
-              <attributes />
-              <operations />
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <properties>
-                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
-                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
-                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="7b52a0a0-d298-484c-ac5a-4e7a2adacaf0" isActive="true" />
-                  </properties>
-                </stereotype>
-                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
-                  <addedByDefault>true</addedByDefault>
-                  <properties>
-                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="356fbe17-bc63-4e16-b915-feefbc063cbe" isActive="true" />
-                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
-                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
-                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <childElements>
-                <childElement id="7b52a0a0-d298-484c-ac5a-4e7a2adacaf0" type="Element Mapping">
-                  <name>NewElementMapping</name>
-                  <display>[mapping]: Model Definition Field -&gt; Table</display>
-                  <isAbstract>false</isAbstract>
-                  <genericTypes />
-                  <isMapped>false</isMapped>
-                  <parentFolderId>196a7913-fd7f-4b47-a697-279827bdbbec</parentFolderId>
-                  <literals />
-                  <attributes />
-                  <operations />
-                  <stereotypes>
-                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
-                      <addedByDefault>true</addedByDefault>
-                      <properties>
-                        <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
-                        <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="e302d9ca-268e-4a98-ad8d-4434aefb9903" isActive="true" />
-                        <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
-                      </properties>
-                    </stereotype>
-                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
-                      <addedByDefault>true</addedByDefault>
-                      <properties>
-                        <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0dfc489c-7456-4a3d-a28b-50a633631a48" isActive="true" />
-                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
-                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
-                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
-                      </properties>
-                    </stereotype>
-                  </stereotypes>
-                  <childElements />
-                </childElement>
-              </childElements>
-            </childElement>
-          </childElements>
+          <childElements />
         </childElement>
       </childElements>
     </childElement>

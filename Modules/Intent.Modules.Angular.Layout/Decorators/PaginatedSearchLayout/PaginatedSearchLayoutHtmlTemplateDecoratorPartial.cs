@@ -26,11 +26,11 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
 
         public ComponentViewModel View => _template.Model.Views.FirstOrDefault();
         public ComponentModel Model => _template.Model;
-        public ComponentModelModel PaginationModel => new ComponentModelModel(View.GetStereotypeProperty<IElement>("Search View Settings", "Pagination Model"));
-        public IElement DataModel => PaginationModel.TypeReference.GenericTypeParameters.First().Element;
+        //public ComponentModelModel PaginationModel => new ComponentModelModel(View.GetStereotypeProperty<IElement>("Search View Settings", "Pagination Model"));
+        //public IElement DataModel => PaginationModel.TypeReference.GenericTypeParameters.First().Element;
 
         public int Priority { get; } = 0;
         public string GetOverwrite() => MustOverwrite() ? TransformText() : null;
-        private bool MustOverwrite() => false;// View?.TypeReference.Element.Name == "Search View";
+        private bool MustOverwrite() => View?.InternalElement.ChildElements.Any() ?? false;
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -22,6 +23,45 @@ namespace Intent.Modules.Angular.Layout.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            if (Mapping != null)
+            {
+                DataModelPath = Mapping.Element.Name.ToCamelCase();
+                if (Mapping.Element.TypeReference.IsCollection)
+                {
+                    DataModel = Mapping.Element.TypeReference.Element;
+                }
+                else
+                {
+                    foreach (var childElement in Mapping.Element.TypeReference.Element.ChildElements)
+                    {
+                        if (childElement.TypeReference.IsCollection)
+                        {
+                            DataModelPath += "?." + childElement.Name.ToCamelCase();
+                            // Not robust:
+                            if (childElement.TypeReference.Element.SpecializationType == "Generic Type")
+                            {
+                                DataModel = Mapping.Element.TypeReference.GenericTypeParameters.First().Element;
+                            }
+                            else
+                            {
+                                DataModel = childElement.TypeReference.Element;
+                            }
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        public string DataModelPath { get; }
+
+        [IntentManaged(Mode.Ignore)]
+        public IElement DataModel { get; }
+
+        public bool IsValid()
+        {
+            return DataModelPath != null && DataModel != null;
         }
 
         [IntentManaged(Mode.Fully)]

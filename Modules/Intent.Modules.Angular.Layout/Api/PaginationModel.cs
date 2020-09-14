@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -22,6 +23,28 @@ namespace Intent.Modules.Angular.Layout.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            if (Mapping != null)
+            {
+                DataModelPath = Mapping.Element.Name.ToCamelCase();
+                TotalItemsPath = Mapping.Element.TypeReference.Element.ChildElements
+                    .FirstOrDefault(x => x.Name.Contains("Total", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
+                PageNumberPath = Mapping.Element.TypeReference.Element.ChildElements
+                    .FirstOrDefault(x => x.Name.Contains("Number", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
+            }
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        public string DataModelPath { get; }
+
+        [IntentManaged(Mode.Ignore)]
+        public string TotalItemsPath { get; set; }
+
+        [IntentManaged(Mode.Ignore)]
+        public string PageNumberPath { get; set; }
+
+        public bool IsValid()
+        {
+            return DataModelPath != null && TotalItemsPath != null && PageNumberPath != null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -68,5 +91,6 @@ namespace Intent.Modules.Angular.Layout.Api
 
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
+
     }
 }
