@@ -48,8 +48,22 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             
             #line default
             #line hidden
-            this.Write("  <div class=\"row\">\r\n    <div class=\"col\">\r\n      <table class=\"table table-hover" +
-                    "\">\r\n        <thead class=\"thead-dark\">\r\n          <tr>\r\n");
+            this.Write("  <div class=\"row\" intent-manage=\"");
+            
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(TableModel.SpecializationType.ToKebabCase()));
+            
+            #line default
+            #line hidden
+            this.Write("-");
+            
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToKebabCase()));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n    <div class=\"col\">\r\n      <table class=\"table table-hover\">\r\n        <thea" +
+                    "d class=\"thead-dark\">\r\n          <tr>\r\n");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  foreach(var field in model.DataModel.ChildElements) { 

@@ -11,6 +11,11 @@ namespace Intent.Modules.Angular.Api
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<ComponentModel> GetComponentModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetComponentModels(application);
+        }
+
         public static IList<EnumModel> GetEnumModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetEnumModels(application);

@@ -5,6 +5,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
+    [Obsolete]
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHasClassDetails
     {
         public IntentTypescriptProjectItemTemplateBase(string templateId, IProject project, TModel model) : base(templateId, project, model)

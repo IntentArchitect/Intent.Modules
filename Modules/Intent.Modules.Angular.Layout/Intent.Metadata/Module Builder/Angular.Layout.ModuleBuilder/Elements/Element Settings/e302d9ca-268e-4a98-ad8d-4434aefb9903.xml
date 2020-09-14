@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e302d9ca-268e-4a98-ad8d-4434aefb9903" type="Element Settings">
-  <name>Table</name>
-  <display>Table</display>
+  <name>Table Control</name>
+  <display>Table Control</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

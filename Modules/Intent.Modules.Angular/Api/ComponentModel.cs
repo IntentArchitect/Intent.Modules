@@ -81,9 +81,9 @@ namespace Intent.Modules.Angular.Api
             .ToList();
 
         [IntentManaged(Mode.Fully)]
-        public IList<ComponentViewModel> Views => _element.ChildElements
+        public ComponentViewModel View => _element.ChildElements
             .Where(x => x.SpecializationType == ComponentViewModel.SpecializationType)
             .Select(x => new ComponentViewModel(x))
-            .ToList();
+            .SingleOrDefault();
     }
 }

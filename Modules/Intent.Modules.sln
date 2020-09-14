@@ -167,6 +167,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Html"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Angular.Layout", "Intent.Modules.Angular.Layout\Intent.Modules.Angular.Layout.csproj", "{E5EEA48B-9AFC-4712-A0EA-19ED3540C743}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.Html.Tests", "Intent.Modules.Common.Html.Tests\Intent.Modules.Common.Html.Tests.csproj", "{E778BFC5-400D-4C51-8401-5221996C742E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -453,6 +455,10 @@ Global
 		{E5EEA48B-9AFC-4712-A0EA-19ED3540C743}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E5EEA48B-9AFC-4712-A0EA-19ED3540C743}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E5EEA48B-9AFC-4712-A0EA-19ED3540C743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E778BFC5-400D-4C51-8401-5221996C742E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E778BFC5-400D-4C51-8401-5221996C742E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E778BFC5-400D-4C51-8401-5221996C742E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E778BFC5-400D-4C51-8401-5221996C742E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -538,6 +544,7 @@ Global
 		{22158299-341A-45A3-8522-B1A765950021} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{2D36E5E7-5FCE-4A96-99A5-4D12204C49B5} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{E5EEA48B-9AFC-4712-A0EA-19ED3540C743} = {5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}
+		{E778BFC5-400D-4C51-8401-5221996C742E} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

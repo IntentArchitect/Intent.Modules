@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="3faee16c-8605-4bb4-8566-06a555c929a3" type="Element Settings">
-  <name>Pagination</name>
-  <display>Pagination</display>
+  <name>Pagination Control</name>
+  <display>Pagination Control</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

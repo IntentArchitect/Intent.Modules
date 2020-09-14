@@ -14,7 +14,7 @@
 <#          case TableModel.SpecializationType: {
                 var model = new TableModel(control);
                 if (!model.IsValid()) break;#>
-  <div class="row">
+  <div class="row" intent-manage="<#= TableModel.SpecializationType.ToKebabCase() #>-<#= model.Name.ToKebabCase() #>">
     <div class="col">
       <table class="table table-hover">
         <thead class="thead-dark">

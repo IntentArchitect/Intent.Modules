@@ -24,7 +24,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             _template = template;
         }
 
-        public ComponentViewModel View => _template.Model.Views.FirstOrDefault();
+        public ComponentViewModel View => _template.Model.View;
         public ComponentModel Model => _template.Model;
         //public ComponentModelModel PaginationModel => new ComponentModelModel(View.GetStereotypeProperty<IElement>("Search View Settings", "Pagination Model"));
         //public IElement DataModel => PaginationModel.TypeReference.GenericTypeParameters.First().Element;
