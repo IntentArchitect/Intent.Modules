@@ -12,7 +12,7 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Common.Html.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Html.Templates.HtmlFileTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate
 {
@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
         string GetOverwrite();
     }
 
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class AngularComponentHtmlTemplate : HtmlTemplateBase<ComponentModel>, ITemplatePostCreationHook, IHasDecorators<IOverwriteDecorator>
     {
         private readonly IList<IOverwriteDecorator> _decorators = new List<IOverwriteDecorator>();
@@ -60,14 +60,14 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
             //if (File.Exists(fullFileName))
             //{
             //    var source = File.ReadAllText(fullFileName);
-                //if (source.StartsWith("<!--IntentManaged-->"))
-                //{
-                    return GetDecorators().Any() ? GetDecorators().First().GetOverwrite() ?? base.RunTemplate() : base.RunTemplate();
-                //}
-                //else
-                //{
-                //    return source;
-                //}
+            //if (source.StartsWith("<!--IntentManaged-->"))
+            //{
+            return GetDecorators().Any() ? GetDecorators().First().GetOverwrite() ?? base.RunTemplate() : base.RunTemplate();
+            //}
+            //else
+            //{
+            //    return source;
+            //}
             //}
 
             //return base.RunTemplate();

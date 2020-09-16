@@ -16,7 +16,7 @@ namespace Intent.Modules.Common.Html.Weaving
         public string Merge(HtmlFile existingFile, string outputContent)
         {
             var merger = new HtmlFileMerger(existingFile, new HtmlFile(outputContent));
-            return merger.GetMergedFile().TrimEnd();
+            return merger.GetMergedFile();
         }
     }
 }

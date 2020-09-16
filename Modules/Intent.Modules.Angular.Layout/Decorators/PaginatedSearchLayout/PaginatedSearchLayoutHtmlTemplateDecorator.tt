@@ -7,24 +7,24 @@
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 <#@ import namespace="Intent.Modules.Angular.Layout.Api" #>
-<div class="container-fluid" intent-merge="container">
+<div class="container-fluid" intent-can-add="container">
 <#  foreach(var control in View.InternalElement.ChildElements) { 
         switch(control.SpecializationType) {#>
-<#          case TableModel.SpecializationType: {
-                var model = new TableModel(control);
+<#          case TableControlModel.SpecializationType: {
+                var model = new TableControlModel(control);
                 if (!model.IsValid()) break;#>
-  <div class="row" intent-manage="<#= TableModel.SpecializationType.ToKebabCase() #>-<#= model.Name.ToKebabCase() #>">
+  <div class="row" intent-id="<#= model.Id #>">
     <div class="col">
       <table class="table table-hover">
         <thead class="thead-dark">
-          <tr>
+          <tr intent-manage="<#= model.Id #>-<#= model.Name.ToKebabCase() #>-header">
 <# foreach(var field in model.DataModel.ChildElements) { #>
             <th><#= field.Name.ToPascalCase() #></th>
 <# } #>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of <#= model.DataModelPath #>" class="clickable">
+          <tr *ngFor="let item of <#= model.DataModelPath #>" class="clickable" intent-manage="<#= model.Id #>-<#= model.Name.ToKebabCase() #>-data">
 <# foreach(var field in model.DataModel.ChildElements) { #>
             <td>{{item.<#= field.Name #>}}</td>
 <# } #>
@@ -34,14 +34,38 @@
     </div>
   </div>
 <#          } break; #>
-<#          case PaginationModel.SpecializationType: {
-                var model = new PaginationModel(control);
+<#          case PaginationControlModel.SpecializationType: {
+                var model = new PaginationControlModel(control);
                 if (!model.IsValid()) break;#>
-  <div class="row" intent-manage="<#= PaginationModel.SpecializationType.ToKebabCase() #>-<#= model.Name.ToKebabCase() #>">
+  <div class="row" intent-manage="<#= model.Id #>">
     <div class="col">
       <pagination [totalItems]="<#= model.DataModelPath #>?.<#= model.TotalItemsPath #>" [(ngModel)]="<#= model.DataModelPath #>.<#= model.PageNumberPath #>" (pageChanged)="pageChanged($event)"></pagination>
     </div>
   </div>
+<#          } break; #>
+<#          case FormModel.SpecializationType: {
+                var model = new FormModel(control);
+                if (!model.IsValid()) break;#>
+  <form [formGroup]="form" (ngSubmit)="save()" intent-manage="<#= model.Id #>">
+<#  foreach(var field in model.FormFields) { #>
+<#      if (field.TypeReference.Element.Name == "Text Input") { #>
+    <div class="form-group" intent-id="<#= field.Id #>">
+      <label for="<#= field.Name #>"><#= field.Name #></label>
+      <input id="<#= field.Name #>" class="form-control" formControlName="<#= field.DataModelPath #>" type="text" />
+    </div>
+<#      } else if (field.TypeReference.Element.Name == "Checkbox") { #>
+    <div class="form-check" intent-id="<#= field.Id #>">
+      <input id="<#= field.Name #>" class="form-check-input" formControlName="<#= field.DataModelPath #>" type="checkbox" />
+      <label for="<#= field.Name #>" class="form-check-label"><#= field.Name #></label>
+    </div>
+<#      } else if (field.TypeReference.Element.Name == "Datepicker") { #>
+    <div class="form-group" intent-id="<#= field.Id #>">
+      <label for="<#= field.Name #>"><#= field.Name #></label>
+      <input id="<#= field.Name #>" class="form-control" formControlName="<#= field.DataModelPath #>" type="text" bsDatepicker="" />
+    </div>
+<#      } #>
+<#  } #>
+  </form>
 <#          } break; #>
 <#      }
     }#>

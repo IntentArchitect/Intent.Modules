@@ -32,7 +32,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
         /// </summary>
         public override string TransformText()
         {
-            this.Write("<div class=\"container-fluid\" intent-merge=\"container\">\r\n");
+            this.Write("<div class=\"container-fluid\" intent-can-add=\"container\">\r\n");
             
             #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
   foreach(var control in View.InternalElement.ChildElements) { 
@@ -42,28 +42,35 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             #line hidden
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-          case TableModel.SpecializationType: {
-                var model = new TableModel(control);
+          case TableControlModel.SpecializationType: {
+                var model = new TableControlModel(control);
                 if (!model.IsValid()) break;
             
             #line default
             #line hidden
-            this.Write("  <div class=\"row\" intent-manage=\"");
+            this.Write("  <div class=\"row\" intent-id=\"");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(TableModel.SpecializationType.ToKebabCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n    <div class=\"col\">\r\n      <table class=\"table table-hover\">\r\n        <thea" +
+                    "d class=\"thead-dark\">\r\n          <tr intent-manage=\"");
+            
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
             
             #line default
             #line hidden
             this.Write("-");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToKebabCase()));
             
             #line default
             #line hidden
-            this.Write("\">\r\n    <div class=\"col\">\r\n      <table class=\"table table-hover\">\r\n        <thea" +
-                    "d class=\"thead-dark\">\r\n          <tr>\r\n");
+            this.Write("-header\">\r\n");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  foreach(var field in model.DataModel.ChildElements) { 
@@ -92,7 +99,21 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             
             #line default
             #line hidden
-            this.Write("\" class=\"clickable\">\r\n");
+            this.Write("\" class=\"clickable\" intent-manage=\"");
+            
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
+            
+            #line default
+            #line hidden
+            this.Write("-");
+            
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToKebabCase()));
+            
+            #line default
+            #line hidden
+            this.Write("-data\">\r\n");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
  foreach(var field in model.DataModel.ChildElements) { 
@@ -122,8 +143,8 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             #line hidden
             
             #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-          case PaginationModel.SpecializationType: {
-                var model = new PaginationModel(control);
+          case PaginationControlModel.SpecializationType: {
+                var model = new PaginationControlModel(control);
                 if (!model.IsValid()) break;
             
             #line default
@@ -131,14 +152,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             this.Write("  <div class=\"row\" intent-manage=\"");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(PaginationModel.SpecializationType.ToKebabCase()));
-            
-            #line default
-            #line hidden
-            this.Write("-");
-            
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToKebabCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
             
             #line default
             #line hidden
@@ -179,6 +193,173 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             #line hidden
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+          case FormModel.SpecializationType: {
+                var model = new FormModel(control);
+                if (!model.IsValid()) break;
+            
+            #line default
+            #line hidden
+            this.Write("  <form [formGroup]=\"form\" (ngSubmit)=\"save()\" intent-manage=\"");
+            
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+  foreach(var field in model.FormFields) { 
+            
+            #line default
+            #line hidden
+            
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+      if (field.TypeReference.Element.Name == "Text Input") { 
+            
+            #line default
+            #line hidden
+            this.Write("    <div class=\"form-group\" intent-id=\"");
+            
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n      <label for=\"");
+            
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\">");
+            
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("</label>\r\n      <input id=\"");
+            
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\" class=\"form-control\" formControlName=\"");
+            
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.DataModelPath));
+            
+            #line default
+            #line hidden
+            this.Write("\" type=\"text\" />\r\n    </div>\r\n");
+            
+            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+      } else if (field.TypeReference.Element.Name == "Checkbox") { 
+            
+            #line default
+            #line hidden
+            this.Write("    <div class=\"form-check\" intent-id=\"");
+            
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n      <input id=\"");
+            
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\" class=\"form-check-input\" formControlName=\"");
+            
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.DataModelPath));
+            
+            #line default
+            #line hidden
+            this.Write("\" type=\"checkbox\" />\r\n      <label for=\"");
+            
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\" class=\"form-check-label\">");
+            
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("</label>\r\n    </div>\r\n");
+            
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+      } else if (field.TypeReference.Element.Name == "Datepicker") { 
+            
+            #line default
+            #line hidden
+            this.Write("    <div class=\"form-group\" intent-id=\"");
+            
+            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\">\r\n      <label for=\"");
+            
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\">");
+            
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("</label>\r\n      <input id=\"");
+            
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            
+            #line default
+            #line hidden
+            this.Write("\" class=\"form-control\" formControlName=\"");
+            
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.DataModelPath));
+            
+            #line default
+            #line hidden
+            this.Write("\" type=\"text\" bsDatepicker=\"\" />\r\n    </div>\r\n");
+            
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+      } 
+            
+            #line default
+            #line hidden
+            
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("  </form>\r\n");
+            
+            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
+          } break; 
+            
+            #line default
+            #line hidden
+            
+            #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
       }
     }
             

@@ -59,7 +59,7 @@
       <childElements>
         <childElement id="0ce0fb70-8fef-4a1d-9b80-8b94b6a69452" type="Element Mapping">
           <name>NewElementMapping</name>
-          <display>[mapping]: Component Model -&gt; Pagination</display>
+          <display>[mapping]: Component Model -&gt; Pagination Control</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

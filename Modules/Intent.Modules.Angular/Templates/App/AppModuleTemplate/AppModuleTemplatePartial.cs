@@ -22,7 +22,7 @@ using Intent.Modules.Common.TypeScript.Templates;
 
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class AppModuleTemplate : TypeScriptTemplateBase<object>, IHasNugetDependencies
     {
         private readonly IList<string> _components = new List<string>() { "AppComponent"};

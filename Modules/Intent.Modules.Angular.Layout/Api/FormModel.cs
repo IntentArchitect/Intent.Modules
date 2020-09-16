@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -11,40 +10,18 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Angular.Layout.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class PaginationModel : IHasStereotypes, IMetadataModel
+    public class FormModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Pagination";
+        public const string SpecializationType = "Form";
         protected readonly IElement _element;
 
-        public PaginationModel(IElement element, string requiredType = SpecializationType)
+        public FormModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            if (Mapping != null)
-            {
-                DataModelPath = Mapping.Element.Name.ToCamelCase();
-                TotalItemsPath = Mapping.Element.TypeReference.Element.ChildElements
-                    .FirstOrDefault(x => x.Name.Contains("Total", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
-                PageNumberPath = Mapping.Element.TypeReference.Element.ChildElements
-                    .FirstOrDefault(x => x.Name.Contains("Number", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
-            }
-        }
-
-        [IntentManaged(Mode.Ignore)]
-        public string DataModelPath { get; }
-
-        [IntentManaged(Mode.Ignore)]
-        public string TotalItemsPath { get; set; }
-
-        [IntentManaged(Mode.Ignore)]
-        public string PageNumberPath { get; set; }
-
-        public bool IsValid()
-        {
-            return DataModelPath != null && TotalItemsPath != null && PageNumberPath != null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -57,7 +34,19 @@ namespace Intent.Modules.Angular.Layout.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
         [IntentManaged(Mode.Fully)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Fully)]
+        public IElementMapping Mapping => _element.MappedElement;
+
+        [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Fully)]
+        public IList<FormFieldModel> FormFields => _element.ChildElements
+            .Where(x => x.SpecializationType == FormFieldModel.SpecializationType)
+            .Select(x => new FormFieldModel(x))
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()
@@ -66,7 +55,7 @@ namespace Intent.Modules.Angular.Layout.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(PaginationModel other)
+        public bool Equals(FormModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -77,7 +66,7 @@ namespace Intent.Modules.Angular.Layout.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((PaginationModel)obj);
+            return Equals((FormModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -86,11 +75,9 @@ namespace Intent.Modules.Angular.Layout.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        [IntentManaged(Mode.Fully)]
-        public bool IsMapped => _element.IsMapped;
-
-        [IntentManaged(Mode.Fully)]
-        public IElementMapping Mapping => _element.MappedElement;
-
+        public bool IsValid()
+        {
+            return true;
+        }
     }
 }

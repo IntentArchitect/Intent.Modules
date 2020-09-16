@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using HtmlAgilityPack;
@@ -9,23 +11,21 @@ namespace Intent.Modules.Common.Html.Editor
     {
         public static string GetRelativeXPath(this HtmlNode node)
         {
-            var identifier = node.GetAttributeValue("intent-ignore", null) ??
-                             node.GetAttributeValue("intent-merge", null) ??
-                             node.GetAttributeValue("intent-manage", null);
+            var identifier = node.GetAttributeValue("intent-id", null);
             if (identifier != null)
             {
-                return $"//*[@intent-manage='{identifier}' or @intent-merge='{identifier}' or @intent-manage='{identifier}']";
+                return $"//*[@intent-id='{identifier}']";
+            }
+
+            if (node.GetAttributeValue("id", null) != null)
+            {
+                return $"//*[@id='{node.GetAttributeValue("id", null)}']";
             }
 
             var parentPath = node.ParentNode?.XPath;
             var xPath = parentPath != null && node.XPath.StartsWith(parentPath)
                 ? node.XPath.Substring(parentPath.Length + 1)
                 : node.XPath;
-
-            if (node.GetAttributeValue("id", null) != null)
-            {
-                return $"{node.OriginalName}[@id='{node.GetAttributeValue("id", null)}']";
-            }
 
             return xPath;
         }
@@ -45,24 +45,32 @@ namespace Intent.Modules.Common.Html.Editor
             return node.GetAttributeValue("intent-manage", null) != null;
         }
 
+        public static bool HasIntentId(this HtmlNode node)
+        {
+            return node.GetAttributeValue("intent-id", null) != null;
+        }
+
         public static bool CanAdd(this HtmlNode node)
         {
-            return node.IsManaged() || node.IsMerged();
+            return node.IsManaged() || node.IsMerged() || node.GetAttributeValue("intent-can-add", null) != null;
         }
 
         public static bool CanUpdate(this HtmlNode node)
         {
-            return node.IsManaged() || node.IsMerged();
+            return node.IsManaged() || node.IsMerged() || node.GetAttributeValue("intent-can-overwrite", null) != null;
         }
 
         public static bool CanRemove(this HtmlNode node)
         {
-            return node.IsManaged();
+            return node.IsManaged() || node.GetAttributeValue("intent-can-remove", null) != null;
         }
 
         public static bool HasIntentAttribute(this HtmlNode node)
         {
-            return node.IsIgnored() || node.IsMerged() || node.IsManaged();
+            return node.IsIgnored() || node.IsMerged() || node.IsManaged()
+                   || node.GetAttributeValue("intent-can-add", null) != null
+                   || node.GetAttributeValue("intent-can-overwrite", null) != null
+                   || node.GetAttributeValue("intent-can-remove", null) != null;
         }
 
         public static IList<HtmlNode> ChildElements(this HtmlNode node)
@@ -97,6 +105,12 @@ namespace Intent.Modules.Common.Html.Editor
             htmlDoc.LoadHtml(string.IsNullOrEmpty(node.InnerHtml)
                 ? $@"<wrapper>{html}</wrapper>"
                 : $@"<wrapper>  {html.TrimStart()}</wrapper>");
+
+            //var nodeIndentation = Regex.Match(node.ParentNode.InnerHtml, "^\\s*").Value;
+            //var htmlLines = html.Split(new[] {'\n', '\r'}, StringSplitOptions.RemoveEmptyEntries);
+            //var leadingWs = Regex.Match(node.ParentNode.InnerHtml, "^\\s*").Value;
+            //var normalizedLines = htmlLines.Select(x => x.Substring(htmlLines[0]))
+
             node.AppendChildren(htmlDoc.DocumentNode.SelectSingleNode("//wrapper").ChildNodes);
         }
 

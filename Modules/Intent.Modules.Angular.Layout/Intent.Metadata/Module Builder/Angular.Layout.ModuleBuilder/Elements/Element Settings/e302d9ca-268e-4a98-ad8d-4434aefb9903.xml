@@ -72,7 +72,7 @@
       <childElements>
         <childElement id="7c808d5d-c6b5-4478-8df0-a95dc939ef11" type="Element Mapping">
           <name>NewElementMapping</name>
-          <display>[mapping]: Component Model -&gt; Table</display>
+          <display>[mapping]: Component Model -&gt; Table Control</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>

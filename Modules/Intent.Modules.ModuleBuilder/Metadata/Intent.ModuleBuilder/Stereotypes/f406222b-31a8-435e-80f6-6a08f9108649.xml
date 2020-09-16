@@ -104,7 +104,7 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <defaultValue>false</defaultValue>
+      <defaultValue>true</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>

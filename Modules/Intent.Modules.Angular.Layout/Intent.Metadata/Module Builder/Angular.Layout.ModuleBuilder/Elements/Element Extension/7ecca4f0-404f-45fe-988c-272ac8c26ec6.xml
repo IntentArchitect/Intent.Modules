@@ -97,6 +97,39 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="bec5c1dd-463c-4d88-80e1-01b221f963fe" type="Element Creation Option">
+          <name>New Form</name>
+          <display>New Form: Form</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="584aa6d0-70bf-4ec7-88d1-bf49b0025522">
+            <typeId>8aee9b69-d02d-4ca8-b28a-6585508bd033</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73e420e6-7224-484c-958c-08d427458c22</parentFolderId>
+          <literals />
+          <attributes />
+          <operations />
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>

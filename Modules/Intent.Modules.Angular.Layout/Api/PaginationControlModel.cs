@@ -11,12 +11,12 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Angular.Layout.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class TableModel : IHasStereotypes, IMetadataModel
+    public class PaginationControlModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Table";
+        [IntentManaged(Mode.Fully)] public const string SpecializationType = "Pagination Control";
         protected readonly IElement _element;
 
-        public TableModel(IElement element, string requiredType = SpecializationType)
+        public PaginationControlModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -26,30 +26,10 @@ namespace Intent.Modules.Angular.Layout.Api
             if (Mapping != null)
             {
                 DataModelPath = Mapping.Element.Name.ToCamelCase();
-                if (Mapping.Element.TypeReference.IsCollection)
-                {
-                    DataModel = Mapping.Element.TypeReference.Element;
-                }
-                else
-                {
-                    foreach (var childElement in Mapping.Element.TypeReference.Element.ChildElements)
-                    {
-                        if (childElement.TypeReference.IsCollection)
-                        {
-                            DataModelPath += "?." + childElement.Name.ToCamelCase();
-                            // Not robust:
-                            if (childElement.TypeReference.Element.SpecializationType == "Generic Type")
-                            {
-                                DataModel = Mapping.Element.TypeReference.GenericTypeParameters.First().Element;
-                            }
-                            else
-                            {
-                                DataModel = childElement.TypeReference.Element;
-                            }
-                            break;
-                        }
-                    }
-                }
+                TotalItemsPath = Mapping.Element.TypeReference.Element.ChildElements
+                    .FirstOrDefault(x => x.Name.Contains("Total", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
+                PageNumberPath = Mapping.Element.TypeReference.Element.ChildElements
+                    .FirstOrDefault(x => x.Name.Contains("Number", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
             }
         }
 
@@ -57,11 +37,14 @@ namespace Intent.Modules.Angular.Layout.Api
         public string DataModelPath { get; }
 
         [IntentManaged(Mode.Ignore)]
-        public IElement DataModel { get; }
+        public string TotalItemsPath { get; set; }
+
+        [IntentManaged(Mode.Ignore)]
+        public string PageNumberPath { get; set; }
 
         public bool IsValid()
         {
-            return DataModelPath != null && DataModel != null;
+            return DataModelPath != null && TotalItemsPath != null && PageNumberPath != null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -83,7 +66,7 @@ namespace Intent.Modules.Angular.Layout.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public bool Equals(TableModel other)
+        public bool Equals(PaginationControlModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -94,7 +77,7 @@ namespace Intent.Modules.Angular.Layout.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((TableModel)obj);
+            return Equals((PaginationControlModel)obj);
         }
 
         [IntentManaged(Mode.Fully)]
@@ -108,5 +91,6 @@ namespace Intent.Modules.Angular.Layout.Api
 
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
+
     }
 }

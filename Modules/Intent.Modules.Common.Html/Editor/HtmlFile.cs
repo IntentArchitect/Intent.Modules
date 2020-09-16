@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Xml;
 using HtmlAgilityPack;
 
 namespace Intent.Modules.Common.Html.Editor
@@ -14,7 +15,7 @@ namespace Intent.Modules.Common.Html.Editor
 
     public class HtmlFile
     {
-        private HtmlDocument _doc;
+        private readonly HtmlDocument _doc;
 
         public HtmlFile(string source)
         {
@@ -56,7 +57,7 @@ namespace Intent.Modules.Common.Html.Editor
                     {
                         continue;
                     }
-                    if (node.CanUpdate())
+                    if (node.CanUpdate() && !existing.HasIntentAttribute())
                     {
                         existing.ReplaceWith(mergeChild);
                         continue;

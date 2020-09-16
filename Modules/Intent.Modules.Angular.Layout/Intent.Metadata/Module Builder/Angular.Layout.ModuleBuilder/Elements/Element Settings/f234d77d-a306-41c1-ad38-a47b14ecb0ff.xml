@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="f234d77d-a306-41c1-ad38-a47b14ecb0ff" type="Element Settings">
-  <name>Text Control</name>
-  <display>Text Control</display>
+  <name>Form Control</name>
+  <display>Form Control</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>8aee9b69-d02d-4ca8-b28a-6585508bd033</parentFolderId>
+  <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -25,7 +25,7 @@
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;pencil-square-o&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
