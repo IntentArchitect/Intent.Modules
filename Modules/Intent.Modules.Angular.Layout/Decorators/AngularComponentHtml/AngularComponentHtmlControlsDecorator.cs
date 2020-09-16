@@ -1,25 +1,23 @@
 using System.Linq;
-using Intent.Engine;
-using Intent.Metadata.Models;
+using System.Text;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Angular.Layout.Decorators.Controls;
 using Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
-using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
+namespace Intent.Modules.Angular.Layout.Decorators.AngularComponentHtml
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class PaginatedSearchLayoutHtmlTemplateDecorator : IntentTemplateBase, IOverwriteDecorator
+    public class AngularComponentHtmlControlsDecorator : IOverwriteDecorator
     {
-        public const string DecoratorId = "Angular.Layout.AngularComponentHtmlDecorator.PagedSearchDecorator";
+        public const string DecoratorId = "Angular.Layout.AngularComponentHtmlDecorator.Controls";
         private readonly AngularComponentHtmlTemplate _template;
 
-        public PaginatedSearchLayoutHtmlTemplateDecorator(AngularComponentHtmlTemplate template)
+        public AngularComponentHtmlControlsDecorator(AngularComponentHtmlTemplate template)
         {
             _template = template;
         }
@@ -30,7 +28,19 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
         //public IElement DataModel => PaginationModel.TypeReference.GenericTypeParameters.First().Element;
 
         public int Priority { get; } = 0;
-        public string GetOverwrite() => MustOverwrite() ? TransformText() : null;
+        public string GetOverwrite() => MustOverwrite() ? GetOutput() : null;
         private bool MustOverwrite() => View?.InternalElement.ChildElements.Any() ?? false;
+
+        public string GetOutput()
+        {
+            var sb = new StringBuilder();
+            sb.AppendLine("<div class=\"container-fluid\" intent-manage=\"add remove\" intent-id=\"container\">");
+            foreach (var control in View.InternalElement.ChildElements)
+            {
+                sb.Append(ControlWriter.WriteControl(control));
+            }
+            sb.AppendLine("</div>");
+            return sb.ToString();
+        }
     }
 }

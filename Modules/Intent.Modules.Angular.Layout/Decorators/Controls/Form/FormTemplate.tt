@@ -1,0 +1,26 @@
+<#@ template language="C#" inherits="IntentTemplateBase" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+  <form [formGroup]="form" (ngSubmit)="save()" intent-manage intent-id="<#= Model.Name.Replace(" ", "").ToKebabCase() #>">
+<#  foreach(var field in Model.FormFields) { #>
+<#      if (field.TypeReference.Element.Name == "Text Input") { #>
+    <div class="form-group" intent-id="<#= field.Id #>">
+      <label for="<#= field.Name #>"><#= field.Name #></label>
+      <input id="<#= field.Name #>" class="form-control" formControlName="<#= field.DataModelPath #>" type="text" />
+    </div>
+<#      } else if (field.TypeReference.Element.Name == "Checkbox") { #>
+    <div class="form-check" intent-id="<#= field.Id #>">
+      <input id="<#= field.Name #>" class="form-check-input" formControlName="<#= field.DataModelPath #>" type="checkbox" />
+      <label for="<#= field.Name #>" class="form-check-label"><#= field.Name #></label>
+    </div>
+<#      } else if (field.TypeReference.Element.Name == "Datepicker") { #>
+    <div class="form-group" intent-id="<#= field.Id #>">
+      <label for="<#= field.Name #>"><#= field.Name #></label>
+      <input id="<#= field.Name #>" class="form-control" formControlName="<#= field.DataModelPath #>" type="text" bsDatepicker="" />
+    </div>
+<#      } #>
+<#  } #>
+  </form>

@@ -1,0 +1,9 @@
+<#@ template language="C#" inherits="IntentTemplateBase" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+      <div intent-manage intent-id=<#= Model.Id #>>
+        <button class="btn btn-default" <# if (Model.ClickCommandPath != null) { #> (click)="<#= Model.ClickCommandPath #>($event)" <# } #> ><#= Model.Name #></button>
+      </div>

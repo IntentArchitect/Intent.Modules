@@ -38,7 +38,7 @@
     </template>
   </templates>
   <decorators>
-    <decorator id="Angular.Layout.AngularComponentHtmlDecorator.PagedSearchDecorator" />
+    <decorator id="Angular.Layout.AngularComponentHtmlDecorator.Controls" />
   </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="2.1.0" />

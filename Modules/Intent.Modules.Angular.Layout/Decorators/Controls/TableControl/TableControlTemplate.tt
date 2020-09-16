@@ -1,0 +1,26 @@
+<#@ template language="C#" inherits="IntentTemplateBase" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+  <div class="row" intent-id="<#= Model.Name.Replace(" ", "").ToKebabCase() #>">
+    <div class="col">
+      <table class="table table-hover">
+        <thead class="thead-dark">
+          <tr intent-manage intent-id="<#= Model.Name.Replace(" ", "").ToKebabCase() #>-header">
+<# foreach(var field in Model.DataModel.ChildElements) { #>
+            <th><#= field.Name.ToPascalCase() #></th>
+<# } #>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of <#= Model.DataModelPath #>" class="clickable" intent-manage intent-id="<#= Model.Name.Replace(" ", "").ToKebabCase() #>-<#= Model.Name.ToKebabCase() #>-data">
+<# foreach(var field in Model.DataModel.ChildElements) { #>
+            <td>{{item.<#= field.Name #>}}</td>
+<# } #>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

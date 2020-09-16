@@ -6,12 +6,32 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt" />
+    <None Remove="Decorators\Controls\ButtonControl\ButtonControlTemplate.tt" />
+    <None Remove="Decorators\Controls\Form\FormTemplate.tt" />
+    <None Remove="Decorators\Controls\PaginationControl\PaginationControlTemplate.tt" />
+    <None Remove="Decorators\AngularComponentHtml\TableControlTemplate.tt" />
+    <None Remove="Decorators\Controls\Section\SectionTemplate.tt" />
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt">
-      <LastGenOutput>PaginatedSearchLayoutHtmlTemplateDecorator.cs</LastGenOutput>
+    <Content Include="Decorators\Controls\Section\SectionTemplate.tt">
+      <LastGenOutput>SectionTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\ButtonControl\ButtonControlTemplate.tt">
+      <LastGenOutput>ButtonControlTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\PaginationControl\PaginationControlTemplate.tt">
+      <LastGenOutput>PaginationControlTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\Form\FormTemplate.tt">
+      <LastGenOutput>FormTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\TableControl\TableControlTemplate.tt">
+      <LastGenOutput>TableControlTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </Content>
   </ItemGroup>
@@ -48,10 +68,30 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.cs">
+    <Compile Update="Decorators\Controls\Section\SectionTemplate.cs">
+      <DependentUpon>SectionTemplate.tt</DependentUpon>
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>PaginatedSearchLayoutHtmlTemplateDecorator.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Decorators\Controls\ButtonControl\ButtonControlTemplate.cs">
+      <DependentUpon>ButtonControlTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Decorators\Controls\PaginationControl\PaginationControlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaginationControlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Decorators\Controls\Form\FormTemplate.cs">
+      <DependentUpon>FormTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Decorators\Controls\TableControl\TableControlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TableControlTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\AppComponentHtmlTemplate\AppComponentHtmlTemplate.cs">
       <DesignTime>True</DesignTime>
