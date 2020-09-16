@@ -7,6 +7,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\ButtonControlModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ButtonControlModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\FormControlModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/FormControlModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -24,6 +29,11 @@
       <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\PaginationControlModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/PaginationControlModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\SectionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/SectionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3b6af4b2-3516-4517-a768-073ad10278bb</ProjectId>

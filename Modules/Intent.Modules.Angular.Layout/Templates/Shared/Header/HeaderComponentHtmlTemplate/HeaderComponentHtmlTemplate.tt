@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="HtmlTemplateBase" #>
+<#@ template language="C#" inherits="HtmlTemplateBase<object>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -15,7 +15,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" [collapse]="isCollapsed">
-    <ul class="navbar-nav" intent-merge="navbar">
+    <ul class="navbar-nav" intent-manage intent-id="navbar">
 <#  foreach (var moduleRoute in _mainRoutes) { #>
       <li class="nav-item active" intent-manage="<#= moduleRoute.Route #>">
         <a class="nav-link" routerLink="/<#= moduleRoute.Route #>"><#= moduleRoute.ModuleName #></a>

@@ -7,24 +7,24 @@
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 <#@ import namespace="Intent.Modules.Angular.Layout.Api" #>
-<div class="container-fluid" intent-can-add="container">
+<div class="container-fluid" intent-can-add intent-id="container">
 <#  foreach(var control in View.InternalElement.ChildElements) { 
         switch(control.SpecializationType) {#>
 <#          case TableControlModel.SpecializationType: {
                 var model = new TableControlModel(control);
                 if (!model.IsValid()) break;#>
-  <div class="row" intent-id="<#= model.Id #>">
+  <div class="row" intent-id="<#= model.Name.Replace(" ", "").ToKebabCase() #>">
     <div class="col">
       <table class="table table-hover">
         <thead class="thead-dark">
-          <tr intent-manage="<#= model.Id #>-<#= model.Name.ToKebabCase() #>-header">
+          <tr intent-manage intent-id="<#= model.Name.Replace(" ", "").ToKebabCase() #>-header">
 <# foreach(var field in model.DataModel.ChildElements) { #>
             <th><#= field.Name.ToPascalCase() #></th>
 <# } #>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let item of <#= model.DataModelPath #>" class="clickable" intent-manage="<#= model.Id #>-<#= model.Name.ToKebabCase() #>-data">
+          <tr *ngFor="let item of <#= model.DataModelPath #>" class="clickable" intent-manage intent-id="<#= model.Name.Replace(" ", "").ToKebabCase() #>-<#= model.Name.ToKebabCase() #>-data">
 <# foreach(var field in model.DataModel.ChildElements) { #>
             <td>{{item.<#= field.Name #>}}</td>
 <# } #>
@@ -37,7 +37,7 @@
 <#          case PaginationControlModel.SpecializationType: {
                 var model = new PaginationControlModel(control);
                 if (!model.IsValid()) break;#>
-  <div class="row" intent-manage="<#= model.Id #>">
+  <div class="row" intent-manage intent-id="<#= model.Name.Replace(" ", "").ToKebabCase() #>">
     <div class="col">
       <pagination [totalItems]="<#= model.DataModelPath #>?.<#= model.TotalItemsPath #>" [(ngModel)]="<#= model.DataModelPath #>.<#= model.PageNumberPath #>" (pageChanged)="pageChanged($event)"></pagination>
     </div>
@@ -46,7 +46,7 @@
 <#          case FormModel.SpecializationType: {
                 var model = new FormModel(control);
                 if (!model.IsValid()) break;#>
-  <form [formGroup]="form" (ngSubmit)="save()" intent-manage="<#= model.Id #>">
+  <form [formGroup]="form" (ngSubmit)="save()" intent-manage intent-id="<#= model.Name.Replace(" ", "").ToKebabCase() #>">
 <#  foreach(var field in model.FormFields) { #>
 <#      if (field.TypeReference.Element.Name == "Text Input") { #>
     <div class="form-group" intent-id="<#= field.Id #>">

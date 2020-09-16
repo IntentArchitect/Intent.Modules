@@ -18,6 +18,15 @@ namespace Intent.Modules.Angular.Layout.Api
             _metadataManager = metadataManager;
         }
 
+        public IList<ButtonControlModel> GetButtonControlModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
+                .Where(x => x.SpecializationType == ButtonControlModel.SpecializationType)
+                .Select(x => new ButtonControlModel(x))
+                .ToList<ButtonControlModel>();
+            return models;
+        }
+
         public IList<FormModel> GetFormModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
@@ -33,6 +42,15 @@ namespace Intent.Modules.Angular.Layout.Api
                 .Where(x => x.SpecializationType == FormControlModel.SpecializationType)
                 .Select(x => new FormControlModel(x))
                 .ToList<FormControlModel>();
+            return models;
+        }
+
+        public IList<SectionModel> GetSectionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
+                .Where(x => x.SpecializationType == SectionModel.SpecializationType)
+                .Select(x => new SectionModel(x))
+                .ToList<SectionModel>();
             return models;
         }
 

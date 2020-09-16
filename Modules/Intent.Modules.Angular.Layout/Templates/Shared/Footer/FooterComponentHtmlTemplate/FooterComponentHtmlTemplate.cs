@@ -13,6 +13,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentH
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.Html.Templates;
     using Intent.Metadata.Models;
     using System;
     
@@ -22,7 +23,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentH
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Templates\Shared\Footer\FooterComponentHtmlTemplate\FooterComponentHtmlTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class FooterComponentHtmlTemplate : IntentProjectItemTemplateBase<object>
+    public partial class FooterComponentHtmlTemplate : HtmlTemplateBase<object>
     {
 #line hidden
         /// <summary>

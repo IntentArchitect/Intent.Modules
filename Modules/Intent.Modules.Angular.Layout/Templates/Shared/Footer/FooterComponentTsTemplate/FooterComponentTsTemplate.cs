@@ -31,9 +31,9 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentT
         /// </summary>
         public override string TransformText()
         {
-            this.Write("import { Component } from \'@angular/core\';\r\n\r\n@IntentMerge\r\n@Component({\r\n  selec" +
-                    "tor: \'app-layout-footer\',\r\n  templateUrl: \'./footer.component.html\',\r\n  styleUrl" +
-                    "s: [\'./footer.component.css\']\r\n})\r\nexport class ");
+            this.Write("import { Component } from \'@angular/core\';\r\n\r\n@IntentMerge()\r\n@Component({\r\n  sel" +
+                    "ector: \'app-layout-footer\',\r\n  templateUrl: \'./footer.component.html\',\r\n  styleU" +
+                    "rls: [\'./footer.component.css\']\r\n})\r\nexport class ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Templates\Shared\Footer\FooterComponentTsTemplate\FooterComponentTsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

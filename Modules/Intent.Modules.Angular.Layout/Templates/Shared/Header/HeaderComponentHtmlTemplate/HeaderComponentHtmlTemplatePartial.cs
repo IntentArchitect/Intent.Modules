@@ -17,19 +17,19 @@ using Intent.Templates;
 
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.Html.Templates.HtmlFileTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class HeaderComponentHtmlTemplate : HtmlTemplateBase
+    partial class HeaderComponentHtmlTemplate : HtmlTemplateBase<object>
     {
         private List<ModuleRoute> _mainRoutes = new List<ModuleRoute>();
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate";
 
-        public HeaderComponentHtmlTemplate(IProject project) : base(TemplateId, project)
+        public HeaderComponentHtmlTemplate(IProject project) : base(TemplateId, project, null)
         {
             project.Application.EventDispatcher.Subscribe(AngularModuleRouteCreatedEvent.EventId, @event =>
             {
@@ -37,36 +37,36 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
             });
         }
 
-      //  public override string RunTemplate()
-      //  {
-      //      var file = GetExistingFile() ?? base.RunTemplate();
-      //      var html = new HtmlDocument()
-      //      {
-      //          OptionOutputOriginalCase = true,
-      //          OptionWriteEmptyNodes = true
-      //      };
-      //      html.LoadHtml(file);
-      //      var navbar = html.DocumentNode.SelectSingleNode("//ul[@intent-managed='navbar']");
-      //      if (navbar != null)
-      //      {
-      //          foreach (var moduleRoute in _mainRoutes)
-      //          {
-      //              if (navbar.SelectSingleNode($"//a[@routerlink='/{moduleRoute.Route}']") == null)
-      //              {
-      //                  navbar.AppendChild($@"
-      //<li class=""nav-item active"">
-      //  <a class=""nav-link"" routerLink=""/{moduleRoute.Route}"">{moduleRoute.ModuleName}</a>
-      //</li>");
-      //              }
-      //          }
-      //      }
+        //  public override string RunTemplate()
+        //  {
+        //      var file = GetExistingFile() ?? base.RunTemplate();
+        //      var html = new HtmlDocument()
+        //      {
+        //          OptionOutputOriginalCase = true,
+        //          OptionWriteEmptyNodes = true
+        //      };
+        //      html.LoadHtml(file);
+        //      var navbar = html.DocumentNode.SelectSingleNode("//ul[@intent-managed='navbar']");
+        //      if (navbar != null)
+        //      {
+        //          foreach (var moduleRoute in _mainRoutes)
+        //          {
+        //              if (navbar.SelectSingleNode($"//a[@routerlink='/{moduleRoute.Route}']") == null)
+        //              {
+        //                  navbar.AppendChild($@"
+        //<li class=""nav-item active"">
+        //  <a class=""nav-link"" routerLink=""/{moduleRoute.Route}"">{moduleRoute.ModuleName}</a>
+        //</li>");
+        //              }
+        //          }
+        //      }
 
-      //      using (StringWriter writer = new StringWriter())
-      //      {
-      //          html.Save(writer);
-      //          return writer.ToString();
-      //      }
-      //  }
+        //      using (StringWriter writer = new StringWriter())
+        //      {
+        //          html.Save(writer);
+        //          return writer.ToString();
+        //      }
+        //  }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()

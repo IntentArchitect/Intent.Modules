@@ -88,6 +88,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>HeaderComponentTsTemplate.tt</DependentUpon>
     </Compile>
+  
+    <Compile Update="Templates\Shared\NewHtmlFileTemplate\NewHtmlFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NewHtmlFileTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\Shared\TestPerModelTemplate\TestPerModelTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestPerModelTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -97,6 +109,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common" Version="2.1.1" />
+    <PackageReference Include="Intent.Modules.Common.Html" Version="2.1.0-pre.1" />
     <PackageReference Include="Intent.Modules.Common.Typescript" Version="2.1.0-pre.5" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.2" />

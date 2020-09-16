@@ -8,7 +8,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 import { Component } from '@angular/core';
 
-@IntentMerge
+@IntentMerge()
 @Component({
   selector: 'app-layout-header',
   templateUrl: './header.component.html',

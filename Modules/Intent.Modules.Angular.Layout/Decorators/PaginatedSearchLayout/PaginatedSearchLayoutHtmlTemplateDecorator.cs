@@ -32,7 +32,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
         /// </summary>
         public override string TransformText()
         {
-            this.Write("<div class=\"container-fluid\" intent-can-add=\"container\">\r\n");
+            this.Write("<div class=\"container-fluid\" intent-can-add intent-id=\"container\">\r\n");
             
             #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
   foreach(var control in View.InternalElement.ChildElements) { 
@@ -51,22 +51,15 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             this.Write("  <div class=\"row\" intent-id=\"");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.Replace(" ", "").ToKebabCase()));
             
             #line default
             #line hidden
             this.Write("\">\r\n    <div class=\"col\">\r\n      <table class=\"table table-hover\">\r\n        <thea" +
-                    "d class=\"thead-dark\">\r\n          <tr intent-manage=\"");
+                    "d class=\"thead-dark\">\r\n          <tr intent-manage intent-id=\"");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
-            
-            #line default
-            #line hidden
-            this.Write("-");
-            
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.ToKebabCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.Replace(" ", "").ToKebabCase()));
             
             #line default
             #line hidden
@@ -99,10 +92,10 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             
             #line default
             #line hidden
-            this.Write("\" class=\"clickable\" intent-manage=\"");
+            this.Write("\" class=\"clickable\" intent-manage intent-id=\"");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.Replace(" ", "").ToKebabCase()));
             
             #line default
             #line hidden
@@ -149,10 +142,10 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             
             #line default
             #line hidden
-            this.Write("  <div class=\"row\" intent-manage=\"");
+            this.Write("  <div class=\"row\" intent-manage intent-id=\"");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.Replace(" ", "").ToKebabCase()));
             
             #line default
             #line hidden
@@ -199,10 +192,10 @@ namespace Intent.Modules.Angular.Layout.Decorators.PaginatedSearchLayout
             
             #line default
             #line hidden
-            this.Write("  <form [formGroup]=\"form\" (ngSubmit)=\"save()\" intent-manage=\"");
+            this.Write("  <form [formGroup]=\"form\" (ngSubmit)=\"save()\" intent-manage intent-id=\"");
             
             #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\PaginatedSearchLayout\PaginatedSearchLayoutHtmlTemplateDecorator.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(model.Id));
+            this.Write(this.ToStringHelper.ToStringWithCulture(model.Name.Replace(" ", "").ToKebabCase()));
             
             #line default
             #line hidden

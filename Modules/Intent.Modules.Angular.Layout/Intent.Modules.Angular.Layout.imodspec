@@ -16,12 +16,6 @@
     <template id="Angular.Layout.Templates.Shared.Footer.FooterComponentCssTemplate" externalReference="ffc791d1-a0f3-49e2-99b7-b37ba469579f">
       <role>Angular</role>
     </template>
-    <template id="Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate" externalReference="217e11ec-bd5e-41d8-9bcf-c63cfde74c32">
-      <role>Angular</role>
-    </template>
-    <template id="Angular.Layout.Templates.Shared.Footer.FooterComponentHtmlTemplate" externalReference="fbf0efd0-6ec1-40b4-8ccb-f8cb6cd5c694">
-      <role>Angular</role>
-    </template>
     <template id="Angular.Layout.Templates.Shared.Footer.FooterComponentTsTemplate" externalReference="180ae8b5-030d-48bb-b541-a36fb3cf118c">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
@@ -34,6 +28,12 @@
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
+      <role>Angular</role>
+    </template>
+    <template id="Angular.Layout.Templates.Shared.Footer.FooterComponentHtmlTemplate" externalReference="deb24a99-3de5-4ac5-94a4-d07db10d4a30">
+      <role>Angular</role>
+    </template>
+    <template id="Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate" externalReference="3c647745-3333-4385-abff-220ebbb6aadc">
       <role>Angular</role>
     </template>
   </templates>

@@ -23,7 +23,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Templates\Shared\Header\HeaderComponentHtmlTemplate\HeaderComponentHtmlTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class HeaderComponentHtmlTemplate : HtmlTemplateBase
+    public partial class HeaderComponentHtmlTemplate : HtmlTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -40,7 +40,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
     <span class=""navbar-toggler-icon""></span>
   </button>
   <div class=""collapse navbar-collapse"" [collapse]=""isCollapsed"">
-    <ul class=""navbar-nav"" intent-merge=""navbar"">
+    <ul class=""navbar-nav"" intent-manage intent-id=""navbar"">
 ");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Templates\Shared\Header\HeaderComponentHtmlTemplate\HeaderComponentHtmlTemplate.tt"

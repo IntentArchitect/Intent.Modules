@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="fbf0efd0-6ec1-40b4-8ccb-f8cb6cd5c694" type="File Template">
+<class id="deb24a99-3de5-4ac5-94a4-d07db10d4a30" type="Html File Template">
   <name>FooterComponentHtmlTemplate</name>
   <display>FooterComponentHtmlTemplate: Single File</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="99e57575-9c5c-4694-92cb-42564367c7f5">
+  <typeReference id="27b65f1b-e301-4566-9bc7-53e5e077127b">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -18,13 +18,6 @@
   <attributes />
   <operations />
   <stereotypes>
-    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
-      <addedByDefault>true</addedByDefault>
-      <properties>
-        <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="html" isActive="true" />
-        <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="T4 Template" isActive="true" />
-      </properties>
-    </stereotype>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
       <properties>
