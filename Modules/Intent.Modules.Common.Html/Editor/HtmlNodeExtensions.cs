@@ -40,9 +40,9 @@ namespace Intent.Modules.Common.Html.Editor
             return node.GetAttributeValue("intent-merge", null) != null;
         }
 
-        public static bool IsManaged(this HtmlNode node)
+        public static bool IsFullyManaged(this HtmlNode node)
         {
-            return node.GetAttributeValue("intent-manage", null) != null;
+            return node.GetAttributeValue("intent-manage", null)?.Trim() == string.Empty;
         }
 
         public static bool HasIntentId(this HtmlNode node)
@@ -52,22 +52,30 @@ namespace Intent.Modules.Common.Html.Editor
 
         public static bool CanAdd(this HtmlNode node)
         {
-            return node.IsManaged() || node.IsMerged() || node.GetAttributeValue("intent-can-add", null) != null;
+            return node.IsFullyManaged() || node.IsMerged() 
+                || node.GetAttributeValue("intent-can-add", null) != null
+                || (node.GetAttributeValue("intent-manage", null)?.Contains("add") ?? false);
         }
 
-        public static bool CanUpdate(this HtmlNode node)
+        public static bool CanOverwrite(this HtmlNode node)
         {
-            return node.IsManaged() || node.IsMerged() || node.GetAttributeValue("intent-can-overwrite", null) != null;
+            return node.IsFullyManaged() || node.IsMerged() 
+                || node.GetAttributeValue("intent-can-overwrite", null) != null
+                || (node.GetAttributeValue("intent-manage", null)?.Contains("overwrite") ?? false);
         }
 
         public static bool CanRemove(this HtmlNode node)
         {
-            return node.IsManaged() || node.GetAttributeValue("intent-can-remove", null) != null;
+            return node.IsFullyManaged() 
+                || node.GetAttributeValue("intent-can-remove", null) != null
+                || (node.GetAttributeValue("intent-manage", null)?.Contains("remove") ?? false);
         }
 
         public static bool HasIntentAttribute(this HtmlNode node)
         {
-            return node.IsIgnored() || node.IsMerged() || node.IsManaged()
+            return node.GetAttributeValue("intent-ignore", null) != null
+                   || node.GetAttributeValue("intent-merge", null) != null
+                   || node.GetAttributeValue("intent-manage", null) != null
                    || node.GetAttributeValue("intent-can-add", null) != null
                    || node.GetAttributeValue("intent-can-overwrite", null) != null
                    || node.GetAttributeValue("intent-can-remove", null) != null;

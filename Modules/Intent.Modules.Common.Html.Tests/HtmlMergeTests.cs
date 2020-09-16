@@ -149,11 +149,11 @@ namespace Intent.Modules.Common.Html.Tests
         }
 
         public static string HtmlFileWithMergedContainerOnly = @"
-  <div class=""container-fluid"" intent-merge=""container""></div>";
+  <div class=""container-fluid"" intent-merge="""" intent-id=""container""></div>";
 
         public static string HtmlFileWithManagedButtons = @"
-  <div class=""container-fluid"" intent-merge=""container"">
-    <div class=""row"" intent-manage=""buttons-identifier"">
+  <div class=""container-fluid"" intent-merge="""" intent-id=""container"">
+    <div class=""row"" intent-manage="""" intent-id=""buttons-identifier"">
       <div class=""col"">
         <div>
           <button type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add User</button>
@@ -162,8 +162,8 @@ namespace Intent.Modules.Common.Html.Tests
     </div>
   </div>";
         public static string HtmlFileWithManagedDifferentButtons = @"
-  <div class=""container-fluid"" intent-merge=""container"">
-    <div class=""row"" intent-manage=""buttons-identifier"">
+  <div class=""container-fluid"" intent-merge="""" intent-id=""container"">
+    <div class=""row"" intent-manage="""" intent-id=""buttons-identifier"">
       <div class=""col"">
         <div>
           <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
@@ -172,7 +172,7 @@ namespace Intent.Modules.Common.Html.Tests
     </div>
   </div>";
         public static string HtmlFileWithMergedContainer = @"
-  <div class=""container-fluid"" intent-merge=""container"">
+  <div class=""container-fluid"" intent-merge="""" intent-id=""container"">
     <div class=""row"">
       <div class=""col"">
         <div>
@@ -186,7 +186,7 @@ namespace Intent.Modules.Common.Html.Tests
   <div class=""container-fluid"">
     <div class=""row"">
       <div class=""col"">
-        <div intent-merge=""container"">
+        <div intent-merge="""" intent-id=""container"">
           <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
         </div>
       </div>
@@ -197,7 +197,7 @@ namespace Intent.Modules.Common.Html.Tests
   <div class=""container-fluid"">
     <div class=""row"">
       <div class=""col"">
-        <div intent-manage=""container"">
+        <div intent-manage="""" intent-id=""container"">
           <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
         </div>
       </div>
@@ -208,7 +208,7 @@ namespace Intent.Modules.Common.Html.Tests
   <div class=""container-fluid"">
     <div class=""row"">
       <div class=""col"">
-        <div intent-merge=""container"">
+        <div intent-merge="""" intent-id=""container"">
           <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
           <button id=""delete-customer"" type=""button"" class=""btn btn-warning"" (click)=""delete()"">Delete Customer</button>
         </div>
@@ -220,7 +220,7 @@ namespace Intent.Modules.Common.Html.Tests
   <div class=""container-fluid"">
     <div class=""row"">
       <div class=""col"">
-        <div intent-manage=""container"">
+        <div intent-manage="""" intent-id=""container"">
           <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add Customer</button>
           <button id=""delete-customer"" type=""button"" class=""btn btn-warning"" (click)=""delete()"">Delete Customer</button>
         </div>
@@ -232,7 +232,7 @@ namespace Intent.Modules.Common.Html.Tests
   <div class=""container-fluid"">
     <div class=""row"">
       <div class=""col"">
-        <div intent-manage=""container"">
+        <div intent-manage="""" intent-id=""container"">
           <button id=""add-customer"" type=""button"" class=""btn btn-primary"" (click)=""navigateToCreate()"">Add</button>
           <button id=""cancel"" type=""button"" class=""btn btn-warning"" (click)=""doSomeSpecial()"">Something Special?</button>
           <button id=""delete-customer"" type=""button"" class=""btn btn-warning"" (click)=""delete()"">Delete Customer</button>

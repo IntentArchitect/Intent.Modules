@@ -18,10 +18,13 @@
       </config>
       <role>Templates</role>
     </template>
+    <template id="ModuleBuilder.Html.Templates.HtmlFileTemplate.T4Template.PreProcessed">
+      <role>Templates</role>
+    </template>
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="2.1.0" />
-    <dependency id="Intent.Common.Types" version="2.1.0" />
+    <dependency id="Intent.ModuleBuilder" version="2.1.2" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
   </dependencies>
   <files>

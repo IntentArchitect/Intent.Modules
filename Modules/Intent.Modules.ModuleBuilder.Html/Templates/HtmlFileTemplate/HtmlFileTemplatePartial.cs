@@ -66,11 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
         private string TemplateBody()
         {
             return @"
-public class <#= ClassName #> { 
-    public <#= ClassName #>() {
-
-    }
-}";
+<!-- Replace this with your HTML template -->";
         }
 
         private string GetExistingTemplateContent()

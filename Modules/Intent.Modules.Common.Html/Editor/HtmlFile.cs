@@ -57,7 +57,7 @@ namespace Intent.Modules.Common.Html.Editor
                     {
                         continue;
                     }
-                    if (node.CanUpdate() && !existing.HasIntentAttribute())
+                    if (node.CanOverwrite() && !existing.HasIntentAttribute())
                     {
                         existing.ReplaceWith(mergeChild);
                         continue;
