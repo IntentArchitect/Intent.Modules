@@ -3,6 +3,7 @@ using System.IO;
 using Intent.Engine;
 using Intent.Modules.Angular.Templates;
 using Intent.Modules.Angular.Templates.App.AppModuleTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -22,6 +23,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentT
 
         public FooterComponentTsTemplate(IProject project, object model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

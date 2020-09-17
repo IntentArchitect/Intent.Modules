@@ -9,6 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -24,6 +25,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
 
         public AppRoutingModuleTemplate(IProject project, IList<ModuleModel> model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }
 
         public IEnumerable<AngularModuleTemplate> ModuleTemplates => Model.Select(x => FindTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));

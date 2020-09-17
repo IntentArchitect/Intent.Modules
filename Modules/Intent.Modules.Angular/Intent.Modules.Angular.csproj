@@ -220,6 +220,17 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Templates\Model\ModelTemplate\ModelTemplatePartial.cs" />
+    <Compile Include="Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplateRegistration.cs" />
+    <Content Include="Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>IntentDecoratorsTemplate.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplate.cs">
+      <DependentUpon>IntentDecoratorsTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Intent.Modules.Angular.imodspec" />
@@ -270,6 +281,9 @@
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common">
       <Version>2.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Intent.Modules.Common.Html">
+      <Version>2.1.0-pre.1</Version>
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common.Typescript">
       <Version>2.1.0-pre.5</Version>

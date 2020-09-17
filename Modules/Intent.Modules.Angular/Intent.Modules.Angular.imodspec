@@ -11,9 +11,6 @@
     <template id="Angular.Templates.Component.AngularComponentCssTemplate" externalReference="3d1fe1c1-b396-4c8b-bc0f-f7ab2537ae7e">
       <role>Angular</role>
     </template>
-    <template id="Angular.Templates.Component.AngularComponentHtmlTemplate" externalReference="920a10bf-8790-47f7-ac8f-25d06735f6f9">
-      <role>Angular</role>
-    </template>
     <template id="Angular.Templates.Component.AngularComponentTsTemplate" externalReference="aa06d3ae-2965-4101-8f8b-8db7da8a0146">
       <role>Angular</role>
     </template>
@@ -47,6 +44,12 @@
     <template id="Angular.Templates.Model.ModelTemplate" externalReference="9273966e-d177-45c3-8807-1e3bcbbf2cd8">
       <role>Angular</role>
     </template>
+    <template id="Angular.Templates.Component.AngularComponentHtmlTemplate" externalReference="25779bc1-5d6b-4fe5-89fb-97d75e8df259">
+      <role>Angular</role>
+    </template>
+    <template id="Angular.Templates.Intent.IntentDecoratorsTemplate" externalReference="24192b12-bce1-4ac8-8edd-3f68a2eb3b7c">
+      <role>Angular</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="Angular.AngularComponentHtmlTemplate.PagedSearchDecorator" />
@@ -55,7 +58,10 @@
     <factoryExtension id="Intent.Angular.CLIInstaller" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.1.1" />
+    <dependency id="Intent.Common" version="2.1.2" />
+    <dependency id="Intent.Common.Types" version="2.1.2" />
+    <dependency id="Intent.Common.Html" version="2.1.0" />
+    <dependency id="Intent.Common.Typescript" version="2.1.3" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />

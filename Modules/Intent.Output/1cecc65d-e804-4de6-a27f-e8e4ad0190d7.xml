@@ -177,6 +177,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Component/AngularComponentHtmlTemplate/AngularComponentHtmlTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Component/AngularComponentHtmlTemplate/AngularComponentHtmlTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
@@ -269,6 +274,26 @@
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Environment\EnvironmentTemplate\EnvironmentTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Environment/EnvironmentTemplate/EnvironmentTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
@@ -369,26 +394,6 @@
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Proxies/AngularServiceProxyTemplate/AngularServiceProxyTemplateRegistration.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplate.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplate.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplate.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplate.tt</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplatePartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplatePartial.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplateRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

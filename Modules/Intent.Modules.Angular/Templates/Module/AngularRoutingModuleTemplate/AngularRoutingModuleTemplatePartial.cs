@@ -7,6 +7,7 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -26,6 +27,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 
         public AngularRoutingModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }
 
         public string ModuleName => Model.GetModuleName() + "Routing";

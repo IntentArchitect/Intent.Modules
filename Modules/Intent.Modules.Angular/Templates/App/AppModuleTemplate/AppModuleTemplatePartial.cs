@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.VisualStudio.Projects;
@@ -25,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class AppModuleTemplate : TypeScriptTemplateBase<object>, IHasNugetDependencies
     {
-        private readonly IList<string> _components = new List<string>() { "AppComponent"};
+        private readonly IList<string> _components = new List<string>() { "AppComponent" };
         private readonly IList<string> _providers = new List<string>();
 
         [IntentManaged(Mode.Fully)]
@@ -33,6 +34,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 
         public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
             {
                 if (@event.GetValue(AngularComponentCreatedEvent.ModuleId) != ClassName)

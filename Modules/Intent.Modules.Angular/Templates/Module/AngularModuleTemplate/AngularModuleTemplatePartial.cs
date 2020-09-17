@@ -8,6 +8,7 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -29,6 +30,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public AngularModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
                 {
                     if (@event.GetValue(AngularComponentCreatedEvent.ModuleId) != Model.Id)

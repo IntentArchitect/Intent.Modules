@@ -62,6 +62,21 @@ namespace Intent.Modules.Common.Templates
             return Types.GetTemplateDependencies().Concat(DetectedDependencies); ;
         }
 
+        protected void AddTemplateDependency(string templateId, IMetadataModel model)
+        {
+            DetectedDependencies.Add(TemplateDependency.OnModel(templateId, model));
+        }
+
+        protected void AddTemplateDependency(string templateId)
+        {
+            DetectedDependencies.Add(TemplateDependency.OnTemplate(templateId));
+        }
+
+        protected void AddTemplateDependency(ITemplateDependency templateDependency)
+        {
+            DetectedDependencies.Add(templateDependency);
+        }
+
         public virtual void OnConfigured()
         {
         }
