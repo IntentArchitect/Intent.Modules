@@ -21,15 +21,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
     public abstract class TypeScriptNode : IEquatable<TypeScriptNode>
     {
         protected internal Node Node;
+        public TypeScriptNode Parent;
         public TypeScriptFileEditor Editor;
         public string NodePath;
         private readonly SyntaxKind _syntaxKind;
         private readonly List<TypeScriptNode> _children = new List<TypeScriptNode>();
 
-        protected TypeScriptNode(Node node, TypeScriptFileEditor editor)
+        protected TypeScriptNode(Node node, TypeScriptNode parent)
         {
             Node = node ?? throw new ArgumentNullException(nameof(node));
-            Editor = editor ?? throw new ArgumentNullException(nameof(editor));
+            Parent = parent;
+            Editor = parent?.Editor;
             _syntaxKind = Node.Kind;
             NodePath = GetNodePath(node);
             //Decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>();
@@ -47,7 +49,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public List<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
 
         public abstract string GetIdentifier(Node node);
-        
+
         public TypeScriptNode TryGetChild(Node node)
         {
             return Children.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
@@ -119,21 +121,21 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Children.Contains(node);
         }
 
-        [Obsolete]
-        public virtual void AddNode(TypeScriptNode node)
-        {
-            if (Children.Count == 0)
-            {
-                var index = GetTextWithComments().LastIndexOf('{') != -1
-                    ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
-                    : Node.End.Value;
-                Editor.Insert(index, node);
-            }
-            else
-            {
-                InsertAfter(Children.Last(), node);
-            }
-        }
+        //[Obsolete]
+        //public virtual void AddNode(TypeScriptNode node)
+        //{
+        //    if (Children.Count == 0)
+        //    {
+        //        var index = GetTextWithComments().LastIndexOf('{') != -1
+        //            ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
+        //            : Node.End.Value;
+        //        Editor.Insert(index, node);
+        //    }
+        //    else
+        //    {
+        //        InsertAfter(Children.Last(), node);
+        //    }
+        //}
 
         public void ReplaceWith(string text)
         {
@@ -160,6 +162,11 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public IList<TypeScriptDecorator> Decorators { get; } = new List<TypeScriptDecorator>();
 
+        public virtual bool HasIntentInstructions()
+        {
+            return Decorators.Any(x => x.Name.StartsWith("Intent")) || GetComments().Contains("//@Intent");
+        }
+
         public bool HasDecorator(string name)
         {
             return Decorators.Any(x => x.Name == name);
@@ -178,22 +185,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public string GetComments()
         {
             return Node.GetTextWithComments().Substring(0, Node.GetTextWithComments().Length - Node.GetText().Length);
-        }
-
-
-        public virtual bool IsIgnored()
-        {
-            return HasDecorator(IntentDecorators.IntentIgnore) || GetComments().Contains($"//@{IntentDecorators.IntentIgnore}");
-        }
-
-        public virtual bool IsMerged()
-        {
-            return HasDecorator(IntentDecorators.IntentMerge) || GetComments().Contains($"//@{IntentDecorators.IntentMerge}");
-        }
-
-        public virtual bool IsManaged()
-        {
-            return HasDecorator(IntentDecorators.IntentManage) || GetComments().Contains($"//@{IntentDecorators.IntentManage}");
         }
 
         public virtual void UpdateNode(Node node)
@@ -231,6 +222,10 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 var existing = getCollection(this).SingleOrDefault(x => x.IsSameNodeAs(node));
                 if (existing == null)
                 {
+                    if (!CanAdd())
+                    {
+                        continue;
+                    }
                     // toAdd:
                     if (getCollection(this).Count == 0)
                     {
@@ -263,7 +258,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
                     }
 
                     //if (!getCollection(existing).Any() || getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
-                    if (existing.CanReplaceInsteadOfMerge() && existing.GetTextWithComments() != node.GetTextWithComments())
+                    if (existing.CanUpdate() && existing.CanReplaceInsteadOfMerge() && existing.GetTextWithComments() != node.GetTextWithComments())
                     {
                         existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
                         continue;
@@ -273,7 +268,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 }
             }
 
-            if (!this.IsMerged() || this.IsManaged())
+            if (CanRemove())
             {
                 var toRemove = getCollection(this).Where(x => !(x is TypeScriptFileImport) && !x.IsIgnored()).Except(getCollection(outputNode)).ToList();
                 foreach (var node in toRemove)
@@ -313,9 +308,29 @@ namespace Intent.Modules.Common.TypeScript.Editor
             //return Node.Kind == node.Node.Kind && Identifier == GetIdentifier(node.Node);
         }
 
+        public virtual bool IsIgnored()
+        {
+            return HasDecorator(IntentDecorators.IntentIgnore) || GetComments().Contains($"//@{IntentDecorators.IntentIgnore}");
+        }
+
+        public virtual bool CanAdd()
+        {
+            return !HasIntentInstructions() || IsManaged() || IsMerged() || HasDecorator("IntentCanAdd") || GetComments().Contains($"//@IntentCanAdd");
+        }
+
+        public virtual bool CanUpdate()
+        {
+            return !HasIntentInstructions() || IsManaged() || IsMerged() || HasDecorator("IntentCanUpdate") || GetComments().Contains($"//@IntentCanUpdate");
+        }
+
+        public virtual bool CanRemove()
+        {
+            return !HasIntentInstructions() || IsManaged() || HasDecorator("IntentCanRemove") || GetComments().Contains($"//@IntentCanRemove");
+        }
+
         protected bool CanReplaceInsteadOfMerge()
         {
-            return (!Decorators.Any() && !Children.Any()) || (Children.All(x => !x.IsIgnored()) && !IsMerged());
+            return (!Decorators.Any() && !Children.Any()) || (Children.All(x => !x.IsIgnored()) && !HasIntentInstructions());
         }
 
         public virtual void AddFirst(TypeScriptNode node)
@@ -373,6 +388,16 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public override string ToString()
         {
             return Node.GetTextWithComments();
+        }
+
+        private bool IsMerged()
+        {
+            return HasDecorator(IntentDecorators.IntentMerge) || GetComments().Contains($"//@{IntentDecorators.IntentMerge}");
+        }
+
+        private bool IsManaged()
+        {
+            return HasDecorator(IntentDecorators.IntentManage) || GetComments().Contains($"//@{IntentDecorators.IntentManage}");
         }
     }
 }

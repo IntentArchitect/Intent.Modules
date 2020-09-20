@@ -6,7 +6,7 @@
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';<#= GetImports() #>
 
 @IntentMerge()
 @NgModule({
@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
 <#  } #>
   imports: [
     CommonModule,
-    <#= RoutingModuleClassName #>
+    <#= RoutingModuleClassName #><#= GetAngularImports() #>
   ]
 })
 export class <#= ClassName #> { }

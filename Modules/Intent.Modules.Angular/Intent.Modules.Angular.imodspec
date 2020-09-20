@@ -47,7 +47,7 @@
     <template id="Angular.Templates.Component.AngularComponentHtmlTemplate" externalReference="25779bc1-5d6b-4fe5-89fb-97d75e8df259">
       <role>Angular</role>
     </template>
-    <template id="Angular.Templates.Intent.IntentDecoratorsTemplate" externalReference="24192b12-bce1-4ac8-8edd-3f68a2eb3b7c">
+    <template id="Angular.Templates.Shared.IntentDecoratorsTemplate" externalReference="24192b12-bce1-4ac8-8edd-3f68a2eb3b7c">
       <role>Angular</role>
     </template>
   </templates>
@@ -61,7 +61,7 @@
     <dependency id="Intent.Common" version="2.1.2" />
     <dependency id="Intent.Common.Types" version="2.1.2" />
     <dependency id="Intent.Common.Html" version="2.1.0" />
-    <dependency id="Intent.Common.Typescript" version="2.1.3" />
+    <dependency id="Intent.Common.Typescript" version="2.1.4" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />
@@ -71,5 +71,6 @@
   <metadata>
     <install target="Angular" src="modelers" />
     <install target="Angular" src="Intent.Metadata/Module Builder/Intent.Modelers.Angular" />
+    <install target="Angular" src="Intent.Metadata/Angular/Intent.Angular.Types" />
   </metadata>
 </package>

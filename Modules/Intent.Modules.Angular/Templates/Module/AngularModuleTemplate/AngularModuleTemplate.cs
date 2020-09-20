@@ -31,7 +31,14 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
         public override string TransformText()
         {
             this.Write("import { NgModule } from \'@angular/core\';\r\nimport { CommonModule } from \'@angular" +
-                    "/common\';\r\n\r\n@IntentMerge()\r\n@NgModule({\r\n  declarations: [");
+                    "/common\';");
+            
+            #line 9 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetImports()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\r\n@IntentMerge()\r\n@NgModule({\r\n  declarations: [");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetComponents()));
@@ -63,6 +70,12 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(RoutingModuleClassName));
+            
+            #line default
+            #line hidden
+            
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Module\AngularModuleTemplate\AngularModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetAngularImports()));
             
             #line default
             #line hidden

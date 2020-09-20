@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         private readonly TypeScriptNode _parent;
 
-        public TypeScriptArrayLiteralExpression(Node node, TypeScriptNode parent) : base(node, parent.Editor)
+        public TypeScriptArrayLiteralExpression(Node node, TypeScriptNode parent) : base(node, parent)
         {
             _parent = parent;
         }
@@ -18,9 +18,24 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return node.Parent.Children.IndexOf(node).ToString();
         }
 
-        public override bool IsMerged()
+        public override bool CanAdd()
         {
-            return _parent.IsMerged();
+            return base.HasIntentInstructions() ? base.CanAdd() : _parent.CanAdd();
+        }
+
+        public override bool CanUpdate()
+        {
+            return base.HasIntentInstructions() ? base.CanUpdate() : _parent.CanUpdate();
+        }
+
+        public override bool CanRemove()
+        {
+            return base.HasIntentInstructions() ? base.CanRemove() : _parent.CanRemove();
+        }
+
+        public override bool HasIntentInstructions()
+        {
+            return base.HasIntentInstructions() || _parent.HasIntentInstructions();
         }
 
         public override void UpdateNode(Node node)
@@ -37,6 +52,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
                         continue;
                     case SyntaxKind.ArrayLiteralExpression:
                         this.InsertOrUpdateChildNode(child, index, () => new TypeScriptArrayLiteralExpression(child, this));
+                        index++;
+                        continue;
+                    case SyntaxKind.ExpressionStatement:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptExpressionStatement(child, this));
+                        index++;
+                        continue;
+                    case SyntaxKind.CallExpression:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptCallExpression(child, this));
                         index++;
                         continue;
                     case SyntaxKind.StringLiteral:

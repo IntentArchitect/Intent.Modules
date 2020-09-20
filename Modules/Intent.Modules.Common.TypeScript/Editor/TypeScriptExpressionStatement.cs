@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptExpressionStatement : TypeScriptNode
     {
-        public TypeScriptExpressionStatement(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptExpressionStatement(Node node, TypeScriptNode parent) : base(node, parent)
         {
             //Identifier =  ?? throw new ArgumentException("Variable identifier could not be determined for node: " + this);
             //NodePath += $"/PropertyAccessExpression~{Identifier}";
@@ -36,45 +36,5 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return null;
         }
 
-        //internal override void UpdateNode()
-
-        //{
-
-        //    Node = (Node)FindNode(File.Ast.RootNode, NodePath).Parent.Parent;
-
-        //}
-
-
-        //public bool Equals(TypeScriptExpressionStatement other)
-
-        //{
-
-        //    return Identifier == other?.Identifier;
-
-        //}
-
-
-        //public override bool Equals(object obj)
-
-        //{
-
-        //    if (ReferenceEquals(null, obj)) return false;
-
-        //    if (ReferenceEquals(this, obj)) return true;
-
-        //    if (obj.GetType() != this.GetType()) return false;
-
-        //    return Equals((TypeScriptExpressionStatement)obj);
-
-        //}
-
-
-        //public override int GetHashCode()
-
-        //{
-
-        //    return Identifier.GetHashCode();
-
-        //}
     }
 }

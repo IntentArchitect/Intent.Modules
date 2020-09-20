@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptVariableStatement : TypeScriptNode
     {
-        public TypeScriptVariableStatement(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptVariableStatement(Node node, TypeScriptNode parent) : base(node, parent)
         {
             //Name = Node.OfKind(SyntaxKind.VariableDeclaration).First().IdentifierStr ?? throw new ArgumentException("Variable Name could not be determined for node: " + this);
             //NodePath = this.GetNodePath(Node.OfKind(SyntaxKind.VariableDeclaration).First());
@@ -52,31 +52,13 @@ namespace Intent.Modules.Common.TypeScript.Editor
                         this.InsertOrUpdateChildNode(child, index, () => new TypeScriptArrayLiteralExpression(child, this));
                         index++;
                         continue;
+                    case SyntaxKind.PropertyAssignment:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptPropertyAssignment(child, this));
+                        index++;
+                        continue;
                 }
             }
         }
 
-        //internal override void UpdateNode()
-        //{
-        //    Node = (Node)FindNode(NodePath).Parent.Parent;
-        //}
-
-        //public bool Equals(TypeScriptVariableStatement other)
-        //{
-        //    return Name == other?.Name;
-        //}
-
-        //public override bool Equals(object obj)
-        //{
-        //    if (ReferenceEquals(null, obj)) return false;
-        //    if (ReferenceEquals(this, obj)) return true;
-        //    if (obj.GetType() != this.GetType()) return false;
-        //    return Equals((TypeScriptVariableStatement)obj);
-        //}
-
-        //public override int GetHashCode()
-        //{
-        //    return Name.GetHashCode();
-        //}
     }
 }

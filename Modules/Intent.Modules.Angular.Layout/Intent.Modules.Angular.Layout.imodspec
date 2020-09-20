@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Angular.Layout</id>
-  <version>0.4.0</version>
+  <version>0.4.1</version>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>
@@ -41,17 +41,14 @@
     <decorator id="Angular.Layout.AngularComponentHtmlDecorator.Controls" />
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="2.1.0" />
-    <dependency id="Intent.Common.Types" version="2.1.0" />
-    <dependency id="Intent.Common.Html" version="2.1.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
+    <dependency id="Intent.Angular" version="0.4.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
-    <file src="$outDir$/HtmlAgilityPack.dll" />
   </files>
   <metadata>
     <install target="Angular" src="modelers" />
+    <install target="Angular" src="Intent.Metadata/Angular/Angular.Layout.Controls" />
   </metadata>
 </package>

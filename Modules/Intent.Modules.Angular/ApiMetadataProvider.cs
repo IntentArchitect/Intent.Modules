@@ -18,6 +18,15 @@ namespace Intent.Modules.Angular.Api
             _metadataManager = metadataManager;
         }
 
+        public IList<AngularServiceModel> GetAngularServiceModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
+                .Where(x => x.SpecializationType == AngularServiceModel.SpecializationType)
+                .Select(x => new AngularServiceModel(x))
+                .ToList<AngularServiceModel>();
+            return models;
+        }
+
         public IList<ComponentModel> GetComponentModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)

@@ -113,5 +113,50 @@ const routes: Routes = [
   }
 ];", result);
         }
+
+        [Fact]
+        public void AddsPropertyWithIntentCanAdd()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: @"
+//@IntentCanAdd()
+export const environment = {
+  production: false
+};", outputContent: @"
+export const environment = {
+  production: true,
+  api_url: 'https://localhost:{port}/api'
+};
+");
+            Assert.Equal(@"
+//@IntentCanAdd()
+export const environment = {
+  production: false,
+  api_url: 'https://localhost:{port}/api'
+};", result);
+        }
+
+        [Fact]
+        public void IgnoresExistingPropertyWithIntentCanAdd()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: @"
+//@IntentCanAdd()
+export const environment = {
+  production: false,
+  api_url: 'https://localhost:44336/api'
+};", outputContent: @"
+//@IntentCanAdd()
+export const environment = {
+  production: true,
+  api_url: 'https://localhost:{port}/api'
+};");
+            Assert.Equal(@"
+//@IntentCanAdd()
+export const environment = {
+  production: false,
+  api_url: 'https://localhost:44336/api'
+};", result);
+        }
     }
 }

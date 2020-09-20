@@ -38,23 +38,30 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 defaultValue: @event.GetValue(AngularConfigVariableRequiredEvent.DefaultValueId)));
         }
 
-        protected override TypeScriptFile CreateOutputFile()
+        public string GetEnvironmentVariables()
         {
-            var file = GetExistingFile() ?? base.CreateOutputFile();
-            var variable = file.Children.First(x => x.Identifier == "environment");
-
-            foreach (var configVariable in _configVariables)
-            {
-                var assigned = variable.Children.FirstOrDefault();//.GetAssignedValue<TypescriptObjectLiteralExpression>();
-                if (assigned != null && assigned.Children.All(x => x.Identifier != configVariable.Name))
-                {
-                    assigned.InsertAfter(assigned.Children.Last(), $@"
-  {configVariable.Name}: {configVariable.DefaultValue}");
-                }
-            }
-
-            return file;
+            return _configVariables.Any() ? $@", 
+  {string.Join(@",
+  ", _configVariables.Select(x => $"{x.Name}: {x.DefaultValue}"))}" : "";
         }
+
+        //      protected override TypeScriptFile CreateOutputFile()
+        //      {
+        //          var file = GetExistingFile() ?? base.CreateOutputFile();
+        //          var variable = file.Children.First(x => x.Identifier == "environment");
+
+        //          foreach (var configVariable in _configVariables)
+        //          {
+        //              var assigned = variable.Children.FirstOrDefault();//.GetAssignedValue<TypescriptObjectLiteralExpression>();
+        //              if (assigned != null && assigned.Children.All(x => x.Identifier != configVariable.Name))
+        //              {
+        //                  assigned.InsertAfter(assigned.Children.Last(), $@"
+        //{configVariable.Name}: {configVariable.DefaultValue}");
+        //              }
+        //          }
+
+        //          return file;
+        //      }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()

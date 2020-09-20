@@ -6,7 +6,6 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
   <div class="row" intent-id="<#= Model.Name #>">
     <div class="col">
-<#  foreach(var control in Model.InternalElement.ChildElements) { #>
-<#= ControlWriter.WriteControl(control) #><#  } #>
+<#= ControlWriter.WriteControls() #>
     </div>
   </div>

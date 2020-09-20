@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Angular.Api;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -23,6 +25,8 @@ namespace Intent.Modules.Angular.Layout.Api
             }
             _element = element;
         }
+
+        public ModuleModel Module => new ModuleModel(_element.GetParentPath().Reverse().First(x => x.SpecializationType == ModuleModel.SpecializationType));
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;

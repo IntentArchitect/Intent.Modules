@@ -1,3 +1,7 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using Intent.Eventing;
 using Intent.Metadata.Models;
 using Intent.Modules.Angular.Layout.Api;
 using Intent.Modules.Angular.Layout.Decorators.Controls.ButtonControl;
@@ -5,51 +9,68 @@ using Intent.Modules.Angular.Layout.Decorators.Controls.Form;
 using Intent.Modules.Angular.Layout.Decorators.Controls.PaginationControl;
 using Intent.Modules.Angular.Layout.Decorators.Controls.Section;
 using Intent.Modules.Angular.Layout.Decorators.Controls.TableControl;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Angular.Layout.Decorators.Controls
 {
-    public static class ControlWriter
+    public class ControlWriter
     {
-        public static string WriteControl(IElement control)
+        private readonly IApplicationEventDispatcher _eventDispatcher;
+        private IList<IntentTemplateBase> _controls = new List<IntentTemplateBase>();
+
+        public ControlWriter(IApplicationEventDispatcher eventDispatcher)
+        {
+            _eventDispatcher = eventDispatcher;
+        }
+
+        public bool AddControl(IElement control)
         {
             switch (control.SpecializationType)
             {
                 case SectionModel.SpecializationType:
-                    return new SectionTemplate(new SectionModel(control)).TransformText();
+                    _controls.Add(new SectionTemplate(new SectionModel(control), _eventDispatcher));
+                    return true;
                 case ButtonControlModel.SpecializationType:
-                    return new ButtonControlTemplate(new ButtonControlModel(control)).TransformText();
+                    _controls.Add(new ButtonControlTemplate(new ButtonControlModel(control)));
+                    return true;
                 case TableControlModel.SpecializationType:
                     {
                         var model = new TableControlModel(control);
                         if (model.IsValid())
                         {
-                            return new TableControlTemplate(model).TransformText();
+                            _controls.Add(new TableControlTemplate(model));
+                            return true;
                         }
-
-                        break;
+                        return false;
                     }
                 case PaginationControlModel.SpecializationType:
                     {
                         var model = new PaginationControlModel(control);
                         if (model.IsValid())
                         {
-                            return new PaginationControlTemplate(model).TransformText();
+                            _controls.Add(new PaginationControlTemplate(model, _eventDispatcher));
+                            return true;
                         }
-
-                        break;
+                        return false;
                     }
                 case FormModel.SpecializationType:
                     {
                         var model = new FormModel(control);
                         if (model.IsValid())
                         {
-                            return new FormTemplate(model).TransformText();
+                            _controls.Add(new FormTemplate(model, _eventDispatcher));
+                            return true;
                         }
-
-                        break;
+                        return false;
                     }
             }
-            return "";
+
+            return false;
+        }
+
+        public string WriteControls()
+        {
+            return string.Join("", _controls.Select(x => x.TransformText()));
         }
     }
 }

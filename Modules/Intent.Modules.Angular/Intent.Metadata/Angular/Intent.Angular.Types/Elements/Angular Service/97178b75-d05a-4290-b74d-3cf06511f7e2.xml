@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="97178b75-d05a-4290-b74d-3cf06511f7e2" type="Angular Service">
+  <name>ActivatedRoute</name>
+  <display>ActivatedRoute</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1c318fe4-2dea-4286-a0bd-971205c9089c</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="ede23670-71ce-42ef-ae7c-a37ff7ae46f3" name="Angular Service Settings">
+      <addedByDefault>true</addedByDefault>
+      <properties>
+        <property name="1b12b283-5a46-4436-8279-9ae95dcc1fb8" display="Location" value="@angular/router" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

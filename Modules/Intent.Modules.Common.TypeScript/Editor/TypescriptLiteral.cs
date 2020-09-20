@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         private readonly IdentifyBy _identifyBy;
 
-        public TypescriptLiteral(Node node, TypeScriptNode parent, IdentifyBy identifyBy) : base(node, parent.Editor)
+        public TypescriptLiteral(Node node, TypeScriptNode parent, IdentifyBy identifyBy) : base(node, parent)
         {
             _identifyBy = identifyBy;
         }
@@ -28,6 +28,28 @@ namespace Intent.Modules.Common.TypeScript.Editor
         }
 
         public override bool IsIgnored() => false;
+
+
+        public override bool CanAdd()
+        {
+            return base.HasIntentInstructions() ? base.CanAdd() : Parent.CanAdd();
+        }
+
+        public override bool CanUpdate()
+        {
+            return base.HasIntentInstructions() ? base.CanUpdate() : Parent.CanUpdate();
+        }
+
+        public override bool CanRemove()
+        {
+            return base.HasIntentInstructions() ? base.CanRemove() : Parent.CanRemove();
+        }
+
+        public override bool HasIntentInstructions()
+        {
+            return base.HasIntentInstructions() || Parent.HasIntentInstructions();
+        }
+
     }
 
     public enum IdentifyBy

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="cddc4621-68ae-4888-8f4c-118a9cefdb33" type="Form Control">
+  <name>Text Input</name>
+  <display>Text Input</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>6c7013d3-ba6b-4135-8af0-421b662ec802</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

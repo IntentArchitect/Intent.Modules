@@ -26,8 +26,10 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class AppModuleTemplate : TypeScriptTemplateBase<object>, IHasNugetDependencies
     {
-        private readonly IList<string> _components = new List<string>() { "AppComponent" };
-        private readonly IList<string> _providers = new List<string>();
+        private readonly ISet<string> _components = new HashSet<string>() { "AppComponent" };
+        private readonly ISet<string> _providers = new HashSet<string>();
+        private readonly ISet<string> _angularImports = new HashSet<string>();
+        private readonly ISet<string> _imports = new HashSet<string>();
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
@@ -55,10 +57,30 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                 var template = GetTemplateClassName(@event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
                 _providers.Add(template);
             });
+
+            project.Application.EventDispatcher.Subscribe(AngularImportDependencyRequiredEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularImportDependencyRequiredEvent.ModuleId) != ClassName)
+                {
+                    return;
+                }
+
+                _angularImports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Dependency));
+                _imports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Import));
+            });
         }
 
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
+
+        public string GetImports()
+        {
+            if (!_imports.Any())
+            {
+                return "";
+            }
+            return $"{System.Environment.NewLine}" + string.Join($"{System.Environment.NewLine}", _imports);
+        }
 
         public string GetComponents()
         {
@@ -76,6 +98,15 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                 return "";
             }
             return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _providers) + $"{System.Environment.NewLine}  ";
+        }
+
+        public string GetAngularImports()
+        {
+            if (!_angularImports.Any())
+            {
+                return "";
+            }
+            return $",{System.Environment.NewLine}    " + string.Join($",    {System.Environment.NewLine}    ", _angularImports);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

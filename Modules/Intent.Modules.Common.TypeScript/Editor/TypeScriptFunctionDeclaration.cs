@@ -4,7 +4,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptFunctionDeclaration : TypeScriptNode
     {
-        public TypeScriptFunctionDeclaration(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptFunctionDeclaration(Node node, TypeScriptNode parent) : base(node, parent)
         {
 
         }

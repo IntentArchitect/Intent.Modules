@@ -16,10 +16,16 @@ namespace Intent.Modules.Angular.Layout.Decorators.AngularComponentHtml
     {
         public const string DecoratorId = "Angular.Layout.AngularComponentHtmlDecorator.Controls";
         private readonly AngularComponentHtmlTemplate _template;
+        private readonly ControlWriter _controlWriter;
 
         public AngularComponentHtmlControlsDecorator(AngularComponentHtmlTemplate template)
         {
             _template = template;
+            _controlWriter = new ControlWriter(_template.Project.Application.EventDispatcher);
+            foreach (var control in View.InternalElement.ChildElements)
+            {
+                _controlWriter.AddControl(control);
+            }
         }
 
         public ComponentViewModel View => _template.Model.View;
@@ -35,10 +41,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.AngularComponentHtml
         {
             var sb = new StringBuilder();
             sb.AppendLine("<div class=\"container-fluid\" intent-manage=\"add remove\" intent-id=\"container\">");
-            foreach (var control in View.InternalElement.ChildElements)
-            {
-                sb.Append(ControlWriter.WriteControl(control));
-            }
+            sb.Append(_controlWriter.WriteControls());
             sb.AppendLine("</div>");
             return sb.ToString();
         }

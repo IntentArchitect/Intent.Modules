@@ -30,6 +30,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         {
             AddTypeSource(ModelTemplate.TemplateId);
             AddTypeSource(AngularDTOTemplate.TemplateId);
+            InjectedServices = Model.GetAngularComponentSettings().InjectServices()?.Select(x => new AngularServiceModel(x)).ToList() ?? new List<AngularServiceModel>();
         }
 
         public string ComponentName
@@ -62,6 +63,24 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                     {AngularComponentCreatedEvent.ModuleId, Model.Module.Id },
                     {AngularComponentCreatedEvent.ModelId, Model.Id},
                 });
+        }
+
+        public IList<AngularServiceModel> InjectedServices { get; }
+
+        public string GetImports()
+        {
+            if (!InjectedServices.Any())
+            {
+                return "";
+            }
+            return @"
+" + string.Join(@"
+", InjectedServices.Select(x => $"import {{ {x.Name} }} from '{x.GetAngularServiceSettings().Location()}'"));
+        }
+
+        public string GetConstructorParams()
+        {
+            return string.Join(", ", InjectedServices.Select(x => $"private {x.Name.ToCamelCase()}: {x.Name}"));
         }
 
         public string GetParameters(ComponentCommandModel command)

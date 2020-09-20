@@ -28,6 +28,14 @@ namespace Intent.Modules.Angular.Templates
         public const string ModuleId = "ModuleId";
     }
 
+    public static class AngularImportDependencyRequiredEvent
+    {
+        public const string EventId = "ModuleProviderDependencyEvent";
+        public const string ModuleId = "ModuleId";
+        public const string Dependency = "Dependency";
+        public const string Import = "Import";
+    }
+
     public static class AngularConfigVariableRequiredEvent
     {
         public const string EventId = nameof(AngularConfigVariableRequiredEvent);

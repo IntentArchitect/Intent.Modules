@@ -30,16 +30,20 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `angular-cli.json`.
+            this.Write(@"// This file can be replaced during build by using the `fileReplacements` array.
+// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// The list of file replacements can be found in `angular.json`.
 
+//@IntentCanAdd()
 export const environment = {
-  production: false,
-  api_url: 'https://localhost:{port}/api'
-};
-");
+  production: false");
+            
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Environment\EnvironmentTemplate\EnvironmentTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetEnvironmentVariables()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n};\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

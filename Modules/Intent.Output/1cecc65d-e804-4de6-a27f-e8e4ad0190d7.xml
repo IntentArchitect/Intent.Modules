@@ -7,6 +7,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\AngularServiceModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/AngularServiceModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\ComponentCommandModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ComponentCommandModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -37,6 +42,16 @@
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\Extensions\AngularServiceModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/AngularServiceModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\Extensions\ComponentModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/Extensions/ComponentModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\FolderModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -49,6 +64,11 @@
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\ModelDefinitionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ModelDefinitionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\ModuleDTOModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/ModuleDTOModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
@@ -277,26 +297,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplate.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplate.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplate.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplate.tt</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplatePartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplatePartial.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Intent\IntentDecoratorsTemplate\IntentDecoratorsTemplateRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/Intent/IntentDecoratorsTemplate/IntentDecoratorsTemplateRegistration.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\ModelTemplate\ModelTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Model/ModelTemplate/ModelTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -394,6 +394,26 @@
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Proxies\AngularServiceProxyTemplate\AngularServiceProxyTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Proxies/AngularServiceProxyTemplate/AngularServiceProxyTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Shared\IntentDecoratorsTemplate\IntentDecoratorsTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Shared/IntentDecoratorsTemplate/IntentDecoratorsTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

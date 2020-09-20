@@ -92,5 +92,11 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<AngularServiceModel> Services => _element.ChildElements
+            .Where(x => x.SpecializationType == AngularServiceModel.SpecializationType)
+            .Select(x => new AngularServiceModel(x))
+            .ToList();
     }
 }

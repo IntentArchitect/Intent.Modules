@@ -6,7 +6,7 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';<#= GetImports() #>
 
 @Component({
   selector: 'app-<#= ComponentName.ToKebabCase() #>',
@@ -19,7 +19,8 @@ export class <#= ClassName #> implements OnInit {
   <#= model.Name #>: <#= Types.Get(model.TypeReference)#>;
 <#  }#>
 
-  constructor() { }
+  //@IntentMerge()
+  constructor(<#= GetConstructorParams() #>) { }
 
   ngOnInit() {
   }

@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
     {
         private readonly TypeScriptNode _parent;
 
-        public TypeScriptDecorator(Node node, TypeScriptNode parent) : base(node, parent.Editor)
+        public TypeScriptDecorator(Node node, TypeScriptNode parent) : base(node, parent)
         {
             if (string.IsNullOrWhiteSpace(Name))
             {
@@ -44,9 +44,24 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return _parent.IsIgnored();
         }
 
-        public override bool IsMerged()
+        public override bool CanAdd()
         {
-            return _parent.IsMerged();
+            return base.HasIntentInstructions() ? base.CanAdd() : _parent.CanAdd();
+        }
+
+        public override bool CanUpdate()
+        {
+            return base.HasIntentInstructions() ? base.CanUpdate() : _parent.CanUpdate();
+        }
+
+        public override bool CanRemove()
+        {
+            return base.HasIntentInstructions() ? base.CanRemove() : _parent.CanRemove();
+        }
+
+        public override bool HasIntentInstructions()
+        {
+            return base.HasIntentInstructions() || _parent.HasIntentInstructions();
         }
 
         public override void MergeWith(TypeScriptNode node)

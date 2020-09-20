@@ -14,7 +14,7 @@ namespace Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate
     partial class IntentDecoratorsTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Intent.IntentDecoratorsTemplate";
+        public const string TemplateId = "Angular.Templates.Shared.IntentDecoratorsTemplate";
 
         public IntentDecoratorsTemplate(IProject project, object model) : base(TemplateId, project, model)
         {

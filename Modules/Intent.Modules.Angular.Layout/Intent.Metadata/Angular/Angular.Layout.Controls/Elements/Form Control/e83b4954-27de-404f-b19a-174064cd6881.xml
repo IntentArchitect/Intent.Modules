@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e83b4954-27de-404f-b19a-174064cd6881" type="Form Control">
+  <name>Datepicker</name>
+  <display>Datepicker</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>6c7013d3-ba6b-4135-8af0-421b662ec802</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

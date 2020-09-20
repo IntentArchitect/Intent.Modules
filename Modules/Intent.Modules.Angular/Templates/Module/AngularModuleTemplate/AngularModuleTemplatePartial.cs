@@ -25,8 +25,10 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
-        private readonly IList<ITemplate> _components = new List<ITemplate>();
-        private readonly IList<ITemplate> _providers = new List<ITemplate>();
+        private readonly ISet<string> _components = new HashSet<string>();
+        private readonly ISet<string> _providers = new HashSet<string>();
+        private readonly ISet<string> _angularImports = new HashSet<string>();
+        private readonly ISet<string> _imports = new HashSet<string>();
 
         public AngularModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model)
         {
@@ -38,7 +40,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                         return;
                     }
 
-                    _components.Add(FindTemplate<ITemplate>(AngularComponentTsTemplate.TemplateId, @event.GetValue(AngularComponentCreatedEvent.ModelId)));
+                    _components.Add(GetTemplateClassName(AngularComponentTsTemplate.TemplateId, @event.GetValue(AngularComponentCreatedEvent.ModelId)));
                 });
 
             project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
@@ -48,14 +50,34 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                var template = FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
-                _providers.Add(template);
+                var templateClassName = GetTemplateClassName(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                _providers.Add(templateClassName);
+            });
+
+            project.Application.EventDispatcher.Subscribe(AngularImportDependencyRequiredEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularImportDependencyRequiredEvent.ModuleId) != Model.Id)
+                {
+                    return;
+                }
+
+                _angularImports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Dependency));
+                _imports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Import));
             });
         }
 
         public string ModuleName => Model.GetModuleName();
 
         public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
+
+        public string GetImports()
+        {
+            if (!_imports.Any())
+            {
+                return "";
+            }
+            return $"{System.Environment.NewLine}" + string.Join($"{System.Environment.NewLine}", _imports);
+        }
 
         public bool HasComponents()
         {
@@ -68,7 +90,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
             {
                 return "";
             }
-            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _components.Select(GetTemplateClassName)) + $"{System.Environment.NewLine}  ";
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _components) + $"{System.Environment.NewLine}  ";
         }
 
         public bool HasProviders()
@@ -82,7 +104,16 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
             {
                 return "";
             }
-            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _providers.Select(GetTemplateClassName)) + $"{System.Environment.NewLine}  ";
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _providers) + $"{System.Environment.NewLine}  ";
+        }
+
+        public string GetAngularImports()
+        {
+            if (!_angularImports.Any())
+            {
+                return "";
+            }
+            return $",{System.Environment.NewLine}    " + string.Join($",    {System.Environment.NewLine}    ", _angularImports);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

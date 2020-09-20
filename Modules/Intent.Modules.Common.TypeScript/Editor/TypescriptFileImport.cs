@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptFileImport : TypeScriptNode
     {
-        public TypeScriptFileImport(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptFileImport(Node node, TypeScriptNode parent) : base(node, parent)
         {
             Location = Node.OfKind(SyntaxKind.StringLiteral).SingleOrDefault()?.GetText();
             Types = GetTypes(Node);

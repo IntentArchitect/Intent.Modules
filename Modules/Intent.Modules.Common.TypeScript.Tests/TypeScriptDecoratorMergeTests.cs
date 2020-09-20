@@ -131,6 +131,7 @@ export class UsersModule { }
 import { CommonModule } from '@angular/common';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { UsersRouting } from './users-routing.module';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { IntentMerge } from ""../../shared/intent.decorators"";
 
 @IntentMerge
@@ -140,7 +141,8 @@ import { IntentMerge } from ""../../shared/intent.decorators"";
   ],
   imports: [
     CommonModule,
-    UsersRouting
+    UsersRouting,
+    CollapseModule.forRoot()
   ]
 })
 export class UsersModule { }
@@ -149,6 +151,7 @@ export class UsersModule { }
 import { CommonModule } from '@angular/common';
 import { UserSearchComponent } from './user-search/user-search.component';
 import { UsersRouting } from './users-routing.module';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { IntentMerge } from ""../../shared/intent.decorators"";
 import { UserDetailsComponent } from ""./user-details/user-details.component"";
 
@@ -160,7 +163,8 @@ import { UserDetailsComponent } from ""./user-details/user-details.component"";
   ],
   imports: [
     CommonModule,
-    UsersRouting
+    UsersRouting,
+    CollapseModule.forRoot()
   ]
 })
 export class UsersModule { }

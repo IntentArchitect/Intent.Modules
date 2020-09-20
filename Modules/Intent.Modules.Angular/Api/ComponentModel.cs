@@ -28,6 +28,7 @@ namespace Intent.Modules.Angular.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
         public string Comment => _element.Comment;
+
         public ModuleModel Module => new ModuleModel(_element.GetParentPath().Reverse().First(x => x.SpecializationType == ModuleModel.SpecializationType));
 
         [IntentManaged(Mode.Fully)]
@@ -85,5 +86,6 @@ namespace Intent.Modules.Angular.Api
             .Where(x => x.SpecializationType == ComponentViewModel.SpecializationType)
             .Select(x => new ComponentViewModel(x))
             .SingleOrDefault();
+
     }
 }

@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
     public class TypeScriptGetAccessor : TypeScriptNode
     {
-        public TypeScriptGetAccessor(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptGetAccessor(Node node, TypeScriptNode parent) : base(node, parent)
         {
 
         }
@@ -21,7 +21,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
     public class TypeScriptSetAccessor : TypeScriptNode
     {
-        public TypeScriptSetAccessor(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptSetAccessor(Node node, TypeScriptNode parent) : base(node, parent)
         {
 
         }
@@ -34,7 +34,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
     public class TypeScriptProperty : TypeScriptNode
     {
-        public TypeScriptProperty(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptProperty(Node node, TypeScriptNode parent) : base(node, parent)
         {
 
         }

@@ -39,23 +39,11 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.Section
             this.Write("\">\r\n    <div class=\"col\">\r\n");
             
             #line 9 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\Section\SectionTemplate.tt"
-  foreach(var control in Model.InternalElement.ChildElements) { 
+            this.Write(this.ToStringHelper.ToStringWithCulture(ControlWriter.WriteControls()));
             
             #line default
             #line hidden
-            
-            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\Section\SectionTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ControlWriter.WriteControl(control)));
-            
-            #line default
-            #line hidden
-            
-            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\Section\SectionTemplate.tt"
-  } 
-            
-            #line default
-            #line hidden
-            this.Write("    </div>\r\n  </div>\r\n");
+            this.Write("\r\n    </div>\r\n  </div>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
