@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
                 new Dictionary<string, string>()
                 {
                     {AngularConfigVariableRequiredEvent.VariableId, "api_url" },
-                    {AngularConfigVariableRequiredEvent.DefaultValueId, "\"http://localhost:{port}/api\"" },
+                    {AngularConfigVariableRequiredEvent.DefaultValueId, "\"https://localhost:{port}/api\"" },
                 });
         }
 
