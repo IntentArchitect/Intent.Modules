@@ -5,6 +5,7 @@ using Intent.Modules.Angular.Layout.Decorators.Controls;
 using Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Utils;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -24,7 +25,11 @@ namespace Intent.Modules.Angular.Layout.Decorators.AngularComponentHtml
             _controlWriter = new ControlWriter(_template.Project.Application.EventDispatcher);
             foreach (var control in View.InternalElement.ChildElements)
             {
-                _controlWriter.AddControl(control);
+                var successful = _controlWriter.AddControl(control);
+                if (!successful)
+                {
+                    Logging.Log.Warning("Control could not be added as it has invalid bindings: " + control);
+                }
             }
         }
 

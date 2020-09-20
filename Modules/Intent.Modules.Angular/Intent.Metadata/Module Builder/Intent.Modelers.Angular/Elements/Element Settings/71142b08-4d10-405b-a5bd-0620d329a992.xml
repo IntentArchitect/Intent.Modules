@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8aee9b69-d02d-4ca8-b28a-6585508bd033" type="Element Settings">
-  <name>Form</name>
-  <display>Form</display>
+<class id="71142b08-4d10-405b-a5bd-0620d329a992" type="Element Settings">
+  <name>Form Group Definition</name>
+  <display>Form Group Definition</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
+  <parentFolderId>0a3786a7-f514-4ec3-88b9-7842744dbb3c</parentFolderId>
   <literals />
   <attributes />
   <operations />
@@ -25,7 +25,7 @@
       <addedByDefault>true</addedByDefault>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;pencil-square-o&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;wpforms&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
@@ -38,25 +38,25 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="57759a64-b8d3-47fc-80a7-2c3b5639bd63" type="Context Menu">
+    <childElement id="70715614-1467-4800-99fd-7deac96e9b25" type="Context Menu">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8aee9b69-d02d-4ca8-b28a-6585508bd033</parentFolderId>
+      <parentFolderId>71142b08-4d10-405b-a5bd-0620d329a992</parentFolderId>
       <literals />
       <attributes />
       <operations />
       <stereotypes />
       <childElements>
-        <childElement id="bb771a26-e38b-409b-99dd-b61addbc60cf" type="Element Creation Option">
-          <name>New Form Field</name>
-          <display>New Form Field: Form Field</display>
+        <childElement id="c23cf3c9-51f6-45e4-96e4-7580b59494ad" type="Element Creation Option">
+          <name>New Field</name>
+          <display>New Field: Form Group Control</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="ea83b119-f485-4d79-bc24-b1959f060e31">
-            <typeId>1e3e3916-0cdb-45bb-a3b8-d7e01834cc36</typeId>
+          <typeReference id="37a95641-c9ae-4f22-ac73-272708c80799">
+            <typeId>b4e29ea5-b9a4-47eb-8214-c4cc5b46ee91</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -64,7 +64,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>57759a64-b8d3-47fc-80a7-2c3b5639bd63</parentFolderId>
+          <parentFolderId>70715614-1467-4800-99fd-7deac96e9b25</parentFolderId>
           <literals />
           <attributes />
           <operations />
@@ -85,13 +85,13 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="90a4b25a-0490-472c-aa00-12bb8ce93c99" type="Mapping Settings">
+    <childElement id="da54d662-a9e5-4f58-9228-db4cf22b825d" type="Mapping Settings">
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8aee9b69-d02d-4ca8-b28a-6585508bd033</parentFolderId>
+      <parentFolderId>71142b08-4d10-405b-a5bd-0620d329a992</parentFolderId>
       <literals />
       <attributes />
       <operations />
@@ -99,18 +99,18 @@
         <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
           <properties>
-            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="Angular" isActive="true" />
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="Services" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="eeb30624-b056-43ea-80ba-4debaa084cb2" type="Element Mapping">
+        <childElement id="1dcb02b3-0d14-4918-9ae9-23e8396a4804" type="Element Mapping">
           <name>NewElementMapping</name>
-          <display>[mapping]: Component Model -&gt; Form</display>
+          <display>[mapping]: DTO -&gt; Form Group Definition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>90a4b25a-0490-472c-aa00-12bb8ce93c99</parentFolderId>
+          <parentFolderId>da54d662-a9e5-4f58-9228-db4cf22b825d</parentFolderId>
           <literals />
           <attributes />
           <operations />
@@ -119,28 +119,28 @@
               <addedByDefault>true</addedByDefault>
               <properties>
                 <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
-                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="8aee9b69-d02d-4ca8-b28a-6585508bd033" isActive="true" />
-                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="9c631b3f-f3cf-422a-b16b-f218751bef31" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="71142b08-4d10-405b-a5bd-0620d329a992" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
               <addedByDefault>true</addedByDefault>
               <properties>
-                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="356fbe17-bc63-4e16-b915-feefbc063cbe" isActive="true" />
-                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="fee0edca-4aa0-4f77-a524-6bbd84e78734" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                 <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
-                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
           <childElements>
-            <childElement id="9c631b3f-f3cf-422a-b16b-f218751bef31" type="Element Mapping">
+            <childElement id="2a07fde9-a674-454a-a710-651db48aa7f8" type="Element Mapping">
               <name>NewElementMapping</name>
-              <display>[mapping]: Model Definition Field -&gt; Form Field</display>
+              <display>[mapping]: DTO-Field -&gt; Form Group Control</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>eeb30624-b056-43ea-80ba-4debaa084cb2</parentFolderId>
+              <parentFolderId>1dcb02b3-0d14-4918-9ae9-23e8396a4804</parentFolderId>
               <literals />
               <attributes />
               <operations />
@@ -149,17 +149,17 @@
                   <addedByDefault>true</addedByDefault>
                   <properties>
                     <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
-                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="1e3e3916-0cdb-45bb-a3b8-d7e01834cc36" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="b4e29ea5-b9a4-47eb-8214-c4cc5b46ee91" isActive="true" />
                     <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
                   </properties>
                 </stereotype>
                 <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
                   <addedByDefault>true</addedByDefault>
                   <properties>
-                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0dfc489c-7456-4a3d-a28b-50a633631a48" isActive="true" />
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
-                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>

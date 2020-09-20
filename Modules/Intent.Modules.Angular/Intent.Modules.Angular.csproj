@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -12,7 +12,8 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -234,6 +235,19 @@
     <Compile Include="Api\AngularServiceModel.cs" />
     <Compile Include="Api\Extensions\ComponentModelExtensions.cs" />
     <Compile Include="Api\Extensions\AngularServiceModelExtensions.cs" />
+    <Compile Include="Api\FormGroupControlModel.cs" />
+    <Compile Include="Api\FormGroupDefinitionModel.cs" />
+    <Compile Include="Templates\Model\FormGroupTemplate\FormGroupTemplateRegistration.cs" />
+    <Content Include="Templates\Model\FormGroupTemplate\FormGroupTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FormGroupTemplate.cs</LastGenOutput>
+    </Content>
+    <Compile Include="Templates\Model\FormGroupTemplate\FormGroupTemplate.cs">
+      <DependentUpon>FormGroupTemplate.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Templates\Model\FormGroupTemplate\FormGroupTemplatePartial.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Intent.Modules.Angular.imodspec" />

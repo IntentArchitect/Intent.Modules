@@ -22,6 +22,7 @@
       <valueOptions />
       <lookupTypes>
         <type>angular service</type>
+        <type>service proxy</type>
       </lookupTypes>
     </property>
   </properties>

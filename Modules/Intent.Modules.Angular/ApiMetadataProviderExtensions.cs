@@ -31,6 +31,11 @@ namespace Intent.Modules.Angular.Api
             return new ApiMetadataProvider(metadataManager).GetFolderModels(application);
         }
 
+        public static IList<FormGroupDefinitionModel> GetFormGroupDefinitionModels(this IMetadataManager metadataManager, IApplication application)
+        {
+            return new ApiMetadataProvider(metadataManager).GetFormGroupDefinitionModels(application);
+        }
+
         public static IList<ModelDefinitionModel> GetModelDefinitionModels(this IMetadataManager metadataManager, IApplication application)
         {
             return new ApiMetadataProvider(metadataManager).GetModelDefinitionModels(application);

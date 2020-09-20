@@ -10,8 +10,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
+using Intent.Modules.Angular.Templates.Model.FormGroupTemplate;
 using Intent.Modules.Angular.Templates.Model.ModelTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
+using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.TypeScript.Templates;
 
@@ -29,8 +31,10 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(ModelTemplate.TemplateId);
+            AddTypeSource(FormGroupTemplate.TemplateId);
             AddTypeSource(AngularDTOTemplate.TemplateId);
-            InjectedServices = Model.GetAngularComponentSettings().InjectServices()?.Select(x => new AngularServiceModel(x)).ToList() ?? new List<AngularServiceModel>();
+            AddTypeSource(AngularServiceProxyTemplate.TemplateId);
+            InjectedServices = Model.GetAngularComponentSettings().InjectServices()?.ToList() ?? new List<IElement>();
         }
 
         public string ComponentName
@@ -65,7 +69,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 });
         }
 
-        public IList<AngularServiceModel> InjectedServices { get; }
+        public IList<IElement> InjectedServices { get; }
 
         public string GetImports()
         {
@@ -75,12 +79,12 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             }
             return @"
 " + string.Join(@"
-", InjectedServices.Select(x => $"import {{ {x.Name} }} from '{x.GetAngularServiceSettings().Location()}'"));
+", InjectedServices.Where(x => x.SpecializationType == AngularServiceModel.SpecializationType).Select(x => $"import {{ {x.Name} }} from '{new AngularServiceModel(x).GetAngularServiceSettings().Location()}'"));
         }
 
         public string GetConstructorParams()
         {
-            return string.Join(", ", InjectedServices.Select(x => $"private {x.Name.ToCamelCase()}: {x.Name}"));
+            return string.Join(", ", InjectedServices.Select(x => $"private {x.Name.ToCamelCase()}: {GetTypeName(x)}"));
         }
 
         public string GetParameters(ComponentCommandModel command)

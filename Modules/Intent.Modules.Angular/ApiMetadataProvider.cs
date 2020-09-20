@@ -54,6 +54,15 @@ namespace Intent.Modules.Angular.Api
             return models;
         }
 
+        public IList<FormGroupDefinitionModel> GetFormGroupDefinitionModels(IApplication application)
+        {
+            var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)
+                .Where(x => x.SpecializationType == FormGroupDefinitionModel.SpecializationType)
+                .Select(x => new FormGroupDefinitionModel(x))
+                .ToList<FormGroupDefinitionModel>();
+            return models;
+        }
+
         public IList<ModelDefinitionModel> GetModelDefinitionModels(IApplication application)
         {
             var models = _metadataManager.GetMetadata<IElement>("Angular", application.Id)

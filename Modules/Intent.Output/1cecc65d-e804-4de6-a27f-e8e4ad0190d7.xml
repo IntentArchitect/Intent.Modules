@@ -57,6 +57,16 @@
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\FormGroupControlModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FormGroupControlModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\FormGroupDefinitionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FormGroupDefinitionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\ModelDefinitionFieldModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/ModelDefinitionFieldModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -294,6 +304,26 @@
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Environment\EnvironmentTemplate\EnvironmentTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Environment/EnvironmentTemplate/EnvironmentTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\FormGroupTemplate\FormGroupTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Model/FormGroupTemplate/FormGroupTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\FormGroupTemplate\FormGroupTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Model/FormGroupTemplate/FormGroupTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\FormGroupTemplate\FormGroupTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Model/FormGroupTemplate/FormGroupTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular\Templates\Model\FormGroupTemplate\FormGroupTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/Model/FormGroupTemplate/FormGroupTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>2972f61c-54b7-4e94-b4dd-55875ac8a154</ProjectId>

@@ -50,6 +50,9 @@
     <template id="Angular.Templates.Shared.IntentDecoratorsTemplate" externalReference="24192b12-bce1-4ac8-8edd-3f68a2eb3b7c">
       <role>Angular</role>
     </template>
+    <template id="Angular.Templates.Model.FormGroupTemplate" externalReference="fc84fb37-d9ec-4459-a3e1-e165eec1ca0e">
+      <role>Angular</role>
+    </template>
   </templates>
   <decorators>
     <decorator id="Angular.AngularComponentHtmlTemplate.PagedSearchDecorator" />

@@ -1,5 +1,6 @@
 ﻿using Intent.Eventing;
 using Intent.Modules.Angular.Layout.Api;
+using Intent.Utils;
 
 namespace Intent.Modules.Angular.Layout.Decorators.Controls.Section
 {
@@ -11,7 +12,11 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.Section
             ControlWriter = new ControlWriter(eventDispatcher);
             foreach (var control in Model.InternalElement.ChildElements)
             {
-                ControlWriter.AddControl(control);
+                var successful = ControlWriter.AddControl(control);
+                if (!successful)
+                {
+                    Logging.Log.Warning("Control could not be added as it has invalid bindings: " + control);
+                }
             }
         }
 

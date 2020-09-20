@@ -19,9 +19,9 @@ export class <#= ClassName #> implements OnInit {
   <#= model.Name #>: <#= Types.Get(model.TypeReference)#>;
 <#  }#>
 
-  //@IntentMerge()
   constructor(<#= GetConstructorParams() #>) { }
 
+  @IntentIgnore()
   ngOnInit() {
   }
 <#  foreach (var command in Model.Commands) {#>

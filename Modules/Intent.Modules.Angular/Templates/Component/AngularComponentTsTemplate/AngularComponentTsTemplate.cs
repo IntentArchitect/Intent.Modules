@@ -94,14 +94,14 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             
             #line default
             #line hidden
-            this.Write("\r\n  //@IntentMerge()\r\n  constructor(");
+            this.Write("\r\n  constructor(");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetConstructorParams()));
             
             #line default
             #line hidden
-            this.Write(") { }\r\n\r\n  ngOnInit() {\r\n  }\r\n");
+            this.Write(") { }\r\n\r\n  @IntentIgnore()\r\n  ngOnInit() {\r\n  }\r\n");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
   foreach (var command in Model.Commands) {
