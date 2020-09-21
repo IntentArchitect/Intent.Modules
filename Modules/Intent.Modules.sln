@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.Contracts", "Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj", "{2972A488-2F67-426D-8762-C85FB36FB32C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Application.Contracts", "Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj", "{2972A488-2F67-426D-8762-C85FB36FB32C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.Contracts.Clients", "Intent.Modules.Application.Contracts.Clients\Intent.Modules.Application.Contracts.Clients.csproj", "{96929B04-8386-4F55-B348-15A592FA7C0C}"
 EndProject
@@ -11,11 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.ServiceCallHandlers", "Intent.Modules.Application.ServiceCallHandlers\Intent.Modules.Application.ServiceCallHandlers.csproj", "{E923CA07-9C38-4D69-B150-2A8FFF6E9100}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.Owin", "Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj", "{56A0B1F7-FA7E-46B0-A1C8-164DDB07FC4C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.AspNet.Owin", "Intent.Modules.AspNet.Owin\Intent.Modules.AspNet.Owin.csproj", "{56A0B1F7-FA7E-46B0-A1C8-164DDB07FC4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.Owin.Cors", "Intent.Modules.AspNet.Owin.Cors\Intent.Modules.AspNet.Owin.Cors.csproj", "{F670D629-233A-44A9-AD6F-0A40F52CB502}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.Owin.FileServer", "Intent.Modules.AspNet.Owin.FileServer\Intent.Modules.AspNet.Owin.FileServer.csproj", "{0DB00A04-D88F-47A7-818E-35D6C0E60BBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.AspNet.Owin.FileServer", "Intent.Modules.AspNet.Owin.FileServer\Intent.Modules.AspNet.Owin.FileServer.csproj", "{0DB00A04-D88F-47A7-818E-35D6C0E60BBB}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.Owin.Jwt", "Intent.Modules.AspNet.Owin.Jwt\Intent.Modules.AspNet.Owin.Jwt.csproj", "{C91ACFE6-88A2-43D8-81D7-0EEBA9C89DFE}"
 EndProject
@@ -23,7 +23,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.Signa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.SignalR.Interop.WebApi", "Intent.Modules.AspNet.SignalR.Interop.WebApi\Intent.Modules.AspNet.SignalR.Interop.WebApi.csproj", "{B4EF59C8-B9E1-46F0-8EB1-3D8C72C778FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.AspNet.WebApi", "Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj", "{D6171CC1-577A-4123-9CA3-34E017A40071}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.AspNet.WebApi", "Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj", "{D6171CC1-577A-4123-9CA3-34E017A40071}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Constants", "Intent.Modules.Constants\Intent.Modules.Constants.csproj", "{DBADFA28-E995-4E75-9933-215A51E7B580}"
 EndProject
@@ -43,7 +43,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Typescript.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Typescript.ServiceAgent.AngularJs", "Intent.Modules.Typescript.ServiceAgent.AngularJs\Intent.Modules.Typescript.ServiceAgent.AngularJs.csproj", "{FDC479ED-9D0A-4D6B-99D3-53C4CD41E852}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Typescript.ServiceAgent.Contracts", "Intent.Modules.Typescript.ServiceAgent.Contracts\Intent.Modules.Typescript.ServiceAgent.Contracts.csproj", "{33EA449E-9D02-4DDE-85BC-58AD664D9ABD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Typescript.ServiceAgent.Contracts", "Intent.Modules.Typescript.ServiceAgent.Contracts\Intent.Modules.Typescript.ServiceAgent.Contracts.csproj", "{33EA449E-9D02-4DDE-85BC-58AD664D9ABD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Unity", "Intent.Modules.Unity\Intent.Modules.Unity.csproj", "{DE177367-D476-4299-B9E6-71934B434FC5}"
 EndProject
@@ -117,7 +117,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules (Experimental)", "M
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Angular", "Intent.Modules.Angular\Intent.Modules.Angular.csproj", "{C5A69A8F-C0B4-4BC6-B74F-49D892D87C3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.ServiceImplementations", "Intent.Modules.Application.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.csproj", "{925156ED-76E0-44B3-9FC4-4CD14AB7312C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Application.ServiceImplementations", "Intent.Modules.Application.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.csproj", "{925156ED-76E0-44B3-9FC4-4CD14AB7312C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Application.ServiceImplementations.Conventions.CRUD", "Intent.Modules.Convention.ServiceImplementations\Intent.Modules.Application.ServiceImplementations.Conventions.CRUD.csproj", "{2AC9A9B5-8DBD-45E0-B340-5778C2C6EE8B}"
 EndProject
@@ -147,7 +147,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Typescript", "Intent.Modules.ModuleBuilder.Typescript\Intent.Modules.ModuleBuilder.Typescript.csproj", "{ED3B03AC-DDEB-4A29-83D6-4BF83D1C563B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.Types", "Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Types", "Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj", "{ED404A63-FC25-4C42-AB4C-619815D8A6EB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Sql", "Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj", "{A412121D-D444-44CC-9974-A603F2372BDC}"
 EndProject
@@ -167,9 +167,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Html"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Angular.Layout", "Intent.Modules.Angular.Layout\Intent.Modules.Angular.Layout.csproj", "{E5EEA48B-9AFC-4712-A0EA-19ED3540C743}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.Html.Tests", "Intent.Modules.Common.Html.Tests\Intent.Modules.Common.Html.Tests.csproj", "{E778BFC5-400D-4C51-8401-5221996C742E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Html.Tests", "Intent.Modules.Common.Html.Tests\Intent.Modules.Common.Html.Tests.csproj", "{E778BFC5-400D-4C51-8401-5221996C742E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.Html", "Intent.Modules.ModuleBuilder.Html\Intent.Modules.ModuleBuilder.Html.csproj", "{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{B6C39338-280B-4C3D-B9A1-2E18A52E2F2F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -433,10 +435,6 @@ Global
 		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AFE0081A-5319-43FA-9487-0A5AB5A15846}.Release|Any CPU.Build.0 = Release|Any CPU
 		{95D948E6-EDBF-4084-A140-98C68D3354F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{95D948E6-EDBF-4084-A140-98C68D3354F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95D948E6-EDBF-4084-A140-98C68D3354F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -469,6 +467,10 @@ Global
 		{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6C39338-280B-4C3D-B9A1-2E18A52E2F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6C39338-280B-4C3D-B9A1-2E18A52E2F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6C39338-280B-4C3D-B9A1-2E18A52E2F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6C39338-280B-4C3D-B9A1-2E18A52E2F2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -548,7 +550,6 @@ Global
 		{A412121D-D444-44CC-9974-A603F2372BDC} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{3EFDFF8D-5841-49E9-B091-C4F1ABEC3D76} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{0DC3CDB0-CC76-498C-AC4F-9E6D69044C2A} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
-		{AFE0081A-5319-43FA-9487-0A5AB5A15846} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{95D948E6-EDBF-4084-A140-98C68D3354F7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{56964EE2-2626-4EE8-B438-5F914C7A7B64} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{1486EC79-2FBD-4DA7-AF1F-7DC8F7CC0AAB} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
@@ -557,6 +558,7 @@ Global
 		{E5EEA48B-9AFC-4712-A0EA-19ED3540C743} = {5F5C3F2E-DD11-4F45-A24D-9E8FB109592A}
 		{E778BFC5-400D-4C51-8401-5221996C742E} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{4493CCFC-6BF3-4971-9E55-DA3E0E8ED660} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
+		{B6C39338-280B-4C3D-B9A1-2E18A52E2F2F} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

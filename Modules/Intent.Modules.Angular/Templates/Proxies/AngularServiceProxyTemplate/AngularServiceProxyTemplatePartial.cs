@@ -7,7 +7,6 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Angular.Api;
-using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Core.ApiServiceTemplate;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
@@ -32,7 +31,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         public AngularServiceProxyTemplate(IProject project, ServiceProxyModel model) : base(TemplateId, project, model)
         {
-            AddTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
+            AddTypeSource(AngularDTOTemplate.AngularDTOTemplate.TemplateId);
         }
 
         public string ApiServiceClassName => GetTemplateClassName(ApiServiceTemplate.TemplateId);
@@ -45,7 +44,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
 
             // New Proxy:
-            Project.Application.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
+            ExecutionContext.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularServiceProxyCreatedEvent.ModuleId, Model.Module.Id },
@@ -158,12 +157,10 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name.ToKebabCase()}.service",
-                fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}",
+                relativeLocation: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}",
                 className: "${Model.Name}"
             );
         }

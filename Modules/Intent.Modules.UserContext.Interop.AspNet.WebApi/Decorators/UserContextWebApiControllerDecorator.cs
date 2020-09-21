@@ -3,6 +3,7 @@ using Intent.Modules.UserContext.Templates.UserContextInterface;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 

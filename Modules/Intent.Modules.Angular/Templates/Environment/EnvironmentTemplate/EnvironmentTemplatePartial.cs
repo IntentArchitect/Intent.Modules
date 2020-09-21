@@ -5,7 +5,6 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Metadata.Models;
-using Intent.Modules.Angular.Editor;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Editor;

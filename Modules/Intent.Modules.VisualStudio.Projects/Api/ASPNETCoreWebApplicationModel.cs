@@ -33,7 +33,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
         public string RelativeLocation { get; }
         public string Type => SpecializationType;
-        public string ProjectTypeId => VisualStudioProjectTypeIds.CoreCSharpLibrary;
+        public string ProjectTypeId => VisualStudioProjectTypeIds.CoreWebApp;
         public FolderModel Folder { get; }
 
         public IOutputTargetConfig ToOutputTargetConfig()

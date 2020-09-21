@@ -29,7 +29,7 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(AngularConfigVariableRequiredEvent.EventId,
+            ExecutionContext.EventDispatcher.Publish(AngularConfigVariableRequiredEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularConfigVariableRequiredEvent.VariableId, "api_url" },
@@ -40,12 +40,10 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: "api.service",
-                fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "ClientApp/src/app/core",
+                relativeLocation: "ClientApp/src/app/core",
                 className: "ApiService"
             );
         }

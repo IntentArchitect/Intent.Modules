@@ -63,6 +63,21 @@ namespace Intent.Modules.Common.Templates
             return FileMetadata;
         }
 
+        public void AddTemplateDependency(string templateId)
+        {
+            AddTemplateDependency(TemplateDependency.OnTemplate(templateId));
+        }
+
+        public void AddTemplateDependency(string templateId, IMetadataModel model)
+        {
+            AddTemplateDependency(TemplateDependency.OnModel(templateId, model));
+        }
+
+        public void AddTemplateDependency(ITemplateDependency templateDependency)
+        {
+            DetectedDependencies.Add(templateDependency);
+        }
+
         public virtual IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             if (!HasTypeResolver())
@@ -129,6 +144,16 @@ namespace Intent.Modules.Common.Templates
         public virtual string GetTypeName(ITypeReference typeReference)
         {
             return Types.Get(typeReference);
+        }
+
+        public virtual string GetTypeName(IElement element, string collectionFormat)
+        {
+            return Types.Get(element, collectionFormat);
+        }
+
+        public virtual string GetTypeName(IElement element)
+        {
+            return Types.Get(element);
         }
 
         public virtual string GetTemplateClassName(ITemplateDependency templateDependency)

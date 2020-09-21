@@ -1,7 +1,6 @@
 using System.IO;
 using System.Linq;
 using Intent.Engine;
-using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Core.CoreModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
@@ -15,7 +14,6 @@ using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.VisualStudio.Projects;
 using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -130,7 +128,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                 new NugetPackageInfo("Microsoft.TypeScript.MsBuild", "3.5.3")
             };
 
-            if (Project.IsNetCore3App())
+            if (OutputTarget.IsNetCore3App())
             {
                 packages.Add(new NugetPackageInfo("Microsoft.AspNetCore.SpaServices.Extensions", "3.1.4"));
             }

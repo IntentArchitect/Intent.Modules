@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Bower.Installer;
+using Intent.Modules.Common.Processors;
 using Intent.Modules.Constants;
 using Intent.Utils;
 
@@ -38,9 +39,9 @@ To install the CLI using npm, open a terminal/console window and enter the follo
 
         }
 
-        public static IProject GetWebCoreProject(IApplication application)
+        public static IOutputTarget GetWebCoreProject(IApplication application)
         {
-            return application.Projects.FirstOrDefault(x => x.ProjectType.Id == VisualStudioProjectTypeIds.CoreWebApp);
+            return application.OutputTargets.FirstOrDefault(x => x.Type == VisualStudioProjectTypeIds.CoreWebApp);
         }
     }
 }

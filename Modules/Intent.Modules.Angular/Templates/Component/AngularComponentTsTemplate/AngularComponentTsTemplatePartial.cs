@@ -9,13 +9,13 @@ using Intent.Templates;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
-using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Model.FormGroupTemplate;
 using Intent.Modules.Angular.Templates.Model.ModelTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.Plugins;
+using Intent.Modules.Common.TypeScript;
 using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -55,15 +55,13 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public override void BeforeTemplateExecution()
         {
-            Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.TemplateId, "{0}[]"));
-
             if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
                 return;
             }
 
             // New Component:
-            Project.Application.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
+            ExecutionContext.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularComponentCreatedEvent.ModuleId, Model.Module.Id },
@@ -102,13 +100,11 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            var moduleTemplate = Project.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new TypescriptDefaultFileMetadata(
+            var moduleTemplate = ExecutionContext.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
-                fileExtension: "ts",
-                defaultLocationInProject: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
+                relativeLocation: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
                 className: "${ComponentName}Component"
             );
         }

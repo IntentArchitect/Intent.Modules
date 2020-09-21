@@ -28,12 +28,10 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: "core.module",
-                fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "ClientApp/src/app/core",
+                relativeLocation: "ClientApp/src/app/core",
                 className: "CoreModule"
             );
         }

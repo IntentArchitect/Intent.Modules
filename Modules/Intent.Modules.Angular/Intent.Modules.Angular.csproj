@@ -10,7 +10,6 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="2.1.0" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="2.1.0" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.1" />
@@ -20,9 +19,15 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
-    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.Html\Intent.Modules.Common.Html.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Intent.Modules.Common.TypeScript">
+      <HintPath>..\Intent.Modules.Common.TypeScript\bin\Debug\netstandard2.0\Intent.Modules.Common.TypeScript.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
   <ItemGroup>

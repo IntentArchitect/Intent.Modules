@@ -45,7 +45,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
         {
             foreach (var module in Model)
             {
-                Project.Application.EventDispatcher.Publish(AngularModuleRouteCreatedEvent.EventId, new Dictionary<string, string>()
+                ExecutionContext.EventDispatcher.Publish(AngularModuleRouteCreatedEvent.EventId, new Dictionary<string, string>()
                 {
                     {AngularModuleRouteCreatedEvent.ModuleName, module.GetModuleName()},
                     {AngularModuleRouteCreatedEvent.Route, GetRoute(module)},

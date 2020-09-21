@@ -5,7 +5,7 @@ using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Modules.VisualStudio.Projects;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 
@@ -26,15 +26,15 @@ namespace Intent.Modules.Angular
                 //{
                 if (!AngularInstalled(application))
                 {
-                    var project = CliCommand.GetWebCoreProject(application);
-                    if (project == null)
+                    var outputTarget = CliCommand.GetWebCoreProject(application);
+                    if (outputTarget == null)
                     {
                         Logging.Log.Failure("Could not find project to install Angular application.");
                         return;
                     }
-                    Logging.Log.Info($"Installing Angular into project: [{ project.Name }]");
-                    CliCommand.Run(project.ProjectLocation, $@"ng new {application.Name} --directory ClientApp --minimal --defaults --skipGit=true --force=true");
-                    CliCommand.Run(project.ProjectLocation, $@"npm i @types/node@8.10.52"); // Ensure this version - typescript fix
+                    Logging.Log.Info($"Installing Angular into project: [{ outputTarget.Name }]");
+                    CliCommand.Run(outputTarget.Location, $@"ng new {application.Name} --directory ClientApp --minimal --defaults --skipGit=true --force=true");
+                    CliCommand.Run(outputTarget.Location, $@"npm i @types/node@8.10.52"); // Ensure this version - typescript fix
                 }
                 else
                 {
@@ -90,7 +90,7 @@ namespace Intent.Modules.Angular
         public bool AngularInstalled(IApplication application)
         {
             var project = CliCommand.GetWebCoreProject(application);
-            return project != null && File.Exists(Path.Combine(project.ProjectLocation, "ClientApp", "angular.json"));
+            return project != null && File.Exists(Path.Combine(project.Location, "ClientApp", "angular.json"));
         }
     }
 }
