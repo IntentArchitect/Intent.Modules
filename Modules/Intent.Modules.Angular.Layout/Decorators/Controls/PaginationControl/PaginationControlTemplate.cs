@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.PaginationControl
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\PaginationControl\PaginationControlTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class PaginationControlTemplate : IntentTemplateBase
+    public partial class PaginationControlTemplate : T4TemplateBase
     {
 #line hidden
         /// <summary>

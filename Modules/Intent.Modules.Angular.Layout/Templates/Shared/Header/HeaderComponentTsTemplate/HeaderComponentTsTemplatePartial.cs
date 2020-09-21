@@ -45,14 +45,14 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentT
             }
 
             // New Component:
-            Project.Application.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
+            ExecutionContext.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularComponentCreatedEvent.ModuleId, "AppModule" },
                     {AngularComponentCreatedEvent.ModelId, TemplateId},
                 });
 
-            Project.Application.EventDispatcher.Publish(AngularImportDependencyRequiredEvent.EventId,
+            ExecutionContext.EventDispatcher.Publish(AngularImportDependencyRequiredEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularImportDependencyRequiredEvent.ModuleId, "AppModule" },

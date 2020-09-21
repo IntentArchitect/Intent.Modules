@@ -16,7 +16,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls
     public class ControlWriter
     {
         private readonly IApplicationEventDispatcher _eventDispatcher;
-        private IList<IntentTemplateBase> _controls = new List<IntentTemplateBase>();
+        private IList<T4TemplateBase> _controls = new List<T4TemplateBase>();
 
         public ControlWriter(IApplicationEventDispatcher eventDispatcher)
         {

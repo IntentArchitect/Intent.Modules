@@ -43,7 +43,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentT
             this.Write(" {\r\n  title = \'");
             
             #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Templates\Shared\Header\HeaderComponentTsTemplate\HeaderComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(OutputTarget.Application.Name));
             
             #line default
             #line hidden

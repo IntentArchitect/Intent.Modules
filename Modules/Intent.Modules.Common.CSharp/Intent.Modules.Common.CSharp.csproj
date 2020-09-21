@@ -12,7 +12,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Intent\Intent.IntentArchitect\IntentArchitect.SoftwareFactory\Intent.SoftwareFactory.SDK\Intent.SoftwareFactory.SDK.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 

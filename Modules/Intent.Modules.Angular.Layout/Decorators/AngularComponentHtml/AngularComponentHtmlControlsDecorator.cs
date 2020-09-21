@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.AngularComponentHtml
         public AngularComponentHtmlControlsDecorator(AngularComponentHtmlTemplate template)
         {
             _template = template;
-            _controlWriter = new ControlWriter(_template.Project.Application.EventDispatcher);
+            _controlWriter = new ControlWriter(_template.ExecutionContext.EventDispatcher);
             if (View == null)
             {
                 return;

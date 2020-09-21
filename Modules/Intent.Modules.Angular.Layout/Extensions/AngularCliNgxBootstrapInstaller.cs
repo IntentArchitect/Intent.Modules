@@ -25,7 +25,7 @@ namespace Intent.Modules.Angular
                     Logging.Log.Failure("Could not find project to install Angular application.");
                     return;
                 }
-                var appLocation = Path.Join(project.ProjectLocation, "ClientApp");
+                var appLocation = Path.Join(project.Location, "ClientApp");
                 if (!IsNgxBootrapInstalled(appLocation))
                 {
                     Logging.Log.Info($"Installing Ngx-Bootstrap into Angular app at location [{appLocation}]");

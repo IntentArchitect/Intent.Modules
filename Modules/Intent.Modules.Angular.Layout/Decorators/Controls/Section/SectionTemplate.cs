@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.Section
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\Section\SectionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class SectionTemplate : IntentTemplateBase
+    public partial class SectionTemplate : T4TemplateBase
     {
 #line hidden
         /// <summary>

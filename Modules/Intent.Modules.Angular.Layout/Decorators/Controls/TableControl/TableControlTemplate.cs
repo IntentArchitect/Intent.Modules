@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.TableControl
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\TableControl\TableControlTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class TableControlTemplate : IntentTemplateBase
+    public partial class TableControlTemplate : T4TemplateBase
     {
 #line hidden
         /// <summary>
