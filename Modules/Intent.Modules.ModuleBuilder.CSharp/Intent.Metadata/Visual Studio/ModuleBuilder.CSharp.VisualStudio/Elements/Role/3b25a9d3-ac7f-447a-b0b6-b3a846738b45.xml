@@ -6,6 +6,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
+  <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+  <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
   <stereotypes />
   <childElements />
 </class>
