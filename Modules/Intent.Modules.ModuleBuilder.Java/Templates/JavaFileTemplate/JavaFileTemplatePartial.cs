@@ -7,6 +7,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Java.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -59,7 +60,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 <#@ import namespace=""Intent.Modules.Common.Java.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModeler() != null ? $@"<#@ import namespace=""{Model.GetModeler().ApiNamespace}"" #>" : "")}
+<#@ import namespace=""{Model.GetModule().ApiNamespace}"" #>
 {TemplateBody()}";
         }
 

@@ -13,7 +13,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Java.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#=(Model.GetModeler() != null ? string.Format("using {0};", Model.GetModeler().ApiNamespace) : "")#>
+<#=string.Format("using {0};", Model.GetModule().ApiNamespace) #>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 

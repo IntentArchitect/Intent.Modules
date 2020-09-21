@@ -11,10 +11,11 @@
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common" Version="2.1.1" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.2" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.1" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
 

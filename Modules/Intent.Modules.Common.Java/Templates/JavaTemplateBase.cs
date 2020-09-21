@@ -15,7 +15,7 @@ namespace Intent.Modules.Common.Java.Templates
         }
     }
 
-    public abstract class JavaTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IJavaMerged
+    public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged
     {
         protected JavaTemplateBase(string templateId, IProject outputTarget, TModel model) : base(templateId, outputTarget, model)
         {

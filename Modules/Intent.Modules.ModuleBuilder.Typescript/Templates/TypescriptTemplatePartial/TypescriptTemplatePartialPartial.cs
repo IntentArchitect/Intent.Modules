@@ -23,9 +23,9 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePa
         public TypescriptTemplatePartial(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonTypescript);
-            if (!string.IsNullOrWhiteSpace(Model.GetModeler()?.NuGetDependency))
+            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
             {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModeler().NuGetDependency, Model.GetModeler().NuGetVersion));
+                AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
             }
         }
 

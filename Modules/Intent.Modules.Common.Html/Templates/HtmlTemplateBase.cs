@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.Html.Templates
         }
     }
 
-    public abstract class HtmlTemplateBase<TModel> : IntentProjectItemTemplateBase<TModel>, IHtmlFileMerge
+    public abstract class HtmlTemplateBase<TModel> : IntentTemplateBase<TModel>, IHtmlFileMerge
     {
         protected HtmlTemplateBase(string templateId, IProject outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
