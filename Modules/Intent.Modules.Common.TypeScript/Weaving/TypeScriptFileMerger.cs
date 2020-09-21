@@ -22,6 +22,11 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 return _existingFile.GetSource();
             }
 
+            if (_existingFile.GetSource().TrimStart().StartsWith("//@IntentOverwriteFile"))
+            {
+                return _outputFile.GetSource();
+            }
+
             _existingFile.MergeWith(_outputFile);
 
             _existingFile.NormalizeImports();

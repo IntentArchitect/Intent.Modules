@@ -217,6 +217,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         protected void MergeNodeCollections(TypeScriptNode outputNode, Func<TypeScriptNode, IList<TypeScriptNode>> getCollection)
         {
             var index = 0;
+            var highestFoundIndex = 0;
             foreach (var node in getCollection(outputNode))
             {
                 var existing = getCollection(this).SingleOrDefault(x => x.IsSameNodeAs(node));
@@ -250,7 +251,15 @@ namespace Intent.Modules.Common.TypeScript.Editor
                 {
                     // toUpdate:
                     var existingIndex = getCollection(this).IndexOf(existing);
-                    index = (existingIndex > index) ? existingIndex + 1 : index + 1;
+                    if (existingIndex >= index)
+                    {
+                        index = existingIndex + 1;
+                        highestFoundIndex = index;
+                    }
+                    else
+                    {
+                        index = highestFoundIndex + 1;
+                    }
 
                     if (existing.IsIgnored())
                     {
