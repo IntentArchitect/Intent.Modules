@@ -31,14 +31,15 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
         /// </summary>
         public override string TransformText()
         {
-            this.Write("<p intent-manage>\r\n  ");
+            this.Write("<div class=\"container-fluid\" intent-manage=\"add remove\" intent-id=\"container\">\r\n " +
+                    "   <h3>");
             
             #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
-            this.Write(" works!\r\n</p>\r\n");
+            this.Write(" loaded successfully!</h3>\r\n</div>");
             return this.GenerationEnvironment.ToString();
         }
     }

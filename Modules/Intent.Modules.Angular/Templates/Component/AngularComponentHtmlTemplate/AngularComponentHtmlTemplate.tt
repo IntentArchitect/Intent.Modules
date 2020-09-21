@@ -6,6 +6,6 @@
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.Html.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
-<p intent-manage>
-  <#= ComponentName #> works!
-</p>
+<div class="container-fluid" intent-manage="add remove" intent-id="container">
+    <h3><#= Model.Name #> loaded successfully!</h3>
+</div>

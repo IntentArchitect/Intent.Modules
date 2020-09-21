@@ -23,6 +23,10 @@ namespace Intent.Modules.Angular.Layout.Decorators.AngularComponentHtml
         {
             _template = template;
             _controlWriter = new ControlWriter(_template.Project.Application.EventDispatcher);
+            if (View == null)
+            {
+                return;
+            }
             foreach (var control in View.InternalElement.ChildElements)
             {
                 var successful = _controlWriter.AddControl(control);

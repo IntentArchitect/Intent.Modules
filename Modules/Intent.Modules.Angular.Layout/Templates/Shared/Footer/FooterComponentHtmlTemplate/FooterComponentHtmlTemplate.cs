@@ -31,7 +31,14 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentH
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n");
+            this.Write(@"<footer class=""container-fluid bg-light"" style=""position: absolute; bottom: 0"">
+  <div class=""text-center text-small mt-2"">
+    <p>Created with the automation power of<br/>
+      <img src=""https://intentarchitect.com/assets/images/logo.png"" height=""14"" style=""vertical-align: baseline"" />
+      <strong class=""ml-1"">Intent Architect</strong>
+    </p>
+  </div>
+</footer>");
             return this.GenerationEnvironment.ToString();
         }
     }

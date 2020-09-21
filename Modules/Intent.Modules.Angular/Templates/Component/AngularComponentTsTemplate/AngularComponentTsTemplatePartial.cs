@@ -14,6 +14,7 @@ using Intent.Modules.Angular.Templates.Model.FormGroupTemplate;
 using Intent.Modules.Angular.Templates.Model.ModelTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.TypeScript.Templates;
 
@@ -34,6 +35,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             AddTypeSource(FormGroupTemplate.TemplateId);
             AddTypeSource(AngularDTOTemplate.TemplateId);
             AddTypeSource(AngularServiceProxyTemplate.TemplateId);
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
             InjectedServices = Model.GetAngularComponentSettings().InjectServices()?.ToList() ?? new List<IElement>();
         }
 
