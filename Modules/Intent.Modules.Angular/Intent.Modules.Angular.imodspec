@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Angular</id>
-  <version>0.4.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <version>3.0.0-beta</version>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Angular for ASP.NET Core</summary>
   <description>This module installs and wires up Angular to run from within the ASP.NET Core environment.</description>
   <authors>Intent Architect</authors>
@@ -61,10 +61,10 @@
     <factoryExtension id="Intent.Angular.CLIInstaller" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.1.2" />
-    <dependency id="Intent.Common.Types" version="2.1.2" />
-    <dependency id="Intent.Common.Html" version="2.1.0" />
-    <dependency id="Intent.Common.Typescript" version="2.1.4" />
+    <dependency id="Intent.Common" version="2.2.0" />
+    <dependency id="Intent.Common.Types" version="2.2.0" />
+    <dependency id="Intent.Common.Html" version="2.2.0" />
+    <dependency id="Intent.Common.Typescript" version="2.2.0" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />

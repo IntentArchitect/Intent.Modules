@@ -22,7 +22,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
 
         public string ProjectId => Model.Id;
         public string Name => Model.Name;
-        public string FilePath => GetMetadata().GetFullLocationPath();
+        public string FilePath => GetMetadata().GetFullLocationPathWithFileName();
 
         public string LoadContent()
         {
