@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Java</id>
-  <version>2.1.2</version>
+  <version>3.0.0</version>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>
@@ -22,10 +22,10 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common" version="2.1.0" />
-    <dependency id="Intent.Common.Types" version="2.1.0" />
-    <dependency id="Intent.Common.Java" version="2.1.2" />
-    <dependency id="Intent.ModuleBuilder" version="2.1.0" />
+    <dependency id="Intent.Common" version="3.0.0" />
+    <dependency id="Intent.Common.Types" version="3.0.0" />
+    <dependency id="Intent.Common.Java" version="3.0.0" />
+    <dependency id="Intent.ModuleBuilder" version="3.0.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
   </dependencies>
   <files>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <package>
   <id>Intent.AspNet.WebApi.Interop.Unity</id>
-  <version>2.1.0</version>
+  <version>3.0.0</version>
   <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
   <summary>Asp.NET Registrations using the Unity container</summary>
   <description>Asp.NET Registrations using the Unity container</description>
@@ -16,8 +16,8 @@
   </decorators>
   <dependencies>
     <dependency id="Intent.Common" version="2.0.4"/>
-    <dependency id="Intent.Unity" version="2.1.0"/>
-    <dependency id="Intent.AspNet.WebApi" version="2.1.0" />
+    <dependency id="Intent.Unity" version="3.0.0"/>
+    <dependency id="Intent.AspNet.WebApi" version="3.0.0" />
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

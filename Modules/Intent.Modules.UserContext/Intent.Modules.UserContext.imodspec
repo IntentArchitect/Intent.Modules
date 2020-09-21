@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.UserContext</id>
-  <version>2.1.0</version>
+  <version>3.0.0</version>
   <summary>User context for abstracting user information from security infrastructure.</summary>
   <description>User context for abstracting user information from security infrastructure.</description>
   <authors>Intent Architect</authors>
@@ -29,7 +29,7 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.UserContext.Interop.WebApi" version="2.1.0"/>
+        <package id="Intent.UserContext.Interop.WebApi" version="3.0.0"/>
       </install>
     </detect>
   </interoperability>

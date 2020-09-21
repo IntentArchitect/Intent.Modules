@@ -50,7 +50,7 @@ namespace Intent.Modules.OutputManager.TagWeaver
         {
             var normalized = setting.Split('|').Where(s => !string.IsNullOrWhiteSpace(s)).Select(s => s.Trim().ToLower());
             addTo.Clear();
-            addTo.AddRange(normalized); 
+            addTo.AddRange(normalized);
         }
 
         private void AddMappings(string codeTypes, WeaveBehaviour behaviour)
@@ -81,7 +81,7 @@ namespace Intent.Modules.OutputManager.TagWeaver
                         string targetFile = output.FileMetadata.GetFullLocationPathWithFileName();
                         if (File.Exists(targetFile))
                         {
-                            var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetadata);
+                            var fileWeaver = new FileWeaver(_eventDispatcher, output.OutputTarget, output.FileMetadata);
                             output.ChangeContent(fileWeaver.Keep(GetTokenParser(output.FileMetadata.FileExtension), output.Content, File.ReadAllText(targetFile)));
                         }
                     }
@@ -91,20 +91,20 @@ namespace Intent.Modules.OutputManager.TagWeaver
                         string targetFile = output.FileMetadata.GetFullLocationPathWithFileName();
                         if (File.Exists(targetFile))
                         {
-                            var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetadata);
+                            var fileWeaver = new FileWeaver(_eventDispatcher, output.OutputTarget, output.FileMetadata);
                             output.ChangeContent(fileWeaver.Embed(GetTokenParser(output.FileMetadata.FileExtension), output.Content, File.ReadAllText(targetFile)));
                         }
                     }
                     break;
                 case WeaveBehaviour.GenerateCodeToScope:
-                {
-                    string targetFile = output.FileMetadata.GetFullLocationPathWithFileName();
-                    if (File.Exists(targetFile))
                     {
-                        var fileWeaver = new FileWeaver(_eventDispatcher, output.Project, output.FileMetadata);
-                        output.ChangeContent(fileWeaver.EmbedByScope(GetTokenParser(output.FileMetadata.FileExtension), output.Content, File.ReadAllText(targetFile)));
+                        string targetFile = output.FileMetadata.GetFullLocationPathWithFileName();
+                        if (File.Exists(targetFile))
+                        {
+                            var fileWeaver = new FileWeaver(_eventDispatcher, output.OutputTarget, output.FileMetadata);
+                            output.ChangeContent(fileWeaver.EmbedByScope(GetTokenParser(output.FileMetadata.FileExtension), output.Content, File.ReadAllText(targetFile)));
+                        }
                     }
-                }
                     break;
             }
         }

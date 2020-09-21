@@ -61,10 +61,10 @@
     <factoryExtension id="Intent.Angular.CLIInstaller" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.2.0" />
-    <dependency id="Intent.Common.Types" version="2.2.0" />
-    <dependency id="Intent.Common.Html" version="2.2.0" />
-    <dependency id="Intent.Common.Typescript" version="2.2.0" />
+    <dependency id="Intent.Common" version="3.0.0" />
+    <dependency id="Intent.Common.Types" version="3.0.0" />
+    <dependency id="Intent.Common.Html" version="3.0.0" />
+    <dependency id="Intent.Common.Typescript" version="3.0.0" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />

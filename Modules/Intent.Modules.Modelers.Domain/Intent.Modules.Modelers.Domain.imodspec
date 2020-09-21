@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain</id>
-  <version>2.2.0</version>
+  <version>3.0.0</version>
   <supportedClientVersions>[2.2.0,3.0.0)</supportedClientVersions>
   <summary>Domain modeler for describing entities and their relationships.</summary>
   <description>Domain modeler for describing entities and their relationships.</description>
@@ -12,7 +12,7 @@
   <templates></templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.4" />
+    <dependency id="Intent.Common" version="3.0.0" />
   </dependencies>
   <metadata>
     <install target="Domain" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain/Intent.Modelers.Domain.pkg.config" externalReference="6572b98d-5e13-4d4b-9ffc-820057da974e" />
