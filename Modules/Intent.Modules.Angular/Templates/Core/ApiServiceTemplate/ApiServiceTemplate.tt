@@ -3,7 +3,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 import { Injectable } from '@angular/core';
@@ -19,7 +18,7 @@ export class <#= ClassName #> {
   ) { }
 
   private formatErrors(error: any) {
-    return throwError(error.error);
+    return throwError(error.error || error);
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {

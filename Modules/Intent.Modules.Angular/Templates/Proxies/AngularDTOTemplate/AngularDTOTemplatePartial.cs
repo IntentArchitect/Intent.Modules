@@ -9,10 +9,9 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript;
-using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
@@ -20,14 +19,14 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularDTOTemplate : TypeScriptTemplateBase<DTOModel>
+    partial class AngularDTOTemplate : TypeScriptTemplateBase<ModuleDTOModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
 
-        public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+        public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model)
         {
-            AddTypeSource(TypescriptTypeSource.InProject(ExecutionContext, TemplateId));
+            AddTypeSource(TypescriptTypeSource.InProject(Project, TemplateId));
         }
 
         public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";
@@ -36,12 +35,10 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             //var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
-                fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"ClientApp/src/app/{((ModuleDTOModel)Model).Module.GetModuleName().ToKebabCase()}/models",
+                relativeLocation: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
                 className: "${Model.Name}"
             );
         }

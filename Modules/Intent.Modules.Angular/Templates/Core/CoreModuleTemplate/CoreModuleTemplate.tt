@@ -3,7 +3,6 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 import { NgModule } from '@angular/core';

@@ -114,7 +114,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var template in _templatesToRegister)
             {
-                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@id=\"{template.TemplateId}\"]") ?? doc.XPathSelectElement($"package/templates/template[@externalReference=\"{template.ModelId}\"]");
+                var specificTemplate = doc.XPathSelectElement($"package/templates/template[@externalReference=\"{template.ModelId}\"]");
+
+                // backward compatibility
+                if (specificTemplate == null)
+                {
+                    var sameId = doc.XPathSelectElement($"package/templates/template[@id=\"{template.TemplateId}\"]");
+                    specificTemplate = sameId?.Attribute("externalReference") == null ? sameId : null;
+                }
 
                 if (specificTemplate == null)
                 {
@@ -131,24 +138,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     templatesElement.Add(specificTemplate);
                 }
 
-                specificTemplate.Attributes("id").Single().Value = template.TemplateId;
+                specificTemplate.SetAttributeValue("id", template.TemplateId);
                 if (!specificTemplate.Attributes("externalReference").Any())
                 {
                     specificTemplate.Add(new XAttribute("externalReference", template.ModelId));
                 }
-
-                if (specificTemplate.Element("role") == null)
-                {
-                    specificTemplate.Add(new XElement("role") { Value = template.Role });
-                }
-                else
-                {
-                    specificTemplate.Element("role").Value = template.Role;
-                }
-                //else
-                //{
-                //    specificTemplate.Element("role").Value = template.Role;
-                //}
+                specificTemplate.SetElementValue("role", template.Role);
 
                 if (!string.IsNullOrWhiteSpace(template.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.ModuleDependency}\"]") == null)
                 {
@@ -163,7 +158,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
-            foreach (var template in doc.XPathSelectElements($"package/templates/template"))
+            foreach (var template in doc.XPathSelectElements($"package/templates/template").ToList())
             {
                 if (template.Attribute("externalReference") != null && _templatesToRegister.All(x => x.ModelId != template.Attribute("externalReference").Value))
                 {

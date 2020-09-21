@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
         public JavaFileTemplate(IProject project, JavaFileTemplateModel model) : base(TemplateId, project, model)
         {
         }
+
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
@@ -71,8 +72,6 @@ public class <#= ClassName #> {
     }
 }";
         }
-
-
 
         private string GetExistingTemplateContent()
         {

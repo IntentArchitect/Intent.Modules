@@ -86,6 +86,90 @@ export class EmptyClass {
             Assert.Equal(MergedMethodWithTwoDecorator, result);
         }
 
+        [Fact]
+        public void MergesInternalsOfDecorator()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: @"
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+@IntentMerge()
+@NgModule({
+  imports: [],
+  providers: [],
+  bootstrap: []
+})
+@ExtraDecorator('some', 3)
+export class AppModule { }", outputContent: ComplexAngularAppDecoration);
+            Assert.Equal(ComplexAngularAppDecoration, result);
+        }
+
+        [Fact]
+        public void AddsTypeToInnerArrayOfDecorator()
+        {
+            
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: @"import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UsersRouting } from './users-routing.module';
+import { IntentMerge } from ""../../shared/intent.decorators"";
+import { UserDetailsComponent } from ""./user-details/user-details.component"";
+
+@IntentMerge
+@NgModule({
+  declarations: [
+    UserDetailsComponent
+  ],
+  imports: [
+    CommonModule,
+    UsersRouting
+  ]
+})
+export class UsersModule { }
+", outputContent: @"import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UsersRouting } from './users-routing.module';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { IntentMerge } from ""../../shared/intent.decorators"";
+
+@IntentMerge
+@NgModule({
+  declarations: [
+    UserSearchComponent
+  ],
+  imports: [
+    CommonModule,
+    UsersRouting,
+    CollapseModule.forRoot()
+  ]
+})
+export class UsersModule { }
+");
+            Assert.Equal(@"import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { UserSearchComponent } from './user-search/user-search.component';
+import { UsersRouting } from './users-routing.module';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { IntentMerge } from ""../../shared/intent.decorators"";
+import { UserDetailsComponent } from ""./user-details/user-details.component"";
+
+@IntentMerge
+@NgModule({
+  declarations: [
+    UserSearchComponent,
+    UserDetailsComponent
+  ],
+  imports: [
+    CommonModule,
+    UsersRouting,
+    CollapseModule.forRoot()
+  ]
+})
+export class UsersModule { }
+", result);
+        }
 
         public static string ClassWithNoDecorators = @"
 export class EmptyClass {
@@ -153,5 +237,36 @@ export class EmptyClass {
         // some implementation
     }
 }";
+
+        public static string ComplexAngularAppDecoration = @"
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { CoreModule } from './core/core.module';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { HeaderComponent } from './shared/header/header.component';
+import { FooterComponent } from './shared/footer/footer.component';
+
+@IntentMerge()
+@NgModule({
+  declarations: [
+    HeaderComponent,
+    AppComponent,
+    FooterComponent
+  ],
+  imports: [
+    BrowserModule, 
+    AppRoutingModule, 
+    CoreModule,
+    CollapseModule.forRoot(),
+    BrowserAnimationsModule,
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+@ExtraDecorator('some-string', 5)
+export class AppModule { }";
     }
 }

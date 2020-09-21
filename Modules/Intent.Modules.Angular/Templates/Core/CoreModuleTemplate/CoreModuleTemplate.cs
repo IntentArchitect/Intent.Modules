@@ -12,7 +12,6 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using System;
@@ -48,7 +47,7 @@ import { ApiService } from ""./api.service"";
 })
 export class ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Core\CoreModuleTemplate\CoreModuleTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Core\CoreModuleTemplate\CoreModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

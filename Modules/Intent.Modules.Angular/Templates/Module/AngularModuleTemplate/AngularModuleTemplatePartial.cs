@@ -8,12 +8,12 @@ using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript.Editor;
-using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
@@ -25,11 +25,14 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
-        private readonly IList<ITemplate> _components = new List<ITemplate>();
-        private readonly IList<ITemplate> _providers = new List<ITemplate>();
+        private readonly ISet<string> _components = new HashSet<string>();
+        private readonly ISet<string> _providers = new HashSet<string>();
+        private readonly ISet<string> _angularImports = new HashSet<string>();
+        private readonly ISet<string> _imports = new HashSet<string>();
 
-        public AngularModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
                 {
                     if (@event.GetValue(AngularComponentCreatedEvent.ModuleId) != Model.Id)
@@ -37,7 +40,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                         return;
                     }
 
-                    _components.Add(FindTemplate<ITemplate>(AngularComponentTsTemplate.TemplateId, @event.GetValue(AngularComponentCreatedEvent.ModelId)));
+                    _components.Add(GetTemplateClassName(AngularComponentTsTemplate.TemplateId, @event.GetValue(AngularComponentCreatedEvent.ModelId)));
                 });
 
             project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
@@ -47,9 +50,19 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                //_components.Add(FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId)));
-                var template = FindTemplate<ITemplate>(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
-                _providers.Add(template);
+                var templateClassName = GetTemplateClassName(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                _providers.Add(templateClassName);
+            });
+
+            project.Application.EventDispatcher.Subscribe(AngularImportDependencyRequiredEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularImportDependencyRequiredEvent.ModuleId) != Model.Id)
+                {
+                    return;
+                }
+
+                _angularImports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Dependency));
+                _imports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Import));
             });
         }
 
@@ -57,36 +70,59 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
 
-        protected override void ApplyFileChanges(TypeScriptFile file)
+        public string GetImports()
         {
-            var @class = file.ClassDeclarations().First();
-            if (@class.IsIgnored())
+            if (!_imports.Any())
             {
-                return;
+                return "";
             }
+            return $"{System.Environment.NewLine}" + string.Join($"{System.Environment.NewLine}", _imports);
+        }
 
-            var ngModuleDecorator = @class.GetDecorator("NgModule")?.ToNgModule();
+        public bool HasComponents()
+        {
+            return _components.Any();
+        }
 
-            foreach (var template in _components)
+        public string GetComponents()
+        {
+            if (!_components.Any())
             {
-                ngModuleDecorator?.AddDeclarationIfNotExists(GetTemplateClassName(template));
+                return "";
             }
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _components) + $"{System.Environment.NewLine}  ";
+        }
 
-            foreach (var template in _providers)
+        public bool HasProviders()
+        {
+            return _providers.Any();
+        }
+
+        public string GetProviders()
+        {
+            if (!_providers.Any())
             {
-                ngModuleDecorator?.AddProviderIfNotExists(GetTemplateClassName(template));
+                return "";
             }
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _providers) + $"{System.Environment.NewLine}  ";
+        }
+
+        public string GetAngularImports()
+        {
+            if (!_angularImports.Any())
+            {
+                return "";
+            }
+            return $",{System.Environment.NewLine}    " + string.Join($",    {System.Environment.NewLine}    ", _angularImports);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
-                fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: $"ClientApp/src/app/{ ModuleName.ToKebabCase() }",
+                relativeLocation: $"ClientApp/src/app/{ ModuleName.ToKebabCase() }",
                 className: "${ModuleName}Module");
         }
     }
@@ -101,6 +137,11 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ComponentName { get; set; }
         public string Location { get; set; }
+
+        public override string ToString()
+        {
+            return $"Component: {ComponentName} - {Location}";
+        }
     }
 
     internal class AngularProviderInfo
@@ -113,5 +154,10 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ProviderName { get; set; }
         public string Location { get; set; }
+
+        public override string ToString()
+        {
+            return $"Provider: {ProviderName} - {Location}";
+        }
     }
 }

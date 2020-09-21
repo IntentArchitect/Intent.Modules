@@ -56,7 +56,7 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePa
             Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
             {
                 { "TemplateId", GetTemplateId() },
-                { "TemplateType", "C# Template" },
+                { "TemplateType", "TypeScript" },
                 { "Role", GetRole() },
                 //{ "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
                 //{ "Module Dependency Version",Model.GetDesignerSettings()?.ModuleVersion },

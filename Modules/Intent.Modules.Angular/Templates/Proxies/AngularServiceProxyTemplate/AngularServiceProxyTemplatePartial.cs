@@ -13,12 +13,11 @@ using Intent.Modules.Angular.Templates.Module.AngularModuleTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript;
 using Intent.Modules.Common.TypeScript.Editor;
-using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Utils;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
@@ -31,9 +30,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
 
-        public AngularServiceProxyTemplate(IProject project, ServiceProxyModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularServiceProxyTemplate(IProject project, ServiceProxyModel model) : base(TemplateId, project, model)
         {
-            AddTypeSource(TypescriptTypeSource.InProject(ExecutionContext, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
+            AddTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.AngularDTOTemplate.TemplateId));
         }
 
         public string ApiServiceClassName => GetTemplateClassName(ApiServiceTemplate.TemplateId);
@@ -46,7 +45,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             }
 
             // New Proxy:
-            ExecutionContext.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
+            Project.Application.EventDispatcher.Publish(AngularServiceProxyCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularServiceProxyCreatedEvent.ModuleId, Model.Module.Id },
@@ -54,45 +53,58 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 });
         }
 
-        protected override void ApplyFileChanges(TypeScriptFile file)
+        protected override TypeScriptFile CreateOutputFile()
         {
             if (Model.MappedService == null)
             {
                 Logging.Log.Warning($"{ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service");
-                return;
             }
-            var @class = file.ClassDeclarations().First();
-            if (@class.IsIgnored())
-            {
-                return;
-            }
+
             foreach (var operation in Model.Operations)
             {
                 if (!operation.IsMapped || operation.Mapping == null)
                 {
                     Logging.Log.Warning($"Operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service Operation");
-                    continue;
-                }
-                var url = $"/{Model.MappedService.Name.ToLower()}/{operation.Mapping.Element.Name.ToLower()}";
-                var method = $@"
-
-  {operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): Observable<{GetReturnType(operation)}> {{
-    let url = ""{url}"";{GetUpdateUrl(operation)}
-    return this.apiService.{GetDataServiceCall(operation)}
-      .pipe(map((response: any) => {{
-        return response;
-      }}));
-  }}";
-                if (@class.MethodExists(operation.Name.ToCamelCase()))
-                {
-                    @class.ReplaceMethod(operation.Name.ToCamelCase(), method);
-                }
-                else
-                {
-                    @class.AddMethod(method);
                 }
             }
+            return base.CreateOutputFile();
         }
+
+        //      protected override void ApplyFileChanges(TypescriptFile file)
+        //      {
+        //          if (Model.MappedService == null)
+        //          {
+        //              Logging.Log.Warning($"{ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service");
+        //              return;
+        //          }
+        //          var @class = file.ClassDeclarations().First();
+        //          foreach (var operation in Model.Operations)
+        //          {
+        //              if (!operation.IsMapped || operation.Mapping == null)
+        //              {
+        //                  Logging.Log.Warning($"Operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}] is not mapped to an underlying Service Operation");
+        //                  continue;
+        //              }
+        //              var url = $"/{Model.MappedService.Name.ToLower()}/{operation.Mapping.Element.Name.ToLower()}";
+        //              var method = $@"
+
+        //{operation.Name.ToCamelCase()}({GetParameterDefinitions(operation)}): Observable<{GetReturnType(operation)}> {{
+        //  let url = ""{url}"";{GetUpdateUrl(operation)}
+        //  return this.apiService.{GetDataServiceCall(operation)}
+        //    .pipe(map((response: any) => {{
+        //      return response;
+        //    }}));
+        //}}";
+        //              if (@class.MethodExists(operation.Name.ToCamelCase()))
+        //              {
+        //                  @class.ReplaceMethod(operation.Name.ToCamelCase(), method);
+        //              }
+        //              else
+        //              {
+        //                  @class.AddMethod(method);
+        //              }
+        //          }
+        //      }
 
         private string GetReturnType(ServiceProxyOperationModel operation)
         {
@@ -178,7 +190,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         private string GetPath(ServiceProxyOperationModel operation)
         {
             var path = operation.GetStereotypeProperty<string>("Http", "Route")?.ToLower();
-            return path ?? operation.Name.ToLower();
+            return path ?? $"/{Model.MappedService.Name.ToLower()}/{operation.Mapping.Element.Name.ToLower()}";
         }
     }
 

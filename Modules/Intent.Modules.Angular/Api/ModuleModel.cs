@@ -90,5 +90,11 @@ namespace Intent.Modules.Angular.Api
         {
             return _element.ToString();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public IList<FormGroupDefinitionModel> FormGroups => _element.ChildElements
+            .Where(x => x.SpecializationType == FormGroupDefinitionModel.SpecializationType)
+            .Select(x => new FormGroupDefinitionModel(x))
+            .ToList();
     }
 }

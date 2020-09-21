@@ -10,47 +10,112 @@ using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
+using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
+using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.TypeScript.Editor;
-using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.VisualStudio.Projects;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AppModuleTemplate : TypeScriptTemplateBase<object>
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    partial class AppModuleTemplate : TypeScriptTemplateBase<object>, IHasNugetDependencies
     {
+        private readonly ISet<string> _components = new HashSet<string>() { "AppComponent" };
+        private readonly ISet<string> _providers = new HashSet<string>();
+        private readonly ISet<string> _angularImports = new HashSet<string>();
+        private readonly ISet<string> _imports = new HashSet<string>();
+
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
 
-        public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
+            project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularComponentCreatedEvent.ModuleId) != ClassName)
+                {
+                    return;
+                }
+
+                _components.Add(GetTemplateClassName(@event.GetValue(AngularComponentCreatedEvent.ModelId)));
+            });
+
+            project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularServiceProxyCreatedEvent.ModuleId) != ClassName)
+                {
+                    return;
+                }
+
+                var template = GetTemplateClassName(@event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                _providers.Add(template);
+            });
+
+            project.Application.EventDispatcher.Subscribe(AngularImportDependencyRequiredEvent.EventId, @event =>
+            {
+                if (@event.GetValue(AngularImportDependencyRequiredEvent.ModuleId) != ClassName)
+                {
+                    return;
+                }
+
+                _angularImports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Dependency));
+                _imports.Add(@event.GetValue(AngularImportDependencyRequiredEvent.Import));
+            });
         }
 
         public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
         public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
 
-        protected override void ApplyFileChanges(TypeScriptFile file)
+        public string GetImports()
         {
-            var moduleClass = file.ClassDeclarations().First();
+            if (!_imports.Any())
+            {
+                return "";
+            }
+            return $"{System.Environment.NewLine}" + string.Join($"{System.Environment.NewLine}", _imports);
+        }
 
-            var moduleDecorator = moduleClass.Decorators().FirstOrDefault(x => x.Name == "NgModule")?.ToNgModule();
+        public string GetComponents()
+        {
+            if (!_components.Any())
+            {
+                return "";
+            }
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _components) + $"{System.Environment.NewLine}  ";
+        }
 
-            moduleDecorator?.AddImportIfNotExists(CoreModule);
-            moduleDecorator?.AddImportIfNotExists(AppRoutingModuleClassName);
+        public string GetProviders()
+        {
+            if (!_providers.Any())
+            {
+                return "";
+            }
+            return $"{System.Environment.NewLine}    " + string.Join($",{System.Environment.NewLine}    ", _providers) + $"{System.Environment.NewLine}  ";
+        }
+
+        public string GetAngularImports()
+        {
+            if (!_angularImports.Any())
+            {
+                return "";
+            }
+            return $",{System.Environment.NewLine}    " + string.Join($",    {System.Environment.NewLine}    ", _angularImports);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: $"app.module",
-                fileExtension: "ts",
-                defaultLocationInProject: $"ClientApp/src/app",
+                relativeLocation: $"ClientApp/src/app",
                 className: "AppModule"
             );
         }
@@ -65,7 +130,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                 new NugetPackageInfo("Microsoft.TypeScript.MsBuild", "3.5.3")
             };
 
-            if (OutputTarget.IsNetCore3App())
+            if (Project.IsNetCore3App())
             {
                 packages.Add(new NugetPackageInfo("Microsoft.AspNetCore.SpaServices.Extensions", "3.1.4"));
             }

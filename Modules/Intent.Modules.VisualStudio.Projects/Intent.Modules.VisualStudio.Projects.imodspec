@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.VisualStudio.Projects</id>
   <version>2.2.0</version>
@@ -149,7 +149,7 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
-    <file src="$outDir$/NuGet.Versioning.dll" inspect="false" />
+    <!--<file src="$outDir$/NuGet.Versioning.dll" inspect="false"/>-->
     <file src="$outDir$/Microsoft.Build.dll" inspect="false" />
     <file src="$outDir$/Microsoft.Build.Framework.dll" inspect="false" />
     <!--<file src="$outDir$/Microsoft.Build.Utilities.Core.dll" inspect="false" />-->

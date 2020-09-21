@@ -1,4 +1,5 @@
 using System.Diagnostics;
+using Intent.Utils;
 
 namespace Intent.Modules.Bower.Installer
 {
@@ -22,6 +23,7 @@ namespace Intent.Modules.Bower.Installer
 
             foreach (var command in commands)
             {
+                Logging.Log.Info($"Executing: {workingDirectory}>{command}");
                 cmd.StandardInput.WriteLine(command);
             }
 

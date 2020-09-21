@@ -9,6 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Metadata.Models;
 using System;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -22,31 +23,39 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppRoutingModuleTemplate";
 
-        public AppRoutingModuleTemplate(IProject project, IList<ModuleModel> model) : base(TemplateId, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+        public AppRoutingModuleTemplate(IProject project, IList<ModuleModel> model) : base(TemplateId, project, model)
         {
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }
 
-        public IEnumerable<AngularModuleTemplate> ModuleTemplates
-        {
-            get
-            {
-                return Model.Select(x => FindTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
-            }
-        }
+        public IEnumerable<AngularModuleTemplate> ModuleTemplates => Model.Select(x => FindTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: $"app-routing.module",
-                fileExtension: "ts",
-                defaultLocationInProject: $"ClientApp/src/app",
+                relativeLocation: $"ClientApp/src/app",
                 className: "AppRoutingModule"
             );
         }
 
+        public override void BeforeTemplateExecution()
+        {
+            foreach (var module in Model)
+            {
+                Project.Application.EventDispatcher.Publish(AngularModuleRouteCreatedEvent.EventId, new Dictionary<string, string>()
+                {
+                    {AngularModuleRouteCreatedEvent.ModuleName, module.GetModuleName()},
+                    {AngularModuleRouteCreatedEvent.Route, GetRoute(module)},
+                });
+            }
+        }
 
+        private string GetRoute(ModuleModel module)
+        {
+            return module.Name.Replace("Module", "").ToLower();
+        }
     }
 }

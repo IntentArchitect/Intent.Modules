@@ -1,14 +1,11 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
-using System.Linq;
-using Intent.Modules.Bower.Installer;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Constants;
 using Intent.SoftwareFactory;
 using Intent.Engine;
-using Intent.Modules.Common.VisualStudio;
+using Intent.Modules.VisualStudio.Projects;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 
@@ -24,12 +21,20 @@ namespace Intent.Modules.Angular
             if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
             {
                 RequestInitialization(application);
-            //}
-            //else if (step == ExecutionLifeCycleSteps.BeforeCommitChanges )
-            //{
+                //}
+                //else if (step == ExecutionLifeCycleSteps.BeforeCommitChanges )
+                //{
                 if (!AngularInstalled(application))
                 {
-                    RunAngularCli(application);
+                    var project = CliCommand.GetWebCoreProject(application);
+                    if (project == null)
+                    {
+                        Logging.Log.Failure("Could not find project to install Angular application.");
+                        return;
+                    }
+                    Logging.Log.Info($"Installing Angular into project: [{ project.Name }]");
+                    CliCommand.Run(project.ProjectLocation, $@"ng new {application.Name} --directory ClientApp --minimal --defaults --skipGit=true --force=true");
+                    CliCommand.Run(project.ProjectLocation, $@"npm i @types/node@8.10.52"); // Ensure this version - typescript fix
                 }
                 else
                 {
@@ -64,7 +69,7 @@ namespace Intent.Modules.Angular
                 { InitializationRequiredEvent.CallKey, $@"InitializeAngularSpa(app, env);" },
                 { InitializationRequiredEvent.MethodKey, $@"
         //[IntentManaged(Mode.Ignore)] // Uncomment to take control of this method.
-        private void InitializeAngularSpa(IApplicationBuilder app, { (GetAngularOutputTarget(application).IsNetCore2App() ? "IHostingEnvironment" : "IWebHostEnvironment") } env)
+        private void InitializeAngularSpa(IApplicationBuilder app, { (CliCommand.GetWebCoreProject(application).IsNetCore2App() ? "IHostingEnvironment" : "IWebHostEnvironment") } env)
         {{
             app.UseSpa(spa =>
             {{
@@ -84,50 +89,8 @@ namespace Intent.Modules.Angular
 
         public bool AngularInstalled(IApplication application)
         {
-            var project = GetAngularOutputTarget(application);
-            return project != null && File.Exists(Path.Combine(project.Location, "ClientApp", "angular.json"));
-        }
-
-        public void RunAngularCli(IApplication application)
-        {
-            var project = GetAngularOutputTarget(application);
-            if (project == null)
-            {
-                Logging.Log.Failure("Could not find project to install Angular application.");
-                return;
-            }
-
-            Logging.Log.Info($"Installing Angular into project: [{ project.Name }]");
-
-            WindowsCommandLineProcessor cmd = new WindowsCommandLineProcessor();
-
-            if (!Directory.Exists(Path.GetFullPath(project.Location)))
-            {
-                Directory.CreateDirectory(Path.GetFullPath(project.Location));
-            }
-            var command = $@"ng new {application.Name} --directory ClientApp --minimal --defaults --skipGit=true --force=true";
-            try
-            {
-                var output = cmd.ExecuteCommand(Path.GetFullPath(project.Location),
-                    new[]
-                    {
-                        command,
-                    });
-                Logging.Log.Info(output);
-            }
-            catch (Exception e)
-            {
-                Logging.Log.Failure($@"Failed to execute: ""{command}""
-Please ensure that both npm and that the Angular CLI have been installed.
-To check that you have the npm client installed, run npm -v in a terminal/console window.
-To install the CLI using npm, open a terminal/console window and enter the following command: npm install -g @angular/cli.");
-                Logging.Log.Failure(e);
-            }
-        }
-
-        private IOutputTarget GetAngularOutputTarget(IApplication application)
-        {
-            return application.OutputTargets.SingleOrDefault(x => x.HasRole("Angular"));
+            var project = CliCommand.GetWebCoreProject(application);
+            return project != null && File.Exists(Path.Combine(project.ProjectLocation, "ClientApp", "angular.json"));
         }
     }
 }

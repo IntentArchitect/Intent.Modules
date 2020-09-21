@@ -12,7 +12,6 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using System;
@@ -31,24 +30,51 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
-@NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
-export class ");
+            this.Write("import { BrowserModule } from \'@angular/platform-browser\';\r\nimport { NgModule } f" +
+                    "rom \'@angular/core\';\r\nimport { BrowserAnimationsModule } from \'@angular/platform" +
+                    "-browser/animations\';");
+            
+            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetImports()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n\r\nimport { AppComponent } from \'./app.component\';\r\n\r\n@IntentMerge()\r\n@NgModule(" +
+                    "{\r\n  declarations: [");
+            
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetComponents()));
+            
+            #line default
+            #line hidden
+            this.Write("],\r\n  imports: [\r\n    BrowserModule,\r\n    BrowserAnimationsModule,\r\n    ");
+            
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(CoreModule));
+            
+            #line default
+            #line hidden
+            this.Write(",\r\n    ");
+            
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AppRoutingModuleClassName));
+            
+            #line default
+            #line hidden
+            
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetAngularImports()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n  ],\r\n  providers: [");
+            
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetProviders()));
+            
+            #line default
+            #line hidden
+            this.Write("],\r\n  bootstrap: [AppComponent]\r\n})\r\nexport class ");
             
             #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\App\AppModuleTemplate\AppModuleTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

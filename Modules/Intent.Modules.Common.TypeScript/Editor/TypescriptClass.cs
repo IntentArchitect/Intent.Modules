@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptClass : TypeScriptNode
     {
-        public TypeScriptClass(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptClass(Node node, TypeScriptNode parent) : base(node, parent)
         {
         }
 
@@ -139,14 +139,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public bool IsEmptyClass()
         {
             return Node.Last.Kind == SyntaxKind.Identifier && Node.Last.IdentifierStr == Name;
-        }
-
-        public void AddCodeToClass(string code)
-        {
-            var overwriteClass = Node.GetTextWithComments();
-            overwriteClass = overwriteClass.Insert(overwriteClass.LastIndexOf('{') + 1, code);
-            Editor.ReplaceNode(Node, overwriteClass);
-            Editor.UpdateNodes();
         }
 
         //public override void UpdateChanges()

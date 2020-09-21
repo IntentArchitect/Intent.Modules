@@ -10,10 +10,12 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Angular.Api;
 using Intent.Modules.Angular.Editor;
+using Intent.Modules.Angular.Templates.Model.FormGroupTemplate;
+using Intent.Modules.Angular.Templates.Model.ModelTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate;
+using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
+using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
 using Intent.Modules.Common.Plugins;
-using Intent.Modules.Common.TypeScript;
-using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -27,8 +29,14 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
 
-        public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public AngularComponentTsTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
         {
+            AddTypeSource(ModelTemplate.TemplateId);
+            AddTypeSource(FormGroupTemplate.TemplateId);
+            AddTypeSource(AngularDTOTemplate.TemplateId);
+            AddTypeSource(AngularServiceProxyTemplate.TemplateId);
+            AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
+            InjectedServices = Model.GetAngularComponentSettings().InjectServices()?.ToList() ?? new List<IElement>();
         }
 
         public string ComponentName
@@ -47,7 +55,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public override void BeforeTemplateExecution()
         {
-            Types.AddClassTypeSource(TypescriptTypeSource.InProject(ExecutionContext, AngularDTOTemplate.TemplateId, "{0}[]"));
+            Types.AddClassTypeSource(TypescriptTypeSource.InProject(Project, AngularDTOTemplate.TemplateId, "{0}[]"));
 
             if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
             {
@@ -55,7 +63,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             }
 
             // New Component:
-            ExecutionContext.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
+            Project.Application.EventDispatcher.Publish(AngularComponentCreatedEvent.EventId,
                 new Dictionary<string, string>()
                 {
                     {AngularComponentCreatedEvent.ModuleId, Model.Module.Id },
@@ -63,40 +71,38 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
                 });
         }
 
-        protected override void ApplyFileChanges(TypeScriptFile file)
+        public IList<IElement> InjectedServices { get; }
+
+        public string GetImports()
         {
-            var @class = file.ClassDeclarations().First();
-            if (@class.IsIgnored())
+            if (!InjectedServices.Any())
             {
-                return;
+                return "";
             }
+            return @"
+" + string.Join(@"
+", InjectedServices.Where(x => x.SpecializationType == AngularServiceModel.SpecializationType).Select(x => $"import {{ {x.Name} }} from '{new AngularServiceModel(x).GetAngularServiceSettings().Location()}'"));
+        }
 
-            foreach (var model in Model.Models)
-            {
-                if (!@class.NodeExists($"PropertyDeclaration:{model.Name}"))
-                {
-                    @class.AddProperty($@"
-  {model.Name}: {Types.Get(model.TypeReference)};");
-                }
-            }
+        public string GetConstructorParams()
+        {
+            return string.Join(", ", InjectedServices.Select(x => $"private {x.Name.ToCamelCase()}: {GetTypeName(x)}"));
+        }
 
-            foreach (var command in Model.Commands)
-            {
-                if (!@class.MethodExists(command.Name.ToCamelCase()))
-                {
-                    @class.AddMethod($@"
+        public string GetParameters(ComponentCommandModel command)
+        {
+            return string.Join(", ", command.Parameters.Select(x => x.Name.ToCamelCase() + (x.TypeReference.IsNullable ? "?" : "") + ": " + Types.Get(x.TypeReference, "{0}[]")));
+        }
 
-  {command.Name.ToCamelCase()}({string.Join(", ", command.Parameters.Select(x => x.Name.ToCamelCase() + (x.TypeReference.IsNullable ? "?" : "") + ": " + Types.Get(x.TypeReference, "{0}[]")))}): {(command.ReturnType != null ? Types.Get(command.ReturnType) : "void")} {{
-
-  }}");
-                }
-            }
+        public string GetReturnType(ComponentCommandModel command)
+        {
+            return command.ReturnType != null ? Types.Get(command.ReturnType) : "void";
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            var moduleTemplate = ExecutionContext.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
+            var moduleTemplate = Project.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new TypescriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,

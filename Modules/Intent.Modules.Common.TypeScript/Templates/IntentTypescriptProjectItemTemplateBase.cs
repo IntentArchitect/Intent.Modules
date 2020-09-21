@@ -1,10 +1,9 @@
 ﻿using System;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript;
 using Intent.Templates;
 
-namespace Intent.Modules.Common.Templates
+namespace Intent.Modules.Common.TypeScript.Templates
 {
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasClassDetails
     {

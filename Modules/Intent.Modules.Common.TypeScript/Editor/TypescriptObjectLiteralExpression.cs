@@ -5,13 +5,68 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptObjectLiteralExpression : TypeScriptNode
     {
-        public TypeScriptObjectLiteralExpression(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        private readonly TypeScriptNode _parent;
+        private readonly string _indexInParent;
+
+        public TypeScriptObjectLiteralExpression(Node node, TypeScriptNode parent) : base(node, parent)
         {
+            _parent = parent;
         }
 
         public override string GetIdentifier(Node node)
         {
-            return Node.GetText(); // No idea...
+            return node.Parent.Children.IndexOf(node).ToString();
+        }
+
+        public override bool CanAdd()
+        {
+            return base.HasIntentInstructions() ? base.CanAdd() : _parent.CanAdd();
+        }
+
+        public override bool CanUpdate()
+        {
+            return base.HasIntentInstructions() ? base.CanUpdate() : _parent.CanUpdate();
+        }
+
+        public override bool CanRemove()
+        {
+            return base.HasIntentInstructions() ? base.CanRemove() : _parent.CanRemove();
+        }
+
+        public override bool HasIntentInstructions()
+        {
+            return base.HasIntentInstructions() || _parent.HasIntentInstructions();
+        }
+
+        public override void MergeWith(TypeScriptNode node)
+        {
+            base.MergeWith(node);
+        }
+
+        public override void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
+        {
+            Editor.InsertBefore(existing, $"{node.GetTextWithComments()},");
+        }
+
+        public override void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
+        {
+            Editor.InsertAfter(existing, $",{node.GetTextWithComments()}");
+        }
+
+        public override void UpdateNode(Node node)
+        {
+            base.UpdateNode(node);
+            var index = 0;
+            foreach (var child in node.Children)
+            {
+                switch (child.Kind)
+                {
+                    case SyntaxKind.PropertyAssignment:
+                        this.InsertOrUpdateChildNode(child, index, () => new TypeScriptPropertyAssignment(child, this));
+                        index++;
+                        continue;
+                }
+            }
         }
 
         public bool PropertyAssignmentExists(string propertyName, string valueLiteral = null)

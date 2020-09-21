@@ -11,27 +11,40 @@ namespace Intent.Modules.Common.TypeScript.Editor
     //    void Visit(TypeScriptClass typeScriptClass);
     //}
 
+    public class IntentDecorators
+    {
+        public const string IntentIgnore = "IntentIgnore";
+        public const string IntentMerge = "IntentMerge";
+        public const string IntentManage = "IntentManage";
+    }
+
     public abstract class TypeScriptNode : IEquatable<TypeScriptNode>
     {
         protected internal Node Node;
+        public TypeScriptNode Parent;
         public TypeScriptFileEditor Editor;
         public string NodePath;
         private readonly SyntaxKind _syntaxKind;
         private readonly List<TypeScriptNode> _children = new List<TypeScriptNode>();
 
-        public TypeScriptNode(Node node, TypeScriptFileEditor editor)
+        protected TypeScriptNode(Node node, TypeScriptNode parent)
         {
             Node = node ?? throw new ArgumentNullException(nameof(node));
-            Editor = editor ?? throw new ArgumentNullException(nameof(editor));
+            Parent = parent;
+            Editor = parent?.Editor;
             _syntaxKind = Node.Kind;
-            //File.Register(this);
             NodePath = GetNodePath(node);
-            Decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>();
+            //Decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>();
+            UpdateNode(node);
         }
 
         public virtual string Identifier => GetIdentifier(Node);
+        public virtual string ExplicitIdentifier => GetExplicitIdentifier();
 
         public IList<TypeScriptNode> Children => _children;
+
+        public virtual int StartIndex => Node.Pos.Value;
+        public virtual int EndIndex => Node.End.Value;
 
         public List<T> GetChildren<T>() where T : TypeScriptNode => Children.Where(x => x is T).Cast<T>().ToList();
 
@@ -42,34 +55,41 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Children.SingleOrDefault(x => x.Node.Kind == node.Kind && x.Identifier == x.GetIdentifier(node));
         }
 
-        public void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
+        public virtual void InsertBefore(TypeScriptNode existing, TypeScriptNode node)
         {
             if (HasNode(node))
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            //InsertChild(_children.IndexOf(existing), node);
             Editor.InsertBefore(existing, node.GetTextWithComments());
         }
 
-        public void InsertBefore(TypeScriptDecorator existing, TypeScriptDecorator node)
+        public virtual void InsertBefore(TypeScriptDecorator existing, TypeScriptDecorator node)
         {
             if (HasNode(node))
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            //InsertDecorator(Decorators.IndexOf(existing), node);
-            Editor.InsertBefore(existing, node.GetTextWithComments());
+            InsertBefore(existing, node.GetTextWithComments());
         }
 
-        public void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
+        public virtual void InsertBefore(TypeScriptNode existing, string text)
+        {
+            Editor.InsertBefore(existing, text);
+        }
+
+        public virtual void InsertAfter(TypeScriptNode existing, TypeScriptNode node)
         {
             if (HasNode(node))
             {
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
-            //InsertChild(_children.IndexOf(existing) + 1, node);
-            Editor.InsertAfter(existing, node.GetTextWithComments());
+            InsertAfter(existing, node.GetTextWithComments());
+        }
+
+        public virtual void InsertAfter(TypeScriptNode existing, string text)
+        {
+            Editor.InsertAfter(existing, text);
         }
 
         public void AddChild(TypeScriptNode node)
@@ -101,27 +121,28 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Children.Contains(node);
         }
 
-        public virtual void AddNode(TypeScriptNode node)
-        {
-            if (Children.Count == 0)
-            {
-                var index = GetTextWithComments().LastIndexOf('{') != -1 
-                    ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
-                    : Node.End.Value;
-                Editor.Insert(index, node);
-            }
-            else
-            {
-                InsertAfter(Children.Last(), node);
-            }
-        }
+        //[Obsolete]
+        //public virtual void AddNode(TypeScriptNode node)
+        //{
+        //    if (Children.Count == 0)
+        //    {
+        //        var index = GetTextWithComments().LastIndexOf('{') != -1
+        //            ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
+        //            : Node.End.Value;
+        //        Editor.Insert(index, node);
+        //    }
+        //    else
+        //    {
+        //        InsertAfter(Children.Last(), node);
+        //    }
+        //}
 
         public void ReplaceWith(string text)
         {
             Editor.Replace(this, text);
         }
 
-        public void Remove()
+        public virtual void Remove()
         {
             Editor.Replace(this, "");
         }
@@ -139,7 +160,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return path;
         }
 
-        public IList<TypeScriptDecorator> Decorators { get; private set; }
+        public IList<TypeScriptDecorator> Decorators { get; } = new List<TypeScriptDecorator>();
+
+        public virtual bool HasIntentInstructions()
+        {
+            return Decorators.Any(x => x.Name.StartsWith("Intent")) || GetComments().Contains("//@Intent");
+        }
 
         public bool HasDecorator(string name)
         {
@@ -156,73 +182,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return Node.GetTextWithComments();
         }
 
-        public virtual bool IsIgnored()
+        public string GetComments()
         {
-            return HasDecorator("IntentIgnore") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore()");
+            return Node.GetTextWithComments().Substring(0, Node.GetTextWithComments().Length - Node.GetText().Length);
         }
 
-        public virtual bool IsMerged()
-        {
-            return HasDecorator("IntentMerge") || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
-        }
-
-        public virtual bool IsManaged()
-        {
-            return HasDecorator("IntentManage");
-        }
-
-        //public virtual void Remove()
-        //{
-        //    Editor.ReplaceNode(Node, "");
-        //    Editor.Unregister(this);
-        //    UpdateChanges();
-        //}
-
-        //public void ReplaceWith(string replaceWith)
-        //{
-        //    if (string.IsNullOrWhiteSpace(replaceWith))
-        //    {
-        //        throw new ArgumentException("Cannot replace a method with an empty string", nameof(replaceWith));
-        //    }
-        //    if (Node.GetTextWithComments() == replaceWith)
-        //    {
-        //        return;
-        //    }
-        //    Change.ChangeNode(Node, replaceWith);
-        //    UpdateChanges();
-        //    //if (IsIgnored())
-        //    //{
-        //    //    throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
-        //    //}
-        //    //File.ReplaceNode(Node, replaceWith);
-        //    //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
-        //}
-
-        //private void UpdateChanges()
-        //{
-        //    Editor.UpdateChanges();
-        //}
-        //public virtual void UpdateChanges()
-        //{
-        //    if (IsIgnored())
-        //    {
-        //        throw new Exception($"Cannot add method to TypeScript node [{ToString()}] as it has been decorated with @IntentIgnore()");
-        //    }
-
-        //    if (_decorators != null)
-        //    {
-        //        foreach (var decorator in _decorators)
-        //        {
-        //            File.Unregister(decorator);
-        //        }
-
-        //        _decorators = null;
-        //    }
-        //    File.UpdateChanges();
-        //    //Node = File.Ast.GetDescendants().OfKind(Node.Kind).Single(x => x.Pos == Node.Pos);
-        //}
-
-        public void UpdateNode(Node node)
+        public virtual void UpdateNode(Node node)
         {
             if (node.Kind != _syntaxKind)
             {
@@ -243,13 +208,176 @@ namespace Intent.Modules.Common.TypeScript.Editor
             });
         }
 
-        //internal virtual void UpdateNode()
-        //{
-        //    Node = FindNode(File.Ast.RootNode, NodePath) ?? throw new Exception($"[{GetType().Name}] Could not find node for path: " + NodePath);
-        //}
+        public virtual void MergeWith(TypeScriptNode node)
+        {
+            MergeNodeCollections(node, x => x.Decorators.ToList<TypeScriptNode>());
+            MergeNodeCollections(node, x => x.Children.ToList<TypeScriptNode>());
+        }
+
+        protected void MergeNodeCollections(TypeScriptNode outputNode, Func<TypeScriptNode, IList<TypeScriptNode>> getCollection)
+        {
+            var index = 0;
+            var highestFoundIndex = 0;
+            foreach (var node in getCollection(outputNode))
+            {
+                var existing = getCollection(this).SingleOrDefault(x => x.IsSameNodeAs(node));
+                if (existing == null)
+                {
+                    if (!CanAdd())
+                    {
+                        continue;
+                    }
+                    // toAdd:
+                    if (getCollection(this).Count == 0)
+                    {
+                        this.AddFirst((dynamic)node);
+                    }
+                    else if (index == 0)
+                    {
+                        this.InsertBefore(getCollection(this)[0], node);
+                    }
+                    else if (getCollection(this).Count > index)
+                    {
+                        this.InsertAfter(getCollection(this)[index - 1], node);
+                    }
+                    else
+                    {
+                        this.InsertAfter(getCollection(this).Last(), node);
+                    }
+
+                    index++;
+                }
+                else
+                {
+                    // toUpdate:
+                    var existingIndex = getCollection(this).IndexOf(existing);
+                    if (existingIndex >= index)
+                    {
+                        index = existingIndex + 1;
+                        highestFoundIndex = index;
+                    }
+                    else
+                    {
+                        index = highestFoundIndex + 1;
+                    }
+
+                    if (existing.IsIgnored())
+                    {
+                        continue;
+                    }
+
+                    //if (!getCollection(existing).Any() || getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    if (existing.CanUpdate() && existing.CanReplaceInsteadOfMerge() && existing.GetTextWithComments() != node.GetTextWithComments())
+                    {
+                        existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
+                        continue;
+                    }
+
+                    existing.MergeWith(node);
+                }
+            }
+
+            if (CanRemove())
+            {
+                var toRemove = getCollection(this).Where(x => !(x is TypeScriptFileImport) && !x.IsIgnored()).Except(getCollection(outputNode)).ToList();
+                foreach (var node in toRemove)
+                {
+                    node.Remove();
+                }
+            }
+        }
+
+        protected virtual string GetExplicitIdentifier()
+        {
+            var identifierDecorator = Decorators.FirstOrDefault(x => x.Name.StartsWith("@Intent"));
+            if (identifierDecorator != null)
+            {
+                var identifier = identifierDecorator.Children.FirstOrDefault()?.Node.GetText();
+                return identifier;
+            }
+
+            var comments = GetComments();
+            var commentLines = comments.Split(new[] { '\n', '\r' }, StringSplitOptions.RemoveEmptyEntries);
+            foreach (var commentLine in commentLines)
+            {
+                if (commentLine.IndexOf("@Intent") != -1 && commentLine.IndexOf(")") != -1)
+                {
+                    var startIndex = commentLine.IndexOf('(', commentLine.IndexOf("@Intent")) + 1;
+                    var length = commentLine.IndexOf(")") - startIndex;
+                    return length == 0 ? null : commentLine.Substring(startIndex, length);
+                }
+            }
+
+            return null;
+        }
+
+        private bool IsSameNodeAs(TypeScriptNode node)
+        {
+            return this.Equals(node);
+            //return Node.Kind == node.Node.Kind && Identifier == GetIdentifier(node.Node);
+        }
+
+        public virtual bool IsIgnored()
+        {
+            return HasDecorator(IntentDecorators.IntentIgnore) || GetComments().Contains($"//@{IntentDecorators.IntentIgnore}");
+        }
+
+        public virtual bool CanAdd()
+        {
+            return !HasIntentInstructions() || IsManaged() || IsMerged() || HasDecorator("IntentCanAdd") || GetComments().Contains($"//@IntentCanAdd");
+        }
+
+        public virtual bool CanUpdate()
+        {
+            return !HasIntentInstructions() || IsManaged() || IsMerged() || HasDecorator("IntentCanUpdate") || GetComments().Contains($"//@IntentCanUpdate");
+        }
+
+        public virtual bool CanRemove()
+        {
+            return !HasIntentInstructions() || IsManaged() || HasDecorator("IntentCanRemove") || GetComments().Contains($"//@IntentCanRemove");
+        }
+
+        protected bool CanReplaceInsteadOfMerge()
+        {
+            return (!Decorators.Any() && !Children.Any()) || (Children.All(x => !x.IsIgnored()) && !HasIntentInstructions());
+        }
+
+        public virtual void AddFirst(TypeScriptNode node)
+        {
+            var index = GetTextWithComments().LastIndexOf('{') != -1
+                ? Node.Pos.Value + GetTextWithComments().LastIndexOf('{') + 1
+                : Math.Max(0, Node.End.Value - 1);
+            Editor.Insert(index, node);
+        }
+
+        protected virtual void InsertOrUpdateChildNode(Node node, int index, Func<TypeScriptNode> createNode)
+        {
+            var existing = TryGetChild(node);
+            if (existing == null)
+            {
+                InsertChild(index, createNode());
+            }
+            else
+            {
+                existing.UpdateNode(node);
+            }
+        }
+
+        private void AddFirst(TypeScriptDecorator node)
+        {
+            Editor.InsertBefore(Node, node.GetTextWithComments());
+        }
 
         public bool Equals(TypeScriptNode other)
         {
+            if (Node.Kind != other?.Node.Kind)
+            {
+                return false;
+            }
+            if (ExplicitIdentifier != null || other?.ExplicitIdentifier != null)
+            {
+                return ExplicitIdentifier == other.ExplicitIdentifier;
+            }
             return Identifier == other?.Identifier;
         }
 
@@ -269,6 +397,16 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public override string ToString()
         {
             return Node.GetTextWithComments();
+        }
+
+        private bool IsMerged()
+        {
+            return HasDecorator(IntentDecorators.IntentMerge) || GetComments().Contains($"//@{IntentDecorators.IntentMerge}");
+        }
+
+        private bool IsManaged()
+        {
+            return HasDecorator(IntentDecorators.IntentManage) || GetComments().Contains($"//@{IntentDecorators.IntentManage}");
         }
     }
 }

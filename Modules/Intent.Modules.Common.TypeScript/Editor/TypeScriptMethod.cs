@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptMethod : TypeScriptNode
     {
-        public TypeScriptMethod(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptMethod(Node node, TypeScriptNode parent) : base(node, parent)
         {
 
         }

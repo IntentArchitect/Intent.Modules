@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptFileImport : TypeScriptNode
     {
-        public TypeScriptFileImport(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptFileImport(Node node, TypeScriptNode parent) : base(node, parent)
         {
             Location = Node.OfKind(SyntaxKind.StringLiteral).SingleOrDefault()?.GetText();
             Types = GetTypes(Node);
@@ -39,6 +39,12 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             //return location;
             return $"import {{{string.Join(", ", types.OrderBy(x => x))}}} from {location};";
+        }
+
+        public override void Remove()
+        {
+            base.Remove();
+            this.Editor.File.Children.Remove(this);
         }
 
         public override bool IsIgnored()

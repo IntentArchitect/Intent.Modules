@@ -13,6 +13,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.Html.Templates;
     using Intent.Modules.Angular.Api;
     using System;
     
@@ -22,7 +23,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AngularComponentHtmlTemplate : IntentProjectItemTemplateBase<ComponentModel>
+    public partial class AngularComponentHtmlTemplate : HtmlTemplateBase<ComponentModel>
     {
 #line hidden
         /// <summary>
@@ -30,14 +31,15 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
         /// </summary>
         public override string TransformText()
         {
-            this.Write("<!--IntentManaged-->\r\n<p>\r\n  ");
+            this.Write("<div class=\"container-fluid\" intent-manage=\"add remove\" intent-id=\"container\">\r\n " +
+                    "   <h3>");
             
             #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentHtmlTemplate\AngularComponentHtmlTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ComponentName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
-            this.Write(" works!\r\n</p>\r\n");
+            this.Write(" loaded successfully!</h3>\r\n</div>");
             return this.GenerationEnvironment.ToString();
         }
     }

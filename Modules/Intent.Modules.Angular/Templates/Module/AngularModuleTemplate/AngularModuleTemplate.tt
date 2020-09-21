@@ -3,17 +3,20 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';<#= GetImports() #>
 
+@IntentMerge()
 @NgModule({
-  declarations: [],
+  declarations: [<#= GetComponents() #>],
+<#  if (HasProviders()) { #>
+  providers: [<#= GetProviders() #>],
+<#  } #>
   imports: [
     CommonModule,
-    <#= RoutingModuleClassName #>
+    <#= RoutingModuleClassName #><#= GetAngularImports() #>
   ]
 })
 export class <#= ClassName #> { }

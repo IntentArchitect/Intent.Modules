@@ -9,9 +9,9 @@ using Intent.Modules.Angular.Editor;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Editor;
-using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Environment.EnvironmentTemplate";
 
-        public EnvironmentTemplate(IProject project, object model) : base(TemplateId, project, model, TypescriptTemplateMode.UpdateFile)
+        public EnvironmentTemplate(IProject project, object model) : base(TemplateId, project, model)
         {
             project.Application.EventDispatcher.Subscribe(AngularConfigVariableRequiredEvent.EventId, HandleConfigVariableRequiredEvent);
         }
@@ -38,20 +38,30 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 defaultValue: @event.GetValue(AngularConfigVariableRequiredEvent.DefaultValueId)));
         }
 
-        protected override void ApplyFileChanges(TypeScriptFile file)
+        public string GetEnvironmentVariables()
         {
-            var variable = file.VariableDeclarations().First();
-
-            foreach (var configVariable in _configVariables)
-            {
-                var assigned = variable.GetAssignedValue<TypeScriptObjectLiteralExpression>();
-                if (assigned != null && !assigned.PropertyAssignmentExists(configVariable.Name))
-                {
-                    assigned.AddPropertyAssignment($@"
-  {configVariable.Name}: {configVariable.DefaultValue}");
-                }
-            }
+            return _configVariables.Any() ? $@", 
+  {string.Join(@",
+  ", _configVariables.Select(x => $"{x.Name}: {x.DefaultValue}"))}" : "";
         }
+
+        //      protected override TypeScriptFile CreateOutputFile()
+        //      {
+        //          var file = GetExistingFile() ?? base.CreateOutputFile();
+        //          var variable = file.Children.First(x => x.Identifier == "environment");
+
+        //          foreach (var configVariable in _configVariables)
+        //          {
+        //              var assigned = variable.Children.FirstOrDefault();//.GetAssignedValue<TypescriptObjectLiteralExpression>();
+        //              if (assigned != null && assigned.Children.All(x => x.Identifier != configVariable.Name))
+        //              {
+        //                  assigned.InsertAfter(assigned.Children.Last(), $@"
+        //{configVariable.Name}: {configVariable.DefaultValue}");
+        //              }
+        //          }
+
+        //          return file;
+        //      }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()

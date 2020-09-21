@@ -3,24 +3,25 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
+//@IntentMerge()
 const routes: Routes = [
 <# foreach(var module in Model) {
 // All of the below is not gonna work; but for now just to test idea...
 #>
   {
-    path: '<#= module.Name.Replace("Module","").ToLower() #>',
+    path: '<#= GetRoute(module) #>',
     loadChildren: './<#= module.Name.Replace("Module","").ToLower() #>/<#= module.Name.Replace("Module","").ToLower() #>.module#<#= module.Name #>'
   },
 <# } #>
 ];
 
+@IntentMerge()
 @NgModule({
   imports: [RouterModule.forRoot(routes, {
     preloadingStrategy: PreloadAllModules

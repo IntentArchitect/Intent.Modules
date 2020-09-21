@@ -6,8 +6,9 @@ namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptFile : TypeScriptNode
     {
-        public TypeScriptFile(Node node, TypeScriptFileEditor editor) : base(node, editor)
+        public TypeScriptFile(Node node, TypeScriptFileEditor editor) : base(node, null)
         {
+            Editor = editor;
         }
 
         public override string GetIdentifier(Node node)
@@ -15,14 +16,24 @@ namespace Intent.Modules.Common.TypeScript.Editor
             return null;
         }
 
-        public override void AddNode(TypeScriptNode node)
+        //public override void AddNode(TypeScriptNode node)
+        //{
+        //    if (Imports.Count > 0)
+        //    {
+        //        InsertAfter(Imports.Last(), node);
+        //        return;
+        //    }
+        //    base.AddNode(node);
+        //}
+
+        public override void AddFirst(TypeScriptNode node)
         {
             if (Imports.Count > 0)
             {
                 InsertAfter(Imports.Last(), node);
                 return;
             }
-            base.AddNode(node);
+            base.AddFirst(node);
         }
 
         public IReadOnlyList<TypeScriptFileImport> Imports => GetChildren<TypeScriptFileImport>(); //{ get; } = new List<TypeScriptFileImport>();

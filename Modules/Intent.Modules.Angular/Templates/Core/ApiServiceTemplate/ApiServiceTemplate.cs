@@ -12,7 +12,6 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
     using System.Collections.Generic;
     using System.Linq;
     using Intent.Modules.Common;
-    using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
     using System;
@@ -40,7 +39,7 @@ import { catchError } from 'rxjs/operators';
 @Injectable()
 export class ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Core\ApiServiceTemplate\ApiServiceTemplate.tt"
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Core\ApiServiceTemplate\ApiServiceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -51,7 +50,7 @@ export class ");
   ) { }
 
   private formatErrors(error: any) {
-    return throwError(error.error);
+    return throwError(error.error || error);
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {

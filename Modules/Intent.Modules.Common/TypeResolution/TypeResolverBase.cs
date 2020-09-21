@@ -99,6 +99,31 @@ namespace Intent.Modules.Common.TypeResolution
             return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionFormat);
         }
 
+        public string Get(IElement element)
+        {
+            return Get(element, null);
+        }
+
+        public string Get(IElement element, string collectionFormat)
+        {
+            return InContext(DEFAULT_CONTEXT).Get(new ElementTypeReference(element), collectionFormat);
+        }
+
         protected abstract string ResolveType(ITypeReference typeInfo, string collectionFormat = null);
+
+        private class ElementTypeReference: ITypeReference, IHasStereotypes
+        {
+            public ElementTypeReference(IElement element)
+            {
+                Element = element;
+            }
+
+            public bool IsNullable { get; } = false;
+            public bool IsCollection { get; } = false;
+            public IElement Element { get; }
+            public IEnumerable<ITypeReference> GenericTypeParameters { get; } = new ITypeReference[0];
+            public string Comment { get; } = null;
+            public IEnumerable<IStereotype> Stereotypes { get; } = new List<IStereotype>();
+        }
     }
 }

@@ -22,5 +22,8 @@
     <application id="ad79943a-b771-42b0-9563-9e01f7ea2dbc" relativePath="Intent.Modules.VisualStudio.Projects\VisualStudio.Projects.application.config" />
     <application id="9f168336-ec07-4e5a-ba92-c75bbed5aed0" relativePath="Intent.Modules.Common.Java/Common.Java.application.config" />
     <application id="fbb9e269-8250-4831-a2ec-f73b68658e77" relativePath="Intent.Modules.ModuleBuilder.Java/ModuleBuilder.Java.application.config" />
+    <application id="db7b140b-14a1-4dac-93a3-84cd8fae7298" relativePath="Intent.Modules.Common.Html/Intent.Modules.Common.Html.application.config" />
+    <application id="49018a38-94b9-46d5-b6b7-8ce2e5aae4a9" relativePath="Intent.Modules.Angular.Layout/Angular.Layout.application.config" />
+    <application id="275030c0-f660-4c46-8156-ce592d267b38" relativePath="Intent.Modules.ModuleBuilder.Html/ModuleBuilder.Html.application.config" />
   </applications>
 </solution>

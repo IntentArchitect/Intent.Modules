@@ -1,11 +1,11 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<ComponentModel>" #>
+<#@ template language="C#" inherits="HtmlTemplateBase<ComponentModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.Html.Templates" #>
 <#@ import namespace="Intent.Modules.Angular.Api" #>
-<!--IntentManaged-->
-<p>
-  <#= ComponentName #> works!
-</p>
+<div class="container-fluid" intent-manage="add remove" intent-id="container">
+    <h3><#= Model.Name #> loaded successfully!</h3>
+</div>

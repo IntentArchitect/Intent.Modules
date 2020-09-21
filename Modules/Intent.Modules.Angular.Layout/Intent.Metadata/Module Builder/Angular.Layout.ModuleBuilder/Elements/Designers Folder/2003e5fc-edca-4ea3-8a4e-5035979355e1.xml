@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="2003e5fc-edca-4ea3-8a4e-5035979355e1" type="Designers Folder">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</parentFolderId>
+  <literals />
+  <attributes />
+  <operations />
+  <stereotypes />
+  <childElements />
+</class>

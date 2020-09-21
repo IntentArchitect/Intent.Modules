@@ -15,7 +15,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.TypeScript.Templates;
     using Intent.Metadata.Models;
-    using Intent.Modelers.Services.Api;
+    using Intent.Modules.Angular.Api;
     using System;
     
     /// <summary>
@@ -24,7 +24,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AngularDTOTemplate : TypeScriptTemplateBase<DTOModel>
+    public partial class AngularDTOTemplate : TypeScriptTemplateBase<ModuleDTOModel>
     {
 #line hidden
         /// <summary>

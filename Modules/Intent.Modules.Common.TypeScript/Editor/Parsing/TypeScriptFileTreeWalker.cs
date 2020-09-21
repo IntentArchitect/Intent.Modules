@@ -83,7 +83,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _editor.File.Imports.SingleOrDefault(x => x.Identifier == x.GetIdentifier(node) && x.Types.OrderBy(t => t).SequenceEqual(x.GetTypes(node).OrderBy(t => t)));
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptFileImport(node, _editor));
+                _node.InsertChild(_index, new TypeScriptFileImport(node, _node));
             }
             else
             {
@@ -96,7 +96,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptConstructor(node, _editor));
+                _node.InsertChild(_index, new TypeScriptConstructor(node, _node));
             }
             else
             {
@@ -109,7 +109,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptProperty(node, _editor));
+                _node.InsertChild(_index, new TypeScriptProperty(node, _node));
             }
             else
             {
@@ -122,7 +122,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptGetAccessor(node, _editor));
+                _node.InsertChild(_index, new TypeScriptGetAccessor(node, _node));
             }
             else
             {
@@ -135,7 +135,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptSetAccessor(node, _editor));
+                _node.InsertChild(_index, new TypeScriptSetAccessor(node, _node));
             }
             else
             {
@@ -148,7 +148,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptMethod(node, _editor));
+                _node.InsertChild(_index, new TypeScriptMethod(node, _node));
             }
             else
             {
@@ -161,7 +161,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptVariableStatement(node, _editor));
+                _node.InsertChild(_index, new TypeScriptVariableStatement(node, _node));
             }
             else
             {
@@ -174,7 +174,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptFunctionDeclaration(node, _editor));
+                _node.InsertChild(_index, new TypeScriptFunctionDeclaration(node, _node));
             }
             else
             {
@@ -187,7 +187,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                _node.InsertChild(_index, new TypeScriptExpressionStatement(node, _editor));
+                _node.InsertChild(_index, new TypeScriptExpressionStatement(node, _node));
             }
             else
             {
@@ -200,7 +200,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                existing = new TypeScriptClass(node, _editor);
+                existing = new TypeScriptClass(node, _node);
                 _node.InsertChild(_index, existing);
             }
             else
@@ -216,7 +216,7 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             var existing = _node.TryGetChild(node);
             if (existing == null)
             {
-                existing = new TypeScriptInterface(node, _editor);
+                existing = new TypeScriptInterface(node, _node);
                 _node.InsertChild(_index, existing);
             }
             else

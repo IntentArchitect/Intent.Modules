@@ -61,21 +61,21 @@ namespace Intent.Modules.Common.TypeScript.Editor
             UpdateNodes();
         }
 
-        public void ReplaceNode(Node node, string replaceWith = "")
+        public void Replace(int start, int end, string text)
         {
-            if (node.GetTextWithComments() == replaceWith)
-            {
-                return;
-            }
             _source = _source
-                .Remove(node.Pos.Value, node.End.Value - node.Pos.Value)
-                .Insert(node.Pos.Value, replaceWith);
+                .Remove(start, end - start)
+                .Insert(start, text);
             UpdateNodes();
         }
 
         public void Replace(TypeScriptNode node, string text)
         {
-            ReplaceNode(node.Node, text);
+            if (node.GetTextWithComments() == text)
+            {
+                return;
+            }
+            Replace(node.StartIndex, node.EndIndex, text);
         }
 
         public void UpdateNodes()

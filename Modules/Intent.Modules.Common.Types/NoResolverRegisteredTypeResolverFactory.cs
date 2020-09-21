@@ -70,7 +70,21 @@ namespace Intent.Modules.Common.Types
             {
                 if (typeInfo == null)
                     return string.Empty;
-                return typeInfo.Element.Name;
+                return string.Format(collectionFormat, typeInfo.Element.Name);
+            }
+
+            public string Get(IElement element)
+            {
+                if (element == null)
+                    return string.Empty;
+                return element.Name;
+            }
+
+            public string Get(IElement element, string collectionFormat)
+            {
+                if (element == null)
+                    return string.Empty;
+                return string.Format(collectionFormat, element.Name);
             }
 
             public ITypeResolverContext InContext(string contextName)

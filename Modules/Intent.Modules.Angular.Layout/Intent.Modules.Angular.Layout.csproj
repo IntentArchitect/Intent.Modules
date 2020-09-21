@@ -1,0 +1,169 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Decorators\Controls\ButtonControl\ButtonControlTemplate.tt" />
+    <None Remove="Decorators\Controls\Form\FormTemplate.tt" />
+    <None Remove="Decorators\Controls\PaginationControl\PaginationControlTemplate.tt" />
+    <None Remove="Decorators\AngularComponentHtml\TableControlTemplate.tt" />
+    <None Remove="Decorators\Controls\Section\SectionTemplate.tt" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Decorators\Controls\Section\SectionTemplate.tt">
+      <LastGenOutput>SectionTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\ButtonControl\ButtonControlTemplate.tt">
+      <LastGenOutput>ButtonControlTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\PaginationControl\PaginationControlTemplate.tt">
+      <LastGenOutput>PaginationControlTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\Form\FormTemplate.tt">
+      <LastGenOutput>FormTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+    <Content Include="Decorators\Controls\TableControl\TableControlTemplate.tt">
+      <LastGenOutput>TableControlTemplate.cs</LastGenOutput>
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\AppComponentHtmlTemplate\AppComponentHtmlTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>AppComponentHtmlTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Footer\FooterComponentCssTemplate\FooterComponentCssTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FooterComponentCssTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Footer\FooterComponentHtmlTemplate\FooterComponentHtmlTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FooterComponentHtmlTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Footer\FooterComponentTsTemplate\FooterComponentTsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FooterComponentTsTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Header\HeaderComponentCssTemplate\HeaderComponentCssTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HeaderComponentCssTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Header\HeaderComponentHtmlTemplate\HeaderComponentHtmlTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HeaderComponentHtmlTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Shared\Header\HeaderComponentTsTemplate\HeaderComponentTsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HeaderComponentTsTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Decorators\Controls\Section\SectionTemplate.cs">
+      <DependentUpon>SectionTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Decorators\Controls\ButtonControl\ButtonControlTemplate.cs">
+      <DependentUpon>ButtonControlTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Decorators\Controls\PaginationControl\PaginationControlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>PaginationControlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Decorators\Controls\Form\FormTemplate.cs">
+      <DependentUpon>FormTemplate.tt</DependentUpon>
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+    </Compile>
+    <Compile Update="Decorators\Controls\TableControl\TableControlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TableControlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\AppComponentHtmlTemplate\AppComponentHtmlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AppComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Footer\FooterComponentCssTemplate\FooterComponentCssTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FooterComponentCssTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Footer\FooterComponentHtmlTemplate\FooterComponentHtmlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FooterComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Footer\FooterComponentTsTemplate\FooterComponentTsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FooterComponentTsTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Header\HeaderComponentCssTemplate\HeaderComponentCssTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HeaderComponentCssTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Header\HeaderComponentHtmlTemplate\HeaderComponentHtmlTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HeaderComponentHtmlTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Shared\Header\HeaderComponentTsTemplate\HeaderComponentTsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>HeaderComponentTsTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\Shared\NewHtmlFileTemplate\NewHtmlFileTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>NewHtmlFileTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\Shared\TestPerModelTemplate\TestPerModelTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TestPerModelTemplate.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.IntentArchitectPackager" Version="1.9.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.Modules.Common" Version="2.1.1" />
+    <PackageReference Include="Intent.Modules.Common.Html" Version="2.1.0-pre.1" />
+    <PackageReference Include="Intent.Modules.Common.Typescript" Version="2.1.0-pre.5" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Angular\Intent.Modules.Angular.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.Html\Intent.Modules.Common.Html.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>

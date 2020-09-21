@@ -3,24 +3,24 @@
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';<#= GetImports() #>
 
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+@IntentMerge()
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [<#= GetComponents() #>],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    <#= CoreModule #>,
+    <#= AppRoutingModuleClassName #><#= GetAngularImports() #>
   ],
-  providers: [],
+  providers: [<#= GetProviders() #>],
   bootstrap: [AppComponent]
 })
 export class <#= ClassName #> { }
