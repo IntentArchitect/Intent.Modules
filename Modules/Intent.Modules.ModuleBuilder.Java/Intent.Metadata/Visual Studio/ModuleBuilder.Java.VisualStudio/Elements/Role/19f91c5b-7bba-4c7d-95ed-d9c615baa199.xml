@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="19f91c5b-7bba-4c7d-95ed-d9c615baa199" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>Api</name>
+  <display>Api</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</parentFolderId>
+  <packageId>9b741307-a2fa-4da6-8894-1c184735b9b5</packageId>
+  <packageName>ModuleBuilder.Java.VisualStudio</packageName>
+  <stereotypes />
+  <childElements />
+</class>

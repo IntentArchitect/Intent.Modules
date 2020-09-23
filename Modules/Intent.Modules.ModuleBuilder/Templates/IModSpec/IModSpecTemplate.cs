@@ -145,7 +145,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
                 specificTemplate.SetElementValue("role", template.Role);
 
-                if (!string.IsNullOrWhiteSpace(template.ModuleDependency) && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.ModuleDependency}\"]") == null)
+                if (!string.IsNullOrWhiteSpace(template.ModuleDependency) && 
+                    template.ModuleDependency != doc.XPathSelectElement("package/id").Value &&
+                    doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.ModuleDependency}\"]") == null)
                 {
                     var dependencies = doc.XPathSelectElement("package/dependencies");
                     dependencies.Add(CreateDependency(new IntentModule(template.ModuleDependency, template.ModuleVersion)));

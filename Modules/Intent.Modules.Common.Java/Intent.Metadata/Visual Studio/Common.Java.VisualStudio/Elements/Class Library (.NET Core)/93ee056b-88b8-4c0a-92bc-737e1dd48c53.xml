@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="93ee056b-88b8-4c0a-92bc-737e1dd48c53" type="Class Library (.NET Core)">
+  <name>Intent.Modules.Common.Java</name>
+  <display>Intent.Modules.Common.Java</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>05ea4a69-1142-4023-a54a-791e1910844a</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

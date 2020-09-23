@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="8d9de378-d928-4a3e-b4a8-ca451d5411fe" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>IModSpec</name>
+  <display>IModSpec</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>59b4ba79-7979-4102-ac26-426a9de6eb12</parentFolderId>
+  <packageId>7515cbbf-1364-4616-9a0a-0d8330e3b3de</packageId>
+  <packageName>ModuleBuilder.Html.VisualStudio</packageName>
+  <stereotypes />
+  <childElements />
+</class>

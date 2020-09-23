@@ -24,6 +24,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
     </property>
     <property id="177a2415-e749-46e7-8257-440e19ecfb5e">
       <name>API Namespace</name>

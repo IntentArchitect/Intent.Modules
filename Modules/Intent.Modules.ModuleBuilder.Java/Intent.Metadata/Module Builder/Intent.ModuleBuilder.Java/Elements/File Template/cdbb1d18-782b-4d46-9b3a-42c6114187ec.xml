@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="cdbb1d18-782b-4d46-9b3a-42c6114187ec" type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
+  <name>JavaFileTemplate</name>
+  <display>JavaFileTemplate: File Per Model</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="230f4d86-111d-42dd-8545-f6f679941387">
+    <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>f3839770-1be1-44cd-b9c3-ba79b2988a52</parentFolderId>
+  <packageId>b6978589-6e21-40a6-88b3-0854c11f4388</packageId>
+  <packageName>Intent.ModuleBuilder.Java</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="tt" isActive="true" />
+        <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="Custom" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
+        <property name="00d3537c-f71f-4450-8cc8-d9e87c12baee" display="Designer" value="a1c3dd87-352e-4353-853b-c79853debecb" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a" isActive="true" />
+        <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
+        <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="Templates" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>
