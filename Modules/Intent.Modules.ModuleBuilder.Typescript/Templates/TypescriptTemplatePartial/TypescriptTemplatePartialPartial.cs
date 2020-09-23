@@ -5,20 +5,20 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Typescript.Api;
+using Intent.Modules.ModuleBuilder.TypeScript.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial
+namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class TypescriptTemplatePartial : IntentRoslynProjectItemTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial";
+        public const string TemplateId = "ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial";
 
         public TypescriptTemplatePartial(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {

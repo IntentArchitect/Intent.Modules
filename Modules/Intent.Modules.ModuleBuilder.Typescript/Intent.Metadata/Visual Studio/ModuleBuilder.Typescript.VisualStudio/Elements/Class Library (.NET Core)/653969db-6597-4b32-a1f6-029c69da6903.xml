@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="653969db-6597-4b32-a1f6-029c69da6903" type="Class Library (.NET Core)" typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE">
-  <name>Intent.Modules.ModuleBuilder.Typescript</name>
-  <display>Intent.Modules.ModuleBuilder.Typescript</display>
+  <name>Intent.Modules.ModuleBuilder.TypeScript</name>
+  <display>Intent.Modules.ModuleBuilder.TypeScript</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>

@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Typescript.Api
+namespace Intent.Modules.ModuleBuilder.TypeScript.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class TypescriptFileTemplateModel : TemplateRegistrationModel, IHasStereotypes, IMetadataModel
@@ -45,5 +45,6 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public new const string SpecializationTypeId = "e6e41d88-2829-41b6-a791-065d2bb44eb3";
     }
 }

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="8159f2a7-6aa5-476b-882f-eb704253e401" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+  <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+  <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+  <stereotypes />
+  <childElements />
+</class>

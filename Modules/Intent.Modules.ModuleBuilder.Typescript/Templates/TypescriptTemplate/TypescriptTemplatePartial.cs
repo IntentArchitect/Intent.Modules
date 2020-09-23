@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Typescript.Api;
+using Intent.Modules.ModuleBuilder.TypeScript.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Metadata.Models;
@@ -16,13 +16,13 @@ using Intent.Modules.ModuleBuilder.Api;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplate
+namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class TypescriptTemplate : IntentProjectItemTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Typescript.Templates.TypescriptTemplate";
+        public const string TemplateId = "ModuleBuilder.TypeScript.Templates.TypescriptTemplate";
 
         public TypescriptTemplate(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {

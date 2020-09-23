@@ -11,9 +11,11 @@ namespace Intent.Modules.ModuleBuilder.Html.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<HtmlFileTemplateModel> GetHtmlFileTemplateModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<HtmlFileTemplateModel> GetHtmlFileTemplateModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetHtmlFileTemplateModels(application);
+            return designer.GetElementsOfType(HtmlFileTemplateModel.SpecializationTypeId)
+                .Select(x => new HtmlFileTemplateModel(x))
+                .ToList();
         }
 
     }

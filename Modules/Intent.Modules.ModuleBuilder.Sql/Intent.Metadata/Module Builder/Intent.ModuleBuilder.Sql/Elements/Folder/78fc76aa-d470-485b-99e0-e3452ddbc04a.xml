@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="78fc76aa-d470-485b-99e0-e3452ddbc04a" type="Folder">
+<class id="78fc76aa-d470-485b-99e0-e3452ddbc04a" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>fb002b11-41c0-43ea-afeb-f26c3346ce87</parentFolderId>
+  <packageId>fb002b11-41c0-43ea-afeb-f26c3346ce87</packageId>
+  <packageName>Intent.ModuleBuilder.Sql</packageName>
   <stereotypes />
   <childElements />
 </class>

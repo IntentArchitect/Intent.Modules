@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Sql.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
@@ -31,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePreProcessed
 
         public override IEnumerable<SqlTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetSqlTemplateModels(application);
+            return _metadataManager.ModuleBuilder(application).GetSqlTemplateModels();
         }
     }
 }

@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Modules.ModuleBuilder.Sql.Api;
@@ -34,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<SqlTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetSqlTemplateModels(application);
+            return _metadataManager.ModuleBuilder(application).GetSqlTemplateModels();
         }
     }
 }

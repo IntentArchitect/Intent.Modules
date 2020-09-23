@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Html.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
@@ -31,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmFileTemplatePreProcesse
 
         public override IEnumerable<HtmlFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetHtmlFileTemplateModels(application);
+            return _metadataManager.ModuleBuilder(application).GetHtmlFileTemplateModels();
         }
     }
 }

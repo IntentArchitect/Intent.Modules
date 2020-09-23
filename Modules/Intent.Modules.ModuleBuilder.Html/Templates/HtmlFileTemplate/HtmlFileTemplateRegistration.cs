@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Html.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -34,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<HtmlFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetHtmlFileTemplateModels(application);
+            return _metadataManager.ModuleBuilder(application).GetHtmlFileTemplateModels();
         }
     }
 }

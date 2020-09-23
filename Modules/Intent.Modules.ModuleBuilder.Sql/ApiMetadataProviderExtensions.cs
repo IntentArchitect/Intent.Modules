@@ -11,9 +11,11 @@ namespace Intent.Modules.ModuleBuilder.Sql.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<SqlTemplateModel> GetSqlTemplateModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<SqlTemplateModel> GetSqlTemplateModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetSqlTemplateModels(application);
+            return designer.GetElementsOfType(SqlTemplateModel.SpecializationTypeId)
+                .Select(x => new SqlTemplateModel(x))
+                .ToList();
         }
 
     }

@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Common.VisualStudio;
 
-namespace Intent.Modules.ModuleBuilder.Typescript
+namespace Intent.Modules.ModuleBuilder.TypeScript
 {
     public static class NugetPackages
     {
