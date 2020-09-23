@@ -24,13 +24,12 @@
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="3.0.0" />
-    <dependency id="Intent.Common.Typescript" version="3.0.0" />
+    <dependency id="Intent.Common.TypeScript" version="3.0.0" />
     <dependency id="Intent.ModuleBuilder" version="3.0.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0" />
   </dependencies>
   <metadata>
-    <install target="Module Builder" src="modelers" />
-    <install src="modelers/Typescript.designer.settings" externalReference="ac7fa580-f66f-4257-a160-0bb82b56f4f9" />
+    <install src="modelers/Typescript.designer.settings" externalReference="ac7fa580-f66f-4257-a160-0bb82b56f4f9" target="Module Builder" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />

@@ -14,9 +14,6 @@
   </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>55c23ef1-04df-4194-b886-57ebd6136353</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="819dee60-184a-4cb7-9529-0d3910f82ee6" name="File Settings">
       <addedByDefault>true</addedByDefault>

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b79f286d-1129-41f9-bb0f-d266b180d3c2" type="Class Library (.NET Core)" typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE">
-  <name>Intent.Modules.Angular</name>
-  <display>Intent.Modules.Angular</display>
+<class id="52d04f2f-7ff6-4102-bfc1-fcb55203dad0" type="Class Library (.NET Core)" typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE">
+  <name>Intent.Modules.Angular.Layout</name>
+  <display>Intent.Modules.Angular.Layout</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</parentFolderId>
-  <packageId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</packageId>
-  <packageName>Angular.VisualStudio</packageName>
+  <parentFolderId>4f8bd004-ca5e-4005-9401-11466c72ccb9</parentFolderId>
+  <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+  <packageName>Angular.Layout.VisualStudio</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
       <addedByDefault>true</addedByDefault>

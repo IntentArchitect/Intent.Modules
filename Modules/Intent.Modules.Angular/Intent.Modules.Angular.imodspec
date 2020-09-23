@@ -64,7 +64,7 @@
     <dependency id="Intent.Common" version="3.0.0" />
     <dependency id="Intent.Common.Types" version="3.0.0" />
     <dependency id="Intent.Common.Html" version="3.0.0" />
-    <dependency id="Intent.Common.Typescript" version="3.0.0" />
+    <dependency id="Intent.Common.TypeScript" version="3.0.0" />
   </dependencies>
   <files>
     <file src="bin\$configuration$\$id$.dll" />

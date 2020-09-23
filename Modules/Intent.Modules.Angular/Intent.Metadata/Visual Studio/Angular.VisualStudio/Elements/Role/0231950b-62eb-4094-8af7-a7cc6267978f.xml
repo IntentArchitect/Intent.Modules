@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="0231950b-62eb-4094-8af7-a7cc6267978f" type="Role">
+<class id="0231950b-62eb-4094-8af7-a7cc6267978f" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b79f286d-1129-41f9-bb0f-d266b180d3c2</parentFolderId>
+  <packageId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</packageId>
+  <packageName>Angular.VisualStudio</packageName>
   <stereotypes />
   <childElements />
 </class>

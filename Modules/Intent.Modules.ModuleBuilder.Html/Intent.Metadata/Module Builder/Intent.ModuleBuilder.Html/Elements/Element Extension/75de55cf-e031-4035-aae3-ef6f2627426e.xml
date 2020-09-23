@@ -39,7 +39,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
-            <typePackageName>ModuleBuilder.Html.ModuleBuilder</typePackageName>
+            <typePackageName>Intent.ModuleBuilder.Html</typePackageName>
             <typePackageId>2a4dd22e-663b-4ef9-8797-3749268224cb</typePackageId>
             <stereotypes />
             <genericTypeParameters />

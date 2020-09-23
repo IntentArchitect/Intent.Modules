@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e302d9ca-268e-4a98-ad8d-4434aefb9903</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>

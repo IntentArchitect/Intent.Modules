@@ -14,9 +14,6 @@
   </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>e7fe6ec2-3ca8-45a7-a0d1-b8b1b2e247cd</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>

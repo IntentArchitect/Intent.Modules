@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ef6f0600-1935-4e87-97ef-dfe9ba36ffd1" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>IModSpec</name>
+  <display>IModSpec</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+  <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+  <packageName>Angular.Layout.VisualStudio</packageName>
+  <stereotypes />
+  <childElements />
+</class>

@@ -37,7 +37,7 @@
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common.Typescript" version="3.0.0" />
+    <dependency id="Intent.Common.TypeScript" version="3.0.0" />
     <dependency id="Intent.Typescript.ServiceAgent.Contracts" version="3.0.0"/>
   </dependencies>
   <files>

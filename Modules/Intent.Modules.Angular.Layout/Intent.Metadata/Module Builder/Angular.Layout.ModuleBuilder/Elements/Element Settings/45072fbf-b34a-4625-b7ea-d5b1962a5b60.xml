@@ -6,9 +6,6 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
-  <literals />
-  <attributes />
-  <operations />
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -45,9 +42,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>45072fbf-b34a-4625-b7ea-d5b1962a5b60</parentFolderId>
-      <literals />
-      <attributes />
-      <operations />
       <stereotypes />
       <childElements>
         <childElement id="e7b0fe62-a7b0-4700-91b5-79f304b345d8" type="Element Creation Option">
@@ -65,9 +59,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -98,9 +89,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -131,9 +119,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -164,9 +149,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -197,9 +179,6 @@
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
-          <literals />
-          <attributes />
-          <operations />
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
