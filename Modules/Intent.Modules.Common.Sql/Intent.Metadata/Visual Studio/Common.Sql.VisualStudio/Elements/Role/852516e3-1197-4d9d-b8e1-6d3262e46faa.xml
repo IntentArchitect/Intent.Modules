@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="852516e3-1197-4d9d-b8e1-6d3262e46faa" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>Decorators</name>
+  <display>Decorators</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>43a7c52b-f246-4b39-a873-1bb154a2d59d</parentFolderId>
+  <packageId>55fb9209-8ea6-4141-92ba-731604c129b2</packageId>
+  <packageName>Common.Sql.VisualStudio</packageName>
+  <stereotypes />
+  <childElements />
+</class>

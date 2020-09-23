@@ -12,6 +12,8 @@
   <autoAdd>false</autoAdd>
   <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
   <order>0</order>
+  <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+  <packageName>Intent.Metadata.RDBMS</packageName>
   <properties>
     <property id="3BB6C479-049E-4258-87D3-7068129B7B57">
       <name>Precision</name>

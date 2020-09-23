@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3930b5dc-3b3e-4313-a015-e92a8d4c362c" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>Api</name>
+  <display>Api</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>05ea4a69-1142-4023-a54a-791e1910844a</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

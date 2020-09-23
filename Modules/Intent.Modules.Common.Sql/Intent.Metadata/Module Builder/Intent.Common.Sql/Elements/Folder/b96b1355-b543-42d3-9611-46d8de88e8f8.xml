@@ -6,6 +6,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b79baf96-febc-4c03-be0b-f4ffce235018</parentFolderId>
+  <packageId>b79baf96-febc-4c03-be0b-f4ffce235018</packageId>
+  <packageName>Intent.Common.Sql</packageName>
   <stereotypes />
   <childElements />
 </class>
