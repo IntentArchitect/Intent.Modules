@@ -21,7 +21,7 @@
   <childElements>
     <childElement id="304cc83d-7c82-42a1-a985-c68eb52498ce" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>firstAttr</name>
-      <display>firstAttr: &lt;not found&gt;</display>
+      <display>firstAttr: string</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="0868421f-95f9-420e-9e8c-82937502c79e">
@@ -41,7 +41,7 @@
     </childElement>
     <childElement id="6f48db24-d7fc-419c-8beb-f67b26121014" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
-      <display>attribute: &lt;not found&gt;</display>
+      <display>attribute: string</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="4766271a-c33f-43db-970a-22026d4b83a8">
@@ -119,7 +119,7 @@
     </childElement>
     <childElement id="bb9e704b-b83a-4ec5-83fc-931a517f6771" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
-      <display>attribute: &lt;not found&gt;</display>
+      <display>attribute: string</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="c831eaaa-7e6f-4c75-82ec-06a80aeda762">

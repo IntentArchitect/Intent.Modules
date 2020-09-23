@@ -8,15 +8,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ModuleBuilder.Api
 {
-    public static class IntentModuleModelExtensions
+    public static class IntentDesignerPackageModelExtensions
     {
-        public static ModuleSettings GetModuleSettings(this IntentModuleModel model)
+        public static ModuleSettings GetModuleSettings(this IntentDesignerPackageModel model)
         {
             var stereotype = model.GetStereotype("Module Settings");
             return stereotype != null ? new ModuleSettings(stereotype) : null;
         }
 
-        public static bool HasModuleSettings(this IntentModuleModel model)
+        public static bool HasModuleSettings(this IntentDesignerPackageModel model)
         {
             return model.HasStereotype("Module Settings");
         }

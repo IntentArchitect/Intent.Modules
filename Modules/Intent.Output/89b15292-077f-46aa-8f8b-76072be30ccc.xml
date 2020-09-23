@@ -3,9 +3,6 @@
   <ApplicationId>89b15292-077f-46aa-8f8b-76072be30ccc</ApplicationId>
   <FileLogs>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp.sln</SolutionRelativeFilePath>
-    </FileLog>
-    <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Api\CSharpTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/CSharpTemplateModel.cs</ProjectRelativeFilePath>

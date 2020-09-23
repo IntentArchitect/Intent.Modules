@@ -2,7 +2,63 @@
 <settings>
   <id>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</id>
   <name>Designer Builder</name>
-  <packageSettings />
+  <packageSettings>
+    <packageSetting type="Intent Designer Package" typeId="4e1f79b4-3272-44cb-bee4-7dbd62b16e0e">
+      <requiredPackages />
+      <creationOptions>
+        <option order="0" type="element">
+          <specializationType>Designers Folder</specializationType>
+          <specializationTypeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</specializationTypeId>
+          <text>Add Designers Folder</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <defaultName>designers</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option order="0" type="element">
+          <specializationType>Folder</specializationType>
+          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
+          <text>New Folder</text>
+          <shortcut>ctrl + shift + f</shortcut>
+          <defaultName>NewFolder</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Designer</specializationType>
+          <specializationTypeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</specializationTypeId>
+          <text>New Designer</text>
+          <defaultName>NewDesigner</defaultName>
+          <icon type="CharacterBox" source="D|#00ffc8" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Designer Settings</specializationType>
+          <specializationTypeId>7a6411a8-ffef-4209-91c6-8d12755a806a</specializationTypeId>
+          <text>New Designer Settings</text>
+          <defaultName>NewDesignerSettings</defaultName>
+          <icon type="CharacterBox" source="S|#00ffc8" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="stereotype-definition">
+          <specializationType>Stereotype-Definition</specializationType>
+          <specializationTypeId>Stereotype-Definition</specializationTypeId>
+          <text>New Stereotype-Definition</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewStereotypeDefinition</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <typeOrder>
+        <type order="0">Designers Folder</type>
+        <type order="0">Folder</type>
+        <type order="2">Designer</type>
+        <type order="3">Designer Settings</type>
+        <type order="4">Stereotype-Definition</type>
+      </typeOrder>
+    </packageSetting>
+  </packageSettings>
   <packageExtensions>
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
       <requiredPackages />

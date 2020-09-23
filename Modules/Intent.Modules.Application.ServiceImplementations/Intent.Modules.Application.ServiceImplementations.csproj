@@ -8,7 +8,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.2" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Application.Contracts\Intent.Modules.Application.Contracts.csproj" />

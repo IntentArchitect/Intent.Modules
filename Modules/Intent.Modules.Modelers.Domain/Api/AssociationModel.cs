@@ -80,7 +80,6 @@ namespace Intent.Modelers.Domain.Api
             _association = association;
         }
 
-
         public string Id => _associationEnd.Id;
         public string Name => _associationEnd.Name;
         public AssociationModel Association => _association;
@@ -88,13 +87,13 @@ namespace Intent.Modelers.Domain.Api
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
-        public IElement Element => _associationEnd.Element;
+        public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
         [IntentManaged(Mode.Ignore)]
-        public ClassModel Class => new ClassModel(_associationEnd.Element);
+        public ClassModel Class => new ClassModel((IElement)_associationEnd.Element);
 
         [IntentManaged(Mode.Ignore)]
         public Multiplicity Multiplicity

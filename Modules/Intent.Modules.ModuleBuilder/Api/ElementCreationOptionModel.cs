@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             //Shortcut = element.TypeReference.Element.GetStereotypeProperty<string>("Default Creation Options", "Shortcut");
             //DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{element.TypeReference.Element.Name.ToCSharpIdentifier()}";
             Icon = element.TypeReference.Element.GetStereotypeProperty<IIconModel>("Settings", "Icon");
-            Type = new ElementSettingsModel(TypeReference.Element);
+            Type = new ElementSettingsModel((IElement)TypeReference.Element);
             //AllowMultiple = element.GetStereotypeProperty("Creation Options", "Allow Multiple", true);
         }
 

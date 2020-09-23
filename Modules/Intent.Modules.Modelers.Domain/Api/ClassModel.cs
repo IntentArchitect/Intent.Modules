@@ -81,9 +81,9 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
 
-        public ClassModel ParentClass => this.Generalizations().Select(x => new ClassModel(x.Element)).SingleOrDefault();
+        public ClassModel ParentClass => this.Generalizations().Select(x => new ClassModel((IElement)x.Element)).SingleOrDefault();
 
-        public IEnumerable<ClassModel> ChildClasses => this.Specializations().Select(x => new ClassModel(x.Element)).ToList();
+        public IEnumerable<ClassModel> ChildClasses => this.Specializations().Select(x => new ClassModel((IElement)x.Element)).ToList();
 
         public string Comment => _element.Comment;
 

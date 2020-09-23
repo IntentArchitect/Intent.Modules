@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Type = new AssociationSettingsModel(TypeReference.Element);
+            Type = new AssociationSettingsModel((IElement)TypeReference.Element);
         }
 
         [IntentManaged(Mode.Fully)]

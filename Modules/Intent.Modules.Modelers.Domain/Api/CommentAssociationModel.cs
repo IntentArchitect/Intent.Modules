@@ -83,7 +83,7 @@ namespace Intent.Modelers.Domain.Api
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
-        public IElement Element => _associationEnd.Element;
+        public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;

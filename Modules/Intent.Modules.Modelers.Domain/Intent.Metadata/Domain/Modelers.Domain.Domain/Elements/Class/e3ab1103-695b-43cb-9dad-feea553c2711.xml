@@ -12,7 +12,7 @@
   <childElements>
     <childElement id="00d22977-8670-45ac-8cd4-18b0f123ea14" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
-      <display>attribute: &lt;not found&gt;</display>
+      <display>attribute: string</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="d0bc9642-41b2-4ef6-8323-bb352488eb7b">

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
-using System.Linq;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
@@ -10,13 +10,13 @@ using System.Linq;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class IntentModuleModel : IHasStereotypes, IMetadataModel
+    public class IntentDesignerPackageModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Intent Module";
-        public const string SpecializationTypeId = "d2e543c7-174a-45b4-aebe-a13f9ee90214";
+        public const string SpecializationType = "Intent Designer Package";
+        public const string SpecializationTypeId = "4e1f79b4-3272-44cb-bee4-7dbd62b16e0e";
 
         [IntentManaged(Mode.Ignore)]
-        public IntentModuleModel(IPackage package)
+        public IntentDesignerPackageModel(IPackage package)
         {
             if (!SpecializationType.Equals(package.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {

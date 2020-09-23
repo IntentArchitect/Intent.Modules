@@ -101,7 +101,7 @@ namespace Intent.Modelers.Domain.Api
         public GeneralizationModel Association => _association;
         IAssociation IAssociationEnd.Association => _association.InternalAssociation;
         public string Comment => _associationEnd.Comment;
-        public IElement Element => _associationEnd.Element;
+        public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public bool IsCollection => _associationEnd.IsCollection;
         public bool IsNavigable => _associationEnd.IsNavigable;

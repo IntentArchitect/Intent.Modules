@@ -73,14 +73,14 @@ namespace Intent.Modules.Common.Types
                 return string.Format(collectionFormat, typeInfo.Element.Name);
             }
 
-            public string Get(IElement element)
+            public string Get(ICanBeReferencedType element)
             {
                 if (element == null)
                     return string.Empty;
                 return element.Name;
             }
 
-            public string Get(IElement element, string collectionFormat)
+            public string Get(ICanBeReferencedType element, string collectionFormat)
             {
                 if (element == null)
                     return string.Empty;

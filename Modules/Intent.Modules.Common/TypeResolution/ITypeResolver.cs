@@ -50,7 +50,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        string Get(IElement element);
+        string Get(ICanBeReferencedType element);
 
         /// <summary>
         /// Resolves the type name for the specified <see cref="element"/>
@@ -58,7 +58,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// <param name="element"></param>
         /// <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
         /// <returns></returns>
-        string Get(IElement element, string collectionFormat);
+        string Get(ICanBeReferencedType element, string collectionFormat);
 
         /// <summary>
         /// Returns a <see cref="ITypeResolverContext"/> that resolves the type using the <see cref="IClassTypeSource"/> added to the specified "<paramref name="contextName"/>"

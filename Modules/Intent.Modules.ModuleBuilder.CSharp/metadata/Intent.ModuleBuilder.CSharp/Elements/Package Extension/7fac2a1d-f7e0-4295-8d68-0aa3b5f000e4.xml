@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
   <name>Package Settings</name>
-  <display>Package Settings: Package</display>
+  <display>Package Settings: Intent Module</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="f40018dc-af29-4693-9d81-f4d1770a966d">
-    <typeId>73cf6531-f699-479d-b2b8-92da159ada37</typeId>
+    <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>

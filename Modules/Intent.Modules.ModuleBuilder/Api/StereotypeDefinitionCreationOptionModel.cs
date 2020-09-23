@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             }
             _element = element;
             Icon = element.TypeReference.Element.GetStereotypeProperty<IIconModel>("Settings", "Icon");
-            Type = new CoreTypeModel(TypeReference.Element);
+            Type = new CoreTypeModel((IElement)TypeReference.Element);
         }
 
         [IntentManaged(Mode.Fully)]

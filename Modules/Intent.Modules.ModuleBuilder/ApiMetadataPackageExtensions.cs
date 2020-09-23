@@ -11,6 +11,13 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public static class ApiMetadataPackageExtensions
     {
+        public static IList<IntentDesignerPackageModel> GetIntentDesignerPackageModels(this IDesigner designer)
+        {
+            return designer.GetPackagesOfType(IntentDesignerPackageModel.SpecializationTypeId)
+                .Select(x => new IntentDesignerPackageModel(x))
+                .ToList();
+        }
+
         public static IList<IntentModuleModel> GetIntentModuleModels(this IDesigner designer)
         {
             return designer.GetPackagesOfType(IntentModuleModel.SpecializationTypeId)

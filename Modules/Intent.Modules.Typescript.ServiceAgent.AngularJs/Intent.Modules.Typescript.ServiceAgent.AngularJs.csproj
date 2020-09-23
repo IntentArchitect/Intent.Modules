@@ -105,7 +105,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Intent.SoftwareFactory.SDK">
-      <Version>3.0.0-pre.2</Version>
+      <Version>3.0.0-pre.4</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

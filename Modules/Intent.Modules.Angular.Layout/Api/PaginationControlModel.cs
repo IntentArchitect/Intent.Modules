@@ -28,9 +28,9 @@ namespace Intent.Modules.Angular.Layout.Api
             if (Mapping != null)
             {
                 DataModelPath = Mapping.Element.Name.ToCamelCase();
-                TotalItemsPath = Mapping.Element.TypeReference.Element.ChildElements
+                TotalItemsPath = ((IElement)Mapping.Element.TypeReference.Element).ChildElements
                     .FirstOrDefault(x => x.Name.Contains("Total", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
-                PageNumberPath = Mapping.Element.TypeReference.Element.ChildElements
+                PageNumberPath = ((IElement)Mapping.Element.TypeReference.Element).ChildElements
                     .FirstOrDefault(x => x.Name.Contains("Number", StringComparison.InvariantCultureIgnoreCase))?.Name.ToCamelCase();
             }
         }

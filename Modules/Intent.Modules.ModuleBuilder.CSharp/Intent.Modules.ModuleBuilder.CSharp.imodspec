@@ -28,6 +28,7 @@
     <dependency id="Intent.Common" version="3.0.0" />
     <dependency id="Intent.ModuleBuilder" version="3.0.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0" />
+    <dependency id="Intent.ModuleBuilder.CSharp" version="3.0.0" />
   </dependencies>
   <metadata>
     <install target="Module Builder" src="metadata/Intent.ModuleBuilder.CSharp" />
