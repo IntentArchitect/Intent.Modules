@@ -34,7 +34,7 @@ namespace Intent.Modules.Angular.Templates.Model.FormGroupTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<FormGroupDefinitionModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetFormGroupDefinitionModels(application);
+            return _metadataManager.Angular(application).GetFormGroupDefinitionModels();
         }
     }
 }

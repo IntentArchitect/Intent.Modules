@@ -2,9 +2,8 @@
 <settings>
   <id>55e213e3-1e43-4bb5-abe6-6ff77af23f39</id>
   <name>Services Types</name>
-  <packageSettings />
-  <packageExtensions>
-    <packageExtension type="Package" typeId="73cf6531-f699-479d-b2b8-92da159ada37">
+  <packageSettings>
+    <packageSetting type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
       <requiredPackages />
       <creationOptions>
         <option type="element">
@@ -63,15 +62,16 @@
         </option>
       </creationOptions>
       <typeOrder>
-        <type>Service</type>
-        <type>DTO</type>
-        <type>Type-Definition</type>
         <type order="0">Folder</type>
-        <type>Enum</type>
-        <type>Stereotype-Definition</type>
+        <type order="1">Service</type>
+        <type order="2">DTO</type>
+        <type order="3">Type-Definition</type>
+        <type order="4">Enum</type>
+        <type order="5">Stereotype-Definition</type>
       </typeOrder>
-    </packageExtension>
-  </packageExtensions>
+    </packageSetting>
+  </packageSettings>
+  <packageExtensions />
   <elementSettings>
     <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
       <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />

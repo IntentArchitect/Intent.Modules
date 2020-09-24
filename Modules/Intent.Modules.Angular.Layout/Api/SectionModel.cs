@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Layout.Api
         public const string SpecializationType = "Section";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public SectionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -92,5 +93,6 @@ namespace Intent.Modules.Angular.Layout.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "45072fbf-b34a-4625-b7ea-d5b1962a5b60";
     }
 }

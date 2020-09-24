@@ -14,6 +14,8 @@ namespace Intent.Modules.Angular.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class ComponentModel : IHasStereotypes, IMetadataModel
     {
+
+        [IntentManaged(Mode.Ignore)]
         public ComponentModel(IElement element, string requiredType = SpecializationType)
         {
             _element = element;
@@ -86,6 +88,7 @@ namespace Intent.Modules.Angular.Api
             .Where(x => x.SpecializationType == ComponentViewModel.SpecializationType)
             .Select(x => new ComponentViewModel(x))
             .SingleOrDefault();
+        public const string SpecializationTypeId = "b1c481e1-e91e-4c29-9817-00ab9cad4b6b";
 
     }
 }

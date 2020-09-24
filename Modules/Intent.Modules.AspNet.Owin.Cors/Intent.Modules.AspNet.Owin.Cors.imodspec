@@ -2,7 +2,7 @@
 <package>
   <id>Intent.AspNet.Owin.Cors</id>
   <version>3.0.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>CORS plugin for OWIN</summary>
   <description>CORS for OWIN</description>
   <authors>Intent Architect</authors>

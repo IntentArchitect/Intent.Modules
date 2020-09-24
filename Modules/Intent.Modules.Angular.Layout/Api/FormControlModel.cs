@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Layout.Api
         public const string SpecializationType = "Form Control";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public FormControlModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -62,5 +63,6 @@ namespace Intent.Modules.Angular.Layout.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "f234d77d-a306-41c1-ad38-a47b14ecb0ff";
     }
 }

@@ -16,6 +16,7 @@ namespace Intent.Modules.Angular.Layout.Api
         public const string SpecializationType = "Button Control";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ButtonControlModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -75,5 +76,6 @@ namespace Intent.Modules.Angular.Layout.Api
 
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
+        public const string SpecializationTypeId = "13eca516-0628-4085-91c3-36d5eddda6c9";
     }
 }

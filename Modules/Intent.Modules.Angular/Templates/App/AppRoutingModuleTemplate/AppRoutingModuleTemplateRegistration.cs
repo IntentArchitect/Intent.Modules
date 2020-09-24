@@ -34,7 +34,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IList<ModuleModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetModuleModels(application).ToList();
+            return _metadataManager.Angular(application).GetModuleModels().ToList();
         }
     }
 }

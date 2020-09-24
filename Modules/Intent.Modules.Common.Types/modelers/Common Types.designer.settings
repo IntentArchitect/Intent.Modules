@@ -2,13 +2,7 @@
 <settings>
   <id>55d06096-83fe-4acf-86ef-586d254e5170</id>
   <name>Common Types</name>
-  <packageSettings>
-    <packageSetting type="Package" typeId="73cf6531-f699-479d-b2b8-92da159ada37">
-      <requiredPackages />
-      <creationOptions />
-      <typeOrder />
-    </packageSetting>
-  </packageSettings>
+  <packageSettings />
   <packageExtensions />
   <elementSettings>
     <elementSetting type="Enum" typeId="85fba0e9-9161-4c85-a603-a229ef312beb">

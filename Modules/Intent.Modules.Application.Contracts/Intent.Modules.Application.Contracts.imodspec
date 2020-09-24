@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Application.Contracts</id>
   <version>3.0.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Creates generic application service contracts.</summary>
   <description>Creates generic application service contracts that is technology agnostic.</description>
   <authors>Intent Architect</authors>

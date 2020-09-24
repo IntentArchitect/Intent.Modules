@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Component Command";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ComponentCommandModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -74,5 +75,6 @@ namespace Intent.Modules.Angular.Api
             .Where(x => x.SpecializationType == ParameterModel.SpecializationType)
             .Select(x => new ParameterModel(x))
             .ToList();
+        public const string SpecializationTypeId = "d6739ffc-30e6-4170-a105-bf28e69aa578";
     }
 }

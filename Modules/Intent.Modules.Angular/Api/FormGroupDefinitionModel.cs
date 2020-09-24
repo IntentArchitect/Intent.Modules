@@ -16,6 +16,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Form Group Definition";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public FormGroupDefinitionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -77,5 +78,6 @@ namespace Intent.Modules.Angular.Api
 
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
+        public const string SpecializationTypeId = "71142b08-4d10-405b-a5bd-0620d329a992";
     }
 }

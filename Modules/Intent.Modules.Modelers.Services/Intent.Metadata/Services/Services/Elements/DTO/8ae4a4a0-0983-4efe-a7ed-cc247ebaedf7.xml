@@ -27,6 +27,8 @@
         <isNavigable>true</isNavigable>
         <isNullable>true</isNullable>
         <isCollection>true</isCollection>
+        <typePackageName>Services</typePackageName>
+        <typePackageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>

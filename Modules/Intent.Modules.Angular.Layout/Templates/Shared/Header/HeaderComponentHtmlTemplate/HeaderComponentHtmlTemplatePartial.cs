@@ -14,6 +14,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Editor;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Angular.Layout.Api;
 
 
 [assembly: DefaultIntentManaged(Mode.Merge)]

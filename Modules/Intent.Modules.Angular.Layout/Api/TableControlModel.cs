@@ -16,6 +16,7 @@ namespace Intent.Modules.Angular.Layout.Api
         [IntentManaged(Mode.Fully)] public const string SpecializationType = "Table Control";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public TableControlModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -28,11 +29,11 @@ namespace Intent.Modules.Angular.Layout.Api
                 DataModelPath = Mapping.Element.Name.ToCamelCase();
                 if (Mapping.Element.TypeReference.IsCollection)
                 {
-                    DataModel = Mapping.Element.TypeReference.Element;
+                    DataModel = (IElement)Mapping.Element.TypeReference.Element;
                 }
                 else
                 {
-                    foreach (var childElement in Mapping.Element.TypeReference.Element.ChildElements)
+                    foreach (var childElement in ((IElement)Mapping.Element.TypeReference.Element).ChildElements)
                     {
                         if (childElement.TypeReference.IsCollection)
                         {
@@ -40,11 +41,11 @@ namespace Intent.Modules.Angular.Layout.Api
                             // Not robust:
                             if (childElement.TypeReference.Element.SpecializationType == "Generic Type")
                             {
-                                DataModel = Mapping.Element.TypeReference.GenericTypeParameters.First().Element;
+                                DataModel = (IElement)Mapping.Element.TypeReference.GenericTypeParameters.First().Element;
                             }
                             else
                             {
-                                DataModel = childElement.TypeReference.Element;
+                                DataModel = (IElement)childElement.TypeReference.Element;
                             }
                             break;
                         }
@@ -108,5 +109,6 @@ namespace Intent.Modules.Angular.Layout.Api
 
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
+        public const string SpecializationTypeId = "e302d9ca-268e-4a98-ad8d-4434aefb9903";
     }
 }

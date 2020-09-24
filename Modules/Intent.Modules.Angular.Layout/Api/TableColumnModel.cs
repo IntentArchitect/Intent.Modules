@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Layout.Api
         public const string SpecializationType = "Table Column";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public TableColumnModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -62,5 +63,6 @@ namespace Intent.Modules.Angular.Layout.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "6837f6c2-f098-45df-8be4-900036b73e25";
     }
 }

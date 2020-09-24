@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Type Definition";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public TypeDefinitionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -65,5 +66,6 @@ namespace Intent.Modules.Angular.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+        public const string SpecializationTypeId = "50c416e1-862d-4ed8-862e-6f4ff93d8857";
     }
 }

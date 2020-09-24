@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Form Group Control";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public FormGroupControlModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -65,5 +66,6 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "b4e29ea5-b9a4-47eb-8214-c4cc5b46ee91";
     }
 }

@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Folder";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public FolderModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -98,5 +99,6 @@ namespace Intent.Modules.Angular.Api
             .Where(x => x.SpecializationType == AngularServiceModel.SpecializationType)
             .Select(x => new AngularServiceModel(x))
             .ToList();
+        public const string SpecializationTypeId = "0b1c1dcb-8c31-4294-883c-a130345730d2";
     }
 }

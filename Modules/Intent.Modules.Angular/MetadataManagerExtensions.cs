@@ -13,7 +13,7 @@ namespace Intent.Modules.Angular
         public static IEnumerable<ModuleDTOModel> GetDTOModels(this IMetadataManager metadataManager, IApplication application)
         {
             var dtoModels = new List<ModuleDTOModel>();
-            foreach (var moduleModel in metadataManager.GetModuleModels(application))
+            foreach (var moduleModel in metadataManager.Angular(application).GetModuleModels())
             {
                 dtoModels.AddRange(moduleModel.GetDTOModels());
             }
@@ -30,14 +30,14 @@ namespace Intent.Modules.Angular
                 .SelectMany(x => GetTypeModels(x.TypeReference))
                 .Concat(operations.Where(x => x.ReturnType != null).SelectMany(x => GetTypeModels(x.ReturnType)));
 
-            return classes.Where(x => x.SpecializationType == DTOModel.SpecializationType).Select(x => new ModuleDTOModel(x, moduleModel)).ToList()
+            return classes.Where(x => x.SpecializationType == DTOModel.SpecializationType).Select(x => new ModuleDTOModel((IElement) x, moduleModel)).ToList()
                 .Distinct()
                 .ToList();
         }
 
-        private static IEnumerable<IElement> GetTypeModels(ITypeReference typeReference)
+        private static IEnumerable<ICanBeReferencedType> GetTypeModels(ITypeReference typeReference)
         {
-            var models = new List<IElement>() { typeReference.Element };
+            var models = new List<ICanBeReferencedType>() { typeReference.Element };
             models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypeModels));
             return models;
         }

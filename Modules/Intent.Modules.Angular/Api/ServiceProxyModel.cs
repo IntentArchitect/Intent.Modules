@@ -38,7 +38,7 @@ namespace Intent.Modules.Angular.Api
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
 
-        public ServiceModel MappedService => Mapping != null ? new ServiceModel(Mapping.Element) : null;
+        public ServiceModel MappedService => Mapping != null ? new ServiceModel((IElement)Mapping.Element) : null;
 
         [IntentManaged(Mode.Fully)]
         public IList<ServiceProxyOperationModel> Operations => _element.ChildElements
@@ -75,6 +75,17 @@ namespace Intent.Modules.Angular.Api
         public override string ToString()
         {
             return _element.ToString();
+        }
+        public const string SpecializationTypeId = "2d4ad132-e574-4319-9ae9-4d6e4b81110c";
+
+        [IntentManaged(Mode.Ignore)]
+        public ServiceProxyModel(IElement element, string requiredType = SpecializationType)
+        {
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
+            _element = element;
         }
     }
 }

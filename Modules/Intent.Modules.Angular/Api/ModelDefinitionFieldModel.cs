@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Model Definition Field";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ModelDefinitionFieldModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -65,5 +66,6 @@ namespace Intent.Modules.Angular.Api
 
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
+        public const string SpecializationTypeId = "0dfc489c-7456-4a3d-a28b-50a633631a48";
     }
 }

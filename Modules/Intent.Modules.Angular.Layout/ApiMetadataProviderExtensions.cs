@@ -11,24 +11,32 @@ namespace Intent.Modules.Angular.Layout.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<ButtonControlModel> GetButtonControlModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<ButtonControlModel> GetButtonControlModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetButtonControlModels(application);
+            return designer.GetElementsOfType(ButtonControlModel.SpecializationTypeId)
+                .Select(x => new ButtonControlModel(x))
+                .ToList();
         }
 
-        public static IList<FormModel> GetFormModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FormModel> GetFormModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFormModels(application);
+            return designer.GetElementsOfType(FormModel.SpecializationTypeId)
+                .Select(x => new FormModel(x))
+                .ToList();
         }
 
-        public static IList<FormControlModel> GetFormControlModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<FormControlModel> GetFormControlModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetFormControlModels(application);
+            return designer.GetElementsOfType(FormControlModel.SpecializationTypeId)
+                .Select(x => new FormControlModel(x))
+                .ToList();
         }
 
-        public static IList<SectionModel> GetSectionModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<SectionModel> GetSectionModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetSectionModels(application);
+            return designer.GetElementsOfType(SectionModel.SpecializationTypeId)
+                .Select(x => new SectionModel(x))
+                .ToList();
         }
 
     }

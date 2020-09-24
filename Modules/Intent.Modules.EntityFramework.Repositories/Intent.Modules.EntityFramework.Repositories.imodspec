@@ -2,7 +2,7 @@
 <package>
   <id>Intent.EntityFramework.Repositories</id>
   <version>3.0.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Repository Patterns for Entity Framework.</summary>
   <description>Repository Patterns for Entity Framework.</description>
   <authors>Intent Architect</authors>

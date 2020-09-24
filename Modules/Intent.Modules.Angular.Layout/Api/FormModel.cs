@@ -18,6 +18,7 @@ namespace Intent.Modules.Angular.Layout.Api
         public const string SpecializationType = "Form";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public FormModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -89,5 +90,6 @@ namespace Intent.Modules.Angular.Layout.Api
         {
             return true;
         }
+        public const string SpecializationTypeId = "8aee9b69-d02d-4ca8-b28a-6585508bd033";
     }
 }

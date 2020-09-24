@@ -2,9 +2,8 @@
 <settings>
   <id>db2f5755-5256-46d1-bb45-72bf2c7cde42</id>
   <name>Domain Types</name>
-  <packageSettings />
-  <packageExtensions>
-    <packageExtension type="Package" typeId="73cf6531-f699-479d-b2b8-92da159ada37">
+  <packageSettings>
+    <packageSetting type="Domain Package" typeId="1a824508-4623-45d9-accc-f572091ade5a">
       <requiredPackages />
       <creationOptions>
         <option type="element">
@@ -71,16 +70,17 @@
         </option>
       </creationOptions>
       <typeOrder>
-        <type>Class</type>
-        <type>Type-Definition</type>
-        <type>Enum</type>
-        <type>Comment</type>
-        <type>Diagram</type>
-        <type>Folder</type>
-        <type>Stereotype-Definition</type>
+        <type order="0">Class</type>
+        <type order="1">Type-Definition</type>
+        <type order="2">Enum</type>
+        <type order="3">Comment</type>
+        <type order="4">Diagram</type>
+        <type order="5">Folder</type>
+        <type order="6">Stereotype-Definition</type>
       </typeOrder>
-    </packageExtension>
-  </packageExtensions>
+    </packageSetting>
+  </packageSettings>
+  <packageExtensions />
   <elementSettings>
     <elementSetting type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
       <icon type="UrlImagePath" source="./img/icons/uml/Class_256x.png" />

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="ede23670-71ce-42ef-ae7c-a37ff7ae46f3">
+  <name>Angular Service Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="d009e5af-adb7-45c5-921c-fe8e209b8aa2">Angular Service</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return `from '${properties["Location"].value}'`</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</parentFolderId>
+  <order>0</order>
+  <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+  <packageName>Intent.Angular</packageName>
+  <properties>
+    <property id="1b12b283-5a46-4436-8279-9ae95dcc1fb8">
+      <name>Location</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

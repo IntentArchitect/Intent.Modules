@@ -19,7 +19,7 @@ using Intent.Utils;
 using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Typescript.Templates.TypescriptTemplatePartial", Version = "1.0")]
+[assembly: IntentTemplate("ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 {
@@ -122,7 +122,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         private string GetUpdateUrl(ServiceProxyOperationModel operation)
         {
-            var mappedOperation = new OperationModel(operation.Mapping.Element);
+            var mappedOperation = new OperationModel((IElement)operation.Mapping.Element);
             if (mappedOperation?.Parameters.Count != operation.Parameters.Count)
             {
                 throw new Exception($"Different number of properties for mapped operation [{operation.Name}] on {ServiceProxyModel.SpecializationType} [{Model.Name}]");

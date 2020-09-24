@@ -151,7 +151,7 @@ namespace Intent.Modules.Common.Templates
             return Types.Get(element, collectionFormat);
         }
 
-        public virtual string GetTypeName(IElement element)
+        public virtual string GetTypeName(ICanBeReferencedType element)
         {
             return Types.Get(element);
         }

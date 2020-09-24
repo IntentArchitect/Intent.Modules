@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Angular Service";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public AngularServiceModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -62,5 +63,6 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "d009e5af-adb7-45c5-921c-fe8e209b8aa2";
     }
 }

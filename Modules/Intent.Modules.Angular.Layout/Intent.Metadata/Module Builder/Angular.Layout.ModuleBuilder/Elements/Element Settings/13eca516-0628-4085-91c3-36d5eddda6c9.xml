@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="13eca516-0628-4085-91c3-36d5eddda6c9" type="Element Settings">
+<class id="13eca516-0628-4085-91c3-36d5eddda6c9" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Button Control</name>
   <display>Button Control</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
+  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+  <packageName>Angular.Layout.ModuleBuilder</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
@@ -20,6 +24,8 @@
     </stereotype>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;data:image/png;base64,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&quot;}" isActive="true" />
@@ -35,32 +41,40 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="67e826e4-cf1c-4554-ab6f-be922c2d6a9f" type="Mapping Settings">
+    <childElement id="67e826e4-cf1c-4554-ab6f-be922c2d6a9f" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>13eca516-0628-4085-91c3-36d5eddda6c9</parentFolderId>
+      <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+      <packageName>Angular.Layout.ModuleBuilder</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
             <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="Angular" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <childElements>
-        <childElement id="1969ef34-7539-4640-bfe9-c766d3a275b2" type="Element Mapping">
+        <childElement id="1969ef34-7539-4640-bfe9-c766d3a275b2" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
           <display>[mapping]: Component Command -&gt; Button Control</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>67e826e4-cf1c-4554-ab6f-be922c2d6a9f</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Angular.Layout.ModuleBuilder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
                 <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="13eca516-0628-4085-91c3-36d5eddda6c9" isActive="true" />
@@ -69,6 +83,8 @@
             </stereotype>
             <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="d6739ffc-30e6-4170-a105-bf28e69aa578" isActive="true" />
                 <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />

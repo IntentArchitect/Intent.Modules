@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="a5c67a96-95fa-45a7-ae12-d06aac82f1c1" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>Angular</name>
+  <display>Angular</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>4f8bd004-ca5e-4005-9401-11466c72ccb9</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

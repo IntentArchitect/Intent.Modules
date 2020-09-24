@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Application.ServiceImplementations</id>
   <version>3.0.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Standard Application Layer service implementation handler.</summary>
   <description>Standard Application Layer service implementation handler.</description>
   <authors>Intent Architect</authors>

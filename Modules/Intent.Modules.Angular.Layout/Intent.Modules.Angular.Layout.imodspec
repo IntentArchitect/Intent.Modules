@@ -48,7 +48,7 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install target="Angular" src="modelers" />
     <install target="Angular" src="Intent.Metadata/Angular/Angular.Layout.Controls" />
+    <install target="Angular" src="modelers/Angular Layout Extensions.designer.settings" externalReference="d3c58ce6-a07c-47dc-8626-f73cf1d047e2" />
   </metadata>
 </package>

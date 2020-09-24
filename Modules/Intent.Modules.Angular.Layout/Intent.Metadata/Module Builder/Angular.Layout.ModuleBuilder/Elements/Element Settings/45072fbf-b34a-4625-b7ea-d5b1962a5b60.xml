@@ -1,14 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="45072fbf-b34a-4625-b7ea-d5b1962a5b60" type="Element Settings">
+<class id="45072fbf-b34a-4625-b7ea-d5b1962a5b60" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
   <name>Section</name>
   <display>Section</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
+  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+  <packageName>Angular.Layout.ModuleBuilder</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
         <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
@@ -20,6 +24,8 @@
     </stereotype>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
       <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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QAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQAADQNqbAaBpBkAAA0DamwGgaQZAAANA2psBoGkGQIAXypeAlb5WTn8u3CQDICMDAICLGAAZGQAAXMQA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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
@@ -35,16 +41,18 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="61e8bb50-2185-4519-910e-3b02401419d3" type="Context Menu">
+    <childElement id="61e8bb50-2185-4519-910e-3b02401419d3" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>45072fbf-b34a-4625-b7ea-d5b1962a5b60</parentFolderId>
+      <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+      <packageName>Angular.Layout.ModuleBuilder</packageName>
       <stereotypes />
       <childElements>
-        <childElement id="e7b0fe62-a7b0-4700-91b5-79f304b345d8" type="Element Creation Option">
+        <childElement id="e7b0fe62-a7b0-4700-91b5-79f304b345d8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Table Control</name>
           <display>New Table Control: Table Control</display>
           <isAbstract>false</isAbstract>
@@ -54,15 +62,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Angular.Layout.ModuleBuilder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Table" isActive="true" />
@@ -74,7 +88,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="82cfc93f-7869-48dc-b663-694427f70529" type="Element Creation Option">
+        <childElement id="82cfc93f-7869-48dc-b663-694427f70529" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Pagination Control</name>
           <display>New Pagination Control: Pagination Control</display>
           <isAbstract>false</isAbstract>
@@ -84,15 +98,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Angular.Layout.ModuleBuilder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Pagination" isActive="true" />
@@ -104,7 +124,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="282a5760-65e7-4cb0-b243-99e17c9fa24f" type="Element Creation Option">
+        <childElement id="282a5760-65e7-4cb0-b243-99e17c9fa24f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Form</name>
           <display>New Form: Form</display>
           <isAbstract>false</isAbstract>
@@ -114,15 +134,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Angular.Layout.ModuleBuilder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
@@ -134,7 +160,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="b08855f0-2d6f-48b1-a0a7-53919354d4cc" type="Element Creation Option">
+        <childElement id="b08855f0-2d6f-48b1-a0a7-53919354d4cc" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Button Control</name>
           <display>New Button Control: Button Control</display>
           <isAbstract>false</isAbstract>
@@ -144,15 +170,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Angular.Layout.ModuleBuilder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
@@ -164,7 +196,7 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="8e8a6b99-ad77-40a2-9d86-e19a07e00ea3" type="Element Creation Option">
+        <childElement id="8e8a6b99-ad77-40a2-9d86-e19a07e00ea3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Section</name>
           <display>New Section: Section</display>
           <isAbstract>false</isAbstract>
@@ -174,15 +206,21 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>61e8bb50-2185-4519-910e-3b02401419d3</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Angular.Layout.ModuleBuilder</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />

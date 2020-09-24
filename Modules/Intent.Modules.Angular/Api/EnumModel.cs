@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Enum";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public EnumModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -68,5 +69,6 @@ namespace Intent.Modules.Angular.Api
             .Where(x => x.SpecializationType == EnumLiteralModel.SpecializationType)
             .Select(x => new EnumLiteralModel(x))
             .ToList();
+        public const string SpecializationTypeId = "ad72753c-c98d-4ccc-8cd1-d462ed58bbbc";
     }
 }

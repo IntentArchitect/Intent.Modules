@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="fc44141e-8079-4f63-894b-f1a26736c991" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+  <name>Angular App</name>
+  <display>Angular App</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0a3786a7-f514-4ec3-88b9-7842744dbb3c</parentFolderId>
+  <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+  <packageName>Intent.Angular</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="643aaa63-ebda-4248-829b-42612562726e" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>fc44141e-8079-4f63-894b-f1a26736c991</parentFolderId>
+      <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+      <packageName>Intent.Angular</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="0fddccdb-22bd-47a1-a038-08c596a679c0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Module</name>
+          <display>New Module: Module</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="74d0decd-ab30-45e9-92b3-18700fab8026">
+            <typeId>cac14331-198a-4f9a-bbb9-171eb0bd4efe</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.Angular</typePackageName>
+            <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>643aaa63-ebda-4248-829b-42612562726e</parentFolderId>
+          <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+          <packageName>Intent.Angular</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="b35fe5aa-b047-4e69-a5b2-3a93ebf04959" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Model Definition</name>
+          <display>New Model Definition: Model Definition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8b36608b-11f3-418f-bacc-cd169f0c8412">
+            <typeId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.Angular</typePackageName>
+            <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>643aaa63-ebda-4248-829b-42612562726e</parentFolderId>
+          <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+          <packageName>Intent.Angular</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="aba3b1fe-270b-4b18-ba94-32be66e08cea" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Type-Definition</name>
+          <display>New Type-Definition: Type-Definition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="04c0b5ec-3a8c-4220-a648-94745a2ce4ba">
+            <typeId>50c416e1-862d-4ed8-862e-6f4ff93d8857</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.Angular</typePackageName>
+            <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>643aaa63-ebda-4248-829b-42612562726e</parentFolderId>
+          <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+          <packageName>Intent.Angular</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="056f8683-bd93-4118-a00a-d58e8eedb890" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Enum</name>
+          <display>New Enum: Enum</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="a50e9b38-b13f-47df-8ab3-e51457bf6977">
+            <typeId>ad72753c-c98d-4ccc-8cd1-d462ed58bbbc</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.Angular</typePackageName>
+            <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>643aaa63-ebda-4248-829b-42612562726e</parentFolderId>
+          <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+          <packageName>Intent.Angular</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="2e15698f-04b1-4ddd-870c-b54f68a9d521" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Folder</name>
+          <display>New Folder: Folder</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="831c39c2-d0ad-4b6f-86fa-514172c3fb1c">
+            <typeId>0b1c1dcb-8c31-4294-883c-a130345730d2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.Angular</typePackageName>
+            <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>643aaa63-ebda-4248-829b-42612562726e</parentFolderId>
+          <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+          <packageName>Intent.Angular</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="0" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="c698bab9-dc0f-4175-9a99-82ebb7e671f0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Service</name>
+          <display>New Service: Angular Service</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f0162ef5-fb1e-4a7e-8cf8-b2a7533b4182">
+            <typeId>d009e5af-adb7-45c5-921c-fe8e209b8aa2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <typePackageName>Intent.Angular</typePackageName>
+            <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>643aaa63-ebda-4248-829b-42612562726e</parentFolderId>
+          <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+          <packageName>Intent.Angular</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="14d5184f-fd0b-4317-875e-3038605c5c9f" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
+          <name>New Stereotype-Definition</name>
+          <display>New Stereotype-Definition: Stereotype-Definition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e82573c0-f745-4d88-91bd-4ffaf435478d">
+            <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>643aaa63-ebda-4248-829b-42612562726e</parentFolderId>
+          <packageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</packageId>
+          <packageName>Intent.Angular</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

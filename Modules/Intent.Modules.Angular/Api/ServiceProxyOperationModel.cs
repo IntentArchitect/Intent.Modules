@@ -16,6 +16,7 @@ namespace Intent.Modules.Angular.Api
 
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ServiceProxyOperationModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -78,5 +79,6 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "6ac4e262-f718-4bf6-849e-f4b1450dfa8b";
     }
 }

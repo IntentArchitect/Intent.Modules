@@ -59,8 +59,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "File Template" },
                 { "Role", GetRole() },
-                { "Module Dependency", Model.GetModelType().ParentModule.Name },
-                { "Module Dependency Version", Model.GetModelType().ParentModule.Version }, 
+                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
+                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version }, 
                 { "ModelId", Model.Id }
             });
         }

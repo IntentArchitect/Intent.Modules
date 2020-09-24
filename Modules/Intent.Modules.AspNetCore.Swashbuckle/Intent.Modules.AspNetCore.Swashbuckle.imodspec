@@ -2,7 +2,7 @@
 <package>
   <id>Intent.AspNetCore.Swashbuckle</id>
   <version>3.0.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Implements Swagger support for using the Swashbuckle library for ASP.NET Core.</summary>
   <description>Implements Swagger support for using the Swashbuckle library for ASP.NET Core.</description>
   <authors>Intent Architect</authors>

@@ -15,6 +15,7 @@ namespace Intent.Modules.Angular.Api
         public const string SpecializationType = "Component View";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ComponentViewModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -62,11 +63,6 @@ namespace Intent.Modules.Angular.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        [IntentManaged(Mode.Fully)]
-        public IList<TableControlModel> TableControls => _element.ChildElements
-            .Where(x => x.SpecializationType == TableControlModel.SpecializationType)
-            .Select(x => new TableControlModel(x))
-            .ToList();
+        public const string SpecializationTypeId = "624513a6-cba8-4dde-8ebe-6b19f00f0364";
     }
 }

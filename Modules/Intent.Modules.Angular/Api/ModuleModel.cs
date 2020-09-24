@@ -96,5 +96,16 @@ namespace Intent.Modules.Angular.Api
             .Where(x => x.SpecializationType == FormGroupDefinitionModel.SpecializationType)
             .Select(x => new FormGroupDefinitionModel(x))
             .ToList();
+        public const string SpecializationTypeId = "cac14331-198a-4f9a-bbb9-171eb0bd4efe";
+
+        [IntentManaged(Mode.Ignore)]
+        public ModuleModel(IElement element, string requiredType = SpecializationType)
+        {
+            if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            {
+                throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
+            }
+            _element = element;
+        }
     }
 }

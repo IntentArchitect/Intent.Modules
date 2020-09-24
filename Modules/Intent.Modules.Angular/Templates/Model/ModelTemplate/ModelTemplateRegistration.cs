@@ -34,7 +34,7 @@ namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<ModelDefinitionModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetModelDefinitionModels(application);
+            return _metadataManager.Angular(application).GetModelDefinitionModels();
         }
     }
 }

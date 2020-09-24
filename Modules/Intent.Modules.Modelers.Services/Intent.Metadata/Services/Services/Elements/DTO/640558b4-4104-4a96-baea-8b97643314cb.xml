@@ -9,15 +9,17 @@
     <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
     <metadataId>Domain</metadataId>
     <mappedPath>
-      <target id="06919864-4a6b-4894-ab64-f660d41e583d" name="Character" type="n/a" />
+      <target id="06919864-4a6b-4894-ab64-f660d41e583d" name="Character" type="element" specialization="Class" />
     </mappedPath>
   </mappedClass>
   <parentFolderId>8ae4a4a0-0983-4efe-a7ed-cc247ebaedf7</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
   <stereotypes />
   <childElements>
     <childElement id="4662bb04-f0f5-4b94-87f0-49e1b29de1a3" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>name</name>
-      <display>name: &lt;not found&gt;</display>
+      <display>name: string</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="7bbae95a-ad15-438b-8d0e-5fa13145e790">
@@ -31,16 +33,18 @@
       <isMapped>true</isMapped>
       <mappedClass>
         <mappedPath>
-          <target id="69c58551-e882-45e4-905f-a90f164a0948" name="name" type="n/a" />
+          <target id="69c58551-e882-45e4-905f-a90f164a0948" name="name" type="element" specialization="Attribute" />
         </mappedPath>
       </mappedClass>
       <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>
     <childElement id="e340b47b-0fad-4c7d-96ff-b210b03b9833" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>isVillain</name>
-      <display>isVillain: &lt;not found&gt;</display>
+      <display>isVillain: bool</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="225019e3-a4b2-4992-804d-ac30d3cd06de">
@@ -54,10 +58,12 @@
       <isMapped>true</isMapped>
       <mappedClass>
         <mappedPath>
-          <target id="4df91bc2-dbee-4ded-9e82-0f3b4371a543" name="isVillain" type="n/a" />
+          <target id="4df91bc2-dbee-4ded-9e82-0f3b4371a543" name="isVillain" type="element" specialization="Attribute" />
         </mappedPath>
       </mappedClass>
       <parentFolderId>640558b4-4104-4a96-baea-8b97643314cb</parentFolderId>
+      <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+      <packageName>Services</packageName>
       <stereotypes />
       <childElements />
     </childElement>

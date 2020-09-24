@@ -34,6 +34,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\DomainPackageModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/DomainPackageModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\AssociationModelAssociationExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/AssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -71,6 +76,11 @@
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>

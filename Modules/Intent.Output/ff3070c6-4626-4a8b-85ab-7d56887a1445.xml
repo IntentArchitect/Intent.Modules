@@ -19,18 +19,8 @@
     </FileLog>
     <FileLog>
       <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\PackageModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/PackageModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>

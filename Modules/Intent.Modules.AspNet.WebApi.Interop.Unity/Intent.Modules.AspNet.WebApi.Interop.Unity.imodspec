@@ -2,7 +2,7 @@
 <package>
   <id>Intent.AspNet.WebApi.Interop.Unity</id>
   <version>3.0.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Asp.NET Registrations using the Unity container</summary>
   <description>Asp.NET Registrations using the Unity container</description>
   <authors>Intent Architect</authors>

@@ -8,6 +8,7 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Modules.Common.Html.Templates;
+using Intent.Modules.Angular.Layout.Api;
 
 
 [assembly: DefaultIntentManaged(Mode.Merge)]

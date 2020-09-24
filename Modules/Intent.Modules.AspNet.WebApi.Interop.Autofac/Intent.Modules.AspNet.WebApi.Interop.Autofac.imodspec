@@ -2,7 +2,7 @@
 <package>
   <id>Intent.AspNet.WebApi.Interop.Autofac</id>
   <version>3.0.0</version>
-  <supportedClientVersions>[2.1.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>ASP.NET Registrations using the Autofac container</summary>
   <description>ASP.NET Registrations using the Autofac container</description>
   <authors>Intent Architect</authors>

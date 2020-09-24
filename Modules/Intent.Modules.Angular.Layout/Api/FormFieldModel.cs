@@ -16,6 +16,7 @@ namespace Intent.Modules.Angular.Layout.Api
         public const string SpecializationType = "Form Field";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public FormFieldModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -72,5 +73,6 @@ namespace Intent.Modules.Angular.Layout.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "1e3e3916-0cdb-45bb-a3b8-d7e01834cc36";
     }
 }

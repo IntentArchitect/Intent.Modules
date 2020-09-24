@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8567ac64-6be4-4ea7-8db8-5e7c6eb285c0" type="Folder" typeId="26f606b9-71e2-4e21-b185-04f90cb7d603">
+<class id="8567ac64-6be4-4ea7-8db8-5e7c6eb285c0" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>App</name>
   <display>App</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>af05bb66-305f-4791-bec8-d9f9cf0c3c34</parentFolderId>
+  <packageId>af05bb66-305f-4791-bec8-d9f9cf0c3c34</packageId>
+  <packageName>Module Builder</packageName>
   <stereotypes />
   <childElements />
 </class>

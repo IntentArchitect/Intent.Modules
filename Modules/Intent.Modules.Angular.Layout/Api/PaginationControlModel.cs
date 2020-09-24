@@ -18,6 +18,7 @@ namespace Intent.Modules.Angular.Layout.Api
         [IntentManaged(Mode.Fully)] public const string SpecializationType = "Pagination Control";
         protected readonly IElement _element;
 
+        [IntentManaged(Mode.Ignore)]
         public PaginationControlModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -95,6 +96,7 @@ namespace Intent.Modules.Angular.Layout.Api
 
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
+        public const string SpecializationTypeId = "3faee16c-8605-4bb4-8566-06a555c929a3";
 
     }
 }
