@@ -4,7 +4,6 @@
   <targetMode>of-type</targetMode>
   <targetElements>
     <element id="d2e543c7-174a-45b4-aebe-a13f9ee90214">Intent Module</element>
-    <element id="4e1f79b4-3272-44cb-bee4-7dbd62b16e0e">Intent Designer Package</element>
   </targetElements>
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />

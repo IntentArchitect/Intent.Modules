@@ -9,15 +9,15 @@
       <table class="table table-hover">
         <thead class="thead-dark">
           <tr intent-manage intent-id="<#= Model.Name.Replace(" ", "").ToKebabCase() #>-header">
-<# foreach(var field in Model.DataModel.ChildElements) { #>
-            <th><#= field.Name.ToPascalCase() #></th>
+<# foreach(var field in Model.Columns) { #>
+            <th><#= field.Name #></th>
 <# } #>
           </tr>
         </thead>
         <tbody>
           <tr *ngFor="let item of <#= Model.DataModelPath #>" class="clickable" intent-manage intent-id="<#= Model.Name.Replace(" ", "").ToKebabCase() #>-<#= Model.Name.ToKebabCase() #>-data">
-<# foreach(var field in Model.DataModel.ChildElements) { #>
-            <td>{{item.<#= field.Name #>}}</td>
+<# foreach(var field in Model.Columns) { #>
+            <td>{{item.<#= field.DataPath #>}}</td>
 <# } #>
           </tr>
         </tbody>

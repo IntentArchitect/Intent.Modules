@@ -66,7 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         {
             return new MappingSettingsPersistable()
             {
-                DefaultModeler = this.GetMappingSettings().DefaultDesigner(),
+                DefaultModeler = this.GetMappingSettings().DefaultDesigner().Id,
                 MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList()
             };
         }

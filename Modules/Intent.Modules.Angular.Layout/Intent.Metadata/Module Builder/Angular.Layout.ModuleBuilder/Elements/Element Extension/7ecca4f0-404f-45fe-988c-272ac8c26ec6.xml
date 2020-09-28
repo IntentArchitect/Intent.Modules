@@ -9,6 +9,9 @@
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Angular</typePackageName>
+    <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -39,6 +42,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
             <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
@@ -75,6 +79,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
             <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
@@ -111,6 +116,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
             <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
@@ -147,6 +153,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
             <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />
@@ -183,6 +190,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
             <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
             <stereotypes />

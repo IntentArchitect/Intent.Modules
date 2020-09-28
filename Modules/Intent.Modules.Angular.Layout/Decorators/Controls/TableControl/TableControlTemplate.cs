@@ -47,14 +47,14 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.TableControl
             this.Write("-header\">\r\n");
             
             #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\TableControl\TableControlTemplate.tt"
- foreach(var field in Model.DataModel.ChildElements) { 
+ foreach(var field in Model.Columns) { 
             
             #line default
             #line hidden
             this.Write("            <th>");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\TableControl\TableControlTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
             
             #line default
             #line hidden
@@ -90,14 +90,14 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.TableControl
             this.Write("-data\">\r\n");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\TableControl\TableControlTemplate.tt"
- foreach(var field in Model.DataModel.ChildElements) { 
+ foreach(var field in Model.Columns) { 
             
             #line default
             #line hidden
             this.Write("            <td>{{item.");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\TableControl\TableControlTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.DataPath));
             
             #line default
             #line hidden

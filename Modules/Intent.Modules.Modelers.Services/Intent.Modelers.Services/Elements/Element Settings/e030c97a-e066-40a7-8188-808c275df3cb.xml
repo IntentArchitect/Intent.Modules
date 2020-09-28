@@ -62,6 +62,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Services</typePackageName>
             <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />

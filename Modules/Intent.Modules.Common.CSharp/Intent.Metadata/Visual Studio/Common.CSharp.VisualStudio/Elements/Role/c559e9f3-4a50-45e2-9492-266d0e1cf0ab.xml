@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c559e9f3-4a50-45e2-9492-266d0e1cf0ab" type="Role">
+<class id="c559e9f3-4a50-45e2-9492-266d0e1cf0ab" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>dbe0fab1-2720-40f2-9f2c-76719e833d59</parentFolderId>
+  <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+  <packageName>Common.CSharp.VisualStudio</packageName>
   <stereotypes />
   <childElements />
 </class>

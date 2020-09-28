@@ -26,43 +26,40 @@ namespace Intent.Modules.Angular.Layout.Api
             _element = element;
             if (Mapping != null)
             {
-                DataModelPath = Mapping.Element.Name.ToCamelCase();
-                if (Mapping.Element.TypeReference.IsCollection)
-                {
-                    DataModel = (IElement)Mapping.Element.TypeReference.Element;
-                }
-                else
-                {
-                    foreach (var childElement in ((IElement)Mapping.Element.TypeReference.Element).ChildElements)
-                    {
-                        if (childElement.TypeReference.IsCollection)
-                        {
-                            DataModelPath += "?." + childElement.Name.ToCamelCase();
-                            // Not robust:
-                            if (childElement.TypeReference.Element.SpecializationType == "Generic Type")
-                            {
-                                DataModel = (IElement)Mapping.Element.TypeReference.GenericTypeParameters.First().Element;
-                            }
-                            else
-                            {
-                                DataModel = (IElement)childElement.TypeReference.Element;
-                            }
-                            break;
-                        }
-                    }
-                }
+                DataModelPath = string.Join("?.", Mapping.Path.Select(x => x.Name.ToCamelCase()));
+                //if (Mapping.Element.TypeReference.IsCollection)
+                //{
+                //    DataModel = (IElement)Mapping.Element.TypeReference.Element;
+                //}
+                //else
+                //{
+                //    foreach (var childElement in ((IElement)Mapping.Element.TypeReference.Element).ChildElements)
+                //    {
+                //        if (childElement.TypeReference.IsCollection)
+                //        {
+                //            DataModelPath += "?." + childElement.Name.ToCamelCase();
+                //            // Not robust:
+                //            if (childElement.TypeReference.Element.SpecializationType == "Generic Type")
+                //            {
+                //                DataModel = (IElement)Mapping.Element.TypeReference.GenericTypeParameters.First().Element;
+                //            }
+                //            else
+                //            {
+                //                DataModel = (IElement)childElement.TypeReference.Element;
+                //            }
+                //            break;
+                //        }
+                //    }
+                //}
             }
         }
 
         [IntentManaged(Mode.Ignore)]
         public string DataModelPath { get; }
 
-        [IntentManaged(Mode.Ignore)]
-        public IElement DataModel { get; }
-
         public bool IsValid()
         {
-            return DataModelPath != null && DataModel != null;
+            return DataModelPath != null;
         }
 
         [IntentManaged(Mode.Fully)]
@@ -110,5 +107,10 @@ namespace Intent.Modules.Angular.Layout.Api
         [IntentManaged(Mode.Fully)]
         public IElementMapping Mapping => _element.MappedElement;
         public const string SpecializationTypeId = "e302d9ca-268e-4a98-ad8d-4434aefb9903";
+
+        public IList<TableColumnModel> Columns => _element.ChildElements
+                    .Where(x => x.SpecializationType == TableColumnModel.SpecializationType)
+                    .Select(x => new TableColumnModel(x))
+                    .ToList();
     }
 }

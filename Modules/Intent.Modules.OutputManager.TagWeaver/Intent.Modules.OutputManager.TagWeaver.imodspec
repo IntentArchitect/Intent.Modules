@@ -2,7 +2,7 @@
 <package>
   <id>Intent.OutputTransformer.TagWeaver</id>
   <version>2.0.0</version>
-  <supportedClientVersions>[2.0.0,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Provides interactive code management between software factory outputs and existing user code through tags.</summary>
   <description>Provides interactive code management between software factory outputs and existing user code through tags.</description>
   <authors>Intent Architect</authors>

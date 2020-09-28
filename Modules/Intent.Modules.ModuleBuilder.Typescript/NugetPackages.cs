@@ -4,6 +4,6 @@ namespace Intent.Modules.ModuleBuilder.TypeScript
 {
     public static class NugetPackages
     {
-        public static NugetPackageInfo IntentCommonTypescript = new NugetPackageInfo("Intent.Modules.Common.Typescript", "2.1.0");
+        public static NugetPackageInfo IntentCommonTypescript = new NugetPackageInfo("Intent.Modules.Common.Typescript", "3.0.0-pre.1");
     }
 }

@@ -19,7 +19,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         public ProjectItemTemplatePartialTemplate(string templateId, IProject project, FileTemplateModel model) : base(templateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
-            AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
             if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
             {
                 AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));

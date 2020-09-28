@@ -62,6 +62,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Services</typePackageName>
             <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
@@ -105,7 +106,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="Domain" isActive="true" />
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="6ab29b31-27af-4f56-a67c-986d82097d63" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

@@ -62,6 +62,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Angular</typePackageName>
             <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
             <stereotypes />
@@ -98,6 +99,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Angular</typePackageName>
             <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
             <stereotypes />
@@ -134,6 +136,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Angular</typePackageName>
             <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
             <stereotypes />
@@ -170,6 +173,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Angular</typePackageName>
             <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
             <stereotypes />

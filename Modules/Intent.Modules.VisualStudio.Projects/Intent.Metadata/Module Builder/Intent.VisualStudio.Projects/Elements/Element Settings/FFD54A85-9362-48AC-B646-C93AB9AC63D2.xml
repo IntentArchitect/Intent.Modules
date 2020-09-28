@@ -62,6 +62,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.VisualStudio.Projects</typePackageName>
             <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
             <stereotypes />
@@ -98,6 +99,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.VisualStudio.Projects</typePackageName>
             <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
             <stereotypes />

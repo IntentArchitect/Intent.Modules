@@ -28,7 +28,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/uml/Class_256x.png&quot;}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;./img/icons/uml/Attribute_256x.png&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />

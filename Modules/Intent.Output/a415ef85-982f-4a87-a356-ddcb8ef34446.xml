@@ -189,11 +189,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\IntentDesignerPackageModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/IntentDesignerPackageModelExtensions.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\IntentModuleModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/Extensions/IntentModuleModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -226,11 +221,6 @@
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\FileTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/FileTemplateModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IntentDesignerPackageModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IntentDesignerPackageModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>

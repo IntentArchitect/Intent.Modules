@@ -33,9 +33,9 @@ namespace Intent.Modules.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
-            public string DefaultDesigner()
+            public IElement DefaultDesigner()
             {
-                return _stereotype.GetProperty<string>("Default Designer");
+                return _stereotype.GetProperty<IElement>("Default Designer");
             }
 
         }

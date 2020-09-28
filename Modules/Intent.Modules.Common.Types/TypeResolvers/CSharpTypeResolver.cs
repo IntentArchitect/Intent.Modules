@@ -30,6 +30,56 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             }
             else
             {
+                switch (typeInfo.Element.Name)
+                {
+                    case "bool":
+                        result = "bool";
+                        break;
+                    case "date":
+                    case "datetime":
+                        result = "System.DateTime";
+                        break;
+                    case "char":
+                        result = "char";
+                        break;
+                    case "byte":
+                        result = "byte";
+                        break;
+                    case "decimal":
+                        result = "decimal";
+                        break;
+                    case "double":
+                        result = "double";
+                        break;
+                    case "float":
+                        result = "float";
+                        break;
+                    case "short":
+                        result = "short";
+                        break;
+                    case "int":
+                        result = "int";
+                        break;
+                    case "long":
+                        result = "long";
+                        break;
+                    case "datetimeoffset":
+                        result = "System.DateTimeOffset";
+                        break;
+                    case "binary":
+                        result = "byte[]";
+                        break;
+                    case "object":
+                        result = "object";
+                        break;
+                    case "guid":
+                        result = "System.Guid";
+                        break;
+                    case "string":
+                        result = "string";
+                        break;
+                }
+
                 if (typeInfo.IsNullable && typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase))
                 {
                     result += "?";

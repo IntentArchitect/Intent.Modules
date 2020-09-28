@@ -61,13 +61,7 @@
       </typeOrder>
     </packageSetting>
   </packageSettings>
-  <packageExtensions>
-    <packageExtension type="Package" typeId="73cf6531-f699-479d-b2b8-92da159ada37">
-      <requiredPackages />
-      <creationOptions />
-      <typeOrder />
-    </packageExtension>
-  </packageExtensions>
+  <packageExtensions />
   <elementSettings>
     <elementSetting type="Decorator" typeId="f0f46278-29ea-42bd-9206-0e7034f623bc">
       <icon type="FontAwesome" source="wpforms" />

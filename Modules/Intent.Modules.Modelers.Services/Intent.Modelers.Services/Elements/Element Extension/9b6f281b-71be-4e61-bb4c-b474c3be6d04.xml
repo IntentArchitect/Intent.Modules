@@ -9,6 +9,9 @@
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Common.Types</typePackageName>
+    <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -39,6 +42,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Services</typePackageName>
             <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
@@ -75,6 +79,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Services</typePackageName>
             <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
@@ -111,6 +116,9 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -145,6 +153,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Services</typePackageName>
             <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
             <stereotypes />
@@ -181,6 +190,9 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -23,7 +24,14 @@ namespace Intent.Modules.Angular.Layout.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            if (InternalElement.IsMapped)
+            {
+                DataPath = string.Join(".", InternalElement.MappedElement.Path.Select(x => x.Name.ToCamelCase()));
+            }
         }
+
+        [IntentManaged(Mode.Ignore)]
+        public string DataPath { get; }
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;

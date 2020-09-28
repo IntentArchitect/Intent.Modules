@@ -1,16 +1,10 @@
-﻿
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using Intent.Modules.Common.TypeResolution;
-using Intent.Modules.Common.Types.TypeResolvers;
 using Intent.Modules.Common.Types.Contracts;
-using Intent.Templates;
+using Intent.Modules.Common.Types.TypeResolvers;
 
-namespace Intent.Modules.Common.Types.TypeResolvers
+namespace Intent.Modules.Common.TypeScript
 {
     [Description("Type Script Type Resolver")]
     public class TypeScriptTypeResolverFactory : ITypeResolverFactory

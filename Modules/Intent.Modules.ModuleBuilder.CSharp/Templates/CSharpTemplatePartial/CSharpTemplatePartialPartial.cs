@@ -5,7 +5,6 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.CSharp.Api;
-using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -22,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public CSharpTemplatePartial(IProject project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency("Intent.Modules.Common.CSharp", "2.2.0");
+            AddNugetDependency(NugetPackages.IntentCommonCSharp);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
             if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
             {

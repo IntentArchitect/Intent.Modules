@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="a4bd2f6a-50c6-427c-89dd-2e6992da4bf4" type="Role">
+<class id="a4bd2f6a-50c6-427c-89dd-2e6992da4bf4" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>dbe0fab1-2720-40f2-9f2c-76719e833d59</parentFolderId>
+  <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+  <packageName>Common.CSharp.VisualStudio</packageName>
   <stereotypes />
   <childElements />
 </class>

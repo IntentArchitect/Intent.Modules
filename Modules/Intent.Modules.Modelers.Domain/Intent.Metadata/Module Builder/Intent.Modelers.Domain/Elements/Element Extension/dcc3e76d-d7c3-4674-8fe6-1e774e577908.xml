@@ -9,6 +9,7 @@
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -39,6 +40,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Domain</typePackageName>
             <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
             <stereotypes />
@@ -75,6 +77,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Domain</typePackageName>
             <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
             <stereotypes />
@@ -111,6 +114,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -145,6 +149,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Domain</typePackageName>
             <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
             <stereotypes />
@@ -181,6 +186,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.Modelers.Domain</typePackageName>
             <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
             <stereotypes />
@@ -217,6 +223,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
