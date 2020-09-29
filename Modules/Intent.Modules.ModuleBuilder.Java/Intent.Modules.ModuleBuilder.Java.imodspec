@@ -26,13 +26,13 @@
     <dependency id="Intent.Common.Types" version="3.0.0" />
     <dependency id="Intent.Common.Java" version="3.0.0" />
     <dependency id="Intent.ModuleBuilder" version="3.0.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="2.0.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install target="Module Builder" src="modelers" />
+    <install target="Module Builder" src="modelers/Java Types.designer.settings" externalReference="f00bf9aa-2c87-45a2-932d-4b587198a092" />
   </metadata>
 </package>

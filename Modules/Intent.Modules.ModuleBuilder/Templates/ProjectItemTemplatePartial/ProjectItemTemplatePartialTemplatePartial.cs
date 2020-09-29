@@ -19,10 +19,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         public ProjectItemTemplatePartialTemplate(string templateId, IProject project, FileTemplateModel model) : base(templateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
-            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
-            {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
-            }
         }
 
         public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();

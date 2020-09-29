@@ -23,10 +23,6 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         public JavaFileTemplatePartial(IProject project, JavaFileTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonJava);
-            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
-            {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
-            }
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

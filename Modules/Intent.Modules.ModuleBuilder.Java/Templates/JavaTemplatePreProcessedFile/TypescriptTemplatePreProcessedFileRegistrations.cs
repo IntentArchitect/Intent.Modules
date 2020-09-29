@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Modules.ModuleBuilder.Java.Api;
 using Intent.Templates;
@@ -31,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaTemplatePreProcessedFi
 
         public override IEnumerable<JavaFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetJavaFileTemplateModels(application);
+            return _metadataManager.ModuleBuilder(application).GetJavaFileTemplateModels();
         }
     }
 }

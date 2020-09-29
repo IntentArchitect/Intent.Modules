@@ -9,6 +9,9 @@
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Common.Types</typePackageName>
+    <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -39,7 +42,8 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
-            <typePackageName>ModuleBuilder.Java.ModuleBuilder</typePackageName>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder.Java</typePackageName>
             <typePackageId>b6978589-6e21-40a6-88b3-0854c11f4388</typePackageId>
             <stereotypes />
             <genericTypeParameters />

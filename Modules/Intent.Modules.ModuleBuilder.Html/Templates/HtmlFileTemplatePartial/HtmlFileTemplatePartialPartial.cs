@@ -23,10 +23,10 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         public HtmlFileTemplatePartial(IProject project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonHtml);
-            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
-            {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
-            }
+            //if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
+            //{
+            //    AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
+            //}
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

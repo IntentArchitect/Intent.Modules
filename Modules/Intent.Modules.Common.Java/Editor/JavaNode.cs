@@ -152,7 +152,14 @@ namespace Intent.Modules.Common.Java.Editor
                     //var text = node.GetTextWithComments();
                     if (getCollection(this).Count == 0)
                     {
-                        this.AddFirst((dynamic)node);
+                        if (node is JavaAnnotation annotation)
+                        {
+                            this.AddFirst(annotation);
+                        }
+                        else
+                        {
+                            this.AddFirst(node);
+                        }
                     }
                     else if (index == 0)
                     {

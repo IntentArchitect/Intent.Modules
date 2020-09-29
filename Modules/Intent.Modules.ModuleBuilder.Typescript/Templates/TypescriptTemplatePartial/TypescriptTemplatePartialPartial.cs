@@ -23,10 +23,6 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         public TypescriptTemplatePartial(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonTypescript);
-            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
-            {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
-            }
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

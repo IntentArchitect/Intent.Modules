@@ -71,11 +71,9 @@
     <file src="$outDir$\$id$.pdb" />
   </files>
   <metadata>
-    <!--<install target="Angular" src="modelers" />
-    <install target="Angular" src="Intent.Metadata/Module Builder/Intent.Modelers.Angular" />
-    <install target="Angular" src="Intent.Metadata/Angular/Intent.Angular.Types" />-->
     <install src="modelers/Angular Core Types.designer.settings" externalReference="0a3786a7-f514-4ec3-88b9-7842744dbb3c" />
     <install src="modelers/Angular.designer.config" externalReference="7083df81-ccfb-435c-be88-d5701adcc106" />
-    <install src="Intent.Metadata/Module Builder/Intent.Angular/Intent.Angular.pkg.config" externalReference="a3deb341-dd4e-4f7f-99f5-2f198c1c251c" target="Angular" />
+    <install target="Angular" src="Intent.Metadata/Module Builder/Intent.Angular/Intent.Angular.pkg.config" externalReference="a3deb341-dd4e-4f7f-99f5-2f198c1c251c" />
+    <install target="Angular" src="Intent.Metadata/Angular/Intent.Angular.Types/Intent.Angular.Types.pkg.config" />
   </metadata>
 </package>

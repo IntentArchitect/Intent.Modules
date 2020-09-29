@@ -60,7 +60,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 <#@ import namespace=""Intent.Modules.Common.Java.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-<#@ import namespace=""{Model.GetModule().ApiNamespace}"" #>
+{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 

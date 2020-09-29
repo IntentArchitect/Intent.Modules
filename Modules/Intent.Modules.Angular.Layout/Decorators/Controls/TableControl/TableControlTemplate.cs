@@ -94,14 +94,14 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.TableControl
             
             #line default
             #line hidden
-            this.Write("            <td>{{item.");
+            this.Write("            <td>");
             
             #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\TableControl\TableControlTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(field.DataPath));
+            this.Write(this.ToStringHelper.ToStringWithCulture(field.DataPath  != null ? "{{item." + field.DataPath + "}}" : ""));
             
             #line default
             #line hidden
-            this.Write("}}</td>\r\n");
+            this.Write("</td>\r\n");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\TableControl\TableControlTemplate.tt"
  } 

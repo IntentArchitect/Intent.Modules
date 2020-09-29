@@ -84,12 +84,12 @@ namespace Intent.Modules.Common.VisualStudio
 
         public static bool IsNetCore2App(this IOutputTarget outputTarget)
         {
-            return outputTarget.GetSupportedFrameworks().Any(x => x == "netcoreapp2");
+            return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp2"));
         }
 
         public static bool IsNetCore3App(this IOutputTarget outputTarget)
         {
-            return outputTarget.GetSupportedFrameworks().Any(x => x == "netcoreapp3");
+            return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
         }
     }
 }

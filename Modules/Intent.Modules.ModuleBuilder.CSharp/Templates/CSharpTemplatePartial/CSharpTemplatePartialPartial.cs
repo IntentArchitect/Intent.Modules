@@ -23,10 +23,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         {
             AddNugetDependency(NugetPackages.IntentCommonCSharp);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
-            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
-            {
-                AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
-            }
         }
 
         public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();

@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Templates;
 
@@ -17,10 +18,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 
         public CustomTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
-            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId) &&
-                !string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageVersion))
+            if (!string.IsNullOrWhiteSpace(Model.GetModelType()?.ParentModule.NuGetPackageId))
             {
-                AddNugetDependency(packageName: Model.GetModule().NuGetPackageId, packageVersion: Model.GetModule().NuGetPackageVersion);
+                AddNugetDependency(new NugetPackageInfo(Model.GetModelType()?.ParentModule.NuGetPackageId, Model.GetModelType()?.ParentModule.NuGetPackageVersion));
             }
         }
 

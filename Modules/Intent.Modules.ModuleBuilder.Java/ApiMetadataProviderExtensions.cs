@@ -11,9 +11,11 @@ namespace Intent.Modules.ModuleBuilder.Java.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<JavaFileTemplateModel> GetJavaFileTemplateModels(this IMetadataManager metadataManager, IApplication application)
+        public static IList<JavaFileTemplateModel> GetJavaFileTemplateModels(this IDesigner designer)
         {
-            return new ApiMetadataProvider(metadataManager).GetJavaFileTemplateModels(application);
+            return designer.GetElementsOfType(JavaFileTemplateModel.SpecializationTypeId)
+                .Select(x => new JavaFileTemplateModel(x))
+                .ToList();
         }
 
     }

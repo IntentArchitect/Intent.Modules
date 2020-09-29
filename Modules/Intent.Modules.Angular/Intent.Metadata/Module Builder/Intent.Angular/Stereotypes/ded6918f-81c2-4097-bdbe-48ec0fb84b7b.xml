@@ -23,8 +23,8 @@
       <placeholder>(optional)</placeholder>
       <valueOptions />
       <lookupTypes>
-        <type>angular service</type>
-        <type>service proxy</type>
+        <type>d009e5af-adb7-45c5-921c-fe8e209b8aa2</type>
+        <type>2d4ad132-e574-4319-9ae9-4d6e4b81110c</type>
       </lookupTypes>
     </property>
   </properties>

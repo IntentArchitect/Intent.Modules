@@ -47,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-<#@ import namespace=""{Model.GetModule().ApiNamespace}"" #>
+{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}
 
 // Place your file template logic here
 ";

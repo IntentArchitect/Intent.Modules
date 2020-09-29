@@ -59,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
 <#@ import namespace=""Intent.Modules.Common.Sql.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-<#@ import namespace=""{Model.GetModule().ApiNamespace}"" #>
+{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 

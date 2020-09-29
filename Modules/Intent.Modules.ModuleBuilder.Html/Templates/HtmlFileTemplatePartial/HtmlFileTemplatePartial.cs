@@ -37,7 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
                     "Weaver.Attributes;\r\nusing Intent.Templates;\r\n");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("using {0};", Model.GetModule().ApiNamespace)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : ""));
             
             #line default
             #line hidden

@@ -6,67 +6,62 @@
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java.sln</SolutionRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Api\JavaFileTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/JavaFileTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\ApiMetadataProvider.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProvider.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Java.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Intent.Modules.ModuleBuilder.Java.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Java.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\modelers\Java Types.modeler.extension.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Java Types.modeler.extension.config</ProjectRelativeFilePath>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\modelers\Java Types.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Java Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplate\JavaFileTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplate/JavaFileTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplate\JavaFileTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplate/JavaFileTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartial.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialPartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialPartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3834cb0a-8fa6-471e-9fcf-7360cfff2a1d</ProjectId>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialRegistration.cs</ProjectRelativeFilePath>
     </FileLog>

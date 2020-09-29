@@ -17,7 +17,7 @@
         <tbody>
           <tr *ngFor="let item of <#= Model.DataModelPath #>" class="clickable" intent-manage intent-id="<#= Model.Name.Replace(" ", "").ToKebabCase() #>-<#= Model.Name.ToKebabCase() #>-data">
 <# foreach(var field in Model.Columns) { #>
-            <td>{{item.<#= field.DataPath #>}}</td>
+            <td><#= field.DataPath  != null ? "{{item." + field.DataPath + "}}" : ""#></td>
 <# } #>
           </tr>
         </tbody>

@@ -17,10 +17,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public SingleFileListModelTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
-            if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId) &&
-                !string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageVersion))
+            if (!string.IsNullOrWhiteSpace(Model.GetModelType()?.ParentModule.NuGetPackageId))
             {
-                AddNugetDependency(packageName: Model.GetModule().NuGetPackageId, packageVersion: Model.GetModule().NuGetPackageVersion);
+                AddNugetDependency(new NugetPackageInfo(Model.GetModelType()?.ParentModule.NuGetPackageId, Model.GetModelType()?.ParentModule.NuGetPackageVersion));
             }
         }
 

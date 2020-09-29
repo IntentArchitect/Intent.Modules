@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Java.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -34,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<JavaFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.GetJavaFileTemplateModels(application);
+            return _metadataManager.ModuleBuilder(application).GetJavaFileTemplateModels();
         }
     }
 }
