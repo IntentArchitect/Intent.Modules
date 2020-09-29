@@ -29,7 +29,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.ButtonControl
         /// </summary>
         public override string TransformText()
         {
-            this.Write("      <div intent-manage intent-id=\"");
+            this.Write("      <span intent-manage intent-id=\"");
             
             #line 7 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Decorators\Controls\ButtonControl\ButtonControlTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Id));
@@ -64,7 +64,7 @@ namespace Intent.Modules.Angular.Layout.Decorators.Controls.ButtonControl
             
             #line default
             #line hidden
-            this.Write("</button>\r\n      </div>\r\n");
+            this.Write("</button>\r\n      </span>\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }
