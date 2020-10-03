@@ -22,8 +22,13 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Ast = new TypeScriptAST(_source);
             Change = new ChangeAST();
             File = new TypeScriptFile(Ast.RootNode, this);
-            var listener = new TypeScriptFileTreeWalker(File, this);
-            listener.WalkTree();
+            var walker = GetTreeWalker(File);
+            walker.WalkTree();
+        }
+
+        public virtual TypeScriptFileTreeWalker GetTreeWalker(TypeScriptNode node)
+        {
+            return new TypeScriptFileTreeWalker(node, this);
         }
 
         public TypeScriptFile File { get; }
@@ -41,7 +46,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
 
         public void InsertBefore(TypeScriptNode node, string text)
         {
-           InsertBefore(node.Node, text);
+            InsertBefore(node.Node, text);
         }
 
         public void InsertBefore(Node node, string text)
@@ -84,88 +89,14 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Ast = new TypeScriptAST(_source);
             Change = new ChangeAST();
             File.UpdateNode(Ast.RootNode);
-            var walker = new TypeScriptFileTreeWalker(File, this);
-            walker.WalkTree();
+            var listener = GetTreeWalker(File);
+            listener.WalkTree();
         }
-
-        //private List<TypeScriptFileImport> _imports;
-        //public List<TypeScriptFileImport> Imports()
-        //{
-        //    return _imports ?? (_imports = Ast.OfKind(SyntaxKind.ImportDeclaration).Select(x => new TypeScriptFileImport(x, this)).ToList());
-        //}
-
-        //public bool ImportExists(TypeScriptFileImport import)
-        //{
-        //    return import.Types.All(type => Imports().Exists(x => x.HasType(type) && x.Location == import.Location));
-        //}
-
-
-
-        //public IList<TypeScriptVariableStatement> VariableDeclarations()
-        //{
-        //    return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.VariableStatement).Select(x => new TypeScriptVariableStatement(x, this)).ToList();
-        //}
-
-        //public IList<TypeScriptExpressionStatement> ExpressionStatements()
-        //{
-        //    return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ExpressionStatement).Select(x => new TypeScriptExpressionStatement(x, this)).ToList();
-        //}
-
-        //public IList<TypeScriptClass> ClassDeclarations()
-        //{
-        //    return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ClassDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
-        //}
-
-        //public IList<TypeScriptClass> InterfaceDeclarations()
-        //{
-        //    return Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.InterfaceDeclaration).Select(x => new TypeScriptClass(x, this)).ToList();
-        //}
-
-        //public void AddVariableDeclaration(string declaration)
-        //{
-        //    var variables = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.VariableStatement);
-        //    Change.InsertAfter(variables.Any() ? variables.Last() : Ast.RootNode.Children.Last(), declaration);
-        //    UpdateChanges();
-        //}
-
-        //public void AddExpressionStatement(string declaration)
-        //{
-        //    var existings = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ExpressionStatement);
-        //    Change.InsertAfter(existings.Any() ? existings.Last() : Ast.RootNode.Children.Last(), declaration);
-        //    UpdateChanges();
-        //}
-
-        //public void AddClass(string declaration)
-        //{
-        //    var classes = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.ClassDeclaration);
-        //    Change.InsertAfter(classes.Any() ? classes.Last() : Ast.RootNode.Children.Last(), declaration);
-        //    UpdateChanges();
-        //}
-
-        //public void AddInterface(string declaration)
-        //{
-        //    var interfaces = Ast.RootNode.Children.Where(x => x.Kind == SyntaxKind.InterfaceDeclaration);
-        //    Change.InsertAfter(interfaces.Any() ? interfaces.Last() : Ast.RootNode.Children.Last(), declaration);
-        //    UpdateChanges();
-        //}
-
-
 
         public string GetSource()
         {
             return _source;
         }
-
-        //public void UpdateChanges()
-        //{
-        //    _source = Change.GetChangedSource(_source);
-        //    Ast = new TypeScriptAST(_source);
-        //    Change = new ChangeAST();
-        //    //foreach (var node in _registeredNodes)
-        //    //{
-        //    //    node.UpdateNode();
-        //    //}
-        //}
 
         public void Register(TypeScriptNode node)
         {
@@ -176,7 +107,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
         {
             _registeredNodes.Remove(node);
         }
-        
+
         public override string ToString()
         {
             return _source;

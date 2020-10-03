@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>7e0041b4-8005-48df-b096-89c39ba546d2</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>65161e83-0223-4511-87ba-271e55e273be</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.React\Intent.Modules.Common.React.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.React.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>65161e83-0223-4511-87ba-271e55e273be</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Common.React\Intent.Modules.Common.React.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.React.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

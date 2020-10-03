@@ -27,13 +27,13 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             }
             _element = element;
             RelativeLocation = this.GetStereotypeProperty<string>("Project Settings", "Relative Location");
-            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
+            ParentFolder = element.ParentElement?.SpecializationType == SolutionFolderModel.SpecializationType ? new SolutionFolderModel(element.ParentElement) : null;
         }
 
         public string RelativeLocation { get; }
         public string Type => SpecializationType;
         public string ProjectTypeId => VisualStudioProjectTypeIds.CoreCSharpLibrary;
-        public FolderModel Folder { get; }
+        public SolutionFolderModel ParentFolder { get; }
 
         public IOutputTargetConfig ToOutputTargetConfig()
         {

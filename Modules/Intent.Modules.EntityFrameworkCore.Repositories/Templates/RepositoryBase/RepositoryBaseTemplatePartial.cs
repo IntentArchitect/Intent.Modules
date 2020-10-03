@@ -20,7 +20,6 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.RepositoryBa
         public RepositoryBaseTemplate(IProject project)
             : base(Identifier, project)
         {
-            AddNugetDependency(new NugetPackageInfo("Microsoft.EntityFrameworkCore.SqlServer", "2.1.1"));
         }
 
         public string RepositoryInterfaceName => GetTemplateClassName(RepositoryInterfaceTemplate.Identifier);

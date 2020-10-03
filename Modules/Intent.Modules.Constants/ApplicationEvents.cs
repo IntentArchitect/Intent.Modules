@@ -66,6 +66,8 @@
         public const string ConcreteTypeKey = "ConcreteType";
         public const string ConcreteTypeTemplateIdKey = "ConcreteTypeTemplateId";
         public const string OptionsKey = "Options";
+        public const string NugetDependency = "Microsoft.EntityFrameworkCore.SqlServer";
+        public const string NugetDependencyVersion = "2.1.1";
     }
 
     public static class EntityFrameworkEvents

@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Zu.TypeScript.TsTypes;
 
@@ -32,43 +33,43 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
                     _index++;
                     return;
                 case SyntaxKind.VariableStatement:
-                    OnVariableStatement(node);
+                    InsertOrUpdateNode(node, CreateVariableStatement);
                     _index++;
                     return;
                 case SyntaxKind.ExpressionStatement:
-                    OnExpressionStatement(node);
+                    InsertOrUpdateNode(node, CreateExpressionStatement);
                     _index++;
                     return;
                 case SyntaxKind.FunctionDeclaration:
-                    OnFunctionDeclaration(node);
+                    InsertOrUpdateNode(node, CreateFunctionDeclaration);
                     _index++;
                     return;
                 case SyntaxKind.ClassDeclaration:
-                    OnClassDeclaration(node);
+                    InsertOrUpdateNode(node, CreateClass);
                     _index++;
                     return;
                 case SyntaxKind.InterfaceDeclaration:
-                    OnInterfaceDeclaration(node);
+                    InsertOrUpdateNode(node, CreateInterface);
                     _index++;
                     return;
                 case SyntaxKind.Constructor:
-                    OnConstructor(node);
+                    InsertOrUpdateNode(node, CreateConstructor);
                     _index++;
                     return;
                 case SyntaxKind.MethodDeclaration:
-                    OnMethodDeclaration(node);
+                    InsertOrUpdateNode(node, CreateMethod);
                     _index++;
                     return;
                 case SyntaxKind.PropertyDeclaration:
-                    OnPropertyDeclaration(node);
+                    InsertOrUpdateNode(node, CreatePropertyDeclaration);
                     _index++;
                     return;
                 case SyntaxKind.GetAccessor:
-                    OnGetAccessor(node);
+                    InsertOrUpdateNode(node, CreateGetAccessor);
                     _index++;
                     return;
                 case SyntaxKind.SetAccessor:
-                    OnSetAccessor(node);
+                    InsertOrUpdateNode(node, CreateSetAccessor);
                     _index++;
                     return;
             }
@@ -91,140 +92,59 @@ namespace Intent.Modules.Common.TypeScript.Editor.Parsing
             }
         }
 
-        private void OnConstructor(Node node)
+        protected virtual TypeScriptNode CreateClass(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptConstructor(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptClass(node, parent);
         }
 
-        private void OnPropertyDeclaration(Node node)
+        protected virtual TypeScriptNode CreateInterface(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptProperty(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptInterface(node, parent);
         }
 
-        private void OnGetAccessor(Node node)
+        protected virtual TypeScriptNode CreateConstructor(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptGetAccessor(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptConstructor(node, parent);
         }
 
-        private void OnSetAccessor(Node node)
+        protected virtual TypeScriptNode CreatePropertyDeclaration(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptSetAccessor(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptProperty(node, parent);
         }
 
-        private void OnMethodDeclaration(Node node)
+        protected virtual TypeScriptNode CreateGetAccessor(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptMethod(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptGetAccessor(node, parent);
         }
 
-        private void OnVariableStatement(Node node)
+        protected virtual TypeScriptNode CreateSetAccessor(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptVariableStatement(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptSetAccessor(node, parent);
         }
 
-        private void OnFunctionDeclaration(Node node)
+        protected virtual TypeScriptNode CreateMethod(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptFunctionDeclaration(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptMethod(node, parent);
         }
 
-        private void OnExpressionStatement(Node node)
+        protected virtual TypeScriptNode CreateVariableStatement(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                _node.InsertChild(_index, new TypeScriptExpressionStatement(node, _node));
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
+            return new TypeScriptVariableStatement(node, parent);
         }
 
-        private void OnClassDeclaration(Node node)
+        protected virtual TypeScriptNode CreateFunctionDeclaration(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                existing = new TypeScriptClass(node, _node);
-                _node.InsertChild(_index, existing);
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
-            var listener = new TypeScriptFileTreeWalker(existing, _editor);
-            listener.WalkTree();
+            return new TypeScriptFunctionDeclaration(node, parent);
         }
 
-        private void OnInterfaceDeclaration(Node node)
+        protected virtual TypeScriptNode CreateExpressionStatement(Node node, TypeScriptNode parent)
         {
-            var existing = _node.TryGetChild(node);
-            if (existing == null)
-            {
-                existing = new TypeScriptInterface(node, _node);
-                _node.InsertChild(_index, existing);
-            }
-            else
-            {
-                existing.UpdateNode(node);
-            }
-            var listener = new TypeScriptFileTreeWalker(existing, _editor);
-            listener.WalkTree();
+            return new TypeScriptExpressionStatement(node, parent);
+        }
+
+        protected void InsertOrUpdateNode(Node node, Func<Node, TypeScriptNode, TypeScriptNode> create)
+        {
+            _node.InsertOrUpdateChildNode(node, _index, () => create(node, _node));
         }
     }
 }

@@ -42,11 +42,18 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
 
         private void HandleDbContextRegistration(ApplicationEvent @event)
         {
-            _dbContextRegistrations.Add(new DbContextContainerRegistration(
+            var registration = new DbContextContainerRegistration(
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.UsingsKey),
                 @event.GetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeKey),
                 @event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey) != null ? TemplateDependency.OnTemplate(@event.TryGetValue(ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey)) : null,
-                @event.TryGetValue(ContainerRegistrationForDbContextEvent.OptionsKey)));
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.OptionsKey),
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.NugetDependency),
+                @event.TryGetValue(ContainerRegistrationForDbContextEvent.NugetDependencyVersion));
+            _dbContextRegistrations.Add(registration);
+            if (registration.NugetPackage != null)
+            {
+                AddNugetDependency(registration.NugetPackage);
+            }
         }
 
         private void HandleServiceConfiguration(ApplicationEvent @event)
@@ -261,18 +268,25 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
 
         internal class DbContextContainerRegistration
         {
-            public DbContextContainerRegistration(string usings, string concreteType, ITemplateDependency concreteTypeTemplateDependency, string options)
+            public DbContextContainerRegistration(string usings, string concreteType,
+                ITemplateDependency concreteTypeTemplateDependency, string options, string nugetDependency,
+                string nugetDependencyVersion)
             {
                 Usings = usings;
                 ConcreteType = concreteType;
                 ConcreteTypeTemplateDependency = concreteTypeTemplateDependency;
                 Options = options;
+                if (!string.IsNullOrWhiteSpace(nugetDependency) && !string.IsNullOrWhiteSpace(nugetDependencyVersion))
+                {
+                    NugetPackage = new NugetPackageInfo(nugetDependency, nugetDependencyVersion);
+                }
             }
 
             public string Usings { get; }
             public string ConcreteType { get; }
             public ITemplateDependency ConcreteTypeTemplateDependency { get; }
             public string Options { get; }
+            public NugetPackageInfo NugetPackage { get; }
         }
 
         internal class Initializations

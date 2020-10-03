@@ -16,13 +16,13 @@ using Intent.Utils;
 namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
 {
     [Description("Visual Studio Dependancy Resolver")]
-    public class DependencyResolutionFactoryExtensions : FactoryExtensionBase, IExecutionLifeCycle
+    public class ProjectDependencyResolutionFactoryExtensions : FactoryExtensionBase, IExecutionLifeCycle
     {
         public override string Id
         {
             get
             {
-                return "Intent.VSProjects.DependencyResolver";
+                return "Intent.VSProjects.ProjectDependencyResolver";
             }
         }
 
@@ -30,39 +30,11 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
 
         public void OnStep(IApplication application, string step)
         {
-            if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
-            {
-                ResolveNuGetDependencies(application);
-            }
             if (step == ExecutionLifeCycleSteps.AfterTemplateExecution)
             {
                 ResolveProjectDependencies(application);
             }
         }
-
-        public void ResolveNuGetDependencies(IApplication application)
-        {
-            // Resolve all dependencies and events
-            Logging.Log.Info($"Resolving NuGet Dependencies");
-
-            foreach (var project in application.Projects)
-            {
-                project.InitializeVSMetadata();
-                 
-                project.AddNugetPackages(GetTemplateNugetDependencies(project));
-
-                var assemblyDependencies = project.TemplateInstances
-                        .SelectMany(ti => ti.GetAllAssemblyDependencies())
-                        .Distinct()
-                        .ToList();
-
-                foreach (var assemblyDependency in assemblyDependencies)
-                {
-                    project.AddReference(assemblyDependency);
-                }
-            }
-        }
-
 
         public void ResolveProjectDependencies(IApplication application)
         {

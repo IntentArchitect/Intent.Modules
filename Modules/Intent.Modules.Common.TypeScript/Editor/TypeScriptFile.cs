@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.TypeScript.Editor.Parsing;
 using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.TypeScript.Editor
 {
     public class TypeScriptFile : TypeScriptNode
     {
-        public TypeScriptFile(Node node, TypeScriptFileEditor editor) : base(node, null)
+        public TypeScriptFile(Node node, TypeScriptFileEditor editor) : base(node, editor)
         {
             Editor = editor;
         }

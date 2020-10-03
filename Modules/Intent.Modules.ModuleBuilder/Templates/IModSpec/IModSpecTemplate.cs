@@ -72,6 +72,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             : base(templateId, project)
         {
             _metadataManager = metadataManager;
+            ModuleModel = _metadataManager.ModuleBuilder(project.Application).GetIntentModuleModels().First();
             ExecutionContext.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
             {
                 _templatesToRegister.Add(new TemplateRegistrationInfo(
@@ -88,6 +89,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 _metadataToRegister.Add(@event);
             });
         }
+
+        public IntentModuleModel ModuleModel { get; }
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
@@ -261,8 +264,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 ? XDocument.Load(filePath)
                 : XDocument.Parse($@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <package>
-  <id>{OutputTarget.Name}</id>
-  <version>1.0.0</version>
+  <id>{ModuleModel.Name}</id>
+  <version>{ModuleModel.GetModuleSettings().Version()}</version>
   <summary>A custom module for {OutputTarget.Application.SolutionName}.</summary>
   <description>A custom module for {OutputTarget.Application.SolutionName}.</description>
   <authors>{OutputTarget.Application.SolutionName}</authors>

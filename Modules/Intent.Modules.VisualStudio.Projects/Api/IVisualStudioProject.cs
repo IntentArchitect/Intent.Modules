@@ -6,7 +6,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
-    public interface IVisualStudioProject : IMetadataModel, IHasStereotypes, IHasFolder
+    public interface IVisualStudioProject : IMetadataModel, IHasStereotypes
     {
         string Name { get; }
         string Type { get; }
@@ -17,6 +17,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         IEnumerable<string> TargetFrameworkVersion();
         IList<RoleModel> Roles { get; }
         IList<FolderModel> Folders { get; }
+        SolutionFolderModel ParentFolder { get; }
     }
 
     public static class VisualStudioProjectExtensions

@@ -4,6 +4,60 @@ using Xunit;
 
 namespace Intent.Modules.Common.TypeScript.Tests
 {
+    public class TypeScriptParsingOfJsxTests
+    {
+        [Fact]
+        public void Test()
+        {
+            var merger = new TypeScriptWeavingMerger();
+            var result = merger.Merge(existingContent: @"import React, { Component } from 'react';
+
+@IntentMerge()
+export class Counter extends Component {
+  render() {
+    return (
+      <div>
+      </div>
+    );
+  }
+}", outputContent: @"import React, { Component } from 'react';
+
+export class Counter extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+
+        <p>This is a simple example of a React component.</p>
+
+        <p aria-live=""polite"">Current count: <strong>{this.state.currentCount}</strong></p>
+
+        <button className=""btn btn-primary"" onClick={this.incrementCounter}>Increment</button>
+      </div>
+    );
+  }
+}");
+            Assert.Equal(@"import React, { Component } from 'react';
+
+@IntentMerge()
+export class Counter extends Component {
+  render() {
+    return (
+      <div>
+        <h1>Counter</h1>
+
+        <p>This is a simple example of a React component.</p>
+
+        <p aria-live=""polite"">Current count: <strong>{this.state.currentCount}</strong></p>
+
+        <button className=""btn btn-primary"" onClick={this.incrementCounter}>Increment</button>
+      </div>
+    );
+  }
+}", result);
+        }
+    }
+
     public class TypeScriptClassMergeTests
     {
         [Fact]

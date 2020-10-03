@@ -27,14 +27,17 @@ namespace Intent.Modules.Common.TypeScript.Editor
         private readonly SyntaxKind _syntaxKind;
         private readonly List<TypeScriptNode> _children = new List<TypeScriptNode>();
 
-        protected TypeScriptNode(Node node, TypeScriptNode parent)
+        protected TypeScriptNode(Node node, TypeScriptNode parent) : this(node, parent.Editor)
+        {
+            Parent = parent;
+        }
+
+        protected TypeScriptNode(Node node, TypeScriptFileEditor editor)
         {
             Node = node ?? throw new ArgumentNullException(nameof(node));
-            Parent = parent;
-            Editor = parent?.Editor;
+            Editor = editor;
             _syntaxKind = Node.Kind;
             NodePath = GetNodePath(node);
-            //Decorators = Node.Decorators?.Select(x => new TypeScriptDecorator(x, this)).ToList() ?? new List<TypeScriptDecorator>();
             UpdateNode(node);
         }
 
@@ -90,12 +93,6 @@ namespace Intent.Modules.Common.TypeScript.Editor
         public virtual void InsertAfter(TypeScriptNode existing, string text)
         {
             Editor.InsertAfter(existing, text);
-        }
-
-        public void AddChild(TypeScriptNode node)
-        {
-            node.Editor = Editor;
-            _children.Add(node);
         }
 
         public void InsertChild(int index, TypeScriptNode node)
@@ -350,7 +347,7 @@ namespace Intent.Modules.Common.TypeScript.Editor
             Editor.Insert(index, node);
         }
 
-        protected virtual void InsertOrUpdateChildNode(Node node, int index, Func<TypeScriptNode> createNode)
+        public virtual void InsertOrUpdateChildNode(Node node, int index, Func<TypeScriptNode> createNode)
         {
             var existing = TryGetChild(node);
             if (existing == null)

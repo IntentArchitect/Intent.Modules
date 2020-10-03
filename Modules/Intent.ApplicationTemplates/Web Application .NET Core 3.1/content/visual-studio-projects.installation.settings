@@ -3,7 +3,7 @@
   <targetDesignerId>0701433c-36c0-4569-b1f4-9204986b587d</targetDesignerId>
   <createElements>
     <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
-      <name>Api</name>
+      <name>1 - Api</name>
       <childElements>
         <element typeId="FFD54A85-9362-48AC-B646-C93AB9AC63D2" type="ASP.NET Core Web Application">
           <name>${application.name}.Api</name>
@@ -37,7 +37,7 @@
       </childElements>
     </element>
     <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
-      <name>Services</name>
+      <name>2 - Services</name>
       <childElements>
         <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">
           <name>${application.name}.Services</name>
@@ -55,6 +55,9 @@
           </stereotypes>
           <childElements>
             <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
+              <name>Application.Mappings</name>
+            </element>
+            <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
               <name>Services.Contracts</name>
             </element>
             <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
@@ -65,7 +68,7 @@
       </childElements>
     </element>
     <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
-      <name>Domain</name>
+      <name>3 - Domain</name>
       <childElements>
         <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">
           <name>${application.name}.Domain</name>
@@ -93,7 +96,7 @@
       </childElements>
     </element>
     <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
-      <name>Persistence</name>
+      <name>4 - Persistence</name>
       <childElements>
         <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">
           <name>${application.name}.Persistence.EF</name>

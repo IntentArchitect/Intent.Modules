@@ -67,20 +67,22 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public void BeforeTemplateExecution()
         {
-            _eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
-            {
-                { "Name", $"{Project.Application.Name}DB" },
-                { "ConnectionString", $"Server=.;Initial Catalog={Project.Application.SolutionName}.{ Project.Application.Name };Integrated Security=true;MultipleActiveResultSets=True" },
-                { "ProviderName", "System.Data.SqlClient" },
-            });
+            //_eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
+            //{
+            //    { "Name", $"{Project.Application.Name}DB" },
+            //    { "ConnectionString", $"Server=.;Initial Catalog={Project.Application.SolutionName}.{ Project.Application.Name };Integrated Security=true;MultipleActiveResultSets=True" },
+            //    { "ProviderName", "System.Data.SqlClient" },
+            //});
 
-            _eventDispatcher.Publish(ContainerRegistrationForDbContextEvent.EventId, new Dictionary<string, string>()
-            {
-                { ContainerRegistrationForDbContextEvent.UsingsKey, $"Microsoft.EntityFrameworkCore;" },
-                { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
-                { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
-                { ContainerRegistrationForDbContextEvent.OptionsKey, $@".{GetDbContextDbServerSetupMethodName()}(Configuration.GetConnectionString(""{Project.Application.Name}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
-            });
+            //_eventDispatcher.Publish(ContainerRegistrationForDbContextEvent.EventId, new Dictionary<string, string>()
+            //{
+            //    { ContainerRegistrationForDbContextEvent.UsingsKey, $"Microsoft.EntityFrameworkCore;" },
+            //    { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
+            //    { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
+            //    { ContainerRegistrationForDbContextEvent.OptionsKey, $@".{GetDbContextDbServerSetupMethodName()}(Configuration.GetConnectionString(""{Project.Application.Name}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
+            //    { ContainerRegistrationForDbContextEvent.NugetDependency, NugetPackages.EntityFrameworkCoreSqlServer. },
+            //    { ContainerRegistrationForDbContextEvent.NugetDependencyVersion, "2.1.1" },
+            //});
         }
 
         public bool UseLazyLoadingProxies => !bool.TryParse(GetMetadata().CustomMetadata["Use Lazy-Loading Proxies"], out var useLazyLoadingProxies) || useLazyLoadingProxies;
@@ -128,12 +130,6 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return Model.Select(x => TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
-        }
-
-        private string GetDbContextDbServerSetupMethodName()
-        {
-            var dbContextDbServerName = GetMetadata().CustomMetadata["DbContext DbServer Setup"];
-            return dbContextDbServerName;
         }
     }
 }

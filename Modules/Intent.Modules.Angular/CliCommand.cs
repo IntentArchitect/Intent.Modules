@@ -21,6 +21,7 @@ namespace Intent.Modules.Angular
             }
             try
             {
+                Logging.Log.Info($"Executing: {location}> {command}");
                 var output = cmd.ExecuteCommand(Path.GetFullPath(location),
                     new[]
                     {
