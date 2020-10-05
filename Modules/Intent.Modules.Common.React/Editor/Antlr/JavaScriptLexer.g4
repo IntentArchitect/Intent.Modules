@@ -67,7 +67,8 @@ Hashtag:                        '#';
 RightShiftArithmetic:           '>>';
 LeftShiftArithmetic:            '<<';
 RightShiftLogical:              '>>>';
-LessThan:                       '<';
+LessThan:                       '< ';
+OpenTag:                        '<' -> pushMode(TAG);
 MoreThan:                       '>';
 LessThanEquals:                 '<=';
 GreaterThanEquals:              '>=';
@@ -169,16 +170,16 @@ Await:                          'await';
 /// The following tokens are also considered to be FutureReservedWords
 /// when parsing strict mode
 
-Implements:                     'implements' {this.IsStrictMode()}?;
-StrictLet:                      'let' {this.IsStrictMode()}?;
+Implements:                     'implements';
+StrictLet:                      'let';
 NonStrictLet:                   'let' {!this.IsStrictMode()}?;
-Private:                        'private' {this.IsStrictMode()}?;
-Public:                         'public' {this.IsStrictMode()}?;
-Interface:                      'interface' {this.IsStrictMode()}?;
-Package:                        'package' {this.IsStrictMode()}?;
-Protected:                      'protected' {this.IsStrictMode()}?;
-Static:                         'static' {this.IsStrictMode()}?;
-Yield:                          'yield' {this.IsStrictMode()}?;
+Private:                        'private';
+Public:                         'public';
+Interface:                      'interface';
+Package:                        'package';
+Protected:                      'protected';
+Static:                         'static';
+Yield:                          'yield';
 
 /// Identifier Names and Identifiers
 
@@ -206,11 +207,17 @@ CDATA:                          '<![CDATA[' .*? ']]>' -> channel(HIDDEN);
 //
 // html tag declarations
 //
+
 mode TAG;
 
 TagOpen
     : LessThan -> pushMode(TAG)
     ;
+
+InlineArrow
+    : '=>' -> type(ARROW)
+    ;
+
 TagClose
     : MoreThan -> popMode
     ;
@@ -227,6 +234,33 @@ TagName
     : TagNameStartChar TagNameChar*
     ;
 
+TagEquals
+    : Assign -> pushMode(ATTVALUE)
+    ;
+
+//InlineOpenBrace
+//    : '{' -> pushMode(INLINE_JAVASCRIPT)
+//    ;
+
+//mode INLINE_JAVASCRIPT;
+
+//InlineJavaScript
+//    : ~'}'+
+//    ;
+
+//DeeperInlineOpenBrace
+//    : '{' -> pushMode(INLINE_JAVASCRIPT)
+//    ;
+
+//InlineCloseBrace
+//    : '}' -> popMode
+//    ;
+
+//
+// lexing mode for attribute values
+//
+mode ATTVALUE;
+
 // an attribute value may have spaces b/t the '=' and the value
 AttributeValue
     : [ ]* Attribute -> popMode
@@ -238,15 +272,6 @@ Attribute
     | AttributeChar
     | HexChars
     | DecChars
-    ;
-
-//
-// lexing mode for attribute values
-//
-mode ATTVALUE;
-
-TagEquals
-    : Assign -> pushMode(ATTVALUE)
     ;
 
 // Fragment rules

@@ -173,7 +173,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeS
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.React", "Intent.Modules.Common.React\Intent.Modules.Common.React.csproj", "{75B5C484-4DD3-4B06-B85E-F1273B8B1E29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.React.Tests", "Intent.Modules.Common.React.Tests\Intent.Modules.Common.React.Tests.csproj", "{263075F3-C93F-40F7-BE56-39742CAB319C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.React.Tests", "Intent.Modules.Common.React.Tests\Intent.Modules.Common.React.Tests.csproj", "{263075F3-C93F-40F7-BE56-39742CAB319C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.React.Console", "Intent.Modules.Common.React.Console\Intent.Modules.Common.React.Console.csproj", "{485C8E7B-3320-4C7D-823A-A928957E9816}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -477,6 +479,10 @@ Global
 		{263075F3-C93F-40F7-BE56-39742CAB319C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{263075F3-C93F-40F7-BE56-39742CAB319C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{263075F3-C93F-40F7-BE56-39742CAB319C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{485C8E7B-3320-4C7D-823A-A928957E9816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{485C8E7B-3320-4C7D-823A-A928957E9816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{485C8E7B-3320-4C7D-823A-A928957E9816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{485C8E7B-3320-4C7D-823A-A928957E9816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -566,6 +572,7 @@ Global
 		{B6C39338-280B-4C3D-B9A1-2E18A52E2F2F} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{75B5C484-4DD3-4B06-B85E-F1273B8B1E29} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{263075F3-C93F-40F7-BE56-39742CAB319C} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{485C8E7B-3320-4C7D-823A-A928957E9816} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

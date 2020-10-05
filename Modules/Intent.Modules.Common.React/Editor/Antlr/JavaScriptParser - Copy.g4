@@ -157,6 +157,7 @@ varModifier  // let, const - ECMAScript 6
     : Var
     | let
     | Const
+    | Static
     ;
 
 continueStatement
@@ -168,8 +169,9 @@ breakStatement
     ;
 
 returnStatement
-    : Return ({this.notLineTerminator()}? expressionSequence)? eos
-    | Return '(' htmlElements ')' eos
+    :  Return '(' htmlElements ')' eos
+    | Return '(' expressionSequence ')' eos
+    | Return ({this.notLineTerminator()}? expressionSequence)? eos
     ;
 
 yieldStatement
@@ -334,7 +336,7 @@ singleExpression
     | singleExpression ('+' | '-') singleExpression                         # AdditiveExpression
     | singleExpression '??' singleExpression                                # CoalesceExpression
     | singleExpression ('<<' | '>>' | '>>>') singleExpression               # BitShiftExpression
-    | singleExpression ( LessThan | '>' | '<=' | '>=') singleExpression     # RelationalExpression
+    | singleExpression ('<' | '>' | '<=' | '>=') singleExpression           # RelationalExpression
     | singleExpression Instanceof singleExpression                          # InstanceofExpression
     | singleExpression In singleExpression                                  # InExpression
     | singleExpression ('==' | '!=' | '===' | '!==') singleExpression       # EqualityExpression
@@ -364,14 +366,18 @@ htmlElements
     ;
 
 htmlElement
-    : '<' htmlTagStartName htmlAttribute* TagClose htmlContent '<' TagSlash htmlTagClosingName TagClose
-    | '<' htmlTagName htmlAttribute* htmlContent TagSlashClose
-    | '<' htmlTagName htmlAttribute* TagSlashClose
+    : '<' htmlTagStartName htmlAttribute+ '>' htmlContent '<''/' htmlTagClosingName '>'
+    | '<' htmlTagStartName '>' htmlContent '<''/' htmlTagClosingName '>'
+    | '<' htmlTagStartName '>' htmlElement '<''/' htmlTagClosingName '>'
+    | '<' htmlTagStartName '>' ~('<'|'{')* '<''/' htmlTagClosingName '>'
+    | '<' htmlTagName htmlAttribute* htmlContent '/''>'
+    | '<' htmlTagName htmlAttribute* '/''>'
     //| '<' htmlTagName htmlAttribute* '>'
     ;
 
 htmlContent
     : htmlChardata? ((htmlElement | objectExpressionSequence) htmlChardata?)*
+    | htmlElement
     ;
 
 htmlTagStartName
@@ -384,18 +390,22 @@ htmlTagClosingName
 
 htmlTagName
     : TagName
-    //| keyword
-    //| Identifier
+    | keyword
+    | Identifier ('-' Identifier)*
+    | Identifier ('.' Identifier)*
+    | Identifier
     ;
 
 htmlAttribute
-    : htmlAttributeName TagEquals htmlAttributeValue
+    : htmlAttributeName '=' htmlAttributeValue
     | htmlAttributeName
     ;
 
 htmlAttributeName
     : TagName
-    //| Identifier
+    | Identifier ('-' Identifier)*
+    | Identifier ('.' Identifier)*
+    | Identifier
     ;
 
 htmlChardata
@@ -404,7 +414,7 @@ htmlChardata
 
 htmlAttributeValue
     : AttributeValue
-    //| StringLiteral
+    | StringLiteral
     | objectExpressionSequence
     ;
 
@@ -425,7 +435,7 @@ objectExpressionSequence
 anoymousFunction
     : functionDeclaration                                                       # FunctionDecl
     | Async? Function '*'? '(' formalParameterList? ')' '{' functionBody '}'    # AnoymousFunctionDecl
-    | Async? arrowFunctionParameters ARROW arrowFunctionBody                    # ArrowFunction
+    | Async? arrowFunctionParameters '=>' arrowFunctionBody                     # ArrowFunction
     ;
 
 arrowFunctionParameters
@@ -530,7 +540,6 @@ keyword
     | Delete
     | In
     | Try
-
     | Class
     | Enum
     | Extends
