@@ -67,14 +67,9 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
         private string TemplateBody()
         {
             return @"
-[assembly: DefaultIntentManaged(Mode.Fully)]
-
-namespace <#= Namespace #>
+export class <#= ClassName #>
 {
-    public class <#= ClassName #>
-    {
 
-    }
 }";
         }
 

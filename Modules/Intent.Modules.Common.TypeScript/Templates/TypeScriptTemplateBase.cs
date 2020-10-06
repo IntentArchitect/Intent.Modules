@@ -7,14 +7,14 @@ namespace Intent.Modules.Common.TypeScript.Templates
 {
     public abstract class TypeScriptTemplateBase : TypeScriptTemplateBase<object>
     {
-        protected TypeScriptTemplateBase(string templateId, IProject outputTarget) : base(templateId, outputTarget, null)
+        protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
         {
         }
     }
 
     public abstract class TypeScriptTemplateBase<TModel> : IntentTypescriptProjectItemTemplateBase<TModel>, ITypeScriptMerged
     {
-        protected TypeScriptTemplateBase(string templateId, IProject outputTarget, TModel model) : base(templateId, outputTarget, model)
+        protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
         }
 

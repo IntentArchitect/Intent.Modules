@@ -68,7 +68,7 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(" : ModelTemplateRegistrationBase<");
+            this.Write(" : FilePerModelTemplateRegistration<");
             
             #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
@@ -91,8 +91,8 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IProject" +
-                    " project, ");
+            this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IOutputT" +
+                    "arget outputTarget, ");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
@@ -106,8 +106,8 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write("(project, model);\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ig" +
-                    "nore, Signature = Mode.Fully)]\r\n        public override IEnumerable<");
+            this.Write("(outputTarget, model);\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mo" +
+                    "de.Ignore, Signature = Mode.Fully)]\r\n        public override IEnumerable<");
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\FilePerModel\FilePerModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
