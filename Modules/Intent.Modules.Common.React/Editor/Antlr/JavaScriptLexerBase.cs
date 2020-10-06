@@ -1,3 +1,4 @@
+using System;
 using Antlr4.Runtime;
 using System.Collections.Generic;
 using System.IO;
@@ -70,6 +71,7 @@ public abstract class JavaScriptLexerBase : Lexer
     {
         // Get the next token.
         IToken next = base.NextToken();
+        Console.WriteLine($"{next.Line}\t{next.Text}\t\t[{next.Type} - {DefaultVocabulary.GetDisplayName(next.Type)}]");
 
         if (next.Channel == DefaultTokenChannel)
         {
@@ -78,6 +80,20 @@ public abstract class JavaScriptLexerBase : Lexer
         }
 
         return next;
+    }
+
+    public override void PushMode(int m)
+    {
+        base.PushMode(m);
+        Console.WriteLine($"PUSH MODE: {m} - ({this.ModeStack.Count})");
+    }
+
+    public override int PopMode()
+    {
+        var m = base.PopMode();
+        Console.WriteLine($"POP MODE: {m} - ({this.ModeStack.Count})");
+
+        return m;
     }
 
     protected void ProcessOpenBrace()

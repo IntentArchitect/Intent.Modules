@@ -54,8 +54,8 @@ export class FetchData extends Component {
     }
 
     render2() {
-        return 
-            <ReactFragment>
+        return (
+            <React.Fragment>
                 <h1>Counter</h1>
 
                 <p>This is a simple example of a React component.</p>
@@ -64,11 +64,11 @@ export class FetchData extends Component {
 
                 <button type=""button""
                         className=""btn btn-primary btn-lg""
-                        onClick={this.do}>
+                        onClick={() => {  this.props.increment(); }}>
                     Increment
                 </button>
-            </ReactFragment>
-        ;
+            </React.Fragment>
+        );
     }
     render() {
         let contents = this.state.loading
@@ -89,7 +89,8 @@ export class FetchData extends Component {
         const data = await response.json();
         this.setState({ forecasts: data, loading: false });
     }
-}")));
+}
+")));
             var javaLexer = new JavaScriptLexer(inputStream);
             var tokens = new CommonTokenStream(javaLexer);
             tokens.Fill();
@@ -97,8 +98,7 @@ export class FetchData extends Component {
             for (var index = 0; index < list.Count; index++)
             {
                 var token = list[index];
-                Console.WriteLine(
-                    $"{index}\t{token.Text}\t\t[{token.Type} - {javaLexer.RuleNames[Math.Min(Math.Max(token.Type - 1, 0), javaLexer.RuleNames.Length)]}]");
+                //Console.WriteLine($"{index}\t{token.Text}\t\t[{token.Type} - {javaLexer.RuleNames[Math.Min(Math.Max(token.Type - 1, 0), javaLexer.RuleNames.Length)]}]");
             }
 
             var _rewriter = new TokenStreamRewriter(tokens);

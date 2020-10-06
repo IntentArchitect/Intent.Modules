@@ -130,14 +130,13 @@ TagSlashClose=129
 TagSlash=130
 TagName=131
 TagEquals=132
-AttributeValue=133
-Attribute=134
+HtmlWS=133
+AttributeValue=134
+Attribute=135
 '['=5
 ']'=6
 '('=7
 ')'=8
-'{'=9
-'}'=10
 ';'=11
 ','=12
 '='=13
@@ -160,7 +159,7 @@ Attribute=134
 '>>'=30
 '<<'=31
 '>>>'=32
-'< '=33
+' < '=33
 '<'=34
 '>'=35
 '<='=36

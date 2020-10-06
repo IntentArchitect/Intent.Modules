@@ -8,9 +8,7 @@ namespace Intent.Modules.Common.React.Editor
         public override void EnterReturnStatement(JavaScriptParser.ReturnStatementContext context)
         {
             base.EnterReturnStatement(context);
-            context.PrintTokens();
-            context.PrintTree();
-            var s = context.GetFullText();
+            LastReturnString = context.GetFullText();
         }
 
         public override void EnterHtmlElements(JavaScriptParser.HtmlElementsContext context)
@@ -25,6 +23,8 @@ namespace Intent.Modules.Common.React.Editor
 
             var s = context.GetFullText();
         }
+
+        public string LastReturnString { get; set; }
     }
 
     public static class PrinterExtension

@@ -11,6 +11,29 @@ using Xunit;
 
 namespace Intent.Modules.Common.React.Tests
 {
+    public static class ParserFactory {
+        public static string GetReturnType(string source)
+        {
+            var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(source)));
+            var javaLexer = new JavaScriptLexer(inputStream);
+            var tokens = new CommonTokenStream(javaLexer);
+            tokens.Fill();
+            var list = tokens.GetTokens();
+            for (var index = 0; index < list.Count; index++)
+            {
+                var token = list[index];
+                //Console.WriteLine($"{index}\t{token.Text}\t\t[{token.Type} - {javaLexer.RuleNames[Math.Min(Math.Max(token.Type - 1, 0), javaLexer.RuleNames.Length)]}]");
+            }
+
+            var _rewriter = new TokenStreamRewriter(tokens);
+            var parser = new JavaScriptParser(tokens);
+            var listener = new JavaScriptFileFactoryListener();
+            //parser.Interpreter.PredictionMode = PredictionMode.SLL; // Performance enhancement
+            ParseTreeWalker.Default.Walk(listener, parser.program());
+            return listener.LastReturnString;
+        }
+    }
+
     public class TsxIdentifiesHtmlTests
     {
         [Fact]

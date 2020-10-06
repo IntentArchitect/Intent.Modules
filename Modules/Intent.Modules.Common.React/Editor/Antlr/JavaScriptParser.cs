@@ -61,7 +61,7 @@ public partial class JavaScriptParser : JavaScriptParserBase {
 		Identifier=118, StringLiteral=119, TemplateStringLiteral=120, WhiteSpaces=121, 
 		LineTerminator=122, HtmlComment=123, CDataComment=124, UnexpectedCharacter=125, 
 		CDATA=126, TagOpen=127, TagClose=128, TagSlashClose=129, TagSlash=130, 
-		TagName=131, TagEquals=132, AttributeValue=133, Attribute=134;
+		TagName=131, TagEquals=132, HtmlWS=133, AttributeValue=134, Attribute=135;
 	public const int
 		RULE_program = 0, RULE_sourceElement = 1, RULE_statement = 2, RULE_block = 3, 
 		RULE_statementList = 4, RULE_importStatement = 5, RULE_importFromBlock = 6, 
@@ -114,10 +114,10 @@ public partial class JavaScriptParser : JavaScriptParserBase {
 	};
 
 	private static readonly string[] _LiteralNames = {
-		null, null, null, null, null, "'['", "']'", "'('", "')'", "'{'", "'}'", 
+		null, null, null, null, null, "'['", "']'", "'('", "')'", null, null, 
 		"';'", "','", "'='", "'?'", "':'", "'...'", "'.'", "'++'", "'--'", "'+'", 
 		"'-'", "'~'", "'!'", "'*'", "'/'", "'%'", "'**'", "'??'", "'#'", "'>>'", 
-		"'<<'", "'>>>'", "'< '", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", 
+		"'<<'", "'>>>'", "' < '", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", 
 		"'==='", "'!=='", "'&'", "'^'", "'|'", "'&&'", "'||'", "'*='", "'/='", 
 		"'%='", "'+='", "'-='", "'<<='", "'>>='", "'>>>='", "'&='", "'^='", "'|='", 
 		"'**='", null, "'null'", null, null, null, null, null, null, null, null, 
@@ -155,7 +155,7 @@ public partial class JavaScriptParser : JavaScriptParserBase {
 		"Protected", "Static", "Yield", "Identifier", "StringLiteral", "TemplateStringLiteral", 
 		"WhiteSpaces", "LineTerminator", "HtmlComment", "CDataComment", "UnexpectedCharacter", 
 		"CDATA", "TagOpen", "TagClose", "TagSlashClose", "TagSlash", "TagName", 
-		"TagEquals", "AttributeValue", "Attribute"
+		"TagEquals", "HtmlWS", "AttributeValue", "Attribute"
 	};
 	public static readonly IVocabulary DefaultVocabulary = new Vocabulary(_LiteralNames, _SymbolicNames);
 
@@ -8388,7 +8388,7 @@ public partial class JavaScriptParser : JavaScriptParserBase {
 
 	private static char[] _serializedATN = {
 		'\x3', '\x608B', '\xA72A', '\x8133', '\xB9ED', '\x417C', '\x3BE7', '\x7786', 
-		'\x5964', '\x3', '\x88', '\x479', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
+		'\x5964', '\x3', '\x89', '\x479', '\x4', '\x2', '\t', '\x2', '\x4', '\x3', 
 		'\t', '\x3', '\x4', '\x4', '\t', '\x4', '\x4', '\x5', '\t', '\x5', '\x4', 
 		'\x6', '\t', '\x6', '\x4', '\a', '\t', '\a', '\x4', '\b', '\t', '\b', 
 		'\x4', '\t', '\t', '\t', '\x4', '\n', '\t', '\n', '\x4', '\v', '\t', '\v', 
@@ -9279,7 +9279,7 @@ public partial class JavaScriptParser : JavaScriptParserBase {
 		'\x3D3', '\x3D5', '\n', '\a', '\x2', '\x2', '\x3D4', '\x3D3', '\x3', '\x2', 
 		'\x2', '\x2', '\x3D5', '\x3D6', '\x3', '\x2', '\x2', '\x2', '\x3D6', '\x3D4', 
 		'\x3', '\x2', '\x2', '\x2', '\x3D6', '\x3D7', '\x3', '\x2', '\x2', '\x2', 
-		'\x3D7', '\x87', '\x3', '\x2', '\x2', '\x2', '\x3D8', '\x3DB', '\a', '\x87', 
+		'\x3D7', '\x87', '\x3', '\x2', '\x2', '\x2', '\x3D8', '\x3DB', '\a', '\x88', 
 		'\x2', '\x2', '\x3D9', '\x3DB', '\x5', '\x8E', 'H', '\x2', '\x3DA', '\x3D8', 
 		'\x3', '\x2', '\x2', '\x2', '\x3DA', '\x3D9', '\x3', '\x2', '\x2', '\x2', 
 		'\x3DB', '\x89', '\x3', '\x2', '\x2', '\x2', '\x3DC', '\x3E0', '\x5', 

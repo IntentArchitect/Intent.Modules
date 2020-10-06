@@ -43,8 +43,8 @@ OpenBracket:                    '[';
 CloseBracket:                   ']';
 OpenParen:                      '(';
 CloseParen:                     ')';
-OpenBrace:                      '{' {this.ProcessOpenBrace();};
-CloseBrace:                     '}' {this.ProcessCloseBrace();};
+OpenBrace:                      '{' {this.ProcessOpenBrace();} -> pushMode(DEFAULT_MODE);
+CloseBrace:                     '}' {this.ProcessCloseBrace();} -> popMode;
 SemiColon:                      ';';
 Comma:                          ',';
 Assign:                         '=';
@@ -67,7 +67,7 @@ Hashtag:                        '#';
 RightShiftArithmetic:           '>>';
 LeftShiftArithmetic:            '<<';
 RightShiftLogical:              '>>>';
-LessThan:                       '< ';
+LessThan:                       ' < ';
 OpenTag:                        '<' -> pushMode(TAG);
 MoreThan:                       '>';
 LessThanEquals:                 '<=';
@@ -218,6 +218,10 @@ InlineArrow
     : '=>' -> type(ARROW)
     ;
 
+InlineOpenBrace
+    : '{' -> type(OpenBrace), pushMode(DEFAULT_MODE)
+    ;
+
 TagClose
     : MoreThan -> popMode
     ;
@@ -238,28 +242,19 @@ TagEquals
     : Assign -> pushMode(ATTVALUE)
     ;
 
-//InlineOpenBrace
-//    : '{' -> pushMode(INLINE_JAVASCRIPT)
-//    ;
+HtmlWS
+    : [\t\u000B\u000C\u0020\u00A0]+ -> channel(HIDDEN)
+    ;
 
-//mode INLINE_JAVASCRIPT;
-
-//InlineJavaScript
-//    : ~'}'+
-//    ;
-
-//DeeperInlineOpenBrace
-//    : '{' -> pushMode(INLINE_JAVASCRIPT)
-//    ;
-
-//InlineCloseBrace
-//    : '}' -> popMode
-//    ;
 
 //
 // lexing mode for attribute values
 //
 mode ATTVALUE;
+
+InlineAttributeOpenBrace
+    : '{' -> type(OpenBrace), popMode, pushMode(DEFAULT_MODE)
+    ;
 
 // an attribute value may have spaces b/t the '=' and the value
 AttributeValue
@@ -308,6 +303,9 @@ fragment DoubleQuoteString
 fragment SingleQuoteString
     : '\'' ~[<']* '\''
     ;
+//fragment InlineJavaScript
+//    : '{' ~[>]* '}'
+//    ;
 
 fragment
 TagNameStartChar

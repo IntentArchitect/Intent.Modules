@@ -67,7 +67,7 @@ statement
     ;
 
 block
-    : '{' statementList? '}'
+    : OpenBrace statementList? CloseBrace
     ;
 
 statementList
@@ -84,7 +84,7 @@ importFromBlock
     ;
 
 moduleItems
-    : '{' (aliasName ',')* (aliasName ','?)? '}'
+    : OpenBrace (aliasName ',')* (aliasName ','?)? CloseBrace
     ;
 
 importDefault
@@ -185,7 +185,7 @@ switchStatement
     ;
 
 caseBlock
-    : '{' caseClauses? (defaultClause caseClauses?)? '}'
+    : OpenBrace caseClauses? (defaultClause caseClauses?)? CloseBrace
     ;
 
 caseClauses
@@ -225,7 +225,7 @@ debuggerStatement
     ;
 
 functionDeclaration
-    : Async? Function '*'? identifier '(' formalParameterList? ')' '{' functionBody '}'
+    : Async? Function '*'? identifier '(' formalParameterList? ')' OpenBrace functionBody CloseBrace
     ;
 
 classDeclaration
@@ -233,7 +233,7 @@ classDeclaration
     ;
 
 classTail
-    : (Extends singleExpression)? '{' classElement* '}'
+    : (Extends singleExpression)? OpenBrace classElement* CloseBrace
     ;
 
 classElement
@@ -243,9 +243,9 @@ classElement
     ;
 
 methodDefinition
-    : '*'? '#'? propertyName '(' formalParameterList? ')' '{' functionBody '}'
-    | '*'? '#'? getter '(' ')' '{' functionBody '}'
-    | '*'? '#'? setter '(' formalParameterList? ')' '{' functionBody '}'
+    : '*'? '#'? propertyName '(' formalParameterList? ')' OpenBrace functionBody CloseBrace
+    | '*'? '#'? getter '(' ')' OpenBrace functionBody CloseBrace
+    | '*'? '#'? setter '(' formalParameterList? ')' OpenBrace functionBody CloseBrace
     ;
 
 formalParameterList
@@ -284,9 +284,9 @@ arrayElement
 propertyAssignment
     : propertyName ':' singleExpression                                             # PropertyExpressionAssignment
     | '[' singleExpression ']' ':' singleExpression                                 # ComputedPropertyExpressionAssignment
-    | Async? '*'? propertyName '(' formalParameterList?  ')'  '{' functionBody '}'  # FunctionProperty
-    | getter '(' ')' '{' functionBody '}'                                           # PropertyGetter
-    | setter '(' formalParameterArg ')' '{' functionBody '}'                        # PropertySetter
+    | Async? '*'? propertyName '(' formalParameterList?  ')'  OpenBrace functionBody CloseBrace  # FunctionProperty
+    | getter '(' ')' OpenBrace functionBody CloseBrace                                           # PropertyGetter
+    | setter '(' formalParameterArg ')' OpenBrace functionBody CloseBrace                        # PropertySetter
     | Ellipsis? singleExpression                                                    # PropertyShorthand
     ;
 
@@ -399,7 +399,7 @@ htmlAttributeName
     ;
 
 htmlChardata
-    : ~('<'|'{')+
+    : ~('<'|OpenBrace)+
     ;
 
 htmlAttributeValue
@@ -415,16 +415,16 @@ assignable
     ;
 
 objectLiteral
-    : '{' (propertyAssignment (',' propertyAssignment)*)? ','? '}'
+    : OpenBrace (propertyAssignment (',' propertyAssignment)*)? ','? CloseBrace
     ;
 
 objectExpressionSequence
-    : '{' expressionSequence '}'
+    : OpenBrace expressionSequence CloseBrace
     ;
 
 anoymousFunction
     : functionDeclaration                                                       # FunctionDecl
-    | Async? Function '*'? '(' formalParameterList? ')' '{' functionBody '}'    # AnoymousFunctionDecl
+    | Async? Function '*'? '(' formalParameterList? ')' OpenBrace functionBody CloseBrace    # AnoymousFunctionDecl
     | Async? arrowFunctionParameters ARROW arrowFunctionBody                    # ArrowFunction
     ;
 
@@ -435,7 +435,7 @@ arrowFunctionParameters
 
 arrowFunctionBody
     : singleExpression
-    | '{' functionBody '}'
+    | OpenBrace functionBody CloseBrace
     ;
 
 assignmentOperator
