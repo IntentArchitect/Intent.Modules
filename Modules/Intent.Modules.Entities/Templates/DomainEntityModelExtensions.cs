@@ -45,7 +45,7 @@ namespace Intent.Modules.Entities.Templates
             //{
             //    returnType = $"{collectionType}<{returnType}>";
             //}
-            return template.NormalizeNamespace(returnType);
+            return template.NormalizeNamespace(returnType.Name);
         }
 
         public static string Name(this AssociationEndModel associationEnd)

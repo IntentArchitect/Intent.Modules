@@ -54,8 +54,8 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "Java Template" },
                 { "Role", GetRole() },
-                //{ "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
-                //{ "Module Dependency Version",Model.GetDesignerSettings()?.ModuleVersion },
+                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
+                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version },
                 { "ModelId", Model.Id }
             });
         }

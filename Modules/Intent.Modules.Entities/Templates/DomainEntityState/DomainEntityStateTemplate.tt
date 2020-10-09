@@ -25,7 +25,7 @@ namespace <#= Namespace #>
 <#= BeforeProperties(Model) #>
 <#  foreach (var attribute in Model.Attributes)
     {
-		string attributeType = Types.Get(attribute.Type);
+		string attributeType = GetTypeName(attribute.Type);
 #><#= PropertyBefore(attribute) #><#      
         if (!CanWriteDefaultAttribute(attribute)) {
             continue;
@@ -67,9 +67,9 @@ namespace <#= Namespace #>
 		{
 			continue;
         }
-#>		private <#= NormalizeNamespace(Types.Get(associatedClass)) #> <#= associatedClass.Name().ToPrivateMember() #>;
+#>		private <#= GetTypeName(associatedClass) #> <#= associatedClass.Name().ToPrivateMember() #>;
 <#= PropertyAnnotations(associatedClass) #>
-        public virtual <#= NormalizeNamespace(Types.Get(associatedClass)) #> <#= associatedClass.Name().ToPascalCase() #>
+        public virtual <#= GetTypeName(associatedClass) #> <#= associatedClass.Name().ToPascalCase() #>
         {
             get
             {

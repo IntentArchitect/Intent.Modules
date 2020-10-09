@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.Sql
     {
         public override string DefaultCollectionFormat { get; set; } = "{0}";
 
-        protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
+        protected override IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
             if (typeInfo == null)
             {
@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.Sql
 
             if (typeInfo.HasStereotype("SQL Type Override"))
             {
-                return typeInfo.GetStereotypeProperty<string>("SQL Type Override", "Type Name");
+                return new ResolvedTypeInfo(typeInfo.GetStereotypeProperty<string>("SQL Type Override", "Type Name"), true, null);
             }
 
             string result = null;
@@ -76,7 +76,7 @@ namespace Intent.Modules.Common.Sql
 
             result += $" {(typeInfo.IsNullable ? "NULL" : "NOT NULL")}";
 
-            return result;
+            return new ResolvedTypeInfo(result, true, null);
         }
     }
 }

@@ -1,6 +1,8 @@
-﻿namespace Intent.Modules.Common.Templates
+﻿using Intent.Templates;
+
+namespace Intent.Modules.Common.Templates
 {
-    public interface IHasClassDetails
+    public interface IHasClassDetails : ITemplate
     {
         string Namespace { get; }
         string ClassName { get; }

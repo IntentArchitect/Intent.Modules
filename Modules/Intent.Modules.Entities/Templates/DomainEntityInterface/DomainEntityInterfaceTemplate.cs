@@ -101,7 +101,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         {
             continue;
         }
-        string attributeType = Types.Get(attribute.Type);
+        string attributeType = GetTypeName(attribute.Type);
 
             
             #line default

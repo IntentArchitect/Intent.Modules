@@ -83,7 +83,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             this.Write(": ");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Component\AngularComponentTsTemplate\AngularComponentTsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Types.Get(model.TypeReference)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(model.TypeReference)));
             
             #line default
             #line hidden

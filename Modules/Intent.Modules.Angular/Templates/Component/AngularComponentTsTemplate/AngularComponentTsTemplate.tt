@@ -16,7 +16,7 @@ import { Component, OnInit } from '@angular/core';<#= GetImports() #>
 export class <#= ClassName #> implements OnInit {
 <#  foreach (var model in Model.Models) {#>
 
-  <#= model.Name #>: <#= Types.Get(model.TypeReference)#>;
+  <#= model.Name #>: <#= GetTypeName(model.TypeReference)#>;
 <#  }#>
 
   constructor(<#= GetConstructorParams() #>) { }

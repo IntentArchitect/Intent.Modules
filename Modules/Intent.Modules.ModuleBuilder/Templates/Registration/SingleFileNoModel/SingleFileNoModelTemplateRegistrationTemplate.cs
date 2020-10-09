@@ -60,23 +60,23 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(" : NoModelTemplateRegistrationBase\r\n    {\r\n        public override string Templat" +
-                    "eId =>  ");
+            this.Write(" : SingleFileTemplateRegistration\r\n    {\r\n        public override string Template" +
+                    "Id =>  ");
             
             #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
             #line hidden
-            this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IProject" +
-                    " project)\r\n        {\r\n\t\t\treturn new ");
+            this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IOutputT" +
+                    "arget outputTarget)\r\n        {\r\n\t\t\treturn new ");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
             #line hidden
-            this.Write("(project, null);\r\n        }\r\n    }\r\n}");
+            this.Write("(outputTarget, null);\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

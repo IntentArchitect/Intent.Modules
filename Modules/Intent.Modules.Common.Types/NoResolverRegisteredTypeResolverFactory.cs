@@ -59,32 +59,32 @@ namespace Intent.Modules.Common.Types
                 throw new NotImplementedException();
             }
 
-            public string Get(ITypeReference typeInfo)
+            public IResolvedTypeInfo Get(ITypeReference typeInfo)
             {
                 if (typeInfo == null)
-                    return string.Empty;
-                return typeInfo.Element.Name;
+                    return new ResolvedTypeInfo(string.Empty, false, null);
+                return new ResolvedTypeInfo(typeInfo.Element.Name, false, null);
             }
 
-            public string Get(ITypeReference typeInfo, string collectionFormat)
+            public IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
                 if (typeInfo == null)
-                    return string.Empty;
-                return string.Format(collectionFormat, typeInfo.Element.Name);
+                    return new ResolvedTypeInfo(string.Empty, false, null);
+                return new ResolvedTypeInfo(string.Format(collectionFormat, typeInfo.Element.Name), false, null);
             }
 
-            public string Get(ICanBeReferencedType element)
+            public IResolvedTypeInfo Get(ICanBeReferencedType element)
             {
                 if (element == null)
-                    return string.Empty;
-                return element.Name;
+                    return new ResolvedTypeInfo(string.Empty, false, null);
+                return new ResolvedTypeInfo(element.Name, false, null);
             }
 
-            public string Get(ICanBeReferencedType element, string collectionFormat)
+            public IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat)
             {
                 if (element == null)
-                    return string.Empty;
-                return string.Format(collectionFormat, element.Name);
+                    return new ResolvedTypeInfo(string.Empty, false, null);
+                return new ResolvedTypeInfo(string.Format(collectionFormat, element.Name), false, null);
             }
 
             public ITypeResolverContext InContext(string contextName)

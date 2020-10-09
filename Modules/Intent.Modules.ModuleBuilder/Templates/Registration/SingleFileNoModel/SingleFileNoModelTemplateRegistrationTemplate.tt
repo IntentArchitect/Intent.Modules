@@ -19,13 +19,13 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : NoModelTemplateRegistrationBase
+    public class <#= ClassName #> : SingleFileTemplateRegistration
     {
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget)
         {
-			return new <#= GetTemplateNameForTemplateId() #>(project, null);
+			return new <#= GetTemplateNameForTemplateId() #>(outputTarget, null);
         }
     }
 }

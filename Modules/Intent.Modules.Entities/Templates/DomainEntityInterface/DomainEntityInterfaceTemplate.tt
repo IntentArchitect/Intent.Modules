@@ -30,7 +30,7 @@ namespace <#= Namespace #>
         {
             continue;
         }
-        string attributeType = Types.Get(attribute.Type);
+        string attributeType = GetTypeName(attribute.Type);
 #>
 <#= PropertyAnnotations(attribute) #>
         <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { <#= AttributeAccessors(attribute) #> }

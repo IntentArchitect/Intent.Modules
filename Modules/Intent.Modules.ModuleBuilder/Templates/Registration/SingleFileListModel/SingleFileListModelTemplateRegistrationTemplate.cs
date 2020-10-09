@@ -68,7 +68,7 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(" : ListModelTemplateRegistrationBase<");
+            this.Write(" : SingleFileListModelTemplateRegistration<");
             
             #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
@@ -91,8 +91,8 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IProject" +
-                    " project, IList<");
+            this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IOutputT" +
+                    "arget outputTarget, IList<");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
@@ -106,8 +106,8 @@ using Intent.Templates;
             
             #line default
             #line hidden
-            this.Write("(project, model);\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ig" +
-                    "nore, Signature = Mode.Fully)]\r\n        public override IList<");
+            this.Write("(outputTarget, model);\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mo" +
+                    "de.Ignore, Signature = Mode.Fully)]\r\n        public override IList<");
             
             #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));

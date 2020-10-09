@@ -19,7 +19,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.4"/>
+    <dependency id="Intent.Common" version="3.0.0"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

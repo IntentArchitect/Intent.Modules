@@ -25,7 +25,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInt
 
         public string EntityInterfaceName => GetTemplateClassName(GetMetadata().CustomMetadata["Entity Interface Template Id"], Model); 
 
-        public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type) ?? "Guid";
+        public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type)?.Name ?? "Guid";
 
         public override RoslynMergeConfig ConfigureRoslynMerger()
         {

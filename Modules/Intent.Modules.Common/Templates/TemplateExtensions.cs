@@ -92,6 +92,27 @@ namespace Intent.Modules.Common.Templates
             return sb.ToString();
         }
 
+
+        public static string ToDotCase(this string name)
+        {
+            var sb = new StringBuilder(name);
+            for (int i = 0; i < sb.Length; i++)
+            {
+                var c = sb[i];
+                if (char.IsUpper(c))
+                {
+                    sb.Remove(i, 1);
+                    sb.Insert(i, char.ToLower(c));
+                    if (i != 0 && i < sb.Length - 1)
+                    {
+                        sb.Insert(i, ".");
+                    }
+                }
+            }
+
+            return sb.ToString();
+        }
+
         public static string ToPluralName(this string s)
         {
             return s.EndsWith("y") && !s.EndsWith("ay") && !s.EndsWith("ey") && !s.EndsWith("iy") && !s.EndsWith("oy") && !s.EndsWith("uy")

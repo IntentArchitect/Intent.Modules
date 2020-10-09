@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
-using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
     public interface ITypeSource
     {
-        string GetType(ITypeReference typeInfo);
+        IResolvedTypeInfo GetType(ITypeReference typeInfo);
         IEnumerable<ITemplateDependency> GetTemplateDependencies();
     }
 
@@ -35,7 +34,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// </summary>
         /// <param name="typeInfo"></param>
         /// <returns></returns>
-        string Get(ITypeReference typeInfo);
+        IResolvedTypeInfo Get(ITypeReference typeInfo);
 
         /// <summary>
         /// Resolves the type name for the specified <see cref="typeInfo"/>
@@ -43,14 +42,14 @@ namespace Intent.Modules.Common.TypeResolution
         /// <param name="typeInfo"></param>
         /// <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
         /// <returns></returns>
-        string Get(ITypeReference typeInfo, string collectionFormat);
+        IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat);
 
         /// <summary>
         /// Resolves the type name for the specified <see cref="element"/>
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        string Get(ICanBeReferencedType element);
+        IResolvedTypeInfo Get(ICanBeReferencedType element);
 
         /// <summary>
         /// Resolves the type name for the specified <see cref="element"/>
@@ -58,7 +57,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// <param name="element"></param>
         /// <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
         /// <returns></returns>
-        string Get(ICanBeReferencedType element, string collectionFormat);
+        IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat);
 
         /// <summary>
         /// Returns a <see cref="ITypeResolverContext"/> that resolves the type using the <see cref="IClassTypeSource"/> added to the specified "<paramref name="contextName"/>"
@@ -81,7 +80,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// </summary>
         /// <param name="typeInfo"></param>
         /// <returns></returns>
-        string Get(ITypeReference typeInfo);
+        IResolvedTypeInfo Get(ITypeReference typeInfo);
 
         /// <summary>
         /// Resolves the type name for the specified <see cref="typeInfo"/>
@@ -89,7 +88,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// <param name="typeInfo"></param>
         /// <param name="collectionFormat">The collection type provided if the typeInfo.IsCollection is true</param>
         /// <returns></returns>
-        string Get(ITypeReference typeInfo, string collectionFormat);
+        IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat);
 
     }
 }

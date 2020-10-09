@@ -112,7 +112,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
                 return "boolean";
             }
 
-            return Types.Get(operation.ReturnType);
+            return GetTypeName(operation.ReturnType);
         }
 
         private string GetParameterDefinitions(ServiceProxyOperationModel operation)

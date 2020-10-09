@@ -101,7 +101,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 
         private string GetTypeInfo(ITypeReference typeInfo)
         {
-            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
+            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>").Name);
             // Don't check for nullables here because the type resolution system will take care of language specific nullables
 
             return result;

@@ -13,14 +13,15 @@ namespace Intent.Modules.Common.Types.TypeResolvers
 
         public override string DefaultCollectionFormat { get; set; } = "IEnumerable<{0}>";
 
-        protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
+        protected override IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
             var result = typeInfo.Element.Name;
+            var isPrimitive = true;
             if (typeInfo.Element.Stereotypes.Any(x => x.Name == "C#"))
             {
                 string typeName = typeInfo.Element.GetStereotypeProperty<string>("C#", "Type", typeInfo.Element.Name);
                 string @namespace = typeInfo.Element.GetStereotypeProperty<string>("C#", "Namespace");
-
+                isPrimitive = typeInfo.Element.GetStereotypeProperty("C#", "Is Primitive", true);
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
 
                 if (typeInfo.IsNullable && (typeInfo.Element.SpecializationType.Equals("Enum",StringComparison.InvariantCultureIgnoreCase) || (typeInfo.Element.GetStereotypeProperty("C#", "IsPrimitive", false))))
@@ -68,6 +69,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                         break;
                     case "binary":
                         result = "byte[]";
+                        isPrimitive = false;
                         break;
                     case "object":
                         result = "object";
@@ -89,17 +91,18 @@ namespace Intent.Modules.Common.Types.TypeResolvers
             if (typeInfo.GenericTypeParameters.Any())
             {
                 var genericTypeParameters = typeInfo.GenericTypeParameters
-                    .Select(x => Get(x, collectionFormat))
+                    .Select(x => Get(x, collectionFormat).Name)
                     .Aggregate((x, y) => x + ", " + y);
                 result += $"<{genericTypeParameters}>";
             }
 
             if (typeInfo.IsCollection)
             {
+                isPrimitive = false;
                 result = string.Format(collectionFormat ?? DefaultCollectionFormat, result);
             }
 
-            return result;
+            return new ResolvedTypeInfo(result, isPrimitive, null);
         }
     }
 }

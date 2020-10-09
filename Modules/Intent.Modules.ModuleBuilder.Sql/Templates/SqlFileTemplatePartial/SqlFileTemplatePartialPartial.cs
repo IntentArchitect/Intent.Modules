@@ -54,8 +54,8 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
                 { "TemplateId", GetTemplateId() },
                 { "TemplateType", "Sql Template" },
                 { "Role", GetRole() },
-                //{ "Module Dependency", Model.GetDesignerSettings()?.ModuleDependency },
-                //{ "Module Dependency Version",Model.GetDesignerSettings()?.ModuleVersion },
+                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
+                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version },
                 { "ModelId", Model.Id }
             });
         }

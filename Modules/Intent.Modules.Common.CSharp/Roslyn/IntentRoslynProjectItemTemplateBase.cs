@@ -126,12 +126,12 @@ namespace Intent.Modules.Common.Templates
 
         public override string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
-            return NormalizeNamespace(Types.Get(typeReference, collectionFormat));
+            return NormalizeNamespace(Types.Get(typeReference, collectionFormat).Name);
         }
 
         public override string GetTypeName(ITypeReference typeReference)
         {
-            return NormalizeNamespace(Types.Get(typeReference));
+            return NormalizeNamespace(Types.Get(typeReference).Name);
         }
 
         public override string GetTemplateClassName(ITemplateDependency templateDependency)

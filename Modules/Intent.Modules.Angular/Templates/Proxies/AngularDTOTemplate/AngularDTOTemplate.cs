@@ -68,7 +68,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
             this.Write(": ");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular\Templates\Proxies\AngularDTOTemplate\AngularDTOTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(this.Types.Get(field.TypeReference)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(this.GetTypeName(field.TypeReference)));
             
             #line default
             #line hidden

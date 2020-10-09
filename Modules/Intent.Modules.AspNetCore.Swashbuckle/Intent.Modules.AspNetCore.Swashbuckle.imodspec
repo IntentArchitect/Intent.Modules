@@ -18,9 +18,9 @@
     <decorator id="Intent.AspNetCore.Swashbuckle.StartupDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.0"/>
+    <dependency id="Intent.Common" version="3.0.0"/>
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0"/>
-    <dependency id="Intent.AspNetCore" version="2.0.0"/>
+    <dependency id="Intent.AspNetCore" version="3.0.0"/>
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll"/>

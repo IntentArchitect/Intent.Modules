@@ -130,12 +130,6 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
-            return result;
-        }
-
         private IEnumerable<ConstructorParameter> GetConstructorDependencies()
         {
             var parameters = GetDecorators()

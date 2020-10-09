@@ -10,6 +10,6 @@
 
 export interface <#= ClassName #><#= GenericTypes #> {
 <#  foreach (var field in Model.Fields) { #>
-    <#=field.Name.ToCamelCase()#><#= field.TypeReference.IsNullable ? "?" : "" #>: <#= this.Types.Get(field.TypeReference) #>;
+    <#=field.Name.ToCamelCase()#><#= field.TypeReference.IsNullable ? "?" : "" #>: <#= this.GetTypeName(field.TypeReference) #>;
 <#  } #>
 }

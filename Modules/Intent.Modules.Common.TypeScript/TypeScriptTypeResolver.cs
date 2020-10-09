@@ -7,13 +7,14 @@ namespace Intent.Modules.Common.TypeScript
     {
         public override string DefaultCollectionFormat { get; set; } = "{0}[]";
 
-        protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
+        protected override IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
             if (typeInfo.HasStereotype("TypeScript"))
             {
-                return typeInfo.GetStereotypeProperty<string>("TypeScript", "Type");
+                return new ResolvedTypeInfo(typeInfo.GetStereotypeProperty<string>("TypeScript", "Type"), false, null);
             }
 
+            bool isPrimitive = true;
             string result = null;
             switch (typeInfo.Element.Name)
             {
@@ -52,9 +53,10 @@ namespace Intent.Modules.Common.TypeScript
             if (typeInfo.IsCollection)
             {
                 result = string.Format(collectionFormat ?? DefaultCollectionFormat, result);
+                isPrimitive = false;
             }
 
-            return result;
+            return new ResolvedTypeInfo(result, isPrimitive, null);
         }
 
     }

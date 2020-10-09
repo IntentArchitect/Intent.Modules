@@ -138,22 +138,22 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
-            return Types.Get(typeReference, collectionFormat);
+            return Types.Get(typeReference, collectionFormat).Name;
         }
 
         public virtual string GetTypeName(ITypeReference typeReference)
         {
-            return Types.Get(typeReference);
+            return Types.Get(typeReference).Name;
         }
 
         public virtual string GetTypeName(IElement element, string collectionFormat)
         {
-            return Types.Get(element, collectionFormat);
+            return Types.Get(element, collectionFormat).Name;
         }
 
         public virtual string GetTypeName(ICanBeReferencedType element)
         {
-            return Types.Get(element);
+            return Types.Get(element).Name;
         }
 
         public virtual string GetTemplateClassName(ITemplateDependency templateDependency)

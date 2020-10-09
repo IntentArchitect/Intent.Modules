@@ -14,8 +14,8 @@
     <decorator id="Intent.Owin.FileServer.WebApiConfiguration"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.0"/>
-    <dependency id="Intent.AspNet.Owin" version="2.0.0"/>
+    <dependency id="Intent.Common" version="3.0.0"/>
+    <dependency id="Intent.AspNet.Owin" version="3.0.0"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

@@ -17,12 +17,12 @@
   <interoperability>
     <detect id="Intent.AspNet.WebApi">
       <install>
-        <package id="Intent.AspNet.SignalR.Interop.WebApi" version="2.0.0"/>
+        <package id="Intent.AspNet.SignalR.Interop.WebApi" version="3.0.0"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Common" version="2.0.0"/>
+    <dependency id="Intent.Common" version="3.0.0"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

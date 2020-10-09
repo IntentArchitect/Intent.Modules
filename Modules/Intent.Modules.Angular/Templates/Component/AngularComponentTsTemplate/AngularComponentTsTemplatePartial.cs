@@ -94,7 +94,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public string GetReturnType(ComponentCommandModel command)
         {
-            return command.ReturnType != null ? Types.Get(command.ReturnType) : "void";
+            return command.ReturnType != null ? GetTypeName(command.ReturnType) : "void";
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

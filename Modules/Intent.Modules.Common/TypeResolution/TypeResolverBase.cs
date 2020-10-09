@@ -6,42 +6,6 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
-    public class TypeResolverContext : ITypeResolverContext
-    {
-        private readonly List<ITypeSource> _classTypeSources;
-        private readonly Func<ITypeReference, string, string> _resolveTypeFunc;
-
-        public TypeResolverContext(List<ITypeSource> classTypeSources, Func<ITypeReference, string, string> resolveTypeFunc)
-        {
-            _classTypeSources = classTypeSources;
-            _resolveTypeFunc = resolveTypeFunc;
-        }
-
-        public string Get(ITypeReference typeInfo)
-        {
-            return Get(typeInfo, null);
-        }
-
-        public string Get(ITypeReference typeInfo, string collectionFormat)
-        {
-            if (typeInfo == null)
-            {
-                return null;
-            }
-
-            foreach (var classLookup in _classTypeSources)
-            {
-                var foundClass = classLookup.GetType(typeInfo);
-                if (!string.IsNullOrWhiteSpace(foundClass))
-                {
-                    return foundClass;
-                }
-            }
-            return _resolveTypeFunc(typeInfo, collectionFormat);
-        }
-    }
-
-
     public abstract class TypeResolverBase : ITypeResolver
     {
         private const string DEFAULT_CONTEXT = "_default_";
@@ -89,27 +53,27 @@ namespace Intent.Modules.Common.TypeResolution
             return _classTypeSources.Values.SelectMany(x => x).SelectMany(x => x.GetTemplateDependencies()).ToList();
         }
 
-        public string Get(ITypeReference typeInfo)
+        public IResolvedTypeInfo Get(ITypeReference typeInfo)
         {
             return Get(typeInfo, null);
         }
 
-        public string Get(ITypeReference typeInfo, string collectionFormat)
+        public IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
             return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionFormat);
         }
 
-        public string Get(ICanBeReferencedType element)
+        public IResolvedTypeInfo Get(ICanBeReferencedType element)
         {
             return Get(element, null);
         }
 
-        public string Get(ICanBeReferencedType element, string collectionFormat)
+        public IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat)
         {
             return InContext(DEFAULT_CONTEXT).Get(new ElementTypeReference(element), collectionFormat);
         }
 
-        protected abstract string ResolveType(ITypeReference typeInfo, string collectionFormat = null);
+        protected abstract IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null);
 
         private class ElementTypeReference: ITypeReference, IHasStereotypes
         {

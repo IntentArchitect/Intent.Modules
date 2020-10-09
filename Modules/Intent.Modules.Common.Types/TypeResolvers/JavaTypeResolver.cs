@@ -14,9 +14,10 @@ namespace Intent.Modules.Common.Types.TypeResolvers
     {
         public override string DefaultCollectionFormat { get; set; } = "{0}[]";
 
-        protected override string ResolveType(ITypeReference typeInfo, string collectionFormat = null)
+        protected override IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null)
         {
             var result = typeInfo.Element.Name;
+            var isPrimitive = true;
             if (typeInfo.Element.HasStereotype("Java"))
             {
                 string typeName = typeInfo.Element.GetStereotypeProperty<string>("Java", "Type");
@@ -24,7 +25,13 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
             }
 
-            return result;
+            if (typeInfo.IsCollection)
+            {
+                isPrimitive = false;
+                result = string.Format(collectionFormat ?? DefaultCollectionFormat, result);
+            }
+
+            return new ResolvedTypeInfo(result, isPrimitive, null);
         }
     }
 }

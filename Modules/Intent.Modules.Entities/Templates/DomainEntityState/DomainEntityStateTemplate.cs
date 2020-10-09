@@ -106,7 +106,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
   foreach (var attribute in Model.Attributes)
     {
-		string attributeType = Types.Get(attribute.Type);
+		string attributeType = GetTypeName(attribute.Type);
 
             
             #line default
@@ -283,7 +283,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             this.Write("\t\tprivate ");
             
             #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(Types.Get(associatedClass))));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(associatedClass)));
             
             #line default
             #line hidden
@@ -304,7 +304,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             this.Write("\r\n        public virtual ");
             
             #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityState\DomainEntityStateTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(Types.Get(associatedClass))));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(associatedClass)));
             
             #line default
             #line hidden

@@ -52,7 +52,7 @@ namespace Intent.Modules.Entities.Decorators
             }
             var t = CSharpTypeSource.Create(Template.ExecutionContext, DomainEntityInterfaceTemplate.Identifier);
             return $@"
-        {Template.NormalizeNamespace(t.GetType(associationEnd))} {associationEnd.Name().ToPascalCase()} {{ get; }}
+        {Template.NormalizeNamespace(t.GetType(associationEnd).Name)} {associationEnd.Name().ToPascalCase()} {{ get; }}
 ";
         }
 

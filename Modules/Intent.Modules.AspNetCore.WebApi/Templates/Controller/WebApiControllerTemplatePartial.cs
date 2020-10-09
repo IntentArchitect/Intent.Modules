@@ -29,6 +29,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public override void OnCreated()
         {
+            Types.DefaultCollectionFormat = "List<{0}>";
             Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
         }
 
@@ -79,11 +80,6 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
         private string GetRoute()
         {
             return Model.GetStereotypeProperty("Http", "Route", "api/[controller]");
-        }
-
-        private string GetTypeName(ITypeReference typeInfo)
-        {
-            return NormalizeNamespace(Types.Get(typeInfo, "List<{0}>"));
         }
 
         public string DeclarePrivateVariables()
