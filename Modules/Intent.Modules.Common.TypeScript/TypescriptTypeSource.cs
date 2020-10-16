@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.TypeScript
             _execute = execute;
         }
 
-        public static ITypeSource InProject(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat = "{0}[]")
+        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat = "{0}[]")
         {
             return new TypescriptTypeSource((_this, typeInfo) =>
             {

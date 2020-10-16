@@ -47,7 +47,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
                 return _dbContextName;
             }
 
-            var dbContextTemplate = Project.FindTemplateInstance(DbContextTemplate.Identifier);
+            var dbContextTemplate = Project.FindTemplateInstance<DbContextTemplate>(DbContextTemplate.Identifier);
             if (dbContextTemplate != null)
             {
                 return _dbContextName = dbContextTemplate.GetMetadata().FileName;
@@ -67,7 +67,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
                 return string.Format(template, _dbContextNamespace);
             }
 
-            var dbContextTemplate = Project.FindTemplateInstance(DbContextTemplate.Identifier);
+            var dbContextTemplate = Project.FindTemplateInstance<DbContextTemplate>(DbContextTemplate.Identifier);
             if (dbContextTemplate != null)
             {
                 return _dbContextNamespace = string.Format(template, Project.FindTemplateInstance<IHasClassDetails>(DbContextTemplate.Identifier).Namespace);

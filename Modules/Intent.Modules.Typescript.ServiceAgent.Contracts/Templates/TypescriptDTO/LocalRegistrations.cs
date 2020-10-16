@@ -9,6 +9,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Common.Types.Api;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO
 {

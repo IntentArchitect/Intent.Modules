@@ -12,11 +12,12 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
 
 namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProxy
 {
-    partial class TypescriptWebApiClientServiceProxyTemplate : IntentTypescriptProjectItemTemplateBase<ServiceModel>, ITemplate, ITemplateBeforeExecutionHook
+    partial class TypescriptWebApiClientServiceProxyTemplate : TypeScriptTemplateBase<ServiceModel>, ITemplate, ITemplateBeforeExecutionHook
     {
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote";
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local";
@@ -28,11 +29,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             : base(identifier, project, model)
         {
             _eventDispatcher = eventDispatcher;
-            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
-            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.RemoteIdentifier));
+            AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.LocalIdentifier));
+            AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.RemoteIdentifier));
         }
 
-        public string ApiBasePathConfigKey => $"{Project.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".AsClassName().ToLower();
+        public string ApiBasePathConfigKey => $"{OutputTarget.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".AsClassName().ToLower();
 
         public string AngularModule
         {
@@ -49,12 +50,10 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}Proxy",
-                fileExtension: "ts",
-                defaultLocationInProject: $"wwwroot/App/Proxies/Generated",
+                relativeLocation: $"wwwroot/App/Proxies/Generated",
                 className: "${Model.Name}Proxy",
                 @namespace: "App.Proxies"
                 );
@@ -62,11 +61,12 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
 
         public override void BeforeTemplateExecution()
         {
-            _eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
-            {
-                { "Key", ApiBasePathConfigKey },
-                { "Value", GetAddress() }
-            });
+            // Disabled because of breaking legacy dependencies in GetAddress()
+            //_eventDispatcher.Publish(ApplicationEvents.AngularJs_ConfigurationRequired, new Dictionary<string, string>()
+            //{
+            //    { "Key", ApiBasePathConfigKey },
+            //    { "Value", GetAddress() }
+            //});
         }
 
         private HttpVerb GetHttpVerb(OperationModel operation)
@@ -83,16 +83,16 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             return HttpVerb.GET;
         }
 
-        private string GetAddress()
-        {
-            var useSsl = false;
-            bool.TryParse(Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "UseSsl")?.Value, out useSsl);
-            if (useSsl)
-            {
-                return "https://localhost:" + (Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "SslPort")?.Value ?? "???");
-            }
-            return "http://localhost:" + (Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value ?? "???");
-        }
+        //private string GetAddress()
+        //{
+        //    var useSsl = false;
+        //    bool.TryParse(Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "UseSsl")?.Value, out useSsl);
+        //    if (useSsl)
+        //    {
+        //        return "https://localhost:" + (Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "SslPort")?.Value ?? "???");
+        //    }
+        //    return "http://localhost:" + (Project.ProjectType.Properties.FirstOrDefault(x => x.Name == "Port")?.Value ?? "???");
+        //}
 
         private string GetMethodDefinitionParameters(OperationModel operation)
         {

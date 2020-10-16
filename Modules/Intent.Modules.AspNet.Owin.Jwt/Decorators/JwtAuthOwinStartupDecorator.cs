@@ -11,10 +11,10 @@ namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
 {
     public class JwtAuthOwinStartupDecorator : IOwinStartupDecorator, IHasNugetDependencies, IHasAssemblyDependencies, ITemplateBeforeExecutionHook
     {
-        private readonly ISolutionEventDispatcher _solutionEvents;
+        private readonly IApplicationEventDispatcher _solutionEvents;
         public const string Identifier = "Intent.Owin.Jwt.JwtAuthOwinStartupDecorator";
 
-        public JwtAuthOwinStartupDecorator(ISolutionEventDispatcher solutionEvents)
+        public JwtAuthOwinStartupDecorator(IApplicationEventDispatcher solutionEvents)
         {
             _solutionEvents = solutionEvents;
             _solutionEvents.Subscribe(SolutionEvents.ResourceAvailable_IdentityServer, HandleIdentityServerAvailable);
@@ -111,7 +111,7 @@ namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
             });
         }
 
-        private void HandleIdentityServerAvailable(SolutionEvent @event)
+        private void HandleIdentityServerAvailable(ApplicationEvent @event)
         {
             _solutionEvents.Publish(ApplicationEvents.Config_AppSetting, new Dictionary<string, string>()
             {

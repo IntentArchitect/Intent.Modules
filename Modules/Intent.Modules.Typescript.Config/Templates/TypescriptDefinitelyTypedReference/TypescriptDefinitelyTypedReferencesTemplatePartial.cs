@@ -5,11 +5,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedReference
 {
-    public partial class TypescriptDefinitelyTypedReferencesTemplate : IntentProjectItemTemplateBase<object>, ITemplate
+    public partial class TypescriptDefinitelyTypedReferencesTemplate : IntentTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.Typescript.Config.DefinitelyTypedReferences";
 
-        public TypescriptDefinitelyTypedReferencesTemplate(IProject project)
+        public TypescriptDefinitelyTypedReferencesTemplate(IOutputTarget project)
             : base(Identifier, project, null)
         {
         }

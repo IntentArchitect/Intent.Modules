@@ -7,6 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Types.Api;
 using Intent.Templates;
 
 namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO

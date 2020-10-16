@@ -48,10 +48,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
             var content = GetExistingTemplateContent();
             if (content != null)
             {
-                return ReplaceTemplateInheritsTag(content, $"IntentRoslynProjectItemTemplateBase<{Model.GetModelName()}>");
+                return ReplaceTemplateInheritsTag(content, $"CSharpTemplateBase<{Model.GetModelName()}>");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""IntentRoslynProjectItemTemplateBase<{Model.GetModelName()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""CSharpTemplateBase<{Model.GetModelName()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>

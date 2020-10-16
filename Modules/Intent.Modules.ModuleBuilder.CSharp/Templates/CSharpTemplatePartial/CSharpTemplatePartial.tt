@@ -22,13 +22,13 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class <#= ClassName #> : IntentRoslynProjectItemTemplateBase<<#= GetModelType() #>>
+    partial class <#= ClassName #> : CSharpTemplateBase<<#= GetModelType() #>>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
         [IntentInitialGen]
-        public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
+        public <#= ClassName #>(IOutputTarget project, <#= GetModelType() #> model) : base(TemplateId, project, model)
         {
         }
 

@@ -7,6 +7,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.Common.Types.Api;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 

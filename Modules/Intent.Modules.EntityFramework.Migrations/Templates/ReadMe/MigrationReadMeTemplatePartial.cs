@@ -20,7 +20,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.ReadMe
 
         public string BoundedContextName => Project.ApplicationName();
         public string MigrationProject => Project.Name;
-        public string ProjectWithDbContext => Project.Application.Projects.FirstOrDefault(x => x.HasStereotype("Startup"))?.Name ?? Project.Application.Projects.First().Name;
+        public string ProjectWithDbContext => /*ExecutionContext.OutputTargets.FirstOrDefault(x => x.HasStereotype("Startup"))?.Name ?? */ OutputTarget.Application.OutputTargets.First().Name;
         public string DbContextConfigurationName => Project.FindTemplateInstance(DbMigrationsConfigurationTemplate.Identifier).GetMetadata().FileName;
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

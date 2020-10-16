@@ -8,6 +8,7 @@
       <isNavigable>false</isNavigable>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
       <typePackageName>Modelers.Domain.Domain</typePackageName>
       <typePackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</typePackageId>
       <stereotypes />
@@ -23,6 +24,7 @@
       <isNavigable>true</isNavigable>
       <isNullable>true</isNullable>
       <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
       <typePackageName>Modelers.Domain.Domain</typePackageName>
       <typePackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</typePackageId>
       <stereotypes />

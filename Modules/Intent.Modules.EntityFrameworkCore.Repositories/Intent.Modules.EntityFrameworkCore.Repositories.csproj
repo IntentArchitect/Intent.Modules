@@ -87,6 +87,10 @@
       <Project>{b9fcf2b2-c126-41cd-b5b2-43b4f9166ac1}</Project>
       <Name>Intent.Modules.Common.CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj">
+      <Project>{ed404a63-fc25-4c42-ab4c-619815d8a6eb}</Project>
+      <Name>Intent.Modules.Common.Types</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>

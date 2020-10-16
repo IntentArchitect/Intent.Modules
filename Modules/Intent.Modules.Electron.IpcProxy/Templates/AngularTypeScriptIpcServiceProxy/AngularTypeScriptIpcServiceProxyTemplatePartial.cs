@@ -19,9 +19,9 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
         public AngularTypeScriptIpcServiceProxyTemplate(ServiceModel model, IProject project)
             : base(Identifier, project, model)
         {
-            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
-            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.RemoteIdentifier));
-            var receivingProxyProject = project.Application.FindProjectWithTemplateInstance(CSharpIpcReceivingProxyTemplate.Identifier, model);
+            AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.LocalIdentifier));
+            AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.RemoteIdentifier));
+            var receivingProxyProject = ExecutionContext.FindOutputTargetWithTemplate(CSharpIpcReceivingProxyTemplate.Identifier, x => x.Id == model.Id);
             AssemblyName = receivingProxyProject.Name;
         }
 

@@ -21,6 +21,7 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
+      <defaultValue>1.0.0</defaultValue>
       <valueOptions />
       <lookupTypes />
       <isRequiredFunction>true</isRequiredFunction>

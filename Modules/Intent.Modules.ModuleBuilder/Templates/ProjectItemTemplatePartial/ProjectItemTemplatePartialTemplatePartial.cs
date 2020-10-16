@@ -72,7 +72,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         private string GetTemplateBaseClass()
         {
-            return nameof(IntentProjectItemTemplateBase);
+            return nameof(IntentTemplateBase);
         }
     }
 }

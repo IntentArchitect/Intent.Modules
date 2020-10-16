@@ -23,7 +23,7 @@ namespace Intent.Modules.Typescript.Config.Templates.TypescriptConfig
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.Config\Templates\TypescriptConfig\TypescriptConfigFileTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class TypescriptConfigFileTemplate : IntentProjectItemTemplateBase<object>
+    public partial class TypescriptConfigFileTemplate : IntentTemplateBase<object>
     {
 #line hidden
         /// <summary>

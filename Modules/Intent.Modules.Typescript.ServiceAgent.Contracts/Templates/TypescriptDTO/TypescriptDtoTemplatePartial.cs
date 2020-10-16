@@ -13,10 +13,10 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
         public const string LocalIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Local";
         public const string RemoteIdentifier = "Intent.Typescript.ServiceAgent.Contracts.DTO.Remote";
         public TypescriptDtoTemplate(string identifier, IProject project, DTOModel model)
-            : base(identifier, project, model, TypescriptTemplateMode.AlwaysRecreateFromTemplate)
+            : base(identifier, project, model)
         {
-            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.LocalIdentifier));
-            AddTypeSource(TypescriptTypeSource.InProject(Project, TypescriptDtoTemplate.RemoteIdentifier));
+            AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.LocalIdentifier));
+            AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.RemoteIdentifier));
             // For reference purposes only:
             //Namespace = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? "App.Contracts" : $"App.Contracts.{model.BoundedContextName}";
             //Location = model.BoundedContextName == project.ApplicationName().Replace("_Client", "") ? $"wwwroot/App/DTOs/Generated" : $@"wwwroot/App/DTOs/Generated/{model.BoundedContextName}";
@@ -26,12 +26,10 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new TypescriptDefaultFileMetadata(
+            return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
                 fileName: Model.Name,
-                fileExtension: "ts",
-                defaultLocationInProject: "wwwroot/App/DTOs/Generated",
+                relativeLocation: "wwwroot/App/DTOs/Generated",
                 className: "${Model.Name}",
                 @namespace: "App.Contracts");
         }

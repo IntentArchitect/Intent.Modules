@@ -39,7 +39,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
 
         public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
-            AddTypeSource(TypescriptTypeSource.InProject(ExecutionContext, templateId, collectionFormat));
+            AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
 

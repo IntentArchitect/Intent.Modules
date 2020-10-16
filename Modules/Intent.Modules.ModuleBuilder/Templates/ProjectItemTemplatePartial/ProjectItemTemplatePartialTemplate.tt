@@ -27,7 +27,7 @@ namespace <#= Namespace #>
         public const string TemplateId = "<#= GetTemplateId() #>";
 
         [IntentInitialGen]
-        public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model) : base(TemplateId, outputTarget, model)
         {
         }
 

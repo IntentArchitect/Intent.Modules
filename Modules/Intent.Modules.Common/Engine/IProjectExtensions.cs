@@ -34,6 +34,11 @@ namespace Intent.Modules.Common
             return project.FindTemplateInstance(TemplateDependency.OnModel(templateId, model));
         }
 
+        public static ITemplate FindTemplateInstance(this IOutputTarget project, string templateId)
+        {
+            return project.ExecutionContext.FindTemplateInstance(templateId);
+        }
+
         public static TTemplate FindTemplateInstance<TTemplate>(this IOutputTarget project, string templateId) where TTemplate : class
         {
             return project.ExecutionContext.FindTemplateInstance(templateId) as TTemplate;

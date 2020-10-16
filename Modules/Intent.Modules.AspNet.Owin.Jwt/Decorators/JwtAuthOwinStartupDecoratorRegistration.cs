@@ -10,7 +10,7 @@ namespace Intent.Modules.AspNet.Owin.Jwt.Decorators
 
         public override IOwinStartupDecorator CreateDecoratorInstance(IApplication application)
         {
-            return new JwtAuthOwinStartupDecorator(application.SolutionEventDispatcher);
+            return new JwtAuthOwinStartupDecorator(application.EventDispatcher);
         }
     }
 }

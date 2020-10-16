@@ -15,7 +15,7 @@ namespace Intent.Modules.AspNet.Owin.FileServer.Decorators
         {
         }
 
-        public void Install(XDocument doc, IProject project)
+        public void Install(XDocument doc, IOutputTarget project)
         {
             var namespaces = new XmlNamespaceManager(new NameTable());
             var _namespace = doc.Root.GetDefaultNamespace();

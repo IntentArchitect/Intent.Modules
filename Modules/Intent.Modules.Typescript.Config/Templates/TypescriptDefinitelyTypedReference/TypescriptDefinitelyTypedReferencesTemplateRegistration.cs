@@ -6,11 +6,11 @@ using Intent.Templates;
 namespace Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedReference
 {
     [Description(TypescriptDefinitelyTypedReferencesTemplate.Identifier)]
-    public class TypescriptDefinitelyTypedReferencesTemplateRegistration : NoModelTemplateRegistrationBase
+    public class TypescriptDefinitelyTypedReferencesTemplateRegistration : SingleFileTemplateRegistration
     {
         public override string TemplateId => TypescriptDefinitelyTypedReferencesTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
             return new TypescriptDefinitelyTypedReferencesTemplate(project);
         }

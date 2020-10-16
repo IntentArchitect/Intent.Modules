@@ -89,14 +89,14 @@ using System.Linq;
             
             #line default
             #line hidden
-            this.Write("(IProject project, ");
+            this.Write("(IOutputTarget outputTarget, ");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
-            this.Write(@" model) : base(TemplateId, project, model)
+            this.Write(@" model) : base(TemplateId, outputTarget, model)
         {
         }
 
