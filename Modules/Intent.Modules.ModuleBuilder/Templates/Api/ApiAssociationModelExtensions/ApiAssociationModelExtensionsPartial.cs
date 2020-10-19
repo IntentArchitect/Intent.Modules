@@ -12,12 +12,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiAssociationModelExtensions : IntentRoslynProjectItemTemplateBase<AssociationSettingsModel>
+    partial class ApiAssociationModelExtensions : CSharpTemplateBase<AssociationSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiAssociationModelExtensions";
 
-        public ApiAssociationModelExtensions(IProject project, AssociationSettingsModel model) : base(TemplateId, project, model)
+        public ApiAssociationModelExtensions(IOutputTarget project, AssociationSettingsModel model) : base(TemplateId, project, model)
         {
         }
 

@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiElementModelExtensionsRegistration : ModelTemplateRegistrationBase<ExtensionModel>
+    public class ApiElementModelExtensionsRegistration : FilePerModelTemplateRegistration<ExtensionModel>
     {
         private readonly IMetadataManager _metadataManager;
         private IEnumerable<IStereotypeDefinition> _stereotypeDefinitions;
@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 
         public override string TemplateId => ApiElementModelExtensions.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ExtensionModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ExtensionModel model)
         {
             return new ApiElementModelExtensions(project, model);
         }

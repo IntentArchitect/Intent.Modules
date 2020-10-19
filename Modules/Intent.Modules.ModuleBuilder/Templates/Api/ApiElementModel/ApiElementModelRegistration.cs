@@ -15,7 +15,7 @@ using System;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiElementModelRegistration : ModelTemplateRegistrationBase<ElementSettingsModel>
+    public class ApiElementModelRegistration : FilePerModelTemplateRegistration<ElementSettingsModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public override string TemplateId => ApiElementModel.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ElementSettingsModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ElementSettingsModel model)
         {
             var associationSettings = _metadataManager.ModuleBuilder(project.Application).GetAssociationSettingsModels()
                 .Where(x => x.TargetEnd.TargetsType(model.Id) || x.SourceEnd.TargetsType(model.Id))

@@ -15,13 +15,13 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiElementModelExtensions : IntentRoslynProjectItemTemplateBase<ExtensionModel>
+    partial class ApiElementModelExtensions : CSharpTemplateBase<ExtensionModel>
     {
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementModelExtensions";
 
-        public ApiElementModelExtensions(IProject project, ExtensionModel model) : base(TemplateId, project, model)
+        public ApiElementModelExtensions(IOutputTarget project, ExtensionModel model) : base(TemplateId, project, model)
         {
         }
 

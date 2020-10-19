@@ -13,12 +13,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiMetadataDesignerExtensions : IntentRoslynProjectItemTemplateBase<IList<DesignerModel>>
+    partial class ApiMetadataDesignerExtensions : CSharpTemplateBase<IList<DesignerModel>>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions";
 
-        public ApiMetadataDesignerExtensions(IProject project, IList<DesignerModel> model) : base(TemplateId, project, model)
+        public ApiMetadataDesignerExtensions(IOutputTarget project, IList<DesignerModel> model) : base(TemplateId, project, model)
         {
         }
 

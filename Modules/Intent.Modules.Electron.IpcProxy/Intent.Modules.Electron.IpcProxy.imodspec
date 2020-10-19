@@ -2,6 +2,7 @@
 <package>
   <id>Intent.Electron.IpcProxy</id>
   <version>3.0.0</version>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Creates service proxies allowing you to make IPC calls within Node.js</summary>
   <description>Implements service contracts and infrastructure in both C# and TypeScript allowing C# service calls to be initiated from within a Node.js hosted Angular Application.</description>
   <authors>Intent Architect</authors>

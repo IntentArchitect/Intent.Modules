@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ApiAssociationModelExtensions : IntentRoslynProjectItemTemplateBase<AssociationSettingsModel>
+    public partial class ApiAssociationModelExtensions : CSharpTemplateBase<AssociationSettingsModel>
     {
 #line hidden
         /// <summary>

@@ -12,12 +12,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiPackageModel : IntentRoslynProjectItemTemplateBase<PackageSettingsModel>
+    partial class ApiPackageModel : CSharpTemplateBase<PackageSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiPackageModel";
 
-        public ApiPackageModel(IProject project, PackageSettingsModel model) : base(TemplateId, project, model)
+        public ApiPackageModel(IOutputTarget project, PackageSettingsModel model) : base(TemplateId, project, model)
         {
         }
 

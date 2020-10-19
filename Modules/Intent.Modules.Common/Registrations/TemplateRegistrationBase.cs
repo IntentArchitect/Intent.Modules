@@ -9,7 +9,7 @@ namespace Intent.Modules.Common.Registrations
     {
         public abstract string TemplateId { get; }
         
-        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
+        public virtual void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
             var config = application.Config.GetConfig(this.TemplateId, PluginConfigType.Template);
             if (!config.Enabled)

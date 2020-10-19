@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiAssociationModelRegistration : ModelTemplateRegistrationBase<AssociationSettingsModel>
+    public class ApiAssociationModelRegistration : FilePerModelTemplateRegistration<AssociationSettingsModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
 
         public override string TemplateId => ApiAssociationModel.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, AssociationSettingsModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, AssociationSettingsModel model)
         {
             return new ApiAssociationModel(project, model);
         }

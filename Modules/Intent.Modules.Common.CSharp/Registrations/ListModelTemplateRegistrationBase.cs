@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Configuration;
 using Intent.Engine;
@@ -9,6 +10,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.Common.Registrations
 {
+    [Obsolete("Use SingleFileListModelTemplateRegistration<TModel>")]
     public abstract class ListModelTemplateRegistrationBase<TModel> : ITemplateRegistration, ISupportsConfiguration
     {
         private ParsedExpression<TModel, bool> _filter;

@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensions.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ApiMetadataDesignerExtensions : IntentRoslynProjectItemTemplateBase<IList<DesignerModel>>
+    public partial class ApiMetadataDesignerExtensions : CSharpTemplateBase<IList<DesignerModel>>
     {
 #line hidden
         /// <summary>

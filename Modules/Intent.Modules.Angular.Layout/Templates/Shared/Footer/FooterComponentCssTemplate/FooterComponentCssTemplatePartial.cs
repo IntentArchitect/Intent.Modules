@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentC
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Footer.FooterComponentCssTemplate";
 
-        public FooterComponentCssTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public FooterComponentCssTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
         }
 

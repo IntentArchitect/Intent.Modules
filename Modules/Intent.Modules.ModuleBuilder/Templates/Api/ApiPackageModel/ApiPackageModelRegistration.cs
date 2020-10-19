@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiPackageModelRegistration : ModelTemplateRegistrationBase<PackageSettingsModel>
+    public class ApiPackageModelRegistration : FilePerModelTemplateRegistration<PackageSettingsModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
 
         public override string TemplateId => ApiPackageModel.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, PackageSettingsModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, PackageSettingsModel model)
         {
             return new ApiPackageModel(project, model);
         }

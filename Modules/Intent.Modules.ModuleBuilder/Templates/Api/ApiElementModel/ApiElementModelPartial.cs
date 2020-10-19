@@ -15,14 +15,14 @@ using Intent.Modules.Common.CSharp;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiElementModel : IntentRoslynProjectItemTemplateBase<ElementSettingsModel>
+    partial class ApiElementModel : CSharpTemplateBase<ElementSettingsModel>
     {
         public List<AssociationSettingsModel> AssociationSettings { get; }
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementModel";
 
-        public ApiElementModel(IProject project, ElementSettingsModel model, List<AssociationSettingsModel> associationSettings) : base(TemplateId, project, model)
+        public ApiElementModel(IOutputTarget project, ElementSettingsModel model, List<AssociationSettingsModel> associationSettings) : base(TemplateId, project, model)
         {
             AssociationSettings = associationSettings;
             AddTypeSource(CSharpTypeSource.Create(ExecutionContext, ApiElementModel.TemplateId, collectionFormat: "IEnumerable<{0}>"));

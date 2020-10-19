@@ -2,6 +2,7 @@
 <package>
   <id>Intent.UserContext.Interop.WebApi</id>
   <version>3.0.0</version>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>User context management in the context of Intent.WebApi.</summary>
   <description>User context management in the context of Intent.WebApi.</description>
   <authors>Intent Architect</authors>

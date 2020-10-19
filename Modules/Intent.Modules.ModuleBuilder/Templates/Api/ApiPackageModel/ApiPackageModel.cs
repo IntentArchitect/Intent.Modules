@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ApiPackageModel : IntentRoslynProjectItemTemplateBase<PackageSettingsModel>
+    public partial class ApiPackageModel : CSharpTemplateBase<PackageSettingsModel>
     {
 #line hidden
         /// <summary>

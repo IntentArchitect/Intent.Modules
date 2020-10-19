@@ -16,7 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.Custom";
 
-        public CustomTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
+        public CustomTemplateRegistrationTemplate(IOutputTarget project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
             if (!string.IsNullOrWhiteSpace(Model.GetModelType()?.ParentModule.NuGetPackageId))
             {

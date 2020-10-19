@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiMetadataDesignerExtensionsRegistration : ListModelTemplateRegistrationBase<DesignerModel>
+    public class ApiMetadataDesignerExtensionsRegistration : SingleFileListModelTemplateRegistration<DesignerModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
 
         public override string TemplateId => ApiMetadataDesignerExtensions.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<DesignerModel> model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, IList<DesignerModel> model)
         {
             return new ApiMetadataDesignerExtensions(project, model);
         }
