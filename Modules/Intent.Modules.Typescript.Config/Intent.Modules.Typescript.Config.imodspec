@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Typescript.Config</id>
-  <version>2.0.0</version>
+  <version>3.0.0-beta</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Typescript configuration files</summary>
   <description>Typescript configuration files</description>
   <authors>Intent Architect</authors>
@@ -16,7 +17,7 @@
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0"/>
+    <dependency id="Intent.Common" version="3.0.0-beta"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

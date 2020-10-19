@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFrameworkCore</id>
-  <version>3.0.0</version>
-  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
+  <version>3.0.0-beta</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Entity Framework Core implementation.</summary>
   <description>Entity Framework Core implementation.</description>
   <authors>Intent Architect</authors>
@@ -40,15 +40,15 @@
   <interoperability>
     <detect id="Intent.AspNetCore.WebApi">
       <install>
-        <package id="Intent.EntityFrameworkCore.Interop.WebApi" version="3.0.0"/>
+        <package id="Intent.EntityFrameworkCore.Interop.WebApi" version="3.0.0-beta"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Modelers.Domain" version="3.0.0"/>
-    <dependency id="Intent.Common.CSharp" version="3.0.0"/>
-    <dependency id="Intent.Metadata.RDBMS" version="3.0.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0"/>
+    <dependency id="Intent.Modelers.Domain" version="3.0.0-beta"/>
+    <dependency id="Intent.Common.CSharp" version="3.0.0-beta"/>
+    <dependency id="Intent.Metadata.RDBMS" version="3.0.0-beta"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/netstandard2.0/$id$.dll"/>

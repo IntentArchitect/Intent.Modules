@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.ServiceCallHandlers</id>
-  <version>3.0.0</version>
-  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
+  <version>3.0.0-beta</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Application Layer service call pattern that dispatches services calls to individual Service Call Handler classes.</summary>
   <description>Application Layer service call pattern that dispatches services calls to individual Service Call Handler classes.</description>
   <authors>Intent Architect</authors>
@@ -23,9 +23,9 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0"/>
-    <dependency id="Intent.Application.Contracts" version="3.0.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0"/>
+    <dependency id="Intent.Common" version="3.0.0-beta"/>
+    <dependency id="Intent.Application.Contracts" version="3.0.0-beta"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

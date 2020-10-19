@@ -2,7 +2,7 @@
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.FullStackWebApi</id>
   <version>2.2.4</version>
-  <supportedClientVersions>[2.1.2,3.0.0)</supportedClientVersions>
+  <supportedClientVersions>[2.1.2,3.0.0-beta)</supportedClientVersions>
   <displayName>Web Application .NET Framework</displayName>
   <shortDescription>Create a web application to be hosted on Windows.</shortDescription>
   <authors>Intent Architect</authors>

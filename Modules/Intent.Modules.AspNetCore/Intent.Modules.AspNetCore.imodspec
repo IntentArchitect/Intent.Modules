@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNetCore</id>
-  <version>3.0.0</version>
-  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
+  <version>3.0.0-beta</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Startup files for an ASP.NET Core application.</summary>
   <description>Startup files for an ASP.NET Core application.</description>
   <authors>Intent Architect</authors>
@@ -25,9 +25,9 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0" />
-    <dependency id="Intent.VisualStudio.Projects" version="3.0.0"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0"/>
+    <dependency id="Intent.Common" version="3.0.0-beta" />
+    <dependency id="Intent.VisualStudio.Projects" version="3.0.0-beta"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta"/>
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll"/>

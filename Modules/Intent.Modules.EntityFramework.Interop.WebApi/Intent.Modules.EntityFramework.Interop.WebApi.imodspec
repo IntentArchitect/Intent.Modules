@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFramework.Interop.WebApi</id>
-  <version>3.0.0</version>
-  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
+  <version>3.0.0-beta</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Entity Framework scope and context management for interoperability with the Intent.AspNet.WebApi package.</summary>
   <description>Entity Framework scope and context management for interoperability with the Intent.AspNet.WebApi package.</description>
   <authors>Intent Architect</authors>
@@ -15,9 +15,9 @@
     <decorator id="Intent.EntityFramework.Interop.WebApi.ControllerDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0"/>
-    <dependency id="Intent.EntityFramework" version="3.0.0"/>
-    <dependency id="Intent.AspNet.WebApi" version="3.0.0"/>
+    <dependency id="Intent.Common" version="3.0.0-beta"/>
+    <dependency id="Intent.EntityFramework" version="3.0.0-beta"/>
+    <dependency id="Intent.AspNet.WebApi" version="3.0.0-beta"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>
