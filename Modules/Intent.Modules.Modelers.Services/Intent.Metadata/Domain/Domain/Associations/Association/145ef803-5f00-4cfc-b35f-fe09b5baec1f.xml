@@ -8,6 +8,7 @@
       <isNavigable>false</isNavigable>
       <isNullable>true</isNullable>
       <isCollection>true</isCollection>
+      <isRequired>true</isRequired>
       <typePackageName>Domain</typePackageName>
       <typePackageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</typePackageId>
       <stereotypes />
@@ -23,6 +24,7 @@
       <isNavigable>true</isNavigable>
       <isNullable>false</isNullable>
       <isCollection>false</isCollection>
+      <isRequired>true</isRequired>
       <typePackageName>Domain</typePackageName>
       <typePackageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</typePackageId>
       <stereotypes />

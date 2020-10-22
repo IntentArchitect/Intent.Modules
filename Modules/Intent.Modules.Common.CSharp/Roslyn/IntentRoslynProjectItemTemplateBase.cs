@@ -79,7 +79,7 @@ namespace Intent.Modules.Common.Templates
         {
             var templateOutput = base.RunTemplate();
             return $@"{DependencyUsings}
-{templateOutput}";
+{templateOutput}".TrimStart();
         }
 
         /// <summary>

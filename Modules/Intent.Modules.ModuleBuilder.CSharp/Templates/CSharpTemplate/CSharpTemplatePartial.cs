@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplate";
 
-        public CSharpTemplate(IProject project, CSharpTemplateModel model) : base(TemplateId, project, model)
+        public CSharpTemplate(IOutputTarget project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {
         }
 

@@ -16,12 +16,12 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class AngularComponentCssTemplate : IntentProjectItemTemplateBase<ComponentModel>
+    partial class AngularComponentCssTemplate : IntentTemplateBase<ComponentModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentCssTemplate";
 
-        public AngularComponentCssTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
+        public AngularComponentCssTemplate(IOutputTarget project, ComponentModel model) : base(TemplateId, project, model)
         {
         }
 
@@ -41,7 +41,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 
         public override void OnCreated()
         {
-            var moduleTemplate = Project.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
+            var moduleTemplate = OutputTarget.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             ModuleName = moduleTemplate.ModuleName;
         }
 
@@ -63,7 +63,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            var moduleTemplate = Project.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
+            var moduleTemplate = ExecutionContext.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,

@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
 
-        public CSharpTemplatePartial(IProject project, CSharpTemplateModel model) : base(TemplateId, project, model)
+        public CSharpTemplatePartial(IOutputTarget project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonCSharp);
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);

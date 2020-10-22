@@ -7,14 +7,14 @@ namespace Intent.Modules.Common.Html.Templates
 {
     public abstract class HtmlTemplateBase : HtmlTemplateBase<object>
     {
-        protected HtmlTemplateBase(string templateId, IProject outputTarget) : base(templateId, outputTarget, null)
+        protected HtmlTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
         {
         }
     }
 
     public abstract class HtmlTemplateBase<TModel> : IntentTemplateBase<TModel>, IHtmlFileMerge
     {
-        protected HtmlTemplateBase(string templateId, IProject outputTarget, TModel model) : base(templateId, outputTarget, model)
+        protected HtmlTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
         }
 

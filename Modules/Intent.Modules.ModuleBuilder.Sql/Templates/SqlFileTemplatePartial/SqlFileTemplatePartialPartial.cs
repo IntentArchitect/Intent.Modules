@@ -15,12 +15,12 @@ using Intent.Modules.ModuleBuilder.Sql.Api;
 namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class SqlFileTemplatePartial : IntentRoslynProjectItemTemplateBase<SqlTemplateModel>
+    partial class SqlFileTemplatePartial : CSharpTemplateBase<SqlTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Sql.Templates.SqlFileTemplatePartial";
 
-        public SqlFileTemplatePartial(IProject project, SqlTemplateModel model) : base(TemplateId, project, model)
+        public SqlFileTemplatePartial(IOutputTarget project, SqlTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonSql);
         }

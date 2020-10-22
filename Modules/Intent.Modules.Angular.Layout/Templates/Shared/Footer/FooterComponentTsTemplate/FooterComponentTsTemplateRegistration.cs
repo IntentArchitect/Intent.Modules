@@ -14,11 +14,11 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentTsTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class FooterComponentTsTemplateRegistration : NoModelTemplateRegistrationBase
+    public class FooterComponentTsTemplateRegistration : SingleFileTemplateRegistration
     {
         public override string TemplateId => FooterComponentTsTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
             return new FooterComponentTsTemplate(project, null);
         }

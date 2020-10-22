@@ -23,7 +23,7 @@ namespace Intent.Modules.Angular.Templates.Model.FormGroupTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Model.FormGroupTemplate";
 
-        public FormGroupTemplate(IProject project, FormGroupDefinitionModel model) : base(TemplateId, project, model)
+        public FormGroupTemplate(IOutputTarget project, FormGroupDefinitionModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(FormGroupTemplate.TemplateId);
             AddTypeSource(AngularDTOTemplate.TemplateId);

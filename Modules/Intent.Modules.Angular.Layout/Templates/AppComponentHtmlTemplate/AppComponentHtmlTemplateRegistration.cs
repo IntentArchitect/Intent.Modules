@@ -14,11 +14,11 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Layout.Templates.AppComponentHtmlTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AppComponentHtmlTemplateRegistration : NoModelTemplateRegistrationBase
+    public class AppComponentHtmlTemplateRegistration : SingleFileTemplateRegistration
     {
         public override string TemplateId => AppComponentHtmlTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
             return new AppComponentHtmlTemplate(project, null);
         }

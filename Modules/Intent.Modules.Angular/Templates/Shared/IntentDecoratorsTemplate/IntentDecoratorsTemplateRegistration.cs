@@ -14,11 +14,11 @@ using System.Linq;
 namespace Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class IntentDecoratorsTemplateRegistration : NoModelTemplateRegistrationBase
+    public class IntentDecoratorsTemplateRegistration : SingleFileTemplateRegistration
     {
         public override string TemplateId => IntentDecoratorsTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
             return new IntentDecoratorsTemplate(project, null);
         }

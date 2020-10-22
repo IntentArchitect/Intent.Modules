@@ -1047,7 +1047,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <text>Add Event Settings</text>
           <defaultName>NewPackageEventSettings</defaultName>
           <icon type="FontAwesome" source="bolt" />
-          <allowMultiple>true</allowMultiple>
+          <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
       <macros>

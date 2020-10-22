@@ -24,7 +24,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
 
-        public AngularDTOTemplate(IProject project, ModuleDTOModel model) : base(TemplateId, project, model)
+        public AngularDTOTemplate(IOutputTarget project, ModuleDTOModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(TemplateId);
         }

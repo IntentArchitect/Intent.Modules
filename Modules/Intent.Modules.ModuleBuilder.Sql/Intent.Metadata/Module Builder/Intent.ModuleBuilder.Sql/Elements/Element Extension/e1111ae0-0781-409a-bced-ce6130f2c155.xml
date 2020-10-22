@@ -9,6 +9,7 @@
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -39,6 +40,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.ModuleBuilder.Sql</typePackageName>
             <typePackageId>fb002b11-41c0-43ea-afeb-f26c3346ce87</typePackageId>
             <stereotypes />

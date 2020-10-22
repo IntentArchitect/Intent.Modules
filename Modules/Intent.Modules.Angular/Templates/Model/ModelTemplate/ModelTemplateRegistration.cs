@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ModelTemplateRegistration : ModelTemplateRegistrationBase<ModelDefinitionModel>
+    public class ModelTemplateRegistration : FilePerModelTemplateRegistration<ModelDefinitionModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
 
         public override string TemplateId => ModelTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ModelDefinitionModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ModelDefinitionModel model)
         {
             return new ModelTemplate(project, model);
         }

@@ -10,24 +10,24 @@ namespace Intent.Modules.Common.Java.Templates
 {
     public abstract class JavaTemplateBase : JavaTemplateBase<object>
     {
-        protected JavaTemplateBase(string templateId, IProject outputTarget) : base(templateId, outputTarget, null)
+        protected JavaTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
         {
         }
     }
 
     public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged
     {
-        protected JavaTemplateBase(string templateId, IProject outputTarget, TModel model) : base(templateId, outputTarget, model)
+        protected JavaTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
         }
 
-        public string Namespace
+        public string Package
         {
             get
             {
-                if (FileMetadata.CustomMetadata.ContainsKey("Namespace"))
+                if (FileMetadata.CustomMetadata.ContainsKey("Package"))
                 {
-                    return FileMetadata.CustomMetadata["Namespace"];
+                    return FileMetadata.CustomMetadata["Package"];
                 }
                 return null;
             }

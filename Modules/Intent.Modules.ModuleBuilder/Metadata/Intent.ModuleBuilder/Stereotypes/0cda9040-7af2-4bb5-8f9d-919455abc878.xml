@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="0cda9040-7af2-4bb5-8f9d-919455abc878">
+  <name>Package Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="89333f72-3960-4159-bf61-9c40d4b65088">Package Settings</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return ``;</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>7f6c3c9b-b131-41a6-bddc-fc644cab7852</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563">
+      <name>Icon</name>
+      <type>string</type>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -4,6 +4,7 @@
   <name>Services Types</name>
   <packageSettings>
     <packageSetting type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
+      <icon type="UrlImagePath" source="./img/icons/shell/Services_256x.png" />
       <requiredPackages />
       <creationOptions>
         <option type="element">
@@ -69,6 +70,7 @@
         <type order="4">Enum</type>
         <type order="5">Stereotype-Definition</type>
       </typeOrder>
+      <macros />
     </packageSetting>
   </packageSettings>
   <packageExtensions />

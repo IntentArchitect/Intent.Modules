@@ -54,12 +54,14 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 SpecializationTypeId = Id,
                 SpecializationType = Name,
+                Icon = this.GetPackageSettings().Icon()?.ToPersistable(),
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList(),
                 RequiredPackages = new string[0],
+                Macros = this.EventSettings?.OnCreatedEvents.Select(x => x.ToPersistable()).ToList()
             };
         }
 
@@ -94,10 +96,10 @@ namespace Intent.Modules.ModuleBuilder.Api
         public IElement InternalElement => _element;
 
         [IntentManaged(Mode.Fully)]
-        public IList<PackageEventSettingsModel> EventSettings => _element.ChildElements
+        public PackageEventSettingsModel EventSettings => _element.ChildElements
             .Where(x => x.SpecializationType == PackageEventSettingsModel.SpecializationType)
             .Select(x => new PackageEventSettingsModel(x))
-            .ToList();
+            .SingleOrDefault();
 
         public IntentModuleModel ParentModule => new IntentModuleModel(_element.Package);
 

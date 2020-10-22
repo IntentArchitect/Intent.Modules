@@ -17,7 +17,7 @@ using Intent.Modelers.Services.Api;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularDTOTemplateRegistration : ModelTemplateRegistrationBase<ModuleDTOModel>
+    public class AngularDTOTemplateRegistration : FilePerModelTemplateRegistration<ModuleDTOModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -28,7 +28,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
 
         public override string TemplateId => AngularDTOTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ModuleDTOModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ModuleDTOModel model)
         {
             return new AngularDTOTemplate(project, (ModuleDTOModel)model);
         }

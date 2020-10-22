@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
 
-        public AppModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public AppModuleTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
             AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>

@@ -29,7 +29,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
         private readonly ISet<string> _angularImports = new HashSet<string>();
         private readonly ISet<string> _imports = new HashSet<string>();
 
-        public AngularModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model)
+        public AngularModuleTemplate(IOutputTarget project, ModuleModel model) : base(TemplateId, project, model)
         {
             AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
             project.Application.EventDispatcher.Subscribe(AngularComponentCreatedEvent.EventId, @event =>

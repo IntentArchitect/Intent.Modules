@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class CSharpTemplateRegistration : ModelTemplateRegistrationBase<CSharpTemplateModel>
+    public class CSharpTemplateRegistration : FilePerModelTemplateRegistration<CSharpTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 
         public override string TemplateId => CSharpTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, CSharpTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, CSharpTemplateModel model)
         {
             return new CSharpTemplate(project, model);
         }

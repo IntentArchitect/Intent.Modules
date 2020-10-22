@@ -15,7 +15,7 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularComponentTsTemplateRegistration : ModelTemplateRegistrationBase<ComponentModel>
+    public class AngularComponentTsTemplateRegistration : FilePerModelTemplateRegistration<ComponentModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
 
         public override string TemplateId => Component.AngularComponentTsTemplate.AngularComponentTsTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ComponentModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ComponentModel model)
         {
             return new Component.AngularComponentTsTemplate.AngularComponentTsTemplate(project, model);
         }

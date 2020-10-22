@@ -137,7 +137,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             }
 
             return onExceptionCaught + @"
-                throw e;";
+                throw;";
         }
 
         public string OnDispose()

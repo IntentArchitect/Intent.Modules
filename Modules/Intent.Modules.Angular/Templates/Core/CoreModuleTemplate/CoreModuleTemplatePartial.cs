@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Core.CoreModuleTemplate";
 
-        public CoreModuleTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public CoreModuleTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
         }
 

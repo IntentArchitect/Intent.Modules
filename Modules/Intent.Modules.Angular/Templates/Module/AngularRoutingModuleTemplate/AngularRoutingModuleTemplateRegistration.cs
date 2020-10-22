@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularRoutingModuleTemplateRegistration : ModelTemplateRegistrationBase<ModuleModel>
+    public class AngularRoutingModuleTemplateRegistration : FilePerModelTemplateRegistration<ModuleModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 
         public override string TemplateId => AngularRoutingModuleTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ModuleModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ModuleModel model)
         {
             return new AngularRoutingModuleTemplate(project, model);
         }

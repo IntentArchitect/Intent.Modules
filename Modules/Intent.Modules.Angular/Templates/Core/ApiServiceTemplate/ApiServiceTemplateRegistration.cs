@@ -14,11 +14,11 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ApiServiceTemplateRegistration : NoModelTemplateRegistrationBase
+    public class ApiServiceTemplateRegistration : SingleFileTemplateRegistration
     {
         public override string TemplateId => ApiServiceTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
             return new ApiServiceTemplate(project, null);
         }

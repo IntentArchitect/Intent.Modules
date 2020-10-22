@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularServiceProxyTemplateRegistration : ModelTemplateRegistrationBase<ServiceProxyModel>
+    public class AngularServiceProxyTemplateRegistration : FilePerModelTemplateRegistration<ServiceProxyModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         public override string TemplateId => AngularServiceProxyTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ServiceProxyModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ServiceProxyModel model)
         {
             return new AngularServiceProxyTemplate(project, model);
         }

@@ -16,7 +16,7 @@ using Intent.Modules.ModuleBuilder.Sql.Api;
 namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class SqlFileTemplateRegistration : ModelTemplateRegistrationBase<SqlTemplateModel>
+    public class SqlFileTemplateRegistration : FilePerModelTemplateRegistration<SqlTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
 
         public override string TemplateId => SqlFileTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, SqlTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, SqlTemplateModel model)
         {
             return new SqlFileTemplate(project, model);
         }

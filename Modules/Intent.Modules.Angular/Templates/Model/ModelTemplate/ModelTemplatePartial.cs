@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Model.ModelTemplate";
 
-        public ModelTemplate(IProject project, ModelDefinitionModel model) : base(TemplateId, project, model)
+        public ModelTemplate(IOutputTarget project, ModelDefinitionModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(AngularDTOTemplate.TemplateId);
         }

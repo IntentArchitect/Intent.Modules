@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Templates.Model.FormGroupTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class FormGroupTemplateRegistration : ModelTemplateRegistrationBase<FormGroupDefinitionModel>
+    public class FormGroupTemplateRegistration : FilePerModelTemplateRegistration<FormGroupDefinitionModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Model.FormGroupTemplate
 
         public override string TemplateId => FormGroupTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, FormGroupDefinitionModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, FormGroupDefinitionModel model)
         {
             return new FormGroupTemplate(project, model);
         }

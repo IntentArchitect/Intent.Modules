@@ -126,6 +126,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
 
+        [XmlElement("icon")]
+        public IconModelPersistable Icon { get; set; }
+
         [XmlArray("requiredPackages")]
         [XmlArrayItem("package")]
         public string[] RequiredPackages { get; set; } = new string[0];
@@ -156,6 +159,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
                 UpdateTypesOrdering();
             }
         }
+
+        [XmlArray("macros")]
+        [XmlArrayItem("macro")]
+        public List<ElementMacroPersistable> Macros { get; set; }
 
         public void AddType(TypeOrderPersistable typeOrder)
         {

@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class SqlFileTemplatePartial : IntentRoslynProjectItemTemplateBase<SqlTemplateModel>
+    public partial class SqlFileTemplatePartial : CSharpTemplateBase<SqlTemplateModel>
     {
 #line hidden
         /// <summary>

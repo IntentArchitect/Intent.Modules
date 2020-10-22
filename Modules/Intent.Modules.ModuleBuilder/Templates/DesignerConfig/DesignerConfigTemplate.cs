@@ -48,8 +48,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 order: Model.GetDesignerConfig().DisplayOrder() ?? 0,
                 icon: Model.GetDesignerConfig().Icon().ToPersistable());
 
-            
-
             foreach (var designerReference in Model.DesignerReferences)
             {
                 designer.DesignerReferences.Add(new DesignerSettingsReference()

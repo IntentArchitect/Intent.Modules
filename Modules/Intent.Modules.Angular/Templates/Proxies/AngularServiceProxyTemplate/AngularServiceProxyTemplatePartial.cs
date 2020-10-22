@@ -29,7 +29,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
 
-        public AngularServiceProxyTemplate(IProject project, ServiceProxyModel model) : base(TemplateId, project, model)
+        public AngularServiceProxyTemplate(IOutputTarget project, ServiceProxyModel model) : base(TemplateId, project, model)
         {
             AddTypeSource(AngularDTOTemplate.AngularDTOTemplate.TemplateId);
         }

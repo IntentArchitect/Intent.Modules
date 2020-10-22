@@ -28,7 +28,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Component.AngularComponentHtmlTemplate";
 
-        public AngularComponentHtmlTemplate(IProject project, ComponentModel model) : base(TemplateId, project, model)
+        public AngularComponentHtmlTemplate(IOutputTarget project, ComponentModel model) : base(TemplateId, project, model)
         {
         }
 

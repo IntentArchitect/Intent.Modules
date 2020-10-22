@@ -8,7 +8,16 @@
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
   <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
   <packageName>Intent.Modelers.Domain</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="0cda9040-7af2-4bb5-8f9d-919455abc878" name="Package Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC90lEQVR4Xu3dMY7DIBBA0WFF5bPRODlnkmbORsveIKuNZBni904QTeSvaYAyxohrAn7iywACAAgAIACAAAACAAgAUOMPpZS4st77iGWxbVuJCxtj2ACANQMACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACABQ41C01uJzZGbMzAYACAAgAIAAAAIACAAgAIAAAAIACAAgAICzADwfr/hmt/seJ8IGAAgAIAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACABQYyrc7nucBxsAIACAAAACAAgAIACAAAACAAgAIACAAADOApCZcabW2nq/HxsAIACAAAACAAgAIACAAAACAAgAIACAAAACAAgAIACAAAA13mLbthIn6r2Py80PGwAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAANV5dub+/91HYQMABAAQAEAAAAEABAAQAEAAAAEABAAQAEAAAAEABAAEAHAfwIxaa8Gq8yczbQCfAAQAEABAAAABAAQAEABAAAABAAQAEABAAAABAAQAEACgOo/9jvP8aX42gCkBAgAIACAAgAAAAgAIACAAgAAAAgAIAAgAIACAAAACALgPoPc+4hjA8d9fsQEASwYAEABAAAABAAQAEABAAAABAAQAEABAAAABAAQAEACgTva+uvfxze8987MBAAIACAAgAIAAAAIACAAgAIAAAAIACABQYzLPxyuOdLvvsSLzMz8bACAAgAAAAgAIACAAgAAAAgAIACAAgAAAAgAIAAgAIACAAAACAAgAIACAAAACAAgAIACAdwHcO29+5rf+BgAIACAAgAAAAgAIACAAgAAAAgAIACAAgLMAmRn/gvmZnw0AEABAAAABAAQAEABAAAABAAQAEABAAAABAAQAEABAAIAyxoivANgAAAEABAAQAEAAAAEABAD4Be+MVrBHQ2QQAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="62489cf3-7614-4422-b84a-3971ca1c9e98" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -275,6 +284,51 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="433832bf-a1a5-4005-b62f-7cfcdb4c2e4e" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
+      <name>NewPackageEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>1a824508-4623-45d9-accc-f572091ade5a</parentFolderId>
+      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+      <packageName>Intent.Modelers.Domain</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="b9ab2732-4060-4cab-b951-be712f200d1a" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="978d4e82-a2b2-4328-a509-dc09d72fa772">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>433832bf-a1a5-4005-b62f-7cfcdb4c2e4e</parentFolderId>
+          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+          <packageName>Intent.Modelers.Domain</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var diagram = createElement(&quot;Diagram&quot;, &quot;Default Diagram&quot;, context.id);&#xD;&#xA;diagram.loadDiagram();&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

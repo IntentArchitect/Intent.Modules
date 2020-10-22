@@ -19,12 +19,12 @@ using Intent.Modules.ModuleBuilder.Api;
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypescriptTemplate : IntentProjectItemTemplateBase<TypescriptFileTemplateModel>
+    partial class TypescriptTemplate : IntentTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.TypeScript.Templates.TypescriptTemplate";
 
-        public TypescriptTemplate(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
+        public TypescriptTemplate(IOutputTarget project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
         }
 

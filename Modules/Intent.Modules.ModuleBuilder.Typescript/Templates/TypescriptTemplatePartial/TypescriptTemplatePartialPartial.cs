@@ -15,12 +15,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypescriptTemplatePartial : IntentRoslynProjectItemTemplateBase<TypescriptFileTemplateModel>
+    partial class TypescriptTemplatePartial : CSharpTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial";
 
-        public TypescriptTemplatePartial(IProject project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
+        public TypescriptTemplatePartial(IOutputTarget project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonTypescript);
         }

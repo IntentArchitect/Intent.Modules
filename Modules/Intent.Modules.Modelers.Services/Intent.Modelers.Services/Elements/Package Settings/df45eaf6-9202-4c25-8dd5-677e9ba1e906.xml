@@ -8,7 +8,16 @@
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
   <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
   <packageName>Intent.Modelers.Services</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="0cda9040-7af2-4bb5-8f9d-919455abc878" name="Package Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/shell/Services_256x.png&quot;}" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="bea3a185-2984-4d19-abb5-44bfc13d1937" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>

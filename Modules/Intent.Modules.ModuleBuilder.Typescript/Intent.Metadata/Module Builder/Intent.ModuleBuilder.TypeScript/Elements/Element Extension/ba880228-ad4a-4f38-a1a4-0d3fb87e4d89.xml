@@ -9,6 +9,7 @@
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -39,6 +40,7 @@
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
             <typePackageName>Intent.ModuleBuilder.TypeScript</typePackageName>
             <typePackageId>4d484b1d-09d8-49e6-8e65-6811e4d28af9</typePackageId>
             <stereotypes />

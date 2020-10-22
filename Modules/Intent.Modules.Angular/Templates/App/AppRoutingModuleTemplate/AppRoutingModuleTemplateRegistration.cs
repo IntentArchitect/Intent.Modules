@@ -15,7 +15,7 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AppRoutingModuleTemplateRegistration : ListModelTemplateRegistrationBase<ModuleModel>
+    public class AppRoutingModuleTemplateRegistration : SingleFileListModelTemplateRegistration<ModuleModel>
     {
         public override string TemplateId => App.AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             _metadataManager = metadataManager;
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<ModuleModel> model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, IList<ModuleModel> model)
         {
             return new App.AppRoutingModuleTemplate.AppRoutingModuleTemplate(project, model);
         }

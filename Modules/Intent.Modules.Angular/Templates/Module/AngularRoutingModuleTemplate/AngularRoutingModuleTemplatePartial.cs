@@ -24,7 +24,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Module.AngularRoutingModuleTemplate";
 
-        public AngularRoutingModuleTemplate(IProject project, ModuleModel model) : base(TemplateId, project, model)
+        public AngularRoutingModuleTemplate(IOutputTarget project, ModuleModel model) : base(TemplateId, project, model)
         {
             AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }

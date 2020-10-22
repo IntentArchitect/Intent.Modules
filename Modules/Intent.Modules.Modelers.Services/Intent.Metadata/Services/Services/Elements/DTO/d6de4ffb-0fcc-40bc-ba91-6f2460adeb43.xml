@@ -27,6 +27,7 @@
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -52,6 +53,7 @@
         <isNavigable>true</isNavigable>
         <isNullable>true</isNullable>
         <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -77,6 +79,7 @@
         <isNavigable>true</isNavigable>
         <isNullable>true</isNullable>
         <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -102,6 +105,7 @@
         <isNavigable>true</isNavigable>
         <isNullable>true</isNullable>
         <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -127,6 +131,7 @@
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -152,6 +157,7 @@
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>

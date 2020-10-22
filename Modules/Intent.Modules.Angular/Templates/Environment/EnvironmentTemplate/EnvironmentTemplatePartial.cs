@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Templates.Environment.EnvironmentTemplate";
 
-        public EnvironmentTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public EnvironmentTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
             project.Application.EventDispatcher.Subscribe(AngularConfigVariableRequiredEvent.EventId, HandleConfigVariableRequiredEvent);
         }

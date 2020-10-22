@@ -15,7 +15,7 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularComponentHtmlTemplateRegistration : ModelTemplateRegistrationBase<ComponentModel>
+    public class AngularComponentHtmlTemplateRegistration : FilePerModelTemplateRegistration<ComponentModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
 
         public override string TemplateId => AngularComponentHtmlTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ComponentModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ComponentModel model)
         {
             return new AngularComponentHtmlTemplate(project, model);
         }

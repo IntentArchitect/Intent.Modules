@@ -47,6 +47,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\Api\TabsModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/TabsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular.Layout\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>

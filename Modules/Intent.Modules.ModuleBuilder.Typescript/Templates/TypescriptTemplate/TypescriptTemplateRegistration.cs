@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class TypescriptTemplateRegistration : ModelTemplateRegistrationBase<TypescriptFileTemplateModel>
+    public class TypescriptTemplateRegistration : FilePerModelTemplateRegistration<TypescriptFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 
         public override string TemplateId => TypescriptTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, TypescriptFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, TypescriptFileTemplateModel model)
         {
             return new TypescriptTemplate(project, model);
         }

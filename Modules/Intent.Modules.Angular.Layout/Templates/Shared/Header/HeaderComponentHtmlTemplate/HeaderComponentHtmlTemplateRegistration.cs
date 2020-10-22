@@ -14,11 +14,11 @@ using Intent.Templates;
 namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class HeaderComponentHtmlTemplateRegistration : NoModelTemplateRegistrationBase
+    public class HeaderComponentHtmlTemplateRegistration : SingleFileTemplateRegistration
     {
         public override string TemplateId => HeaderComponentHtmlTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
             return new HeaderComponentHtmlTemplate(project);
         }

@@ -39,5 +39,12 @@ namespace Intent.Modules.Angular.Layout.Api
                 .ToList();
         }
 
+        public static IList<TabsModel> GetTabsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(TabsModel.SpecializationTypeId)
+                .Select(x => new TabsModel(x))
+                .ToList();
+        }
+
     }
 }

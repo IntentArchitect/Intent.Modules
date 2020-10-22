@@ -15,7 +15,7 @@ using Intent.Modules.Angular.Api;
 namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class AngularComponentCssTemplateRegistration : ModelTemplateRegistrationBase<ComponentModel>
+    public class AngularComponentCssTemplateRegistration : FilePerModelTemplateRegistration<ComponentModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
 
         public override string TemplateId => Component.AngularComponentCssTemplate.AngularComponentCssTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, ComponentModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, ComponentModel model)
         {
             return new Component.AngularComponentCssTemplate.AngularComponentCssTemplate(project, model);
         }

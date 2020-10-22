@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Sql.Templates.SqlFileTemplate";
 
-        public SqlFileTemplate(IProject project, SqlTemplateModel model) : base(TemplateId, project, model)
+        public SqlFileTemplate(IOutputTarget project, SqlTemplateModel model) : base(TemplateId, project, model)
         {
         }
 
