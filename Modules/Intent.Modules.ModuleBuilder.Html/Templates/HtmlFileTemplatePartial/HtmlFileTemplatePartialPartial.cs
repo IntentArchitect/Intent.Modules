@@ -6,6 +6,7 @@ using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Html.Api;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -53,15 +54,20 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+                modelId: Model.Id,
+                templateId: GetTemplateId(),
+                templateType: "Html Template",
+                role: GetRole()));
+            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: "Intent.Common.Html",
+                moduleVersion: "3.0.0-beta"));
+            if (Model.GetModelType() != null)
             {
-                { "TemplateId", GetTemplateId() },
-                { "TemplateType", "Java Template" },
-                { "Role", GetRole() },
-                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
-                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version },
-                { "ModelId", Model.Id }
-            });
+                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                    moduleId: Model.GetModelType().ParentModule.Name,
+                    moduleVersion: Model.GetModelType().ParentModule.Version));
+            }
         }
         private string GetRole()
         {

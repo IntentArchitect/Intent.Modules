@@ -5,6 +5,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.CSharp.Api;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -14,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 {
     [IntentManaged(Mode.Merge)]
-    partial class CSharpTemplatePartial : IntentRoslynProjectItemTemplateBase<CSharpTemplateModel>
+    partial class CSharpTemplatePartial : CSharpTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
@@ -49,15 +50,21 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+                modelId: Model.Id, 
+                templateId: GetTemplateId(), 
+                templateType: "C# Template", 
+                role: GetRole()));
+
+            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: "Intent.Common.CSharp",
+                moduleVersion: "3.0.0-beta"));
+            if (Model.GetModelType() != null)
             {
-                { "TemplateId", GetTemplateId() },
-                { "TemplateType", "C# Template" },
-                { "Role", GetRole() },
-                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
-                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version },
-                { "ModelId", Model.Id }
-            });
+                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                    moduleId: Model.GetModelType().ParentModule.Name,
+                    moduleVersion: Model.GetModelType().ParentModule.Version));
+            }
         }
 
         private string GetRole()

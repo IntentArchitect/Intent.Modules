@@ -8,6 +8,7 @@ using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
@@ -49,15 +50,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+                modelId: Model.Id,
+                templateId: GetTemplateId(),
+                templateType: "File Template",
+                role: GetRole()));
+
+            if (Model.GetModelType() != null)
             {
-                { "TemplateId", GetTemplateId() },
-                { "TemplateType", "File Template" },
-                { "Role", GetRole() },
-                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
-                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version }, 
-                { "ModelId", Model.Id }
-            });
+                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                    moduleId: Model.GetModelType().ParentModule.Name,
+                    moduleVersion: Model.GetModelType().ParentModule.Version));
+            }
         }
 
         private string GetRole()

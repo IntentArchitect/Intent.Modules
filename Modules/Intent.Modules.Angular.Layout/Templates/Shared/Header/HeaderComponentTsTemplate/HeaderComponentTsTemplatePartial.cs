@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentT
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentTsTemplate";
 
-        public HeaderComponentTsTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public HeaderComponentTsTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
             AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }

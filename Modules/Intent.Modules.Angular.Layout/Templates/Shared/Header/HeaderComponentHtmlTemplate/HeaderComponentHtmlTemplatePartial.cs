@@ -30,7 +30,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate";
 
-        public HeaderComponentHtmlTemplate(IProject project) : base(TemplateId, project, null)
+        public HeaderComponentHtmlTemplate(IOutputTarget project) : base(TemplateId, project, null)
         {
             project.Application.EventDispatcher.Subscribe(AngularModuleRouteCreatedEvent.EventId, @event =>
             {

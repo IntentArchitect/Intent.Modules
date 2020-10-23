@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class CSharpTemplatePartial : IntentRoslynProjectItemTemplateBase<CSharpTemplateModel>
+    public partial class CSharpTemplatePartial : CSharpTemplateBase<CSharpTemplateModel>
     {
 #line hidden
         /// <summary>
@@ -100,10 +100,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: """);
+                fileName: $""");
             
             #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
@@ -115,14 +115,14 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             
             #line default
             #line hidden
-            this.Write("\",\r\n                className: \"");
+            this.Write("\",\r\n                className: $\"");
             
             #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
-            this.Write("\",\r\n                @namespace: \"${Project.Name}");
+            this.Write("\",\r\n                @namespace: $\"{Project.Name}");
             
             #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "." + Model.Name.Replace("Template", "") : ""));

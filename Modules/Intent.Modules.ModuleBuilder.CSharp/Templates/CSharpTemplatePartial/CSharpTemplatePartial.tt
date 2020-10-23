@@ -42,11 +42,11 @@ namespace <#= Namespace #>
         {
             return new RoslynDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
                 defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>",
-                className: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: "${Project.Name}<#= Model.IsFilePerModelTemplateRegistration() ? "." + Model.Name.Replace("Template", "") : "" #>"
+                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
+                @namespace: $"{Project.Name}<#= Model.IsFilePerModelTemplateRegistration() ? "." + Model.Name.Replace("Template", "") : "" #>"
             );
         }
 

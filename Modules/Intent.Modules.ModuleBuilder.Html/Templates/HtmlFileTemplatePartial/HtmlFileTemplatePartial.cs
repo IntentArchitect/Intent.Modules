@@ -77,14 +77,14 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
             
             #line default
             #line hidden
-            this.Write("(IProject project, ");
+            this.Write("(IOutputTarget outputTarget, ");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
-            this.Write(@" model) : base(TemplateId, project, model)
+            this.Write(@" model) : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -93,10 +93,10 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         {
             return new HtmlDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: """);
+                fileName: $""");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden

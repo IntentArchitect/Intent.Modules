@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentH
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Footer.FooterComponentHtmlTemplate";
 
-        public FooterComponentHtmlTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public FooterComponentHtmlTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
         }
 

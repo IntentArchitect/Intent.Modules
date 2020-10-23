@@ -10,7 +10,6 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Modules.Angular.Layout.Api;
 
-
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial", Version = "1.0")]
 
@@ -22,7 +21,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentT
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Footer.FooterComponentTsTemplate";
 
-        public FooterComponentTsTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public FooterComponentTsTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
             AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }

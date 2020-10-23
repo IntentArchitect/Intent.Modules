@@ -19,7 +19,7 @@ using Intent.Modules.ModuleBuilder.Sql.Api;
 namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class SqlFileTemplate : IntentProjectItemTemplateBase<SqlTemplateModel>
+    partial class SqlFileTemplate : IntentTemplateBase<SqlTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Sql.Templates.SqlFileTemplate";

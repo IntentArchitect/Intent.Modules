@@ -8,6 +8,7 @@ using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Modules.ModuleBuilder.Sql.Api;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -49,15 +50,20 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+                modelId: Model.Id,
+                templateId: GetTemplateId(),
+                templateType: "Sql Template",
+                role: GetRole()));
+            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: "Intent.Common.Sql",
+                moduleVersion: "3.0.0-beta"));
+            if (Model.GetModelType() != null)
             {
-                { "TemplateId", GetTemplateId() },
-                { "TemplateType", "Sql Template" },
-                { "Role", GetRole() },
-                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
-                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version },
-                { "ModelId", Model.Id }
-            });
+                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                    moduleId: Model.GetModelType().ParentModule.Name,
+                    moduleVersion: Model.GetModelType().ParentModule.Version));
+            }
         }
 
         private string GetRole()

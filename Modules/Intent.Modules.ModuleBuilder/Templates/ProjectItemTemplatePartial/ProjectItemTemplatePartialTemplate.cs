@@ -106,10 +106,10 @@ using System.Linq;
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: """);
+                fileName: $""");
             
             #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration()  ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration()  ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden

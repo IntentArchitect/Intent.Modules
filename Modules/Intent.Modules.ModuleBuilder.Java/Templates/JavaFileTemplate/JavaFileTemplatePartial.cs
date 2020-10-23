@@ -67,9 +67,19 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
         private string TemplateBody()
         {
             return @"
-public class <#= ClassName #> { 
+public class <#= ClassName #> {
+    private String exampleFiled;
+
     public <#= ClassName #>() {
 
+    }
+
+    public void setExampleFiled(String value) {
+        this.exampleField = value;
+    }
+
+    public String getExampleField() {
+        return this.exampleField;
     }
 }";
         }

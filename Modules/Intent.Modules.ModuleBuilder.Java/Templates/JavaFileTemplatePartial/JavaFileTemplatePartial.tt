@@ -26,7 +26,7 @@ namespace <#= Namespace #>
         public const string TemplateId = "<#= GetTemplateId() #>";
 
         [IntentInitialGen]
-        public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model) : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -35,9 +35,9 @@ namespace <#= Namespace #>
         {
             return new JavaDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
                 relativeLocation: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>",
-                className: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>"
+                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>"
             );
         }
 

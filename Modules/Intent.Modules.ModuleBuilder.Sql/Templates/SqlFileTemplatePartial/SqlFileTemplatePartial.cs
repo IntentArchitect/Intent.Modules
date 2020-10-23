@@ -93,10 +93,10 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         {
             return new SqlFileConfiguration(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: """);
+                fileName: $""");
             
             #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden

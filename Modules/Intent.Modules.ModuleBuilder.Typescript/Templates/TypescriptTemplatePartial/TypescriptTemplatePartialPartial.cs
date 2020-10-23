@@ -5,6 +5,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.TypeScript.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -49,15 +50,20 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish("TemplateRegistrationRequired", new Dictionary<string, string>()
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+                modelId: Model.Id,
+                templateId: GetTemplateId(),
+                templateType: "Typescript Template",
+                role: GetRole()));
+            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                moduleId: "Intent.Common.TypeScript",
+                moduleVersion: "3.0.0-beta"));
+            if (Model.GetModelType() != null)
             {
-                { "TemplateId", GetTemplateId() },
-                { "TemplateType", "TypeScript" },
-                { "Role", GetRole() },
-                { "Module Dependency", Model.GetModelType()?.ParentModule.Name },
-                { "Module Dependency Version", Model.GetModelType()?.ParentModule.Version },
-                { "ModelId", Model.Id }
-            });
+                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                    moduleId: Model.GetModelType().ParentModule.Name,
+                    moduleVersion: Model.GetModelType().ParentModule.Version));
+            }
         }
 
         private string GetRole()

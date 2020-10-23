@@ -37,7 +37,7 @@ namespace <#= Namespace #>
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "<#= Model.IsFilePerModelTemplateRegistration()  ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: $"<#= Model.IsFilePerModelTemplateRegistration()  ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "<#= Model.GetFileSettings().FileExtension() #>",
                 defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration()  ? Model.Name.Replace("Template", "") : "" #>"
             );

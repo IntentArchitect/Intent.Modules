@@ -10,7 +10,7 @@
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Intent Module Builder</tags>
   <factoryExtensions>
-    <factoryExtension id="Intent.ModuleBuilder.AutoCompile" />
+    <factoryExtension id="Intent.ModuleBuilder.AutoCompile" enabled="false" />
   </factoryExtensions>
   <templates>
     <template id="Intent.ModuleBuilder.IModeSpecFile">

@@ -34,7 +34,7 @@ namespace <#= Namespace #>
         {
             return new SqlFileConfiguration(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "<#= Model.IsFilePerModelTemplateRegistration() ? "${Model.Name}" : Model.Name.Replace("Template", "") #>",
+                fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
                 defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>"
             );
         }

@@ -26,23 +26,29 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         public IEnumerable<DecoratorModel> Decorators { get; }
     }
 
-    public class TemplateRegistrationInfo
+    public class TemplateRegistrationRequiredEvent
     {
-        public TemplateRegistrationInfo(string modelId, string templateId, string templateType, string role, string moduleDependency, string moduleVersion)
+        public TemplateRegistrationRequiredEvent(string modelId, string templateId, string templateType, string role)
         {
             ModelId = modelId;
             TemplateId = templateId;
             TemplateType = templateType;
             Role = role;
-            ModuleDependency = moduleDependency;
-            ModuleVersion = moduleVersion;
         }
-
         public string ModelId { get; }
         public string TemplateId { get; set; }
         public string TemplateType { get; set; }
         public string Role { get; }
-        public string ModuleDependency { get; }
+    }
+
+    public class ModuleDependencyRequiredEvent
+    {
+        public ModuleDependencyRequiredEvent(string moduleId, string moduleVersion)
+        {
+            ModuleId = moduleId ?? throw new ArgumentNullException(nameof(moduleId));
+            ModuleVersion = moduleVersion ?? throw new ArgumentNullException(nameof(moduleVersion));
+        }
+        public string ModuleId { get; }
         public string ModuleVersion { get; }
     }
 
@@ -63,8 +69,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
     public class IModSpecTemplate : IntentProjectItemTemplateBase, IHasNugetDependencies
     {
         private readonly IMetadataManager _metadataManager;
-        private readonly ICollection<TemplateRegistrationInfo> _templatesToRegister = new List<TemplateRegistrationInfo>();
+        private readonly ICollection<TemplateRegistrationRequiredEvent> _templatesToRegister = new List<TemplateRegistrationRequiredEvent>();
         private readonly ICollection<MetadataRegistrationRequiredEvent> _metadataToRegister = new List<MetadataRegistrationRequiredEvent>();
+        private readonly ICollection<ModuleDependencyRequiredEvent> _moduleDependencies = new List<ModuleDependencyRequiredEvent>();
 
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
@@ -73,15 +80,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             _metadataManager = metadataManager;
             ModuleModel = _metadataManager.ModuleBuilder(project.Application).GetIntentModuleModels().First();
-            ExecutionContext.EventDispatcher.Subscribe("TemplateRegistrationRequired", @event =>
+            ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
+           {
+               _templatesToRegister.Add(@event);
+           });
+
+            ExecutionContext.EventDispatcher.Subscribe<ModuleDependencyRequiredEvent>(@event =>
             {
-                _templatesToRegister.Add(new TemplateRegistrationInfo(
-                    modelId: @event.GetValue("ModelId"),
-                    templateId: @event.GetValue("TemplateId"),
-                    templateType: @event.GetValue("TemplateType"),
-                    role: @event.GetValue("Role"),
-                    moduleDependency: @event.TryGetValue("Module Dependency"),
-                    moduleVersion: @event.TryGetValue("Module Dependency Version")));
+                _moduleDependencies.Add(@event);
             });
 
             ExecutionContext.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event =>
@@ -147,13 +153,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     specificTemplate.Add(new XAttribute("externalReference", template.ModelId));
                 }
                 specificTemplate.SetElementValue("role", template.Role);
+            }
 
-                if (!string.IsNullOrWhiteSpace(template.ModuleDependency) && 
-                    template.ModuleDependency != doc.XPathSelectElement("package/id").Value &&
-                    doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{template.ModuleDependency}\"]") == null)
+            foreach (var moduleDependency in _moduleDependencies)
+            {
+                if (moduleDependency.ModuleId != doc.XPathSelectElement("package/id").Value &&
+                    doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]") == null)
                 {
                     var dependencies = doc.XPathSelectElement("package/dependencies");
-                    dependencies.Add(CreateDependency(new IntentModule(template.ModuleDependency, template.ModuleVersion)));
+                    dependencies.Add(CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion)));
                 }
             }
 

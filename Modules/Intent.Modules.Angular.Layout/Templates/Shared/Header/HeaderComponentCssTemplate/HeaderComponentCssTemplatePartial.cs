@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentC
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentCssTemplate";
 
-        public HeaderComponentCssTemplate(IProject project, object model) : base(TemplateId, project, model)
+        public HeaderComponentCssTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
         }
 

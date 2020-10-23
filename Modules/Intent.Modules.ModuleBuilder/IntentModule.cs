@@ -6,9 +6,9 @@ namespace Intent.Modules.ModuleBuilder
 {
     public class IntentModule
     {
-        public static readonly IntentModule IntentRoslynWeaver = new IntentModule("Intent.OutputManager.RoslynWeaver", "2.2.0");
-        public static readonly IntentModule IntentCommon = new IntentModule("Intent.Common", "2.2.0");
-        public static readonly IntentModule IntentCommonTypes = new IntentModule("Intent.Common.Types", "2.2.0");
+        public static readonly IntentModule IntentRoslynWeaver = new IntentModule("Intent.OutputManager.RoslynWeaver", "3.0.0-beta");
+        public static readonly IntentModule IntentCommon = new IntentModule("Intent.Common", "3.0.0-beta");
+        public static readonly IntentModule IntentCommonTypes = new IntentModule("Intent.Common.Types", "3.0.0-beta");
 
         public IntentModule(string name, string version)
         {

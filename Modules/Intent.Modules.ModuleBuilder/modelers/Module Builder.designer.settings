@@ -60,7 +60,6 @@
         <type order="3">Type-Definition</type>
         <type order="4">Stereotype-Definition</type>
       </typeOrder>
-      <macros />
     </packageSetting>
   </packageSettings>
   <packageExtensions />
