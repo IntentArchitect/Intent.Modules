@@ -4,7 +4,7 @@ using Intent.Modules.Common;
 
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 {
-    public interface IOwinStartupDecorator : ITemplateDecorator, IDeclareUsings
+    public interface IOwinStartupDecorator : ITemplateDecorator, Intent.Modules.Common.IDeclareUsings
     {
         IEnumerable<string> Configuration();
         IEnumerable<string> Methods();

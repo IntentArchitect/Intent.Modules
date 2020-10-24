@@ -231,7 +231,7 @@ namespace Intent.Modules.Common.Templates
         {
             if (!_onCreatedHasHappened)
             {
-                throw new Exception($"${nameof(GetTemplateClassName)} cannot be called during template instantiation.");
+                throw new Exception($"{nameof(GetTemplateClassName)} cannot be called during template instantiation.");
             }
 
             var template = ExecutionContext.FindTemplateInstance<TTemplate>(dependency);

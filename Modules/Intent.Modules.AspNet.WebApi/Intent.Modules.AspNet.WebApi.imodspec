@@ -57,6 +57,6 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install target="Services" src="metadata/Intent.AspNet.WebApi"/>
+    <install target="Services" src="metadata/Intent.AspNet.WebApi/Intent.AspNet.WebApi.services.pkg.config"/>
   </metadata>
 </package>

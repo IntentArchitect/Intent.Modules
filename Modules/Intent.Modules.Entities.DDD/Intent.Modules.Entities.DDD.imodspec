@@ -35,6 +35,6 @@
     <file src="bin/$configuration$/$id$.pdb"/>
   </files>
   <metadata>
-    <install target="Domain" src="metadata/Intent.Entities.DDD"/>
+    <install target="Domain" src="metadata/Intent.Entities.DDD/Intent.Entities.DDD.domain.pkg.config"/>
   </metadata>
 </package>
