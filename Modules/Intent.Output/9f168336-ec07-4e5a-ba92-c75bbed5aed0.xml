@@ -3,9 +3,6 @@
   <ApplicationId>9f168336-ec07-4e5a-ba92-c75bbed5aed0</ApplicationId>
   <FileLogs>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Java.sln</SolutionRelativeFilePath>
-    </FileLog>
-    <FileLog>
       <ProjectId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Java\Intent.Modules.Common.Java.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Java.csproj</ProjectRelativeFilePath>

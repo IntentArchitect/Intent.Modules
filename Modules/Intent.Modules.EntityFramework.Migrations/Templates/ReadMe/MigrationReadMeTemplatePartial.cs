@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.EntityFramework.Migrations.Templates.ReadMe
 {
@@ -20,7 +21,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.ReadMe
 
         public string BoundedContextName => Project.ApplicationName();
         public string MigrationProject => Project.Name;
-        public string ProjectWithDbContext => /*ExecutionContext.OutputTargets.FirstOrDefault(x => x.HasStereotype("Startup"))?.Name ?? */ OutputTarget.Application.OutputTargets.First().Name;
+        public string StartupProject => OutputTarget.Application.OutputTargets.FirstOrDefault(x => x.Type == VisualStudioProjectTypeIds.WebApiApplication || x.Type == VisualStudioProjectTypeIds.ConsoleAppNetFramework)?.Name ?? "Unknown";
         public string DbContextConfigurationName => Project.FindTemplateInstance(DbMigrationsConfigurationTemplate.Identifier).GetMetadata().FileName;
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

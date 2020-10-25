@@ -13,8 +13,6 @@
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic"#>
 <#@ import namespace="Intent.Modules.Typescript.ServiceAgent.Contracts"#>
-<#
-#>
 
 namespace <#= Namespace #> {
     export class <#=ClassName#> {

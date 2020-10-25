@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
@@ -54,17 +55,12 @@ namespace Intent.Modules.Common
             return executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch) as TTemplate;
         }
 
-        public static IOutputTarget FindOutputTargetWithTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model)
+        public static IOutputTarget FindOutputTargetWithTemplate(this ISoftwareFactoryExecutionContext executionContext, string templateId, IMetadataModel hasModel)
         {
-            return FindOutputTargetWithTemplateInstance(executionContext, TemplateDependency.OnModel(templateId, model));
+            return FindOutputTargetWithTemplate(executionContext, TemplateDependency.OnModel(templateId, hasModel));
         }
 
-        //public static IOutputTarget FindProjectWithTemplateInstance(this IApplication executionContext, string templateId, string className)
-        //{
-        //    return executionContext.FindProjectWithTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
-        //}
-
-        public static IOutputTarget FindOutputTargetWithTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
+        public static IOutputTarget FindOutputTargetWithTemplate(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
         {
             return executionContext.FindOutputTargetWithTemplate(templateDependency.TemplateId, templateDependency.IsMatch);
         }

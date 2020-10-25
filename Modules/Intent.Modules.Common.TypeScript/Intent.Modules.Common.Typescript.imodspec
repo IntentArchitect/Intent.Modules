@@ -9,7 +9,7 @@
   <authors>Intent.Modules</authors>
   <templates></templates>
   <factoryExtensions>
-    <factoryExtension id="Intent.Common.TypeScript.OutputWeaver"/>
+    <factoryExtension id="Intent.Common.TypeScript.OutputWeaver" />
   </factoryExtensions>
   <dependencies>
     <dependency id="Intent.Common" version="3.0.0-beta" />
@@ -19,4 +19,7 @@
     <file src="$outDir$/$id$.pdb" />
     <file src="$outDir$/TypeScriptAST.dll" inspect="false" />
   </files>
+  <metadata>
+    <install src="Intent.Metadata/Module Builder/Intent.Common.Typescript/Intent.Common.Typescript.pkg.config" externalReference="2debfc4c-f15d-47a6-88c1-8597b2ca8e50" />
+  </metadata>
 </package>

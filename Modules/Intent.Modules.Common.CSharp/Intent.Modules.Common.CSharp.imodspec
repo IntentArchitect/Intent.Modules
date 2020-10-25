@@ -15,5 +15,7 @@
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
   </files>
-  <metadata />
+  <metadata>
+    <install src="Intent.Metadata/Module Builder/Intent.Common.CSharp/Intent.Common.CSharp.pkg.config" externalReference="730e1275-0c32-44f7-991a-9619d07ca68d" />
+  </metadata>
 </package>

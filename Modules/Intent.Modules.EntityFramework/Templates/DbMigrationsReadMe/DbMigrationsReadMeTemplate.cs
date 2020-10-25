@@ -31,7 +31,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
                     "---------------\r\nadd-migration -Name {ChangeName} -StartupProjectName \"");
             
             #line 6 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
+            this.Write(this.ToStringHelper.ToStringWithCulture(StartupProject));
             
             #line default
             #line hidden
@@ -57,7 +57,7 @@ Override an existing migration:
 add-migration -Name {ExistingNameWithoutDateComponent} -StartupProjectName """);
             
             #line 11 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
+            this.Write(this.ToStringHelper.ToStringWithCulture(StartupProject));
             
             #line default
             #line hidden
@@ -80,7 +80,7 @@ add-migration -Name {ExistingNameWithoutDateComponent} -StartupProjectName """);
                     "------------------------------\r\nupdate-database -StartupProjectName \"");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
+            this.Write(this.ToStringHelper.ToStringWithCulture(StartupProject));
             
             #line default
             #line hidden
@@ -103,7 +103,7 @@ add-migration -Name {ExistingNameWithoutDateComponent} -StartupProjectName """);
                     "-----------------------------------\r\nupdate-database -StartupProjectName \"");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
+            this.Write(this.ToStringHelper.ToStringWithCulture(StartupProject));
             
             #line default
             #line hidden
@@ -129,7 +129,7 @@ Generate script which detects current database version and updates it to the lat
 update-database -StartupProjectName """);
             
             #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
+            this.Write(this.ToStringHelper.ToStringWithCulture(StartupProject));
             
             #line default
             #line hidden
@@ -155,7 +155,7 @@ Generate a script two upgrade from and to a specific version:
 update-database -StartupProjectName """);
             
             #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ProjectWithDbContext));
+            this.Write(this.ToStringHelper.ToStringWithCulture(StartupProject));
             
             #line default
             #line hidden

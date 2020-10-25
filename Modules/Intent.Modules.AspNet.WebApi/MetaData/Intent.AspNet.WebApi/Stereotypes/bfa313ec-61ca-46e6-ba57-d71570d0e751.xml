@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="bfa313ec-61ca-46e6-ba57-d71570d0e751">
+  <name>Transactional Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="e030c97a-e066-40a7-8188-808c275df3cb">Operation</element>
+  </targetElements>
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="btc" />
+  <displayIcon>true</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>87d16e6c-ce99-4329-87c4-d39dcddf0764</parentFolderId>
+  <order>0</order>
+  <packageId>4685C0D9-8FF8-4471-82DC-B44D1B17D6DE</packageId>
+  <packageName>Intent.AspNet.WebApi</packageName>
+  <properties>
+    <property id="050b5ad7-d0b6-4b67-9e0d-25037a27c22d">
+      <name>Explicit Scope</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

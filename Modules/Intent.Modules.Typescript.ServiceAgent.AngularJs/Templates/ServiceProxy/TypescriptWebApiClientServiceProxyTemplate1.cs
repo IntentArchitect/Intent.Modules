@@ -34,23 +34,16 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
         /// </summary>
         public override string TransformText()
         {
-            
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
-
-
-            
-            #line default
-            #line hidden
             this.Write("\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write(" {\r\n    export class ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -60,14 +53,14 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
                     "pService,\r\n            config: any\r\n        ) {\r\n            this.baseUrl = conf" +
                     "ig[\"");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ApiBasePathConfigKey));
             
             #line default
             #line hidden
             this.Write("\"];\r\n        }\r\n");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
         foreach (var o in Model.Operations)
         {
             if (o.ReturnType != null)
@@ -79,91 +72,91 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             #line hidden
             this.Write("\r\n        ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodDefinitionParameters(o)));
             
             #line default
             #line hidden
             this.Write("): ng.IPromise<");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(o.ReturnType)));
             
             #line default
             #line hidden
             this.Write(">\r\n        {\r\n            const url = `${this.baseUrl}/api/");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToLower().Replace("service","")));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write("`;\r\n");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
               if (GetHttpVerb(o) == HttpVerb.GET) { 
             
             #line default
             #line hidden
             this.Write("            return this.$http.get<");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(o.ReturnType)));
             
             #line default
             #line hidden
             this.Write(">(url, { params: { ");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParametersForGet(o)));
             
             #line default
             #line hidden
             this.Write(" } }).then(result => result.data);\r\n");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
               } else {
             
             #line default
             #line hidden
             this.Write("            return this.$http.post<");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(o.ReturnType)));
             
             #line default
             #line hidden
             this.Write(">(url, ");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParametersForPost(o)));
             
             #line default
             #line hidden
             this.Write(").then(result => result.data);\r\n");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
               }
             
             #line default
             #line hidden
             this.Write("        }\r\n");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
 
             }
             else
@@ -174,42 +167,42 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             #line hidden
             this.Write("\r\n        ");
             
-            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name.ToCamelCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodDefinitionParameters(o)));
             
             #line default
             #line hidden
             this.Write("): ng.IPromise<void>\r\n        {\r\n            const url = `${this.baseUrl}/api/");
             
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name.ToLower().Replace("service","")));
             
             #line default
             #line hidden
             this.Write("/");
             
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name.ToLower()));
             
             #line default
             #line hidden
             this.Write("`;\r\n            return this.$http.post<void>(url, ");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethodCallParametersForPost(o)));
             
             #line default
             #line hidden
             this.Write(").then(() => null);\r\n        }\r\n");
             
-            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             }
         }
 
@@ -218,21 +211,21 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             #line hidden
             this.Write("    }\r\n\r\n    angular.module(\"");
             
-            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AngularModule));
             
             #line default
             #line hidden
             this.Write("\").service(\"");
             
-            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("Proxy\", ");
             
-            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.AngularJs\Templates\ServiceProxy\TypescriptWebApiClientServiceProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default

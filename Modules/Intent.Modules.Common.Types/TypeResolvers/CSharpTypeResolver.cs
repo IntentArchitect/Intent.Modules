@@ -24,7 +24,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                 isPrimitive = typeInfo.Element.GetStereotypeProperty("C#", "Is Primitive", true);
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
 
-                if (typeInfo.IsNullable && (typeInfo.Element.SpecializationType.Equals("Enum",StringComparison.InvariantCultureIgnoreCase) || (typeInfo.Element.GetStereotypeProperty("C#", "IsPrimitive", false))))
+                if (typeInfo.IsNullable && isPrimitive)
                 {
                     result += "?";
                 }
@@ -79,10 +79,11 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                         break;
                     case "string":
                         result = "string";
+                        isPrimitive = false;
                         break;
                 }
 
-                if (typeInfo.IsNullable && typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase))
+                if (typeInfo.IsNullable && (isPrimitive || typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
                 {
                     result += "?";
                 }

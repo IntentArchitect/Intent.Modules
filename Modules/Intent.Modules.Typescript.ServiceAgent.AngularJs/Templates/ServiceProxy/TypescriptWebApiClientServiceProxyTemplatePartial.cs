@@ -33,6 +33,11 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.RemoteIdentifier));
         }
 
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            return new ITemplateDependency[0]; // disable adding on imports when merged
+        }
+
         public string ApiBasePathConfigKey => $"{OutputTarget.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".AsClassName().ToLower();
 
         public string AngularModule

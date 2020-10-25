@@ -438,6 +438,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                     case "cs":
                         itemType = "Compile";
                         break;
+                    case "csproj":
+                        return;
                     default:
                         itemType = "Content";
                         break;

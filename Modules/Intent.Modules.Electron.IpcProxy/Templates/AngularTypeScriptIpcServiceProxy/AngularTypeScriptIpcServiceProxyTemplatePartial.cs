@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
@@ -5,6 +6,7 @@ using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy;
 using Intent.Modules.Typescript.ServiceAgent.Contracts;
 using Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptDTO;
@@ -12,7 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcServiceProxy
 {
-    partial class AngularTypeScriptIpcServiceProxyTemplate : IntentProjectItemTemplateBase<ServiceModel>, ITemplate
+    partial class AngularTypeScriptIpcServiceProxyTemplate : TypeScriptTemplateBase<ServiceModel>, ITemplate
     {
         public const string Identifier = "Intent.Electron.IpcProxy.AngularTypeScriptIpcServiceProxy";
 
@@ -21,12 +23,22 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
         {
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.LocalIdentifier));
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, TypescriptDtoTemplate.RemoteIdentifier));
-            var receivingProxyProject = ExecutionContext.FindOutputTargetWithTemplate(CSharpIpcReceivingProxyTemplate.Identifier, x => x.Id == model.Id);
+        }
+
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        {
+            return new ITemplateDependency[0]; // disable adding on imports when merged
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            base.BeforeTemplateExecution();
+            var receivingProxyProject = ExecutionContext.FindOutputTargetWithTemplate(CSharpIpcReceivingProxyTemplate.Identifier, Model);
             AssemblyName = receivingProxyProject.Name;
         }
 
         public string Namespace => "App.Proxies";
-        public string AssemblyName { get; }
+        public string AssemblyName { get; private set; }
         public string TypeName => $"{AssemblyName}.{Model.Name}NodeIpcProxy";
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()

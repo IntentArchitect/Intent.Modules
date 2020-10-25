@@ -1,8 +1,9 @@
-﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<ServiceModel>" #>
+﻿<#@ template  debug="true"  inherits="TypeScriptTemplateBase<ServiceModel>" #>
 <#@ output extension=".ts" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="Intent.Modelers.Services.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="System" #>
 namespace <#= Namespace #> {
     export class <#=Model.Name#>Proxy {
