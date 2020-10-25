@@ -333,19 +333,32 @@ white-space: inherit;`</style>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Comment Association</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="association">
+          <specializationType>Comment Association</specializationType>
+          <specializationTypeId>5264c135-e856-468d-8bd7-154b75842256</specializationTypeId>
+          <text>New Association</text>
+          <defaultName>NewCommentAssociation</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
       <visualSettings type="Comment">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
         <display>
           <drawPath>
-            <path>M${x + 10},${y} h${w - 10} v${h} h-${w} v-${h - 10} l10,-10 v10 h-10 z</path>
+            <path>`M${x + 10},${y} h${w - 10} v${h} h-${w} v-${h - 10} l10,-10 v10 h-10 z`</path>
             <lineColor>#222222</lineColor>
             <fillColor>#ffffdd</fillColor>
           </drawPath>
           <drawText>
             <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: normal;`</style>
             <size width="${w - 20}" height="${h - 16}" />
-            <position x="{x + 10}" y="${y + 8}" />
+            <position x="${x + 10}" y="${y + 8}" />
           </drawText>
         </display>
         <defaultSize width="${x}" height="${y}" />

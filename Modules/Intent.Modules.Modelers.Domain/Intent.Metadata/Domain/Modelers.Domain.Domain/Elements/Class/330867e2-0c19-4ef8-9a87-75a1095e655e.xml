@@ -107,14 +107,17 @@
     </childElement>
     <childElement id="7733c257-c6e3-4ee6-9e7e-6a641dcac66a" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
-      <display>attribute: &lt;no type&gt;</display>
+      <display>attribute: string</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <typeReference id="bc8d3d77-e2d2-4a71-82f1-c85a1e0554d8">
+        <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
         <isNavigable>true</isNavigable>
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
