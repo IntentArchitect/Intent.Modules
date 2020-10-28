@@ -3,9 +3,6 @@
   <ApplicationId>1cecc65d-e804-4de6-a27f-e8e4ad0190d7</ApplicationId>
   <FileLogs>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.Angular.sln</SolutionRelativeFilePath>
-    </FileLog>
-    <FileLog>
       <ProjectId>b79f286d-1129-41f9-bb0f-d266b180d3c2</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Angular\Api\AngularAppModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/AngularAppModel.cs</ProjectRelativeFilePath>

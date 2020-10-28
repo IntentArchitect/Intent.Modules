@@ -54,6 +54,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\FolderExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FolderExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\GeneralizationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/GeneralizationModel.cs</ProjectRelativeFilePath>
     </FileLog>

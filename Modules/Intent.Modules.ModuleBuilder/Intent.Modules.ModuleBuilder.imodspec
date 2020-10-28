@@ -108,6 +108,13 @@
       </config>
       <role>Api</role>
     </template>
+    <template id="ModuleBuilder.Templates.Api.ApiElementExtensionModel" externalReference="e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>

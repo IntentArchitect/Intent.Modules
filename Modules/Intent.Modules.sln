@@ -173,6 +173,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.React
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.React.Console", "Intent.Modules.Common.React.Console\Intent.Modules.Common.React.Console.csproj", "{485C8E7B-3320-4C7D-823A-A928957E9816}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.OutputTargets.Folders", "Intent.Modules.OutputTargets.Folders\Intent.Modules.OutputTargets.Folders.csproj", "{33437816-211B-4808-8AD9-E5866A7DCB27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -471,6 +473,10 @@ Global
 		{485C8E7B-3320-4C7D-823A-A928957E9816}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{485C8E7B-3320-4C7D-823A-A928957E9816}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{485C8E7B-3320-4C7D-823A-A928957E9816}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33437816-211B-4808-8AD9-E5866A7DCB27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33437816-211B-4808-8AD9-E5866A7DCB27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33437816-211B-4808-8AD9-E5866A7DCB27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33437816-211B-4808-8AD9-E5866A7DCB27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -559,6 +565,7 @@ Global
 		{75B5C484-4DD3-4B06-B85E-F1273B8B1E29} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{263075F3-C93F-40F7-BE56-39742CAB319C} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{485C8E7B-3320-4C7D-823A-A928957E9816} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{33437816-211B-4808-8AD9-E5866A7DCB27} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

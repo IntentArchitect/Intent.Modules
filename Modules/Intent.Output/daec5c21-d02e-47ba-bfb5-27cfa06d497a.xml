@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>daec5c21-d02e-47ba-bfb5-27cfa06d497a</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\Api\RoleModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/RoleModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\Api\RootLocationPackageModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/RootLocationPackageModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\modelers\Output Folder Types.designer.settings</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Output Folder Types.designer.settings</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\modelers\Output Folders.designer.config</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>modelers/Output Folders.designer.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\OutputTargets.Folders.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>OutputTargets.Folders.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\OutputTargets.Folders.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>OutputTargets.Folders.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2b916576-26f0-47eb-b878-7788a46ac29c</ProjectId>
+      <SolutionRelativeFilePath>..\OutputTargets.Folders\README.txt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

@@ -84,8 +84,79 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
         public string Name => UnderlyingPackage.Name;
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
-    }
-}");
+
+        ");
+            
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+  if (Model.MenuOptions != null) {
+        foreach(var creationOption in Model.MenuOptions.ElementCreations) {
+            
+            #line default
+            #line hidden
+            this.Write("        public ");
+            
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple())));
+            
+            #line default
+            #line hidden
+            this.Write(" ");
+            
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
+            
+            #line default
+            #line hidden
+            this.Write(" => UnderlyingPackage.ChildElements\r\n            .Where(x => x.SpecializationType" +
+                    " == ");
+            
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write(".SpecializationType)\r\n            .Select(x => new ");
+            
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write("(x))\r\n");
+            
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+          if (creationOption.GetOptionSettings().AllowMultiple()) { 
+            
+            #line default
+            #line hidden
+            this.Write("            .ToList();\r\n");
+            
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+          } else { 
+            
+            #line default
+            #line hidden
+            this.Write("            .SingleOrDefault();\r\n");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+          } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n");
+            
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+      } 
+            
+            #line default
+            #line hidden
+            
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModel.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

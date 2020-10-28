@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="2a20852f-a195-4773-a5c3-2c2ee125ed4a" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+  <name>DesignerConfig</name>
+  <display>DesignerConfig</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>576b0748-e723-411b-a944-7cfedbeb9498</parentFolderId>
+  <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
+  <packageName>OutputTargets.Folders</packageName>
+  <stereotypes />
+  <childElements />
+</class>

@@ -126,6 +126,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
 
+        [XmlElement("defaultName")]
+        public string DefaultName { get; set; }
+
         [XmlElement("icon")]
         public IconModelPersistable Icon { get; set; }
 

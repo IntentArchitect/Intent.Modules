@@ -39,5 +39,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
             );
         }
 
+        private string FormatForCollection(string name, bool asCollection)
+        {
+            return asCollection ? $"IList<{name}>" : name;
+        }
+
+        private string GetCreationOptionName(ElementCreationOptionModel option)
+        {
+            if (option.GetOptionSettings().ApiModelName() != null)
+            {
+                return option.GetOptionSettings().ApiModelName();
+            }
+            var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
+            return option.GetOptionSettings().AllowMultiple() ? name.ToPluralName() : name;
+        }
+
     }
 }

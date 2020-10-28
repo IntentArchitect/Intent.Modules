@@ -37,5 +37,19 @@ namespace <#= Namespace #>
         public string Name => UnderlyingPackage.Name;
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
+
+        <#  if (Model.MenuOptions != null) {
+        foreach(var creationOption in Model.MenuOptions.ElementCreations) {#>
+        public <#= FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == <#= creationOption.ApiModelName #>.SpecializationType)
+            .Select(x => new <#= creationOption.ApiModelName #>(x))
+<#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>
+            .ToList();
+<#          } else { #>
+            .SingleOrDefault();
+<#          } #>
+
+<#      } #>
+<#  } #>
     }
 }

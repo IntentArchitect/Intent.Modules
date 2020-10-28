@@ -15,6 +15,15 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
+    <property id="fc8c4bc7-d83c-40e7-a85f-35886682d910">
+      <name>Default Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563">
       <name>Icon</name>
       <type>string</type>

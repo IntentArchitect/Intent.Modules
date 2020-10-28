@@ -81,9 +81,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             _metadataManager = metadataManager;
             ModuleModel = _metadataManager.ModuleBuilder(project.Application).GetIntentModuleModels().First();
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
-           {
-               _templatesToRegister.Add(@event);
-           });
+            {
+                _templatesToRegister.Add(@event);
+            });
 
             ExecutionContext.EventDispatcher.Subscribe<ModuleDependencyRequiredEvent>(@event =>
             {
@@ -120,6 +120,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 templatesElement = new XElement("templates");
                 doc.Element("package").Add(templatesElement);
             }
+
+            var icon = doc.XPathSelectElement($"package/iconUrl");
+            if (icon == null)
+            {
+                icon = new XElement("iconUrl");
+                doc.Element("package").Add(icon);
+            }
+            //icon.SetAttributeValue("type", ModuleModel.GetModuleSettings().Icon()?.Type.ToString());
+            //icon.SetAttributeValue("source", ModuleModel.GetModuleSettings().Icon()?.Source);
+            icon.SetValue(ModuleModel.GetModuleSettings().Icon()?.Source ?? "");
 
             foreach (var template in _templatesToRegister)
             {
@@ -277,6 +287,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   <summary>A custom module for {OutputTarget.Application.SolutionName}.</summary>
   <description>A custom module for {OutputTarget.Application.SolutionName}.</description>
   <authors>{OutputTarget.Application.SolutionName}</authors>
+  <iconUrl></iconUrl>
   <templates>
   </templates>
   <dependencies>

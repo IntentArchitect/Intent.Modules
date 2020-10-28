@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9d4b93f4-6ecb-457e-8ef7-f1f715b5ddcb" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</parentFolderId>
+  <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
+  <packageName>Intent.OutputTargets.Folders</packageName>
+  <stereotypes />
+  <childElements />
+</class>

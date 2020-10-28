@@ -24,6 +24,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\FolderExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Api/FolderExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Services\Api\OperationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Api/OperationModel.cs</ProjectRelativeFilePath>
     </FileLog>

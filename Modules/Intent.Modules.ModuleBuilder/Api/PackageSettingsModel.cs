@@ -54,6 +54,7 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 SpecializationTypeId = Id,
                 SpecializationType = Name,
+                DefaultName = this.GetPackageSettings().DefaultName(),
                 Icon = this.GetPackageSettings().Icon()?.ToPersistable(),
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))

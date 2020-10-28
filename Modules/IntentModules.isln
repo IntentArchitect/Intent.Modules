@@ -26,5 +26,6 @@
     <application id="49018a38-94b9-46d5-b6b7-8ce2e5aae4a9" relativePath="Intent.Modules.Angular.Layout/Angular.Layout.application.config" />
     <application id="275030c0-f660-4c46-8156-ce592d267b38" relativePath="Intent.Modules.ModuleBuilder.Html/ModuleBuilder.Html.application.config" />
     <application id="7e0041b4-8005-48df-b096-89c39ba546d2" name="Intent.Modules.Common.React" relativePath="Intent.Modules.Common.React/Intent.Modules.Common.React.application.config" />
+    <application id="6c53239e-354a-4005-baa3-1fabf4a5dc11" name="OutputTargets.Folders" relativePath="Intent.Modules.OutputTargets.Folders\OutputTargets.Folders.application.config" />
   </applications>
 </solution>

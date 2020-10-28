@@ -113,6 +113,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiPackageModel.tt</DependentUpon>
     </Compile>
+  
+    <None Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModel.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiElementExtensionModel.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModel.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiElementExtensionModel.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -141,7 +152,7 @@
     <PackageReference Include="Intent.Modules.Common" Version="3.0.0-pre.2" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.0-pre.2" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.5" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.6" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
   </ItemGroup>
 

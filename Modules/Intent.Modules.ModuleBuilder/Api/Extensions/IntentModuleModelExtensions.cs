@@ -38,6 +38,11 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Version");
             }
 
+            public IIconModel Icon()
+            {
+                return _stereotype.GetProperty<IIconModel>("Icon");
+            }
+
             public string APINamespace()
             {
                 return _stereotype.GetProperty<string>("API Namespace");

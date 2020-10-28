@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="7a1c396a-0633-45de-9b90-b034bf0e53ad" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Folder</name>
+  <display>Folder</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>44f27240-0f70-4d91-8224-9472f9609c81</parentFolderId>
+  <packageId>44f27240-0f70-4d91-8224-9472f9609c81</packageId>
+  <packageName>Root</packageName>
+  <stereotypes />
+  <childElements />
+</class>
