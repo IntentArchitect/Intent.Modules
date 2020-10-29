@@ -1,105 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9A223AC6-CBF7-418E-93E0-F2326ADDAC07}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.ApplicationTemplates</RootNamespace>
-    <AssemblyName>Intent.ApplicationTemplates</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Intent.Packager" Version="3.0.0-pre.3">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Icons\EntityFramework.png" />
-    <Content Include="Icons\Unity.png" />
-    <Content Include="Icons\Autofac.png" />
-    <None Include="Intent Module Builder\content\%24{field_application.name}.application.config" />
-    <None Include="Intent Module Builder\content\visual-studio-projects.installation.settings">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web Application .NET Core 2.1\content\visual-studio-projects.installation.settings">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Web Application .NET Core 3.1\content\%24{field_application.name}.application.config" />
-    <None Include="Web Application .NET Core 2.1\content\%24{field_application.name}.application.config" />
-    <None Include="Web Application .NET Framework\content\%24{field_application.name}.application.config" />
-    <Content Include="Intent Module Builder\description.html" />
-    <Content Include="Intent Module Builder\metadata.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web Application .NET Core 3.1\description.html" />
-    <Content Include="Web Application .NET Core 3.1\metadata.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Web Application .NET Core 2.1\description.html" />
-    <Content Include="Web Application .NET Core 2.1\metadata.xml">
-      <SubType>Designer</SubType>
-    </Content>
-    <None Include="Web Application .NET Core 3.1\content\visual-studio-projects.installation.settings">
-      <SubType>Designer</SubType>
-    </None>
-    <Content Include="Web Application .NET Framework\description.html" />
-    <Content Include="Web Application .NET Framework\metadata.xml">
-      <SubType>Designer</SubType>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Web Application .NET Core 3.1\metadata\" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>if not exist "$(SolutionDir)Intent.Modules" mkdir "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.3.0.0-pre.1\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Framework\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.3.0.0-pre.1\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 2.1\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.3.0.0-pre.1\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Web Application .NET Core 3.1\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-dotnet $(SolutionDir)packages\Intent.IntentArchitectPackager.3.0.0-pre.1\tools\Intent.IArchitect.Packager.dll packageApplicationTemplate -metadataInputPath "$(ProjectDir)Intent Module Builder\metadata.xml" -destinationFolder "$(SolutionDir)Intent.Modules"
-</PostBuildEvent>
-  </PropertyGroup>
-  <PropertyGroup>
-    <PreBuildEvent>
-    </PreBuildEvent>
-  </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
 </Project>

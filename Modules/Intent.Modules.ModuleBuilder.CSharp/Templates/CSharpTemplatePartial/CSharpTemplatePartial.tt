@@ -28,7 +28,7 @@ namespace <#= Namespace #>
         public const string TemplateId = "<#= GetTemplateId() #>";
 
         [IntentInitialGen]
-        public <#= ClassName #>(IOutputTarget project, <#= GetModelType() #> model) : base(TemplateId, project, model)
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model) : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -44,9 +44,9 @@ namespace <#= Namespace #>
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "cs",
-                defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>",
+                defaultLocationInProject: "",
                 className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: $"{Project.Name}<#= Model.IsFilePerModelTemplateRegistration() ? "." + Model.Name.Replace("Template", "") : "" #>"
+                @namespace: $"{OutputTarget.Name}"
             );
         }
 
