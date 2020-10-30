@@ -11,7 +11,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
 {
     [Description("Wcf Service CS Project File - VS Projects")]
-    public class Registrations : ITemplateRegistration, IOutputTargetRegistration
+    public class Registrations : ITemplateRegistration
     {
         public string TemplateId => WcfServiceCSProjectFileTemplate.IDENTIFIER;
         private readonly IMetadataManager _metadataManager;
@@ -19,15 +19,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WcfServiceCSProjectFile
         public Registrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
-        }
-
-        public void Register(IOutputTargetRegistry registry, IApplication application)
-        {
-            var models = _metadataManager.VisualStudio(application).GetWCFServiceApplicationModels();
-            foreach (var model in models)
-            {
-                registry.RegisterOutputTarget(model.ToOutputTargetConfig());
-            }
         }
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)

@@ -62,7 +62,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         {
             foreach (var project in _actions)
             {
-                var vsproject = application.Projects.FirstOrDefault(x => x.Id == project.Key);
+                var vsproject = application.Projects.FirstOrDefault(x => x.Id == project.Key)?.GetTargetPath()[0];
                 if (vsproject == null)
                 {
                     //This scenario occurs when projects have been deleted

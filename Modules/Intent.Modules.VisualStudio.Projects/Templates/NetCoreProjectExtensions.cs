@@ -83,7 +83,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
             }
         }
 
-        public static void SyncProjectReferences(this IProject _project, XDocument doc)
+        public static void SyncProjectReferences(this IOutputTarget _project, XDocument doc)
         {
             if (_project.Dependencies().Count <= 0)
             {

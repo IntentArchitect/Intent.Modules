@@ -10,7 +10,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
 {
     [Description("Library CS Project - VS Projects")]
-    public class Registrations : ITemplateRegistration, IOutputTargetRegistration
+    public class Registrations : ITemplateRegistration
     {
         public string TemplateId => LibraryCSProjectFileTemplate.IDENTIFIER;
         private readonly IMetadataManager _metadataManager;
@@ -18,15 +18,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.LibraryCSProjectFile
         public Registrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
-        }
-
-        public void Register(IOutputTargetRegistry registry, IApplication application)
-        {
-            var models = _metadataManager.VisualStudio(application).GetClassLibraryNETFrameworkModels();
-            foreach (var model in models)
-            {
-                registry.RegisterOutputTarget(model.ToOutputTargetConfig());
-            }
         }
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)

@@ -93,8 +93,9 @@ namespace Intent.Modules.OutputTargets.Folders.Registrations
         public string Type => "Folder";
         public string Name => _model.Name;
         public string RelativeLocation => "";
+        public string ParentId => null;
         public IEnumerable<string> SupportedFrameworks => new string[0];
-        public IList<IOutputTargetRole> Roles => _model.Roles.Select(x => new FolderRole(x.Name)).ToList<IOutputTargetRole>();
+        public IEnumerable<IOutputTargetRole> Roles => _model.Roles.Select(x => new FolderRole(x.Name)).ToList<IOutputTargetRole>();
     }
 
     public class FolderOutputTarget : IOutputTargetConfig
@@ -110,9 +111,10 @@ namespace Intent.Modules.OutputTargets.Folders.Registrations
         public string Id => _model.Id;
         public string Type => "Folder";
         public string Name => _model.Name;
-        public string RelativeLocation => Path.Combine(_model.GetFolderPath().Select(x => x.Name).Concat(new[] { Name }).ToArray());
+        public string RelativeLocation => _model.Name;
+        public string ParentId => _model.InternalElement.ParentId;
         public IEnumerable<string> SupportedFrameworks => new string[0];
-        public IList<IOutputTargetRole> Roles => _model.Roles.Select(x => new FolderRole(x.Name)).ToList<IOutputTargetRole>();
+        public IEnumerable<IOutputTargetRole> Roles => _model.Roles.Select(x => new FolderRole(x.Name)).ToList<IOutputTargetRole>();
     }
 
     public class FolderRole : IOutputTargetRole

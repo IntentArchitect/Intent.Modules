@@ -21,7 +21,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private readonly IChanges _changeManager;
         private readonly string _projectPath;
         private readonly ISoftwareFactoryEventDispatcher _sfEventDispatcher;
-        private readonly IProject _project;
+        private readonly IOutputTarget _project;
 
         private Action<string, string> _syncProjectFile;
         private XDocument _doc;
@@ -34,7 +34,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             ISoftwareFactoryEventDispatcher sfEventDispatcher,
             IXmlFileCache xmlFileCache,
             IChanges changeManager,
-            IProject project)
+            IOutputTarget project)
         {
             _projectPath = projectPath;
             _sfEventDispatcher = sfEventDispatcher;
@@ -567,7 +567,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             ReplaceElementIfNotMatch(targetElement, desiredContent);
         }
 
-        private void ProcessChangeProjectItemType(IProject project, string relativeFileName, string itemType)
+        private void ProcessChangeProjectItemType(IOutputTarget project, string relativeFileName, string itemType)
         {
             relativeFileName = NormalizePath(relativeFileName);
 

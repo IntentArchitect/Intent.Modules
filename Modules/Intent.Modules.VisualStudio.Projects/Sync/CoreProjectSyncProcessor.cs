@@ -20,7 +20,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
         private readonly IChanges _changeManager;
         private readonly string _projectPath;
         private readonly ISoftwareFactoryEventDispatcher _softwareFactoryEventDispatcher;
-        private readonly IProject _project;
+        private readonly IOutputTarget _project;
 
         private Action<string, string> _syncProjectFile;
         private XDocument _doc;
@@ -33,7 +33,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             ISoftwareFactoryEventDispatcher softwareFactoryEventDispatcher,
             IXmlFileCache xmlFileCache,
             IChanges changeManager,
-            IProject project)
+            IOutputTarget project)
         {
             _projectPath = projectPath;
             _softwareFactoryEventDispatcher = softwareFactoryEventDispatcher;

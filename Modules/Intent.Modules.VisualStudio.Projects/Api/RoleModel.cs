@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -9,8 +10,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class RoleModel : IHasStereotypes, IMetadataModel
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    public class RoleModel : IHasStereotypes, IMetadataModel, IOutputTargetRole
     {
         public const string SpecializationType = "Role";
         protected readonly IElement _element;
@@ -30,6 +31,12 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
+
+        string IOutputTargetRole.Id => Name; // using name matching
+
+        public string RelativeLocation => null;
+
+        public IEnumerable<string> RequiredFrameworks => new string[0];
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;

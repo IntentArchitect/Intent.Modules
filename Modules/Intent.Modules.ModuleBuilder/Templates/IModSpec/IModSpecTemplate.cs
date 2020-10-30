@@ -129,7 +129,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             }
             //icon.SetAttributeValue("type", ModuleModel.GetModuleSettings().Icon()?.Type.ToString());
             //icon.SetAttributeValue("source", ModuleModel.GetModuleSettings().Icon()?.Source);
-            icon.SetValue(ModuleModel.GetModuleSettings().Icon()?.Source ?? "");
+            if (!string.IsNullOrWhiteSpace(ModuleModel.GetModuleSettings().Icon()?.Source))
+            {
+                icon.SetValue(ModuleModel.GetModuleSettings().Icon()?.Source ?? "");
+            }
 
             foreach (var template in _templatesToRegister)
             {

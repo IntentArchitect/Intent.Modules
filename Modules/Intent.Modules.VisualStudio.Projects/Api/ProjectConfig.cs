@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Configuration;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
@@ -20,9 +21,30 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string Type => _project.ProjectTypeId;
         public string Name => _project.Name;
         public string RelativeLocation => _project.RelativeLocation ?? _project.Name;
+        public string ParentId => null;
+
         public IEnumerable<string> SupportedFrameworks => _project.TargetFrameworkVersion()
             .Select(x => x.Trim())
             .ToArray();
-        public IList<IOutputTargetRole> Roles => _project.GetRoles();
+        public IEnumerable<IOutputTargetRole> Roles => _project.Roles;
+    }
+
+    internal class FolderOutputTarget : IOutputTargetConfig
+    {
+        private readonly FolderModel _model;
+
+        public FolderOutputTarget(FolderModel model)
+        {
+            _model = model;
+        }
+        public IEnumerable<IStereotype> Stereotypes => _model.Stereotypes;
+        public string Id => _model.Id;
+        public string Type => _model.InternalElement.SpecializationType; // Folder
+        public string Name => _model.Name;
+        public string RelativeLocation => _model.Name;
+        public string ParentId => _model.InternalElement.ParentId;
+
+        public IEnumerable<string> SupportedFrameworks => new string[0];
+        public IEnumerable<IOutputTargetRole> Roles => _model.Roles;
     }
 }

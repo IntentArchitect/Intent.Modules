@@ -10,7 +10,7 @@ using Intent.Registrations;
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
 {
     [Description(CoreWebCSProjectTemplate.Identifier)]
-    public class CoreWebCSProjectTemplateRegistrations : ITemplateRegistration, IOutputTargetRegistration
+    public class CoreWebCSProjectTemplateRegistrations : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
         public string TemplateId => CoreWebCSProjectTemplate.Identifier;
@@ -18,15 +18,6 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.CsProject
         public CoreWebCSProjectTemplateRegistrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
-        }
-
-        public void Register(IOutputTargetRegistry registry, IApplication application)
-        {
-            var models = _metadataManager.VisualStudio(application).GetASPNETCoreWebApplicationModels();
-            foreach (var model in models)
-            {
-                registry.RegisterOutputTarget(model.ToOutputTargetConfig());
-            }
         }
 
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)

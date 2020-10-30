@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -41,6 +42,22 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)]
+        public IList<FolderModel> GetFolderPath()
+        {
+            List<FolderModel> result = new List<FolderModel>();
+
+            var current = Folder;
+            while (current != null)
+            {
+                result.Insert(0, current);
+                current = current.Folder;
+            }
+            return result;
+        }
+
+
+
         [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
@@ -80,5 +97,9 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Select(x => new FolderModel(x))
             .ToList();
 
+        public IOutputTargetConfig ToOutputTargetConfig()
+        {
+            return new FolderOutputTarget(this);
+        }
     }
 }
