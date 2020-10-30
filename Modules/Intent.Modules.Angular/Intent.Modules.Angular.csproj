@@ -14,7 +14,7 @@
     <PackageReference Include="Intent.Modules.Common.Html" Version="3.0.0-pre.2" />
     <PackageReference Include="Intent.Modules.Common.Typescript" Version="3.0.0-pre.2" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.6" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.7" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
   </ItemGroup>
 

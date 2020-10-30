@@ -7,38 +7,21 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Keys.Templates.IdentityGenerator
 {
-    partial class IdentityGeneratorTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
+    partial class IdentityGeneratorTemplate : CSharpTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.Entities.Keys.IdentityGenerator";
 
-        public IdentityGeneratorTemplate(IProject project)
+        public IdentityGeneratorTemplate(IOutputTarget project)
             : base(Identifier, project, null)
         {
+            AddNugetDependency("RT.Comb", "2.3.0");
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "IdentityGenerator",
-                fileExtension: "cs",
-                defaultLocationInProject: "Common",
+            return new CSharpDefaultFileConfig(
                 className: "IdentityGenerator",
-                @namespace: "${Project.ProjectName}.Common"
-                );
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new List<INugetPackageInfo>()
-            {
-                new NugetPackageInfo("RT.Comb", "2.3.0")
-            }.Union(base.GetNugetDependencies());
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

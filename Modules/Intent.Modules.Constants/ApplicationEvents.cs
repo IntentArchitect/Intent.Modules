@@ -2,8 +2,8 @@
 {
     public static class SoftwareFactoryEvents
     {
-        public const string AddProjectItemEvent = "Intent.SoftwareFactory.AddProjectItemEvent";
-        public const string RemoveProjectItemEvent = "Intent.SoftwareFactory.RemoveProjectItemEvent";
+        public const string FileAdded = "Intent.SoftwareFactory.AddProjectItemEvent";
+        public const string FileRemoved = "Intent.SoftwareFactory.RemoveProjectItemEvent";
         public const string AddTargetEvent = "Intent.SoftwareFactory.AddTargetEvent";
         public const string AddTaskEvent = "Intent.SoftwareFactory.AddTaskEvent";
         public const string ChangeProjectItemTypeEvent = "Intent.SoftwareFactory.ChangeProjectItemTypeEvent";

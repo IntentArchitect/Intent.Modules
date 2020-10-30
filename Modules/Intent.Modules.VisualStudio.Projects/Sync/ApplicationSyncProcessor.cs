@@ -33,8 +33,8 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             _actions = new Dictionary<string, List<SoftwareFactoryEvent>>();
             _sfEventDispatcher = sfEventDispatcher;
             //Subscribe to all the project change events
-            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.AddProjectItemEvent, Handle);
-            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.RemoveProjectItemEvent, Handle);
+            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.FileAdded, Handle);
+            _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.FileRemoved, Handle);
             _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.AddTargetEvent, Handle);
             _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.AddTaskEvent, Handle);
             _sfEventDispatcher.Subscribe(SoftwareFactoryEvents.ChangeProjectItemTypeEvent, Handle);
@@ -60,30 +60,30 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         public void SyncProjectFiles(IApplication application)
         {
-            foreach (var project in _actions)
+            foreach (var outputEvent in _actions)
             {
-                var vsproject = application.Projects.FirstOrDefault(x => x.Id == project.Key)?.GetTargetPath()[0];
-                if (vsproject == null)
+                var vsProject = application.OutputTargets.FirstOrDefault(x => x.Id == outputEvent.Key)?.GetTargetPath()[0];
+                if (vsProject == null)
                 {
                     //This scenario occurs when projects have been deleted
                     continue;
                 }
 
-                switch (vsproject.Type)
+                switch (vsProject.Type)
                 {
                     case VisualStudioProjectTypeIds.CSharpLibrary:
                     case VisualStudioProjectTypeIds.ConsoleAppNetFramework:
                     case VisualStudioProjectTypeIds.NodeJsConsoleApplication:
                     case VisualStudioProjectTypeIds.WcfApplication:
                     case VisualStudioProjectTypeIds.WebApiApplication:
-                        new FrameworkProjectSyncProcessor(_projectRegistry[vsproject.Id].FilePath, _sfEventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
+                        new FrameworkProjectSyncProcessor(_projectRegistry[vsProject.Id].FilePath, _sfEventDispatcher, _fileCache, _changeManager, vsProject).Process(outputEvent.Value);
                         break;
                     case VisualStudioProjectTypeIds.CoreCSharpLibrary:
                     case VisualStudioProjectTypeIds.CoreWebApp:
-                        new CoreProjectSyncProcessor(_projectRegistry[vsproject.Id].FilePath, _sfEventDispatcher, _fileCache, _changeManager, vsproject).Process(project.Value);
+                        new CoreProjectSyncProcessor(_projectRegistry[vsProject.Id].FilePath, _sfEventDispatcher, _fileCache, _changeManager, vsProject).Process(outputEvent.Value);
                         break;
                     default:
-                        throw new Exception($"No syncer configured for project '{vsproject.Name}' with type ({vsproject.Type})");
+                        throw new Exception($"No syncer configured for project '{vsProject.Name}' with type ({vsProject.Type})");
                 }
             }
 
@@ -101,12 +101,12 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         public void Handle(SoftwareFactoryEvent @event)
         {
-            var projectId = @event.GetValue("ProjectId");
-            if (!_actions.ContainsKey(projectId))
+            var outputTargetId = @event.GetValue("OutputTargetId");
+            if (!_actions.ContainsKey(outputTargetId))
             {
-                _actions[projectId] = new List<SoftwareFactoryEvent>();
+                _actions[outputTargetId] = new List<SoftwareFactoryEvent>();
             }
-            _actions[projectId].Add(@event);
+            _actions[outputTargetId].Add(@event);
         }
     }
 }

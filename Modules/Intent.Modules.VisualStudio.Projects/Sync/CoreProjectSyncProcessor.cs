@@ -80,9 +80,9 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 switch (@event.EventIdentifier)
                 {
-                    case SoftwareFactoryEvents.AddProjectItemEvent:
+                    case SoftwareFactoryEvents.FileAdded:
                         ProcessAddProjectItem(
-                            relativeFileName: @event.GetValue("RelativeFileName"),
+                            path: @event.GetValue("Path"),
                             itemType: @event.TryGetValue("ItemType"),
                             dependsOn: @event.TryGetValue("Depends On"),
                             copyToOutputDirectory: @event.TryGetValue("CopyToOutputDirectory"),
@@ -90,15 +90,15 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                         break;
                     case CsProjectEvents.AddContentFile:
                         ProcessAddProjectItem(
-                            relativeFileName: @event.GetValue("Link"),
+                            path: Path.Combine(Path.GetDirectoryName(_projectPath), @event.GetValue("Link")),
                             itemType: "Content",
                             dependsOn: null,
                             copyToOutputDirectory: @event.TryGetValue("CopyToOutputDirectory"),
                             linkSource: @event.GetValue("Include"));
                         break;
-                    case SoftwareFactoryEvents.RemoveProjectItemEvent:
+                    case SoftwareFactoryEvents.FileRemoved:
                         ProcessRemoveProjectItem(
-                            relativeFileName: @event.GetValue("RelativeFileName"));
+                            path: @event.GetValue("Path"));
                         break;
                     case CsProjectEvents.AddCompileDependsOn:
                         ProcessCompileDependsOn(
@@ -213,17 +213,17 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             return projectItem;
         }
 
-        private void ProcessRemoveProjectItem(string relativeFileName)
+        private void ProcessRemoveProjectItem(string path)
         {
-            relativeFileName = NormalizePath(relativeFileName);
+            var relativeFileName = NormalizePath(Path.GetRelativePath(_projectPath, path));
 
             var projectItem = GetProjectItem(relativeFileName);
             projectItem?.Remove();
         }
 
-        private void ProcessAddProjectItem(string relativeFileName, string itemType, string dependsOn, string copyToOutputDirectory, string linkSource)
+        private void ProcessAddProjectItem(string path, string itemType, string dependsOn, string copyToOutputDirectory, string linkSource)
         {
-            relativeFileName = NormalizePath(relativeFileName);
+            var relativeFileName = NormalizePath(Path.GetRelativePath(_projectPath, path));
             dependsOn = NormalizePath(dependsOn);
             linkSource = NormalizePath(linkSource);
 

@@ -3,6 +3,32 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
+    public class CSharpDefaultFileConfig : DefaultFileMetadata
+    {
+        public CSharpDefaultFileConfig(
+                    string className,
+                    string @namespace,
+                    string relativeLocation = "",
+                    OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
+                    string fileName = null,
+                    string fileExtension = "cs",
+                    string dependsUpon = null
+                    )
+            : base(overwriteBehaviour, "RoslynWeave", fileName ?? className, fileExtension, relativeLocation)
+        {
+            CustomMetadata["ClassName"] = className ?? throw new ArgumentNullException(nameof(className));
+            if (!string.IsNullOrWhiteSpace(@namespace))
+            {
+                this.CustomMetadata["Namespace"] = @namespace;
+            }
+            if (!string.IsNullOrWhiteSpace(dependsUpon))
+            {
+                this.CustomMetadata["Depends On"] = dependsUpon;
+            }
+        }
+    }
+
+    [Obsolete("Use CSharpDefaultFileConfig")]
     public class RoslynDefaultFileMetadata : DefaultFileMetadata
     {
         [Obsolete("use the one with namespace and classname ans specify them, upgrade template to bind to ClassName and Namespace")]

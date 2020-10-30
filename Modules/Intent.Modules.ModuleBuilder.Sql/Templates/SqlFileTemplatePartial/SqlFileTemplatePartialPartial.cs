@@ -35,19 +35,15 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}Partial",
-                fileExtension: "cs",
-                defaultLocationInProject: "${FolderPath}/${Model.Name}",
-                className: "${Model.Name}",
-                @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
-            );
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}.{Model.Name}",
+                fileName: $"{Model.Name}Partial",
+                relativeLocation: $"{FolderPath}/${Model.Name}");
         }
-
+        
         public override void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(

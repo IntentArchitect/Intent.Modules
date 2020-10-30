@@ -85,16 +85,16 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             {
                 switch (@event.EventIdentifier)
                 {
-                    case SoftwareFactoryEvents.AddProjectItemEvent:
+                    case SoftwareFactoryEvents.FileAdded:
                         ProcessAddProjectItem(
-                            relativeFileName: @event.GetValue("RelativeFileName"),
+                            path: @event.GetValue("Path"),
                             itemType: @event.TryGetValue("ItemType"),
                             dependsOn: @event.TryGetValue("Depends On"),
                             copyToOutputDirectory: @event.TryGetValue("CopyToOutputDirectory"));
                         break;
-                    case SoftwareFactoryEvents.RemoveProjectItemEvent:
+                    case SoftwareFactoryEvents.FileRemoved:
                         ProcessRemoveProjectItem(
-                            relativeFileName: @event.GetValue("RelativeFileName"));
+                            path: @event.GetValue("Path"));
                         break;
                     case SoftwareFactoryEvents.AddTargetEvent:
                         ProcessTargetElement(
@@ -407,32 +407,32 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
             return projectItem;
         }
 
-        private void ProcessRemoveProjectItem(string relativeFileName)
+        private void ProcessRemoveProjectItem(string path)
         {
-            relativeFileName = NormalizePath(relativeFileName);
+            var relativeFileName = NormalizePath(Path.GetRelativePath(Path.GetDirectoryName(_projectPath), path));
 
             var projectItem = GetProjectItem(relativeFileName);
             projectItem?.Remove();
         }
 
-        private void ProcessAddProjectItem(string relativeFileName, string itemType, string dependsOn, string copyToOutputDirectory)
+        private void ProcessAddProjectItem(string path, string itemType, string dependsOn, string copyToOutputDirectory)
         {
-            relativeFileName = NormalizePath(relativeFileName);
+            var relativePath = NormalizePath(Path.GetRelativePath(Path.GetDirectoryName(_projectPath), path));
             dependsOn = NormalizePath(dependsOn);
 
-            if (string.IsNullOrWhiteSpace(relativeFileName))
+            if (string.IsNullOrWhiteSpace(relativePath))
             {
                 throw new Exception("relativeFileName is null");
             }
 
-            if (Path.GetExtension(relativeFileName).Equals(".config", StringComparison.InvariantCultureIgnoreCase))
+            if (Path.GetExtension(relativePath).Equals(".config", StringComparison.InvariantCultureIgnoreCase))
             {
                 copyToOutputDirectory = "PreserveNewest";
             }
 
             if (itemType == null)
             {
-                var fileExtension = !string.IsNullOrEmpty(Path.GetExtension(relativeFileName)) ? Path.GetExtension(relativeFileName).Substring(1) : null; //remove the '.'
+                var fileExtension = !string.IsNullOrEmpty(Path.GetExtension(relativePath)) ? Path.GetExtension(relativePath).Substring(1) : null; //remove the '.'
                 switch (fileExtension)
                 {
                     case "cs":
@@ -453,19 +453,19 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
                 metadata.Add("DependentUpon", dependsOn);
 
             // GCB - not the most extensible / flexible way of doing this...
-            if (Path.GetExtension(relativeFileName).Equals(".tt", StringComparison.InvariantCultureIgnoreCase))
+            if (Path.GetExtension(relativePath).Equals(".tt", StringComparison.InvariantCultureIgnoreCase))
             {
                 metadata.Add("Generator", "TextTemplatingFilePreprocessor");
-                metadata.Add("LastGenOutput", Path.GetFileNameWithoutExtension(relativeFileName) + ".cs");
+                metadata.Add("LastGenOutput", Path.GetFileNameWithoutExtension(relativePath) + ".cs");
             }
 
             var codeItems = FindItemGroupForCodeFiles() ?? AddItemGroupForCodeFiles();
 
-            var projectItem = GetProjectItem(relativeFileName);
+            var projectItem = GetProjectItem(relativePath);
             if (projectItem == null)
             {
                 var item = new XElement(XName.Get(itemType, _namespace.NamespaceName));
-                item.Add(new XAttribute("Include", relativeFileName));
+                item.Add(new XAttribute("Include", relativePath));
                 foreach (var data in metadata)
                 {
                     var child = new XElement(XName.Get(data.Key, _namespace.NamespaceName))

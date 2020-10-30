@@ -26,23 +26,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         public string AssociationSourceEndClassName => $"{Model.SourceEnd.Name.ToCSharpIdentifier()}Model";
         public string AssociationTargetEndClassName => $"{Model.TargetEnd.Name.ToCSharpIdentifier()}Model";
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.ApiModelName}",
-                fileExtension: "cs",
-                defaultLocationInProject: "Api",
+            return new CSharpDefaultFileConfig(
                 className: $"{Model.ApiModelName}",
-                @namespace: Model.ParentModule.ApiNamespace
-            );
+                @namespace: Model.ParentModule.ApiNamespace);
         }
-
     }
 }

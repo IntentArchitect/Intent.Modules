@@ -22,22 +22,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "ApiMetadataProviderExtensions",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
+            return new CSharpDefaultFileConfig(
                 className: "ApiMetadataProviderExtensions",
-                @namespace: Model.First().ParentModule.ApiNamespace
-            );
+                @namespace: Model.First().ParentModule.ApiNamespace);
         }
 
         private string GetClassName(ElementSettingsModel elementSettings)

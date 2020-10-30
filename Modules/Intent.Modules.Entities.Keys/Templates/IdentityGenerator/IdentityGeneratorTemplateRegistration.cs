@@ -3,17 +3,16 @@ using Intent.Modules.Common.Registrations;
 using Intent.Engine;
 using Intent.Templates;
 
-
 namespace Intent.Modules.Entities.Keys.Templates.IdentityGenerator
 {
-    [Description(Keys.Templates.IdentityGenerator.IdentityGeneratorTemplate.Identifier)]
-    public class IdentityGeneratorTemplateRegistration : NoModelTemplateRegistrationBase
+    [Description(IdentityGeneratorTemplate.Identifier)]
+    public class IdentityGeneratorTemplateRegistration : SingleFileTemplateRegistration
     {
-        public override string TemplateId => Keys.Templates.IdentityGenerator.IdentityGeneratorTemplate.Identifier;
+        public override string TemplateId => IdentityGeneratorTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
-            return new Keys.Templates.IdentityGenerator.IdentityGeneratorTemplate(project);
+            return new IdentityGeneratorTemplate(project);
         }
     }
 }

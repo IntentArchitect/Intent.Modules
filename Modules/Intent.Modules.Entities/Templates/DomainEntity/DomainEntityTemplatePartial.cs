@@ -13,38 +13,22 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntity
 {
-    partial class DomainEntityTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityDecoratorBase>, ITemplatePostCreationHook
+    partial class DomainEntityTemplate : CSharpTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityDecoratorBase>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.DomainEntity";
         private readonly IList<DomainEntityDecoratorBase> _decorators = new List<DomainEntityDecoratorBase>();
 
-        public DomainEntityTemplate(ClassModel model, IProject project)
+        public DomainEntityTemplate(ClassModel model, IOutputTarget project)
             : base(Identifier, project, model)
         {
-            
+            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, DomainEntityInterfaceTemplate.Identifier));
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
-        }
-
-        public override void OnCreated()
-        {
-            //Types.AddClassTypeSource(ClassTypeSource.InProject(Project, DomainEntityTemplate.Identifier, nameof(ICollection)));
-            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DomainEntityInterfaceTemplate.Identifier));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
-                fileExtension: "cs",
-                defaultLocationInProject: "Domain",
-                className: "${Model.Name}",
-                @namespace: "${Project.ProjectName}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public void AddDecorator(DomainEntityDecoratorBase decorator)
@@ -64,9 +48,10 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
 
         public string GetParametersDefinition(OperationModel operation)
         {
-            return operation.Parameters.Any() 
-                ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) 
-                : "";
+            return string.Join(", ", operation.Parameters.Select(x => $"{GetTypeName(x.Type)} {x.Name.ToCamelCase()}"));
+            //return operation.Parameters.Any() 
+            //    ? operation.Parameters.Select(x => GetTypeName(x.Type) + " " +).Aggregate((x, y) => x + ", " + y) 
+            //    : "";
         }
 
         public string EmitOperationReturnType(OperationModel o)
@@ -75,7 +60,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             {
                 return o.IsAsync() ? "async Task" : "void";
             }
-            return o.IsAsync() ? $"async Task<{this.ConvertType(o.ReturnType)}>" : this.ConvertType(o.ReturnType);
+            return o.IsAsync() ? $"async Task<{GetTypeName(o.ReturnType)}>" : GetTypeName(o.ReturnType);
         }
     }
 }

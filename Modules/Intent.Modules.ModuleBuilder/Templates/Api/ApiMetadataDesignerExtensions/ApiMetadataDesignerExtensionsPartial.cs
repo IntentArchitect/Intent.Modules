@@ -27,18 +27,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "ApiMetadataDesignerExtensions",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
+            return new CSharpDefaultFileConfig(
                 className: "ApiMetadataDesignerExtensions",
-                @namespace: Model.First().ParentModule.ApiNamespace
-            );
+                @namespace: Model.First().ParentModule.ApiNamespace);
         }
-
     }
 }

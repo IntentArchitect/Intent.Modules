@@ -15,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
-    partial class DTOTemplate : IntentRoslynProjectItemTemplateBase<DTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>, ITemplatePostCreationHook
+    partial class DTOTemplate : CSharpTemplateBase<DTOModel>, ITemplate, IHasAssemblyDependencies, IHasDecorators<IDTOAttributeDecorator>, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.DTO";
 
@@ -24,24 +24,8 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         public DTOTemplate(IProject project, DTOModel model, string identifier = IDENTIFIER)
             : base(identifier, project, model)
         {
-        }
-
-        public override void OnCreated()
-        {
-            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DTOTemplate.IDENTIFIER, "List<{0}>"));
-        }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
-        {
-            return new IAssemblyReference[]
-            {
-                new GacAssemblyReference("System.Runtime.Serialization"),
-            };
+            AddAssemblyReference(new GacAssemblyReference("System.Runtime.Serialization"));
+            AddTypeSource(DTOTemplate.IDENTIFIER, "List<{0}>");
         }
 
         public string ClassAttributes()
@@ -63,24 +47,27 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 : "";
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
-                fileExtension: "cs",
-                defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("DTOs")),
-                className: "${Model.Name}",
-                @namespace: "${FolderBasedNamespace}");
+            return new CSharpDefaultFileConfig(
+                className: $"I{Model.Name}",
+                @namespace: $"{FolderBasedNamespace}",
+                relativeLocation: string.Join("/", GetNamespaceParts()));
         }
 
-        public string FolderBasedNamespace => string.Join(".", new[] { Project.Name }.Concat(GetNamespaceParts()));
+        //protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        //{
+        //    return new RoslynDefaultFileMetadata(
+        //        overwriteBehaviour: OverwriteBehaviour.Always,
+        //        fileName: "${Model.Name}",
+        //        fileExtension: "cs",
+        //        defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("DTOs")),
+        //        className: "${Model.Name}",
+        //        @namespace: "${FolderBasedNamespace}");
+        //}
+
+        public string FolderBasedNamespace => string.Join(".", new[] { OutputTarget.GetNamespace() }.Concat(GetNamespaceParts()));
         public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";
-
-        public IEnumerable<IDTOAttributeDecorator> GetDecorators()
-        {
-            return _decorators;
-        }
 
         private IEnumerable<string> GetNamespaceParts()
         {
@@ -90,15 +77,11 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 .Where(x => !string.IsNullOrWhiteSpace(x));
         }
 
-        //private string ResolveNamespace()
-        //{
-        //    string value;
-
-        //    return GetMetadata().CustomMetadata.TryGetValue("Namespace", out value)
-        //        ? value
-        //        : FolderBasedNamespace;
-        //}
-
+        public IEnumerable<IDTOAttributeDecorator> GetDecorators()
+        {
+            return _decorators;
+        }
+        
         private string GetTypeInfo(ITypeReference typeInfo)
         {
             var result = NormalizeNamespace(Types.Get(typeInfo, "List<{0}>").Name);

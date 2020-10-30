@@ -24,7 +24,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>
+    public partial class DomainEntityInterfaceTemplate : CSharpTemplateBase<ClassModel>
     {
 #line hidden
         /// <summary>
@@ -79,9 +79,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             
             #line default
             #line hidden
-            this.Write("\r\n");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
   foreach (var attribute in Model.Attributes)
     {
 
@@ -89,13 +88,13 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             #line default
             #line hidden
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PropertyBefore(attribute)));
             
             #line default
             #line hidden
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
 
         if (!CanWriteDefaultAttribute(attribute)) 
         {
@@ -107,35 +106,35 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             #line default
             #line hidden
             
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PropertyAnnotations(attribute)));
             
             #line default
             #line hidden
             this.Write("\r\n        ");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attributeType));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(attribute.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" { ");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AttributeAccessors(attribute)));
             
             #line default
             #line hidden
             this.Write(" }\r\n");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
   }
 
     foreach (var associatedClass in Model.AssociatedClasses)
@@ -145,13 +144,13 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             #line default
             #line hidden
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PropertyBefore(associatedClass)));
             
             #line default
             #line hidden
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
 
         if (!CanWriteDefaultAssociation(associatedClass) || !associatedClass.IsNavigable) 
         {
@@ -162,42 +161,42 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             #line default
             #line hidden
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PropertyAnnotations(associatedClass)));
             
             #line default
             #line hidden
             this.Write("\r\n        ");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(associatedClass)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(associatedClass.Name().ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" { ");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationAccessors(associatedClass)));
             
             #line default
             #line hidden
             this.Write(" }\r\n");
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
   }
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
   foreach (var operation in Model.Operations)
     {
         if (!CanWriteDefaultOperation(operation)) 
@@ -205,34 +204,33 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             continue;
         }
         string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.TypeReference) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
-
             
             #line default
             #line hidden
             this.Write("        ");
             
-            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EmitOperationReturnType(operation)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetParametersDefinition(operation)));
             
             #line default
             #line hidden
-            this.Write(");\r\n");
+            this.Write(");\r\n\r\n");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntityInterface\DomainEntityInterfaceTemplate.tt"
   }
             
             #line default

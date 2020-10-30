@@ -13,7 +13,7 @@ using Intent.Modules.Entities.Templates.DomainEntityState;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityInterface
 {
-    partial class DomainEntityInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, ITemplatePostCreationHook
+    partial class DomainEntityInterfaceTemplate : CSharpTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityInterfaceDecoratorBase>, ITemplatePostCreationHook
     {
         private readonly IMetadataManager _metadataManager;
         public const string Identifier = "Intent.Entities.DomainEntityInterface";
@@ -32,22 +32,12 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DomainEntityStateTemplate.Identifier, "ICollection<{0}>"));
             Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DomainEntityInterfaceTemplate.Identifier), OPERATIONS_CONTEXT);
         }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "I${Model.Name}",
-                fileExtension: "cs",
-                defaultLocationInProject: "Domain",
-                className: "I${Model.Name}",
-                @namespace: "${Project.ProjectName}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"I{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public void AddDecorator(DomainEntityInterfaceDecoratorBase decorator)
@@ -67,7 +57,8 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             {
                 interfaces.Insert(0, GetBaseTypeInterface());
             }
-            return interfaces.Any() ? " : " + interfaces.Aggregate((x, y) => x + ", " + y) : "";
+
+            return string.Join(", ", interfaces);
         }
 
         private string GetBaseTypeInterface()
@@ -146,7 +137,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public string GetParametersDefinition(OperationModel operation)
         {
             return operation.Parameters.Any()
-                ? operation.Parameters.Select(x => this.ConvertType(x.TypeReference, OPERATIONS_CONTEXT) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                ? operation.Parameters.Select(x => this.GetTypeName(x.TypeReference, OPERATIONS_CONTEXT) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
                 : "";
         }
 
@@ -156,7 +147,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{this.ConvertType(o.TypeReference, OPERATIONS_CONTEXT)}>" : this.ConvertType(o.TypeReference, OPERATIONS_CONTEXT);
+            return o.IsAsync() ? $"Task<{this.GetTypeName(o.TypeReference, OPERATIONS_CONTEXT)}>" : this.GetTypeName(o.TypeReference, OPERATIONS_CONTEXT);
         }
     }
 }

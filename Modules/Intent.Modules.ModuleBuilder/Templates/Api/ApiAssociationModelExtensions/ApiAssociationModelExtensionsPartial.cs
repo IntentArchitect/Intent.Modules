@@ -26,18 +26,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.ApiModelName}AssociationExtensions",
-                fileExtension: "cs",
-                defaultLocationInProject: "Api/Extensions",
+            return new CSharpDefaultFileConfig(
                 className: $"{Model.ApiModelName}AssociationExtensions",
-                @namespace: Model.ParentModule.ApiNamespace
-            );
+                @namespace: Model.ParentModule.ApiNamespace,
+                relativeLocation: "Extensions");
         }
-
     }
 }

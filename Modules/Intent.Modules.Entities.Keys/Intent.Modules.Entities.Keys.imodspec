@@ -28,7 +28,7 @@
   </settings>-->
   <templates>
     <template id="Intent.Entities.Keys.IdentityGenerator">
-      <role>Domain</role>
+      <role>Domain.Common</role>
     </template>
   </templates>
   <decorators>

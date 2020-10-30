@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentRoslynProjectItemTemplateBase<ClassModel>" #>
+﻿<#@ template  debug="true"  inherits="CSharpTemplateBase<ClassModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ Assembly Name="System.Windows.Forms" #>
@@ -22,8 +22,7 @@ namespace <#= Namespace #>
 <#= InterfaceAnnotations(Model) #>
     public partial interface <#= ClassName #><#= GetInterfaces(Model) #><#= Model.ParentClass != null ? string.Format(" : I{0}", Model.ParentClass.Name) : "" #>
     {
-<#= BeforeProperties(Model) #>
-<#  foreach (var attribute in Model.Attributes)
+<#= BeforeProperties(Model) #><#  foreach (var attribute in Model.Attributes)
     {
 #><#= PropertyBefore(attribute) #><#
         if (!CanWriteDefaultAttribute(attribute)) 
@@ -31,8 +30,7 @@ namespace <#= Namespace #>
             continue;
         }
         string attributeType = GetTypeName(attribute.Type);
-#>
-<#= PropertyAnnotations(attribute) #>
+#><#= PropertyAnnotations(attribute) #>
         <#= attributeType #> <#= attribute.Name.ToPascalCase() #> { <#= AttributeAccessors(attribute) #> }
 <#  }
 
@@ -53,9 +51,9 @@ namespace <#= Namespace #>
         {
             continue;
         }
-        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.TypeReference) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";
-#>
+        string parameterDefinitions = operation.Parameters.Any() ? operation.Parameters.Select(x => Types.Get(x.TypeReference) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y) : "";#>
         <#= EmitOperationReturnType(operation) #> <#= operation.Name.ToPascalCase() #>(<#= GetParametersDefinition(operation) #>);
+
 <#  }#>
     }
 }

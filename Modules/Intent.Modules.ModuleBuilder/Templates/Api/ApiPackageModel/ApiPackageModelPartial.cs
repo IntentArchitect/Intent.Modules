@@ -21,22 +21,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Name.ToCSharpIdentifier()}Model",
-                fileExtension: "cs",
-                defaultLocationInProject: "Api",
+            return new CSharpDefaultFileConfig(
                 className: $"{Model.Name.ToCSharpIdentifier()}Model",
-                @namespace: "${Project.Name}.Api"
-            );
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         private string FormatForCollection(string name, bool asCollection)

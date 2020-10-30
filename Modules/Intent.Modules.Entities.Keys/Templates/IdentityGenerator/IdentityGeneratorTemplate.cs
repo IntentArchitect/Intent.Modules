@@ -24,7 +24,7 @@ namespace Intent.Modules.Entities.Keys.Templates.IdentityGenerator
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Keys\Templates\IdentityGenerator\IdentityGeneratorTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class IdentityGeneratorTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class IdentityGeneratorTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

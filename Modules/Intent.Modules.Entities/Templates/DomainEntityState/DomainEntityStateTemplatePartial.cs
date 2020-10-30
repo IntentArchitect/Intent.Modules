@@ -14,7 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
 {
-    partial class DomainEntityStateTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, ITemplatePostCreationHook
+    partial class DomainEntityStateTemplate : CSharpTemplateBase<ClassModel>, ITemplate, IHasDecorators<DomainEntityStateDecoratorBase>, ITemplatePostCreationHook
     {
         private readonly IMetadataManager _metadataManager;
         public const string Identifier = "Intent.Entities.DomainEntityState";
@@ -25,34 +25,19 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             : base(Identifier, project, model)
         {
             _metadataManager = metadataManager;
+            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, Identifier, "ICollection<{0}>"));
         }
 
         public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
                                              ?? $"I{Model.Name}";
 
-        public override void OnCreated()
+        
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, Identifier, "ICollection<{0}>"));
-        }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            var entity = Project.FindTemplateInstance(DomainEntityTemplate.Identifier, Model);
-
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}State",
-                fileExtension: "cs",
-                defaultLocationInProject: "Domain",
-                className: "${Model.Name}",
-                @namespace: "${Project.ProjectName}",
-                dependsUpon: entity?.GetMetadata().FileNameWithExtension()
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}",
+                fileName: $"{Model.Name}State");
         }
 
         public void AddDecorator(DomainEntityStateDecoratorBase decorator)
@@ -62,14 +47,6 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public IEnumerable<DomainEntityStateDecoratorBase> GetDecorators()
         {
-            //if (_decorators == null)
-            //{
-            //    _decorators = Project.ResolveDecorators(this);
-            //    foreach (var decorator in _decorators)
-            //    {
-            //        decorator.Template = this;
-            //    }
-            //}
             return _decorators;
         }
 
@@ -128,7 +105,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
         }
 
         public string PropertyFieldAnnotations(AttributeModel attribute)
-        { 
+        {
             return GetDecorators().Aggregate(x => x.PropertyFieldAnnotations(attribute));
         }
 

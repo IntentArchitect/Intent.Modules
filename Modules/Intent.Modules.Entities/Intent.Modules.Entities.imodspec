@@ -11,20 +11,20 @@
     <template id="Intent.Entities.DomainEntity">
       <role>Domain</role>
       <config>
-        <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
+        <add key="Namespace" description="Namespace"/>
       </config>
     </template>
     <template id="Intent.Entities.DomainEntityState">
       <role>Domain</role>
       <config>
-        <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
+        <add key="Namespace" description="Namespace"/>
         <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
       </config>
     </template>
     <template id="Intent.Entities.DomainEntityInterface">
       <role>Domain</role>
       <config>
-        <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
+        <add key="Namespace" description="Namespace" />
         <add key="Depends On" description="Make this output a code behind file for" default="${Model.Name}.cs" />
       </config>
     </template>

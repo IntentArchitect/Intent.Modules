@@ -24,25 +24,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public ApiElementModelExtensions(IOutputTarget project, ExtensionModel model) : base(TemplateId, project, model)
         {
         }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Type.ApiClassName}Extensions",
-                fileExtension: "cs",
-                defaultLocationInProject: "Api/Extensions",
+            return new CSharpDefaultFileConfig(
                 className: $"{Model.Type.ApiClassName}Extensions",
-                @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace
-            );
+                @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace,
+                relativeLocation: "Extensions");
         }
-
+        
         public string ModelClassName => Model.Type.ApiClassName;
     }
 
