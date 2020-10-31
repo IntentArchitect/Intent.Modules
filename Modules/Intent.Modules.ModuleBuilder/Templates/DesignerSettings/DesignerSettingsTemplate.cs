@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
             Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
                 Model.Id, 
                 Model.GetDesignerSettings().ExtendDesigners()?.Select(x => (x.Id, x.Name)).ToList() ?? new List<(string Id, string Name)>(), 
-                GetMetadata().GetRelativeFilePathWithFileNameWithExtension()));
+                GetMetadata().GetFilePath()));
             //Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
             //{
             //    { "Id", Model.Id },
@@ -62,7 +62,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}",
                 fileExtension: DesignerSettingsPersistable.FileExtension,
-                defaultLocationInProject: "modelers");
+                defaultLocationInProject: "");
         }
 
         private static string Serialize<T>(T @object)

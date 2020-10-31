@@ -61,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         public MetadataRegistrationInfo(string target, string path, string id)
         {
             Target = target;
-            Path = CrossPlatformPathHelpers.NormalizePath(path);
+            Path = PathHelper.NormalizePath(path);
             Id = id;
         }
     }
@@ -233,7 +233,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         ? string.Join(";", metadataRegistration.Targets.Select(x => x.Name))
                         : null);
 
-                existing.SetAttributeValue("src", metadataRegistration.Path);
+                existing.SetAttributeValue("src", Path.GetRelativePath(GetMetadata().GetFullLocationPath(), metadataRegistration.Path).NormalizePath()); 
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 
@@ -242,7 +242,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 .ToList();
             foreach (var package in packagesToInclude)
             {
-                var path = CrossPlatformPathHelpers.NormalizePath(Path.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation));
+                var path = Path.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation).NormalizePath();
                 var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
                 if (existing == null)
                 {

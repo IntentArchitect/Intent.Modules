@@ -30,8 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModelExtensio
         {
             return new CSharpDefaultFileConfig(
                 className: $"{Model.ApiModelName}AssociationExtensions",
-                @namespace: Model.ParentModule.ApiNamespace,
-                relativeLocation: "Extensions");
+                @namespace: Model.ParentModule.ApiNamespace);
         }
     }
 }

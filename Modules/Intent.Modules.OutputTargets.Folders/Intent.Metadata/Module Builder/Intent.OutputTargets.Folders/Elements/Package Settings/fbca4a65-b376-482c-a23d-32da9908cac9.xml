@@ -68,6 +68,43 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="4f3d0dd1-55e6-4f85-907d-371a3b0b2856" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Template Output</name>
+          <display>Add Template Output: Template Output</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="2d529744-b18b-41bf-9abf-379bc094eae7">
+            <typeId>09de2192-2507-41a2-8044-286c7ecadec2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.OutputTargets.Folders</typePackageName>
+            <typePackageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>05d9da33-a99c-4be4-aea1-12b163919a9f</parentFolderId>
+          <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
+          <packageName>Intent.OutputTargets.Folders</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="a865e64a-7470-4930-9a41-240acb57c85d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Role</name>
           <display>Add Role: Role</display>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="016ab4c9-c75c-49ce-bd58-e13fd43fe847" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>modelers</name>
+  <display>modelers</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3ff20de1-253f-4f42-82ca-55a1345f9042</parentFolderId>
+  <packageId>8d6f4aac-236d-4bc7-83f6-f9ce6a516654</packageId>
+  <packageName>VisualStudio.Projects.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="c798f105-b1bb-4eaf-b848-55d2afd75da6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DesignerConfig</name>
+      <display>Intent.ModuleBuilder.DesignerConfig</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>016ab4c9-c75c-49ce-bd58-e13fd43fe847</parentFolderId>
+      <packageId>8d6f4aac-236d-4bc7-83f6-f9ce6a516654</packageId>
+      <packageName>VisualStudio.Projects.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="75b7d326-a01c-4bd8-932b-bfe06f6c1254" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DesignerSettings</name>
+      <display>Intent.ModuleBuilder.DesignerSettings</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>016ab4c9-c75c-49ce-bd58-e13fd43fe847</parentFolderId>
+      <packageId>8d6f4aac-236d-4bc7-83f6-f9ce6a516654</packageId>
+      <packageName>VisualStudio.Projects.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

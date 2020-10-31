@@ -59,7 +59,7 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
                         .ToList();
 
                 var projectDependencies =
-                    templateDependencies.Select(x => project.Application.FindOutputTargetWithTemplate(x))
+                    templateDependencies.Select(x => project.Application.FindOutputTargetWithTemplate(x).GetTargetPath()[0])
                         .Where(x => x != null && !x.Equals(project))
                         .Distinct()
                         .ToList();

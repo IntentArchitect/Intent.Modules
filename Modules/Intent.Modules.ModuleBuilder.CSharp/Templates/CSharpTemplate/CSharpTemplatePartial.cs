@@ -34,14 +34,14 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
             return new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Model.Name}",
+                fileName: $"{Model.Name}",
                 fileExtension: "tt",
-                defaultLocationInProject: "${FolderPath}/${Model.Name}");
+                defaultLocationInProject: $"{FolderPath}");
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-
-        public string FolderPath => string.Join("/", FolderBaseList);
+        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolder);
+        public string FolderNamespace => string.Join(".", OutputFolder);
 
         public override string TransformText()
         {

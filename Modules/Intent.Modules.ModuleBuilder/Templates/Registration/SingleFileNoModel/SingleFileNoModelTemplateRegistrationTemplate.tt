@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="IntentRoslynProjectItemTemplateBase<TemplateRegistrationModel>" #>
+<#@ template language="C#" inherits="CSharpTemplateBase<TemplateRegistrationModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>

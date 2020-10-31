@@ -52,43 +52,6 @@
       <packageName>Intent.VisualStudio.Projects</packageName>
       <stereotypes />
       <childElements>
-        <childElement id="81eb0815-3b58-4976-a0a5-a5956bf50b44" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Role</name>
-          <display>Add Role: Role</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="e6b6d386-dfc7-47c2-8b45-1aa1884b67b3">
-            <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
-            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>2e74cee0-67ea-4a8a-b520-2e7818c36528</parentFolderId>
-          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
-          <packageName>Intent.VisualStudio.Projects</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
         <childElement id="cde9d52b-ba5c-4fef-92ab-e79261fdc775" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Folder</name>
           <display>New Folder: Folder</display>
@@ -126,13 +89,50 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="5e90d9a4-a795-4f18-857a-1e1bfe8fb95a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="23bd2bdc-f5c8-4937-869b-dbe4d52f6c57" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Template Output</name>
           <display>Add Template Output: Template Output</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="492dfa8f-f963-41be-86f9-1efcf08c92aa">
+          <typeReference id="6565abe7-1eb3-430e-bc14-c704c5eda46e">
             <typeId>d421c322-7a51-4094-89fa-e5d8a0a97b27</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.VisualStudio.Projects</typePackageName>
+            <typePackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2e74cee0-67ea-4a8a-b520-2e7818c36528</parentFolderId>
+          <packageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</packageId>
+          <packageName>Intent.VisualStudio.Projects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="81eb0815-3b58-4976-a0a5-a5956bf50b44" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Role</name>
+          <display>Add Role: Role</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e6b6d386-dfc7-47c2-8b45-1aa1884b67b3">
+            <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

@@ -3,102 +3,102 @@
   <ApplicationId>ad79943a-b771-42b0-9563-9e01f7ea2dbc</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ASPNETCoreWebApplicationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ASPNETCoreWebApplicationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ASPNETWebApplicationNETFrameworkModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ASPNETWebApplicationNETFrameworkModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ClassLibraryNETCoreModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ClassLibraryNETCoreModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ClassLibraryNETFrameworkModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ClassLibraryNETFrameworkModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\ConsoleAppNETFrameworkModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ConsoleAppNETFrameworkModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ASPNETCoreWebApplicationModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Extensions/ASPNETCoreWebApplicationModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ASPNETCoreWebApplicationModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ASPNETWebApplicationNETFrameworkModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Extensions/ASPNETWebApplicationNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ASPNETWebApplicationNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ClassLibraryNETCoreModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Extensions/ClassLibraryNETCoreModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ClassLibraryNETCoreModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ClassLibraryNETFrameworkModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Extensions/ClassLibraryNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ClassLibraryNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\ConsoleAppNETFrameworkModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Extensions/ConsoleAppNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ConsoleAppNETFrameworkModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\NETFrameworkVersionModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Extensions/NETFrameworkVersionModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>NETFrameworkVersionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\WCFServiceApplicationModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Extensions/WCFServiceApplicationModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>WCFServiceApplicationModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\FolderModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>FolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\NETCoreVersionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>NETCoreVersionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\NETFrameworkVersionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>NETFrameworkVersionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\RoleModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>RoleModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\SolutionFolderModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>SolutionFolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\TemplateOutputModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>TemplateOutputModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\VisualStudioSolutionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>VisualStudioSolutionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>5b45ff84-82ce-4c74-ae6a-64f097750d04</ProjectId>
+      <ProjectId>341f2475-429b-48fd-aaaa-3748947e6633</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\WCFServiceApplicationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>WCFServiceApplicationModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -128,14 +128,14 @@
       <ProjectRelativeFilePath>Intent.Modules.VisualStudio.Projects.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <ProjectId>016ab4c9-c75c-49ce-bd58-e13fd43fe847</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\modelers\Visual Studio Types.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Visual Studio Types.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Visual Studio Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ff20de1-253f-4f42-82ca-55a1345f9042</ProjectId>
+      <ProjectId>016ab4c9-c75c-49ce-bd58-e13fd43fe847</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\modelers\Visual Studio.designer.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Visual Studio.designer.config</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Visual Studio.designer.config</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

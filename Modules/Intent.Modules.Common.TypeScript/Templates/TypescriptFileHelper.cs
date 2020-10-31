@@ -1,3 +1,4 @@
+using System.IO;
 using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Editor;
@@ -19,7 +20,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
 
                 file.AddImportIfNotExists(
                     className: ((IHasClassDetails)dependency).ClassName,
-                    location: template.GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(dependency.GetMetadata().GetRelativeFilePathWithFileName()));
+                    location: template.GetMetadata().GetFilePath().GetRelativePath(dependency.GetMetadata().GetFilePathWithoutExtension()).Normalize());
             }
         }
     }

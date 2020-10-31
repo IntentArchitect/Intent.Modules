@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.OutputTargets.Folders.Registrations;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -18,9 +20,20 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         {
         }
 
+        [IntentManaged(Mode.Ignore)]
+        public IOutputTargetConfig ToOutputTargetConfig()
+        {
+            return new FolderOutputTarget(this);
+        }
+
         public IList<RoleModel> Roles => _element.ChildElements
             .Where(x => x.SpecializationType == RoleModel.SpecializationType)
             .Select(x => new RoleModel(x))
+            .ToList();
+
+        public IList<TemplateOutputModel> TemplateOutputs => _element.ChildElements
+            .Where(x => x.SpecializationType == TemplateOutputModel.SpecializationType)
+            .Select(x => new TemplateOutputModel(x))
             .ToList();
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
@@ -10,31 +11,20 @@ namespace Intent.Modules.Common.Templates
             return $"{fm.FileName}.{fm.FileExtension}";
         }
 
+        [Obsolete("Use GetFilePath")]
         public static string GetFullLocationPathWithFileName(this IFileMetadata fm)
         {
             return Path.Combine(fm.GetFullLocationPath(), fm.FileNameWithExtension());
         }
 
-        public static string GetRelativeFilePathWithFileName(this IFileMetadata fm)
+        public static string GetFilePath(this IFileMetadata fm)
         {
-            var relativePath = fm.GetRelativeFilePath();
-            if (!string.IsNullOrWhiteSpace(relativePath))
-            {
-                return CrossPlatformPathHelpers.NormalizePath(Path.Combine(relativePath, fm.FileName));
-            }
-            return fm.FileNameWithExtension();
+            return Path.Combine(fm.GetFullLocationPath(), fm.FileNameWithExtension());
         }
 
-        public static string GetRelativeFilePathWithFileNameWithExtension(this IFileMetadata fm)
+        public static string GetFilePathWithoutExtension(this IFileMetadata fm)
         {
-            string relativePath = fm.GetRelativeFilePath();
-            if (!string.IsNullOrWhiteSpace(relativePath))
-            {
-                return CrossPlatformPathHelpers.NormalizePath(Path.Combine(relativePath, fm.FileNameWithExtension()));
-            }
-
-            return fm.FileNameWithExtension();
+            return Path.Combine(fm.GetFullLocationPath(), fm.FileName);
         }
-
     }
 }

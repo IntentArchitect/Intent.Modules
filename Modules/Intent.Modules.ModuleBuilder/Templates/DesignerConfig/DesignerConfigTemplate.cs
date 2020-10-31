@@ -28,9 +28,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
         {
             base.OnCreated();
             Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
-                Model.Id,
-                new List<(string Id, string Name)>(),
-                GetMetadata().GetRelativeFilePathWithFileNameWithExtension()));
+                id: Model.Id,
+                targets: new List<(string Id, string Name)>(),
+                path: GetMetadata().GetFilePath()));
             //Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
             //{
             //    { "Id", Model.Id },
@@ -41,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 
         public override string TransformText()
         {
-            var path = FileMetadata.GetFullLocationPathWithFileName();
+            var path = FileMetadata.GetFilePath();
             var designer = ApplicationDesignerPersistable.Create(
                 id: Model.Id,
                 name: Model.Name,
@@ -69,7 +69,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}",
                 fileExtension: ApplicationDesignerPersistable.FileExtension,
-                defaultLocationInProject: "modelers");
+                defaultLocationInProject: "");
         }
 
         private static T LoadAndDeserialize<T>(string path)

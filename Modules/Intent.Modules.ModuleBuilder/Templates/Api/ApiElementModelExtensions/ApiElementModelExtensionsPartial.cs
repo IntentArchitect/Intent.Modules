@@ -29,8 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         {
             return new CSharpDefaultFileConfig(
                 className: $"{Model.Type.ApiClassName}Extensions",
-                @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace,
-                relativeLocation: "Extensions");
+                @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace);
         }
         
         public string ModelClassName => Model.Type.ApiClassName;

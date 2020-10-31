@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -10,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.OutputTargets.Folders.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class RoleModel : IHasStereotypes, IMetadataModel
+    public class RoleModel : IHasStereotypes, IMetadataModel, IOutputTargetRole
     {
         public const string SpecializationType = "Role";
         public const string SpecializationTypeId = "8663c9f9-2852-45e7-aaa1-0883a2e6f1da";
@@ -27,6 +28,12 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         }
 
         public string Id => _element.Id;
+
+        [IntentManaged(Mode.Ignore)]
+        string IOutputTargetRole.Id => _element.Id;
+
+        [IntentManaged(Mode.Ignore)]
+        public IEnumerable<string> RequiredFrameworks => new string[0];
 
         public string Name => _element.Name;
 

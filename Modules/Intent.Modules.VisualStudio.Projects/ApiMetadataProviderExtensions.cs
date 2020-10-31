@@ -61,13 +61,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
                 .ToList();
         }
 
-        public static IList<RoleModel> GetRoleModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(RoleModel.SpecializationTypeId)
-                .Select(x => new RoleModel(x))
-                .ToList();
-        }
-
         public static IList<WCFServiceApplicationModel> GetWCFServiceApplicationModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(WCFServiceApplicationModel.SpecializationTypeId)
@@ -100,13 +93,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         {
             return designer.GetElementsOfType(FolderModel.SpecializationTypeId)
                 .Select(x => new FolderModel(x))
-                .ToList();
-        }
-
-        public static IList<TemplateOutputModel> GetTemplateOutputModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(TemplateOutputModel.SpecializationTypeId)
-                .Select(x => new TemplateOutputModel(x))
                 .ToList();
         }
 

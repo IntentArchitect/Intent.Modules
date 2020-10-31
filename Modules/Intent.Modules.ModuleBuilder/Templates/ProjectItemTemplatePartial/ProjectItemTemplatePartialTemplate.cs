@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ProjectItemTemplatePartialTemplate : IntentRoslynProjectItemTemplateBase<FileTemplateModel>
+    public partial class ProjectItemTemplatePartialTemplate : CSharpTemplateBase<FileTemplateModel>
     {
 #line hidden
         /// <summary>

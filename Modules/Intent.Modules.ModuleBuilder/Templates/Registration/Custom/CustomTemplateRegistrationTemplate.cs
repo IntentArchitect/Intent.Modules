@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class CustomTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<TemplateRegistrationModel>
+    public partial class CustomTemplateRegistrationTemplate : CSharpTemplateBase<TemplateRegistrationModel>
     {
 #line hidden
         /// <summary>

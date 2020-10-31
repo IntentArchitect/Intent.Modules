@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.Templates
             string codeGenType,
             string fileName,
             string fileExtension,
-            string defaultLocationInProject
+            string defaultLocationInProject = ""
             )
         {
             CustomMetadata = new Dictionary<string, string>();

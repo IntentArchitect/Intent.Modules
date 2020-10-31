@@ -51,5 +51,10 @@ namespace Intent.Modules.OutputTargets.Folders.Api
             .Where(x => x.SpecializationType == RoleModel.SpecializationType)
             .Select(x => new RoleModel(x))
             .ToList();
+
+        public IList<TemplateOutputModel> TemplateOutputs => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == TemplateOutputModel.SpecializationType)
+            .Select(x => new TemplateOutputModel(x))
+            .ToList();
     }
 }

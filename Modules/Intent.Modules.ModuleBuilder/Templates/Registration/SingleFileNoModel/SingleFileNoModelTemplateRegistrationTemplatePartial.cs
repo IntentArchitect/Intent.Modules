@@ -11,7 +11,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
-    partial class SingleFileNoModelTemplateRegistrationTemplate : IntentRoslynProjectItemTemplateBase<TemplateRegistrationModel>
+    partial class SingleFileNoModelTemplateRegistrationTemplate : CSharpTemplateBase<TemplateRegistrationModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel";
 
@@ -19,25 +19,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
         {
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-        public string FolderPath => string.Join("/", FolderBaseList);
-        public string FolderNamespace => string.Join(".", FolderBaseList);
+        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolder);
+        public string FolderNamespace => string.Join(".", OutputFolder);
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}Registration",
-                fileExtension: "cs",
-                defaultLocationInProject: "${FolderPath}/${Model.Name}",
-                className: "${Model.Name}Registration",
-                @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
-            );
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}Registration",
+                @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
+                relativeLocation: $"{FolderPath}");
         }
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()

@@ -89,13 +89,13 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="bae1f609-a7e5-43ca-979b-f65b32e93daf" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Role</name>
-          <display>Add Role: Role</display>
+        <childElement id="ae36be5f-93d3-4a8c-80dd-5fa0c682a3ec" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Template Output</name>
+          <display>Add Template Output: Template Output</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="fe218fdc-4c38-4cae-b852-e7dc3f32b8ee">
-            <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
+          <typeReference id="474b54f3-4fe3-4d15-9839-8609127c9c3d">
+            <typeId>d421c322-7a51-4094-89fa-e5d8a0a97b27</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -126,13 +126,13 @@
           </stereotypes>
           <childElements />
         </childElement>
-        <childElement id="ae36be5f-93d3-4a8c-80dd-5fa0c682a3ec" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Template Output</name>
-          <display>Add Template Output: Template Output</display>
+        <childElement id="bae1f609-a7e5-43ca-979b-f65b32e93daf" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Role</name>
+          <display>Add Role: Role</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="474b54f3-4fe3-4d15-9839-8609127c9c3d">
-            <typeId>d421c322-7a51-4094-89fa-e5d8a0a97b27</typeId>
+          <typeReference id="fe218fdc-4c38-4cae-b852-e7dc3f32b8ee">
+            <typeId>025e933b-b602-4b6d-95ab-0ec36ae940da</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

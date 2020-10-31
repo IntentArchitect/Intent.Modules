@@ -69,7 +69,6 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
-      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiAssociationModel" externalReference="1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5">
       <config>
@@ -109,7 +108,6 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
-      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" externalReference="51ff3bbd-74dc-4f6c-996a-c8502814570a">
       <config>
@@ -117,7 +115,6 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
-      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiPackageModel" externalReference="12d0509f-a513-4263-9c31-3786f61b44bd">
       <config>
@@ -133,7 +130,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
-      <location>Api/Extensions</location>
+      <location>Api</location>
     </template>
   </templates>
   <decorators></decorators>
