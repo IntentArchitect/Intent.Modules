@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceCallHandler\ServiceCallHandlerImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ServiceCallHandlerImplementationTemplate : Intent.Modules.Common.Templates.IntentRoslynProjectItemTemplateBase<OperationModel>
+    public partial class ServiceCallHandlerImplementationTemplate : Intent.Modules.Common.Templates.CSharpTemplateBase<OperationModel>
     {
 #line hidden
         /// <summary>

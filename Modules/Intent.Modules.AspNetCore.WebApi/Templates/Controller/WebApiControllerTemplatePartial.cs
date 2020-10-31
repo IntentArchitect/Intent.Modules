@@ -17,7 +17,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, ITemplatePostCreationHook
+    partial class WebApiControllerTemplate : CSharpTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasNugetDependencies, IHasDecorators<WebApiControllerDecoratorBase>, IDeclareUsings, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.AspNetCore.WebApi.Controller";
         private IList<WebApiControllerDecoratorBase> _decorators = new List<WebApiControllerDecoratorBase>();
@@ -54,21 +54,11 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             };
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}Controller",
-                fileExtension: "cs",
-                defaultLocationInProject: "Controllers",
-                className: "${Model.Name}Controller",
-                @namespace: "${Project.Name}.Controller"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}Controller",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public string GetServiceInterfaceName()

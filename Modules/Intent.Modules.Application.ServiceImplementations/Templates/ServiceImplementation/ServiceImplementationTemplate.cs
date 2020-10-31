@@ -25,7 +25,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceImplementations\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
+    public partial class ServiceImplementationTemplate : CSharpTemplateBase<ServiceModel>
     {
 #line hidden
         /// <summary>

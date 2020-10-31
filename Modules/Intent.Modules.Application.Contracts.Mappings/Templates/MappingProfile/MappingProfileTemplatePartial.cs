@@ -17,7 +17,7 @@ using OperationModel = Intent.Modelers.Services.Api.OperationModel;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
 {
-    partial class MappingProfileTemplate : IntentRoslynProjectItemTemplateBase<IList<DTOModel>>, ITemplateBeforeExecutionHook, ITemplatePostCreationHook
+    partial class MappingProfileTemplate : CSharpTemplateBase<IList<DTOModel>>, ITemplateBeforeExecutionHook, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Application.Contracts.Mapping.Profile";
 
@@ -97,19 +97,14 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             return templateOutput.FullTypeName();
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "DtoProfile",
-                fileExtension: "cs",
-                defaultLocationInProject: "Mappings",
-                className: "DtoProfile",
-                @namespace: "${Project.ProjectName}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"DtoProfile",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(InitializationRequiredEvent.EventId, new Dictionary<string, string>()
             {

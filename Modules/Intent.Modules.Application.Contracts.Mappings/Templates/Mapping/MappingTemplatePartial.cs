@@ -13,7 +13,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 {
-    partial class MappingTemplate : IntentRoslynProjectItemTemplateBase<DTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook, IHasDecorators<IMappingTemplateDecorator>
+    partial class MappingTemplate : CSharpTemplateBase<DTOModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook, IHasDecorators<IMappingTemplateDecorator>
     {
         public const string Identifier = "Intent.Application.Contracts.Mapping";
 
@@ -138,16 +138,24 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public string DotIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "." : string.Empty;
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}Mapping",
-                fileExtension: "cs",
-                defaultLocationInProject: "Mappings${SlashIfInNamespace}${StereotypedNamespaceBasedPath}",
-                className: "${Model.Name}Mapping",
-                @namespace: "${Project.ProjectName}${DotIfInNamespace}${StereotypedNamespace}");
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}Mapping",
+                @namespace: $"{OutputTarget.GetNamespace()}",
+                relativeLocation: string.Join("/", GetNamespaceParts()));
         }
+
+        //protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        //{
+        //    return new RoslynDefaultFileMetadata(
+        //        overwriteBehaviour: OverwriteBehaviour.Always,
+        //        fileName: "${Model.Name}Mapping",
+        //        fileExtension: "cs",
+        //        defaultLocationInProject: "Mappings${SlashIfInNamespace}${StereotypedNamespaceBasedPath}",
+        //        className: "${Model.Name}Mapping",
+        //        @namespace: "${Project.ProjectName}${DotIfInNamespace}${StereotypedNamespace}");
+        //}
 
         private IEnumerable<string> GetNamespaceParts()
         {

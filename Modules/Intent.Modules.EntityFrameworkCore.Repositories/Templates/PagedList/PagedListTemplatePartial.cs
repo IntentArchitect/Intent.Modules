@@ -8,7 +8,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
 {
-    partial class PagedListTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    partial class PagedListTemplate : CSharpTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.EntityFrameworkCore.Repositories.PagedList";
 
@@ -19,21 +19,11 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
 
         public string PagedResultInterfaceName => GetTemplateClassName(PagedResultInterfaceTemplate.Identifier);
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"PagedList",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
-                className: "PagedList",
-                @namespace: "${Project.Name}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"PagedList",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

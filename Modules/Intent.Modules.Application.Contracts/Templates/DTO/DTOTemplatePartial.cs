@@ -50,7 +50,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         protected override CSharpDefaultFileConfig DefineFileConfig()
         {
             return new CSharpDefaultFileConfig(
-                className: $"I{Model.Name}",
+                className: $"{Model.Name}",
                 @namespace: $"{FolderBasedNamespace}",
                 relativeLocation: string.Join("/", GetNamespaceParts()));
         }

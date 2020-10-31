@@ -100,5 +100,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .ToList();
         public const string SpecializationTypeId = "52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE";
 
+        public IList<TemplateOutputModel> TemplateOutputs => _element.ChildElements
+                    .Where(x => x.SpecializationType == TemplateOutputModel.SpecializationType)
+                    .Select(x => new TemplateOutputModel(x))
+                    .ToList();
+
     }
 }

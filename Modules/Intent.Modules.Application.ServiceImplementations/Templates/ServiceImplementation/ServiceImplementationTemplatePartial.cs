@@ -16,7 +16,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, ITemplatePostCreationHook
+    partial class ServiceImplementationTemplate : CSharpTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook, IHasDecorators<ServiceImplementationDecoratorBase>, ITemplatePostCreationHook
     {
         private IList<ServiceImplementationDecoratorBase> _decorators = new List<ServiceImplementationDecoratorBase>();
 
@@ -49,25 +49,14 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
             return _decorators;
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
-                fileExtension: "cs",
-                defaultLocationInProject: "ServiceImplementation",
-                className: "${Model.Name}",
-                @namespace: "${Project.ProjectName}.ServiceImplementation"
-
-                );
-        }
-
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {

@@ -16,7 +16,7 @@ using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
 {
-    partial class ServiceContractTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
+    partial class ServiceContractTemplate : CSharpTemplateBase<ServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IServiceContractAttributeDecorator>
     {
         private IList<IServiceContractAttributeDecorator> _decorators = new List<IServiceContractAttributeDecorator>();
 
@@ -42,28 +42,31 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             };
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
         public IEnumerable<IServiceContractAttributeDecorator> GetDecorators()
         {
             return _decorators;
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "I${Model.Name}",
-                fileExtension: "cs",
-                defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
-                className: "I${Model.Name}",
-                @namespace: "${FolderBasedNamespace}");
+            return new CSharpDefaultFileConfig(
+                className: $"I{Model.Name}",
+                @namespace: $"{FolderBasedNamespace}",
+                relativeLocation: string.Join("/", GetNamespaceParts()));
         }
 
-        public string FolderBasedNamespace => string.Join(".", new[] { Project.Name }.Concat(GetNamespaceParts()));
+        //protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        //{
+        //    return new RoslynDefaultFileMetadata(
+        //        overwriteBehaviour: OverwriteBehaviour.Always,
+        //        fileName: "I${Model.Name}",
+        //        fileExtension: "cs",
+        //        defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
+        //        className: "I${Model.Name}",
+        //        @namespace: "${FolderBasedNamespace}");
+        //}
+
+        public string FolderBasedNamespace => string.Join(".", new[] { OutputTarget.GetNamespace() }.Concat(GetNamespaceParts()));
 
         public string ContractAttributes()
         {

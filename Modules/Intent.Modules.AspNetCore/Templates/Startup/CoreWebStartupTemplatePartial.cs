@@ -12,7 +12,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Templates.Startup
 {
-    partial class CoreWebStartupTemplate : IntentRoslynProjectItemTemplateBase<object>, IHasTemplateDependencies, IDeclareUsings, IHasDecorators<CoreWebStartupDecorator>, IHasNugetDependencies
+    partial class CoreWebStartupTemplate : CSharpTemplateBase<object>, IHasTemplateDependencies, IDeclareUsings, IHasDecorators<CoreWebStartupDecorator>, IHasNugetDependencies
     {
         public const string Identifier = "Intent.AspNetCore.Startup";
         private readonly IList<CoreWebStartupDecorator> _decorators = new List<CoreWebStartupDecorator>();
@@ -198,21 +198,11 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
             }
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"Startup",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
+            return new CSharpDefaultFileConfig(
                 className: $"Startup",
-                @namespace: "${Project.Name}"
-                );
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public override IEnumerable<ITemplateDependency> GetTemplateDependencies()

@@ -96,5 +96,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Select(x => new FolderModel(x))
             .ToList();
         public const string SpecializationTypeId = "3CDFF513-03D8-4BAB-9435-160108A086A3";
+
+        public IList<TemplateOutputModel> TemplateOutputs => _element.ChildElements
+                    .Where(x => x.SpecializationType == TemplateOutputModel.SpecializationType)
+                    .Select(x => new TemplateOutputModel(x))
+                    .ToList();
     }
 }

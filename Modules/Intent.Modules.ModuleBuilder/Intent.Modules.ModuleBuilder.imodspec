@@ -21,36 +21,47 @@
     </template>
     <template id="Intent.ModuleBuilder.ProjectItemTemplate.T4Template">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.ProjectItemTemplate.Partial">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.Custom">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.FilePerModel">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.DesignerConfig">
       <role>DesignerConfig</role>
+      <location>modelers</location>
     </template>
     <template id="Intent.ModuleBuilder.DesignerSettings">
       <role>DesignerConfig</role>
+      <location>modelers</location>
     </template>
     <template id="Intent.ModuleBuilder.DecoratorTemplate">
       <role>Decorators</role>
+      <location>Decorators</location>
     </template>
     <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
       <role>Decorators</role>
+      <location>Decorators</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" externalReference="ff86b4fd-d613-4983-8066-605f97b58581">
       <config>
@@ -58,6 +69,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiAssociationModel" externalReference="1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5">
       <config>
@@ -65,6 +77,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiElementModel" externalReference="f9800e0d-99ea-4d27-850b-4e6d07250ede">
       <config>
@@ -72,6 +85,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" externalReference="d8b63ecf-82cf-466b-8b57-8a70c88c51f6">
       <config>
@@ -79,6 +93,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiElementModelExtensions" externalReference="3877283b-1f5c-4171-a8da-55595c1905b8">
       <config>
@@ -86,6 +101,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" externalReference="11b1ac64-5537-4301-9a1e-d8de08c2786c">
       <config>
@@ -93,6 +109,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" externalReference="51ff3bbd-74dc-4f6c-996a-c8502814570a">
       <config>
@@ -100,6 +117,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api/Extensions</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiPackageModel" externalReference="12d0509f-a513-4263-9c31-3786f61b44bd">
       <config>
@@ -107,6 +125,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api</location>
     </template>
     <template id="ModuleBuilder.Templates.Api.ApiElementExtensionModel" externalReference="e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1">
       <config>
@@ -114,6 +133,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api/Extensions</location>
     </template>
   </templates>
   <decorators></decorators>

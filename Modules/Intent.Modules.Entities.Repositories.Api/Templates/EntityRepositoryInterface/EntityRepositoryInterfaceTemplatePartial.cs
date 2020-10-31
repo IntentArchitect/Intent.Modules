@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInterface
 {
-    partial class EntityRepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
+    partial class EntityRepositoryInterfaceTemplate : CSharpTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.Repositories.Api.EntityInterface";
 
@@ -27,21 +27,11 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInt
 
         public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type)?.Name ?? "Guid";
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "I${Model.Name}Repository",
-                fileExtension: "cs",
-                defaultLocationInProject: "Repositories",
-                className: "I${Model.Name}Repository",
-                @namespace: "${Project.ProjectName}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"I{Model.Name}Repository",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

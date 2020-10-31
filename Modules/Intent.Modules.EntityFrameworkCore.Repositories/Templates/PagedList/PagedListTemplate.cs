@@ -24,7 +24,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\PagedList\PagedListTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class PagedListTemplate : IntentRoslynProjectItemTemplateBase
+    public partial class PagedListTemplate : CSharpTemplateBase
     {
 #line hidden
         /// <summary>

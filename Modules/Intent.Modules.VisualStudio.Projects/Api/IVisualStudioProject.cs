@@ -16,6 +16,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         IOutputTargetConfig ToOutputTargetConfig();
         IEnumerable<string> TargetFrameworkVersion();
         IList<RoleModel> Roles { get; }
+        IList<TemplateOutputModel> TemplateOutputs { get; }
         IList<FolderModel> Folders { get; }
         SolutionFolderModel ParentFolder { get; }
     }

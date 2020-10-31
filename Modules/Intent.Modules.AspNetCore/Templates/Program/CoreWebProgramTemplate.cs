@@ -23,7 +23,7 @@ namespace Intent.Modules.AspNetCore.Templates.Program
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore\Templates\Program\CoreWebProgramTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class CoreWebProgramTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class CoreWebProgramTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

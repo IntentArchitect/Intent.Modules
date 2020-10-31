@@ -17,7 +17,7 @@ using Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHandler
 {
-    partial class ServiceCallHandlerImplementationTemplate : IntentRoslynProjectItemTemplateBase<OperationModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook
+    partial class ServiceCallHandlerImplementationTemplate : CSharpTemplateBase<OperationModel>, ITemplate, IHasTemplateDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.Handler";
 
@@ -31,22 +31,25 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public ServiceModel Service { get; set; }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}.{Service.Name}",
+                relativeLocation: $"{Service.Name}");
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}SCH",
-                fileExtension: "cs",
-                defaultLocationInProject: $"ServiceCallHandlers/{Service.Name}",
-                className: "${Model.Name}SCH",
-                @namespace: "${Project.ProjectName}.ServiceCallHandlers.${Service.Name}"
-                );
-        }
+        //protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        //{
+        //    return new RoslynDefaultFileMetadata(
+        //        overwriteBehaviour: OverwriteBehaviour.Always,
+        //        fileName: "${Model.Name}SCH",
+        //        fileExtension: "cs",
+        //        defaultLocationInProject: $"{Service.Name}",
+        //        className: $"{Model.Name}SCH",
+        //        @namespace: $"{OutputTarget.GetNamespace()}.{Service.Name}"
+        //        );
+        //}
 
         private string GetOperationDefinitionParameters(OperationModel o)
         {

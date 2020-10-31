@@ -12,7 +12,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Autofac.Templates.AutofacConfig
 {
-    partial class AutofacConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IAutofacRegistrationsDecorator>, IHasTemplateDependencies
+    partial class AutofacConfigTemplate : CSharpTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IAutofacRegistrationsDecorator>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Autofac.Config";
 
@@ -25,23 +25,13 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
             eventDispatcher.Subscribe(Constants.ContainerRegistrationEvent.EventId, Handle);
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"AutofacConfig",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "AutofacConfig",
-                fileExtension: "cs",
-                defaultLocationInProject: "Autofac",
-                className: "AutofacConfig",
-                @namespace: "${Project.ProjectName}.Autofac"
-                );
-        }
-
+        
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new INugetPackageInfo[]

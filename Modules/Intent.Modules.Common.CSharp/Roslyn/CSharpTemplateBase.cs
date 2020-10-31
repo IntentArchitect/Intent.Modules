@@ -10,6 +10,13 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
+    public abstract class CSharpTemplateBase : CSharpTemplateBase<object>
+    {
+        protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
+        {
+        }
+    }
+
     public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IHasClassDetails, IRoslynMerge 
     {
         private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();

@@ -14,7 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 {
-    partial class RepositoryTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    partial class RepositoryTemplate : CSharpTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.EntityFrameworkCore.Repositories.Implementation";
         private ITemplateDependency _entityStateTemplateDependency;
@@ -61,29 +61,14 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type)?.Name ?? "Guid";
         public string PrimaryKeyName => Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Name.ToPascalCase() ?? "Id";
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}Repository",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Name}Repository",
-                fileExtension: "cs",
-                defaultLocationInProject: "Repository",
-                className: "${Model.Name}Repository",
-                @namespace: "${Project.Name}"
-                );
-        }
-
-        public void PreProcess()
-        {
-
-        }
-
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        
+        public override IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             return new[]
             {
@@ -94,7 +79,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
             };
         }
 
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency);
             if (contractTemplate == null)

@@ -17,7 +17,7 @@ using Intent.Modules.Constants;
 
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
-    partial class ServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplateBeforeExecutionHook, ITemplatePostCreationHook
+    partial class ServiceImplementationTemplate : CSharpTemplateBase<ServiceModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplateBeforeExecutionHook, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Application.ServiceCallHandlers.ServiceImplementation";
         public ServiceImplementationTemplate(IProject project, ServiceModel model)
@@ -50,24 +50,13 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             .ToArray();
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}",
-                fileExtension: "cs",
-                defaultLocationInProject: "ServiceImplementation",
-                className: "${Model.Name}",
-                @namespace: "${Project.ProjectName}"
-
-                );
-        }
-
+        
         public override void BeforeTemplateExecution()
         {
             ExecutionContext.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()

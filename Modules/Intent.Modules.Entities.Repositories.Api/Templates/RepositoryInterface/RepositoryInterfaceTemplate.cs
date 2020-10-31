@@ -24,7 +24,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase
+    public partial class RepositoryInterfaceTemplate : CSharpTemplateBase
     {
 #line hidden
         /// <summary>

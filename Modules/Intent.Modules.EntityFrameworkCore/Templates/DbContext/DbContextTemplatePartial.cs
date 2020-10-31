@@ -13,7 +13,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>, IHasTemplateDependencies
+    partial class DbContextTemplate : CSharpTemplateBase<IEnumerable<ClassModel>>, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.EntityFrameworkCore.DbContext";
 
@@ -32,22 +32,24 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             return template != null ? NormalizeNamespace($"{template.ClassName}") : $"{model.Name}";
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"{Project.Application.Name}DbContext".AsClassName(),
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Project.Application.Name}DbContext".AsClassName(),
-                fileExtension: "cs",
-                defaultLocationInProject: "DbContext",
-                className: $"{Project.Application.Name}DbContext".AsClassName(),
-                @namespace: "${Project.ProjectName}"
-                );
-        }
+        //protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        //{
+        //    return new RoslynDefaultFileMetadata(
+        //        overwriteBehaviour: OverwriteBehaviour.Always,
+        //        fileName: $"{Project.Application.Name}DbContext".AsClassName(),
+        //        fileExtension: "cs",
+        //        defaultLocationInProject: "DbContext",
+        //        className: $"{Project.Application.Name}DbContext".AsClassName(),
+        //        @namespace: "${Project.ProjectName}"
+        //        );
+        //}
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {

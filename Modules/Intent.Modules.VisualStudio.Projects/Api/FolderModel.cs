@@ -101,5 +101,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         {
             return new FolderOutputTarget(this);
         }
+
+        public IList<TemplateOutputModel> TemplateOutputs => _element.ChildElements
+                    .Where(x => x.SpecializationType == TemplateOutputModel.SpecializationType)
+                    .Select(x => new TemplateOutputModel(x))
+                    .ToList();
     }
 }

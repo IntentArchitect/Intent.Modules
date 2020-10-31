@@ -4,7 +4,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Templates.Program
 {
-    partial class CoreWebProgramTemplate : IntentRoslynProjectItemTemplateBase<object>
+    partial class CoreWebProgramTemplate : CSharpTemplateBase<object>
     {
         public const string Identifier = "Intent.AspNetCore.Program";
 
@@ -13,21 +13,11 @@ namespace Intent.Modules.AspNetCore.Templates.Program
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"Program",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
+            return new CSharpDefaultFileConfig(
                 className: $"Program",
-                @namespace: "${Project.Name}"
-                );
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

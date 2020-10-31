@@ -103,5 +103,12 @@ namespace Intent.Modules.VisualStudio.Projects.Api
                 .ToList();
         }
 
+        public static IList<TemplateOutputModel> GetTemplateOutputModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(TemplateOutputModel.SpecializationTypeId)
+                .Select(x => new TemplateOutputModel(x))
+                .ToList();
+        }
+
     }
 }

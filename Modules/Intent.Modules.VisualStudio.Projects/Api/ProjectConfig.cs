@@ -27,6 +27,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .Select(x => x.Trim())
             .ToArray();
         public IEnumerable<IOutputTargetRole> Roles => _project.Roles;
+        public IEnumerable<IOutputTargetTemplate> Templates => _project.TemplateOutputs;
     }
 
     internal class FolderOutputTarget : IOutputTargetConfig
@@ -46,5 +47,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
         public IEnumerable<string> SupportedFrameworks => new string[0];
         public IEnumerable<IOutputTargetRole> Roles => _model.Roles;
+        public IEnumerable<IOutputTargetTemplate> Templates => _model.TemplateOutputs;
     }
 }

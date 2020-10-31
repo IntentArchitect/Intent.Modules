@@ -6,7 +6,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.PagedResultInterface
 {
-    partial class PagedResultInterfaceTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    partial class PagedResultInterfaceTemplate : CSharpTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.Entities.Repositories.Api.PagedResultInterface";
 
@@ -15,21 +15,11 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.PagedResultInterfac
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"IPagedResult",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
-                className: "IPagedResult",
-                @namespace: "${Project.Name}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"IPagedResult",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

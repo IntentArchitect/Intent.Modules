@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
 {
-    partial class RepositoryInterfaceTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
+    partial class RepositoryInterfaceTemplate : CSharpTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.Entities.Repositories.Api.Interface";
 
@@ -18,22 +18,11 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
             : base(Identifier, project)
         {
         }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "IRepository",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
-                className: "IRepository",
-                @namespace: "${Project.ProjectName}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"IRepository",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

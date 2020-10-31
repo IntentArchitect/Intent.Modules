@@ -1,4 +1,4 @@
-﻿<#@ template debug="true" inherits="IntentRoslynProjectItemTemplateBase<IList<DTOModel>>" #>
+﻿<#@ template debug="true" inherits="CSharpTemplateBase<IList<DTOModel>>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #> 
