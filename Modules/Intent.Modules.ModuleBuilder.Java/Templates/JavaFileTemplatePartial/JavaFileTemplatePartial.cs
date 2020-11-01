@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class JavaFileTemplatePartial : IntentRoslynProjectItemTemplateBase<JavaFileTemplateModel>
+    public partial class JavaFileTemplatePartial : CSharpTemplateBase<JavaFileTemplateModel>
     {
 #line hidden
         /// <summary>

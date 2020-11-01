@@ -25,7 +25,7 @@ namespace Intent.Modules.VisualStudio.Projects.Tests.NuGet.SchemeTests
             Assert.Collection(installedPackages, x =>
             {
                 Assert.Equal("TestPackage.One", x.Key);
-                Assert.Equal(x.Value.Version, SemanticVersion.Parse("1.0.0"));
+                Assert.Equal(x.Value.Version, VersionRange.Parse("1.0.0"));
             });
         }
 

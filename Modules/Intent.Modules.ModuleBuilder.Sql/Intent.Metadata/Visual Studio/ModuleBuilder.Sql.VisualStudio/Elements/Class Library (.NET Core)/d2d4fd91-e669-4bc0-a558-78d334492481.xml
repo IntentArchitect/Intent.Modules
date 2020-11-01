@@ -20,5 +20,126 @@
       </properties>
     </stereotype>
   </stereotypes>
-  <childElements />
+  <childElements>
+    <childElement id="1ee7063f-db75-47af-bf41-0df1e0e23708" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.IModeSpecFile</name>
+      <display>Intent.ModuleBuilder.IModeSpecFile</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="f9b757a6-bf94-4009-b5f5-22660fee712c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ReadMe</name>
+      <display>Intent.ModuleBuilder.ReadMe</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="38f4a1d8-a825-44d0-91cc-7339673b9236" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="9f85bd03-b056-4785-b312-5c42fcb8e4f7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="82a57fc7-c9d8-4f7b-8f02-dac52a518ca4" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="1e842d52-2375-4a98-a87f-cf7523b0d33c" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Api</name>
+      <display>Api</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="d6785731-8311-4478-ae90-e3dc10d9d559" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Decorators</name>
+      <display>Decorators</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="570e4ff8-ebd1-402f-a2f8-3765130e8596" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>DesignerConfig</name>
+      <display>DesignerConfig</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c28b54f2-6acd-4aae-82d6-937e0dca7cc0" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>IModSpec</name>
+      <display>IModSpec</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="8159f2a7-6aa5-476b-882f-eb704253e401" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Templates</name>
+      <display>Templates</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
+      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
+      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

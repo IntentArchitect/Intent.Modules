@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class HtmlFileTemplatePartialRegistration : ModelTemplateRegistrationBase<HtmlFileTemplateModel>
+    public class HtmlFileTemplatePartialRegistration : FilePerModelTemplateRegistration<HtmlFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 
         public override string TemplateId => HtmlFileTemplatePartial.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, HtmlFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, HtmlFileTemplateModel model)
         {
             return new HtmlFileTemplatePartial(project, model);
         }

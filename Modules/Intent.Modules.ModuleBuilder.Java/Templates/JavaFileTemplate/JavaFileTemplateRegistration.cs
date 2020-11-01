@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class JavaFileTemplateRegistration : ModelTemplateRegistrationBase<JavaFileTemplateModel>
+    public class JavaFileTemplateRegistration : FilePerModelTemplateRegistration<JavaFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 
         public override string TemplateId => JavaFileTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, JavaFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, JavaFileTemplateModel model)
         {
             return new JavaFileTemplate(project, model);
         }

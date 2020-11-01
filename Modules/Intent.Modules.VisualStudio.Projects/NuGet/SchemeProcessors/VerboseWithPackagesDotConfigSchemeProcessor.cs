@@ -70,7 +70,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                 .Where(x => !installedPackages.ContainsKey(x.Key))
                 .ToArray();
             var upgradesRequired = requestedPackages
-                .Where(x => installedPackages.TryGetValue(x.Key, out var nuGetPackage) && nuGetPackage.Version < x.Value.Version)
+                .Where(x => installedPackages.TryGetValue(x.Key, out var nuGetPackage) && nuGetPackage.Version.MinVersion < x.Value.Version.MinVersion)
                 .ToArray();
 
             if (!installationsRequired.Any() && !upgradesRequired.Any())

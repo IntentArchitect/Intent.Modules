@@ -87,6 +87,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             ExecutionContext.EventDispatcher.Subscribe<ModuleDependencyRequiredEvent>(@event =>
             {
+                if (@event.ModuleId == ModuleModel.Name)
+                {
+                    return;
+                }
                 _moduleDependencies.Add(@event);
             });
 
@@ -113,6 +117,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             var location = FileMetadata.GetFullLocationPathWithFileName();
 
             var doc = LoadOrCreateImodSpecFile(location);
+
+            doc.Element("package").SetElementValue("id", ModuleModel.Name);
 
             var templatesElement = doc.Element("package").Element("templates");
             if (templatesElement == null)
@@ -310,7 +316,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             return new INugetPackageInfo[]
             {
-                NugetPackages.IntentArchitectPackager
+                NugetPackages.IntentPackager
             };
         }
     }

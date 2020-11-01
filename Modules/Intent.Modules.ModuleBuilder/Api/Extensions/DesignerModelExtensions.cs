@@ -21,6 +21,17 @@ namespace Intent.Modules.ModuleBuilder.Api
             return model.HasStereotype("Designer Config");
         }
 
+        public static OutputConfiguration GetOutputConfiguration(this DesignerModel model)
+        {
+            var stereotype = model.GetStereotype("Output Configuration");
+            return stereotype != null ? new OutputConfiguration(stereotype) : null;
+        }
+
+        public static bool HasOutputConfiguration(this DesignerModel model)
+        {
+            return model.HasStereotype("Output Configuration");
+        }
+
 
         public class DesignerConfig
         {
@@ -41,6 +52,39 @@ namespace Intent.Modules.ModuleBuilder.Api
             public int? DisplayOrder()
             {
                 return _stereotype.GetProperty<int?>("Display Order");
+            }
+
+        }
+
+        public class OutputConfiguration
+        {
+            private IStereotype _stereotype;
+
+            public OutputConfiguration(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public IElement PackageType()
+            {
+                return _stereotype.GetProperty<IElement>("Package Type");
+            }
+
+            public IElement RoleType()
+            {
+                return _stereotype.GetProperty<IElement>("Role Type");
+            }
+
+            public IElement TemplateOutputType()
+            {
+                return _stereotype.GetProperty<IElement>("Template Output Type");
+            }
+
+            public IElement FolderType()
+            {
+                return _stereotype.GetProperty<IElement>("Folder Type");
             }
 
         }

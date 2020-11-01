@@ -16,12 +16,12 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class HtmlFileTemplatePartial : IntentRoslynProjectItemTemplateBase<HtmlFileTemplateModel>
+    partial class HtmlFileTemplatePartial : CSharpTemplateBase<HtmlFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Html.Templates.HtmlFileTemplatePartial";
 
-        public HtmlFileTemplatePartial(IProject project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
+        public HtmlFileTemplatePartial(IOutputTarget project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentCommonHtml);
             //if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
@@ -30,27 +30,18 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
             //}
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
+        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolder);
+        public string FolderNamespace => string.Join(".", OutputFolder);
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "${Model.Name}Partial",
-                fileExtension: "cs",
-                defaultLocationInProject: "${FolderPath}/${Model.Name}",
-                className: "${Model.Name}",
-                @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
-            );
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
+                fileName: $"{Model.Name}Partial",
+                relativeLocation: $"{FolderPath}");
         }
-
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-        public string FolderPath => string.Join("/", FolderBaseList);
-        public string FolderNamespace => string.Join(".", FolderBaseList);
 
         public override void BeforeTemplateExecution()
         {
@@ -76,7 +67,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Project.Application.Name}.{FolderNamespace}.{Model.Name}";
+            return $"{Project.Application.Name}.{FolderNamespace}";
         }
 
         private string GetModelType()

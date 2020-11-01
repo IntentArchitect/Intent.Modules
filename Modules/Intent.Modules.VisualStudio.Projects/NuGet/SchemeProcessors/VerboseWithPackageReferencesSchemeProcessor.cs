@@ -86,7 +86,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                     packageReferenceItemGroup.Add(packageReferenceElement = new XElement(
                         XName.Get("PackageReference", namespaceName),
                         new XAttribute("Include", packageId),
-                        new XElement(XName.Get("Version", namespaceName), package.Version)));
+                        new XElement(XName.Get("Version", namespaceName), package.Version.OriginalString)));
                 }
 
                 var versionElement = packageReferenceElement.XPathSelectElement($"{prefix}:Version", namespaceManager); // try element first
@@ -96,14 +96,14 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                     throw new Exception("Missing version element from PackageReference element.");
                 }
 
-                if (NuGetVersion.Parse(versionElement?.Value ?? versionAttribute.Value) >= package.Version)
+                if (VersionRange.Parse(versionElement?.Value ?? versionAttribute.Value).MinVersion >= package.Version.MinVersion)
                 {
                     continue;
                 }
 
                 tracing.Info($"Upgrading {packageId} from {versionElement?.Value ?? versionAttribute.Value} to {package.Version} in project {projectName}");
-                versionElement?.SetValue(package.Version);
-                versionAttribute?.SetValue(package.Version);
+                versionElement?.SetValue(package.Version.OriginalString);
+                versionAttribute?.SetValue(package.Version.OriginalString);
             }
 
             SortAlphabetically(packageReferenceItemGroup);

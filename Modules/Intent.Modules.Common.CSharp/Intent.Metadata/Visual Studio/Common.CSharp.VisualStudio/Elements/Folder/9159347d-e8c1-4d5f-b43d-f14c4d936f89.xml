@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9159347d-e8c1-4d5f-b43d-f14c4d936f89" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>dbe0fab1-2720-40f2-9f2c-76719e833d59</parentFolderId>
+  <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+  <packageName>Common.CSharp.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="12773ab4-4176-477d-ba55-51aeba064c01" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</name>
+      <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="25e7fb4c-356c-4e13-a93d-f134d00c4bbf" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.Custom</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.Custom</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="31896aff-b70f-4bf0-9349-3dd3ac8097d0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.CSharp.Templates.CSharpTemplate</name>
+      <display>ModuleBuilder.CSharp.Templates.CSharpTemplate</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="482e0e9b-46cb-48e2-a298-023c35df79da" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="62b579e5-ab5d-498e-8344-e9d815da21ab" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="825d0f0c-c6ca-4b4b-bbbf-4f1a8f34750a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</name>
+      <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="8e15429f-680e-473b-8b26-ea93a1f3c900" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.CSharp.Templates.CSharpTemplatePartial</name>
+      <display>ModuleBuilder.CSharp.Templates.CSharpTemplatePartial</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="93f51b72-0978-4b31-badf-2f126764dac7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed</name>
+      <display>ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="a9a4756d-f5e0-44dd-adc5-b6239b2d1b0a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ProjectItemTemplate.Partial</name>
+      <display>Intent.ModuleBuilder.ProjectItemTemplate.Partial</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="caae954f-64b8-44cd-ab8f-c8bda70bbb44" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9159347d-e8c1-4d5f-b43d-f14c4d936f89</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

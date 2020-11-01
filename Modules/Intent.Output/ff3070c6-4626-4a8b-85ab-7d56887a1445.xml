@@ -3,24 +3,24 @@
   <ApplicationId>ff3070c6-4626-4a8b-85ab-7d56887a1445</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\EnumLiteralModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/EnumLiteralModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>EnumLiteralModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\EnumModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/EnumModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>EnumModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\FolderModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>FolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>TypeDefinitionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
@@ -38,9 +38,9 @@
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <ProjectId>17425481-e9c3-4b0a-aade-259fb47f4cc9</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Types\modelers\Common Types.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Common Types.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Common Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

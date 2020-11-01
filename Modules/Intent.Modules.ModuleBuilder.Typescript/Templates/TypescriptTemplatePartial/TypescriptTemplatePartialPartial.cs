@@ -26,18 +26,18 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             AddNugetDependency(NugetPackages.IntentCommonTypescript);
         }
 
+        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolder);
+        public string FolderNamespace => string.Join(".", OutputFolder);
+
         protected override CSharpDefaultFileConfig DefineFileConfig()
         {
             return new CSharpDefaultFileConfig(
                 className: $"{Model.Name}",
-                @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}.{Model.Name}",
+                @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
                 fileName: $"{Model.Name}Partial",
-                relativeLocation: $"{FolderPath}/${Model.Name}");
+                relativeLocation: $"{FolderPath}");
         }
-
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-        public string FolderPath => string.Join("/", FolderBaseList);
-        public string FolderNamespace => string.Join(".", FolderBaseList);
 
         public override void BeforeTemplateExecution()
         {

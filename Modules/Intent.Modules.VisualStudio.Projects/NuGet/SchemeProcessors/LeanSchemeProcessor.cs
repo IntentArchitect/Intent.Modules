@@ -65,13 +65,19 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                 var packageId = requestedPackage.Key;
                 var package = requestedPackage.Value;
 
+                var existingProjectReference = document.XPathSelectElement($"Project/ItemGroup/ProjectReference[substring(@Include,string-length(@Include) -string-length('{packageId}.csproj') +1) = '{packageId}.csproj']");
+                if (existingProjectReference != null)
+                {
+                    continue;
+                }
+
                 var packageReferenceElement = packageReferenceItemGroup.XPathSelectElement($"PackageReference[@Include='{packageId}']");
                 if (packageReferenceElement == null)
                 {
                     tracing.Info($"Installing {packageId} {package.Version} into project {projectName}");
                     packageReferenceItemGroup.Add(packageReferenceElement = new XElement("PackageReference",
                         new XAttribute("Include", packageId),
-                        new XAttribute("Version", package.Version)));
+                        new XAttribute("Version", package.Version.OriginalString)));
                 }
 
                 if (package.PrivateAssets.Any())
@@ -103,13 +109,13 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.SchemeProcessors
                     throw new Exception("Missing version attribute from PackageReference element.");
                 }
 
-                if (NuGetVersion.Parse(versionAttribute.Value) >= package.Version)
+                if (VersionRange.Parse(versionAttribute.Value).MinVersion >= package.Version.MinVersion)
                 {
                     continue;
                 }
 
                 tracing.Info($"Upgrading {packageId} from {versionAttribute.Value} to {package.Version} in project {projectName}");
-                versionAttribute.SetValue(package.Version);
+                versionAttribute.SetValue(package.Version.OriginalString);
             }
 
             SortAlphabetically(packageReferenceItemGroup);

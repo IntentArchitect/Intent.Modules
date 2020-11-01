@@ -91,11 +91,17 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class DesignerOutputConfiguration
     {
-        [XmlAttribute("packageTypeId")]
+        [XmlElement("packageTypeId")]
         public string PackageTypeId { get; set; }
 
-        [XmlAttribute("roleTypeId")]
+        [XmlElement("folderTypeId")]
+        public string FolderTypeId { get; set; }
+
+        [XmlElement("roleTypeId")]
         public string RoleTypeId { get; set; }
+
+        [XmlElement("templateOutputTypeId")]
+        public string TemplateOutputTypeId { get; set; }
     }
 
     public class DesignerSettingsReference

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -113,12 +113,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiPackageModel.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModel.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiElementExtensionModel.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -145,15 +143,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.IntentArchitectPackager" Version="3.0.0-pre.1">
+    <PackageReference Include="Intent.Packager" Version="3.0.0-pre.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="3.0.0-pre.2" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.0-pre.2" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.7" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.8" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -218,12 +220,6 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
-    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 
 </Project>

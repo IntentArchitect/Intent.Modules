@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Entities</id>
-  <version>3.0.0-beta</version>
+  <version>3.0.0-beta.1</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Create domain entities and related artifacts.</summary>
   <description></description>
@@ -39,20 +39,20 @@
   <interoperability>
     <detect id="Intent.EntityFramework">
       <install>
-        <package id="Intent.Entities.Keys" version="3.0.0-beta"/>
+        <package id="Intent.Entities.Keys" version="3.0.0-beta.1"/>
       </install>
     </detect>
     <detect id="Intent.EntityFrameworkCore">
       <install>
-        <package id="Intent.Entities.Keys" version="3.0.0-beta"/>
+        <package id="Intent.Entities.Keys" version="3.0.0-beta.1"/>
       </install>
     </detect>
   </interoperability>
   <dependencies>
-    <dependency id="Intent.Modelers.Domain" version="3.0.0-beta"/>
-    <dependency id="Intent.Common.CSharp" version="3.0.0-beta"/>
-    <dependency id="Intent.Common.Types" version="3.0.0-beta"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta"/>
+    <dependency id="Intent.Modelers.Domain" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Common.CSharp" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.1"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

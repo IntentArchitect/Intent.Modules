@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="babbe519-dbd5-4a80-bdd4-ca04bb873ff2" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Decorators</name>
+  <display>Decorators</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>43a7c52b-f246-4b39-a873-1bb154a2d59d</parentFolderId>
+  <packageId>55fb9209-8ea6-4141-92ba-731604c129b2</packageId>
+  <packageName>Common.Sql.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="f9cc6def-682b-498b-9122-8d31da9b1f39" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
+      <display>Intent.ModuleBuilder.DecoratorRegistration.Template</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>babbe519-dbd5-4a80-bdd4-ca04bb873ff2</parentFolderId>
+      <packageId>55fb9209-8ea6-4141-92ba-731604c129b2</packageId>
+      <packageName>Common.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="6eb65201-9d7c-4a78-9261-e3c313cf81b2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DecoratorTemplate</name>
+      <display>Intent.ModuleBuilder.DecoratorTemplate</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>babbe519-dbd5-4a80-bdd4-ca04bb873ff2</parentFolderId>
+      <packageId>55fb9209-8ea6-4141-92ba-731604c129b2</packageId>
+      <packageName>Common.Sql.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

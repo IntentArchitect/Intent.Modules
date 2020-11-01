@@ -42,9 +42,9 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         public override void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
-                modelId: Model.Id, 
-                templateId: GetTemplateId(), 
-                templateType: "C# Template", 
+                modelId: Model.Id,
+                templateId: GetTemplateId(),
+                templateType: "C# Template",
                 role: GetRole()));
 
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
@@ -65,7 +65,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Project.Application.Name}.{FolderNamespace}.{Model.Name}";
+            return $"{Project.Application.Name}.{FolderNamespace}";
         }
 
         private string GetModelType()

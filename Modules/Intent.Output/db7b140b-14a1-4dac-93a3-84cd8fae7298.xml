@@ -3,9 +3,6 @@
   <ApplicationId>db7b140b-14a1-4dac-93a3-84cd8fae7298</ApplicationId>
   <FileLogs>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Html.sln</SolutionRelativeFilePath>
-    </FileLog>
-    <FileLog>
       <ProjectId>07beaa78-cc2d-44d1-b440-831f49337608</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Html\Intent.Modules.Common.Html.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Html.csproj</ProjectRelativeFilePath>

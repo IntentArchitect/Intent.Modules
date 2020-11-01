@@ -20,5 +20,246 @@
       </properties>
     </stereotype>
   </stereotypes>
-  <childElements />
+  <childElements>
+    <childElement id="a5104107-1bfa-4638-9cd9-c9dd697002a3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.IModeSpecFile</name>
+      <display>Intent.ModuleBuilder.IModeSpecFile</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c1036f96-fc89-49f7-bde2-cf70b72acf30" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ProjectItemTemplate.Partial</name>
+      <display>Intent.ModuleBuilder.ProjectItemTemplate.Partial</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="118cd282-7cc9-4df0-b036-ac2292202727" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</name>
+      <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="fbe9bb7d-df47-4345-abcb-e3d5cc5c364d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</name>
+      <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="30325bdd-c014-4683-8b5d-e0a94066b262" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ReadMe</name>
+      <display>Intent.ModuleBuilder.ReadMe</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="d1a99d23-71c0-4194-b703-ff9e9750b539" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.Custom</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.Custom</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="4df7cb35-31af-4aa8-ad39-1985603ae12e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="7ddb1401-3398-4b2f-9401-fdf8d14d943a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="64241493-f6e5-476e-8a96-081e66caa8fe" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</name>
+      <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="ed2003cf-5084-4fa8-8d7e-b59be0cbfdcd" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.CSharp.Templates.CSharpTemplate</name>
+      <display>ModuleBuilder.CSharp.Templates.CSharpTemplate</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="3c589d7e-64b1-419c-b1b9-430101fc724b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed</name>
+      <display>ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="df2a72a5-7355-4b6c-a8c0-f343011fb025" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.CSharp.Templates.CSharpTemplatePartial</name>
+      <display>ModuleBuilder.CSharp.Templates.CSharpTemplatePartial</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="d47b6b1c-ebdd-45b3-9f3c-5cf910af73d3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="9fb69c0a-25f0-4a6b-853d-9f73ff1668e5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="a6ed9352-df46-4b2b-bfba-4b88e49561cb" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c4685217-d114-427c-89a0-5dd2dd77a885" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Api</name>
+      <display>Api</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="b9ba1787-7f99-43fc-bff0-d37fe5260d3b" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Decorators</name>
+      <display>Decorators</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="3cfae9cc-f0be-4bbe-8f4b-2695af52fab6" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>DesignerConfig</name>
+      <display>DesignerConfig</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="bedbaca1-c82b-4285-bf68-f27bb96d6b36" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>IModSpec</name>
+      <display>IModSpec</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="966b05a9-a18f-4188-b100-1e8e35976548" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Templates</name>
+      <display>Templates</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

@@ -3,12 +3,14 @@
   <ApplicationId>275030c0-f660-4c46-8156-ce592d267b38</ApplicationId>
   <FileLogs>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html.sln</SolutionRelativeFilePath>
+      <ProjectId>1ea44e7b-c146-478b-8549-23b1969fb10d</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Api\FolderExtensionsModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>1ea44e7b-c146-478b-8549-23b1969fb10d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Api\HtmlFileTemplateModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/HtmlFileTemplateModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>HtmlFileTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
@@ -26,9 +28,9 @@
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Html.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
+      <ProjectId>0b5c7803-b049-406e-964f-050489bf41ab</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\modelers\Html Types.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Html Types.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Html Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>

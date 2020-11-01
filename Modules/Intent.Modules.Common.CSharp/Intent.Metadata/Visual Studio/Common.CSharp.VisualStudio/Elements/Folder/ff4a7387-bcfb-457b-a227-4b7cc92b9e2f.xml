@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ff4a7387-bcfb-457b-a227-4b7cc92b9e2f" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Extensions</name>
+  <display>Extensions</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d0305f48-45a9-48f8-8c30-87a45416a41a</parentFolderId>
+  <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+  <packageName>Common.CSharp.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="9343b8c9-d5da-43ea-adc2-b094e3954d60" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ff4a7387-bcfb-457b-a227-4b7cc92b9e2f</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="cfc70e4c-90f2-469b-a532-42fcc2234c6a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementModelExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementModelExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ff4a7387-bcfb-457b-a227-4b7cc92b9e2f</parentFolderId>
+      <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+      <packageName>Common.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

@@ -215,7 +215,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void ProcessRemoveProjectItem(string path)
         {
-            var relativeFileName = NormalizePath(Path.GetRelativePath(_projectPath, path));
+            var relativeFileName = NormalizePath(Path.GetRelativePath(Path.GetDirectoryName(_projectPath), path));
 
             var projectItem = GetProjectItem(relativeFileName);
             projectItem?.Remove();
@@ -223,7 +223,7 @@ namespace Intent.Modules.VisualStudio.Projects.Sync
 
         private void ProcessAddProjectItem(string path, string itemType, string dependsOn, string copyToOutputDirectory, string linkSource)
         {
-            var relativeFileName = NormalizePath(Path.GetRelativePath(_projectPath, path));
+            var relativeFileName = NormalizePath(Path.GetRelativePath(Path.GetDirectoryName(_projectPath), path));
             dependsOn = NormalizePath(dependsOn);
             linkSource = NormalizePath(linkSource);
 

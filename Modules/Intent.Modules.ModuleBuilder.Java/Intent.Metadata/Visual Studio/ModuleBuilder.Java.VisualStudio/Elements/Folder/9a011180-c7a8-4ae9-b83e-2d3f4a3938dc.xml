@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9a011180-c7a8-4ae9-b83e-2d3f4a3938dc" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Extensions</name>
+  <display>Extensions</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</parentFolderId>
+  <packageId>9b741307-a2fa-4da6-8894-1c184735b9b5</packageId>
+  <packageName>ModuleBuilder.Java.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="99dc2103-1ef9-4416-a2fe-48886fcbbeca" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9a011180-c7a8-4ae9-b83e-2d3f4a3938dc</parentFolderId>
+      <packageId>9b741307-a2fa-4da6-8894-1c184735b9b5</packageId>
+      <packageName>ModuleBuilder.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="341a4f22-f8a8-4e57-8d3b-44d900978adc" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementModelExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementModelExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9a011180-c7a8-4ae9-b83e-2d3f4a3938dc</parentFolderId>
+      <packageId>9b741307-a2fa-4da6-8894-1c184735b9b5</packageId>
+      <packageName>ModuleBuilder.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

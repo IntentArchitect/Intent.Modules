@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Html.Templates.HtmlFileTemplate";
 
-        public HtmlFileTemplate(IProject project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
+        public HtmlFileTemplate(IOutputTarget project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
         {
         }
 

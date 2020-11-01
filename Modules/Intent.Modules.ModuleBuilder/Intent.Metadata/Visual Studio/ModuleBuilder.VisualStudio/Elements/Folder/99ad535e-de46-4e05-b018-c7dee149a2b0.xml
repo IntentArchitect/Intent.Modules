@@ -9,5 +9,54 @@
   <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
   <packageName>ModuleBuilder.VisualStudio</packageName>
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="a2044ba1-1cd0-42f0-8f1f-757ef4f8c8a1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiAssociationModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiAssociationModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>99ad535e-de46-4e05-b018-c7dee149a2b0</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="b28b19b5-e775-4451-afe0-ea8f272995e6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementExtensionModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementExtensionModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>99ad535e-de46-4e05-b018-c7dee149a2b0</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c3e7b3ef-a250-48ff-933c-8f518b8c3df0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>99ad535e-de46-4e05-b018-c7dee149a2b0</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c697fa50-8a8c-4d34-b591-0bb7d4b6b442" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiPackageModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiPackageModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>99ad535e-de46-4e05-b018-c7dee149a2b0</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

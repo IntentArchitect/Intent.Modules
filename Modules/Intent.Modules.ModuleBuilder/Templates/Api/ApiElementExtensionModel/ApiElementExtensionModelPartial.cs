@@ -32,10 +32,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
                 className: $"{Model.ApiModelName}",
                 @namespace: Model.ParentModule.ApiNamespace);
         }
-        
+
         private ElementSettingsModel GetBaseElementModel()
         {
-            return new ElementSettingsModel((IElement) Model.TypeReference.Element);
+            return new ElementSettingsModel((IElement)Model.TypeReference.Element);
         }
 
         private string FormatForCollection(string name, bool asCollection)

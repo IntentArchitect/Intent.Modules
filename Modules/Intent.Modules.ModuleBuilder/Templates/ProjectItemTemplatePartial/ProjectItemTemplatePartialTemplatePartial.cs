@@ -29,14 +29,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
         protected override CSharpDefaultFileConfig DefineFileConfig()
         {
             return new CSharpDefaultFileConfig(
-                className: $"{Model.Name}Registration",
+                className: $"{Model.Name}",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
-                relativeLocation: $"{FolderPath}");
+                relativeLocation: $"{FolderPath}",
+                fileName: $"{Model.Name}Partial"
+                );
         }
 
         public string GetTemplateId()
         {
-            return $"{Project.ApplicationName()}.{FolderNamespace}.{Model.Name}";
+            return $"{Project.ApplicationName()}.{FolderNamespace}";
         }
 
         public override void BeforeTemplateExecution()

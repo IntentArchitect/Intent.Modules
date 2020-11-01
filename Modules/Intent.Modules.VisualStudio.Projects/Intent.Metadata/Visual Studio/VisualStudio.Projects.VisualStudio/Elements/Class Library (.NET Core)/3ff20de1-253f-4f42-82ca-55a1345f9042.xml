@@ -21,7 +21,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="c241d119-4d4e-4708-97c7-85aa6c8ff700" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="5b257f79-2054-48e3-a777-f637387ae873" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.IModeSpecFile</name>
       <display>Intent.ModuleBuilder.IModeSpecFile</display>
       <isAbstract>false</isAbstract>
@@ -33,7 +33,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="93affa65-a18f-415c-833f-062755f0f49f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="7e502dbc-9dd2-4c18-ac1a-2a1c281105e5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.ReadMe</name>
       <display>Intent.ModuleBuilder.ReadMe</display>
       <isAbstract>false</isAbstract>

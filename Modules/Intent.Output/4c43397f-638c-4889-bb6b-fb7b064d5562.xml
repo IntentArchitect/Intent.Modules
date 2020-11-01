@@ -3,12 +3,12 @@
   <ApplicationId>4c43397f-638c-4889-bb6b-fb7b064d5562</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>6c51b1d7-b8eb-44d7-a3c8-72bf161e6acb</ProjectId>
+      <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Sql.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>6c51b1d7-b8eb-44d7-a3c8-72bf161e6acb</ProjectId>
+      <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Common.Sql\Intent.Modules.Common.Sql.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Sql.imodspec</ProjectRelativeFilePath>
     </FileLog>

@@ -9,5 +9,30 @@
   <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
   <packageName>ModuleBuilder.VisualStudio</packageName>
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="8da02d9a-1b0f-413c-9c80-febbce8eb640" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
+      <display>Intent.ModuleBuilder.DecoratorRegistration.Template</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>f9687794-4653-4a29-9fb0-dfb889e3fc3e</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c36ebd1a-4f8c-410c-9c01-9466617a2a40" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DecoratorTemplate</name>
+      <display>Intent.ModuleBuilder.DecoratorTemplate</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>f9687794-4653-4a29-9fb0-dfb889e3fc3e</parentFolderId>
+      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
+      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

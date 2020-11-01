@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class HtmlFileTemplatePartial : IntentRoslynProjectItemTemplateBase<HtmlFileTemplateModel>
+    public partial class HtmlFileTemplatePartial : CSharpTemplateBase<HtmlFileTemplateModel>
     {
 #line hidden
         /// <summary>

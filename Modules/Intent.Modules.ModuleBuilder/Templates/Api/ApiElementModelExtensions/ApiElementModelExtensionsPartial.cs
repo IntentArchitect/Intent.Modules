@@ -24,14 +24,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public ApiElementModelExtensions(IOutputTarget project, ExtensionModel model) : base(TemplateId, project, model)
         {
         }
-        
+
         protected override CSharpDefaultFileConfig DefineFileConfig()
         {
             return new CSharpDefaultFileConfig(
                 className: $"{Model.Type.ApiClassName}Extensions",
                 @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace);
         }
-        
+
         public string ModelClassName => Model.Type.ApiClassName;
     }
 

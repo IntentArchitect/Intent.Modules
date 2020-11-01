@@ -31,17 +31,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             _partialTemplateId = partialTemplateId;
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-        public string FolderPath => string.Join("/", FolderBaseList);
+        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolder);
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             var Metadata = new DefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Model.Name}",
+                fileName: $"{Model.Name}",
                 fileExtension: "cs",
-                defaultLocationInProject: "${FolderPath}/${Model.Name}");
+                defaultLocationInProject: $"{FolderPath}");
 
             Metadata.CustomMetadata.Add("Depends On", "${Model.Name}.tt");
 

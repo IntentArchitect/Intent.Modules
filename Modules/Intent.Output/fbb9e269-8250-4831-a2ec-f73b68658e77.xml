@@ -3,12 +3,14 @@
   <ApplicationId>fbb9e269-8250-4831-a2ec-f73b68658e77</ApplicationId>
   <FileLogs>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java.sln</SolutionRelativeFilePath>
+      <ProjectId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Api\FolderExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <ProjectId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Api\JavaFileTemplateModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/JavaFileTemplateModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>JavaFileTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
@@ -26,9 +28,9 @@
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Java.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <ProjectId>bdaa5db3-cdd5-4572-9680-07a7262dd842</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\modelers\Java Types.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Java Types.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Java Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>

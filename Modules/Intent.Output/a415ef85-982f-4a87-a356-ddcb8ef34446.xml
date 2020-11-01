@@ -3,289 +3,294 @@
   <ApplicationId>a415ef85-982f-4a87-a356-ddcb8ef34446</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationCreationOptionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationCreationOptionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationCreationOptionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationDestinationEndSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationDestinationEndSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationDestinationEndSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationDestinationEndVisualSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationDestinationEndVisualSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationDestinationEndVisualSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationSourceEndSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationSourceEndSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSourceEndSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationSourceEndVisualSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationSourceEndVisualSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSourceEndVisualSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\AssociationVisualSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationVisualSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationVisualSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ContextMenuModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ContextMenuModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ContextMenuModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\CoreTypeModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/CoreTypeModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>CoreTypeModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DecoratorModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DecoratorModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DecoratorModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerExtensionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DesignerExtensionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DesignerExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DesignerModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DesignerModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerReferenceModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DesignerReferenceModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DesignerReferenceModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DesignerSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DesignerSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignersFolderModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DesignersFolderModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DesignersFolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DiagramSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DiagramSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementCreationOptionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementCreationOptionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementCreationOptionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementEventHandlerModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementEventHandlerModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementEventHandlerModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementEventSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementEventSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementEventSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementExtensionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementExtensionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementMappingModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementMappingModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementMappingModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ElementVisualSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ElementVisualSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementVisualSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationCreationOptionModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationCreationOptionModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationCreationOptionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationDestinationEndSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationDestinationEndSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationDestinationEndSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationDestinationEndVisualSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationDestinationEndVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationDestinationEndVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationSourceEndSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationSourceEndSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSourceEndSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationSourceEndVisualSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationSourceEndVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSourceEndVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\AssociationVisualSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\CoreTypeModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/CoreTypeModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>CoreTypeModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DesignerModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/DesignerModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DesignerModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\DesignerSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/DesignerSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DesignerSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ElementCreationOptionModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ElementCreationOptionModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementCreationOptionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ElementMappingModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ElementMappingModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementMappingModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ElementSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ElementSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ElementVisualSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/ElementVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ElementVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\FileTemplateModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/FileTemplateModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>FileTemplateModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\IntentModuleModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/IntentModuleModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>IntentModuleModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\MappingSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/MappingSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>MappingSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\PackageSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/PackageSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>PackageSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\PathDrawSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/PathDrawSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>PathDrawSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\StereotypeDefinitionCreationOptionModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/StereotypeDefinitionCreationOptionModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>StereotypeDefinitionCreationOptionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\StereotypesVisualSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/StereotypesVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>StereotypesVisualSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\TextDrawSettingsModelExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/TextDrawSettingsModelExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>TextDrawSettingsModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\FileTemplateModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FileTemplateModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>FileTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\FolderExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\IntentModuleModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/IntentModuleModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>IntentModuleModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\MappingSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/MappingSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>MappingSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageEventHandlerModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/PackageEventHandlerModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>PackageEventHandlerModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageEventSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/PackageEventSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>PackageEventSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageExtensionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/PackageExtensionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>PackageExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PackageSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/PackageSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>PackageSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\PathDrawSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/PathDrawSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>PathDrawSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\ScriptModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ScriptModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ScriptModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\StereotypeDefinitionCreationOptionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/StereotypeDefinitionCreationOptionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>StereotypeDefinitionCreationOptionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\StereotypesVisualSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/StereotypesVisualSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>StereotypesVisualSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\TemplateRegistrationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/TemplateRegistrationModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>TemplateRegistrationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\TextDrawSettingsModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/TextDrawSettingsModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>TextDrawSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
@@ -313,19 +318,19 @@
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Designer Builder.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Designer Builder.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Designer Builder.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Module Builder.designer.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Module Builder.designer.config</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Module Builder.designer.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Module Builder.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Module Builder.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Module Builder.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>

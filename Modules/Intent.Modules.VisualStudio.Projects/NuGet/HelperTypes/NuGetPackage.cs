@@ -10,11 +10,11 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
         {
         }
 
-        public static NuGetPackage Create(INugetPackageInfo nugetPackageInfo, NuGetVersion version = null)
+        public static NuGetPackage Create(INugetPackageInfo nugetPackageInfo, VersionRange version = null)
         {
             return new NuGetPackage
             {
-                Version = version ?? NuGetVersion.Parse(nugetPackageInfo.Version),
+                Version = version ?? VersionRange.Parse(nugetPackageInfo.Version),
                 IncludeAssets = new List<string>(nugetPackageInfo.IncludeAssets ?? new string[0]),
                 PrivateAssets = new List<string>(nugetPackageInfo.PrivateAssets ?? new string[0])
             };
@@ -24,15 +24,15 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
         {
             return new NuGetPackage
             {
-                Version = NuGetVersion.Parse(version),
+                Version = VersionRange.Parse(version),
                 IncludeAssets = new List<string>(includeAssets),
                 PrivateAssets = new List<string>(privateAssets)
             };
         }
 
-        public void Update(NuGetVersion highestVersion, INugetPackageInfo nugetPackageInfo)
+        public void Update(VersionRange highestVersion, INugetPackageInfo nugetPackageInfo)
         {
-            if (Version < highestVersion) Version = highestVersion;
+            if (Version.MinVersion < highestVersion.MinVersion) Version = highestVersion;
 
             if (nugetPackageInfo.IncludeAssets != null)
             {
@@ -51,7 +51,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
             }
         }
 
-        public NuGetPackage Clone(NuGetVersion version = null)
+        public NuGetPackage Clone(VersionRange version = null)
         {
             return new NuGetPackage
             {
@@ -61,7 +61,7 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet.HelperTypes
             };
         }
 
-        public NuGetVersion Version { get; set; }
+        public VersionRange Version { get; set; }
 
         public List<string> PrivateAssets { get; private set; }
 

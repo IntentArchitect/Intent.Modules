@@ -11,6 +11,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
@@ -47,6 +48,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
                 name: Model.Name,
                 order: Model.GetDesignerConfig().DisplayOrder() ?? 0,
                 icon: Model.GetDesignerConfig().Icon().ToPersistable());
+
+            if (Model.GetOutputConfiguration() != null)
+            {
+                designer.OutputConfiguration = new DesignerOutputConfiguration()
+                {
+                    PackageTypeId = Model.GetOutputConfiguration().PackageType().Id,
+                    RoleTypeId = Model.GetOutputConfiguration().RoleType().Id,
+                    TemplateOutputTypeId = Model.GetOutputConfiguration().TemplateOutputType().Id,
+                    FolderTypeId = Model.GetOutputConfiguration().FolderType()?.Id,
+                };
+            }
 
             foreach (var designerReference in Model.DesignerReferences)
             {

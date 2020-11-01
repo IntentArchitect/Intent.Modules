@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Electron.IpcProxy</id>
-  <version>3.0.0-beta</version>
+  <version>3.0.0-beta.1</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Creates service proxies allowing you to make IPC calls within Node.js</summary>
   <description>Implements service contracts and infrastructure in both C# and TypeScript allowing C# service calls to be initiated from within a Node.js hosted Angular Application.</description>
@@ -16,12 +16,12 @@
   </templates>
   <decorators/>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta"/>
-    <dependency id="Intent.Application.ServiceCallHandlers" version="3.0.0-beta"/>
-    <dependency id="Intent.Application.Contracts" version="3.0.0-beta"/>
-    <dependency id="Intent.Unity" version="3.0.0-beta"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta"/>
-    <dependency id="Intent.Typescript.ServiceAgent.Contracts" version="3.0.0-beta"/>
+    <dependency id="Intent.Common" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Application.ServiceCallHandlers" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Application.Contracts" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Unity" version="3.0.0-beta.1"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Typescript.ServiceAgent.Contracts" version="3.0.0-beta.1"/>
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll"/>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.AspNetCore.WebApi</id>
-  <version>3.0.0-beta</version>
+  <version>3.0.0-beta.1</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>ASP.NET Core Web API distribution pattern for services.</summary>
   <description>ASP.NET Core Web API distribution pattern for services.</description>
@@ -24,9 +24,9 @@
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common.Types" version="3.0.0-beta"/>
-    <dependency id="Intent.Application.Contracts" version="3.0.0-beta"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta"/>
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Application.Contracts" version="3.0.0-beta.1"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

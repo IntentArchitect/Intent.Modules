@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="82a8b98c-0306-4309-b564-146668de0e74">
+  <name>Output Configuration</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="7f5fcc9f-c721-4a31-bfe2-7909f4289420">Designer</element>
+  </targetElements>
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>ea7ccdb1-1f68-4cf0-87a7-f060b69e364d</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="64331a40-f8d5-4cee-9e7b-fa50c056b2e9">
+      <name>Package Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>89333f72-3960-4159-bf61-9c40d4b65088</type>
+      </lookupTypes>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="021811b3-c37b-44ed-980f-92d0323b8270">
+      <name>Role Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+      </lookupTypes>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="a643c815-8772-4166-bfa8-d5122c72e981">
+      <name>Template Output Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+      </lookupTypes>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="d46b5e6c-da25-462e-be51-04635a0125b5">
+      <name>Folder Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+      </lookupTypes>
+      <isRequiredFunction />
+    </property>
+  </properties>
+</stereotypeDefinition>

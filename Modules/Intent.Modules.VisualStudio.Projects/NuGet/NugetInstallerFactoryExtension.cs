@@ -196,18 +196,18 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
         /// <summary>
         /// Internal so available to unit tests
         /// </summary>
-        internal static (IReadOnlyCollection<NuGetProject> Projects, Dictionary<string, NuGetVersion> HighestVersions) DeterminePackages(IEnumerable<IVisualStudioProjectTemplate> applicationProjects)
+        internal static (IReadOnlyCollection<NuGetProject> Projects, Dictionary<string, VersionRange> HighestVersions) DeterminePackages(IEnumerable<IVisualStudioProjectTemplate> applicationProjects)
         {
             var projects = new List<NuGetProject>();
 
-            var highestVersions = new Dictionary<string, NuGetVersion>();
+            var highestVersions = new Dictionary<string, VersionRange>();
             foreach (var project in applicationProjects.OrderBy(x => x.Name))
             {
                 var projectNugetInfo = DetermineProjectNugetPackageInfo(project);
                 foreach (var nuGetVersion in projectNugetInfo.HighestVersions)
                 {
                     if (!highestVersions.TryGetValue(nuGetVersion.Key, out var highestVersion) ||
-                        highestVersion < nuGetVersion.Value)
+                        highestVersion.MinVersion < nuGetVersion.Value.MinVersion)
                     {
                         highestVersions[nuGetVersion.Key] = nuGetVersion.Value;
                     }
@@ -234,13 +234,13 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
             //}
             var installedPackages = processor.GetInstalledPackages(project.FilePath, document);
 
-            var highestVersionsInProject = new Dictionary<string, NuGetVersion>();
+            var highestVersionsInProject = new Dictionary<string, VersionRange>();
             foreach (var installedPackage in installedPackages)
             {
                 var packageId = installedPackage.Key;
 
                 if (!highestVersionsInProject.TryGetValue(packageId, out var highestVersion) ||
-                    highestVersion < installedPackage.Value.Version)
+                    highestVersion.MinVersion < installedPackage.Value.Version.MinVersion)
                 {
                     highestVersionsInProject[packageId] = installedPackage.Value.Version;
                 }
@@ -251,14 +251,14 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
 
             foreach (var package in project.RequestedNugetPackages())
             {
-                if (!NuGetVersion.TryParse(package.Version, out var semanticVersion))
+                if (!VersionRange.TryParse(package.Version, out var semanticVersion))
                 {
                     throw new Exception(
                         $"Could not parse '{package.Version}' from Intent metadata for package '{package.Name}' in project '{project.Name}' as a valid Semantic Version 2.0 'version' value.");
                 }
 
                 if (!highestVersionsInProject.TryGetValue(package.Name, out var highestVersion) ||
-                    highestVersion < semanticVersion)
+                    highestVersion.MinVersion < semanticVersion.MinVersion)
                 {
                     highestVersionsInProject[package.Name] = highestVersion = semanticVersion;
                 }
@@ -324,21 +324,21 @@ namespace Intent.Modules.VisualStudio.Projects.NuGet
             return NuGetScheme.Unsupported;
         }
 
-        private static void ConsolidatePackageVersions(IReadOnlyCollection<NuGetProject> projectPackages, IDictionary<string, NuGetVersion> highestVersions)
+        private static void ConsolidatePackageVersions(IReadOnlyCollection<NuGetProject> projectPackages, IDictionary<string, VersionRange> highestVersions)
         {
             foreach (var highestVersion in highestVersions)
             {
                 foreach (var projectPackage in projectPackages)
                 {
                     if (projectPackage.RequestedPackages.TryGetValue(highestVersion.Key, out var requestedPackage) &&
-                        requestedPackage.Version < highestVersion.Value)
+                        requestedPackage.Version.MinVersion < highestVersion.Value.MinVersion)
                     {
                         requestedPackage.Version = highestVersion.Value;
                         continue;
                     }
 
                     if (projectPackage.InstalledPackages.TryGetValue(highestVersion.Key, out var installedPackage) &&
-                        installedPackage.Version < highestVersion.Value)
+                        installedPackage.Version.MinVersion < highestVersion.Value.MinVersion)
                     {
                         projectPackage.RequestedPackages.Add(highestVersion.Key, installedPackage.Clone(highestVersion.Value));
                     }

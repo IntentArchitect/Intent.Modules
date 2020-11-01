@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.VisualStudio.Projects</id>
-  <version>3.0.0-beta</version>
+  <version>3.0.0-beta.1</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Installs templates for Visual Studio projects that integrate with Intent Architect</summary>
   <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>
@@ -40,8 +40,8 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta" />
-    <dependency id="Intent.Common.CSharp" version="3.0.0-beta" />
+    <dependency id="Intent.Common" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common.CSharp" version="3.0.0-beta.1" />
   </dependencies>
   <metadata>
     <install target="Visual Studio" src="Intent.Metadata/Module Builder/Intent.VisualStudio.Projects/Intent.VisualStudio.Projects.pkg.config" externalReference="a0636ab7-d3a1-430b-9609-11a18aa3cc7f" />

@@ -3,79 +3,79 @@
   <ApplicationId>b980295a-75ce-48ac-9ef8-0368f8a1a174</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\AssociationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AssociationModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\AttributeModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/AttributeModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AttributeModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\ClassModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ClassModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ClassModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\CommentAssociationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/CommentAssociationModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>CommentAssociationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\CommentModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/CommentModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>CommentModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\DiagramModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DiagramModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\DomainPackageModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/DomainPackageModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>DomainPackageModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>5313bf46-dda7-4531-860a-3ce63561db80</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\AssociationModelAssociationExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/AssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>5313bf46-dda7-4531-860a-3ce63561db80</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\CommentAssociationModelAssociationExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/CommentAssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>CommentAssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>5313bf46-dda7-4531-860a-3ce63561db80</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\Extensions\GeneralizationModelAssociationExtensions.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/Extensions/GeneralizationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>GeneralizationModelAssociationExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\FolderExtensionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/FolderExtensionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\GeneralizationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/GeneralizationModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>GeneralizationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\OperationModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/OperationModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>OperationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\ParameterModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/ParameterModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>ParameterModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\Api\TypeDefinitionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/TypeDefinitionModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>TypeDefinitionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
@@ -103,14 +103,14 @@
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Domain.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>a3d2d01f-b6e2-4edd-8332-54920af009f7</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\modelers\Domain Types.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Domain Types.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Domain Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <ProjectId>a3d2d01f-b6e2-4edd-8332-54920af009f7</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Domain\modelers\Domain.designer.config</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Domain.designer.config</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Domain.designer.config</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

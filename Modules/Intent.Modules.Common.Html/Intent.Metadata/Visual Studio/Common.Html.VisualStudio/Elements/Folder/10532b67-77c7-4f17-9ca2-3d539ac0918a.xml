@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="10532b67-77c7-4f17-9ca2-3d539ac0918a" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Api</name>
+  <display>Api</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+  <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+  <packageName>Common.Html.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="fd78e5e7-a2a3-41d1-bd31-2ab9151fb4cc" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiAssociationModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiAssociationModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>10532b67-77c7-4f17-9ca2-3d539ac0918a</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="10933ec5-0a51-4017-bb9d-b3178edde0b8" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementExtensionModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementExtensionModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>10532b67-77c7-4f17-9ca2-3d539ac0918a</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="5c22d3f0-61c8-4a3e-8188-b73da023620e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>10532b67-77c7-4f17-9ca2-3d539ac0918a</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="d557a54a-5298-4df4-8562-0e6ce8970938" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiPackageModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiPackageModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>10532b67-77c7-4f17-9ca2-3d539ac0918a</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

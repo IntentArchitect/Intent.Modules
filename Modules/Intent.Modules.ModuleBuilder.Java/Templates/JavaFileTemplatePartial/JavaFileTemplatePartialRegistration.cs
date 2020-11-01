@@ -16,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class JavaFileTemplatePartialRegistration : ModelTemplateRegistrationBase<JavaFileTemplateModel>
+    public class JavaFileTemplatePartialRegistration : FilePerModelTemplateRegistration<JavaFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 
         public override string TemplateId => JavaFileTemplatePartial.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, JavaFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, JavaFileTemplateModel model)
         {
             return new JavaFileTemplatePartial(project, model);
         }

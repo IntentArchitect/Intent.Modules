@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="75de55cf-e031-4035-aae3-ef6f2627426e" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Folder</name>
-  <display>Folder: Folder</display>
+  <name>Folder Extensions</name>
+  <display>Folder Extensions: Folder</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <typeReference id="12b054c7-80b5-4d4d-abd0-f72d587cd238">
@@ -10,6 +10,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Common.Types</typePackageName>
+    <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

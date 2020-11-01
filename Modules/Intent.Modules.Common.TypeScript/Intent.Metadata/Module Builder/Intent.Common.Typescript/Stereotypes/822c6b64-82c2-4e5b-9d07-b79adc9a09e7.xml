@@ -11,7 +11,7 @@
   <parentFolderId>2debfc4c-f15d-47a6-88c1-8597b2ca8e50</parentFolderId>
   <order>0</order>
   <packageId>2debfc4c-f15d-47a6-88c1-8597b2ca8e50</packageId>
-  <packageName>Intent.Common.Typescript</packageName>
+  <packageName>Intent.Common.TypeScript</packageName>
   <properties>
     <property id="6591a390-5d73-422c-af7b-371184a8519a">
       <name>Type</name>

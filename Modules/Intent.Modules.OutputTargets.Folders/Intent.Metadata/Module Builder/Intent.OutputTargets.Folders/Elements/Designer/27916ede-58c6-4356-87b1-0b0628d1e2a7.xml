@@ -18,6 +18,17 @@
         <property name="179da558-7e6e-43b0-ab61-5d76a2b879d0" display="Display Order" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="82a8b98c-0306-4309-b564-146668de0e74" name="Output Configuration">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="64331a40-f8d5-4cee-9e7b-fa50c056b2e9" display="Package Type" value="fbca4a65-b376-482c-a23d-32da9908cac9" isActive="true" />
+        <property name="021811b3-c37b-44ed-980f-92d0323b8270" display="Role Type" value="8663c9f9-2852-45e7-aaa1-0883a2e6f1da" isActive="true" />
+        <property name="a643c815-8772-4166-bfa8-d5122c72e981" display="Template Output Type" value="09de2192-2507-41a2-8044-286c7ecadec2" isActive="true" />
+        <property name="d46b5e6c-da25-462e-be51-04635a0125b5" display="Folder Type" value="4d95d53a-8855-4f35-aa82-e312643f5c5f" isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <childElements>
     <childElement id="5bf26fca-a9d6-459f-af46-737a4e89eb5f" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">

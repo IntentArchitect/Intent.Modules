@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using System.Linq;
+using Intent.Modules.Common.Types.Api;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
@@ -43,5 +44,25 @@ namespace Intent.Modules.ModuleBuilder.Api
 
         [IntentManaged(Mode.Ignore)]
         public string Version => this.GetModuleSettings().Version();
+
+        public IList<FileTemplateModel> FileTemplates => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == FileTemplateModel.SpecializationType)
+            .Select(x => new FileTemplateModel(x))
+            .ToList();
+
+        public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .Select(x => new FolderModel(x))
+            .ToList();
+
+        public IList<TemplateRegistrationModel> TemplateRegistrations => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == TemplateRegistrationModel.SpecializationType)
+            .Select(x => new TemplateRegistrationModel(x))
+            .ToList();
+
+        public IList<TypeDefinitionModel> Types => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
+            .Select(x => new TypeDefinitionModel(x))
+            .ToList();
     }
 }
