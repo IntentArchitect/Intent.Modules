@@ -23,7 +23,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class RequireHttpsMiddlewareTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class RequireHttpsMiddlewareTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

@@ -10,14 +10,17 @@
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>EntityFramework</tags>
   <templates>
-    <template id="Intent.Entities.Repositories.Api.Interface">
+    <template id="Intent.Entities.Repositories.Api.BaseInterface">
       <role>Repository.Interface</role>
+      <location>Repositories</location>
     </template>
     <template id="Intent.Entities.Repositories.Api.PagedResultInterface">
       <role>Repository.Interface</role>
+      <location>Repositories</location>
     </template>
     <template id="Intent.Entities.Repositories.Api.EntityInterface">
       <role>Repository.Interface</role>
+      <location>Repositories</location>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
         <add key="Entity Interface Template Id" description="The template Id for the template producing the Domain Entity Interfaces" default="Intent.Entities.DomainEntityInterface" />

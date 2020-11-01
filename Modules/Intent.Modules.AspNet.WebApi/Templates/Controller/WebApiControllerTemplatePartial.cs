@@ -16,7 +16,7 @@ using Intent.Modules.Common.CSharp;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
-    partial class WebApiControllerTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplatePostCreationHook, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasDecorators<WebApiControllerDecoratorBase>, ITemplateBeforeExecutionHook
+    partial class WebApiControllerTemplate : CSharpTemplateBase<ServiceModel>, ITemplatePostCreationHook, ITemplate, IHasTemplateDependencies, IHasAssemblyDependencies, IHasDecorators<WebApiControllerDecoratorBase>, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.AspNet.WebApi.Controller";
 
@@ -48,24 +48,14 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             .ToArray();
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}Controller",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: Model.Name + "Controller",
-                fileExtension: "cs",
-                defaultLocationInProject: "Controllers",
-                className: "${Model.Name}Controller",
-                @namespace: "${Project.Name}"
-                );
-        }
-
-        public void BeforeTemplateExecution()
+        public override void BeforeTemplateExecution()
         {
             Project.Application.EventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {

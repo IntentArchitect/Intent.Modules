@@ -23,7 +23,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class WebApiServiceCallContextTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

@@ -30,9 +30,6 @@
                   <name>Distribution.WebApi</name>
                 </element>
                 <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
-                  <name>Program</name>
-                </element>
-                <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
                   <name>Startup</name>
                 </element>
               </childElements>
@@ -61,7 +58,7 @@
                   <name>Services.Contracts</name>
                 </element>
                 <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
-                  <name>Application.Mappings</name>
+                  <name>Services.Mappings</name>
                 </element>
                 <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
                   <name>Services.Implementation</name>

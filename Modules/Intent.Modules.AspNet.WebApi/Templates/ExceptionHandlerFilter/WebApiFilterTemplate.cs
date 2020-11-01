@@ -18,7 +18,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class WebApiFilterTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class WebApiFilterTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

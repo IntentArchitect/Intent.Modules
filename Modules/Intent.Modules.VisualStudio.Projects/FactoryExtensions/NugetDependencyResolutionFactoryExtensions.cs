@@ -35,13 +35,19 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
             // Resolve all dependencies and events
             Logging.Log.Info($"Resolving NuGet Dependencies");
 
-            foreach (var project in application.Projects)
+            foreach (var project in application.OutputTargets.Where(x => x.IsVSProject()))
             {
                 project.InitializeVSMetadata();
-                 
-                project.AddNugetPackages(GetTemplateNugetDependencies(project));
+            }
 
-                var assemblyDependencies = project.TemplateInstances
+            foreach (var outputTarget in application.OutputTargets)
+            {
+                // root path is the project itself
+                var project = outputTarget.GetTargetPath()[0];
+
+                project.AddNugetPackages(GetTemplateNugetDependencies(outputTarget)); 
+
+                var assemblyDependencies = outputTarget.TemplateInstances
                         .SelectMany(ti => ti.GetAllAssemblyDependencies())
                         .Distinct()
                         .ToList();
@@ -53,9 +59,9 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
             }
         }
 
-        private IEnumerable<INugetPackageInfo> GetTemplateNugetDependencies(IOutputTarget project)
+        private IEnumerable<INugetPackageInfo> GetTemplateNugetDependencies(IOutputTarget outputTarget)
         {
-            return project.TemplateInstances
+            return outputTarget.TemplateInstances
                     .SelectMany(ti => ti.GetAllNugetDependencies())
                     .Distinct()
                     .ToList();

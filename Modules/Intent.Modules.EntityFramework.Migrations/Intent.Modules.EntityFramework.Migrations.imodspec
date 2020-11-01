@@ -10,10 +10,10 @@
   <tags>EntityFramework ORM Domain Repository Data Migrations</tags>
   <templates>
     <template id="Intent.EntityFramework.Migrations.DbMigrationsConfiguration">
-      <role>Infrastructure.Data.EF.Migrations</role>
+      <role>Infrastructure.Data</role>
     </template>
     <template id="Intent.EntityFramework.Migrations.ReadMe">
-      <role>Infrastructure.Data.EF.Migrations</role>
+      <role>Infrastructure.Data</role>
     </template>
   </templates>
   <decorators />

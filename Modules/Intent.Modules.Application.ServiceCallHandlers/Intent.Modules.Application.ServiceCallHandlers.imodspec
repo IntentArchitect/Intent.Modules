@@ -10,15 +10,11 @@
   <templates>
     <template id="Intent.Application.ServiceCallHandlers.Handler">
       <role>Application.Services</role>
+      <location>Implementation</location>
     </template>
     <template id="Intent.Application.ServiceCallHandlers.ServiceImplementation">
       <role>Application.Services</role>
-    </template>
-    <template id="Intent.Application.ServiceCallHandlers.Handler.Legacy">
-      <role>Application.Services</role>
-    </template>
-    <template id="Intent.Application.ServiceCallHandlers.ServiceImplementation.Legacy">
-      <role>Application.Services</role>
+      <location>Implementation</location>
     </template>
   </templates>
   <decorators />

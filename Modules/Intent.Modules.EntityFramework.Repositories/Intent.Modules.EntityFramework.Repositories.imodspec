@@ -12,6 +12,7 @@
   <templates>
     <template id="Intent.EntityFramework.Repositories.Implementation">
       <role>Repository.Implementation</role>
+      <location>Repositories</location>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
         <add key="Entity Interface Template Id" description="The template Id for the template producing the Domain Entity Interfaces" default="Intent.Entities.DomainEntityInterface" />
@@ -20,12 +21,15 @@
     </template>
     <template id="Intent.EntityFramework.Repositories.BaseRepository">
       <role>Repository.Implementation</role>
+      <location>Repositories</location>
     </template>
     <template id="Intent.EntityFramework.Repositories.PagedList">
       <role>Repository.Implementation</role>
+      <location>Repositories</location>
     </template>
     <template id="Intent.EntityFramework.Repositories.EntityCompositionVisitor" enabled="false">
-      <role>Repository.EntityCompositionVisitor</role>
+      <role>Repository.Implementation</role>
+      <location>Visitor</location>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
       </config>

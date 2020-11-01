@@ -8,17 +8,15 @@
         <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
           <name>1 - Api</name>
           <childElements>
-            <element typeId="FFD54A85-9362-48AC-B646-C93AB9AC63D2" type="ASP.NET Core Web Application">
+            <element typeId="8AF747CF-58F0-449C-8B95-46080FEFC8C0" type="ASP.NET Web Application (.NET Framework)">
               <name>${application.name}.Api</name>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
+                <stereotype stereotypeDefinitionId="f3fcc35a-4bb2-44e7-aca2-d721e047a4c9" name=".NET Framework Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
                   <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
                   <properties>
-                    <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
-                    <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" isActive="true" />
-                    <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
+                    <property name="117cf9ee-04da-4f1c-915a-b62c61e2c558" display="Target Framework" value="13b3a401-3f7d-491a-83c2-a160c7035bf1" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -39,17 +37,15 @@
         <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
           <name>2 - Services</name>
           <childElements>
-            <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">
+            <element typeId="0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D" type="Class Library (.NET Framework)">
               <name>${application.name}.Services</name>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
+                <stereotype stereotypeDefinitionId="f3fcc35a-4bb2-44e7-aca2-d721e047a4c9" name=".NET Framework Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
                   <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
                   <properties>
-                    <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
-                    <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" isActive="true" />
-                    <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
+                    <property name="117cf9ee-04da-4f1c-915a-b62c61e2c558" display="Target Framework" value="13b3a401-3f7d-491a-83c2-a160c7035bf1" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -70,17 +66,15 @@
         <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
           <name>3 - Domain</name>
           <childElements>
-            <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">
+            <element typeId="0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D" type="Class Library (.NET Framework)">
               <name>${application.name}.Domain</name>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
+                <stereotype stereotypeDefinitionId="f3fcc35a-4bb2-44e7-aca2-d721e047a4c9" name=".NET Framework Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
                   <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
                   <properties>
-                    <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
-                    <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" isActive="true" />
-                    <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
+                    <property name="117cf9ee-04da-4f1c-915a-b62c61e2c558" display="Target Framework" value="13b3a401-3f7d-491a-83c2-a160c7035bf1" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -98,26 +92,21 @@
         <element typeId="0dc2b846-c968-49eb-99b7-8776919313a8" type="Solution Folder">
           <name>4 - Persistence</name>
           <childElements>
-            <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">
+            <element typeId="0FEBBF41-7C8E-4F98-85A5-F8B5236CFD7D" type="Class Library (.NET Framework)">
               <name>${application.name}.Persistence.EF</name>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
+                <stereotype stereotypeDefinitionId="f3fcc35a-4bb2-44e7-aca2-d721e047a4c9" name=".NET Framework Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
                   <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
                   <properties>
-                    <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
-                    <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" isActive="true" />
-                    <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
+                    <property name="117cf9ee-04da-4f1c-915a-b62c61e2c558" display="Target Framework" value="13b3a401-3f7d-491a-83c2-a160c7035bf1" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
               <childElements>
                 <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
-                  <name>Infrastructure.Data.EF</name>
-                </element>
-                <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
-                  <name>Infrastructure.Data.EF.Migrations</name>
+                  <name>Infrastructure.Data</name>
                 </element>
                 <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
                   <name>Repository.Implementation</name>

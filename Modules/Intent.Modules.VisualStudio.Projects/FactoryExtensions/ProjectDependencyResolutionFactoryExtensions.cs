@@ -41,25 +41,26 @@ namespace Intent.Modules.VisualStudio.Projects.FactoryExtensions
             // Resolve all dependencies and events
             Logging.Log.Info($"Resolving Project Dependencies");
 
-            foreach (var project in application.Projects)
+            foreach (var outputTarget in application.OutputTargets)
             {
                 // 1. Identify project dependencies (for debugging purposes - does nothing):
                 //var p = project.TemplateInstances.Select(x => new { x, deps = x.GetAllTemplateDependencies().ToList() }).Where(x => x.deps.Any()).ToList();
+                var project = outputTarget.GetTargetPath()[0]; // root is the project itself
 
-                var nullDependencies = project.TemplateInstances.Where(x => x.GetAllTemplateDependencies().Any(d => d == null)).ToList();
+                var nullDependencies = outputTarget.TemplateInstances.Where(x => x.GetAllTemplateDependencies().Any(d => d == null)).ToList();
                 if (nullDependencies.Any())
                 {
                     var templates = nullDependencies.First().Id;
                     throw new Exception($"The following template is returning a 'null' template dependency [{templates}]. Please check your GetTemplateDependencies() method.");
                 }
 
-                var templateDependencies = project.TemplateInstances
+                var templateDependencies = outputTarget.TemplateInstances
                         .SelectMany(ti => ti.GetAllTemplateDependencies())
                         .Distinct()
                         .ToList();
 
                 var projectDependencies =
-                    templateDependencies.Select(x => project.Application.FindOutputTargetWithTemplate(x).GetTargetPath()[0])
+                    templateDependencies.Select(x => outputTarget.Application.FindOutputTargetWithTemplate(x)?.GetTargetPath()[0])
                         .Where(x => x != null && !x.Equals(project))
                         .Distinct()
                         .ToList();

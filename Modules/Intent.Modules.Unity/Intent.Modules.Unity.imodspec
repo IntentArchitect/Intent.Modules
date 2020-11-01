@@ -12,12 +12,15 @@
   <templates>
     <template id="Intent.Unity.Config">
       <role>Distribution</role>
+      <location>Unity</location>
     </template>
     <template id="Intent.Unity.ServiceProvider">
       <role>Distribution</role>
+      <location>Unity</location>
     </template>
     <template id="Intent.Unity.PerServiceCallLifetimeManager">
       <role>Distribution</role>
+      <location>Unity</location>
     </template>
   </templates>
   <decorators />

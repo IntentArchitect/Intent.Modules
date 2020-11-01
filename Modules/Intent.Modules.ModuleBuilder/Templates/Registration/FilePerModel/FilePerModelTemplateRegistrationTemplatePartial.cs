@@ -7,6 +7,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 

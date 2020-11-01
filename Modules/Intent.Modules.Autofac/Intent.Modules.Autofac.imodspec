@@ -11,7 +11,8 @@
   <tags>Autofac Container DI Dependency Injection</tags>
   <templates>
     <template id="Intent.Autofac.Config">
-      <role>Distribution</role>
+      <role>Startup</role>
+      <location>Autofac</location>
     </template>
   </templates>
   <decorators />

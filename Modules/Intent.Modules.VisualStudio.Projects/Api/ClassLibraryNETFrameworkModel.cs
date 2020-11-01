@@ -42,7 +42,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
 
         public IEnumerable<string> TargetFrameworkVersion()
         {
-            return new[] { this.GetNETFrameworkSettings().TargetFramework().Value };
+            return new[] { new NETFrameworkVersionModel(this.GetNETFrameworkSettings().TargetFramework()).GetNETFrameworkVersionSettings().LegacyVersionIdentifier() };
         }
 
         [IntentManaged(Mode.Fully)]

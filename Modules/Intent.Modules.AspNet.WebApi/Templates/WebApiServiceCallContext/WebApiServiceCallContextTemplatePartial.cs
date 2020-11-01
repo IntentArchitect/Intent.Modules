@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 {
-    partial class WebApiServiceCallContextTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook
+    partial class WebApiServiceCallContextTemplate : CSharpTemplateBase<object>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook
     {
         public const string IDENTIFIER = "Intent.AspNet.WebApi.ServiceCallContext";
 
@@ -19,23 +19,13 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"WebApiServiceCallContext",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "WebApiServiceCallContext",
-                fileExtension: "cs",
-                defaultLocationInProject: "Context",
-                className: "WebApiServiceCallContext",
-                @namespace: "${Project.ProjectName}.Context"
-                );
-        }
-
+        
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]

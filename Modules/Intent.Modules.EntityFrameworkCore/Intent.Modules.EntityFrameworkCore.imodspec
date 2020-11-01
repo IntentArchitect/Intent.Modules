@@ -15,25 +15,23 @@
   </factoryExtensions>
   <templates>
     <template id="Intent.EntityFrameworkCore.DbContext">
-      <role>Infrastructure.Data.EF</role>
+      <role>Infrastructure.Data</role>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
         <add key="Use Lazy-Loading Proxies" description="Whether EF should be configured to use lazy-loading proxies" type="boolean" default="true" />
       </config>
     </template>
     <template id="Intent.EntityFrameworkCore.EFMapping">
-      <role>Infrastructure.Data.EF</role>
+      <role>Infrastructure.Data</role>
+      <location>EFMapping</location>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
         <add key="Implicit Surrogate Key" description="Flag for whether to use implicit surrogate keys from the Entities model." type="boolean" default="true" />
         <add key="Use Foreign Keys" description="Flag for whether to use foreign keys from the Entities model." type="boolean" default="true" />
       </config>
     </template>
-    <template id="Intent.EntityFrameworkCore.DbMigrationsConfiguration" enabled="true">
-      <role>Infrastructure.Data.EF.Migrations</role>
-    </template>
     <template id="Intent.EntityFrameworkCore.DbMigrationsReadMe" enabled="true">
-      <role>Infrastructure.Data.EF.Migrations</role>
+      <role>Infrastructure.Data</role>
     </template>
   </templates>
   <decorators />

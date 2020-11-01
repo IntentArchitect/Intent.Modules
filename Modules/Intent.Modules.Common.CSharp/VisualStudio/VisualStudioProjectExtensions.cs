@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Constants;
 
 namespace Intent.Modules.Common.VisualStudio
 {
@@ -25,13 +27,16 @@ namespace Intent.Modules.Common.VisualStudio
 
         public static void AddDependency(this IOutputTarget outputTarget, IOutputTarget dependency)
         {
+            if (outputTarget.Equals(dependency))
+            {
+                throw new Exception($"OutputTarget [{outputTarget}] cannot add a dependency to itself");
+            }
             var collection = outputTarget.Dependencies();
             if (!collection.Contains(dependency))
             {
                 collection.Add(dependency);
             }
         }
-
 
         public static void AddNugetPackages(this IOutputTarget outputTarget, IEnumerable<INugetPackageInfo> packages)
         {
@@ -44,6 +49,19 @@ namespace Intent.Modules.Common.VisualStudio
             var collection = outputTarget.References();
             if (!collection.Contains(assemblyDependency))
                 collection.Add(assemblyDependency);
+        }
+
+        public static bool IsVSProject(this IOutputTarget outputTarget)
+        {
+            return new[] {
+                    VisualStudioProjectTypeIds.CSharpLibrary,
+                    VisualStudioProjectTypeIds.WebApiApplication,
+                    VisualStudioProjectTypeIds.WcfApplication,
+                    VisualStudioProjectTypeIds.ConsoleAppNetFramework,
+                    VisualStudioProjectTypeIds.NodeJsConsoleApplication,
+                    VisualStudioProjectTypeIds.CoreWebApp,
+                    VisualStudioProjectTypeIds.CoreCSharpLibrary
+                }.Contains(outputTarget.Type);
         }
 
         public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)

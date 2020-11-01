@@ -49,7 +49,8 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "Html Template",
-                role: GetRole()));
+                role: GetRole(),
+                location: Model.GetLocation()));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Html",
                 moduleVersion: "3.0.0-beta"));

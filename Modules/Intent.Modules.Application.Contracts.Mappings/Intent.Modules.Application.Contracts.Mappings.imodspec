@@ -9,7 +9,8 @@
   <authors>Intent Architect</authors>
   <templates>    
     <template id="Intent.Application.Contracts.Mapping" enabled="true">
-      <role>Application.Mappings</role>
+      <role>Services.Mappings</role>
+      <location>Mappings</location>
       <config>          
         <add key="ContractTemplateDependancyId" default="Intent.Application.Contracts.DTO" description="The template Id for the template producing the Contracts" />
         <add key="DomainTemplateDependancyId" default="Intent.Entities.DomainEntityInterface" description="The template Id for the template producing the Domain Entities" />
@@ -19,7 +20,8 @@
       </config>
     </template>
     <template id="Intent.Application.Contracts.Mapping.Profile">
-      <role>Application.Mappings</role>
+      <role>Services.Mappings</role>
+      <location>Mappings</location>
       <config>
         <add key="ContractTemplateDependancyId" description="The template Id for the template producing the Contracts" default="Intent.Application.Contracts.DTO"  />
         <add key="DomainTemplateDependancyId" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityInterface" />

@@ -14,7 +14,7 @@
       <config>
         <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
       </config>
-      <role>Program</role>
+      <role>Startup</role>
     </template>
     <template id="Intent.AspNetCore.Startup">
       <config>

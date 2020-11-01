@@ -7,7 +7,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
 {
-    partial class PerServiceCallLifetimeManagerTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies
+    partial class PerServiceCallLifetimeManagerTemplate : CSharpTemplateBase<object>, ITemplate, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Unity.PerServiceCallLifetimeManager";
 
@@ -16,23 +16,13 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"PerServiceCallLifetimeManager",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "PerServiceCallLifetimeManager",
-                fileExtension: "cs",
-                defaultLocationInProject: "Unity",
-                className: "PerServiceCallLifetimeManager",
-                @namespace: "${Project.Name}.Unity"
-                );
-        }
-
+        
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]

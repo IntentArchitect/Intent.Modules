@@ -12,7 +12,7 @@ using Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager;
 
 namespace Intent.Modules.Unity.Templates.UnityConfig
 {
-    partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>, IHasTemplateDependencies
+    partial class UnityConfigTemplate : CSharpTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<IUnityRegistrationsDecorator>, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.Unity.Config";
 
@@ -27,23 +27,13 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
         public IEnumerable<IProject> ApplicationProjects => Project.Application.Projects;
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"UnityConfig",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "UnityConfig",
-                fileExtension: "cs",
-                defaultLocationInProject: "Unity",
-                className: "UnityConfig",
-                @namespace: "${Project.ProjectName}.Unity"
-                );
-        }
-
+        
         public override string DependencyUsings => "";
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()

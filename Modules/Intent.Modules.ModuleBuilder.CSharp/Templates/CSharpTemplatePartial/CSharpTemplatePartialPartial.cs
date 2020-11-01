@@ -45,7 +45,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "C# Template",
-                role: GetRole()));
+                role: GetRole(),
+                location: Model.GetLocation()));
 
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.CSharp",

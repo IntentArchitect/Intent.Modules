@@ -12,9 +12,9 @@ using Intent.Templates;
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 {
-    partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, ITemplatePostCreationHook
+    partial class DomainEntityBehavioursTemplate : CSharpTemplateBase<ClassModel>, ITemplate, ITemplatePostCreationHook
     {
-        public const string Identifier = "Intent.Entities.DDD.Behaviours";
+        public const string Identifier = "Intent.Entities.DDD.BehavioursInterface";
 
         public DomainEntityBehavioursTemplate(ClassModel model, IProject project)
             : base(Identifier, project, model)
@@ -28,27 +28,17 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 
         public string ClassStateName => Model.Name;
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
+            return new CSharpDefaultFileConfig(
+                className: $"I{Model.Name}Behaviours",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "I${Model.Name}Behaviours",
-                fileExtension: "cs",
-                defaultLocationInProject: "Domain",
-                className: "I${Model.Name}Behaviours",
-                @namespace: "${Project.ProjectName}"
-                );
-        }
-
+        
         private string GetParametersDefinition(OperationModel operation)
         {
             return operation.Parameters.Any()
-                ? operation.Parameters.Select(x => this.ConvertType(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                ? operation.Parameters.Select(x => this.GetTypeName(x.Type) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
                 : "";
         }
 
@@ -58,7 +48,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{this.ConvertType(o.ReturnType)}>" : this.ConvertType(o.ReturnType);
+            return o.IsAsync() ? $"Task<{this.GetTypeName(o.ReturnType)}>" : this.GetTypeName(o.ReturnType);
         }
     }
 }

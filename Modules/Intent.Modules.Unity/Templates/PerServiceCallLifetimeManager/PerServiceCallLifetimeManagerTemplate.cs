@@ -23,7 +23,7 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class PerServiceCallLifetimeManagerTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class PerServiceCallLifetimeManagerTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

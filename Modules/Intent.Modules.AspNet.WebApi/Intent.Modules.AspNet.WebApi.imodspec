@@ -12,18 +12,23 @@
   <templates>
     <template id="Intent.AspNet.WebApi.Controller">
       <role>Distribution.WebApi</role>
+      <location>Controllers</location>
     </template>
     <template id="Intent.AspNet.WebApi.OwinWebApiConfig">
       <role>Distribution.WebApi</role>
+      <location>App_Start</location>
     </template>
     <template id="Intent.AspNet.WebApi.ServiceCallContext" enabled="false">
       <role>Distribution.WebApi</role>
+      <location>Context</location>
     </template>
     <template id="Intent.AspNet.WebApi.ExceptionHandlerFilter">
       <role>Distribution.WebApi</role>
+      <location>Filters</location>
     </template>
     <template id="Intent.AspNet.WebApi.RequireHttpsMiddleware" enabled="false">
       <role>Distribution.WebApi</role>
+      <location>App_Start</location>
     </template>
   </templates>
   <decorators>

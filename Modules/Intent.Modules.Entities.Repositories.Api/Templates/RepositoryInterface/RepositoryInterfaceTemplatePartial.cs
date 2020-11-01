@@ -12,7 +12,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
 {
     partial class RepositoryInterfaceTemplate : CSharpTemplateBase, ITemplate, IHasTemplateDependencies, ITemplatePostCreationHook
     {
-        public const string Identifier = "Intent.Entities.Repositories.Api.Interface";
+        public const string Identifier = "Intent.Entities.Repositories.Api.BaseInterface";
 
         public RepositoryInterfaceTemplate(IProject project)
             : base(Identifier, project)

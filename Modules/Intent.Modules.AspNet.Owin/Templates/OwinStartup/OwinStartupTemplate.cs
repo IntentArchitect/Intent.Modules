@@ -23,7 +23,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class OwinStartupTemplate : IntentRoslynProjectItemTemplateBase
+    public partial class OwinStartupTemplate : CSharpTemplateBase
     {
 #line hidden
         /// <summary>

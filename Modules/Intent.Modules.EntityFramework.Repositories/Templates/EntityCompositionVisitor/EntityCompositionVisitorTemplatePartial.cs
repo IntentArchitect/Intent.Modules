@@ -9,7 +9,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
 {
-    partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook
+    partial class EntityCompositionVisitorTemplate : CSharpTemplateBase<IEnumerable<ClassModel>>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFramework.Repositories.EntityCompositionVisitor";
         private ITemplateDependency[] _entityStateTemplateDependancies;
@@ -38,21 +38,11 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             return Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "EntityCompositionVisitor",
-                fileExtension: "cs",
-                defaultLocationInProject: "Visitor",
-                className: "EntityCompositionVisitor",
-                @namespace: "${Project.ProjectName}"
-            );
+            return new CSharpDefaultFileConfig(
+                className: $"EntityCompositionVisitor",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

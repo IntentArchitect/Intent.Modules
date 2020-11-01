@@ -9,7 +9,7 @@ using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
 {
-    partial class WebApiFilterTemplate : IntentRoslynProjectItemTemplateBase<object>, IDeclareUsings, IHasAssemblyDependencies
+    partial class WebApiFilterTemplate : CSharpTemplateBase<object>, IDeclareUsings, IHasAssemblyDependencies
     {
         public const string TemplateId = "Intent.AspNet.WebApi.ExceptionHandlerFilter";
 
@@ -19,9 +19,11 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
             AddAssemblyReference(new GacAssemblyReference("System.Net.Http"));
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"ExceptionHandlerFilter",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public IEnumerable<string> DeclareUsings()
@@ -32,18 +34,6 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
                 "System.Net.Http",
                 "System.Web.Http.Filters"
             };
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "ExceptionHandlerFilter",
-                fileExtension: "cs",
-                defaultLocationInProject: "Filters",
-                className: "ExceptionHandlerFilter",
-                @namespace: "${Project.ProjectName}.Filters"
-            );
         }
     }
 }

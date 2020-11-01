@@ -88,6 +88,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             {
                 return _stereotype.GetProperty<string>("Role");
             }
+
+            public string GetLocation()
+            {
+                return _stereotype.GetProperty<string>("Location");
+            }
         }
     }
 }

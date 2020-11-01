@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Constants\Intent.Modules.Constants.csproj" />
   </ItemGroup>
 
   <ItemGroup>

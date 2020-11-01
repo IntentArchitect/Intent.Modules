@@ -8,18 +8,13 @@ using Intent.Templates;
 
 namespace Intent.Modules.Unity.Templates.UnityServiceProvider
 {
-    partial class UnityServiceProviderTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplateBeforeExecutionHook
+    partial class UnityServiceProviderTemplate : CSharpTemplateBase<object>, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.Unity.ServiceProvider";
 
         public UnityServiceProviderTemplate(IProject project)
             : base(Identifier, project, null)
         {
-        }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
         public void BeforeTemplateExecution()
@@ -33,16 +28,11 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
             });
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"UnityServiceProvider",
-                fileExtension: "cs",
-                defaultLocationInProject: "Unity",
+            return new CSharpDefaultFileConfig(
                 className: $"UnityServiceProvider",
-                @namespace: "${Project.Name}.Unity"
-                );
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

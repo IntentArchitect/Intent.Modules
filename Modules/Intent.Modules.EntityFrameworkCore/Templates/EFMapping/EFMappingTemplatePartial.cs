@@ -30,6 +30,13 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             ValidateAssociations();
         }
 
+        protected override CSharpDefaultFileConfig DefineFileConfig()
+        {
+            return new CSharpDefaultFileConfig(
+                className: $"{Model.Name}Mapping",
+                @namespace: $"{OutputTarget.GetNamespace()}");
+        }
+
         public void ValidateAssociations()
         {
             foreach (var associationEnd in Model.AssociatedClasses)
@@ -150,13 +157,6 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
 
                 return true;
             }
-        }
-
-        protected override CSharpDefaultFileConfig DefineFileConfig()
-        {
-            return new CSharpDefaultFileConfig(
-                className: $"{Model.Name}Mapping",
-                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public void AddDecorator(IEFMappingTemplateDecorator decorator)

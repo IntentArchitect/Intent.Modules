@@ -40,7 +40,7 @@ namespace Intent.Modules.VisualStudio.Projects.Decorators
                 runtimeElement.AddFirst(assemblyBindingElement = new XElement((XNamespace)_namespaces.LookupNamespace("urns") + "assemblyBinding"));
             }
 
-            var nugetPackages = p.Application.Projects.SelectMany(x => x.NugetPackages()).Distinct(); // NOTE: This is not very robust as we are "distincting" on name. Logic should be implemented to choose which version.
+            var nugetPackages = p.Application.OutputTargets.Where(x => x.IsVSProject()).SelectMany(x => x.NugetPackages()).Distinct(); // NOTE: This is not very robust as we are "distincting" on name. Logic should be implemented to choose which version.
             AddAssemblyBindingRedirects(assemblyBindingElement, nugetPackages.SelectMany(x => x.AssemblyRedirects).ToList());
         }
 

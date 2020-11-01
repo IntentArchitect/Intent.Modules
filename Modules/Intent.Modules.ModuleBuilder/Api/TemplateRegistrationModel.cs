@@ -91,6 +91,11 @@ namespace Intent.Modules.ModuleBuilder.Api
             return this.GetTemplateSettings().GetRole();
         }
 
+        public string GetLocation()
+        {
+            return this.GetTemplateSettings().GetLocation();
+        }
+
         public FolderModel Folder { get; }
 
         public bool IsSingleFileTemplateRegistration()

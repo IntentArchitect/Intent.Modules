@@ -88,5 +88,14 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="1ac0fa39-ecea-48f8-92e4-41616a639586">
+      <name>Location</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

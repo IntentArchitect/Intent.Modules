@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true" inherits="IntentRoslynProjectItemTemplateBase" #>
+﻿<#@ template  debug="true" inherits="CSharpTemplateBase" #>
 <#@ output extension=".cs" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 using System;

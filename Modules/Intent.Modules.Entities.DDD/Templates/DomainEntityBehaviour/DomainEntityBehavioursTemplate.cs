@@ -25,7 +25,7 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.DDD\Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DomainEntityBehavioursTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>
+    public partial class DomainEntityBehavioursTemplate : CSharpTemplateBase<ClassModel>
     {
 #line hidden
         /// <summary>

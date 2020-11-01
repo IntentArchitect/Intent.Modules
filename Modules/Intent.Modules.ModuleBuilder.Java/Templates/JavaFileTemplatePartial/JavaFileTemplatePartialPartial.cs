@@ -45,7 +45,8 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "Java Template",
-                role: GetRole()));
+                role: GetRole(),
+                location: Model.GetLocation()));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Java",
                 moduleVersion: "3.0.0-beta"));

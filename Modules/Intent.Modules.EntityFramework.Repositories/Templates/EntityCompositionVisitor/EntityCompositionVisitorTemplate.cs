@@ -25,7 +25,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\EntityCompositionVisitor\EntityCompositionVisitorTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class EntityCompositionVisitorTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>
+    public partial class EntityCompositionVisitorTemplate : CSharpTemplateBase<IEnumerable<ClassModel>>
     {
 #line hidden
         /// <summary>

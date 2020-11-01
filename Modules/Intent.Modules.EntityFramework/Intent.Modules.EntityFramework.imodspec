@@ -11,10 +11,11 @@
   <tags>EntityFramework</tags>
   <templates>
     <template id="Intent.EntityFramework.DbContext">
-      <role>Infrastructure.Data.EF</role>
+      <role>Infrastructure.Data</role>
     </template>
     <template id="Intent.EntityFramework.EFMapping">
-      <role>Infrastructure.Data.EF</role>
+      <role>Infrastructure.Data</role>
+      <location>EFMappings</location>
       <config>
         <add key="Entity Template Id" description="The template Id for the template producing the Domain Entities" default="Intent.Entities.DomainEntityState" />
         <add key="Implicit Surrogate Key" description="Flag for whether to use implicit surrogate keys from the Entities model." type="boolean" default="true" />
@@ -22,10 +23,10 @@
       </config>
     </template>
     <template id="Intent.EntityFramework.DbMigrationsConfiguration" enabled="true">
-      <role>Infrastructure.Data.EF.Migrations</role>
+      <role>Infrastructure.Data</role>
     </template>
     <template id="Intent.EntityFramework.DbMigrationsReadMe" enabled="true">
-      <role>Infrastructure.Data.EF.Migrations</role>
+      <role>Infrastructure.Data</role>
     </template>
   </templates>
   <decorators />

@@ -7,7 +7,7 @@ using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
 {
-    partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<WebApiConfigTemplateDecoratorBase>
+    partial class OwinWebApiConfigTemplate : CSharpTemplateBase<object>, ITemplate, IHasNugetDependencies, IHasDecorators<WebApiConfigTemplateDecoratorBase>
     {
         public const string Identifier = "Intent.AspNet.WebApi.OwinWebApiConfig";
         private readonly IList<WebApiConfigTemplateDecoratorBase> _decorators = new List<WebApiConfigTemplateDecoratorBase>();
@@ -16,27 +16,16 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
             : base (Identifier, project, null)
         {
         }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
         public IEnumerable<string> ConfigureItems => GetDecorators().SelectMany(x => x.Configure().Union(new[] {string.Empty}));
         public string Methods() => GetDecorators().Aggregate(x => x.Methods());
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "WebApiConfig",
-                fileExtension: "cs",
-                defaultLocationInProject: "App_Start",
-                className: "WebApiConfig",
-                @namespace: "${Project.Name}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"WebApiConfig",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
+        
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]

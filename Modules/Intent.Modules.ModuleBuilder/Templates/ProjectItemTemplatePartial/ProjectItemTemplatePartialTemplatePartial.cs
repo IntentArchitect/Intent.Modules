@@ -47,7 +47,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "File Template",
-                role: GetRole()));
+                role: GetRole(),
+                location: Model.GetLocation()));
 
             if (Model.GetModelType() != null)
             {

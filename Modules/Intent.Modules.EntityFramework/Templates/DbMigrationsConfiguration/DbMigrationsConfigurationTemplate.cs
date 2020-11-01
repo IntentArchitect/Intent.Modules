@@ -18,7 +18,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsConfiguration\DbMigrationsConfigurationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase
+    public partial class DbMigrationsConfigurationTemplate : CSharpTemplateBase
     {
 #line hidden
         /// <summary>

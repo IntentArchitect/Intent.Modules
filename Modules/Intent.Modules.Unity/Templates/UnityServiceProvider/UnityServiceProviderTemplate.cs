@@ -23,7 +23,7 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class UnityServiceProviderTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class UnityServiceProviderTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

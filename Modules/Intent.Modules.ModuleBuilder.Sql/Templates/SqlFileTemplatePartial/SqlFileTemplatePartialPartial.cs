@@ -45,7 +45,9 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "Sql Template",
-                role: GetRole()));
+                role: GetRole(),
+                location: Model.GetLocation()));
+
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Sql",
                 moduleVersion: "3.0.0-beta"));

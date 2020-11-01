@@ -7,7 +7,7 @@ using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
 {
-    public partial class RequireHttpsMiddlewareTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies
+    public partial class RequireHttpsMiddlewareTemplate : CSharpTemplateBase<object>, ITemplate, IHasNugetDependencies
     {
         public const string Identifier = "Intent.AspNet.WebApi.RequireHttpsMiddleware";
         public RequireHttpsMiddlewareTemplate(IProject project)
@@ -15,22 +15,13 @@ namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"RequireHttpsMiddleware",
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "RequireHttpsMiddleware",
-                fileExtension: "cs",
-                defaultLocationInProject: @"App_Start"
-
-                );
-        }
-
+        
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]

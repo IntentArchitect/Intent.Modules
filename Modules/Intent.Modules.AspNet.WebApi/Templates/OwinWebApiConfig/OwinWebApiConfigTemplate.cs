@@ -23,7 +23,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.OwinWebApiConfig
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\OwinWebApiConfig\OwinWebApiConfigTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class OwinWebApiConfigTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class OwinWebApiConfigTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

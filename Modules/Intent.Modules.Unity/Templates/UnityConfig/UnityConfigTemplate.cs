@@ -23,7 +23,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class UnityConfigTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class UnityConfigTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>

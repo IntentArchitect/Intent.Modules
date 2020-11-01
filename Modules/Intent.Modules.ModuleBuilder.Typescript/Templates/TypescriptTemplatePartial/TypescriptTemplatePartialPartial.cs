@@ -45,7 +45,8 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "Typescript Template",
-                role: GetRole()));
+                role: GetRole(),
+                location: Model.GetLocation()));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.TypeScript",
                 moduleVersion: "3.0.0-beta"));

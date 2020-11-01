@@ -19,7 +19,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 
     }
 
-    partial class OwinStartupTemplate : IntentRoslynProjectItemTemplateBase, IHasDecorators<IOwinStartupDecorator>, IHasAssemblyDependencies, Intent.Modules.Common.IDeclareUsings
+    partial class OwinStartupTemplate : CSharpTemplateBase, IHasDecorators<IOwinStartupDecorator>, IHasAssemblyDependencies, Intent.Modules.Common.IDeclareUsings
     {
         public const string Identifier = "Intent.Owin.OwinStartup";
         private readonly IList<IOwinStartupDecorator> _decorators = new List<IOwinStartupDecorator>();
@@ -44,21 +44,11 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                 templateDependency: @event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey)));
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: "Startup",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
-                className: "Startup",
-                @namespace: "${Project.Name}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"Startup", 
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public override IEnumerable<ITemplateDependency> GetTemplateDependencies()

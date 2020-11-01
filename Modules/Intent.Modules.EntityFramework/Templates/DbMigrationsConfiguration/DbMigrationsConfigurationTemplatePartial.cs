@@ -11,7 +11,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 {
-    partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, ITemplatePostCreationHook
+    partial class DbMigrationsConfigurationTemplate : CSharpTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFramework.DbMigrationsConfiguration";
         private ITemplateDependency _dbContextDependancy;
@@ -30,18 +30,13 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 
         public string DbContextVariableName => "dbContext";
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Project.ApplicationName()}DbContextConfiguration".Replace(".", string.Empty),
-                fileExtension: "cs",
-                defaultLocationInProject: "",
-                className: $"{Project.ApplicationName()}DbContextConfiguration".Replace(".", string.Empty),
-                @namespace: "${Project.Name}"
-                );
+            return new CSharpDefaultFileConfig(
+                className: $"{Project.ApplicationName()}DbContextConfiguration".ToCSharpIdentifier(),
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
+        
         private string[] GetSeedDataRequiredRegistrations()
         {
             return _seedDataRequiredEvents.ToArray();
@@ -75,11 +70,6 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
             {
                 _dbContextDependancy,
             };
-        }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
     }

@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.EFMapping
 {
-    partial class EFMappingTemplate : IntentRoslynProjectItemTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
+    partial class EFMappingTemplate : CSharpTemplateBase<ClassModel>, ITemplate, IHasTemplateDependencies, IHasNugetDependencies, IHasDecorators<IEFMappingTemplateDecorator>, ITemplatePostCreationHook
     {
         public const string Identifier = "Intent.EntityFramework.EFMapping";
         private IList<IEFMappingTemplateDecorator> _decorators = new List<IEFMappingTemplateDecorator>();
@@ -54,20 +54,11 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             }
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Model.Name}Mapping",
-                fileExtension: "cs",
-                defaultLocationInProject: "EFMapping",
+            return new CSharpDefaultFileConfig(
                 className: $"{Model.Name}Mapping",
-                @namespace: "${Project.Name}");
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public void AddDecorator(IEFMappingTemplateDecorator decorator)

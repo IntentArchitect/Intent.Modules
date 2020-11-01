@@ -14,7 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbContext
 {
-    partial class DbContextTemplate : IntentRoslynProjectItemTemplateBase<IEnumerable<ClassModel>>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>
+    partial class DbContextTemplate : CSharpTemplateBase<IEnumerable<ClassModel>>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook, IHasDecorators<DbContextDecoratorBase>
     {
         public const string Identifier = "Intent.EntityFramework.DbContext";
 
@@ -27,24 +27,13 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             _eventDispatcher = eventDispatcher;
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpDefaultFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            return new CSharpDefaultFileConfig(
+                className: $"{Project.Application.Name}DbContext".ToCSharpIdentifier(),
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Project.Application.Name}DbContext".AsClassName(),
-                fileExtension: "cs",
-                defaultLocationInProject: "DbContext",
-                className: $"{Project.Application.Name}DbContext".AsClassName(),
-                @namespace: "${Project.ProjectName}"
-                );
-        }
-
+        
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return new[]
@@ -104,7 +93,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
         {
             try
             {
-                return GetDecorators().Select(x => x.GetBaseClass()).SingleOrDefault(x => x != null) ?? "DbContext";
+                return NormalizeNamespace(GetDecorators().Select(x => x.GetBaseClass()).SingleOrDefault(x => x != null) ?? "System.Data.Entity.DbContext");
             }
             catch (InvalidOperationException)
             {
