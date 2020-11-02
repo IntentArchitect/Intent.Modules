@@ -10,6 +10,7 @@
   <templates>
     <template id="ModuleBuilder.Sql.Templates.SqlFileTemplate" externalReference="e4b007d8-6cd9-4a76-868b-6140d381d7de">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.Sql.Templates.SqlFileTemplatePartial" externalReference="030b31a1-61ef-4d0f-979a-68a09d85ae6a">
       <config>
@@ -17,9 +18,11 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.Sql.Templates.SqlFileTemplate.T4Template.PreProcessed">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
   </templates>
   <dependencies>

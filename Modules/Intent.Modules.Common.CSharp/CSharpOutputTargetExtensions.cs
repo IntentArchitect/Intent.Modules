@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.Templates
     {
         public static string GetNamespace(this IOutputTarget target)
         {
-            return string.Join(".", target.GetTargetPath().Select(x => x.Name));
+            return string.Join(".", target.GetTargetPath().Select(x => x.Name.ToCSharpNamespace()));
         }
     }
 }

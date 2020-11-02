@@ -18,7 +18,6 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install target="" src="Intent.Metadata/Module Builder/Intent.Common.Sql" />
     <install target="Domain" src="Intent.Metadata/Module Builder/Intent.Common.Sql/Intent.Common.Sql.pkg.config" externalReference="b79baf96-febc-4c03-be0b-f4ffce235018" />
   </metadata>
 </package>

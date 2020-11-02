@@ -81,7 +81,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             : base(templateId, project)
         {
             _metadataManager = metadataManager;
-            ModuleModel = _metadataManager.ModuleBuilder(project.Application).GetIntentModuleModels().First();
+            ModuleModel = _metadataManager.ModuleBuilder(project.Application).GetIntentModuleModels().FirstOrDefault() ?? throw new Exception("No module has been created in the Module Builder");
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {
                 _templatesToRegister.Add(@event);

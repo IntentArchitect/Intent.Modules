@@ -12,6 +12,7 @@
   <templates>
     <template id="Intent.AspNetCore.WebApi.Controller">
       <role>Distribution.WebApi</role>
+      <location>Controllers</location>
       <config>
         <add key="ClassName" description="Class name" />
         <add key="Namespace" description="Namespace" />

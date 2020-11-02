@@ -114,10 +114,7 @@
               <name>${application.name}.Persistence.EF</name>
               <childElements>
                 <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
-                  <name>Infrastructure.Data.EF</name>
-                </element>
-                <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
-                  <name>Infrastructure.Data.EF.Migrations</name>
+                  <name>Infrastructure.Data</name>
                 </element>
                 <element typeId="025e933b-b602-4b6d-95ab-0ec36ae940da" type="Role">
                   <name>Repository.Implementation</name>

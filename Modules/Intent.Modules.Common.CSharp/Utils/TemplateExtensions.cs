@@ -51,6 +51,27 @@ namespace Intent.Modules.Common.Templates
             return "_" + ToCamelCase(s, false);
         }
 
+        public static string ToCSharpNamespace(this string s)
+        {
+            return string.Concat(s.Split(' ')
+                        .Select(x => string.Join("_", x.Split('-').Select(p => p.ToPascalCase())))
+                        .Select(x => string.Join(".", x.Split('.').Select(p => p.ToPascalCase()))))
+                    .Replace("#", "Sharp")
+                    .Replace("&", "And")
+                    .Replace("(", "")
+                    .Replace(")", "")
+                    .Replace(",", "")
+                    .Replace("[", "")
+                    .Replace("]", "")
+                    .Replace("{", "")
+                    .Replace("}", "")
+                    .Replace("/", "")
+                    .Replace("\\", "")
+                    .Replace("?", "")
+                    .Replace("@", "")
+                ;
+        }
+
         public static string ToCSharpIdentifier(this string s)
         {
             return string.Concat(s.Split(' ').SelectMany(x => x.Split('-')).Select(x => x.ToPascalCase()))
