@@ -34,6 +34,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public string Type => SpecializationType;
         public string ProjectTypeId => VisualStudioProjectTypeIds.WcfApplication;
         public SolutionFolderModel ParentFolder { get; }
+        public VisualStudioSolutionModel Solution => new VisualStudioSolutionModel(InternalElement.Package);
 
         public IOutputTargetConfig ToOutputTargetConfig()
         {

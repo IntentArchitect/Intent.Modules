@@ -27,8 +27,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public void DoRegistration(IApplicationTemplateInstanceRegistry registry, IApplication application)
         {
-            var projects = _metadataManager.GetAllProjectModels(application);
-            registry.RegisterApplicationTemplate(VisualStudio2015SolutionTemplate.Identifier, () => new VisualStudio2015SolutionTemplate(application, projects));
+            var vsSolutions = _metadataManager.VisualStudio(application).GetVisualStudioSolutionModels();
+            foreach (var vsSolution in vsSolutions)
+            {
+                var projects = _metadataManager.GetAllProjectModels(application).Where(x => x.Solution.Id == vsSolution.Id).ToList();
+                registry.RegisterApplicationTemplate(VisualStudio2015SolutionTemplate.Identifier, () => new VisualStudio2015SolutionTemplate(application, vsSolution, projects));
+            }
         }
     }
 }

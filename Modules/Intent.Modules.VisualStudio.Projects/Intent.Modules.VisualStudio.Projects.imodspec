@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.VisualStudio.Projects</id>
-  <version>3.0.0-beta.1</version>
+  <version>3.0.0-beta.2</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Installs templates for Visual Studio projects that integrate with Intent Architect</summary>
   <description>Installs templates for Visual Studio projects that integrate with Intent Architect</description>

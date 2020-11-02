@@ -19,6 +19,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         IList<TemplateOutputModel> TemplateOutputs { get; }
         IList<FolderModel> Folders { get; }
         SolutionFolderModel ParentFolder { get; }
+        VisualStudioSolutionModel Solution { get; }
     }
 
     public static class VisualStudioProjectExtensions

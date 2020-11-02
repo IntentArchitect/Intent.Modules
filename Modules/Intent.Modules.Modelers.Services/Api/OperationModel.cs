@@ -34,6 +34,9 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        [IntentManaged(Mode.Ignore)]
+        public ServiceModel ParentService => new ServiceModel(InternalElement.ParentElement);
+
         [IntentManaged(Mode.Fully)]
         public IList<ParameterModel> Parameters => _element.ChildElements
             .Where(x => x.SpecializationType == ParameterModel.SpecializationType)

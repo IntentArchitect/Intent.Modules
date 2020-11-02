@@ -30,9 +30,10 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
         public const string Identifier = "Intent.VisualStudio.Projects.VisualStudio2015Solution";
         private IFileMetadata _fileMetadata;
 
-        public VisualStudio2015SolutionTemplate(IApplication application, IEnumerable<IVisualStudioProject> projects)
+        public VisualStudio2015SolutionTemplate(IApplication application, VisualStudioSolutionModel model, IEnumerable<IVisualStudioProject> projects)
         {
             Application = application;
+            Model = model;
             //_fileMetadata = CreateMetadata();
             BindingContext = new TemplateBindingContext(new VisualStudio2015SolutionTemplateModel(Application));
             Projects = projects;
@@ -46,6 +47,8 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
 
         public string Id { get; } = Identifier;
         public IApplication Application { get; }
+        public VisualStudioSolutionModel Model { get; }
+
         public IEnumerable<IVisualStudioProject> Projects { get; }
         //public SolutionFile ExistingSolution { get; }
         public IList<SolutionFolder> SolutionFolders { get; }
@@ -171,7 +174,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
                 outputType: "VisualStudio2015Solution",
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.UserControlledWeave,
-                fileName: "${Application.Name}",
+                fileName: $"{Model.Name}",
                 fileLocation: Application.RootLocation);
         }
 

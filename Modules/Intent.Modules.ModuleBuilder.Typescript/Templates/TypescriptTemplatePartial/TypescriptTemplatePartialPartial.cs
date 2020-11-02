@@ -65,7 +65,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
         public string GetTemplateId()
         {
-            return $"{Project.Application.Name}.{FolderNamespace}.{Model.Name}";
+            return $"{Project.Application.Name}.{FolderNamespace}";
         }
 
         private string GetModelType()
