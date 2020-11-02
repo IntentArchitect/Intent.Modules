@@ -20,7 +20,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentT
     partial class HeaderComponentTsTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentTsTemplate";
+        public const string TemplateId = "Angular.Layout.Shared.Header.HeaderComponentTsTemplate.HeaderComponentTsTemplate";
 
         public HeaderComponentTsTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -33,14 +33,14 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentT
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "header.component",
-                relativeLocation: "ClientApp/src/app/shared/header",
+                relativeLocation: "",
                 className: "HeaderComponent"
             );
         }
 
         public override void BeforeTemplateExecution()
         {
-            if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
+            if (File.Exists(GetMetadata().GetFilePath()))
             {
                 return;
             }

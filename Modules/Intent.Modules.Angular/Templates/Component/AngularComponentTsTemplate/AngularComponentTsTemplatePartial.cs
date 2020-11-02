@@ -27,7 +27,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
     partial class AngularComponentTsTemplate : TypeScriptTemplateBase<ComponentModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Component.AngularComponentTsTemplate";
+        public const string TemplateId = "Angular.Component.AngularComponentTsTemplate.AngularComponentTsTemplate";
 
         public AngularComponentTsTemplate(IOutputTarget project, ComponentModel model) : base(TemplateId, project, model)
         {
@@ -104,7 +104,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
-                relativeLocation: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
+                relativeLocation: $"{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",
                 className: "${ComponentName}Component"
             );
         }

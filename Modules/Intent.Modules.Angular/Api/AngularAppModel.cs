@@ -31,5 +31,35 @@ namespace Intent.Modules.Angular.Api
         public string Name => UnderlyingPackage.Name;
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
+
+        public IList<EnumModel> Enums => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == EnumModel.SpecializationType)
+            .Select(x => new EnumModel(x))
+            .ToList();
+
+        public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .Select(x => new FolderModel(x))
+            .ToList();
+
+        public IList<ModelDefinitionModel> ModelDefinitions => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == ModelDefinitionModel.SpecializationType)
+            .Select(x => new ModelDefinitionModel(x))
+            .ToList();
+
+        public IList<ModuleModel> Modules => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == ModuleModel.SpecializationType)
+            .Select(x => new ModuleModel(x))
+            .ToList();
+
+        public IList<AngularServiceModel> Services => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == AngularServiceModel.SpecializationType)
+            .Select(x => new AngularServiceModel(x))
+            .ToList();
+
+        public IList<TypeDefinitionModel> TypeDefinitions => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
+            .Select(x => new TypeDefinitionModel(x))
+            .ToList();
     }
 }

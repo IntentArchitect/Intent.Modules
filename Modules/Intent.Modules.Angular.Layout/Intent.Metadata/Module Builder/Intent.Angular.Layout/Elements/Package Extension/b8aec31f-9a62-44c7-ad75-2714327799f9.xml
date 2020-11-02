@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="b8aec31f-9a62-44c7-ad75-2714327799f9" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Angular App Extensions</name>
+  <display>Angular App Extensions: Angular App</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="2193ae6a-9e7a-4699-8dba-80af2fc7a128">
+    <typeId>fc44141e-8079-4f63-894b-f1a26736c991</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Angular</typePackageName>
+    <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
+  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+  <packageName>Intent.Angular.Layout</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="42906023-f7af-4836-b2e6-bdfd54045e1d" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b8aec31f-9a62-44c7-ad75-2714327799f9</parentFolderId>
+      <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+      <packageName>Intent.Angular.Layout</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="0c139fa4-b70a-46b7-bfd5-60de65c19410" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Form Control Type</name>
+          <display>New Form Control Type: Form Control</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="82b9dbc5-8150-4cc2-a4e7-326394a64805">
+            <typeId>f234d77d-a306-41c1-ad38-a47b14ecb0ff</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>42906023-f7af-4836-b2e6-bdfd54045e1d</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

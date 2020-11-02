@@ -10,6 +10,7 @@
   <templates>
     <template id="ModuleBuilder.Html.Templates.HtmlFileTemplate" externalReference="4d27f85a-03b0-4a9b-92e6-212e4d9272af">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.Html.Templates.HtmlFileTemplatePartial" externalReference="64dd72e2-7896-4275-8b89-93d09749224e">
       <config>
@@ -17,9 +18,11 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.Html.Templates.HtmlFileTemplate.T4Template.PreProcessed">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
   </templates>
   <dependencies>

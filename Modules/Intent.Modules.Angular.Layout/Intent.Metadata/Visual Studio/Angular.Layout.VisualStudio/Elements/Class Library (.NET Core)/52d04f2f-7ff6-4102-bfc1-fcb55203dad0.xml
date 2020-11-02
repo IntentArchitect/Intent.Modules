@@ -20,5 +20,126 @@
       </properties>
     </stereotype>
   </stereotypes>
-  <childElements />
+  <childElements>
+    <childElement id="62ff33c9-3168-4a04-a3b2-85e8f3089585" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.IModeSpecFile</name>
+      <display>Intent.ModuleBuilder.IModeSpecFile</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="206d7507-52ae-4a9e-b8f3-44a38aa8db00" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ReadMe</name>
+      <display>Intent.ModuleBuilder.ReadMe</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="83da061a-53fe-49a9-b86f-949618e87b7f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="7b84812e-e0d4-4ea0-94b8-209b6f012ce9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="7542a1d8-9127-4e00-b0d9-26d4e9efd797" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="1336eeea-fc20-4d20-8092-580c39925048" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Api</name>
+      <display>Api</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="ea6b9762-1c8e-4b65-b7d6-8171e06642fb" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Decorators</name>
+      <display>Decorators</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="0d402758-4ff7-4235-93e6-7ce8c02f208f" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>DesignerConfig</name>
+      <display>DesignerConfig</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="ef6f0600-1935-4e87-97ef-dfe9ba36ffd1" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>IModSpec</name>
+      <display>IModSpec</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="f966b7a3-5549-4c0e-a2bc-13cbcbb843f7" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Templates</name>
+      <display>Templates</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

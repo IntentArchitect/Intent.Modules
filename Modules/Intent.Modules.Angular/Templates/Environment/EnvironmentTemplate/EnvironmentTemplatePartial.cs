@@ -24,7 +24,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
         private IList<ConfigVariable> _configVariables = new List<ConfigVariable>();
 
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Environment.EnvironmentTemplate";
+        public const string TemplateId = "Angular.Environment.EnvironmentTemplate.EnvironmentTemplate";
 
         public EnvironmentTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -71,7 +71,7 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "environment",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: "ClientApp/src/environments"
+                defaultLocationInProject: ""
             );
         }
 

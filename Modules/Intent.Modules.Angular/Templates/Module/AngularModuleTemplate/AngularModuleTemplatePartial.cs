@@ -23,7 +23,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
     partial class AngularModuleTemplate : TypeScriptTemplateBase<ModuleModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Module.AngularModuleTemplate";
+        public const string TemplateId = "Angular.Module.AngularModuleTemplate.AngularModuleTemplate";
         private readonly ISet<string> _components = new HashSet<string>();
         private readonly ISet<string> _providers = new HashSet<string>();
         private readonly ISet<string> _angularImports = new HashSet<string>();
@@ -121,7 +121,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
-                relativeLocation: $"ClientApp/src/app/{ ModuleName.ToKebabCase() }",
+                relativeLocation: $"{ ModuleName.ToKebabCase() }",
                 className: "${ModuleName}Module");
         }
     }

@@ -27,7 +27,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
     partial class AngularServiceProxyTemplate : TypeScriptTemplateBase<ServiceProxyModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Proxies.AngularServiceProxyTemplate";
+        public const string TemplateId = "Angular.Proxies.AngularServiceProxyTemplate.AngularServiceProxyTemplate";
 
         public AngularServiceProxyTemplate(IOutputTarget project, ServiceProxyModel model) : base(TemplateId, project, model)
         {
@@ -38,7 +38,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
 
         public override void BeforeTemplateExecution()
         {
-            if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
+            if (File.Exists(GetMetadata().GetFilePath()))
             {
                 return;
             }
@@ -160,7 +160,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name.ToKebabCase()}.service",
-                relativeLocation: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}",
+                relativeLocation: $"{Model.Module.GetModuleName().ToKebabCase()}",
                 className: "${Model.Name}"
             );
         }

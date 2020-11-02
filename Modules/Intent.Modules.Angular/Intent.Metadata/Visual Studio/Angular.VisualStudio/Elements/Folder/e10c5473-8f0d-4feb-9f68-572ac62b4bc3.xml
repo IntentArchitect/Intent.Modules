@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e10c5473-8f0d-4feb-9f68-572ac62b4bc3" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>modelers</name>
+  <display>modelers</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b79f286d-1129-41f9-bb0f-d266b180d3c2</parentFolderId>
+  <packageId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</packageId>
+  <packageName>Angular.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="0fae274a-b7b8-4709-9084-cb1b0cf2952b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DesignerConfig</name>
+      <display>Intent.ModuleBuilder.DesignerConfig</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e10c5473-8f0d-4feb-9f68-572ac62b4bc3</parentFolderId>
+      <packageId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</packageId>
+      <packageName>Angular.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="31acdb48-919f-48df-ab26-e4e7194fd8ae" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DesignerSettings</name>
+      <display>Intent.ModuleBuilder.DesignerSettings</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e10c5473-8f0d-4feb-9f68-572ac62b4bc3</parentFolderId>
+      <packageId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</packageId>
+      <packageName>Angular.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

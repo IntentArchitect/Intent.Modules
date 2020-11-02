@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
     partial class AngularRoutingModuleTemplate : TypeScriptTemplateBase<ModuleModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Module.AngularRoutingModuleTemplate";
+        public const string TemplateId = "Angular.Module.AngularRoutingModuleTemplate.AngularRoutingModuleTemplate";
 
         public AngularRoutingModuleTemplate(IOutputTarget project, ModuleModel model) : base(TemplateId, project, model)
         {
@@ -56,7 +56,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
-                relativeLocation: $"ClientApp/src/app/{ Model.GetModuleName().ToKebabCase() }",
+                relativeLocation: $"{ Model.GetModuleName().ToKebabCase() }",
                 className: "${ModuleName}"
             );
         }

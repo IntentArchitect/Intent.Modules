@@ -14,12 +14,15 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.TypeScript.Templates.TypescriptTemplate" externalReference="17b9a627-3b97-4cdb-86a2-93686d20150e">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
   </templates>
   <dependencies>

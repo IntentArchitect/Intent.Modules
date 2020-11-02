@@ -19,7 +19,7 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
     partial class CoreModuleTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Core.CoreModuleTemplate";
+        public const string TemplateId = "Angular.Core.CoreModuleTemplate.CoreModuleTemplate";
 
         public CoreModuleTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -31,7 +31,7 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "core.module",
-                relativeLocation: "ClientApp/src/app/core",
+                relativeLocation: "",
                 className: "CoreModule"
             );
         }

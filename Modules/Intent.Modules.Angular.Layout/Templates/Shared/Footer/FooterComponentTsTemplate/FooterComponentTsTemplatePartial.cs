@@ -19,7 +19,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentT
     partial class FooterComponentTsTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Layout.Templates.Shared.Footer.FooterComponentTsTemplate";
+        public const string TemplateId = "Angular.Layout.Shared.Footer.FooterComponentTsTemplate.FooterComponentTsTemplate";
 
         public FooterComponentTsTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -32,14 +32,14 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentT
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "footer.component",
-                relativeLocation: "ClientApp/src/app/shared/footer",
+                relativeLocation: "",
                 className: "FooterComponent"
             );
         }
 
         public override void BeforeTemplateExecution()
         {
-            if (File.Exists(GetMetadata().GetFullLocationPathWithFileName()))
+            if (File.Exists(GetMetadata().GetFilePath()))
             {
                 return;
             }

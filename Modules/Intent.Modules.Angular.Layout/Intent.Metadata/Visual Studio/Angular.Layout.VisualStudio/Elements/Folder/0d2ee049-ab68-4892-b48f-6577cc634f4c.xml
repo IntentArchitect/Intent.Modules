@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0d2ee049-ab68-4892-b48f-6577cc634f4c" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Api</name>
+  <display>Api</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>52d04f2f-7ff6-4102-bfc1-fcb55203dad0</parentFolderId>
+  <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+  <packageName>Angular.Layout.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="f363559c-a435-46e0-beab-9e372b3f88b5" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiAssociationModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiAssociationModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0d2ee049-ab68-4892-b48f-6577cc634f4c</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="dd2e7c21-af0b-46a5-9e0a-96ec9bc5b072" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementExtensionModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementExtensionModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0d2ee049-ab68-4892-b48f-6577cc634f4c</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="74e1401b-a4c4-4621-bb2c-928dcbfc590b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0d2ee049-ab68-4892-b48f-6577cc634f4c</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="2a1852c5-6e8d-459a-8e8f-6cceec38d241" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiPackageModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiPackageModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0d2ee049-ab68-4892-b48f-6577cc634f4c</parentFolderId>
+      <packageId>4f8bd004-ca5e-4005-9401-11466c72ccb9</packageId>
+      <packageName>Angular.Layout.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

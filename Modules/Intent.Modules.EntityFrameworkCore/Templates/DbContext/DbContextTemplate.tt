@@ -12,9 +12,7 @@
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #> 
 using Microsoft.EntityFrameworkCore;
-<#= DependencyUsings #>
 <#= DeclareUsings() #>
-
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
@@ -44,7 +42,7 @@ foreach (var model in Model)
 foreach (var model in Model)
 {
 #>
-            modelBuilder.ApplyConfiguration(new <#= model.Name.ToPascalCase()#>Mapping());
+            modelBuilder.ApplyConfiguration(new <#= GetMappingClassName(model) #>());
 <#
 }
 #>

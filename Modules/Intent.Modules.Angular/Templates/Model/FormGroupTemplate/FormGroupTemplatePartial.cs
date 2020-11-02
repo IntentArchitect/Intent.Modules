@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Templates.Model.FormGroupTemplate
     partial class FormGroupTemplate : TypeScriptTemplateBase<FormGroupDefinitionModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Model.FormGroupTemplate";
+        public const string TemplateId = "Angular.Model.FormGroupTemplate.FormGroupTemplate";
 
         public FormGroupTemplate(IOutputTarget project, FormGroupDefinitionModel model) : base(TemplateId, project, model)
         {
@@ -35,7 +35,7 @@ namespace Intent.Modules.Angular.Templates.Model.FormGroupTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name.ToKebabCase()}.model",
-                relativeLocation: $"ClientApp/src/app/{(Model.Module != null ? Model.Module.GetModuleName().ToKebabCase() + "/models" : "models")}",
+                relativeLocation: $"{(Model.Module != null ? Model.Module.GetModuleName().ToKebabCase() + "/models" : "models")}",
                 className: "${Model.Name}"
             );
         }

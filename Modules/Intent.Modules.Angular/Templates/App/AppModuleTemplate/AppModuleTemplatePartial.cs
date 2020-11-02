@@ -31,7 +31,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
         private readonly ISet<string> _imports = new HashSet<string>();
 
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.App.AppModuleTemplate";
+        public const string TemplateId = "Angular.App.AppModuleTemplate.AppModuleTemplate";
 
         public AppModuleTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -114,7 +114,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"app.module",
-                relativeLocation: $"ClientApp/src/app",
+                relativeLocation: $"",
                 className: "AppModule"
             );
         }

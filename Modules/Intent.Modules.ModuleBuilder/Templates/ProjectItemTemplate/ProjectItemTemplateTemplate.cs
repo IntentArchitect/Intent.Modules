@@ -19,9 +19,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
         {
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-        public string FolderPath => string.Join("/", FolderBaseList);
-
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
             return new DefaultFileMetadata(
@@ -29,8 +26,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "tt",
-                defaultLocationInProject: $"{Model.Name}");
+                defaultLocationInProject: $"{FolderPath}");
         }
+
+        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolder);
 
         public override string TransformText()
         {

@@ -23,7 +23,7 @@ using Microsoft.EntityFrameworkCore;
 namespace <#= Namespace #>
 {
     public class <#= ClassName #><TDomain, TPersistence, TDbContext> : <#= RepositoryInterfaceName #><TDomain, TPersistence>
-        where TDbContext : DbContext
+        where TDbContext : <#= NormalizeNamespace("Microsoft.EntityFrameworkCore.DbContext") #>
         where TPersistence : class, TDomain
         where TDomain : class
     {

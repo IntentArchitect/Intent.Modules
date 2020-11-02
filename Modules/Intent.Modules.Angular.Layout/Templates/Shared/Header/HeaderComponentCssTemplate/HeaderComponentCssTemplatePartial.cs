@@ -19,7 +19,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentC
     partial class HeaderComponentCssTemplate : IntentProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentCssTemplate";
+        public const string TemplateId = "Angular.Layout.Shared.Header.HeaderComponentCssTemplate";
 
         public HeaderComponentCssTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentC
                 codeGenType: CodeGenType.Basic,
                 fileName: "header.component",
                 fileExtension: "css",
-                defaultLocationInProject: "ClientApp/src/app/shared/header"
+                defaultLocationInProject: ""
             );
         }
     }

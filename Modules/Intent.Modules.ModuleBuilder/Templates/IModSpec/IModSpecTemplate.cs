@@ -174,6 +174,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     specificTemplate.Add(new XAttribute("externalReference", template.ModelId));
                 }
                 specificTemplate.SetElementValue("role", template.Role);
+                if (!string.IsNullOrWhiteSpace(template.Location))
+                {
+                    specificTemplate.SetElementValue("location", template.Location);
+                }
             }
 
             foreach (var moduleDependency in _moduleDependencies)
@@ -241,7 +245,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         ? string.Join(";", metadataRegistration.Targets.Select(x => x.Name))
                         : null);
 
-                existing.SetAttributeValue("src", Path.GetRelativePath(GetMetadata().GetFullLocationPath(), metadataRegistration.Path).NormalizePath()); 
+                existing.SetAttributeValue("src", Path.GetRelativePath(GetMetadata().GetFullLocationPath(), metadataRegistration.Path).NormalizePath());
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 

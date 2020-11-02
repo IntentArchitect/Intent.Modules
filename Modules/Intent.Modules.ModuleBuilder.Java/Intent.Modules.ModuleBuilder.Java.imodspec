@@ -10,6 +10,7 @@
   <templates>
     <template id="ModuleBuilder.Java.Templates.JavaFileTemplate" externalReference="cdbb1d18-782b-4d46-9b3a-42c6114187ec">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.Java.Templates.JavaFileTemplatePartial" externalReference="70e44e1f-2fd8-4c61-a7aa-d622a7c08eac">
       <config>
@@ -17,9 +18,11 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Templates</role>
+      <location>Templates</location>
     </template>
     <template id="ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4">
       <role>Templates</role>
+      <location>Templates</location>
     </template>
   </templates>
   <dependencies>

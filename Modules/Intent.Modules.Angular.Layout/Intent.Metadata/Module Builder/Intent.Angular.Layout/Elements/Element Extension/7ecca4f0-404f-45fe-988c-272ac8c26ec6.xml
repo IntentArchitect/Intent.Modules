@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="7ecca4f0-404f-45fe-988c-272ac8c26ec6" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Component View Extension</name>
+  <display>Component View Extension: Component View</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="e6f428bc-2238-44df-b4b5-76d23fd463c6">
+    <typeId>624513a6-cba8-4dde-8ebe-6b19f00f0364</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Angular</typePackageName>
+    <typePackageId>a3deb341-dd4e-4f7f-99f5-2f198c1c251c</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
+  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+  <packageName>Intent.Angular.Layout</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="73e420e6-7224-484c-958c-08d427458c22" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>7ecca4f0-404f-45fe-988c-272ac8c26ec6</parentFolderId>
+      <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+      <packageName>Intent.Angular.Layout</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="980f97d3-8a71-42b6-a752-82c83aee0979" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Table Control</name>
+          <display>New Table Control: Table Control</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="374f33bf-05ab-4a6a-9aa2-58de9a430683">
+            <typeId>e302d9ca-268e-4a98-ad8d-4434aefb9903</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73e420e6-7224-484c-958c-08d427458c22</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Table" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="32315b53-7a12-4f32-ac13-856d56de50fe" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Pagination Control</name>
+          <display>New Pagination Control: Pagination Control</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8368592c-c978-467d-9cb5-6b49a678dcb9">
+            <typeId>3faee16c-8605-4bb4-8566-06a555c929a3</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73e420e6-7224-484c-958c-08d427458c22</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Pagination" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="bec5c1dd-463c-4d88-80e1-01b221f963fe" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Form</name>
+          <display>New Form: Form</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="584aa6d0-70bf-4ec7-88d1-bf49b0025522">
+            <typeId>8aee9b69-d02d-4ca8-b28a-6585508bd033</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73e420e6-7224-484c-958c-08d427458c22</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="444a466f-3134-4a55-83ad-b3357fe1de10" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Button Control</name>
+          <display>New Button Control: Button Control</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="3aaddba8-3078-4b04-ba78-859d7d441547">
+            <typeId>13eca516-0628-4085-91c3-36d5eddda6c9</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73e420e6-7224-484c-958c-08d427458c22</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="24228cdf-4983-4e4e-a331-4bc42abce864" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Section</name>
+          <display>New Section: Section</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="5fa768e7-c2ed-4a7b-91d6-25def3ecfa70">
+            <typeId>45072fbf-b34a-4625-b7ea-d5b1962a5b60</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73e420e6-7224-484c-958c-08d427458c22</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="3f07b2b9-ab8d-4584-a7f9-8394be21cd2a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Tabs</name>
+          <display>New Tabs: Tabs</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="874b05d2-d78f-426b-b7cb-9efb335f4d98">
+            <typeId>32e3b819-399f-4cbd-89d6-31dd5fab9d20</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73e420e6-7224-484c-958c-08d427458c22</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

@@ -26,7 +26,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
     {
         private readonly IList<IOverwriteDecorator> _decorators = new List<IOverwriteDecorator>();
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Component.AngularComponentHtmlTemplate";
+        public const string TemplateId = "Angular.Component.AngularComponentHtmlTemplate";
 
         public AngularComponentHtmlTemplate(IOutputTarget project, ComponentModel model) : base(TemplateId, project, model)
         {
@@ -97,7 +97,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentHtmlTemplat
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "html",
-                defaultLocationInProject: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
+                defaultLocationInProject: $"{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
                     );
         }
     }

@@ -9,7 +9,7 @@ using Intent.Templates;
 namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
     [Description(DbContextTemplate.Identifier)]
-    public class DbContextTemplateRegistration : ListModelTemplateRegistrationBase<ClassModel>
+    public class DbContextTemplateRegistration : SingleFileListModelTemplateRegistration<ClassModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -20,9 +20,9 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public override string TemplateId => DbContextTemplate.Identifier;
 
-        public override ITemplate CreateTemplateInstance(IProject project, IList<ClassModel> models)
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, IList<ClassModel> models)
         {
-            return new DbContextTemplate(models, project, project.Application.EventDispatcher);
+            return new DbContextTemplate(models, outputTarget);
         }
 
         public override IList<ClassModel> GetModels(Engine.IApplication application)

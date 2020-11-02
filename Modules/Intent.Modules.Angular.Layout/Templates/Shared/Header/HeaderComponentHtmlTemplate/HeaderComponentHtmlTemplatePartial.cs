@@ -28,7 +28,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
         private List<ModuleRoute> _mainRoutes = new List<ModuleRoute>();
 
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Layout.Templates.Shared.Header.HeaderComponentHtmlTemplate";
+        public const string TemplateId = "Angular.Layout.Shared.Header.HeaderComponentHtmlTemplate";
 
         public HeaderComponentHtmlTemplate(IOutputTarget project) : base(TemplateId, project, null)
         {
@@ -75,7 +75,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
             return new HtmlDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "header.component",
-                relativeLocation: "ClientApp/src/app/shared/header"
+                relativeLocation: ""
             );
         }
 

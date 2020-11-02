@@ -17,19 +17,16 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
     {
         public const string Identifier = "Intent.EntityFrameworkCore.DbContext";
 
-        private readonly IApplicationEventDispatcher _eventDispatcher;
-        private IList<DbContextDecoratorBase> _decorators = new List<DbContextDecoratorBase>();
+        private readonly IList<DbContextDecoratorBase> _decorators = new List<DbContextDecoratorBase>();
 
-        public DbContextTemplate(IEnumerable<ClassModel> models, IProject project, IApplicationEventDispatcher eventDispatcher)
-            : base(Identifier, project, models)
+        public DbContextTemplate(IEnumerable<ClassModel> models, IOutputTarget outputTarget)
+            : base(Identifier, outputTarget, models)
         {
-            _eventDispatcher = eventDispatcher;
         }
 
         public string GetEntityName(ClassModel model)
         {
-            var template = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == model.Id));
-            return template != null ? NormalizeNamespace($"{template.ClassName}") : $"{model.Name}";
+            return GetTemplateClassName(GetMetadata().CustomMetadata["Entity Template Id"], model);
         }
 
         protected override CSharpDefaultFileConfig DefineFileConfig()
@@ -38,18 +35,6 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
                 className: $"{Project.Application.Name}DbContext".AsClassName(),
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
-
-        //protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        //{
-        //    return new RoslynDefaultFileMetadata(
-        //        overwriteBehaviour: OverwriteBehaviour.Always,
-        //        fileName: $"{Project.Application.Name}DbContext".AsClassName(),
-        //        fileExtension: "cs",
-        //        defaultLocationInProject: "DbContext",
-        //        className: $"{Project.Application.Name}DbContext".AsClassName(),
-        //        @namespace: "${Project.ProjectName}"
-        //        );
-        //}
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
@@ -65,26 +50,6 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
                 })
             .Union(base.GetNugetDependencies())
             .ToArray();
-        }
-
-        public void BeforeTemplateExecution()
-        {
-            //_eventDispatcher.Publish(ApplicationEvents.Config_ConnectionString, new Dictionary<string, string>()
-            //{
-            //    { "Name", $"{Project.Application.Name}DB" },
-            //    { "ConnectionString", $"Server=.;Initial Catalog={Project.Application.SolutionName}.{ Project.Application.Name };Integrated Security=true;MultipleActiveResultSets=True" },
-            //    { "ProviderName", "System.Data.SqlClient" },
-            //});
-
-            //_eventDispatcher.Publish(ContainerRegistrationForDbContextEvent.EventId, new Dictionary<string, string>()
-            //{
-            //    { ContainerRegistrationForDbContextEvent.UsingsKey, $"Microsoft.EntityFrameworkCore;" },
-            //    { ContainerRegistrationForDbContextEvent.ConcreteTypeKey, $"{Namespace}.{ClassName}" },
-            //    { ContainerRegistrationForDbContextEvent.ConcreteTypeTemplateIdKey, Identifier },
-            //    { ContainerRegistrationForDbContextEvent.OptionsKey, $@".{GetDbContextDbServerSetupMethodName()}(Configuration.GetConnectionString(""{Project.Application.Name}DB"")){(UseLazyLoadingProxies ? ".UseLazyLoadingProxies()" : "")}" },
-            //    { ContainerRegistrationForDbContextEvent.NugetDependency, NugetPackages.EntityFrameworkCoreSqlServer. },
-            //    { ContainerRegistrationForDbContextEvent.NugetDependencyVersion, "2.1.1" },
-            //});
         }
 
         public bool UseLazyLoadingProxies => !bool.TryParse(GetMetadata().CustomMetadata["Use Lazy-Loading Proxies"], out var useLazyLoadingProxies) || useLazyLoadingProxies;
@@ -121,7 +86,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         {
             try
             {
-                return GetDecorators().Select(x => x.GetBaseClass()).SingleOrDefault(x => x != null) ?? "DbContext";
+                return NormalizeNamespace(GetDecorators().Select(x => x.GetBaseClass()).SingleOrDefault(x => x != null) ?? "Microsoft.EntityFrameworkCore.DbContext");
             }
             catch (InvalidOperationException)
             {
@@ -129,9 +94,9 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
             }
         }
 
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        public string GetMappingClassName(ClassModel model)
         {
-            return Model.Select(x => TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == x.Id)).ToList();
+            return GetTemplateClassName(EFMapping.EFMappingTemplate.Identifier, model);
         }
     }
 }

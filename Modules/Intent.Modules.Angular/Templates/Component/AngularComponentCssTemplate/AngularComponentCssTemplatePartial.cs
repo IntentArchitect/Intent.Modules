@@ -19,7 +19,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
     partial class AngularComponentCssTemplate : IntentTemplateBase<ComponentModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Component.AngularComponentCssTemplate";
+        public const string TemplateId = "Angular.Component.AngularComponentCssTemplate";
 
         public AngularComponentCssTemplate(IOutputTarget project, ComponentModel model) : base(TemplateId, project, model)
         {
@@ -69,7 +69,7 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "css", // Change to desired file extension.
-                defaultLocationInProject: $"ClientApp/src/app/{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
+                defaultLocationInProject: $"{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
             );
         }
     }

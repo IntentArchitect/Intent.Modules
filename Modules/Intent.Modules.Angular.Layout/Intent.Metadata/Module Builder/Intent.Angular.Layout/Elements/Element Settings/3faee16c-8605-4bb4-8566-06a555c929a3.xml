@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3faee16c-8605-4bb4-8566-06a555c929a3" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Pagination Control</name>
+  <display>Pagination Control</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
+  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+  <packageName>Intent.Angular.Layout</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="74ef00c1-212d-44a8-aa30-2ff44eba556e" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+      <name>NewMappingSettings</name>
+      <display>[mappings]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>3faee16c-8605-4bb4-8566-06a555c929a3</parentFolderId>
+      <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+      <packageName>Intent.Angular.Layout</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="7083df81-ccfb-435c-be88-d5701adcc106" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="0ce0fb70-8fef-4a1d-9b80-8b94b6a69452" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Component Model -&gt; Pagination Control</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>74ef00c1-212d-44a8-aa30-2ff44eba556e</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="3faee16c-8605-4bb4-8566-06a555c929a3" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="356fbe17-bc63-4e16-b915-feefbc063cbe" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

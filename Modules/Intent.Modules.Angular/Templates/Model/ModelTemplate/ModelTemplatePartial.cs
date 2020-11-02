@@ -19,7 +19,7 @@ namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
     partial class ModelTemplate : TypeScriptTemplateBase<ModelDefinitionModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Model.ModelTemplate";
+        public const string TemplateId = "Angular.Model.ModelTemplate.ModelTemplate";
 
         public ModelTemplate(IOutputTarget project, ModelDefinitionModel model) : base(TemplateId, project, model)
         {
@@ -37,7 +37,7 @@ namespace Intent.Modules.Angular.Templates.Model.ModelTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: GetFileName(),
-                relativeLocation: $"ClientApp/src/app/{(Model.Module != null ? Model.Module.GetModuleName().ToKebabCase() + "/models" : "models")}",
+                relativeLocation: $"{(Model.Module != null ? Model.Module.GetModuleName().ToKebabCase() + "/models" : "models")}",
                 className: "${Model.Name}"
             );
         }

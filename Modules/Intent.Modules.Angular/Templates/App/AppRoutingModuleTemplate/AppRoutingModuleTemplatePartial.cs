@@ -21,7 +21,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
     partial class AppRoutingModuleTemplate : TypeScriptTemplateBase<IList<ModuleModel>>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.App.AppRoutingModuleTemplate";
+        public const string TemplateId = "Angular.App.AppRoutingModuleTemplate.AppRoutingModuleTemplate";
 
         public AppRoutingModuleTemplate(IOutputTarget project, IList<ModuleModel> model) : base(TemplateId, project, model)
         {
@@ -36,7 +36,7 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"app-routing.module",
-                relativeLocation: $"ClientApp/src/app",
+                relativeLocation: $"",
                 className: "AppRoutingModule"
             );
         }

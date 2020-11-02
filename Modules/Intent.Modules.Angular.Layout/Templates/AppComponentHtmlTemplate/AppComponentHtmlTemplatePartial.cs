@@ -19,7 +19,7 @@ namespace Intent.Modules.Angular.Layout.Templates.AppComponentHtmlTemplate
     partial class AppComponentHtmlTemplate : IntentProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Layout.Templates.AppComponentHtmlTemplate";
+        public const string TemplateId = "Angular.Layout.AppComponentHtmlTemplate";
 
         public AppComponentHtmlTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Layout.Templates.AppComponentHtmlTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: "app.component",
                 fileExtension: "html",
-                defaultLocationInProject: "ClientApp/src/app"
+                defaultLocationInProject: ""
             );
         }
     }

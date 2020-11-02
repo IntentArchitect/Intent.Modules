@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -6,13 +6,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Modules.Common" Version="3.0.0-pre.2" />
+    <PackageReference Include="Intent.Modules.Common.Html" Version="3.0.0-pre.2" />
+    <PackageReference Include="Intent.Modules.Common.Typescript" Version="3.0.0-pre.2" />
     <PackageReference Include="Intent.Packager" Version="3.0.0-pre.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="3.0.0-pre.2" />
-    <PackageReference Include="Intent.Modules.Common.Html" Version="3.0.0-pre.2" />
-    <PackageReference Include="Intent.Modules.Common.Typescript" Version="3.0.0-pre.2" />
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-pre.8" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />

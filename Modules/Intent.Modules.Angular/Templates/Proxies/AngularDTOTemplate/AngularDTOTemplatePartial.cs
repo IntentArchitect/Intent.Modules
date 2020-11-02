@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
     partial class AngularDTOTemplate : TypeScriptTemplateBase<ModuleDTOModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Proxies.AngularDTOTemplate";
+        public const string TemplateId = "Angular.Proxies.AngularDTOTemplate.AngularDTOTemplate";
 
         public AngularDTOTemplate(IOutputTarget project, ModuleDTOModel model) : base(TemplateId, project, model)
         {
@@ -38,7 +38,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}",
-                relativeLocation: $"ClientApp/src/app/{Model.Module.GetModuleName().ToKebabCase()}/models",
+                relativeLocation: $"{Model.Module.GetModuleName().ToKebabCase()}/models",
                 className: "${Model.Name}"
             );
         }

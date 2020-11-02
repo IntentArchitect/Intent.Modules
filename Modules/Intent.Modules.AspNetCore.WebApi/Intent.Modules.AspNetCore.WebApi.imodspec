@@ -13,8 +13,8 @@
     <template id="Intent.AspNetCore.WebApi.Controller">
       <role>Distribution.WebApi</role>
       <config>
-        <add key="ClassName" description="Class name" default="${Model.Name}Controller" />
-        <add key="Namespace" description="Namespace" default="${Project.Name}.Controllers" />
+        <add key="ClassName" description="Class name" />
+        <add key="Namespace" description="Namespace" />
       </config>
     </template>
     <!--<template id="Intent.AspNetCore.WebApi.ServiceCallContext" enabled="false">

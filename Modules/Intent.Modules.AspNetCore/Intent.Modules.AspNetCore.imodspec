@@ -12,13 +12,13 @@
   <templates>
     <template id="Intent.AspNetCore.Program">
       <config>
-        <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
+        <add key="Namespace" description="Namespace" />
       </config>
       <role>Startup</role>
     </template>
     <template id="Intent.AspNetCore.Startup">
       <config>
-        <add key="Namespace" description="Namespace" default="${Project.ProjectName}" />
+        <add key="Namespace" description="Namespace" />
       </config>
       <role>Startup</role>
     </template>

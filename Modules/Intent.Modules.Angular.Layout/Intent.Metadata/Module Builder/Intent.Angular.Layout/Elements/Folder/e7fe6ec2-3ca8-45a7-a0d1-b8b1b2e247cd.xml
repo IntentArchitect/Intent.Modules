@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e7fe6ec2-3ca8-45a7-a0d1-b8b1b2e247cd" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Header</name>
+  <display>Header</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>ca1b4c77-29a7-4c81-96a0-3133c2b2fef1</parentFolderId>
+  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+  <packageName>Intent.Angular.Layout</packageName>
+  <stereotypes />
+  <childElements />
+</class>

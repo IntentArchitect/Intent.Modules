@@ -19,7 +19,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentC
     partial class FooterComponentCssTemplate : IntentProjectItemTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Layout.Templates.Shared.Footer.FooterComponentCssTemplate";
+        public const string TemplateId = "Angular.Layout.Shared.Footer.FooterComponentCssTemplate";
 
         public FooterComponentCssTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -33,7 +33,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentC
                 codeGenType: CodeGenType.Basic,
                 fileName: "footer.component",
                 fileExtension: "css",
-                defaultLocationInProject: "ClientApp/src/app/shared/footer"
+                defaultLocationInProject: ""
             );
         }
     }

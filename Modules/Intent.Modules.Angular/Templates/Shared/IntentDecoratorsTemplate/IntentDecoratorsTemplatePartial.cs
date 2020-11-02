@@ -15,7 +15,7 @@ namespace Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate
     partial class IntentDecoratorsTemplate : TypeScriptTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Angular.Templates.Shared.IntentDecoratorsTemplate";
+        public const string TemplateId = "Angular.Shared.IntentDecoratorsTemplate.IntentDecoratorsTemplate";
 
         public IntentDecoratorsTemplate(IOutputTarget project, object model) : base(TemplateId, project, model)
         {
@@ -27,7 +27,7 @@ namespace Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate
             return new TypeScriptDefaultFileMetadata(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "intent.decorators",
-                relativeLocation: "ClientApp/src/app/intent",
+                relativeLocation: "",
                 className: "IntentIgnore, IntentMerge, IntentManage"
             );
         }

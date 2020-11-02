@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e302d9ca-268e-4a98-ad8d-4434aefb9903" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Table Control</name>
+  <display>Table Control</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d3c58ce6-a07c-47dc-8626-f73cf1d047e2</parentFolderId>
+  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+  <packageName>Intent.Angular.Layout</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="57756582-4ea3-48ab-9e9c-1c2ce5b5b94a" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e302d9ca-268e-4a98-ad8d-4434aefb9903</parentFolderId>
+      <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+      <packageName>Intent.Angular.Layout</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="29ba5cdc-edf5-470a-96d5-b9d5cb8fc6ae" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Column</name>
+          <display>Add Column: Table Column</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e6eb9ce7-9c6a-43f1-8057-c0bbc4353a94">
+            <typeId>6837f6c2-f098-45df-8be4-900036b73e25</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Angular.Layout.ModuleBuilder</typePackageName>
+            <typePackageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>57756582-4ea3-48ab-9e9c-1c2ce5b5b94a</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="510bf1dc-08d2-4184-9358-499b96e41586" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+      <name>NewMappingSettings</name>
+      <display>[mappings]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e302d9ca-268e-4a98-ad8d-4434aefb9903</parentFolderId>
+      <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+      <packageName>Intent.Angular.Layout</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="7083df81-ccfb-435c-be88-d5701adcc106" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="7c808d5d-c6b5-4478-8df0-a95dc939ef11" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Component Model -&gt; (Traverse)</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>510bf1dc-08d2-4184-9358-499b96e41586</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="356fbe17-bc63-4e16-b915-feefbc063cbe" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements>
+            <childElement id="c3360961-3eb7-4377-a387-f265c73fa65f" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Model Definition Field -&gt; Table Control</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>7c808d5d-c6b5-4478-8df0-a95dc939ef11</parentFolderId>
+              <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+              <packageName>Intent.Angular.Layout</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="e302d9ca-268e-4a98-ad8d-4434aefb9903" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0dfc489c-7456-4a3d-a28b-50a633631a48" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Yes" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements>
+                <childElement id="7a509075-49fe-471f-90b5-fcd84e45e613" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+                  <name>NewElementMapping</name>
+                  <display>[mapping]: Model Definition Field -&gt; Table Column</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>c3360961-3eb7-4377-a387-f265c73fa65f</parentFolderId>
+                  <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+                  <packageName>Intent.Angular.Layout</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                        <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="6837f6c2-f098-45df-8be4-900036b73e25" isActive="true" />
+                        <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0dfc489c-7456-4a3d-a28b-50a633631a48" isActive="true" />
+                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <childElements />
+                </childElement>
+              </childElements>
+            </childElement>
+          </childElements>
+        </childElement>
+        <childElement id="aba6038e-8ff6-4311-9192-1abeb4d42504" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Component Model -&gt; Table Control</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>510bf1dc-08d2-4184-9358-499b96e41586</parentFolderId>
+          <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+          <packageName>Intent.Angular.Layout</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="e302d9ca-268e-4a98-ad8d-4434aefb9903" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="356fbe17-bc63-4e16-b915-feefbc063cbe" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Yes" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements>
+            <childElement id="6cc930f2-3bda-49b7-a3c8-6ae7d49c9de0" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Model Definition Field -&gt; Table Column</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>aba6038e-8ff6-4311-9192-1abeb4d42504</parentFolderId>
+              <packageId>411a47ef-bf13-45dd-b800-7abf7eb9ac92</packageId>
+              <packageName>Intent.Angular.Layout</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="6837f6c2-f098-45df-8be4-900036b73e25" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0dfc489c-7456-4a3d-a28b-50a633631a48" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

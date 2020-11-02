@@ -63,9 +63,15 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("<TDomain, TPersistence>\r\n        where TDbContext : DbContext\r\n        where TPer" +
-                    "sistence : class, TDomain\r\n        where TDomain : class\r\n    {\r\n        private" +
-                    " readonly TDbContext _dbContext;\r\n\r\n        public ");
+            this.Write("<TDomain, TPersistence>\r\n        where TDbContext : ");
+            
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace("Microsoft.EntityFrameworkCore.DbContext")));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        where TPersistence : class, TDomain\r\n        where TDomain : class\r\n   " +
+                    " {\r\n        private readonly TDbContext _dbContext;\r\n\r\n        public ");
             
             #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore.Repositories\Templates\RepositoryBase\RepositoryBaseTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
