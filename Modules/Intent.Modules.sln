@@ -179,6 +179,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.IdentityServ
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.IdentityServer4.InMemoryStore", "Intent.Modules.IdentityServer4.InMemoryStore\Intent.Modules.IdentityServer4.InMemoryStore.csproj", "{7F3459FC-62F3-40DC-9371-B21E8504FAFA}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.IdentityServer4", "Intent.Modules.Common.IdentityServer4\Intent.Modules.Common.IdentityServer4.csproj", "{E7BC3758-3212-40C1-B559-0D950DF4094E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -489,6 +491,10 @@ Global
 		{7F3459FC-62F3-40DC-9371-B21E8504FAFA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7F3459FC-62F3-40DC-9371-B21E8504FAFA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7F3459FC-62F3-40DC-9371-B21E8504FAFA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E7BC3758-3212-40C1-B559-0D950DF4094E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E7BC3758-3212-40C1-B559-0D950DF4094E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E7BC3758-3212-40C1-B559-0D950DF4094E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E7BC3758-3212-40C1-B559-0D950DF4094E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -580,6 +586,7 @@ Global
 		{33437816-211B-4808-8AD9-E5866A7DCB27} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{25BEB4D6-10D0-4499-8130-B79CE40090C6} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{7F3459FC-62F3-40DC-9371-B21E8504FAFA} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
+		{E7BC3758-3212-40C1-B559-0D950DF4094E} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

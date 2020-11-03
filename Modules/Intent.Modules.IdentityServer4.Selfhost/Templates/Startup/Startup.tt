@@ -37,13 +37,7 @@ namespace <#= Namespace #>
             // services.AddRazorPages();
             services.AddControllers();
 
-            services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
-                .AddInMemoryClients(<#= GetClientsConfiguration() #>)
-                .AddInMemoryApiResources(<#= GetApiResourcesConfiguration() #>)
-                .AddInMemoryApiScopes(<#= GetScopesConfiguration() #>)
-                .AddInMemoryIdentityResources(<#= GetIdentityResourcesConfiguration() #>)
-                ;
+            <#= GetIdentityServerServices(tabSubIndents: 5) #>
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

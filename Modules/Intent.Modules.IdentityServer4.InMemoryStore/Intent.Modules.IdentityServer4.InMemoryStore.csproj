@@ -15,6 +15,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.IdentityServer4\Intent.Modules.Common.IdentityServer4.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="Templates\TestUsers\TestUsers.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TestUsers.cs</LastGenOutput>

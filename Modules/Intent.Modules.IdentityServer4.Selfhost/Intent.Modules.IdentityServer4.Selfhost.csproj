@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common.IdentityServer4\Intent.Modules.Common.IdentityServer4.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.VisualStudio.Projects\Intent.Modules.VisualStudio.Projects.csproj" />
   </ItemGroup>

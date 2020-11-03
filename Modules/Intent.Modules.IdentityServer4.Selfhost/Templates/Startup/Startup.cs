@@ -79,38 +79,14 @@ namespace ");
             // services.AddRazorPages();
             services.AddControllers();
 
-            services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
-                .AddInMemoryClients(");
+            ");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetClientsConfiguration()));
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetIdentityServerServices(tabSubIndents: 5)));
             
             #line default
             #line hidden
-            this.Write(")\r\n                .AddInMemoryApiResources(");
-            
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetApiResourcesConfiguration()));
-            
-            #line default
-            #line hidden
-            this.Write(")\r\n                .AddInMemoryApiScopes(");
-            
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetScopesConfiguration()));
-            
-            #line default
-            #line hidden
-            this.Write(")\r\n                .AddInMemoryIdentityResources(");
-            
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetIdentityResourcesConfiguration()));
-            
-            #line default
-            #line hidden
-            this.Write(@")
-                ;
+            this.Write(@"
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

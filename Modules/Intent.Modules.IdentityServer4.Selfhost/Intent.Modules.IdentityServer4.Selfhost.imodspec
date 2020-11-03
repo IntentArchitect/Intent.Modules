@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.IdentityServer4.SelfHost</id>
-  <version>1.0.0</version>
+  <version>3.0.0-beta.1</version>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>
@@ -35,6 +35,7 @@
     <dependency id="Intent.Common.CSharp" version="3.0.0-beta" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1" />
     <dependency id="Intent.VisualStudio.Projects" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common.IdentityServer4" version="3.0.0-beta.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

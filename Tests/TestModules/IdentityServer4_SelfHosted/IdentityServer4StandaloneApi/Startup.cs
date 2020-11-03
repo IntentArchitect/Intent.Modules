@@ -32,13 +32,14 @@ namespace IdentityServer4StandaloneApi
             services.AddControllers();
 
             services.AddIdentityServer()
-                .AddDeveloperSigningCredential()
                 .AddInMemoryClients(IdentityConfig.Clients)
                 .AddInMemoryApiResources(IdentityConfig.ApiResources)
                 .AddInMemoryApiScopes(IdentityConfig.Scopes)
                 .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
+                .AddDeveloperSigningCredential()
                 .AddTestUsers(TestUsers.Users)
                 ;
+
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
