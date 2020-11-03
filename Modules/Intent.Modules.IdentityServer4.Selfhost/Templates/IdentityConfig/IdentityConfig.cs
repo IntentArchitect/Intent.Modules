@@ -32,8 +32,8 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
         public override string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing IdentityServer4;\r\nusing I" +
-                    "dentityServer4.Models;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnames" +
-                    "pace ");
+                    "dentityServer4.Models;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
+                    "ace ");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
@@ -55,16 +55,10 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
         {
             new Client
             {
-                ClientId = ApiResourceName + ""_client"",
-                AllowedGrantTypes = GrantTypes.Code,
+                ClientId = ApiResourceName + ""_pwd_client"",
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 RequireClientSecret = false,
-                RequirePkce = true,
-                RequireConsent = false,
-                RedirectUris = { },
-                PostLogoutRedirectUris = {  },
                 AllowedScopes = { ""openid"", ""profile"", ""email"", ApiResourceName },
-                AllowedCorsOrigins = {  },
-                AllowAccessTokensViaBrowser = true,
             },
         };
 

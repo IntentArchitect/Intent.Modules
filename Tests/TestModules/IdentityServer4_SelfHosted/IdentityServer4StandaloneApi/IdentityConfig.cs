@@ -4,7 +4,7 @@ using IdentityServer4;
 using IdentityServer4.Models;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: DefaultIntentManaged(Mode.Ignore)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("IdentityServer4.Selfhost.IdentityConfig", Version = "1.0")]
 
 namespace IdentityServer4StandaloneApi
@@ -17,17 +17,10 @@ namespace IdentityServer4StandaloneApi
         {
             new Client
             {
-                ClientId = ApiResourceName + "_client",
-                AllowedGrantTypes = GrantTypes.Code,
+                ClientId = ApiResourceName + "_pwd_client",
+                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 RequireClientSecret = false,
-                RequirePkce = true,
-                RequireConsent = false,
-                RedirectUris = { },
-                PostLogoutRedirectUris = {  },
                 AllowedScopes = { "openid", "profile", "email", ApiResourceName },
-                AllowedCorsOrigins = {  },
-                AllowAccessTokensViaBrowser = true,
-               
             },
         };
 
