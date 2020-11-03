@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="8a1ac50e-7a4f-4b68-9fbb-2cd5cf7b96df" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Extensions</name>
+  <display>Extensions</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b2dd51d9-9561-4d3a-a9c8-623304aa8965</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

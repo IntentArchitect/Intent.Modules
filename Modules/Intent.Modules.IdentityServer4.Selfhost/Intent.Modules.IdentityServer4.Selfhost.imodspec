@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <id>Module Builder</id>
+  <version>1.0.0</version>
+  <summary>A custom module for Intent.Modules.</summary>
+  <description>A custom module for Intent.Modules.</description>
+  <authors>Intent.Modules</authors>
+  <iconUrl></iconUrl>
+  <templates>
+    <template id="IdentityServer4.Selfhost.Program" externalReference="34238343-091d-4803-85e6-67f989397bd2">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>IdentityServer4.Selfhost.Program</role>
+    </template>
+    <template id="IdentityServer4.Selfhost.Startup" externalReference="f4108d1e-b173-4b07-bda8-8e53f231aec9">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>IdentityServer4.Selfhost.Startup</role>
+    </template>
+    <template id="IdentityServer4.Selfhost.IdentityConfig" externalReference="205e7b03-c499-48d7-9e4e-dcace692b747">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>IdentityServer4.Selfhost.IdentityConfig</role>
+    </template>
+  </templates>
+  <dependencies>
+    <dependency id="Intent.Common" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common.CSharp" version="3.0.0-beta" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1" />
+  </dependencies>
+  <files>
+    <file src="$outDir$/$id$.dll" />
+    <file src="$outDir$/$id$.pdb" />
+  </files>
+  <metadata />
+</package>

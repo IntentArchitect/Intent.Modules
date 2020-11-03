@@ -1,0 +1,105 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.Modules.Common" Version="3.0.0-*" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.0-*" />
+    <PackageReference Include="Intent.Packager" Version="3.0.0-*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\IdentityConfig\Clients\Clients.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Clients.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Program\Program.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Program.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\IdentityConfig\Resources\Resources.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Resources.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\IdentityConfig\Scopes\Scopes.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Scopes.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Startup\Startup.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>Startup.cs</LastGenOutput>
+    </None>
+  
+    <None Update="Templates\IdentityConfig\ApiResources\ApiResources.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiResources.cs</LastGenOutput>
+    </None>
+  
+    <None Update="Templates\IdentityConfig\IdentityResources\IdentityResources.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>IdentityResources.cs</LastGenOutput>
+    </None>
+  
+    <None Update="Templates\IdentityConfig\IdentityConfig.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>IdentityConfig.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\IdentityConfig\Clients\Clients.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Clients.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Program\Program.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Program.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\IdentityConfig\Resources\Resources.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\IdentityConfig\Scopes\Scopes.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Scopes.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Startup\Startup.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Startup.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\IdentityConfig\ApiResources\ApiResources.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiResources.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\IdentityConfig\IdentityResources\IdentityResources.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IdentityResources.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\IdentityConfig\IdentityConfig.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>IdentityConfig.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>
