@@ -1,30 +1,25 @@
-<#@ template language="C#" inherits="CSharpTemplateBase<object>" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.Templates" #>
-<#@ import namespace="Intent.Metadata.Models" #>
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using IdentityServerHost;
+using Intent.RoslynWeaver.Attributes;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.Extensions.Hosting;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("IdentityServer4.Selfhost.Startup", Version = "1.0")]
 
-namespace <#= Namespace #>
+namespace IdentityServer4StandaloneApi
 {
-    public class <#= ClassName #>
+    public class Startup
     {
-        public <#= ClassName #>(IConfiguration configuration)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
@@ -39,10 +34,11 @@ namespace <#= Namespace #>
 
             services.AddIdentityServer()
                 .AddDeveloperSigningCredential()
-                .AddInMemoryClients(<#= GetClientsConfiguration() #>)
-                .AddInMemoryApiResources(<#= GetApiResourcesConfiguration() #>)
-                .AddInMemoryApiScopes(<#= GetScopesConfiguration() #>)
-                .AddInMemoryIdentityResources(<#= GetIdentityResourcesConfiguration() #>)
+                .AddInMemoryClients(IdentityConfig.Clients)
+                .AddInMemoryApiResources(IdentityConfig.ApiResources)
+                .AddInMemoryApiScopes(IdentityConfig.Scopes)
+                .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
+                .AddTestUsers(TestUsers.Users)
                 ;
         }
 

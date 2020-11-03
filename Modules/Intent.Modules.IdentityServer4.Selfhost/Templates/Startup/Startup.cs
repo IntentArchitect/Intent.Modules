@@ -41,26 +41,27 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Hosting;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -82,28 +83,28 @@ namespace ");
                 .AddDeveloperSigningCredential()
                 .AddInMemoryClients(");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClientsConfiguration()));
             
             #line default
             #line hidden
             this.Write(")\r\n                .AddInMemoryApiResources(");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetApiResourcesConfiguration()));
             
             #line default
             #line hidden
             this.Write(")\r\n                .AddInMemoryApiScopes(");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetScopesConfiguration()));
             
             #line default
             #line hidden
             this.Write(")\r\n                .AddInMemoryIdentityResources(");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetIdentityResourcesConfiguration()));
             
             #line default

@@ -1,9 +1,0 @@
-<#@ template language="C#" inherits="IntentProjectItemTemplateBase<IClass>" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.Modelers.Domain.Api" #>
-
-Some dummy text file for <#= Model #>

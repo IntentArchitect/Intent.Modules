@@ -1,21 +1,15 @@
-<#@ template language="C#" inherits="CSharpTemplateBase<object>" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.Templates" #>
-<#@ import namespace="Intent.Metadata.Models" #>
 using System;
 using System.Collections.Generic;
 using IdentityServer4;
 using IdentityServer4.Models;
+using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
+[assembly: IntentTemplate("IdentityServer4.Selfhost.IdentityConfig", Version = "1.0")]
 
-namespace <#= Namespace #>
+namespace IdentityServer4StandaloneApi
 {
-    public class <#= ClassName #>
+    public class IdentityConfig
     {
         public const string ApiResourceName = "api";
 
@@ -33,6 +27,7 @@ namespace <#= Namespace #>
                 AllowedScopes = { "openid", "profile", "email", ApiResourceName },
                 AllowedCorsOrigins = {  },
                 AllowAccessTokensViaBrowser = true,
+               
             },
         };
 

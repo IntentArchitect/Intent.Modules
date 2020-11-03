@@ -6,6 +6,57 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d9267876-4fbb-49bb-b061-f5dc37275754</parentFolderId>
+  <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+  <packageName>Intent.Modules.IdentityServer4.Selfhost</packageName>
   <stereotypes />
-  <childElements />
+  <childElements>
+    <childElement id="7dee2c04-83a1-4d6f-89d8-e894f60c6c05" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiAssociationModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiAssociationModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b2dd51d9-9561-4d3a-a9c8-623304aa8965</parentFolderId>
+      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <packageName>Intent.Modules.IdentityServer4.Selfhost</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="e206a046-01f7-4a67-85ec-7819e81980b3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementExtensionModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementExtensionModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b2dd51d9-9561-4d3a-a9c8-623304aa8965</parentFolderId>
+      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <packageName>Intent.Modules.IdentityServer4.Selfhost</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="d80dd362-9f53-4ef4-870c-420a563c4d01" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiElementModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiElementModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b2dd51d9-9561-4d3a-a9c8-623304aa8965</parentFolderId>
+      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <packageName>Intent.Modules.IdentityServer4.Selfhost</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="ce7f28cb-279c-4d39-9e4e-83076c5ade4c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiPackageModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiPackageModel</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b2dd51d9-9561-4d3a-a9c8-623304aa8965</parentFolderId>
+      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <packageName>Intent.Modules.IdentityServer4.Selfhost</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
 </class>

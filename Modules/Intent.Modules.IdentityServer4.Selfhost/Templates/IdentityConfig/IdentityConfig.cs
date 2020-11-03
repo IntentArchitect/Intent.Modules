@@ -68,9 +68,9 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
             },
         };
 
-        public static IEnumerable<Scope> Scopes = new List<Scope>
+        public static IEnumerable<ApiScope> Scopes = new List<ApiScope>
         {
-            new Scope(ApiResourceName)
+            new ApiScope(ApiResourceName)
         };
 
         public static IEnumerable<IdentityResource> IdentityResources = new List<IdentityResource>
