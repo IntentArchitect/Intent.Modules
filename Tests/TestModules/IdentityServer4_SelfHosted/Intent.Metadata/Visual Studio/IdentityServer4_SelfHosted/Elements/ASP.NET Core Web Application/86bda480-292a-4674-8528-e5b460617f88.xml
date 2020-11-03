@@ -21,6 +21,18 @@
     </stereotype>
   </stereotypes>
   <childElements>
+    <childElement id="e3094e45-f7f9-4975-b83b-1d480b5a92d2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>IdentityServer4.InMemoryStore.TestUsers</name>
+      <display>IdentityServer4.InMemoryStore.TestUsers</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>86bda480-292a-4674-8528-e5b460617f88</parentFolderId>
+      <packageId>de231ea6-9356-4a0b-9f65-4c7444283d56</packageId>
+      <packageName>IdentityServer4_SelfHosted</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
     <childElement id="4aa6349c-30c0-4d7d-bf1f-3cec3211c04d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>IdentityServer4.Selfhost.IdentityConfig</name>
       <display>IdentityServer4.Selfhost.IdentityConfig</display>

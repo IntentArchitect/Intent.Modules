@@ -28,5 +28,6 @@
     <application id="7e0041b4-8005-48df-b096-89c39ba546d2" name="Intent.Modules.Common.React" relativePath="Intent.Modules.Common.React/Intent.Modules.Common.React.application.config" />
     <application id="6c53239e-354a-4005-baa3-1fabf4a5dc11" name="OutputTargets.Folders" relativePath="Intent.Modules.OutputTargets.Folders\OutputTargets.Folders.application.config" />
     <application id="beca030c-beb8-43b8-88e7-75b0639ef40c" name="Intent.Modules.IdentityServer4.Selfhost" relativePath="Intent.Modules.IdentityServer4.Selfhost\Intent.Modules.IdentityServer4.Selfhost.application.config" />
+    <application id="92e5e9f4-9635-4e77-87dc-6b4253f54675" name="Intent.Modules.IdentityServer4.InMemoryStore" relativePath="Intent.Modules.IdentityServer4.InMemoryStore\Intent.Modules.IdentityServer4.InMemoryStore.application.config" />
   </applications>
 </solution>

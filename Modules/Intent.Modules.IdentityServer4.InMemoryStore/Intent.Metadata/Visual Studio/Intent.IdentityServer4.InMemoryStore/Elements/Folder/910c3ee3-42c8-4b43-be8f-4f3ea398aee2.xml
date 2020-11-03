@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="29f9cd51-7bdf-4835-99d2-1aa3c391f4ba" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+<class id="910c3ee3-42c8-4b43-be8f-4f3ea398aee2" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d9267876-4fbb-49bb-b061-f5dc37275754</parentFolderId>
-  <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+  <parentFolderId>479bf28a-a5ff-408d-9166-d5d9e60f3e74</parentFolderId>
+  <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="dc8c1182-e058-4620-bab0-34a9c5090485" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="ebe9e702-7fab-444d-aaa9-69cca8bc6109" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
       <display>Intent.ModuleBuilder.DecoratorRegistration.Template</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>29f9cd51-7bdf-4835-99d2-1aa3c391f4ba</parentFolderId>
-      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <parentFolderId>910c3ee3-42c8-4b43-be8f-4f3ea398aee2</parentFolderId>
+      <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="67df92cb-8b24-4544-92e5-c3aae2632c8a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="63da1b4d-959e-4c86-a2ec-bee9d2859388" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DecoratorTemplate</name>
       <display>Intent.ModuleBuilder.DecoratorTemplate</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>29f9cd51-7bdf-4835-99d2-1aa3c391f4ba</parentFolderId>
-      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <parentFolderId>910c3ee3-42c8-4b43-be8f-4f3ea398aee2</parentFolderId>
+      <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />

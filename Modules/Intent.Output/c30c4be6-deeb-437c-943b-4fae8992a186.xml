@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>c30c4be6-deeb-437c-943b-4fae8992a186</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>26e32fed-b399-41f9-bc0a-43c3fa5e7ec9</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.Common\Intent.Modules.IdentityServer4.Common.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.IdentityServer4.Common.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>26e32fed-b399-41f9-bc0a-43c3fa5e7ec9</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.Common\Intent.Modules.IdentityServer4.Common.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.IdentityServer4.Common.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>26e32fed-b399-41f9-bc0a-43c3fa5e7ec9</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.Common\README.txt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

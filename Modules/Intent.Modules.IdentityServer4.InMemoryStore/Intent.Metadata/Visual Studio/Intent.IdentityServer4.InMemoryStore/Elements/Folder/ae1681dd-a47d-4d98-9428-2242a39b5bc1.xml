@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="9fc52aed-6724-45cd-88e7-82690b22ee1a" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+<class id="ae1681dd-a47d-4d98-9428-2242a39b5bc1" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
   <name>modelers</name>
   <display>modelers</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>d9267876-4fbb-49bb-b061-f5dc37275754</parentFolderId>
-  <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+  <parentFolderId>479bf28a-a5ff-408d-9166-d5d9e60f3e74</parentFolderId>
+  <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="301b8e33-a2f8-4409-bae9-16b0ccd8eb85" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="ce1455a0-8334-4b53-8190-c31bbed96c42" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DesignerConfig</name>
       <display>Intent.ModuleBuilder.DesignerConfig</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>9fc52aed-6724-45cd-88e7-82690b22ee1a</parentFolderId>
-      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <parentFolderId>ae1681dd-a47d-4d98-9428-2242a39b5bc1</parentFolderId>
+      <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="2d99296b-374c-43b4-8f42-637b575c0f06" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="b289e932-7e84-49b3-abfa-4d15f698d5db" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DesignerSettings</name>
       <display>Intent.ModuleBuilder.DesignerSettings</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>9fc52aed-6724-45cd-88e7-82690b22ee1a</parentFolderId>
-      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <parentFolderId>ae1681dd-a47d-4d98-9428-2242a39b5bc1</parentFolderId>
+      <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />

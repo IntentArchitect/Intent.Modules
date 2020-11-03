@@ -18,7 +18,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>e1a19c18-2631-4bac-9431-ef4f05e001e5</parentFolderId>
   <packageId>e1a19c18-2631-4bac-9431-ef4f05e001e5</packageId>
-  <packageName>Intent.IdentityServer4.SelfHosted</packageName>
+  <packageName>Intent.IdentityServer4.SelfHost</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>

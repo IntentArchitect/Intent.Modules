@@ -17,7 +17,7 @@ namespace IdentityServer4StandaloneApi
         {
             new Client
             {
-                ClientId = ApiResourceName + "_pwd_client",
+                ClientId = $"{ApiResourceName}_pwd_client",
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 RequireClientSecret = false,
                 AllowedScopes = { "openid", "profile", "email", ApiResourceName },

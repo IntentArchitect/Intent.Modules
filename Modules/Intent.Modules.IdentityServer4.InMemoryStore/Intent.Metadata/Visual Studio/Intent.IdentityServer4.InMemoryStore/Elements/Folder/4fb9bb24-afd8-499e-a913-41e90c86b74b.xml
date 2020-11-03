@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="8a1ac50e-7a4f-4b68-9fbb-2cd5cf7b96df" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+<class id="4fb9bb24-afd8-499e-a913-41e90c86b74b" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
   <name>Extensions</name>
   <display>Extensions</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>b2dd51d9-9561-4d3a-a9c8-623304aa8965</parentFolderId>
-  <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+  <parentFolderId>9400617b-c340-41d1-ae67-9e932f7d4b67</parentFolderId>
+  <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes />
   <childElements>
-    <childElement id="57765587-3b1c-4ba4-af3f-ac5bfd1066e3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="965d84b2-c096-4b55-80f3-45f35153a13e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</name>
       <display>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8a1ac50e-7a4f-4b68-9fbb-2cd5cf7b96df</parentFolderId>
-      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <parentFolderId>4fb9bb24-afd8-499e-a913-41e90c86b74b</parentFolderId>
+      <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="3f2142bc-cf05-442f-88c7-3de5facf0a3c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="da04a0b2-75c2-48a4-8f3b-bb8cacffcf62" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.Api.ApiElementModelExtensions</name>
       <display>ModuleBuilder.Templates.Api.ApiElementModelExtensions</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>8a1ac50e-7a4f-4b68-9fbb-2cd5cf7b96df</parentFolderId>
-      <packageId>9c222056-b384-4c7d-acd5-fbdfbad485b0</packageId>
+      <parentFolderId>4fb9bb24-afd8-499e-a913-41e90c86b74b</parentFolderId>
+      <packageId>2227f6a4-2498-40e5-9e17-75e11e7521c1</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />

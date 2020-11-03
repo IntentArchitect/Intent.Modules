@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="205e7b03-c499-48d7-9e4e-dcace692b747" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
-  <name>IdentityConfig</name>
-  <display>IdentityConfig: Single File</display>
+<class id="34238343-091d-4803-85e6-67f989397bd2" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
+  <name>Program</name>
+  <display>Program: Single File</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="f9e2df11-3ce6-4261-810f-b30f5da242cf">
+  <typeReference id="cdf47b4d-579b-4f1d-be46-ad41491d3084">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -18,7 +18,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>e1a19c18-2631-4bac-9431-ef4f05e001e5</parentFolderId>
   <packageId>e1a19c18-2631-4bac-9431-ef4f05e001e5</packageId>
-  <packageName>Intent.IdentityServer4.SelfHosted</packageName>
+  <packageName>Intent.IdentityServer4.SelfHost</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
