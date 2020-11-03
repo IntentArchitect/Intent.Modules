@@ -8,6 +8,6 @@ namespace Intent.Modules.Common.IdentityServer4.Decorators
     {
         public abstract int Priority { get; }
 
-        public abstract IReadOnlyCollection<string> GetIdentityServerServicesConfigurationStatements();
+        public abstract IReadOnlyCollection<string> GetServicesConfigurationStatements();
     }
 }

@@ -11,7 +11,7 @@ namespace Intent.Modules.IdentityServer4.InMemoryStore.Decorators
 
         public override int Priority => 1;
 
-        public override IReadOnlyCollection<string> GetIdentityServerServicesConfigurationStatements()
+        public override IReadOnlyCollection<string> GetServicesConfigurationStatements()
         {
             return new[] 
             {

@@ -65,7 +65,7 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.Startup
             AddFluentCall(sb, indents, $"AddInMemoryIdentityResources({GetIdentityResourcesConfiguration()})");
 
             GetDecorators()
-                .SelectMany(s => s.GetIdentityServerServicesConfigurationStatements())
+                .SelectMany(s => s.GetServicesConfigurationStatements())
                 .ToList()
                 .ForEach(x => AddFluentCall(sb, indents, x));
 
