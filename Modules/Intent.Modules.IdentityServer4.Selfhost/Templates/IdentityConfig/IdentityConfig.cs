@@ -40,7 +40,7 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    public class ");
+            this.Write("\r\n{\r\n    public static class ");
             
             #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -55,7 +55,7 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
         {
             new Client
             {
-                ClientId = ApiResourceName + ""_pwd_client"",
+                ClientId = $""{ApiResourceName}_pwd_client"",
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 RequireClientSecret = false,
                 AllowedScopes = { ""openid"", ""profile"", ""email"", ApiResourceName },

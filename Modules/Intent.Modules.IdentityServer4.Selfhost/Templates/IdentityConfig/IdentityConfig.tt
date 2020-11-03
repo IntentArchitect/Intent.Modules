@@ -15,7 +15,7 @@ using IdentityServer4.Models;
 
 namespace <#= Namespace #>
 {
-    public class <#= ClassName #>
+    public static class <#= ClassName #>
     {
         public const string ApiResourceName = "api";
 
@@ -23,7 +23,7 @@ namespace <#= Namespace #>
         {
             new Client
             {
-                ClientId = ApiResourceName + "_pwd_client",
+                ClientId = $"{ApiResourceName}_pwd_client",
                 AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
                 RequireClientSecret = false,
                 AllowedScopes = { "openid", "profile", "email", ApiResourceName },

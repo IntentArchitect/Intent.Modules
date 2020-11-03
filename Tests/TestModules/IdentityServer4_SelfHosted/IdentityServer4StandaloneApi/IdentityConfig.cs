@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace IdentityServer4StandaloneApi
 {
-    public class IdentityConfig
+    public static class IdentityConfig
     {
         public const string ApiResourceName = "api";
 
