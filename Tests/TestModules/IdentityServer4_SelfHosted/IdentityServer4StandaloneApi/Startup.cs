@@ -36,8 +36,8 @@ namespace IdentityServer4StandaloneApi
                 .AddInMemoryApiResources(IdentityConfig.ApiResources)
                 .AddInMemoryApiScopes(IdentityConfig.Scopes)
                 .AddInMemoryIdentityResources(IdentityConfig.IdentityResources)
-                .AddDeveloperSigningCredential()
                 .AddTestUsers(TestUsers.Users)
+                .AddDeveloperSigningCredential()
                 ;
 
         }

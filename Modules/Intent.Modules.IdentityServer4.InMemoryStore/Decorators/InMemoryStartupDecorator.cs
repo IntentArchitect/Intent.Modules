@@ -15,7 +15,6 @@ namespace Intent.Modules.IdentityServer4.InMemoryStore.Decorators
         {
             return new[] 
             {
-                "AddDeveloperSigningCredential()",
                 "AddTestUsers(TestUsers.Users)"
             };
         }

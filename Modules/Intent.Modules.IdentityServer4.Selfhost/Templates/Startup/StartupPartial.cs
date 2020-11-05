@@ -64,10 +64,16 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.Startup
             AddFluentCall(sb, indents, $"AddInMemoryApiScopes({GetScopesConfiguration()})");
             AddFluentCall(sb, indents, $"AddInMemoryIdentityResources({GetIdentityResourcesConfiguration()})");
 
-            GetDecorators()
+            var services = GetDecorators()
                 .SelectMany(s => s.GetServicesConfigurationStatements())
-                .ToList()
-                .ForEach(x => AddFluentCall(sb, indents, x));
+                .ToList();
+
+            if (!services.Any(p => p.Contains("AddSigningCredential")))
+            {
+                services.Add("AddDeveloperSigningCredential()");
+            }
+
+            services.ForEach(x => AddFluentCall(sb, indents, x));
 
             sb.Append(indents).AppendLine(";");
             return sb.ToString();
