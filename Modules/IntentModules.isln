@@ -30,5 +30,6 @@
     <application id="beca030c-beb8-43b8-88e7-75b0639ef40c" name="Intent.Modules.IdentityServer4.Selfhost" relativePath="Intent.Modules.IdentityServer4.Selfhost\Intent.Modules.IdentityServer4.Selfhost.application.config" />
     <application id="92e5e9f4-9635-4e77-87dc-6b4253f54675" name="Intent.Modules.IdentityServer4.InMemoryStore" relativePath="Intent.Modules.IdentityServer4.InMemoryStore\Intent.Modules.IdentityServer4.InMemoryStore.application.config" />
     <application id="f75e159b-9104-4a82-a7a7-a912137e717f" name="Intent.Modules.Common.IdentityServer4" relativePath="Intent.Modules.Common.IdentityServer4\Intent.Modules.Common.IdentityServer4.application.config" />
+    <application id="d0170c2a-3918-4877-bc3c-7ae70a4885e0" name="Intent.Modules.IdentityServer4.X509CertSigning" relativePath="Intent.Modules.IdentityServer4.X509CertSigning\Intent.Modules.IdentityServer4.X509CertSigning.application.config" />
   </applications>
 </solution>
