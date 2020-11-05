@@ -22,6 +22,7 @@ namespace IdentityServer4StandaloneApi
                 RequireClientSecret = false,
                 AllowedScopes = { "openid", "profile", "email", ApiResourceName },
             },
+
         };
 
         public static IEnumerable<ApiScope> Scopes = new List<ApiScope>

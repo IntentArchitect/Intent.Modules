@@ -47,19 +47,15 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
             
             #line default
             #line hidden
+            this.Write("\r\n    {\r\n        public const string ApiResourceName = \"api\";\r\n\r\n        public s" +
+                    "tatic IEnumerable<Client> Clients = new List<Client>\r\n        {\r\n");
+            
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClients(tabSubIndents: 4)));
+            
+            #line default
+            #line hidden
             this.Write(@"
-    {
-        public const string ApiResourceName = ""api"";
-
-        public static IEnumerable<Client> Clients = new List<Client>
-        {
-            new Client
-            {
-                ClientId = $""{ApiResourceName}_pwd_client"",
-                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                RequireClientSecret = false,
-                AllowedScopes = { ""openid"", ""profile"", ""email"", ApiResourceName },
-            },
         };
 
         public static IEnumerable<ApiScope> Scopes = new List<ApiScope>
