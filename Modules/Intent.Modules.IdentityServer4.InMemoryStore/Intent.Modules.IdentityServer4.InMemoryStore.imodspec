@@ -12,7 +12,7 @@
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
-      <role>IdentityServer4.InMemoryStore.TestUsers</role>
+      <role>IdentityServer4</role>
     </template>
   </templates>
   <decorators>

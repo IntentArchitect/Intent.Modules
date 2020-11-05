@@ -12,21 +12,21 @@
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
-      <role>IdentityServer4.Selfhost.Program</role>
+      <role>IdentityServer4</role>
     </template>
     <template id="IdentityServer4.Selfhost.Startup" externalReference="f4108d1e-b173-4b07-bda8-8e53f231aec9">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
-      <role>IdentityServer4.Selfhost.Startup</role>
+      <role>IdentityServer4</role>
     </template>
     <template id="IdentityServer4.Selfhost.IdentityConfig" externalReference="205e7b03-c499-48d7-9e4e-dcace692b747">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
-      <role>IdentityServer4.Selfhost.IdentityConfig</role>
+      <role>IdentityServer4</role>
     </template>
   </templates>
   <dependencies>

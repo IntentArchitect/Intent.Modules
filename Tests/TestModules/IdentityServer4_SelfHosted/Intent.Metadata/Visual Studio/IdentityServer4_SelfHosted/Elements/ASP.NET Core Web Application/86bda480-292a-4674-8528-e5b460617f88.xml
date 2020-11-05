@@ -69,5 +69,41 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="6e30a7e1-f4c0-4587-ad1c-ac78a096581c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>IdentityServer4.X509CertSigning.CertificateRepo</name>
+      <display>IdentityServer4.X509CertSigning.CertificateRepo</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>86bda480-292a-4674-8528-e5b460617f88</parentFolderId>
+      <packageId>de231ea6-9356-4a0b-9f65-4c7444283d56</packageId>
+      <packageName>IdentityServer4_SelfHosted</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="ed674267-7438-4edf-9ba2-4ce7b303ae89" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>IdentityServer4.X509CertSigning.SigningCertificate</name>
+      <display>IdentityServer4.X509CertSigning.SigningCertificate</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>86bda480-292a-4674-8528-e5b460617f88</parentFolderId>
+      <packageId>de231ea6-9356-4a0b-9f65-4c7444283d56</packageId>
+      <packageName>IdentityServer4_SelfHosted</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="2ed6e10e-e94d-4646-ac8e-59b6833f18fd" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>IdentityServer4</name>
+      <display>IdentityServer4</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>86bda480-292a-4674-8528-e5b460617f88</parentFolderId>
+      <packageId>de231ea6-9356-4a0b-9f65-4c7444283d56</packageId>
+      <packageName>IdentityServer4_SelfHosted</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
   </childElements>
 </class>

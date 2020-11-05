@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c17e0a0e-22fc-46b4-99f0-eb1f53e3ccbe" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
-  <name>TestUsers</name>
-  <display>TestUsers: Single File</display>
+<class id="12912d05-d01f-40c7-997a-f0513a49e7b0" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
+  <name>CertificateRepo</name>
+  <display>CertificateRepo: Single File</display>
   <isAbstract>false</isAbstract>
   <genericTypes />
-  <typeReference id="64702040-bf44-4c6b-8602-d31b8d007c1a">
+  <typeReference id="6e45c0ae-1b0a-4a98-abd4-3b3bb6a64d9e">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -16,9 +16,9 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>a9cceffe-39ff-48e7-83a9-9440958774d9</parentFolderId>
-  <packageId>a9cceffe-39ff-48e7-83a9-9440958774d9</packageId>
-  <packageName>Intent.IdentityServer4.InMemoryStore</packageName>
+  <parentFolderId>9dd5af98-e049-4ecd-a5b5-3b74a0ef1136</parentFolderId>
+  <packageId>9dd5af98-e049-4ecd-a5b5-3b74a0ef1136</packageId>
+  <packageName>Intent.IdentityServer4.X506CertSigning</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
       <addedByDefault>true</addedByDefault>
@@ -30,7 +30,7 @@
         <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="" isActive="true" />
         <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
         <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="IdentityServer4" isActive="true" />
-        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Location" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Location" value="" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

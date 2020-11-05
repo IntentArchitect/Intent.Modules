@@ -17,5 +17,25 @@
       <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.X509CertSigning\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
+    <FileLog>
+      <ProjectId>9db0a5a2-cab2-4e7b-b224-47f0c6af8587</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>CertificateRepo/CertificateRepo.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9db0a5a2-cab2-4e7b-b224-47f0c6af8587</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>CertificateRepo/CertificateRepo.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9db0a5a2-cab2-4e7b-b224-47f0c6af8587</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepoPartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>CertificateRepo/CertificateRepoPartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9db0a5a2-cab2-4e7b-b224-47f0c6af8587</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepoRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>CertificateRepo/CertificateRepoRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
   </FileLogs>
 </outputLog>
