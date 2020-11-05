@@ -22,7 +22,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.0.0-beta.1" />
     <dependency id="Intent.Common.Types" version="3.0.0-beta.1" />
-    <dependency id="Intent.Common.CSharp" version="3.0.0-beta" />
+    <dependency id="Intent.Common.CSharp" version="3.0.0-beta.2" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1" />
     <dependency id="Intent.Common.IdentityServer4" version="3.0.0-beta.1" />
   </dependencies>
