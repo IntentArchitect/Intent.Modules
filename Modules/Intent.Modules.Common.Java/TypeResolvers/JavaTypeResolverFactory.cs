@@ -1,14 +1,10 @@
-﻿using Intent.Modules.Common.Types.Contracts;
-using Intent.Templates;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Intent.Modules.Common.TypeResolution;
+using Intent.Modules.Common.Types.Contracts;
+using Intent.Modules.Common.Types.TypeResolvers;
 
-namespace Intent.Modules.Common.Types.TypeResolvers
+namespace Intent.Modules.Common.Java.TypeResolvers
 {
     [Description("Java Type Resolver")]
     public class JavaTypeResolverFactory : ITypeResolverFactory

@@ -40,7 +40,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         {
             get
             {
-                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityInterfaceTemplateDependency);
+                var template = Project.FindTemplateInstance<IClassProvider>(_entityInterfaceTemplateDependency);
                 return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
             }
         }
@@ -49,14 +49,14 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
         {
             get
             {
-                var template = Project.FindTemplateInstance<IHasClassDetails>(_entityStateTemplateDependency);
+                var template = Project.FindTemplateInstance<IClassProvider>(_entityStateTemplateDependency);
                 return template != null ? NormalizeNamespace($"{template.Namespace}.{template.ClassName}") : $"{Model.Name}";
             }
         }
 
-        public string RepositoryContractName => Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency)?.ClassName ?? $"I{ClassName}";
+        public string RepositoryContractName => Project.FindTemplateInstance<IClassProvider>(_repositoryInterfaceTemplateDependency)?.ClassName ?? $"I{ClassName}";
 
-        public string DbContextName => Project.FindTemplateInstance<IHasClassDetails>(_dbContextTemplateDependency)?.ClassName ?? $"{Model.Application.Name}DbContext";
+        public string DbContextName => Project.FindTemplateInstance<IClassProvider>(_dbContextTemplateDependency)?.ClassName ?? $"{Model.Application.Name}DbContext";
 
         public string PrimaryKeyType => Types.Get(Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Type)?.Name ?? "Guid";
         public string PrimaryKeyName => Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Name.ToPascalCase() ?? "Id";
@@ -81,7 +81,7 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.Repository
 
         public override void BeforeTemplateExecution()
         {
-            var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(_repositoryInterfaceTemplateDependency);
+            var contractTemplate = Project.FindTemplateInstance<IClassProvider>(_repositoryInterfaceTemplateDependency);
             if (contractTemplate == null)
             {
                 return;

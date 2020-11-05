@@ -37,7 +37,7 @@ namespace Intent.Modules.AspNet.WebApi.Interop.Autofac.Decorators
             return new[]
             {
                 "Autofac.Integration.WebApi",
-                _application.FindTemplateInstance<IHasClassDetails>(AutofacConfigTemplate.Identifier).Namespace
+                _application.FindTemplateInstance<IClassProvider>(AutofacConfigTemplate.Identifier).Namespace
             };
         }
 

@@ -58,7 +58,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
         public string GetContractType(DTOModel model)
         {
             var templateDependancy = TemplateDependency.OnModel<DTOModel>(GetMetadata().CustomMetadata[ContractTemplateDependancyConfigId], (to) => to.Id == model.Id);
-            var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
+            var templateOutput = Project.Application.FindTemplateInstance<IClassProvider>(templateDependancy);
             if (templateOutput == null)
             {
                 Logging.Log.Failure($"Unable to resolve template dependancy. Template : {Id} Depends on : {ContractTemplateDependancyConfigId} Model : {model.Id}");
@@ -79,7 +79,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             }
 
             var templateDependancy = TemplateDependency.OnModel<ClassModel>(_domainTemplateDependancyConfigValue, (to) => to.Id == model.Mapping.ElementId);
-            var templateOutput = Project.Application.FindTemplateInstance<IHasClassDetails>(templateDependancy);
+            var templateOutput = Project.Application.FindTemplateInstance<IClassProvider>(templateDependancy);
             if (templateOutput == null)
             {
                 throw new Exception(message:

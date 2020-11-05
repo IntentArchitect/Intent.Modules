@@ -107,7 +107,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel<ServiceModel>(_serviceContractTemplateId, x => x.Id == Model.Id));
             if (serviceContractTemplate == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_serviceContractTemplateId}] " +
@@ -122,7 +122,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 
         private string GetHttpClientServiceInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(_httpClientServiceInterfaceTemplateId));
+            var template = Project.Application.FindTemplateInstance<IClassProvider>(TemplateDependency.OnTemplate(_httpClientServiceInterfaceTemplateId));
             if (template == null)
             {
                 Logging.Log.Warning($"Could not find template with ID [{_httpClientServiceInterfaceTemplateId}] " +

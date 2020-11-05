@@ -46,6 +46,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
                 ?? $"{Model.GetInheritedType().Name.ToCSharpIdentifier()}Model"
             : null;
 
+        public string GetInterfaces()
+        {
+            var interfaces = new List<string> { "IMetadataModel", "IHasStereotypes", "IHasName" };
+            if (!Model.GetTypeReferenceSettings().Mode().IsDisabled())
+            {
+                interfaces.Add("IHasTypeReference");
+            }
+
+            return string.Join(", ", interfaces);
+        }
+
         private string FormatForCollection(string name, bool asCollection)
         {
             return asCollection ? $"IList<{name}>" : name;

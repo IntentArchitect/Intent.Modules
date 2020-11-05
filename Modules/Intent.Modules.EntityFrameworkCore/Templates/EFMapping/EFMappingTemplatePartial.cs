@@ -113,7 +113,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.EFMapping
             _domainTemplateDependancy = TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == Model.Id);
         }
 
-        public string EntityStateName => Project.FindTemplateInstance<IHasClassDetails>(_domainTemplateDependancy)?.ClassName ?? Model.Name;
+        public string EntityStateName => Project.FindTemplateInstance<IClassProvider>(_domainTemplateDependancy)?.ClassName ?? Model.Name;
 
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {

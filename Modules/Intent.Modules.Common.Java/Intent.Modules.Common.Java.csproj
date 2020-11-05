@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>3.0.0-pre.4</Version>
+    <Version>3.0.0-pre.5</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Intent Architect</Authors>
     <Description>Base classes and weaving capabilities for modules that output Java files for Intent Architect.</Description>
@@ -22,6 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 

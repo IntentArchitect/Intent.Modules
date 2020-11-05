@@ -11,7 +11,7 @@ namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class EnumLiteralModel
-        : IHasStereotypes, IMetadataModel
+        : IMetadataModel, IHasStereotypes, IHasName
     {
         protected readonly IElement _element;
         public const string SpecializationType = "Enum-Literal";

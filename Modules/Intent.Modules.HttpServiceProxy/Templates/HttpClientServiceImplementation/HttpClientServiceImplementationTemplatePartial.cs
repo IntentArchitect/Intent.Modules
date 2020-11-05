@@ -53,7 +53,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementat
 
         private string GetInterceptorInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(_httpClientInterceptorInterfaceTemplateId);
+            var template = Project.Application.FindTemplateInstance<IClassProvider>(_httpClientInterceptorInterfaceTemplateId);
             if (template == null)
             {
                 throw new System.Exception($"Could not find template with ID [{_httpClientInterceptorInterfaceTemplateId}] " +
@@ -66,7 +66,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementat
 
         private string GetHttpClientServiceInterfaceName()
         {
-            var template = Project.Application.FindTemplateInstance<IHasClassDetails>(_httpClientServiceInterfaceTemplateId);
+            var template = Project.Application.FindTemplateInstance<IClassProvider>(_httpClientServiceInterfaceTemplateId);
             if (template == null)
             {
                 throw new System.Exception($"Could not find template with ID [{_httpClientServiceInterfaceTemplateId}] " +

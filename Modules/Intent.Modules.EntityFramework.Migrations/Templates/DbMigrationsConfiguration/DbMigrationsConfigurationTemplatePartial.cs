@@ -70,7 +70,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
             var dbContextTemplate = Project.FindTemplateInstance<DbContextTemplate>(DbContextTemplate.Identifier);
             if (dbContextTemplate != null)
             {
-                return _dbContextNamespace = string.Format(template, Project.FindTemplateInstance<IHasClassDetails>(DbContextTemplate.Identifier).Namespace);
+                return _dbContextNamespace = string.Format(template, Project.FindTemplateInstance<IClassProvider>(DbContextTemplate.Identifier).Namespace);
             }
 
             _log.Warning($"{Identifier} - Could not find template with creates DbContext's name, default used instead.");

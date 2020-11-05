@@ -35,7 +35,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
 
         public string GetClassName(ClassModel @class)
         {
-            return Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
+            return Project.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
         }
 
         protected override CSharpDefaultFileConfig DefineFileConfig()

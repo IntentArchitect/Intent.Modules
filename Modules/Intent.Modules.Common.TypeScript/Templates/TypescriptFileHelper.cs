@@ -13,13 +13,13 @@ namespace Intent.Modules.Common.TypeScript.Templates
             var dependencies = template.GetTemplateDependencies().Select(template.ExecutionContext.FindTemplateInstance<ITemplate>).Distinct();
             foreach (var dependency in dependencies)
             {
-                if (!(dependency is IHasClassDetails))
+                if (!(dependency is IClassProvider))
                 {
                     continue;
                 }
 
                 file.AddImportIfNotExists(
-                    className: ((IHasClassDetails)dependency).ClassName,
+                    className: ((IClassProvider)dependency).ClassName,
                     location: template.GetMetadata().GetFilePath().GetRelativePath(dependency.GetMetadata().GetFilePathWithoutExtension()).Normalize());
             }
         }

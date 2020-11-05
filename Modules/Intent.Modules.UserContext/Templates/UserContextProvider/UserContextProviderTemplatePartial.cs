@@ -50,8 +50,8 @@ namespace Intent.Modules.UserContext.Templates.UserContextProvider
 
         public void BeforeTemplateExecution()
         {
-            var userContextProviderInterface = Project.FindTemplateInstance<IHasClassDetails>(UserContextProviderInterfaceTemplate.Identifier);
-            var contractTemplate = Project.FindTemplateInstance<IHasClassDetails>(UserContextInterfaceTemplate.Identifier);
+            var userContextProviderInterface = Project.FindTemplateInstance<IClassProvider>(UserContextProviderInterfaceTemplate.Identifier);
+            var contractTemplate = Project.FindTemplateInstance<IClassProvider>(UserContextInterfaceTemplate.Identifier);
             _eventDispatcher.Publish(ContainerRegistrationEvent.EventId, new Dictionary<string, string>()
             {
                 { "InterfaceType", $"{userContextProviderInterface.FullTypeName()}<{contractTemplate.FullTypeName()}>" },

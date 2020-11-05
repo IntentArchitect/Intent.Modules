@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class TypeDefinitionModel : IHasStereotypes, IMetadataModel, IHasFolder
+    public class TypeDefinitionModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
     {
         public const string SpecializationType = "Type-Definition";
         protected readonly IElement _element;

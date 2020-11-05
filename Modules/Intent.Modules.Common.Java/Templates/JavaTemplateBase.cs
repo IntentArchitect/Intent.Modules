@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using Intent.Engine;
 using Intent.Modules.Common.Java.Editor;
+using Intent.Modules.Common.Java.TypeResolvers;
 using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.Java.Templates
@@ -15,7 +16,7 @@ namespace Intent.Modules.Common.Java.Templates
         }
     }
 
-    public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged
+    public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged, IClassProvider
     {
         protected JavaTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
@@ -33,6 +34,8 @@ namespace Intent.Modules.Common.Java.Templates
             }
         }
 
+        public string Namespace => Package;
+
         public string ClassName
         {
             get
@@ -44,15 +47,24 @@ namespace Intent.Modules.Common.Java.Templates
                 return FileMetadata.FileName;
             }
         }
-
+        
         public string Location => FileMetadata.LocationInProject;
 
+        public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
+        {
+            AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormat));
+        }
+
+        public override string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
+        {
+            return FindTemplate<IClassProvider>(templateDependency, throwIfNotFound).ClassName;
+        }
 
         public override string RunTemplate()
         {
             var file = CreateOutputFile();
 
-            //file.AddDependencyImports(this);
+            file.AddDependencyImports(this);
 
             return file.GetSource();
         }

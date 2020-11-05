@@ -54,9 +54,9 @@ namespace Intent.Modules.EntityFrameworkCore.Interop.WebApi.Decorators
 
         public override int Priority { get; set; } = -200;
 
-        private IHasClassDetails GetDbContextTemplate()
+        private IClassProvider GetDbContextTemplate()
         {
-            return _application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(DbContextTemplate.Identifier));
+            return _application.FindTemplateInstance<IClassProvider>(TemplateDependency.OnTemplate(DbContextTemplate.Identifier));
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()

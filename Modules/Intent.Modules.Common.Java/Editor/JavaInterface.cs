@@ -43,7 +43,7 @@ namespace Intent.Modules.Common.Java.Editor
                 else
                 {
                     var afterContext = ((Java9Parser.NormalInterfaceDeclarationContext)Context).identifier();
-                    File.InsertAfter(afterContext.Stop, node.SuperInterfaces.GetText());
+                    File.InsertAfter(afterContext.Stop, node.SuperInterfaces.GetTextWithComments());
                 }
             }
             else if (!IsMerged())

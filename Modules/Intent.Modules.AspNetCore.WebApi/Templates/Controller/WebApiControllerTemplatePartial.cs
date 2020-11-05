@@ -63,7 +63,7 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = ExecutionContext.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = ExecutionContext.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return NormalizeNamespace($"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}");
         }
 

@@ -23,6 +23,11 @@ namespace Intent.Modules.Common.Java.Weaving
             //    return _existingFile.GetSource();
             //}
 
+            if (_outputFile.Package != null)
+            {
+                _existingFile.SetPackage(_outputFile.Package);
+            }
+
             foreach (var import in _outputFile.Imports)
             {
                 if (!_existingFile.ImportExists(import))
@@ -53,7 +58,7 @@ namespace Intent.Modules.Common.Java.Weaving
                 if (existing == null)
                 {
                     // toAdd:
-                    var text = node.GetText();
+                    var text = node.GetTextWithComments();
                     if (existingNode.Children.Count == 0)
                     {
                         // EOF has Stop == null
@@ -86,7 +91,7 @@ namespace Intent.Modules.Common.Java.Weaving
 
                     if (existing.Children.All(x => !x.IsIgnored()) && !existing.IsMerged())
                     {
-                        existing.ReplaceWith(node.GetText()); // Overwrite
+                        existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
                         continue;
                     }
                     MergeNodes(existing, node);
@@ -115,7 +120,7 @@ namespace Intent.Modules.Common.Java.Weaving
                     //var text = node.GetTextWithComments();
                     if (existingNode.Annotations.Count == 0)
                     {
-                        _existingFile.InsertBefore(existingNode, node.GetText());
+                        _existingFile.InsertBefore(existingNode, node.GetTextWithComments());
                     }
                     else if (index == 0)
                     {
@@ -143,7 +148,7 @@ namespace Intent.Modules.Common.Java.Weaving
 
                     if (existing.Annotations.All(x => !x.IsIgnored()) && !existing.IsMerged())
                     {
-                        existing.ReplaceWith(node.GetText()); // Overwrite
+                        existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
                         continue;
                     }
                     //MergeDecorators(existing, node); // maybe one day

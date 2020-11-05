@@ -82,7 +82,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 case Constants.ContainerRegistrationEvent.SingletonLifetime:
                     return "new ContainerControlledLifetimeManager()";
                 case Constants.ContainerRegistrationEvent.PerServiceCallLifetime:
-                    return $"new {Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnTemplate(PerServiceCallLifetimeManagerTemplate.Identifier)).ClassName}()";
+                    return $"new {Project.Application.FindTemplateInstance<IClassProvider>(TemplateDependency.OnTemplate(PerServiceCallLifetimeManagerTemplate.Identifier)).ClassName}()";
                 case Constants.ContainerRegistrationEvent.TransientLifetime:
                     return string.Empty;
                 default:

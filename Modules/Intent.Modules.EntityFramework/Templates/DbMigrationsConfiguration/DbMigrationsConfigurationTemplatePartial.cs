@@ -50,7 +50,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 
         public string GetDbContextClassName()
         {
-            var dbContext = this.Project.FindTemplateInstance<IHasClassDetails>(_dbContextDependancy);
+            var dbContext = this.Project.FindTemplateInstance<IClassProvider>(_dbContextDependancy);
             return dbContext.ClassName;
         }       
 

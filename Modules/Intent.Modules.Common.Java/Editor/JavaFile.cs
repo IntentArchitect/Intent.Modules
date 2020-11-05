@@ -38,8 +38,9 @@ namespace Intent.Modules.Common.Java.Editor
             ParseTreeWalker.Default.Walk(listener, Context);
         }
 
+        public JavaPackage Package { get; set; }
+        public IList<JavaImport> Imports => Children.Where(x => x is JavaImport).Cast<JavaImport>().ToList();
         public IReadOnlyList<JavaClass> Classes => Children.Where(x => x is JavaClass).Cast<JavaClass>().ToList();
-        public IList<JavaImport> Imports { get; } = new List<JavaImport>();
 
         public void Replace(JavaNode node, string text)
         {
@@ -134,9 +135,31 @@ namespace Intent.Modules.Common.Java.Editor
             return Imports.Any(x => x.Equals(import));
         }
 
+        public bool ImportExists(string import)
+        {
+            return Imports.Any(x => x.GetTextWithComments() == import.Trim());
+        }
+
         public void AddImport(JavaImport import)
         {
-            InsertAfter(Imports.Last(), import.GetText());
+            AddImport(import.GetTextWithComments());
+            //Imports.Add(import); // commented out while AST doesn't update after each change to it
+        }
+
+        public void AddImport(string import)
+        {
+            if (Imports.Any())
+            {
+                InsertAfter(Imports.Last(), import);
+            }
+            else if (Package != null)
+            {
+                InsertAfter(Package, Environment.NewLine + import + Environment.NewLine);
+            }
+            else
+            {
+                InsertBefore(Children.First(), import + Environment.NewLine + Environment.NewLine);
+            }
             //Imports.Add(import); // commented out while AST doesn't update after each change to it
         }
 
@@ -144,5 +167,16 @@ namespace Intent.Modules.Common.Java.Editor
         //{
         //    return true;
         //}
+        public void SetPackage(JavaPackage package)
+        {
+            if (Package != null)
+            {
+                Replace(Package, package.GetTextWithComments());
+            }
+            else
+            {
+                InsertBefore(Children.First(), package.GetTextWithComments() + Environment.NewLine + Environment.NewLine);
+            }
+        }
     }
 }

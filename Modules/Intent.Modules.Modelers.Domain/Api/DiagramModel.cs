@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DiagramModel : IHasStereotypes, IMetadataModel
+    public class DiagramModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Diagram";
         protected readonly IElement _element;

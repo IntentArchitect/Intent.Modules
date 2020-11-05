@@ -57,9 +57,9 @@ namespace Intent.Modules.Common.CSharp
             return _templateDependencies;
         }
 
-        private IHasClassDetails GetTemplateInstance(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo)
+        private IClassProvider GetTemplateInstance(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = context.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));
+            var templateInstance = context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));
             if (templateInstance != null)
             {
                 _templateDependencies.Add(TemplateDependency.OnModel<IMetadataModel>(templateId, (x) => x.Id == typeInfo.Element.Id, $"Model Id: {typeInfo.Element.Id}"));

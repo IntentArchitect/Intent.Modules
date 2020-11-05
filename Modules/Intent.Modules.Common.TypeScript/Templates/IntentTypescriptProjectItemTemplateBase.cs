@@ -5,7 +5,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Templates
 {
-    public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasClassDetails
+    public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IClassProvider
     {
         public IntentTypescriptProjectItemTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
@@ -35,34 +35,14 @@ namespace Intent.Modules.Common.TypeScript.Templates
             }
         }
 
+        public string TypeName => string.IsNullOrWhiteSpace(Namespace) ? ClassName : $"{Namespace}.{ClassName}";
+
         public string Location => FileMetadata.LocationInProject;
 
         public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
-
-
-        public override string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound = true)
-        {
-            return FindTemplate<IHasClassDetails>(templateDependency, throwIfNotFound).ClassName;
-        }
-
-        //public string DependencyImports
-        //{
-        //    get
-        //    {
-        //        var sb = new StringBuilder();
-        //        foreach (var dependency in GetTemplateDependencies().Select(Project.FindTemplateInstance<ITemplate>).Distinct())
-        //        {
-        //            var className = ((IHasClassDetails)dependency).ClassName;
-        //            var location = GetMetadata().GetRelativeFilePathWithFileName().GetRelativePath(dependency.GetMetadata().GetRelativeFilePathWithFileName());
-        //            sb.AppendLine($"import {{ {className} }} from '{location}';");
-        //        }
-
-        //        return sb.ToString();
-        //    }
-        //}
 
         public override string RunTemplate()
         {

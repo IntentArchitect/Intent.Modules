@@ -156,5 +156,85 @@ public class User implements Serializable {
     }
 }", result);
         }
+
+        [Fact]
+        public void InsertsNewUsingClausesAtTheRightPlace()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(
+                existingContent: @"
+package root.src.main.java.com.vod_ms_infinity.subscription_customer.application.services.impl;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+import root.src.main.java.com.vod_ms_infinity.subscription_customer.application.models.CustomerRetrievalModel;
+import root.src.main.java.com.vod_ms_infinity.subscription_customer.application.services.CustomerService;
+
+@Service
+@AllArgsConstructor
+@Slf4j
+public class CustomerServiceImpl implements CustomerService {
+    @Override
+    @Transactional(readOnly = true)
+    public CustomerRetrievalModel getCustomerBySubscription(String msisdn) {
+        throw new NotImplementedException(""Your implementation here..."");
+    }
+}", outputContent: @"
+package com.vod_ms_infinity.subscription_customer.application.services.impl;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+import com.vod_ms_infinity.subscription_customer.application.models.CustomerRetrievalModel;
+import com.vod_ms_infinity.subscription_customer.application.services.CustomerService;
+
+@Service
+@AllArgsConstructor
+@Slf4j
+public class CustomerServiceImpl implements CustomerService {
+    @Override
+    @Transactional(readOnly = true)
+    public CustomerRetrievalModel getCustomerBySubscription(String msisdn) {
+        throw new NotImplementedException(""Your implementation here..."");
+    }
+}");
+            Assert.Equal(@"
+package com.vod_ms_infinity.subscription_customer.application.services.impl;
+
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
+import javax.persistence.TypedQuery;
+import root.src.main.java.com.vod_ms_infinity.subscription_customer.application.models.CustomerRetrievalModel;
+import root.src.main.java.com.vod_ms_infinity.subscription_customer.application.services.CustomerService;
+import com.vod_ms_infinity.subscription_customer.application.models.CustomerRetrievalModel;
+import com.vod_ms_infinity.subscription_customer.application.services.CustomerService;
+
+@Service
+@AllArgsConstructor
+@Slf4j
+public class CustomerServiceImpl implements CustomerService {
+    @Override
+    @Transactional(readOnly = true)
+    public CustomerRetrievalModel getCustomerBySubscription(String msisdn) {
+        throw new NotImplementedException(""Your implementation here..."");
+    }
+}", result);
+        }
     }
 }

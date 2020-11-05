@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class EnumModel : IHasStereotypes, IMetadataModel, IHasFolder
+    public class EnumModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
     {
         protected readonly IElement _element;
 

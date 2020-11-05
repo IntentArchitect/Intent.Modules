@@ -17,7 +17,27 @@ namespace Intent.Modules.Common.Templates
         }
     }
 
-    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IHasClassDetails, IRoslynMerge 
+    public abstract class CSharpTemplateBase<TModel, TDecorator> : CSharpTemplateBase<TModel>, IHasDecorators<TDecorator> 
+        where TDecorator : ITemplateDecorator
+    {
+        private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
+
+        protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
+        {
+        }
+
+        public IEnumerable<TDecorator> GetDecorators()
+        {
+            return _decorators;
+        }
+
+        public void AddDecorator(TDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+    }
+
+    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge 
     {
         private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
 
@@ -52,6 +72,8 @@ namespace Intent.Modules.Common.Templates
                 return FileMetadata.FileName.Replace(".", "");
             }
         }
+
+        public string TypeName => $"{Namespace}.{ClassName}";
 
         public override string RunTemplate()
         {
@@ -114,12 +136,12 @@ namespace Intent.Modules.Common.Templates
 
         public override string GetTemplateClassName(ITemplateDependency templateDependency)
         {
-            return NormalizeNamespace(FindTemplate<IHasClassDetails>(templateDependency).FullTypeName());
+            return NormalizeNamespace(FindTemplate<IClassProvider>(templateDependency).FullTypeName());
         }
 
         public override string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
         {
-            var template = FindTemplate<IHasClassDetails>(templateDependency, throwIfNotFound);
+            var template = FindTemplate<IClassProvider>(templateDependency, throwIfNotFound);
             return template == null ? null : NormalizeNamespace(template.FullTypeName());
         }
 

@@ -40,13 +40,20 @@ namespace Intent.Modules.Common.Java.Editor.Parser
             _nodeStack.Pop();
         }
 
+        public override void EnterPackageDeclaration(Java9Parser.PackageDeclarationContext context)
+        {
+            var package = new JavaPackage(context, File);
+            File.Package = package;
+        }
+
         public override void EnterImportDeclaration([NotNull] Java9Parser.ImportDeclarationContext context)
         {
-            var import = new JavaImport(context, File);
-            if (!File.ImportExists(import))
-            {
-                File.Imports.Add(import);
-            }
+            //var import = new JavaImport(context, File);
+            //if (!File.ImportExists(import))
+            //{
+            //    File.Imports.Add(import);
+            //}
+            InsertOrUpdateNode(context, () => new JavaImport(context, File));
         }
 
         public override void EnterConstructorDeclaration(Java9Parser.ConstructorDeclarationContext context)

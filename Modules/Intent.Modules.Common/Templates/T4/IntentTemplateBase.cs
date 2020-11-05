@@ -146,6 +146,16 @@ namespace Intent.Modules.Common.Templates
             return Types.Get(typeReference).Name;
         }
 
+        public virtual string GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat)
+        {
+            return GetTypeName(hasTypeReference.TypeReference, collectionFormat);
+        }
+
+        public virtual string GetTypeName(IHasTypeReference hasTypeReference)
+        {
+            return GetTypeName(hasTypeReference.TypeReference);
+        }
+
         public virtual string GetTypeName(IElement element, string collectionFormat)
         {
             return Types.Get(element, collectionFormat).Name;
@@ -158,7 +168,7 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string GetTemplateClassName(ITemplateDependency templateDependency)
         {
-            return FindTemplate<IHasClassDetails>(templateDependency).FullTypeName();
+            return GetTemplateClassName(templateDependency, true);
         }
 
         public string GetTemplateClassName(ITemplate template)
@@ -183,7 +193,7 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
         {
-            return FindTemplate<IHasClassDetails>(templateDependency, throwIfNotFound).FullTypeName();
+            return FindTemplate<IClassProvider>(templateDependency, throwIfNotFound).FullTypeName();
         }
 
         public string GetTemplateClassName(ITemplate template, bool throwIfNotFound)

@@ -35,7 +35,7 @@ namespace Intent.Modules.AspNet.WebApi.Interop.Unity.Decorators
             return new[]
             {
                 "Unity.WebApi",
-                _application.FindTemplateInstance<IHasClassDetails>(UnityConfigTemplate.Identifier).Namespace
+                _application.FindTemplateInstance<IClassProvider>(UnityConfigTemplate.Identifier).Namespace
             };
         }
 

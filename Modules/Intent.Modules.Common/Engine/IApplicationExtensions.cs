@@ -37,22 +37,22 @@ namespace Intent.Modules.Common
         //Typed Overloads
         public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, string className) where TTemplate : class
         {
-            return executionContext.FindTemplateInstance(templateId, className) as TTemplate;
+            return (TTemplate)executionContext.FindTemplateInstance(templateId, className) as TTemplate;
         }
 
         public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model) where TTemplate : class
         {
-            return executionContext.FindTemplateInstance(templateId, model) as TTemplate;
+            return (TTemplate)executionContext.FindTemplateInstance(templateId, model) as TTemplate;
         }
 
         public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId) where TTemplate : class
         {
-            return executionContext.FindTemplateInstance(TemplateDependency.OnTemplate(templateId)) as TTemplate;
+            return (TTemplate)executionContext.FindTemplateInstance(TemplateDependency.OnTemplate(templateId)) as TTemplate;
         }
 
         public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency) where TTemplate : class
         {
-            return executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch) as TTemplate;
+            return (TTemplate)executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch);
         }
 
         public static IOutputTarget FindOutputTargetWithTemplate(this ISoftwareFactoryExecutionContext executionContext, string templateId, IMetadataModel hasModel)

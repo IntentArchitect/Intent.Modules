@@ -115,7 +115,7 @@ namespace Intent.Modules.Application.ServiceImplementations.Templates.ServiceImp
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = Project.Application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = Project.Application.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return $"{serviceContractTemplate.Namespace}.{serviceContractTemplate.ClassName}";
         }
 

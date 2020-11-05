@@ -66,6 +66,8 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
         private string TemplateBody()
         {
             return @"
+package <#= Package #>;
+
 public class <#= ClassName #> {
     private String exampleFiled;
 

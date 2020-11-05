@@ -44,11 +44,11 @@ namespace Intent.Modules.Common.Java.Editor
             {
                 if (SuperClass != null)
                 {
-                    SuperClass.ReplaceWith(node.SuperClass.GetText());
+                    SuperClass.ReplaceWith(node.SuperClass.GetTextWithComments());
                 }
                 else
                 {
-                    File.InsertAfter(((Java9Parser.NormalClassDeclarationContext)Context).identifier().Stop, node.SuperClass.GetText());
+                    File.InsertAfter(((Java9Parser.NormalClassDeclarationContext)Context).identifier().Stop, node.SuperClass.GetTextWithComments());
                 }
             }
             else if (!IsMerged())
@@ -68,7 +68,7 @@ namespace Intent.Modules.Common.Java.Editor
                 else
                 {
                     var afterContext = ((Java9Parser.NormalClassDeclarationContext)Context).superclass() ?? (ParserRuleContext)((Java9Parser.NormalClassDeclarationContext)Context).identifier();
-                    File.InsertAfter(afterContext.Stop, node.SuperInterfaces.GetText());
+                    File.InsertAfter(afterContext.Stop, node.SuperInterfaces.GetTextWithComments());
                 }
             }
             else if (!IsMerged())

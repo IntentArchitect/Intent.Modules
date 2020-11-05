@@ -71,7 +71,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
             return _decorators;
         }
 
-        public string ContractTypeName => Project.Application.FindTemplateInstance<IHasClassDetails>(_contractTemplateDependancy)?.ClassName ?? Model.Name;
+        public string ContractTypeName => Project.Application.FindTemplateInstance<IClassProvider>(_contractTemplateDependancy)?.ClassName ?? Model.Name;
 
         public string SourceTypeName
         {
@@ -88,7 +88,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
                 }
 
                 return
-                    Project.Application.FindTemplateInstance<IHasClassDetails>(_domainTemplateDependancy)?.ClassName ??
+                    Project.Application.FindTemplateInstance<IClassProvider>(_domainTemplateDependancy)?.ClassName ??
                     throw new Exception(message:
                         $"\r\n" +
                         $"\r\n" +

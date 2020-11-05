@@ -28,7 +28,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
             AddTypeSource(CSharpTypeSource.Create(ExecutionContext, Identifier, "ICollection<{0}>"));
         }
 
-        public string EntityInterfaceName => Project.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
+        public string EntityInterfaceName => Project.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(DomainEntityInterfaceTemplate.Identifier, Model))?.ClassName
                                              ?? $"I{Model.Name}";
 
         

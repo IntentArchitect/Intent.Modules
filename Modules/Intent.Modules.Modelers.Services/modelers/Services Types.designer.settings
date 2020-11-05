@@ -182,6 +182,7 @@
               <type>DTO</type>
               <type>Type-Definition</type>
             </targetTypes>
+            <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
             <allowIsCollection>true</allowIsCollection>
@@ -325,6 +326,7 @@
                   <type>DTO</type>
                   <type>Type-Definition</type>
                 </targetTypes>
+                <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>
                 <allowIsNullable>true</allowIsNullable>
                 <allowIsCollection>true</allowIsCollection>

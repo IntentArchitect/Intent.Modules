@@ -27,20 +27,7 @@ namespace Intent.Modules.Common.TypeScript
                 return typeName;
             });
         }
-
-        //public static ITypeSource InApplication(IApplication application, string templateId, string collectionFormat = "{0}[]")
-        //{
-        //    return new TypescriptTypeSource((_this, typeInfo) =>
-        //    {
-        //        var typeName = _this.GetTypeName(application, templateId, typeInfo);
-        //        if (typeInfo.IsCollection)
-        //        {
-        //            return string.Format(collectionFormat, typeName);
-        //        }
-        //        return typeName;
-        //    });
-        //}
-
+        
         public IResolvedTypeInfo GetType(ITypeReference typeInfo)
         {
             return _execute(this, typeInfo);
@@ -51,9 +38,9 @@ namespace Intent.Modules.Common.TypeScript
             return _templateDependencies;
         }
 
-        private IHasClassDetails GetTemplateInstance(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo)
+        private IClassProvider GetTemplateInstance(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo)
         {
-            var templateInstance = context.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, typeInfo.Element));
+            var templateInstance = context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(templateId, typeInfo.Element));
             if (templateInstance != null)
             {
                 _templateDependencies.Add(TemplateDependency.OnModel(templateId, typeInfo.Element));
@@ -61,17 +48,6 @@ namespace Intent.Modules.Common.TypeScript
 
             return templateInstance;
         }
-
-        //private IHasClassDetails GetTemplateInstance(IApplication application, string templateId, ITypeReference typeInfo)
-        //{
-        //    var templateInstance = application.FindTemplateInstance<IHasClassDetails>(TemplateDependency.OnModel(templateId, typeInfo.Element));
-        //    if (templateInstance != null)
-        //    {
-        //        _templateDependencies.Add(TemplateDependency.OnModel(templateId, typeInfo.Element));
-        //    }
-
-        //    return templateInstance;
-        //}
 
         private IResolvedTypeInfo GetTypeName(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo, string collectionFormat)
         {
@@ -92,16 +68,5 @@ namespace Intent.Modules.Common.TypeScript
 
             return new ResolvedTypeInfo(name, false, templateInstance);
         }
-
-        //private string GetTypeName(IApplication application, string templateId, ITypeReference typeInfo)
-        //{
-        //    var templateInstance = GetTemplateInstance(application, templateId, typeInfo);
-
-        //    return templateInstance != null ? (string.IsNullOrWhiteSpace(templateInstance.Namespace) ? "" : templateInstance.Namespace + ".") +
-        //                                      templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any()
-        //                                          ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(application, templateId, x)))}>"
-        //                                          : "")
-        //        : null;
-        //}
     }
 }

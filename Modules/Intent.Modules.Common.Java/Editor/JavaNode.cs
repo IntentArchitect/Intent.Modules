@@ -45,7 +45,7 @@ namespace Intent.Modules.Common.Java.Editor
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
             //Children.Insert(Children.IndexOf(existing), node);
-            File.InsertBefore(existing, node.GetText());
+            File.InsertBefore(existing, node.GetTextWithComments());
         }
 
         public virtual void InsertAfter(JavaNode existing, JavaNode node)
@@ -55,7 +55,7 @@ namespace Intent.Modules.Common.Java.Editor
                 throw new InvalidOperationException("Child already exists: " + node.ToString());
             }
             //Children.Insert(Children.IndexOf(existing) + 1, node);
-            File.InsertAfter(existing, node.GetText());
+            File.InsertAfter(existing, node.GetTextWithComments());
         }
 
         public bool HasChild(JavaNode node)
@@ -78,7 +78,7 @@ namespace Intent.Modules.Common.Java.Editor
             Annotations.Insert(index, annotation);
         }
 
-        public virtual string GetText()
+        public virtual string GetTextWithComments()
         {
             var ws = File.GetCommentsAndWhitespaceBefore(Context.Start);
             return $"{ws.Text}{Context.GetFullText()}";
@@ -97,12 +97,48 @@ namespace Intent.Modules.Common.Java.Editor
 
         public virtual bool IsIgnored()
         {
-            return Annotations.Any(x => x.Identifier.StartsWith("@IntentIgnore"));// || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore()");
+            return HasAnnotation("@IntentIgnore");// || GetComments().Contains($"//@{IntentDecorators.IntentIgnore}");
+            //return Annotations.Any(x => x.Identifier.StartsWith("@IntentIgnore"));// || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentIgnore()");
+        }
+
+        public virtual bool CanAdd()
+        {
+            return !HasIntentInstructions() || IsManaged() || IsMerged() || HasAnnotation("IntentCanAdd");// || GetComments().Contains($"//@IntentCanAdd");
+        }
+
+        public virtual bool CanUpdate()
+        {
+            return !HasIntentInstructions() || IsManaged() || IsMerged() || HasAnnotation("IntentCanUpdate");// || GetComments().Contains($"//@IntentCanUpdate");
+        }
+
+        public virtual bool CanRemove()
+        {
+            return !HasIntentInstructions() || IsManaged() || HasAnnotation("IntentCanRemove");// || GetComments().Contains($"//@IntentCanRemove");
+        }
+
+        public virtual bool IsManaged()
+        {
+            return Annotations.Any(x => x.Identifier.StartsWith("@IntentManage"));// || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
         }
 
         public virtual bool IsMerged()
         {
             return Annotations.Any(x => x.Identifier.StartsWith("@IntentMerge"));// || Node.GetTextWithComments().TrimStart().StartsWith("//@IntentMerge()");
+        }
+
+        protected virtual bool HasIntentInstructions()
+        {
+            return Annotations.Any(x => x.Identifier.StartsWith("@Intent"));// || GetComments().Contains("//@Intent");
+        }
+
+        protected bool CanReplaceInsteadOfMerge()
+        {
+            return (!Annotations.Any() && !Children.Any()) || (Children.All(x => !x.IsIgnored()) && !HasIntentInstructions());
+        }
+
+        private bool HasAnnotation(string name)
+        {
+            return Annotations.Any(x => x.Identifier.StartsWith(name));
         }
 
         public virtual void UpdateContext(RuleContext context)
@@ -136,30 +172,26 @@ namespace Intent.Modules.Common.Java.Editor
 
         public override string ToString()
         {
-            return GetText();
+            return GetTextWithComments();
         }
 
         protected void MergeNodeCollections(JavaNode outputNode, Func<JavaNode, IList<JavaNode>> getCollection)
         {
             var index = 0;
+            var highestFoundIndex = 0;
             foreach (var node in getCollection(outputNode))
             {
-                var existing = getCollection(this).SingleOrDefault(x => x.Context.GetType() == node.Context.GetType() && x.Identifier == x.GetIdentifier(node.Context));
-                //this.TryGetAnnotation((Java9Parser.AnnotationContext)node.Context);
+                var existing = getCollection(this).SingleOrDefault(x => x.Equals(node));
                 if (existing == null)
                 {
+                    if (!CanAdd())
+                    {
+                        continue;
+                    }
                     // toAdd:
-                    //var text = node.GetTextWithComments();
                     if (getCollection(this).Count == 0)
                     {
-                        if (node is JavaAnnotation annotation)
-                        {
-                            this.AddFirst(annotation);
-                        }
-                        else
-                        {
-                            this.AddFirst(node);
-                        }
+                        this.AddFirst((dynamic)node);
                     }
                     else if (index == 0)
                     {
@@ -180,18 +212,25 @@ namespace Intent.Modules.Common.Java.Editor
                 {
                     // toUpdate:
                     var existingIndex = getCollection(this).IndexOf(existing);
-                    index = (existingIndex > index) ? existingIndex + 1 : index + 1;
+                    if (existingIndex >= index)
+                    {
+                        index = existingIndex + 1;
+                        highestFoundIndex = index;
+                    }
+                    else
+                    {
+                        index = highestFoundIndex + 1;
+                    }
+
                     if (existing.IsIgnored())
                     {
                         continue;
                     }
 
-                    if (getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    //if (!getCollection(existing).Any() || getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
+                    if (existing.CanUpdate() && existing.CanReplaceInsteadOfMerge() && existing.GetTextWithComments() != node.GetTextWithComments())
                     {
-                        if (existing.GetText() != node.GetText())
-                        {
-                            existing.ReplaceWith(node.GetText()); // Overwrite
-                        }
+                        existing.ReplaceWith(node.GetTextWithComments()); // Overwrite
                         continue;
                     }
 
@@ -199,24 +238,90 @@ namespace Intent.Modules.Common.Java.Editor
                 }
             }
 
-            if (!this.IsMerged())
+            if (CanRemove())
             {
-                var toRemove = getCollection(this).Where(x => !x.IsIgnored()).Except(getCollection(outputNode)).ToList();
+                var toRemove = getCollection(this).Where(x => !(x is JavaImport) && !x.IsIgnored()).Except(getCollection(outputNode)).ToList();
                 foreach (var node in toRemove)
                 {
                     node.Remove();
                 }
             }
+            //var index = 0;
+            //foreach (var node in getCollection(outputNode))
+            //{
+            //    var existing = getCollection(this).SingleOrDefault(x => x.Context.GetType() == node.Context.GetType() && x.Identifier == x.GetIdentifier(node.Context));
+            //    //this.TryGetAnnotation((Java9Parser.AnnotationContext)node.Context);
+            //    if (existing == null)
+            //    {
+            //        // toAdd:
+            //        //var text = node.GetTextWithComments();
+            //        if (getCollection(this).Count == 0)
+            //        {
+            //            if (node is JavaAnnotation annotation)
+            //            {
+            //                this.AddFirst(annotation);
+            //            }
+            //            else
+            //            {
+            //                this.AddFirst(node);
+            //            }
+            //        }
+            //        else if (index == 0)
+            //        {
+            //            this.InsertBefore(getCollection(this)[0], node);
+            //        }
+            //        else if (getCollection(this).Count > index)
+            //        {
+            //            this.InsertAfter(getCollection(this)[index - 1], node);
+            //        }
+            //        else
+            //        {
+            //            this.InsertAfter(getCollection(this).Last(), node);
+            //        }
+
+            //        index++;
+            //    }
+            //    else
+            //    {
+            //        // toUpdate:
+            //        var existingIndex = getCollection(this).IndexOf(existing);
+            //        index = (existingIndex > index) ? existingIndex + 1 : index + 1;
+            //        if (existing.IsIgnored())
+            //        {
+            //            continue;
+            //        }
+
+            //        if (getCollection(existing).All(x => !x.IsIgnored()) && !existing.IsMerged())
+            //        {
+            //            if (existing.GetText() != node.GetText())
+            //            {
+            //                existing.ReplaceWith(node.GetText()); // Overwrite
+            //            }
+            //            continue;
+            //        }
+
+            //        existing.MergeWith(node);
+            //    }
+            //}
+
+            //if (!this.IsMerged())
+            //{
+            //    var toRemove = getCollection(this).Where(x => !x.IsIgnored()).Except(getCollection(outputNode)).ToList();
+            //    foreach (var node in toRemove)
+            //    {
+            //        node.Remove();
+            //    }
+            //}
         }
 
         protected virtual void AddFirst(JavaAnnotation node)
         {
-            File.InsertBefore(this, node.GetText());
+            File.InsertBefore(this, node.GetTextWithComments());
         }
 
         protected virtual void AddFirst(JavaNode node)
         {
-            File.InsertBefore(Context.Stop ?? Context.Start, node.GetText());
+            File.InsertBefore(Context.Stop ?? Context.Start, node.GetTextWithComments());
         }
     }
 }

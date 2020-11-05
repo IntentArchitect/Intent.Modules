@@ -10,6 +10,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Java;
 using Intent.Modules.Common.Java.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -33,11 +34,9 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new JavaDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                relativeLocation: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>",
-                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>"
+            return new JavaDefaultFileConfig(
+                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
+                package: $"{OutputTarget.GetPackage()}"
             );
         }
 

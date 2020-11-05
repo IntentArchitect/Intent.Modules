@@ -14,7 +14,7 @@ namespace Intent.Modules.Common.Java.Editor
         protected override void UpdateSourceFile()
         {
             // whitespace coming from interface nodes
-            var overwriteWith = Interfaces.Any() ? $" implements{string.Join(",", Interfaces.Select(x => x.GetText()))}" : "";
+            var overwriteWith = Interfaces.Any() ? $" implements{string.Join(",", Interfaces.Select(x => x.GetTextWithComments()))}" : "";
             ReplaceWith(overwriteWith);
         }
     }
@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.Java.Editor
         protected override void UpdateSourceFile()
         {
             // whitespace coming from interface nodes
-            var overwriteWith = Interfaces.Any() ? $" extends{string.Join(",", Interfaces.Select(x => x.GetText()))}" : "";
+            var overwriteWith = Interfaces.Any() ? $" extends{string.Join(",", Interfaces.Select(x => x.GetTextWithComments()))}" : "";
             ReplaceWith(overwriteWith);
         }
     }

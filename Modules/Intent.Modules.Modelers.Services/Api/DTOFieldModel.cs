@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DTOFieldModel : IHasStereotypes, IMetadataModel
+    public class DTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "DTO-Field";
         protected readonly IElement _element;

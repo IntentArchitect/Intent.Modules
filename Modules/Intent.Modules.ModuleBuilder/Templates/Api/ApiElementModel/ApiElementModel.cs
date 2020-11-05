@@ -55,7 +55,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             
             #line default
             #line hidden
-            this.Write("IHasStereotypes, IMetadataModel\r\n    {\r\n        public ");
+            
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModel.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetInterfaces()));
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    {\r\n        public ");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? "new " : ""));

@@ -16,7 +16,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder
+    public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
     {
         private IList<AssociationEndModel> _associatedElements;
         protected readonly IElement _element;

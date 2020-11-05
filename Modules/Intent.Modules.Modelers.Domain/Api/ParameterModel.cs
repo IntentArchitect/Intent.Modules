@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -10,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ParameterModel : IHasStereotypes, IMetadataModel
+    public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "Parameter";
         protected readonly IElement _element;

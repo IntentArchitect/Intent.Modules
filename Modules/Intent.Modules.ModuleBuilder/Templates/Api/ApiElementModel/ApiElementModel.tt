@@ -17,7 +17,7 @@ using Intent.Metadata.Models;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge)]
-    public class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #>IHasStereotypes, IMetadataModel
+    public class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #><#= GetInterfaces() #>
     {
         public <#= BaseType != null ? "new " : "" #>const string SpecializationType = "<#= Model.Name #>";
         public <#= BaseType != null ? "new " : "" #>const string SpecializationTypeId = "<#= Model.Id #>";

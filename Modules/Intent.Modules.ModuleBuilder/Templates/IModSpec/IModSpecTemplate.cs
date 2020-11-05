@@ -141,6 +141,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 icon.SetValue(ModuleModel.GetModuleSettings().Icon()?.Source ?? "");
             }
+            else
+            {
+                icon.SetValue(OutputTarget.Application.Icon.Source);
+            }
 
             foreach (var template in _templatesToRegister)
             {
