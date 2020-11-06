@@ -33,7 +33,8 @@ namespace Intent.Modules.IdentityServer4.X509CertSigning.Templates.CertificateRe
         public override string TransformText()
         {
             this.Write("using System;\r\nusing System.IO;\r\nusing System.Security.Cryptography.X509Certifica" +
-                    "tes;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+                    "tes;\r\nusing Intent.RoslynWeaver.Attributes;\r\n\r\n[assembly: DefaultIntentManaged(M" +
+                    "ode.Fully)]\r\n\r\nnamespace ");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));

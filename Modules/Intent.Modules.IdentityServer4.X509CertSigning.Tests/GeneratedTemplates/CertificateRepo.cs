@@ -1,12 +1,3 @@
-<#@ template language="C#" inherits="CSharpTemplateBase<object>" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
-<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
-<#@ import namespace="Intent.Templates" #>
-<#@ import namespace="Intent.Metadata.Models" #>
 using System;
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
@@ -14,12 +5,12 @@ using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
-namespace <#= Namespace #>
+namespace Intent.Modules.IdentityServer4.X509CertSigning.Tests.GeneratedTemplates
 {
     /// <summary>
     /// Convenient way to obtain X509 Certificates from various sources
     /// </summary>
-    static class <#= ClassName #>
+    static class CertificateRepo
     {
         public static X509Certificate2 GetFromCertificateStore(
             string findType,
@@ -77,7 +68,7 @@ namespace <#= Namespace #>
 
         public static X509Certificate2 GetEmbeddedCertificate(string resourceName, string password = null)
         {
-            var assembly = typeof(<#= ClassName #>).Assembly;
+            var assembly = typeof(CertificateRepo).Assembly;
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
                 return new X509Certificate2(ReadStream(stream), password);

@@ -183,6 +183,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Ident
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.IdentityServer4.X509CertSigning", "Intent.Modules.IdentityServer4.X509CertSigning\Intent.Modules.IdentityServer4.X509CertSigning.csproj", "{FFF1A74E-FF1B-40C7-ACB7-BDC8BF1C302D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.IdentityServer4.X509CertSigning.Tests", "Intent.Modules.IdentityServer4.X509CertSigning.Tests\Intent.Modules.IdentityServer4.X509CertSigning.Tests.csproj", "{D1EBC7E4-C69F-44B8-9118-8709D7482E1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -501,6 +503,10 @@ Global
 		{FFF1A74E-FF1B-40C7-ACB7-BDC8BF1C302D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FFF1A74E-FF1B-40C7-ACB7-BDC8BF1C302D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FFF1A74E-FF1B-40C7-ACB7-BDC8BF1C302D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1EBC7E4-C69F-44B8-9118-8709D7482E1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1EBC7E4-C69F-44B8-9118-8709D7482E1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1EBC7E4-C69F-44B8-9118-8709D7482E1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1EBC7E4-C69F-44B8-9118-8709D7482E1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -594,6 +600,7 @@ Global
 		{7F3459FC-62F3-40DC-9371-B21E8504FAFA} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 		{E7BC3758-3212-40C1-B559-0D950DF4094E} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{FFF1A74E-FF1B-40C7-ACB7-BDC8BF1C302D} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
+		{D1EBC7E4-C69F-44B8-9118-8709D7482E1B} = {F24A3FC4-85CD-4089-9C1C-0A9DA1900B86}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
