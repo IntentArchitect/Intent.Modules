@@ -1,38 +1,35 @@
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Metadata.Models;
-using Intent.Modules.Common;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Modules.ModuleBuilder.Templates.Common;
-using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate;
-using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial;
+using Intent.Modules.ModuleBuilder.Templates.FileTemplate;
+using Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 
-namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePreProcessedFile
+namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePreProcessedFile
 {
-    public class ProjectItemTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<FileTemplateModel>
+    public class FileTemplatePreProcessedFileRegistrations : FilePerModelTemplateRegistration<FileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public ProjectItemTemplatePreProcessedFileRegistrations(IMetadataManager metadataManager)
+        public FileTemplatePreProcessedFileRegistrations(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
         public override string TemplateId => "Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, FileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, FileTemplateModel model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: ProjectItemTemplateTemplate.TemplateId,
-                partialTemplateId: ProjectItemTemplatePartialTemplate.TemplateId);
+                t4TemplateId: FileTemplateTemplate.TemplateId,
+                partialTemplateId: FileTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<FileTemplateModel> GetModels(IApplication application)

@@ -9,6 +9,8 @@ using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.EntityFramework.Templates.EFMapping;
 using Intent.Templates;
 
@@ -27,9 +29,9 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
             _eventDispatcher = eventDispatcher;
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Project.Application.Name}DbContext".ToCSharpIdentifier(),
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
@@ -103,7 +105,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbContext
 
         private string GetMappingName(ClassModel model)
         {
-            return GetTemplateClassName(EFMappingTemplate.Identifier, model);
+            return GetTypeName(EFMappingTemplate.Identifier, model);
         }
     }
 }

@@ -27,14 +27,14 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentH
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "footer.component",
                 fileExtension: "html",
-                defaultLocationInProject: ""
+                relativeLocation: ""
             );
         }
     }

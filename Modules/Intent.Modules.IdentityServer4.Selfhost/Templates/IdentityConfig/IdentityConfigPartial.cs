@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.IdentityServer4.Decorators;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -26,9 +28,9 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
             AddNugetDependency(NugetPackages.IdentityServer4);
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"IdentityConfig",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

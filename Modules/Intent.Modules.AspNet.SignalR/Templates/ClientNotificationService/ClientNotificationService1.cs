@@ -10,6 +10,7 @@
 namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ClientNotificationService : IntentRoslynProjectItemTemplateBase
+    public partial class ClientNotificationService : CSharpTemplateBase
     {
 #line hidden
         /// <summary>
@@ -33,7 +34,7 @@ namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
         {
             this.Write(" \r\n");
             
-            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
+            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
 
 
 
@@ -43,14 +44,14 @@ namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
             #line hidden
             this.Write("using System;\r\n");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.SignalR\Templates\ClientNotificationService\ClientNotificationService.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

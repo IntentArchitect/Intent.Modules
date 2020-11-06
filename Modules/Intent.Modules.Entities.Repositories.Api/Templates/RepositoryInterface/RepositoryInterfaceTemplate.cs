@@ -11,6 +11,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
 {
     using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -36,14 +37,14 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
                     "m.Linq.Expressions;\r\nusing System.Threading;\r\nusing System.Threading.Tasks;\r\n\r\n[" +
                     "assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\RepositoryInterface\RepositoryInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

@@ -24,7 +24,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.VisualStudio.Projects\Templates\CoreWeb\AppSettings\AppSettingsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class AppSettingsTemplate : IntentProjectItemTemplateBase<object>
+    public partial class AppSettingsTemplate : IntentFileTemplateBase<object>
     {
 #line hidden
         /// <summary>

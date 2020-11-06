@@ -8,6 +8,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
@@ -47,9 +48,9 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
                 : "";
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}",
                 @namespace: $"{FolderBasedNamespace}",
                 relativeLocation: string.Join("/", GetNamespaceParts()));
@@ -61,7 +62,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         //        overwriteBehaviour: OverwriteBehaviour.Always,
         //        fileName: "${Model.Name}",
         //        fileExtension: "cs",
-        //        defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("DTOs")),
+        //        relativeLocation: string.Join("/", GetNamespaceParts().DefaultIfEmpty("DTOs")),
         //        className: "${Model.Name}",
         //        @namespace: "${FolderBasedNamespace}");
         //}

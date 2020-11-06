@@ -11,6 +11,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
 {
     using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -36,21 +37,21 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
                     "\nusing System.Threading.Tasks;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n" +
                     "\r\nnamespace ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("<T> : List<T>, ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PagedResultInterfaceName));
             
             #line default
@@ -59,7 +60,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
                     "nt PageCount { get; private set; }\r\n        public int PageNo { get; private set" +
                     "; }\r\n        public int PageSize { get; private set; }\r\n\r\n        public ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -80,7 +81,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
 
         public ");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -96,7 +97,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
 
         public static async Task<");
             
-            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PagedResultInterfaceName));
             
             #line default
@@ -111,7 +112,7 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.PagedList
                 .ToListAsync();
             return new ");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Repositories\Templates\PagedList\PagedListTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

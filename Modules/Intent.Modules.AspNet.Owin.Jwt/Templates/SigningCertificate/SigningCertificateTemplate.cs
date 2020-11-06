@@ -10,6 +10,7 @@
 namespace Intent.Modules.AspNet.Owin.Jwt.Templates.SigningCertificate
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Intent.Modules.AspNet.Owin.Jwt.Templates.SigningCertificate
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin.Jwt\Templates\SigningCertificate\SigningCertificateTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class SigningCertificateTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class SigningCertificateTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -34,7 +35,7 @@ namespace Intent.Modules.AspNet.Owin.Jwt.Templates.SigningCertificate
             this.Write(" \r\nusing System;\r\nusing System.IO;\r\nusing System.Security.Cryptography.X509Certif" +
                     "icates;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin.Jwt\Templates\SigningCertificate\SigningCertificateTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin.Jwt\Templates\SigningCertificate\SigningCertificateTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

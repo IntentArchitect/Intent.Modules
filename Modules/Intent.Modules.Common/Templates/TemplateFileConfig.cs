@@ -3,23 +3,22 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    public class DefaultFileMetadata : ITemplateFileConfig
+    public class TemplateFileConfig : ITemplateFileConfig
     {
-
-        public DefaultFileMetadata(
-            OverwriteBehaviour overwriteBehaviour,
-            string codeGenType,
+        public TemplateFileConfig(
             string fileName,
             string fileExtension,
-            string defaultLocationInProject = ""
-            )
+            string relativeLocation = "",
+            OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
+            string codeGenType = Common.CodeGenType.Basic
+        )
         {
             CustomMetadata = new Dictionary<string, string>();
             CodeGenType = codeGenType;
             OverwriteBehaviour = overwriteBehaviour;
             FileName = fileName;
             FileExtension = fileExtension;
-            LocationInProject = defaultLocationInProject;
+            LocationInProject = relativeLocation;
         }
 
         public virtual string CodeGenType { get; }

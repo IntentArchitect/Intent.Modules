@@ -1,6 +1,7 @@
 <#@ template language="C#" inherits="CSharpTemplateBase<TemplateRegistrationModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>

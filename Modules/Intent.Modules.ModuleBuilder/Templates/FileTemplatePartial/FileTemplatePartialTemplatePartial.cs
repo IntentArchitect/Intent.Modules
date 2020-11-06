@@ -1,39 +1,37 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
-using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
-using Intent.Templates;
 
-namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial
+namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 {
-    partial class ProjectItemTemplatePartialTemplate : CSharpTemplateBase<FileTemplateModel>, IHasTemplateDependencies
+    partial class FileTemplatePartialTemplate : CSharpTemplateBase<FileTemplateModel>, IHasTemplateDependencies
     {
         public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.Partial";
 
-        public ProjectItemTemplatePartialTemplate(string templateId, IProject project, FileTemplateModel model) : base(templateId, project, model)
+        public FileTemplatePartialTemplate(string templateId, IOutputTarget project, FileTemplateModel model) : base(templateId, project, model)
         {
             AddNugetDependency(NugetPackages.IntentModulesCommon);
         }
 
-        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
-        public string FolderPath => string.Join("/", OutputFolder);
-        public string FolderNamespace => string.Join(".", OutputFolder);
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
+        public IList<string> OutputFolders => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolders);
+        public string FolderNamespace => string.Join(".", OutputFolders);
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
-                className: $"{Model.Name}",
+            return new CSharpFileConfig(
+                className: $"{TemplateName}",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
-                relativeLocation: $"{FolderPath}",
-                fileName: $"{Model.Name}Partial"
-                );
+                fileName: $"{TemplateName}Partial",
+                relativeLocation: $"{FolderPath}");
         }
 
         public string GetTemplateId()

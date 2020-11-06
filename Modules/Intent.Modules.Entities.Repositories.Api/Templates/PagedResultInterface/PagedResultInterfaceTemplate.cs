@@ -11,6 +11,7 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.PagedResultInterfac
 {
     using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -35,14 +36,14 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.PagedResultInterfac
             this.Write("using System.Collections.Generic;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]" +
                     "\r\n\r\nnamespace ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\PagedResultInterface\PagedResultInterfaceTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\PagedResultInterface\PagedResultInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\PagedResultInterface\PagedResultInterfaceTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities.Repositories.Api\Templates\PagedResultInterface\PagedResultInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

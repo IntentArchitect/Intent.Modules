@@ -16,7 +16,7 @@ using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
-    public class WebApiWebConfigFileTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
+    public class WebApiWebConfigFileTemplate : IntentFileTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
     {
         public const string IDENTIFIER = "Intent.VisualStudio.Projects.WebConfig";
 
@@ -59,14 +59,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
             _connectionStrings.Add(@event.GetValue("Name"), new ConnectionStringElement(name: @event.GetValue("Name"), connectionString: @event.GetValue("ConnectionString"), providerName: @event.GetValue("ProviderName")));
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.UserControlledWeave,
                 fileName: "Web",
                 fileExtension: "config",
-                defaultLocationInProject: ""
+                relativeLocation: ""
                 );
         }
 

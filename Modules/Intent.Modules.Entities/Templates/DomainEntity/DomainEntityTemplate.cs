@@ -11,6 +11,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
 {
     using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,14 +35,14 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\n");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -50,21 +51,21 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
                     "ture = Mode.Merge, Body = Mode.Merge, Targets = Targets.Methods, AccessModifiers" +
                     " = AccessModifiers.Public)]\r\n    public partial class ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Constructors(Model)));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
  	foreach (var operation in Model.Operations)
     {
         if (!operation.IsAbstract)
@@ -74,21 +75,21 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             #line hidden
             this.Write("        public ");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EmitOperationReturnType(operation)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetParametersDefinition(operation)));
             
             #line default
@@ -96,7 +97,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             this.Write(")\r\n        {\r\n            throw new NotImplementedException(\"Replace with your im" +
                     "plementation...\");\r\n        }\r\n");
             
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
 		}
         else
         { 
@@ -105,28 +106,28 @@ namespace Intent.Modules.Entities.Templates.DomainEntity
             #line hidden
             this.Write("        public abstract ");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(EmitOperationReturnType(operation)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetParametersDefinition(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Entities\Templates\DomainEntity\DomainEntityTemplate.tt"
 		}
     }
 

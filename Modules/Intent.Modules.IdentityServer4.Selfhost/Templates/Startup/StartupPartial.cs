@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.IdentityServer4.Decorators;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -26,31 +28,31 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.Startup
             AddNugetDependency(NugetPackages.IdentityServer4);
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"Startup",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
         public string GetClientsConfiguration()
         {
-            return $"{GetTemplateClassName(IdentityConfig.IdentityConfig.TemplateId)}.Clients";
+            return $"{GetTypeName(IdentityConfig.IdentityConfig.TemplateId)}.Clients";
         }
 
         public string GetApiResourcesConfiguration()
         {
-            return $"{GetTemplateClassName(IdentityConfig.IdentityConfig.TemplateId)}.ApiResources";
+            return $"{GetTypeName(IdentityConfig.IdentityConfig.TemplateId)}.ApiResources";
         }
 
         public string GetScopesConfiguration()
         {
-            return $"{GetTemplateClassName(IdentityConfig.IdentityConfig.TemplateId)}.Scopes";
+            return $"{GetTypeName(IdentityConfig.IdentityConfig.TemplateId)}.Scopes";
         }
 
         public string GetIdentityResourcesConfiguration()
         {
-            return $"{GetTemplateClassName(IdentityConfig.IdentityConfig.TemplateId)}.IdentityResources";
+            return $"{GetTypeName(IdentityConfig.IdentityConfig.TemplateId)}.IdentityResources";
         }
 
         public string GetIdentityServerServices(int tabSubIndents)

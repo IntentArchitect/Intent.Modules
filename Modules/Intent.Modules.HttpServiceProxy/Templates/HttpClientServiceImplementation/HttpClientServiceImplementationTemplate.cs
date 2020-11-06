@@ -10,6 +10,7 @@
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementat
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class HttpClientServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class HttpClientServiceImplementationTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -45,21 +46,21 @@ using System.Threading.Tasks;
 
 namespace ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetHttpClientServiceInterfaceName()));
             
             #line default
@@ -68,7 +69,7 @@ namespace ");
                     "   private static readonly int TimeoutInSeconds;\r\n\r\n        private static bool " +
                     "_instantiated;\r\n\r\n        private readonly Func<");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetInterceptorInterfaceName()));
             
             #line default
@@ -88,7 +89,7 @@ namespace ");
 
         public HttpClientService(Func<");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceImplementation\HttpClientServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetInterceptorInterfaceName()));
             
             #line default

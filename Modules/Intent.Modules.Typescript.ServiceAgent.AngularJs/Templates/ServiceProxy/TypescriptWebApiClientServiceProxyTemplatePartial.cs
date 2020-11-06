@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript;
@@ -53,9 +54,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             }
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Proxy",
                 relativeLocation: $"wwwroot/App/Proxies/Generated",

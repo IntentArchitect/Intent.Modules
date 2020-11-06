@@ -1,11 +1,13 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.VisualStudio.Projects.Events;
 using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
 {
-    partial class ConsoleAppProgramTemplate : IntentRoslynProjectItemTemplateBase<object>
+    partial class ConsoleAppProgramTemplate : CSharpTemplateBase<object>
     {
         public const string Identifier = "Intent.VisualStudio.Projects.ConsoleApp.Program";
 
@@ -14,21 +16,11 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.ConsoleApp.Program
         {
         }
 
-        public override RoslynMergeConfig ConfigureRoslynMerger()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
-        }
-
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
-        {
-            return new RoslynDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"Program",
-                fileExtension: "cs",
-                defaultLocationInProject: "",
+            return new CSharpFileConfig(
                 className: $"Program",
-                @namespace: "${Project.Name}"
-                );
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
     }
 }

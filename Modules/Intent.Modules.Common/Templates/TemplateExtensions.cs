@@ -72,29 +72,24 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
-        public static string ToKebabCase(this string name)
+        public static string ToSnakeCase(this string name)
         {
-            var sb = new StringBuilder(name);
-            for (int i = 0; i < sb.Length; i++)
-            {
-                var c = sb[i];
-                if (char.IsUpper(c))
-                {
-                    sb.Remove(i, 1);
-                    sb.Insert(i, char.ToLower(c));
-                    if (i != 0 && i < sb.Length - 1)
-                    {
-                        sb.Insert(i, "-");
-                    }
-                }
-            }
-
-            return sb.ToString();
+            return name.ToSpecialCase("_");
         }
 
+        public static string ToKebabCase(this string name)
+        {
+            return name.ToSpecialCase("-");
+        }
 
         public static string ToDotCase(this string name)
         {
+            return name.ToSpecialCase(".");
+        }
+
+
+        private static string ToSpecialCase(this string name, string separator)
+        {
             var sb = new StringBuilder(name);
             for (int i = 0; i < sb.Length; i++)
             {
@@ -105,7 +100,7 @@ namespace Intent.Modules.Common.Templates
                     sb.Insert(i, char.ToLower(c));
                     if (i != 0 && i < sb.Length - 1)
                     {
-                        sb.Insert(i, ".");
+                        sb.Insert(i, separator);
                     }
                 }
             }

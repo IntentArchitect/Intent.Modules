@@ -70,9 +70,9 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentH
         //  }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new HtmlDefaultFileMetadata(
+            return new HtmlFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "header.component",
                 relativeLocation: ""

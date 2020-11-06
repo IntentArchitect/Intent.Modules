@@ -10,6 +10,7 @@
 namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplementation
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Modules.Application.Contracts;
     using Intent.Modelers.Services.Api;
     using System;
@@ -36,7 +37,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
 
 
             
@@ -45,28 +46,28 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             this.Write("\r\nusing System;\r\nusing System.Linq;\r\nusing System.Collections.Generic;\r\nusing Sys" +
                     "tem.Threading.Tasks;\r\nusing Intent.RoslynWeaver.Attributes;\r\n");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetServiceInterfaceName()));
             
             #line default
@@ -74,7 +75,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             this.Write("\r\n    {\r\n        private readonly IServiceProvider _serviceProvider;\r\n\r\n        p" +
                     "ublic ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -82,7 +83,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             this.Write("(IServiceProvider serviceProvider)\r\n        { \r\n            _serviceProvider = se" +
                     "rviceProvider;\r\n        }\r\n\r\n");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
     foreach (var o in Model.Operations)
     {
 
@@ -92,42 +93,42 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             #line hidden
             this.Write("        public ");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationReturnType(o)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationDefinitionParameters(o)));
             
             #line default
             #line hidden
             this.Write(")\r\n        {\r\n            var sch = (");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetHandlerClassName(o)));
             
             #line default
             #line hidden
             this.Write(")_serviceProvider.GetService(typeof(");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetHandlerClassName(o)));
             
             #line default
             #line hidden
             this.Write("));\r\n            ");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
 
         if (o.TypeReference.Element != null)
         {
@@ -137,7 +138,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             #line hidden
             this.Write("return ");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
 
         }
 
@@ -145,21 +146,21 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             #line default
             #line hidden
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(o.IsAsync() ? "await " : ""));
             
             #line default
             #line hidden
             this.Write("sch.Handle(");
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationCallParameters(o)));
             
             #line default
             #line hidden
             this.Write(");\r\n        }\r\n\r\n");
             
-            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.ServiceCallHandlers\Templates\ServiceImplementation\ServiceImplementationTemplate.tt"
         
     }
 

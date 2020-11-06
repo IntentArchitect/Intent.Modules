@@ -3,6 +3,8 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
@@ -19,14 +21,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
         {
         }
 
-        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
-        public string FolderPath => string.Join("/", OutputFolder);
-        public string FolderNamespace => string.Join(".", OutputFolder);
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
+        public IList<string> OutputFolders => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolders);
+        public string FolderNamespace => string.Join(".", OutputFolders);
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
-                className: $"{Model.Name}Registration",
+            return new CSharpFileConfig(
+                className: $"{TemplateName}Registration",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
                 relativeLocation: $"{FolderPath}");
         }
@@ -43,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 
         private string GetTemplateNameForTemplateId()
         {
-            return Model.Name.Replace("Registrations", "Template");
+            return TemplateName;
         }
     }
 }

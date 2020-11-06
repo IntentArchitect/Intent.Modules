@@ -10,6 +10,7 @@
 namespace Intent.Modules.HttpServiceProxy.Templates.Exception
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Exception
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class WebApiClientServiceProxyRemoteExceptionTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class WebApiClientServiceProxyRemoteExceptionTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -34,21 +35,21 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Exception
             this.Write(" \r\nusing System;\r\nusing System.Net;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully" +
                     ")]\r\n\r\nnamespace ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : Exception\r\n    {\r\n        public ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\Exception\WebApiClientServiceProxyRemoteExceptionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

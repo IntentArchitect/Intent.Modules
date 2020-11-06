@@ -43,7 +43,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                     return;
                 }
 
-                _components.Add(GetTemplateClassName(@event.GetValue(AngularComponentCreatedEvent.ModelId)));
+                _components.Add(GetTypeName(@event.GetValue(AngularComponentCreatedEvent.ModelId)));
             });
 
             project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
@@ -53,7 +53,7 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
                     return;
                 }
 
-                var template = GetTemplateClassName(@event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                var template = GetTypeName(@event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
                 _providers.Add(template);
             });
 
@@ -69,8 +69,8 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
             });
         }
 
-        public string AppRoutingModuleClassName => GetTemplateClassName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
-        public string CoreModule => GetTemplateClassName(CoreModuleTemplate.TemplateId);
+        public string AppRoutingModuleClassName => GetTypeName(AppRoutingModuleTemplate.AppRoutingModuleTemplate.TemplateId);
+        public string CoreModule => GetTypeName(CoreModuleTemplate.TemplateId);
 
         public string GetImports()
         {
@@ -109,9 +109,9 @@ namespace Intent.Modules.Angular.Templates.App.AppModuleTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"app.module",
                 relativeLocation: $"",

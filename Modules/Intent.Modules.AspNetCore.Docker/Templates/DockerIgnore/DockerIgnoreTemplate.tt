@@ -1,4 +1,4 @@
-﻿<#@ template  debug="true"  inherits="IntentProjectItemTemplateBase<object>" #>
+﻿<#@ template  debug="true"  inherits="IntentFileTemplateBase<object>" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ output extension="" #>
 bin\

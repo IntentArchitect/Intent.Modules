@@ -18,7 +18,7 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework\Templates\DbMigrationsReadMe\DbMigrationsReadMeTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DbMigrationsReadMeTemplate : IntentProjectItemTemplateBase<object>
+    public partial class DbMigrationsReadMeTemplate : IntentFileTemplateBase<object>
     {
 #line hidden
         /// <summary>

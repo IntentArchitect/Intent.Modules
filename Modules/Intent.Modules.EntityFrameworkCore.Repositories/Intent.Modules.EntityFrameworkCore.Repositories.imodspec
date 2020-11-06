@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.EntityFrameworkCore.Repositories</id>
-  <version>3.0.0-beta.1</version>
+  <version>3.0.0-beta.2</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Repository Patterns for Entity Framework Core.</summary>
   <description>Repository Patterns for Entity Framework Core.</description>
@@ -31,11 +31,11 @@
   <decorators>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.1"/>
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.1"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1"/>
-    <dependency id="Intent.Entities.Repositories.Api" version="3.0.0-beta.1"/>
-    <dependency id="Intent.EntityFrameworkCore" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Common" version="3.0.0-beta.2"/>
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.2"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.2"/>
+    <dependency id="Intent.Entities.Repositories.Api" version="3.0.0-beta.2"/>
+    <dependency id="Intent.EntityFrameworkCore" version="3.0.0-beta.2"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

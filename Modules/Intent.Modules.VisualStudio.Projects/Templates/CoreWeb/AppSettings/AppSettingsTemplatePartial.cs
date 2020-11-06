@@ -14,7 +14,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
 {
-    partial class AppSettingsTemplate : IntentProjectItemTemplateBase<object>, ITemplate
+    partial class AppSettingsTemplate : IntentFileTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.AppSettings";
         private readonly IDictionary<string, ConnectionStringElement> _connectionStrings = new Dictionary<string, ConnectionStringElement>();
@@ -57,14 +57,13 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.AppSettings
                 : JsonConvert.DeserializeObject(TransformText());
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "appsettings",
-                fileExtension: "json",
-                defaultLocationInProject: ""
+                fileExtension: "json"
             );
         }
 

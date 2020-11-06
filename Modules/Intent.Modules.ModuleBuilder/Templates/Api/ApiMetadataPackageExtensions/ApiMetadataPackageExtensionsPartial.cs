@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -22,16 +23,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataPackageExtension
         {
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: "ApiMetadataPackageExtensions",
                 @namespace: Model.First().ParentModule.ApiNamespace);
         }
 
         private string GetClassName(PackageSettingsModel packageSettings)
         {
-            return GetTemplateClassName(ApiPackageModel.ApiPackageModel.TemplateId, packageSettings);
+            return GetTypeName(ApiPackageModel.ApiPackageModel.TemplateId, packageSettings);
         }
 
     }

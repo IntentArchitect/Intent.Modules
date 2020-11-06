@@ -4,6 +4,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Java.Api" #>
@@ -32,9 +33,9 @@ namespace <#= Namespace #>
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new JavaDefaultFileConfig(
+            return new JavaFileConfig(
                 className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
                 package: $"{OutputTarget.GetPackage()}"
             );

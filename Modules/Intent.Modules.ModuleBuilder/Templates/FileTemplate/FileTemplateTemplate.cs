@@ -1,36 +1,38 @@
-using Intent.Metadata.Models;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Templates;
 
-namespace Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplate
+namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
 {
-    public class ProjectItemTemplateTemplate : IntentProjectItemTemplateBase<FileTemplateModel>
+    public class FileTemplateTemplate : IntentFileTemplateBase<FileTemplateModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.T4Template";
 
-        public ProjectItemTemplateTemplate(string templateId, IProject project, FileTemplateModel model) : base(templateId, project, model)
+        public FileTemplateTemplate(string templateId, IOutputTarget project, FileTemplateModel model) : base(templateId, project, model)
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
+        public IList<string> OutputFolders => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public string FolderPath => string.Join("/", OutputFolders);
+
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Model.Name}",
+                fileName: $"{TemplateName}",
                 fileExtension: "tt",
-                defaultLocationInProject: $"{FolderPath}");
+                relativeLocation: $"{FolderPath}");
         }
 
-        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
-        public string FolderPath => string.Join("/", OutputFolder);
 
         public override string TransformText()
         {

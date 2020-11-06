@@ -8,6 +8,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Entities.Templates.DomainEntityState;
 
@@ -33,9 +34,9 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             Types.AddClassTypeSource(CSharpTypeSource.Create(ExecutionContext, DomainEntityInterfaceTemplate.Identifier), OPERATIONS_CONTEXT);
         }
         
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"I{Model.Name}",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

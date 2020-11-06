@@ -9,6 +9,7 @@
 // ------------------------------------------------------------------------------
 namespace Intent.Modules.UserContext.Templates.UserContextStatic
 {
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Modules.Common.Templates;
     using System;
     using System.IO;
@@ -23,7 +24,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextStatic
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class UserContextStaticTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class UserContextStaticTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -33,7 +34,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextStatic
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
 
 
 
@@ -44,7 +45,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextStatic
             this.Write("using Intent.Framework;\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespac" +
                     "e ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextStatic\UserContextStaticTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

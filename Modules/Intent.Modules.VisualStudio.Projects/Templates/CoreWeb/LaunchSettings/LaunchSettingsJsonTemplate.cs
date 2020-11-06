@@ -12,7 +12,7 @@ using Newtonsoft.Json.Linq;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
 {
-    public class LaunchSettingsJsonTemplate : IntentProjectItemTemplateBase<object>, ITemplate
+    public class LaunchSettingsJsonTemplate : IntentFileTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.CoreWeb.LaunchSettings";
 
@@ -114,14 +114,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.CoreWeb.LaunchSettings
             });
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "launchsettings",
                 fileExtension: "json",
-                defaultLocationInProject: "Properties"
+                relativeLocation: "Properties"
                 );
         }
     }

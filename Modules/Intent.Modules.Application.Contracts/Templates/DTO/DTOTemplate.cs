@@ -11,6 +11,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
 {
     using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -24,7 +25,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DTOTemplate : Intent.Modules.Common.Templates.CSharpTemplateBase<DTOModel>
+    public partial class DTOTemplate : CSharpTemplateBase<DTOModel>
     {
 #line hidden
         /// <summary>
@@ -34,21 +35,21 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
         {
             this.Write(" \r\nusing System;\r\nusing System.Collections.Generic;\r\n");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
  
     foreach (var line in Model.GetXmlDocLines())
     {
@@ -58,14 +59,14 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             #line hidden
             this.Write("    /// ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(line));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
 
     }
 
@@ -74,102 +75,102 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             #line hidden
             this.Write("    ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassAttributes()));
             
             #line default
             #line hidden
             this.Write("\r\n    public class ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("()\r\n        {\r\n        }\r\n\r\n        public static ");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
             
             #line default
             #line hidden
             this.Write(" Create");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ConstructorParameters()));
             
             #line default
             #line hidden
             this.Write(") \r\n        {\r\n            return new ");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GenericTypes));
             
             #line default
             #line hidden
             this.Write("\r\n            {\r\n");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
  foreach (var field in Model.Fields) {
             
             #line default
             #line hidden
             this.Write("                ");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" = ");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToCamelCase(reservedWordEscape: true)));
             
             #line default
             #line hidden
             this.Write(",\r\n");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
 }
             
             #line default
             #line hidden
             this.Write("            };\r\n        }\r\n");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
 
     foreach (var field in Model.Fields)
     {
@@ -179,7 +180,7 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             #line hidden
             this.Write("\r\n");
             
-            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
 
         foreach (var line in field.GetXmlDocLines())
         {
@@ -189,14 +190,14 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             #line hidden
             this.Write("        /// ");
             
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(line));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
 
         }
 
@@ -205,28 +206,28 @@ namespace Intent.Modules.Application.Contracts.Templates.DTO
             #line hidden
             this.Write("        ");
             
-            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(PropertyAttributes(field)));
             
             #line default
             #line hidden
             this.Write("\r\n        public ");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeInfo(field.TypeReference)));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(" {get; set;}\r\n");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts\Templates\DTO\DTOTemplate.tt"
 
     }
 

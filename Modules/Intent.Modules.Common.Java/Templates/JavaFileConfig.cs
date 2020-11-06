@@ -3,9 +3,9 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Java.Templates
 {
-    public class JavaDefaultFileConfig : DefaultFileMetadata
+    public class JavaFileConfig : TemplateFileConfig
     {
-        public JavaDefaultFileConfig(
+        public JavaFileConfig(
             string className,
             string package,
             string relativeLocation = "",
@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.Java.Templates
                 codeGenType: codeGenType, 
                 fileName: fileName ?? className, 
                 fileExtension: fileExtension,
-                defaultLocationInProject: relativeLocation)
+                relativeLocation: relativeLocation)
         {
             if (!string.IsNullOrWhiteSpace(className))
             {

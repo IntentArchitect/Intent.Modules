@@ -14,14 +14,14 @@ namespace Intent.Modules.Typescript.Config.Templates.TypescriptDefinitelyTypedRe
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
-                codeGenType: CodeGenType.Basic,
+            return new TemplateFileConfig(
                 fileName: "_references",
                 fileExtension: "ts",
-                defaultLocationInProject: "wwwroot/App"
+                relativeLocation: "wwwroot/App",
+                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                codeGenType: CodeGenType.Basic
                 );
         }
     }

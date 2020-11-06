@@ -10,6 +10,7 @@
 namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     
     /// <summary>
@@ -29,21 +30,21 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
             this.Write("using Intent.RoslynWeaver.Attributes;\r\nusing System;\r\nusing System.Collections.Ge" +
                     "neric;\r\nusing System.Linq;\r\n");
             
-            #line 9 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
+            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\ExceptionHandlerFilter\WebApiFilterTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

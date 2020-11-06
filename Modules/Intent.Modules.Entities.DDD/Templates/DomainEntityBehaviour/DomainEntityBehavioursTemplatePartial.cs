@@ -8,6 +8,7 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
@@ -28,9 +29,9 @@ namespace Intent.Modules.Entities.DDD.Templates.DomainEntityBehaviour
 
         public string ClassStateName => Model.Name;
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"I{Model.Name}Behaviours",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

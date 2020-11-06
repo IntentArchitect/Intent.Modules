@@ -27,9 +27,9 @@ namespace Intent.Modules.Common.Sql.Templates
         }
     }
 
-    public class SqlFileConfiguration : DefaultFileMetadata
+    public class SqlFileConfig : TemplateFileConfig
     {
-        public SqlFileConfiguration(
+        public SqlFileConfig(
                     OverwriteBehaviour overwriteBehaviour,
                     string fileName,
                     string relativeLocation,
@@ -40,7 +40,7 @@ namespace Intent.Modules.Common.Sql.Templates
                   codeGenType: codeGenType, 
                   fileName: fileName, 
                   fileExtension: fileExtension,
-                  defaultLocationInProject: relativeLocation)
+                  relativeLocation: relativeLocation)
         {
         }
     }

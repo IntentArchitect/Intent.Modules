@@ -7,6 +7,7 @@ using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.UnityConfig;
@@ -14,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 {
-    partial class CSharpIpcReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies
+    partial class CSharpIpcReceivingProxyTemplate : CSharpTemplateBase<ServiceModel>, ITemplate, ITemplatePostCreationHook, IHasTemplateDependencies, IHasNugetDependencies
     {
         public const string Identifier = "Intent.Electron.IpcProxy.CSharpIpcReceivingProxy";
 
@@ -29,13 +30,13 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             return new RoslynMergeConfig(new TemplateMetadata(Identifier, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}NodeIpcProxy",
                 fileExtension: "cs",
-                defaultLocationInProject: @"NodeIpcProxies/Generated",
+                relativeLocation: @"NodeIpcProxies/Generated",
                 className: $"{Model.Name}NodeIpcProxy",
                 @namespace: "${Project.ProjectName}");
         }

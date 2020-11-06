@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Api;
@@ -28,9 +30,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}Registration",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
                 relativeLocation: $"{FolderPath}");
@@ -42,7 +44,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
         //        overwriteBehaviour: OverwriteBehaviour.Always,
         //        fileName: "${Model.Name}Registration",
         //        fileExtension: "cs",
-        //        defaultLocationInProject: "${FolderPath}/${Model.Name}",
+        //        relativeLocation: "${FolderPath}/${Model.Name}",
         //        className: "${Model.Name}Registration",
         //        @namespace: "${Project.Name}.${FolderNamespace}.${Model.Name}"
         //    );

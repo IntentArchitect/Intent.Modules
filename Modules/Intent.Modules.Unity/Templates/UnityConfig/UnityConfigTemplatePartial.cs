@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager;
@@ -27,9 +29,9 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
 
         public IEnumerable<IProject> ApplicationProjects => Project.Application.Projects;
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"UnityConfig",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

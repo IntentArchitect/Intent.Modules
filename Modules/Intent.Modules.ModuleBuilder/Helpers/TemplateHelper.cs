@@ -1,7 +1,7 @@
 ﻿using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Templates.ProjectItemTemplatePartial;
+using Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
 {
     public static class TemplateHelper
     {
-        public static string GetExistingTemplateContent<T>(IntentProjectItemTemplateBase<T> template)
+        public static string GetExistingTemplateContent<T>(IntentFileTemplateBase<T> template)
         {
             var fileLocation = template.FileMetadata.GetFullLocationPathWithFileName();
 
@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Helpers
             return _templateInheritsTagRegex.Replace(templateContent, $"${{begin}}{inheritType}${{end}}");
         }
 
-        //    public static IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencyInfos(IProjectItemTemplate template, IModuleBuilderElement classRepresentingTemplate, IEnumerable<IModuleBuilderElement> otherTemplateClasses)
+        //    public static IReadOnlyCollection<TemplateDependencyInfo> GetTemplateDependencyInfos(IFileTemplate template, IModuleBuilderElement classRepresentingTemplate, IEnumerable<IModuleBuilderElement> otherTemplateClasses)
         //    {
         //        var infos = GetTemplateDependencyNames(classRepresentingTemplate)
         //            .Where(p => !string.IsNullOrEmpty(p))
@@ -43,13 +43,13 @@ namespace Intent.Modules.ModuleBuilder.Helpers
         //            {
         //                if (s.Type == ModuleBuilderElementType.CSharpTemplate)
         //                {
-        //                    var templateInstance = template.Project.FindTemplateInstance<RoslynProjectItemTemplatePartialTemplate>(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
+        //                    var templateInstance = template.Project.FindTemplateInstance<RoslynFileTemplatePartialTemplate>(RoslynFileTemplatePartialTemplate.TemplateId, s);
         //                    return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetModelTypeName(), "IHasClassDetails");
         //                }
         //                else if (s.Type == ModuleBuilderElementType.FileTemplate)
         //                {
-        //                    var templateInstance = template.Project.FindTemplateInstance<ProjectItemTemplatePartialTemplate>(ProjectItemTemplatePartialTemplate.TemplateId, s);
-        //                    return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetModelTypeName(), $"IntentProjectItemTemplateBase<{templateInstance.Model.GetModelTypeName()}>");
+        //                    var templateInstance = template.Project.FindTemplateInstance<FileTemplatePartialTemplate>(FileTemplatePartialTemplate.TemplateId, s);
+        //                    return new TemplateDependencyInfo(s.Name, $"{templateInstance.NormalizeNamespace(templateInstance.FullTypeName())}.TemplateId", templateInstance.Model.GetModelTypeName(), $"IntentFileTemplateBase<{templateInstance.Model.GetModelTypeName()}>");
         //                }
         //                return null;
         //            })
@@ -70,11 +70,11 @@ namespace Intent.Modules.ModuleBuilder.Helpers
         //            {
         //                if (s.Type == ModuleBuilderElementType.CSharpTemplate)
         //                {
-        //                    return TemplateDependency.OnModel(RoslynProjectItemTemplatePartialTemplate.TemplateId, s);
+        //                    return TemplateDependency.OnModel(RoslynFileTemplatePartialTemplate.TemplateId, s);
         //                }
         //                else if (s.Type == ModuleBuilderElementType.FileTemplate)
         //                {
-        //                    return TemplateDependency.OnModel(ProjectItemTemplatePartialTemplate.TemplateId, s);
+        //                    return TemplateDependency.OnModel(FileTemplatePartialTemplate.TemplateId, s);
         //                }
         //                return null;
         //            })

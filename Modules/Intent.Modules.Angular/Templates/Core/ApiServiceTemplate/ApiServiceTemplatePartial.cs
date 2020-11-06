@@ -39,9 +39,9 @@ namespace Intent.Modules.Angular.Templates.Core.ApiServiceTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "api.service",
                 relativeLocation: "",

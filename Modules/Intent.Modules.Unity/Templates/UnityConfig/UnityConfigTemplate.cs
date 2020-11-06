@@ -10,6 +10,7 @@
 namespace Intent.Modules.Unity.Templates.UnityConfig
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,28 +35,28 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
             this.Write(" \r\nusing System;\r\nusing System.Linq;\r\nusing System.Collections.Generic;\r\nusing Un" +
                     "ity;\r\nusing Unity.RegistrationByConvention;\r\n");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetUsingsFromDecorators()));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -102,28 +103,28 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
                 .Where(x => 
 ");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
   foreach(var project in ApplicationProjects) { 
             
             #line default
             #line hidden
             this.Write("                            ");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project == ApplicationProjects.First() ? "" : "|| "));
             
             #line default
             #line hidden
             this.Write("x.GetName().Name.Equals(\"");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(project.Name));
             
             #line default
             #line hidden
             this.Write("\") \r\n");
             
-            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
   } 
             
             #line default
@@ -140,7 +141,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
         {
             ");
             
-            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityConfig\UnityConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
             
             #line default

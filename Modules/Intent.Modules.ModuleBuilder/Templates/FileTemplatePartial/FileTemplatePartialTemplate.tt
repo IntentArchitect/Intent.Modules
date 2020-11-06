@@ -1,6 +1,7 @@
 <#@ template language="C#" inherits="CSharpTemplateBase<FileTemplateModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Helpers" #>
@@ -32,14 +33,11 @@ namespace <#= Namespace #>
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
+            return new DefaultFileConfig(
                 fileName: $"<#= Model.IsFilePerModelTemplateRegistration()  ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                fileExtension: "<#= Model.GetFileSettings().FileExtension() #>",
-                defaultLocationInProject: "<#= Model.IsFilePerModelTemplateRegistration()  ? Model.Name.Replace("Template", "") : "" #>"
+                fileExtension: "<#= Model.GetFileSettings().FileExtension() #>"
             );
         }
 <#  if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { #>

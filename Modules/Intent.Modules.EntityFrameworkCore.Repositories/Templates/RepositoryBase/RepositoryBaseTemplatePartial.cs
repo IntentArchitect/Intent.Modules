@@ -3,6 +3,8 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
@@ -22,12 +24,12 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.RepositoryBa
         {
         }
 
-        public string RepositoryInterfaceName => GetTemplateClassName(RepositoryInterfaceTemplate.Identifier);
-        public string PagedListClassName => GetTemplateClassName(PagedListTemplate.Identifier);
+        public string RepositoryInterfaceName => GetTypeName(RepositoryInterfaceTemplate.Identifier);
+        public string PagedListClassName => GetTypeName(PagedListTemplate.Identifier);
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"RepositoryBase",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

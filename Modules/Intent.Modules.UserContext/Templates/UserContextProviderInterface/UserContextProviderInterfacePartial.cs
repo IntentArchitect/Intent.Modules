@@ -5,11 +5,12 @@ using Intent.Modules.UserContext.Templates.UserContextInterface;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.UserContext.Templates.UserContextProviderInterface
 {
-    partial class UserContextProviderInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies
+    partial class UserContextProviderInterfaceTemplate : CSharpTemplateBase<object>, ITemplate, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.UserContext.UserContextProviderInterface";
 
@@ -24,13 +25,13 @@ namespace Intent.Modules.UserContext.Templates.UserContextProviderInterface
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                        overwriteBehaviour: OverwriteBehaviour.Always,
                        fileName: $"IUserContextProvider",
                        fileExtension: "cs",
-                       defaultLocationInProject: "Providers",
+                       relativeLocation: "Providers",
                        className: "IUserContextProvider",
                        @namespace: "${Project.ProjectName}"
                 );

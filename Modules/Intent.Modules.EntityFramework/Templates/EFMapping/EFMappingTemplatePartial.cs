@@ -5,6 +5,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
@@ -23,7 +25,7 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
 
         public string GetEntityName(ClassModel model)
         {
-            return GetTemplateClassName(GetMetadata().CustomMetadata["Entity Template Id"], model);
+            return GetTypeName(GetMetadata().CustomMetadata["Entity Template Id"], model);
         }
 
         public bool UseForeignKeys
@@ -54,9 +56,9 @@ namespace Intent.Modules.EntityFramework.Templates.EFMapping
             }
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}Mapping",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

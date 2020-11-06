@@ -10,6 +10,7 @@
 namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -33,7 +34,7 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
 
 
 
@@ -44,14 +45,14 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing Intent.Framework.Core.Con" +
                     "text;\r\nusing Unity.Lifetime;\r\n");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -65,7 +66,7 @@ namespace Intent.Modules.Unity.Templates.PerServiceCallLifetimeManager
     /// </summary>
     public class ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\PerServiceCallLifetimeManager\PerServiceCallLifetimeManagerTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

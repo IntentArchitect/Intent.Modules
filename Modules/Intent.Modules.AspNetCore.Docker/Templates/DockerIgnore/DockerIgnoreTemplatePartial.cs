@@ -5,7 +5,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Docker.Templates.DockerIgnore
 {
-    partial class DockerIgnoreTemplate : IntentProjectItemTemplateBase<object>, ITemplate
+    partial class DockerIgnoreTemplate : IntentFileTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.AspNetCore.DockerIgnore";
 
@@ -16,14 +16,14 @@ namespace Intent.Modules.AspNetCore.Docker.Templates.DockerIgnore
         }
 
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: ".dockerignore",
                 fileExtension: "",
-                defaultLocationInProject: ""
+                relativeLocation: ""
                 );
         }
     }

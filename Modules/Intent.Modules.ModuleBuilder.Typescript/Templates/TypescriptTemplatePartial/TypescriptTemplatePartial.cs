@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.ModuleBuilder.TypeScript.Api;
@@ -36,28 +37,28 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                     "mon.Templates;\r\nusing Intent.Modules.Common.TypeScript.Templates;\r\nusing Intent." +
                     "RoslynWeaver.Attributes;\r\nusing Intent.Templates;\r\n");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : ""));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : TypeScriptTemplateBase<");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -65,21 +66,21 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
                     "teId = \"");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        [IntentInitialGen]\r\n        public ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IOutputTarget outputTarget, ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -89,28 +90,20 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $""");
+            return new TypeScriptFileConfig(
+                className: $""");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name.ToKebabCase()}" : Model.Name.Replace("Template", "").ToDotCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
-            this.Write("\",\r\n                relativeLocation: \"");
+            this.Write("\"\r\n                fileName: $\"");
             
             #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "").ToKebabCase() : ""));
-            
-            #line default
-            #line hidden
-            this.Write("\",\r\n                className: $\"");
-            
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Typescript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name.ToKebabCase()}" : Model.Name.Replace("Template", "").ToDotCase()));
             
             #line default
             #line hidden

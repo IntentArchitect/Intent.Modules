@@ -22,7 +22,7 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentC
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Angular.Layout\Templates\Shared\Footer\FooterComponentCssTemplate\FooterComponentCssTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class FooterComponentCssTemplate : IntentProjectItemTemplateBase<object>
+    public partial class FooterComponentCssTemplate : IntentTemplateBase<object>
     {
 #line hidden
         /// <summary>

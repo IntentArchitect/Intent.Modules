@@ -4,6 +4,7 @@
 <#@ import namespace="System.Collections.Generic" #> 
 <#@ import namespace="Intent.Modelers.Services.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#=DependencyUsings#>
 using System.Runtime.Serialization;
 using AutoMapper;

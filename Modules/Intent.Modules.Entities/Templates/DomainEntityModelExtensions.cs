@@ -6,6 +6,7 @@ using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Entities.Templates
@@ -38,7 +39,7 @@ namespace Intent.Modules.Entities.Templates
         //    return attribute.Type.ConvertType();
         //}
 
-        public static string ConvertType<T>(this IntentRoslynProjectItemTemplateBase<T> template, ITypeReference type, string context = null, string collectionType = "IEnumerable<{0}>")
+        public static string ConvertType<T>(this CSharpTemplateBase<T> template, ITypeReference type, string context = null, string collectionType = "IEnumerable<{0}>")
         {
             var returnType = context != null ? template.Types.InContext(context).Get(type, collectionType) : template.Types.Get(type, collectionType);
             //if (type.IsCollection && type.Type != ReferenceType.ClassType) // GCB - ClassType automatically adds the collectiont type. This disparity is a smell..

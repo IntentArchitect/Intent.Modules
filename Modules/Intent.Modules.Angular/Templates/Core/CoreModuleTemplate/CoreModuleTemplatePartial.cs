@@ -26,13 +26,12 @@ namespace Intent.Modules.Angular.Templates.Core.CoreModuleTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
+            return new TypeScriptFileConfig(
                 fileName: "core.module",
-                relativeLocation: "",
-                className: "CoreModule"
+                className: "CoreModule",
+                relativeLocation: ""
             );
         }
 

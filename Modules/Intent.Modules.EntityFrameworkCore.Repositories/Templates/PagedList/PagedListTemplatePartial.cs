@@ -1,6 +1,8 @@
 ﻿using Intent.Engine;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Entities.Repositories.Api.Templates.PagedResultInterface;
@@ -17,11 +19,11 @@ namespace Intent.Modules.EntityFrameworkCore.Repositories.Templates.PagedList
         {
         }
 
-        public string PagedResultInterfaceName => GetTemplateClassName(PagedResultInterfaceTemplate.Identifier);
+        public string PagedResultInterfaceName => GetTypeName(PagedResultInterfaceTemplate.Identifier);
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"PagedList",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

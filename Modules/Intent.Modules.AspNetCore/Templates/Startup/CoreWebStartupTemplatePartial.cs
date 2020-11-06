@@ -7,6 +7,8 @@ using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.VisualStudio.Projects;
 using Intent.Templates;
 
@@ -198,9 +200,9 @@ namespace Intent.Modules.AspNetCore.Templates.Startup
             }
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"Startup",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

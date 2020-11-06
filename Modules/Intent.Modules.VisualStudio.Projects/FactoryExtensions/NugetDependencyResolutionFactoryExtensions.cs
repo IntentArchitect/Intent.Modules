@@ -8,6 +8,7 @@ using System;
 using System.ComponentModel;
 using System.Linq;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;

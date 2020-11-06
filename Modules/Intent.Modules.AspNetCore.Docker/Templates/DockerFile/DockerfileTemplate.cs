@@ -18,7 +18,7 @@ namespace Intent.Modules.AspNetCore.Docker.Templates.DockerFile
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.Docker\Templates\DockerFile\DockerfileTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DockerfileTemplate : IntentProjectItemTemplateBase<object>
+    public partial class DockerfileTemplate : IntentFileTemplateBase<object>
     {
 #line hidden
         /// <summary>

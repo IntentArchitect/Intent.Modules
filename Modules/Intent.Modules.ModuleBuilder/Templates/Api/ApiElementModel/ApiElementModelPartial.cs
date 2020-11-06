@@ -8,6 +8,7 @@ using Intent.Templates;
 using System.Collections.Generic;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -34,15 +35,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.ApiModelName}",
                 @namespace: Model.ParentModule.ApiNamespace);
         }
 
         public string BaseType => Model.GetInheritedType() != null
-            ? GetTemplateClassName(TemplateId, Model.GetInheritedType().Id, throwIfNotFound: false)
+            ? GetTypeName(TemplateId, Model.GetInheritedType().Id, throwIfNotFound: false)
                 ?? $"{Model.GetInheritedType().Name.ToCSharpIdentifier()}Model"
             : null;
 

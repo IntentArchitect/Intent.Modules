@@ -10,6 +10,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Entities.Templates.DomainEntityState
@@ -32,9 +33,9 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
                                              ?? $"I{Model.Name}";
 
         
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}",
                 @namespace: $"{OutputTarget.GetNamespace()}",
                 fileName: $"{Model.Name}State");

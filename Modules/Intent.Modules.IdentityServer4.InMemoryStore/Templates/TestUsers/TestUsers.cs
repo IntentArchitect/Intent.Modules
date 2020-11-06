@@ -13,6 +13,7 @@ namespace Intent.Modules.IdentityServer4.InMemoryStore.Templates.TestUsers
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using System;
@@ -35,14 +36,14 @@ namespace Intent.Modules.IdentityServer4.InMemoryStore.Templates.TestUsers
                     "ic;\r\nusing System.Security.Claims;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully" +
                     ")]\r\n\r\nnamespace ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.InMemoryStore\Templates\TestUsers\TestUsers.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.InMemoryStore\Templates\TestUsers\TestUsers.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.InMemoryStore\Templates\TestUsers\TestUsers.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.InMemoryStore\Templates\TestUsers\TestUsers.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

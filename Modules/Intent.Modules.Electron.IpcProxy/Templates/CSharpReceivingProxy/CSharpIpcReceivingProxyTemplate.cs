@@ -10,6 +10,7 @@
 namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Modelers.Services.Api;
     using System;
     
@@ -19,7 +20,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class CSharpIpcReceivingProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>
+    public partial class CSharpIpcReceivingProxyTemplate : CSharpTemplateBase<ServiceModel>
     {
 #line hidden
         /// <summary>
@@ -31,28 +32,28 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
                     "m.Threading.Tasks;\r\nusing Newtonsoft.Json;\r\nusing Newtonsoft.Json.Serialization;" +
                     "\r\nusing Unity;\r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : IInvokable\r\n    {\r\n        private readonly I");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
@@ -60,7 +61,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             this.Write(" _appService;\r\n        private readonly JsonSerializerSettings _jsonSerializerSet" +
                     "tings;\r\n\r\n        public ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -68,7 +69,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             this.Write("()\r\n        {\r\n            _appService = UnityConfig.GetConfiguredContainer().Res" +
                     "olve<I");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
@@ -94,7 +95,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
                     {
 ");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
 
                         // An exception gets thrown if "null" is returned, so we always wrap everthing up in an object and 
                         // then on the receiving side we always read the "response" property as necessary. 
@@ -106,7 +107,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             #line hidden
             this.Write("                        case nameof(");
             
-            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
@@ -114,14 +115,14 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             this.Write("):\r\n                            return JsonConvert.SerializeObject(new\r\n         " +
                     "                   {\r\n                                Response = ");
             
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(methodParameters)\r\n                            }, _jsonSerializerSettings);\r\n");
             
-            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
 
                         } // foreach(var operation in Model.Operations)
 
@@ -132,7 +133,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
                     "($\"Unknown method: {methodName}\");\r\n                    }\r\n                }\r\n  " +
                     "              catch (Exception e)\r\n                {");
             
-            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
  
                     // Sometimes there is a StackOverflow exception when we try to send 
                     // some exceptions back to the client, so we just wrap all exceptions
@@ -146,7 +147,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             this.Write("                    throw new SerializableException(e);\r\n                }\r\n     " +
                     "       }, TaskCreationOptions.LongRunning);\r\n        }\r\n");
             
-            #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
 
         foreach(var operation in Model.Operations)
         {
@@ -156,14 +157,14 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             #line hidden
             this.Write("\r\n        private object ");
             
-            #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 81 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(string[] methodParameters)\r\n        {\r\n");
             
-            #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
 
             if (operation.ReturnType != null)
             {
@@ -173,21 +174,21 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             #line hidden
             this.Write("            return _appService.");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n");
             
-            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
 
             }
             else
@@ -198,21 +199,21 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             #line hidden
             this.Write("            _appService.");
             
-            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(operation.Name));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetOperationCallParameters(operation)));
             
             #line default
             #line hidden
             this.Write(");\r\n            return null;\r\n");
             
-            #line 94 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
 
             }
 
@@ -221,7 +222,7 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.CSharpReceivingProxy
             #line hidden
             this.Write("        }\r\n");
             
-            #line 98 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
+            #line 99 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Electron.IpcProxy\Templates\CSharpReceivingProxy\CSharpIpcReceivingProxyTemplate.tt"
 
         }
 

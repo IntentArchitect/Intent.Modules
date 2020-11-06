@@ -11,6 +11,7 @@ using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 using Intent.Utils;
@@ -54,9 +55,9 @@ namespace Intent.Modules.AspNetCore.WebApi.Templates.Controller
             };
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}Controller",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

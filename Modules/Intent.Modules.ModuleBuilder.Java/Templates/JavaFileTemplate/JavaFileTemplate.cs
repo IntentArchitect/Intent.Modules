@@ -19,7 +19,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class JavaFileTemplate : IntentProjectItemTemplateBase<JavaFileTemplateModel>
+    partial class JavaFileTemplate : IntentFileTemplateBase<JavaFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Java.Templates.JavaFileTemplate";
@@ -28,19 +28,20 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
         {
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
-        {
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
-                fileName: "${Model.Name}",
-                fileExtension: "tt",
-                defaultLocationInProject: $"{FolderPath}");
-        }
-
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
         public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public override ITemplateFileConfig GetTemplateFileConfig()
+        {
+            return new TemplateFileConfig(
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                codeGenType: CodeGenType.Basic,
+                fileName: $"{TemplateName}",
+                fileExtension: "tt",
+                relativeLocation: $"{FolderPath}");
+        }
 
         public override string TransformText()
         {
@@ -65,8 +66,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 
         private string TemplateBody()
         {
-            return @"
-package <#= Package #>;
+            return @"package <#= Package #>;
 
 public class <#= ClassName #> {
     private String exampleFiled;

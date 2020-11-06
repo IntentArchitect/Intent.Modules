@@ -16,7 +16,7 @@ using Intent.Modules.Angular.Layout.Api;
 namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentCssTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class FooterComponentCssTemplate : IntentProjectItemTemplateBase<object>
+    partial class FooterComponentCssTemplate : IntentTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Shared.Footer.FooterComponentCssTemplate";
@@ -26,14 +26,14 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Footer.FooterComponentC
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "footer.component",
                 fileExtension: "css",
-                defaultLocationInProject: ""
+                relativeLocation: ""
             );
         }
     }

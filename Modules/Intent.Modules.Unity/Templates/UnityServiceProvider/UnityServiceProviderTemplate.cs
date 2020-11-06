@@ -10,6 +10,7 @@
 namespace Intent.Modules.Unity.Templates.UnityServiceProvider
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,7 +35,7 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
             this.Write(" \r\n");
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
 
 
 
@@ -45,21 +46,21 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Unity" +
                     ";\r\n");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -67,7 +68,7 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
             this.Write(" : IServiceProvider\r\n    {\r\n        private readonly IUnityContainer _container;\r" +
                     "\n\r\n        public ");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Unity\Templates\UnityServiceProvider\UnityServiceProviderTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

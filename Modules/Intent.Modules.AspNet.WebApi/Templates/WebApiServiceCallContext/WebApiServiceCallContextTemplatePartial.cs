@@ -6,6 +6,8 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
@@ -19,9 +21,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
         {
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"WebApiServiceCallContext",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

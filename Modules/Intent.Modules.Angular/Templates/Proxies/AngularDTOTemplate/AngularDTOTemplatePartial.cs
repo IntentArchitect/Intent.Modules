@@ -32,10 +32,10 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularDTOTemplate
         public string GenericTypes => Model.GenericTypes.Any() ? $"<{ string.Join(", ", Model.GenericTypes) }>" : "";
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
             //var moduleTemplate = Project.FindTemplateInstance<AngularModuleTemplate.AngularModuleTemplate>(AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}",
                 relativeLocation: $"{Model.Module.GetModuleName().ToKebabCase()}/models",

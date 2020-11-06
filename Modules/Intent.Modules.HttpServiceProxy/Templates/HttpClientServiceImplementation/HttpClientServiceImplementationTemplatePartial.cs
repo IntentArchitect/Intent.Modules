@@ -3,11 +3,12 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation
 {
-    partial class HttpClientServiceImplementationTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasAssemblyDependencies, ITemplatePostCreationHook
+    partial class HttpClientServiceImplementationTemplate : CSharpTemplateBase<object>, ITemplate, IHasAssemblyDependencies, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementation";
         public const string HTTP_CLIENT_INTERCEPTOR_INTERFACE_TEMPLATE_ID_CONFIG_KEY = "HttpClientInterceptorInterfaceTemplateId";
@@ -32,13 +33,13 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceImplementat
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "HttpClientService",
                 fileExtension: "cs",
-                defaultLocationInProject: @"Generated",
+                relativeLocation: @"Generated",
                 className: "HttpClientService",
                 @namespace: "${Project.Name}");
         }

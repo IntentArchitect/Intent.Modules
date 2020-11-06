@@ -1,5 +1,7 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Templates.Program
@@ -13,9 +15,9 @@ namespace Intent.Modules.AspNetCore.Templates.Program
         {
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"Program",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

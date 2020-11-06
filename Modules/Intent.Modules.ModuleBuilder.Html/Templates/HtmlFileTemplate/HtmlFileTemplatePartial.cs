@@ -19,7 +19,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class HtmlFileTemplate : IntentProjectItemTemplateBase<HtmlFileTemplateModel>
+    partial class HtmlFileTemplate : IntentFileTemplateBase<HtmlFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Html.Templates.HtmlFileTemplate";
@@ -29,14 +29,14 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "${Model.Name}",
                 fileExtension: "tt",
-                defaultLocationInProject: $"{FolderPath}");
+                relativeLocation: $"{FolderPath}");
         }
 
         public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();

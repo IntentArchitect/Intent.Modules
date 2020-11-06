@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 {
@@ -48,9 +49,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
             .ToArray();
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}Controller",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
@@ -69,7 +70,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.Controller
 
         public string GetServiceInterfaceName()
         {
-            return GetTemplateClassName(ServiceContractTemplate.IDENTIFIER, Model);
+            return GetTypeName(ServiceContractTemplate.IDENTIFIER, Model);
         }
 
         public string DeclarePrivateVariables()

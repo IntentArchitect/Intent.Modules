@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.ModuleBuilder.Api;
@@ -36,42 +37,42 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
                     "ent.Metadata.Models;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespac" +
                     "e ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    public class ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : IMetadataModel\r\n    {\r\n        public const string SpecializationType = \"");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("\";\r\n        protected readonly IAssociation _association;\r\n        protected ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
             
             #line default
             #line hidden
             this.Write(" _sourceEnd;\r\n        protected ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write(" _targetEnd;\r\n\r\n        public ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -87,7 +88,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
 
         public static ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -95,7 +96,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             this.Write(" CreateFromEnd(IAssociationEnd associationEnd)\r\n        {\r\n            var associ" +
                     "ation = new ");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -103,28 +104,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             this.Write("(associationEnd.Association);\r\n            return association;\r\n        }\r\n\r\n    " +
                     "    public string Id => _association.Id;\r\n        \r\n        public ");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
             
             #line default
             #line hidden
             this.Write(" SourceEnd => _sourceEnd ?? (_sourceEnd = new ");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
             
             #line default
             #line hidden
             this.Write("(_association.SourceEnd, this));\r\n\r\n        public ");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write(" TargetEnd => _targetEnd ?? (_targetEnd = new ");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
@@ -134,7 +135,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
                     "  {\r\n            return _association.ToString();\r\n        }\r\n\r\n        public bo" +
                     "ol Equals(");
             
-            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -151,7 +152,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             if (obj.GetType() != this.GetType()) return false;
             return Equals((");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -160,28 +161,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
                     "      return (_association != null ? _association.GetHashCode() : 0);\r\n        }" +
                     "\r\n    }\r\n\r\n    [IntentManaged(Mode.Fully)]\r\n    public class ");
             
-            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
             
             #line default
             #line hidden
             this.Write("(IAssociationEnd associationEnd, ");
             
-            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -189,28 +190,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             this.Write(" association) : base(associationEnd, association)\r\n        {\r\n        }\r\n    }\r\n\r" +
                     "\n    [IntentManaged(Mode.Fully)]\r\n    public class ");
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write("(IAssociationEnd associationEnd, ");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -218,7 +219,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             this.Write(" association) : base(associationEnd, association)\r\n        {\r\n        }\r\n    }\r\n\r" +
                     "\n    [IntentManaged(Mode.Fully)]\r\n    public class ");
             
-            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
@@ -226,21 +227,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             this.Write(" : IAssociationEnd\r\n    {\r\n        protected readonly IAssociationEnd _associatio" +
                     "nEnd;\r\n        private readonly ");
             
-            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 96 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" _association;\r\n\r\n        public ");
             
-            #line 97 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 98 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
             #line hidden
             this.Write("(IAssociationEnd associationEnd, ");
             
-            #line 97 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 98 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -250,7 +251,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
                     "iationEnd.Id;\r\n        public string Name => _associationEnd.Name;\r\n        publ" +
                     "ic ");
             
-            #line 105 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 106 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -287,7 +288,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
 
         public bool Equals(");
             
-            #line 135 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 136 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
@@ -304,7 +305,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             if (obj.GetType() != this.GetType()) return false;
             return Equals((");
             
-            #line 145 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
+            #line 146 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModel.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default

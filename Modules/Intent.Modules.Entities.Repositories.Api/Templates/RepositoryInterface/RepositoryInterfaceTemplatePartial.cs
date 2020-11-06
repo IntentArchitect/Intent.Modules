@@ -3,6 +3,8 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
@@ -18,9 +20,9 @@ namespace Intent.Modules.Entities.Repositories.Api.Templates.RepositoryInterface
             : base(Identifier, project)
         {
         }
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"IRepository",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

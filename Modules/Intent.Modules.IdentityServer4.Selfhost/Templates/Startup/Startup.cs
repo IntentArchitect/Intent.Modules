@@ -13,6 +13,7 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.Startup
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using System;
@@ -47,21 +48,21 @@ using Microsoft.Extensions.Hosting;
 
 namespace ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -81,7 +82,7 @@ namespace ");
 
             ");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Startup\Startup.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetIdentityServerServices(tabSubIndents: 5)));
             
             #line default

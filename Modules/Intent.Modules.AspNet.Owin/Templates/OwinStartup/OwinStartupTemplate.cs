@@ -10,6 +10,7 @@
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -33,7 +34,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
 
 
 
@@ -44,21 +45,21 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.IO;\r\nusing System." +
                     "Linq;\r\nusing Microsoft.Owin;\r\nusing Owin; \r\n");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: OwinStartup(typeof(");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write(".Startup))]\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -66,7 +67,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public partial class Startup\r\n    {\r\n  " +
                     "      public void Configuration(IAppBuilder app)\r\n        {");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Configuration()));
             
             #line default
@@ -75,7 +76,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                     ".Ignore)]\r\n        public void CustomConfiguration(IAppBuilder app)\r\n        {\r\n" +
                     "            // Put your own custom configuration here\r\n        }");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.Owin\Templates\OwinStartup\OwinStartupTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Methods()));
             
             #line default

@@ -17,7 +17,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 {
-    public class DesignerConfigTemplate : IntentProjectItemTemplateBase<DesignerModel>
+    public class DesignerConfigTemplate : IntentFileTemplateBase<DesignerModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.DesignerConfig";
 
@@ -74,14 +74,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
             return Serialize(designer);
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}",
                 fileExtension: ApplicationDesignerPersistable.FileExtension,
-                defaultLocationInProject: "");
+                relativeLocation: "");
         }
 
         private static T LoadAndDeserialize<T>(string path)

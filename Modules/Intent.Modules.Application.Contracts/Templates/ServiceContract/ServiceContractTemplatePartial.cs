@@ -10,6 +10,7 @@ using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
@@ -47,9 +48,9 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
             return _decorators;
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"I{Model.Name}",
                 @namespace: $"{FolderBasedNamespace}",
                 relativeLocation: string.Join("/", GetNamespaceParts()));
@@ -61,7 +62,7 @@ namespace Intent.Modules.Application.Contracts.Templates.ServiceContract
         //        overwriteBehaviour: OverwriteBehaviour.Always,
         //        fileName: "I${Model.Name}",
         //        fileExtension: "cs",
-        //        defaultLocationInProject: string.Join("/", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
+        //        relativeLocation: string.Join("/", GetNamespaceParts().DefaultIfEmpty("ServiceContracts")),
         //        className: "I${Model.Name}",
         //        @namespace: "${FolderBasedNamespace}");
         //}

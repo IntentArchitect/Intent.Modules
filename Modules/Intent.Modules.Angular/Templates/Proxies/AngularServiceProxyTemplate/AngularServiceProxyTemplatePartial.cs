@@ -34,7 +34,7 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
             AddTypeSource(AngularDTOTemplate.AngularDTOTemplate.TemplateId);
         }
 
-        public string ApiServiceClassName => GetTemplateClassName(ApiServiceTemplate.TemplateId);
+        public string ApiServiceClassName => GetTypeName(ApiServiceTemplate.TemplateId);
 
         public override void BeforeTemplateExecution()
         {
@@ -155,9 +155,9 @@ namespace Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name.ToKebabCase()}.service",
                 relativeLocation: $"{Model.Module.GetModuleName().ToKebabCase()}",

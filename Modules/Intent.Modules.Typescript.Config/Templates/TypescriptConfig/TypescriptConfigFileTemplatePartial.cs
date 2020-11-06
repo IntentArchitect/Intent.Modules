@@ -14,14 +14,14 @@ namespace Intent.Modules.Typescript.Config.Templates.TypescriptConfig
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: "tsconfig",
                 fileExtension: "json",
-                defaultLocationInProject: "wwwroot/App"
+                relativeLocation: "wwwroot/App"
                 );
         }
     }

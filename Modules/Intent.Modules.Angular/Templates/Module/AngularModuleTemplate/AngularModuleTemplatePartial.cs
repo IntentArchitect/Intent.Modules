@@ -39,7 +39,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                         return;
                     }
 
-                    _components.Add(GetTemplateClassName(AngularComponentTsTemplate.TemplateId, @event.GetValue(AngularComponentCreatedEvent.ModelId)));
+                    _components.Add(GetTypeName(AngularComponentTsTemplate.TemplateId, @event.GetValue(AngularComponentCreatedEvent.ModelId)));
                 });
 
             project.Application.EventDispatcher.Subscribe(AngularServiceProxyCreatedEvent.EventId, @event =>
@@ -49,7 +49,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
                     return;
                 }
 
-                var templateClassName = GetTemplateClassName(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
+                var templateClassName = GetTypeName(AngularServiceProxyTemplate.TemplateId, @event.GetValue(AngularServiceProxyCreatedEvent.ModelId));
                 _providers.Add(templateClassName);
             });
 
@@ -67,7 +67,7 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
 
         public string ModuleName => Model.GetModuleName();
 
-        public string RoutingModuleClassName => GetTemplateClassName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
+        public string RoutingModuleClassName => GetTypeName(AngularRoutingModuleTemplate.AngularRoutingModuleTemplate.TemplateId, Model);
 
         public string GetImports()
         {
@@ -116,9 +116,9 @@ namespace Intent.Modules.Angular.Templates.Module.AngularModuleTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
                 relativeLocation: $"{ ModuleName.ToKebabCase() }",

@@ -7,6 +7,8 @@ using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
@@ -44,9 +46,9 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
                 templateDependency: @event.TryGetValue(InitializationRequiredEvent.TemplateDependencyIdKey)));
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"Startup", 
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
@@ -60,7 +62,7 @@ namespace Intent.Modules.AspNet.Owin.Templates.OwinStartup
         public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return base.GetNugetDependencies()
-                    .Concat(_initializations.Where(x => x.TemplateDependency != null).SelectMany(x => FindTemplate<IHasNugetDependencies>(TemplateDependency.OnTemplate(x.TemplateDependency))?.GetNugetDependencies()));
+                    .Concat(_initializations.Where(x => x.TemplateDependency != null).SelectMany(x => GetTemplate<IHasNugetDependencies>(TemplateDependency.OnTemplate(x.TemplateDependency))?.GetNugetDependencies()));
         }
 
         public string Configuration()

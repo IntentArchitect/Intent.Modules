@@ -168,7 +168,7 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.VisualStudio2015Solutio
             _fileMetadata = fileMetadata;
         }
 
-        public ITemplateFileConfig DefineDefaultFileMetadata()
+        public ITemplateFileConfig GetTemplateFileConfig()
         {
             return new SolutionFileMetadata(
                 outputType: "VisualStudio2015Solution",

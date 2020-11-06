@@ -13,7 +13,7 @@ using JetBrains.Annotations;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates
 {
-    public abstract class VisualStudioProjectTemplateBase : IntentProjectItemTemplateBase<IVisualStudioProject>, ITemplate, IVisualStudioProjectTemplate
+    public abstract class VisualStudioProjectTemplateBase : IntentFileTemplateBase<IVisualStudioProject>, ITemplate, IVisualStudioProjectTemplate
     {
 
         protected VisualStudioProjectTemplateBase([NotNull]string templateId, [NotNull]IOutputTarget project, [NotNull]IVisualStudioProject model) : base(templateId, project, model)
@@ -72,20 +72,20 @@ namespace Intent.Modules.VisualStudio.Projects.Templates
             Project.Application.EventDispatcher.Publish(new VisualStudioProjectCreatedEvent(Project.Id, this));
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: Project.Name,
                 fileExtension: "csproj",
-                defaultLocationInProject: ""
+                relativeLocation: ""
             );
         }
 
         public override string RunTemplate()
         {
-            if (DefineDefaultFileMetadata().OverwriteBehaviour != OverwriteBehaviour.OnceOff)
+            if (GetTemplateFileConfig().OverwriteBehaviour != OverwriteBehaviour.OnceOff)
             {
                 // Unless onceOff, then on subsequent SF runs, the SF shows two outputs for the same .csproj file.
                 throw new Exception("Template must be configured with OverwriteBehaviour.OnceOff.");

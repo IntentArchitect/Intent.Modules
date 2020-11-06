@@ -5,7 +5,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
 {
-    partial class AssemblyInfoTemplate : IntentProjectItemTemplateBase<object>, ITemplate
+    partial class AssemblyInfoTemplate : IntentFileTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.VisualStudio.Projects.AssemblyInfo";
 
@@ -14,14 +14,14 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.AssemblyInfo
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: "AssemblyInfo",
                 fileExtension: "cs",
-                defaultLocationInProject: "Properties"
+                relativeLocation: "Properties"
                 );
         }
     }

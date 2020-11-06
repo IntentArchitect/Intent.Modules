@@ -3,21 +3,21 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Templates
 {
-    public class TypeScriptDefaultFileMetadata : DefaultFileMetadata
+    public class TypeScriptFileConfig : TemplateFileConfig
     {
-        public TypeScriptDefaultFileMetadata(
-            OverwriteBehaviour overwriteBehaviour,
-            string fileName,
-            string relativeLocation,
+        public TypeScriptFileConfig(
             string className,
+            string fileName = null,
+            string relativeLocation = "",
+            OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
             string codeGenType = Common.CodeGenType.Basic,
             string fileExtension = "ts",
             string @namespace = null
-        ) : base(overwriteBehaviour: overwriteBehaviour,
-                codeGenType: codeGenType,
-                fileName: fileName,
+        ) : base(fileName: fileName ?? className.ToKebabCase(),
                 fileExtension: fileExtension,
-                defaultLocationInProject: relativeLocation)
+                relativeLocation: relativeLocation,
+                overwriteBehaviour: overwriteBehaviour,
+                codeGenType: codeGenType)
         {
             if (!string.IsNullOrWhiteSpace(className))
             {

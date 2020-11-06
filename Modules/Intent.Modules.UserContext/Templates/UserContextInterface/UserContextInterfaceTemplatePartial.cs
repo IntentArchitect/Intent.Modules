@@ -1,10 +1,11 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.UserContext.Templates.UserContextInterface
 {
-    partial class UserContextInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate
+    partial class UserContextInterfaceTemplate : CSharpTemplateBase<object>, ITemplate
     {
         public const string Identifier = "Intent.UserContext.UserContextInterface";
 
@@ -18,13 +19,13 @@ namespace Intent.Modules.UserContext.Templates.UserContextInterface
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                        overwriteBehaviour: OverwriteBehaviour.Always,
                        fileName: $"IUserContextData",
                        fileExtension: "cs",
-                       defaultLocationInProject: "Context",
+                       relativeLocation: "Context",
                        className: "IUserContextData",
                        @namespace: "${Project.ProjectName}"
                 );

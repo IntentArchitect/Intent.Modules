@@ -1,12 +1,13 @@
 ﻿using Intent.Engine;
 using Intent.Templates;
 using System.Collections.Generic;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
 {
-    partial class HttpClientServiceInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>, ITemplate, IHasAssemblyDependencies
+    partial class HttpClientServiceInterfaceTemplate : CSharpTemplateBase<object>, ITemplate, IHasAssemblyDependencies
     {
         public const string IDENTIFIER = "Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface";
 
@@ -20,13 +21,13 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "IHttpClientService",
                 fileExtension: "cs",
-                defaultLocationInProject: @"Generated",
+                relativeLocation: @"Generated",
                 className: "IHttpClientService",
                 @namespace: "${Project.Name}");
         }

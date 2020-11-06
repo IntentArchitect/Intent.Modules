@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         }
     }
 
-    public class IModSpecTemplate : IntentProjectItemTemplateBase, IHasNugetDependencies
+    public class IModSpecTemplate : IntentFileTemplateBase, IHasNugetDependencies
     {
         private readonly IMetadataManager _metadataManager;
         private readonly ICollection<TemplateRegistrationRequiredEvent> _templatesToRegister = new List<TemplateRegistrationRequiredEvent>();
@@ -104,14 +104,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public IntentModuleModel ModuleModel { get; }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
-                OverwriteBehaviour.Always,
-                CodeGenType.Basic,
-                "${Project.ProjectName}",
-                "imodspec",
-                "");
+            return new TemplateFileConfig(
+                fileName: OutputTarget.GetTargetPath()[0].Name,
+                fileExtension: "imodspec");
         }
 
         public override string TransformText()

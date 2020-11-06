@@ -64,14 +64,14 @@ namespace Intent.Modules.Angular.Templates.Environment.EnvironmentTemplate
         //      }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "environment",
                 fileExtension: "ts", // Change to desired file extension.
-                defaultLocationInProject: ""
+                relativeLocation: ""
             );
         }
 

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
@@ -26,9 +27,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         public string AssociationSourceEndClassName => $"{Model.SourceEnd.Name.ToCSharpIdentifier()}Model";
         public string AssociationTargetEndClassName => $"{Model.TargetEnd.Name.ToCSharpIdentifier()}Model";
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.ApiModelName}",
                 @namespace: Model.ParentModule.ApiNamespace);
         }

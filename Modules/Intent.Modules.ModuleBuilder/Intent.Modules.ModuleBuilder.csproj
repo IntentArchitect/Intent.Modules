@@ -159,10 +159,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.cs">
+    <Compile Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ProjectItemTemplatePartialTemplate.tt</DependentUpon>
+      <DependentUpon>FileTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\ReadMe\ReadMeTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -196,9 +196,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\ProjectItemTemplatePartial\ProjectItemTemplatePartialTemplate.tt">
+    <None Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ProjectItemTemplatePartialTemplate.cs</LastGenOutput>
+      <LastGenOutput>FileTemplatePartialTemplate.cs</LastGenOutput>
     </None>
     <None Update="Templates\ReadMe\ReadMeTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>

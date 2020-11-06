@@ -9,12 +9,13 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 using Intent.Utils;
 
 namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
 {
-    partial class WebApiClientServiceProxyTemplate : IntentRoslynProjectItemTemplateBase<ServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, ITemplatePostCreationHook
+    partial class WebApiClientServiceProxyTemplate : CSharpTemplateBase<ServiceModel>, ITemplate, IHasNugetDependencies, IHasAssemblyDependencies, ITemplatePostCreationHook
     {
         public const string IDENTIFIER = "Intent.HttpServiceProxy.Proxy";
         public const string SERVICE_CONTRACT_TEMPLATE_ID_CONFIG_KEY = "ServiceContractTemplateId";
@@ -44,13 +45,13 @@ namespace Intent.Modules.HttpServiceProxy.Templates.Proxy
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{Model.Name}WebApiClientProxy",
                 fileExtension: "cs",
-                defaultLocationInProject: @"Generated/ClientProxies",
+                relativeLocation: @"Generated/ClientProxies",
                 className: "${Model.Name}WebApiClientProxy",
                 @namespace: "${Project.Name}");
         }

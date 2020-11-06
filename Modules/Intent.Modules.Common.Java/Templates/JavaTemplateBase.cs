@@ -55,9 +55,9 @@ namespace Intent.Modules.Common.Java.Templates
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
-        public override string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
+        public override string GetTypeName(ITemplateDependency templateDependency, bool throwIfNotFound)
         {
-            return FindTemplate<IClassProvider>(templateDependency, throwIfNotFound).ClassName;
+            return GetTemplate<IClassProvider>(templateDependency, throwIfNotFound).ClassName;
         }
 
         public override string RunTemplate()

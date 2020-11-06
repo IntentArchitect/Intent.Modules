@@ -15,14 +15,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
         {
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "README",
                 fileExtension: "txt",
-                defaultLocationInProject: ""
+                relativeLocation: ""
             );
         }
     }

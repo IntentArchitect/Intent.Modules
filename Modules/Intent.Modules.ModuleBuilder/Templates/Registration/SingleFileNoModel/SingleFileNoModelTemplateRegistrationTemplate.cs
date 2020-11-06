@@ -10,6 +10,7 @@
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Modules.ModuleBuilder.Api;
     using Intent.Metadata.Models;
     using System;
@@ -40,14 +41,14 @@ using Intent.Engine;
 using Intent.Templates;
 ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -55,7 +56,7 @@ using Intent.Templates;
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n   " +
                     " public class ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -63,7 +64,7 @@ using Intent.Templates;
             this.Write(" : SingleFileTemplateRegistration\r\n    {\r\n        public override string Template" +
                     "Id =>  ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
@@ -71,7 +72,7 @@ using Intent.Templates;
             this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IOutputT" +
                     "arget outputTarget)\r\n        {\r\n\t\t\treturn new ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileNoModel\SingleFileNoModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default

@@ -10,6 +10,7 @@
 namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,7 +35,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.RequireHttpsMiddleware
             this.Write(" \r\n\r\nusing Microsoft.Owin;\r\nusing System.Threading.Tasks;\r\nusing System.Web;\r\n\r\n[" +
                     "assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\RequireHttpsMiddleware\RequireHttpsMiddlewareTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

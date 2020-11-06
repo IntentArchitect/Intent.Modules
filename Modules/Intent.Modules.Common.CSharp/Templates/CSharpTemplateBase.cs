@@ -4,11 +4,11 @@ using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
-namespace Intent.Modules.Common.Templates
+namespace Intent.Modules.Common.CSharp.Templates
 {
     public abstract class CSharpTemplateBase : CSharpTemplateBase<object>
     {
@@ -134,14 +134,9 @@ namespace Intent.Modules.Common.Templates
             return NormalizeNamespace(Types.Get(typeReference).Name);
         }
 
-        public override string GetTemplateClassName(ITemplateDependency templateDependency)
+        public override string GetTypeName(ITemplateDependency templateDependency, bool throwIfNotFound = true)
         {
-            return NormalizeNamespace(FindTemplate<IClassProvider>(templateDependency).FullTypeName());
-        }
-
-        public override string GetTemplateClassName(ITemplateDependency templateDependency, bool throwIfNotFound)
-        {
-            var template = FindTemplate<IClassProvider>(templateDependency, throwIfNotFound);
+            var template = GetTemplate<IClassProvider>(templateDependency, throwIfNotFound);
             return template == null ? null : NormalizeNamespace(template.FullTypeName());
         }
 
@@ -306,12 +301,12 @@ namespace Intent.Modules.Common.Templates
             return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1,0)));
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return DefineFileConfig();
         }
 
-        protected abstract CSharpDefaultFileConfig DefineFileConfig();
+        protected abstract CSharpFileConfig DefineFileConfig();
 
         public virtual string DependencyUsings => this.ResolveAllUsings(ExecutionContext, namespacesToIgnore: Namespace);
 

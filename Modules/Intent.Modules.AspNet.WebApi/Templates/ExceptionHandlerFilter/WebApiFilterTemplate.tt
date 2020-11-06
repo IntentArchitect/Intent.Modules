@@ -2,6 +2,7 @@
 <#@ assembly name="System.Core" #>
 <#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 using Intent.RoslynWeaver.Attributes;
 using System;
 using System.Collections.Generic;

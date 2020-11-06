@@ -10,7 +10,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePreProcessedFile
 {
-    public class CSharpTemplatePreProcessedFileTemplateRegistration : ModelTemplateRegistrationBase<CSharpTemplateModel>
+    public class CSharpTemplatePreProcessedFileTemplateRegistration : FilePerModelTemplateRegistration<CSharpTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePreProcess
 
         public override string TemplateId => "ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, CSharpTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, CSharpTemplateModel model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,

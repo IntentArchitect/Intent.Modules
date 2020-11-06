@@ -13,6 +13,7 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using System;
@@ -35,14 +36,14 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
                     "dentityServer4.Models;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
                     "ace ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -50,7 +51,7 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.IdentityConfig
             this.Write("\r\n    {\r\n        public const string ApiResourceName = \"api\";\r\n\r\n        public s" +
                     "tatic IEnumerable<Client> Clients = new List<Client>\r\n        {\r\n");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\IdentityConfig\IdentityConfig.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClients(tabSubIndents: 4)));
             
             #line default

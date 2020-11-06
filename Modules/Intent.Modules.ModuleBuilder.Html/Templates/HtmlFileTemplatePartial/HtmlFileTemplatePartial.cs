@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.ModuleBuilder.Html.Api;
@@ -36,28 +37,28 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
                     "mon.Templates;\r\nusing Intent.Modules.Common.Html.Templates;\r\nusing Intent.Roslyn" +
                     "Weaver.Attributes;\r\nusing Intent.Templates;\r\n");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : ""));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : HtmlTemplateBase<");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -65,21 +66,21 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
             this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
                     "teId = \"");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        [IntentInitialGen]\r\n        public ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IOutputTarget outputTarget, ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -89,10 +90,9 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new HtmlDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $""");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
@@ -100,14 +100,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
             
             #line default
             #line hidden
-            this.Write("\",\r\n                relativeLocation: \"");
-            
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : ""));
-            
-            #line default
-            #line hidden
-            this.Write("\"\r\n            );\r\n        }\r\n\r\n    }\r\n}");
+            this.Write("\",\r\n                relativeLocation: \"\"\r\n            );\r\n        }\r\n\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

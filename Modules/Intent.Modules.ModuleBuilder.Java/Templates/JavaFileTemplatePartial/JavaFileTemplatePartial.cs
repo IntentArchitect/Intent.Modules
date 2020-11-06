@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.ModuleBuilder.Java.Api;
@@ -37,28 +38,28 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
                     "ava.Templates;\r\nusing Intent.RoslynWeaver.Attributes;\r\nusing Intent.Templates;\r\n" +
                     "");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : ""));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : JavaTemplateBase<");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -66,21 +67,21 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
                     "teId = \"");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        [IntentInitialGen]\r\n        public ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IOutputTarget outputTarget, ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -90,12 +91,12 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new JavaDefaultFileConfig(
+            return new JavaFileConfig(
                 className: $""");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default

@@ -10,6 +10,7 @@
 namespace Intent.Modules.Autofac.Templates.AutofacConfig
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,21 +35,21 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
             this.Write(" \r\nusing System;\r\nusing System.Linq;\r\nusing System.Collections.Generic;\r\nusing Au" +
                     "tofac;\r\nusing Autofac.Extensions.DependencyInjection;\r\n");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -83,7 +84,7 @@ namespace Intent.Modules.Autofac.Templates.AutofacConfig
             builder.RegisterType<AutofacServiceProvider>().As<IServiceProvider>();
             ");
             
-            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Autofac\Templates\AutofacConfig\AutofacConfigTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Registrations()));
             
             #line default

@@ -4,6 +4,8 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Unity.Templates.UnityServiceProvider
@@ -28,9 +30,9 @@ namespace Intent.Modules.Unity.Templates.UnityServiceProvider
             });
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"UnityServiceProvider",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

@@ -5,6 +5,8 @@ using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
@@ -26,12 +28,12 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public string GetEntityName(ClassModel model)
         {
-            return GetTemplateClassName(GetMetadata().CustomMetadata["Entity Template Id"], model);
+            return GetTypeName(GetMetadata().CustomMetadata["Entity Template Id"], model);
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Project.Application.Name}DbContext".AsClassName(),
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
@@ -96,7 +98,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 
         public string GetMappingClassName(ClassModel model)
         {
-            return GetTemplateClassName(EFMapping.EFMappingTemplate.Identifier, model);
+            return GetTypeName(EFMapping.EFMappingTemplate.Identifier, model);
         }
     }
 }

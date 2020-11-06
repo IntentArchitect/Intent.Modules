@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.SoftwareFactory;
@@ -12,7 +13,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfiguration
 {
-    partial class DbMigrationsConfigurationTemplate : IntentRoslynProjectItemTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasDecorators<IMigrationSeedDecorator>
+    partial class DbMigrationsConfigurationTemplate : CSharpTemplateBase, ITemplate, IHasNugetDependencies, IHasTemplateDependencies, IHasDecorators<IMigrationSeedDecorator>
     {
         public const string Identifier = "Intent.EntityFramework.Migrations.DbMigrationsConfiguration";
 
@@ -28,14 +29,14 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.DbMigrationsConfig
 
         public string DbContextVariableName => "dbContext";
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
-                fileName: $"{Project.ApplicationName()}DbContextConfiguration".Replace(".", string.Empty),
+                fileName: $"{OutputTarget.Application.Name.ToCSharpIdentifier()}DbContextConfiguration".Replace(".", string.Empty),
                 fileExtension: "cs",
-                defaultLocationInProject: "",
-                className: $"{Project.ApplicationName()}DbContextConfiguration".Replace(".", string.Empty),
+                relativeLocation: "",
+                className: $"{OutputTarget.Application.Name.ToCSharpIdentifier()}DbContextConfiguration".Replace(".", string.Empty),
                 @namespace: "${Project.Name}"
                 );
         }

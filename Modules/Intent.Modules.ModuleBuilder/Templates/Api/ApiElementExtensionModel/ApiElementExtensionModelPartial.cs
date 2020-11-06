@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -26,9 +27,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.ApiModelName}",
                 @namespace: Model.ParentModule.ApiNamespace);
         }

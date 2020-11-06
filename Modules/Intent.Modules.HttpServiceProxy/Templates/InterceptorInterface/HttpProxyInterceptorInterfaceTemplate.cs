@@ -10,6 +10,7 @@
 namespace Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class HttpProxyInterceptorInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class HttpProxyInterceptorInterfaceTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -34,14 +35,14 @@ namespace Intent.Modules.HttpServiceProxy.Templates.InterceptorInterface
             this.Write(" \r\nusing System.Net.Http;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nname" +
                     "space ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\InterceptorInterface\HttpProxyInterceptorInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

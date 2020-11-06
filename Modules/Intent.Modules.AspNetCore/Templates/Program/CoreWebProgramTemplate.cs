@@ -7,6 +7,9 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
+
+using Intent.Modules.Common.CSharp.Templates;
+
 namespace Intent.Modules.AspNetCore.Templates.Program
 {
     using Intent.Modules.Common.Templates;

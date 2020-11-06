@@ -16,7 +16,7 @@ using Intent.Modules.Angular.Layout.Api;
 namespace Intent.Modules.Angular.Layout.Templates.AppComponentHtmlTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class AppComponentHtmlTemplate : IntentProjectItemTemplateBase<object>
+    partial class AppComponentHtmlTemplate : IntentTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.AppComponentHtmlTemplate";
@@ -26,14 +26,14 @@ namespace Intent.Modules.Angular.Layout.Templates.AppComponentHtmlTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "app.component",
                 fileExtension: "html",
-                defaultLocationInProject: ""
+                relativeLocation: ""
             );
         }
     }

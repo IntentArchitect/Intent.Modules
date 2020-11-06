@@ -10,6 +10,7 @@
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListModel
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.ModuleBuilder.Api;
     using Intent.Modules.ModuleBuilder.Helpers;
@@ -41,21 +42,21 @@ using Intent.Engine;
 using Intent.Templates;
 ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : ""));
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -63,14 +64,14 @@ using Intent.Templates;
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n" +
                     "    public class ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : SingleFileListModelTemplateRegistration<");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -78,7 +79,7 @@ using Intent.Templates;
             this.Write(">\r\n    {\r\n        private readonly IMetadataManager _metadataManager;\r\n\r\n        " +
                     "public ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -86,7 +87,7 @@ using Intent.Templates;
             this.Write("(IMetadataManager metadataManager)\r\n        {\r\n            _metadataManager = met" +
                     "adataManager;\r\n        }\r\n\r\n        public override string TemplateId =>  ");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
@@ -94,14 +95,14 @@ using Intent.Templates;
             this.Write(".TemplateId;\r\n\r\n        public override ITemplate CreateTemplateInstance(IOutputT" +
                     "arget outputTarget, IList<");
             
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
             this.Write("> model)\r\n        {\r\n            return new ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
@@ -109,14 +110,14 @@ using Intent.Templates;
             this.Write("(outputTarget, model);\r\n        }\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mo" +
                     "de.Ignore, Signature = Mode.Fully)]\r\n        public override IList<");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
             this.Write("> GetModels(IApplication application)\r\n        {\r\n            return ");
             
-            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
+            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\SingleFileListModel\SingleFileListModelTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelsMethod()));
             
             #line default

@@ -9,6 +9,8 @@ using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Entities.Repositories.Api.Templates.EntityRepositoryInterface;
 using Intent.Templates;
 
@@ -74,9 +76,9 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.Repository
 
         public string PrimaryKeyName => Model.Attributes.FirstOrDefault(x => x.HasStereotype("Primary Key"))?.Name.ToPascalCase() ?? "Id";
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}Repository",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

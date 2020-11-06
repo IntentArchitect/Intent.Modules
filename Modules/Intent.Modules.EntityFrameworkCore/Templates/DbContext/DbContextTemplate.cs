@@ -11,6 +11,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
 {
     using Intent.Modelers.Domain.Api;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,42 +35,42 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         {
             this.Write(" \r\nusing Microsoft.EntityFrameworkCore;\r\n");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DeclareUsings()));
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseClass()));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(DbContextOptions options) : base(options)\r\n        {\r\n        }\r\n\r\n");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
 
 foreach (var model in Model)
 {
@@ -79,21 +80,21 @@ foreach (var model in Model)
             #line hidden
             this.Write("        public DbSet<");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetEntityName(model)));
             
             #line default
             #line hidden
             this.Write("> ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetEntityName(model).ToPluralName()));
             
             #line default
             #line hidden
             this.Write(" { get; set; }\r\n");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
 
 }
 
@@ -104,7 +105,7 @@ foreach (var model in Model)
                     "     {\r\n            base.OnModelCreating(modelBuilder);\r\n\r\n            Configure" +
                     "Model(modelBuilder);\r\n\r\n");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
 
 foreach (var model in Model)
 {
@@ -114,14 +115,14 @@ foreach (var model in Model)
             #line hidden
             this.Write("            modelBuilder.ApplyConfiguration(new ");
             
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMappingClassName(model)));
             
             #line default
             #line hidden
             this.Write("());\r\n");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
 
 }
 
@@ -132,7 +133,7 @@ foreach (var model in Model)
                     "Model(ModelBuilder modelBuilder)\r\n        {\r\n            // Customize Default Sc" +
                     "hema\r\n            // modelBuilder.HasDefaultSchema(\"");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Project.Application.Name));
             
             #line default
@@ -150,7 +151,7 @@ foreach (var model in Model)
             */
         }");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
+            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFrameworkCore\Templates\DbContext\DbContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetMethods()));
             
             #line default

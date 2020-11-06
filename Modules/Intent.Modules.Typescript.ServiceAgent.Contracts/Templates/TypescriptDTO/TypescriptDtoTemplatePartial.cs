@@ -29,9 +29,9 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
 
         public string ApplicationName => Model.Application.Name;
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: Model.Name,
                 relativeLocation: "wwwroot/App/DTOs/Generated",

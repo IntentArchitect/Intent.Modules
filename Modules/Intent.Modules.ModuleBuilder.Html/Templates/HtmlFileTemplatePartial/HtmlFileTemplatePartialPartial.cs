@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
@@ -34,9 +36,9 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
                 fileName: $"{Model.Name}Partial",

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.IdentityServer4.InMemoryStore</id>
-  <version>3.0.0-beta.1</version>
+  <version>3.0.0-beta.2</version>
   <summary>A module that supplements the Self Hosted Identity Server 4 one with in-memory data to get started</summary>
   <description>A module that supplements the Self Hosted Identity Server 4 one with in-memory data to get started</description>
   <authors>Intent.Modules</authors>
@@ -20,11 +20,11 @@
     <decorator id="IdentityServer4.InMemoryStore.IdentityConfigDecorator" />
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.1" />
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.2" />
     <dependency id="Intent.Common.CSharp" version="3.0.0-beta.2" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1" />
-    <dependency id="Intent.Common.IdentityServer4" version="3.0.0-beta.1" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common.IdentityServer4" version="3.0.0-beta.2" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

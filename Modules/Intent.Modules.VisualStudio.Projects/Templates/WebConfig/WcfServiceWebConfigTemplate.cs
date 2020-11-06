@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 {
-    public class WcfServiceWebConfigTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
+    public class WcfServiceWebConfigTemplate : IntentFileTemplateBase<object>, ITemplate, IHasDecorators<IWebConfigDecorator>
     {
         private IEnumerable<IWebConfigDecorator> _decorators;
 
@@ -20,12 +20,12 @@ namespace Intent.Modules.VisualStudio.Projects.Templates.WebConfig
 
         public override ITemplateFileConfig DefineDefaultFileMetadata()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.UserControlledWeave,
                 fileName: "Web",
                 fileExtension: "config",
-                defaultLocationInProject: ""
+                relativeLocation: ""
                 );
         }
 

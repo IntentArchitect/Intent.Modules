@@ -10,6 +10,7 @@ using Intent.Modelers.Services.Api;
 using Intent.Modules.Application.Contracts;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
@@ -50,9 +51,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
             .ToArray();
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
@@ -97,13 +98,13 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceImplem
 
         public string GetServiceInterfaceName()
         {
-            var serviceContractTemplate = GetTemplateClassName(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
+            var serviceContractTemplate = GetTypeName(TemplateDependency.OnModel<ServiceModel>(ServiceContractTemplate.IDENTIFIER, x => x.Id == Model.Id));
             return serviceContractTemplate;
         }
 
         private string GetHandlerClassName(OperationModel o)
         {
-            var serviceContractTemplate = GetTemplateClassName(TemplateDependency.OnModel<OperationModel>(ServiceCallHandlerImplementationTemplate.Identifier, x => x.Id == o.Id));
+            var serviceContractTemplate = GetTypeName(TemplateDependency.OnModel<OperationModel>(ServiceCallHandlerImplementationTemplate.Identifier, x => x.Id == o.Id));
             return serviceContractTemplate;
         }
     }

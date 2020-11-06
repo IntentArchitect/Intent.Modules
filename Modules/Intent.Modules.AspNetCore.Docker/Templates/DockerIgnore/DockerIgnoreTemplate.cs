@@ -18,7 +18,7 @@ namespace Intent.Modules.AspNetCore.Docker.Templates.DockerIgnore
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNetCore.Docker\Templates\DockerIgnore\DockerIgnoreTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class DockerIgnoreTemplate : IntentProjectItemTemplateBase<object>
+    public partial class DockerIgnoreTemplate : IntentFileTemplateBase<object>
     {
 #line hidden
         /// <summary>

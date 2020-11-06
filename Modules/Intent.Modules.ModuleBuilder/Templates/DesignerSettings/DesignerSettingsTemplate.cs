@@ -16,7 +16,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 
 namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 {
-    public class DesignerSettingsTemplate : IntentProjectItemTemplateBase<DesignerSettingsModel>
+    public class DesignerSettingsTemplate : IntentFileTemplateBase<DesignerSettingsModel>
     {
         public const string TemplateId = "Intent.ModuleBuilder.DesignerSettings";
 
@@ -55,14 +55,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
             return Serialize(modelerSettings);
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}",
                 fileExtension: DesignerSettingsPersistable.FileExtension,
-                defaultLocationInProject: "");
+                relativeLocation: "");
         }
 
         private static string Serialize<T>(T @object)

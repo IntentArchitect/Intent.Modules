@@ -10,6 +10,7 @@
 namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class HttpClientServiceInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class HttpClientServiceInterfaceTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -34,14 +35,14 @@ namespace Intent.Modules.HttpServiceProxy.Templates.HttpClientServiceInterface
             this.Write(" \r\nusing System.Net.Http;\r\nusing System.Threading;\r\nusing System.Threading.Tasks;" +
                     "\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.HttpServiceProxy\Templates\HttpClientServiceInterface\HttpClientServiceInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

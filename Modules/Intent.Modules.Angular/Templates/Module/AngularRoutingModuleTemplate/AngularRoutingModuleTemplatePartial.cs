@@ -51,9 +51,9 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
         //      }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{ModuleName.ToKebabCase()}.module",
                 relativeLocation: $"{ Model.GetModuleName().ToKebabCase() }",
@@ -63,12 +63,12 @@ namespace Intent.Modules.Angular.Templates.Module.AngularRoutingModuleTemplate
 
         private string GetPath(ComponentModel component)
         {
-            return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component).Replace("Component", "").ToKebabCase();
+            return GetTypeName(AngularComponentTsTemplate.TemplateId, component).Replace("Component", "").ToKebabCase();
         }
 
         private string GetClassName(ComponentModel component)
         {
-            return GetTemplateClassName(AngularComponentTsTemplate.TemplateId, component);
+            return GetTypeName(AngularComponentTsTemplate.TemplateId, component);
         }
     }
 }

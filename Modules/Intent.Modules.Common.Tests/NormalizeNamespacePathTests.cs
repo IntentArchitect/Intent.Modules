@@ -1,4 +1,5 @@
-﻿using Intent.Modules.Common.Templates;
+﻿using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
 using Xunit;
 
 namespace Intent.Modules.Common.Tests
@@ -26,7 +27,7 @@ namespace Intent.Modules.Common.Tests
         [Fact]
         public void Scenario1()
         {
-            var result = IntentRoslynProjectItemTemplateBase.NormalizeNamespace(
+            var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.Contracts.Internal.CompanyDetailsManagement",
                 foreignType: "Solution.Common.Types.Country",
                 knownOtherPaths: ProjectNames,
@@ -44,7 +45,7 @@ namespace Intent.Modules.Common.Tests
         [Fact]
         public void Scenario2()
         {
-            var result = IntentRoslynProjectItemTemplateBase.NormalizeNamespace(
+            var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.Contracts.Internal.CompanyDetailsManagement",
                 foreignType: "Solution.Common.Types.Country",
                 knownOtherPaths: ProjectNames,
@@ -63,7 +64,7 @@ namespace Intent.Modules.Common.Tests
         [Fact]
         public void Scenario3()
         {
-            var result = IntentRoslynProjectItemTemplateBase.NormalizeNamespace(
+            var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.ApplicationLayer",
                 foreignType: "Solution.Application.Contracts.Internal.CompanyDetailsManagement.StatutoryInfoDTO",
                 knownOtherPaths: ProjectNames,
@@ -80,7 +81,7 @@ namespace Intent.Modules.Common.Tests
         [Fact]
         public void Scenario4()
         {
-            var result = IntentRoslynProjectItemTemplateBase.NormalizeNamespace(
+            var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "Solution.Application.Contracts.Internal.CompanyDetailsManagement",
                 foreignType: "Solution.Application.Common.Enums.CompanyDetails.SocialMediaType",
                 knownOtherPaths: ProjectNames,
@@ -94,7 +95,7 @@ namespace Intent.Modules.Common.Tests
         [Fact]
         public void Scenario5()
         {
-            var result = IntentRoslynProjectItemTemplateBase.NormalizeNamespace(
+            var result = CSharpTemplateBase.NormalizeNamespace(
                 localNamespace: "MyCompany.Movies.Api",
                 foreignType: "MyCompany.Movies.Application.Movies",
                 knownOtherPaths: new string[]

@@ -98,10 +98,10 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
             var moduleTemplate = ExecutionContext.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 relativeLocation: $"{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}",

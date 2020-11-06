@@ -16,7 +16,7 @@ using Intent.Modules.Angular.Layout.Api;
 namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentCssTemplate
 {
     [IntentManaged(Mode.Merge)]
-    partial class HeaderComponentCssTemplate : IntentProjectItemTemplateBase<object>
+    partial class HeaderComponentCssTemplate : IntentTemplateBase<object>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Angular.Layout.Shared.Header.HeaderComponentCssTemplate";
@@ -26,14 +26,14 @@ namespace Intent.Modules.Angular.Layout.Templates.Shared.Header.HeaderComponentC
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "header.component",
                 fileExtension: "css",
-                defaultLocationInProject: ""
+                relativeLocation: ""
             );
         }
     }

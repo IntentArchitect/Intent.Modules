@@ -9,7 +9,7 @@
   <authors>Intent.Modules</authors>
   <templates></templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common" version="3.0.0-beta.2" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

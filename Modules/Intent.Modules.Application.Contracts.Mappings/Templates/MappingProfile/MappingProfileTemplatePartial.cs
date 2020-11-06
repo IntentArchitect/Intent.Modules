@@ -11,6 +11,8 @@ using Intent.SoftwareFactory;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 using Intent.Utils;
 using OperationModel = Intent.Modelers.Services.Api.OperationModel;
@@ -97,9 +99,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             return templateOutput.FullTypeName();
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"DtoProfile",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

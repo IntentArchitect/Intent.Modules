@@ -9,6 +9,7 @@ using Intent.Modules.Application.Contracts.Templates.DTO;
 using Intent.Modules.Application.Contracts.Templates.ServiceContract;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Constants;
@@ -31,9 +32,9 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
 
         public ServiceModel Service { get; set; }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}",
                 @namespace: $"{OutputTarget.GetNamespace()}.{Service.Name}",
                 relativeLocation: $"{Service.Name}");
@@ -45,7 +46,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
         //        overwriteBehaviour: OverwriteBehaviour.Always,
         //        fileName: "${Model.Name}SCH",
         //        fileExtension: "cs",
-        //        defaultLocationInProject: $"{Service.Name}",
+        //        relativeLocation: $"{Service.Name}",
         //        className: $"{Model.Name}SCH",
         //        @namespace: $"{OutputTarget.GetNamespace()}.{Service.Name}"
         //        );

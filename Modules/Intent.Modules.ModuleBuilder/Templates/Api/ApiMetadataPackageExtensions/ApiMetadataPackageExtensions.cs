@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataPackageExtension
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.ModuleBuilder.Api;
@@ -35,35 +36,35 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataPackageExtension
             this.Write("using System.Collections.Generic;\r\nusing System.Linq;\r\nusing Intent.Metadata.Mode" +
                     "ls;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
   foreach(var packageSettings in Model) { 
             
             #line default
             #line hidden
             this.Write("        public static IList<");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(packageSettings)));
             
             #line default
             #line hidden
             this.Write("> Get");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(packageSettings).ToPluralName()));
             
             #line default
@@ -71,21 +72,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataPackageExtension
             this.Write("(this IDesigner designer)\r\n        {\r\n            return designer.GetPackagesOfTy" +
                     "pe(");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(packageSettings)));
             
             #line default
             #line hidden
             this.Write(".SpecializationTypeId)\r\n                .Select(x => new ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName(packageSettings)));
             
             #line default
             #line hidden
             this.Write("(x))\r\n                .ToList();\r\n        }\r\n\r\n");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt"
   } 
             
             #line default

@@ -4,6 +4,7 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ModuleBuilder.Html.Api" #>
@@ -31,12 +32,11 @@ namespace <#= Namespace #>
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new HtmlDefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                relativeLocation: "<#= Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : "" #>"
+                relativeLocation: ""
             );
         }
 

@@ -41,14 +41,14 @@ namespace Intent.Modules.Electron.IpcProxy.Templates.AngularTypeScriptIpcService
         public string AssemblyName { get; private set; }
         public string TypeName => $"{AssemblyName}.{Model.Name}NodeIpcProxy";
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{Model.Name}Proxy",
                 fileExtension: "ts",
-                defaultLocationInProject: "wwwroot/App/Proxies/Generated");
+                relativeLocation: "wwwroot/App/Proxies/Generated");
         }
 
         private string GetReturnType(OperationModel operation)

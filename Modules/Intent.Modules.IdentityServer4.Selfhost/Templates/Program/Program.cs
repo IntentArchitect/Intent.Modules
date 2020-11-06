@@ -10,6 +10,7 @@
 namespace Intent.Modules.IdentityServer4.Selfhost.Templates.Program
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,14 +35,14 @@ namespace Intent.Modules.IdentityServer4.Selfhost.Templates.Program
             this.Write(" \r\n");
             this.Write("using Microsoft.AspNetCore;\r\nusing Microsoft.AspNetCore.Hosting;\r\n");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Program\Program.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Program\Program.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Program\Program.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.Selfhost\Templates\Program\Program.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default

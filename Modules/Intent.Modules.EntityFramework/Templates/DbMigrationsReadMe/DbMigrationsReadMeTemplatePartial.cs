@@ -10,7 +10,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
 {
-    partial class DbMigrationsReadMeTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasTemplateDependencies
+    partial class DbMigrationsReadMeTemplate : IntentFileTemplateBase<object>, ITemplate, IHasTemplateDependencies
     {
         public const string Identifier = "Intent.EntityFramework.DbMigrationsReadMe";
 
@@ -25,14 +25,14 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsReadMe
         public string StartupProject => OutputTarget.Application.OutputTargets.FirstOrDefault(x => x.Type == VisualStudioProjectTypeIds.WebApiApplication || x.Type == VisualStudioProjectTypeIds.ConsoleAppNetFramework)?.Name ?? "Unknown";
         public string DbContextConfigurationName => ExecutionContext.FindTemplateInstance(DbMigrationsConfigurationTemplate.Identifier).GetMetadata().FileName;
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: "MIGRATION_README",
                 fileExtension: "txt",
-                defaultLocationInProject: ""
+                relativeLocation: ""
                 );
         }
 

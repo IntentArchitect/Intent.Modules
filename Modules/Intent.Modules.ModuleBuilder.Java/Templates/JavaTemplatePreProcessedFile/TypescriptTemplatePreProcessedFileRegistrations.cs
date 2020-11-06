@@ -9,7 +9,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaTemplatePreProcessedFile
 {
-    public class JavaTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<JavaFileTemplateModel>
+    public class JavaTemplatePreProcessedFileRegistrations : FilePerModelTemplateRegistration<JavaFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaTemplatePreProcessedFi
             _metadataManager = metadataManager;
         }
 
-        public override ITemplate CreateTemplateInstance(IProject project, JavaFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, JavaFileTemplateModel model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,

@@ -10,6 +10,7 @@
 namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -34,21 +35,21 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
             this.Write(" \r\n\r\nusing Intent.Framework.Core.Context;\r\nusing System;\r\nusing System.Collection" +
                     "s.Generic;\r\nusing System.Linq;\r\nusing System.Web;\r\n");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -95,7 +96,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
                 throw new InvalidOperationException(
                     $""{nameof(");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -103,7 +104,7 @@ namespace Intent.Modules.AspNet.WebApi.Templates.WebApiServiceCallContext
             this.Write(")} can only be used in the context of an HTTP request. Possible causes for this e" +
                     "rror are using {nameof(");
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.AspNet.WebApi\Templates\WebApiServiceCallContext\WebApiServiceCallContextTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

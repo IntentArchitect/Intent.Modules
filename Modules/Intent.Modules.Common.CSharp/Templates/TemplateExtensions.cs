@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using Humanizer.Inflections;
-using Intent.Engine;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
-using Intent.Utils;
 
-namespace Intent.Modules.Common.Templates
+namespace Intent.Modules.Common.CSharp.Templates
 {
     public static class TemplateExtensions
     {
@@ -26,7 +22,7 @@ namespace Intent.Modules.Common.Templates
         {
             var result = s.ToCamelCase();
 
-            if (reservedWordEscape && CSharp.ReservedWords.Contains(result))
+            if (reservedWordEscape && Common.Templates.CSharp.ReservedWords.Contains(result))
             {
                 return $"@{result}";
             }

@@ -5,6 +5,7 @@
 <#@ Assembly Name="Intent.SoftwareFactory" #>
 <#@ import namespace="Intent.Modelers.Domain.Api" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
 <#@ import namespace="System.Diagnostics" #>

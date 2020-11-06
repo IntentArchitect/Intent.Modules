@@ -9,7 +9,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.AspNetCore.Docker.Templates.DockerFile
 {
-    partial class DockerfileTemplate : IntentProjectItemTemplateBase<object>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook
+    partial class DockerfileTemplate : IntentFileTemplateBase<object>, ITemplate, IHasNugetDependencies, ITemplateBeforeExecutionHook
     {
         public const string Identifier = "Intent.AspNetCore.Dockerfile";
 
@@ -28,14 +28,14 @@ namespace Intent.Modules.AspNetCore.Docker.Templates.DockerFile
             };
         }
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileMetadata(
+            return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
                 fileName: "Dockerfile",
                 fileExtension: "",
-                defaultLocationInProject: ""
+                relativeLocation: ""
                 );
         }
 

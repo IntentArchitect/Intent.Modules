@@ -8,6 +8,8 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.Engine;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Templates;
 
@@ -138,9 +140,9 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
 
         public string DotIfInNamespace => !string.IsNullOrWhiteSpace(StereotypedNamespaceBasedPath) ? "." : string.Empty;
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Name}Mapping",
                 @namespace: $"{OutputTarget.GetNamespace()}",
                 relativeLocation: string.Join("/", GetNamespaceParts()));
@@ -152,7 +154,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.Mapping
         //        overwriteBehaviour: OverwriteBehaviour.Always,
         //        fileName: "${Model.Name}Mapping",
         //        fileExtension: "cs",
-        //        defaultLocationInProject: "Mappings${SlashIfInNamespace}${StereotypedNamespaceBasedPath}",
+        //        relativeLocation: "Mappings${SlashIfInNamespace}${StereotypedNamespaceBasedPath}",
         //        className: "${Model.Name}Mapping",
         //        @namespace: "${Project.ProjectName}${DotIfInNamespace}${StereotypedNamespace}");
         //}

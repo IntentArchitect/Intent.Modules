@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
@@ -26,16 +28,17 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
         }
 
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
         public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
-                className: $"{Model.Name}",
+            return new CSharpFileConfig(
+                className: $"{TemplateName}",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
-                fileName: $"{Model.Name}Partial",
+                fileName: $"{TemplateName}Partial",
                 relativeLocation: $"{FolderPath}");
         }
 

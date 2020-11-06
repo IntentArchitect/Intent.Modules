@@ -5,8 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.0.0-*" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.0-*" />
     <PackageReference Include="Intent.Packager" Version="3.0.0-*">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -15,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common.IdentityServer4\Intent.Modules.Common.IdentityServer4.csproj" />
   </ItemGroup>
 

@@ -19,7 +19,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 {
     [IntentManaged(Mode.Merge)]
-    public partial class CSharpTemplate : IntentProjectItemTemplateBase<CSharpTemplateModel>
+    public partial class CSharpTemplate : IntentFileTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplate";
@@ -28,20 +28,20 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
         {
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
-        {
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}",
-                fileExtension: "tt",
-                defaultLocationInProject: $"{FolderPath}");
-        }
-
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
         public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
-        public string FolderNamespace => string.Join(".", OutputFolder);
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public override ITemplateFileConfig GetTemplateFileConfig()
+        {
+            return new TemplateFileConfig(
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                codeGenType: CodeGenType.Basic,
+                fileName: $"{TemplateName}",
+                fileExtension: "tt",
+                relativeLocation: $"{FolderPath}");
+        }
 
         public override string TransformText()
         {
@@ -57,6 +57,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common.CSharp.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 {(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}

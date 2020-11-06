@@ -28,12 +28,12 @@ namespace Intent.Modules.Angular.Templates.App.AppRoutingModuleTemplate
             AddTemplateDependency(IntentDecoratorsTemplate.TemplateId);
         }
 
-        public IEnumerable<AngularModuleTemplate> ModuleTemplates => Model.Select(x => FindTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
+        public IEnumerable<AngularModuleTemplate> ModuleTemplates => Model.Select(x => GetTemplate<AngularModuleTemplate>(TemplateDependency.OnModel(AngularModuleTemplate.TemplateId, x)));
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new TypeScriptDefaultFileMetadata(
+            return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $"app-routing.module",
                 relativeLocation: $"",

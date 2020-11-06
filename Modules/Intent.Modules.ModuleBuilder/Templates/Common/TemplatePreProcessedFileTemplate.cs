@@ -14,14 +14,14 @@ using Intent.Modules.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
 {
-    public class TemplatePreProcessedFileTemplate : IntentProjectItemTemplateBase<TemplateRegistrationModel>
+    public class TemplatePreProcessedFileTemplate : IntentFileTemplateBase<TemplateRegistrationModel>
     {
         private readonly string _t4TemplateId;
         private readonly string _partialTemplateId;
 
         public TemplatePreProcessedFileTemplate(
             string templateId,
-            IProject project,
+            IOutputTarget project,
             TemplateRegistrationModel model,
             string t4TemplateId,
             string partialTemplateId)
@@ -33,17 +33,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
 
         public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
 
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            var Metadata = new DefaultFileMetadata(
+            var Metadata = new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.OnceOff,
                 codeGenType: CodeGenType.Basic,
-                fileName: $"{Model.Name}",
+                fileName: $"{TemplateName}",
                 fileExtension: "cs",
-                defaultLocationInProject: $"{FolderPath}");
+                relativeLocation: $"{FolderPath}");
 
-            Metadata.CustomMetadata.Add("Depends On", "${Model.Name}.tt");
+            Metadata.CustomMetadata.Add("Depends On", $"{TemplateName}.tt");
 
             return Metadata;
         }

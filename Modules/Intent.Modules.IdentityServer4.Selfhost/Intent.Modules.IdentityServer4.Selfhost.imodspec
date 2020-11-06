@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.IdentityServer4.SelfHost</id>
-  <version>3.0.0-beta.1</version>
+  <version>3.0.0-beta.2</version>
   <summary>For setting up a stand-alone Secure Token Server using Identity Server 4.</summary>
   <description>For setting up a stand-alone Secure Token Server using Identity Server 4.</description>
   <authors>Intent.Modules</authors>
@@ -30,11 +30,11 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.1" />
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.2" />
     <dependency id="Intent.Common.CSharp" version="3.0.0-beta.2" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1" />
-    <dependency id="Intent.Common.IdentityServer4" version="3.0.0-beta.1" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common.IdentityServer4" version="3.0.0-beta.2" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

@@ -3,6 +3,7 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
@@ -25,9 +26,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         {
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Model.Type.ApiClassName}Extensions",
                 @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace);
         }

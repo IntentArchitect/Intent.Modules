@@ -12,6 +12,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
     using System.Collections.Generic;
     using Intent.Modelers.Services.Api;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     
     /// <summary>
@@ -30,7 +31,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
         {
             this.Write(" \r\n");
             
-            #line 7 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 8 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(DependencyUsings));
             
             #line default
@@ -38,21 +39,21 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             this.Write("\r\nusing System.Runtime.Serialization;\r\nusing AutoMapper;\r\n\r\n[assembly: DefaultInt" +
                     "entManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : Profile\r\n    {\r\n        public ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -66,7 +67,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             
 ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
 
     foreach (var model in Model) {
 
@@ -75,21 +76,21 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             #line hidden
             this.Write("            Configure(this, default(");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetSourceType(model))));
             
             #line default
             #line hidden
             this.Write("), default(");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetContractType(model))));
             
             #line default
             #line hidden
             this.Write("));\r\n");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
 
     }
 
@@ -98,7 +99,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             #line hidden
             this.Write("        }\r\n");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
 
     foreach (var model in Model)
     {
@@ -108,49 +109,49 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             #line hidden
             this.Write("\r\n        public static IMappingExpression<");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetSourceType(model))));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetContractType(model))));
             
             #line default
             #line hidden
             this.Write("> Configure(IProfileExpression cfg, ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetSourceType(model))));
             
             #line default
             #line hidden
             this.Write(" sourceType, ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetContractType(model))));
             
             #line default
             #line hidden
             this.Write(" destinationType)\r\n        {\r\n            return cfg.CreateMap<");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetSourceType(model))));
             
             #line default
             #line hidden
             this.Write(", ");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(NormalizeNamespace(GetContractType(model))));
             
             #line default
             #line hidden
             this.Write(">()\r\n");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
 
         foreach (var field in model.Fields)
         {
@@ -162,21 +163,21 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             #line hidden
             this.Write("                .ForMember(dest => dest.");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToPascalCase()));
             
             #line default
             #line hidden
             this.Write(", opt => opt.MapFrom(src => src.");
             
-            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetPath(field.Mapping.Path)));
             
             #line default
             #line hidden
             this.Write("))\r\n");
             
-            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
 
             }
         }
@@ -186,7 +187,7 @@ namespace Intent.Modules.Application.Contracts.Mappings.Templates.MappingProfile
             #line hidden
             this.Write("                ;\r\n        }\r\n");
             
-            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Application.Contracts.Mappings\Templates\MappingProfile\MappingProfileTemplate.tt"
 
     } //foreach
 

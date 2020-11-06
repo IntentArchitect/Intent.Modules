@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 
@@ -19,9 +21,9 @@ namespace Intent.Modules.AspNet.WebApi.Templates.ExceptionHandlerFilter
             AddAssemblyReference(new GacAssemblyReference("System.Net.Http"));
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"ExceptionHandlerFilter",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

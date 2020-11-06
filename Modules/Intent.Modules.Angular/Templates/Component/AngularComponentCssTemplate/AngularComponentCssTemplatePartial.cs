@@ -61,15 +61,13 @@ namespace Intent.Modules.Angular.Templates.Component.AngularComponentCssTemplate
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
             var moduleTemplate = ExecutionContext.FindTemplateInstance<Module.AngularModuleTemplate.AngularModuleTemplate>(Module.AngularModuleTemplate.AngularModuleTemplate.TemplateId, Model.Module);
-            return new DefaultFileMetadata(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
+            return new TemplateFileConfig(
                 fileName: $"{ComponentName.ToKebabCase()}.component",
                 fileExtension: "css", // Change to desired file extension.
-                defaultLocationInProject: $"{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
+                relativeLocation: $"{moduleTemplate.ModuleName.ToKebabCase()}/{ComponentName.ToKebabCase()}"
             );
         }
     }

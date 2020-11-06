@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using Intent.Modules.ModuleBuilder.Sql.Api;
@@ -36,28 +37,28 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
                     "mon.Sql.Templates;\r\nusing Intent.RoslynWeaver.Attributes;\r\nusing Intent.Template" +
                     "s;\r\n");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("using {0};", Model.GetModule().ApiNamespace)));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : SqlTemplateBase<");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -65,21 +66,21 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
             this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
                     "teId = \"");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        [IntentInitialGen]\r\n        public ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IProject project, ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
@@ -89,20 +90,20 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override ITemplateFileConfig DefineDefaultFileMetadata()
+        public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new SqlFileConfiguration(
+            return new SqlFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: $""");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
-            this.Write("\",\r\n                defaultLocationInProject: \"");
+            this.Write("\",\r\n                relativeLocation: \"");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? Model.Name.Replace("Template", "") : ""));
             
             #line default

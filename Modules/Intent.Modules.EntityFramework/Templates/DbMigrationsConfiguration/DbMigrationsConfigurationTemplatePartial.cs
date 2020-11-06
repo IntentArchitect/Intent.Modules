@@ -7,6 +7,8 @@ using Intent.Modules.Constants;
 using Intent.Modules.EntityFramework.Templates.DbContext;
 using Intent.Engine;
 using Intent.Eventing;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
@@ -30,9 +32,9 @@ namespace Intent.Modules.EntityFramework.Templates.DbMigrationsConfiguration
 
         public string DbContextVariableName => "dbContext";
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"{Project.ApplicationName()}DbContextConfiguration".ToCSharpIdentifier(),
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

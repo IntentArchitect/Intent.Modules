@@ -1,4 +1,4 @@
-﻿<#@ template debug="true"  inherits="IntentRoslynProjectItemTemplateBase<ServiceModel>" #>
+﻿<#@ template debug="true"  inherits="CSharpTemplateBase<ServiceModel>" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
 <#@ import namespace="System" #>
@@ -6,6 +6,7 @@
 <#@ import namespace="System.Collections" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Modelers.Services.Api" #>
 using System;
 using System.Configuration;

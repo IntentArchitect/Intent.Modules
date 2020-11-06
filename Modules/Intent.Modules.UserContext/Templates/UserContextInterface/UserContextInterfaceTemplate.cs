@@ -10,6 +10,7 @@
 namespace Intent.Modules.UserContext.Templates.UserContextInterface
 {
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using System;
     using System.IO;
     using System.Diagnostics;
@@ -23,7 +24,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextInterface
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class UserContextInterfaceTemplate : IntentRoslynProjectItemTemplateBase<object>
+    public partial class UserContextInterfaceTemplate : CSharpTemplateBase<object>
     {
 #line hidden
         /// <summary>
@@ -33,7 +34,7 @@ namespace Intent.Modules.UserContext.Templates.UserContextInterface
         {
             this.Write(" \r\n");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
 
 
 
@@ -43,14 +44,14 @@ namespace Intent.Modules.UserContext.Templates.UserContextInterface
             #line hidden
             this.Write("using System;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public interface ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.UserContext\Templates\UserContextInterface\UserContextInterfaceTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

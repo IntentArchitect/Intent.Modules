@@ -5,6 +5,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositionVisitor
@@ -38,9 +40,9 @@ namespace Intent.Modules.EntityFramework.Repositories.Templates.EntityCompositio
             return Project.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel<ClassModel>(GetMetadata().CustomMetadata["Entity Template Id"], (to) => to.Id == @class.Id))?.ClassName ?? $"{@class.Name}";
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"EntityCompositionVisitor",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

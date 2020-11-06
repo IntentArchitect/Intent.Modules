@@ -18,7 +18,7 @@ namespace Intent.Modules.EntityFramework.Migrations.Templates.ReadMe
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.EntityFramework.Migrations\Templates\ReadMe\MigrationReadMeTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class MigrationReadMeTemplate : IntentProjectItemTemplateBase<object>
+    public partial class MigrationReadMeTemplate : IntentFileTemplateBase<object>
     {
 #line hidden
         /// <summary>

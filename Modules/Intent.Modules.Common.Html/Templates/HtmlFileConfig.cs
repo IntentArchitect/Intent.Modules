@@ -3,19 +3,19 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Html.Templates
 {
-    public class HtmlDefaultFileMetadata : DefaultFileMetadata
+    public class HtmlFileConfig : TemplateFileConfig
     {
-        public HtmlDefaultFileMetadata(
-            OverwriteBehaviour overwriteBehaviour,
+        public HtmlFileConfig(
             string fileName,
             string relativeLocation,
+            OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
             string codeGenType = Common.CodeGenType.Basic,
             string fileExtension = "html"
         ) : base(overwriteBehaviour: overwriteBehaviour,
                 codeGenType: codeGenType,
                 fileName: fileName,
                 fileExtension: fileExtension,
-                defaultLocationInProject: relativeLocation)
+                relativeLocation: relativeLocation)
         {
         }
     }

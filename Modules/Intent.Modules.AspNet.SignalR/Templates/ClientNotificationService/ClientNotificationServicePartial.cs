@@ -1,10 +1,11 @@
 ﻿using Intent.Modules.Common.Templates;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
 {
-    public partial class ClientNotificationService : IntentRoslynProjectItemTemplateBase
+    public partial class ClientNotificationService : CSharpTemplateBase
     {
         public const string Identifier = "Intent.AspNet.SignalR.IClientNotificationService";
 
@@ -17,13 +18,13 @@ namespace Intent.Modules.AspNet.SignalR.Templates.ClientNotificationService
             return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
         }
 
-        protected override RoslynDefaultFileMetadata DefineRoslynDefaultFileMetadata()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new RoslynDefaultFileMetadata(
+            return new CSharpFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "IClientNotificationService",
                 fileExtension: "cs",
-                defaultLocationInProject: "Services",
+                relativeLocation: "Services",
                 className: "IClientNotificationService",
                 @namespace: "${Project.ProjectName}.Services");
         }

@@ -95,7 +95,7 @@ this.Write("        ");
         #line hidden
         
         #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.Typescript.ServiceAgent.Contracts\Templates\TypescriptDTO\TypescriptDtoTemplate.tt"
-this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToCamelCase(false)));
+this.Write(this.ToStringHelper.ToStringWithCulture(field.Name.ToCamelCase()));
 
         
         #line default

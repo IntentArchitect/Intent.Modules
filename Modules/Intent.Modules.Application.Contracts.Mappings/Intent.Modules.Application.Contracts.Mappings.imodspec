@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts.Mappings</id>
-  <version>3.0.0-beta.1</version>
+  <version>3.0.0-beta.2</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Creates mapping configuration and extension methods using Automapper.</summary>
   <description>Creates mapping configuration and extension methods using Automapper.</description>
@@ -33,8 +33,8 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.1"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.1"/>
+    <dependency id="Intent.Common" version="3.0.0-beta.2"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.2"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>
