@@ -52,13 +52,6 @@
     <Compile Include="Decorators\DDDEntityStateDecoratorRegistration.cs" />
     <Compile Include="Decorators\DDDEntityInterfaceDecorator.cs" />
     <Compile Include="Decorators\DDDEntityInterfaceDecoratorRegistration.cs" />
-    <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.cs">
-      <DependentUpon>DomainEntityBehavioursTemplate.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplatePartial.cs" />
-    <Compile Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplateRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -97,10 +90,6 @@
     <Content Include="metadata\Intent.Entities.DDD\Stereotypes\ValueObject.xml" />
     <Content Include="metadata\Intent.Entities.DDD\Stereotypes\Entity.xml" />
     <Content Include="metadata\Intent.Entities.DDD\Stereotypes\QueryOperation.xml" />
-    <Content Include="Templates\DomainEntityBehaviour\DomainEntityBehavioursTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>DomainEntityBehavioursTemplate.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

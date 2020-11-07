@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class WCFServiceApplicationModel : IHasStereotypes, IMetadataModel, IVisualStudioProject
+    public class WCFServiceApplicationModel : IHasStereotypes, IMetadataModel, IVisualStudioProject, IHasName
     {
         public const string SpecializationType = "WCF Service Application";
         protected readonly IElement _element;

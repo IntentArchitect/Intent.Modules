@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class ASPNETCoreWebApplicationModel : IHasStereotypes, IMetadataModel, IVisualStudioProject
+    public class ASPNETCoreWebApplicationModel : IHasStereotypes, IMetadataModel, IVisualStudioProject, IHasName
     {
         public const string SpecializationTypeId = "FFD54A85-9362-48AC-B646-C93AB9AC63D2";
         public const string SpecializationType = "ASP.NET Core Web Application";

@@ -35,7 +35,7 @@ namespace Intent.Modules.Application.ServiceCallHandlers.Templates.ServiceCallHa
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"{Model.Name}",
+                className: $"{Model.Name}SCH",
                 @namespace: $"{OutputTarget.GetNamespace()}.{Service.Name}",
                 relativeLocation: $"{Service.Name}");
         }

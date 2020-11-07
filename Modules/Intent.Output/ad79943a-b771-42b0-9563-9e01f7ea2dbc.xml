@@ -54,6 +54,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\FolderModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>FolderModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5e94c359-e6e5-4b58-a1fc-151de9c10934</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.VisualStudio.Projects\Api\Extensions\NETFrameworkVersionModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>NETFrameworkVersionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>

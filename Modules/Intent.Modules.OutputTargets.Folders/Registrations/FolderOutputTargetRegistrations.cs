@@ -79,6 +79,7 @@ namespace Intent.Modules.OutputTargets.Folders.Registrations
         public IEnumerable<string> SupportedFrameworks => new string[0];
         public IEnumerable<IOutputTargetRole> Roles => _model.Roles;
         public IEnumerable<IOutputTargetTemplate> Templates => _model.TemplateOutputs;
+        public IDictionary<string, object> Metadata { get; }
     }
 
     public class FolderOutputTarget : IOutputTargetConfig
@@ -99,5 +100,6 @@ namespace Intent.Modules.OutputTargets.Folders.Registrations
         public IEnumerable<string> SupportedFrameworks => new string[0];
         public IEnumerable<IOutputTargetRole> Roles => _model.Roles;
         public IEnumerable<IOutputTargetTemplate> Templates => _model.TemplateOutputs;
+        public IDictionary<string, object> Metadata { get; }
     }
 }

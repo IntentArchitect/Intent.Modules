@@ -34,7 +34,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.Contracts.Templates.TypescriptD
             return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: Model.Name,
-                relativeLocation: "wwwroot/App/DTOs/Generated",
+                relativeLocation: "",
                 className: "${Model.Name}",
                 @namespace: "App.Contracts");
         }

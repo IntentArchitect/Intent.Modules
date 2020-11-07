@@ -35,7 +35,7 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            return new DefaultFileConfig(
+            return new TemplateFileConfig(
                 fileName: $"<#= Model.IsFilePerModelTemplateRegistration()  ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
                 fileExtension: "<#= Model.GetFileSettings().FileExtension() #>"
             );

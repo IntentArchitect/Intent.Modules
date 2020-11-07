@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Intent.Engine;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -20,9 +21,9 @@ namespace Intent.Modules.IdentityServer4.X509CertSigning.Templates.CertificateRe
         {
         }
 
-        protected override CSharpDefaultFileConfig DefineFileConfig()
+        protected override CSharpFileConfig DefineFileConfig()
         {
-            return new CSharpDefaultFileConfig(
+            return new CSharpFileConfig(
                 className: $"CertificateRepo",
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }

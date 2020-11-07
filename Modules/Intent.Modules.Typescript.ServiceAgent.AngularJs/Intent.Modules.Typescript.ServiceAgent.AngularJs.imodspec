@@ -11,6 +11,7 @@
   <templates>
     <template id="Intent.Typescript.ServiceAgent.AngularJs.Proxy.Local">
       <role>Presentation.Web</role>
+      <location>wwwroot/App/Proxies/Generated</location>
       <config>
         <add key="Namespace"
              default="App.Proxies"/>
@@ -21,6 +22,7 @@
     </template>
     <template id="Intent.Typescript.ServiceAgent.AngularJs.Proxy.Remote">
       <role>Presentation.Web</role>
+      <location>wwwroot/App/Proxies/Generated</location>
       <config>
         <add key="Namespace"
              default="App.Proxies.${Model.Application.Name}"/>

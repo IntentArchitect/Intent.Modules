@@ -13,6 +13,7 @@ namespace Intent.Modules.IdentityServer4.X509CertSigning.Templates.CertificateRe
     using System.Linq;
     using Intent.Modules.Common;
     using Intent.Modules.Common.Templates;
+    using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
     using System;
@@ -34,7 +35,7 @@ namespace Intent.Modules.IdentityServer4.X509CertSigning.Templates.CertificateRe
             this.Write("using System;\r\nusing System.IO;\r\nusing System.Security.Cryptography.X509Certifica" +
                     "tes;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -42,7 +43,7 @@ namespace Intent.Modules.IdentityServer4.X509CertSigning.Templates.CertificateRe
             this.Write("\r\n{\r\n    /// <summary>\r\n    /// Convenient way to obtain X509 Certificates from v" +
                     "arious sources\r\n    /// </summary>\r\n    static class ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -76,7 +77,7 @@ namespace Intent.Modules.IdentityServer4.X509CertSigning.Templates.CertificateRe
                     "tEmbeddedCertificate(string resourceName, string password = null)\r\n        {\r\n  " +
                     "          var assembly = typeof(");
             
-            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt"
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.IdentityServer4.X509CertSigning\Templates\CertificateRepo\CertificateRepo.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

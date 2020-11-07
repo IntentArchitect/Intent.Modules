@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class ASPNETWebApplicationNETFrameworkModel : IHasStereotypes, IMetadataModel, IVisualStudioProject
+    public class ASPNETWebApplicationNETFrameworkModel : IHasStereotypes, IMetadataModel, IVisualStudioProject, IHasName
     {
         public const string SpecializationType = "ASP.NET Web Application (.NET Framework)";
         protected readonly IElement _element;

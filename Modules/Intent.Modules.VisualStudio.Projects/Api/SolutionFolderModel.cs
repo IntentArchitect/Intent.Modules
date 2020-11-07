@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class SolutionFolderModel : IHasStereotypes, IMetadataModel
+    public class SolutionFolderModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Solution Folder";
         protected readonly IElement _element;

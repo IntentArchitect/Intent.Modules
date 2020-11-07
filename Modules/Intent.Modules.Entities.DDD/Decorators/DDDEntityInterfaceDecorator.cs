@@ -55,10 +55,5 @@ namespace Intent.Modules.Entities.Decorators
         {Template.NormalizeNamespace(t.GetType(associationEnd).Name)} {associationEnd.Name().ToPascalCase()} {{ get; }}
 ";
         }
-
-        public override bool CanWriteDefaultOperation(OperationModel operation)
-        {
-            return !operation.HasStereotype("Command Operation");
-        }
     }
 }

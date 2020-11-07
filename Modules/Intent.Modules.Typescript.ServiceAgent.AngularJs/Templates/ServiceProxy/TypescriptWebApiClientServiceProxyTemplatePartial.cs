@@ -59,7 +59,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "${Model.Name}Proxy",
-                relativeLocation: $"wwwroot/App/Proxies/Generated",
+                relativeLocation: $"",
                 className: "${Model.Name}Proxy",
                 @namespace: "App.Proxies"
                 );

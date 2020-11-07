@@ -27,7 +27,7 @@ namespace Intent.Modules.Unity.Templates.UnityConfig
             eventDispatcher.Subscribe(Constants.ContainerRegistrationEvent.EventId, Handle);
         }
 
-        public IEnumerable<IProject> ApplicationProjects => Project.Application.Projects;
+        public IEnumerable<IOutputTarget> ApplicationProjects => ExecutionContext.OutputTargets.Select(x => x.GetTargetPath()[0]).Distinct();
 
         protected override CSharpFileConfig DefineFileConfig()
         {

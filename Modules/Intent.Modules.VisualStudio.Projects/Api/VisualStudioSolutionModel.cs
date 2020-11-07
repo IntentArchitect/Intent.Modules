@@ -18,7 +18,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         [IntentManaged(Mode.Ignore)]
         public VisualStudioSolutionModel(IPackage package)
         {
-            if (!SpecializationType.Equals(package.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
+            if (!SpecializationTypeId.Equals(package.SpecializationTypeId, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from package with specialization type '{package.SpecializationType}'. Must be of type '{SpecializationType}'");
             }

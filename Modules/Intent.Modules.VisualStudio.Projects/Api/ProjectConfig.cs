@@ -28,6 +28,7 @@ namespace Intent.Modules.VisualStudio.Projects.Api
             .ToArray();
         public IEnumerable<IOutputTargetRole> Roles => _project.Roles;
         public IEnumerable<IOutputTargetTemplate> Templates => _project.TemplateOutputs;
+        public IDictionary<string, object> Metadata { get; }
     }
 
     internal class FolderOutputTarget : IOutputTargetConfig
@@ -37,6 +38,10 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public FolderOutputTarget(FolderModel model)
         {
             _model = model;
+            Metadata = new Dictionary<string, object>()
+            {
+                { "Namespace Provider", model.GetFolderOptions()?.NamespaceProvider() ?? true }
+            };
         }
         public IEnumerable<IStereotype> Stereotypes => _model.Stereotypes;
         public string Id => _model.Id;
@@ -48,5 +53,6 @@ namespace Intent.Modules.VisualStudio.Projects.Api
         public IEnumerable<string> SupportedFrameworks => new string[0];
         public IEnumerable<IOutputTargetRole> Roles => _model.Roles;
         public IEnumerable<IOutputTargetTemplate> Templates => _model.TemplateOutputs;
+        public IDictionary<string, object> Metadata { get; }
     }
 }

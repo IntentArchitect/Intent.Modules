@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class FolderModel : IHasStereotypes, IMetadataModel
+    public class FolderModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Folder";
         public const string SpecializationTypeId = "3407a825-1331-4f3f-89a4-901903ed97ce";

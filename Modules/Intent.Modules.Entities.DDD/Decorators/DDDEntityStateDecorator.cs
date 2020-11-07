@@ -101,12 +101,7 @@ namespace Intent.Modules.Entities.DDD.Decorators
             }
             return base.GetBaseClass(@class);
         }
-
-        public override IEnumerable<string> GetInterfaces(ClassModel @class)
-        {
-            return new[] { $"I{@class.Name}Behaviours" };
-        }
-
+        
         public override string AssociationAfter(AssociationEndModel associationEnd)
         {
             if (!associationEnd.IsNavigable)

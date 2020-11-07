@@ -34,11 +34,12 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
             return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Model.Name}",
+                fileName: TemplateName,
                 fileExtension: "tt",
                 relativeLocation: $"{FolderPath}");
         }
 
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
         public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
 

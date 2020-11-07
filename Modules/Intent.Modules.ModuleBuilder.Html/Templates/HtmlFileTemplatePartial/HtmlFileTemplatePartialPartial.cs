@@ -32,6 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
             //}
         }
 
+        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
         public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
@@ -39,9 +40,9 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"{Model.Name}",
+                className: $"{TemplateName}",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
-                fileName: $"{Model.Name}Partial",
+                fileName: $"{TemplateName}Partial",
                 relativeLocation: $"{FolderPath}");
         }
 

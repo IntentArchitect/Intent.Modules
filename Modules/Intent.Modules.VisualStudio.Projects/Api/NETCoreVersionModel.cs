@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.VisualStudio.Projects.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class NETCoreVersionModel : IHasStereotypes, IMetadataModel
+    public class NETCoreVersionModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = ".NET Core Version";
         protected readonly IElement _element;

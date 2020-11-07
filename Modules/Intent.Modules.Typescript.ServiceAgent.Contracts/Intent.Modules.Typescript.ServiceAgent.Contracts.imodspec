@@ -9,13 +9,12 @@
   <templates>
     <template id="Intent.Typescript.ServiceAgent.Contracts.DTO.Local">
       <role>Presentation.Web</role>
+      <location>wwwroot/App/DTOs/Generated</location>
     </template>
     <template id="Intent.Typescript.ServiceAgent.Contracts.DTO.Remote">
       <role>Presentation.Web</role>
-      <location>wwwroot/App/DTOs/Generated/${Model.Application.Name}</location>
+      <location>wwwroot/App/DTOs/Generated</location>
       <config>
-        <add key="Namespace"
-             default="App.Contracts.${Model.Application.Name}"/>
         <add key="Consumer Stereotype Name"
              default="Consumers"
              description="The name of Stereotype to search for on DTOs in a different applications which contain the 'Consumer Stereotype Property Name' specified below." />

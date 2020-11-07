@@ -138,7 +138,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
         public string GetParametersDefinition(OperationModel operation)
         {
             return operation.Parameters.Any()
-                ? operation.Parameters.Select(x => this.GetTypeName(x.TypeReference, OPERATIONS_CONTEXT) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
+                ? operation.Parameters.Select(x => NormalizeNamespace(Types.InContext(OPERATIONS_CONTEXT).Get(x.TypeReference).Name) + " " + x.Name.ToCamelCase()).Aggregate((x, y) => x + ", " + y)
                 : "";
         }
 
@@ -148,7 +148,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityInterface
             {
                 return o.IsAsync() ? "Task" : "void";
             }
-            return o.IsAsync() ? $"Task<{this.GetTypeName(o.TypeReference, OPERATIONS_CONTEXT)}>" : this.GetTypeName(o.TypeReference, OPERATIONS_CONTEXT);
+            return o.IsAsync() ? $"Task<{NormalizeNamespace(Types.InContext(OPERATIONS_CONTEXT).Get(o.TypeReference).Name)}>" : NormalizeNamespace(Types.InContext(OPERATIONS_CONTEXT).Get(o.TypeReference).Name);
         }
     }
 }
