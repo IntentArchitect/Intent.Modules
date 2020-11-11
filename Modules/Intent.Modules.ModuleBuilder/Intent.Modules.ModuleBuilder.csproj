@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Version>2.2.0-pre.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -23,50 +23,50 @@
     <None Remove="Templates\RoslynProjectItemTemplatePartial\**" />
     <None Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
     <None Remove="Templates\RoslynProjectItemTemplate\**" />
-    <None Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensions.tt">
+    <None Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiMetadataDesignerExtensions.cs</LastGenOutput>
+      <LastGenOutput>ApiMetadataDesignerExtensionsTemplate.cs</LastGenOutput>
     </None>
-    <None Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.tt">
+    <None Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiMetadataProviderExtensions.cs</LastGenOutput>
+      <LastGenOutput>ApiMetadataProviderExtensionsTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensions.cs">
+    <Compile Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiMetadataDesignerExtensions.tt</DependentUpon>
+      <DependentUpon>ApiMetadataDesignerExtensionsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensions.cs">
+    <Compile Update="Templates\Api\ApiMetadataProviderExtensions\ApiMetadataProviderExtensionsTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiMetadataProviderExtensions.tt</DependentUpon>
+      <DependentUpon>ApiMetadataProviderExtensionsTemplate.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiElementModel\ApiElementModel.tt">
+    <None Update="Templates\Api\ApiElementModel\ApiElementModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiElementModel.cs</LastGenOutput>
+      <LastGenOutput>ApiElementModelTemplate.cs</LastGenOutput>
     </None>
     <None Update="Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiModelInterfaceTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiElementModel\ApiElementModel.cs">
+    <Compile Update="Templates\Api\ApiElementModel\ApiElementModelTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiElementModel.tt</DependentUpon>
+      <DependentUpon>ApiElementModelTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\Api\ApiModelInterfaceTemplate\ApiModelInterfaceTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiModelInterfaceTemplate.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiElementModelExtensions\ApiElementModelExtensions.tt">
+    <None Update="Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiElementModelExtensions.cs</LastGenOutput>
+      <LastGenOutput>ApiElementModelExtensionsTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiElementModelExtensions\ApiElementModelExtensions.cs">
+    <Compile Update="Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiElementModelExtensions.tt</DependentUpon>
+      <DependentUpon>ApiElementModelExtensionsTemplate.tt</DependentUpon>
     </Compile>
     <None Update="Templates\Api\ApiMetadataProvider\ApiMetadataProvider.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -77,50 +77,50 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiMetadataProvider.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiAssociationModel\ApiAssociationModel.tt">
+    <None Update="Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiAssociationModel.cs</LastGenOutput>
+      <LastGenOutput>ApiAssociationModelTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiAssociationModel\ApiAssociationModel.cs">
+    <Compile Update="Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiAssociationModel.tt</DependentUpon>
+      <DependentUpon>ApiAssociationModelTemplate.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.tt">
+    <None Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiAssociationModelExtensions.cs</LastGenOutput>
+      <LastGenOutput>ApiAssociationModelExtensionsTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensions.cs">
+    <Compile Update="Templates\Api\ApiAssociationModelExtensions\ApiAssociationModelExtensionsTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiAssociationModelExtensions.tt</DependentUpon>
+      <DependentUpon>ApiAssociationModelExtensionsTemplate.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.tt">
+    <None Update="Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiMetadataPackageExtensions.cs</LastGenOutput>
+      <LastGenOutput>ApiMetadataPackageExtensionsTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensions.cs">
+    <Compile Update="Templates\Api\ApiMetadataPackageExtensions\ApiMetadataPackageExtensionsTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiMetadataPackageExtensions.tt</DependentUpon>
+      <DependentUpon>ApiMetadataPackageExtensionsTemplate.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiPackageModel\ApiPackageModel.tt">
+    <None Update="Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiPackageModel.cs</LastGenOutput>
+      <LastGenOutput>ApiPackageModelTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiPackageModel\ApiPackageModel.cs">
+    <Compile Update="Templates\Api\ApiPackageModel\ApiPackageModelTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiPackageModel.tt</DependentUpon>
+      <DependentUpon>ApiPackageModelTemplate.tt</DependentUpon>
     </Compile>
-    <None Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModel.tt">
+    <None Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ApiElementExtensionModel.cs</LastGenOutput>
+      <LastGenOutput>ApiElementExtensionModelTemplate.cs</LastGenOutput>
     </None>
-    <Compile Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModel.cs">
+    <Compile Update="Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ApiElementExtensionModel.tt</DependentUpon>
+      <DependentUpon>ApiElementExtensionModelTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

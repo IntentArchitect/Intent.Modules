@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignersFolderModel : IHasStereotypes, IMetadataModel
+    public class DesignersFolderModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Designers Folder";
         protected readonly IElement _element;

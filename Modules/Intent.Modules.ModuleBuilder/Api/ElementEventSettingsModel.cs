@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementEventSettingsModel : IHasStereotypes, IMetadataModel
+    public class ElementEventSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Element Event Settings";
         protected readonly IElement _element;

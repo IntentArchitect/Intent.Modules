@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="cfcf4a0f-799b-43a7-9d0d-b4e9dee57066">
+  <name>Installation Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>0</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="e585ebaf-ce34-4d6d-a93c-abb1df86a58c">
+      <name>File Path</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

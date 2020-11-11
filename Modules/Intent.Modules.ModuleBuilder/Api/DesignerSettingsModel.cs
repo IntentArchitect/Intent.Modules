@@ -14,7 +14,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerSettingsModel : IHasStereotypes, IMetadataModel
+    public class DesignerSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         protected readonly IElement _element;
         public const string SpecializationType = "Designer Settings";

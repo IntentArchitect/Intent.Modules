@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationDestinationEndSettingsModel : IHasStereotypes, IMetadataModel
+    public class AssociationDestinationEndSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Association Destination End Settings";
         protected readonly IElement _element;

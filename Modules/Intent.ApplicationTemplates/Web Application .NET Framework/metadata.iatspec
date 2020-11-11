@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.FullStackWebApi</id>
-  <version>3.0.1</version>
+  <version>3.0.2</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <displayName>Web Application .NET Framework</displayName>
   <shortDescription>Create a web application to be hosted on Windows.</shortDescription>

@@ -43,6 +43,38 @@ namespace Intent.Modules.ModuleBuilder.Api
                 return _stereotype.GetProperty<IIconModel>("Icon");
             }
 
+            public SortingOptions Sorting()
+            {
+                return new SortingOptions(_stereotype.GetProperty<string>("Sorting"));
+            }
+
+            public class SortingOptions
+            {
+                public readonly string Value;
+
+                public SortingOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsManually()
+                {
+                    return Value == "Manually";
+                }
+                public bool IsByTypeThenManually()
+                {
+                    return Value == "By type, then manually";
+                }
+                public bool IsByTypeThenByName()
+                {
+                    return Value == "By type, then by name";
+                }
+                public bool IsByName()
+                {
+                    return Value == "By name";
+                }
+            }
+
         }
 
     }

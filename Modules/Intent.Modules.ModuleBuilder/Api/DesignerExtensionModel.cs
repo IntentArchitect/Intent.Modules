@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerExtensionModel : DesignerSettingsModel, IHasStereotypes, IMetadataModel
+    public class DesignerExtensionModel : DesignerSettingsModel, IMetadataModel, IHasStereotypes, IHasName
     {
         public DesignerExtensionModel(IElement element) : base(element, SpecializationType)
         {

@@ -34,5 +34,21 @@
       <lookupTypes />
       <isRequiredFunction />
     </property>
+    <property id="c15cbaf3-f83d-4e3f-b489-7bf88a5143c4">
+      <name>Sorting</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>By type, then by name</defaultValue>
+      <valueOptions>
+        <option>Manually</option>
+		<option>By type, then manually</option>
+        <option>By type, then by name</option>
+        <option>By name</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
   </properties>
 </stereotypeDefinition>

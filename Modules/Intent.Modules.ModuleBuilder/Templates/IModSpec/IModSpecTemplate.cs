@@ -77,11 +77,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
 
-        public IModSpecTemplate(string templateId, IOutputTarget project, IMetadataManager metadataManager)
-            : base(templateId, project)
+        public IModSpecTemplate(IOutputTarget project, IntentModuleModel model, IMetadataManager metadataManager)
+            : base(TemplateId, project)
         {
             _metadataManager = metadataManager;
-            ModuleModel = _metadataManager.ModuleBuilder(project.Application).GetIntentModuleModels().FirstOrDefault() ?? throw new Exception("No module has been created in the Module Builder");
+            ModuleModel = model;
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {
                 _templatesToRegister.Add(@event);
@@ -246,7 +246,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         ? string.Join(";", metadataRegistration.Targets.Select(x => x.Name))
                         : null);
 
-                existing.SetAttributeValue("src", Path.GetRelativePath(GetMetadata().GetFullLocationPath(), metadataRegistration.Path).NormalizePath());
+                existing.SetAttributeValue("src", PathHelper.GetRelativePath(GetMetadata().GetFullLocationPath(), metadataRegistration.Path).NormalizePath());
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 
@@ -255,7 +255,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 .ToList();
             foreach (var package in packagesToInclude)
             {
-                var path = Path.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation).NormalizePath();
+                var path = PathHelper.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation).NormalizePath();
                 var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
                 if (existing == null)
                 {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace Intent.Modules.Common
 {
@@ -20,15 +21,21 @@ namespace Intent.Modules.Common
         public static string GetRelativePath(this string relativeTo, string path)
         {
 #if NETCOREAPP2_1
-            return SystemPath.GetRelativePath(relativeTo.NormalizePath(), path.NormalizePath());
+            return Path.GetRelativePath(relativeTo.NormalizePath(), path.NormalizePath());
 #endif
 #if NETSTANDARD2_1
-            return SystemPath.GetRelativePath(relativeTo.NormalizePath(), path.NormalizePath());
+            return Path.GetRelativePath(relativeTo.NormalizePath(), path.NormalizePath());
 #endif
-            var url = new Uri("http://localhost/" + path, UriKind.Absolute);
-            var relativeUrl = new Uri("http://localhost/" + relativeTo, UriKind.Absolute).MakeRelativeUri(url);
-            return "./" + relativeUrl.ToString();
-            //throw new NotSupportedException("This is only supported if the entry executable is at least .NET Core 2.1 or higher.");
+            // Require trailing backslash for path
+            if (!relativeTo.EndsWith("\\"))
+                relativeTo += "\\";
+
+            Uri baseUri = new Uri(relativeTo);
+            Uri fullUri = new Uri(path);
+
+            Uri relativeUri = baseUri.MakeRelativeUri(fullUri);
+
+            return relativeUri.ToString().Replace("%20", " ");
         }
     }
 }

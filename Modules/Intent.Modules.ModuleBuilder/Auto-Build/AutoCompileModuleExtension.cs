@@ -35,7 +35,7 @@ namespace Intent.Modules.Angular
             var location = GetRootExecutionLocation(application);
             if (location == null)
             {
-                Logging.Log.Failure("Could not find location to install Angular application.");
+                Logging.Log.Failure("Could not find location to run dotnet build command.");
                 return;
             }
 
@@ -66,7 +66,7 @@ Auto-compiling of module failed. If the problem persists, consider disabling thi
 
         private string GetRootExecutionLocation(IApplication application)
         {
-            return application.OutputTargets.SingleOrDefault(x => x.HasTemplateInstances(IModSpecTemplate.TemplateId))?.Location;
+            return application.OutputTargets.FirstOrDefault(x => x.HasTemplateInstances(IModSpecTemplate.TemplateId) || x.IsVSProject())?.Location;
         }
     }
 }

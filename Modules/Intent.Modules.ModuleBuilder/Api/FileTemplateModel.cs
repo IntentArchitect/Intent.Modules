@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class FileTemplateModel : TemplateRegistrationModel, IHasStereotypes, IMetadataModel
+    public class FileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName
     {
         public FileTemplateModel(IElement element) : base(element, SpecializationType)
         {

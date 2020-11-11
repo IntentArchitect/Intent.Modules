@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementMappingModel : IHasStereotypes, IMetadataModel
+    public class ElementMappingModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Element Mapping";
         protected readonly IElement _element;

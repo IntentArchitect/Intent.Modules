@@ -11,7 +11,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class ContextMenuModel
-        : IHasStereotypes, IMetadataModel
+        : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Context Menu";
         protected readonly IElement _element;

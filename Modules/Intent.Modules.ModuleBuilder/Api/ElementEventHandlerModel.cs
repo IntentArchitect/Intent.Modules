@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ElementEventHandlerModel : ScriptModel, IHasStereotypes, IMetadataModel
+    public class ElementEventHandlerModel : ScriptModel, IMetadataModel, IHasStereotypes, IHasName
     {
         public ElementEventHandlerModel(IElement element) : base(element, SpecializationType)
         {

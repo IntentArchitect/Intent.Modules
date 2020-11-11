@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6e2b0cb0-3abd-4fce-b72e-d81c325a2632">
+  <name>Application Template Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="cf385bd9-e92f-453d-a3e1-00b9922b57b3">Application Template</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return properties["Version"].value</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>0</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="50b17c87-a6af-4b1f-bc27-70c21b0249cb">
+      <name>Icon</name>
+      <type>string</type>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="c1ed16b6-804c-4e04-b041-336630941ff9">
+      <name>Version</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true</isRequiredFunction>
+    </property>
+    <property id="0c7fbd14-0ae7-45d0-950a-9e0ac243bbed">
+      <name>Display Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true</isRequiredFunction>
+    </property>
+    <property id="212c479d-1e24-4bc5-bff3-e01063010e04">
+      <name>Description</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="f21c3511-4a5e-4da5-b78f-c796eef11bf9">
+      <name>Authors</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="f1862f29-1c35-4681-a2e3-33f5967e0f26">
+      <name>Priority</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>0</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="d1b9cc54-f7e1-4a75-8dac-e40534eecb86">
+      <name>Supported Client Versions</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

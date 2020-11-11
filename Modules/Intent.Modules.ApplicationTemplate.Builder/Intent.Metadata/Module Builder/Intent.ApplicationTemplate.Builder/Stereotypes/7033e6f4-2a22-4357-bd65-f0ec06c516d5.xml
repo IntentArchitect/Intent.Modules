@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="7033e6f4-2a22-4357-bd65-f0ec06c516d5">
+  <name>Module Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">Module</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return properties["Version"].value</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>0</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="8235e942-6dec-4576-be44-3543b35ca44c">
+      <name>Version</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

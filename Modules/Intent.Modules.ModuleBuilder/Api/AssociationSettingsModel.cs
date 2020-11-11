@@ -16,7 +16,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationSettingsModel : IHasStereotypes, IMetadataModel
+    public class AssociationSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Association Settings";
         public const string SpecializationTypeId = "16d21684-d5ea-4fde-b648-f88d292fa272";

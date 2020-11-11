@@ -15,7 +15,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class StereotypeDefinitionCreationOptionModel : IHasStereotypes, IMetadataModel
+    public class StereotypeDefinitionCreationOptionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "Stereotype-Definition Creation Option";
         protected readonly IElement _element;

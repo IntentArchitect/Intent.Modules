@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplate.AspNetCore3.1.WebApi.FullStack</id>
-  <version>3.0.1</version>
+  <version>3.0.2</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <displayName>Web Application ASP.NET Core 3.1</displayName>
   <shortDescription>Create a web application that supports cross-platform hosting using .NET Core 3.1.</shortDescription>

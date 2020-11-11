@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="08725da5-d0cf-4ec8-ad65-a58d9927d32f" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Content Folder</name>
+  <display>Content Folder</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>c75eea8b-43c3-477d-9bbf-83ada9809113</parentFolderId>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAL5ElEQVR4Xu3dz4udVx3H8WeSSTtMg9ZUbGjUdCNddGGhoEjFCBEqdd2Vuuk+IJSA/4GFIBS6cOemdNV1iwVnkUUp2dWFC8FFxUZjwdDCdBiaHyM3EhmHNHPv85zzPOe5n1e3vc855/v+fM/7nnvuzGSj8x8CCMQS2IitXOEIINARgCZAIJgAAQSHr3QECEAPIBBMgACCw1c6AgSgBxAIJkAAweErHQEC0AMIBBMggODwlY4AAegBBIIJEEBw+EpHgAD0AALBBAggOHylI0AAegCBYAIEEBy+0hEgAD2AQDABAggOX+kIEIAeQCCYAAEEh690BAhADyAQTIAAgsNXOgIEoAcQCCZAAMHhKx0BAphxD+zt7R3MePmWfojA9vb2JHtxkkklP5yAzT+cYasjjCkDAmi1Cx6yLpt/hqH1WPIYIiCAHsFM/QgBTJ3AuPPXFAEBjJvl4Nls/sEIZztADREQwMzagQBmFliF5ZYUAQFUCKjWkDZ/LbLzG7eUBAhgJtnb/DMJasRllpAAAYwY2JCpCGAIvfV9dqgECGAGvWHzzyCkCZc4RAIEMGFwy05NAMuSyn1dXwkQQOM9Y/M3HlBDy+sjAQJoKMCjS7H5Gw6nwaURQIOhDFkSAQyhl/nsqhJwAmi0T2z+RoNpfFkE0HhAyy6PAJYl5XVHCawiASeABvun5OY/eOdsgxVmL+n2yWe7T86+2p177qUqIAigCtZxBi25+a9/+G731PVXxlm4WXoR+Hzr5W77wpXuxOZWr+e/7KFlJeAEUBT78MFKCeDu7f1u472nhy/ICKMQ+Me53xc9ERDAKLGVnaTU5l+sanfnUvfY/ttlF2i0qgQWHw1O/XSn2BzLSMAJoBju4QOVEsCd/c+6EzvPDF+QESYhsPGzG0XmJYAiGMcZpNTmX6zWxd84mdWa5fqZK903f/DLwcMTwGCE4wxQcvO7+Bsns9qzHLz4UZGLweMk4CNA7SSXGL+UAFz8LQF7Ji9ZfDtw+uIbg1dLAIMR1h2g1OZ38Vc3pylGL3EKIIApklthzlICcPG3AvSZvLTEXQABNBx2qc3v4q/hkAcubeg3AgQwMIBaj5fc/C7+aqU0/bgEMH0GVVZQSgAu/qrE08ygBNBMFOUWUmrzu/grl0mrIw29CPQRoMFkSwng1u6/us2r322wQksqReDWC9e6Rx4/33u4WQrg6AY5rojedCZ4sNTmd/E3QXgTTLm2Aii5ESbIZfIpP/7gze7czcuD1/HFj//abWw+OngcAzyYwKk/fmsQmrW6A7DpB/XC/x4udfG3u/Xz7tEfvlZmUUZ5IAEC6LrOxi+7O2794WK3eefPgwf17j8Y4bEDRAvAxj+2P1Z+QamLv39+7Tfd15//xcrze2A1ApECsPFXa5JVXl3qV31v/eTvq0zrtT0JxAnA5u/ZKUs8Vuriz7v/ErALvSRGADZ+oY75kmFKXfwthvfuXzerw6NHCMDmr99QpS7+vPvXzypKADZ//YYqdfHn3b9+VkdnWOsTgM0/TkOVuvi7cf6t7onv/GicRZvlHoG1FYDNP06Hl7r48+4/Tl4xJwACqN9QJS/+9r73fnfqK9+uv2gz/B+BtTwB2PzjdHmpiz/v/uPk9aBZ1k4ANv84zVTy4s+7/ziZEcB0nNdu5lIXf979p22NtToBjPnu/8Wnf7uX3ObpJ4v8AwnTtsFqs5e8+PPuvxr70q8mgCWILv6o5Tdu/LbIb7gtMZ2XIDAbAs38PYDS7/6LG+69q5f9C7azaUULnYLAWgrAn7GeopXMOUcCTQig5Lv/v6++1p3ZfX2OWVgzAqMTWCsB2Pyj948JZ05gbQTg2D/zTrT8SQhMLoASx/+SP9I6SQomRWAiAmshgN2dS277J2og086bwFoIoORPtc07TqtHYDUCsxfA4if6Tr3//dWq9moEELhHYPYCcPzXyQj0JzB7ATj+9w/fkwgQgB5AIJgAAQSHr3QECEAPIBBMgACCw1c6AgSgBxAIJkAAweErHQEC0AMIBBMggODwlY4AAegBBIIJEEBw+EpHgAD0AALBBAggOHylI0AAegCBYAIEEBy+0hEgAD2AQDABAggOX+kIEIAeQCCYAAEEh690BAhADyAQTIAAgsNXOgIEoAcQCCZAAMHhKx0BAtADCAQTIIDg8JWOAAHoAQSCCRBAcPhKR4AA9AACwQQIIDh8pSNAAHoAgWACBBAcvtIRIAA9gEAwAQIIDl/pCBCAHkAgmAABBIevdAQIQA8gEEyAAILDVzoCBKAHEAgmQADB4SsdAQLQAwgEEyCA4PCVjgAB6AEEggkQQHD4SkeAAPQAAsEECCA4fKUjQAB6AIFgAgQQHL7SESAAPYBAMAECCA5f6QgQgB5AIJgAAQSHr3QECEAPIBBMgACCw1c6AgSgBxAIJkAAweErHQEC0AMIBBMggODwlY4AAegBBIIJEEBw+EpHgAD0AALBBAggOHylI0AAegCBYAIEEBy+0hEgAD2AQDABAggOX+kIEIAeQCCYAAEEh690BAhADyAQTIAAgsNXOgIEoAcQCCZAAMHhKx0BAtADCAQTIIDg8JWOAAHoAQSCCRBAcPhKR4AA9AACwQQIIDh8pSNAAHoAgWACBBAcvtIRIAA9gEAwAQIIDl/pCBCAHkAgmAABBIevdAQIQA8gEEyAAILDVzoCBKAHEAgmQADB4SsdAQLQAwgEEyCA4PCVjgAB6AEEggkQQHD4SkeAAPQAAsEECCA4fKUjQAB6AIFgAgQQHL7SESAAPYBAMAECCA5f6QgQgB5AIJgAAQSHr3QECEAPIBBMgACCw1c6AgSgBxAIJkAAweErHQEC0AMIBBMggODwlY4AAegBBIIJEEBw+EpHgAD0AALBBAggOHylI0AAegCBYAIEEBy+0hEgAD2AQDABAggOX+kIEIAeQCCYAAEEh690BAhADyAQTIAAgsNXOgIEoAcQCCZw64Vr3SOPn+9NYHt7e+NhDz/0fy4e3NvbO+g9e9d1B++cHfK4ZxGIJkAA0fErPp3A7Qt/6k6dfrI3BieA3ug8iMD0BNwBTJ+BFSAwGYHZC+DjD97szt28PBlAEyMwZwKzF8Dd2/vdxntPzzkDa0dgEgI3T/+qe+LCrwfNPfkdwGL1vgkYlKGHQwkcvPhRd2Jza1D1TQjgzv5n3YmdZwYV4mEE0ggMPf4veA0WwGKQoT8LsBhjd+dS99j+22kZqheBXgTuXvxLd3Lrq72ePfxQMwLwUWBwlgYIIfD51svd6YtvDK72uM2/mODYnwQsdQJYjONCcHCmBgggUOLov8zxf2kBkEBA1ymxCQKlNn+zArhP+fqH73ZPXX+lCegWgcDUBEp85bfKZ//7r13qI0DJE8BR0H5QaOrWM/+UBBaf97cvXBn8dd/RGpb5/L/SR4CaEliMvfiq8NNrv+vO7L4+ZR7mRqA6gdsnn+0+Oftqd+65l6rNNTsBVCNhYATCCCy7+Vc+AdQ+BYTlpFwEqhCoKgASqJKZQREoQmCVzd/rBEAARXIyCALFCay6+XsLgASKZ2dABAYTGFUAJDA4LwMgUIxAn80/6ARwf+UlflGoGAUDIRBIoO/mLyIAJ4HAjlNyMwSGbP5iAiCBZvrBQoIIDN38RQVAAkGdp9TJCZTY/MUFQAKT94UFBBAotfmrCMDlYEAHKnESAiU3/v0Clv5twL4V+5agLznPIfBfAjU2/mgCcCLQxgj0I1Bz448uACLo1wSeyiMwxsafTACH4/TxIK+5VfxgAmNu+sMrqH4HIHAEEGiXAAG0m42VIVCdAAFUR2wCBNolQADtZmNlCFQnQADVEZsAgXYJEEC72VgZAtUJEEB1xCZAoF0CBNBuNlaGQHUCBFAdsQkQaJcAAbSbjZUhUJ0AAVRHbAIE2iVAAO1mY2UIVCdAANURmwCBdgkQQLvZWBkC1QkQQHXEJkCgXQIE0G42VoZAdQIEUB2xCRBolwABtJuNlSFQnQABVEdsAgTaJUAA7WZjZQhUJ0AA1RGbAIF2CRBAu9lYGQLVCRBAdcQmQKBdAgTQbjZWhkB1Av8BGvYAW7iEt14AAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="b7fb021c-9031-45e9-a849-f49b937a4f68" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>08725da5-d0cf-4ec8-ad65-a58d9927d32f</parentFolderId>
+      <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+      <packageName>Intent.ApplicationTemplate.Builder</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="a422eb6e-d65e-4086-8e97-2f2d891233c4" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Installation Settings</name>
+          <display>Add Installation Settings: Installation Settings</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="9e7430ce-dd05-4dd9-93ec-8002e0b421cb">
+            <typeId>76db4fe8-5c95-4240-8f25-48b8079fa4ae</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ApplicationTemplate.Builder</typePackageName>
+            <typePackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>b7fb021c-9031-45e9-a849-f49b937a4f68</parentFolderId>
+          <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+          <packageName>Intent.ApplicationTemplate.Builder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

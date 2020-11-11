@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ScriptModel : IHasStereotypes, IMetadataModel
+    public class ScriptModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Script";
         protected readonly IElement _element;

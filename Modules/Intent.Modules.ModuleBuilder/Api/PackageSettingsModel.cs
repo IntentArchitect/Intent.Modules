@@ -12,7 +12,7 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class PackageSettingsModel
-        : IHasStereotypes, IMetadataModel
+        : IMetadataModel, IHasStereotypes, IHasName
     {
         protected readonly IElement _element;
         public const string SpecializationType = "Package Settings";
@@ -55,6 +55,7 @@ namespace Intent.Modules.ModuleBuilder.Api
                 SpecializationTypeId = Id,
                 SpecializationType = Name,
                 DefaultName = this.GetPackageSettings().DefaultName(),
+                SortChildren = DetermineSortingOption(),
                 Icon = this.GetPackageSettings().Icon()?.ToPersistable(),
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
@@ -64,6 +65,27 @@ namespace Intent.Modules.ModuleBuilder.Api
                 RequiredPackages = new string[0],
                 Macros = this.EventSettings?.OnCreatedEvents.Select(x => x.ToPersistable()).ToList()
             };
+        }
+
+        private SortChildrenOptions DetermineSortingOption()
+        {
+            if (this.GetPackageSettings().Sorting().IsManually())
+            {
+                return SortChildrenOptions.Manually;
+            }
+            if (this.GetPackageSettings().Sorting().IsByTypeThenManually())
+            {
+                return SortChildrenOptions.SortByTypeThenManually;
+            }
+            if (this.GetPackageSettings().Sorting().IsByTypeThenByName())
+            {
+                return SortChildrenOptions.SortByTypeAndName;
+            }
+            if (this.GetPackageSettings().Sorting().IsByName())
+            {
+                return SortChildrenOptions.SortByName;
+            }
+            return SortChildrenOptions.Manually;
         }
 
         [IntentManaged(Mode.Fully)]

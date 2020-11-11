@@ -47,17 +47,32 @@ namespace Intent.Modules.Common.Java.Templates
                 return FileMetadata.FileName;
             }
         }
-        
+
         public string Location => FileMetadata.LocationInProject;
+        public ICollection<JavaDependency> Dependencies { get; } = new List<JavaDependency>();
 
         public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
+        public void AddDependency(JavaDependency dependency)
+        {
+            Dependencies.Add(dependency);
+        }
+
         public override string GetTypeName(ITemplateDependency templateDependency, bool throwIfNotFound)
         {
             return GetTemplate<IClassProvider>(templateDependency, throwIfNotFound).ClassName;
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            base.BeforeTemplateExecution();
+            foreach (var dependency in Dependencies)
+            {
+                ExecutionContext.EventDispatcher.Publish(dependency);
+            }
         }
 
         public override string RunTemplate()

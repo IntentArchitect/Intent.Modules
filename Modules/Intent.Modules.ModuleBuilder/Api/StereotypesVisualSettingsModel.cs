@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class StereotypesVisualSettingsModel : IHasStereotypes, IMetadataModel
+    public class StereotypesVisualSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Stereotypes Visual Settings";
         protected readonly IElement _element;

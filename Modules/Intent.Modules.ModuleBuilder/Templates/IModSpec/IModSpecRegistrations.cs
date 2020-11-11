@@ -1,6 +1,7 @@
 using System.Linq;
 using Intent.Modules.Common;
 using Intent.Engine;
+using Intent.Modules.ModuleBuilder.Api;
 using Intent.Registrations;
 
 
@@ -17,12 +18,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public string TemplateId => IModSpecTemplate.TemplateId;
 
-        public void DoRegistration(ITemplateInstanceRegistry registry, Engine.IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registry, Engine.IApplication application)
         {
-            registry.RegisterTemplate(TemplateId, context => new IModSpecTemplate(
-                templateId: TemplateId, 
-                project: context, 
-                metadataManager:_metadataManager));
+            foreach (var intentModule in _metadataManager.ModuleBuilder(application).GetIntentModuleModels())
+            {
+                registry.RegisterTemplate(TemplateId, context => new IModSpecTemplate(
+                    project: context,
+                    model: intentModule,
+                    metadataManager: _metadataManager));
+            }
         }
     }
 }

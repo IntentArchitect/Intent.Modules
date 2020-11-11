@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class PackageEventHandlerModel : ScriptModel, IHasStereotypes, IMetadataModel
+    public class PackageEventHandlerModel : ScriptModel, IMetadataModel, IHasStereotypes, IHasName
     {
         public new const string SpecializationType = "Package Event Handler";
         public new const string SpecializationTypeId = "e59f6c30-69ba-427c-9a73-33d69e44f765";

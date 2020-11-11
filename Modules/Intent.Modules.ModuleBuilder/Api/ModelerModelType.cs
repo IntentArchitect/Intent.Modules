@@ -10,13 +10,11 @@ namespace Intent.Modules.ModuleBuilder.Api
 {
     public class ModelerModelType
     {
-        public const string RequiredSpecializationType = "Element Settings";
-
         private readonly IElement _element;
 
-        public ModelerModelType(IElement element, string requiredType = RequiredSpecializationType)
+        public ModelerModelType(IElement element)
         {
-            if (element.SpecializationType != requiredType)
+            if (element.SpecializationType != "Element Settings" & element.SpecializationType != "Package Settings")
             {
                 throw new InvalidOperationException($"Cannot load {nameof(ModelerModelType)} from element of type {element.SpecializationType}");
             }
