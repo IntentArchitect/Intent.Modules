@@ -21,7 +21,7 @@ namespace Intent.Modules.Common.Java.Editor
         public JavaSuperClass SuperClass { get; set; }
         public JavaSuperInterfaces SuperInterfaces { get; set; }
         public IReadOnlyList<JavaField> Fields => Children.Where(x => x is JavaField).Cast<JavaField>().ToList();
-        public IReadOnlyList<JavaClassMethod> Methods => Children.Where(x => x is JavaClassMethod).Cast<JavaClassMethod>().ToList();
+        public IReadOnlyList<JavaMethod> Methods => Children.Where(x => x is JavaMethod).Cast<JavaMethod>().ToList();
         public IReadOnlyList<JavaConstructor> Constructors => Children.Where(x => x is JavaConstructor).Cast<JavaConstructor>().ToList();
 
         public override void UpdateContext(RuleContext context)

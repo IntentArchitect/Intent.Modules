@@ -8,8 +8,8 @@ namespace Intent.Modules.Common.Java
         public static string ToJavaPackage(this string s)
         {
             return string.Concat(s.Split(' ')
-                        .Select(x => string.Join("_", x.Split('-').Select(p => p.ToPascalCase())))
-                        .Select(x => string.Join(".", x.Split('.').Select(p => p.ToPascalCase()))))
+                        .Select(x => string.Join("_", x.Split('-').Select(p => p)))
+                        .Select(x => string.Join(".", x.Split('.').Select(p => p.ToSnakeCase()))))
                     .Replace("#", "Sharp")
                     .Replace("&", "And")
                     .Replace("(", "")

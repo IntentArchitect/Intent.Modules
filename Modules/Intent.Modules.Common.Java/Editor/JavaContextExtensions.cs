@@ -11,5 +11,12 @@ namespace Intent.Modules.Common.Java.Editor
                     .Select(x => x.unannType().GetText()) ?? new List<string>())
                 .Concat(new[] { formalParameterList.lastFormalParameter().formalParameter().unannType().GetText() }).ToList();
         }
+
+        public static IList<JavaParameter> GetParameters(this Java9Parser.FormalParameterListContext formalParameterList, JavaNode parent)
+        {
+            return (formalParameterList.formalParameters()?.formalParameter()
+                    .Select(x => new JavaParameter(x, parent)) ?? new List<JavaParameter>())
+                .Concat(new[] { new JavaParameter(formalParameterList.lastFormalParameter().formalParameter(), parent) }).ToList();
+        }
     }
 }

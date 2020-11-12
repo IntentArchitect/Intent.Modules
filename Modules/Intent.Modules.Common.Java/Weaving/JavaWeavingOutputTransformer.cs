@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Text;
 using Intent.Engine;
@@ -17,12 +18,12 @@ namespace Intent.Modules.Common.Java.Weaving
 
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is IJavaMerged typeScriptMerged))
+            if (!(output.Template is IJavaMerged javaMerged))
             {
                 return;
             }
 
-            var existingFile = typeScriptMerged.GetExistingFile();
+            var existingFile = javaMerged.GetExistingFile();
 
             if (existingFile == null)
             {
@@ -33,7 +34,9 @@ namespace Intent.Modules.Common.Java.Weaving
             {
                 var merger = new JavaWeavingMerger();
 
+                var sw = Stopwatch.StartNew();
                 var newContent = merger.Merge(existingFile, output.Content);
+                Logging.Log.Debug($"Merged file: {output.FileMetadata.GetFilePath()} ({sw.ElapsedMilliseconds}ms)");
 
                 output.ChangeContent(newContent);
             }

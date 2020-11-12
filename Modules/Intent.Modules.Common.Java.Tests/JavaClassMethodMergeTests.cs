@@ -75,6 +75,107 @@ public class TestClass {
 }", result);
         }
 
+
+        [Fact]
+        public void AddsParametersToEmptySignature()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(existingContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod() {
+        // my special implementation
+    }
+}", outputContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String newParam) {
+    }
+}");
+            Assert.Equal(@"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String newParam) {
+        // my special implementation
+    }
+}", result);
+        }
+
+        [Fact]
+        public void AddsParametersToSignature()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(existingContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String existing) {
+        // my special implementation
+    }
+}", outputContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String existing, Boolean newParam) {
+    }
+}");
+            Assert.Equal(@"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String existing, Boolean newParam) {
+        // my special implementation
+    }
+}", result);
+        }
+
+        [Fact]
+        public void InsertsParametersToSignature()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(existingContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String existing) {
+        // my special implementation
+    }
+}", outputContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(Boolean newParam, String existing) {
+    }
+}");
+            Assert.Equal(@"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(Boolean newParam, String existing) {
+        // my special implementation
+    }
+}", result);
+        }
+
+        [Fact]
+        public void RemovesParameterFromSignature()
+        {
+            var merger = new JavaWeavingMerger();
+            var result = merger.Merge(existingContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(Boolean newParam, String existing) {
+        // my special implementation
+    }
+}", outputContent: @"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String existing) {
+    }
+}");
+            Assert.Equal(@"
+public class EmptyClass {
+    @IntentIgnoreBody()
+    public void someMethod(String existing) {
+        // my special implementation
+    }
+}", result);
+        }
+
         public static string OneMethodVoid = @"
 public class TestClass {
     public void testMethod() {

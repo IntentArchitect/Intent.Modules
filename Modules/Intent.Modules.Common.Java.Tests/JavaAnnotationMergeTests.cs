@@ -86,8 +86,7 @@ public class EmptyClass {
             var result = merger.Merge(existingContent: MergedMethodWithTwoAnnotation, outputContent: MergedMethodWithOneAnnotation);
             Assert.Equal(MergedMethodWithTwoAnnotation, result);
         }
-
-
+        
         public static string ClassWithNoAnnotations = @"
 public class EmptyClass {
     @IntentIgnore()

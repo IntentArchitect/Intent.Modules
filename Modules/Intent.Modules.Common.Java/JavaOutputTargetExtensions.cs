@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.Java
     {
         public static string GetPackage(this IOutputTarget target)
         {
-            return string.Join(".", target.GetTargetPath().Select(x => x.Name)).Split(new [] {"java."}, StringSplitOptions.RemoveEmptyEntries).Last();
+            return string.Join(".", target.GetTargetPath().Select(x => x.Name)).Split(new [] {"java."}, StringSplitOptions.RemoveEmptyEntries).Last().ToJavaPackage();
         }
     }
 }

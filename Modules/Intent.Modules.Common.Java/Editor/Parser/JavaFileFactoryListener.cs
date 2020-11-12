@@ -68,12 +68,17 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 
         public override void EnterMethodDeclaration(Java9Parser.MethodDeclarationContext context)
         {
-            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaClassMethod(context, (JavaClass)Current.Node)));
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaMethod(context, (JavaClass)Current.Node)));
         }
 
         public override void ExitMethodDeclaration(Java9Parser.MethodDeclarationContext context)
         {
             _nodeStack.Pop();
+        }
+
+        public override void EnterFormalParameter(Java9Parser.FormalParameterContext context)
+        {
+            InsertOrUpdateNode(context, () => new JavaParameter(context, Current.Node));
         }
 
         public override void EnterInterfaceMethodDeclaration(Java9Parser.InterfaceMethodDeclarationContext context)

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using Antlr4.Runtime;
+using Antlr4.Runtime.Atn;
 using Antlr4.Runtime.Tree;
 using Intent.Modules.Common.Java.Editor.Parser;
 
@@ -26,6 +27,8 @@ namespace Intent.Modules.Common.Java.Editor
         private static Java9Parser.CompilationUnitContext ParseFile(ITokenStream tokens)
         {
             var parser = new Java9Parser(tokens);
+            // Parsing succeeds but is wrong (e.g. doesn't pick up imports properly) when this is enabled.
+            //parser.Interpreter.PredictionMode = PredictionMode.SLL; // Performance enhancement
             return parser.compilationUnit();
         }
 
@@ -83,7 +86,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public void InsertBefore(IToken token, string text)
         {
-            _rewriter.InsertBefore(token, text + Environment.NewLine);
+            _rewriter.InsertBefore(token, text);
             UpdateContext();
         }
 
