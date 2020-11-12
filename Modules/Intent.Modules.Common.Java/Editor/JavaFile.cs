@@ -18,15 +18,15 @@ namespace Intent.Modules.Common.Java.Editor
         public static JavaFile Parse(string originalSource)
         {
             var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(originalSource)));
-            var javaLexer = new Java9Lexer(inputStream);
+            var javaLexer = new JavaLexer(inputStream);
             var tokens = new CommonTokenStream(javaLexer);
 
             return new JavaFile(tokens);
         }
 
-        private static Java9Parser.CompilationUnitContext ParseFile(ITokenStream tokens)
+        private static JavaParser.CompilationUnitContext ParseFile(ITokenStream tokens)
         {
-            var parser = new Java9Parser(tokens);
+            var parser = new JavaParser(tokens);
             // Parsing succeeds but is wrong (e.g. doesn't pick up imports properly) when this is enabled.
             //parser.Interpreter.PredictionMode = PredictionMode.SLL; // Performance enhancement
             return parser.compilationUnit();
@@ -47,7 +47,18 @@ namespace Intent.Modules.Common.Java.Editor
 
         public void Replace(JavaNode node, string text)
         {
-            _rewriter.Replace(node.StartToken, node.StopToken, text);
+            Replace(GetPreviousWsToken(node.StartToken), node.StopToken, text);
+        }
+
+        public void Replace(IToken start, IToken stop, string text)
+        {
+            _rewriter.Replace(start, stop, text);
+            UpdateContext();
+        }
+
+        public void Replace(int start, int stop, string text)
+        {
+            _rewriter.Replace(start, stop, text);
             UpdateContext();
         }
 
@@ -94,7 +105,7 @@ namespace Intent.Modules.Common.Java.Editor
         public void UpdateContext()
         {
             var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(GetSource())));
-            var javaLexer = new Java9Lexer(inputStream);
+            var javaLexer = new JavaLexer(inputStream);
             _tokens = new CommonTokenStream(javaLexer);
             _rewriter = new TokenStreamRewriter(_tokens);
             UpdateContext(ParseFile(_tokens));
@@ -104,13 +115,17 @@ namespace Intent.Modules.Common.Java.Editor
 
         public (string Text, IToken StartToken) GetCommentsAndWhitespaceBefore(IToken token)
         {
+            if (token == null)
+            {
+                return (null, null);
+            }
             if (token.TokenIndex - 1 < 0)
             {
                 return ("", null);
             }
             var text = "";
             var previous = _tokens.Get(token.TokenIndex - 1);
-            while (previous.Type == Java9Lexer.WS || previous.Type == Java9Lexer.COMMENT)
+            while (previous.Type == JavaLexer.WS || previous.Type == JavaLexer.COMMENT)
             {
                 text = $"{previous.Text}{text}";
                 if (previous.TokenIndex - 1 < 0)
@@ -123,10 +138,32 @@ namespace Intent.Modules.Common.Java.Editor
             return text != "" ? (text, _tokens.Get(previous.TokenIndex + 1)) : (text, null);
         }
 
+        public IToken GetPreviousWsToken(IToken token)
+        {
+            var previous = _tokens.Get(token.TokenIndex - 1);
+            IToken ws = null;
+            while (previous.Type == JavaLexer.WS)
+            {
+                ws = previous;
+                if (previous.TokenIndex - 1 < 0)
+                {
+                    return previous;
+                }
+                previous = _tokens.Get(previous.TokenIndex - 1);
+            }
+
+            return ws ?? token;
+        }
+
+        public IToken GetPreviousToken(IToken token )
+        {
+            return _tokens.Get(token.TokenIndex - 1);
+        }
+
         public object GetCommentsBefore(IToken token)
         {
             var commentToken = _tokens.Get(token.TokenIndex - 1);
-            if (commentToken.Type == Java9Lexer.COMMENT)
+            if (commentToken.Type == JavaLexer.COMMENT)
             {
                 return commentToken;
             }

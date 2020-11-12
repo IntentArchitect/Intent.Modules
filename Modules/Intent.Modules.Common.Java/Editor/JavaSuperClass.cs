@@ -4,7 +4,7 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaSuperClass : JavaNode
     {
-        public JavaSuperClass(Java9Parser.SuperclassContext context, JavaNode parent) : base(context, parent)
+        public JavaSuperClass(JavaParser.TypeTypeContext context, JavaNode parent) : base(context, parent)
         {
 
         }
@@ -13,5 +13,7 @@ namespace Intent.Modules.Common.Java.Editor
         {
             return context.GetText();
         }
+
+        public override IToken StartToken => File.GetPreviousWsToken(((JavaParser.ClassDeclarationContext)Context.Parent).EXTENDS().Symbol);
     }
 }

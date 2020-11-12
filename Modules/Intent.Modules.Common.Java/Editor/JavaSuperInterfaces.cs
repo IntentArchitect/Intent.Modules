@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaSuperInterfaces : JavaInterfacesBase
     {
-        public JavaSuperInterfaces(Java9Parser.SuperinterfacesContext context, JavaNode parent) : base(context, parent)
+        public JavaSuperInterfaces(JavaParser.TypeListContext context, JavaNode parent) : base(context, parent)
         {
         }
 
@@ -17,11 +17,13 @@ namespace Intent.Modules.Common.Java.Editor
             var overwriteWith = Interfaces.Any() ? $" implements{string.Join(",", Interfaces.Select(x => x.GetTextWithComments()))}" : "";
             ReplaceWith(overwriteWith);
         }
+
+        public override IToken StartToken => ((JavaParser.ClassDeclarationContext)Context.Parent).IMPLEMENTS().Symbol;
     }
 
     public class JavaExtendsInterfaces : JavaInterfacesBase
     {
-        public JavaExtendsInterfaces(Java9Parser.ExtendsInterfacesContext context, JavaNode parent) : base(context, parent)
+        public JavaExtendsInterfaces(JavaParser.TypeListContext context, JavaNode parent) : base(context, parent)
         {
         }
 
@@ -31,6 +33,8 @@ namespace Intent.Modules.Common.Java.Editor
             var overwriteWith = Interfaces.Any() ? $" extends{string.Join(",", Interfaces.Select(x => x.GetTextWithComments()))}" : "";
             ReplaceWith(overwriteWith);
         }
+
+        public override IToken StartToken => ((JavaParser.InterfaceDeclarationContext)Context.Parent).EXTENDS().Symbol;
     }
 
     public abstract class JavaInterfacesBase : JavaNode
@@ -92,7 +96,7 @@ namespace Intent.Modules.Common.Java.Editor
             return Parent.IsMerged();
         }
 
-        private class JavaInterfacesListener : Java9BaseListener
+        private class JavaInterfacesListener : JavaParserBaseListener
         {
             private int _index;
             private readonly JavaInterfacesBase _interfaces;
@@ -102,23 +106,27 @@ namespace Intent.Modules.Common.Java.Editor
                 _interfaces = interfaces;
             }
 
-            public override void EnterInterfaceType(Java9Parser.InterfaceTypeContext context)
+            public override void EnterTypeList(JavaParser.TypeListContext context)
             {
-                var node = _interfaces.Interfaces.SingleOrDefault(x => x.Context.GetType() == context.GetType() && x.Identifier == x.GetIdentifier(context));
-                if (node == null)
+                foreach (var typeTypeContext in context.typeType())
                 {
-                    node = new JavaInterfaceType(context, _interfaces);
-                    _interfaces.Interfaces.Insert(_index, node);
-                }
-                else
-                {
-                    node.UpdateContext(context);
-                }
+                    var node = _interfaces.Interfaces.SingleOrDefault(x => x.Context.GetType() == typeTypeContext.GetType() && x.Identifier == x.GetIdentifier(typeTypeContext));
+                    if (node == null)
+                    {
+                        node = new JavaInterfaceType(typeTypeContext, _interfaces);
+                        _interfaces.Interfaces.Insert(_index, node);
+                    }
+                    else
+                    {
+                        node.UpdateContext(typeTypeContext);
+                    }
 
-                if (_index < _interfaces.Interfaces.Count)
-                {
-                    _index++;
+                    if (_index < _interfaces.Interfaces.Count)
+                    {
+                        _index++;
+                    }
                 }
+                
             }
         }
     }

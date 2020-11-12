@@ -5,17 +5,17 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaConstructor : JavaNode
     {
-        private readonly Java9Parser.ConstructorDeclarationContext _context;
+        private readonly JavaParser.ConstructorDeclarationContext _context;
 
-        public JavaConstructor(Java9Parser.ConstructorDeclarationContext context, JavaClass parent) : base(context, parent)
+        public JavaConstructor(JavaParser.ConstructorDeclarationContext context, JavaClass parent) : base(context, parent)
         {
             _context = context;
         }
 
         public override string GetIdentifier(ParserRuleContext context)
         {
-            return ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList() != null
-                ? string.Join(", ", ((Java9Parser.ConstructorDeclarationContext)context).constructorDeclarator().formalParameterList().GetParameterTypes())
+            return ((JavaParser.ConstructorDeclarationContext)context).formalParameters().formalParameterList() != null
+                ? string.Join(", ", ((JavaParser.ConstructorDeclarationContext)context).formalParameters().formalParameterList().GetParameterTypes())
                 : "";
         }
 

@@ -5,28 +5,28 @@ using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor
 {
-    public class JavaMethod : JavaNode
+    public class JavaMethod : JavaNode<JavaParser.MethodDeclarationContext>
     {
-        private readonly Java9Parser.MethodDeclarationContext _context;
+        private readonly JavaParser.MethodDeclarationContext _context;
 
-        public JavaMethod(Java9Parser.MethodDeclarationContext context, JavaClass parent) : base(context, parent)
+        public JavaMethod(JavaParser.MethodDeclarationContext context, JavaClass parent) : base(context, parent)
         {
             _context = context;
-            Name = _context.methodHeader().methodDeclarator().identifier().GetText();
+            Name = _context.IDENTIFIER().GetText();
         }
 
         public string Name { get; }
-        public IList<JavaParameter> Parameters { get; set; }
+        public override IToken StartToken => Annotations.FirstOrDefault()?.StartToken ?? ((ParserRuleContext)Context.Parent.Parent).Start;
 
-        public override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(JavaParser.MethodDeclarationContext context)
         {
-            var name = ((Java9Parser.MethodDeclarationContext)context).methodHeader().methodDeclarator().identifier().GetText();
+            var name = context.IDENTIFIER().GetText();
             if (HasIntentInstructions() && IsBodyIgnored())
             {
                 return name;
             }
-            var parameterTypes = ((Java9Parser.MethodDeclarationContext)context)
-                .methodHeader().methodDeclarator().formalParameterList()?.GetParameterTypes() ?? new List<string>();
+            var parameterTypes = context
+                .formalParameters().formalParameterList()?.GetParameterTypes() ?? new List<string>();
             return $"{name}({string.Join(", ", parameterTypes)})";
         }
 
@@ -39,22 +39,11 @@ namespace Intent.Modules.Common.Java.Editor
         public override void UpdateContext(RuleContext context)
         {
             base.UpdateContext(context);
-            UpdateParameters(((Java9Parser.MethodDeclarationContext)context).methodHeader().methodDeclarator().formalParameterList());
-        }
-
-        private void UpdateParameters(Java9Parser.FormalParameterListContext formalParameterList)
-        {
-            if (formalParameterList == null)
-            {
-                return;
-            }
-
-            Parameters = formalParameterList.GetParameters(this);
         }
 
         protected override void AddFirst(JavaNode node)
         {
-            File.InsertBefore(((Java9Parser.MethodDeclarationContext)Context).methodHeader().Stop, node.GetText().Trim());
+            File.InsertBefore(((JavaParser.MethodDeclarationContext)Context).IDENTIFIER().Symbol, node.GetText().Trim());
         }
 
         public override void InsertBefore(JavaNode existing, JavaNode node)
@@ -100,13 +89,13 @@ namespace Intent.Modules.Common.Java.Editor
 
     public class JavaParameter : JavaNode
     {
-        public JavaParameter(Java9Parser.FormalParameterContext context, JavaNode parent) : base(context, parent)
+        public JavaParameter(JavaParser.FormalParameterContext context, JavaNode parent) : base(context, parent)
         {
         }
 
         public override string GetIdentifier(ParserRuleContext context)
         {
-            var type = ((Java9Parser.FormalParameterContext)context).unannType().GetText();
+            var type = ((JavaParser.FormalParameterContext)context).typeType().GetText();
             return type;
         }
     }

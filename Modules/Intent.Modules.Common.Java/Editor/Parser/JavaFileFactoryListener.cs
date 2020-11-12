@@ -7,7 +7,7 @@ using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor.Parser
 {
-    public class JavaFileFactoryListener : Java9BaseListener
+    public class JavaFileFactoryListener : JavaParserBaseListener
     {
         public JavaFileFactoryListener(JavaFile javaFile)
         {
@@ -20,33 +20,35 @@ namespace Intent.Modules.Common.Java.Editor.Parser
         private readonly Stack<JavaNodeContext> _nodeStack = new Stack<JavaNodeContext>();
         private JavaNodeContext Current => _nodeStack.Peek();
 
-        public override void EnterNormalClassDeclaration(Java9Parser.NormalClassDeclarationContext context)
+        public override void EnterClassDeclaration(JavaParser.ClassDeclarationContext context)
         {
-            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaClass(context, Current.Node)));
+            _nodeStack.Push(InsertOrUpdateNode((JavaParser.TypeDeclarationContext)context.Parent, () => new JavaClass((JavaParser.TypeDeclarationContext) context.Parent, Current.Node)));
+            ApplyAnnotations(Current);
         }
 
-        public override void ExitNormalClassDeclaration(Java9Parser.NormalClassDeclarationContext context)
+        public override void ExitClassDeclaration(JavaParser.ClassDeclarationContext context)
         {
             _nodeStack.Pop();
         }
 
-        public override void EnterNormalInterfaceDeclaration(Java9Parser.NormalInterfaceDeclarationContext context)
+        public override void EnterInterfaceDeclaration(JavaParser.InterfaceDeclarationContext context)
         {
             _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaInterface(context, Current.Node)));
+            ApplyAnnotations(Current);
         }
 
-        public override void ExitNormalInterfaceDeclaration(Java9Parser.NormalInterfaceDeclarationContext context)
+        public override void ExitInterfaceDeclaration(JavaParser.InterfaceDeclarationContext context)
         {
             _nodeStack.Pop();
         }
 
-        public override void EnterPackageDeclaration(Java9Parser.PackageDeclarationContext context)
+        public override void EnterPackageDeclaration(JavaParser.PackageDeclarationContext context)
         {
             var package = new JavaPackage(context, File);
             File.Package = package;
         }
 
-        public override void EnterImportDeclaration([NotNull] Java9Parser.ImportDeclarationContext context)
+        public override void EnterImportDeclaration([NotNull] JavaParser.ImportDeclarationContext context)
         {
             //var import = new JavaImport(context, File);
             //if (!File.ImportExists(import))
@@ -56,64 +58,89 @@ namespace Intent.Modules.Common.Java.Editor.Parser
             InsertOrUpdateNode(context, () => new JavaImport(context, File));
         }
 
-        public override void EnterConstructorDeclaration(Java9Parser.ConstructorDeclarationContext context)
+        public override void EnterConstructorDeclaration(JavaParser.ConstructorDeclarationContext context)
         {
             _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaConstructor(context, (JavaClass)Current.Node)));
+            ApplyAnnotations(Current);
         }
 
-        public override void ExitConstructorDeclaration(Java9Parser.ConstructorDeclarationContext context)
+        public override void ExitConstructorDeclaration(JavaParser.ConstructorDeclarationContext context)
         {
             _nodeStack.Pop();
         }
 
-        public override void EnterMethodDeclaration(Java9Parser.MethodDeclarationContext context)
+        public override void EnterMethodDeclaration(JavaParser.MethodDeclarationContext context)
         {
             _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaMethod(context, (JavaClass)Current.Node)));
+            ApplyAnnotations(Current);
         }
 
-        public override void ExitMethodDeclaration(Java9Parser.MethodDeclarationContext context)
+        public override void ExitMethodDeclaration(JavaParser.MethodDeclarationContext context)
         {
             _nodeStack.Pop();
         }
 
-        public override void EnterFormalParameter(Java9Parser.FormalParameterContext context)
+        public override void EnterFormalParameter(JavaParser.FormalParameterContext context)
         {
             InsertOrUpdateNode(context, () => new JavaParameter(context, Current.Node));
         }
 
-        public override void EnterInterfaceMethodDeclaration(Java9Parser.InterfaceMethodDeclarationContext context)
+        public override void EnterInterfaceMethodDeclaration(JavaParser.InterfaceMethodDeclarationContext context)
         {
             _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaInterfaceMethod(context, Current.Node)));
+            ApplyAnnotations(Current);
         }
 
-        public override void ExitInterfaceMethodDeclaration(Java9Parser.InterfaceMethodDeclarationContext context)
+        public override void ExitInterfaceMethodDeclaration(JavaParser.InterfaceMethodDeclarationContext context)
         {
             _nodeStack.Pop();
         }
 
-        public override void EnterFieldDeclaration(Java9Parser.FieldDeclarationContext context)
+        public override void EnterFieldDeclaration(JavaParser.FieldDeclarationContext context)
         {
             _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaField(context, (JavaClass)Current.Node)));
+            ApplyAnnotations(Current);
         }
 
-        public override void ExitFieldDeclaration(Java9Parser.FieldDeclarationContext context)
+        public override void ExitFieldDeclaration(JavaParser.FieldDeclarationContext context)
         {
             _nodeStack.Pop();
         }
         
-        public override void EnterAnnotation(Java9Parser.AnnotationContext context)
-        {
-            var existing = Current.Node.TryGetAnnotation(context);
-            if (existing == null)
-            {
-                Current.Node.InsertAnnotation(Current.AnnotationIndex, new JavaAnnotation(context, Current.Node));
-            }
-            else
-            {
-                existing.UpdateContext(context);
-            }
+        private ICollection<JavaParser.AnnotationContext> _annotations = new List<JavaParser.AnnotationContext>();
 
-            Current.AnnotationIndex++;
+        private void ApplyAnnotations(JavaNodeContext nodeContext)
+        {
+            foreach (var annotationContext in _annotations)
+            {
+                var existing = nodeContext.Node.TryGetAnnotation(annotationContext);
+                if (existing == null)
+                {
+                    nodeContext.Node.InsertAnnotation(Current.AnnotationIndex, new JavaAnnotation(annotationContext, nodeContext.Node));
+                }
+                else
+                {
+                    existing.UpdateContext(annotationContext);
+                }
+
+                nodeContext.AnnotationIndex++;
+            }
+            _annotations.Clear();
+        }
+        public override void EnterAnnotation(JavaParser.AnnotationContext context)
+        {
+            _annotations.Add(context);
+            //var existing = Current.Node.TryGetAnnotation(context);
+            //if (existing == null)
+            //{
+            //    Current.Node.InsertAnnotation(Current.AnnotationIndex, new JavaAnnotation(context, Current.Node));
+            //}
+            //else
+            //{
+            //    existing.UpdateContext(context);
+            //}
+
+            //Current.AnnotationIndex++;
         }
 
         private JavaNodeContext InsertOrUpdateNode<TRuleContext>(TRuleContext context, Func<JavaNode> createNode)

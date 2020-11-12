@@ -4,7 +4,7 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaPackage : JavaNode
     {
-        public JavaPackage(Java9Parser.PackageDeclarationContext context, JavaFile file) : base(context, file)
+        public JavaPackage(JavaParser.PackageDeclarationContext context, JavaFile file) : base(context, file)
         {
         }
         

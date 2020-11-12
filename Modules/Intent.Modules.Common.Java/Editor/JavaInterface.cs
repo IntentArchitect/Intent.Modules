@@ -6,13 +6,13 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaInterface : JavaNode
     {
-        public JavaInterface(Java9Parser.NormalInterfaceDeclarationContext context, JavaNode parent) : base(context, parent)
+        public JavaInterface(JavaParser.InterfaceDeclarationContext context, JavaNode parent) : base(context, parent)
         {
         }
 
         public override string GetIdentifier(ParserRuleContext context)
         {
-            return ((Java9Parser.NormalInterfaceDeclarationContext)context).identifier().GetText();
+            return ((JavaParser.InterfaceDeclarationContext)context).IDENTIFIER().GetText();
         }
 
         public string Name => Identifier;
@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.Java.Editor
         public override void UpdateContext(RuleContext context)
         {
             base.UpdateContext(context);
-            UpdateInterfaces(((Java9Parser.NormalInterfaceDeclarationContext)context).extendsInterfaces());
+            UpdateInterfaces(((JavaParser.InterfaceDeclarationContext)context).typeList());
         }
 
         public override void MergeWith(JavaNode node)
@@ -42,8 +42,8 @@ namespace Intent.Modules.Common.Java.Editor
                 }
                 else
                 {
-                    var afterContext = ((Java9Parser.NormalInterfaceDeclarationContext)Context).identifier();
-                    File.InsertAfter(afterContext.Stop, node.SuperInterfaces.GetTextWithComments());
+                    var afterContext = ((JavaParser.InterfaceDeclarationContext)Context).IDENTIFIER();
+                    File.InsertAfter(afterContext.Symbol, node.SuperInterfaces.GetTextWithComments());
                 }
             }
             else if (!IsMerged())
@@ -52,7 +52,7 @@ namespace Intent.Modules.Common.Java.Editor
             }
         }
 
-        private void UpdateInterfaces(Java9Parser.ExtendsInterfacesContext extendsInterfaces)
+        private void UpdateInterfaces(JavaParser.TypeListContext extendsInterfaces)
         {
             SuperInterfaces = extendsInterfaces != null ? new JavaExtendsInterfaces(extendsInterfaces, this) : null;
         }

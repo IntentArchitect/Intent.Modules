@@ -2,12 +2,44 @@
 using System.Collections.Generic;
 using System.Linq;
 using Antlr4.Runtime;
+using Antlr4.Runtime.Misc;
 using Antlr4.Runtime.Tree;
 using Intent.Modules.Common.Java.Editor.Parser;
 using JavaParserLib;
 
 namespace Intent.Modules.Common.Java.Editor
 {
+    public abstract class JavaNode<TContext> : JavaNode
+        where TContext : ParserRuleContext
+    {
+        protected JavaNode(TContext context, JavaFile file) : base(context, file)
+        {
+        }
+
+        protected JavaNode(TContext context, JavaNode parent) : base(context, parent)
+        {
+        }
+
+        public TContext TypedContext => (TContext) Context;
+
+        public abstract string GetIdentifier(TContext context);
+
+        public override string GetIdentifier(ParserRuleContext context)
+        {
+            return GetIdentifier((TContext) context);
+        }
+
+        public override void UpdateContext(RuleContext context)
+        {
+            base.UpdateContext(context);
+            UpdateContext((TContext)context);
+        }
+
+        public virtual void UpdateContext(TContext context)
+        {
+        }
+    }
+
     public abstract class JavaNode : IEquatable<JavaNode>
     {
         private readonly List<JavaNode> _children = new List<JavaNode>();
@@ -30,8 +62,8 @@ namespace Intent.Modules.Common.Java.Editor
         public JavaNode Parent { get; }
         public IList<JavaNode> Children => _children;
         public IList<JavaAnnotation> Annotations { get; } = new List<JavaAnnotation>();
-        public IToken StartToken => File.GetCommentsAndWhitespaceBefore(Context.Start).StartToken ?? Context.Start;
-        public IToken StopToken => Context.Stop;
+        public virtual IToken StartToken => Annotations.FirstOrDefault()?.StartToken ?? Context.Start;
+        public virtual IToken StopToken => Context.Stop;
 
         public JavaNode TryGetChild(ParserRuleContext context)
         {
@@ -78,7 +110,7 @@ namespace Intent.Modules.Common.Java.Editor
             _children.Insert(index, node);
         }
 
-        public JavaAnnotation TryGetAnnotation(Java9Parser.AnnotationContext context)
+        public JavaAnnotation TryGetAnnotation(JavaParser.AnnotationContext context)
         {
             return Annotations.SingleOrDefault(x => x.Context.GetType() == context.GetType() && x.Identifier == x.GetIdentifier(context));
         }
@@ -90,14 +122,15 @@ namespace Intent.Modules.Common.Java.Editor
 
         public virtual string GetTextWithComments()
         {
-            var ws = File.GetCommentsAndWhitespaceBefore(Context.Start);
-            return $"{ws.Text}{Context.GetFullText()}";
+            var ws = File.GetCommentsAndWhitespaceBefore(Annotations.FirstOrDefault()?.StartToken ?? Context.Start);
+            return $"{ws.Text}{GetText()}";
+            //return $"{ws.Text}{Context.GetFullText()}";
             //return Context.GetFullText();
         }
 
         public virtual string GetText()
         {
-            return Context.GetFullText();
+            return Context.Start.InputStream.GetText(Interval.Of((Annotations.FirstOrDefault()?.StartToken ?? Context.Start).StartIndex, Context.Stop.StopIndex));
         }
 
         public void ReplaceWith(string text)
@@ -271,7 +304,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         protected virtual void AddFirst(JavaAnnotation node)
         {
-            File.InsertBefore(this, node.GetTextWithComments());
+            File.InsertBefore(this, node.GetText().TrimStart() + Environment.NewLine);
         }
 
         protected virtual void AddFirst(JavaNode node)

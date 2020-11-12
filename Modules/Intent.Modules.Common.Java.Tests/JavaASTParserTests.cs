@@ -15,20 +15,17 @@ namespace Intent.Modules.Common.Java.Tests
             Assert.Equal(3, javaFile.Imports.Count);
 
             var import1 = javaFile.Imports[0];
-            Assert.Equal("java.lang", import1.Namespace);
-            Assert.Equal("Math", import1.TypeName);
+            Assert.Equal("java.lang.Math", import1.TypeName);
             Assert.True(import1.IsImportOnDemand);
             Assert.True(import1.IsStatic);
 
             var import2 = javaFile.Imports[1];
-            Assert.Equal("java.lang", import2.Namespace);
-            Assert.Equal("System", import2.TypeName);
+            Assert.Equal("java.lang.System", import2.TypeName);
             Assert.False(import2.IsImportOnDemand);
             Assert.False(import2.IsStatic);
 
             var import3 = javaFile.Imports[2];
-            Assert.Equal("org.lib", import3.Namespace);
-            Assert.Equal("Class", import3.TypeName);
+            Assert.Equal("org.lib.Class", import3.TypeName);
             Assert.True(import3.IsImportOnDemand);
             Assert.False(import3.IsStatic);
         }

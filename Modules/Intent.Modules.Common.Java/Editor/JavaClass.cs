@@ -1,20 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Antlr4.Runtime;
-using Intent.Modules.Common.Java.Editor.Parser;
 using JavaParserLib;
 
 namespace Intent.Modules.Common.Java.Editor
 {
-    public class JavaClass : JavaNode
+    public class JavaClass : JavaNode<JavaParser.TypeDeclarationContext>
     {
-        public JavaClass(Java9Parser.NormalClassDeclarationContext context, JavaNode parent) : base(context, parent)
+        public JavaClass(JavaParser.TypeDeclarationContext context, JavaNode parent) : base(context, parent)
         {
         }
 
-        public override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(JavaParser.TypeDeclarationContext context)
         {
-            return ((Java9Parser.NormalClassDeclarationContext)context).identifier().GetText();
+            return context.classDeclaration().IDENTIFIER().GetText();
         }
 
         public string Name => Identifier;
@@ -24,11 +23,11 @@ namespace Intent.Modules.Common.Java.Editor
         public IReadOnlyList<JavaMethod> Methods => Children.Where(x => x is JavaMethod).Cast<JavaMethod>().ToList();
         public IReadOnlyList<JavaConstructor> Constructors => Children.Where(x => x is JavaConstructor).Cast<JavaConstructor>().ToList();
 
-        public override void UpdateContext(RuleContext context)
+        public override void UpdateContext(JavaParser.TypeDeclarationContext context)
         {
             base.UpdateContext(context);
-            UpdateSuperClass(((Java9Parser.NormalClassDeclarationContext)context).superclass());
-            UpdateInterfaces(((Java9Parser.NormalClassDeclarationContext)context).superinterfaces());
+            UpdateSuperClass(context.classDeclaration().typeType());
+            UpdateInterfaces(context.classDeclaration().typeList());
         }
 
         public override void MergeWith(JavaNode node)
@@ -48,7 +47,7 @@ namespace Intent.Modules.Common.Java.Editor
                 }
                 else
                 {
-                    File.InsertAfter(((Java9Parser.NormalClassDeclarationContext)Context).identifier().Stop, node.SuperClass.GetTextWithComments());
+                    File.InsertAfter(TypedContext.classDeclaration().IDENTIFIER().Symbol, " extends" + node.SuperClass.GetTextWithComments());
                 }
             }
             else if (!IsMerged())
@@ -67,8 +66,8 @@ namespace Intent.Modules.Common.Java.Editor
                 }
                 else
                 {
-                    var afterContext = ((Java9Parser.NormalClassDeclarationContext)Context).superclass() ?? (ParserRuleContext)((Java9Parser.NormalClassDeclarationContext)Context).identifier();
-                    File.InsertAfter(afterContext.Stop, node.SuperInterfaces.GetTextWithComments());
+                    var afterToken = TypedContext.classDeclaration().typeType()?.Stop ?? TypedContext.classDeclaration().IDENTIFIER().Symbol;
+                    File.InsertAfter(afterToken, " implements" + node.SuperInterfaces.GetTextWithComments());
                 }
             }
             else if (!IsMerged())
@@ -77,12 +76,12 @@ namespace Intent.Modules.Common.Java.Editor
             }
         }
 
-        private void UpdateSuperClass(Java9Parser.SuperclassContext superclass)
+        private void UpdateSuperClass(JavaParser.TypeTypeContext superclass)
         {
             SuperClass = superclass != null ? new JavaSuperClass(superclass, this) : null;
         }
 
-        private void UpdateInterfaces(Java9Parser.SuperinterfacesContext superinterfaces)
+        private void UpdateInterfaces(JavaParser.TypeListContext superinterfaces)
         {
             SuperInterfaces = superinterfaces != null ? new JavaSuperInterfaces(superinterfaces, this) : null;
         }

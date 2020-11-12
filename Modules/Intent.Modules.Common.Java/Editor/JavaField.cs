@@ -5,9 +5,9 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaField : JavaNode
     {
-        private readonly Java9Parser.FieldDeclarationContext _context;
+        private readonly JavaParser.FieldDeclarationContext _context;
 
-        public JavaField(Java9Parser.FieldDeclarationContext context, JavaClass parent) : base(context, parent)
+        public JavaField(JavaParser.FieldDeclarationContext context, JavaClass parent) : base(context, parent)
         {
             _context = context;
             Name = Identifier;
@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public override string GetIdentifier(ParserRuleContext context)
         {
-            return ((Java9Parser.FieldDeclarationContext)context).variableDeclaratorList().variableDeclarator(0).variableDeclaratorId().identifier().GetText();
+            return ((JavaParser.FieldDeclarationContext)context).variableDeclarators().variableDeclarator(0).variableDeclaratorId().IDENTIFIER().GetText();
         }
 
         //public override bool IsIgnored()

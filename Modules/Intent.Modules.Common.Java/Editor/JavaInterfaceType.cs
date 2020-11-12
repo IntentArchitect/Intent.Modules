@@ -4,7 +4,7 @@ namespace Intent.Modules.Common.Java.Editor
 {
     public class JavaInterfaceType : JavaNode
     {
-        public JavaInterfaceType(Java9Parser.InterfaceTypeContext context, JavaNode parent) : base(context, parent)
+        public JavaInterfaceType(JavaParser.TypeTypeContext context, JavaNode parent) : base(context, parent)
         {
 
         }

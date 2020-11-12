@@ -10,7 +10,7 @@ namespace Intent.Modules.Common.Java.Editor.Parser
         public static JavaFile Parse(string source)
         {
             //var inputStream = new AntlrInputStream(new MemoryStream(Encoding.UTF8.GetBytes(source)));
-            //var javaLexer = new Java9Lexer(inputStream);
+            //var javaLexer = new JavaLexer(inputStream);
             //var tokens = new CommonTokenStream(javaLexer);
             var javaFile = JavaFile.Parse(source);
             return javaFile;
