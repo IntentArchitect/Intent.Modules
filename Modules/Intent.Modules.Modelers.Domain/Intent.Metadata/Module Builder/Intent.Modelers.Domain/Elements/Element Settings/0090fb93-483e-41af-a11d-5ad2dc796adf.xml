@@ -3,6 +3,7 @@
   <name>Attribute</name>
   <display>Attribute</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</parentFolderId>

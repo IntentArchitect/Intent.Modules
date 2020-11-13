@@ -3,6 +3,7 @@
   <name>Visual Studio</name>
   <display>Visual Studio</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e72110a0-9891-4bfc-833e-e6b1f8b2282b</parentFolderId>
@@ -35,6 +36,7 @@
       <name>reference</name>
       <display>reference: Visual Studio Types</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="d291c67e-7be8-43d5-9df7-2dc258bc17ab">
         <typeId>2ef69545-61ca-42b7-89bd-4ae3d5970280</typeId>

@@ -3,6 +3,7 @@
   <name>Operation</name>
   <display>Operation</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b16578a5-27b1-4047-a8df-f0b783d706bd</parentFolderId>
@@ -45,6 +46,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e030c97a-e066-40a7-8188-808c275df3cb</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="939f0104-dd25-4fc2-a761-b9c3f1ff8edd">
             <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>

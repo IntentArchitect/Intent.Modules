@@ -3,6 +3,7 @@
   <name>.NET Framework Version</name>
   <display>.NET Framework Version</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>6453c4bd-78b8-4589-a223-9f57a348a1a1</parentFolderId>

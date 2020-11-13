@@ -3,6 +3,7 @@
   <name>NewEnum</name>
   <display>NewEnum</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
@@ -15,6 +16,7 @@
       <display>NewEnumLiteral = 0</display>
       <isAbstract>false</isAbstract>
       <value>0</value>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>38a9b164-346c-491d-b6cc-53df6c842f01</parentFolderId>

@@ -3,6 +3,7 @@
   <name>NewService</name>
   <display>NewService</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
@@ -14,6 +15,7 @@
       <name>GetSomeShit</name>
       <display>GetSomeShit(): date</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="540fcd32-1b83-4283-b0ed-159827c7c427">
         <typeId>1fbaa056-b666-4f25-b8fd-76fe3165acc8</typeId>
@@ -35,6 +37,7 @@
       <name>DoSomething</name>
       <display>DoSomething(): void</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="ce86fae4-e31b-482a-ba8b-3c6c367598d0">
         <isNavigable>true</isNavigable>
@@ -55,6 +58,7 @@
       <name>TestParams</name>
       <display>TestParams(param: string): bool</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="c333acd6-1dd0-47cc-bb39-90ee65811dc9">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -75,6 +79,7 @@
           <name>param</name>
           <display>in : param: string</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="d8a0d783-5d1c-4b0b-9cb2-6faf72253d73">
             <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

@@ -3,6 +3,7 @@
   <name>Role</name>
   <display>Role</display>
   <isAbstract>false</isAbstract>
+  <order>8</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>2ef69545-61ca-42b7-89bd-4ae3d5970280</parentFolderId>

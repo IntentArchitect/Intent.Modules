@@ -3,6 +3,7 @@
   <name>OldClass</name>
   <display>OldClass</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
@@ -14,6 +15,7 @@
       <name>xxxx</name>
       <display>xxxx: string</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="c927e3f2-a824-4141-9b8c-58448085adf1">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

@@ -3,6 +3,7 @@
   <name>Enum</name>
   <display>Enum</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
@@ -45,6 +46,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Literal</name>
           <display>Add Literal: Enum-Literal</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="96d1ca10-5ed1-40ff-9ec1-57853a356918">
             <typeId>cd1dc4bd-30cb-473b-9922-05d9179c4e93</typeId>

@@ -3,6 +3,7 @@
   <name>Class</name>
   <display>Class</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
@@ -45,6 +46,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Attribute</name>
           <display>Add Attribute: Attribute</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="ab47c186-3215-429f-90be-28710b9f3f6f">
             <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
@@ -93,6 +96,7 @@
           <name>Add Operation</name>
           <display>Add Operation: Operation</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="82251521-cdd6-4576-8f3d-2659c68f851c">
             <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
@@ -130,6 +134,7 @@
           <name>New Association</name>
           <display>New Association: Association</display>
           <isAbstract>false</isAbstract>
+          <order>2</order>
           <genericTypes />
           <typeReference id="1c4430e8-0b67-4f15-a6d4-36605f186d81">
             <typeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</typeId>
@@ -166,6 +171,7 @@
           <name>New Inheritance</name>
           <display>New Inheritance: Generalization</display>
           <isAbstract>false</isAbstract>
+          <order>3</order>
           <genericTypes />
           <typeReference id="e5c43fbf-ef15-414a-9dc6-7d5aa535868d">
             <typeId>5de35973-3ac7-4e65-b48c-385605aec561</typeId>
@@ -204,6 +210,7 @@
       <name>[visual]</name>
       <display>[visual]: Class</display>
       <isAbstract>false</isAbstract>
+      <order>3</order>
       <genericTypes />
       <typeReference id="13a385fc-1fe7-4fdb-ade1-8ce6807b546d">
         <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
@@ -238,6 +245,7 @@
           <name>NewPathDrawSettings</name>
           <display>[draw path]</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>b3668b13-7c9a-4a2b-81fd-877c387dd1cf</parentFolderId>
@@ -264,6 +272,7 @@
           <name>[draw text]</name>
           <display>[draw text]</display>
           <isAbstract>false</isAbstract>
+          <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>b3668b13-7c9a-4a2b-81fd-877c387dd1cf</parentFolderId>
@@ -298,6 +307,7 @@
           <name>NewStereotypesVisualSettings</name>
           <display>[stereotypes]</display>
           <isAbstract>false</isAbstract>
+          <order>3</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>b3668b13-7c9a-4a2b-81fd-877c387dd1cf</parentFolderId>
@@ -322,6 +332,7 @@
           <name>NewElementVisualSettings</name>
           <display>[visual]: Attribute</display>
           <isAbstract>false</isAbstract>
+          <order>4</order>
           <genericTypes />
           <typeReference id="68df2b19-cb42-4e35-80c7-77b07bc91e82">
             <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
@@ -356,6 +367,7 @@
               <name>NewPathDrawSettings</name>
               <display>[draw path]</display>
               <isAbstract>false</isAbstract>
+              <order>1</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>ef5a5552-db98-4c62-8388-12d0acdbf87a</parentFolderId>
@@ -382,6 +394,7 @@
               <name>[draw text]</name>
               <display>[draw text]</display>
               <isAbstract>false</isAbstract>
+              <order>2</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>ef5a5552-db98-4c62-8388-12d0acdbf87a</parentFolderId>
@@ -416,6 +429,7 @@
               <name>NewStereotypesVisualSettings</name>
               <display>[stereotypes]</display>
               <isAbstract>false</isAbstract>
+              <order>3</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>ef5a5552-db98-4c62-8388-12d0acdbf87a</parentFolderId>
@@ -442,6 +456,7 @@
           <name>NewElementVisualSettings</name>
           <display>[visual]: Operation</display>
           <isAbstract>false</isAbstract>
+          <order>5</order>
           <genericTypes />
           <typeReference id="ea44734b-b901-4d8e-86e2-a902cae30ffa">
             <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
@@ -476,6 +491,7 @@
               <name>NewPathDrawSettings</name>
               <display>[draw path]</display>
               <isAbstract>false</isAbstract>
+              <order>1</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>b90bcb52-db66-458d-962a-8eeeb95cd110</parentFolderId>
@@ -502,6 +518,7 @@
               <name>[draw text]</name>
               <display>[draw text]</display>
               <isAbstract>false</isAbstract>
+              <order>2</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>b90bcb52-db66-458d-962a-8eeeb95cd110</parentFolderId>
@@ -536,6 +553,7 @@
               <name>NewStereotypesVisualSettings</name>
               <display>[stereotypes]</display>
               <isAbstract>false</isAbstract>
+              <order>3</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>b90bcb52-db66-458d-962a-8eeeb95cd110</parentFolderId>

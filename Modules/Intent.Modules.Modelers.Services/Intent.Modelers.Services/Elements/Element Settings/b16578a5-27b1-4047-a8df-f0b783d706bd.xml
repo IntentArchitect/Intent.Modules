@@ -3,6 +3,7 @@
   <name>Service</name>
   <display>Service</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
@@ -45,6 +46,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>b16578a5-27b1-4047-a8df-f0b783d706bd</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Operation</name>
           <display>Add Operation: Operation</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="0928d26d-dde5-4ef3-8a20-59e8c85fdf80">
             <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>

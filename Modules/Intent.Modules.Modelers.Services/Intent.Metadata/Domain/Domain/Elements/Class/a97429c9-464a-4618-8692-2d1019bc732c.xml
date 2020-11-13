@@ -3,6 +3,7 @@
   <name>Movie</name>
   <display>Movie</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
@@ -14,6 +15,7 @@
       <name>attribute</name>
       <display>attribute: char</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="b024982a-7c30-484b-a8c8-cbbb464055e9">
         <typeId>C1B3A361-B1C6-48C3-B34C-7999B3E071F0</typeId>
@@ -35,6 +37,7 @@
       <name>attribute2</name>
       <display>attribute2: datetimeoffset</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="1364b3d6-ca1b-4f46-8e98-7b16aa4b652b">
         <typeId>f1ba4df3-a5bc-427e-a591-4f6029f89bd7</typeId>
@@ -56,6 +59,7 @@
       <name>IReturnSomething</name>
       <display>IReturnSomething(): string</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="937f6e33-3f51-4814-98c0-99cd59d6cbc6">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -77,6 +81,7 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="27a1ba62-c25f-4ee6-a7dd-4ee7db99f8e7">
         <isNavigable>true</isNavigable>

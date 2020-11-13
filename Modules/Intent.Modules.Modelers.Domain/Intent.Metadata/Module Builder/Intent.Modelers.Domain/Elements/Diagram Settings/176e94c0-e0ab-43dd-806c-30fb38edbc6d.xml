@@ -3,6 +3,7 @@
   <name>NewDiagramSettings</name>
   <display>[diagram]</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>4d66fecd-e9b8-436f-aa50-c59040ad0879</parentFolderId>
@@ -14,6 +15,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>176e94c0-e0ab-43dd-806c-30fb38edbc6d</parentFolderId>
@@ -25,6 +27,7 @@
           <name>New Class</name>
           <display>New Class: Class</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="b8e84770-1a6c-4691-b94f-22c801d5d408">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
@@ -62,6 +65,7 @@
           <name>New Comment</name>
           <display>New Comment: Comment</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="0ceb93b5-07c2-4165-a69a-5c6dc2a2986c">
             <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>

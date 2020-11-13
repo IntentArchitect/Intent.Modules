@@ -3,6 +3,7 @@
   <name>EmptyClass</name>
   <display>EmptyClass</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
@@ -14,6 +15,7 @@
       <name>attribute</name>
       <display>attribute: string</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="d0bc9642-41b2-4ef6-8323-bb352488eb7b">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>

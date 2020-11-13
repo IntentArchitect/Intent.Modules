@@ -3,6 +3,7 @@
   <name>Domain Types</name>
   <display>Domain Types</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>696e26c8-1840-4564-8eee-fef4c77d1439</parentFolderId>

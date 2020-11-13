@@ -3,6 +3,7 @@
   <name>Services</name>
   <display>Services</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>6968d532-461a-4cc8-a30e-d3ec87c50cdc</parentFolderId>
@@ -24,6 +25,7 @@
       <name>reference</name>
       <display>reference: Services Types</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="e4816569-3255-46fa-9255-056b61350dbe">
         <typeId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</typeId>
@@ -47,6 +49,7 @@
       <name>reference</name>
       <display>reference: Common Types</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <typeReference id="653610a4-0f32-4fe9-8da3-40bc4275581f">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>

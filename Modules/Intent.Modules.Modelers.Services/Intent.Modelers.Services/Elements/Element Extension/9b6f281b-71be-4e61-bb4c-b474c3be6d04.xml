@@ -3,6 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <typeReference id="80b765b0-cd1b-43f6-bed8-f8cd1696746c">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -25,6 +26,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9b6f281b-71be-4e61-bb4c-b474c3be6d04</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New Service</name>
           <display>New Service: Service</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="877cd4ab-4540-44ea-83eb-b4589e8046cf">
             <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
@@ -73,6 +76,7 @@
           <name>New DTO</name>
           <display>New DTO: DTO</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="8a8c2bca-2c74-442f-be3b-9c56d4b0c7da">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
@@ -110,6 +114,7 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>2</order>
           <genericTypes />
           <typeReference id="2f19b9cc-6dbc-455a-b668-282e54549485">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -147,6 +152,7 @@
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
+          <order>3</order>
           <genericTypes />
           <typeReference id="1955c34d-b5c7-4987-8e06-3788fea952d9">
             <typeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</typeId>
@@ -184,6 +190,7 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>4</order>
           <genericTypes />
           <typeReference id="4bfc3588-539e-4ca3-9b9e-372cd826c740">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

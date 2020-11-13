@@ -3,6 +3,7 @@
   <name>Parameter</name>
   <display>Parameter</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e030c97a-e066-40a7-8188-808c275df3cb</parentFolderId>

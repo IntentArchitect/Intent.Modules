@@ -3,6 +3,7 @@
   <name>Domain Package</name>
   <display>Domain Package</display>
   <isAbstract>false</isAbstract>
+  <order>8</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
@@ -16,6 +17,7 @@
       <properties>
         <property name="fc8c4bc7-d83c-40e7-a85f-35886682d910" display="Default Name" value="Domain" isActive="true" />
         <property name="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQAAAAEACAYAAABccqhmAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAC90lEQVR4Xu3dMY7DIBBA0WFF5bPRODlnkmbORsveIKuNZBni904QTeSvaYAyxohrAn7iywACAAgAIACAAAACAAgAUOMPpZS4st77iGWxbVuJCxtj2ACANQMACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACABQ41C01uJzZGbMzAYACAAgAIAAAAIACAAgAIAAAAIACAAgAICzADwfr/hmt/seJ8IGAAgAIAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACABQYyrc7nucBxsAIACAAAACAAgAIACAAAACAAgAIACAAADOApCZcabW2nq/HxsAIACAAAACAAgAIACAAAACAAgAIACAAAACAAgAIACAAAA13mLbthIn6r2Py80PGwAgAIAAAAIACAAgAIAAAAIACAAgAIAAAAIACAAgAIAAANV5dub+/91HYQMABAAQAEAAAAEABAAQAEAAAAEABAAQAEAAAAEABAAEAHAfwIxaa8Gq8yczbQCfAAQAEABAAAABAAQAEABAAAABAAQAEABAAAABAAQAEACgOo/9jvP8aX42gCkBAgAIACAAgAAAAgAIACAAgAAAAgAIAAgAIACAAAACALgPoPc+4hjA8d9fsQEASwYAEABAAAABAAQAEABAAAABAAQAEABAAAABAAQAEACgTva+uvfxze8987MBAAIACAAgAIAAAAIACAAgAIAAAAIACABQYzLPxyuOdLvvsSLzMz8bACAAgAAAAgAIACAAgAAAAgAIACAAgAAAAgAIAAgAIACAAAACAAgAIACAAAACAAgAIACAdwHcO29+5rf+BgAIACAAgAAAAgAIACAAgAAAAgAIACAAgLMAmRn/gvmZnw0AEABAAAABAAQAEABAAAABAAQAEABAAAABAAQAEABAAIAyxoivANgAAAEABAAQAEAAAAEABAD4Be+MVrBHQ2QQAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="c15cbaf3-f83d-4e3f-b489-7bf88a5143c4" display="Sorting" value="By type, then by name" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
@@ -24,6 +26,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1a824508-4623-45d9-accc-f572091ade5a</parentFolderId>
@@ -35,6 +38,7 @@
           <name>New Class</name>
           <display>New Class: Class</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="8aedeb6a-308b-409e-ae9a-6e17751a761d">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
@@ -72,6 +76,7 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="653ec654-a7b7-4036-8ddb-fd9861462a4c">
             <typeId>8f990b5b-a182-4fb8-a577-b985c8859078</typeId>
@@ -109,6 +114,7 @@
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
+          <order>2</order>
           <genericTypes />
           <typeReference id="fd912adf-8488-4471-a763-ae82985cbaf6">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
@@ -146,6 +152,7 @@
           <name>New Comment</name>
           <display>New Comment: Comment</display>
           <isAbstract>false</isAbstract>
+          <order>3</order>
           <genericTypes />
           <typeReference id="98f81fc1-4b5a-443e-89cc-4db600f91a1e">
             <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
@@ -183,6 +190,7 @@
           <name>New Diagram</name>
           <display>New Diagram: Diagram</display>
           <isAbstract>false</isAbstract>
+          <order>4</order>
           <genericTypes />
           <typeReference id="14a3eb5e-379a-40f9-97aa-d9b3aa9948fe">
             <typeId>4d66fecd-e9b8-436f-aa50-c59040ad0879</typeId>
@@ -220,6 +228,7 @@
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
+          <order>5</order>
           <genericTypes />
           <typeReference id="02e43da8-8397-400a-adbe-bc45237c110d">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -257,6 +266,7 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>6</order>
           <genericTypes />
           <typeReference id="1242321a-4cc1-4af9-86c5-1b0a73d7e524">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
@@ -296,6 +306,7 @@
       <name>NewPackageEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1a824508-4623-45d9-accc-f572091ade5a</parentFolderId>
@@ -307,6 +318,7 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="978d4e82-a2b2-4328-a509-dc09d72fa772">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

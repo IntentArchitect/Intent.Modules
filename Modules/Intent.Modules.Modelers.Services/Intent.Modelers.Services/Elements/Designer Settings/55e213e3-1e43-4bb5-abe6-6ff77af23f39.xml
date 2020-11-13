@@ -3,6 +3,7 @@
   <name>Services Types</name>
   <display>Services Types</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>6968d532-461a-4cc8-a30e-d3ec87c50cdc</parentFolderId>

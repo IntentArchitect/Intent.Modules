@@ -3,6 +3,7 @@
   <name>Api</name>
   <display>Api</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -14,6 +15,7 @@
       <name>ModuleBuilder.Templates.Api.ApiAssociationModel</name>
       <display>ModuleBuilder.Templates.Api.ApiAssociationModel</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</parentFolderId>
@@ -26,6 +28,7 @@
       <name>ModuleBuilder.Templates.Api.ApiElementExtensionModel</name>
       <display>ModuleBuilder.Templates.Api.ApiElementExtensionModel</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</parentFolderId>
@@ -38,6 +41,7 @@
       <name>ModuleBuilder.Templates.Api.ApiElementModel</name>
       <display>ModuleBuilder.Templates.Api.ApiElementModel</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</parentFolderId>
@@ -50,6 +54,7 @@
       <name>ModuleBuilder.Templates.Api.ApiPackageModel</name>
       <display>ModuleBuilder.Templates.Api.ApiPackageModel</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</parentFolderId>

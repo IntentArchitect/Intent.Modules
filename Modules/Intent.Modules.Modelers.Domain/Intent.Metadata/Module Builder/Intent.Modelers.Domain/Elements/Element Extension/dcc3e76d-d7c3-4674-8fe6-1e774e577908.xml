@@ -3,6 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
+  <order>4</order>
   <genericTypes />
   <typeReference id="1d0cd222-69d7-457f-bb49-349592fdab0b">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -25,6 +26,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>dcc3e76d-d7c3-4674-8fe6-1e774e577908</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New Class</name>
           <display>New Class: Class</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="587b7475-b3f1-4dd4-8122-45ae5154f61d">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
@@ -73,6 +76,7 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="c4ef3d03-e73a-460a-9566-c7b9988502c5">
             <typeId>8f990b5b-a182-4fb8-a577-b985c8859078</typeId>
@@ -110,6 +114,7 @@
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
+          <order>2</order>
           <genericTypes />
           <typeReference id="1da135b7-87ba-4003-a6b0-8d1fec1a84ad">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
@@ -147,6 +152,7 @@
           <name>New Comment</name>
           <display>New Comment: Comment</display>
           <isAbstract>false</isAbstract>
+          <order>3</order>
           <genericTypes />
           <typeReference id="90a6fe29-a4d1-4959-b5f1-27d6f4c38323">
             <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
@@ -184,6 +190,7 @@
           <name>New Diagram</name>
           <display>New Diagram: Diagram</display>
           <isAbstract>false</isAbstract>
+          <order>4</order>
           <genericTypes />
           <typeReference id="b0415995-bc9d-4c61-ac1c-1d4a42454202">
             <typeId>4d66fecd-e9b8-436f-aa50-c59040ad0879</typeId>
@@ -221,6 +228,7 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>5</order>
           <genericTypes />
           <typeReference id="73707a0d-482d-4009-aa41-344fc276552f">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

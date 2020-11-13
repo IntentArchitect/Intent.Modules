@@ -3,6 +3,7 @@
   <name>DTO-Field</name>
   <display>DTO-Field</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>fee0edca-4aa0-4f77-a524-6bbd84e78734</parentFolderId>
