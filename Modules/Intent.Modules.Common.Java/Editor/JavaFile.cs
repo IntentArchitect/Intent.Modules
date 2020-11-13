@@ -91,7 +91,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public void InsertBefore(JavaNode node, string text)
         {
-            _rewriter.InsertBefore(node.StartToken, text);
+            _rewriter.InsertBefore(GetPreviousWsToken(node.StartToken), text);
             UpdateContext();
         }
 
@@ -140,9 +140,14 @@ namespace Intent.Modules.Common.Java.Editor
 
         public IToken GetPreviousWsToken(IToken token)
         {
+            if (token.TokenIndex - 1 < 0)
+            {
+                return token;
+            }
+
             var previous = _tokens.Get(token.TokenIndex - 1);
             IToken ws = null;
-            while (previous.Type == JavaLexer.WS)
+            while (previous.Type == JavaLexer.WS || previous.Type == JavaLexer.COMMENT)
             {
                 ws = previous;
                 if (previous.TokenIndex - 1 < 0)
@@ -155,9 +160,14 @@ namespace Intent.Modules.Common.Java.Editor
             return ws ?? token;
         }
 
-        public IToken GetPreviousToken(IToken token )
+        public IToken GetPreviousToken(IToken token)
         {
             return _tokens.Get(token.TokenIndex - 1);
+        }
+
+        public IToken GetNextToken(IToken token)
+        {
+            return _tokens.Get(token.TokenIndex + 1);
         }
 
         public object GetCommentsBefore(IToken token)

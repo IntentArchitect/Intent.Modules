@@ -15,7 +15,7 @@ namespace Intent.Modules.Common.Java.Editor
         public static IList<JavaParameter> GetParameters(this JavaParser.FormalParameterListContext formalParameterList, JavaNode parent)
         {
             return formalParameterList.formalParameter()
-                .Select(x => new JavaParameter(x, parent))
+                .Select((x, index) => new JavaParameter(x, parent, index))
                 .ToList();
         }
     }

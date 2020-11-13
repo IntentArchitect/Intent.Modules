@@ -12,6 +12,8 @@ namespace Intent.Modules.Common.Java.Editor
             _context = context;
         }
 
+        public override IToken StartToken => Annotations.FirstOrDefault()?.StartToken ?? ((ParserRuleContext)Context.Parent.Parent).Start;
+
         public override string GetIdentifier(ParserRuleContext context)
         {
             return ((JavaParser.ConstructorDeclarationContext)context).formalParameters().formalParameterList() != null

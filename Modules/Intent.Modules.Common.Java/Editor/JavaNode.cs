@@ -80,6 +80,11 @@ namespace Intent.Modules.Common.Java.Editor
             InsertBefore(existing, node.GetTextWithComments());
         }
 
+        public virtual void InsertBefore(JavaNode existing, JavaAnnotation node)
+        {
+            File.InsertBefore(existing.StartToken, node.GetText());
+        }
+
         protected virtual void InsertBefore(JavaNode existing, string text)
         {
             File.InsertBefore(existing, text);
@@ -122,7 +127,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         public virtual string GetTextWithComments()
         {
-            var ws = File.GetCommentsAndWhitespaceBefore(Annotations.FirstOrDefault()?.StartToken ?? Context.Start);
+            var ws = File.GetCommentsAndWhitespaceBefore(StartToken);
             return $"{ws.Text}{GetText()}";
             //return $"{ws.Text}{Context.GetFullText()}";
             //return Context.GetFullText();
@@ -130,15 +135,15 @@ namespace Intent.Modules.Common.Java.Editor
 
         public virtual string GetText()
         {
-            return Context.Start.InputStream.GetText(Interval.Of((Annotations.FirstOrDefault()?.StartToken ?? Context.Start).StartIndex, Context.Stop.StopIndex));
+            return Context.Start.InputStream.GetText(Interval.Of(StartToken.StartIndex, StopToken.StopIndex));
         }
 
-        public void ReplaceWith(string text)
+        public virtual void ReplaceWith(string text)
         {
             File.Replace(this, text);
         }
 
-        public void Remove()
+        public virtual void Remove()
         {
             File.Replace(this, "");
         }
@@ -245,7 +250,7 @@ namespace Intent.Modules.Common.Java.Editor
                     }
                     else if (index == 0)
                     {
-                        this.InsertBefore(getCollection(this)[0], node);
+                        this.InsertBefore(getCollection(this)[0], (dynamic)node);
                     }
                     else if (getCollection(this).Count > index)
                     {
@@ -304,7 +309,7 @@ namespace Intent.Modules.Common.Java.Editor
 
         protected virtual void AddFirst(JavaAnnotation node)
         {
-            File.InsertBefore(this, node.GetText().TrimStart() + Environment.NewLine);
+            File.InsertBefore(StartToken, node.GetText().TrimStart() + Environment.NewLine);
         }
 
         protected virtual void AddFirst(JavaNode node)

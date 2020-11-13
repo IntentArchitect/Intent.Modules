@@ -22,7 +22,7 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 
         public override void EnterClassDeclaration(JavaParser.ClassDeclarationContext context)
         {
-            _nodeStack.Push(InsertOrUpdateNode((JavaParser.TypeDeclarationContext)context.Parent, () => new JavaClass((JavaParser.TypeDeclarationContext) context.Parent, Current.Node)));
+            _nodeStack.Push(InsertOrUpdateNode((JavaParser.TypeDeclarationContext)context.Parent, () => new JavaClass((JavaParser.TypeDeclarationContext)context.Parent, Current.Node)));
             ApplyAnnotations(Current);
         }
 
@@ -33,7 +33,7 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 
         public override void EnterInterfaceDeclaration(JavaParser.InterfaceDeclarationContext context)
         {
-            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaInterface(context, Current.Node)));
+            _nodeStack.Push(InsertOrUpdateNode((JavaParser.TypeDeclarationContext)context.Parent, () => new JavaInterface((JavaParser.TypeDeclarationContext)context.Parent, Current.Node)));
             ApplyAnnotations(Current);
         }
 
@@ -82,7 +82,13 @@ namespace Intent.Modules.Common.Java.Editor.Parser
 
         public override void EnterFormalParameter(JavaParser.FormalParameterContext context)
         {
-            InsertOrUpdateNode(context, () => new JavaParameter(context, Current.Node));
+            _nodeStack.Push(InsertOrUpdateNode(context, () => new JavaParameter(context, Current.Node, Current.ChildIndex)));
+        }
+
+        public override void ExitFormalParameter(JavaParser.FormalParameterContext context)
+        {
+            ApplyAnnotations(Current);
+            _nodeStack.Pop();
         }
 
         public override void EnterInterfaceMethodDeclaration(JavaParser.InterfaceMethodDeclarationContext context)
@@ -106,7 +112,7 @@ namespace Intent.Modules.Common.Java.Editor.Parser
         {
             _nodeStack.Pop();
         }
-        
+
         private ICollection<JavaParser.AnnotationContext> _annotations = new List<JavaParser.AnnotationContext>();
 
         private void ApplyAnnotations(JavaNodeContext nodeContext)

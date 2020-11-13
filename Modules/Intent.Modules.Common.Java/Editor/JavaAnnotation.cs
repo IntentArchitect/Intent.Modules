@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.Java.Editor
         {
         }
 
-        public override IToken StartToken => File.GetPreviousToken(Context.Start);
+        public override IToken StartToken => File.GetPreviousToken(Context.Start).Type == JavaLexer.WS ? File.GetPreviousToken(Context.Start) : Context.Start;
 
         public override string GetIdentifier(ParserRuleContext context)
         {

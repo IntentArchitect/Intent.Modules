@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor
@@ -14,6 +15,7 @@ namespace Intent.Modules.Common.Java.Editor
         }
 
         public string Name { get; }
+        public override IToken StartToken => Annotations.FirstOrDefault()?.StartToken ?? ((ParserRuleContext)Context.Parent.Parent).Start;
 
         public override string GetIdentifier(ParserRuleContext context)
         {

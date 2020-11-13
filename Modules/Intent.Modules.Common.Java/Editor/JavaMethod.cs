@@ -16,6 +16,7 @@ namespace Intent.Modules.Common.Java.Editor
         }
 
         public string Name { get; }
+        public JavaReturnType ReturnType { get; private set; }
         public override IToken StartToken => Annotations.FirstOrDefault()?.StartToken ?? ((ParserRuleContext)Context.Parent.Parent).Start;
 
         public override string GetIdentifier(JavaParser.MethodDeclarationContext context)
@@ -33,17 +34,18 @@ namespace Intent.Modules.Common.Java.Editor
         public override void MergeWith(JavaNode node)
         {
             base.MergeWith(node);
-            //MergeParameters((JavaClass)node);
+            ReturnType.ReplaceWith(((JavaMethod)node).ReturnType.GetTextWithComments());
         }
 
-        public override void UpdateContext(RuleContext context)
+        public override void UpdateContext(JavaParser.MethodDeclarationContext context)
         {
             base.UpdateContext(context);
+            ReturnType = new JavaReturnType(context.typeTypeOrVoid(), this);
         }
 
         protected override void AddFirst(JavaNode node)
         {
-            File.InsertBefore(((JavaParser.MethodDeclarationContext)Context).IDENTIFIER().Symbol, node.GetText().Trim());
+            File.InsertAfter(((JavaParser.MethodDeclarationContext)Context).formalParameters().LPAREN().Symbol, node.GetText().Trim());
         }
 
         public override void InsertBefore(JavaNode existing, JavaNode node)
@@ -84,19 +86,6 @@ namespace Intent.Modules.Common.Java.Editor
         private bool IsBodyIgnored()
         {
             return this.HasAnnotation("@IntentIgnoreBody");
-        }
-    }
-
-    public class JavaParameter : JavaNode
-    {
-        public JavaParameter(JavaParser.FormalParameterContext context, JavaNode parent) : base(context, parent)
-        {
-        }
-
-        public override string GetIdentifier(ParserRuleContext context)
-        {
-            var type = ((JavaParser.FormalParameterContext)context).typeType().GetText();
-            return type;
         }
     }
 }

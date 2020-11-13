@@ -4,15 +4,15 @@ using Antlr4.Runtime;
 
 namespace Intent.Modules.Common.Java.Editor
 {
-    public class JavaInterface : JavaNode
+    public class JavaInterface : JavaNode<JavaParser.TypeDeclarationContext>
     {
-        public JavaInterface(JavaParser.InterfaceDeclarationContext context, JavaNode parent) : base(context, parent)
+        public JavaInterface(JavaParser.TypeDeclarationContext context, JavaNode parent) : base(context, parent)
         {
         }
 
-        public override string GetIdentifier(ParserRuleContext context)
+        public override string GetIdentifier(JavaParser.TypeDeclarationContext context)
         {
-            return ((JavaParser.InterfaceDeclarationContext)context).IDENTIFIER().GetText();
+            return context.interfaceDeclaration().IDENTIFIER().GetText();
         }
 
         public string Name => Identifier;
@@ -20,10 +20,10 @@ namespace Intent.Modules.Common.Java.Editor
         public IReadOnlyList<JavaField> Fields => Children.Where(x => x is JavaField).Cast<JavaField>().ToList();
         public IReadOnlyList<JavaInterfaceMethod> Methods => Children.Where(x => x is JavaInterfaceMethod).Cast<JavaInterfaceMethod>().ToList();
 
-        public override void UpdateContext(RuleContext context)
+        public override void UpdateContext(JavaParser.TypeDeclarationContext context)
         {
             base.UpdateContext(context);
-            UpdateInterfaces(((JavaParser.InterfaceDeclarationContext)context).typeList());
+            UpdateInterfaces(context.interfaceDeclaration().typeList());
         }
 
         public override void MergeWith(JavaNode node)
@@ -42,7 +42,7 @@ namespace Intent.Modules.Common.Java.Editor
                 }
                 else
                 {
-                    var afterContext = ((JavaParser.InterfaceDeclarationContext)Context).IDENTIFIER();
+                    var afterContext = TypedContext.interfaceDeclaration().IDENTIFIER();
                     File.InsertAfter(afterContext.Symbol, node.SuperInterfaces.GetTextWithComments());
                 }
             }

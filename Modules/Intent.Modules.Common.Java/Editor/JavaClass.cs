@@ -47,7 +47,7 @@ namespace Intent.Modules.Common.Java.Editor
                 }
                 else
                 {
-                    File.InsertAfter(TypedContext.classDeclaration().IDENTIFIER().Symbol, " extends" + node.SuperClass.GetTextWithComments());
+                    File.InsertAfter(TypedContext.classDeclaration().IDENTIFIER().Symbol, node.SuperClass.GetTextWithComments());
                 }
             }
             else if (!IsMerged())
@@ -67,7 +67,7 @@ namespace Intent.Modules.Common.Java.Editor
                 else
                 {
                     var afterToken = TypedContext.classDeclaration().typeType()?.Stop ?? TypedContext.classDeclaration().IDENTIFIER().Symbol;
-                    File.InsertAfter(afterToken, " implements" + node.SuperInterfaces.GetTextWithComments());
+                    File.InsertAfter(afterToken, node.SuperInterfaces.GetTextWithComments());
                 }
             }
             else if (!IsMerged())
