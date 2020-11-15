@@ -12,10 +12,9 @@ using System.Collections.Generic;
 using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Angular.Templates.Proxies.AngularServiceProxyTemplate;
 using Intent.Modules.Angular.Templates.Shared.IntentDecoratorsTemplate;
-using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Modules.Angular.Api;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial", Version = "1.0")]

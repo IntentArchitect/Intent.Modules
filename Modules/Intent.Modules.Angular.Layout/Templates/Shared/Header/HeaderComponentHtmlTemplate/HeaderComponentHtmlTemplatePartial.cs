@@ -11,7 +11,6 @@ using Intent.Modules.Angular.Templates.Component.AngularComponentTsTemplate;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Html.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript.Editor;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Modules.Angular.Layout.Api;

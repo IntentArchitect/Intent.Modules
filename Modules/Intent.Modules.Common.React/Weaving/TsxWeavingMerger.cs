@@ -1,6 +1,6 @@
-﻿using Intent.Modules.Common.React.Editor;
-using Intent.Modules.Common.TypeScript.Editor;
-using Intent.Modules.Common.TypeScript.Weaving;
+﻿using Intent.Code.Weaving.TypeScript;
+using Intent.Code.Weaving.TypeScript.Editor;
+using Intent.Modules.Common.React.Editor;
 
 namespace Intent.Modules.Common.React.Weaving
 {

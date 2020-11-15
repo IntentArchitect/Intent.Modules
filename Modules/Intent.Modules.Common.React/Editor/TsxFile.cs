@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Intent.Modules.Common.TypeScript.Editor;
-using Intent.Modules.Common.TypeScript.Editor.Parsing;
+using Intent.Code.Weaving.TypeScript.Editor;
+using Intent.Code.Weaving.TypeScript.Editor.Parsing;
 using Zu.TypeScript.TsTypes;
 
 namespace Intent.Modules.Common.React.Editor
