@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using Intent.Engine;
-using Intent.Modules.Common.Java.Editor;
+using Intent.Code.Weaving.Java.Editor;
 using Intent.Modules.Common.Java.TypeResolvers;
 using Intent.Modules.Common.Templates;
 

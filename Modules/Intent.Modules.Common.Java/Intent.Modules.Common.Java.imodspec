@@ -18,7 +18,8 @@
   <files>
     <file src="$outDir$/$id$.dll" />
     <file src="$outDir$/$id$.pdb" />
-    <file src="$outDir$/Antlr4.Runtime.Standard.dll" />
+    <file src="$outDir$/Antlr4.Runtime.Standard.dll" inspect="false" />
+    <file src="$outDir$/Intent.Code.Weaving.Java.dll" inspect="false" />
   </files>
   <metadata />
 </package>

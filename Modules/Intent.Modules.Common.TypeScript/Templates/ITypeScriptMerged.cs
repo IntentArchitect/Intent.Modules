@@ -1,4 +1,4 @@
-using Intent.Modules.Common.TypeScript.Editor;
+using Intent.Code.Weaving.TypeScript.Editor;
 
 namespace Intent.Modules.Common.TypeScript.Templates
 {

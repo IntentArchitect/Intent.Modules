@@ -1,5 +1,5 @@
 ﻿using System.Linq;
-using Intent.Modules.Common.Java.Editor;
+using Intent.Code.Weaving.Java.Editor;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 

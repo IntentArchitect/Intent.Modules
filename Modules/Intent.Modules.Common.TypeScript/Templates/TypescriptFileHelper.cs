@@ -1,7 +1,7 @@
 using System.IO;
 using System.Linq;
+using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeScript.Editor;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Templates

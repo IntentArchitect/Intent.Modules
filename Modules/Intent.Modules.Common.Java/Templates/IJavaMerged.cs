@@ -1,4 +1,4 @@
-﻿using Intent.Modules.Common.Java.Editor;
+﻿using Intent.Code.Weaving.Java.Editor;
 
 namespace Intent.Modules.Common.Java.Templates
 {
