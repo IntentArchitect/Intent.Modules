@@ -3,6 +3,7 @@
   <name>Form Group Definition</name>
   <display>Form Group Definition</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>0a3786a7-f514-4ec3-88b9-7842744dbb3c</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>71142b08-4d10-405b-a5bd-0620d329a992</parentFolderId>
@@ -56,6 +58,7 @@
           <name>New Field</name>
           <display>New Field: Form Group Control</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="37a95641-c9ae-4f22-ac73-272708c80799">
             <typeId>b4e29ea5-b9a4-47eb-8214-c4cc5b46ee91</typeId>
@@ -95,6 +98,7 @@
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>71142b08-4d10-405b-a5bd-0620d329a992</parentFolderId>
@@ -115,6 +119,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: DTO -&gt; Form Group Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>da54d662-a9e5-4f58-9228-db4cf22b825d</parentFolderId>
@@ -148,6 +153,7 @@
               <name>NewElementMapping</name>
               <display>[mapping]: DTO-Field -&gt; Form Group Control</display>
               <isAbstract>false</isAbstract>
+              <order>0</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>1dcb02b3-0d14-4918-9ae9-23e8396a4804</parentFolderId>

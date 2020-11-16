@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.ServiceImplementations.Conventions.CRUD</id>
-  <version>3.0.0-beta.2</version>
+  <version>3.0.0-beta.3</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Autocomplete implementations by using convention based naming.</summary>
   <description>
@@ -20,10 +20,10 @@
     </decorator>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.2" />
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.2" />
-    <dependency id="Intent.Application.ServiceImplementations" version="3.0.0-beta.2" />
-    <dependency id="Intent.Application.Contracts.Mappings" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common" version="3.0.0-beta.3" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.3" />
+    <dependency id="Intent.Application.ServiceImplementations" version="3.0.0-beta.3" />
+    <dependency id="Intent.Application.Contracts.Mappings" version="3.0.0-beta.3" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

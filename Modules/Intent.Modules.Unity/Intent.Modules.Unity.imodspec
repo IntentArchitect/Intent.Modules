@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Unity</id>
-  <version>3.0.0-beta.2</version>
+  <version>3.0.0-beta.3</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Unity container for patterns that require Dependency Injection.</summary>
   <description>Unity container for patterns that require Dependency Injection.</description>
@@ -25,8 +25,8 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.2"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.2"/>
+    <dependency id="Intent.Common" version="3.0.0-beta.3"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.3"/>
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll"/>

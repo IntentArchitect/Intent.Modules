@@ -48,7 +48,7 @@ namespace Intent.Modules.Entities.Templates.DomainEntityState
 
         public IEnumerable<DomainEntityStateDecoratorBase> GetDecorators()
         {
-            return _decorators;
+            return _decorators.OrderBy(x => x.Priority);
         }
 
         public string GetBaseClass(ClassModel @class)

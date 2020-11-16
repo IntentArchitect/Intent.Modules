@@ -3,6 +3,7 @@
   <name>Angular</name>
   <display>Angular</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3a0f5357-03bf-4a4d-b8a3-606ae0cd02dc</parentFolderId>
@@ -24,6 +25,7 @@
       <name>reference</name>
       <display>reference: Angular Core Types</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="ce520dbb-8d53-445d-b4f7-acc21962fcb2">
         <typeId>0a3786a7-f514-4ec3-88b9-7842744dbb3c</typeId>
@@ -47,6 +49,7 @@
       <name>reference</name>
       <display>reference: Common Types</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <typeReference id="d2828f88-7798-432a-b928-eabf516d58cb">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>

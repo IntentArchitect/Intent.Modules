@@ -71,10 +71,6 @@
       <Project>{C5A5AE9C-9137-4309-AC4E-F9494694390E}</Project>
       <Name>Intent.Modules.Modelers.Services</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.UserContext\Intent.Modules.UserContext.csproj">
-      <Project>{c12c6483-778d-4606-8239-62045d67788f}</Project>
-      <Name>Intent.Modules.UserContext</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

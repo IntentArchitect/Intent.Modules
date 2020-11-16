@@ -3,6 +3,7 @@
   <name>Command Parameter</name>
   <display>Command Parameter</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d6739ffc-30e6-4170-a105-bf28e69aa578</parentFolderId>

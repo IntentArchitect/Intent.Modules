@@ -3,6 +3,7 @@
   <name>Model Definition</name>
   <display>Model Definition</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>0a3786a7-f514-4ec3-88b9-7842744dbb3c</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Field</name>
           <display>Add Field: Model Definition Field</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="f07dd21e-a39d-45c8-9791-693a7472b1cc">
             <typeId>0dfc489c-7456-4a3d-a28b-50a633631a48</typeId>
@@ -95,6 +98,7 @@
       <name>NewMappingSettings</name>
       <display>[mappings]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</parentFolderId>
@@ -115,6 +119,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: DTO -&gt; Model Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>963abe09-e38a-4248-ac03-c6498c614e67</parentFolderId>
@@ -148,6 +153,7 @@
               <name>NewElementMapping</name>
               <display>[mapping]: DTO-Field -&gt; Model Definition Field</display>
               <isAbstract>false</isAbstract>
+              <order>0</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>22ba6711-485c-4ffc-b222-faeba5720947</parentFolderId>

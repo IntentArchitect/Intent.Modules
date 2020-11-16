@@ -3,6 +3,7 @@
   <name>Component</name>
   <display>Component</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>cac14331-198a-4f9a-bbb9-171eb0bd4efe</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Model</name>
           <display>Add Model: Component Model</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="e9178392-5395-4f03-a8ca-06c251a88a20">
             <typeId>356fbe17-bc63-4e16-b915-feefbc063cbe</typeId>
@@ -93,6 +96,7 @@
           <name>Add Command</name>
           <display>Add Command: Component Command</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="8b5e5c99-664b-424e-a62a-d79cee3d0788">
             <typeId>d6739ffc-30e6-4170-a105-bf28e69aa578</typeId>
@@ -130,6 +134,7 @@
           <name>Add View</name>
           <display>Add View: Component View</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="1d8b16eb-6b45-4a3c-a094-789c8518dd24">
             <typeId>624513a6-cba8-4dde-8ebe-6b19f00f0364</typeId>
@@ -167,6 +172,7 @@
           <name>Add Model Definition</name>
           <display>Add Model Definition: Model Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="e0bf4e43-8ecd-46d1-a06f-f859029119dc">
             <typeId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</typeId>

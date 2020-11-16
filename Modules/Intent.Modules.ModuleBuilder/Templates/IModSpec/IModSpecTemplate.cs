@@ -323,6 +323,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             return new INugetPackageInfo[]
             {
+                NugetPackages.IntentSdk,
                 NugetPackages.IntentPackager
             };
         }

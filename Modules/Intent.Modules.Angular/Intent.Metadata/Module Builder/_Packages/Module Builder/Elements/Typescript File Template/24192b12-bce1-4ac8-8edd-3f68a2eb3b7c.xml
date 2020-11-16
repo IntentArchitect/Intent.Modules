@@ -3,6 +3,7 @@
   <name>IntentDecoratorsTemplate</name>
   <display>IntentDecoratorsTemplate: Single File</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <typeReference id="519de0d9-705e-4ca0-acd9-5dd71261fbce">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>

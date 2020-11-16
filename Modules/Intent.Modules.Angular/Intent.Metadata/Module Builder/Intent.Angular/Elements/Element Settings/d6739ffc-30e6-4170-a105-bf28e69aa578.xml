@@ -3,6 +3,7 @@
   <name>Component Command</name>
   <display>Component Command</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>d6739ffc-30e6-4170-a105-bf28e69aa578</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="a63e6127-0d4c-470c-b394-d3c709387cf6">
             <typeId>cad78742-0d76-4270-8704-59d47e773753</typeId>

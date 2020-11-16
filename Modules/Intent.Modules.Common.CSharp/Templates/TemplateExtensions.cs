@@ -29,15 +29,6 @@ namespace Intent.Modules.Common.CSharp.Templates
             return result;
         }
 
-        public static string AsClassName(this string s)
-        {
-            if (s.StartsWith("I") && s.Length >= 2 && char.IsUpper(s[1]))
-            {
-                s = s.Substring(1);
-            }
-            return s.Replace(".", "");
-        }
-
         public static string ToPrivateMember(this string s)
         {
             if (string.IsNullOrWhiteSpace(s))

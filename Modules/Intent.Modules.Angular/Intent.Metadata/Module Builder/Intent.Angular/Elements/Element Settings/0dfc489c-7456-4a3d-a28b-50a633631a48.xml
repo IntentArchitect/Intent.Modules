@@ -3,6 +3,7 @@
   <name>Model Definition Field</name>
   <display>Model Definition Field</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</parentFolderId>

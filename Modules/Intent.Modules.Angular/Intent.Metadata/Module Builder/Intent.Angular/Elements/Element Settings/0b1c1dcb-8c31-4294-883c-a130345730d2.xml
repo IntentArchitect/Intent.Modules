@@ -3,6 +3,7 @@
   <name>Folder</name>
   <display>Folder</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>0a3786a7-f514-4ec3-88b9-7842744dbb3c</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>0b1c1dcb-8c31-4294-883c-a130345730d2</parentFolderId>
@@ -56,6 +58,7 @@
           <name>New Module</name>
           <display>New Module: Module</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="a7b6b4ec-30df-4b4a-8e30-16d22479699e">
             <typeId>cac14331-198a-4f9a-bbb9-171eb0bd4efe</typeId>
@@ -93,6 +96,7 @@
           <name>New Model Definition</name>
           <display>New Model Definition: Model Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="61c42ee6-0e55-49c6-896a-e6e7e5834dfc">
             <typeId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</typeId>
@@ -130,6 +134,7 @@
           <name>New Type-Definition</name>
           <display>New Type-Definition: Type-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="09bda8c5-9a43-4250-89d4-797c75a16ee2">
             <typeId>50c416e1-862d-4ed8-862e-6f4ff93d8857</typeId>
@@ -167,6 +172,7 @@
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="82fb3499-52b3-4002-9d5c-17e1a8a0d571">
             <typeId>ad72753c-c98d-4ccc-8cd1-d462ed58bbbc</typeId>
@@ -204,6 +210,7 @@
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="601aa4f2-2d6b-4fc1-b11c-fdaf68bece7a">
             <typeId>0b1c1dcb-8c31-4294-883c-a130345730d2</typeId>
@@ -241,6 +248,7 @@
           <name>New Service</name>
           <display>New Service: Angular Service</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="c010e733-bb9d-4961-a2a1-24d77ff07d86">
             <typeId>d009e5af-adb7-45c5-921c-fe8e209b8aa2</typeId>
@@ -278,6 +286,7 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="8864f13c-c8c2-4dea-9c4c-c68fa1797abf">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

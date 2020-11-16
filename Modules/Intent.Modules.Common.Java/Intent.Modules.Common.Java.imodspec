@@ -12,8 +12,8 @@
     <factoryExtension id="Intent.Common.Java.OutputWeaver" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.2" />
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common" version="3.0.0-beta.3" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.3" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

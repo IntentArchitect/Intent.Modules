@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts</id>
-  <version>3.0.0-beta.2</version>
+  <version>3.0.0-beta.3</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Creates generic application service contracts.</summary>
   <description>Creates generic application service contracts that is technology agnostic.</description>
@@ -31,10 +31,10 @@
     <decorator id="Intent.Application.Contracts.DataContractDecorator"/>
   </decorators>
   <dependencies>
-    <dependency id="Intent.Modelers.Services" version="3.0.0-beta.2"/>
-    <dependency id="Intent.Common" version="3.0.0-beta.2"/>
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.2"/>
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.2"/>
+    <dependency id="Intent.Modelers.Services" version="3.0.0-beta.3"/>
+    <dependency id="Intent.Common" version="3.0.0-beta.3"/>
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.3"/>
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.3"/>
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Application.Contracts.Clients</id>
-  <version>3.0.0-beta.2</version>
+  <version>3.0.0-beta.3</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Creates generic client application service contracts.</summary>
   <description>Creates generic application service contracts that is technology agnostic for clients.</description>
@@ -40,8 +40,8 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.2"/>
-    <dependency id="Intent.Application.Contracts" version="3.0.0-beta.2"/>
+    <dependency id="Intent.Common" version="3.0.0-beta.3"/>
+    <dependency id="Intent.Application.Contracts" version="3.0.0-beta.3"/>
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll"/>

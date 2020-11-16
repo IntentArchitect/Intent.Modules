@@ -54,10 +54,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
-      <Project>{d6171cc1-577a-4123-9ca3-34e017a40071}</Project>
-      <Name>Intent.Modules.AspNet.WebApi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj">
       <Project>{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}</Project>
       <Name>Intent.Modules.Common.CSharp</Name>
@@ -65,10 +61,6 @@
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj">
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Unity\Intent.Modules.Unity.csproj">
-      <Project>{de177367-d476-4299-b9e6-71934b434fc5}</Project>
-      <Name>Intent.Modules.Unity</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

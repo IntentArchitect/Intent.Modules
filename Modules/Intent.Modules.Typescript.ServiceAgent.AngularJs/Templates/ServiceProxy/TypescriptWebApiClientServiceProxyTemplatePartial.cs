@@ -1,7 +1,6 @@
 ﻿using System;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Constants;
-using Intent.Modules.Typescript.ServiceAgent.Contracts;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Templates;
@@ -9,8 +8,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
-using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript;
 using Intent.Modules.Common.TypeScript.Templates;
@@ -39,7 +36,7 @@ namespace Intent.Modules.Typescript.ServiceAgent.AngularJs.Templates.ServiceProx
             return new ITemplateDependency[0]; // disable adding on imports when merged
         }
 
-        public string ApiBasePathConfigKey => $"{OutputTarget.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".AsClassName().ToLower();
+        public string ApiBasePathConfigKey => $"{OutputTarget.Application.SolutionName.ToLower()}_{Model.Application.Name.ToLower()}_api_basepath".Replace(".", "").ToLower();
 
         public string AngularModule
         {

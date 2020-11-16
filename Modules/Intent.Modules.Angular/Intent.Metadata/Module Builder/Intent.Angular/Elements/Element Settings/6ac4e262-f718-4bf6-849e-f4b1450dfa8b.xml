@@ -3,6 +3,7 @@
   <name>Service Proxy Operation</name>
   <display>Service Proxy Operation</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>2d4ad132-e574-4319-9ae9-4d6e4b81110c</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>6ac4e262-f718-4bf6-849e-f4b1450dfa8b</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="5664e112-68b8-4683-8e9f-94dbccc294e5">
             <typeId>cad78742-0d76-4270-8704-59d47e773753</typeId>

@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         public IEnumerable<TDecorator> GetDecorators()
         {
-            return _decorators;
+            return _decorators.OrderBy(x=> x.Priority);
         }
 
         public void AddDecorator(TDecorator decorator)

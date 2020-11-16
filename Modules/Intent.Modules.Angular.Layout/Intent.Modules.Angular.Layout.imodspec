@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Angular.Layout</id>
-  <version>3.0.0-beta.2</version>
+  <version>3.0.0-beta.3</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -49,7 +49,7 @@
     <decorator id="Angular.Layout.AngularComponentHtmlDecorator.Controls" />
   </decorators>
   <dependencies>
-    <dependency id="Intent.Angular" version="3.0.0-beta.2" />
+    <dependency id="Intent.Angular" version="3.0.0-beta.3" />
     <dependency id="Intent.Common.Html" version="3.0.0-beta" />
     <dependency id="Intent.Common.TypeScript" version="3.0.0-beta" />
   </dependencies>

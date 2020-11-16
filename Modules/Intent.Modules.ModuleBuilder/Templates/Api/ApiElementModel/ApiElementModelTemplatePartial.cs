@@ -27,7 +27,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         {
             AssociationSettings = associationSettings;
             AddTypeSource(CSharpTypeSource.Create(ExecutionContext, ApiElementModelTemplate.TemplateId, collectionFormat: "IEnumerable<{0}>"));
-            AddNugetDependency(NugetPackages.IntentSdk);
         }
 
         public override RoslynMergeConfig ConfigureRoslynMerger()

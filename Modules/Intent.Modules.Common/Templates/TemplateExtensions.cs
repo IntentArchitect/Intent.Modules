@@ -101,6 +101,15 @@ namespace Intent.Modules.Common.Templates
                     if (i != 0 && i < sb.Length - 1)
                     {
                         sb.Insert(i, separator);
+                        i++;
+                    }
+
+                    while (i < sb.Length - 1 && char.IsUpper(sb[i + 1]))
+                    {
+                        i++;
+                        c = sb[i];
+                        sb.Remove(i, 1);
+                        sb.Insert(i, char.ToLower(c));
                     }
                 }
             }
@@ -133,7 +142,7 @@ namespace Intent.Modules.Common.Templates
             }
             return result;
         }
-        
+
         public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
         {
             return Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);

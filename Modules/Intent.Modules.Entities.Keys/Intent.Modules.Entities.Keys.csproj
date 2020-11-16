@@ -81,10 +81,6 @@
       <Project>{80ca36f8-e589-4933-9746-57c164ef557e}</Project>
       <Name>Intent.Modules.Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.Entities\Intent.Modules.Entities.csproj">
-      <Project>{04ce09b0-68c2-4c8b-921f-65eea14d3d58}</Project>
-      <Name>Intent.Modules.Entities</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj">
       <Project>{944F5519-873F-4C88-BACE-1A383E0C5F49}</Project>
       <Name>Intent.Modules.Modelers.Domain</Name>

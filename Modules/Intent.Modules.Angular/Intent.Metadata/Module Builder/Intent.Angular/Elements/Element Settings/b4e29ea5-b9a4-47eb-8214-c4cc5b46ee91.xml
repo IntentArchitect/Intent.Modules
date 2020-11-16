@@ -3,6 +3,7 @@
   <name>Form Group Control</name>
   <display>Form Group Control</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>71142b08-4d10-405b-a5bd-0620d329a992</parentFolderId>

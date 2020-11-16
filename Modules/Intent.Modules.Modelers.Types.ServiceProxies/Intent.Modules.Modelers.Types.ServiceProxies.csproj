@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>3.0.0-pre.1</Version>
+    <Authors>Intent Architect</Authors>
+    <Company>Intent Architect</Company>
+    <Product>Intent - Modules Service Proxy Types</Product>
+    <Copyright>Intent Architect 2020</Copyright>
+    <PackageProjectUrl>https://github.com/IntentSoftware/Intent.Modules.NET</PackageProjectUrl>
+    <PackageIconUrl>https://intentarchitect.com/assets/images/logo.png</PackageIconUrl>
+    <PackageTags>Intent Architect Software Factory SDK Modules Domain Modeler</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.Packager" Version="3.0.0-*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-*" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj" />
+  </ItemGroup>
+
+</Project>

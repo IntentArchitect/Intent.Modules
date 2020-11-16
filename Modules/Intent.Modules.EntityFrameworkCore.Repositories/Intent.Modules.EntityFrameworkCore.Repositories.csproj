@@ -107,10 +107,6 @@
       <Project>{e3054741-163b-4df0-8ae0-eab74a57341d}</Project>
       <Name>Intent.Modules.EntityFrameworkCore</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Intent.Modules.EntityFramework\Intent.Modules.EntityFramework.csproj">
-      <Project>{6F1E2AAB-73BC-47BE-978E-C8CA8E93379A}</Project>
-      <Name>Intent.Modules.EntityFramework</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Modelers.Domain\Intent.Modules.Modelers.Domain.csproj">
       <Project>{944F5519-873F-4C88-BACE-1A383E0C5F49}</Project>
       <Name>Intent.Modules.Modelers.Domain</Name>

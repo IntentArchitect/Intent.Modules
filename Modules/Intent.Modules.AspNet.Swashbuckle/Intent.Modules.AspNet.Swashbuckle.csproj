@@ -59,10 +59,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
-      <Project>{D6171CC1-577A-4123-9CA3-34E017A40071}</Project>
-      <Name>Intent.Modules.AspNet.WebApi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj">
       <Project>{B9FCF2B2-C126-41CD-B5B2-43B4F9166AC1}</Project>
       <Name>Intent.Modules.Common.CSharp</Name>

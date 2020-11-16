@@ -12,8 +12,8 @@
   <templates></templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.2" />
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common" version="3.0.0-beta.3" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.3" />
   </dependencies>
   <metadata>
     <install target="Domain" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain/Intent.Modelers.Domain.pkg.config" externalReference="6572b98d-5e13-4d4b-9ffc-820057da974e" />

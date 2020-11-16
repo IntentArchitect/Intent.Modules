@@ -58,10 +58,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.AspNet.WebApi\Intent.Modules.AspNet.WebApi.csproj">
-      <Project>{D6171CC1-577A-4123-9CA3-34E017A40071}</Project>
-      <Name>Intent.Modules.AspNet.WebApi</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Intent.Modules.Autofac\Intent.Modules.Autofac.csproj">
       <Project>{935E6089-3EE2-4661-B04F-EBE893629E83}</Project>
       <Name>Intent.Modules.Autofac</Name>

@@ -3,6 +3,7 @@
   <name>AppModuleTemplate</name>
   <display>AppModuleTemplate: Single File</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <typeReference id="dd071b78-7399-4949-a5f5-a06f1284bc8d">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>

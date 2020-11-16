@@ -3,17 +3,28 @@
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b79f286d-1129-41f9-bb0f-d266b180d3c2</parentFolderId>
   <packageId>ad91f155-bad0-4aaf-97d6-d72d8d08f389</packageId>
   <packageName>Angular.VisualStudio</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="82676359-dc5c-4c2b-ae97-46894b86833e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.ProjectItemTemplate.Partial</name>
       <display>Intent.ModuleBuilder.ProjectItemTemplate.Partial</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -26,6 +37,7 @@
       <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</name>
       <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -38,6 +50,7 @@
       <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</name>
       <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</display>
       <isAbstract>false</isAbstract>
+      <order>2</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -50,6 +63,7 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.Custom</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.Custom</display>
       <isAbstract>false</isAbstract>
+      <order>3</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -62,6 +76,7 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</display>
       <isAbstract>false</isAbstract>
+      <order>4</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -74,6 +89,7 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</display>
       <isAbstract>false</isAbstract>
+      <order>5</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -86,6 +102,7 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</display>
       <isAbstract>false</isAbstract>
+      <order>6</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -98,6 +115,7 @@
       <name>ModuleBuilder.Html.Templates.HtmlFileTemplate</name>
       <display>ModuleBuilder.Html.Templates.HtmlFileTemplate</display>
       <isAbstract>false</isAbstract>
+      <order>7</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -110,6 +128,7 @@
       <name>ModuleBuilder.Html.Templates.HtmlFileTemplate.T4Template.PreProcessed</name>
       <display>ModuleBuilder.Html.Templates.HtmlFileTemplate.T4Template.PreProcessed</display>
       <isAbstract>false</isAbstract>
+      <order>8</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -122,6 +141,7 @@
       <name>ModuleBuilder.Html.Templates.HtmlFileTemplatePartial</name>
       <display>ModuleBuilder.Html.Templates.HtmlFileTemplatePartial</display>
       <isAbstract>false</isAbstract>
+      <order>9</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -134,6 +154,7 @@
       <name>ModuleBuilder.TypeScript.Templates.TypescriptTemplate</name>
       <display>ModuleBuilder.TypeScript.Templates.TypescriptTemplate</display>
       <isAbstract>false</isAbstract>
+      <order>10</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -146,6 +167,7 @@
       <name>ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4</name>
       <display>ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4</display>
       <isAbstract>false</isAbstract>
+      <order>11</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>
@@ -158,6 +180,7 @@
       <name>ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial</name>
       <display>ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial</display>
       <isAbstract>false</isAbstract>
+      <order>12</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>abc98339-4259-4d28-82ae-502ba6cdc8b2</parentFolderId>

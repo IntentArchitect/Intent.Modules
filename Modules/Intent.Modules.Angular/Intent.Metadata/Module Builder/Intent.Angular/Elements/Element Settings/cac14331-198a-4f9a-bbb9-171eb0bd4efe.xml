@@ -3,6 +3,7 @@
   <name>Module</name>
   <display>Module</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>0a3786a7-f514-4ec3-88b9-7842744dbb3c</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>cac14331-198a-4f9a-bbb9-171eb0bd4efe</parentFolderId>
@@ -56,6 +58,7 @@
           <name>New Component</name>
           <display>New Component: Component</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="05000835-a66a-40b2-b40c-837222881929">
             <typeId>b1c481e1-e91e-4c29-9817-00ab9cad4b6b</typeId>
@@ -93,6 +96,7 @@
           <name>New Model Definition</name>
           <display>New Model Definition: Model Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="ce9f4ee2-2575-47ba-bc37-0aaa7d0dd6fb">
             <typeId>bd3941b5-e3b3-4a40-96e6-b9c87cea0101</typeId>
@@ -130,6 +134,7 @@
           <name>New Form Group</name>
           <display>New Form Group: Form Group Definition</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="a51c4fd5-b4b5-4add-98d8-7ea61aa79705">
             <typeId>71142b08-4d10-405b-a5bd-0620d329a992</typeId>
@@ -167,6 +172,7 @@
           <name>New Service Proxy</name>
           <display>New Service Proxy: Service Proxy</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="6369a64e-ccf4-43ac-ac76-6998cfbefcbc">
             <typeId>2d4ad132-e574-4319-9ae9-4d6e4b81110c</typeId>

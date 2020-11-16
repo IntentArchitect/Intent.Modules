@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="47b15d5e-c9ef-44a1-80c7-19d5435c94a1" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f4710958-060a-42e9-a987-48af8f90324a</parentFolderId>
+  <packageId>f4710958-060a-42e9-a987-48af8f90324a</packageId>
+  <packageName>Intent.Modelers.ServiceProxies</packageName>
+  <stereotypes />
+  <childElements />
+</class>

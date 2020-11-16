@@ -3,6 +3,7 @@
   <name>Angular Core Types</name>
   <display>Angular Core Types</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3a0f5357-03bf-4a4d-b8a3-606ae0cd02dc</parentFolderId>

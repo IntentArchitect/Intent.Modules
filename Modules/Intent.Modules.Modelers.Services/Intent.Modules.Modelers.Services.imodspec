@@ -12,7 +12,7 @@
   <templates></templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.2" />
+    <dependency id="Intent.Common" version="3.0.0-beta.3" />
   </dependencies>
   <metadata>
     <install src="modelers/Services Types.designer.settings" externalReference="55e213e3-1e43-4bb5-abe6-6ff77af23f39" />

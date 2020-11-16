@@ -12,6 +12,7 @@ namespace Intent.Modules.Entities.Keys.Decorators
 
         public BidirectionalOneToManyEntityStateDecorator(DomainEntityStateTemplate template) : base(template)
         {
+            Priority = 10;
         }
 
         public override string AssociationBefore(AssociationEndModel associationEnd)

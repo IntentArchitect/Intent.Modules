@@ -34,7 +34,7 @@ namespace Intent.Modules.EntityFrameworkCore.Templates.DbContext
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"{Project.Application.Name}DbContext".AsClassName(),
+                className: $"{Project.Application.Name}DbContext".ToCSharpIdentifier(),
                 @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
