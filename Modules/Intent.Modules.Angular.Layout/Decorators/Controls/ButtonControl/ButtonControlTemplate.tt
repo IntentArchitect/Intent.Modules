@@ -1,9 +1,0 @@
-<#@ template language="C#" inherits="T4TemplateBase" #>
-<#@ assembly name="System.Core" #>
-<#@ import namespace="System.Collections.Generic" #>
-<#@ import namespace="System.Linq" #>
-<#@ import namespace="Intent.Modules.Common" #>
-<#@ import namespace="Intent.Modules.Common.Templates" #>
-      <span intent-manage intent-id="<#= Model.Id #>">
-        <button class="btn btn-default" <# if (Model.ClickCommandPath != null) { #> (click)="<#= Model.ClickCommandPath #>($event)" <# } #> ><#= Model.Name #></button>
-      </span>
