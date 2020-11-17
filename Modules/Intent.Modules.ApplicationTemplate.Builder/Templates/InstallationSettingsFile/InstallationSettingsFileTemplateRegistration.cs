@@ -6,7 +6,6 @@ using Intent.Metadata.Models;
 using Intent.Modules.ApplicationTemplate.Builder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -35,7 +34,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.InstallationSetti
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<InstallationSettingsModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetInstallationSettingsModels();
+            return _metadataManager.AppTemplates(application).GetInstallationSettingsModels();
         }
     }
 }

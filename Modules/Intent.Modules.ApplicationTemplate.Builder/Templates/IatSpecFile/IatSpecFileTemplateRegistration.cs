@@ -8,7 +8,6 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Modules.ApplicationTemplate.Builder.Api;
-using Intent.Modules.ModuleBuilder.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
@@ -34,7 +33,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<ApplicationTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetApplicationTemplateModels();
+            return _metadataManager.AppTemplates(application).GetApplicationTemplateModels();
         }
     }
 }

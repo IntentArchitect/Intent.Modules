@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>733fb48d-c276-447d-a44a-72eb3b89cfa1</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>45d36fa6-cf88-498b-9089-456eb751a331</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.ApplicationTemplates\Intent.ApplicationTemplateBuilder\metadata.iatspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ApplicationTemplateBuilder/metadata.iatspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>45d36fa6-cf88-498b-9089-456eb751a331</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ApplicationTemplates.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <SolutionRelativeFilePath>..\Intent.Modules.sln</SolutionRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

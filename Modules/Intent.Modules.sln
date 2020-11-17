@@ -24,7 +24,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common", "Intent.Modules.Common\Intent.Modules.Common.csproj", "{2149B693-AA4E-43F3-AA72-D1EF8FA14E6D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Official", "Official", "{41EB094E-7906-4D47-85B8-42FAC60C5178}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{41EB094E-7906-4D47-85B8-42FAC60C5178}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.CSharp", "Intent.Modules.ModuleBuilder.CSharp\Intent.Modules.ModuleBuilder.CSharp.csproj", "{FC0DF4DD-975B-40A0-8534-871752B685B5}"
 EndProject
@@ -53,6 +53,10 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.ServiceProxies", "Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.csproj", "{817EC71F-A91D-4598-9A09-E05373EF4333}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.ApplicationTemplates.ModuleBuilder", "Intent.ApplicationTemplates.ModuleBuilder\Intent.ApplicationTemplates.ModuleBuilder.csproj", "{27A610E2-4497-483F-AF40-A6ADAE40BE8D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.ApplicationTemplates", "Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj", "{45D36FA6-CF88-498B-9089-456EB751A331}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application Templates", "Application Templates", "{CFF4E896-BD1F-4354-AAA8-8DB27FC8B102}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -140,6 +144,10 @@ Global
 		{27A610E2-4497-483F-AF40-A6ADAE40BE8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27A610E2-4497-483F-AF40-A6ADAE40BE8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27A610E2-4497-483F-AF40-A6ADAE40BE8D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D36FA6-CF88-498B-9089-456EB751A331}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D36FA6-CF88-498B-9089-456EB751A331}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D36FA6-CF88-498B-9089-456EB751A331}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D36FA6-CF88-498B-9089-456EB751A331}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -170,6 +178,7 @@ Global
 		{5D8691BE-86ED-4521-861F-D0045712FB9A} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{817EC71F-A91D-4598-9A09-E05373EF4333} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{27A610E2-4497-483F-AF40-A6ADAE40BE8D} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
+		{45D36FA6-CF88-498B-9089-456EB751A331} = {CFF4E896-BD1F-4354-AAA8-8DB27FC8B102}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

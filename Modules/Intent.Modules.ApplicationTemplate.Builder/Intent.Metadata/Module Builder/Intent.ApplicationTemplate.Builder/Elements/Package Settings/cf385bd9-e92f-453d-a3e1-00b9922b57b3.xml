@@ -3,6 +3,7 @@
   <name>Application Template</name>
   <display>Application Template</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c75eea8b-43c3-477d-9bbf-83ada9809113</parentFolderId>
@@ -25,6 +26,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>cf385bd9-e92f-453d-a3e1-00b9922b57b3</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New Group</name>
           <display>New Group: Component Group</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="b1d66ac9-a615-4139-b4b7-1b536b7b1901">
             <typeId>027f8bb9-9b28-4c1d-a516-8c3daa70e46d</typeId>
@@ -75,6 +78,7 @@
       <name>NewPackageEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>cf385bd9-e92f-453d-a3e1-00b9922b57b3</parentFolderId>

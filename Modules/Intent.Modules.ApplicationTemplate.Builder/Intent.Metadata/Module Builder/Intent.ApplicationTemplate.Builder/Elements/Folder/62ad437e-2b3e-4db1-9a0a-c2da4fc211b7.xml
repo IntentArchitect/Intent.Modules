@@ -3,6 +3,7 @@
   <name>Stereotypes</name>
   <display>Stereotypes</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</parentFolderId>
