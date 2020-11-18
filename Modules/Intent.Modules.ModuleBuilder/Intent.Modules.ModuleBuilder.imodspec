@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.0.0-beta.3</version>
+  <version>3.0.0-beta.4</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
@@ -131,6 +131,14 @@
       </config>
       <role>Api</role>
       <location>Api</location>
+    </template>
+    <template id="ModuleBuilder.Templates.FactoryExtension" externalReference="8d856f7d-a6e8-45dd-9cba-843d984cb41a">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>FactoryExtentions</location>
     </template>
   </templates>
   <decorators></decorators>

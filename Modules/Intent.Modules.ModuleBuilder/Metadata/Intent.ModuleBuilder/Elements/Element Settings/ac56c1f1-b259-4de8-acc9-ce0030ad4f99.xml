@@ -3,6 +3,7 @@
   <name>Path Draw Settings</name>
   <display>Path Draw Settings</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>5eea5fba-15df-4971-8541-6f19bad4297d</parentFolderId>

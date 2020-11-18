@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -16,62 +15,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
-    public class IModeSpecModel
-    {
-        public IModeSpecModel(IEnumerable<DecoratorModel> decorators)
-        {
-            Decorators = decorators;
-        }
-
-        public IEnumerable<DecoratorModel> Decorators { get; }
-    }
-
-    public class TemplateRegistrationRequiredEvent
-    {
-        public TemplateRegistrationRequiredEvent(string modelId, string templateId, string templateType, string role, string location)
-        {
-            ModelId = modelId;
-            TemplateId = templateId;
-            TemplateType = templateType;
-            Role = role;
-            Location = location;
-        }
-        public string ModelId { get; }
-        public string TemplateId { get; set; }
-        public string TemplateType { get; set; }
-        public string Role { get; }
-        public string Location { get; }
-    }
-
-    public class ModuleDependencyRequiredEvent
-    {
-        public ModuleDependencyRequiredEvent(string moduleId, string moduleVersion)
-        {
-            ModuleId = moduleId ?? throw new ArgumentNullException(nameof(moduleId));
-            ModuleVersion = moduleVersion ?? throw new ArgumentNullException(nameof(moduleVersion));
-        }
-        public string ModuleId { get; }
-        public string ModuleVersion { get; }
-    }
-
-    public class MetadataRegistrationInfo
-    {
-        public string Target { get; }
-        public string Path { get; }
-        public string Id { get; }
-
-        public MetadataRegistrationInfo(string target, string path, string id)
-        {
-            Target = target;
-            Path = PathHelper.NormalizePath(path);
-            Id = id;
-        }
-    }
-
     public class IModSpecTemplate : IntentFileTemplateBase, IHasNugetDependencies
     {
         private readonly IMetadataManager _metadataManager;
         private readonly ICollection<TemplateRegistrationRequiredEvent> _templatesToRegister = new List<TemplateRegistrationRequiredEvent>();
+        private readonly ICollection<FactoryExtensionRegistrationRequiredEvent> _extensionsToRegister = new List<FactoryExtensionRegistrationRequiredEvent>();
         private readonly ICollection<MetadataRegistrationRequiredEvent> _metadataToRegister = new List<MetadataRegistrationRequiredEvent>();
         private readonly ICollection<ModuleDependencyRequiredEvent> _moduleDependencies = new List<ModuleDependencyRequiredEvent>();
 
@@ -85,6 +33,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {
                 _templatesToRegister.Add(@event);
+            });
+
+            ExecutionContext.EventDispatcher.Subscribe<FactoryExtensionRegistrationRequiredEvent>(@event =>
+            {
+                _extensionsToRegister.Add(@event);
             });
 
             ExecutionContext.EventDispatcher.Subscribe<ModuleDependencyRequiredEvent>(@event =>
@@ -178,6 +131,30 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (!string.IsNullOrWhiteSpace(template.Location))
                 {
                     specificTemplate.SetElementValue("location", template.Location);
+                }
+            }
+
+            var factoryExtensions = doc.Element("package").Element("factoryExtensions");
+            if (_extensionsToRegister.Any() || factoryExtensions == null)
+            {
+                factoryExtensions = new XElement("factoryExtensions");
+                doc.Element("package").Add(factoryExtensions);
+            }
+            foreach (var extension in _extensionsToRegister)
+            {
+                var specificExtension = doc.XPathSelectElement($"package/factoryExtensions/factoryExtension[@externalReference=\"{extension.ModelId}\"]");
+
+                if (specificExtension == null)
+                {
+                    specificExtension = new XElement("factoryExtensions", new XAttribute("id", extension.ExtensionId), new XAttribute("externalReference", extension.ModelId));
+
+                    factoryExtensions.Add(specificExtension);
+                }
+
+                specificExtension.SetAttributeValue("id", extension.ExtensionId);
+                if (!specificExtension.Attributes("externalReference").Any())
+                {
+                    specificExtension.Add(new XAttribute("externalReference", extension.ModelId));
                 }
             }
 

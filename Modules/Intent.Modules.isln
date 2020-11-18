@@ -22,6 +22,5 @@
     <application id="d80e91fc-ff6c-4960-b18c-7fb30c4e81e3" name="Intent.Modules.ApplicationTemplate.Builder" relativePath="Intent.Modules.ApplicationTemplate.Builder\Intent.Modules.ApplicationTemplate.Builder.application.config" />
     <application id="13414c87-2aee-4d87-b8cb-2da2cd9625d9" name="Intent.Modules.Modelers.Types.ServiceProxies" relativePath="Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.application.config" />
     <application id="9ca2cdd8-34c3-4fc7-96aa-a1a6815c2117" name="Intent.Modules.Modelers.ServiceProxies" relativePath="Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.application.config" />
-    <application id="733fb48d-c276-447d-a44a-72eb3b89cfa1" name="Intent.ApplicationTemplates.ApplicationTemplateBuilder" relativePath="Intent.ApplicationTemplates.ApplicationTemplateBuilder\Intent.ApplicationTemplates.ApplicationTemplateBuilder.application.config" />
   </applications>
 </solution>

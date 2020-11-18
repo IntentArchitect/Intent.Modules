@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>655e3658-3963-4401-8d3f-b5a5c1a0a3a4</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>758a955f-9d4a-44f6-a4c3-c5fa28590b2f</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.AutoCompile\FactoryExtentions\AutoCompileModuleExtension.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>AutoCompileModuleExtension.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9e966e7a-c37c-4290-8fb4-75301fb3ecbe</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.AutoCompile\Intent.Modules.ModuleBuilder.AutoCompile.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.AutoCompile.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9e966e7a-c37c-4290-8fb4-75301fb3ecbe</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.AutoCompile\Intent.Modules.ModuleBuilder.AutoCompile.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.AutoCompile.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9e966e7a-c37c-4290-8fb4-75301fb3ecbe</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.AutoCompile\README.txt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <SolutionRelativeFilePath>..\Intent.Modules.sln</SolutionRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

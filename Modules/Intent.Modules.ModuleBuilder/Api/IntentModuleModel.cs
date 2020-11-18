@@ -64,5 +64,10 @@ namespace Intent.Modules.ModuleBuilder.Api
             .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
             .Select(x => new TypeDefinitionModel(x))
             .ToList();
+
+        public IList<FactoryExtensionModel> FactoryExtensions => UnderlyingPackage.ChildElements
+            .Where(x => x.SpecializationType == FactoryExtensionModel.SpecializationType)
+            .Select(x => new FactoryExtensionModel(x))
+            .ToList();
     }
 }

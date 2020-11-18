@@ -3,6 +3,7 @@
   <name>Association Visual Settings</name>
   <display>Association Visual Settings</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>16d21684-d5ea-4fde-b648-f88d292fa272</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>153a4063-82a1-4515-87f1-44c189004fad</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Source Visual</name>
           <display>Add Source Visual: Association Source End Visual Settings</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="f5b598ba-4eef-4bd4-9671-e3ee43faba7b">
             <typeId>77fdd377-950a-46e4-8d25-ab3c962d6105</typeId>
@@ -93,6 +96,7 @@
           <name>Add Destination Visual</name>
           <display>Add Destination Visual: Association Destination End Visual Settings</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="5f2bb1e3-8cde-465b-91ee-c7511582c3c5">
             <typeId>b59113a4-209c-45d6-b395-352362864fd1</typeId>

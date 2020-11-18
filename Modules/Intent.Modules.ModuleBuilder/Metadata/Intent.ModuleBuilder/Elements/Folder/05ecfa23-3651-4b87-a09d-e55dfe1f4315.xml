@@ -3,6 +3,7 @@
   <name>Registration Types</name>
   <display>Registration Types</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</parentFolderId>

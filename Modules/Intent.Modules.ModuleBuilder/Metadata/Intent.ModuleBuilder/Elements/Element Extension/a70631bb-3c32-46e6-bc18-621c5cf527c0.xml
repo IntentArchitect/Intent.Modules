@@ -3,6 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
+  <order>4</order>
   <genericTypes />
   <typeReference id="cd943cfc-d65f-4d00-9b14-34dfe469cf9a">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -25,6 +26,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a70631bb-3c32-46e6-bc18-621c5cf527c0</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New File Template</name>
           <display>New File Template: File Template</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="975a9ee9-c5e7-4430-82ea-5ca2281457a8">
             <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
@@ -73,6 +76,7 @@
           <name>New Template Registration</name>
           <display>New Template Registration: Template Registration</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="ab24fbf7-69a3-4fc4-95d4-611211526901">
             <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
@@ -110,6 +114,7 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>2</order>
           <genericTypes />
           <typeReference id="3f6e52e1-17bf-496f-bd04-dd00ae7d817f">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -147,6 +152,7 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
+          <order>3</order>
           <genericTypes />
           <typeReference id="c20d2250-5954-4fa0-8210-5a2fa6602e49">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

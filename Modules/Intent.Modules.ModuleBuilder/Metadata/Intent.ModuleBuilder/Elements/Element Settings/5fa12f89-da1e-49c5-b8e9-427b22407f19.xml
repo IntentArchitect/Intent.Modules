@@ -3,6 +3,7 @@
   <name>Element Creation Option</name>
   <display>Element Creation Option</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d45e383d-90ba-4b64-aca7-34ca100cea21</parentFolderId>

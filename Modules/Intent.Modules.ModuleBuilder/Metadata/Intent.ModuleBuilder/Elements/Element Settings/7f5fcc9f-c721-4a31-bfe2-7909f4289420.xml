@@ -3,6 +3,7 @@
   <name>Designer</name>
   <display>Designer</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Designer Reference</name>
           <display>Add Designer Reference: Designer Reference</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="47d8db34-9485-4ede-9618-72c0ab318e61">
             <typeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</typeId>

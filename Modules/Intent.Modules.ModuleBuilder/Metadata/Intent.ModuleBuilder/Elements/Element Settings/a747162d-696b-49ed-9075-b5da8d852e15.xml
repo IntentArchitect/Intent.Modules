@@ -3,6 +3,7 @@
   <name>Designer Extension</name>
   <display>Designer Extension</display>
   <isAbstract>false</isAbstract>
+  <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -45,6 +46,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a747162d-696b-49ed-9075-b5da8d852e15</parentFolderId>
@@ -56,6 +58,7 @@
           <name>New Element Type</name>
           <display>New Element Type: Element Settings</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="c3b7b375-05bd-49a3-b977-e2c8045ccc4f">
             <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
@@ -93,6 +96,7 @@
           <name>New Core Type</name>
           <display>New Core Type: Core Type</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="0179bc41-e5bb-4152-bae5-b66d9f99cdeb">
             <typeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</typeId>
@@ -130,6 +134,7 @@
           <name>New Association Type</name>
           <display>New Association Type: Association Settings</display>
           <isAbstract>false</isAbstract>
+          <order>2</order>
           <genericTypes />
           <typeReference id="fb29ee31-462f-4331-a4e8-4676ca2fca90">
             <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>

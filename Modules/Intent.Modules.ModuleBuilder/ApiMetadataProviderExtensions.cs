@@ -82,6 +82,13 @@ namespace Intent.Modules.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<FactoryExtensionModel> GetFactoryExtensionModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(FactoryExtensionModel.SpecializationTypeId)
+                .Select(x => new FactoryExtensionModel(x))
+                .ToList();
+        }
+
         public static IList<FileTemplateModel> GetFileTemplateModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(FileTemplateModel.SpecializationTypeId)

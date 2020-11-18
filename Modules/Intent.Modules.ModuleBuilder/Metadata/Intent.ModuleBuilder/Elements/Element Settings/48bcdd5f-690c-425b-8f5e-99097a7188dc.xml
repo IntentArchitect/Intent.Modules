@@ -3,6 +3,7 @@
   <name>Package Event Settings</name>
   <display>Package Event Settings</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>89333f72-3960-4159-bf61-9c40d4b65088</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>48bcdd5f-690c-425b-8f5e-99097a7188dc</parentFolderId>
@@ -56,6 +58,7 @@
           <name>On Loaded Event</name>
           <display>On Loaded Event: Element Event Handler</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="d6b8233f-8247-4de0-98ee-905994430834">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
@@ -93,6 +96,7 @@
           <name>On Created Event</name>
           <display>On Created Event: Element Event Handler</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="bf9abd64-346e-465e-905d-962e5e7949ec">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>

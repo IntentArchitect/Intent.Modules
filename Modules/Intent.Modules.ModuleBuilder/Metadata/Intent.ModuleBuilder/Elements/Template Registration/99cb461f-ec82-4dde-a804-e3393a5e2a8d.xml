@@ -3,6 +3,7 @@
   <name>File Per Model</name>
   <display>File Per Model</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>05ecfa23-3651-4b87-a09d-e55dfe1f4315</parentFolderId>

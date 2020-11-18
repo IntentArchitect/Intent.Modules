@@ -3,7 +3,7 @@
   <name>Movie</name>
   <display>Movie</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</parentFolderId>
@@ -23,6 +23,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -37,7 +39,7 @@
       <name>attribute2</name>
       <display>attribute2: datetimeoffset</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>1</order>
       <genericTypes />
       <typeReference id="1364b3d6-ca1b-4f46-8e98-7b16aa4b652b">
         <typeId>f1ba4df3-a5bc-427e-a591-4f6029f89bd7</typeId>
@@ -45,6 +47,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -59,7 +63,7 @@
       <name>IReturnSomething</name>
       <display>IReturnSomething(): string</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>2</order>
       <genericTypes />
       <typeReference id="937f6e33-3f51-4814-98c0-99cd59d6cbc6">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -67,6 +71,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -81,7 +87,7 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>3</order>
       <genericTypes />
       <typeReference id="27a1ba62-c25f-4ee6-a7dd-4ee7db99f8e7">
         <isNavigable>true</isNavigable>

@@ -3,6 +3,7 @@
   <name>Intent Module Extension</name>
   <display>Intent Module Extension: Intent Module</display>
   <isAbstract>false</isAbstract>
+  <order>12</order>
   <genericTypes />
   <typeReference id="dda738b4-48c6-4611-b3a8-83dbe6ef1184">
     <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
@@ -25,6 +26,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>858d78fd-2e73-4a55-9206-83ece70e3059</parentFolderId>
@@ -36,6 +38,7 @@
           <name>Add Designers Folder</name>
           <display>Add Designers Folder: Designers Folder</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="557467f0-2346-4502-bf78-45de351c0888">
             <typeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</typeId>

@@ -3,6 +3,7 @@
   <name>Package Extension</name>
   <display>Package Extension</display>
   <isAbstract>false</isAbstract>
+  <order>9</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ab4152df-3add-4a08-81b6-0fefc7cbb204</parentFolderId>
@@ -56,6 +58,7 @@
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="ff056aef-952a-49ed-82f9-d79b4aeeb3d7">
             <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
@@ -95,6 +98,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ab4152df-3add-4a08-81b6-0fefc7cbb204</parentFolderId>
@@ -106,6 +110,7 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="90066d0d-dc8a-477e-9d96-ba0bee940b42">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

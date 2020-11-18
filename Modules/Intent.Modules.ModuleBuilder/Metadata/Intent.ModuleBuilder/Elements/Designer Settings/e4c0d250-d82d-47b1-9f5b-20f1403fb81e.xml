@@ -3,6 +3,7 @@
   <name>Module Builder</name>
   <display>Module Builder</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b54ca450-86a6-4a9e-9797-9e628aaeebdd</parentFolderId>

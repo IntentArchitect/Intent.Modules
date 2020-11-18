@@ -3,6 +3,7 @@
   <name>Association Creation Option</name>
   <display>Association Creation Option</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d45e383d-90ba-4b64-aca7-34ca100cea21</parentFolderId>

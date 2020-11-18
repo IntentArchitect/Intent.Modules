@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -132,6 +132,17 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiElementExtensionModelTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <None Update="Templates\FactoryExtension\FactoryExtensionTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FactoryExtensionTemplate.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\FactoryExtension\FactoryExtensionTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FactoryExtensionTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

@@ -3,6 +3,7 @@
   <name>Designer Reference</name>
   <display>Designer Reference</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ace8c966-1a7f-487e-b21b-dd601e57f13f</parentFolderId>

@@ -3,6 +3,7 @@
   <name>Association Destination End Settings</name>
   <display>Association Destination End Settings</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>16d21684-d5ea-4fde-b648-f88d292fa272</parentFolderId>
