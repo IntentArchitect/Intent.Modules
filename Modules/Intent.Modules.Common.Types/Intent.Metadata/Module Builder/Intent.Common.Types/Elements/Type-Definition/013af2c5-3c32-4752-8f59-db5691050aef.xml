@@ -3,6 +3,7 @@
   <name>binary</name>
   <display>binary</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>29b10ff0-1c9f-422b-ac1e-caeea16e69ec</parentFolderId>

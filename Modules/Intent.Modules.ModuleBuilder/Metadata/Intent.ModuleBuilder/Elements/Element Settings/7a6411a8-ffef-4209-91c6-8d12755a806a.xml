@@ -54,11 +54,49 @@
       <packageName>Intent.ModuleBuilder</packageName>
       <stereotypes />
       <childElements>
+        <childElement id="adf04854-bd72-4e55-9563-6aa79fff6a54" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Designer Reference</name>
+          <display>Add Designer Reference: Designer Reference</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="8e9a55f9-0792-4a9e-94d6-11cfe02e64ac">
+            <typeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>b7e38d21-ff61-4d05-a709-567dd77f2ee6</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="reference" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="058142d9-feda-4a2f-9d9f-d1d616d2547e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Element Type</name>
           <display>New Element Type: Element Settings</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <order>1</order>
           <genericTypes />
           <typeReference id="52d3de97-1d40-4bbe-8e5e-f528dfbf5549">
             <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
@@ -96,7 +134,7 @@
           <name>New Element Extension</name>
           <display>New Element Extension: Element Extension</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
+          <order>2</order>
           <genericTypes />
           <typeReference id="57a99121-76c5-431c-abf0-30e663fed68e">
             <typeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</typeId>
@@ -134,7 +172,7 @@
           <name>New Association Type</name>
           <display>New Association Type: Association Settings</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
+          <order>3</order>
           <genericTypes />
           <typeReference id="69f5c1df-c772-4da4-9c5c-85ffab50f814">
             <typeId>16d21684-d5ea-4fde-b648-f88d292fa272</typeId>
@@ -172,7 +210,7 @@
           <name>New Package Type</name>
           <display>New Package Type: Package Settings</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
+          <order>4</order>
           <genericTypes />
           <typeReference id="900421b6-2fe4-4fce-afe8-5761bd4ca283">
             <typeId>89333f72-3960-4159-bf61-9c40d4b65088</typeId>
@@ -210,7 +248,7 @@
           <name>New Package Extension</name>
           <display>New Package Extension: Package Extension</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
+          <order>5</order>
           <genericTypes />
           <typeReference id="86cc6e65-3fd0-437a-a188-ecd96a477f90">
             <typeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</typeId>
@@ -248,7 +286,7 @@
           <name>New Core Type</name>
           <display>New Core Type: Core Type</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
+          <order>6</order>
           <genericTypes />
           <typeReference id="9a9d9391-d892-49c7-bdbc-a9ef5ecededc">
             <typeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</typeId>
@@ -286,7 +324,7 @@
           <name>New Script Type</name>
           <display>New Script Type: Script</display>
           <isAbstract>false</isAbstract>
-          <order>6</order>
+          <order>7</order>
           <genericTypes />
           <typeReference id="fbb2d4c2-23ee-402a-9466-f20f8659c6f2">
             <typeId>101fd5b6-3159-4810-9490-a103ef323e9c</typeId>

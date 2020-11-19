@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -23,6 +24,17 @@ namespace Intent.Modules.ModuleBuilder.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+        }
+
+        public DesignerSettingsReference ToPersistable()
+        {
+            return new DesignerSettingsReference
+            {
+                Id = TypeReference.Element.Id,
+                Name = TypeReference.Element.Name,
+                Module = TypeReference.Element.Package.Name,
+                Type = DesignerSettingsReferenceType.Reference
+            };
         }
 
         [IntentManaged(Mode.Fully)]

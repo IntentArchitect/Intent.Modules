@@ -45,6 +45,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
             {
                 Id = Model.Id,
                 Name = Model.Name,
+                DesignerReferences = Model.DesignerReferences.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 PackageSettings = Model.PackageTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 PackageExtensions = Model.PackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),

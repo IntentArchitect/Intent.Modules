@@ -2,7 +2,7 @@
 <applicationTemplate>
   <id>Intent.ApplicationTemplateBuilder</id>
   <version>1.0.0</version>
-  <supportedClientVersions></supportedClientVersions>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <displayName>Intent Application Builder</displayName>
   <shortDescription>Build application templates for your tech stack.</shortDescription>
   <authors>Intent Architect</authors>

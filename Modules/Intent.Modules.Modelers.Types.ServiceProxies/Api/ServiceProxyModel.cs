@@ -7,7 +7,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.WebClient.Proxies.Api
+namespace Intent.Modules.Modelers.Types.ServiceProxies.Api
 {
     [IntentManaged(Mode.Merge)]
     public class ServiceProxyModel : IMetadataModel, IHasStereotypes, IHasName

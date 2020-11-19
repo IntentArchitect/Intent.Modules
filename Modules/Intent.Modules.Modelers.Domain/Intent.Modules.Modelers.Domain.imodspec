@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain</id>
-  <version>3.0.0-beta.3</version>
+  <version>3.0.0-beta.4</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Domain modeler for describing entities and their relationships.</summary>
   <description>Domain modeler for describing entities and their relationships.</description>
@@ -21,4 +21,5 @@
     <install src="modelers/Domain.designer.config" externalReference="6ab29b31-27af-4f56-a67c-986d82097d63" />
   </metadata>
   <files></files>
+  <factoryExtensions />
 </package>

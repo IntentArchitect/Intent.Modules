@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Intent.Modules.Common.Plugins;
@@ -39,26 +40,29 @@ namespace Intent.Modules.Angular
                 return;
             }
 
-            var cmd = new CommandLineProcessor();
 
             if (!Directory.Exists(Path.GetFullPath(location)))
             {
                 Logging.Log.Warning($"Could not build module because the path was not found: " + Path.GetFullPath(location));
             }
-            var command = $@"dotnet build";
-            Logging.Log.Info($"Executing: \"{command}\" at location \"{ Path.GetFullPath(location) }\"");
+            Logging.Log.Info($"Executing: \"dotnet build\" at location \"{ Path.GetFullPath(location) }\"");
             try
             {
-                var output = cmd.ExecuteCommand(Path.GetFullPath(location),
-                    new[]
-                    {
-                        command,
-                    });
-                Logging.Log.Info(output);
+                var cmd = Process.Start(new ProcessStartInfo(){
+                    FileName = "dotnet",
+                    Arguments = "build",
+                    RedirectStandardInput = true,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = false,
+                    UseShellExecute = false,
+                    WorkingDirectory = location
+                });
+                cmd.WaitForExit();
+                Logging.Log.Info(cmd.StandardOutput.ReadToEnd());
             }
             catch (Exception e)
             {
-                Logging.Log.Failure($@"Failed to execute: ""{command}""
+                Logging.Log.Failure($@"Failed to execute: ""dotnet build""
 Auto-compiling of module failed. If the problem persists, consider disabling this extension. Please see reasons below:");
                 Logging.Log.Failure(e);
             }

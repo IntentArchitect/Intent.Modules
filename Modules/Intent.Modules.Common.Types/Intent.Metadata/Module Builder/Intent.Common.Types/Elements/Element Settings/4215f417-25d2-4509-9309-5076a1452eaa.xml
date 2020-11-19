@@ -3,6 +3,7 @@
   <name>Enum-Literal</name>
   <display>Enum-Literal</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>85fba0e9-9161-4c85-a603-a229ef312beb</parentFolderId>

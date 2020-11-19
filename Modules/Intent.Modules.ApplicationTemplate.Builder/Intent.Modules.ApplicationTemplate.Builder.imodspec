@@ -15,8 +15,8 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.1" />
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.1" />
+    <dependency id="Intent.Common" version="3.0.0-beta.3" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.3" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -27,4 +27,5 @@
     <install target="App Templates" src="Intent.Metadata/Module Builder/Intent.ApplicationTemplate.Builder/Intent.ApplicationTemplate.Builder.pkg.config" externalReference="002e9a7f-e5b7-4392-a60f-b60ae4e86262" />
     <install src="modelers/App Templates.designer.config" externalReference="22091d1e-a855-41af-ba7f-3f0b033c0fc3" />
   </metadata>
+  <factoryExtensions />
 </package>

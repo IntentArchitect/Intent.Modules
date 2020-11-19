@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Common.Types.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class EnumModel : IHasStereotypes, IMetadataModel
+    public class EnumModel : IHasStereotypes, IMetadataModel, IHasName
     {
         public const string SpecializationType = "Enum";
         public const string SpecializationTypeId = "85fba0e9-9161-4c85-a603-a229ef312beb";

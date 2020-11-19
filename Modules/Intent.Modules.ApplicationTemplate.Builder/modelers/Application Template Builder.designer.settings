@@ -2,6 +2,7 @@
 <settings>
   <id>c75eea8b-43c3-477d-9bbf-83ada9809113</id>
   <name>Application Template Builder</name>
+  <designerReferences />
   <packageSettings>
     <packageSetting type="Application Template" typeId="cf385bd9-e92f-453d-a3e1-00b9922b57b3">
       <sortChildren>by-type-then-manually</sortChildren>

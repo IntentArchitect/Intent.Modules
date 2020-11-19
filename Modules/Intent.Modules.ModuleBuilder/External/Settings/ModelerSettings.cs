@@ -15,6 +15,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("name")]
         public string Name { get; set; }
 
+        [XmlArray("designerReferences")]
+        [XmlArrayItem("designerReference")]
+        public List<DesignerSettingsReference> DesignerReferences { get; set; } = new List<DesignerSettingsReference>();
+
         [XmlArray("packageSettings")]
         [XmlArrayItem("packageSetting")]
         public List<PackageSettingsPersistable> PackageSettings { get; set; } = new List<PackageSettingsPersistable>();

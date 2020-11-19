@@ -12,6 +12,7 @@ using Intent.Modules.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.Modules.ModuleBuilder.Templates.DesignerSettings;
 using Intent.Templates;
+using NuGet.Versioning;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
@@ -40,6 +41,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 _extensionsToRegister.Add(@event);
             });
 
+            _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommon.Name, IntentModule.IntentCommon.Version));
+            _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommonTypes.Name, IntentModule.IntentCommonTypes.Version));
             ExecutionContext.EventDispatcher.Subscribe<ModuleDependencyRequiredEvent>(@event =>
             {
                 if (@event.ModuleId == ModuleModel.Name)
@@ -160,11 +163,19 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var moduleDependency in _moduleDependencies)
             {
-                if (moduleDependency.ModuleId != doc.XPathSelectElement("package/id").Value &&
-                    doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]") == null)
+                if (moduleDependency.ModuleId != doc.XPathSelectElement("package/id").Value)
                 {
-                    var dependencies = doc.XPathSelectElement("package/dependencies");
-                    dependencies.Add(CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion)));
+                    var existing = doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]");
+                    if (existing == null)
+                    {
+                        var dependencies = doc.XPathSelectElement("package/dependencies");
+                        existing = CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion));
+                        dependencies.Add(existing);
+                    }
+                    else if (NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion))
+                    {
+                        existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
+                    }
                 }
             }
 
@@ -284,8 +295,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   <templates>
   </templates>
   <dependencies>
-    {CreateDependency(IntentModule.IntentCommon)}
-    {CreateDependency(IntentModule.IntentCommonTypes)}
   </dependencies>
   <files>
     <file src=""$outDir$/$id$.dll"" />

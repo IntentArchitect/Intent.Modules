@@ -62,13 +62,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 
             foreach (var designerReference in Model.DesignerReferences)
             {
-                designer.DesignerReferences.Add(new DesignerSettingsReference()
-                {
-                    Id = designerReference.TypeReference.Element.Id,
-                    Name = designerReference.TypeReference.Element.Name,
-                    Module = designerReference.TypeReference.Element.Package.Name,
-                    Type = DesignerSettingsReferenceType.Reference
-                });
+                designer.DesignerReferences.Add(designerReference.ToPersistable());
             }
 
             return Serialize(designer);

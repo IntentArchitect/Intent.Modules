@@ -444,15 +444,24 @@ createElement("Association Destination End Settings", "[destination]", context.i
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Element Settings</type>
-        <type order="1">Element Extension</type>
-        <type order="2">Association Settings</type>
-        <type order="3">Package Settings</type>
-        <type order="4">Package Extension</type>
-        <type order="5">Core Type</type>
-        <type order="6">Script</type>
+        <type order="0">Designer Reference</type>
+        <type order="1">Element Settings</type>
+        <type order="2">Element Extension</type>
+        <type order="3">Association Settings</type>
+        <type order="4">Package Settings</type>
+        <type order="5">Package Extension</type>
+        <type order="6">Core Type</type>
+        <type order="7">Script</type>
       </typeOrder>
       <creationOptions>
+        <option type="element">
+          <specializationType>Designer Reference</specializationType>
+          <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
+          <text>Add Designer Reference</text>
+          <defaultName>reference</defaultName>
+          <icon type="CharacterBox" source="R|#00BFA5" />
+          <allowMultiple>true</allowMultiple>
+        </option>
         <option type="element">
           <specializationType>Element Settings</specializationType>
           <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
