@@ -137,7 +137,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             }
 
             var factoryExtensions = doc.Element("package").Element("factoryExtensions");
-            if (_extensionsToRegister.Any() || factoryExtensions == null)
+            if (_extensionsToRegister.Any() && factoryExtensions == null)
             {
                 factoryExtensions = new XElement("factoryExtensions");
                 doc.Element("package").Add(factoryExtensions);
@@ -148,7 +148,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
                 if (specificExtension == null)
                 {
-                    specificExtension = new XElement("factoryExtensions", new XAttribute("id", extension.ExtensionId), new XAttribute("externalReference", extension.ModelId));
+                    specificExtension = new XElement("factoryExtension", new XAttribute("id", extension.ExtensionId), new XAttribute("externalReference", extension.ModelId));
 
                     factoryExtensions.Add(specificExtension);
                 }

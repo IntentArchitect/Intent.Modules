@@ -21,6 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
 
         public FactoryExtensionTemplate(IOutputTarget outputTarget, FactoryExtensionModel model) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(NugetPackages.IntentModulesCommon);
         }
 
         public override void BeforeTemplateExecution()

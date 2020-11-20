@@ -33,16 +33,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            this.Write("using Intent.Engine;\r\nusing Intent.Modules.Common.Plugins;\r\nusing Intent.Plugins." +
+                    "FactoryExtensions;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace " +
+                    "");
             
-            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -50,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
             this.Write(" : FactoryExtensionBase, IExecutionLifeCycle\r\n    {\r\n        public override stri" +
                     "ng Id => \"");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetId()));
             
             #line default
