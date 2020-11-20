@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Sql.Api;
+using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Sql.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePreProcessed
                 project: project,
                 model: model,
                 t4TemplateId: SqlFileTemplate.SqlFileTemplate.TemplateId,
-                partialTemplateId: SqlFileTemplatePartial.SqlFileTemplatePartial.TemplateId);
+                partialTemplateId: SqlFileTemplatePartial.SqlFileTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<SqlTemplateModel> GetModels(IApplication application)

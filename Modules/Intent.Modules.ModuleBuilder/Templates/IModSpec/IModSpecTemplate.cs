@@ -8,8 +8,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.DesignerSettings;
 using Intent.Templates;
 using NuGet.Versioning;
@@ -288,6 +287,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 <package>
   <id>{ModuleModel.Name}</id>
   <version>{ModuleModel.GetModuleSettings().Version()}</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>A custom module for {OutputTarget.Application.SolutionName}.</summary>
   <description>A custom module for {OutputTarget.Application.SolutionName}.</description>
   <authors>{OutputTarget.Application.SolutionName}</authors>

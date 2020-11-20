@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial

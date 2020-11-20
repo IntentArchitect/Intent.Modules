@@ -3,6 +3,7 @@
   <name>designers</name>
   <display>designers</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>b6978589-6e21-40a6-88b3-0854c11f4388</parentFolderId>

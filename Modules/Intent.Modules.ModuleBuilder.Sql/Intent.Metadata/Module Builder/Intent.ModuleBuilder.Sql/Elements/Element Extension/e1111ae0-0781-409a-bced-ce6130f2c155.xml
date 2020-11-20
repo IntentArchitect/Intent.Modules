@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="e1111ae0-0781-409a-bced-ce6130f2c155" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Folder</name>
-  <display>Folder: Folder</display>
+  <name>Folder Extension</name>
+  <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <typeReference id="8b8f1057-db7e-4990-b908-9265709673c5">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -10,6 +11,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Common.Types</typePackageName>
+    <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -23,6 +26,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e1111ae0-0781-409a-bced-ce6130f2c155</parentFolderId>
@@ -34,6 +38,7 @@
           <name>New Sql Template</name>
           <display>New Sql Template: Sql Template</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="44ba94ab-6d34-413f-bc3d-816d546b8794">
             <typeId>f3e581f7-96eb-439f-8bc4-9103128f0bd7</typeId>

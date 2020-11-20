@@ -2,6 +2,7 @@
 <package>
   <id>Intent.ApplicationTemplate.Builder</id>
   <version>3.0.0-beta.3</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Net.</summary>
   <description>A custom module for Intent.Modules.Net.</description>
   <authors>Intent.Modules.Net</authors>

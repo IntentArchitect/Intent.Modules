@@ -6,14 +6,13 @@ using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class ElementCreationOptionModel : IHasStereotypes, IMetadataModel, ICreationOptionModel, IHasName, IHasTypeReference

@@ -4,18 +4,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
+using Intent.ModuleBuilder.Api.Factories;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api.Factories;
-using Intent.Modules.ModuleBuilder.Helpers;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class ElementSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName

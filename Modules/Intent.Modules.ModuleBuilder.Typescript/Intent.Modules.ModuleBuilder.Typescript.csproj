@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -16,13 +16,14 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TypescriptTemplate.cs</LastGenOutput>
     </None>
-    <None Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.tt">
+    <None Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>TypescriptTemplatePartial.cs</LastGenOutput>
+      <LastGenOutput>TypescriptTemplatePartialTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.0-*" />
     <PackageReference Include="Intent.Packager" Version="3.0.0-pre.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -42,10 +43,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartial.cs">
+    <Compile Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>TypescriptTemplatePartial.tt</DependentUpon>
+      <DependentUpon>TypescriptTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

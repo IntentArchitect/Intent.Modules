@@ -16,8 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
     using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
-    using Intent.Modules.ModuleBuilder.Api;
-    using Intent.Modules.ModuleBuilder.Helpers;
+    using Intent.ModuleBuilder.Api;
+    using Intent.ModuleBuilder.Helpers;
     using System;
     
     /// <summary>

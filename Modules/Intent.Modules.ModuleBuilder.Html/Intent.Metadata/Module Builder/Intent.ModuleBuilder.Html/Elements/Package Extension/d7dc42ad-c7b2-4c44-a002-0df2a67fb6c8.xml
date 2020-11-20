@@ -3,6 +3,7 @@
   <name>Intent Module Extension</name>
   <display>Intent Module Extension: Intent Module</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <typeReference id="c045c789-e1b2-40ce-93fd-c067bf1a35be">
     <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
@@ -25,6 +26,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>d7dc42ad-c7b2-4c44-a002-0df2a67fb6c8</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New Html File</name>
           <display>New Html File: Html File Template</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="67e81395-cf28-4cf6-a324-da6d48c35ca4">
             <typeId>af3fe721-86c5-41e3-9daf-1e79209ed345</typeId>

@@ -3,6 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <typeReference id="8e71ed84-331c-48ba-81d2-71e9516ad445">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -25,6 +26,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>862b559d-2e44-424d-b102-26ac394c5d77</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New C# Template</name>
           <display>New C# Template: C# Template</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="9638d3de-4aca-4d6e-8dcb-f362ac9c88d1">
             <typeId>f6456232-0f1b-4235-b5f8-b4cce548ca59</typeId>

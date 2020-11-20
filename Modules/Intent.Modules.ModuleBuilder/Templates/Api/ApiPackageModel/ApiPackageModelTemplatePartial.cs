@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using Intent.Engine;
-using Intent.Modules.Common;
-using Intent.Modules.Common.CSharp;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using System.Collections.Generic;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -27,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
         {
             return new CSharpFileConfig(
                 className: $"{Model.Name.ToCSharpIdentifier()}Model",
-                @namespace: $"{OutputTarget.GetNamespace()}");
+                @namespace: $"{Model.ParentModule.ApiNamespace}");
         }
 
         private string FormatForCollection(string name, bool asCollection)

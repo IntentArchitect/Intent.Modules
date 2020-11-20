@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class TemplateRegistrationModel : IHasFolder, IHasStereotypes, IMetadataModel, IHasName

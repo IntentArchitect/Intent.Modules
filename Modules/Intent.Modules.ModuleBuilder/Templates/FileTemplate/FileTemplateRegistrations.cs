@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate

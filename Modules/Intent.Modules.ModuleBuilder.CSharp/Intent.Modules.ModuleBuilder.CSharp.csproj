@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.0-*" />
     <PackageReference Include="Intent.Packager" Version="3.0.0-pre.6">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -35,9 +36,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>CSharpTemplate.cs</LastGenOutput>
     </None>
-    <None Update="Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt">
+    <None Update="Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>CSharpTemplatePartial.cs</LastGenOutput>
+      <LastGenOutput>CSharpTemplatePartialTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
 
@@ -56,10 +57,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>CSharpTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\CSharpTemplatePartial\CSharpTemplatePartial.cs">
+    <Compile Update="Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>CSharpTemplatePartial.tt</DependentUpon>
+      <DependentUpon>CSharpTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.TypeScript.Api;
+using Intent.ModuleBuilder.TypeScript.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.Metadata.Models;
@@ -11,7 +11,7 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Modules.Common.Types.Api;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]

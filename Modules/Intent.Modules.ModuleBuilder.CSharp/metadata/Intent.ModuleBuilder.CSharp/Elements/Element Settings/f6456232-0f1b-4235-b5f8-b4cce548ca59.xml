@@ -3,6 +3,7 @@
   <name>C# Template</name>
   <display>C# Template</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>1e3cc0d3-8901-498a-960b-4a51f915b92b</parentFolderId>

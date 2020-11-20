@@ -7,7 +7,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class DesignersFolderModel : IMetadataModel, IHasStereotypes, IHasName

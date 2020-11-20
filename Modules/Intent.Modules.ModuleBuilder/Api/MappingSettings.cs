@@ -8,7 +8,7 @@ using Intent.IArchitect.Agent.Persistence.Model.Common;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiModelImplementationTemplate", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class MappingSettings

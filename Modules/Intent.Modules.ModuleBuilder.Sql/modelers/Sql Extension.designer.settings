@@ -2,6 +2,7 @@
 <settings>
   <id>10e0a595-2d6e-421d-bb12-673557b45313</id>
   <name>Sql Extension</name>
+  <designerReferences />
   <packageSettings />
   <packageExtensions>
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">

@@ -10,7 +10,7 @@ using Mono.TextTemplating;
 using System.Collections.Generic;
 using System.Text;
 using Intent.Modules.Common.Types.Api;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
 {

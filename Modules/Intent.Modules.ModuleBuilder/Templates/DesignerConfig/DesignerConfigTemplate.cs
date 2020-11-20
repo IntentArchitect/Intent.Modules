@@ -10,7 +10,7 @@ using Intent.IArchitect.Agent.Persistence.Model.Settings;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using IconType = Intent.IArchitect.Common.Types.IconType;

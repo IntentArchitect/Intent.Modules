@@ -2,6 +2,7 @@
 <settings>
   <id>db2f5755-5256-46d1-bb45-72bf2c7cde42</id>
   <name>Domain Types</name>
+  <designerReferences />
   <packageSettings>
     <packageSetting type="Domain Package" typeId="1a824508-4623-45d9-accc-f572091ade5a">
       <sortChildren>by-type-then-by-name</sortChildren>

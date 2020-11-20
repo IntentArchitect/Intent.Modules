@@ -3,9 +3,14 @@
   <ApplicationId>c5d9d6eb-8953-4b30-8e4d-a8d2890d31b4</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
+      <ProjectId>6bc95a70-83a2-40e8-bcdc-176d231beb7d</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Api\FolderExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6bc95a70-83a2-40e8-bcdc-176d231beb7d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Api\SqlTemplateModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Api/SqlTemplateModel.cs</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>SqlTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
@@ -23,9 +28,9 @@
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Sql.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
+      <ProjectId>d62c7c10-ba5c-44c6-9ed8-5adc01662e84</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\modelers\Sql Extension.designer.settings</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>modelers/Sql Extension.designer.settings</ProjectRelativeFilePath>
+      <ProjectRelativeFilePath>Sql Extension.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
@@ -39,23 +44,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartialTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartial.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartial.tt</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartialTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartialPartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartialPartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartialTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartialRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartialRegistration.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Sql\Templates\SqlFileTemplatePartial\SqlFileTemplatePartialTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/SqlFileTemplatePartial/SqlFileTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

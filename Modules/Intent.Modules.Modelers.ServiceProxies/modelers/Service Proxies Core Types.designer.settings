@@ -2,6 +2,7 @@
 <settings>
   <id>acd93869-aa05-4bca-879d-a3efe397e534</id>
   <name>Service Proxies Core Types</name>
+  <designerReferences />
   <packageSettings>
     <packageSetting type="Service Proxies Package" typeId="46ef9b5e-e38c-48f2-8516-ea48c310ce23">
       <sortChildren>by-type-then-by-name</sortChildren>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
-  <version>3.0.0-beta.3</version>
+  <version>3.0.0-beta.4</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
@@ -13,6 +13,7 @@
   <decorators></decorators>
   <dependencies>
     <dependency id="Intent.Common" version="3.0.0-beta.3" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.3" />
   </dependencies>
   <metadata>
     <install src="modelers/Services Types.designer.settings" externalReference="55e213e3-1e43-4bb5-abe6-6ff77af23f39" />
@@ -20,4 +21,5 @@
     <install src="Intent.Modelers.Services/Intent.Modelers.Services.pkg.config" externalReference="4ba53041-59f9-4446-a207-6da4fbdf86fe" target="Services" />
   </metadata>
   <files></files>
+  <factoryExtensions />
 </package>

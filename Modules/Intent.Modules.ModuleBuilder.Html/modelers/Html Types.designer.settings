@@ -2,6 +2,7 @@
 <settings>
   <id>a24d301b-f0f5-4899-b1ab-4bc5087bd4b2</id>
   <name>Html Types</name>
+  <designerReferences />
   <packageSettings />
   <packageExtensions>
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">

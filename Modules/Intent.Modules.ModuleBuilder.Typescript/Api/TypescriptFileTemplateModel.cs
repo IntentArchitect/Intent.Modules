@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.TypeScript.Api
+namespace Intent.ModuleBuilder.TypeScript.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class TypescriptFileTemplateModel : TemplateRegistrationModel, IHasStereotypes, IMetadataModel
+    public class TypescriptFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName
     {
         public new const string SpecializationType = "Typescript File Template";
 

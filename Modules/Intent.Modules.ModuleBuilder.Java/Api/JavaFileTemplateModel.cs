@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Java.Api
+namespace Intent.ModuleBuilder.Java.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class JavaFileTemplateModel : TemplateRegistrationModel, IHasStereotypes, IMetadataModel
+    public class JavaFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName
     {
         public new const string SpecializationType = "Java File Template";
 

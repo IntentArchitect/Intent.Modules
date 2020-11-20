@@ -49,23 +49,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartialTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartial.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartial.tt</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartialTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartialPartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialPartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartialTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>59b4ba79-7979-4102-ac26-426a9de6eb12</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartialRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialRegistration.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Html\Templates\HtmlFileTemplatePartial\HtmlFileTemplatePartialTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/HtmlFileTemplatePartial/HtmlFileTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
-using Intent.Modules.ModuleBuilder.TypeScript.Api;
+using Intent.ModuleBuilder.TypeScript.Api;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePr
                 project: project,
                 model: model,
                 t4TemplateId: TypescriptTemplate.TypescriptTemplate.TemplateId,
-                partialTemplateId: TypescriptTemplatePartial.TypescriptTemplatePartial.TemplateId);
+                partialTemplateId: TypescriptTemplatePartial.TypescriptTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<TypescriptFileTemplateModel> GetModels(IApplication application)

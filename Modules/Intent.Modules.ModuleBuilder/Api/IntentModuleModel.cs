@@ -8,7 +8,7 @@ using Intent.Modules.Common.Types.Api;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
     public class IntentModuleModel : IHasStereotypes, IMetadataModel
@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Api
         public string FileLocation => UnderlyingPackage.FileLocation;
 
         [IntentManaged(Mode.Ignore)]
-        public string ApiNamespace => this.GetModuleSettings().APINamespace();
+        public string ApiNamespace => this.GetModuleSettings().APINamespace() ?? $"{Name}.Api";
 
         [IntentManaged(Mode.Ignore)]
         public string NuGetPackageId => this.GetModuleSettings().NuGetPackageId();

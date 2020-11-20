@@ -8,8 +8,8 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Html.Api;
+using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Html.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 

@@ -4,8 +4,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.ModuleBuilder.Api;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListModel

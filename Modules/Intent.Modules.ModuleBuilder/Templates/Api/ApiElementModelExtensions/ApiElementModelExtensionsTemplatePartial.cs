@@ -5,8 +5,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -60,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
     {
         private readonly IElement _element;
         public string Name => _element.Name;
-        public string ApiNamespace => new IntentModuleModel(_element.Package).GetModuleSettings().APINamespace();
+        public string ApiNamespace => new IntentModuleModel(_element.Package).Name;
         public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
 
         public ExtensionModelType(IElement element)

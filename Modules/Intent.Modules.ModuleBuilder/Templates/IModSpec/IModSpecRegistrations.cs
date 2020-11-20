@@ -1,7 +1,7 @@
 using System.Linq;
 using Intent.Modules.Common;
 using Intent.Engine;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.Registrations;
 
 

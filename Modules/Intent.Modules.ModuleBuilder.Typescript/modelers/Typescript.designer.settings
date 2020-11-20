@@ -2,6 +2,7 @@
 <settings>
   <id>ac7fa580-f66f-4257-a160-0bb82b56f4f9</id>
   <name>Typescript</name>
+  <designerReferences />
   <packageSettings />
   <packageExtensions>
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">

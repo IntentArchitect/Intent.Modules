@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
-using Intent.Modules.ModuleBuilder.Java.Api;
+using Intent.ModuleBuilder.Java.Api;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaTemplatePreProcessedFi
                 project: project,
                 model: model,
                 t4TemplateId: JavaFileTemplate.JavaFileTemplate.TemplateId,
-                partialTemplateId: JavaFileTemplatePartial.JavaFileTemplatePartial.TemplateId);
+                partialTemplateId: JavaFileTemplatePartial.JavaFileTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<JavaFileTemplateModel> GetModels(IApplication application)

@@ -2,7 +2,7 @@
 <#@ assembly name="System.Core" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
-<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+<#@ import namespace="Intent.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 
 using System;

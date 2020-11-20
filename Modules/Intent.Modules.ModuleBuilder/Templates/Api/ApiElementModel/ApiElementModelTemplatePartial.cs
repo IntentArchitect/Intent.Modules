@@ -1,8 +1,7 @@
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using System.Collections.Generic;

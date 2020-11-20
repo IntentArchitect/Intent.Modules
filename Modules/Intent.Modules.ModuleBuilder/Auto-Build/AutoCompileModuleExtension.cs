@@ -57,7 +57,7 @@ namespace Intent.Modules.Angular
                     UseShellExecute = false,
                     WorkingDirectory = location
                 });
-                cmd.WaitForExit();
+                //cmd.StandardInput.Flush();
                 Logging.Log.Info(cmd.StandardOutput.ReadToEnd());
             }
             catch (Exception e)

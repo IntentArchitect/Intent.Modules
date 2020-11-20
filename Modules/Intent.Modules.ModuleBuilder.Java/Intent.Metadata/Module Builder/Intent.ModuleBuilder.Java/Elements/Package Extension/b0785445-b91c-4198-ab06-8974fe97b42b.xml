@@ -3,6 +3,7 @@
   <name>Intent Module Extension</name>
   <display>Intent Module Extension: Intent Module</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <typeReference id="6d2cd555-fb53-4943-a0f3-a6b6ef7d910a">
     <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
@@ -25,6 +26,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>b0785445-b91c-4198-ab06-8974fe97b42b</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New Java File</name>
           <display>New Java File: Java File Template</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="920c8a69-3a81-4866-88e0-863ee8687666">
             <typeId>e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a</typeId>

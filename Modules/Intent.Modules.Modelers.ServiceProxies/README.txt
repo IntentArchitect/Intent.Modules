@@ -14,7 +14,7 @@ NOTE: In Visual Studio, it is recommended to use a T4 editor such as this one (h
     - Click the Repository Setting cog in the top right corner of the Modules section.
     - Click Add New, and specify the Name (e.g. Local Modules) and Address which will be the full (or relative) path to the ${SolutionFolder}/Intent.Modules folder.
       TIP: for the current workspace, this will be at the following relative location (copy directly into your repository location):
-      ./Intent.Modules.Modelers.ServiceProxies/Intent.Modules
+      ./Intent.Modules
     - Click Save.
 
 #3. Install Module

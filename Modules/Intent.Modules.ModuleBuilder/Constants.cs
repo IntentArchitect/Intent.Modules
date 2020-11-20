@@ -1,4 +1,4 @@
-﻿namespace Intent.Modules.ModuleBuilder
+﻿namespace Intent.ModuleBuilder
 {
     public static class Constants
     {

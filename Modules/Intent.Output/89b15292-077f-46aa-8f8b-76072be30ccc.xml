@@ -49,23 +49,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartial.tt</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialPartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialPartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialRegistration.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpTemplatePartial/CSharpTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

@@ -7,7 +7,7 @@
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
-<#@ import namespace="Intent.Modules.ModuleBuilder.Api" #>
+<#@ import namespace="Intent.ModuleBuilder.Api" #>
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;

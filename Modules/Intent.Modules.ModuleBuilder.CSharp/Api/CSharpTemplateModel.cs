@@ -2,16 +2,16 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.CSharp.Api
+namespace Intent.ModuleBuilder.CSharp.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CSharpTemplateModel : TemplateRegistrationModel, IHasStereotypes, IMetadataModel
+    public class CSharpTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName
     {
         public new const string SpecializationType = "C# Template";
 

@@ -49,23 +49,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartial.tt</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartial.tt</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialPartial.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialPartial.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialRegistration.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialRegistration.cs</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

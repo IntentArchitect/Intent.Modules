@@ -3,6 +3,7 @@
   <name>Java File Template</name>
   <display>Java File Template</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f00bf9aa-2c87-45a2-932d-4b587198a092</parentFolderId>

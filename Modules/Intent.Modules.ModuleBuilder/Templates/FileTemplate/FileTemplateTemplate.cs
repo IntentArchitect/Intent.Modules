@@ -4,8 +4,8 @@ using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Helpers;
+using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Helpers;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate

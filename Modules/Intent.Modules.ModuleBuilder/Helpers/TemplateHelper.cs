@@ -1,15 +1,8 @@
-﻿using Intent.Metadata.Models;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
+﻿using System.IO;
 using System.Text.RegularExpressions;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Templates;
+using Intent.Modules.Common.Templates;
 
-namespace Intent.Modules.ModuleBuilder.Helpers
+namespace Intent.ModuleBuilder.Helpers
 {
     public static class TemplateHelper
     {

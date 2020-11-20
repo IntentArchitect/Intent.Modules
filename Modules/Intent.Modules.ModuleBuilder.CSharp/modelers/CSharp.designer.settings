@@ -2,6 +2,7 @@
 <settings>
   <id>1e3cc0d3-8901-498a-960b-4a51f915b92b</id>
   <name>CSharp</name>
+  <designerReferences />
   <packageSettings />
   <packageExtensions>
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">

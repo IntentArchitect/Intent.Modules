@@ -3,6 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <typeReference id="cc0cb7dc-b55a-4930-ada5-0c4a84d6a4bb">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -25,6 +26,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8b6e4792-63ad-47f6-8aa2-78e9f74411bd</parentFolderId>
@@ -36,6 +38,7 @@
           <name>New Java File</name>
           <display>New Java File: Java File Template</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="5cddc1dd-b684-4603-b970-3e7732ec0c72">
             <typeId>e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a</typeId>

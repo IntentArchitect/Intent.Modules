@@ -2,6 +2,7 @@
 <settings>
   <id>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</id>
   <name>Module Builder</name>
+  <designerReferences />
   <packageSettings>
     <packageSetting type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
       <sortChildren>by-type-then-by-name</sortChildren>

@@ -1,12 +1,11 @@
 ﻿using System;
 using Intent.Metadata.Models;
+using Intent.ModuleBuilder.Api.Factories;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Api.Factories;
-using Intent.Modules.ModuleBuilder.Helpers;
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     public class ModelerModelType
     {

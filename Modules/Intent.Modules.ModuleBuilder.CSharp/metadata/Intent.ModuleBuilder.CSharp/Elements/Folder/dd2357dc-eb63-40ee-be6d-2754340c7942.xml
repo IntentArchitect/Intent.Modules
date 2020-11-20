@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="dd2357dc-eb63-40ee-be6d-2754340c7942" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <order>2</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f2bfb0f7-d304-466f-b923-021d4016b48d</parentFolderId>
+  <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+  <packageName>Intent.ModuleBuilder.CSharp</packageName>
+  <stereotypes />
+  <childElements />
+</class>

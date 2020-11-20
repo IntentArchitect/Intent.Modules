@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9080e1bc-0d5d-4f2f-bc5c-249d26e67997" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+  <name>ModuleBuilder.Templates.FactoryExtension</name>
+  <display>ModuleBuilder.Templates.FactoryExtension</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>27ed61b4-22f5-4e35-8db1-7c4613dde71d</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

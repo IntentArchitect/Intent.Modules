@@ -2,6 +2,7 @@
 <settings>
   <id>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</id>
   <name>Designer Builder</name>
+  <designerReferences />
   <packageSettings />
   <packageExtensions>
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">

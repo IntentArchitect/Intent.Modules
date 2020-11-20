@@ -2,6 +2,7 @@
 <settings>
   <id>55e213e3-1e43-4bb5-abe6-6ff77af23f39</id>
   <name>Services Types</name>
+  <designerReferences />
   <packageSettings>
     <packageSetting type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
       <sortChildren>by-type-then-by-name</sortChildren>

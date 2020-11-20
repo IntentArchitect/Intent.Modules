@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
-namespace Intent.Modules.ModuleBuilder.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class DesignerSettingsModel : IMetadataModel, IHasStereotypes, IHasName

@@ -45,7 +45,7 @@
       <valueOptions />
       <lookupTypes />
       <isActiveFunction />
-      <isRequiredFunction>true</isRequiredFunction>
+      <isRequiredFunction />
     </property>
     <property id="0d2ae582-090e-42d6-a7d6-689144433254">
       <name>NuGet Package Id</name>

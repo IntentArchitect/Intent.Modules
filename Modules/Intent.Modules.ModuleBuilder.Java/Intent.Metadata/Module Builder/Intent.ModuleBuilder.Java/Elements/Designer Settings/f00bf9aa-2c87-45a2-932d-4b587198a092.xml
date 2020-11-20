@@ -3,6 +3,7 @@
   <name>Java Types</name>
   <display>Java Types</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>9d431133-c2e1-4575-a869-7ffcaa6f4f3e</parentFolderId>

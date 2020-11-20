@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Html.Api
+namespace Intent.ModuleBuilder.Html.Api
 {
     [IntentManaged(Mode.Merge)]
     public class FolderExtensionsModel : FolderModel

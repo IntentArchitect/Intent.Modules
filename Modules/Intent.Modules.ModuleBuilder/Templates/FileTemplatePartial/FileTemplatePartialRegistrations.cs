@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.FileTemplate;
 using Intent.Templates;
 

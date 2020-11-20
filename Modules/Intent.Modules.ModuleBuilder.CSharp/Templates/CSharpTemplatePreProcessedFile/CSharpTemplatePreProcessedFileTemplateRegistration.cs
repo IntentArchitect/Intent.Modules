@@ -2,8 +2,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.CSharp.Api;
+using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.CSharp.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePreProcess
                 project: project,
                 model: model,
                 t4TemplateId: CSharpTemplate.CSharpTemplate.TemplateId,
-                partialTemplateId: CSharpTemplatePartial.CSharpTemplatePartial.TemplateId);
+                partialTemplateId: CSharpTemplatePartial.CSharpTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<CSharpTemplateModel> GetModels(IApplication application)

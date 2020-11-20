@@ -5,7 +5,7 @@ using System.Text;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
-namespace Intent.Modules.ModuleBuilder.Api.Factories
+namespace Intent.ModuleBuilder.Api.Factories
 {
     public class DesignerModelFactory
     {

@@ -2,6 +2,7 @@
 <package>
   <id>Intent.OutputTargets.Folders</id>
   <version>3.0.0-beta.3</version>
+  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>

@@ -11,7 +11,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileNoModel
 {
     using Intent.Modules.Common.Templates;
     using Intent.Modules.Common.CSharp.Templates;
-    using Intent.Modules.ModuleBuilder.Api;
+    using Intent.ModuleBuilder.Api;
     using Intent.Metadata.Models;
     using System;
     

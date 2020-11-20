@@ -10,7 +10,7 @@ using EnumModel = Intent.Modelers.Services.Api.EnumModel;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Services.Api
+namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge)]
     public class ServicesPackageModel : IHasStereotypes, IMetadataModel

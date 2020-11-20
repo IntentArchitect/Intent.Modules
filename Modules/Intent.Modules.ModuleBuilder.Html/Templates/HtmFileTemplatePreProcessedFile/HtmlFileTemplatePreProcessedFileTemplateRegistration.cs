@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
-using Intent.Modules.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Html.Api;
+using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Html.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmFileTemplatePreProcesse
                 project: project,
                 model: model,
                 t4TemplateId: HtmlFileTemplate.HtmlFileTemplate.TemplateId,
-                partialTemplateId: HtmlFileTemplatePartial.HtmlFileTemplatePartial.TemplateId);
+                partialTemplateId: HtmlFileTemplatePartial.HtmlFileTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<HtmlFileTemplateModel> GetModels(IApplication application)

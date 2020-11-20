@@ -3,6 +3,7 @@
   <name>Typescript File Template</name>
   <display>Typescript File Template</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>ac7fa580-f66f-4257-a160-0bb82b56f4f9</parentFolderId>

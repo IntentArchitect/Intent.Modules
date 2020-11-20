@@ -16,7 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
     using Intent.Modules.Common.CSharp.Templates;
     using Intent.Templates;
     using Intent.Metadata.Models;
-    using Intent.Modules.ModuleBuilder.Api;
+    using Intent.ModuleBuilder.Api;
     using System;
     
     /// <summary>

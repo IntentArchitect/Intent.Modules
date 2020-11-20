@@ -1,10 +1,9 @@
-using System.Collections.Generic;
-using System.Linq;
+using System.IO;
 using Intent.Engine;
-using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
+
 namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
 {
     partial class ReadMeTemplate : IntentTemplateBase
@@ -24,6 +23,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.ReadMe
                 fileExtension: "txt",
                 relativeLocation: ""
             );
+        }
+
+        public string GetModuleOutputLocation()
+        {
+            return "./" + OutputTarget.Application.RootLocation.GetRelativePath(Path.Combine(OutputTarget.GetTargetPath()[0].Location, "../Intent.Modules")).Normalize();
         }
     }
 }
