@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.Services.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -37,6 +38,9 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         public IElementMapping Mapping => _element.MappedElement;
 
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Ignore)]
+        public ServiceModel MappedService => Mapping != null ? new ServiceModel((IElement)Mapping.Element) : null;
 
         public IList<OperationModel> Operations => _element.ChildElements
             .Where(x => x.SpecializationType == OperationModel.SpecializationType)

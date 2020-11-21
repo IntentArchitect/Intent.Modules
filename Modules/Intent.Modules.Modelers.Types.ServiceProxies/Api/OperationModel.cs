@@ -36,6 +36,15 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)]
+        public ITypeReference ReturnType => TypeReference.Element != null ? TypeReference : null;
+
+        [IntentManaged(Mode.Ignore)]
+        public bool IsMapped => _element.IsMapped;
+
+        [IntentManaged(Mode.Ignore)]
+        public IElementMapping Mapping => _element.MappedElement;
+
         public IList<ParameterModel> Parameters => _element.ChildElements
             .Where(x => x.SpecializationType == ParameterModel.SpecializationType)
             .Select(x => new ParameterModel(x))
