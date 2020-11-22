@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -25,6 +26,12 @@ namespace Intent.ModuleBuilder.Api
             }
             _element = element;
         }
+
+        [IntentManaged(Mode.Ignore)]
+        public string ApiModelName => $"{Name.ToCSharpIdentifier()}Model";
+
+        [IntentManaged(Mode.Ignore)]
+        public IntentModuleModel ParentModule => new IntentModuleModel(_element.Package);
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;

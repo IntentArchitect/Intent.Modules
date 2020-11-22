@@ -13,7 +13,10 @@ namespace Intent.ModuleBuilder.Api
 
         public ModelerModelType(IElement element)
         {
-            if (element.SpecializationType != "Element Settings" & element.SpecializationType != "Package Settings")
+            if (element.SpecializationType != "Element Settings" && 
+                element.SpecializationType != "Package Settings" &&
+                element.SpecializationType != "Element Extension" &&
+                element.SpecializationType != "Package Extension")
             {
                 throw new InvalidOperationException($"Cannot load {nameof(ModelerModelType)} from element of type {element.SpecializationType}");
             }

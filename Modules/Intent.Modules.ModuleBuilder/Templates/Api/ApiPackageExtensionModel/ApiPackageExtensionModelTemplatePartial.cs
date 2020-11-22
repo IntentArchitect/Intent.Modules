@@ -1,24 +1,24 @@
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
+namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageExtensionModel
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiElementExtensionModelTemplate : CSharpTemplateBase<ElementExtensionModel>
+    partial class ApiPackageExtensionModelTemplate : CSharpTemplateBase<PackageExtensionModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementExtensionModel";
+        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiPackageExtensionModel";
 
-        public ApiElementExtensionModelTemplate(IOutputTarget project, ElementExtensionModel model) : base(TemplateId, project, model)
+        public ApiPackageExtensionModelTemplate(IOutputTarget outputTarget, PackageExtensionModel model) : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -26,12 +26,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
         {
             return new CSharpFileConfig(
                 className: $"{Model.ApiModelName}",
-                @namespace: Model.ParentModule.ApiNamespace);
+                @namespace: $"{OutputTarget.GetNamespace()}");
         }
 
-        private ElementSettingsModel GetBaseElementModel()
+        private PackageSettingsModel GetBasePackageModel()
         {
-            return new ElementSettingsModel((IElement)Model.TypeReference.Element);
+            return new PackageSettingsModel((IElement)Model.TypeReference.Element);
         }
 
         private string FormatForCollection(string name, bool asCollection)

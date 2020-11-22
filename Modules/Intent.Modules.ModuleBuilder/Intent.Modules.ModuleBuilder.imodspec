@@ -138,7 +138,14 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Templates</role>
-      <location>FactoryExtensions</location>
+      <location>FactoryExtentions</location>
+    </template>
+    <template id="ModuleBuilder.Templates.Api.ApiPackageExtensionModel" externalReference="5a307c40-0d05-4dac-a83e-6a3a553c5b9e">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
     </template>
   </templates>
   <decorators></decorators>
