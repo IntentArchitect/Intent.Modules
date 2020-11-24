@@ -104,6 +104,11 @@
       </creationOptions>
       <mappingSettings>
         <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+        <optionsSource>elements-of-type</optionsSource>
+        <targetTypeOptions>
+          <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
+        </targetTypeOptions>
+        <mapFrom>root</mapFrom>
         <mappings>
           <mapping id="e45defc1-8775-49c0-bf70-5ec59684e944">
             <criteria specializationType="Class">

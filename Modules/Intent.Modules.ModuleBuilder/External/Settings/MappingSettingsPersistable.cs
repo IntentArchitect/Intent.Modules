@@ -9,6 +9,19 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("defaultModeler")]
         public string DefaultModeler { get; set; }
 
+        [XmlElement("optionsSource")]
+        public MappingOptionsSource OptionsSource { get; set; }
+
+        [XmlElement("lookupElementFunction")]
+        public string LookupElementFunction { get; set; }
+
+        [XmlArray("targetTypeOptions")]
+        [XmlArrayItem("option")]
+        public List<TargetTypeOption> LookupTypes { get; set; }
+
+        [XmlElement("mapFrom")]
+        public MappingMapFrom MapFrom { get; set; }
+
         [XmlArray("mappings")]
         [XmlArrayItem("mapping")]
         public List<ElementMappingSettingPersistable> MappedTypes { get; set; }
@@ -24,6 +37,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("mapTo")]
         public ElementMappingMapToSettingPersistable MapTo { get; set; } = new ElementMappingMapToSettingPersistable();
+
+        [XmlElement("behaviour")]
+        public ElementMappingBehaviourPersistable Behaviour { get; set; } = new ElementMappingBehaviourPersistable();
 
         [XmlArray("childMappings")]
         [XmlArrayItem("mapping")]
@@ -88,12 +104,39 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         public ElementMappingTypeCreationSettingPersistable TypeReferenceCreation { get; set; }
     }
 
+    public class ElementMappingBehaviourPersistable
+    {
+        [XmlAttribute("autoSelectChildren")]
+        public bool AutoSelectChildren { get; set; }
+    }
+
     public enum ChildMappingMode
     {
         [XmlEnum("map-to-child")]
         MapToChild = 0,
         [XmlEnum("traverse")]
         Traverse = 1
+    }
+
+    public enum MappingOptionsSource
+    {
+        Unknown = 0,
+
+        [XmlEnum("elements-of-type")]
+        ElementsOfType = 1,
+
+        [XmlEnum("lookup-element")]
+        LookupElement = 2
+    }
+
+    public enum MappingMapFrom
+    {
+        Unknown = 0,
+
+        [XmlEnum("root")]
+        RootElement = 1,
+        [XmlEnum("children")]
+        ChildElements = 2
     }
 
     public class ElementMappingTypeCreationSettingPersistable

@@ -41,7 +41,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         }
 
         public string BaseType => Model.GetInheritedType() != null
-            ? GetTypeName(TemplateId, Model.GetInheritedType().Id, throwIfNotFound: false)
+            ? GetTypeName(TemplateId, Model.GetInheritedType().Id, new TemplateDiscoveryOptions() { ThrowIfNotFound = false })
                 ?? $"{Model.GetInheritedType().Name.ToCSharpIdentifier()}Model"
             : null;
 

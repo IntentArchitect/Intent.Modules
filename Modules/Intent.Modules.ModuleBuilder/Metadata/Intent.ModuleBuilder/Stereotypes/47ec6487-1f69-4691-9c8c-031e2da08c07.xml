@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="47ec6487-1f69-4691-9c8c-031e2da08c07">
+  <name>Behaviour Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="4a16943b-702c-4fb0-bfcc-2afd98b8814c">Element Mapping</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>e5490d86-5379-4e9f-8946-13b5d457c86e</parentFolderId>
+  <order>1</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a">
+      <name>Auto-select Children</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Not Applicable</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+  </properties>
+</stereotypeDefinition>

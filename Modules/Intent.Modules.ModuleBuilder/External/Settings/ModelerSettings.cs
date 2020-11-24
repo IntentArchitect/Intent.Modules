@@ -48,10 +48,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlArray("targetTypeOptions")]
         [XmlArrayItem("option")]
-        public List<StereotypeTargetTypeOption> TargetTypeOptions { get; set; }
+        public List<TargetTypeOption> TargetTypeOptions { get; set; }
     }
 
-    public class StereotypeTargetTypeOption
+    public class TargetTypeOption
     {
         [XmlAttribute("specializationType")]
         public string SpecializationType { get; set; }

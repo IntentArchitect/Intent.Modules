@@ -26,12 +26,12 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.3" />
-    <dependency id="Intent.Common.TypeScript" version="3.0.0-beta.3" />
+    <dependency id="Intent.Common" version="3.0.0-beta.4" />
+    <dependency id="Intent.Common.TypeScript" version="3.0.0-beta.4" />
     <dependency id="Intent.ModuleBuilder" version="3.0.0-beta.4" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.3" />
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.3" />
-    <dependency id="Intent.Common.CSharp" version="3.0.0-beta.3" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.4" />
+    <dependency id="Intent.Common.Types" version="3.0.0-beta.4" />
+    <dependency id="Intent.Common.CSharp" version="3.0.0-beta.4" />
   </dependencies>
   <metadata>
     <install src="modelers/Typescript.designer.settings" externalReference="ac7fa580-f66f-4257-a160-0bb82b56f4f9" target="Module Builder" />

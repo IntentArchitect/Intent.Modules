@@ -67,8 +67,40 @@ namespace Intent.ModuleBuilder.Api
             return new MappingSettingsPersistable()
             {
                 DefaultModeler = this.GetMappingSettings().DefaultDesigner().Id,
+                OptionsSource = GetOptionsSourceEnumValue(),
+                LookupElementFunction = this.GetMappingSettings().OptionSource().IsLookupElement()
+                    ? this.GetMappingSettings().LookupElementFunction() : null,
+                LookupTypes = this.GetMappingSettings().OptionSource().IsElementsOfType()
+                    ? this.GetMappingSettings().LookupTypes().Select(x => new TargetTypeOption() { SpecializationType = x.Id, DisplayText = x.Name }).ToList() : null,
+                MapFrom = GetMapFromEnumValue(),
                 MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList()
             };
+        }
+
+        private MappingMapFrom GetMapFromEnumValue()
+        {
+            if (this.GetMappingSettings().MapFrom().IsRootElement())
+            {
+                return MappingMapFrom.RootElement;
+            }
+            if (this.GetMappingSettings().MapFrom().IsChildElements())
+            {
+                return MappingMapFrom.ChildElements;
+            }
+            throw new Exception("Mapping 'Map From' value must be specified.");
+        }
+
+        private MappingOptionsSource GetOptionsSourceEnumValue()
+        {
+            if (this.GetMappingSettings().OptionSource().IsElementsOfType())
+            {
+                return MappingOptionsSource.ElementsOfType;
+            }
+            if (this.GetMappingSettings().OptionSource().IsLookupElement())
+            {
+                return MappingOptionsSource.LookupElement;
+            }
+            throw new Exception("Mapping 'Option Source' value must be specified.");
         }
 
         [IntentManaged(Mode.Fully)]

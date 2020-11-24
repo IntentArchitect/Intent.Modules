@@ -10,6 +10,17 @@ namespace Intent.ModuleBuilder.Api
 {
     public static class ElementMappingModelExtensions
     {
+        public static BehaviourSettings GetBehaviourSettings(this ElementMappingModel model)
+        {
+            var stereotype = model.GetStereotype("Behaviour Settings");
+            return stereotype != null ? new BehaviourSettings(stereotype) : null;
+        }
+
+        public static bool HasBehaviourSettings(this ElementMappingModel model)
+        {
+            return model.HasStereotype("Behaviour Settings");
+        }
+
         public static CriteriaSettings GetCriteriaSettings(this ElementMappingModel model)
         {
             var stereotype = model.GetStereotype("Criteria Settings");
@@ -32,6 +43,47 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Output Settings");
         }
 
+
+        public class BehaviourSettings
+        {
+            private IStereotype _stereotype;
+
+            public BehaviourSettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public bool AutoSelectChildren()
+            {
+                return _stereotype.GetProperty<bool>("Auto-select Children");
+            }
+
+            public class AutoSelectChildrenOptions
+            {
+                public readonly string Value;
+
+                public AutoSelectChildrenOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public bool IsYes()
+                {
+                    return Value == "Yes";
+                }
+                public bool IsNo()
+                {
+                    return Value == "No";
+                }
+                public bool IsNotApplicable()
+                {
+                    return Value == "Not Applicable";
+                }
+            }
+
+        }
 
         public class CriteriaSettings
         {

@@ -62,6 +62,10 @@ namespace Intent.ModuleBuilder.Api
                     ChildMappingMode = this.GetOutputSettings().ChildMappingMode().IsTraverse() ? ChildMappingMode.Traverse : ChildMappingMode.MapToChild,
                     UseMappingSettings = this.GetOutputSettings().UseMappingSettings()?.Id
                 },
+                Behaviour = new ElementMappingBehaviourPersistable()
+                {
+                    AutoSelectChildren = this.GetBehaviourSettings().AutoSelectChildren()
+                },
                 ChildMappingSettings = ChildMappings.Select(x => x.ToPersistable()).ToList()
             };
         }

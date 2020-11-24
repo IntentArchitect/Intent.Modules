@@ -33,6 +33,11 @@
       </creationOptions>
       <mappingSettings>
         <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
+        <optionsSource>elements-of-type</optionsSource>
+        <targetTypeOptions>
+          <option specializationType="b16578a5-27b1-4047-a8df-f0b783d706bd" displayText="Service" />
+        </targetTypeOptions>
+        <mapFrom>root</mapFrom>
         <mappings>
           <mapping id="ae3e8569-4f13-41f5-b15f-1c9144b9d482">
             <criteria specializationType="Service">
@@ -41,6 +46,7 @@
               <hasChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
             </criteria>
             <mapTo specializationType="Service Proxy" childMappingMode="map-to-child" />
+            <behaviour autoSelectChildren="false" />
             <childMappings>
               <mapping id="ff7f2a97-e7e4-48e3-960d-521171d1a77b">
                 <criteria specializationType="Operation">
@@ -49,6 +55,7 @@
                   <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
                 </criteria>
                 <mapTo specializationType="Operation" childMappingMode="map-to-child" />
+                <behaviour autoSelectChildren="true" />
                 <childMappings>
                   <mapping id="7d8db837-a62c-41b2-b9e5-f81b9f61469a">
                     <criteria specializationType="Parameter">
@@ -57,6 +64,7 @@
                       <hasChildren d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
                     </criteria>
                     <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                    <behaviour autoSelectChildren="false" />
                     <childMappings />
                   </mapping>
                 </childMappings>

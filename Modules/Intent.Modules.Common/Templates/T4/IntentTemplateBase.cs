@@ -135,6 +135,8 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
+        #region GetTypeName for TypeReference
+
         public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
             return Types.Get(typeReference, collectionFormat).Name;
@@ -165,93 +167,91 @@ namespace Intent.Modules.Common.Templates
             return Types.Get(element).Name;
         }
 
-        public virtual string GetTypeName(ITemplateDependency templateDependency, bool throwIfNotFound = true)
+        #endregion
+        #region GetTypeName for Template
+
+        public virtual string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
-            return GetTemplate<IClassProvider>(templateDependency, throwIfNotFound)?.FullTypeName();
+            return GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName();
         }
 
-        public string GetTypeName(ITemplate template, bool throwIfNotFound = true)
+        public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnTemplate(template), throwIfNotFound);
+            return GetTypeName(TemplateDependency.OnTemplate(template), options);
         }
 
-        public string GetTypeName(string templateId, bool throwIfNotFound = true)
+        public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnTemplate(templateId), throwIfNotFound);
+            return GetTypeName(TemplateDependency.OnTemplate(templateId), options);
         }
 
-        public string GetTypeName(string templateId, IMetadataModel model, bool throwIfNotFound = true)
+        public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnModel(templateId, model), throwIfNotFound);
+            return GetTypeName(TemplateDependency.OnModel(templateId, model), options);
         }
 
-        public string GetTypeName(string templateId, string modelId, bool throwIfNotFound = true)
+        public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), throwIfNotFound);
+            return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);
         }
 
-        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency)
-            where TTemplate : class
+        #endregion
+        #region GetTemplate
+
+        public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
-            return GetTemplate<TTemplate>(dependency, true);
+            return GetTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId), options);
         }
 
-        public TTemplate GetTemplate<TTemplate>(string templateId) where TTemplate : class
+        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
-            return GetTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId));
+            return GetTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model), options);
         }
 
-        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model) where TTemplate : class
+        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
-            return GetTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model));
+            return GetTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);
         }
 
-        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId) where TTemplate : class
+        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
-            return GetTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"));
-        }
-
-        public TTemplate GetTemplate<TTemplate>(string templateId, bool throwIfNotFound) where TTemplate : class
-        {
-            return GetTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId), throwIfNotFound);
-        }
-
-        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, bool throwIfNotFound) where TTemplate : class
-        {
-            return GetTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model), throwIfNotFound);
-        }
-
-        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, bool throwIfNotFound) where TTemplate : class
-        {
-            return GetTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), throwIfNotFound);
-        }
-
-        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, bool throwIfNotFound) where TTemplate : class
-        {
+            if (options == null)
+            {
+                options = new TemplateDiscoveryOptions();
+            }
             if (!_onCreatedHasHappened)
             {
                 throw new Exception($"{nameof(GetTypeName)} cannot be called during template instantiation.");
             }
 
             var template = ExecutionContext.FindTemplateInstance<TTemplate>(dependency);
-            if (template != null)
+
+            if (template == null && options.ThrowIfNotFound)
+            {
+                throw new Exception($"Could not find template from dependency: {dependency}");
+            }
+
+            if (options.TrackDependency && template != null)
             {
                 DetectedDependencies.Add(dependency);
                 return template;
             }
 
-            if (throwIfNotFound)
-            {
-                throw new Exception($"Could not find template from dependency: {dependency}");
-            }
-
-            return null;
+            return template;
         }
+
+        #endregion
 
         public override string ToString()
         {
             return $"{Id}";
         }
+    }
+
+    public class TemplateDiscoveryOptions
+    {
+        public bool ThrowIfNotFound { get; set; } = true;
+        public bool TrackDependency { get; set; } = true;
     }
 
     public class TemplateBindingContext : ITemplateBindingContext

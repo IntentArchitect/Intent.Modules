@@ -69,7 +69,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageExtensionModel
             
             #line default
             #line hidden
-            this.Write("(IElement element) : base(element)\r\n        {\r\n        }\r\n\r\n");
+            this.Write("(IPackage package) : base(package)\r\n        {\r\n        }\r\n\r\n");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageExtensionModel\ApiPackageExtensionModelTemplate.tt"
   if (Model.MenuOptions != null) {
@@ -91,7 +91,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageExtensionModel
             
             #line default
             #line hidden
-            this.Write(" => _element.ChildElements\r\n            .Where(x => x.SpecializationType == ");
+            this.Write(" => UnderlyingPackage.ChildElements\r\n            .Where(x => x.SpecializationType" +
+                    " == ");
             
             #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageExtensionModel\ApiPackageExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));

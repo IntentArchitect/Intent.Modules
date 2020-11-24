@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.0.0-beta.3</version>
+  <version>3.0.0-beta.4</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Metadata for specifying RDBMS related concepts in the domain.</summary>
   <description>Metadata for specifying RDBMS related concepts in the domain.</description>
@@ -13,7 +13,7 @@
   </templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Modelers.Domain" version="3.0.0-beta.3"/>
+    <dependency id="Intent.Modelers.Domain" version="3.0.0-beta.4"/>
   </dependencies>
   <files>
   </files>

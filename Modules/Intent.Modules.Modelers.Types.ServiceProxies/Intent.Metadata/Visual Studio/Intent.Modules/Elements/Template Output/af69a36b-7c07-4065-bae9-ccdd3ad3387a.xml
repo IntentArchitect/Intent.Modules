@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="af69a36b-7c07-4065-bae9-ccdd3ad3387a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+  <name>ModuleBuilder.Templates.Api.ApiPackageExtensionModel</name>
+  <display>ModuleBuilder.Templates.Api.ApiPackageExtensionModel</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>5d8691be-86ed-4521-861f-d0045712fb9a</parentFolderId>
+  <stereotypes />
+  <childElements />
+</class>

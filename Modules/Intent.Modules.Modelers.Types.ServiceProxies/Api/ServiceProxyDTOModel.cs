@@ -16,6 +16,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         public new const string SpecializationType = "Service Proxy DTO";
         public new const string SpecializationTypeId = "ba46b928-b0f4-4672-a520-d6ae1cfe077a";
 
+        [IntentManaged(Mode.Ignore)]
         public ServiceProxyDTOModel(IElement element, ServiceProxyModel serviceProxy) : base(element, SpecializationType)
         {
             ServiceProxy = serviceProxy;
