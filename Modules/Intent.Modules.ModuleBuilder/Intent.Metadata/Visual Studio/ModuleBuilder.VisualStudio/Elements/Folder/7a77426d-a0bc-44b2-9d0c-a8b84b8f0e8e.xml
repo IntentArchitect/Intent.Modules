@@ -9,6 +9,15 @@
   <parentFolderId>99ad535e-de46-4e05-b018-c7dee149a2b0</parentFolderId>
   <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
   <packageName>ModuleBuilder.VisualStudio</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements />
 </class>

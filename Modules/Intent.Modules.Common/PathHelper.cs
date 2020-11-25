@@ -20,27 +20,7 @@ namespace Intent.Modules.Common
 
         public static string GetRelativePath(this string relativeTo, string path)
         {
-#if NETCOREAPP2_1
-            return Path.GetRelativePath(relativeTo.NormalizePath(), path.NormalizePath());
-#endif
-#if NETSTANDARD2_1
-            return Path.GetRelativePath(relativeTo.NormalizePath(), path.NormalizePath());
-#endif
-            if (Path.HasExtension(relativeTo))
-            {
-                relativeTo = Path.GetDirectoryName(relativeTo);
-            }
-
-            // Require trailing backslash for path
-            if (!relativeTo.EndsWith("\\") && !relativeTo.EndsWith("/"))
-                relativeTo += "/";
-
-            Uri baseUri = new Uri(relativeTo);
-            Uri fullUri = new Uri(path);
-
-            Uri relativeUri = baseUri.MakeRelativeUri(fullUri);
-
-            return relativeUri.ToString().Replace("%20", " ");
+            return Path.GetRelativePath(relativeTo.NormalizePath(), path.NormalizePath()).NormalizePath();
         }
     }
 }

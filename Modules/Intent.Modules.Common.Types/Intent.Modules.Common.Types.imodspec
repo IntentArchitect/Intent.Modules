@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Types</id>
-  <version>3.0.0-beta.4</version>
+  <version>3.0.0-beta.5</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Provides common types supported by the majority of programming languages.</summary>
   <description>Provides common types supported by the majority of programming languages.</description>
@@ -13,7 +13,7 @@
     <factoryExtension id="Intent.CommonTypes.TypeResolvers"></factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.4" />
+    <dependency id="Intent.Common" version="3.0.0-beta.5" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

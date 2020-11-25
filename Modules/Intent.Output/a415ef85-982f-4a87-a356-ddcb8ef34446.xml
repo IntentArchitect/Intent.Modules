@@ -323,6 +323,11 @@
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\IntentModuleExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
       <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\modelers\Designer Builder.designer.settings</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Designer Builder.designer.settings</ProjectRelativeFilePath>

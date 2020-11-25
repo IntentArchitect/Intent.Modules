@@ -74,6 +74,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             doc.Element("package").SetElementValue("id", ModuleModel.Name);
 
+            if (NuGetVersion.TryParse(doc.Element("package").Element("version")?.Value, out var moduleVersion) &&
+                NuGetVersion.TryParse(ModuleModel.Version, out var versionFromDesigner) &&
+                versionFromDesigner > moduleVersion)
+            {
+                doc.Element("package").SetElementValue("version", ModuleModel.Version);
+            }
+
             var templatesElement = doc.Element("package").Element("templates");
             if (templatesElement == null)
             {
