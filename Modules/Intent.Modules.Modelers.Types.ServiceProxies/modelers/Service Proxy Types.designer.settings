@@ -46,7 +46,7 @@
               <hasChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
             </criteria>
             <mapTo specializationType="Service Proxy" childMappingMode="map-to-child" />
-            <behaviour autoSelectChildren="false" />
+            <behaviour autoSelectChildren="true" />
             <childMappings>
               <mapping id="ff7f2a97-e7e4-48e3-960d-521171d1a77b">
                 <criteria specializationType="Operation">
