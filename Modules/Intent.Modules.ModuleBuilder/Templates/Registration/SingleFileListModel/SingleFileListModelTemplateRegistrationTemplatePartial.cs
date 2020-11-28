@@ -61,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
 
         public string GetModelType()
         {
-            return Model.GetModelType()?.ClassName ?? Model.GetTemplateSettings().ModelName();
+            return NormalizeNamespace(Model.GetModelType()?.ClassName ?? Model.GetTemplateSettings().ModelName());
         }
     }
 }

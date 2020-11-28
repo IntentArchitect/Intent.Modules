@@ -57,12 +57,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 
         private string GetModelType()
         {
-            return Model.GetModelName();
+            return NormalizeNamespace(Model.GetModelName());
         }
 
         public string GetModelsMethod()
         {
-            var modelName = Model.GetModelName();
+            var modelName = Model.GetModelType()?.ClassName ?? Model.GetTemplateSettings().ModelName();
             return $"_metadataManager.{Model.GetDesigner().Name.ToCSharpIdentifier()}(application).Get{modelName.ToPluralName()}()";
         }
     }

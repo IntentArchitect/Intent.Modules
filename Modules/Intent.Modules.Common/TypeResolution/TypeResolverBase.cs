@@ -10,6 +10,7 @@ namespace Intent.Modules.Common.TypeResolution
     {
         private const string DEFAULT_CONTEXT = "_default_";
         private readonly IDictionary<string, List<ITypeSource>> _classTypeSources;
+        private static IList<ITypeSource> _globalTypeSources = new List<ITypeSource>();
 
         protected TypeResolverBase()
         {
@@ -50,7 +51,9 @@ namespace Intent.Modules.Common.TypeResolution
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return _classTypeSources.Values.SelectMany(x => x).SelectMany(x => x.GetTemplateDependencies()).ToList();
+            return _classTypeSources.Values
+                .SelectMany(x => x)
+                .SelectMany(x => x.GetTemplateDependencies()).ToList();
         }
 
         public IResolvedTypeInfo Get(ITypeReference typeInfo)

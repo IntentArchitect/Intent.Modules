@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -20,6 +21,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
 
         public ApiElementExtensionModelTemplate(IOutputTarget project, ElementExtensionModel model) : base(TemplateId, project, model)
         {
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            base.BeforeTemplateExecution();
+            if (Model.TypeReference.Element.Id == FolderModel.SpecializationTypeId && Model.MenuOptions != null)
+            {
+                foreach (var creationOption in Model.MenuOptions.ElementCreations)
+                {
+                    ExecutionContext.EventDispatcher.Publish(new NotifyModelHasParentFolderEvent(creationOption.TypeReference.Element.Id));
+                }
+            }
         }
 
         protected override CSharpFileConfig DefineFileConfig()
@@ -45,7 +58,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
             {
                 return option.GetOptionSettings().ApiModelName();
             }
-            var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
+            var name = option.Name.Replace("Add ", "").Replace("New ", "").Replace("Create ", "").ToCSharpIdentifier();
             return option.GetOptionSettings().AllowMultiple() ? name.ToPluralName() : name;
         }
     }

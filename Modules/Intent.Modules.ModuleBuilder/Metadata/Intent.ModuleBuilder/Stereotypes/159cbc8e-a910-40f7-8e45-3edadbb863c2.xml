@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="159cbc8e-a910-40f7-8e45-3edadbb863c2">
+  <name>Type Reference Extension Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">Element Extension</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return ``;</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>86ed4b79-2a1d-4717-b925-4a12291606a9</parentFolderId>
+  <order>1</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="35226a83-3965-4224-8aef-20c68a0c5180">
+      <name>Mode</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>Inherit</defaultValue>
+      <valueOptions>
+        <option>Optional</option>
+        <option>Required</option>
+        <option>Inherit</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="b2cef034-5706-45d2-8554-f4dc582a18ff">
+      <name>Target Types</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(Inherit from base element)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+      </lookupTypes>
+      <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
+      <isRequiredFunction />
+    </property>
+    <property id="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e">
+      <name>Default Type Id</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Inherit from base element)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
+    </property>
+    <property id="7a0c4185-1c08-4d3e-9185-14683d7a3bd0">
+      <name>Allow Collection</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Inherit</defaultValue>
+      <valueOptions>
+        <option>Inherit</option>
+        <option>Allow</option>
+        <option>Disallow</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>return (properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required');</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="e3dc90ec-4f5f-4f20-b271-e28a5094dc91">
+      <name>Allow Nullable</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Inherit</defaultValue>
+      <valueOptions>
+        <option>Inherit</option>
+        <option>Allow</option>
+        <option>Disallow</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>return (properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required');</isActiveFunction>
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -69,9 +69,9 @@ namespace Intent.ModuleBuilder.Api
                 var modelType = this.GetModelType();
                 if (this.IsSingleFileTemplateRegistration())
                 {
-                    return modelType == null ? "object" : $"IList<{modelType.ClassName}>";
+                    return modelType == null ? "object" : $"IList<{modelType.FullyQualifiedName}>";
                 }
-                return modelType?.ClassName ?? "object";
+                return modelType?.FullyQualifiedName ?? "object";
             }
 
             if (this.GetTemplateSettings().Source().IsCustomType())

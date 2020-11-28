@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="115b5ff3-8e0f-4712-9384-372eb7c2c168" type="C# Template" typeId="f6456232-0f1b-4235-b5f8-b4cce548ca59">
+  <name>TemplateDecoratorContract</name>
+  <display>TemplateDecoratorContract: File Per Model</display>
+  <isAbstract>false</isAbstract>
+  <order>3</order>
+  <genericTypes />
+  <typeReference id="bc3b8479-a472-4439-be01-a39ee6d6d4d8">
+    <typeId>99cb461f-ec82-4dde-a804-e3393a5e2a8d</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.ModuleBuilder</typePackageName>
+    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>e5a6d9c4-a9cf-4e13-9b41-9169e64ed316</parentFolderId>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
+        <property name="00d3537c-f71f-4450-8cc8-d9e87c12baee" display="Designer" value="a1c3dd87-352e-4353-853b-c79853debecb" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="ac1da322-377e-45cf-a2d9-d147a4d91457" isActive="true" />
+        <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
+        <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Location" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

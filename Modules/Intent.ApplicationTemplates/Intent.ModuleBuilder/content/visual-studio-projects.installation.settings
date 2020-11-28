@@ -3,7 +3,7 @@
   <targetDesignerId>0701433c-36c0-4569-b1f4-9204986b587d</targetDesignerId>
   <createPackages>
     <package  typeId="07e7b690-a59d-4b72-8440-4308a121d32c" type="Visual Studio Solution">
-      <name>${application.name}</name>
+      <name>${solution.name}</name>
       <childElements>
         <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">
           <name>${application.name}</name>
@@ -14,7 +14,7 @@
               <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
               <properties>
                 <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
-                <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="f2872d65-d69e-460d-988b-165e2fa6c8ca" isActive="true" />
+                <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="2619c225-4a0d-40ba-ae06-6b2c31384342" isActive="true" />
                 <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
               </properties>
             </stereotype>

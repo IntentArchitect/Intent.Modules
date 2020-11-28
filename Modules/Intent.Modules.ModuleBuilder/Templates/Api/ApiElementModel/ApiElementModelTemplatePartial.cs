@@ -17,6 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class ApiElementModelTemplate : CSharpTemplateBase<ElementSettingsModel>
     {
+        public bool HasParentFolder { get; private set; } = false;
         public List<AssociationSettingsModel> AssociationSettings { get; }
 
         [IntentManaged(Mode.Fully)]
@@ -26,11 +27,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         {
             AssociationSettings = associationSettings;
             AddTypeSource(CSharpTypeSource.Create(ExecutionContext, ApiElementModelTemplate.TemplateId, collectionFormat: "IEnumerable<{0}>"));
-        }
-
-        public override RoslynMergeConfig ConfigureRoslynMerger()
-        {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
+            ExecutionContext.EventDispatcher.Subscribe<NotifyModelHasParentFolderEvent>(@event =>
+            {
+                if (@event.ModelId == model.Id)
+                {
+                    HasParentFolder = true;
+                }
+            });
         }
 
         protected override CSharpFileConfig DefineFileConfig()
@@ -51,6 +54,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             if (!Model.GetTypeReferenceSettings().Mode().IsDisabled() && Model.GetTypeReferenceSettings().Represents().IsReference())
             {
                 interfaces.Add("IHasTypeReference");
+            }
+
+            if (HasParentFolder)
+            {
+                interfaces.Add("IHasFolder");
             }
 
             return string.Join(", ", interfaces);

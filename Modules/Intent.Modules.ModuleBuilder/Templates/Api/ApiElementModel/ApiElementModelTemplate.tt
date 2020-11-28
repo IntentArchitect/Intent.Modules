@@ -12,6 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+<#  if (HasParentFolder) { #>
+using Intent.Modules.Common.Types.Api;
+<#  } #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -33,6 +36,9 @@ namespace <#= Namespace #>
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+<#      if (HasParentFolder) { #>
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
+<#      } #>
         }
 
         public string Id => _element.Id;
@@ -41,6 +47,10 @@ namespace <#= Namespace #>
         
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+<#      if (HasParentFolder) { #>
+        public FolderModel Folder { get; }
+
+<#      } #>
 <#      if (Model.GetSettings().AllowSetValue()) { #>
         public string Value => _element.Value;
 

@@ -169,6 +169,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ElementExtensionModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ElementExtensionModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\Extensions\ElementMappingModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ElementMappingModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>

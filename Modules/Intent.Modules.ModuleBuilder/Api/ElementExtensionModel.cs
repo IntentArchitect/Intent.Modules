@@ -75,7 +75,16 @@ namespace Intent.ModuleBuilder.Api
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
-                MappingSettings = MappingSettings?.ToPersistable()
+                MappingSettings = MappingSettings?.ToPersistable(),
+                TypeReferenceExtensionSetting = !this.GetTypeReferenceExtensionSettings().Mode().IsInherit() ?
+                    new TypeReferenceExtensionSettingPersistable()
+                    {
+                        IsRequired = this.GetTypeReferenceExtensionSettings().Mode().IsRequired(),
+                        TargetTypes = this.GetTypeReferenceExtensionSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                        DefaultTypeId = string.IsNullOrWhiteSpace(this.GetTypeReferenceExtensionSettings().DefaultTypeId()) ? this.GetTypeReferenceExtensionSettings().DefaultTypeId() : null,
+                        AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowNullable().Value, out var allowIsNullable) ? allowIsNullable : BooleanExtensionOptions.Inherit,
+                        AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowCollection().Value, out var allowIsCollection) ? allowIsCollection : BooleanExtensionOptions.Inherit,
+                    } : null
             };
         }
 

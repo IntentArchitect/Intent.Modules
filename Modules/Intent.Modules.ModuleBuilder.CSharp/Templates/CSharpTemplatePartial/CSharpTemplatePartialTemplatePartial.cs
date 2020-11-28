@@ -74,7 +74,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         private string GetModelType()
         {
-            return Model.GetModelName();
+            return NormalizeNamespace(Model.GetModelName());
         }
     }
 }

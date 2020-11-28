@@ -3,7 +3,7 @@
   <name>Factory Extension</name>
   <display>Factory Extension</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>

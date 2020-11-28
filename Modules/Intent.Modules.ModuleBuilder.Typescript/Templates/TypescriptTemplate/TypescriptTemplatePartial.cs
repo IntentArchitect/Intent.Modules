@@ -60,7 +60,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 <#@ import namespace=""Intent.Modules.Common.TypeScript.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}
+{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.Namespace}"" #>" : "")}
 {TemplateBody()}";
         }
 
