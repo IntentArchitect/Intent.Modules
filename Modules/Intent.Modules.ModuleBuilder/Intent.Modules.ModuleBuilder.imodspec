@@ -147,6 +147,27 @@
       </config>
       <role>Api</role>
     </template>
+    <template id="ModuleBuilder.Templates.TemplateDecorator" externalReference="f5648642-e1bb-43fa-b522-150cc3878589">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilder.Templates.TemplateDecorator</role>
+    </template>
+    <template id="ModuleBuilder.Templates.TemplateDecoratorContract" externalReference="115b5ff3-8e0f-4712-9384-372eb7c2c168">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilder.Templates.TemplateDecoratorContract</role>
+    </template>
+    <template id="ModuleBuilder.Templates.TemplateDecoratorRegistration" externalReference="a1972650-0420-42cf-9e21-54c0c653d5b4">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>ModuleBuilder.Templates.TemplateDecoratorRegistration</role>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>

@@ -19,6 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
     {
         private readonly IMetadataManager _metadataManager;
         private readonly ICollection<TemplateRegistrationRequiredEvent> _templatesToRegister = new List<TemplateRegistrationRequiredEvent>();
+        private readonly ICollection<DecoratorRegistrationRequiredEvent> _decoratorsToRegister = new List<DecoratorRegistrationRequiredEvent>();
         private readonly ICollection<FactoryExtensionRegistrationRequiredEvent> _extensionsToRegister = new List<FactoryExtensionRegistrationRequiredEvent>();
         private readonly ICollection<MetadataRegistrationRequiredEvent> _metadataToRegister = new List<MetadataRegistrationRequiredEvent>();
         private readonly ICollection<ModuleDependencyRequiredEvent> _moduleDependencies = new List<ModuleDependencyRequiredEvent>();
@@ -33,6 +34,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {
                 _templatesToRegister.Add(@event);
+            });
+
+            ExecutionContext.EventDispatcher.Subscribe<DecoratorRegistrationRequiredEvent>(@event =>
+            {
+                _decoratorsToRegister.Add(@event);
             });
 
             ExecutionContext.EventDispatcher.Subscribe<FactoryExtensionRegistrationRequiredEvent>(@event =>
@@ -167,6 +173,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
+            foreach (var extension in doc.XPathSelectElements($"package/factoryExtensions/factoryExtension").ToList())
+            {
+                if (extension.Attribute("externalReference") != null && _extensionsToRegister.All(x => x.ModelId != extension.Attribute("externalReference").Value))
+                {
+                    extension.Remove();
+                }
+            }
+
             foreach (var moduleDependency in _moduleDependencies)
             {
                 if (moduleDependency.ModuleId != doc.XPathSelectElement("package/id").Value)
@@ -199,8 +213,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
-            var decorators = _metadataManager.ModuleBuilder(OutputTarget.Application).GetDecoratorModels();
-            if (decorators.Any())
+            if (_decoratorsToRegister.Any())
             {
                 var decoratorsElement = doc.Element("package").Element("decorators");
                 if (decoratorsElement == null)
@@ -209,15 +222,23 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     doc.Element("package").Add(decoratorsElement);
                 }
 
-                foreach (var model in decorators)
+                foreach (var decorator in _decoratorsToRegister)
                 {
-                    var id = $"{OutputTarget.ApplicationName()}.{model.Name}";
-                    var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@id=\"{id}\"]");
+                    var specificDecorator = doc.XPathSelectElement($"package/decorators/decorator[@externalReference=\"{decorator.ModelId}\"]");
                     if (specificDecorator == null)
                     {
-                        specificDecorator = new XElement("decorator", new XAttribute("id", id));
+                        specificDecorator = new XElement("decorator", new XAttribute("id", decorator.DecoratorId), new XAttribute("externalReference", decorator.ModelId));
                         decoratorsElement.Add(specificDecorator);
                     }
+                    specificDecorator.SetAttributeValue("id", decorator.DecoratorId);
+                }
+            }
+
+            foreach (var decorator in doc.XPathSelectElements($"package/decorators/decorator").ToList())
+            {
+                if (decorator.Attribute("externalReference") != null && _decoratorsToRegister.All(x => x.ModelId != decorator.Attribute("externalReference").Value))
+                {
+                    decorator.Remove();
                 }
             }
 

@@ -143,6 +143,32 @@ namespace Intent.Modules.Common.Templates
             return result;
         }
 
+        public static string RemovePrefix(this string word, params string[] prefixes)
+        {
+            foreach (var prefix in prefixes)
+            {
+                if (word.StartsWith(prefix))
+                {
+                    word = word.Substring(prefix.Length);
+                }
+            }
+
+            return word;
+        }
+
+        public static string RemoveSuffix(this string word, params string[] suffixes)
+        {
+            foreach (var suffix in suffixes)
+            {
+                if (word.EndsWith(suffix))
+                {
+                    word = word.Substring(0, word.Length - suffix.Length);
+                }
+            }
+
+            return word;
+        }
+
         public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
         {
             return Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);

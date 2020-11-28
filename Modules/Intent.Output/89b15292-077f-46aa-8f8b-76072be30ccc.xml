@@ -34,6 +34,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\PackageSettingsModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>PackageSettingsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.CSharp\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>

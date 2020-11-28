@@ -67,10 +67,6 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
-                public bool IsDisabled()
-                {
-                    return Value == "Disabled";
-                }
                 public bool IsOptional()
                 {
                     return Value == "Optional";

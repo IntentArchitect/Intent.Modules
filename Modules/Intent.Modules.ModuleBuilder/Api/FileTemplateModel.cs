@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common.Types.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -10,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class FileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName
+    public class FileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public FileTemplateModel(IElement element) : base(element, SpecializationType)
         {

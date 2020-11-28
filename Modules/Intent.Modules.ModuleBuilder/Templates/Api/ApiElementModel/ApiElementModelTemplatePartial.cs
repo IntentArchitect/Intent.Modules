@@ -87,13 +87,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         private bool ExistsInBase(ElementCreationOptionModel creationOption)
         {
-            return Model.GetInheritedType()?.MenuOptions.ElementCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??
+            return Model.GetInheritedType()?.MenuOptions?.ElementCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??
                    false;
         }
 
         private bool ExistsInBase(AssociationCreationOptionModel creationOption)
         {
-            return Model.GetInheritedType()?.MenuOptions.AssociationCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??
+            return Model.GetInheritedType()?.MenuOptions?.AssociationCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??
                    false;
         }
 

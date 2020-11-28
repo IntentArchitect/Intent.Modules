@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common.Types.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -11,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.CSharp.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class CSharpTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName
+    public class CSharpTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public new const string SpecializationType = "C# Template";
 
@@ -47,5 +48,10 @@ namespace Intent.ModuleBuilder.CSharp.Api
             return _element.ToString();
         }
         public new const string SpecializationTypeId = "f6456232-0f1b-4235-b5f8-b4cce548ca59";
+
+        public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
+                    .Where(x => x.SpecializationType == TemplateDecoratorContractModel.SpecializationType)
+                    .Select(x => new TemplateDecoratorContractModel(x))
+                    .SingleOrDefault();
     }
 }

@@ -137,14 +137,24 @@ namespace Intent.Modules.Common.Templates
 
         #region GetTypeName for TypeReference
 
+        /// <summary>
+        /// Override this to alter Type names after they have been found.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public virtual string NormalizeTypeName(string name)
+        {
+            return name;
+        }
+
         public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
-            return Types.Get(typeReference, collectionFormat).Name;
+            return NormalizeTypeName(Types.Get(typeReference, collectionFormat).Name);
         }
 
         public virtual string GetTypeName(ITypeReference typeReference)
         {
-            return Types.Get(typeReference).Name;
+            return NormalizeTypeName(Types.Get(typeReference).Name);
         }
 
         public virtual string GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat)
@@ -159,12 +169,12 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string GetTypeName(IElement element, string collectionFormat)
         {
-            return Types.Get(element, collectionFormat).Name;
+            return NormalizeTypeName(Types.Get(element, collectionFormat).Name);
         }
 
         public virtual string GetTypeName(ICanBeReferencedType element)
         {
-            return Types.Get(element).Name;
+            return NormalizeTypeName(Types.Get(element).Name);
         }
 
         #endregion
@@ -172,7 +182,7 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
-            return GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName();
+            return NormalizeTypeName(GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName());
         }
 
         public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)

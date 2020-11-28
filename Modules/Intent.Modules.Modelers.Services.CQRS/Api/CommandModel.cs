@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
@@ -41,9 +42,10 @@ namespace Intent.Modelers.Services.CQRS.Api
 
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)]
         public string GetConceptName()
         {
-            return Name.EndsWith("Command") ? Name.Substring(0, Name.Length - "Command".Length) : Name;
+            return Name.RemoveSuffix("Command");
         }
 
         public IList<DTOFieldModel> Properties => _element.ChildElements

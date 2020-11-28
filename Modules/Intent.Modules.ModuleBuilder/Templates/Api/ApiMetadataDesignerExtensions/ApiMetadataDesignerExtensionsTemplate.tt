@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="CSharpTemplateBase<IList<DesignerModel>>" #>
+<#@ template language="C#" inherits="CSharpTemplateBase<IList<Intent.ModuleBuilder.Api.DesignerModel>>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>

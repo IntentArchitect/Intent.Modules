@@ -8,6 +8,7 @@ using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.ModuleBuilder.CSharp.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -70,6 +71,15 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         public string GetTemplateId()
         {
             return $"{Project.Application.Name}.{FolderNamespace}";
+        }
+
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"CSharpTemplateBase<{GetModelType()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"CSharpTemplateBase<{GetModelType()}>";
         }
 
         private string GetModelType()

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
@@ -7,7 +8,7 @@ namespace Intent.Modules.Common.Types.Api
 {
     public static class FolderExtensions
     {
-        public static IList<FolderModel> GetFolderModels(this IHasFolder model)
+        public static IList<FolderModel> GetParentFolders(this IHasFolder model)
         {
             List<FolderModel> result = new List<FolderModel>();
 
@@ -20,10 +21,15 @@ namespace Intent.Modules.Common.Types.Api
             return result;
         }
 
-        [Obsolete("Use GetFolderModels")]
+        public static IList<string> GetParentFolderNames(this IHasFolder model)
+        {
+            return model.GetParentFolders().Select(x => x.Name).ToList();
+        }
+
+        [Obsolete("Use GetParentFolders")]
         public static IList<FolderModel> GetFolderPath(this IHasFolder model, bool includePackage = false)
         {
-            return GetFolderModels(model);
+            return GetParentFolders(model);
         }
 
 

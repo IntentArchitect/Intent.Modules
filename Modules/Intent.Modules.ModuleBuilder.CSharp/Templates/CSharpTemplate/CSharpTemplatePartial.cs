@@ -11,6 +11,7 @@ using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.CSharp.Api;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -47,10 +48,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
             var content = GetExistingTemplateContent();
             if (content != null)
             {
-                return ReplaceTemplateInheritsTag(content, $"CSharpTemplateBase<{Model.GetModelName()}>");
+                return ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""CSharpTemplateBase<{Model.GetModelName()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""{GetBaseType()}"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
@@ -76,7 +77,14 @@ namespace <#= Namespace #>
 }";
         }
 
-
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"CSharpTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"CSharpTemplateBase<{Model.GetModelName()}>";
+        }
 
         private string GetExistingTemplateContent()
         {

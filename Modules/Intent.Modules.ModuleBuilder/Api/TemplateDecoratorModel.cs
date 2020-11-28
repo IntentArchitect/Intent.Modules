@@ -2,32 +2,28 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modelers.Services.Api;
-using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.Services.CQRS.Api
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class QueryModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
+    public class TemplateDecoratorModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "Query";
-        public const string SpecializationTypeId = "e71b0662-e29d-4db2-868b-8a12464b25d0";
+        public const string SpecializationType = "Template Decorator";
+        public const string SpecializationTypeId = "f0f46278-29ea-42bd-9206-0e7034f623bc";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Ignore)]
-        public QueryModel(IElement element, string requiredType = SpecializationType)
+        public TemplateDecoratorModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -36,29 +32,16 @@ namespace Intent.Modelers.Services.CQRS.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public FolderModel Folder { get; }
-
         public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
-
-        [IntentManaged(Mode.Ignore)]
-        public string GetConceptName()
-        {
-            return Name.RemoveSuffix("Query");
-        }
-
-        public IList<DTOFieldModel> Properties => _element.ChildElements
-            .Where(x => x.SpecializationType == DTOFieldModel.SpecializationType)
-            .Select(x => new DTOFieldModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(QueryModel other)
+        public bool Equals(TemplateDecoratorModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -68,7 +51,7 @@ namespace Intent.Modelers.Services.CQRS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((QueryModel)obj);
+            return Equals((TemplateDecoratorModel)obj);
         }
 
         public override int GetHashCode()

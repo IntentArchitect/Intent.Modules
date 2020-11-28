@@ -217,11 +217,63 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="fd5e7401-fa68-4ce2-8387-e43075477cde" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiPackageExtensionModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiPackageExtensionModel</display>
+      <isAbstract>false</isAbstract>
+      <order>19</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="7b2e8524-c850-4388-82e9-823e2b77333f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.TemplateDecorator</name>
+      <display>ModuleBuilder.Templates.TemplateDecorator</display>
+      <isAbstract>false</isAbstract>
+      <order>20</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="0585aa90-ee4d-4cf7-9512-a582119a9181" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.TemplateDecoratorContract</name>
+      <display>ModuleBuilder.Templates.TemplateDecoratorContract</display>
+      <isAbstract>false</isAbstract>
+      <order>21</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="11f6d1a5-64d7-468b-b1e8-ec71b47fdbef" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
+      <display>ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
+      <isAbstract>false</isAbstract>
+      <order>22</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
     <childElement id="1ae7e8f1-c31c-4477-b4ae-cfd002ad2315" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>Api</name>
       <display>Api</display>
       <isAbstract>false</isAbstract>
-      <order>19</order>
+      <order>23</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
@@ -234,7 +286,7 @@
       <name>Decorators</name>
       <display>Decorators</display>
       <isAbstract>false</isAbstract>
-      <order>20</order>
+      <order>24</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
@@ -247,7 +299,7 @@
       <name>DesignerConfig</name>
       <display>DesignerConfig</display>
       <isAbstract>false</isAbstract>
-      <order>21</order>
+      <order>25</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
@@ -260,7 +312,7 @@
       <name>IModSpec</name>
       <display>IModSpec</display>
       <isAbstract>false</isAbstract>
-      <order>22</order>
+      <order>26</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>
@@ -273,7 +325,7 @@
       <name>Templates</name>
       <display>Templates</display>
       <isAbstract>false</isAbstract>
-      <order>23</order>
+      <order>27</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>823b06dd-dc3f-47f4-9e85-81da6304659c</parentFolderId>

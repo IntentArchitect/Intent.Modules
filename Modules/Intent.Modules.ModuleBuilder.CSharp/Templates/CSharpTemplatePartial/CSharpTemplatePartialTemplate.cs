@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class CSharpTemplatePartialTemplate : CSharpTemplateBase<CSharpTemplateModel>
+    public partial class CSharpTemplatePartialTemplate : CSharpTemplateBase<Intent.ModuleBuilder.CSharp.Api.CSharpTemplateModel>
     {
 #line hidden
         /// <summary>
@@ -58,15 +58,15 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             
             #line default
             #line hidden
-            this.Write(" : CSharpTemplateBase<");
+            this.Write(" : ");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseType()));
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
-                    "teId = \"");
+            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templat" +
+                    "eId = \"");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));

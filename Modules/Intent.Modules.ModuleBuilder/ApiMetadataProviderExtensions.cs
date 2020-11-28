@@ -26,13 +26,6 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
-        public static IList<DecoratorModel> GetDecoratorModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(DecoratorModel.SpecializationTypeId)
-                .Select(x => new DecoratorModel(x))
-                .ToList();
-        }
-
         public static IList<DesignerModel> GetDesignerModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(DesignerModel.SpecializationTypeId)
@@ -114,6 +107,20 @@ namespace Intent.ModuleBuilder.Api
         {
             return designer.GetElementsOfType(ScriptModel.SpecializationTypeId)
                 .Select(x => new ScriptModel(x))
+                .ToList();
+        }
+
+        public static IList<TemplateDecoratorModel> GetTemplateDecoratorModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(TemplateDecoratorModel.SpecializationTypeId)
+                .Select(x => new TemplateDecoratorModel(x))
+                .ToList();
+        }
+
+        public static IList<TemplateDecoratorContractModel> GetTemplateDecoratorContractModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
+                .Select(x => new TemplateDecoratorContractModel(x))
                 .ToList();
         }
 

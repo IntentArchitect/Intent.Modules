@@ -49,11 +49,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DecoratorModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>DecoratorModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\DesignerExtensionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>DesignerExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -291,6 +286,16 @@
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\StereotypesVisualSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>StereotypesVisualSettingsModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\TemplateDecoratorContractModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>TemplateDecoratorContractModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Api\TemplateDecoratorModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>TemplateDecoratorModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
@@ -566,6 +571,66 @@
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/FactoryExtension/FactoryExtensionTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecorator/TemplateDecoratorTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecorator/TemplateDecoratorTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecorator/TemplateDecoratorTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecorator/TemplateDecoratorTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplateRegistration.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplate.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplate.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplate.tt</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplate.tt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplatePartial.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplatePartial.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplateRegistration.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

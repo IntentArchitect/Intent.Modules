@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="CSharpTemplateBase<CSharpTemplateModel>" #>
+<#@ template language="C#" inherits="CSharpTemplateBase<Intent.ModuleBuilder.CSharp.Api.CSharpTemplateModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
@@ -24,7 +24,7 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class <#= ClassName #> : CSharpTemplateBase<<#= GetModelType() #>>
+    partial class <#= ClassName #> : <#= GetBaseType() #>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
