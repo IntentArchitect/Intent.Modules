@@ -6,6 +6,7 @@ using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecorator;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -23,6 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
         public TemplateDecoratorRegistrationTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) 
             : base(TemplateId, outputTarget, model)
         {
+            AddTypeSource(TemplateDecoratorContractTemplate.TemplateId);
         }
 
         protected override CSharpFileConfig DefineFileConfig()
@@ -37,14 +39,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
             return GetTypeName(TemplateDecoratorTemplate.TemplateId, Model);
         }
 
+        private string GetDecoratorContractTypeName()
+        {
+            return GetTypeName(Model.TypeReference);
+        }
+
         private string GetTemplateTypeName()
         {
             return ((IElement) Model.TypeReference.Element).ParentElement.Name.RemoveSuffix("Template") + "Template";
-        }
-
-        private string GetDecoratorContractTypeName()
-        {
-            return Model.TypeReference.Element.Name;
         }
     }
 }

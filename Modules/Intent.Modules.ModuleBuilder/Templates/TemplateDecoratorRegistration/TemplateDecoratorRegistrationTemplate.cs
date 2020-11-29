@@ -47,7 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
             
             #line default
             #line hidden
-            this.Write(".Identifier)]\r\n    public class ");
+            this.Write(".DecoratorId)]\r\n    public class ");
             
             #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -96,7 +96,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
             
             #line default
             #line hidden
-            this.Write(".Identifier;\r\n    }\r\n}");
+            this.Write(".DecoratorId;\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

@@ -15,7 +15,7 @@ using Intent.Modules.Common.Registrations;
 
 namespace <#= Namespace #>
 {
-    [Description(<#= GetDecoratorTypeName() #>.Identifier)]
+    [Description(<#= GetDecoratorTypeName() #>.DecoratorId)]
     public class <#= ClassName #> : DecoratorRegistration<<#= GetTemplateTypeName() #>, <#= GetDecoratorContractTypeName() #>>
     {
         public override <#= GetDecoratorContractTypeName() #> CreateDecoratorInstance(<#= GetTemplateTypeName() #> template, IApplication application)
@@ -23,6 +23,6 @@ namespace <#= Namespace #>
             return new <#= GetDecoratorTypeName() #>(template);
         }
 
-        public override string DecoratorId => <#= GetDecoratorTypeName() #>.Identifier;
+        public override string DecoratorId => <#= GetDecoratorTypeName() #>.DecoratorId;
     }
 }

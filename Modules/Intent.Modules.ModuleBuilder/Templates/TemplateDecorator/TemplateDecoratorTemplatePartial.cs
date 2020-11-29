@@ -7,6 +7,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -23,6 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
 
         public TemplateDecoratorTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) : base(TemplateId, outputTarget, model)
         {
+            AddTypeSource(TemplateDecoratorContractTemplate.TemplateId);
         }
 
         protected override CSharpFileConfig DefineFileConfig()
