@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
 
         private string GetTemplateTypeName()
         {
-            return ((IElement) Model.TypeReference.Element).ParentElement.Name.RemoveSuffix("Template") + "Template";
+            return ((IElement)Model.TypeReference.Element).ParentElement.Name.RemoveSuffix("Template") + "Template";
         }
     }
 }

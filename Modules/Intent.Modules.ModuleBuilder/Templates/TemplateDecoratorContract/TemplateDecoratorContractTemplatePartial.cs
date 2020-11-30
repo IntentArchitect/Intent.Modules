@@ -28,8 +28,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract
         {
             return new CSharpFileConfig(
                 className: $"{Model.Name}",
-                @namespace: $"{string.Join(".", new [] { OutputTarget.GetNamespace() }.Concat(Model.Template.GetParentFolderNames()))}.{Model.Template.Name}",
-                relativeLocation: $"{string.Join("/", Model.Template.GetParentFolderNames().Concat(new [] { Model.Template.Name }))}");
+                @namespace: $"{string.Join(".", new[] { OutputTarget.GetNamespace() }.Concat(Model.Template.GetParentFolderNames()))}.{Model.Template.Name}",
+                relativeLocation: $"{string.Join("/", Model.Template.GetParentFolderNames().Concat(new[] { Model.Template.Name }))}");
         }
     }
 }
