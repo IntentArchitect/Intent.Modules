@@ -32,16 +32,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
+            this.Write("using Intent.Templates;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnames" +
+                    "pace ");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public abstract class ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default

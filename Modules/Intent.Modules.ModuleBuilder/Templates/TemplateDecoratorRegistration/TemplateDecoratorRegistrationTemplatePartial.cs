@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecorator;
@@ -19,7 +20,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "ModuleBuilder.Templates.TemplateDecoratorRegistration";
 
-        public TemplateDecoratorRegistrationTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) : base(TemplateId, outputTarget, model)
+        public TemplateDecoratorRegistrationTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) 
+            : base(TemplateId, outputTarget, model)
         {
         }
 

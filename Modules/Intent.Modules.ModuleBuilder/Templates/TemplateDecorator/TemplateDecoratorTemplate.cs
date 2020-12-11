@@ -67,7 +67,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
             
             #line default
             #line hidden
-            this.Write(" _template;\r\n\r\n        public MediatRControllerDecorator(");
+            this.Write(" _template;\r\n\r\n        public ");
+            
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("(");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateTypeName()));

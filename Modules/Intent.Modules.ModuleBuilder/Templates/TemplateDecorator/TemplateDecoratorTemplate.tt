@@ -19,7 +19,7 @@ namespace <#= Namespace #>
 
         private readonly <#= GetTemplateTypeName() #> _template;
 
-        public MediatRControllerDecorator(<#= GetTemplateTypeName() #> template)
+        public <#= ClassName #>(<#= GetTemplateTypeName() #> template)
         {
             _template = template;
         }

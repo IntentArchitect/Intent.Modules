@@ -7,13 +7,14 @@
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Ignore)]
 
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge)]
-    public class <#= ClassName #> : ITemplateDecorator
+    public abstract class <#= ClassName #> : ITemplateDecorator
     {
         public int Priority { get; protected set; } = 0;
 
