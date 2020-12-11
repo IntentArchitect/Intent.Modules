@@ -57,5 +57,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         [IntentManaged(Mode.Ignore)]
         public IIconModel Icon => this.GetApplicationTemplateSettings().Icon();
+
+        [IntentManaged(Mode.Ignore)]
+        public string DefaultName => this.GetApplicationTemplateSettings().DefaultName() ?? "NewApplication";
+
+        [IntentManaged(Mode.Ignore)]
+        public string DefaultOutputLocation => this.GetApplicationTemplateSettings().DefaultOutputLocation() ?? "";
     }
 }

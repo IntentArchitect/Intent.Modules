@@ -20,11 +20,67 @@
     </stereotype>
   </stereotypes>
   <childElements>
+    <childElement id="61bb0db1-f3c7-47c5-b7eb-cf6b4be865f3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>1</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="944bb248-d558-4df0-a753-39bb010c0fd7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>2</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="2ad05f24-c71b-47c4-a5b5-906f2c3d3737" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiElementModel</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiElementModel</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>3</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="d4859d81-d2d4-4cfe-a86f-b459f1801081" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiPackageModel</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiPackageModel</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>4</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>
+      <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+      <packageName>ModuleBuilder.CSharp.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
     <childElement id="750539c5-fa66-4a62-9c81-66017cbe0e46" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.Api.ApiAssociationModel</name>
       <display>ModuleBuilder.Templates.Api.ApiAssociationModel</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <order>5</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>
@@ -37,7 +93,7 @@
       <name>ModuleBuilder.Templates.Api.ApiElementExtensionModel</name>
       <display>ModuleBuilder.Templates.Api.ApiElementExtensionModel</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <order>6</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>
@@ -50,7 +106,7 @@
       <name>ModuleBuilder.Templates.Api.ApiElementModel</name>
       <display>ModuleBuilder.Templates.Api.ApiElementModel</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <order>7</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>
@@ -63,7 +119,7 @@
       <name>ModuleBuilder.Templates.Api.ApiPackageModel</name>
       <display>ModuleBuilder.Templates.Api.ApiPackageModel</display>
       <isAbstract>false</isAbstract>
-      <order>4</order>
+      <order>8</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>6994427e-45de-4d7d-b0f6-73454dfa9229</parentFolderId>

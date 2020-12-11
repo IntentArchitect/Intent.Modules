@@ -15,7 +15,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
     partial class ApiPackageModelTemplate : CSharpTemplateBase<PackageSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiPackageModel";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiPackageModel";
 
         public ApiPackageModelTemplate(IOutputTarget project, PackageSettingsModel model) : base(TemplateId, project, model)
         {

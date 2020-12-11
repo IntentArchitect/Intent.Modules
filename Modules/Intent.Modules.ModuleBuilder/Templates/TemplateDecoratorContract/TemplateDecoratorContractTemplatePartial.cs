@@ -18,7 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract
     partial class TemplateDecoratorContractTemplate : CSharpTemplateBase<TemplateDecoratorContractModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.TemplateDecoratorContract";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateDecoratorContract";
 
         public TemplateDecoratorContractTemplate(IOutputTarget outputTarget, TemplateDecoratorContractModel model) : base(TemplateId, outputTarget, model)
         {

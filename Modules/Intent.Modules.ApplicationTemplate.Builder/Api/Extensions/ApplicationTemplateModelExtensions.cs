@@ -58,6 +58,16 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<string>("Authors");
             }
 
+            public string DefaultName()
+            {
+                return _stereotype.GetProperty<string>("Default Name");
+            }
+
+            public string DefaultOutputLocation()
+            {
+                return _stereotype.GetProperty<string>("Default Output Location");
+            }
+
             public string Priority()
             {
                 return _stereotype.GetProperty<string>("Priority");

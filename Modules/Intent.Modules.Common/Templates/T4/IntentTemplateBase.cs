@@ -182,7 +182,8 @@ namespace Intent.Modules.Common.Templates
 
         public virtual string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
-            return NormalizeTypeName(GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName());
+            var name = GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName();
+            return name != null ? NormalizeTypeName(name) : null;
         }
 
         public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b9174071-2358-407a-b78b-f7aba4950739" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
-  <name>FactoryExtentions</name>
-  <display>FactoryExtentions</display>
+<class id="811d6b80-b558-41f4-a764-97404db4a4a8" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Templates</name>
+  <display>Templates</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
@@ -20,28 +20,15 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="2eab1e86-03b2-49d5-8ebd-0532627c7aa6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.FactoryExtension</name>
-      <display>Intent.ModuleBuilder.Templates.FactoryExtension</display>
+    <childElement id="b02d4562-9559-49f4-92dd-4bfece3bcf03" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>b9174071-2358-407a-b78b-f7aba4950739</parentFolderId>
-      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
-      <packageName>ModuleBuilder.VisualStudio</packageName>
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="39fe5966-b312-443f-86e9-59423f08e03c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>ModuleBuilder.Templates.FactoryExtension</name>
-      <display>ModuleBuilder.Templates.FactoryExtension</display>
-      <isAbstract>false</isAbstract>
-      <order>1</order>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>b9174071-2358-407a-b78b-f7aba4950739</parentFolderId>
+      <parentFolderId>811d6b80-b558-41f4-a764-97404db4a4a8</parentFolderId>
       <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
       <packageName>ModuleBuilder.VisualStudio</packageName>
       <stereotypes />

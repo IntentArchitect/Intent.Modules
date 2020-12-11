@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
     partial class ApiMetadataProviderExtensionsTemplate : CSharpTemplateBase<IList<ElementSettingsModel>>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions";
 
         public ApiMetadataProviderExtensionsTemplate(IOutputTarget project, IList<ElementSettingsModel> model) : base(TemplateId, project, model)
         {

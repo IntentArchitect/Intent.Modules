@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
     partial class ApiMetadataDesignerExtensionsTemplate : CSharpTemplateBase<IList<DesignerModel>>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions";
 
         public ApiMetadataDesignerExtensionsTemplate(IOutputTarget project, IList<DesignerModel> model) : base(TemplateId, project, model)
         {

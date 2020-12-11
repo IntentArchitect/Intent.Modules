@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
     partial class FactoryExtensionTemplate : CSharpTemplateBase<FactoryExtensionModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.FactoryExtension";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.FactoryExtension";
 
         public FactoryExtensionTemplate(IOutputTarget outputTarget, FactoryExtensionModel model) : base(TemplateId, outputTarget, model)
         {

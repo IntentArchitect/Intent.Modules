@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
     partial class TemplateDecoratorTemplate : CSharpTemplateBase<TemplateDecoratorModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.TemplateDecorator";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateDecorator";
 
         public TemplateDecoratorTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) : base(TemplateId, outputTarget, model)
         {

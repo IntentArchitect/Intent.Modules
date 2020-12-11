@@ -63,22 +63,14 @@
       <role>Decorators</role>
       <location>Decorators</location>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" externalReference="ff86b4fd-d613-4983-8066-605f97b58581">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" externalReference="ff86b4fd-d613-4983-8066-605f97b58581">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiAssociationModel" externalReference="1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5">
-      <config>
-        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
-        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
-      </config>
-      <role>Api</role>
-      <location>Api</location>
-    </template>
-    <template id="ModuleBuilder.Templates.Api.ApiElementModel" externalReference="f9800e0d-99ea-4d27-850b-4e6d07250ede">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiAssociationModel" externalReference="1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -86,7 +78,15 @@
       <role>Api</role>
       <location>Api</location>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" externalReference="d8b63ecf-82cf-466b-8b57-8a70c88c51f6">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiElementModel" externalReference="f9800e0d-99ea-4d27-850b-4e6d07250ede">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+      <location>Api</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions" externalReference="d8b63ecf-82cf-466b-8b57-8a70c88c51f6">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -94,7 +94,7 @@
       <role>Api</role>
       <location>Api/Extensions</location>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiElementModelExtensions" externalReference="3877283b-1f5c-4171-a8da-55595c1905b8">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" externalReference="3877283b-1f5c-4171-a8da-55595c1905b8">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -102,29 +102,21 @@
       <role>Api</role>
       <location>Api/Extensions</location>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" externalReference="11b1ac64-5537-4301-9a1e-d8de08c2786c">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" externalReference="11b1ac64-5537-4301-9a1e-d8de08c2786c">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" externalReference="51ff3bbd-74dc-4f6c-996a-c8502814570a">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" externalReference="51ff3bbd-74dc-4f6c-996a-c8502814570a">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiPackageModel" externalReference="12d0509f-a513-4263-9c31-3786f61b44bd">
-      <config>
-        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
-        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
-      </config>
-      <role>Api</role>
-      <location>Api</location>
-    </template>
-    <template id="ModuleBuilder.Templates.Api.ApiElementExtensionModel" externalReference="e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiPackageModel" externalReference="12d0509f-a513-4263-9c31-3786f61b44bd">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -132,7 +124,15 @@
       <role>Api</role>
       <location>Api</location>
     </template>
-    <template id="ModuleBuilder.Templates.FactoryExtension" externalReference="8d856f7d-a6e8-45dd-9cba-843d984cb41a">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel" externalReference="e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+      <location>Api</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Templates.FactoryExtension" externalReference="8d856f7d-a6e8-45dd-9cba-843d984cb41a">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -140,14 +140,14 @@
       <role>Templates</role>
       <location>FactoryExtentions</location>
     </template>
-    <template id="ModuleBuilder.Templates.Api.ApiPackageExtensionModel" externalReference="5a307c40-0d05-4dac-a83e-6a3a553c5b9e">
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" externalReference="5a307c40-0d05-4dac-a83e-6a3a553c5b9e">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
     </template>
-    <template id="ModuleBuilder.Templates.TemplateDecorator" externalReference="f5648642-e1bb-43fa-b522-150cc3878589">
+    <template id="Intent.ModuleBuilder.Templates.TemplateDecorator" externalReference="f5648642-e1bb-43fa-b522-150cc3878589">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -155,7 +155,7 @@
       <role>Decorators</role>
       <location>Decorators</location>
     </template>
-    <template id="ModuleBuilder.Templates.TemplateDecoratorContract" externalReference="115b5ff3-8e0f-4712-9384-372eb7c2c168">
+    <template id="Intent.ModuleBuilder.Templates.TemplateDecoratorContract" externalReference="115b5ff3-8e0f-4712-9384-372eb7c2c168">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -163,7 +163,7 @@
       <role>Templates</role>
       <location>Templates</location>
     </template>
-    <template id="ModuleBuilder.Templates.TemplateDecoratorRegistration" externalReference="a1972650-0420-42cf-9e21-54c0c653d5b4">
+    <template id="Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration" externalReference="a1972650-0420-42cf-9e21-54c0c653d5b4">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />

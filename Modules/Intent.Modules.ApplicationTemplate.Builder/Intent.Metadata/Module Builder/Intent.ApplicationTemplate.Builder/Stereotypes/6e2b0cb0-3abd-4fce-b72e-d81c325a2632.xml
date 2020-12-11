@@ -62,6 +62,26 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="9c2430bc-5afa-414a-b862-2432fd1e4e5a">
+      <name>Default Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>NewApplication</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="61743c96-5b08-4925-8902-28db41244bf3">
+      <name>Default Output Location</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="f1862f29-1c35-4681-a2e3-33f5967e0f26">
       <name>Priority</name>
       <type>string</type>
@@ -80,6 +100,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>return true</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

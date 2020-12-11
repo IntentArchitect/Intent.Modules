@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
     partial class ApiElementExtensionModelTemplate : CSharpTemplateBase<ElementExtensionModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementExtensionModel";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel";
 
         public ApiElementExtensionModelTemplate(IOutputTarget project, ElementExtensionModel model) : base(TemplateId, project, model)
         {

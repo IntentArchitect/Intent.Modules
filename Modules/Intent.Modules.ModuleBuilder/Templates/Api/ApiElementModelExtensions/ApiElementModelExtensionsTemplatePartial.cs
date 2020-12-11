@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
     {
 
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementModelExtensions";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions";
 
         public ApiElementModelExtensionsTemplate(IOutputTarget project, ExtensionModel model) : base(TemplateId, project, model)
         {

@@ -34,6 +34,7 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)]
         public TemplateRegistrationModel Template => new TemplateRegistrationModel(InternalElement.ParentElement);
 
         public override string ToString()

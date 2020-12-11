@@ -16,7 +16,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
     partial class ApiAssociationModelTemplate : CSharpTemplateBase<AssociationSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiAssociationModel";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiAssociationModel";
 
         public ApiAssociationModelTemplate(IOutputTarget project, AssociationSettingsModel model) : base(TemplateId, project, model)
         {

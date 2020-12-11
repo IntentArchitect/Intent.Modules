@@ -3,13 +3,22 @@
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
   <packageId>60552236-e866-429d-aebd-855a2058b995</packageId>
   <packageName>Modelers.Domain.VisualStudio</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="976be749-2c1d-405d-9caf-a24061f04e17" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
@@ -28,7 +37,33 @@
       <name>Intent.ModuleBuilder.DecoratorTemplate</name>
       <display>Intent.ModuleBuilder.DecoratorTemplate</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>1</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>
+      <packageId>60552236-e866-429d-aebd-855a2058b995</packageId>
+      <packageName>Modelers.Domain.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="94f5f5e0-b6c5-4930-b07b-49c15434651a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.TemplateDecorator</name>
+      <display>ModuleBuilder.Templates.TemplateDecorator</display>
+      <isAbstract>false</isAbstract>
+      <order>2</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>
+      <packageId>60552236-e866-429d-aebd-855a2058b995</packageId>
+      <packageName>Modelers.Domain.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="b150a8b6-c42f-40ff-b7da-e4be3a2ce2e8" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
+      <display>ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
+      <isAbstract>false</isAbstract>
+      <order>3</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9872d6a3-09d5-47cf-b012-6e1bf079c634</parentFolderId>

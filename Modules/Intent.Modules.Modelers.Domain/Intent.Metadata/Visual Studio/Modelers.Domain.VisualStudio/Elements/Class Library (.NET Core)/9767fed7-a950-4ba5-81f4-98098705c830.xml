@@ -3,7 +3,7 @@
   <name>Intent.Modules.Modelers.Domain</name>
   <display>Intent.Modules.Modelers.Domain</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>60552236-e866-429d-aebd-855a2058b995</parentFolderId>
@@ -26,7 +26,7 @@
       <name>Intent.ModuleBuilder.IModeSpecFile</name>
       <display>Intent.ModuleBuilder.IModeSpecFile</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>5</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -39,7 +39,7 @@
       <name>Intent.ModuleBuilder.ReadMe</name>
       <display>Intent.ModuleBuilder.ReadMe</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>6</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -52,7 +52,7 @@
       <name>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
       <display>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>7</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -65,7 +65,7 @@
       <name>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</name>
       <display>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>8</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -78,7 +78,20 @@
       <name>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
       <display>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>9</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
+      <packageId>60552236-e866-429d-aebd-855a2058b995</packageId>
+      <packageName>Modelers.Domain.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="7feccf6d-df3c-42b0-aea7-14f17606f338" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiPackageExtensionModel</name>
+      <display>ModuleBuilder.Templates.Api.ApiPackageExtensionModel</display>
+      <isAbstract>false</isAbstract>
+      <order>10</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -91,7 +104,7 @@
       <name>Api</name>
       <display>Api</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>11</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -104,7 +117,7 @@
       <name>Decorators</name>
       <display>Decorators</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>12</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -117,7 +130,7 @@
       <name>DesignerConfig</name>
       <display>DesignerConfig</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>13</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -130,7 +143,7 @@
       <name>IModSpec</name>
       <display>IModSpec</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>14</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>
@@ -143,7 +156,7 @@
       <name>Templates</name>
       <display>Templates</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>15</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9767fed7-a950-4ba5-81f4-98098705c830</parentFolderId>

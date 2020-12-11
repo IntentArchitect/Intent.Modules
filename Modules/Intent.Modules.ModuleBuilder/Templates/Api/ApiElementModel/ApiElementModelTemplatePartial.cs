@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         public List<AssociationSettingsModel> AssociationSettings { get; }
 
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Templates.Api.ApiElementModel";
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiElementModel";
 
         public ApiElementModelTemplate(IOutputTarget project, ElementSettingsModel model, List<AssociationSettingsModel> associationSettings) : base(TemplateId, project, model)
         {

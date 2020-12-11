@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common.Types.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -10,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DiagramModel : IMetadataModel, IHasStereotypes, IHasName
+    public class DiagramModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public const string SpecializationType = "Diagram";
         protected readonly IElement _element;
@@ -65,5 +66,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
         public const string SpecializationTypeId = "4d66fecd-e9b8-436f-aa50-c59040ad0879";
+
+        public FolderModel Folder { get; }
     }
 }
