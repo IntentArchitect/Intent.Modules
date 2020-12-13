@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="811d6b80-b558-41f4-a764-97404db4a4a8" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
-  <name>Templates</name>
-  <display>Templates</display>
+<class id="5380e687-4772-45d7-8bfa-1e9b57ed900e" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>FactoryExtentions</name>
+  <display>FactoryExtentions</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
-  <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
-  <packageName>ModuleBuilder.VisualStudio</packageName>
+  <parentFolderId>653969db-6597-4b32-a1f6-029c69da6903</parentFolderId>
+  <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+  <packageName>Intent.Modules</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
       <addedByDefault>true</addedByDefault>
@@ -20,17 +20,17 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="b02d4562-9559-49f4-92dd-4bfece3bcf03" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</name>
-      <display>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</display>
+    <childElement id="a83ae28d-2a59-430a-8302-7d1fe1f6ad91" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.FactoryExtension</name>
+      <display>Intent.ModuleBuilder.Templates.FactoryExtension</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>811d6b80-b558-41f4-a764-97404db4a4a8</parentFolderId>
-      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
-      <packageName>ModuleBuilder.VisualStudio</packageName>
+      <parentFolderId>5380e687-4772-45d7-8bfa-1e9b57ed900e</parentFolderId>
+      <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+      <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />
     </childElement>

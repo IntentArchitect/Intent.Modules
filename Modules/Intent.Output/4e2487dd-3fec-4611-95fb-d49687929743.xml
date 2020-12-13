@@ -34,6 +34,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.TypeScript\PackageExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>PackageExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.TypeScript\README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>

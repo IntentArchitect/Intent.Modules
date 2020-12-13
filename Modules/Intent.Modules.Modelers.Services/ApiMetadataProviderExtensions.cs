@@ -6,7 +6,7 @@ using Intent.Modelers.Services.Api;
 using System.Linq;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace Intent.Modelers.Services.Api

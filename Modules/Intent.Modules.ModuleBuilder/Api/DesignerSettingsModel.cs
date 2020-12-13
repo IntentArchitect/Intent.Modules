@@ -8,7 +8,7 @@ using Intent.Modules.Common;
 using IconType = Intent.IArchitect.Common.Types.IconType;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.ModuleBuilder.Api

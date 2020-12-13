@@ -2,23 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.Types.Api;
+using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.TypeScript.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel", Version = "1.0")]
 
-namespace Intent.ModuleBuilder.TypeScript.Api
+namespace Intent.Modules.ModuleBuilder.TypeScript
 {
     [IntentManaged(Mode.Merge)]
-    public class FolderExtensionModel : FolderModel
+    public class PackageExtensionModel : IntentModuleModel
     {
         [IntentManaged(Mode.Ignore)]
-        public FolderExtensionModel(IElement element) : base(element)
+        public PackageExtensionModel(IPackage package) : base(package)
         {
         }
 
-        public IList<TypescriptFileTemplateModel> TypescriptTemplates => _element.ChildElements
+        public IList<TypescriptFileTemplateModel> TypescriptTemplates => UnderlyingPackage.ChildElements
             .Where(x => x.SpecializationType == TypescriptFileTemplateModel.SpecializationType)
             .Select(x => new TypescriptFileTemplateModel(x))
             .ToList();

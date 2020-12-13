@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
 {
@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration";
 
-        public TemplateDecoratorRegistrationTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) 
+        public TemplateDecoratorRegistrationTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model)
             : base(TemplateId, outputTarget, model)
         {
             AddTypeSource(TemplateDecoratorContractTemplate.TemplateId);

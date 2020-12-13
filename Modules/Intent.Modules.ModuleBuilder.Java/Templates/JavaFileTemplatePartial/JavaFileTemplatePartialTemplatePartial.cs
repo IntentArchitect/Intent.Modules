@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 {
@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
     partial class JavaFileTemplatePartialTemplate : CSharpTemplateBase<JavaFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Java.Templates.JavaFileTemplatePartial";
+        public const string TemplateId = "Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial";
 
         public JavaFileTemplatePartialTemplate(IOutputTarget project, JavaFileTemplateModel model) : base(TemplateId, project, model)
         {
@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Project.Application.Name}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{FolderNamespace}";
         }
 
         private string GetModelType()

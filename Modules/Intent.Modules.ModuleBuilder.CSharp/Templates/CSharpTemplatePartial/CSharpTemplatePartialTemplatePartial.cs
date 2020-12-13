@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 {
@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
     partial class CSharpTemplatePartialTemplate : CSharpTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
+        public const string TemplateId = "Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
 
         public CSharpTemplatePartialTemplate(IOutputTarget project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {

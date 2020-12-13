@@ -13,7 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaTemplatePreProcessedFi
     {
         private readonly IMetadataManager _metadataManager;
 
-        public override string TemplateId => "ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4";
+        public override string TemplateId => "Intent.ModuleBuilder.Java.Templates.JavaTemplate.PreProcessT4";
 
         public JavaTemplatePreProcessedFileRegistrations(IMetadataManager metadataManager)
         {

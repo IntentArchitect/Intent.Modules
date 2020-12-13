@@ -1,4 +1,4 @@
-<#@ template language="C#" inherits="CSharpTemplateBase<JavaFileTemplateModel>" #>
+<#@ template language="C#" inherits="CSharpTemplateBase<Intent.ModuleBuilder.Java.Api.JavaFileTemplateModel>" #>
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>

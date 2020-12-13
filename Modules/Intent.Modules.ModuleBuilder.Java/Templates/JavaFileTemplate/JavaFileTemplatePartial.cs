@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
     partial class JavaFileTemplate : IntentFileTemplateBase<JavaFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Java.Templates.JavaFileTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.Java.Templates.JavaFileTemplate";
 
         public JavaFileTemplate(IOutputTarget project, JavaFileTemplateModel model) : base(TemplateId, project, model)
         {

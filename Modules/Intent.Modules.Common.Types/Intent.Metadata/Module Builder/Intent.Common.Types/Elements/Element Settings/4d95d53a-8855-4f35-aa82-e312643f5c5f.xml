@@ -3,7 +3,7 @@
   <name>Folder</name>
   <display>Folder</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55d06096-83fe-4acf-86ef-586d254e5170</parentFolderId>

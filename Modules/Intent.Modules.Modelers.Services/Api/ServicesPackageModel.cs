@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 using EnumModel = Intent.Modelers.Services.Api.EnumModel;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
 
 namespace Intent.Modelers.Services.Api
 {

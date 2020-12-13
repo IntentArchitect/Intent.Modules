@@ -28,6 +28,11 @@
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Java.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
+      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\IntentModuleExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
       <ProjectId>bdaa5db3-cdd5-4572-9680-07a7262dd842</ProjectId>
       <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder.Java\modelers\Java Types.designer.settings</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Java Types.designer.settings</ProjectRelativeFilePath>

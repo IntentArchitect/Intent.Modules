@@ -36,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Project.ApplicationName()}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{FolderNamespace}";
         }
 
         public override void BeforeTemplateExecution()

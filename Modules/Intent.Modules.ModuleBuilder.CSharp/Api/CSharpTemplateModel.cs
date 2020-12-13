@@ -7,7 +7,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common.Types.Api;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.ModuleBuilder.CSharp.Api
 {

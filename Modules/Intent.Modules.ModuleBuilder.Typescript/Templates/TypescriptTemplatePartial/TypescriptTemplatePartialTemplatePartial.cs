@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial
 {
@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
     partial class TypescriptTemplatePartialTemplate : CSharpTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial";
+        public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial";
 
         public TypescriptTemplatePartialTemplate(IOutputTarget project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
         public string GetTemplateId()
         {
-            return $"{Project.Application.Name}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{FolderNamespace}";
         }
 
         private string GetModelType()

@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Project.Application.Name}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{FolderNamespace}";
         }
 
         private string GetModelType()

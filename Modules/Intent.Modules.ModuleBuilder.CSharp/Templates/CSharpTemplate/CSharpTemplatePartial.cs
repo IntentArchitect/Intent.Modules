@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
     public partial class CSharpTemplate : IntentFileTemplateBase<CSharpTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.CSharp.Templates.CSharpTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate";
 
         public CSharpTemplate(IOutputTarget project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {

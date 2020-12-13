@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="a10b032e-23fc-41f4-8265-2b26f70adc19" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+<class id="a10b032e-23fc-41f4-8265-2b26f70adc19" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
   <name>Decorators</name>
   <display>Decorators</display>
   <isAbstract>false</isAbstract>
@@ -38,6 +38,34 @@
       <display>Intent.ModuleBuilder.DecoratorTemplate</display>
       <isAbstract>false</isAbstract>
       <order>1</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>a10b032e-23fc-41f4-8265-2b26f70adc19</parentFolderId>
+      <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="f558ec06-9a88-41a1-9cf7-153af08c121d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateDecorator</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateDecorator</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>2</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>a10b032e-23fc-41f4-8265-2b26f70adc19</parentFolderId>
+      <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="a08ad01f-7aba-429f-a897-cb3863d23d62" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>3</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a10b032e-23fc-41f4-8265-2b26f70adc19</parentFolderId>

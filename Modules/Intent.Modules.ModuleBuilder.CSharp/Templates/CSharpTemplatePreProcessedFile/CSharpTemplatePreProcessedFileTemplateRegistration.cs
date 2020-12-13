@@ -19,7 +19,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePreProcess
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => "ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed";
+        public override string TemplateId => "Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed";
 
         public override ITemplate CreateTemplateInstance(IOutputTarget project, CSharpTemplateModel model)
         {
