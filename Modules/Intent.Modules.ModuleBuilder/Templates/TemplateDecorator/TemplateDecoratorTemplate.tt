@@ -8,13 +8,14 @@
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 
-[assembly: DefaultIntentManaged(Mode.Ignore)]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge)]
     public class <#= ClassName #> : <#= GetTypeName(Model) #>
     {
+        [IntentManaged(Mode.Fully)]
         public const string DecoratorId = "<#= GetDecoratorId() #>";
 
         private readonly <#= GetTemplateTypeName() #> _template;

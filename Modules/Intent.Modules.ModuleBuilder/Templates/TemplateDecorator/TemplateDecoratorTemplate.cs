@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnamespace ");
+            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
             #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
@@ -53,30 +53,31 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
             
             #line default
             #line hidden
-            this.Write("\r\n    {\r\n        public const string DecoratorId = \"");
+            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Decorat" +
+                    "orId = \"");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDecoratorId()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        private readonly ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateTypeName()));
             
             #line default
             #line hidden
             this.Write(" _template;\r\n\r\n        public ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateTypeName()));
             
             #line default

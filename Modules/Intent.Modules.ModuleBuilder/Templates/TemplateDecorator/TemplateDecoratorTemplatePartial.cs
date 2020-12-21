@@ -43,7 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
 
         private string GetDecoratorId()
         {
-            return $"{Project.ApplicationName()}.{Model.Name}";
+            return $"{Model.GetModule().Name}.{Model.Name}";
         }
 
         private string GetTemplateTypeName()

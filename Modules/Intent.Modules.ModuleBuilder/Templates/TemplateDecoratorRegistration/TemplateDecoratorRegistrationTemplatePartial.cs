@@ -25,6 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
             : base(TemplateId, outputTarget, model)
         {
             AddTypeSource(TemplateDecoratorContractTemplate.TemplateId);
+            AddNugetDependency(NugetPackages.IntentModulesCommon);
         }
 
         protected override CSharpFileConfig DefineFileConfig()

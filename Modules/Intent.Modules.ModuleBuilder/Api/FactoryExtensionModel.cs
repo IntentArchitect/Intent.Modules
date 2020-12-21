@@ -34,6 +34,12 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)]
+        public IntentModuleModel GetModule()
+        {
+            return new IntentModuleModel(_element.Package);
+        }
+
         public override string ToString()
         {
             return _element.ToString();

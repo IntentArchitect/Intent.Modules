@@ -38,7 +38,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
 
         private string GetId()
         {
-            return $"{Project.ApplicationName().ToCSharpNamespace()}.{Model.Name.ToCSharpIdentifier()}";
+            return $"{Model.GetModule().Name}.{Model.Name.ToCSharpIdentifier()}";
         }
     }
 }

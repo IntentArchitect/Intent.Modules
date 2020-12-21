@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(
-                fileName: OutputTarget.GetTargetPath()[0].Name,
+                fileName: ModuleModel.Name,
                 fileExtension: "imodspec");
         }
 

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Common.Types.Api
 {
@@ -23,7 +22,7 @@ namespace Intent.Modules.Common.Types.Api
 
         public static IList<string> GetParentFolderNames(this IHasFolder model)
         {
-            return model.GetParentFolders().Select(x => x.Name).ToList();
+            return model.GetParentFolders().Select(x => x.Name).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
         }
 
         [Obsolete("Use GetParentFolders")]
