@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d16f795a-3ebf-4dd9-9574-9d2521529969" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Decorators</name>
+  <display>Decorators</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>601e229b-c0be-440e-8a38-4553f62d54b9</parentFolderId>
+  <packageId>c023bb5c-7fb8-4e2d-9fd5-ae504020e5bb</packageId>
+  <packageName>Common.Typescript.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="d3716def-4c93-40b3-a10e-8236f1a9c7e4" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
+      <display>Intent.ModuleBuilder.DecoratorRegistration.Template</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d16f795a-3ebf-4dd9-9574-9d2521529969</parentFolderId>
+      <packageId>c023bb5c-7fb8-4e2d-9fd5-ae504020e5bb</packageId>
+      <packageName>Common.Typescript.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="6aecdaf6-2757-4866-bf9c-08742875087a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DecoratorTemplate</name>
+      <display>Intent.ModuleBuilder.DecoratorTemplate</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d16f795a-3ebf-4dd9-9574-9d2521529969</parentFolderId>
+      <packageId>c023bb5c-7fb8-4e2d-9fd5-ae504020e5bb</packageId>
+      <packageName>Common.Typescript.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

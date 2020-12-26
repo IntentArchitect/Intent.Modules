@@ -6,7 +6,7 @@ using Intent.Modelers.Services.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modelers.Types.ServiceProxies.Api
 {
@@ -46,6 +46,10 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        public ServiceProxyDTOModel(IElement element) : base(element, SpecializationType)
+        {
         }
     }
 }

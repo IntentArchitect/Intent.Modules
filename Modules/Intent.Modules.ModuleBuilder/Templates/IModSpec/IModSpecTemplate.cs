@@ -315,15 +315,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 <package>
   <id>{ModuleModel.Name}</id>
   <version>{ModuleModel.GetModuleSettings().Version()}</version>
-  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>A custom module for {OutputTarget.Application.SolutionName}.</summary>
   <description>A custom module for {OutputTarget.Application.SolutionName}.</description>
   <authors>{OutputTarget.Application.SolutionName}</authors>
   <iconUrl></iconUrl>
-  <templates>
-  </templates>
-  <dependencies>
-  </dependencies>
+  <templates></templates>
+  <decorators></decorators>
+  <factoryExtensions></factoryExtensions>
+  <dependencies></dependencies>
   <files>
     <file src=""$outDir$/$id$.dll"" />
     <file src=""$outDir$/$id$.pdb"" />

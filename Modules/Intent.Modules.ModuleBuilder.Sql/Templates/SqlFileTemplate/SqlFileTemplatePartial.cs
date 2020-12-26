@@ -39,7 +39,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
                 relativeLocation: "${FolderPath}/${Model.Name}");
         }
 
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetFolderPath(false).Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
+        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetParentFolders().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
 
         public string FolderPath => string.Join("/", FolderBaseList);
 

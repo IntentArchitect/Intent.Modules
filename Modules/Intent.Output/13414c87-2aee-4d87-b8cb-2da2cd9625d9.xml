@@ -29,13 +29,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.Types.ServiceProxies.csproj</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modelers.Types.ServiceProxies.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modelers.Types.ServiceProxies.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.imodspec</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.Types.ServiceProxies.imodspec</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.Types.ServiceProxies.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>00c285fd-668c-4d5e-b67f-99b8c76032d1</ProjectId>

@@ -147,6 +147,11 @@ namespace Intent.Modules.Common.Templates
             return name;
         }
 
+        public virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference)
+        {
+            return Types.Get(typeReference);
+        }
+
         public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
             return NormalizeTypeName(Types.Get(typeReference, collectionFormat).Name);

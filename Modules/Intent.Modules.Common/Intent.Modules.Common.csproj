@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <PackageId>Intent.Modules.Common</PackageId>
-    <Version>3.0.0-pre.6</Version>
+    <Version>3.0.0</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>
@@ -21,11 +21,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Packager" Version="3.0.0-*">
+    <PackageReference Include="Intent.Packager" Version="3.0.*">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0-*" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.*" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
 

@@ -5,7 +5,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modelers.Types.ServiceProxies.Api
 {
@@ -35,6 +35,12 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
+
+        [IntentManaged(Mode.Ignore)]
+        public IElementMapping Mapping => _element.MappedElement;
+
+        [IntentManaged(Mode.Ignore)]
+        public Services.Api.ParameterModel MappedParameter => Mapping != null ? new Services.Api.ParameterModel((IElement)Mapping.Element) : null;
 
         public override string ToString()
         {

@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
             AddNugetDependency(NugetPackages.IntentCommonSql);
         }
 
-        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
@@ -52,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Sql",
-                moduleVersion: "3.0.0-beta.3"));
+                moduleVersion: "3.0.0"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

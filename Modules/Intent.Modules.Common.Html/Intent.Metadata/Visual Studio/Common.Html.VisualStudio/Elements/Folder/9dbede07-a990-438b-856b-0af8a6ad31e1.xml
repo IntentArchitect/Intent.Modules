@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9dbede07-a990-438b-856b-0af8a6ad31e1" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+  <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+  <packageName>Common.Html.VisualStudio</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="7226224c-c4df-4fa0-bea6-85520f27e2c3" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Templates</name>
+      <display>Templates</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>9dbede07-a990-438b-856b-0af8a6ad31e1</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

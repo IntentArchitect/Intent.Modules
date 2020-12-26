@@ -24,7 +24,6 @@ namespace Intent.Modules.Common.Plugins
                     .ToList();
 
                 templates.ForEach(x => x.BeforeTemplateExecution());
-
             }
         }
 

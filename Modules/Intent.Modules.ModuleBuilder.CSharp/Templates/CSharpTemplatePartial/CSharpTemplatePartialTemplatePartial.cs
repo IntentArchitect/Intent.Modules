@@ -30,7 +30,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         }
 
         public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
-        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.CSharp",
-                moduleVersion: "3.0.0-beta.3"));
+                moduleVersion: "3.0.0"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

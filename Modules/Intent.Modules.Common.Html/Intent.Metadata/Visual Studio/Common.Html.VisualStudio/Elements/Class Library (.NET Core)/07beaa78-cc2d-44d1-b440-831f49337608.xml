@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="07beaa78-cc2d-44d1-b440-831f49337608" type="Class Library (.NET Core)" typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE">
+  <name>Intent.Modules.Common.Html</name>
+  <display>Intent.Modules.Common.Html</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>aee41039-637b-492f-affb-c5651c013c10</parentFolderId>
+  <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+  <packageName>Common.Html.VisualStudio</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
+        <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="f2872d65-d69e-460d-988b-165e2fa6c8ca" isActive="true" />
+        <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="d93bb4cb-ea11-4c65-96ef-e8f0abd8edb0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.IModeSpecFile</name>
+      <display>Intent.ModuleBuilder.IModeSpecFile</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="b011f746-6130-4997-8f9f-e100c6906766" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ReadMe</name>
+      <display>Intent.ModuleBuilder.ReadMe</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="8ca54b27-aa73-4f09-a9cc-3b11a32e2262" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="85eabe34-c5d9-4d0b-b8a2-f08976939782" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="fe9e95ab-de65-4dff-9f50-edd7b550435b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="f85ac32c-4547-4bdd-84cc-cf5740b6eddc" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Api</name>
+      <display>Api</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="9c81a0f6-f826-4c85-8429-f507364dc4c6" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Decorators</name>
+      <display>Decorators</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="bbd99a06-090b-4dbb-8843-182a797b616a" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>DesignerConfig</name>
+      <display>DesignerConfig</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="f0dd3fac-f59c-4b80-a236-f316bb3a3e6e" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>IModSpec</name>
+      <display>IModSpec</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>07beaa78-cc2d-44d1-b440-831f49337608</parentFolderId>
+      <packageId>aee41039-637b-492f-affb-c5651c013c10</packageId>
+      <packageName>Common.Html.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

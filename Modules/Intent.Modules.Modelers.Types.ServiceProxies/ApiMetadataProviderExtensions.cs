@@ -3,10 +3,11 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
 
 namespace Intent.Modelers.Types.ServiceProxies.Api
 {
@@ -46,7 +47,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
             }
 
             return dtos
-                .Where(x => x.SpecializationTypeId == DTOModel.SpecializationTypeId)
+                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId)
                 .Select(x => new ServiceProxyDTOModel((IElement)x, proxy)).ToList()
                 .Distinct()
                 .ToList();
@@ -64,7 +65,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         private static IEnumerable<IElement> GetChildDTOs(this IElement dto)
         {
             var childDTOs = dto.ChildElements
-                .Where(x => x.TypeReference.Element?.SpecializationTypeId == DTOModel.SpecializationTypeId)
+                .Where(x => x.TypeReference.Element is IElement)
                 .Select(x => (IElement)x.TypeReference.Element).ToList();
             foreach (var childDtO in childDTOs.ToList())
             {

@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
 
 
         public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
-        public IList<string> OutputFolders => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolders);
 
         public override ITemplateFileConfig GetTemplateFileConfig()

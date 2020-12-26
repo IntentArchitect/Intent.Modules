@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
         }
 
         public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
-        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
 
         public override string TransformText()

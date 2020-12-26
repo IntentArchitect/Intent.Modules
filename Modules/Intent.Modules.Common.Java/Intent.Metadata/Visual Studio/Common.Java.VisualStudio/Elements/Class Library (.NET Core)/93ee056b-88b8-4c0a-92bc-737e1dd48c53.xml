@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="93ee056b-88b8-4c0a-92bc-737e1dd48c53" type="Class Library (.NET Core)" typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE">
+  <name>Intent.Modules.Common.Java</name>
+  <display>Intent.Modules.Common.Java</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>05ea4a69-1142-4023-a54a-791e1910844a</parentFolderId>
+  <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+  <packageName>Common.Java.VisualStudio</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="5d85edfb-490c-42c2-81ef-c57c0300eb5a" name=".NET Core Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4756bd10-23e2-473b-9957-d7083759cd42" display="Target Multiple Frameworks" value="false" isActive="true" />
+        <property name="ef3e7b17-ba1d-4818-82a2-5a8ad3875d40" display="Target Framework" value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" isActive="true" />
+        <property name="5215b600-32fc-4a6d-af72-9eb88a6f30e7" display="Target Frameworks" value="" isActive="false" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="c8cb3587-916d-4b28-a4b3-42a3b9241ade" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.IModeSpecFile</name>
+      <display>Intent.ModuleBuilder.IModeSpecFile</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="eee6d7d8-cd6b-4dd4-9ed8-da0de65f1874" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.ReadMe</name>
+      <display>Intent.ModuleBuilder.ReadMe</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="8f79bcc2-9387-4316-a025-96eee1e7a4d3" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="4a9455ad-ab2f-4ea6-8996-6b902ce2bf85" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="120e123c-70de-45de-81c4-dbf29f2083bd" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
+      <display>ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="59f3f333-ff08-4565-a3b1-e12a5c3b44a6" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Api</name>
+      <display>Api</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="8e0b8dde-7af7-4401-8eb3-ad74077bec6c" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Decorators</name>
+      <display>Decorators</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="9c430f07-f87d-4ab8-a7ef-76c2325a45d8" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>DesignerConfig</name>
+      <display>DesignerConfig</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="ca3841e5-f19f-4a89-ba82-774ebb24c7d4" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>IModSpec</name>
+      <display>IModSpec</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="6209ded0-60b6-4a6f-a2e7-1aa299a734d1" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
+      <name>Templates</name>
+      <display>Templates</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>93ee056b-88b8-4c0a-92bc-737e1dd48c53</parentFolderId>
+      <packageId>05ea4a69-1142-4023-a54a-791e1910844a</packageId>
+      <packageName>Common.Java.VisualStudio</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

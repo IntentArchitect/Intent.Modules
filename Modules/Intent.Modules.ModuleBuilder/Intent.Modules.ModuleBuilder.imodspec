@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.0.0-beta.5</version>
-  <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
+  <version>3.0.0</version>
+  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
   <authors>Intent Architect</authors>
@@ -174,10 +174,10 @@
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common.Types" version="3.0.0-beta.5" />
-    <dependency id="Intent.Common.CSharp" version="3.0.0-beta.5" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0-beta.5" />
-    <dependency id="Intent.Common" version="3.0.0-beta.5" />
+    <dependency id="Intent.Common.Types" version="3.0.0" />
+    <dependency id="Intent.Common.CSharp" version="3.0.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0" />
+    <dependency id="Intent.Common" version="3.0.0" />
   </dependencies>
   <designers>
     <designer id="Module Builder" name="Module Builder" src="modelers/Module Builder.designer.config" />

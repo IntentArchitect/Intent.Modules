@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         }
 
         public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
-        public IList<string> OutputFolder => Model.GetFolderPath().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
@@ -52,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                 location: Model.GetLocation()));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.TypeScript",
-                moduleVersion: "3.0.0-beta.3"));
+                moduleVersion: "3.0.0"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

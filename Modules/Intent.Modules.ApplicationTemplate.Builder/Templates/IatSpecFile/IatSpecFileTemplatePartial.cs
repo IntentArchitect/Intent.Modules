@@ -39,7 +39,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[] { new NugetPackageInfo("Intent.Packager", "3.0.0-*") };
+            return new[] { new NugetPackageInfo("Intent.Packager", "3.0.*") };
         }
     }
 }

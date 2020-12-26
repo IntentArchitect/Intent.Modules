@@ -25,13 +25,6 @@ namespace Intent.Modules.Common.Types.Api
             return model.GetParentFolders().Select(x => x.Name).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
         }
 
-        [Obsolete("Use GetParentFolders")]
-        public static IList<FolderModel> GetFolderPath(this IHasFolder model, bool includePackage = false)
-        {
-            return GetParentFolders(model);
-        }
-
-
         public static IStereotype GetStereotypeInFolders(this IHasFolder model, string stereotypeName)
         {
             var folder = model.Folder;
