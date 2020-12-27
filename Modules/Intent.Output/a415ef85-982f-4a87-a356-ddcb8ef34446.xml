@@ -324,13 +324,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.csproj</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Intent.ModuleBuilder.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ModuleBuilder.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.imodspec</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.imodspec</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>

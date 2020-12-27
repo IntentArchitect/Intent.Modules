@@ -138,7 +138,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Templates</role>
-      <location>FactoryExtentions</location>
+      <location>FactoryExtensions</location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" externalReference="5a307c40-0d05-4dac-a83e-6a3a553c5b9e">
       <config>
