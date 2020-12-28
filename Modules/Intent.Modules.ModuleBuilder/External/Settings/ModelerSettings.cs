@@ -159,6 +159,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("shortcut")]
         public string Shortcut { get; set; }
 
+        [XmlElement("macShortcut")]
+        public string MacShortcut { get; set; }
+
         [XmlElement("defaultName")]
         public string DefaultName { get; set; }
 

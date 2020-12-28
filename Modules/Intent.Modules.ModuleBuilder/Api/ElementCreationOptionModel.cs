@@ -63,6 +63,7 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationType = _element.TypeReference.Element.Name,
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
+                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
                 Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "file-o" },
                 AllowMultiple = this.GetOptionSettings().AllowMultiple()

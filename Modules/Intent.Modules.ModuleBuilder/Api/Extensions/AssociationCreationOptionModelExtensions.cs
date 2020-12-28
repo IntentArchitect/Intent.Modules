@@ -38,6 +38,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Shortcut");
             }
 
+            public string ShortcutMacOS()
+            {
+                return _stereotype.GetProperty<string>("Shortcut (macOS)");
+            }
+
             public string DefaultName()
             {
                 return _stereotype.GetProperty<string>("Default Name");

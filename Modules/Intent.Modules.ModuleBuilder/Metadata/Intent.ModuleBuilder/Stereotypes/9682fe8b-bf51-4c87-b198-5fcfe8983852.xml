@@ -9,7 +9,18 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
   <displayIcon>false</displayIcon>
-  <displayFunction>return `[${!Shortcut ? "No Shortcut" : Shortcut}]`;</displayFunction>
+  <displayFunction>var macOsShortcut = properties["Shortcut (macOS)"].value;
+var shortcut = properties["Shortcut"].value;
+
+if (!shortcut) {
+    return "[No Shortcut]";
+}
+
+if (macOsShortcut) {
+    return `[${shortcut} / ${macOsShortcut}]`
+}
+
+return `[${shortcut}]`;</displayFunction>
   <autoAdd>false</autoAdd>
   <parentFolderId>ea7ccdb1-1f68-4cf0-87a7-f060b69e364d</parentFolderId>
   <order>0</order>
@@ -18,6 +29,16 @@
   <properties>
     <property id="46678a0e-dbb3-479a-a434-092390ec23ec">
       <name>Shortcut</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="78e777be-eeac-4959-8196-8377fe677cc2">
+      <name>Shortcut (macOS)</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>

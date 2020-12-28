@@ -57,6 +57,7 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationType = this.Type.Name,
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
+                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
                 Icon = Icon?.ToPersistable(),
                 AllowMultiple = this.GetOptionSettings().AllowMultiple()
