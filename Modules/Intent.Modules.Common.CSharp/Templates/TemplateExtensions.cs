@@ -47,48 +47,59 @@ namespace Intent.Modules.Common.CSharp.Templates
             return "_" + ToCamelCase(s, false);
         }
 
-        public static string ToCSharpNamespace(this string s)
+        public static string ToCSharpNamespace(this string @string)
         {
-            return string.Concat(s.Split(' ')
-                        .Select(x => string.Join("_", x.Split('-').Select(p => p.ToPascalCase())))
-                        .Select(x => string.Join(".", x.Split('.').Select(p => p.ToPascalCase()))))
-                    .Replace("#", "Sharp")
-                    .Replace("&", "And")
-                    .Replace("(", "")
-                    .Replace(")", "")
-                    .Replace(",", "")
-                    .Replace("[", "")
-                    .Replace("]", "")
-                    .Replace("{", "")
-                    .Replace("}", "")
-                    .Replace("/", "")
-                    .Replace("\\", "")
-                    .Replace("?", "")
-                    .Replace("@", "")
-                ;
-        }
-
-        public static string ToCSharpIdentifier(this string s)
-        {
-            return string.Concat(s.Split(' ').SelectMany(x => x.Split('-')).Select(x => x.ToPascalCase()))
+            @string = @string
                 .Replace("#", "Sharp")
                 .Replace("&", "And")
-                .Replace("-", "")
-                .Replace("(", "")
-                .Replace(")", "")
-                .Replace(",", "")
-                .Replace("[", "")
-                .Replace("]", "")
-                .Replace("{", "")
-                .Replace("}", "")
-                .Replace(".", "")
-                .Replace("/", "")
-                .Replace("\\", "")
-                .Replace("?", "")
-                .Replace("@", "")
-                ;
+                .Replace("(", " ")
+                .Replace(")", " ")
+                .Replace(",", " ")
+                .Replace("[", " ")
+                .Replace("]", " ")
+                .Replace("{", " ")
+                .Replace("}", " ")
+                .Replace("/", " ")
+                .Replace("\\", " ")
+                .Replace("?", " ")
+                .Replace("@", " ");
+
+            while (@string.Contains("  "))
+            {
+                @string = @string.Replace("  ", " ");
+            }
+
+            return string.Concat(@string.Split(' ')
+                        .Select(x => string.Join("_", x.Split('-').Select(p => p.ToPascalCase())))
+                        .Select(x => string.Join(".", x.Split('.').Select(p => p.ToPascalCase()))));
         }
 
+        public static string ToCSharpIdentifier(this string @string)
+        {
+            @string = @string
+                .Replace("#", "Sharp")
+                .Replace("&", "And")
+                .Replace("-", " ")
+                .Replace("(", " ")
+                .Replace(")", " ")
+                .Replace(",", " ")
+                .Replace("[", " ")
+                .Replace("]", " ")
+                .Replace("{", " ")
+                .Replace("}", " ")
+                .Replace(".", " ")
+                .Replace("/", " ")
+                .Replace("\\", " ")
+                .Replace("?", " ")
+                .Replace("@", " ");
+
+            while (@string.Contains("  "))
+            {
+                @string = @string.Replace("  ", " ");
+            }
+
+            return string.Concat(@string.Split(' ').Select(x => x.ToPascalCase()));
+        }
     }
 
 }
