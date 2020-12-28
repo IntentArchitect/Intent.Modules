@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageExtensionModel
         {
             return new CSharpFileConfig(
                 className: $"{Model.ApiModelName}",
-                @namespace: $"{OutputTarget.GetNamespace()}");
+                @namespace: Model.ParentModule.ApiNamespace);
         }
 
         private PackageSettingsModel GetBasePackageModel()

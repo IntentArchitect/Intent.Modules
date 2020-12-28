@@ -71,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Project.Application.Name}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{FolderNamespace}";
         }
 
         private string GetModelType()
