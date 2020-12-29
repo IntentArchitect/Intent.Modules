@@ -4,6 +4,24 @@ trigger:
     include:
     - '*'
 
+variables:
+  vstsFeed: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
+  targetsToBuild: '**/Intent.Modules.sln'
+  targetsToPack: |
+    ;**/Intent.Modules.Common.CSharp.csproj
+    ;**/Intent.Modules.Common.csproj
+    ;**/Intent.Modules.Common.Types.csproj
+    ;**/Intent.Modules.Common.Sql.csproj
+    ;**/Intent.Modules.Common.Java.csproj
+    ;**/Intent.Modules.Common.TypeScript.csproj
+    ;**/Intent.Modules.Common.Html.csproj
+    ;**/Intent.Modules.Modelers.Domain.csproj
+    ;**/Intent.Modules.Modelers.Services.csproj
+    ;**/Intent.Modules.Modelers.Services.CQRS.csproj
+    ;**/Intent.Modules.ModuleBuilder.csproj
+    ;**/Intent.Modules.Modelers.ServiceProxies.csproj
+    ;**/Intent.Modules.Modelers.Types.ServiceProxies.csproj
+
 pool:
   vmImage: 'ubuntu-latest'
 
@@ -14,40 +32,51 @@ steps:
   fetchDepth: 1
   submodules: 'recursive'
 
-- task: NuGetAuthenticate@0
-  displayName: 'nuget authenticate'
+- task: NuGetCommand@2
+  displayName: 'nuget restore'
+  inputs:
+    command: 'restore'
+    feedsToUse: 'select'
+    vstsFeed: $(vstsFeed)
+    includeNuGetOrg: true
+    restoreSolution: $(targetsToBuild)
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   env:
     DOTNET_NOLOGO: 1
   inputs:
-      command: 'build'
-      projects: 'Modules/Intent.Modules.sln'
+    command: 'build'
+    projects: $(targetsToBuild)
+    arguments: '--no-restore'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet test'
   env:
     DOTNET_NOLOGO: 1
   inputs:
-      command: 'test'
-      projects: 'Modules/Intent.Modules.sln'
-      nobuild: true
+    command: 'test'
+    projects: $(targetsToBuild)
+    arguments: '--no-build'
 
-- template: 'azure-pipelines/templates/steps/nuget.yml'
-  parameters:
-    noBuild: true
-    projects:
-    - 'Intent.Modules.Common.CSharp'
-    - 'Intent.Modules.Common'
-    - 'Intent.Modules.Common.Types'
-    - 'Intent.Modules.Common.Sql'
-    - 'Intent.Modules.Common.Java'
-    - 'Intent.Modules.Common.TypeScript'
-    - 'Intent.Modules.Common.Html'
-    - 'Intent.Modules.Modelers.Domain'
-    - 'Intent.Modules.Modelers.Services'
-    - 'Intent.Modules.Modelers.Services.CQRS'
-    - 'Intent.Modules.ModuleBuilder'
-    - 'Intent.Modules.Modelers.ServiceProxies'
-    - 'Intent.Modules.Modelers.Types.ServiceProxies'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet pack'
+  condition: and(succeeded(), ne(variables['targetsToPack'], ''))
+  env:
+    DOTNET_NOLOGO: '1'
+  inputs:
+    command: 'pack'
+    nobuild: true
+    searchPatternPack: $(targetsToPack)
+
+- task: NuGetCommand@2
+  displayName: 'nuget push'
+  condition: and(succeeded(), ne(variables['targetsToPack'], ''))
+  inputs:
+      command: 'push'
+      feedsToUse: 'select'
+      includeNuGetOrg: false
+      publishVstsFeed: $(vstsFeed)
+      allowPackageConflicts: true
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nuGetFeedType: 'internal'
