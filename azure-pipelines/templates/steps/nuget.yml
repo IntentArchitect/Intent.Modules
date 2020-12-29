@@ -2,16 +2,24 @@ parameters:
 - name: 'projects'
   type: 'object'
 
+- name: 'noBuild'
+  type: 'boolean'
+  default: false
+
 steps:
 - ${{ each project in parameters.projects }}:
+
+  # Documentation for `dotnet pack` says it should build automatically, but it doesn't right now:
   # https://github.com/dotnet/sdk/issues/12160
-  - task: DotNetCoreCLI@2
-    displayName: 'dotnet build ${{ project }}'
-    env:
-      DOTNET_NOLOGO: 1
-    inputs:
-        command: 'build'
-        projects: '**/${{ project }}.csproj'
+  - ${{ if ne('${{ parameters.noBuild }}', 'True') }}:
+
+    - task: DotNetCoreCLI@2
+      displayName: 'dotnet build ${{ project }}'
+      env:
+        DOTNET_NOLOGO: 1
+      inputs:
+          command: 'build'
+          projects: '**/${{ project }}.csproj'
 
   - task: DotNetCoreCLI@2
     displayName: 'dotnet pack ${{ project }}'
@@ -20,9 +28,6 @@ steps:
     inputs:
         command: 'pack'
         packagesToPack: '**/${{ project }}.csproj'
-
-# - task: NuGetAuthenticate@0
-#   displayName: 'nuget authenticate'
 
 - task: NuGetCommand@2
   displayName: 'nuget push'

@@ -36,6 +36,7 @@ steps:
 
 - template: 'azure-pipelines/templates/steps/nuget.yml'
   parameters:
+    noBuild: true
     projects:
     - 'Intent.Modules.Common.CSharp'
     - 'Intent.Modules.Common'
