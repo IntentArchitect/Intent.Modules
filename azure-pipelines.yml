@@ -1,0 +1,52 @@
+trigger:
+  batch: true
+  branches:
+    include:
+    - '*'
+
+pool:
+  vmImage: 'windows-latest' # Can't be ubuntu as there are still some netframework dependencies in here
+
+steps:
+
+- checkout: 'self'
+  persistCredentials: true
+  fetchDepth: 1
+  submodules: 'recursive'
+
+- task: NuGetAuthenticate@0
+  displayName: 'nuget authenticate'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet build'
+  env:
+    DOTNET_NOLOGO: 1
+  inputs:
+      command: 'build'
+      projects: 'Modules/Intent.Modules.sln'
+
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet test'
+  env:
+    DOTNET_NOLOGO: 1
+  inputs:
+      command: 'test'
+      projects: 'Modules/Intent.Modules.sln'
+      nobuild: true
+
+- template: 'azure-pipelines/templates/steps/nuget.yml'
+  parameters:
+    projects:
+    - 'Intent.Modules.Common.CSharp'
+    - 'Intent.Modules.Common'
+    - 'Intent.Modules.Common.Types'
+    - 'Intent.Modules.Common.Sql'
+    - 'Intent.Modules.Common.Java'
+    - 'Intent.Modules.Common.TypeScript'
+    - 'Intent.Modules.Common.Html'
+    - 'Intent.Modules.Modelers.Domain'
+    - 'Intent.Modules.Modelers.Services'
+    - 'Intent.Modules.Modelers.Services.CQRS'
+    - 'Intent.Modules.ModuleBuilder'
+    - 'Intent.Modules.Modelers.ServiceProxies'
+    - 'Intent.Modules.Modelers.Types.ServiceProxies'
