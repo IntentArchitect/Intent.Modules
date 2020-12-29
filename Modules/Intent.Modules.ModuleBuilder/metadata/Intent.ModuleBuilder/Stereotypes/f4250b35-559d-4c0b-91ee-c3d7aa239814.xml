@@ -39,6 +39,7 @@ return `[${shortcut}]`;</displayFunction>
       <isRequiredFunction />
     </property>
     <property id="5572d05e-dd37-47f6-944a-73710c07f4f1">
+      <comment>Optional. If unspecified, then the "Shortcut" property is automatically used with uses of "Ctrl" changed to "Command".</comment>
       <name>Shortcut (macOS)</name>
       <type>string</type>
       <controlType>text</controlType>
