@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
@@ -91,13 +92,13 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<AttributeModel> Attributes => _element.ChildElements
-            .Where(x => x.SpecializationType == AttributeModel.SpecializationType)
+            .GetElementsOfType(AttributeModel.SpecializationTypeId)
             .Select(x => new AttributeModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<OperationModel> Operations => _element.ChildElements
-            .Where(x => x.SpecializationType == OperationModel.SpecializationType)
+            .GetElementsOfType(OperationModel.SpecializationTypeId)
             .Select(x => new OperationModel(x))
             .ToList();
 

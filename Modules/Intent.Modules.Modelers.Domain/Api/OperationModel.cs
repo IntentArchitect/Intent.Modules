@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -43,7 +44,7 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<ParameterModel> Parameters => _element.ChildElements
-            .Where(x => x.SpecializationType == ParameterModel.SpecializationType)
+            .GetElementsOfType(ParameterModel.SpecializationTypeId)
             .Select(x => new ParameterModel(x))
             .ToList();
 

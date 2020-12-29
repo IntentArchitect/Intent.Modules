@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ApiPackageModelTemplate : CSharpTemplateBase<PackageSettingsModel>
+    public partial class ApiPackageModelTemplate : CSharpTemplateBase<Intent.ModuleBuilder.Api.PackageSettingsModel>
     {
 #line hidden
         /// <summary>
@@ -34,16 +34,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
         public override string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Inten" +
-                    "t.Metadata.Models;\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+                    "t.Metadata.Models;\r\nusing Intent.Modules.Common;\r\n[assembly: DefaultIntentManage" +
+                    "d(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -51,21 +52,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
             this.Write(" : IHasStereotypes, IMetadataModel\r\n    {\r\n        public const string Specializa" +
                     "tionType = \"");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("\";\r\n        public const string SpecializationTypeId = \"");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Id));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        [IntentManaged(Mode.Ignore)]\r\n        public ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -88,7 +89,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
 
         ");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
   if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.ElementCreations) {
             
@@ -96,63 +97,62 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
             #line hidden
             this.Write("        public ");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple())));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 44 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
             
             #line default
             #line hidden
-            this.Write(" => UnderlyingPackage.ChildElements\r\n            .Where(x => x.SpecializationType" +
-                    " == ");
-            
-            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
-            
-            #line default
-            #line hidden
-            this.Write(".SpecializationType)\r\n            .Select(x => new ");
+            this.Write(" => UnderlyingPackage.ChildElements\r\n            .GetElementsOfType(");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
             
             #line default
             #line hidden
-            this.Write("(x))\r\n");
+            this.Write(".SpecializationTypeId)\r\n            .Select(x => new ");
             
             #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write("(x))\r\n");
+            
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
           if (creationOption.GetOptionSettings().AllowMultiple()) { 
             
             #line default
             #line hidden
             this.Write("            .ToList();\r\n");
             
-            #line 49 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
           } else { 
             
             #line default
             #line hidden
             this.Write("            .SingleOrDefault();\r\n");
             
-            #line 51 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
           } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
   } 
             
             #line default

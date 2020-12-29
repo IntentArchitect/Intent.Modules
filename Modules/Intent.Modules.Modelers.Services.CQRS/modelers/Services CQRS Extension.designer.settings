@@ -164,7 +164,7 @@
               <hasChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
             </criteria>
             <mapTo specializationType="Operation" childMappingMode="map-to-child" />
-            <behaviour autoSelectChildren="false" />
+            <behaviour autoSelectChildren="true" />
             <childMappings>
               <mapping id="a544f9b1-a158-4e03-83c4-718c4f304cce">
                 <criteria specializationType="DTO-Field">
@@ -185,7 +185,7 @@
               <hasChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
             </criteria>
             <mapTo specializationType="Operation" childMappingMode="map-to-child" />
-            <behaviour autoSelectChildren="false" />
+            <behaviour autoSelectChildren="true" />
             <childMappings>
               <mapping id="f52b112e-d0f1-4120-9c59-ee50f1ad4eb8">
                 <criteria specializationType="DTO-Field">

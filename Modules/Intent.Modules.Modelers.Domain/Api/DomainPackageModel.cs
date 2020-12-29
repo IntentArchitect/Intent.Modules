@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using TypeDefinitionModel = Intent.Modelers.Domain.Api.TypeDefinitionModel;
@@ -36,32 +37,32 @@ namespace Intent.Modelers.Domain.Api
         public string FileLocation => UnderlyingPackage.FileLocation;
 
         public IList<ClassModel> Classes => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == ClassModel.SpecializationType)
+            .GetElementsOfType(ClassModel.SpecializationTypeId)
             .Select(x => new ClassModel(x))
             .ToList();
 
         public IList<CommentModel> Comments => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == CommentModel.SpecializationType)
+            .GetElementsOfType(CommentModel.SpecializationTypeId)
             .Select(x => new CommentModel(x))
             .ToList();
 
         public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == DiagramModel.SpecializationType)
+            .GetElementsOfType(DiagramModel.SpecializationTypeId)
             .Select(x => new DiagramModel(x))
             .ToList();
 
         public IList<EnumModel> Enums => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == EnumModel.SpecializationType)
+            .GetElementsOfType(EnumModel.SpecializationTypeId)
             .Select(x => new EnumModel(x))
             .ToList();
 
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
             .ToList();
 
         public IList<TypeDefinitionModel> Types => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
+            .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
             .Select(x => new TypeDefinitionModel(x))
             .ToList();
     }

@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
@@ -42,7 +43,7 @@ namespace <#= Namespace #>
         <#  if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.ElementCreations) {#>
         public <#= FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple()) #> <#= GetCreationOptionName(creationOption) #> => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == <#= creationOption.ApiModelName #>.SpecializationType)
+            .GetElementsOfType(<#= creationOption.ApiModelName #>.SpecializationTypeId)
             .Select(x => new <#= creationOption.ApiModelName #>(x))
 <#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>
             .ToList();

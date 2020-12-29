@@ -59,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
     {
         private readonly IElement _element;
         public string Name => _element.Name;
-        public string ApiNamespace => new IntentModuleModel(_element.Package).Name;
+        public string ApiNamespace => new IntentModuleModel(_element.Package).ApiNamespace;
         public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
 
         public ExtensionModelType(IElement element)

@@ -12,6 +12,7 @@
 using System;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using <#= Model.Type.ApiNamespace #>;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
