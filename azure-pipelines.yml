@@ -5,7 +5,7 @@ trigger:
     - '*'
 
 pool:
-  vmImage: 'windows-latest' # Can't be ubuntu as there are still some netframework dependencies in here
+  vmImage: 'ubuntu-latest'
 
 steps:
 

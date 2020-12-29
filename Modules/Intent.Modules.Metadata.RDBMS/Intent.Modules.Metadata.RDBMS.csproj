@@ -1,72 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Intent.Modules.Metadata.RDBMS</RootNamespace>
-    <AssemblyName>Intent.Modules.Metadata.RDBMS</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <Deterministic>true</Deterministic>
-    <NuGetPackageImportStamp>
-    </NuGetPackageImportStamp>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <PackageReference Include="Intent.Packager" Version="3.0.*">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Intent.Modules.Metadata.RDBMS.imodspec" />
-    <None Include="metadata\Domain\Intent.Metadata.RDBMS.pkg.config" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup />
-  <ItemGroup>
-    <Content Include="metadata\Domain\Elements\Folder\7C81DE70-0B90-44F4-9B18-F648B5976FC3.xml" />
-    <Content Include="metadata\Domain\Stereotypes\6347286E-A637-44D6-A5D7-D9BE5789CA7A.xml" />
-    <Content Include="metadata\Domain\Stereotypes\8565814D-EF70-40EE-A0D3-577AB7B1254C.xml" />
-    <Content Include="metadata\Domain\Stereotypes\b99aac21-9ca4-467f-a3a6-046255a9eed6.xml" />
-    <Content Include="metadata\Domain\Stereotypes\bbe43b90-c20d-4fdb-8a55-9037a5f6bd0b.xml" />
-    <Content Include="metadata\Domain\Stereotypes\dd205b32-b48b-4c77-98f5-faefb2c047ce.xml" />
-    <Content Include="metadata\Domain\Stereotypes\dfe17723-99ee-4554-9be3-f4c90dd48078.xml" />
-    <Content Include="metadata\Domain\Stereotypes\f21339bf-9ce6-4584-828f-de82089e3b72.xml" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\Intent.IntentArchitectPackager.3.0.0-pre.1\build\Intent.IntentArchitectPackager.targets" Condition="Exists('..\packages\Intent.IntentArchitectPackager.3.0.0-pre.1\build\Intent.IntentArchitectPackager.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Intent.IntentArchitectPackager.3.0.0-pre.1\build\Intent.IntentArchitectPackager.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Intent.IntentArchitectPackager.3.0.0-pre.1\build\Intent.IntentArchitectPackager.targets'))" />
-  </Target>
+
 </Project>
