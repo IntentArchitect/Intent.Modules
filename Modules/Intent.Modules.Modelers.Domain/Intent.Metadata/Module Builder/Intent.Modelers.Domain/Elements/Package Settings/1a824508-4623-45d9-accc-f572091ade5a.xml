@@ -3,7 +3,7 @@
   <name>Domain Package</name>
   <display>Domain Package</display>
   <isAbstract>false</isAbstract>
-  <order>8</order>
+  <order>7</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
@@ -79,13 +79,13 @@
           <order>1</order>
           <genericTypes />
           <typeReference id="653ec654-a7b7-4036-8ddb-fd9861462a4c">
-            <typeId>8f990b5b-a182-4fb8-a577-b985c8859078</typeId>
+            <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain</typePackageName>
-            <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

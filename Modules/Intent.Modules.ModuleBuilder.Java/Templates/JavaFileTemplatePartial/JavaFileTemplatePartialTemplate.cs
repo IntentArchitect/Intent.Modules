@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class JavaFileTemplatePartialTemplate : CSharpTemplateBase<JavaFileTemplateModel>
+    public partial class JavaFileTemplatePartialTemplate : CSharpTemplateBase<Intent.ModuleBuilder.Java.Api.JavaFileTemplateModel>
     {
 #line hidden
         /// <summary>
@@ -57,22 +57,23 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             
             #line default
             #line hidden
-            this.Write(" : JavaTemplateBase<");
+            this.Write(" : ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseType()));
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
-                    "teId = \"");
+            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templat" +
+                    "eId = \"");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
             #line hidden
-            this.Write("\";\r\n\r\n        [IntentInitialGen]\r\n        public ");
+            this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Ful" +
+                    "ly)]\r\n        public ");
             
             #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

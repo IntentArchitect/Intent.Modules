@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 using Intent.Engine;
 using Intent.Code.Weaving.Java.Editor;
 using Intent.Modules.Common.Java.TypeResolvers;
 using Intent.Modules.Common.Templates;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Java.Templates
 {
@@ -13,6 +15,31 @@ namespace Intent.Modules.Common.Java.Templates
     {
         protected JavaTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
         {
+        }
+    }
+
+    public abstract class JavaTemplateBase<TModel, TDecorator> : JavaTemplateBase<TModel>, IHasDecorators<TDecorator>
+        where TDecorator : ITemplateDecorator
+    {
+        private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
+
+        protected JavaTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
+        {
+        }
+
+        public IEnumerable<TDecorator> GetDecorators()
+        {
+            return _decorators.OrderBy(x => x.Priority);
+        }
+
+        public void AddDecorator(TDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
+        protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
+        {
+            return GetDecorators().Aggregate(propertyFunc);
         }
     }
 
@@ -79,7 +106,7 @@ namespace Intent.Modules.Common.Java.Templates
         {
             var file = CreateOutputFile();
 
-            file.AddDependencyImports(this);
+            this.ResolveAndAddImports(file);
 
             return file.GetSource();
         }

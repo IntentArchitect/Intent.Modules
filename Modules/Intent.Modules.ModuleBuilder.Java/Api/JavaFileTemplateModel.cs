@@ -47,5 +47,20 @@ namespace Intent.ModuleBuilder.Java.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
         public new const string SpecializationTypeId = "e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a";
+
+        public IList<TemplateDecoratorContractModel> Decorators => _element.ChildElements
+                    .Where(x => x.SpecializationType == TemplateDecoratorContractModel.SpecializationType)
+                    .Select(x => new TemplateDecoratorContractModel(x))
+                    .ToList();
+
+        public IList<TemplateDecoratorContractModel> DecoratorContracts => _element.ChildElements
+                    .Where(x => x.SpecializationType == TemplateDecoratorContractModel.SpecializationType)
+                    .Select(x => new TemplateDecoratorContractModel(x))
+                    .ToList();
+
+        public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
+                    .Where(x => x.SpecializationType == TemplateDecoratorContractModel.SpecializationType)
+                    .Select(x => new TemplateDecoratorContractModel(x))
+                    .SingleOrDefault();
     }
 }

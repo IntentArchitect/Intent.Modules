@@ -6,7 +6,6 @@ using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
-using TypeDefinitionModel = Intent.Modelers.Domain.Api.TypeDefinitionModel;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]

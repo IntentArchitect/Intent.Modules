@@ -21,7 +21,7 @@
         </option>
         <option type="element">
           <specializationType>Type-Definition</specializationType>
-          <specializationTypeId>8f990b5b-a182-4fb8-a577-b985c8859078</specializationTypeId>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
           <shortcut>ctrl + shift + t</shortcut>
           <defaultName>NewTypeDefinition</defaultName>
@@ -235,8 +235,8 @@ white-space: inherit;`</style>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
-              <type>Type-Definition</type>
               <type>Enum</type>
+              <type>Type-Definition</type>
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -264,9 +264,9 @@ white-space: inherit;`</style>
           <typeReferenceSetting>
             <isRequired>false</isRequired>
             <targetTypes>
-              <type>Type-Definition</type>
               <type>Enum</type>
               <type>Class</type>
+              <type>Type-Definition</type>
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -306,9 +306,9 @@ white-space: inherit;`</style>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>
-                  <type>Type-Definition</type>
                   <type>Enum</type>
                   <type>Class</type>
+                  <type>Type-Definition</type>
                 </targetTypes>
                 <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>
@@ -408,20 +408,6 @@ white-space: inherit;`</style>
       </diagramSettings>
       <childElementSettings />
     </elementSetting>
-    <elementSetting type="Type-Definition" typeId="8f990b5b-a182-4fb8-a577-b985c8859078">
-      <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
-      <saveAsOwnFile>true</saveAsOwnFile>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowGenericTypes>true</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>false</allowSorting>
-      <allowFindInView>true</allowFindInView>
-      <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <childElementSettings />
-    </elementSetting>
   </elementSettings>
   <elementExtensions>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
@@ -437,7 +423,7 @@ white-space: inherit;`</style>
         </option>
         <option order="3" type="element">
           <specializationType>Type-Definition</specializationType>
-          <specializationTypeId>8f990b5b-a182-4fb8-a577-b985c8859078</specializationTypeId>
+          <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
           <shortcut>ctrl + shift + t</shortcut>
           <defaultName>NewTypeDefinition</defaultName>

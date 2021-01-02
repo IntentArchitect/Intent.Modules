@@ -10,6 +10,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Java.Api;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -48,10 +49,10 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
             var content = GetExistingTemplateContent();
             if (content != null)
             {
-                return ReplaceTemplateInheritsTag(content, $"JavaTemplateBase<{Model.GetModelName()}>");
+                return ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""JavaTemplateBase<{Model.GetModelName()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""{GetBaseType()}"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
@@ -60,7 +61,6 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
 <#@ import namespace=""Intent.Modules.Common.Java.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 
@@ -85,9 +85,18 @@ public class <#= ClassName #> {
 }";
         }
 
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"JavaTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"JavaTemplateBase<{Model.GetModelName()}>";
+        }
+
         private string GetExistingTemplateContent()
         {
-            var fileLocation = FileMetadata.GetFullLocationPathWithFileName();
+            var fileLocation = FileMetadata.GetFilePath();
 
             if (File.Exists(fileLocation))
             {

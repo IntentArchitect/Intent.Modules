@@ -33,12 +33,5 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
-        public static IList<TypeDefinitionModel> GetTypeDefinitionModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
-                .Select(x => new TypeDefinitionModel(x))
-                .ToList();
-        }
-
     }
 }

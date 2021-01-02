@@ -73,11 +73,6 @@
       <ProjectRelativeFilePath>ParameterModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
-      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Domain/Api/TypeDefinitionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>TypeDefinitionModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.Modelers.Domain/ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>

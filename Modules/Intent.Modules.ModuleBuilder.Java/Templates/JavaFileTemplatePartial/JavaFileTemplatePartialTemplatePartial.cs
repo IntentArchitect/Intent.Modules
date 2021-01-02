@@ -9,6 +9,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Java.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -52,13 +53,22 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
                 location: Model.GetLocation()));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Java",
-                moduleVersion: "3.0.0"));
+                moduleVersion: "3.0.1"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }
+        }
+
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"JavaTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"JavaTemplateBase<{Model.GetModelName()}>";
         }
 
         private string GetRole()

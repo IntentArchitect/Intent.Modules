@@ -88,7 +88,7 @@ namespace <#= Namespace #>
 
         private string GetExistingTemplateContent()
         {
-            var fileLocation = FileMetadata.GetFullLocationPathWithFileName();
+            var fileLocation = FileMetadata.GetFilePath();
 
             if (File.Exists(fileLocation))
             {
