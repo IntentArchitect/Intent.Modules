@@ -24,5 +24,6 @@
     <application id="9ca2cdd8-34c3-4fc7-96aa-a1a6815c2117" name="Intent.Modules.Modelers.ServiceProxies" relativePath="Intent.Modules.Modelers.ServiceProxies\Intent.Modules.Modelers.ServiceProxies.application.config" />
     <application id="0158d6dc-b471-421a-bb3e-57347f7c6275" name="Intent.ApplicationTemplates" relativePath="Intent.ApplicationTemplates/Intent.ApplicationTemplates.application.config" />
     <application id="b12d90e1-8c8f-4fd8-9c47-0e165ce28161" name="Intent.Modules.Modelers.Services.CQRS" relativePath="Intent.Modules.Modelers.Services.CQRS/Intent.Modules.Modelers.Services.CQRS.application.config" />
+    <application id="765236f6-13a2-40be-90d3-38674e01f4a7" name="Intent.Modules.Metadata.RDBMS" relativePath="Intent.Modules.Metadata.RDBMS/Intent.Modules.Metadata.RDBMS.application.config" />
   </applications>
 </solution>

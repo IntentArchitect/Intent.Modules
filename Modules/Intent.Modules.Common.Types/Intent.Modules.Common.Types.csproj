@@ -3,21 +3,26 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <PackageId>Intent.Modules.Common.Types</PackageId>
-    <Version>3.0.0</Version>
+    <Version>3.0.1</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>
     <Copyright>Copyright 2020</Copyright>
     <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
-    <PackageIconUrl>https://intentarchitect.com/assets/images/logo.png</PackageIconUrl>
+    <PackageIconUrl></PackageIconUrl>
     <PackageTags>Intent Architect Software Factory SDK Modules Common</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <Compile Remove="Templates\Typescript\**" />
     <EmbeddedResource Remove="Templates\Typescript\**" />
     <None Remove="Templates\Typescript\**" />
+    <None Include="..\..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
