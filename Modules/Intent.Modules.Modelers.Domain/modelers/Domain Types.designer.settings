@@ -54,7 +54,7 @@
           <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
-        <option type="element">
+        <option order="0" type="element">
           <specializationType>Folder</specializationType>
           <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
           <text>New Folder</text>
@@ -74,12 +74,12 @@
         </option>
       </creationOptions>
       <typeOrder>
-        <type order="0">Class</type>
-        <type order="1">Type-Definition</type>
-        <type order="2">Enum</type>
-        <type order="3">Comment</type>
-        <type order="4">Diagram</type>
-        <type order="5">Folder</type>
+        <type order="0">Folder</type>
+        <type order="1">Class</type>
+        <type order="2">Type-Definition</type>
+        <type order="3">Enum</type>
+        <type order="4">Comment</type>
+        <type order="5">Diagram</type>
         <type order="6">Stereotype-Definition</type>
       </typeOrder>
       <macros>

@@ -6,6 +6,7 @@ using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -49,7 +50,7 @@ namespace Intent.Modelers.Services.CQRS.Api
         }
 
         public IList<DTOFieldModel> Properties => _element.ChildElements
-            .Where(x => x.SpecializationType == DTOFieldModel.SpecializationType)
+            .GetElementsOfType(DTOFieldModel.SpecializationTypeId)
             .Select(x => new DTOFieldModel(x))
             .ToList();
 

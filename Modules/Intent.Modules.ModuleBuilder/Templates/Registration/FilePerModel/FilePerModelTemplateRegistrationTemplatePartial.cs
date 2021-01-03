@@ -15,7 +15,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 {
-    partial class FilePerModelTemplateRegistrationTemplate : CSharpTemplateBase<TemplateRegistrationModel>
+    partial class FilePerModelTemplateRegistrationTemplate : CSharpTemplateBase<TemplateRegistrationModel>, IDeclareUsings
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.FilePerModel";
 
@@ -64,6 +64,19 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
         {
             var modelName = Model.GetModelType()?.ClassName ?? Model.GetTemplateSettings().ModelName();
             return $"_metadataManager.{Model.GetDesigner().Name.ToCSharpIdentifier()}(application).Get{modelName.ToPluralName()}()";
+        }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            if (Model.GetModelType() != null)
+            {
+                yield return Model.GetModelType().ParentModule.ApiNamespace;
+            }
+
+            if (Model.GetDesigner() != null)
+            {
+                yield return Model.GetDesigner().ParentModule.ApiNamespace;
+            }
         }
     }
 }

@@ -16,7 +16,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Registrations;
 using Intent.Templates;
-<#=DependencyUsings#>
+
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>

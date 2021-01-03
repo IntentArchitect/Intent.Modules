@@ -13,7 +13,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListModel
 {
-    partial class SingleFileListModelTemplateRegistrationTemplate : CSharpTemplateBase<TemplateRegistrationModel>
+    partial class SingleFileListModelTemplateRegistrationTemplate : CSharpTemplateBase<TemplateRegistrationModel>, IDeclareUsings
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel";
 
@@ -62,6 +62,19 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         public string GetModelType()
         {
             return NormalizeNamespace(Model.GetModelType()?.ClassName ?? Model.GetTemplateSettings().ModelName());
+        }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            if (Model.GetModelType() != null)
+            {
+                yield return Model.GetModelType().ParentModule.ApiNamespace;
+            }
+
+            if (Model.GetDesigner() != null)
+            {
+                yield return Model.GetDesigner().ParentModule.ApiNamespace;
+            }
         }
     }
 }

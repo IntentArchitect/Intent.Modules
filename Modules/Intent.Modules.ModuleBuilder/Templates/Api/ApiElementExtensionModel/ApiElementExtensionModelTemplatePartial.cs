@@ -21,6 +21,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
 
         public ApiElementExtensionModelTemplate(IOutputTarget project, ElementExtensionModel model) : base(TemplateId, project, model)
         {
+            if (Model.TypeReference.Element.Id == FolderModel.SpecializationTypeId)
+            {
+                AddNugetDependency(NugetPackages.IntentModulesCommonTypes);
+            }
         }
 
         public override void BeforeTemplateExecution()

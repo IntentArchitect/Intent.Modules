@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{B78BC1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Module Builder", "Module Builder", "{4EF0E910-DD23-4813-8959-9D10F1E4E788}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Metadata.RDBMS", "Intent.Modules.Metadata.RDBMS\Intent.Modules.Metadata.RDBMS.csproj", "{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.RDBMS", "Intent.Modules.Metadata.RDBMS\Intent.Modules.Metadata.RDBMS.csproj", "{3A9AA6C6-E8DA-41BE-B69C-9DC662D084B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Metadata.AdventureWorks", "Intent.Modules.Metadata.AdventureWorks\Intent.Modules.Metadata.AdventureWorks.csproj", "{E8F8E83D-81EE-4EE1-AB7E-B5B4B9A88E03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.AdventureWorks", "Intent.Modules.Metadata.AdventureWorks\Intent.Modules.Metadata.AdventureWorks.csproj", "{E8F8E83D-81EE-4EE1-AB7E-B5B4B9A88E03}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Designers", "Designers", "{C643FF80-0938-4E5C-81AD-E9FDFE6D9654}"
 EndProject
@@ -65,6 +65,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.TypeScript", "Intent.Modules.Common.TypeScript\Intent.Modules.Common.TypeScript.csproj", "{E77CFD3A-9486-426C-8D00-5469A1229054}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Html", "Intent.Modules.Common.Html\Intent.Modules.Common.Html.csproj", "{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.Events", "Intent.Modules.Modelers.Domain.Events\Intent.Modules.Modelers.Domain.Events.csproj", "{54740661-E598-4671-ADE3-D2F798401653}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -172,6 +174,10 @@ Global
 		{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54740661-E598-4671-ADE3-D2F798401653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54740661-E598-4671-ADE3-D2F798401653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54740661-E598-4671-ADE3-D2F798401653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54740661-E598-4671-ADE3-D2F798401653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -207,6 +213,7 @@ Global
 		{1E028CA1-8132-4E7C-9856-50406F7F76C7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{E77CFD3A-9486-426C-8D00-5469A1229054} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{54740661-E598-4671-ADE3-D2F798401653} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

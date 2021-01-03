@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.CQRS</id>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Net.</summary>
   <description>A custom module for Intent.Modules.Net.</description>
@@ -11,8 +11,9 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0" />
+    <dependency id="Intent.Common" version="3.0.1" />
     <dependency id="Intent.Common.Types" version="3.0.0" />
+    <dependency id="Intent.Modelers.Services" version="3.0.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -20,6 +21,6 @@
   </files>
   <metadata>
     <install target="Services" src="modelers/Services CQRS Extension.designer.settings" externalReference="6ac83417-e6d5-4699-b88c-aa1d7f894326" />
-    <install target="Services" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.CQRS/Intent.Modelers.Services.CQRS.pkg.config" externalReference="45fb22e9-f493-4de5-9fe0-845f783aa9d4" />
+    <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.CQRS/Intent.Modelers.Services.CQRS.pkg.config" externalReference="45fb22e9-f493-4de5-9fe0-845f783aa9d4" />
   </metadata>
 </package>

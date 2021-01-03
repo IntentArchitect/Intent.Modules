@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using System.Linq;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -42,7 +43,7 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<OperationModel> Operations => _element.ChildElements
-            .Where(x => x.SpecializationType == OperationModel.SpecializationType)
+            .GetElementsOfType(OperationModel.SpecializationTypeId)
             .Select(x => new OperationModel(x))
             .ToList();
         public string Comment => _element.Id;

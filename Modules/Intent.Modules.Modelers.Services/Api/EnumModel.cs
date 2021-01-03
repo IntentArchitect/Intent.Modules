@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -35,7 +36,7 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<EnumLiteralModel> Literals => _element.ChildElements
-            .Where(x => x.SpecializationType == EnumLiteralModel.SpecializationType)
+            .GetElementsOfType(EnumLiteralModel.SpecializationTypeId)
             .Select(x => new EnumLiteralModel(x))
             .ToList();
         public string Comment => _element.Comment;
