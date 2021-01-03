@@ -35,6 +35,11 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             _decorators.Add(decorator);
         }
+
+        protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
+        {
+            return GetDecorators().Aggregate(propertyFunc);
+        }
     }
 
     public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge 
