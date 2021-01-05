@@ -15,12 +15,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.0.*" />
-    <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.*" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.0.1" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.1" />
     <PackageReference Include="Intent.Code.Weaving.TypeScript" Version="1.0.1">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Packager" Version="3.0.*">
+    <PackageReference Include="Intent.Packager" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

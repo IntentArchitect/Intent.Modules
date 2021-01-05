@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.ApplicationTemplate.Builder.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.RoslynWeaver.Attributes;
@@ -39,7 +40,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new[] { new NugetPackageInfo("Intent.Packager", "3.0.*") };
+            return new[] { IntentNugetPackages.IntentPackager };
         }
     }
 }

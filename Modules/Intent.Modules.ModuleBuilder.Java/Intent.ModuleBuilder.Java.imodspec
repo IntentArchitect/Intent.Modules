@@ -26,12 +26,12 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0" />
-    <dependency id="Intent.Common.Types" version="3.0.0" />
-    <dependency id="Intent.Common.Java" version="3.0.0" />
-    <dependency id="Intent.ModuleBuilder" version="3.0.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0" />
-    <dependency id="Intent.Common.CSharp" version="3.0.0" />
+    <dependency id="Intent.Common" version="3.0.1" />
+    <dependency id="Intent.Common.Types" version="3.0.1" />
+    <dependency id="Intent.Common.Java" version="3.0.1" />
+    <dependency id="Intent.ModuleBuilder" version="3.0.1" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.1" />
+    <dependency id="Intent.Common.CSharp" version="3.0.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

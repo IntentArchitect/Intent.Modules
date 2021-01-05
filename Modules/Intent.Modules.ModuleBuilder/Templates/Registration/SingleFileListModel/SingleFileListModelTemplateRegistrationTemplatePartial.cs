@@ -42,7 +42,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         {
             return new INugetPackageInfo[]
             {
-                NugetPackages.IntentModulesCommon
+                IntentNugetPackages.IntentModulesCommon
             }
             .Union(base.GetNugetDependencies())
             .ToArray();

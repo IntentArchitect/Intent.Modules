@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
         public TypescriptTemplatePartialTemplate(IOutputTarget project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency(NugetPackages.IntentCommonTypescript);
+            AddNugetDependency(IntentNugetPackages.IntentCommonTypescript);
         }
 
         public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";

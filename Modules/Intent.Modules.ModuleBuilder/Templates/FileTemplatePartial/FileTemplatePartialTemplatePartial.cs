@@ -17,7 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 
         public FileTemplatePartialTemplate(string templateId, IOutputTarget project, FileTemplateModel model) : base(templateId, project, model)
         {
-            AddNugetDependency(NugetPackages.IntentModulesCommon);
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
         }
 
         public string TemplateName => Model.Name.RemoveSuffix("Template") + "Template";

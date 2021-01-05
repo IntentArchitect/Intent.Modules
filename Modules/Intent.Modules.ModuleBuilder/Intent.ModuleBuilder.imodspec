@@ -174,10 +174,10 @@
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common.Types" version="3.0.0" />
-    <dependency id="Intent.Common.CSharp" version="3.0.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0" />
-    <dependency id="Intent.Common" version="3.0.0" />
+    <dependency id="Intent.Common.Types" version="3.0.1" />
+    <dependency id="Intent.Common.CSharp" version="3.0.1" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.1" />
+    <dependency id="Intent.Common" version="3.0.1" />
   </dependencies>
   <designers>
     <designer id="Module Builder" name="Module Builder" src="modelers/Module Builder.designer.config" />

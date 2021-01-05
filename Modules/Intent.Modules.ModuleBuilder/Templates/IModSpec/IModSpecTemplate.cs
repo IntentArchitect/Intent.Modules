@@ -9,6 +9,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.ModuleBuilder.Templates.DesignerSettings;
 using Intent.Templates;
 using NuGet.Versioning;
@@ -48,6 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommon.Name, IntentModule.IntentCommon.Version));
             _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommonTypes.Name, IntentModule.IntentCommonTypes.Version));
+            
             ExecutionContext.EventDispatcher.Subscribe<ModuleDependencyRequiredEvent>(@event =>
             {
                 if (@event.ModuleId == ModuleModel.Name)
@@ -65,6 +67,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public IntentModuleModel ModuleModel { get; }
 
+
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(
@@ -74,7 +77,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public override string TransformText()
         {
-            var location = FileMetadata.GetFullLocationPathWithFileName();
+            var location = FileMetadata.GetFilePath();
 
             var doc = LoadOrCreateImodSpecFile(location);
 
@@ -181,6 +184,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
+            if (_templatesToRegister.Any(x => x.TemplateType == "C# Template"))
+            {
+                _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentRoslynWeaver.Name, IntentModule.IntentRoslynWeaver.Version));
+            }
             foreach (var moduleDependency in _moduleDependencies)
             {
                 if (moduleDependency.ModuleId != doc.XPathSelectElement("package/id").Value)
@@ -197,12 +204,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
                     }
                 }
-            }
-
-            if (_templatesToRegister.Any(x => x.TemplateType == "C# Template") && doc.XPathSelectElement($"package/dependencies/dependency[@id=\"Intent.OutputManager.RoslynWeaver\"]") == null)
-            {
-                var dependencies = doc.XPathSelectElement("package/dependencies");
-                dependencies.Add(CreateDependency(IntentModule.IntentRoslynWeaver));
             }
 
             foreach (var template in doc.XPathSelectElements($"package/templates/template").ToList())
@@ -337,8 +338,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         {
             return new INugetPackageInfo[]
             {
-                NugetPackages.IntentSdk,
-                NugetPackages.IntentPackager
+                IntentNugetPackages.IntentSdk,
+                IntentNugetPackages.IntentPackager
             };
         }
     }

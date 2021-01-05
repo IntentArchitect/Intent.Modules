@@ -4,6 +4,7 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -21,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
 
         public FactoryExtensionTemplate(IOutputTarget outputTarget, FactoryExtensionModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(NugetPackages.IntentModulesCommon);
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
         }
 
         public override void BeforeTemplateExecution()

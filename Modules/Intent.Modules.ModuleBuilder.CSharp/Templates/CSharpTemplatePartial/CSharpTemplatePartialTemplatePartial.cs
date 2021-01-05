@@ -25,8 +25,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public CSharpTemplatePartialTemplate(IOutputTarget project, CSharpTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency(NugetPackages.IntentCommonCSharp);
-            AddNugetDependency(NugetPackages.IntentRoslynWeaverAttributes);
+            AddNugetDependency(IntentNugetPackages.IntentCommonCSharp);
+            AddNugetDependency(IntentNugetPackages.IntentRoslynWeaverAttributes);
         }
 
         public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";

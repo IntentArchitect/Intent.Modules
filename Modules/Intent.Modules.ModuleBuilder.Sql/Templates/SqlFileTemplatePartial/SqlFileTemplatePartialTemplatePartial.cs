@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
         public SqlFileTemplatePartialTemplate(IOutputTarget project, SqlTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency(NugetPackages.IntentCommonSql);
+            AddNugetDependency(IntentNugetPackages.IntentCommonSql);
         }
 
         public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();

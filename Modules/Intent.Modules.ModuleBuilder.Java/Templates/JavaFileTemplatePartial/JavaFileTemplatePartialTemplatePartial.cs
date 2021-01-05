@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 
         public JavaFileTemplatePartialTemplate(IOutputTarget project, JavaFileTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency(NugetPackages.IntentCommonJava);
+            AddNugetDependency(IntentNugetPackages.IntentCommonJava);
         }
 
         public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";

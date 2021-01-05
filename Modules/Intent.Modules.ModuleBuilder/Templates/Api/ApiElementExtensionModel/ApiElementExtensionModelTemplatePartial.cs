@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -23,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
         {
             if (Model.TypeReference.Element.Id == FolderModel.SpecializationTypeId)
             {
-                AddNugetDependency(NugetPackages.IntentModulesCommonTypes);
+                AddNugetDependency(IntentNugetPackages.IntentModulesCommonTypes);
             }
         }
 

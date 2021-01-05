@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 
         public HtmlFileTemplatePartialTemplate(IOutputTarget project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
         {
-            AddNugetDependency(NugetPackages.IntentCommonHtml);
+            AddNugetDependency(IntentNugetPackages.IntentCommonHtml);
             //if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
             //{
             //    AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
