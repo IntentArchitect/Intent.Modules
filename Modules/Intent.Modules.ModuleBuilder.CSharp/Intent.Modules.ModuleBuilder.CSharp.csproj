@@ -22,7 +22,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
 
