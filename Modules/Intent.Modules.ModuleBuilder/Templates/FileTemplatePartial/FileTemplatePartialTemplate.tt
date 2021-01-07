@@ -22,7 +22,7 @@ using System.Linq;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge)]
-    partial class <#= ClassName #> : <#= GetTemplateBaseClass() #><<#= GetModelType() #>>
+    partial class <#= ClassName #> : <#= GetBaseType() #>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";

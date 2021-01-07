@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -36,7 +37,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DesignerModel> Designers => _element.ChildElements
-            .Where(x => x.SpecializationType == DesignerModel.SpecializationType)
+            .GetElementsOfType(DesignerModel.SpecializationTypeId)
             .Select(x => new DesignerModel(x))
             .ToList();
 
@@ -72,7 +73,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<DesignerSettingsModel> DesignerSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == DesignerSettingsModel.SpecializationType)
+            .GetElementsOfType(DesignerSettingsModel.SpecializationTypeId)
             .Select(x => new DesignerSettingsModel(x))
             .ToList();
         public const string SpecializationTypeId = "dbb71aa5-0db2-4a2a-97a9-501950f36f99";

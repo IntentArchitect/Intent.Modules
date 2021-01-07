@@ -15,7 +15,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiElementModelExtensionsTemplate : CSharpTemplateBase<ExtensionModel>
+    partial class ApiElementModelExtensionsTemplate : CSharpTemplateBase<ExtensionModel>, IDeclareUsings
     {
 
         [IntentManaged(Mode.Fully)]
@@ -33,6 +33,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         }
 
         public string ModelClassName => Model.Type.ApiClassName;
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            yield return Model.Type.ApiNamespace;
+        }
     }
 
     public class ExtensionModel

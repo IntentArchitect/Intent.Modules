@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -44,19 +45,19 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementCreationOptionModel> ElementCreations => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementCreationOptionModel.SpecializationType)
+            .GetElementsOfType(ElementCreationOptionModel.SpecializationTypeId)
             .Select(x => new ElementCreationOptionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<AssociationCreationOptionModel> AssociationCreations => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationCreationOptionModel.SpecializationType)
+            .GetElementsOfType(AssociationCreationOptionModel.SpecializationTypeId)
             .Select(x => new AssociationCreationOptionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public StereotypeDefinitionCreationOptionModel StereotypeDefinitionCreation => _element.ChildElements
-            .Where(x => x.SpecializationType == StereotypeDefinitionCreationOptionModel.SpecializationType)
+            .GetElementsOfType(StereotypeDefinitionCreationOptionModel.SpecializationTypeId)
             .Select(x => new StereotypeDefinitionCreationOptionModel(x))
             .SingleOrDefault();
 

@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -68,19 +69,19 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<PathDrawSettingsModel> Paths => _element.ChildElements
-            .Where(x => x.SpecializationType == PathDrawSettingsModel.SpecializationType)
+            .GetElementsOfType(PathDrawSettingsModel.SpecializationTypeId)
             .Select(x => new PathDrawSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<TextDrawSettingsModel> Texts => _element.ChildElements
-            .Where(x => x.SpecializationType == TextDrawSettingsModel.SpecializationType)
+            .GetElementsOfType(TextDrawSettingsModel.SpecializationTypeId)
             .Select(x => new TextDrawSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public StereotypesVisualSettingsModel StereotypesVisual => _element.ChildElements
-            .Where(x => x.SpecializationType == StereotypesVisualSettingsModel.SpecializationType)
+            .GetElementsOfType(StereotypesVisualSettingsModel.SpecializationTypeId)
             .Select(x => new StereotypesVisualSettingsModel(x))
             .SingleOrDefault();
 
@@ -113,7 +114,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementVisualSettingsModel> ChildVisuals => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementVisualSettingsModel.SpecializationType)
+            .GetElementsOfType(ElementVisualSettingsModel.SpecializationTypeId)
             .Select(x => new ElementVisualSettingsModel(x))
             .ToList();
 

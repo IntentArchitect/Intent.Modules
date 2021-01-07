@@ -5,6 +5,7 @@ using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -48,7 +49,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == ContextMenuModel.SpecializationType)
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
@@ -125,7 +126,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public PackageEventSettingsModel EventSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == PackageEventSettingsModel.SpecializationType)
+            .GetElementsOfType(PackageEventSettingsModel.SpecializationTypeId)
             .Select(x => new PackageEventSettingsModel(x))
             .SingleOrDefault();
 

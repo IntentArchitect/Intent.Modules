@@ -22,7 +22,7 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class <#= ClassName #> : IProjectTemplateRegistration
+    public class <#= ClassName #> : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
 

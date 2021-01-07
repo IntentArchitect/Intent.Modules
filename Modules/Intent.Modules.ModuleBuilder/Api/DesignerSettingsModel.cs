@@ -55,13 +55,13 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<AssociationSettingsModel> AssociationTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationSettingsModel.SpecializationType)
+            .GetElementsOfType(AssociationSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementSettingsModel> ElementTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementSettingsModel.SpecializationType)
+            .GetElementsOfType(ElementSettingsModel.SpecializationTypeId)
             .Select(x => new ElementSettingsModel(x))
             .ToList();
 
@@ -88,7 +88,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<CoreTypeModel> CoreTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == CoreTypeModel.SpecializationType)
+            .GetElementsOfType(CoreTypeModel.SpecializationTypeId)
             .Select(x => new CoreTypeModel(x))
             .ToList();
 
@@ -108,25 +108,25 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IList<ScriptModel> ScriptTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == ScriptModel.SpecializationType)
+            .GetElementsOfType(ScriptModel.SpecializationTypeId)
             .Select(x => new ScriptModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementExtensionModel> ElementExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementExtensionModel.SpecializationType)
+            .GetElementsOfType(ElementExtensionModel.SpecializationTypeId)
             .Select(x => new ElementExtensionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<PackageExtensionModel> PackageExtensions => _element.ChildElements
-            .Where(x => x.SpecializationType == PackageExtensionModel.SpecializationType)
+            .GetElementsOfType(PackageExtensionModel.SpecializationTypeId)
             .Select(x => new PackageExtensionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public IList<PackageSettingsModel> PackageTypes => _element.ChildElements
-            .Where(x => x.SpecializationType == PackageSettingsModel.SpecializationType)
+            .GetElementsOfType(PackageSettingsModel.SpecializationTypeId)
             .Select(x => new PackageSettingsModel(x))
             .ToList();
         public const string SpecializationTypeId = "7a6411a8-ffef-4209-91c6-8d12755a806a";

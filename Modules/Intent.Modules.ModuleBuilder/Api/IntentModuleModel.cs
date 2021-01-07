@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using System.Linq;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
@@ -46,32 +47,32 @@ namespace Intent.ModuleBuilder.Api
         public string Version => this.GetModuleSettings().Version();
 
         public IList<FileTemplateModel> FileTemplates => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == FileTemplateModel.SpecializationType)
+            .GetElementsOfType(FileTemplateModel.SpecializationTypeId)
             .Select(x => new FileTemplateModel(x))
             .ToList();
 
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
             .ToList();
 
         public IList<TemplateRegistrationModel> TemplateRegistrations => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == TemplateRegistrationModel.SpecializationType)
+            .GetElementsOfType(TemplateRegistrationModel.SpecializationTypeId)
             .Select(x => new TemplateRegistrationModel(x))
             .ToList();
 
         public IList<TypeDefinitionModel> Types => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
+            .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
             .Select(x => new TypeDefinitionModel(x))
             .ToList();
 
         public IList<FactoryExtensionModel> FactoryExtensions => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == FactoryExtensionModel.SpecializationType)
+            .GetElementsOfType(FactoryExtensionModel.SpecializationTypeId)
             .Select(x => new FactoryExtensionModel(x))
             .ToList();
 
         public IList<TemplateDecoratorModel> TemplateDecorators => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == TemplateDecoratorModel.SpecializationType)
+            .GetElementsOfType(TemplateDecoratorModel.SpecializationTypeId)
             .Select(x => new TemplateDecoratorModel(x))
             .ToList();
     }

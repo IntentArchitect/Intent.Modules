@@ -4,11 +4,12 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder
+namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
     public class IntentModuleExtensionModel : IntentModuleModel
@@ -19,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder
         }
 
         public DesignersFolderModel DesignersFolder => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == DesignersFolderModel.SpecializationType)
+            .GetElementsOfType(DesignersFolderModel.SpecializationTypeId)
             .Select(x => new DesignersFolderModel(x))
             .SingleOrDefault();
 

@@ -34,44 +34,38 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
         public override string TransformText()
         {
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Inten" +
-                    "t.Metadata.Models;\r\nusing Intent.Modules.Common;\r\n");
+                    "t.Metadata.Models;\r\nusing Intent.Modules.Common;\r\n\r\n[assembly: DefaultIntentMana" +
+                    "ged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(string.Format("using {0};", GetBaseElementModel().ParentModule.ApiNamespace)));
-            
-            #line default
-            #line hidden
-            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
-            
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseElementModel().ApiModelName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        [IntentManaged(Mode.Ignore)]\r\n        public ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IElement element) : base(element)\r\n        {\r\n        }\r\n\r\n");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
   if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.ElementCreations) { 
             
@@ -79,62 +73,62 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
             #line hidden
             this.Write("        public ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple())));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
             
             #line default
             #line hidden
             this.Write(" => _element.ChildElements\r\n            .GetElementsOfType(");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
             
             #line default
             #line hidden
             this.Write(".SpecializationTypeId)\r\n            .Select(x => new ");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
             
             #line default
             #line hidden
             this.Write("(x))\r\n");
             
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
           if (creationOption.GetOptionSettings().AllowMultiple()) { 
             
             #line default
             #line hidden
             this.Write("            .ToList();\r\n");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
           } else { 
             
             #line default
             #line hidden
             this.Write("            .SingleOrDefault();\r\n");
             
-            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
           } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
   } 
             
             #line default

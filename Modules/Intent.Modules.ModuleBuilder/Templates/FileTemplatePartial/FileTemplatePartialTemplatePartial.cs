@@ -8,6 +8,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 {
@@ -59,6 +60,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
         private string GetRole()
         {
             return Model.GetRole() ?? GetTemplateId();
+        }
+
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"{GetTemplateBaseClass()}<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"{GetTemplateBaseClass()}<{Model.GetModelName()}>";
         }
 
         private string GetModelType()

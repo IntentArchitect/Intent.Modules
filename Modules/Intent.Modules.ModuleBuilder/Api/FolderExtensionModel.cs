@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
@@ -19,17 +20,17 @@ namespace Intent.ModuleBuilder.Api
         }
 
         public IList<FileTemplateModel> FileTemplates => _element.ChildElements
-            .Where(x => x.SpecializationType == FileTemplateModel.SpecializationType)
+            .GetElementsOfType(FileTemplateModel.SpecializationTypeId)
             .Select(x => new FileTemplateModel(x))
             .ToList();
 
         public IList<TemplateRegistrationModel> TemplateRegistrations => _element.ChildElements
-            .Where(x => x.SpecializationType == TemplateRegistrationModel.SpecializationType)
+            .GetElementsOfType(TemplateRegistrationModel.SpecializationTypeId)
             .Select(x => new TemplateRegistrationModel(x))
             .ToList();
 
         public IList<TypeDefinitionModel> Types => _element.ChildElements
-            .Where(x => x.SpecializationType == TypeDefinitionModel.SpecializationType)
+            .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
             .Select(x => new TypeDefinitionModel(x))
             .ToList();
 

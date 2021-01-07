@@ -59,8 +59,8 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write(" : IProjectTemplateRegistration\r\n    {\r\n        private readonly IMetadataManager" +
-                    " _metadataManager;\r\n\r\n        public ");
+            this.Write(" : ITemplateRegistration\r\n    {\r\n        private readonly IMetadataManager _metad" +
+                    "ataManager;\r\n\r\n        public ");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

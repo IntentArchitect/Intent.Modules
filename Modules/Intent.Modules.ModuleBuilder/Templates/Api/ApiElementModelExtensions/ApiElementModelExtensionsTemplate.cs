@@ -34,115 +34,108 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System;\r\nusing Intent.Metadata.Models;\r\nusing Intent.Modules.Common;\r\nusing" +
-                    " ");
+            this.Write("using System;\r\nusing Intent.Metadata.Models;\r\nusing Intent.Modules.Common;\r\n\r\n[as" +
+                    "sembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Type.ApiNamespace));
-            
-            #line default
-            #line hidden
-            this.Write(";\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
-            
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
   foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { 
             
             #line default
             #line hidden
             this.Write("        public static ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write(" Get");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("(this ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelClassName));
             
             #line default
             #line hidden
             this.Write(" model)\r\n        {\r\n            var stereotype = model.GetStereotype(\"");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n            return stereotype != null ? new ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.  ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("(stereotype) : null;\r\n        }\r\n\r\n        public static bool Has");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("(this ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ModelClassName));
             
             #line default
             #line hidden
             this.Write(" model)\r\n        {\r\n            return model.HasStereotype(\"");
             
-            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n        }\r\n\r\n");
             
-            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write(" \r\n");
             
-            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
   foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { 
             
             #line default
             #line hidden
             this.Write("        public class ");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 36 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            private IStereotype _stereotype;\r\n\r\n            public ");
             
-            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Name.ToCSharpIdentifier()));
             
             #line default
@@ -150,7 +143,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             this.Write("(IStereotype stereotype)\r\n            {\r\n                _stereotype = stereotype" +
                     ";\r\n            }\r\n\r\n            public string Name => _stereotype.Name;\r\n\r\n");
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
       foreach(var property in stereotypeDefinition.Properties) { 
         switch (property.ControlType) {
             case StereotypePropertyControlType.TextBox:
@@ -162,21 +155,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line hidden
             this.Write("            public string ");
             
-            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("() {\r\n                return _stereotype.GetProperty<string>(\"");
             
-            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n            }\r\n\r\n");
             
-            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
               break;
             case StereotypePropertyControlType.Number:
             
@@ -184,21 +177,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line hidden
             this.Write("            public int? ");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("() {\r\n                return _stereotype.GetProperty<int?>(\"");
             
-            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n            }\r\n\r\n");
             
-            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 63 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
               break;
             case StereotypePropertyControlType.Checkbox:
             
@@ -206,28 +199,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line hidden
             this.Write("            public bool ");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("() {\r\n                return _stereotype.GetProperty<bool>(\"");
             
-            #line 67 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n            }\r\n\r\n");
             
-            #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
               break;
             case StereotypePropertyControlType.Select:
             
             #line default
             #line hidden
             
-            #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 71 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
               switch (property.OptionsSource) {
                     case StereotypePropertyOptionsSource.LookupElement:
                     case StereotypePropertyOptionsSource.NestedLookup:
@@ -236,56 +229,56 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line hidden
             this.Write("            public IElement ");
             
-            #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("() {\r\n");
             
-            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
                       if (property.LookupTypes.Count == 1 && false) { /* TODO */ 
             
             #line default
             #line hidden
             this.Write("                return new ");
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.LookupTypes.Single().ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("(_stereotype.GetProperty<IElement>(\"");
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\"));\r\n");
             
-            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
                       } else { 
             
             #line default
             #line hidden
             this.Write("                return _stereotype.GetProperty<IElement>(\"");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n");
             
-            #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
                       } 
             
             #line default
             #line hidden
             this.Write("            }\r\n\r\n");
             
-            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 82 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
                       break;
                 case StereotypePropertyOptionsSource.Options:
             
@@ -293,35 +286,35 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line hidden
             this.Write("            public ");
             
-            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("Options ");
             
-            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("() {\r\n                return new ");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("Options(_stereotype.GetProperty<string>(\"");
             
-            #line 86 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\"));\r\n            }\r\n\r\n");
             
-            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
                       break;
                     default:
                         throw new ArgumentOutOfRangeException(property.OptionsSource.ToString());
@@ -330,7 +323,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line default
             #line hidden
             
-            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
               break;
             case StereotypePropertyControlType.MultiSelect:
             
@@ -338,21 +331,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line hidden
             this.Write("            public IElement[] ");
             
-            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 94 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("() {\r\n                return _stereotype.GetProperty<IElement[]>(\"");
             
-            #line 96 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n            }\r\n\r\n");
             
-            #line 99 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 98 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
               break;
             case StereotypePropertyControlType.Icon:
             
@@ -360,21 +353,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line hidden
             this.Write("            public IIconModel ");
             
-            #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 100 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("() {\r\n                return _stereotype.GetProperty<IIconModel>(\"");
             
-            #line 102 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n            }\r\n\r\n");
             
-            #line 105 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 104 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
               break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -384,14 +377,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line default
             #line hidden
             
-            #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 109 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
   foreach (var property in stereotypeDefinition.Properties.Where(x => x.ValueOptions.Any())) { 
             
             #line default
             #line hidden
             this.Write("            public class ");
             
-            #line 111 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 110 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
@@ -399,7 +392,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             this.Write("Options\r\n            {\r\n                public readonly string Value;\r\n\r\n        " +
                     "        public ");
             
-            #line 115 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 114 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(property.Name.ToCSharpIdentifier()));
             
             #line default
@@ -407,42 +400,42 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             this.Write("Options(string value)\r\n                {\r\n                    Value = value;\r\n   " +
                     "             }\r\n\r\n");
             
-            #line 120 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 119 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
       foreach(var option in property.ValueOptions) { 
             
             #line default
             #line hidden
             this.Write("                public bool Is");
             
-            #line 121 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 120 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(option.ToCSharpIdentifier()));
             
             #line default
             #line hidden
             this.Write("()\r\n                {\r\n                    return Value == \"");
             
-            #line 123 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 122 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(option));
             
             #line default
             #line hidden
             this.Write("\";\r\n                }\r\n");
             
-            #line 125 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 124 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("            }\r\n\r\n");
             
-            #line 128 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 127 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("        }\r\n\r\n");
             
-            #line 131 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            #line 130 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
   }
             
             #line default

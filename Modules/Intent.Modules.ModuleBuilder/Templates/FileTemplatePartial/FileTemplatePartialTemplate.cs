@@ -64,19 +64,12 @@ using System.Linq;
             this.Write(" : ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateBaseClass()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseType()));
             
             #line default
             #line hidden
-            this.Write("<");
-            
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
-            
-            #line default
-            #line hidden
-            this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
-                    "teId = \"");
+            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templat" +
+                    "eId = \"");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));

@@ -8,6 +8,7 @@ using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using IconType = Intent.IArchitect.Common.Types.IconType;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -50,13 +51,13 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public AssociationSourceEndSettingsModel SourceEnd => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationSourceEndSettingsModel.SpecializationType)
+            .GetElementsOfType(AssociationSourceEndSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationSourceEndSettingsModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public AssociationDestinationEndSettingsModel TargetEnd => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationDestinationEndSettingsModel.SpecializationType)
+            .GetElementsOfType(AssociationDestinationEndSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationDestinationEndSettingsModel(x))
             .SingleOrDefault();
 
@@ -133,7 +134,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public AssociationVisualSettingsModel VisualSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationVisualSettingsModel.SpecializationType)
+            .GetElementsOfType(AssociationVisualSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationVisualSettingsModel(x))
             .SingleOrDefault();
 

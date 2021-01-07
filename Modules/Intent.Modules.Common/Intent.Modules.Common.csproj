@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <PackageId>Intent.Modules.Common</PackageId>
-    <Version>3.0.1</Version>
+    <Version>3.0.2</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>

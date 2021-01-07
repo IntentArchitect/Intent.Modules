@@ -6,6 +6,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Helpers;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
@@ -39,10 +40,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
             var content = TemplateHelper.GetExistingTemplateContent(this);
             if (content != null)
             {
-                return TemplateHelper.ReplaceTemplateInheritsTag(content, $"{GetTemplateBaseClass()}<{GetModelType()}>");
+                return TemplateHelper.ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""{GetTemplateBaseClass()}<{GetModelType()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""{GetBaseType()}"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
@@ -53,6 +54,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
 
 // Place your file template logic here
 ";
+        }
+
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"{GetTemplateBaseClass()}<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"{GetTemplateBaseClass()}<{Model.GetModelName()}>";
         }
 
         private string GetTemplateBaseClass()

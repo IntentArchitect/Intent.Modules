@@ -12,7 +12,13 @@ namespace Intent.Modules.Common.CSharp.Configuration
             Value = value;
         }
 
+        public AppSettingRegistrationRequest(string key, object value)
+        {
+            Key = key;
+            Value = value;
+        }
+
         public string Key { get; set; }
-        public string Value { get; set; }
+        public object Value { get; set; }
     }
 }

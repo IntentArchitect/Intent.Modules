@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -47,5 +48,15 @@ namespace Intent.ModuleBuilder.Api
 
         public new const string SpecializationType = "File Template";
         public new const string SpecializationTypeId = "43eae4bd-4613-4d15-88ac-52b7e743b7b2";
+
+        public IList<TemplateDecoratorContractModel> DecoratorContracts => _element.ChildElements
+                    .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
+                    .Select(x => new TemplateDecoratorContractModel(x))
+                    .ToList();
+
+        public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
+                    .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
+                    .Select(x => new TemplateDecoratorContractModel(x))
+                    .SingleOrDefault();
     }
 }

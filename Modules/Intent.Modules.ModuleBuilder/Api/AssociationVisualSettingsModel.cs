@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -67,13 +68,13 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public AssociationDestinationEndVisualSettingsModel DestinationVisual => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationDestinationEndVisualSettingsModel.SpecializationType)
+            .GetElementsOfType(AssociationDestinationEndVisualSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationDestinationEndVisualSettingsModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public AssociationSourceEndVisualSettingsModel SourceVisual => _element.ChildElements
-            .Where(x => x.SpecializationType == AssociationSourceEndVisualSettingsModel.SpecializationType)
+            .GetElementsOfType(AssociationSourceEndVisualSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationSourceEndVisualSettingsModel(x))
             .SingleOrDefault();
 

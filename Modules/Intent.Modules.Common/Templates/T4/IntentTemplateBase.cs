@@ -9,6 +9,31 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
+    public abstract class IntentTemplateBase<TModel, TDecorator> : IntentTemplateBase<TModel>, IHasDecorators<TDecorator>
+        where TDecorator : ITemplateDecorator
+    {
+        private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
+
+        protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
+        {
+        }
+
+        public IEnumerable<TDecorator> GetDecorators()
+        {
+            return _decorators.OrderBy(x => x.Priority);
+        }
+
+        public void AddDecorator(TDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
+        protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
+        {
+            return GetDecorators().Aggregate(propertyFunc);
+        }
+    }
+
     public abstract class IntentTemplateBase<TModel> : IntentTemplateBase, ITemplateWithModel
     {
         protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget)

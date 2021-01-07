@@ -4,6 +4,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -15,7 +16,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class ApiElementExtensionModelTemplate : CSharpTemplateBase<ElementExtensionModel>
+    partial class ApiElementExtensionModelTemplate : CSharpTemplateBase<ElementExtensionModel>, IDeclareUsings
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel";
@@ -65,6 +66,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
             }
             var name = option.Name.Replace("Add ", "").Replace("New ", "").Replace("Create ", "").ToCSharpIdentifier();
             return option.GetOptionSettings().AllowMultiple() ? name.ToPluralName() : name;
+        }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            yield return GetBaseElementModel().ParentModule.ApiNamespace;
         }
     }
 }

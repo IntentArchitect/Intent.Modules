@@ -106,25 +106,25 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements
-            .Where(x => x.SpecializationType == ContextMenuModel.SpecializationType)
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public IList<ElementSettingsModel> ElementSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementSettingsModel.SpecializationType)
+            .GetElementsOfType(ElementSettingsModel.SpecializationTypeId)
             .Select(x => new ElementSettingsModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
         public DiagramSettingsModel DiagramSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == DiagramSettingsModel.SpecializationType)
+            .GetElementsOfType(DiagramSettingsModel.SpecializationTypeId)
             .Select(x => new DiagramSettingsModel(x))
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public MappingSettingsModel MappingSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == MappingSettingsModel.SpecializationType)
+            .GetElementsOfType(MappingSettingsModel.SpecializationTypeId)
             .Select(x => new MappingSettingsModel(x))
             .SingleOrDefault();
 
@@ -160,7 +160,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ElementVisualSettingsModel VisualSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementVisualSettingsModel.SpecializationType)
+            .GetElementsOfType(ElementVisualSettingsModel.SpecializationTypeId)
             .Select(x => new ElementVisualSettingsModel(x))
             .SingleOrDefault();
 
@@ -175,7 +175,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public ElementEventSettingsModel EventSettings => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementEventSettingsModel.SpecializationType)
+            .GetElementsOfType(ElementEventSettingsModel.SpecializationTypeId)
             .Select(x => new ElementEventSettingsModel(x))
             .SingleOrDefault();
         public const string SpecializationTypeId = "727577aa-3e07-4b41-be7d-7359bb1e48c8";

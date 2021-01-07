@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.0.1</version>
+  <version>3.0.2</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>

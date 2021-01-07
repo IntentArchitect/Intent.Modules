@@ -5,6 +5,7 @@ using System.Security.Cryptography.X509Certificates;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -37,7 +38,7 @@ namespace Intent.ModuleBuilder.Api
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         [IntentManaged(Mode.Fully)]
         public IList<ElementMappingModel> ChildMappings => _element.ChildElements
-            .Where(x => x.SpecializationType == ElementMappingModel.SpecializationType)
+            .GetElementsOfType(ElementMappingModel.SpecializationTypeId)
             .Select(x => new ElementMappingModel(x))
             .ToList();
 

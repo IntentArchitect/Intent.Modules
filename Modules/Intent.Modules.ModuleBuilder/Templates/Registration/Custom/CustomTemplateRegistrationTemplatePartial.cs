@@ -33,7 +33,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"{Model.Name}Registration",
+                className: $"{Model.Name.RemoveSuffix("Template")}TemplateRegistration",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
                 relativeLocation: $"{FolderPath}");
         }
