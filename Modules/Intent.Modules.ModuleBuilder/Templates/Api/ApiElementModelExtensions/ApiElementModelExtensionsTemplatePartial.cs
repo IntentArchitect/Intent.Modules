@@ -23,6 +23,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 
         public ApiElementModelExtensionsTemplate(IOutputTarget project, ExtensionModel model) : base(TemplateId, project, model)
         {
+            foreach (var module in Model.StereotypeDefinitions
+                .SelectMany(x => x.TargetElements)
+                .Distinct()
+                .Select(x => new IntentModuleModel(x.Package))
+                .Distinct()
+                .Where(x => !string.IsNullOrWhiteSpace(x.NuGetPackageId) && !string.IsNullOrWhiteSpace(x.NuGetPackageVersion)))
+            {
+                AddNugetDependency(module.NuGetPackageId, module.NuGetPackageVersion);
+            }
         }
 
         protected override CSharpFileConfig DefineFileConfig()

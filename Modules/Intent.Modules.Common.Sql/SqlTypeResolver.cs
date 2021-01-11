@@ -46,7 +46,7 @@ namespace Intent.Modules.Common.Sql
                     result = "DATETIMEOFFSET";
                     break;
                 case "decimal":
-                    result = $"DECIMAL({typeInfo.GetStereotypeProperty("Numeric", "Precision", "18")}, {typeInfo.GetStereotypeProperty("Numeric", "Scale", "2")})";
+                    result = $"DECIMAL({typeInfo.GetStereotypeProperty("Decimal Constraints", "Precision", "18")}, {typeInfo.GetStereotypeProperty("Decimal Constraints", "Scale", "2")})";
                     break;
                 case "double":
                     result = "FLOAT";
@@ -70,7 +70,7 @@ namespace Intent.Modules.Common.Sql
                     result = "SMALLINT";
                     break;
                 case "string":
-                    result = $"{typeInfo.GetStereotypeProperty("Text", "SQL Data Type", "NVARCHAR")}({typeInfo.GetStereotypeProperty("Text", "MaxLength", typeInfo.GetStereotypeProperty("Text", "Max Length", "MAX"))})";
+                    result = $"{typeInfo.GetStereotypeProperty("Text Constraints", "SQL Data Type", "NVARCHAR")}({typeInfo.GetStereotypeProperty("Text Constraints", "MaxLength", typeInfo.GetStereotypeProperty("Text Constraints", "Max Length", "MAX"))})";
                     break;
             }
 

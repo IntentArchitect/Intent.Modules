@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d01df110-1208-4af8-a913-92a49d219552">
+  <name>Parameter Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="00208d20-469d-41cb-8501-768fd5eb796b">Parameter</element>
+  </targetElements>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return (properties["Source"].value == "Default") ? "" : `[${properties["Source"].value}]`;</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>0011387a-b122-45d7-9cdb-8e21b315ab9f</parentFolderId>
+  <order>0</order>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <properties>
+    <property id="d2630e0f-f930-404f-b453-1e8052a712f5">
+      <name>Source</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>Default</defaultValue>
+      <valueOptions>
+        <option>Default</option>
+        <option>From Query</option>
+        <option>From Body</option>
+        <option>From Route</option>
+        <option>From Header</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

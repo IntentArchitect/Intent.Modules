@@ -45,7 +45,7 @@ namespace Intent.Modules.Common.Java.Weaving
             {
                 output.ChangeContent(existingFile.GetSource());
 
-                Logging.Log.Failure($"Error while weaving Java file: {output.FileMetadata.GetRelativeFilePath()}");
+                Logging.Log.Failure($"Error while weaving Java file: {output.FileMetadata.GetFilePath()}");
                 Logging.Log.Failure(e.ToString());
             }
         }

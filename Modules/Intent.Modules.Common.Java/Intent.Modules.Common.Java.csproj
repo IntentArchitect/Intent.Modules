@@ -18,7 +18,7 @@
     <PackageReference Include="Intent.Modules.Common" Version="3.0.1" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.1" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
-    <PackageReference Include="Intent.Code.Weaving.Java" Version="1.0.0">
+    <PackageReference Include="Intent.Code.Weaving.Java" Version="1.0.1">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Intent.Packager" Version="3.0.1">

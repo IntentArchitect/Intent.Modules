@@ -26,5 +26,6 @@
     <application id="b12d90e1-8c8f-4fd8-9c47-0e165ce28161" name="Intent.Modules.Modelers.Services.CQRS" relativePath="Intent.Modules.Modelers.Services.CQRS/Intent.Modules.Modelers.Services.CQRS.application.config" />
     <application id="765236f6-13a2-40be-90d3-38674e01f4a7" name="Intent.Modules.Metadata.RDBMS" relativePath="Intent.Modules.Metadata.RDBMS/Intent.Modules.Metadata.RDBMS.application.config" />
     <application id="be31373a-86a5-41f4-8bf4-468cc0c481d0" name="Intent.Modules.Modelers.Domain.Events" relativePath="Intent.Modules.Modelers.Domain.Events/Intent.Modules.Modelers.Domain.Events.application.config" />
+    <application id="0f9ab3ec-dfce-4320-ac37-19c5b8d05528" name="Intent.Modules.Metadata.WebApi" relativePath="Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.application.config" />
   </applications>
 </solution>

@@ -122,7 +122,7 @@ namespace Intent.Modules.Common.Templates
             return s.EndsWith("y") && !s.EndsWith("ay") && !s.EndsWith("ey") && !s.EndsWith("iy") && !s.EndsWith("oy") && !s.EndsWith("uy")
                 ? (s.Substring(0, s.Length - 1) + "ies")
                 : s.EndsWith("ings") ? s
-                : s.EndsWith("s") ? $"{s}es" : $"{s}s";
+                : (s.EndsWith("s") || s.EndsWith("x") || s.EndsWith("z") || s.EndsWith("ch") || s.EndsWith("sh")) ? $"{s}es" : $"{s}s";
         }
 
         public static string ToCamelCase(this string s)

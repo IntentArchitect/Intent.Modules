@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Java.Templates
             foreach (var import in template.ResolveAllImports())
             {
 
-                if (file.ImportExists(import))
+                if (file.ImportExists(import) || template.Package == FixImport(import).RemoveSuffix("." + FixImport(import).Split('.').Last()))
                 {
                     continue;
                 }
