@@ -47,7 +47,7 @@
       <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
-      <defaultValue>true</defaultValue>
+      <defaultValue>false</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>

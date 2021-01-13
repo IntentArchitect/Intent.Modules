@@ -40,7 +40,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public abstract class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    public abstract" +
+                    " class ");
             
             #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

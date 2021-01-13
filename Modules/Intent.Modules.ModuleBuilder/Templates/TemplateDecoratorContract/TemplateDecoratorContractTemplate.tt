@@ -13,7 +13,7 @@ using Intent.Templates;
 
 namespace <#= Namespace #>
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public abstract class <#= ClassName #> : ITemplateDecorator
     {
         public int Priority { get; protected set; } = 0;
