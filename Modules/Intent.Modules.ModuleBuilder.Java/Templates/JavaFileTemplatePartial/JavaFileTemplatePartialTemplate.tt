@@ -27,8 +27,8 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model) : base(TemplateId, outputTarget, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
         }
 

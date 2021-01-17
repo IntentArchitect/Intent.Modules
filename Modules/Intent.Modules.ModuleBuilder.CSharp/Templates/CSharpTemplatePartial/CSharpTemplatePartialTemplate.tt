@@ -7,6 +7,7 @@
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Modules.Common.Types.Api" #>
 <#@ import namespace="Intent.ModuleBuilder.CSharp.Api" #>
 <#@ import namespace="Intent.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.ModuleBuilder.Helpers" #>
@@ -29,30 +30,17 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-        [IntentInitialGen]
-        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model) : base(TemplateId, outputTarget, model)
+	    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
         }
 
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                @namespace: $"{OutputTarget.GetNamespace()}");
+                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.RemoveSuffix("Template") #>",
+                @namespace: $"{this.GetNamespace()}",
+                relativeLocation: $"{this.GetFolderPath()}");
         }
-
-<#  if (/*HasDecorators()*/false) { #>
-        [IntentManaged(Mode.Fully)]
-        public void AddDecorator(<#= "TODO Decorator Type" #> decorator)
-        {
-            _decorators.Add(decorator);
-        }
-
-        [IntentManaged(Mode.Fully)]
-        public IEnumerable<<#= "TODO Decorator Type" #>> GetDecorators()
-        {
-            return _decorators;
-        }
-<#  } #>
     }
 }

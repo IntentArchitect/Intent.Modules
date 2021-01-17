@@ -21,18 +21,17 @@ using System.Linq;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge)]
+	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class <#= ClassName #> : <#= GetBaseType() #>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-        [IntentInitialGen]
-        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model) : base(TemplateId, outputTarget, model)
+	    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(

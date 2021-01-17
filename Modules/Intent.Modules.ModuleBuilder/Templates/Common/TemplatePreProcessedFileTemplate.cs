@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Text;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
 {
@@ -33,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
 
         public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
-        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
 
         public override ITemplateFileConfig GetTemplateFileConfig()
         {

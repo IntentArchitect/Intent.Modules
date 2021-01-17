@@ -72,8 +72,8 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             
             #line default
             #line hidden
-            this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Ful" +
-                    "ly)]\r\n        public ");
+            this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n        public" +
+                    " ");
             
             #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -87,7 +87,14 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             
             #line default
             #line hidden
-            this.Write(@" model) : base(TemplateId, outputTarget, model)
+            this.Write(" model");
+            
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() == null ? " = null" : ""));
+            
+            #line default
+            #line hidden
+            this.Write(@") : base(TemplateId, outputTarget, model)
         {
         }
 

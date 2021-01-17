@@ -12,6 +12,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -28,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
         {
         }
 
-        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
         public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
 

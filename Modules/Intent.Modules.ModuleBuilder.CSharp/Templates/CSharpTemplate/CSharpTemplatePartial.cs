@@ -11,6 +11,7 @@ using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.CSharp.Api;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
@@ -28,9 +29,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
         {
         }
 
-        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
-        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
-        public string FolderPath => string.Join("/", OutputFolder);
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig GetTemplateFileConfig()
@@ -39,8 +38,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{TemplateName}",
-                fileExtension: "tt",
-                relativeLocation: $"{FolderPath}");
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
+                fileExtension: "tt");
         }
 
         public override string TransformText()
@@ -99,7 +98,7 @@ namespace <#= Namespace #>
         }
 
         private static readonly Regex _templateInheritsTagRegex = new Regex(
-            @"(?<begin><#@[ ]*template[ ]+[\.a-zA-Z0-9=_\""#<> ]*inherits=\"")(?<type>[a-zA-Z0-9\._<>]+)(?<end>\""[ ]*#>)",
+            @"(?<begin><#@[ ]*template[ ]+[\.a-zA-Z0-9=_\""#<> ]*inherits=\"")(?<type>[a-zA-Z0-9\.,_<> ]+)(?<end>\""[ ]*#>)",
             RegexOptions.Compiled);
 
         private static string ReplaceTemplateInheritsTag(string templateContent, string inheritType)

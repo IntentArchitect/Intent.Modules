@@ -6,6 +6,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Helpers;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.Templates;
 
@@ -20,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
         }
 
 
-        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
         public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolders);
 

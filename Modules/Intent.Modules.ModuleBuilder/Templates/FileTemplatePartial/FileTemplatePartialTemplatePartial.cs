@@ -66,14 +66,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
         {
             if (Model.DecoratorContract != null)
             {
-                return $"{GetTemplateBaseClass()}<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+                return $"{GetTemplateBaseClass()}<{GetModelType()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
             }
-            return $"{GetTemplateBaseClass()}<{Model.GetModelName()}>";
+            return $"{GetTemplateBaseClass()}<{GetModelType()}>";
         }
 
         private string GetModelType()
         {
-            return Model.GetModelName();
+            return NormalizeNamespace(Model.GetModelName());
         }
 
         private string GetTemplateBaseClass()

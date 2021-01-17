@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
             }
         }
 
-        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
         public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
         public string FolderPath => string.Join("/", OutputFolders);
         public string FolderNamespace => string.Join(".", OutputFolders);

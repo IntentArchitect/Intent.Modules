@@ -212,6 +212,7 @@
     <file src="$outDir$/$id$.pdb" />
     <file src="$outDir$/Mono.TextTemplating.dll" />
     <file src="$outDir$/System.CodeDom.dll" />
+    <!--is this needed?-->
     <file src="$outDir$/Intent.Modules.Common.CSharp.dll" />
   </files>
 </package>

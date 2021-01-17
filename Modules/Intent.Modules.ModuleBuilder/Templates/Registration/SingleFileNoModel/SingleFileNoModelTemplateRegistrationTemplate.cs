@@ -73,7 +73,7 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("(outputTarget, null);\r\n        }\r\n    }\r\n}");
+            this.Write("(outputTarget);\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

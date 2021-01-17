@@ -29,18 +29,18 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             AddNugetDependency(IntentNugetPackages.IntentRoslynWeaverAttributes);
         }
 
-        public string TemplateName => Model.Name.EndsWith("Template") ? Model.Name : $"{Model.Name}Template";
-        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
-        public string FolderPath => string.Join("/", OutputFolder);
-        public string FolderNamespace => string.Join(".", OutputFolder);
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+        //public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        //public string FolderPath => string.Join("/", OutputFolder);
+        //public string FolderNamespace => string.Join(".", OutputFolder);
 
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
                 className: $"{TemplateName}",
-                @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
-                fileName: $"{TemplateName}Partial",
-                relativeLocation: $"{FolderPath}");
+                @namespace: $"{this.GetNamespace(additionalFolders: Model.Name)}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
+                fileName: $"{TemplateName}Partial");
         }
 
         public override void BeforeTemplateExecution()
@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.CSharp",
-                moduleVersion: "3.0.1"));
+                moduleVersion: "3.0.3"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
@@ -70,7 +70,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Model.GetModule().Name}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Concat(new []{ Model.Name }))}";
         }
 
         private string GetBaseType()
