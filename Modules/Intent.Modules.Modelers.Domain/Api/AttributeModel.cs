@@ -40,6 +40,8 @@ namespace Intent.Modelers.Domain.Api
 
         public ITypeReference Type => _element.TypeReference;
 
+        [IntentManaged(Mode.Ignore)]
+        public ClassModel Class => new ClassModel(_element.ParentElement);
 
         [IntentManaged(Mode.Fully)]
         public bool Equals(AttributeModel other)

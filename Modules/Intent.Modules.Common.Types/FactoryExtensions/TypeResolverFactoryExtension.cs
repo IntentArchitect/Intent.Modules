@@ -49,20 +49,11 @@ namespace Intent.Modules.Common.Types.FactoryExtensions
 
         public void PostConfiguration(ITemplate templateInstance)
         {
-            if (templateInstance is IRequireTypeResolver)
+            if (templateInstance is IRequireTypeResolver requireTypeResolver && _typeResolverFactoryRepository.GetTypeResolver(templateInstance.GetMetadata()) != null)
             {
-                var requireTypeResolver = templateInstance as IRequireTypeResolver;
-                if (templateInstance is ITypeResolverFactoryResolution)
-                {
-                    var resolverFactory = (templateInstance as ITypeResolverFactoryResolution).DetermineTypeResolver(_typeResolverFactoryRepository);
-                    requireTypeResolver.Types = resolverFactory.Create();
-                }
-                else
-                {
-                    requireTypeResolver.Types =
-                        _typeResolverFactoryRepository.GetTypeResolver(templateInstance.GetMetadata())
-                        .Create();
-                }
+                requireTypeResolver.Types =
+                    _typeResolverFactoryRepository.GetTypeResolver(templateInstance.GetMetadata())
+                    .Create();
             }
         }
 

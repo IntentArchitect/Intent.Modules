@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.TypeResolvers;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
@@ -50,6 +52,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             : base(templateId, outputTarget, model)
         {
             AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
+            Types = new CSharpTypeResolver(OutputTarget.GetProject());
         }
 
         public IOutputTarget Project => OutputTarget;

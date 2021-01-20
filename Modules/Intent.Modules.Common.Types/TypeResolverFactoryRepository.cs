@@ -30,7 +30,7 @@ namespace Intent.Modules.Common.Types
         {
             var resolver = _typeResolvers.OrderByDescending(tr => tr.Priority).FirstOrDefault(tr => tr.SupportedFileTypes.Any( ft => ft.ToLower().EndsWith( metadata.FileExtension.ToLower())) );
 
-            return resolver ?? _noTypeResolverResolver;
+            return resolver;
         }
     }
 }

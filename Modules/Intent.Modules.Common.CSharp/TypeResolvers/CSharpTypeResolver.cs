@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.Common.Types.TypeResolvers
+namespace Intent.Modules.Common.CSharp.TypeResolvers
 {
     public class CSharpTypeResolver : TypeResolverBase, ITypeResolver
     {
-        public CSharpTypeResolver()
+        private readonly ICSharpProject _project;
+
+        public CSharpTypeResolver(ICSharpProject project)
         {
+            _project = project;
         }
 
         public override string DefaultCollectionFormat { get; set; } = "IEnumerable<{0}>";
@@ -83,7 +87,7 @@ namespace Intent.Modules.Common.Types.TypeResolvers
                         break;
                 }
 
-                if (typeInfo.IsNullable && (isPrimitive || typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
+                if (typeInfo.IsNullable && (isPrimitive || _project.IsNullableAwareContext() || typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
                 {
                     result += "?";
                 }
