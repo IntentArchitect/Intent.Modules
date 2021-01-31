@@ -169,6 +169,15 @@ namespace Intent.Modules.Common.Templates
             return word;
         }
 
+        public static string EnsureSuffixedWith(this string @string, string suffix, params string[] suffixesToRemove)
+        {
+            @string = @string.RemoveSuffix(suffixesToRemove);
+
+            return @string.EndsWith(@string)
+                ? @string
+                : $"{@string}{suffix}";
+        }
+
         public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
         {
             return Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);
