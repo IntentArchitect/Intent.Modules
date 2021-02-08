@@ -2,6 +2,9 @@
 
 namespace Intent.Modules.Common.TypeResolution
 {
+    /// <summary>
+    /// Information about the resolved type.
+    /// </summary>
     public interface IResolvedTypeInfo
     {
         string Name { get; }

@@ -5,6 +5,9 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Registrations
 {
+    /// <summary>
+    /// Template Registration that produces as single file. Passes in a list of models into the template.
+    /// </summary>
     public abstract class SingleFileListModelTemplateRegistration<TModel> : TemplateRegistrationBase
         where TModel: class
     {

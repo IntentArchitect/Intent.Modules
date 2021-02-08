@@ -63,8 +63,19 @@ namespace Intent.Modules.Common.Templates
             BindingContext = new TemplateBindingContext(this);
         }
 
+        /// <summary>
+        /// Unique identifier for this template. Must be unique in the application in which this template is installed.
+        /// </summary>
         public string Id { get; }
+
+        /// <summary>
+        /// Software Factory Execution context. Gives access to application-wide services.
+        /// </summary>
         public ISoftwareFactoryExecutionContext ExecutionContext { get; }
+
+        /// <summary>
+        /// The OutputTarget of this template. This is determined by a designer with Output Targeting capabilities (e.g. Visual Studio, Folder Structure, etc.)
+        /// </summary>
         public IOutputTarget OutputTarget { get; }
         public ITemplateBindingContext BindingContext { get; }
         public IFileMetadata FileMetadata { get; private set; }
@@ -87,16 +98,29 @@ namespace Intent.Modules.Common.Templates
             return FileMetadata;
         }
 
+        /// <summary>
+        /// Adds the Template with <paramref name="templateId"/> as a dependency of this template.
+        /// </summary>
+        /// <param name="templateId"></param>
         public void AddTemplateDependency(string templateId)
         {
             AddTemplateDependency(TemplateDependency.OnTemplate(templateId));
         }
 
+        /// <summary>
+        /// Adds the Template with <paramref name="templateId"/> and <paramref name="model"/> as a dependency of this template.
+        /// </summary>
+        /// <param name="templateId"></param>
+        /// <param name="model">The metadata modle instance that the Template must be bound to.</param>
         public void AddTemplateDependency(string templateId, IMetadataModel model)
         {
             AddTemplateDependency(TemplateDependency.OnModel(templateId, model));
         }
 
+        /// <summary>
+        /// Adds the <see cref="ITemplateDependency"/> <paramref name="templateDependency"/> as a dependency of this template.
+        /// </summary>
+        /// <param name="templateDependency"></param>
         public void AddTemplateDependency(ITemplateDependency templateDependency)
         {
             DetectedDependencies.Add(templateDependency);
@@ -115,6 +139,9 @@ namespace Intent.Modules.Common.Templates
         {
         }
 
+        /// <summary>
+        /// Executed before the Template's <see cref="RunTemplate"/> runs.
+        /// </summary>
         public virtual void BeforeTemplateExecution()
         {
         }
@@ -131,6 +158,10 @@ namespace Intent.Modules.Common.Templates
             }
         }
 
+        /// <summary>
+        /// Adds the <see cref="ITypeSource"/> <paramref name="typeSource"/> as a source to find fully qualified types when using the <see cref="GetTypeName(ITypeReference)"/> method.
+        /// </summary>
+        /// <param name="typeSource"></param>
         public void AddTypeSource(ITypeSource typeSource)
         {
             _typeSources.Add(typeSource);
@@ -172,6 +203,11 @@ namespace Intent.Modules.Common.Templates
             return name;
         }
 
+        /// <summary>
+        /// Gets the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
+        /// </summary>
+        /// <param name="typeReference"></param>
+        /// <returns></returns>
         public virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference)
         {
             return Types.Get(typeReference);
@@ -210,27 +246,65 @@ namespace Intent.Modules.Common.Templates
         #endregion
         #region GetTypeName for Template
 
+        /// <summary>
+        /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
+        /// </summary>
+        /// <param name="templateDependency"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public virtual string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
             var name = GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName();
             return name != null ? NormalizeTypeName(name) : null;
         }
 
+        /// <summary>
+        /// Resolves the type name of the <paramref name="template"/> as a string.
+        /// </summary>
+        /// <param name="template"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnTemplate(template), options);
         }
 
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// Will throw an exception if more than one template instance exists.
+        /// </summary>
+        /// <param name="templateId"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnTemplate(templateId), options);
         }
 
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="model"/>.
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="model">The model instance that the Template must be bound to.</param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnModel(templateId, model), options);
         }
 
+
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="modelId"/>.
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);

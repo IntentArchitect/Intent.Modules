@@ -47,7 +47,8 @@ namespace Intent.ModuleBuilder.Api
 
             public DesignerModel Designer()
             {
-                return new DesignerModel(_stereotype.GetProperty<IElement>("Designer"));
+                var designerElement = _stereotype.GetProperty<IElement>("Designer");
+                return designerElement != null ? new DesignerModel(designerElement) : null;
             }
 
             public TemplateSettingsSource Source()

@@ -6,6 +6,16 @@ namespace Intent.Modules.Common.CSharp.Templates
 {
     public class CSharpFileConfig : TemplateFileConfig
     {
+        /// <summary>
+        /// Sets the C# file configuration
+        /// </summary>
+        /// <param name="className"></param>
+        /// <param name="namespace">namespace</param>
+        /// <param name="relativeLocation"></param>
+        /// <param name="overwriteBehaviour"></param>
+        /// <param name="fileName"></param>
+        /// <param name="fileExtension"></param>
+        /// <param name="dependsUpon"></param>
         public CSharpFileConfig(
             string className,
             string @namespace,

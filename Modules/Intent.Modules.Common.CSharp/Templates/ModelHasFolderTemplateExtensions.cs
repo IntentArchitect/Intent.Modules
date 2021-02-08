@@ -21,13 +21,25 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Creates a folder path based on the <see cref="additionalFolders"/>.
+        /// Creates a folder path based on the <paramref name="additionalFolders"/>.
         /// </summary>
         /// <typeparam name="TModel"></typeparam>
         /// <param name="template"></param>
         /// <param name="additionalFolders"></param>
         /// <returns></returns>
         public static string GetFolderPath(this IntentTemplateBase<object> template, params string[] additionalFolders)
+        {
+            return string.Join("/", additionalFolders);
+        }
+
+        /// <summary>
+        /// Creates a folder path based on the <paramref name="additionalFolders"/>.
+        /// </summary>
+        /// <typeparam name="TModel"></typeparam>
+        /// <param name="template"></param>
+        /// <param name="additionalFolders"></param>
+        /// <returns></returns>
+        public static string GetFolderPath(this IntentTemplateBase template, params string[] additionalFolders)
         {
             return string.Join("/", additionalFolders);
         }
@@ -46,13 +58,23 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Creates a fully qualified namespace based on the OutputTarget location and the <see cref="additionalFolders"/>.
+        /// Creates a fully qualified namespace based on the OutputTarget location and the <paramref name="additionalFolders"/>.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
         /// <param name="template"></param>
         /// <param name="additionalFolders"></param>
         /// <returns></returns>
         public static string GetNamespace(this CSharpTemplateBase<object> template, params string[] additionalFolders)
+        {
+            return string.Join(".", new[] { template.OutputTarget.GetNamespace() }.Concat(additionalFolders));
+        }
+
+        /// <summary>
+        /// Creates a fully qualified namespace based on the OutputTarget location and the <paramref name="additionalFolders"/>.
+        /// </summary>
+        /// <param name="template"></param>
+        /// <param name="additionalFolders"></param>
+        /// <returns></returns>
+        public static string GetNamespace(this IntentTemplateBase template, params string[] additionalFolders)
         {
             return string.Join(".", new[] { template.OutputTarget.GetNamespace() }.Concat(additionalFolders));
         }

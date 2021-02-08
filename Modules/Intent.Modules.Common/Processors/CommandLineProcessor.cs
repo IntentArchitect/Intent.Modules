@@ -6,6 +6,7 @@ using Intent.Utils;
 
 namespace Intent.Modules.Common.Processors
 {
+    [Obsolete("Only works in windows environments")]
     public class CommandLineProcessor
     {
         public string ExecuteCommand(string workingDirectory, params string[] commands)

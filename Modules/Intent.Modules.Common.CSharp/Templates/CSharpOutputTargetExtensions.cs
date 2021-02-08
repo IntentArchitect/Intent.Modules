@@ -6,6 +6,11 @@ namespace Intent.Modules.Common.CSharp.Templates
 {
     public static class CSharpOutputTargetExtensions
     {
+        /// <summary>
+        /// Returns a namespace string based on the full path from the <paramref name="target"/>. This will include folders and C# projects.
+        /// </summary>
+        /// <param name="target"></param>
+        /// <returns></returns>
         public static string GetNamespace(this IOutputTarget target)
         {
             return string.Join(".", target.GetTargetPath()

@@ -38,6 +38,11 @@ namespace Intent.Modules.Common.CSharp.Templates
             _decorators.Add(decorator);
         }
 
+        /// <summary>
+        /// Aggregates the specified <see cref="propertyFunc"/> property of all Decorators. Ignores Decorators where the property returns null.
+        /// </summary>
+        /// <param name="propertyFunc"></param>
+        /// <returns></returns>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);
@@ -55,7 +60,10 @@ namespace Intent.Modules.Common.CSharp.Templates
             Types = new CSharpTypeResolver(OutputTarget.GetProject());
         }
 
-        public IOutputTarget Project => OutputTarget;
+        /// <summary>
+        /// Returns the csproj file <see cref="IOutputTarget"/> that contains this file.
+        /// </summary>
+        public IOutputTarget Project => OutputTarget.GetProject();
 
         public string Namespace
         {
@@ -88,11 +96,22 @@ namespace Intent.Modules.Common.CSharp.Templates
 {templateOutput}".TrimStart();
         }
 
+        /// <summary>
+        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// </summary>
+        /// <param name="templateId"></param>
+        /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
         public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
             AddTypeSource(CSharpTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
+        /// <summary>
+        /// Called once a type has been resolved in the <see cref="IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
+        /// Override to alter the resulting string.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <returns></returns>
         public override string NormalizeTypeName(string name)
         {
             return NormalizeNamespace(name);
@@ -308,6 +327,9 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         protected abstract CSharpFileConfig DefineFileConfig();
 
+        /// <summary>
+        /// Returns all using statements that are introduced through dependencies.
+        /// </summary>
         public virtual string DependencyUsings => this.ResolveAllUsings(ExecutionContext, namespacesToIgnore: Namespace);
 
         private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
@@ -316,6 +338,12 @@ namespace Intent.Modules.Common.CSharp.Templates
             return _nugetDependencies;
         }
 
+        /// <summary>
+        /// Registers that the specified NuGet package should be installed in the csproj file where this file resides.
+        /// </summary>
+        /// <param name="packageName"></param>
+        /// <param name="packageVersion"></param>
+        /// <returns></returns>
         public NugetPackageInfo AddNugetDependency(string packageName, string packageVersion)
         {
             var package = new NugetPackageInfo(packageName, packageVersion);
@@ -323,6 +351,10 @@ namespace Intent.Modules.Common.CSharp.Templates
             return package;
         }
 
+        /// <summary>
+        /// Registers that the specified NuGet package should be installed in the csproj file where this file resides.
+        /// </summary>
+        /// <param name="nugetPackageInfo"></param>
         public void AddNugetDependency(INugetPackageInfo nugetPackageInfo)
         {
             _nugetDependencies.Add(nugetPackageInfo);
@@ -330,11 +362,16 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
 
+
         public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
         {
             return _assemblyDependencies;
         }
 
+        /// <summary>
+        /// Registers that the specified GAC assembly should be installed in the csproj file where this file resides.
+        /// </summary>
+        /// <param name="assemblyReference"></param>
         public void AddAssemblyReference(IAssemblyReference assemblyReference)
         {
             _assemblyDependencies.Add(assemblyReference);

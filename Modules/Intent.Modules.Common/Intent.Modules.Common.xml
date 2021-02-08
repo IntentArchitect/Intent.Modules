@@ -1,0 +1,1075 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Intent.Modules.Common</name>
+    </assembly>
+    <members>
+        <member name="M:Intent.Modules.Common.StereotypeExtensions.GetStereotype(Intent.Metadata.Models.IHasStereotypes,System.String)">
+            <summary>
+            Lookup only one stereotype with a given name. If more than one is found with the same name, it fails.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.StereotypeExtensions.GetStereotypes(Intent.Metadata.Models.IHasStereotypes,System.String)">
+            <summary>
+            Look up multiple stereotypes by the same name.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.PathHelper.NormalizePath(System.String)">
+            <summary>
+            Windows accepts "\" as path seperators, but other platforms do not, so we always convert everything to "/".
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1">
+            <summary>
+            Template Registration that produces a file per module that is returned by the <see cref="M:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1.GetModels(Intent.Engine.IApplication)"/> method.
+            </summary>
+            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="M:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1.CreateTemplateInstance(Intent.Engine.IOutputTarget,`0)">
+            <summary>
+            Returns the template instance. This method is run for each <typeparamref name="TModel"/> <paramref name="model"/> that is
+            returned from the <see cref="M:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1.GetModels(Intent.Engine.IApplication)"/> method.
+            </summary>
+            <param name="outputTarget"></param>
+            <param name="model"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1.GetModels(Intent.Engine.IApplication)">
+            <summary>
+            Implement to determine which instances of <typeparamref name="TModel"/> must create a file based on the template.
+            </summary>
+            <param name="application"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Intent.Modules.Common.Registrations.SingleFileListModelTemplateRegistration`1">
+            <summary>
+            Template Registration that produces as single file. Passes in a list of models into the template.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Registrations.SingleFileTemplateRegistration">
+            <summary>
+            Template Registration that produces as single file.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.IClassProvider">
+            <summary>
+            Template that provides a OOP class type - Class name and namespace (package).
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IClassProviderExtensions.FullTypeName(Intent.Modules.Common.Templates.IClassProvider)">
+            <summary>
+            Returns the fully qualified class name.
+            </summary>
+            <param name="item"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.IntentTemplateBase.Id">
+            <summary>
+            Unique identifier for this template. Must be unique in the application in which this template is installed.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.IntentTemplateBase.ExecutionContext">
+            <summary>
+            Software Factory Execution context. Gives access to application-wide services.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.IntentTemplateBase.OutputTarget">
+            <summary>
+            The OutputTarget of this template. This is determined by a designer with Output Targeting capabilities (e.g. Visual Studio, Folder Structure, etc.)
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTemplateDependency(System.String)">
+            <summary>
+            Adds the Template with <paramref name="templateId"/> as a dependency of this template.
+            </summary>
+            <param name="templateId"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTemplateDependency(System.String,Intent.Metadata.Models.IMetadataModel)">
+            <summary>
+            Adds the Template with <paramref name="templateId"/> and <paramref name="model"/> as a dependency of this template.
+            </summary>
+            <param name="templateId"></param>
+            <param name="model">The metadata modle instance that the Template must be bound to.</param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTemplateDependency(Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Adds the <see cref="T:Intent.Modules.Common.ITemplateDependency"/> <paramref name="templateDependency"/> as a dependency of this template.
+            </summary>
+            <param name="templateDependency"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution">
+            <summary>
+            Executed before the Template's <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.RunTemplate"/> runs.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
+            <summary>
+            Adds the <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> <paramref name="typeSource"/> as a source to find fully qualified types when using the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/> method.
+            </summary>
+            <param name="typeSource"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.NormalizeTypeName(System.String)">
+            <summary>
+            Override this to alter Type names after they have been found.
+            </summary>
+            <param name="name"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.ITypeReference)">
+            <summary>
+            Gets the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
+            </summary>
+            <param name="typeReference"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the type name of the <paramref name="templateDependency"/> as a string.
+            </summary>
+            <param name="templateDependency"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Templates.ITemplate,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the type name of the <paramref name="template"/> as a string.
+            </summary>
+            <param name="template"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+            Will throw an exception if more than one template instance exists.
+            </summary>
+            <param name="templateId"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+            This overload assumes that the Template can have many instances and identifies the target instance
+            based on which has the <paramref name="model"/>.
+            </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="model">The model instance that the Template must be bound to.</param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+            This overload assumes that the Template can have many instances and identifies the target instance
+            based on which has the <paramref name="modelId"/>.
+            </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.GenerationEnvironment">
+            <summary>
+            The string builder that generation-time code is using to assemble generated output
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.indentLengths">
+            <summary>
+            A list of the lengths of each indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.CurrentIndent">
+            <summary>
+            Gets the current indent we use when adding lines to the output
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.Session">
+            <summary>
+            Current transformation session
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.Write(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.WriteLine(System.String)">
+            <summary>
+            Write text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.Write(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.WriteLine(System.String,System.Object[])">
+            <summary>
+            Write formatted text directly into the generated output
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.PushIndent(System.String)">
+            <summary>
+            Increase the indent
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.PopIndent">
+            <summary>
+            Remove the last indent that was added with PushIndent
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.ClearIndent">
+            <summary>
+            Remove any indentation
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.T4TemplateBase.ToStringInstanceHelper">
+            <summary>
+            Utility class to produce culture-oriented representation of an object as a string.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.ToStringInstanceHelper.FormatProvider">
+            <summary>
+            Gets or sets format provider to be used by ToStringWithCulture method.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.T4TemplateBase.ToStringInstanceHelper.ToStringWithCulture(System.Object)">
+            <summary>
+            This is called from the compile/run appdomain to convert objects within an expression block to a string
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.ToStringHelper">
+            <summary>
+            Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo">
+            <summary>
+            Information about the resolved type.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.ITypeResolver.DefaultCollectionFormat">
+            <summary>
+            Default format to use when the typeInfo.IsCollection is true;
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
+            <summary>
+            Adds a default <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> that is used when resolving type names of classes.
+            </summary>
+            <param name="typeSource"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
+            <summary>
+            Adds an <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> that is only used to resolve type names when <see cref="M:Intent.Modules.Common.TypeResolution.ITypeResolver.InContext(System.String)"/> is called for the specific <see cref="!:contextName"/>.
+            </summary>
+            <param name="typeSource"></param>
+            <param name="contextName"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.Get(Intent.Metadata.Models.ITypeReference)">
+            <summary>
+            Resolves the type name for the specified <see cref="!:typeInfo"/>
+            </summary>
+            <param name="typeInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.Get(Intent.Metadata.Models.ITypeReference,System.String)">
+            <summary>
+            Resolves the type name for the specified <see cref="!:typeInfo"/>
+            </summary>
+            <param name="typeInfo"></param>
+            <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.Get(Intent.Metadata.Models.ICanBeReferencedType)">
+            <summary>
+            Resolves the type name for the specified <see cref="!:element"/>
+            </summary>
+            <param name="element"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.Get(Intent.Metadata.Models.ICanBeReferencedType,System.String)">
+            <summary>
+            Resolves the type name for the specified <see cref="!:element"/>
+            </summary>
+            <param name="element"></param>
+            <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.InContext(System.String)">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.TypeResolution.ITypeResolverContext"/> that resolves the type using the <see cref="!:IClassTypeSource"/> added to the specified "<paramref name="contextName"/>"
+            </summary>
+            <param name="contextName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.GetTemplateDependencies">
+            <summary>
+            Returns a collection of template dependencies discovered while discovering type names from templates.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference)">
+            <summary>
+            Resolves the type name for the specified <see cref="!:typeInfo"/>
+            </summary>
+            <param name="typeInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference,System.String)">
+            <summary>
+            Resolves the type name for the specified <see cref="!:typeInfo"/>
+            </summary>
+            <param name="typeInfo"></param>
+            <param name="collectionFormat">The collection type provided if the typeInfo.IsCollection is true</param>
+            <returns></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.AssemblyBuilderFactory.DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess)">
+            <summary>
+            Defines a dynamic assembly that has the specified name and access rights.
+            </summary>
+            <param name="name">The name of the assembly.</param>
+            <param name="access">The access rights of the assembly.</param>
+            <returns>An object that represents the new assembly.</returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.CustomTypeProviders.AbstractDynamicLinqCustomTypeProvider">
+            <summary>
+            The abstract DynamicLinqCustomTypeProvider which is used by the DefaultDynamicLinqCustomTypeProvider and can be used by a custom TypeProvider like in .NET Core.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.AbstractDynamicLinqCustomTypeProvider.FindTypesMarkedWithDynamicLinqTypeAttribute(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Finds the unique types marked with DynamicLinqTypeAttribute.
+            </summary>
+            <param name="assemblies">The assemblies to process.</param>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1" /></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.AbstractDynamicLinqCustomTypeProvider.ResolveType(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.String)">
+            <summary>
+            Resolve any type which is registered in the current application domain.
+            </summary>
+            <param name="assemblies">The assemblies to inspect.</param>
+            <param name="typeName">The typename to resolve.</param>
+            <returns>A resolved <see cref="T:System.Type"/> or null when not found.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.AbstractDynamicLinqCustomTypeProvider.ResolveTypeBySimpleName(System.Collections.Generic.IEnumerable{System.Reflection.Assembly},System.String)">
+            <summary>
+            Resolve a type by the simple name which is registered in the current application domain.
+            </summary>
+            <param name="assemblies">The assemblies to inspect.</param>
+            <param name="simpleTypeName">The simple typename to resolve.</param>
+            <returns>A resolved <see cref="T:System.Type"/> or null when not found.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.AbstractDynamicLinqCustomTypeProvider.GetAssemblyTypesWithDynamicLinqTypeAttribute(System.Collections.Generic.IEnumerable{System.Reflection.Assembly})">
+            <summary>
+            Gets the assembly types annotated with <see cref="T:System.Linq.Dynamic.Core.CustomTypeProviders.DynamicLinqTypeAttribute"/> in an Exception friendly way.
+            </summary>
+            <param name="assemblies">The assemblies to process.</param>
+            <returns><see cref="T:System.Collections.Generic.IEnumerable`1" /></returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.CustomTypeProviders.DefaultDynamicLinqCustomTypeProvider">
+             <summary>
+             The default implementation for <see cref="T:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider"/>.
+             
+             Scans the current AppDomain for all types marked with <see cref="T:System.Linq.Dynamic.Core.CustomTypeProviders.DynamicLinqTypeAttribute"/>, and adds them as custom Dynamic Link types.
+            
+             Also provides functionality to resolve a Type in the current Application Domain.
+            
+             This class is used as default for full .NET Framework, so not for .NET Core
+             </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.DefaultDynamicLinqCustomTypeProvider.#ctor(System.Boolean)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Linq.Dynamic.Core.CustomTypeProviders.DefaultDynamicLinqCustomTypeProvider"/> class.
+            </summary>
+            <param name="cacheCustomTypes">Defines whether to cache the CustomTypes which are found in the Application Domain. Default set to 'true'.</param>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.DefaultDynamicLinqCustomTypeProvider.GetCustomTypes">
+            <inheritdoc cref="M:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider.GetCustomTypes"/>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.DefaultDynamicLinqCustomTypeProvider.ResolveType(System.String)">
+            <inheritdoc cref="M:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider.ResolveType(System.String)"/>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.DefaultDynamicLinqCustomTypeProvider.ResolveTypeBySimpleName(System.String)">
+            <inheritdoc cref="M:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider.ResolveTypeBySimpleName(System.String)"/>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.CustomTypeProviders.DynamicLinqTypeAttribute">
+            <summary>
+            Indicates to Dynamic Linq to consider the Type as a valid dynamic linq type.
+            </summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider">
+            <summary>
+            Interface for providing functionality to find custom types for or resolve any type.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider.GetCustomTypes">
+            <summary>
+            Returns a list of custom types that System.Linq.Dynamic.Core will understand.
+            </summary>
+            <returns>A <see cref="T:System.Collections.Generic.HashSet`1" /> list of custom types.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider.ResolveType(System.String)">
+            <summary>
+            Resolve any type by fullname which is registered in the current application domain.
+            </summary>
+            <param name="typeName">The typename to resolve.</param>
+            <returns>A resolved <see cref="T:System.Type"/> or null when not found.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider.ResolveTypeBySimpleName(System.String)">
+            <summary>
+            Resolve any type by the simple name which is registered in the current application domain.
+            </summary>
+            <param name="simpleTypeName">The typename to resolve.</param>
+            <returns>A resolved <see cref="T:System.Type"/> or null when not found.</returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.DefaultQueryableAnalyzer">
+            <summary>
+            Default implementation.
+            </summary>
+            <seealso cref="T:System.Linq.Dynamic.Core.IQueryableAnalyzer" />
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DefaultQueryableAnalyzer.SupportsLinqToObjects(System.Linq.IQueryable,System.Linq.IQueryProvider)">
+            <inheritdoc cref="M:System.Linq.Dynamic.Core.IQueryableAnalyzer.SupportsLinqToObjects(System.Linq.IQueryable,System.Linq.IQueryProvider)"/>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.DynamicClass">
+            <summary>
+            Provides a base class for dynamic objects.
+            
+            In addition to the methods defined here, the following items are added using reflection:
+            - default constructor
+            - constructor with all the properties as parameters (if not linq-to-entities)
+            - all properties (also with getter and setters)
+            - ToString() method
+            - Equals() method
+            - GetHashCode() method
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClass.GetDynamicPropertyValue``1(System.String)">
+            <summary>
+            Gets the dynamic property by name.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="propertyName">Name of the property.</param>
+            <returns>T</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClass.GetDynamicPropertyValue(System.String)">
+            <summary>
+            Gets the dynamic property value by name.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <returns>value</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClass.SetDynamicPropertyValue``1(System.String,``0)">
+            <summary>
+            Sets the dynamic property value by name.
+            </summary>
+            <typeparam name="T">The type.</typeparam>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClass.SetDynamicPropertyValue(System.String,System.Object)">
+            <summary>
+            Sets the dynamic property value by name.
+            </summary>
+            <param name="propertyName">Name of the property.</param>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.DynamicClass.Item(System.String)">
+            <summary>
+            Gets or sets the <see cref="T:System.Object"/> with the specified name.
+            </summary>
+            <value>The <see cref="T:System.Object"/>.</value>
+            <param name="name">The name.</param>
+            <returns>Value from the property.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClass.GetDynamicMemberNames">
+            <summary>
+            Returns the enumeration of all dynamic member names.
+            </summary>
+            <returns>
+            A sequence that contains dynamic member names.
+            </returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClass.TryGetMember(System.Dynamic.GetMemberBinder,System.Object@)">
+            <summary>
+            Provides the implementation for operations that get member values. Classes derived from the <see cref="T:System.Dynamic.DynamicObject" /> class can override this method to specify dynamic behavior for operations such as getting a value for a property.
+            </summary>
+            <param name="binder">Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the member on which the dynamic operation is performed. For example, for the Console.WriteLine(sampleObject.SampleProperty) statement, where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject" /> class, binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
+            <param name="result">The result of the get operation. For example, if the method is called for a property, you can assign the property value to <paramref name="result" />.</param>
+            <returns>
+            true if the operation is successful; otherwise, false. If this method returns false, the run-time binder of the language determines the behavior. (In most cases, a run-time exception is thrown.)
+            </returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClass.TrySetMember(System.Dynamic.SetMemberBinder,System.Object)">
+            <summary>
+            Provides the implementation for operations that set member values. Classes derived from the <see cref="T:System.Dynamic.DynamicObject" /> class can override this method to specify dynamic behavior for operations such as setting a value for a property.
+            </summary>
+            <param name="binder">Provides information about the object that called the dynamic operation. The binder.Name property provides the name of the member to which the value is being assigned. For example, for the statement sampleObject.SampleProperty = "Test", where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject" /> class, binder.Name returns "SampleProperty". The binder.IgnoreCase property specifies whether the member name is case-sensitive.</param>
+            <param name="value">The value to set to the member. For example, for sampleObject.SampleProperty = "Test", where sampleObject is an instance of the class derived from the <see cref="T:System.Dynamic.DynamicObject" /> class, the <paramref name="value" /> is "Test".</param>
+            <returns>
+            true if the operation is successful; otherwise, false. If this method returns false, the run-time binder of the language determines the behavior. (In most cases, a language-specific run-time exception is thrown.)
+            </returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.DynamicClassFactory">
+            <summary>
+            A factory to create dynamic classes, based on <see href="http://stackoverflow.com/questions/29413942/c-sharp-anonymous-object-with-properties-from-dictionary" />.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClassFactory.#cctor">
+            <summary>
+            Initializes the <see cref="T:System.Linq.Dynamic.Core.DynamicClassFactory"/> class.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClassFactory.CreateType(System.Collections.Generic.IList{System.Linq.Dynamic.Core.DynamicProperty},System.Boolean)">
+            <summary>
+            The CreateType method creates a new data class with a given set of public properties and returns the System.Type object for the newly created class. If a data class with an identical sequence of properties has already been created, the System.Type object for this class is returned.        
+            Data classes implement private instance variables and read/write property accessors for the specified properties.Data classes also override the Equals and GetHashCode members to implement by-value equality.
+            Data classes are created in an in-memory assembly in the current application domain. All data classes inherit from <see cref="T:System.Linq.Dynamic.Core.DynamicClass"/> and are given automatically generated names that should be considered private (the names will be unique within the application domain but not across multiple invocations of the application). Note that once created, a data class stays in memory for the lifetime of the current application domain. There is currently no way to unload a dynamically created data class.
+            The dynamic expression parser uses the CreateClass methods to generate classes from data object initializers. This feature in turn is often used with the dynamic Select method to create projections.
+            </summary>
+            <param name="properties">The DynamicProperties</param>
+            <param name="createParameterCtor">Create a constructor with parameters. Default set to true. Note that for Linq-to-Database objects, this needs to be set to false.</param>
+            <returns>Type</returns>
+            <example>
+            <code>
+            <![CDATA[
+            DynamicProperty[] props = new DynamicProperty[] { new DynamicProperty("Name", typeof(string)), new DynamicProperty("Birthday", typeof(DateTime)) };
+            Type type = DynamicClassFactory.CreateType(props);
+            DynamicClass dynamicClass = Activator.CreateInstance(type) as DynamicClass;
+            dynamicClass.SetDynamicProperty("Name", "Albert");
+            dynamicClass.SetDynamicProperty("Birthday", new DateTime(1879, 3, 14));
+            Console.WriteLine(dynamicClass);
+            ]]>
+            </code>
+            </example>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicClassFactory.GenerateKey(System.Collections.Generic.IEnumerable{System.Linq.Dynamic.Core.DynamicProperty},System.Boolean)">
+            <summary>
+            Generates the key.
+            Anonymous classes are generics based. The generic classes are distinguished by number of parameters and name of parameters. The specific types of the parameters are the generic arguments.
+            </summary>
+            <param name="dynamicProperties">The dynamic propertys.</param>
+            <param name="createParameterCtor">if set to <c>true</c> [create parameter ctor].</param>
+            <returns></returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.DynamicExpressionParser">
+            <summary>
+            Helper class to convert an expression into an LambdaExpression
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Linq.Dynamic.Core.ParsingConfig,System.Boolean,System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression.
+            </summary>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda``1(System.Linq.Dynamic.Core.ParsingConfig,System.Boolean,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a Typed Expression.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.Expression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Linq.Dynamic.Core.ParsingConfig,System.Boolean,System.Linq.Expressions.ParameterExpression[],System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression.
+            </summary>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="parameters">A array from ParameterExpressions.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda``1(System.Linq.Dynamic.Core.ParsingConfig,System.Boolean,System.Linq.Expressions.ParameterExpression[],System.String,System.Object[])">
+            <summary>
+            Parses an expression into a Typed Expression.
+            </summary>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="parameters">A array from ParameterExpressions.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.Expression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Boolean,System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression.
+            </summary>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="itType">The main type from the dynamic class expression.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda``2(System.Linq.Dynamic.Core.ParsingConfig,System.Boolean,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a Typed Expression.
+            </summary>
+            <typeparam name="T">The `it`-Type.</typeparam>
+            <typeparam name="TResult">The type of the result.</typeparam>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.Expression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Linq.Dynamic.Core.ParsingConfig,System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression. (Also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.)
+            </summary>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression. (Also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.)
+            </summary>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression. (Also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.)
+            </summary>
+            <param name="itType">The main type from the dynamic class expression.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Linq.Dynamic.Core.ParsingConfig,System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression. (Also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.)
+            </summary>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="itType">The main type from the dynamic class expression.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Linq.Dynamic.Core.ParsingConfig,System.Boolean,System.Type,System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression.
+            </summary>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="itType">The main type from the dynamic class expression.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Linq.Expressions.ParameterExpression[],System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression. (Also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.)
+            </summary>
+            <param name="parameters">A array from ParameterExpressions.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Linq.Dynamic.Core.ParsingConfig,System.Linq.Expressions.ParameterExpression[],System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression. (Also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.)
+            </summary>
+            <param name="parsingConfig">The Configuration for the parsing.</param>
+            <param name="parameters">A array from ParameterExpressions.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicExpressionParser.ParseLambda(System.Boolean,System.Linq.Expressions.ParameterExpression[],System.Type,System.String,System.Object[])">
+            <summary>
+            Parses an expression into a LambdaExpression.
+            </summary>
+            <param name="createParameterCtor">if set to <c>true</c> then also create a constructor for all the parameters. Note that this doesn't work for Linq-to-Database entities.</param>
+            <param name="parameters">A array from ParameterExpressions.</param>
+            <param name="resultType">Type of the result. If not specified, it will be generated dynamically.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">An object array that contains zero or more objects which are used as replacement values.</param>
+            <returns>The generated <see cref="T:System.Linq.Expressions.LambdaExpression"/></returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.DynamicGetMemberBinder">
+            <summary>
+            Based on From SqlLinq by dkackman. https://github.com/dkackman/SqlLinq/blob/210b594e37f14061424397368ed750ce547c21e7/License.md
+            </summary>
+            <seealso cref="T:System.Dynamic.GetMemberBinder" />
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.DynamicProperty">
+            <summary>
+            DynamicProperty
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.DynamicProperty.#ctor(System.String,System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Linq.Dynamic.Core.DynamicProperty"/> class.
+            </summary>
+            <param name="name">The name from the property.</param>
+            <param name="type">The type from the property.</param>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.DynamicProperty.Name">
+            <summary>
+            Gets the name from the property.
+            </summary>
+            <value>
+            The name from the property.
+            </value>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.DynamicProperty.Type">
+            <summary>
+            Gets the type from the property.
+            </summary>
+            <value>
+            The type from the property.
+            </value>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.Exceptions.ParseException">
+            <summary>
+            Represents errors that occur while parsing dynamic linq string expressions.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Exceptions.ParseException.#ctor(System.String,System.Int32)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Linq.Dynamic.Core.Exceptions.ParseException"/> class with a specified error message and position.
+            </summary>
+            <param name="message">The message that describes the error.</param>
+            <param name="position">The location in the parsed string that produced the <see cref="T:System.Linq.Dynamic.Core.Exceptions.ParseException"/></param>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.Exceptions.ParseException.Position">
+            <summary>
+            The location in the parsed string that produced the <see cref="T:System.Linq.Dynamic.Core.Exceptions.ParseException"/>.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Exceptions.ParseException.ToString">
+            <summary>
+            Creates and returns a string representation of the current exception.
+            </summary>
+            <returns>A string representation of the current exception.</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Exceptions.ParseException.GetObjectData(System.Runtime.Serialization.SerializationInfo,System.Runtime.Serialization.StreamingContext)">
+            <summary>
+            When overridden in a derived class, sets the <see cref="T:System.Runtime.Serialization.SerializationInfo" /> with information about the exception.
+            </summary>
+            <param name="info">The <see cref="T:System.Runtime.Serialization.SerializationInfo" /> that holds the serialized object data about the exception being thrown.</param>
+            <param name="context">The <see cref="T:System.Runtime.Serialization.StreamingContext" /> that contains contextual information about the source or destination.</param>
+            <PermissionSet>
+              <IPermission class="System.Security.Permissions.FileIOPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Read="*AllFiles*" PathDiscovery="*AllFiles*" />
+              <IPermission class="System.Security.Permissions.SecurityPermission, mscorlib, Version=2.0.3600.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" version="1" Flags="SerializationFormatter" />
+            </PermissionSet>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.IAssemblyHelper">
+            <summary>
+            IAssemblyHelper interface which is used to retrieve assemblies that have been loaded into the execution context of this application domain.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.IAssemblyHelper.GetAssemblies">
+            <summary>
+            Gets the assemblies that have been loaded into the execution context of this application domain.
+            </summary>
+            
+            <returns>
+            An array of assemblies in this application domain.
+            </returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.IQueryableAnalyzer">
+            <summary>
+            Interface for QueryableAnalyzer.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.IQueryableAnalyzer.SupportsLinqToObjects(System.Linq.IQueryable,System.Linq.IQueryProvider)">
+            <summary>
+            Determines whether the specified query (and provider) supports LinqToObjects.
+            </summary>
+            <param name="query">The query to check.</param>
+            <param name="provider">The provider to check (can be null).</param>
+            <returns>true/false</returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.Parser.ConstantExpressionWrapper">
+            <summary>
+            Based on gblog by graeme-hill. https://github.com/graeme-hill/gblog/blob/master/source_content/articles/2014.139_entity-framework-dynamic-queries-and-parameterization.mkd
+            </summary>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.Parser.ExpressionParser">
+            <summary>
+            ExpressionParser
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.Parser.ExpressionParser.ItName">
+            <summary>
+            Gets name for the `it` field. By default this is set to the KeyWord value "it".
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Parser.ExpressionParser.#ctor(System.Linq.Expressions.ParameterExpression[],System.String,System.Object[],System.Linq.Dynamic.Core.ParsingConfig)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Linq.Dynamic.Core.Parser.ExpressionParser"/> class.
+            </summary>
+            <param name="parameters">The parameters.</param>
+            <param name="expression">The expression.</param>
+            <param name="values">The values.</param>
+            <param name="parsingConfig">The parsing configuration.</param>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Parser.ExpressionParser.Parse(System.Type,System.Boolean)">
+            <summary>
+            Uses the TextParser to parse the string into the specified result type.
+            </summary>
+            <param name="resultType">Type of the result.</param>
+            <param name="createParameterCtor">if set to <c>true</c> [create parameter ctor].</param>
+            <returns>Expression</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Parser.ExpressionPromoter.Promote(System.Linq.Expressions.Expression,System.Type,System.Boolean,System.Boolean)">
+            <inheritdoc cref="M:System.Linq.Dynamic.Core.Parser.IExpressionPromoter.Promote(System.Linq.Expressions.Expression,System.Type,System.Boolean,System.Boolean)"/>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.Parser.IExpressionPromoter">
+            <summary>
+            Expression promoter is used to promote object or value types
+            to their destination type when an automatic promotion is available
+            such as: int to int?
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Parser.IExpressionPromoter.Promote(System.Linq.Expressions.Expression,System.Type,System.Boolean,System.Boolean)">
+            <summary>
+            Promote an expression
+            </summary>
+            <param name="expr">Source expression</param>
+            <param name="type">Destionation data type to promote</param>
+            <param name="exact">If the match must be exact</param>
+            <param name="convertExpr">Convert expression</param>
+            <returns>The promoted <see cref="T:System.Linq.Expressions.Expression"/></returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Parser.SupportedMethods.MethodFinder.#ctor(System.Linq.Dynamic.Core.ParsingConfig)">
+            <summary>
+            Get an instance
+            </summary>
+            <param name="parsingConfig"></param>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.ParsingConfig">
+            <summary>
+            Configuration class for System.Linq.Dynamic.Core.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.Default">
+            <summary>
+            Default ParsingConfig
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.DefaultEFCore21">
+            <summary>
+            Default ParsingConfig for EntityFramework Core 2.1 and higher
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.CustomTypeProvider">
+            <summary>
+            Gets or sets the <see cref="T:System.Linq.Dynamic.Core.CustomTypeProviders.IDynamicLinkCustomTypeProvider"/>.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.ExpressionPromoter">
+            <summary>
+            Gets or sets the <see cref="T:System.Linq.Dynamic.Core.Parser.IExpressionPromoter"/>.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.QueryableAnalyzer">
+            <summary>
+            Gets or sets the <see cref="T:System.Linq.Dynamic.Core.IQueryableAnalyzer"/>.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.AreContextKeywordsEnabled">
+            <summary>
+            Determines if the context keywords (it, parent, and root) are valid and usable inside a Dynamic Linq string expression.  
+            Does not affect the usability of the equivalent context symbols ($, ^ and ~).
+            Default value is true.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.UseDynamicObjectClassForAnonymousTypes">
+            <summary>
+            Gets or sets a value indicating whether to use dynamic object class for anonymous types. Default value is false.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.EvaluateGroupByAtDatabase">
+            <summary>
+            Gets or sets a value indicating whether the EntityFramework version supports evaluating GroupBy at database level. Default value is false.
+            See https://docs.microsoft.com/en-us/ef/core/what-is-new/ef-core-2.1#linq-groupby-translation
+            
+            Remark: when this setting is set to 'true', make sure to supply this ParsingConfig as first parameter on the extension methods.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.UseParameterizedNamesInDynamicQuery">
+            <summary>
+            Use Parameterized Names in generated dynamic SQL query. Default set to false.
+            See https://github.com/graeme-hill/gblog/blob/master/source_content/articles/2014.139_entity-framework-dynamic-queries-and-parameterization.mkd
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.AllowNewToEvaluateAnyType">
+            <summary>
+            Allows the New() keyword to evaluate any available Type. Default value is false.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.RenameParameterExpression">
+            <summary>
+            Renames the (Typed)ParameterExpression empty Name to a the correct supplied name from `it`. Default value is false.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.DisableMemberAccessToIndexAccessorFallback">
+            <summary>
+            By default when a member is not found in a type and the type has a string based index accessor it will be parsed as an index accessor. Use
+            this flag to disable this behaviour and have parsing fail when parsing an expression
+            where a member access on a non existing member happens. Default value is false.
+            </summary>
+        </member>
+        <member name="P:System.Linq.Dynamic.Core.ParsingConfig.ResolveTypesBySimpleName">
+            <summary>
+            By default finding types by a simple name is not suported.
+            Use this flag to use the CustomTypeProvider to resolve types by a simple name like "Employee" instead of "MyDatabase.Entities.Employee".
+            Note that a first matching type is returned and this functionality needs to scan all types from all assemblies, so use with caution.
+            Default value is false.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.TypeConverterFactory.GetConverter(System.Type)">
+            <summary>
+            Returns a type converter for the specified type.
+            </summary>
+            <param name="type">The System.Type of the target component.</param>
+            <returns>A System.ComponentModel.TypeConverter for the specified type.</returns>
+        </member>
+        <member name="T:System.Linq.Dynamic.Core.Util.ParameterExpressionRenamer">
+            <summary>
+            Renames a single (Typed)ParameterExpression in an Expression.
+            </summary>
+            <seealso cref="T:System.Linq.Expressions.ExpressionVisitor" />
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Util.ParameterExpressionRenamer.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Linq.Dynamic.Core.Util.ParameterExpressionRenamer"/> class.
+            </summary>
+            <param name="newName">The new name (the oldName is assumed to be "").</param>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Util.ParameterExpressionRenamer.#ctor(System.String,System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Linq.Dynamic.Core.Util.ParameterExpressionRenamer"/> class.
+            </summary>
+            <param name="oldName">The old name.</param>
+            <param name="newName">The new name.</param>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Util.ParameterExpressionRenamer.Rename(System.Linq.Expressions.Expression,System.Linq.Expressions.ParameterExpression@)">
+            <summary>
+            Renames a single (Typed)ParameterExpression from specified expression.
+            </summary>
+            <param name="expression">The expression.</param>
+            <param name="parameterExpression">The new generated (Typed)ParameterExpression.</param>
+            <returns>Renamed Expression</returns>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Util.ParameterExpressionRenamer.VisitParameter(System.Linq.Expressions.ParameterExpression)">
+            <inheritdoc cref="M:System.Linq.Expressions.ExpressionVisitor.VisitParameter(System.Linq.Expressions.ParameterExpression)"/>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Validation.CoreStrings.ArgumentPropertyNull(System.String,System.String)">
+            <summary>
+            The property '{property}' of the argument '{argument}' cannot be null.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Validation.CoreStrings.ArgumentIsEmpty(System.String)">
+            <summary>
+            The string argument '{argumentName}' cannot be empty.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Validation.CoreStrings.InvalidEntityType(System.Type,System.String)">
+            <summary>
+            The entity type '{type}' provided for the argument '{argumentName}' must be a reference type.
+            </summary>
+        </member>
+        <member name="M:System.Linq.Dynamic.Core.Validation.CoreStrings.CollectionArgumentIsEmpty(System.String)">
+            <summary>
+            The collection argument '{argumentName}' must contain at least one element.
+            </summary>
+        </member>
+        <member name="T:System.Reflection.CustomIntrospectionExtensions">
+            <summary>
+            https://github.com/castleproject/Core/blob/netcore/src/Castle.Core/Compatibility/IntrospectionExtensions.cs
+            </summary>
+        </member>
+        <member name="T:Humanizer.Inflections.Vocabularies">
+            <summary>
+            Container for registered Vocabularies.  At present, only a single vocabulary is supported: Default.
+            </summary>
+        </member>
+        <member name="P:Humanizer.Inflections.Vocabularies.Default">
+            <summary>
+            The default vocabulary used for singular/plural irregularities.
+            Rules can be added to this vocabulary and will be picked up by called to Singularize() and Pluralize().
+            At this time, multiple vocabularies and removing existing rules are not supported.
+            </summary>
+        </member>
+        <member name="T:Humanizer.Inflections.Vocabulary">
+            <summary>
+            A container for exceptions to simple pluralization/singularization rules.
+            Vocabularies.Default contains an extensive list of rules for US English.
+            At this time, multiple vocabularies and removing existing rules are not supported.
+            </summary>
+        </member>
+        <member name="M:Humanizer.Inflections.Vocabulary.AddIrregular(System.String,System.String,System.Boolean)">
+            <summary>
+            Adds a word to the vocabulary which cannot easily be pluralized/singularized by RegEx, e.g. "person" and "people".
+            </summary>
+            <param name="singular">The singular form of the irregular word, e.g. "person".</param>
+            <param name="plural">The plural form of the irregular word, e.g. "people".</param>
+            <param name="matchEnding">True to match these words on their own as well as at the end of longer words. False, otherwise.</param>
+        </member>
+        <member name="M:Humanizer.Inflections.Vocabulary.AddUncountable(System.String)">
+            <summary>
+            Adds an uncountable word to the vocabulary, e.g. "fish".  Will be ignored when plurality is changed.
+            </summary>
+            <param name="word">Word to be added to the list of uncountables.</param>
+        </member>
+        <member name="M:Humanizer.Inflections.Vocabulary.AddPlural(System.String,System.String)">
+            <summary>
+            Adds a rule to the vocabulary that does not follow trivial rules for pluralization, e.g. "bus" -> "buses"
+            </summary>
+            <param name="rule">RegEx to be matched, case insensitive, e.g. "(bus)es$"</param>
+            <param name="replacement">RegEx replacement  e.g. "$1"</param>
+        </member>
+        <member name="M:Humanizer.Inflections.Vocabulary.AddSingular(System.String,System.String)">
+            <summary>
+            Adds a rule to the vocabulary that does not follow trivial rules for singularization, e.g. "vertices/indices -> "vertex/index"
+            </summary>
+            <param name="rule">RegEx to be matched, case insensitive, e.g. ""(vert|ind)ices$""</param>
+            <param name="replacement">RegEx replacement  e.g. "$1ex"</param>
+        </member>
+        <member name="M:Humanizer.Inflections.Vocabulary.Pluralize(System.String,System.Boolean)">
+            <summary>
+            Pluralizes the provided input considering irregular words
+            </summary>
+            <param name="word">Word to be pluralized</param>
+            <param name="inputIsKnownToBeSingular">Normally you call Pluralize on singular words; but if you're unsure call it with false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.Inflections.Vocabulary.Singularize(System.String,System.Boolean)">
+            <summary>
+            Singularizes the provided input considering irregular words
+            </summary>
+            <param name="word">Word to be singularized</param>
+            <param name="inputIsKnownToBePlural">Normally you call Singularize on plural words; but if you're unsure call it with false</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

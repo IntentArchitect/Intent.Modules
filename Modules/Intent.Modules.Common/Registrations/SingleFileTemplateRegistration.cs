@@ -4,6 +4,9 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Registrations
 {
+    /// <summary>
+    /// Template Registration that produces as single file.
+    /// </summary>
     public abstract class SingleFileTemplateRegistration : TemplateRegistrationBase
     {
         public abstract ITemplate CreateTemplateInstance(IOutputTarget project);

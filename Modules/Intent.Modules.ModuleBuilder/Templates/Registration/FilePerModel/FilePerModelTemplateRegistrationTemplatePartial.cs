@@ -25,6 +25,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
             {
                 AddNugetDependency(new NugetPackageInfo(Model.GetModelType()?.ParentModule.NuGetPackageId, Model.GetModelType()?.ParentModule.NuGetPackageVersion));
             }
+            if (!string.IsNullOrWhiteSpace(Model.GetDesigner()?.ParentModule.NuGetPackageId))
+            {
+                AddNugetDependency(new NugetPackageInfo(Model.GetDesigner()?.ParentModule.NuGetPackageId, Model.GetDesigner()?.ParentModule.NuGetPackageVersion));
+            }
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
