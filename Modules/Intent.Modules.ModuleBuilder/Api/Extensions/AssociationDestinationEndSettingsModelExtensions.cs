@@ -43,6 +43,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement[]>("Target Types");
             }
 
+            public string DisplayTextFunction()
+            {
+                return _stereotype.GetProperty<string>("Display Text Function");
+            }
+
             public string ApiPropertyName()
             {
                 return _stereotype.GetProperty<string>("Api Property Name");

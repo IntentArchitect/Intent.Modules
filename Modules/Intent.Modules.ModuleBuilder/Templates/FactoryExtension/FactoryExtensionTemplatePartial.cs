@@ -20,6 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.FactoryExtension";
 
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public FactoryExtensionTemplate(IOutputTarget outputTarget, FactoryExtensionModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency(IntentNugetPackages.IntentModulesCommon);

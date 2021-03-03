@@ -23,7 +23,8 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial";
 
-        public TypescriptTemplatePartialTemplate(IOutputTarget project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public TypescriptTemplatePartialTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency(IntentNugetPackages.IntentCommonTypescript);
         }

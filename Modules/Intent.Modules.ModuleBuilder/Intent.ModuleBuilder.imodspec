@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.0.4</version>
+  <version>3.0.6</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
@@ -92,7 +92,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
-      <location>Api/Extensions</location>
+      <location>Api</location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions" externalReference="3877283b-1f5c-4171-a8da-55595c1905b8">
       <config>
@@ -100,7 +100,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
-      <location>Api/Extensions</location>
+      <location>Api</location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions" externalReference="11b1ac64-5537-4301-9a1e-d8de08c2786c">
       <config>
@@ -146,6 +146,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location>Api</location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.TemplateDecorator" externalReference="f5648642-e1bb-43fa-b522-150cc3878589">
       <config>

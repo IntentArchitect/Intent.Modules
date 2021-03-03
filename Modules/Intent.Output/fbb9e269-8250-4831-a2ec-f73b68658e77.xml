@@ -9,6 +9,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</ProjectId>
+      <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Api/IntentModuleExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Api/JavaFileTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>JavaFileTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -26,11 +31,6 @@
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Intent.Modules.ModuleBuilder.Java.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Java.csproj</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/IntentModuleExtensionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>bdaa5db3-cdd5-4572-9680-07a7262dd842</ProjectId>

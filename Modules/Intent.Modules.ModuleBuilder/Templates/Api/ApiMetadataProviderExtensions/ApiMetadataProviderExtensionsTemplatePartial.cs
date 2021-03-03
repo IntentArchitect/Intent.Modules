@@ -19,7 +19,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensio
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions";
 
-        public ApiMetadataProviderExtensionsTemplate(IOutputTarget project, IList<ElementSettingsModel> model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public ApiMetadataProviderExtensionsTemplate(IOutputTarget outputTarget, IList<ElementSettingsModel> model) : base(TemplateId, outputTarget, model)
         {
         }
 

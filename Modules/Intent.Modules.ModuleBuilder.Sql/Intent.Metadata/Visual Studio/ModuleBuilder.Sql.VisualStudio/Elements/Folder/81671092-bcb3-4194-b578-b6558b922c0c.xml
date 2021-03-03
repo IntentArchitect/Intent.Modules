@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="d62c7c10-ba5c-44c6-9ed8-5adc01662e84" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
-  <name>modelers</name>
-  <display>modelers</display>
+<class id="81671092-bcb3-4194-b578-b6558b922c0c" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>FactoryExtensions</name>
+  <display>FactoryExtensions</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>d2d4fd91-e669-4bc0-a558-78d334492481</parentFolderId>
@@ -20,27 +20,15 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="d1983fb7-4ace-4e5a-b50f-bb3f8091bfc7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.DesignerConfig</name>
-      <display>Intent.ModuleBuilder.DesignerConfig</display>
+    <childElement id="9718e1b4-d369-4af1-bd82-1ea2bdda66b1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.FactoryExtension</name>
+      <display>Intent.ModuleBuilder.Templates.FactoryExtension</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
       <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>d62c7c10-ba5c-44c6-9ed8-5adc01662e84</parentFolderId>
-      <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
-      <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="104dd573-77ab-40b4-9f60-390aa4092fb2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.DesignerSettings</name>
-      <display>Intent.ModuleBuilder.DesignerSettings</display>
-      <isAbstract>false</isAbstract>
-      <order>1</order>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>d62c7c10-ba5c-44c6-9ed8-5adc01662e84</parentFolderId>
+      <parentFolderId>81671092-bcb3-4194-b578-b6558b922c0c</parentFolderId>
       <packageId>cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</packageId>
       <packageName>ModuleBuilder.Sql.VisualStudio</packageName>
       <stereotypes />

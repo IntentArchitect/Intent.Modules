@@ -239,6 +239,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder/Api/IntentModuleExtensionModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder/Api/IntentModuleModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>IntentModuleModel.cs</ProjectRelativeFilePath>
     </FileLog>
@@ -331,11 +336,6 @@
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder/Intent.Modules.ModuleBuilder.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.csproj</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder/IntentModuleExtensionModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>

@@ -23,7 +23,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiElementModel";
 
-        public ApiElementModelTemplate(IOutputTarget project, ElementSettingsModel model, List<AssociationSettingsModel> associationSettings) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Ignore)]
+        public ApiElementModelTemplate(IOutputTarget outputTarget, ElementSettingsModel model, List<AssociationSettingsModel> associationSettings) : base(TemplateId, outputTarget, model)
         {
             AssociationSettings = associationSettings;
             AddTypeSource(CSharpTypeSource.Create(ExecutionContext, ApiElementModelTemplate.TemplateId, collectionFormat: "IEnumerable<{0}>"));

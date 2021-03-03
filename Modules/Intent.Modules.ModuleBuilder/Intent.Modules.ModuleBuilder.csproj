@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.1" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.5" />
     <PackageReference Include="Intent.Packager" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -144,51 +144,42 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>FactoryExtensionTemplate.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\Api\ApiPackageExtensionModel\ApiPackageExtensionModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiPackageExtensionModelTemplate.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\Api\ApiPackageExtensionModel\ApiPackageExtensionModelTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiPackageExtensionModelTemplate.tt</DependentUpon>
     </Compile>
-  
     <None Update="Templates\TemplateDecorator\TemplateDecoratorTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TemplateDecoratorTemplate.cs</LastGenOutput>
     </None>
-  
     <None Update="Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TemplateDecoratorContractTemplate.cs</LastGenOutput>
     </None>
-  
     <None Update="Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TemplateDecoratorRegistrationTemplate.cs</LastGenOutput>
     </None>
-  
     <Compile Update="Templates\TemplateDecorator\TemplateDecoratorTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TemplateDecoratorTemplate.tt</DependentUpon>
     </Compile>
-  
     <Compile Update="Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TemplateDecoratorContractTemplate.tt</DependentUpon>
     </Compile>
-  
     <Compile Update="Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TemplateDecoratorRegistrationTemplate.tt</DependentUpon>
     </Compile>
-  
     <None Include="..\..\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>

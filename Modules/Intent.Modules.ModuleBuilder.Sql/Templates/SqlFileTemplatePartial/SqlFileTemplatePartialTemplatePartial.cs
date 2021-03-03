@@ -13,7 +13,7 @@ using Intent.ModuleBuilder.Sql.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 {
@@ -21,9 +21,10 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
     partial class SqlFileTemplatePartialTemplate : CSharpTemplateBase<SqlTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Sql.Templates.SqlFileTemplatePartial";
+        public const string TemplateId = "Intent.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial";
 
-        public SqlFileTemplatePartialTemplate(IOutputTarget project, SqlTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public SqlFileTemplatePartialTemplate(IOutputTarget outputTarget, SqlTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency(IntentNugetPackages.IntentCommonSql);
         }

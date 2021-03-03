@@ -22,9 +22,10 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
     partial class SqlFileTemplate : IntentTemplateBase<SqlTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Sql.Templates.SqlFileTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.Sql.Templates.SqlFileTemplate";
 
-        public SqlFileTemplate(IOutputTarget project, SqlTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public SqlFileTemplate(IOutputTarget outputTarget, SqlTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 

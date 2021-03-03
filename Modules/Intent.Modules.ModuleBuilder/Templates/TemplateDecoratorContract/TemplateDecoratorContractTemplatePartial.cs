@@ -20,6 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateDecoratorContract";
 
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public TemplateDecoratorContractTemplate(IOutputTarget outputTarget, TemplateDecoratorContractModel model) : base(TemplateId, outputTarget, model)
         {
         }

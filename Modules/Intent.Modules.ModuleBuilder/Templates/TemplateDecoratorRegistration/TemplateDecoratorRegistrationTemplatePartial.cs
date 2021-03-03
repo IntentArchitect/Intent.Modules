@@ -21,8 +21,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration";
 
-        public TemplateDecoratorRegistrationTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model)
-            : base(TemplateId, outputTarget, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public TemplateDecoratorRegistrationTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) : base(TemplateId, outputTarget, model)
         {
             AddTypeSource(TemplateDecoratorContractTemplate.TemplateId);
             AddNugetDependency(IntentNugetPackages.IntentModulesCommon);

@@ -20,12 +20,13 @@ using Intent.Modules.Common.CSharp.Templates;
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypescriptTemplate : IntentTemplateBase<Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel>
+    partial class TypescriptTemplate : IntentTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplate";
 
-        public TypescriptTemplate(IOutputTarget project, TypescriptFileTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public TypescriptTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 

@@ -26,7 +26,8 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Java.Templates.JavaFileTemplate";
 
-        public JavaFileTemplate(IOutputTarget project, JavaFileTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public JavaFileTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 

@@ -18,7 +18,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiAssociationModel";
 
-        public ApiAssociationModelTemplate(IOutputTarget project, AssociationSettingsModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public ApiAssociationModelTemplate(IOutputTarget outputTarget, AssociationSettingsModel model) : base(TemplateId, outputTarget, model)
         {
         }
 

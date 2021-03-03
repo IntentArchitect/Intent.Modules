@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 {
@@ -21,9 +21,10 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
     partial class HtmlFileTemplatePartialTemplate : CSharpTemplateBase<HtmlFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Html.Templates.HtmlFileTemplatePartial";
+        public const string TemplateId = "Intent.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial";
 
-        public HtmlFileTemplatePartialTemplate(IOutputTarget project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public HtmlFileTemplatePartialTemplate(IOutputTarget outputTarget, HtmlFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency(IntentNugetPackages.IntentCommonHtml);
             //if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))

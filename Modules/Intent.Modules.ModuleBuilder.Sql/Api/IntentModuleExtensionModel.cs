@@ -2,24 +2,24 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.Types.Api;
-using Intent.RoslynWeaver.Attributes;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel", Version = "1.0")]
 
 namespace Intent.ModuleBuilder.Sql.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class FolderExtensionModel : FolderModel
+    public class IntentModuleExtensionModel : IntentModuleModel
     {
         [IntentManaged(Mode.Ignore)]
-        public FolderExtensionModel(IElement element) : base(element)
+        public IntentModuleExtensionModel(IPackage package) : base(package)
         {
         }
 
-        public IList<SqlTemplateModel> SqlTemplates => _element.ChildElements
+        public IList<SqlTemplateModel> SqlTemplates => UnderlyingPackage.ChildElements
             .GetElementsOfType(SqlTemplateModel.SpecializationTypeId)
             .Select(x => new SqlTemplateModel(x))
             .ToList();

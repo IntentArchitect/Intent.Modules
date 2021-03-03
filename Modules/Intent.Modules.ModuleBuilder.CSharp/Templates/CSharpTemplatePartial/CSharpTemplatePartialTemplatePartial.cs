@@ -23,7 +23,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
 
-        public CSharpTemplatePartialTemplate(IOutputTarget project, CSharpTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public CSharpTemplatePartialTemplate(IOutputTarget outputTarget, CSharpTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency(IntentNugetPackages.IntentCommonCSharp);
             AddNugetDependency(IntentNugetPackages.IntentRoslynWeaverAttributes);
@@ -76,7 +77,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Concat(new []{ Model.Name }))}";
+            return $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Concat(new[] { Model.Name }))}";
         }
 
         private string GetBaseType()

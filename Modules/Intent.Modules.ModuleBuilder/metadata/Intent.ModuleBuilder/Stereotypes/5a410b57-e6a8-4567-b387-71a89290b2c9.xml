@@ -38,6 +38,16 @@
       </lookupTypes>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="65b99db7-ec8e-408d-a0fd-a98245d1fbcc">
+      <name>Display Text Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="b534060a-c8a3-4631-b4a9-db0baeecd1b3">
       <name>Api Property Name</name>
       <type>string</type>

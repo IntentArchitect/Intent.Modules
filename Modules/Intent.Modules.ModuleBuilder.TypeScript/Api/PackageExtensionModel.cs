@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
-using Intent.ModuleBuilder.TypeScript.Api;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.TypeScript
+namespace Intent.ModuleBuilder.TypeScript.Api
 {
     [IntentManaged(Mode.Merge)]
     public class PackageExtensionModel : IntentModuleModel
@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript
         }
 
         public IList<TypescriptFileTemplateModel> TypescriptTemplates => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == TypescriptFileTemplateModel.SpecializationType)
+            .GetElementsOfType(TypescriptFileTemplateModel.SpecializationTypeId)
             .Select(x => new TypescriptFileTemplateModel(x))
             .ToList();
 

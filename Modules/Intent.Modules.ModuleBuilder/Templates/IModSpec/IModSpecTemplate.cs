@@ -12,6 +12,7 @@ using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.ModuleBuilder.Templates.DesignerSettings;
 using Intent.Templates;
+using Intent.Utils;
 using NuGet.Versioning;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
@@ -266,11 +267,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
             }
 
+
+            var notIncludedModules = _metadataManager.ModuleBuilder(OutputTarget.Application).StereotypeDefinitions
+                .Where(x => x.Package.SpecializationTypeId == IntentModuleModel.SpecializationTypeId &&
+                            !new IntentModuleModel(x.Package).GetModuleSettings().IncludeInModule())
+                .Select(x => new IntentModuleModel(x.Package))
+                .ToList();
+            foreach (var notIncludedModule in notIncludedModules)
+            {
+                Logging.Log.Warning($"Intent Module [{notIncludedModule.Name}] package has Stereotype Definitions but is not set to be included. Check your Module Settings in the Module Builder designer.");
+            }
+
             var packagesToInclude = _metadataManager.ModuleBuilder(OutputTarget.Application).GetIntentModuleModels()
                 .Where(x => x.GetModuleSettings().IncludeInModule())
                 .ToList();
             foreach (var package in packagesToInclude)
             {
+                if (!package.GetModuleSettings().ReferenceInDesigner()?.Any() ?? true)
+                {
+                    Logging.Log.Warning($"Intent Module [{package.Name}] package is included but not set to be automatically referenced in a designer. Check your Module Settings in the Module Builder designer.");
+                }
+
                 var path = PathHelper.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation).NormalizePath();
                 var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
                 if (existing == null)
@@ -279,7 +296,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     metadataRegistrations.Add(existing);
                 }
 
-                var targets = package.GetModuleSettings().ReferenceInDesigner();
+                var targets = package.GetModuleSettings().ReferenceInDesigner() ?? new IElement[0];
                 existing.SetAttributeValue("target", targets.Any()
                     ? string.Join(";", targets.Select(x => x.Name))
                     : null);

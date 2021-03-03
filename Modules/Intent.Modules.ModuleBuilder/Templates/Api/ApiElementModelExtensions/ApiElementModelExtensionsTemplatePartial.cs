@@ -14,14 +14,15 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class ApiElementModelExtensionsTemplate : CSharpTemplateBase<ExtensionModel>, IDeclareUsings
     {
 
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions";
 
-        public ApiElementModelExtensionsTemplate(IOutputTarget project, ExtensionModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public ApiElementModelExtensionsTemplate(IOutputTarget outputTarget, ExtensionModel model = null) : base(TemplateId, outputTarget, model)
         {
             foreach (var module in Model.StereotypeDefinitions
                 .SelectMany(x => x.TargetElements)

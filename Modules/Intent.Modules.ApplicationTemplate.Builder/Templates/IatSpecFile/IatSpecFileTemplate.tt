@@ -2,29 +2,30 @@
 <#@ assembly name="System.Core" #>
 <#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Security" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Modules.ApplicationTemplate.Builder.Api" #>
 <?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
-  <id><#= Model.Name #></id>
+  <id><#= SecurityElement.Escape(Model.Name) #></id>
   <version><#= Model.Version #></version>
   <supportedClientVersions><#= Model.SupportedClientVersions ?? ""#></supportedClientVersions>
-  <displayName><#= Model.DisplayName #></displayName>
-  <shortDescription><#= Model.Description ?? "" #></shortDescription>
-  <authors><#= Model.Authors ?? "" #></authors>
+  <displayName><#= SecurityElement.Escape(Model.DisplayName) #></displayName>
+  <shortDescription><#= SecurityElement.Escape(Model.Description) ?? "" #></shortDescription>
+  <authors><#= SecurityElement.Escape(Model.Authors) ?? "" #></authors>
   <priority><#= Model.Priority ?? "0" #></priority>
-  <defaultName><#= Model.DefaultName #></defaultName>
-  <relativeOutputLocation><#= Model.DefaultOutputLocation #></relativeOutputLocation>
+  <defaultName><#= SecurityElement.Escape(Model.DefaultName) #></defaultName>
+  <relativeOutputLocation><#= SecurityElement.Escape(Model.DefaultOutputLocation) #></relativeOutputLocation>
   <icon type="<#= Icon.Type #>" source="<#= Icon.Source #>" />
   <componentGroups>
 <#  foreach(var @group in Model.Groups) { #>
-    <group name="<#= @group.Name #>">
+    <group name="<#= SecurityElement.Escape(@group.Name) #>">
       <components>
 <#      foreach(var component in @group.Components) { #>
-        <component name="<#= component.Name #>" included="<#= component.IncludeByDefault.ToString().ToLower() #>">
-          <description><#= component.Description ?? "" #></description>
+        <component name="<#= SecurityElement.Escape(component.Name) #>" included="<#= component.IncludeByDefault.ToString().ToLower() #>">
+          <description><#= SecurityElement.Escape(component.Description) ?? "" #></description>
           <icon type="<#= component.Icon.Type #>" source="<#= component.Icon.Source #>"/>
           <modules>
 <#          foreach(var module in component.Modules) { #>

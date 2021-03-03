@@ -72,6 +72,7 @@ namespace Intent.ModuleBuilder.Api
                 {
                     SpecializationTypeId = this.SourceEnd.Id,
                     SpecializationType = this.SourceEnd.Name,
+                    DisplayFunction = this.SourceEnd.GetSettings().DisplayTextFunction(),
                     TypeReferenceSetting = new TypeReferenceSettingPersistable()
                     {
                         TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
@@ -87,6 +88,7 @@ namespace Intent.ModuleBuilder.Api
                 {
                     SpecializationTypeId = this.TargetEnd.Id,
                     SpecializationType = this.TargetEnd.Name,
+                    DisplayFunction = this.TargetEnd.GetSettings().DisplayTextFunction(),
                     TypeReferenceSetting = new TypeReferenceSettingPersistable()
                     {
                         TargetTypes = this.TargetEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),

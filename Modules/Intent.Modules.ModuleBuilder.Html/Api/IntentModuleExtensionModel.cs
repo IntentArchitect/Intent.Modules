@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
-using Intent.ModuleBuilder.Java.Api;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Java
+namespace Intent.ModuleBuilder.Html.Api
 {
     [IntentManaged(Mode.Merge)]
     public class IntentModuleExtensionModel : IntentModuleModel
@@ -19,9 +19,9 @@ namespace Intent.Modules.ModuleBuilder.Java
         {
         }
 
-        public IList<JavaFileTemplateModel> JavaFiles => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == JavaFileTemplateModel.SpecializationType)
-            .Select(x => new JavaFileTemplateModel(x))
+        public IList<HtmlFileTemplateModel> HtmlFiles => UnderlyingPackage.ChildElements
+            .GetElementsOfType(HtmlFileTemplateModel.SpecializationTypeId)
+            .Select(x => new HtmlFileTemplateModel(x))
             .ToList();
 
     }

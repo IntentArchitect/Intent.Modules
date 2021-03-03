@@ -36,6 +36,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
 
+        [XmlElement("displayFunction")]
+        public string DisplayFunction { get; set; }
+
         [XmlElement("typeReferenceSetting")]
         public TypeReferenceSettingPersistable TypeReferenceSetting { get; set; }
 

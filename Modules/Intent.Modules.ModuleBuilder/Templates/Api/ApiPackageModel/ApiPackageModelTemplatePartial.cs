@@ -17,7 +17,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiPackageModel";
 
-        public ApiPackageModelTemplate(IOutputTarget project, PackageSettingsModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public ApiPackageModelTemplate(IOutputTarget outputTarget, PackageSettingsModel model) : base(TemplateId, outputTarget, model)
         {
         }
 

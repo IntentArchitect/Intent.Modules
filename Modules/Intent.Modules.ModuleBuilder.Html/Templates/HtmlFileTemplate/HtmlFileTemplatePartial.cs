@@ -23,9 +23,10 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
     partial class HtmlFileTemplate : IntentFileTemplateBase<HtmlFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ModuleBuilder.Html.Templates.HtmlFileTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.Html.Templates.HtmlFileTemplate";
 
-        public HtmlFileTemplate(IOutputTarget project, HtmlFileTemplateModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public HtmlFileTemplate(IOutputTarget outputTarget, HtmlFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 

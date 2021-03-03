@@ -15,13 +15,14 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class ApiElementExtensionModelTemplate : CSharpTemplateBase<ElementExtensionModel>, IDeclareUsings
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel";
 
-        public ApiElementExtensionModelTemplate(IOutputTarget project, ElementExtensionModel model) : base(TemplateId, project, model)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public ApiElementExtensionModelTemplate(IOutputTarget outputTarget, ElementExtensionModel model) : base(TemplateId, outputTarget, model)
         {
             if (Model.TypeReference.Element.Id == FolderModel.SpecializationTypeId)
             {

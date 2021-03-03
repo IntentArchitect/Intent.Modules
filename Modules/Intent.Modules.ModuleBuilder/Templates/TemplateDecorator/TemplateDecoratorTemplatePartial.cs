@@ -22,6 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateDecorator";
 
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public TemplateDecoratorTemplate(IOutputTarget outputTarget, TemplateDecoratorModel model) : base(TemplateId, outputTarget, model)
         {
             AddTypeSource(TemplateDecoratorContractTemplate.TemplateId);
