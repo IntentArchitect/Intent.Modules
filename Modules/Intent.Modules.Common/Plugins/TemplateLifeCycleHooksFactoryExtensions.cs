@@ -19,8 +19,7 @@ namespace Intent.Modules.Common.Plugins
             if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
             {
                 var templates = application.Projects.SelectMany(x => x.TemplateInstances)
-                    .Where(x => x is ITemplateBeforeExecutionHook)
-                    .Cast<ITemplateBeforeExecutionHook>()
+                    .OfType<ITemplateBeforeExecutionHook>()
                     .ToList();
 
                 templates.ForEach(x => x.BeforeTemplateExecution());
