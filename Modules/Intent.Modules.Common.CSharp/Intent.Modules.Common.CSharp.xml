@@ -34,17 +34,21 @@
             <param name="parameters"></param>
             <returns></returns>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig">
+            <summary>
+            Specialization of <see cref="T:Intent.Modules.Common.Templates.TemplateFileConfig"/> for setting
+            metadata specific to C# templates.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.#ctor(System.String,System.String,System.String,Intent.Templates.OverwriteBehaviour,System.String,System.String,System.String)">
             <summary>
             Sets the C# file configuration
             </summary>
-            <param name="className"></param>
-            <param name="namespace">namespace</param>
-            <param name="relativeLocation"></param>
-            <param name="overwriteBehaviour"></param>
-            <param name="fileName"></param>
-            <param name="fileExtension"></param>
-            <param name="dependsUpon"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.#ctor(System.String,System.String,System.String,Intent.Templates.OverwriteBehaviour,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Sets the C# file configuration
+            </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpOutputTargetExtensions.GetNamespace(Intent.Engine.IOutputTarget)">
             <summary>
