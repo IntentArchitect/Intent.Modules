@@ -7,6 +7,7 @@
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
+using Intent.Engine;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -19,10 +20,12 @@ namespace <#= Namespace #>
         public const string DecoratorId = "<#= GetDecoratorId() #>";
 
         private readonly <#= GetTemplateTypeName() #> _template;
+        private readonly IApplication _application;
 
-        public <#= ClassName #>(<#= GetTemplateTypeName() #> template)
+        public <#= ClassName #>(<#= GetTemplateTypeName() #> template, IApplication application)
         {
             _template = template;
+            _application = application;
         }
 
     }

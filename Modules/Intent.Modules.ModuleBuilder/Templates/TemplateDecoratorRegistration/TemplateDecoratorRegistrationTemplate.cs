@@ -89,7 +89,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
             
             #line default
             #line hidden
-            this.Write("(template);\r\n        }\r\n\r\n        public override string DecoratorId => ");
+            this.Write("(template, application);\r\n        }\r\n\r\n        public override string DecoratorId" +
+                    " => ");
             
             #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDecoratorTypeName()));

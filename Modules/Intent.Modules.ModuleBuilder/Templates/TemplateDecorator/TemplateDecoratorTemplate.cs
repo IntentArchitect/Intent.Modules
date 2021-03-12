@@ -32,23 +32,24 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
         /// </summary>
         public override string TransformText()
         {
-            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
+            this.Write("using Intent.Engine;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace" +
+                    " ");
             
-            #line 13 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(Model)));
             
             #line default
@@ -56,33 +57,35 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
             this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Decorat" +
                     "orId = \"");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetDecoratorId()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        private readonly ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateTypeName()));
             
             #line default
             #line hidden
-            this.Write(" _template;\r\n\r\n        public ");
+            this.Write(" _template;\r\n        private readonly IApplication _application;\r\n\r\n        publi" +
+                    "c ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateTypeName()));
             
             #line default
             #line hidden
-            this.Write(" template)\r\n        {\r\n            _template = template;\r\n        }\r\n\r\n    }\r\n}");
+            this.Write(" template, IApplication application)\r\n        {\r\n            _template = template" +
+                    ";\r\n            _application = application;\r\n        }\r\n\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

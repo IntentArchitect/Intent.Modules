@@ -20,7 +20,7 @@ namespace <#= Namespace #>
     {
         public override <#= GetDecoratorContractTypeName() #> CreateDecoratorInstance(<#= GetTemplateTypeName() #> template, IApplication application)
         {
-            return new <#= GetDecoratorTypeName() #>(template);
+            return new <#= GetDecoratorTypeName() #>(template, application);
         }
 
         public override string DecoratorId => <#= GetDecoratorTypeName() #>.DecoratorId;
