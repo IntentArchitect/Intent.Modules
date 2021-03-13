@@ -69,17 +69,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
             
             #line default
             #line hidden
-            this.Write(" _template;\r\n        private readonly IApplication _application;\r\n\r\n        publi" +
-                    "c ");
+            this.Write(" _template;\r\n        private readonly IApplication _application;\r\n\r\n        [Inte" +
+                    "ntManaged(Mode.Merge)]\r\n        public ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateTypeName()));
             
             #line default
