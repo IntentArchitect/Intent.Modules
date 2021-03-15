@@ -10,7 +10,10 @@ using Intent.Utils;
 
 namespace Intent.Modules.Common.Registrations
 {
-    [Obsolete("Use FilePerModelTemplateRegistration<TModel>")]
+    /// <summary>
+    /// Use <see cref="FilePerModelTemplateRegistration{TModel}"/> instead.
+    /// </summary>
+    [Obsolete("Use " + nameof(FilePerModelTemplateRegistration<TModel>) + " instead.")]
     public abstract class ModelTemplateRegistrationBase<TModel> : ITemplateRegistration, ISupportsConfiguration
     {
         private ParsedExpression<TModel, bool> _filter;
