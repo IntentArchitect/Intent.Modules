@@ -69,7 +69,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationEndModel : IAssociationEnd
+    public class AssociationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly AssociationModel _association;
@@ -82,15 +82,18 @@ namespace Intent.Modelers.Domain.Api
         }
 
         public string Id => _associationEnd.Id;
+        public string SpecializationType => _associationEnd.SpecializationType;
+        public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public AssociationModel Association => _association;
-        IAssociation IAssociationEnd.Association => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
         public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
+        public ITypeReference TypeReference => this;
+        public IPackage Package => Element?.Package;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
         [IntentManaged(Mode.Ignore)]
@@ -119,10 +122,10 @@ namespace Intent.Modelers.Domain.Api
             return this.Equals(_association.SourceEnd) ? (AssociationEndModel)_association.TargetEnd : (AssociationEndModel)_association.SourceEnd;
         }
 
-        IAssociationEnd IAssociationEnd.OtherEnd()
-        {
-            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
-        }
+        //IAssociationEnd IAssociationEnd.OtherEnd()
+        //{
+        //    return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
+        //}
 
         public bool IsTargetEnd()
         {
@@ -156,6 +159,10 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);
         }
+
+        IAssociation InternalAssociation => _association.InternalAssociation;
+
+        IAssociationEnd InternalAssociationEnd => _associationEnd;
     }
 
     [IntentManaged(Mode.Fully)]

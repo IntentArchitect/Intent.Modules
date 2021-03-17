@@ -66,7 +66,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class CommentAssociationEndModel : IAssociationEnd
+    public class CommentAssociationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly CommentAssociationModel _association;
@@ -78,20 +78,25 @@ namespace Intent.Modelers.Domain.Api
         }
 
         public string Id => _associationEnd.Id;
+        public string SpecializationType => _associationEnd.SpecializationType;
+        public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public CommentAssociationModel Association => _association;
-        IAssociation IAssociationEnd.Association => _association.InternalAssociation;
+        IAssociationEnd InternalAssociationEnd => _associationEnd;
+        IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
         public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
+        public ITypeReference TypeReference => this;
+        public IPackage Package => Element?.Package;
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        IAssociationEnd IAssociationEnd.OtherEnd()
+        public CommentAssociationEndModel OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (CommentAssociationEndModel)_association.TargetEnd : (CommentAssociationEndModel)_association.SourceEnd;
         }
 
         public bool IsTargetEnd()

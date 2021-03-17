@@ -66,7 +66,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class GeneralizationEndModel : IAssociationEnd
+    public class GeneralizationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
 
@@ -100,7 +100,6 @@ namespace Intent.Modelers.Domain.Api
 
         private readonly GeneralizationModel _association;
         public GeneralizationModel Association => _association;
-        IAssociation IAssociationEnd.Association => _association.InternalAssociation;
         public string Comment => _associationEnd.Comment;
         public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
@@ -118,15 +117,27 @@ namespace Intent.Modelers.Domain.Api
             return _associationEnd.IsTargetEnd();
         }
 
-        IAssociationEnd IAssociationEnd.OtherEnd()
+        public GeneralizationEndModel OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (GeneralizationEndModel)_association.TargetEnd : (GeneralizationEndModel)_association.SourceEnd;
         }
 
         public override string ToString()
         {
             return _associationEnd.ToString();
         }
+
+        IAssociation InternalAssociation => _association.InternalAssociation;
+
+        IAssociationEnd InternalAssociationEnd => _associationEnd;
+
+        public IPackage Package => Element?.Package;
+
+        public string SpecializationType => _associationEnd.SpecializationType;
+
+        public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
+
+        public ITypeReference TypeReference => this;
     }
 
     [IntentManaged(Mode.Fully)]

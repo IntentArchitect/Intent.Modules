@@ -95,7 +95,7 @@ namespace <#= Namespace #>
     }
 
     [IntentManaged(Mode.Fully)]
-    public class <#=AssociationEndClassName #> : IAssociationEnd
+    public class <#=AssociationEndClassName #> : ITypeReference, ICanBeReferencedType, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly <#= ClassName #> _association;
@@ -107,20 +107,25 @@ namespace <#= Namespace #>
         }
 
         public string Id => _associationEnd.Id;
+        public string SpecializationType => _associationEnd.SpecializationType;
+        public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public <#= ClassName #> Association => _association;
-        IAssociation IAssociationEnd.Association => _association.InternalAssociation;
+        IAssociationEnd InternalAssociationEnd => _associationEnd;
+        IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.IsNullable;
         public bool IsCollection => _associationEnd.IsCollection;
         public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
+        public ITypeReference TypeReference => this;
+        public IPackage Package => Element?.Package;
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        IAssociationEnd IAssociationEnd.OtherEnd()
+        public <#=AssociationEndClassName #> OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (<#=AssociationEndClassName #>)_association.TargetEnd : (<#=AssociationEndClassName #>)_association.SourceEnd;
         }
 
         public bool IsTargetEnd()

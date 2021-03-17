@@ -30,9 +30,23 @@
       <stereotypes />
       <genericTypeParameters />
     </typeReference>
-    <stereotypes />
+    <stereotypes>
+      <stereotype stereotypeDefinitionId="efae693b-e497-430f-93ea-d68738b7f0e4" name="Association Stereotype">
+        <addedByDefault>false</addedByDefault>
+        <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+        <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
+        <properties />
+      </stereotype>
+    </stereotypes>
   </targetEnd>
   <associationType>Association</associationType>
   <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="efae693b-e497-430f-93ea-d68738b7f0e4" name="Association Stereotype">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+      <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
+      <properties />
+    </stereotype>
+  </stereotypes>
 </association>

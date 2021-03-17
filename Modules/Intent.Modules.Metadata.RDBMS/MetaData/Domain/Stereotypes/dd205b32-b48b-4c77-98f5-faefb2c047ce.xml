@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="dd205b32-b48b-4c77-98f5-faefb2c047ce">
+<stereotypeDefinition id="dd205b32-b48b-4c77-98f5-faefb2c047ce" version="3.1.0">
   <name>Table</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</element>
-  </targetElements>
+  <targetTypes>
+    <type id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAAGEMEXHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADYUExURQAAAP+AQNtJJNVVFcZVDrxRB79RBrtOCrlQCrlPCcJSCbtRCb1QCLtRCL9RCr5SB75RB79QB75SCLxSCL5SCL1SCL1SCL1RCb1RCb1QCb5RCb5RCb5SCb5SCL5RCb1RB79SB79RCL9RCL9QCL5RCL9RCL1RCL5QCL9RCL5RCL5QCL5SCL5RCb1QB79RCL5RCL5SCL5RCMJTCL1RCL5RCL9RCMBSCMFSCMJTCMNTCMRUCMVTCMVUCMZUCMZVCMdUCMdVCMhVCMlVCMlWCMpVCMtWCc1YCc9YCZouWWgAAAAzdFJOUwAEBwwSJiwxMzc7PF1eaGpub3l6fYCDh4uMjpGWmaSrrra3uLm6wcXGx8jI0NLT3OHn+hd6f9EAAAAJcEhZcwAAC4gAAAuIAeWOKUkAAAExSURBVChTnZFnc8IwDIZFMdOMMsIKewXMxmRBUmJW/v8/qhLMFa7XfuDR2a9l6V75zhAifF/ctyrn1fudRAgBuztgK18YNgjwMYTskGWZQLFcKpWLMnlwRhtxhvH5hzG4CZq6JmnymqIJF7wIid4+yMctSiJeaO7LJcDQ2NTSmGZNmWbA6akWnJ/wpDniPZ4dAh1KsxVKK1lKO6ACxDMAmTjgsUVIOkdILk1IC2aK0uwqSrepKLPXtpdkw9hixdhqwdjmn7atEO5eiL0rxBZi+cLnbwr5GBi6fOUrugE70w04cDtUmx9CNXcgcBAS93EYkvFxIKLiP/5Z4fblhBy5E+jF4ccgvdj8LTdz3RuNRoOJteyj9pfWZIDaW5tvuenzmqqqjbYzrKPWh067gVqb69+bOUVi00YNywAAAABJRU5ErkJggg==" />
   <displayIcon>true</displayIcon>
