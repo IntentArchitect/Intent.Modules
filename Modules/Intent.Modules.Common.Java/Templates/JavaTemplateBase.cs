@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -40,6 +41,12 @@ namespace Intent.Modules.Common.Java.Templates
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);
+        }
+
+        protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc, string suffixIfFound)
+        {
+            var output = GetDecorators().Aggregate(propertyFunc);
+            return string.IsNullOrWhiteSpace(output) ? string.Empty : $"{output}{suffixIfFound}";
         }
     }
 
