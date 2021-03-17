@@ -65,27 +65,35 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public IOutputTarget Project => OutputTarget.GetProject();
 
-        public string Namespace
+        /// <summary>
+        /// Returns the class' namespace as specified in the <see cref="CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
+        /// May be overriden.
+        /// </summary>
+        public virtual string Namespace
         {
             get
             {
                 if (FileMetadata.CustomMetadata.ContainsKey("Namespace"))
                 {
-                    return FileMetadata.CustomMetadata["Namespace"];
+                    return FileMetadata.CustomMetadata["Namespace"].ToCSharpNamespace();
                 }
-                return this.OutputTarget.Name;
+                return this.OutputTarget.Name.ToCSharpNamespace();
             }
         }
 
-        public string ClassName
+        /// <summary>
+        /// Returns the class name as specified in the <see cref="CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
+        /// May be overriden.
+        /// </summary>
+        public virtual string ClassName
         {
             get
             {
                 if (FileMetadata.CustomMetadata.ContainsKey("ClassName"))
                 {
-                    return FileMetadata.CustomMetadata["ClassName"].Replace(".", "");
+                    return FileMetadata.CustomMetadata["ClassName"].ToCSharpIdentifier();
                 }
-                return FileMetadata.FileName.Replace(".", "");
+                return FileMetadata.FileName.ToCSharpIdentifier();
             }
         }
 

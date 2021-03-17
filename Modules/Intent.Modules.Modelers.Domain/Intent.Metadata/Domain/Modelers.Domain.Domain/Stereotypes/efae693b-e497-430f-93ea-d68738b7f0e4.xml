@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="efae693b-e497-430f-93ea-d68738b7f0e4">
+  <name>Association Stereotype</name>
+  <targetMode>of-type</targetMode>
+  <targetElements>
+    <element id="0a66489f-30aa-417b-a75d-b945863366fd">Association Target End</element>
+    <element id="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">Association Source End</element>
+  </targetElements>
+  <applyMode>manually</applyMode>
+  <icon type="CharacterBox" source="A|#8BC34A" />
+  <displayIcon>true</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <order>0</order>
+  <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+  <packageName>Modelers.Domain.Domain</packageName>
+  <properties />
+</stereotypeDefinition>
