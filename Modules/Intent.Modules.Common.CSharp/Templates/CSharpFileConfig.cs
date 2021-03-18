@@ -43,14 +43,19 @@ namespace Intent.Modules.Common.CSharp.Templates
         public CSharpFileConfig(
             string className,
             string @namespace,
-            string relativeLocation = "",
-            OverwriteBehaviour overwriteBehaviour = OverwriteBehaviour.Always,
-            string fileName = null,
-            string fileExtension = "cs",
-            string dependsUpon = null,
-            bool autoFormat = true)
+            string relativeLocation,
+            OverwriteBehaviour overwriteBehaviour,
+            string fileName,
+            string fileExtension,
+            string dependsUpon,
+            bool autoFormat)
             : base(fileName ?? className, fileExtension, relativeLocation, overwriteBehaviour, "RoslynWeave")
         {
+            // This overload has to be void of optional parameters because the compiler will not be
+            // able to differentiate between the two constructors if none of the optional parameters
+            // are not specified. So this overload will have to be explicitly set while the other one
+            // offers a more convenient setup.
+
             CustomMetadata["ClassName"] = className ?? throw new ArgumentNullException(nameof(className));
             CustomMetadata["AutoFormat"] = autoFormat.ToString();
             

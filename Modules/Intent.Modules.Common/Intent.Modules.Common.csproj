@@ -1,5 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
-
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <PackageId>Intent.Modules.Common</PackageId>
@@ -14,11 +14,9 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Dev\Intent.Modules\Modules\Intent.Modules.Common\Intent.Modules.Common.xml</DocumentationFile>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Templates\Typescript\**" />
     <EmbeddedResource Remove="Templates\Typescript\**" />
@@ -28,7 +26,6 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="Intent.Packager" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
@@ -37,5 +34,4 @@
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
     <PackageReference Include="System.Reflection.Emit" Version="4.3.0" />
   </ItemGroup>
-
 </Project>

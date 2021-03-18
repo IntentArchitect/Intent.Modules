@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Html</id>
-  <version>3.0.1</version>
+  <version>3.0.2</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -12,8 +12,8 @@
     <factoryExtension id="Intent.Common.Html.OutputWeaver" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.1" />
-    <dependency id="Intent.Common.Types" version="3.0.1" />
+    <dependency id="Intent.Common" version="3.0.4" />
+    <dependency id="Intent.Common.Types" version="3.0.3" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

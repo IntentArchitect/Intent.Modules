@@ -1,17 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
+    <Version>3.0.5</Version>
   </PropertyGroup>
-
   <ItemGroup>
     <Compile Remove="Roslyn\**" />
     <EmbeddedResource Remove="Roslyn\**" />
     <None Remove="Roslyn\**" />
   </ItemGroup>
-
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.5" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.7" />
     <PackageReference Include="Intent.Packager" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -19,12 +18,10 @@
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <None Update="Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -39,11 +36,9 @@
       <LastGenOutput>CSharpTemplatePartialTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
-
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
-
   <ItemGroup>
     <Compile Update="Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartial.cs">
       <DesignTime>True</DesignTime>
@@ -61,11 +56,8 @@
       <DependentUpon>CSharpTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
-
   <ItemGroup></ItemGroup>
-
   <ItemGroup>
     <Folder Include="Api\" />
   </ItemGroup>
-
 </Project>

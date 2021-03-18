@@ -41,6 +41,11 @@
             <param name="application"></param>
             <returns></returns>
         </member>
+        <member name="T:Intent.Modules.Common.Registrations.ModelTemplateRegistrationBase`1">
+            <summary>
+            Use <see cref="T:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1"/> instead.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.Registrations.SingleFileListModelTemplateRegistration`1">
             <summary>
             Template Registration that produces as single file. Passes in a list of models into the template.

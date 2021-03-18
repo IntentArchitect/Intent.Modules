@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.Contracts;
-using Intent.Modules.Common.Types.TypeResolvers;
 
 namespace Intent.Modules.Common.Java.TypeResolvers
 {

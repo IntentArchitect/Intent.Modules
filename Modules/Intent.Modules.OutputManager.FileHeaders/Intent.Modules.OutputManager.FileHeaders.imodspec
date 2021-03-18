@@ -1,13 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.OutputTransformer.FileHeader</id>
-  <version>3.0.0-beta.3</version>
+  <version>3.0.0-beta.4</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Inserts an "Intent" header with additional information provided by the Software Factory.</summary>
   <description>Inserts an "Intent" header with additional information provided by the Software Factory.</description>
   <authors>Intent Architect</authors>
-  <templates>
-  </templates>
+  <templates></templates>
   <decorators />
   <factoryExtensions>
     <factoryExtension id="Intent.OutputTransformer.FileHeader" enabled="true">
@@ -19,10 +18,10 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.0-beta.3"/>
+    <dependency id="Intent.Common" version="3.0.4" />
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll" />
+    <file src="bin/$configuration$/$id$.pdb" />
   </files>
 </package>

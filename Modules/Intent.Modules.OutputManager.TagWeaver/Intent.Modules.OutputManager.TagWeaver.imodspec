@@ -1,32 +1,31 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.OutputTransformer.TagWeaver</id>
-  <version>3.0.0-beta.3</version>
+  <version>3.0.0-beta.4</version>
   <supportedClientVersions>[3.0.0-beta,4.0.0)</supportedClientVersions>
   <summary>Provides interactive code management between software factory outputs and existing user code through tags.</summary>
   <description>Provides interactive code management between software factory outputs and existing user code through tags.</description>
   <authors>Intent Architect</authors>
   <projectUrl>www.intentarchitect.com</projectUrl>
   <tags>Weave Weaving OutputManager Tags</tags>
-  <templates>
-  </templates>
+  <templates></templates>
   <decorators />
   <factoryExtensions>
     <factoryExtension id="Intent.OutputTransformer.TagWeaver">
       <config>
         <add key="Keep Code In Tags" description="List of CodeGenTypes which should 'Keep Code In Tags' weaving. (comma delimited list of strings)" default="IntentControlledTagWeave" />
         <add key="Generate Code To Tags" description="List of CodeGenTypes which should have 'Generate Code To Tags' weaving. (comma delimited list of strings)" default="UserControlledTagWeave" />
-        <add key="Generate Code To Tagged Scope" description="List of CodeGenTypes which should have 'Generate Code To Tags' weaving. (comma delimited list of strings)" default="IntentManageTaggedScope" />        
+        <add key="Generate Code To Tagged Scope" description="List of CodeGenTypes which should have 'Generate Code To Tags' weaving. (comma delimited list of strings)" default="IntentManageTaggedScope" />
         <add key="C Style Parser Extensions" description="List of file extensions which should be parsed as '//' comment syntax. (| delimited list of strings)" default="cs|ts|js" />
         <add key="Xml Style Extensions" description="List of file extensions which should be parsed as '&lt;!-- --&gt;' comment syntax. (| delimited list of strings)" default="xml|config|xaml" />
       </config>
     </factoryExtension>
   </factoryExtensions>
-  <dependencies >
-    <dependency id="Intent.Common" version="3.0.0-beta.3"/>
+  <dependencies>
+    <dependency id="Intent.Common" version="3.0.4" />
   </dependencies>
   <files>
-    <file src="bin/$configuration$/$id$.dll"/>
-    <file src="bin/$configuration$/$id$.pdb"/>
+    <file src="bin/$configuration$/$id$.dll" />
+    <file src="bin/$configuration$/$id$.pdb" />
   </files>
 </package>

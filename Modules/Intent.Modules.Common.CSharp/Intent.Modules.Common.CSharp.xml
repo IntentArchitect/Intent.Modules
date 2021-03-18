@@ -69,6 +69,18 @@
             Returns the csproj file <see cref="T:Intent.Engine.IOutputTarget"/> that contains this file.
             </summary>
         </member>
+        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.Namespace">
+            <summary>
+            Returns the class' namespace as specified in the <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
+            May be overriden.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.ClassName">
+            <summary>
+            Returns the class name as specified in the <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
+            May be overriden.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String,System.String)">
             <summary>
             Adds a Template source that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>
