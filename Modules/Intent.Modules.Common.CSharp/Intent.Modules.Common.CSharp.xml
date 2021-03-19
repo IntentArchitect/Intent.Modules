@@ -45,9 +45,9 @@
             Sets the C# file configuration
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.#ctor(System.String,System.String,System.String,Intent.Templates.OverwriteBehaviour,System.String,System.String,System.String,System.Boolean)">
+        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.AutoFormat">
             <summary>
-            Sets the C# file configuration
+            C# styling automatically formatted
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpOutputTargetExtensions.GetNamespace(Intent.Engine.IOutputTarget)">
