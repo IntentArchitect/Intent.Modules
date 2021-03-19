@@ -20,14 +20,19 @@ namespace Intent.Modules.Common.Java.TypeResolvers
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat = "{0}[]")
         {
+            return JavaTypeSource.Create(context, templateId, (type) => string.Format(collectionFormat, type));
+        }
+
+        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, Func<string, string> formatCollection)
+        {
             return new JavaTypeSource((_this, typeInfo) =>
             {
-                var typeName = _this.GetTypeName(context, templateId, typeInfo, collectionFormat);
+                var typeName = _this.GetTypeName(context, templateId, typeInfo, formatCollection);
 
                 return typeName;
             });
         }
-        
+
         public IResolvedTypeInfo GetType(ITypeReference typeInfo)
         {
             return _execute(this, typeInfo);
@@ -38,7 +43,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             return _templateDependencies;
         }
 
-        private IResolvedTypeInfo GetTypeName(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo, string collectionFormat)
+        private IResolvedTypeInfo GetTypeName(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo, Func<string, string> formatCollection)
         {
             var templateInstance = GetTemplateInstance(context, templateId, typeInfo);
             if (templateInstance == null)
@@ -46,12 +51,12 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                 return null;
             }
             var name = templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any() 
-                           ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(context, templateId, x, collectionFormat).Name))}>" 
+                           ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(context, templateId, x, formatCollection).Name))}>" 
                            : "");
 
             if (!string.IsNullOrWhiteSpace(name) && typeInfo.IsCollection)
             {
-                name = string.Format(collectionFormat, name);
+                name = formatCollection(name);
             }
 
             return new ResolvedTypeInfo(name, false, templateInstance);

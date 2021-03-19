@@ -13,11 +13,15 @@
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Dev\Intent.Modules\Modules\Intent.Modules.Common.Java\Intent.Modules.Common.Java.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.0.4" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.3" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
-    <PackageReference Include="Intent.Code.Weaving.Java" Version="1.0.1">
+    <PackageReference Include="Intent.Code.Weaving.Java" Version="1.0.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Intent.Packager" Version="3.0.1">

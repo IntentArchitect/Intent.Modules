@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Intent.Modules.Common.Java</name>
+    </assembly>
+    <members>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddDependency(Intent.Modules.Common.Java.Templates.JavaDependency)">
+            <summary>
+            Adds the <see cref="T:Intent.Modules.Common.Java.Templates.JavaDependency"/> which can be use by Maven or Gradle to import dependencies.
+            </summary>
+            <param name="dependency"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.ImportType(System.String)">
+            <summary>
+            imports the fully qualified type and returns its reference name. For example, java.util.List will import java.util.List and return List.
+            </summary>
+            <param name="fullyQualifiedType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the type name of the <paramref name="templateDependency"/> as a string. Will automatically import types if necessary.
+            </summary>
+            <param name="templateDependency"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.DeclareImports">
+            <summary>
+            Override this method to add additional imports to this java template. It is recommended to call base.DeclareImports().
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>
