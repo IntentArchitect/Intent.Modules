@@ -32,6 +32,8 @@ namespace Intent.Modelers.Services.Api
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
+        public string Comment => _element.Comment;
+
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 

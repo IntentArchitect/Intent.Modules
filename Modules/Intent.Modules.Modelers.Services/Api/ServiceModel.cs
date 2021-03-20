@@ -46,7 +46,8 @@ namespace Intent.Modelers.Services.Api
             .GetElementsOfType(OperationModel.SpecializationTypeId)
             .Select(x => new OperationModel(x))
             .ToList();
-        public string Comment => _element.Id;
+
+        public string Comment => _element.Comment;
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()

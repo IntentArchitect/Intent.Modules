@@ -45,6 +45,8 @@ namespace <#= Namespace #>
         public string Id => _element.Id;
         
         public string Name => _element.Name;
+
+        public string Comment => _element.Comment;
         
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
