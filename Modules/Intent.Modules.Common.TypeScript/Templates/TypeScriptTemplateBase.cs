@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.IO;
 using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
@@ -20,6 +21,8 @@ namespace Intent.Modules.Common.TypeScript.Templates
         {
         }
 
+        public ICollection<TypeScriptImport> Imports = new List<TypeScriptImport>();
+
         public override string RunTemplate()
         {
             var file = CreateOutputFile();
@@ -32,6 +35,11 @@ namespace Intent.Modules.Common.TypeScript.Templates
         protected virtual TypeScriptFile CreateOutputFile()
         {
             return GetTemplateFile();
+        }
+
+        public void AddImport(string type, string location)
+        {
+            Imports.Add(new TypeScriptImport(type, location));
         }
 
         public TypeScriptFile GetTemplateFile()
@@ -54,5 +62,17 @@ namespace Intent.Modules.Common.TypeScript.Templates
             var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
             return File.Exists(fullFileName) ? new TypeScriptFileEditor(File.ReadAllText(fullFileName)).File : null;
         }
+    }
+
+    public class TypeScriptImport
+    {
+        public TypeScriptImport(string type, string location)
+        {
+            Type = type;
+            Location = location;
+        }
+
+        public string Type { get; set; }
+        public string Location { get; set; }
     }
 }

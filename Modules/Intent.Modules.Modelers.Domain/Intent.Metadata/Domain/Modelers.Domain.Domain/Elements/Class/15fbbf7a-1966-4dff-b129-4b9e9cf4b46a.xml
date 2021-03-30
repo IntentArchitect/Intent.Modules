@@ -3,34 +3,12 @@
   <name>OperationOnly</name>
   <display>OperationOnly</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
   <packageName>Modelers.Domain.Domain</packageName>
   <stereotypes />
-  <childElements>
-    <childElement id="98385541-17b1-4868-8466-5f82fbf8f0f3" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-      <name>Operation</name>
-      <display>Operation(): void</display>
-      <isAbstract>false</isAbstract>
-      <order>0</order>
-      <genericTypes />
-      <typeReference id="0bd76fb8-a40b-4966-82a7-2d119602e5ad">
-        <isNavigable>true</isNavigable>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <isRequired>true</isRequired>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
-      <isMapped>false</isMapped>
-      <parentFolderId>15fbbf7a-1966-4dff-b129-4b9e9cf4b46a</parentFolderId>
-      <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
-      <packageName>Modelers.Domain.Domain</packageName>
-      <stereotypes />
-      <childElements />
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

@@ -3,14 +3,19 @@
   <ApplicationId>45b6cbb2-bbe2-4a28-a65b-1100ec6a550c</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>601e229b-c0be-440e-8a38-4553f62d54b9</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Typescript\Intent.Modules.Common.Typescript.csproj</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Common.Typescript.csproj</ProjectRelativeFilePath>
+      <ProjectId>e97eac7b-5f1b-4aed-aeeb-e9d882944801</ProjectId>
+      <SolutionRelativeFilePath>../Intent.Modules.Common.Typescript/Api/Extensions/TypeDefinitionModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>TypeDefinitionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>601e229b-c0be-440e-8a38-4553f62d54b9</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.Typescript\Intent.Modules.Common.Typescript.imodspec</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Common.Typescript.imodspec</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Common.Typescript/Intent.Common.TypeScript.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Common.TypeScript.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>601e229b-c0be-440e-8a38-4553f62d54b9</ProjectId>
+      <SolutionRelativeFilePath>../Intent.Modules.Common.Typescript/Intent.Modules.Common.Typescript.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Typescript.csproj</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

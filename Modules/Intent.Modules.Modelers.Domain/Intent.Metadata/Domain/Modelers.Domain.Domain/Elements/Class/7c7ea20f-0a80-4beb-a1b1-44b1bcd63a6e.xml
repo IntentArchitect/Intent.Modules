@@ -3,7 +3,7 @@
   <name>NewClass2</name>
   <display>NewClass2</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
@@ -63,7 +63,7 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>1</order>
       <genericTypes />
       <typeReference id="8f2e93d7-6281-4ab5-a31f-122e7ed66b97">
         <isNavigable>true</isNavigable>

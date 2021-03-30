@@ -18,10 +18,28 @@ namespace Intent.Modules.Common.TypeScript.Templates
                     continue;
                 }
 
+                if (string.IsNullOrWhiteSpace(((IClassProvider) dependency).ClassName))
+                {
+                    continue;
+                }
+
                 file.AddImportIfNotExists(
                     className: ((IClassProvider)dependency).ClassName,
-                    location: "./" + template.GetMetadata().GetFullLocationPath().GetRelativePath(dependency.GetMetadata().GetFilePathWithoutExtension()));
+                    location: GetRelativePath(template, dependency));
             }
+
+            foreach (var import in template.Imports)
+            {
+                file.AddImportIfNotExists(
+                    className: import.Type,
+                    location: import.Location);
+            }
+            file.NormalizeImports();
+        }
+
+        public static string GetRelativePath<T>(this TypeScriptTemplateBase<T> template, ITemplate dependency)
+        {
+            return "./" + template.GetMetadata().GetFullLocationPath().GetRelativePath(dependency.GetMetadata().GetFilePathWithoutExtension());
         }
     }
 }

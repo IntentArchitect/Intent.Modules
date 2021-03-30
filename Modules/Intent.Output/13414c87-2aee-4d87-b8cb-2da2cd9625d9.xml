@@ -4,51 +4,51 @@
   <FileLogs>
     <FileLog>
       <ProjectId>ec67333c-966e-4ba1-9d7b-8a0cac8b8d13</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Api\OperationModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/Api/OperationModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>OperationModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>ec67333c-966e-4ba1-9d7b-8a0cac8b8d13</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Api\ParameterModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/Api/ParameterModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ParameterModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>ec67333c-966e-4ba1-9d7b-8a0cac8b8d13</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Api\ServiceProxyDTOModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/Api/ServiceProxyDTOModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ServiceProxyDTOModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>ec67333c-966e-4ba1-9d7b-8a0cac8b8d13</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Api\ServiceProxyModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/Api/ServiceProxyModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ServiceProxyModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modelers.Types.ServiceProxies.imodspec</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/Intent.Modelers.Types.ServiceProxies.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.Types.ServiceProxies.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/Intent.Modules.Modelers.Types.ServiceProxies.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Types.ServiceProxies.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>00c285fd-668c-4d5e-b67f-99b8c76032d1</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\modelers\Service Proxy Types.designer.settings</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/modelers/Service Proxy Types.designer.settings</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Service Proxy Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Modelers.Types.ServiceProxies\README.txt</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Types.ServiceProxies/README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.sln</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.sln</SolutionRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

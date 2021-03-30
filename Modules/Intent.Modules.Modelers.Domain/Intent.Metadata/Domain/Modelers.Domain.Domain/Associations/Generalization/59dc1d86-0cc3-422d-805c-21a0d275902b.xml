@@ -2,7 +2,7 @@
 <association id="59dc1d86-0cc3-422d-805c-21a0d275902b">
   <sourceEnd id="40b1b5ba-63bb-41f7-a483-fe79a2937a6b">
     <name>EmptyClass</name>
-    <display>EmptyClass : EmptyClass</display>
+    <display>EmptyClass: EmptyClass</display>
     <typeReference id="8ffcf3b3-fbe1-4d8c-9e3a-0fb62583b3eb">
       <typeId>e3ab1103-695b-43cb-9dad-feea553c2711</typeId>
       <isNavigable>false</isNavigable>
@@ -18,7 +18,7 @@
   </sourceEnd>
   <targetEnd id="59dc1d86-0cc3-422d-805c-21a0d275902b">
     <name>NewClass2</name>
-    <display>NewClass2 : NewClass2</display>
+    <display>NewClass2: NewClass2</display>
     <typeReference id="4d93ca44-c99d-47e8-a9ab-aef7466cf004">
       <typeId>7c7ea20f-0a80-4beb-a1b1-44b1bcd63a6e</typeId>
       <isNavigable>true</isNavigable>

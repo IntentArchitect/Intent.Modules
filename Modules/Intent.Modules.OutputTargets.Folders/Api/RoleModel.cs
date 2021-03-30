@@ -30,7 +30,7 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         public string Id => _element.Id;
 
         [IntentManaged(Mode.Ignore)]
-        string IOutputTargetRole.Id => _element.Id;
+        string IOutputTargetRole.Id => _element.Name;
 
         [IntentManaged(Mode.Ignore)]
         public IEnumerable<string> RequiredFrameworks => new string[0];

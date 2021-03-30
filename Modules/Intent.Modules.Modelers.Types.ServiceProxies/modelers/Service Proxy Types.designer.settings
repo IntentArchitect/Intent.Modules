@@ -133,6 +133,8 @@
                   <type>DTO</type>
                   <type>Type-Definition</type>
                   <type>Enum</type>
+                  <type>Command</type>
+                  <type>Query</type>
                 </targetTypes>
                 <allowIsNavigable>true</allowIsNavigable>
                 <allowIsNullable>true</allowIsNullable>
