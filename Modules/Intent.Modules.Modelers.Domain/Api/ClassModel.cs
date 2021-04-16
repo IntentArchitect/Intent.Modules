@@ -165,5 +165,11 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
         public const string SpecializationTypeId = "04e12b51-ed12-42a3-9667-a6aa81bb6d10";
+
+        public IList<ClassConstructorModel> Constructors => _element.ChildElements
+                    .GetElementsOfType(ClassConstructorModel.SpecializationTypeId)
+                    .Select(x => new ClassConstructorModel(x))
+                    .ToList();
+
     }
 }

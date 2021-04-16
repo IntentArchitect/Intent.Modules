@@ -29,17 +29,18 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
             AddNugetDependency(IntentNugetPackages.IntentCommonSql);
         }
 
-        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
-        public string FolderPath => string.Join("/", OutputFolder);
-        public string FolderNamespace => string.Join(".", OutputFolder);
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+        //public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        //public string FolderPath => string.Join("/", OutputFolder);
+        //public string FolderNamespace => string.Join(".", OutputFolder);
 
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"{Model.Name}",
-                @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
-                fileName: $"{Model.Name}Partial",
-                relativeLocation: $"{FolderPath}");
+                className: $"{TemplateName}",
+                @namespace: $"{this.GetNamespace(additionalFolders: Model.Name)}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
+                fileName: $"{TemplateName}Partial");
         }
 
         public override void BeforeTemplateExecution()
@@ -69,7 +70,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Model.GetModule().Name}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Concat(new[] { Model.Name }))}";
         }
 
         private string GetModelType()

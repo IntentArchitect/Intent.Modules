@@ -107,9 +107,10 @@ diagram.loadDiagram();
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Attribute</type>
-        <type order="1">Operation</type>
-        <type order="2">Association</type>
-        <type order="3">Generalization</type>
+        <type order="1">Class Constructor</type>
+        <type order="2">Operation</type>
+        <type order="3">Association</type>
+        <type order="4">Generalization</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -119,6 +120,15 @@ diagram.loadDiagram();
           <shortcut>ctrl + shift + a</shortcut>
           <defaultName>attribute</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Attribute_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Class Constructor</specializationType>
+          <specializationTypeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</specializationTypeId>
+          <text>Add Constructor</text>
+          <shortcut>ctrl + shift + o</shortcut>
+          <defaultName>Constructor</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
@@ -191,9 +201,30 @@ white-space: inherit;`</style>
             <defaultSize width="`${parent.w}`" height="18" />
             <childElementVisualSettings />
           </childElementVisualSetting>
-          <childElementVisualSetting type="Operation">
+          <childElementVisualSetting type="Class Constructor">
             <size width="`${parent.w}`" height="18" />
             <position x="`${parent.x}`" y="${parent.y + (parent.elements['Attribute'].any() ? 12 : 0) + (parent.elements['Attribute'].size.height) + ($index * 18) + 36}" />
+            <display>
+              <drawPath>
+                <condition>return $firstOfType;</condition>
+                <path>`M${x},${y - 6} h${w}`</path>
+              </drawPath>
+              <drawText>
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
+                <size width="${w}" height="${h}" />
+                <position x="${x}" y="${y}" />
+              </drawText>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <childElementVisualSettings />
+          </childElementVisualSetting>
+          <childElementVisualSetting type="Operation">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="`${parent.y &#xD;&#xA;    + (parent.elements['Attribute'].any() ? 12 : 0) + (parent.elements['Attribute'].size.height) &#xD;&#xA;    + (parent.elements['Class Constructor'].any() ? 12 : 0) + (parent.elements['Class Constructor'].size.height) &#xD;&#xA;    + ($index * 18) + 36}`" />
             <display>
               <drawPath>
                 <condition>return $firstOfType;</condition>
@@ -241,6 +272,74 @@ white-space: inherit;`</style>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>return `${getParent().name}${genericTypes}(${children("Parameter").map(x =&gt; x.name + ": " + x.typeReference.display).join(", ")})`;</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>true</allowMapping>
+          <allowSorting>true</allowSorting>
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Parameter</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Parameter</specializationType>
+              <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
+              <text>Add Parameter</text>
+              <shortcut>ctrl + shift + p</shortcut>
+              <defaultName>param</defaultName>
+              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <mappingSettings>
+            <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+            <optionsSource>lookup-element</optionsSource>
+            <lookupElementFunction>return getParent().id</lookupElementFunction>
+            <mapFrom>root</mapFrom>
+            <mappings>
+              <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
+                <criteria specializationType="Class">
+                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <isCollection d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo specializationType="Class Constructor" childMappingMode="map-to-child" />
+                <behaviour autoSelectChildren="true" />
+                <childMappings>
+                  <mapping id="5601382d-8b87-465f-bc8c-d41fcc28185d">
+                    <criteria specializationType="Attribute">
+                      <hasTypeReference d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      <isCollection d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      <hasChildren d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    </criteria>
+                    <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                    <behaviour autoSelectChildren="false" />
+                    <childMappings />
+                  </mapping>
+                  <mapping id="6a1129e9-e2a3-4df5-9678-98bc9d839836">
+                    <criteria specializationType="Association Target End">
+                      <hasTypeReference d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      <isCollection d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      <hasChildren d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    </criteria>
+                    <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                    <behaviour autoSelectChildren="false" />
+                    <childMappings />
+                  </mapping>
+                </childMappings>
+              </mapping>
+            </mappings>
+          </mappingSettings>
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
@@ -353,9 +452,15 @@ white-space: inherit;`</style>
             <fillColor>#ffffdd</fillColor>
           </drawPath>
           <drawText>
-            <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: normal;`</style>
+            <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; font-weight: bold; text-align: center; white-space: normal;`</style>
             <size width="${w - 20}" height="${h - 16}" />
             <position x="${x + 10}" y="${y + 8}" />
+          </drawText>
+          <drawText>
+            <text>return comment;</text>
+            <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: normal;`</style>
+            <size width="${w - 20}" height="${h - 40}" />
+            <position x="${x + 10}" y="${y + 32}" />
           </drawText>
         </display>
         <defaultSize width="${x}" height="${y}" />

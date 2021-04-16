@@ -35,5 +35,43 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="ad502434-d3e4-4446-9696-53e84a1676e9" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+      <name>Constructor</name>
+      <display>EmptyClass(param: string)</display>
+      <isAbstract>false</isAbstract>
+      <order>1</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e3ab1103-695b-43cb-9dad-feea553c2711</parentFolderId>
+      <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+      <packageName>Modelers.Domain.Domain</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="765700e8-57d5-46d7-b281-d3dd72ae0f91" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+          <name>param</name>
+          <display>in : param: string</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="693beb96-4727-4620-ab80-925ab2036fd7">
+            <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>ad502434-d3e4-4446-9696-53e84a1676e9</parentFolderId>
+          <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+          <packageName>Modelers.Domain.Domain</packageName>
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

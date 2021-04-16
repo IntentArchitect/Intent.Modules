@@ -14,6 +14,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
+      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Domain/Api/ClassConstructorModel.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>ClassConstructorModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.Modelers.Domain/Api/ClassModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ClassModel.cs</ProjectRelativeFilePath>
     </FileLog>

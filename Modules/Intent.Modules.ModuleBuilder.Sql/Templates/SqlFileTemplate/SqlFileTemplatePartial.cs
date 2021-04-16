@@ -12,6 +12,7 @@ using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.Sql.Api;
+using Intent.Modules.Common.CSharp.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -29,20 +30,18 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
         {
         }
 
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: "${Model.Name}",
-                fileExtension: "tt",
-                relativeLocation: "${FolderPath}/${Model.Name}");
+                fileName: $"{TemplateName}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
+                fileExtension: "tt");
         }
-
-        public IList<string> FolderBaseList => new[] { "Templates" }.Concat(Model.GetParentFolders().Where((p, i) => (i == 0 && p.Name != "Templates") || i > 0).Select(x => x.Name)).ToList();
-
-        public string FolderPath => string.Join("/", FolderBaseList);
 
         public override string TransformText()
         {

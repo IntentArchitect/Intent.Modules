@@ -13,7 +13,7 @@ using Intent.Engine;
 using Intent.Modules.Common.Sql.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#=string.Format("using {0};", Model.GetModule().ApiNamespace)#>
+<#= Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().Namespace) : "" #>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -26,7 +26,7 @@ namespace <#= Namespace #>
         public const string TemplateId = "<#= GetTemplateId() #>";
 
         [IntentInitialGen]
-        public <#= ClassName #>(IProject project, <#= GetModelType() #> model) : base(TemplateId, project, model)
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model) : base(TemplateId, outputTarget, model)
         {
         }
 

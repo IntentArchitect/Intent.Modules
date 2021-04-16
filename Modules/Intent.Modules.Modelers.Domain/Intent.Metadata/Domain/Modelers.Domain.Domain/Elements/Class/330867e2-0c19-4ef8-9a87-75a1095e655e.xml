@@ -157,11 +157,90 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="606f8354-eb96-4811-b2ca-2447b1a1cba4" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+      <name>Constructor</name>
+      <display>NewClass1(firstAttr: string, attribute: string)</display>
+      <isAbstract>false</isAbstract>
+      <order>5</order>
+      <genericTypes />
+      <isMapped>true</isMapped>
+      <mappedClass>
+        <applicationId>b980295a-75ce-48ac-9ef8-0368f8a1a174</applicationId>
+        <metadataId>6ab29b31-27af-4f56-a67c-986d82097d63</metadataId>
+        <mappedPath>
+          <target id="330867e2-0c19-4ef8-9a87-75a1095e655e" name="NewClass1" type="element" specialization="Class" />
+        </mappedPath>
+      </mappedClass>
+      <parentFolderId>330867e2-0c19-4ef8-9a87-75a1095e655e</parentFolderId>
+      <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+      <packageName>Modelers.Domain.Domain</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="fe3e769b-7248-4e3f-988b-2515cda83b3f" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+          <name>firstAttr</name>
+          <display>in : firstAttr: string</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="a29c35c2-304e-46f8-a227-f99993a1a3fd">
+            <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>true</isMapped>
+          <mappedClass>
+            <mappedPath>
+              <target id="304cc83d-7c82-42a1-a985-c68eb52498ce" name="firstAttr" type="element" specialization="Attribute" />
+            </mappedPath>
+          </mappedClass>
+          <parentFolderId>606f8354-eb96-4811-b2ca-2447b1a1cba4</parentFolderId>
+          <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+          <packageName>Modelers.Domain.Domain</packageName>
+          <stereotypes />
+          <childElements />
+        </childElement>
+        <childElement id="5112124c-5984-44f3-93d3-62a7b05c4ad4" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+          <name>attribute</name>
+          <display>in : attribute: string</display>
+          <isAbstract>false</isAbstract>
+          <order>1</order>
+          <genericTypes />
+          <typeReference id="5c320daf-ec29-4c2e-82cc-fc569a891096">
+            <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>true</isMapped>
+          <mappedClass>
+            <mappedPath>
+              <target id="6f48db24-d7fc-419c-8beb-f67b26121014" name="attribute" type="element" specialization="Attribute" />
+            </mappedPath>
+          </mappedClass>
+          <parentFolderId>606f8354-eb96-4811-b2ca-2447b1a1cba4</parentFolderId>
+          <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+          <packageName>Modelers.Domain.Domain</packageName>
+          <stereotypes />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
     <childElement id="1c274c4c-2c2f-44f7-84a1-b96533aa1bfb" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
       <name>Operation</name>
       <display>Operation(param: NewClass2, param: NewType): void</display>
       <isAbstract>false</isAbstract>
-      <order>5</order>
+      <order>6</order>
       <genericTypes />
       <typeReference id="0cd36cdf-4b30-4beb-8730-5d05426adf48">
         <isNavigable>true</isNavigable>
@@ -231,7 +310,7 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
-      <order>6</order>
+      <order>7</order>
       <genericTypes />
       <typeReference id="a4a6ee58-3326-4fd1-993b-987774e397ca">
         <isNavigable>true</isNavigable>
@@ -252,7 +331,7 @@
       <name>Operation</name>
       <display>Operation(): void</display>
       <isAbstract>false</isAbstract>
-      <order>7</order>
+      <order>8</order>
       <genericTypes />
       <typeReference id="e59201f4-08a2-436d-a530-11f39f9f1203">
         <isNavigable>true</isNavigable>
