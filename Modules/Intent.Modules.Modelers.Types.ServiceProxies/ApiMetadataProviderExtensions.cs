@@ -67,7 +67,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         private static IEnumerable<IElement> GetChildDTOs(this IElement dto)
         {
             var childDTOs = dto.ChildElements
-                .Where(x => x.TypeReference.Element is IElement)
+                .Where(x => x.TypeReference?.Element is IElement)
                 .Select(x => (IElement)x.TypeReference.Element).ToList();
             foreach (var childDtO in childDTOs.ToList())
             {
