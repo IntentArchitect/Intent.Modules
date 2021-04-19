@@ -72,7 +72,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         private string GetRole()
         {
-            return Model.GetRole() ?? GetTemplateId();
+            return Model.GetRole();
         }
 
         public string GetTemplateId()

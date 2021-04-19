@@ -9,12 +9,14 @@ namespace Intent.ModuleBuilder.Api
 {
     public class ModelerModelType
     {
-        private readonly IElement _element;
+        private readonly ICanBeReferencedType _element;
 
-        public ModelerModelType(IElement element)
+        public ModelerModelType(ICanBeReferencedType element)
         {
             if (element.SpecializationType != "Element Settings" && 
                 element.SpecializationType != "Package Settings" &&
+                element.SpecializationType != "Association Source End Settings" &&
+                element.SpecializationType != "Association Destination End Settings" &&
                 element.SpecializationType != "Element Extension" &&
                 element.SpecializationType != "Package Extension")
             {

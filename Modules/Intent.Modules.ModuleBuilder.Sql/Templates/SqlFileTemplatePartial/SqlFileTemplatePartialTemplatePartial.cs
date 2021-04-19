@@ -54,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Sql",
-                moduleVersion: "3.0.2"));
+                moduleVersion: "3.0.3"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
@@ -65,7 +65,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
         private string GetRole()
         {
-            return Model.GetRole() ?? GetTemplateId();
+            return Model.GetRole();
         }
 
         public string GetTemplateId()

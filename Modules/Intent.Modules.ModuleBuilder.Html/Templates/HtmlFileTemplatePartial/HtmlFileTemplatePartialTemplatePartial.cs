@@ -67,7 +67,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         }
         private string GetRole()
         {
-            return Model.GetRole() ?? GetTemplateId();
+            return Model.GetRole();
         }
 
         public string GetTemplateId()

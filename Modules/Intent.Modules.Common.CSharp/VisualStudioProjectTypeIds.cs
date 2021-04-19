@@ -9,5 +9,6 @@
         public const string NodeJsConsoleApplication = "CC13FD07-C783-4B0D-A641-4A861A22F087";
         public const string CoreWebApp = "FFD54A85-9362-48AC-B646-C93AB9AC63D2";
         public const string CoreCSharpLibrary = "52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE";
+        public const string SQLServerDatabaseProject = "00D1A9C2-B5F0-4AF3-8072-F6C62B433612";
     }
 }

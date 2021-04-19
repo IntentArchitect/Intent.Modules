@@ -60,8 +60,9 @@ namespace Intent.Modules.Common.VisualStudio
                     VisualStudioProjectTypeIds.ConsoleAppNetFramework,
                     VisualStudioProjectTypeIds.NodeJsConsoleApplication,
                     VisualStudioProjectTypeIds.CoreWebApp,
-                    VisualStudioProjectTypeIds.CoreCSharpLibrary
-                }.Contains(outputTarget.Type);
+                    VisualStudioProjectTypeIds.CoreCSharpLibrary,
+                    VisualStudioProjectTypeIds.SQLServerDatabaseProject
+            }.Contains(outputTarget.Type);
         }
 
         public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)

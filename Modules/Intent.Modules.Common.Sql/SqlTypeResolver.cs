@@ -70,7 +70,8 @@ namespace Intent.Modules.Common.Sql
                     result = "SMALLINT";
                     break;
                 case "string":
-                    result = $"{typeInfo.GetStereotypeProperty("Text Constraints", "SQL Data Type", "NVARCHAR")}({typeInfo.GetStereotypeProperty("Text Constraints", "MaxLength", typeInfo.GetStereotypeProperty("Text Constraints", "Max Length", "MAX"))})";
+                    var type = typeInfo.GetStereotypeProperty("Text Constraints", "SQL Data Type", "NVARCHAR").Replace("DEFAULT", "NVARCHAR");
+                    result = $"{type}({typeInfo.GetStereotypeProperty("Text Constraints", "MaxLength", typeInfo.GetStereotypeProperty("Text Constraints", "Max Length", "MAX"))})";
                     break;
             }
 

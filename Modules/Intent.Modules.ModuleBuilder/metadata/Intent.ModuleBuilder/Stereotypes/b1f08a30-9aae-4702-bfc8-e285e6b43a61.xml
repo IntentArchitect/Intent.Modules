@@ -61,6 +61,8 @@
         <type>89333f72-3960-4159-bf61-9c40d4b65088</type>
         <type>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</type>
         <type>ab4152df-3add-4a08-81b6-0fefc7cbb204</type>
+        <type>c4c61fdc-464d-41d2-8e0e-5a734d588302</type>
+        <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
       </lookupTypes>
       <lookupInternalTargetPropertyId>96176aa0-9da3-4a3a-bfb0-344603fa7e6c</lookupInternalTargetPropertyId>
       <isActiveFunction>return properties["Source"].value == "Lookup Type";</isActiveFunction>
@@ -88,6 +90,7 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
+      <defaultValue>Default</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>
