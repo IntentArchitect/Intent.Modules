@@ -20,8 +20,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
     partial class IatSpecFileTemplate : IntentTemplateBase<ApplicationTemplateModel>, IHasNugetDependencies
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ApplicationTemplate.Builder.Templates.IatSpecFile";
+        public const string TemplateId = "Intent.ApplicationTemplate.Builder.Templates.IatSpecFile";
 
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public IatSpecFileTemplate(IOutputTarget outputTarget, ApplicationTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }

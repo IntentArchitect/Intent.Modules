@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
@@ -33,7 +34,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public string FileLocation => UnderlyingPackage.FileLocation;
 
         public IList<ComponentGroupModel> Groups => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == ComponentGroupModel.SpecializationType)
+            .GetElementsOfType(ComponentGroupModel.SpecializationTypeId)
             .Select(x => new ComponentGroupModel(x))
             .ToList();
 

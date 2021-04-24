@@ -30,6 +30,7 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
+      <defaultValue>1.0.0</defaultValue>
       <valueOptions />
       <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>
@@ -47,7 +48,7 @@
     <property id="212c479d-1e24-4bc5-bff3-e01063010e04">
       <name>Description</name>
       <type>string</type>
-      <controlType>text</controlType>
+      <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <valueOptions />
@@ -98,6 +99,7 @@
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
+      <defaultValue>[3.0.0,4.0.0)</defaultValue>
       <valueOptions />
       <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>

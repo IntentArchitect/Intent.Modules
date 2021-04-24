@@ -28,7 +28,7 @@
     <property id="476744d2-a4bc-4750-a9db-7022edf576c5">
       <name>Description</name>
       <type>string</type>
-      <controlType>text</controlType>
+      <controlType>textarea</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <valueOptions />

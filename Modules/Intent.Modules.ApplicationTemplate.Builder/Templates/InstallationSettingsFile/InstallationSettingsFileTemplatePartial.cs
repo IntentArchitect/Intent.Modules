@@ -18,8 +18,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.InstallationSetti
     partial class InstallationSettingsFileTemplate : IntentTemplateBase<InstallationSettingsModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "ApplicationTemplate.Builder.Templates.InstallationSettingsFile";
+        public const string TemplateId = "Intent.ApplicationTemplate.Builder.Templates.InstallationSettingsFile";
 
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public InstallationSettingsFileTemplate(IOutputTarget outputTarget, InstallationSettingsModel model) : base(TemplateId, outputTarget, model)
         {
         }

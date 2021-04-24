@@ -3,6 +3,7 @@
   <name>Role</name>
   <display>Role</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>055be48d-e085-4a52-b6bf-80dd34e9abf4</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8663c9f9-2852-45e7-aaa1-0883a2e6f1da</parentFolderId>

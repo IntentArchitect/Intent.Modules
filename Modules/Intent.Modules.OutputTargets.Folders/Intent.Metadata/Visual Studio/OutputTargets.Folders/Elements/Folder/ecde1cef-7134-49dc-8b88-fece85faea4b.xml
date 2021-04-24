@@ -3,17 +3,28 @@
   <name>Extensions</name>
   <display>Extensions</display>
   <isAbstract>false</isAbstract>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>940db473-d0e0-4dfb-b19c-270a53025376</parentFolderId>
   <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
   <packageName>OutputTargets.Folders</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="21820d02-ca2d-46a9-a466-8080d8e06045" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</name>
       <display>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ecde1cef-7134-49dc-8b88-fece85faea4b</parentFolderId>
@@ -26,6 +37,7 @@
       <name>ModuleBuilder.Templates.Api.ApiElementModelExtensions</name>
       <display>ModuleBuilder.Templates.Api.ApiElementModelExtensions</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ecde1cef-7134-49dc-8b88-fece85faea4b</parentFolderId>

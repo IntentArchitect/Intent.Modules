@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
@@ -35,7 +36,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public IElement InternalElement => _element;
 
         public IList<ModuleModel> Modules => _element.ChildElements
-            .Where(x => x.SpecializationType == ModuleModel.SpecializationType)
+            .GetElementsOfType(ModuleModel.SpecializationTypeId)
             .Select(x => new ModuleModel(x))
             .ToList();
 
@@ -70,5 +71,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Comment => _element.Comment;
     }
 }

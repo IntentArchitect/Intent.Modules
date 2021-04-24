@@ -4,131 +4,131 @@
   <FileLogs>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\ApplicationTemplateModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/ApplicationTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\ComponentGroupModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/ComponentGroupModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ComponentGroupModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\ComponentModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/ComponentModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ComponentModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\ContentFolderModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/ContentFolderModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ContentFolderModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\Extensions\ApplicationTemplateModelExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/Extensions/ApplicationTemplateModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\Extensions\ComponentModelExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/Extensions/ComponentModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ComponentModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\Extensions\ModuleModelExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/Extensions/ModuleModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ModuleModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\InstallationSettingsModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/InstallationSettingsModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>InstallationSettingsModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Api\ModuleModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Api/ModuleModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ModuleModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Intent.Modules.ApplicationTemplate.Builder.csproj</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.ApplicationTemplate.Builder.csproj</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Intent.ApplicationTemplate.Builder.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ApplicationTemplate.Builder.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Intent.Modules.ApplicationTemplate.Builder.imodspec</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.ApplicationTemplate.Builder.imodspec</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Intent.Modules.ApplicationTemplate.Builder.csproj</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.ApplicationTemplate.Builder.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>32572de3-c0a7-4680-8ad3-8cbd5033b2b5</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\modelers\App Templates.designer.config</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/modelers/App Templates.designer.config</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>App Templates.designer.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>32572de3-c0a7-4680-8ad3-8cbd5033b2b5</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\modelers\Application Template Builder.designer.settings</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/modelers/Application Template Builder.designer.settings</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Application Template Builder.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\README.txt</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\IatSpecFile\IatSpecFileTemplate.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/IatSpecFile/IatSpecFileTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\IatSpecFile\IatSpecFileTemplate.tt</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/IatSpecFile/IatSpecFileTemplate.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\IatSpecFile\IatSpecFileTemplatePartial.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/IatSpecFile/IatSpecFileTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\IatSpecFile\IatSpecFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/IatSpecFile/IatSpecFileTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.tt</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\InstallationSettingsFile\InstallationSettingsFileTemplatePartial.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/InstallationSettingsFile/InstallationSettingsFileTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.ApplicationTemplate.Builder\Templates\InstallationSettingsFile\InstallationSettingsFileTemplateRegistration.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Templates/InstallationSettingsFile/InstallationSettingsFileTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.sln</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.sln</SolutionRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>

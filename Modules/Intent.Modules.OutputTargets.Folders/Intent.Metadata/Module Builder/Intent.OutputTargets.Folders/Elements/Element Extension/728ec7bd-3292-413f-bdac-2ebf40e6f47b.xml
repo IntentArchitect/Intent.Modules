@@ -3,6 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
+  <order>2</order>
   <genericTypes />
   <typeReference id="f288c656-6244-4feb-b146-c4132f0aa0aa">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -19,12 +20,26 @@
   <parentFolderId>055be48d-e085-4a52-b6bf-80dd34e9abf4</parentFolderId>
   <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
   <packageName>Intent.OutputTargets.Folders</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="ab58337c-93cc-4e3c-aa97-8a9750dddfe2" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>728ec7bd-3292-413f-bdac-2ebf40e6f47b</parentFolderId>
@@ -36,6 +51,7 @@
           <name>Add Template Output</name>
           <display>Add Template Output: Template Output</display>
           <isAbstract>false</isAbstract>
+          <order>0</order>
           <genericTypes />
           <typeReference id="78e93b7e-3ad1-4fde-989d-ae7614ea5328">
             <typeId>09de2192-2507-41a2-8044-286c7ecadec2</typeId>
@@ -73,6 +89,7 @@
           <name>Add Role</name>
           <display>Add Role: Role</display>
           <isAbstract>false</isAbstract>
+          <order>1</order>
           <genericTypes />
           <typeReference id="d98e3ee5-8f63-4e2b-8abd-409673733503">
             <typeId>8663c9f9-2852-45e7-aaa1-0883a2e6f1da</typeId>

@@ -3,6 +3,7 @@
   <name>Output Folder Types</name>
   <display>Output Folder Types</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>9d4b93f4-6ecb-457e-8ef7-f1f715b5ddcb</parentFolderId>

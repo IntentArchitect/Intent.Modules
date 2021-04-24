@@ -3,17 +3,28 @@
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
+  <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>576b0748-e723-411b-a944-7cfedbeb9498</parentFolderId>
   <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
   <packageName>OutputTargets.Folders</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="86aa7bd1-8627-4ffe-810a-8c0ffbba5969" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.ProjectItemTemplate.Partial</name>
       <display>Intent.ModuleBuilder.ProjectItemTemplate.Partial</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>
@@ -26,6 +37,7 @@
       <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</name>
       <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>
@@ -38,6 +50,7 @@
       <name>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</name>
       <display>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed</display>
       <isAbstract>false</isAbstract>
+      <order>2</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>
@@ -50,6 +63,7 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.Custom</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.Custom</display>
       <isAbstract>false</isAbstract>
+      <order>3</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>
@@ -62,6 +76,7 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.FilePerModel</display>
       <isAbstract>false</isAbstract>
+      <order>4</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>
@@ -74,6 +89,7 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel</display>
       <isAbstract>false</isAbstract>
+      <order>5</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>
@@ -86,6 +102,21 @@
       <name>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</name>
       <display>Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel</display>
       <isAbstract>false</isAbstract>
+      <order>6</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>
+      <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
+      <packageName>OutputTargets.Folders</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="c2b83a87-39ee-48c2-b2af-3cc36d7e214e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>7</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>726233db-eb67-4179-8f11-2ddb8d1b67f9</parentFolderId>

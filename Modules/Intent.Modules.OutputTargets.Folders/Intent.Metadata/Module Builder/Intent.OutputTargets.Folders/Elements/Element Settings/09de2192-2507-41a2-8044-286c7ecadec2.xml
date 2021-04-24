@@ -3,6 +3,7 @@
   <name>Template Output</name>
   <display>Template Output</display>
   <isAbstract>false</isAbstract>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>055be48d-e085-4a52-b6bf-80dd34e9abf4</parentFolderId>
@@ -45,6 +46,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>09de2192-2507-41a2-8044-286c7ecadec2</parentFolderId>

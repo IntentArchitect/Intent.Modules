@@ -3,17 +3,28 @@
   <name>modelers</name>
   <display>modelers</display>
   <isAbstract>false</isAbstract>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>576b0748-e723-411b-a944-7cfedbeb9498</parentFolderId>
   <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
   <packageName>OutputTargets.Folders</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="58d025c0-1606-47c2-9c03-f0c338377f8d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DesignerConfig</name>
       <display>Intent.ModuleBuilder.DesignerConfig</display>
       <isAbstract>false</isAbstract>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>19da46e6-b338-40d0-a02a-e8f3e43e76aa</parentFolderId>
@@ -26,6 +37,7 @@
       <name>Intent.ModuleBuilder.DesignerSettings</name>
       <display>Intent.ModuleBuilder.DesignerSettings</display>
       <isAbstract>false</isAbstract>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>19da46e6-b338-40d0-a02a-e8f3e43e76aa</parentFolderId>

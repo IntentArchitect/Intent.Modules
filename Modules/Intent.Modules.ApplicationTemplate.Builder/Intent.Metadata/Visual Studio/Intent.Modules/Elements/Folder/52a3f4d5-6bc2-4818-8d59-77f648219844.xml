@@ -3,7 +3,7 @@
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <order>5</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>653969db-6597-4b32-a1f6-029c69da6903</parentFolderId>
@@ -20,11 +20,25 @@
     </stereotype>
   </stereotypes>
   <childElements>
+    <childElement id="6c6beced-6deb-4ed7-9915-4ac37c78e985" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>52a3f4d5-6bc2-4818-8d59-77f648219844</parentFolderId>
+      <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
     <childElement id="c4d0eab3-bdfb-47a1-a5d1-989344bdc7a4" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.TemplateDecoratorContract</name>
       <display>ModuleBuilder.Templates.TemplateDecoratorContract</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>52a3f4d5-6bc2-4818-8d59-77f648219844</parentFolderId>

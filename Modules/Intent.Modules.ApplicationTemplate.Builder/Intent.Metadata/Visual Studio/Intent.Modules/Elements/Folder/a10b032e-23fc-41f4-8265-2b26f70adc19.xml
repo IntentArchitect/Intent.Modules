@@ -46,11 +46,39 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="1cb5e702-83b4-4322-93b5-6e85d2f0d06b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateDecorator</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateDecorator</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>2</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>a10b032e-23fc-41f4-8265-2b26f70adc19</parentFolderId>
+      <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="da0cb820-ee63-480e-a815-f74544d10223" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>3</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>a10b032e-23fc-41f4-8265-2b26f70adc19</parentFolderId>
+      <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
     <childElement id="64d311e9-0875-4b4a-98ef-da6125b02949" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.TemplateDecorator</name>
       <display>ModuleBuilder.Templates.TemplateDecorator</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <order>4</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a10b032e-23fc-41f4-8265-2b26f70adc19</parentFolderId>
@@ -63,7 +91,7 @@
       <name>ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
       <display>ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <order>5</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a10b032e-23fc-41f4-8265-2b26f70adc19</parentFolderId>
