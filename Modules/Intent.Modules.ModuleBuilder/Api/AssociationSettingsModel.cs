@@ -140,5 +140,7 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new AssociationVisualSettingsModel(x))
             .SingleOrDefault();
 
+        public string Comment => _element.Comment;
+
     }
 }

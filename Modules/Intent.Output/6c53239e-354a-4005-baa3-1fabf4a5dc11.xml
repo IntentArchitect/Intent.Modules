@@ -4,57 +4,57 @@
   <FileLogs>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\Api\FolderExtensionModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/Api/FolderExtensionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\Api\RoleModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/Api/RoleModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>RoleModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\Api\RootLocationPackageModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/Api/RootLocationPackageModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>RootLocationPackageModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\Api\TemplateOutputModel.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/Api/TemplateOutputModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>TemplateOutputModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/ApiMetadataDesignerExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/ApiMetadataPackageExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\Intent.Modules.OutputTargets.Folders.csproj</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/Intent.Modules.OutputTargets.Folders.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.OutputTargets.Folders.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\Intent.Modules.OutputTargets.Folders.imodspec</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.OutputTargets.Folders.imodspec</ProjectRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/Intent.OutputTargets.Folders.imodspec</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.OutputTargets.Folders.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>19da46e6-b338-40d0-a02a-e8f3e43e76aa</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\modelers\Folder Structure.designer.config</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/modelers/Folder Structure.designer.config</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Folder Structure.designer.config</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>19da46e6-b338-40d0-a02a-e8f3e43e76aa</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\modelers\Output Folder Types.designer.settings</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/modelers/Output Folder Types.designer.settings</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Output Folder Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.OutputTargets.Folders\README.txt</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.OutputTargets.Folders/README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>

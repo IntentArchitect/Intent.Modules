@@ -130,5 +130,7 @@ namespace Intent.ModuleBuilder.Api
             };
         }
         public const string SpecializationTypeId = "153a4063-82a1-4515-87f1-44c189004fad";
+
+        public string Comment => _element.Comment;
     }
 }

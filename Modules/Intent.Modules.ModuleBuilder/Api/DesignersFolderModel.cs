@@ -77,5 +77,7 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new DesignerSettingsModel(x))
             .ToList();
         public const string SpecializationTypeId = "dbb71aa5-0db2-4a2a-97a9-501950f36f99";
+
+        public string Comment => _element.Comment;
     }
 }

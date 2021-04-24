@@ -70,7 +70,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.WebApi", "Intent.Modules.Metadata.WebApi\Intent.Modules.Metadata.WebApi.csproj", "{9B26C297-0062-4303-B90A-752DA4B75DE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.ModuleBuilder.AutoCompile", "Intent.Modules.ModuleBuilder.AutoCompile\Intent.Modules.ModuleBuilder.AutoCompile.csproj", "{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilder.AutoCompile", "Intent.Modules.ModuleBuilder.AutoCompile\Intent.Modules.ModuleBuilder.AutoCompile.csproj", "{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -227,6 +227,7 @@ Global
 		{21D5B8AB-C920-4FAB-B3BA-3A8367F9C059} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{54740661-E598-4671-ADE3-D2F798401653} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{9B26C297-0062-4303-B90A-752DA4B75DE6} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
+		{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

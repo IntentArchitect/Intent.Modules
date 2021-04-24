@@ -84,5 +84,7 @@ namespace Intent.ModuleBuilder.Api
             return OnCreatedEvents.Select(x => x.ToPersistable()).ToList();
         }
         public const string SpecializationTypeId = "3c628ab0-2407-4fb0-8507-ddde986cff2e";
+
+        public string Comment => _element.Comment;
     }
 }

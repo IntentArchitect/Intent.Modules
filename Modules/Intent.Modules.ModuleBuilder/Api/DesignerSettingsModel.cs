@@ -135,6 +135,8 @@ namespace Intent.ModuleBuilder.Api
                     .Where(x => x.SpecializationType == DesignerReferenceModel.SpecializationType)
                     .Select(x => new DesignerReferenceModel(x))
                     .ToList();
+
+        public string Comment => _element.Comment;
     }
 
     public class TypeOrder : IEquatable<TypeOrder>

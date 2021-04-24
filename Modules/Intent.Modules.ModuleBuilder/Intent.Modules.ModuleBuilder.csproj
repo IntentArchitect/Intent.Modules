@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -7,6 +7,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.7" />
     <PackageReference Include="Intent.Packager" Version="3.0.1">
@@ -18,6 +19,7 @@
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
     <PackageReference Include="NuGet.Versioning" Version="5.6.0" />
   </ItemGroup>
+
   <ItemGroup>
     <Compile Remove="Api\Modeler\**" />
     <Compile Remove="Intent.Metadata\**" />
@@ -183,6 +185,7 @@
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
+
   <ItemGroup>
     <Content Update="modeler\ModuleBuilder.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -200,10 +203,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
     <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <Compile Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -236,9 +241,11 @@
       <DependentUpon>SingleFileNoModelTemplateRegistrationTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
+
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
+
   <ItemGroup>
     <None Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -265,4 +272,5 @@
       <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
+
 </Project>
