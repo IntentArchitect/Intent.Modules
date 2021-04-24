@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0ba35a90-6091-471d-bfed-97ea62b0803d" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+  <name>modelers</name>
+  <display>modelers</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>dec6ff7a-9304-4bbe-9dcc-b8b49b420d0f</parentFolderId>
+  <stereotypes />
+  <childElements>
+    <childElement id="a7d089e5-6e76-4081-8b4e-d829a330bfe4" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DesignerConfig</name>
+      <display>Intent.ModuleBuilder.DesignerConfig</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0ba35a90-6091-471d-bfed-97ea62b0803d</parentFolderId>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="fd7e5741-057d-4364-b251-d54357bd9755" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.DesignerSettings</name>
+      <display>Intent.ModuleBuilder.DesignerSettings</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>0ba35a90-6091-471d-bfed-97ea62b0803d</parentFolderId>
+      <stereotypes />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

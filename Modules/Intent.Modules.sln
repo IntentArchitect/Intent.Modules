@@ -70,6 +70,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Metadata.WebApi", "Intent.Modules.Metadata.WebApi\Intent.Modules.Metadata.WebApi.csproj", "{9B26C297-0062-4303-B90A-752DA4B75DE6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.ModuleBuilder.AutoCompile", "Intent.Modules.ModuleBuilder.AutoCompile\Intent.Modules.ModuleBuilder.AutoCompile.csproj", "{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -184,6 +186,10 @@ Global
 		{9B26C297-0062-4303-B90A-752DA4B75DE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B26C297-0062-4303-B90A-752DA4B75DE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B26C297-0062-4303-B90A-752DA4B75DE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

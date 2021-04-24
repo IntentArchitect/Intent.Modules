@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e2167dd4-7302-418d-be65-bec84384cf3e" type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76">
+  <name>AutoCompileFactoryExtension</name>
+  <display>AutoCompileFactoryExtension</display>
+  <isAbstract>false</isAbstract>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>9e228022-3b45-4e3d-80e7-354bc916f35f</parentFolderId>
+  <packageId>9e228022-3b45-4e3d-80e7-354bc916f35f</packageId>
+  <packageName>Intent.ModuleBuilder.AutoCompile</packageName>
+  <stereotypes />
+  <childElements />
+</class>
