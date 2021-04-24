@@ -6,9 +6,10 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.OutputTargets.Folders.Registrations;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
 
 namespace Intent.Modules.OutputTargets.Folders.Api
 {
@@ -43,17 +44,17 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         public string FileLocation => UnderlyingPackage.FileLocation;
 
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
             .ToList();
 
         public IList<RoleModel> Roles => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == RoleModel.SpecializationType)
+            .GetElementsOfType(RoleModel.SpecializationTypeId)
             .Select(x => new RoleModel(x))
             .ToList();
 
         public IList<TemplateOutputModel> TemplateOutputs => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == TemplateOutputModel.SpecializationType)
+            .GetElementsOfType(TemplateOutputModel.SpecializationTypeId)
             .Select(x => new TemplateOutputModel(x))
             .ToList();
     }

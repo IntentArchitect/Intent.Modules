@@ -4,14 +4,16 @@ using System.Linq;
 using Intent.Configuration;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.OutputTargets.Folders.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class TemplateOutputModel : IHasStereotypes, IMetadataModel, IOutputTargetTemplate
+    public class TemplateOutputModel : IHasStereotypes, IMetadataModel, IOutputTargetTemplate, IHasName, IHasFolder
     {
         public const string SpecializationType = "Template Output";
         public const string SpecializationTypeId = "09de2192-2507-41a2-8044-286c7ecadec2";
@@ -63,5 +65,9 @@ namespace Intent.Modules.OutputTargets.Folders.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Comment => _element.Comment;
+
+        public FolderModel Folder { get; }
     }
 }
