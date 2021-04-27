@@ -20,7 +20,25 @@ namespace Intent.Modules.Common.Types.Api
             return result;
         }
 
+        public static IList<IFolder> GetParentFolders(this IHasFolder<IFolder> model) 
+        {
+            List<IFolder> result = new List<IFolder>();
+
+            IFolder current = model.Folder;
+            while (current != null)
+            {
+                result.Insert(0, current);
+                current = (current as IHasFolder<IFolder>)?.Folder;
+            }
+            return result;
+        }
+
         public static IList<string> GetParentFolderNames(this IHasFolder model)
+        {
+            return model.GetParentFolders().Select(x => x.Name).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
+        }
+
+        public static IList<string> GetParentFolderNames(this IHasFolder<IFolder> model)
         {
             return model.GetParentFolders().Select(x => x.Name).Where(x => !string.IsNullOrWhiteSpace(x)).ToList();
         }

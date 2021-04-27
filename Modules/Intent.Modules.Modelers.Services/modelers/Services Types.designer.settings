@@ -48,7 +48,7 @@
         </option>
         <option type="element">
           <specializationType>Enum</specializationType>
-          <specializationTypeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</specializationTypeId>
+          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
           <text>New Enum</text>
           <shortcut>ctrl + shift + e</shortcut>
           <defaultName>NewEnum</defaultName>
@@ -210,9 +210,9 @@
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
-              <type>Enum</type>
               <type>DTO</type>
               <type>Type-Definition</type>
+              <type>Enum</type>
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -222,49 +222,6 @@
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <childElementSettings />
-        </childElementSetting>
-      </childElementSettings>
-    </elementSetting>
-    <elementSetting type="Enum" typeId="bc763e02-b38f-41e4-aac3-ea62e39d34f2">
-      <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
-      <saveAsOwnFile>true</saveAsOwnFile>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowGenericTypes>false</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>true</allowSorting>
-      <allowFindInView>true</allowFindInView>
-      <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <typeOrder>
-        <type order="0">Enum-Literal</type>
-      </typeOrder>
-      <creationOptions>
-        <option type="element">
-          <specializationType>Enum-Literal</specializationType>
-          <specializationTypeId>cd1dc4bd-30cb-473b-9922-05d9179c4e93</specializationTypeId>
-          <text>Add Literal</text>
-          <defaultName>NewEnumLiteral</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <childElementSettings>
-        <childElementSetting type="Enum-Literal" typeId="cd1dc4bd-30cb-473b-9922-05d9179c4e93">
-          <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>`${name}${value !== null &amp;&amp; value != "" ? " = " + value : ""}`</displayFunction>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>false</allowSorting>
-          <allowFindInView>true</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>true</allowSetValue>
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -312,9 +269,9 @@
           <typeReferenceSetting>
             <isRequired>false</isRequired>
             <targetTypes>
-              <type>Enum</type>
               <type>DTO</type>
               <type>Type-Definition</type>
+              <type>Enum</type>
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -354,9 +311,9 @@
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>
-                  <type>Enum</type>
                   <type>DTO</type>
                   <type>Type-Definition</type>
+                  <type>Enum</type>
                 </targetTypes>
                 <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>
@@ -405,7 +362,7 @@
         </option>
         <option type="element">
           <specializationType>Enum</specializationType>
-          <specializationTypeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</specializationTypeId>
+          <specializationTypeId>85fba0e9-9161-4c85-a603-a229ef312beb</specializationTypeId>
           <text>New Enum</text>
           <shortcut>ctrl + shift + e</shortcut>
           <defaultName>NewEnum</defaultName>

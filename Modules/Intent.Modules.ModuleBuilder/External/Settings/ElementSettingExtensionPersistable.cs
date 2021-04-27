@@ -24,6 +24,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("typeReferenceSetting")]
         public TypeReferenceExtensionSettingPersistable TypeReferenceExtensionSetting { get; set; }
+
+        [XmlArray("macros")]
+        [XmlArrayItem("macro")]
+        public List<ElementMacroPersistable> Macros { get; set; } = new List<ElementMacroPersistable>();
     }
 
     public class TypeReferenceExtensionSettingPersistable

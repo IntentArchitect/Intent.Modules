@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <order>2</order>
   <genericTypes />
   <typeReference id="80b765b0-cd1b-43f6-bed8-f8cd1696746c">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -171,13 +171,13 @@
           <order>3</order>
           <genericTypes />
           <typeReference id="1955c34d-b5c7-4987-8e06-3788fea952d9">
-            <typeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</typeId>
+            <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

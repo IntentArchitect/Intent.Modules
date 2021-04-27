@@ -5,7 +5,6 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
-using EnumModel = Intent.Modelers.Services.Api.EnumModel;
 using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

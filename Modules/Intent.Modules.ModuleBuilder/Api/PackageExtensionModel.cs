@@ -67,6 +67,7 @@ namespace Intent.ModuleBuilder.Api
                     .ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select(x => new TypeOrderPersistable() { Type = x.Type, Order = x.Order?.ToString() }).ToList(),
                 RequiredPackages = new string[0],
+                Macros = this.EventSettings?.ToPersistable()
             };
         }
 
@@ -99,5 +100,10 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "ab4152df-3add-4a08-81b6-0fefc7cbb204";
 
         public string Comment => _element.Comment;
+
+        public ElementEventSettingsModel EventSettings => _element.ChildElements
+                    .GetElementsOfType(ElementEventSettingsModel.SpecializationTypeId)
+                    .Select(x => new ElementEventSettingsModel(x))
+                    .SingleOrDefault();
     }
 }

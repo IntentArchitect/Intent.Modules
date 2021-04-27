@@ -85,5 +85,10 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "67d711dd-3918-4b28-b2a0-4d845884e17a";
 
         public string Comment => _element.Comment;
+
+        public ElementEventSettingsModel EventSettings => _element.ChildElements
+                    .GetElementsOfType(ElementEventSettingsModel.SpecializationTypeId)
+                    .Select(x => new ElementEventSettingsModel(x))
+                    .SingleOrDefault();
     }
 }

@@ -3,7 +3,7 @@
   <name>Service</name>
   <display>Service</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>

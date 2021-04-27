@@ -20,13 +20,6 @@ namespace Intent.Modelers.Services.Api
                 .ToList();
         }
 
-        public static IList<EnumModel> GetEnumModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(EnumModel.SpecializationTypeId)
-                .Select(x => new EnumModel(x))
-                .ToList();
-        }
-
         public static IList<ServiceModel> GetServiceModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ServiceModel.SpecializationTypeId)

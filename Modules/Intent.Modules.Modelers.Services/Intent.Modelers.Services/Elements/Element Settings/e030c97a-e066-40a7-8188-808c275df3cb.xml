@@ -33,7 +33,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Optional" isActive="true" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;bc763e02-b38f-41e4-aac3-ea62e39d34f2&quot;,&quot;fee0edca-4aa0-4f77-a524-6bbd84e78734&quot;,&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;]" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;fee0edca-4aa0-4f77-a524-6bbd84e78734&quot;,&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;,&quot;85fba0e9-9161-4c85-a603-a229ef312beb&quot;]" isActive="true" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="true" />

@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Common.Types.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class FolderModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
+    public class FolderModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName, IFolder, IHasFolder<IFolder>
     {
         public const string SpecializationType = "Folder";
         public const string SpecializationTypeId = "4d95d53a-8855-4f35-aa82-e312643f5c5f";
@@ -38,6 +38,9 @@ namespace Intent.Modules.Common.Types.Api
 
         [IntentManaged(Mode.Ignore)]
         public FolderModel Folder { get; set; }
+
+        [IntentManaged(Mode.Ignore)] 
+        IFolder IHasFolder<IFolder>.Folder => Folder;
 
         public IList<FolderModel> Folders => _element.ChildElements
             .Where(x => x.SpecializationType == FolderModel.SpecializationType)

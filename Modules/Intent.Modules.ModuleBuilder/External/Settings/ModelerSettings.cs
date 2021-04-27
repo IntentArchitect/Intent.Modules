@@ -137,6 +137,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
         public List<TypeOrderPersistable> TypeOrder { get; set; }
+
+        [XmlArray("macros")]
+        [XmlArrayItem("macro")]
+        public List<ElementMacroPersistable> Macros { get; set; } = new List<ElementMacroPersistable>();
     }
 
     public class ElementCreationOption

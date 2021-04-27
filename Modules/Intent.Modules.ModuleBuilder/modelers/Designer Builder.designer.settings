@@ -524,11 +524,6 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <macros>
-        <macro trigger="on-created">
-          <script>createElement("Package Settings", "Package", context.id);</script>
-        </macro>
-      </macros>
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
@@ -596,6 +591,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
         <type order="0">Context Menu</type>
         <type order="1">Diagram Settings</type>
         <type order="2">Mapping Settings</type>
+        <type order="3">Element Event Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -622,6 +618,14 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <shortcut>ctrl + shift + m</shortcut>
           <defaultName>NewMappingSettings</defaultName>
           <icon type="CharacterBox" source="M|#1A237E" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Element Event Settings</specializationType>
+          <specializationTypeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</specializationTypeId>
+          <text>Add Event Settings</text>
+          <defaultName>NewElementEventSettings</defaultName>
+          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -1006,6 +1010,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       </typeReferenceSetting>
       <typeOrder>
         <type order="0">Context Menu</type>
+        <type order="1">Element Event Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -1015,6 +1020,14 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <shortcut>ctrl + shift + c</shortcut>
           <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Element Event Settings</specializationType>
+          <specializationTypeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</specializationTypeId>
+          <text>Add Event Settings</text>
+          <defaultName>NewElementEventSettings</defaultName>
+          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>

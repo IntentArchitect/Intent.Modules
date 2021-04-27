@@ -85,7 +85,8 @@ namespace Intent.ModuleBuilder.Api
                         DefaultTypeId = string.IsNullOrWhiteSpace(this.GetTypeReferenceExtensionSettings().DefaultTypeId()) ? this.GetTypeReferenceExtensionSettings().DefaultTypeId() : null,
                         AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowNullable().Value, out var allowIsNullable) ? allowIsNullable : BooleanExtensionOptions.Inherit,
                         AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowCollection().Value, out var allowIsCollection) ? allowIsCollection : BooleanExtensionOptions.Inherit,
-                    } : null
+                    } : null,
+                Macros = this.EventSettings?.ToPersistable()
             };
         }
 
@@ -121,5 +122,10 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "e3c7b1ca-f080-45c1-b56f-8d44226c8e20";
 
         public string Comment => _element.Comment;
+
+        public ElementEventSettingsModel EventSettings => _element.ChildElements
+                    .GetElementsOfType(ElementEventSettingsModel.SpecializationTypeId)
+                    .Select(x => new ElementEventSettingsModel(x))
+                    .SingleOrDefault();
     }
 }

@@ -3,11 +3,11 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <PackageId>Intent.Modules.Common.Types</PackageId>
-    <Version>3.0.3</Version>
+    <Version>3.0.4</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
     <Description>Base classes and helpers for building your own modules for Intent Architect.</Description>
-    <Copyright>Copyright 2020</Copyright>
+    <Copyright>Copyright 2021</Copyright>
     <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
     <PackageIconUrl></PackageIconUrl>
     <PackageTags>Intent Architect Software Factory SDK Modules Common</PackageTags>

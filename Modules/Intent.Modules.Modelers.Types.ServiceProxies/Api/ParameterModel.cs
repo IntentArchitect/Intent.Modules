@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -64,5 +65,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Comment => _element.Comment;
     }
 }

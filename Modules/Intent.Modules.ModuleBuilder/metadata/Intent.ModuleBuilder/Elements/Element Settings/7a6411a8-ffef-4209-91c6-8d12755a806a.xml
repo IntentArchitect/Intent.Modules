@@ -368,52 +368,5 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="c5c2e7ac-5d75-44b6-8ed1-dd3261112552" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
-      <name>NewElementEventSettings</name>
-      <display>[events]</display>
-      <isAbstract>false</isAbstract>
-      <order>1</order>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>7a6411a8-ffef-4209-91c6-8d12755a806a</parentFolderId>
-      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
-      <packageName>Intent.ModuleBuilder</packageName>
-      <stereotypes />
-      <childElements>
-        <childElement id="d18dd67a-feca-45dd-9710-23e38416b49c" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Created</name>
-          <display>On Created: Script</display>
-          <isAbstract>false</isAbstract>
-          <order>0</order>
-          <genericTypes />
-          <typeReference id="f7d950a4-241d-438c-8246-8b38b8586355">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>c5c2e7ac-5d75-44b6-8ed1-dd3261112552</parentFolderId>
-          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
-          <packageName>Intent.ModuleBuilder</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;Package Settings&quot;, &quot;Package&quot;, context.id);" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
   </childElements>
 </class>

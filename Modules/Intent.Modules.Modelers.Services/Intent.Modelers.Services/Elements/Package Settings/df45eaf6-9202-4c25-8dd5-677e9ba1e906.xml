@@ -3,7 +3,7 @@
   <name>Services Package</name>
   <display>Services Package</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
@@ -197,13 +197,13 @@
           <order>4</order>
           <genericTypes />
           <typeReference id="13aa1a36-09f6-4772-9732-144bd7f1615a">
-            <typeId>bc763e02-b38f-41e4-aac3-ea62e39d34f2</typeId>
+            <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services</typePackageName>
-            <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>

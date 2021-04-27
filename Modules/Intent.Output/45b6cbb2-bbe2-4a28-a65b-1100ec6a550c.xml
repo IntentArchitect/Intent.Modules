@@ -4,6 +4,11 @@
   <FileLogs>
     <FileLog>
       <ProjectId>e97eac7b-5f1b-4aed-aeeb-e9d882944801</ProjectId>
+      <SolutionRelativeFilePath>../Intent.Modules.Common.Typescript/Api/Extensions/EnumModelExtensions.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>EnumModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e97eac7b-5f1b-4aed-aeeb-e9d882944801</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.Common.Typescript/Api/Extensions/TypeDefinitionModelExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>TypeDefinitionModelExtensions.cs</ProjectRelativeFilePath>
     </FileLog>

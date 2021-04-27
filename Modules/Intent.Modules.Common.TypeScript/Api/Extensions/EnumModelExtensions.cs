@@ -9,15 +9,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Common.TypeScript.Api
 {
-    public static class TypeDefinitionModelExtensions
+    public static class EnumModelExtensions
     {
-        public static TypeScript GetTypeScript(this TypeDefinitionModel model)
+        public static TypeScript GetTypeScript(this EnumModel model)
         {
             var stereotype = model.GetStereotype("TypeScript");
             return stereotype != null ? new TypeScript(stereotype) : null;
         }
 
-        public static bool HasTypeScript(this TypeDefinitionModel model)
+        public static bool HasTypeScript(this EnumModel model)
         {
             return model.HasStereotype("TypeScript");
         }

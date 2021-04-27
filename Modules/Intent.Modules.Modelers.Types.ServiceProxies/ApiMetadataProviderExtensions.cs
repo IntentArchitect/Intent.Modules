@@ -48,7 +48,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
             }
 
             return dtos
-                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId && 
+                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId &&
                             x.SpecializationTypeId != EnumModel.SpecializationTypeId)
                 .Select(x => new ServiceProxyDTOModel((IElement)x, proxy)).ToList()
                 .Distinct()

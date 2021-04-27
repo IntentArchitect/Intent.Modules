@@ -14,16 +14,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>3043ab47-170b-4d78-ba2d-3673f8381213</ProjectId>
-      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Services/Api/EnumLiteralModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>EnumLiteralModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3043ab47-170b-4d78-ba2d-3673f8381213</ProjectId>
-      <SolutionRelativeFilePath>../Intent.Modules.Modelers.Services/Api/EnumModel.cs</SolutionRelativeFilePath>
-      <ProjectRelativeFilePath>EnumModel.cs</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3043ab47-170b-4d78-ba2d-3673f8381213</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.Modelers.Services/Api/FolderExtensionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
