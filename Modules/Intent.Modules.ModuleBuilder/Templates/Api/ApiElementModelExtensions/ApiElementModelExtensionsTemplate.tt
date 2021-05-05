@@ -70,6 +70,7 @@ namespace <#= Namespace #>
             case StereotypePropertyControlType.Select:#>
 <#              switch (property.OptionsSource) {
                     case StereotypePropertyOptionsSource.LookupElement:
+                    case StereotypePropertyOptionsSource.LookupChildren:
                     case StereotypePropertyOptionsSource.NestedLookup:#>
             public IElement <#= property.Name.ToCSharpIdentifier() #>() {
 <#                      if (property.LookupTypes.Count == 1 && false) { /* TODO */ #>

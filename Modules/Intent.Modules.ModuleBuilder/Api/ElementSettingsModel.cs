@@ -68,6 +68,7 @@ namespace Intent.ModuleBuilder.Api
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
                 AllowMapping = this.MappingSettings != null,
                 AllowSorting = this.GetSettings().AllowSorting(),
+                SortChildren = ToSortChildrenOptions(this.GetSettings().SortChildren()),
                 AllowFindInView = this.GetSettings().AllowFindInView(),
                 AllowTypeReference = !this.GetTypeReferenceSettings().Mode().IsDisabled(),
                 TypeReferenceSetting = !this.GetTypeReferenceSettings().Mode().IsDisabled() ? new TypeReferenceSettingPersistable()
@@ -102,6 +103,34 @@ namespace Intent.ModuleBuilder.Api
                    this.GetTypeReferenceSettings().Represents().IsInheritance()
                 ? new ElementSettingsModel(this.GetTypeReferenceSettings().TargetTypes().Single())
                 : null;
+        }
+
+        private static SortChildrenOptions? ToSortChildrenOptions(
+            ElementSettingsModelExtensions.Settings.SortChildrenOptions options)
+        {
+            if (options == null)
+            {
+                return null;
+            }
+
+            if (options.IsManually())
+            {
+                return SortChildrenOptions.Manually;
+            }
+            if (options.IsByTypeThenManually())
+            {
+                return SortChildrenOptions.SortByTypeThenManually;
+            }
+            if (options.IsByTypeThenName())
+            {
+                return SortChildrenOptions.SortByTypeAndName;
+            }
+            if (options.IsByName())
+            {
+                return SortChildrenOptions.SortByName;
+            }
+
+            return null;
         }
 
         [IntentManaged(Mode.Fully)]

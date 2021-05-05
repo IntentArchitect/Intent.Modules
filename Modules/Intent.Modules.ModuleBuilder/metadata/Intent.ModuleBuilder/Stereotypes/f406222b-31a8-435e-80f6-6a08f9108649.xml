@@ -110,6 +110,22 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="3a68e3cb-8014-4c43-9965-f6fc35589d37">
+      <name>Sort Children</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions>
+        <option>Manually</option>
+        <option>By type then manually</option>
+        <option>By type then name</option>
+        <option>By name</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction />
+    </property>
     <property id="46180320-9a7e-4fe3-8351-f7524612a52c">
       <name>Allow Find in View</name>
       <type>boolean</type>

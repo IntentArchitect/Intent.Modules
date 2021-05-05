@@ -22,6 +22,7 @@ namespace <#= Namespace #>
     public class <#= ClassName #> : IMetadataModel
     {
         public const string SpecializationType = "<#= Model.Name #>";
+        public const string SpecializationTypeId = "<#= Model.Id #>";
         protected readonly IAssociation _association;
         protected <#=AssociationSourceEndClassName #> _sourceEnd;
         protected <#=AssociationTargetEndClassName #> _targetEnd;
@@ -76,6 +77,8 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Fully)]
     public class <#=AssociationSourceEndClassName #> : <#=AssociationEndClassName #>
     {
+        public const string SpecializationTypeId = "<#= Model.Id #>";
+
         public <#=AssociationSourceEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
         }
@@ -84,6 +87,8 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Fully)]
     public class <#=AssociationTargetEndClassName #> : <#=AssociationEndClassName #>
     {
+        public const string SpecializationTypeId = "<#= Model.Id #>";
+
         public <#=AssociationTargetEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
         }

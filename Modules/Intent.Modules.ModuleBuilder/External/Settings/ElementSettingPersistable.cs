@@ -50,6 +50,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("allowSorting")]
         public bool? AllowSorting { get; set; }
 
+        [XmlElement("sortChildren")]
+        public SortChildrenOptions? SortChildren { get; set; }
+
         [XmlElement("allowFindInView")]
         public bool? AllowFindInView { get; set; }
 
