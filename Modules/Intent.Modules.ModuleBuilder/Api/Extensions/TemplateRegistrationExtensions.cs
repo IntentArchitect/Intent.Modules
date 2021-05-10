@@ -90,9 +90,9 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Role");
             }
 
-            public string GetLocation()
+            public string GetDefaultLocation()
             {
-                return _stereotype.GetProperty<string>("Location");
+                return _stereotype.GetProperty<string>("Default Location");
             }
         }
     }

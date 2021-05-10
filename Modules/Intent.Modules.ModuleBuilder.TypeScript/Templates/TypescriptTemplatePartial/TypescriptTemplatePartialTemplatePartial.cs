@@ -9,6 +9,7 @@ using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.ModuleBuilder.TypeScript.Api;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -26,7 +27,8 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public TypescriptTemplatePartialTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(IntentNugetPackages.IntentCommonTypescript);
+            // whichever his higher:
+            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.0.5"); 
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -60,6 +62,15 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }
+        }
+
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"TypeScriptTemplateBase<{GetModelType()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"TypeScriptTemplateBase<{GetModelType()}>";
         }
 
         private string GetRole()

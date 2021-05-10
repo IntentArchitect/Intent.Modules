@@ -15,7 +15,7 @@ namespace Intent.Modules.Common.CSharp
         public static NugetPackageInfo IntentCommonCSharp = new NugetPackageInfo("Intent.Modules.Common.CSharp", "3.0.8");
         public static NugetPackageInfo IntentCommonSql = new NugetPackageInfo("Intent.Modules.Common.Sql", "3.0.3");
         public static NugetPackageInfo IntentCommonHtml = new NugetPackageInfo("Intent.Modules.Common.Html", "3.0.2");
-        public static NugetPackageInfo IntentCommonTypescript = new NugetPackageInfo("Intent.Modules.Common.TypeScript", "3.0.3");
+        public static NugetPackageInfo IntentCommonTypescript = new NugetPackageInfo("Intent.Modules.Common.TypeScript", "3.0.5");
         public static NugetPackageInfo IntentCommonJava = new NugetPackageInfo("Intent.Modules.Common.Java", "3.0.3");
     }
 }

@@ -47,6 +47,19 @@
         <isNullableDefault>false</isNullableDefault>
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
+      <typeOrder>
+        <type order="0">Template Decorator Contract</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Template Decorator Contract</specializationType>
+          <specializationTypeId>ac1da322-377e-45cf-a2d9-d147a4d91457</specializationTypeId>
+          <text>Add Decorator Contract</text>
+          <defaultName>NewTemplateDecoratorContract</defaultName>
+          <icon type="FontAwesome" source="wpforms" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
       <childElementSettings />
     </elementSetting>
   </elementSettings>

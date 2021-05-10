@@ -56,15 +56,15 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             
             #line default
             #line hidden
-            this.Write(" : TypeScriptTemplateBase<");
+            this.Write(" : ");
             
             #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.TypeScript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseType()));
             
             #line default
             #line hidden
-            this.Write(">\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templa" +
-                    "teId = \"");
+            this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templat" +
+                    "eId = \"");
             
             #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.TypeScript\Templates\TypescriptTemplatePartial\TypescriptTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));

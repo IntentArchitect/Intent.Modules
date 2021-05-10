@@ -94,7 +94,7 @@ namespace Intent.ModuleBuilder.Api
 
         public string GetLocation()
         {
-            return this.GetTemplateSettings().GetLocation();
+            return this.GetTemplateSettings().GetDefaultLocation();
         }
 
         public FolderModel Folder { get; }

@@ -21,7 +21,7 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
 	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class <#= ClassName #> : TypeScriptTemplateBase<<#= GetModelType() #>>
+    partial class <#= ClassName #> : <#= GetBaseType() #>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";

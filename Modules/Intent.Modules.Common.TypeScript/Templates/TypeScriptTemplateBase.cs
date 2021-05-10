@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.Templates;
 using Intent.Utils;
 
 namespace Intent.Modules.Common.TypeScript.Templates
@@ -12,6 +14,36 @@ namespace Intent.Modules.Common.TypeScript.Templates
     {
         protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
         {
+        }
+    }
+
+    public abstract class TypeScriptTemplateBase<TModel, TDecorator> : TypeScriptTemplateBase<TModel>, IHasDecorators<TDecorator>
+        where TDecorator : ITemplateDecorator
+    {
+        private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
+
+        protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
+        {
+        }
+
+        public IEnumerable<TDecorator> GetDecorators()
+        {
+            return _decorators.OrderBy(x => x.Priority);
+        }
+
+        public void AddDecorator(TDecorator decorator)
+        {
+            _decorators.Add(decorator);
+        }
+
+        /// <summary>
+        /// Aggregates the specified <see cref="propertyFunc"/> property of all Decorators. Ignores Decorators where the property returns null.
+        /// </summary>
+        /// <param name="propertyFunc"></param>
+        /// <returns></returns>
+        protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
+        {
+            return GetDecorators().Aggregate(propertyFunc);
         }
     }
 

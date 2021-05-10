@@ -31,7 +31,7 @@
         <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="16d21684-d5ea-4fde-b648-f88d292fa272" isActive="true" />
         <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
         <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="Api" isActive="true" />
-        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Location" value="Api" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" value="Api" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

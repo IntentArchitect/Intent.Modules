@@ -13,6 +13,7 @@ using System.Text.RegularExpressions;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -50,10 +51,10 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
             var content = GetExistingTemplateContent();
             if (content != null)
             {
-                return ReplaceTemplateInheritsTag(content, $"TypeScriptTemplateBase<{Model.GetModelName()}>");
+                return ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""TypeScriptTemplateBase<{Model.GetModelName()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""{GetBaseType()}"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
@@ -75,7 +76,14 @@ export class <#= ClassName #>
 }";
         }
 
-
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"TypeScriptTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"TypeScriptTemplateBase<{Model.GetModelName()}>";
+        }
 
         private string GetExistingTemplateContent()
         {
@@ -90,7 +98,7 @@ export class <#= ClassName #>
         }
 
         private static readonly Regex _templateInheritsTagRegex = new Regex(
-            @"(?<begin><#@[ ]*template[ ]+[\.a-zA-Z0-9=_\""#<> ]*inherits=\"")(?<type>[a-zA-Z0-9\._<>]+)(?<end>\""[ ]*#>)",
+            @"(?<begin><#@[ ]*template[ ]+[\.a-zA-Z0-9=_\""#<> ]*inherits=\"")(?<type>[a-zA-Z0-9\.,_<> ]+)(?<end>\""[ ]*#>)",
             RegexOptions.Compiled);
 
         private static string ReplaceTemplateInheritsTag(string templateContent, string inheritType)
