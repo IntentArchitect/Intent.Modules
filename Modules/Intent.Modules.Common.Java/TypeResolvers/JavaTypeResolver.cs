@@ -1,13 +1,44 @@
-﻿using Intent.Metadata.Models;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.Java.TypeResolvers
 {
     public class JavaTypeResolver : TypeResolverBase, ITypeResolver
     {
-        public override string DefaultCollectionFormat { get; set; } = "{0}[]";
 
-        protected override IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null)
+        public JavaTypeResolver() : base(defaultContext: new JavaTypeResolverContext(new JavaTypeResolverOptions()))
+        {
+        }
+
+        protected override ITypeResolverContext CreateContext()
+        {
+            return new JavaTypeResolverContext(new JavaTypeResolverOptions());
+        }
+    }
+
+    public class JavaTypeResolverOptions
+    {
+        public bool ReturnsPrimitives { get; set; } = true;
+    }
+
+    public class JavaTypeResolverContext : TypeResolverContextBase
+    {
+
+        public JavaTypeResolverContext(JavaTypeResolverOptions options) : base(new CollectionFormatter("{0}[]"))
+        {
+            Options = options;
+        }
+
+        public JavaTypeResolverOptions Options { get; set; }
+
+        protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
+        {
+            return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
+        }
+
+        protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
         {
             if (typeInfo.Element == null)
             {
@@ -28,7 +59,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                 switch (typeInfo.Element.Name)
                 {
                     case "bool":
-                        result = typeInfo.IsNullable ? "Boolean" : "boolean";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Boolean" : "boolean";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "date":
@@ -40,11 +71,11 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                         isPrimitive = false;
                         break;
                     case "char":
-                        result = typeInfo.IsNullable ? "Char" : "char";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Char" : "char";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "byte":
-                        result = typeInfo.IsNullable ? "Byte" : "byte";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Byte" : "byte";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "decimal":
@@ -52,23 +83,23 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                         isPrimitive = false;
                         break;
                     case "double":
-                        result = typeInfo.IsNullable ? "Double" : "double";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Double" : "double";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "float":
-                        result = typeInfo.IsNullable ? "Float" : "float";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Float" : "float";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "short":
-                        result = typeInfo.IsNullable ? "Short" : "short";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Short" : "short";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "int":
-                        result = typeInfo.IsNullable ? "Integer" : "int";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Integer" : "int";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "long":
-                        result = typeInfo.IsNullable ? "Long" : "long";
+                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Long" : "long";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "datetimeoffset":
@@ -96,12 +127,6 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                 result = !string.IsNullOrWhiteSpace(result)
                     ? result
                     : typeInfo.Element.Name;
-            }
-
-            if (typeInfo.IsCollection)
-            {
-                isPrimitive = false;
-                result = string.Format(collectionFormat ?? DefaultCollectionFormat, result);
             }
 
             return new ResolvedTypeInfo(result, isPrimitive, null);

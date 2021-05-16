@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="90c0e85e-54cf-4d6b-b69f-0440e4ace079" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Producer</name>
+  <display>Producer</display>
+  <isAbstract>false</isAbstract>
+  <order>2</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</parentFolderId>
+  <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+  <packageName>Intent.Modelers.Eventing</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="2e66d3dc-87ed-443f-b034-83a435d54615" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>90c0e85e-54cf-4d6b-b69f-0440e4ace079</parentFolderId>
+      <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+      <packageName>Intent.Modelers.Eventing</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="81d9f875-4a88-4b95-aeb8-129abd8fbf6d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Publish Message</name>
+          <display>Add Publish Message: Publish Message</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="f2602e59-89e6-4b58-a0ef-185807dd3d2b">
+            <typeId>7b59cb3e-527e-414d-a784-88d67b0d1e20</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Eventing</typePackageName>
+            <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2e66d3dc-87ed-443f-b034-83a435d54615</parentFolderId>
+          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+          <packageName>Intent.Modelers.Eventing</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[publishes]" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+        <childElement id="c224727e-d337-43c4-8c23-60d4b7dbc5d0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Send Message</name>
+          <display>Add Send Message: Send Message</display>
+          <isAbstract>false</isAbstract>
+          <order>1</order>
+          <genericTypes />
+          <typeReference id="417abdb8-1877-4c10-aff3-47b774ff4be0">
+            <typeId>0ffa7fa8-61d5-4c8d-8301-12bf4de7ba04</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Eventing</typePackageName>
+            <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2e66d3dc-87ed-443f-b034-83a435d54615</parentFolderId>
+          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+          <packageName>Intent.Modelers.Eventing</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[sends]" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f49d67ab-c0ef-4f48-a69d-db7a7a287260" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+  <name>Core Eventing Types</name>
+  <display>Core Eventing Types</display>
+  <isAbstract>false</isAbstract>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>da53e9dd-36d6-4d56-ab3b-c59c79887cb8</parentFolderId>
+  <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+  <packageName>Intent.Modelers.Eventing</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
+        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

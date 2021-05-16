@@ -45,6 +45,11 @@ namespace Intent.Modules.Common.Templates
 
         object ITemplateWithModel.Model => Model;
 
+        public override string GetCorrelationId()
+        {
+            return (Model as IMetadataModel)?.Id;
+        }
+
         public override string ToString()
         {
             return $"{Id} [{Model?.ToString()}]";
@@ -83,6 +88,7 @@ namespace Intent.Modules.Common.Templates
         public void ConfigureFileMetadata(IFileMetadata fileMetadata)
         {
             FileMetadata = fileMetadata;
+            FileMetadata.CustomMetadata.TryAdd("CorrelationId", GetCorrelationId());
         }
 
         public abstract ITemplateFileConfig GetTemplateFileConfig();
@@ -91,6 +97,15 @@ namespace Intent.Modules.Common.Templates
         {
             // NOTE: If this method is run multiple times for a template instance, the output is duplicated. Perhaps put in a check here?
             return TransformText();
+        }
+
+        /// <summary>
+        /// Used to identify template outputs between software factory executions.
+        /// </summary>
+        /// <returns></returns>
+        public virtual string GetCorrelationId()
+        {
+            return Id;
         }
 
         public IFileMetadata GetMetadata()
@@ -139,6 +154,10 @@ namespace Intent.Modules.Common.Templates
         {
         }
 
+        public virtual void OnCreated()
+        {
+        }
+
         /// <summary>
         /// Executed before the Template's <see cref="RunTemplate"/> runs.
         /// </summary>
@@ -146,16 +165,24 @@ namespace Intent.Modules.Common.Templates
         {
         }
 
-        private string _defaultTypeCollectionFormat;
         private readonly ICollection<ITypeSource> _typeSources = new List<ITypeSource>();
 
         public void SetDefaultTypeCollectionFormat(string collectionFormat)
         {
-            _defaultTypeCollectionFormat = collectionFormat;
-            if (_onCreatedHasHappened)
+            if (!HasTypeResolver())
             {
-                Types.DefaultCollectionFormat = collectionFormat;
+                throw new Exception($"A {nameof(ITypeResolver)} has not been set for this Template at this time. Set {nameof(Types)} before calling this operation.");
+            } 
+            Types.SetDefaultCollectionFormatter(new CollectionFormatter(collectionFormat));
+        }
+
+        public void SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter)
+        {
+            if (!HasTypeResolver())
+            {
+                throw new Exception($"A {nameof(ITypeResolver)} has not been set for this Template at this time. Set {nameof(Types)} before calling this operation.");
             }
+            Types.SetDefaultCollectionFormatter(collectionFormatter);
         }
 
         /// <summary>
@@ -165,30 +192,7 @@ namespace Intent.Modules.Common.Templates
         public void AddTypeSource(ITypeSource typeSource)
         {
             _typeSources.Add(typeSource);
-            if (_onCreatedHasHappened)
-            {
-                Types.AddClassTypeSource(typeSource);
-            }
-        }
-
-        private bool _onCreatedHasHappened;
-
-        public virtual void OnCreated()
-        {
-            _onCreatedHasHappened = true;
-            if (!HasTypeResolver())
-            {
-                return;
-            }
-            if (_defaultTypeCollectionFormat != null)
-            {
-                Types.DefaultCollectionFormat = _defaultTypeCollectionFormat;
-            }
-
-            foreach (var typeSource in _typeSources)
-            {
-                Types.AddClassTypeSource(typeSource);
-            }
+            Types.AddTypeSource(typeSource);
         }
 
         #region GetTypeName for TypeReference
@@ -334,10 +338,11 @@ namespace Intent.Modules.Common.Templates
             {
                 options = new TemplateDiscoveryOptions();
             }
-            if (!_onCreatedHasHappened)
-            {
-                throw new Exception($"{nameof(GetTypeName)} cannot be called during template instantiation.");
-            }
+            // TODO: Bring this back to prevent unexpected behaviour.
+            //if (!_onCreatedHasHappened)
+            //{
+            //    throw new Exception($"{nameof(GetTypeName)} cannot be called during template instantiation.");
+            //}
 
             var template = ExecutionContext.FindTemplateInstance<TTemplate>(dependency);
 

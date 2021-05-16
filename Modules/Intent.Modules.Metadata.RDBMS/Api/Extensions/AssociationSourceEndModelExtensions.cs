@@ -1,4 +1,3 @@
-using System;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;

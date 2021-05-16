@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="37969deb-2289-48bd-aa41-cf66006fbd33" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Message Handler</name>
+  <display>Message Handler</display>
+  <isAbstract>false</isAbstract>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f40a4942-5d2d-4174-8ec1-af66cbd464db</parentFolderId>
+  <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+  <packageName>Intent.Modelers.Eventing</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Required" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;cbe970af-5bad-4d92-a3ed-a24b9fdaa23e&quot;]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" value="" isActive="true" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="false" isActive="true" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAADG0lEQVR4Xu3asWsUQRQG8O/NpRBFhDQR04qVjYidYGWjaGe8K8S0liruxkgQRYsEY2ktCHe7G7EQ1D/AOiIIoqWFAZsUotgk++RiRJPM5nb33eb2ki/tzsu8/e23N3OTCPhjEhBTNYtBQGMICEhAo4CxnAkkoFHAWM4EEtAoYCxnAgloFDCWM4EENAoYy5lAAhoFjOVMIAGNAsZyJpCARgFjeWYCF+LgrqqcNP7+XVEuoouXLs/d891MJmASBa8AObcrBMw3oa8nmnPnCVgakoCl6f4UEnBYAVUB+enrXoERAfZl3NmPjBoR4MDGa6XnKIA6uAQuTTRnx32dxnF4QRQvfdcmmrPexa3TCY40RL5uqik1RwG9gb7CpW6OgP8eLwGLRX3LaAIScLDbGCaQCWQCvVulYsHgPnCT19rmu8BZaJ8BNdVJcfI0x1Os5WegprgiDs9y9L8+pM+A3Y1u3AlmROR+jyZqCbiqOu6cOyOq7XyIFQB2J47jcFoUD7dporaArdbc0vPO1IlU9F1vxIoAk+TWYaTuPYCxjCZqDdjtOYnCGwDmt0esCPDvpEkUfgdw0NNE7QHXEDvhWwhOZyNWDPgiun1sBennYQVst6fHRtzKR0BG/YgVA64fM30BMNKPo6aqT2O6i0j3M/D/XpMovAbgyUAAF+LwsSquD2sCk3ZwFk7eAGjsOGDcDm6Kk0fDuojE8VSr93amolc4bgdXe2yoa72IRNH0cYfVDwPZxiRRcAeQB8O6kW409qdIf30CcGjHAVOkRx3cYo7Ja5tAJzIvQLM3XiWnMbqcveRvaKmWgAp8k+zNv8e0z5+B+Z7a2qhaAhbov5rDhAINELAAlm8oAQlYySKSm5UJzE3lH0hAAvIVHuq/yi2rYNKXYgc5paozvmsquOhN/qqOer57l5qj2Js1uI10sT5rO5qAxkdDQAIaBYzlJRJonHHPlBf4/5A9Y1LoRglYiGvrYAIS0ChgLGcCCWgUMJYzgQQ0ChjLmUACGgWM5UwgAY0CxnImkIBGAWM5E0hAo4CxnAkkoFHAWM4EGgF/A8Tkh34Ay+IzAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements />
+</class>

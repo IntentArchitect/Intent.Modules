@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f40a4942-5d2d-4174-8ec1-af66cbd464db" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Consumer</name>
+  <display>Consumer</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</parentFolderId>
+  <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+  <packageName>Intent.Modelers.Eventing</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAHZElEQVR4Xu2ca2wUVRTH/2dmty2lUJ6hIBJMeHTbaEKwiCQmqAkGeSdgIh8EE4XER4JGoAtRqglsoURMDCYgiUriI2ACgiLBqCRGBSohIdItDyOiWGoBS2lL2925x9xtVwrs7szsnd2W5s6nTfae/z33d899zJk7Q9CXEgFSstbG0AAVg0AD1AAVCSia6wjUABUJKJrrCNQAFQkomusI1AAVCSiaZzwCJ67iAYaJ+SyQp+irK3My0GbkYs+pCmp2ZeiycMYATq7g/JZ2fETAQpc+eVqcgc/752LJ8Qpq9VS4SyxjAIvX8GII7CSCmQnHnWoyw2JgyelK+tipjZtyGQMYCHIU6Fl43UBY4RD53IBxWjYjAAPl/D4Izzl1IivlCDvCG+h5r+vyHGBxkGcT8CmAAq+dVdRrZuDp2hB9qahzi7m3ABexWTwOWwlY7qWTXmkxsK32HF7EbrK80vQU4IRyLjOBo6BemmdksGVi6pn1dKzXAZxewb76dkS8ciyTOiNy4T9cQXKRU748i8BAOb8OwlvKHmVBgAXW1W4kT3z1BGBpkEsE8B2AEVlovxdV1BvAY6dCVKMq5gnA4iC/QcCbqs5k056BdbUh9ShUBjhxLT9oCFRns/Fe1WUxppypJCXflQCOe5lz/QWQK9oDXjUqyzonI82Ycu5dak+3XiWAJav5KTbwEZDdTEu6jU1g10aEJTUbaFe6mkoAA0G+dBctHMkY1YdDVJR1gIEgrwCwJd2Ke5ndK+EQvZOOT2lFYEk5TxJAdU+nqtJpcCIbmfIygLKaSjrhVtM1wMnL2H9jGLYzY6nbynpzeSJ82O8ylh3fTq7uplwDnBDkYpNQDe512RbV/mmxgAfPhKjWjZBrgIEgX0+WqsrPdVN18rIRC4jcdqfq9wF+j3Lbrck3LS3hELlKw7kCWFzOy4iwLVHTQ4uAeZO8AShVHt8E1DV26o0cBHy7yjvtL04Awd2J9ZixvLaStjutzTHAwEoeDxNfgTC+LwME4ywszApX0VknEJ0DXMMrwdiUTLSvRGCsfYRV4Q1U5RnAURWcX9iOfwD0Tyb65HQLrz5iYFQ/x32SUIoBHL1iYcU2A03NnVoDCxhblglMHWYqZ2ov3WBs/kHgwOGUE2qLP4IRJzdTix1E+9ZWsBFox19yKkolFiiLomiMhdmjfHiiyIRhr3yHXIcAqmo7cPEG48jXOWhr7RTJy2dMndmBkXmE1YEc5Bh2zbrzf8HAoUsW9v8dxaULJsLVtg/p6sK5GI0KEqlqs21mYC0vgMAndve7Ux6OYvgYgdYoY9owEw8NNTCuwHlLq69aOFhnob6NMdBPOLTfj9aWTvfy+zNmzImgKcIYkUexDpoy1PmS/FuzwNErAj9etpDvIzRcMHDsZ1uAbTCwOLye9qQNsPQFLrAGYj8Rptv1+dRpFsbeJ9AhGI0RjkXJs2P9uH9QaohyyG49G8HZZgGTCAN9FIvefXt9twCcOz8KGUXXo4woc6xzXhrvtx3SvzYKfHA+gnYBDPITcgzC+d8NHPnJvgOYcdhswpxT7yU/HpIyAktXcpHwoc4Onvw/DlD+llAaOzgGs2yIgVmjfBiee2dVNU0CB/6O4o9WRp5JGOC7WSYRwLgfEmKbxbi3H8WmjJLCOzupoZ1xsC6KI1dEDNrgnJvaTgHK+owoRp6qIpk0SXhlBGAcYkQwrnZ0DruFo30o7WpoRADf1Fs4UBeFZDbAZ8B/G4NUAKW+1IhFo2DMHOnDjCLzf41wk8CuP6Ox6WBIDsFv3PqYMHsA5RAuxD4CHrWLwu4R2L2sjMZ/O+TQRiwa593jQ1U4gqaojDqg8HZyXcZ2AON1XIsItFmIDf3XAn7suxhF9VUZdcDgHCPhEHcKkIHvzWuYm/YQlk46XUSSAYxHo1xcWqIMuaSZJMF1zkfJLqcApb2cKq5FOk8RScUCH8UWi2TqDgGqLyKxxjncxqQCGIckozF+2S3/bgDGO8mptkOA3mxjpFOj3+Z+AxrQkGoj7QSg3TTQ/X+3AN1oOwDo4Ua6y7NAOa8EJb+V61MAvb6VkwxLy3mcAA4kSyb0GYCZSiZIiKnSWX0FYMbSWfE5JlVC1bTf3DuaqpgBcdsdqGEAZLfyOFIHrOSH2zKbUJX+6ZT+rb3kuk/1QyVFgNJcP9Z0vp9NOqvoB+udaFwP4e5E9dEORYAl5byICTvtkq0OF8eeKNZGAktqNvbQ4SJ9vE0xArs215OJ8EtPhI9qncJA2en1pOS70hwYb4A+4qvYlfqQuSJAaa5fc1CEqF+0UQQYu0/Wr3opUtQvGyoClHPhGp4Fxmf6dVcFlr3yhWvGjnDlXfDCdbfEq37lXyEIUbyaF4N6x0cnYOCZ2g0kD0h5fnlyJ5LIK/nZk9YOfAjGIs+9diNI2J2fg6V33WdP4m2UJ7xEIRZk+8M7hokbDY3Y25DiZJWbfkhWNmMR6IVzd4OGBqjYSxqgBqhIQNFcR6AGqEhA0VxHoAaoSEDRXEegBqhIQNFcR6AiwP8A14Adfs5MrKsAAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="3a9ab1e8-4db3-4d25-bde7-d576f97ca80a" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>f40a4942-5d2d-4174-8ec1-af66cbd464db</parentFolderId>
+      <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+      <packageName>Intent.Modelers.Eventing</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="01947d6f-82ee-48c8-825a-5d9a0aee23d1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Message Consumer</name>
+          <display>Add Message Consumer: Message Handler</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="c0bcd735-143f-4c8b-8e3f-a2ec0a421039">
+            <typeId>37969deb-2289-48bd-aa41-cf66006fbd33</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Eventing</typePackageName>
+            <typePackageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3a9ab1e8-4db3-4d25-bde7-d576f97ca80a</parentFolderId>
+          <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+          <packageName>Intent.Modelers.Eventing</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[consumes]" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

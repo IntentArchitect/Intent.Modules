@@ -11,6 +11,10 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
     {
         string LanguageVersion { get; }
         bool NullableEnabled { get; }
+        bool IsNetCore2App { get; }
+        bool IsNetCore3App { get; }
+        bool IsNet4App { get; }
+        bool IsNet5App { get; }
         bool IsNullableAwareContext();
     }
 
@@ -63,6 +67,14 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
 
             return false;
         }
+
+        public bool IsNetCore2App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp2"));
+
+        public bool IsNetCore3App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
+
+        public bool IsNet4App => GetSupportedFrameworks().Any(x => x.StartsWith("net4"));
+
+        public bool IsNet5App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
 
         public bool Equals(IOutputTarget other)
         {

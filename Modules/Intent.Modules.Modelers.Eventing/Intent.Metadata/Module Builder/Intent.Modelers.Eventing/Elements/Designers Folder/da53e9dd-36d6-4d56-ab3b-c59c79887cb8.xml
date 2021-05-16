@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="da53e9dd-36d6-4d56-ab3b-c59c79887cb8" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</parentFolderId>
+  <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
+  <packageName>Intent.Modelers.Eventing</packageName>
+  <stereotypes />
+  <childElements />
+</class>

@@ -29,5 +29,6 @@
     <application id="0f9ab3ec-dfce-4320-ac37-19c5b8d05528" name="Intent.Modules.Metadata.WebApi" relativePath="Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.application.config" />
     <application id="45b6cbb2-bbe2-4a28-a65b-1100ec6a550c" name="Common.Typescript" relativePath="Intent.Modules.Common.TypeScript/Common.Typescript.application.config" />
     <application id="7f521a90-df6d-409e-b3a4-ff4dc8ef9c45" name="Intent.Modules.ModuleBuilder.AutoCompile" relativePath="Intent.Modules.ModuleBuilder.AutoCompile/Intent.Modules.ModuleBuilder.AutoCompile.application.config" />
+    <application id="f7f12dd9-7193-4407-be08-2f7b7d232af3" name="Intent.Modules.Modelers.Eventing" relativePath="Intent.Modules.Modelers.Eventing/Intent.Modules.Modelers.Eventing.application.config" />
   </applications>
 </solution>

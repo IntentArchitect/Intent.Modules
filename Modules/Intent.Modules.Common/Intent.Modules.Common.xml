@@ -83,6 +83,12 @@
             The OutputTarget of this template. This is determined by a designer with Output Targeting capabilities (e.g. Visual Studio, Folder Structure, etc.)
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetCorrelationId">
+            <summary>
+            Used to identify template outputs between software factory executions.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTemplateDependency(System.String)">
             <summary>
             Adds the Template with <paramref name="templateId"/> as a dependency of this template.
@@ -259,13 +265,13 @@
             Default format to use when the typeInfo.IsCollection is true;
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
             <summary>
             Adds a default <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> that is used when resolving type names of classes.
             </summary>
             <param name="typeSource"></param>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
             <summary>
             Adds an <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> that is only used to resolve type names when <see cref="M:Intent.Modules.Common.TypeResolution.ITypeResolver.InContext(System.String)"/> is called for the specific <see cref="!:contextName"/>.
             </summary>
@@ -328,6 +334,29 @@
             </summary>
             <param name="typeInfo"></param>
             <param name="collectionFormat">The collection type provided if the typeInfo.IsCollection is true</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
+            <summary>
+            Adds a <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> that is used when resolving information about types provided by other templates.
+            </summary>
+            <param name="typeSource"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.SetCollectionFormatter(Intent.Modules.Common.TypeResolution.ICollectionFormatter)">
+            <summary>
+            Default collection formatter to use when the typeInfo.IsCollection is true;
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.ITypeResolverContext.TypeSources">
+            <summary>
+            Returns the list of added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/>s
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.CanBeReferencedTypeExtensions.AsTypeReference(Intent.Metadata.Models.ICanBeReferencedType)">
+            <summary>
+            Converts <see cref="T:Intent.Metadata.Models.ICanBeReferencedType"/> to type of <see cref="T:Intent.Metadata.Models.ITypeReference"/>
+            </summary>
+            <param name="type"></param>
             <returns></returns>
         </member>
         <member name="M:System.Linq.Dynamic.Core.AssemblyBuilderFactory.DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess)">

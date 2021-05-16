@@ -81,6 +81,21 @@
             May be overriden.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.UseType(System.String,System.String)">
+            <summary>
+            Adds the @namespace as a dependent <see cref="!:@namespace"/> and returns the <see cref="!:name"/>
+            </summary>
+            <param name="name"></param>
+            <param name="namespace"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.UseType(System.String)">
+            <summary>
+            Adds the @namespace as a dependent <see cref="!:@namespace"/> and returns the <see cref="!:name"/>
+            </summary>
+            <param name="fullName"></param>
+            <returns></returns>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String,System.String)">
             <summary>
             Adds a Template source that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>

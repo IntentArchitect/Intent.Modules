@@ -6,53 +6,95 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
+    public class CollectionFormatter : ICollectionFormatter
+    {
+        private readonly Func<string, string> _formatCollection;
+
+        public CollectionFormatter(string collectionFormat)
+        {
+            _formatCollection = (name) => string.Format(collectionFormat, name);
+        }
+
+        public CollectionFormatter(Func<string, string> formatCollection)
+        {
+            _formatCollection = formatCollection;
+        }
+
+        public string AsCollection(IResolvedTypeInfo typeInfo)
+        {
+            return _formatCollection(typeInfo.Name);
+        }
+    }
+
     public abstract class TypeResolverBase : ITypeResolver
     {
         private const string DEFAULT_CONTEXT = "_default_";
-        private readonly IDictionary<string, List<ITypeSource>> _classTypeSources;
-        private static IList<ITypeSource> _globalTypeSources = new List<ITypeSource>();
+        //private readonly IDictionary<string, List<ITypeSource>> _classTypeSources;
+        private readonly IDictionary<string, ITypeResolverContext> _contexts;
 
-        protected TypeResolverBase()
+        protected TypeResolverBase(ITypeResolverContext defaultContext)
         {
-            _classTypeSources = new Dictionary<string, List<ITypeSource>>()
+            _contexts = new Dictionary<string, ITypeResolverContext>()
             {
-                { DEFAULT_CONTEXT, new List<ITypeSource>() }
+                { DEFAULT_CONTEXT, defaultContext }
             };
         }
 
-        public abstract string DefaultCollectionFormat { get; set; }
+        protected abstract ITypeResolverContext CreateContext();
 
-        public void AddClassTypeSource(ITypeSource typeSource)
+        public virtual string DefaultCollectionFormat
         {
-            AddClassTypeSource(typeSource, DEFAULT_CONTEXT);
+            set => SetDefaultCollectionFormatter(new CollectionFormatter(value));
         }
 
-        public void AddClassTypeSource(ITypeSource typeSource, string contextName)
+        public void SetDefaultCollectionFormatter(ICollectionFormatter formatter)
+        {
+            _contexts[DEFAULT_CONTEXT].SetCollectionFormatter(formatter);
+        }
+
+        public void AddTypeSource(ITypeSource typeSource)
+        {
+            AddTypeSource(typeSource, DEFAULT_CONTEXT);
+        }
+
+        [Obsolete]
+        public void AddClassTypeSource(ITypeSource typeSource)
+        {
+            AddTypeSource(typeSource);
+        }
+
+        public void AddTypeSource(ITypeSource typeSource, string contextName)
         {
             if (contextName == null)
                 contextName = DEFAULT_CONTEXT;
 
-            if (!_classTypeSources.ContainsKey(contextName))
+            if (!_contexts.ContainsKey(contextName))
             {
-                _classTypeSources.Add(contextName, new List<ITypeSource>());
+                _contexts.Add(contextName, CreateContext());
             }
-            _classTypeSources[contextName].Add(typeSource);
+            _contexts[contextName].AddTypeSource(typeSource);
+        }
+
+        [Obsolete]
+        public void AddClassTypeSource(ITypeSource typeSource, string contextName)
+        {
+            AddTypeSource(typeSource, contextName);
         }
 
         public ITypeResolverContext InContext(string contextName)
         {
-            if (!_classTypeSources.ContainsKey(contextName))
+            if (!_contexts.ContainsKey(contextName))
             {
                 throw new InvalidOperationException($"contextName '{contextName}' does not exist.");
             }
 
-            return new TypeResolverContext(_classTypeSources[contextName], ResolveType);
+            return _contexts[contextName];
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return _classTypeSources.Values
-                .SelectMany(x => x)
+            return _contexts.Values
+                .SelectMany(x => x.TypeSources)
                 .SelectMany(x => x.GetTemplateDependencies()).ToList();
         }
 
@@ -73,24 +115,39 @@ namespace Intent.Modules.Common.TypeResolution
 
         public IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat)
         {
-            return InContext(DEFAULT_CONTEXT).Get(new ElementTypeReference(element), collectionFormat);
+            return InContext(DEFAULT_CONTEXT).Get(element.AsTypeReference(), collectionFormat);
+        }
+    }
+
+    public static class CanBeReferencedTypeExtensions
+    {
+        /// <summary>
+        /// Converts <see cref="ICanBeReferencedType"/> to type of <see cref="ITypeReference"/>
+        /// </summary>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public static ITypeReference AsTypeReference(this ICanBeReferencedType type)
+        {
+            return new ElementTypeReference(type);
         }
 
-        protected abstract IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null);
-
-        private class ElementTypeReference: ITypeReference, IHasStereotypes
+        private class ElementTypeReference : ITypeReference, IHasStereotypes
         {
-            public ElementTypeReference(ICanBeReferencedType element)
+            public ElementTypeReference(ICanBeReferencedType element, bool isNullable = false, bool isCollection = false)
             {
                 Element = element;
+                IsNullable = isNullable;
+                IsCollection = isCollection;
             }
 
-            public bool IsNullable { get; } = false;
-            public bool IsCollection { get; } = false;
+            public bool IsNullable { get; }
+            public bool IsCollection { get; }
             public ICanBeReferencedType Element { get; }
             public IEnumerable<ITypeReference> GenericTypeParameters { get; } = new ITypeReference[0];
             public string Comment { get; } = null;
             public IEnumerable<IStereotype> Stereotypes { get; } = new List<IStereotype>();
         }
     }
+
+    
 }

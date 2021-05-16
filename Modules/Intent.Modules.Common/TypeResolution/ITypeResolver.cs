@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.TypeResolution
@@ -7,6 +8,12 @@ namespace Intent.Modules.Common.TypeResolution
     {
         IResolvedTypeInfo GetType(ITypeReference typeInfo);
         IEnumerable<ITemplateDependency> GetTemplateDependencies();
+        ICollectionFormatter CollectionFormatter { get; }
+    }
+
+    public interface ICollectionFormatter
+    {
+        string AsCollection(IResolvedTypeInfo typeInfo);
     }
 
     public interface ITypeResolver
@@ -14,12 +21,16 @@ namespace Intent.Modules.Common.TypeResolution
         /// <summary>
         /// Default format to use when the typeInfo.IsCollection is true;
         /// </summary>
-        string DefaultCollectionFormat { get; set; }
-        
+        string DefaultCollectionFormat { set; }
+
+        void SetDefaultCollectionFormatter(ICollectionFormatter formatter);
+
         /// <summary>
         /// Adds a default <see cref="ITypeSource"/> that is used when resolving type names of classes.
         /// </summary>
         /// <param name="typeSource"></param>
+        void AddTypeSource(ITypeSource typeSource);
+        [Obsolete("Use AddTypeSource")]
         void AddClassTypeSource(ITypeSource typeSource);
 
         /// <summary>
@@ -27,6 +38,8 @@ namespace Intent.Modules.Common.TypeResolution
         /// </summary>
         /// <param name="typeSource"></param>
         /// <param name="contextName"></param>
+        void AddTypeSource(ITypeSource typeSource, string contextName);
+        [Obsolete("Use AddTypeSource")]
         void AddClassTypeSource(ITypeSource typeSource, string contextName);
 
         /// <summary>
@@ -71,24 +84,5 @@ namespace Intent.Modules.Common.TypeResolution
         /// </summary>
         /// <returns></returns>
         IEnumerable<ITemplateDependency> GetTemplateDependencies();
-    }
-
-    public interface ITypeResolverContext
-    {
-        /// <summary>
-        /// Resolves the type name for the specified <see cref="typeInfo"/>
-        /// </summary>
-        /// <param name="typeInfo"></param>
-        /// <returns></returns>
-        IResolvedTypeInfo Get(ITypeReference typeInfo);
-
-        /// <summary>
-        /// Resolves the type name for the specified <see cref="typeInfo"/>
-        /// </summary>
-        /// <param name="typeInfo"></param>
-        /// <param name="collectionFormat">The collection type provided if the typeInfo.IsCollection is true</param>
-        /// <returns></returns>
-        IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat);
-
     }
 }

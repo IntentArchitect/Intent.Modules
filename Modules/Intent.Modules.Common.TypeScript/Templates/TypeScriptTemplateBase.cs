@@ -51,6 +51,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
     {
         protected TypeScriptTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
+            Types = new TypeScriptTypeResolver();
         }
 
         public ICollection<TypeScriptImport> Imports = new List<TypeScriptImport>();

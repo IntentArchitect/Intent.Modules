@@ -21,9 +21,14 @@ namespace Intent.Modules.Common.TypeResolution
             Template = template;
         }
 
-        public string Name { get; }
-        public bool IsPrimitive { get; }
-        public ITemplate Template { get; }
+        public ResolvedTypeInfo(IResolvedTypeInfo typeInfo) : this(typeInfo.Name, typeInfo.IsPrimitive, typeInfo.Template)
+        {
+
+        }
+
+        public string Name { get; set; }
+        public bool IsPrimitive { get; set; }
+        public ITemplate Template { get; set; }
 
         public override string ToString()
         {

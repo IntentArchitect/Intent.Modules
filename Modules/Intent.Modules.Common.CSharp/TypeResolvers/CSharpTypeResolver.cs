@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.VisualStudio;
@@ -9,15 +10,35 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
     public class CSharpTypeResolver : TypeResolverBase, ITypeResolver
     {
         private readonly ICSharpProject _project;
+        private readonly ICollectionFormatter _defaultFormatter;
 
-        public CSharpTypeResolver(ICSharpProject project)
+        public CSharpTypeResolver(ICSharpProject project, ICollectionFormatter defaultFormatter) : base(new CSharpTypeResolverContext(project, defaultFormatter))
+        {
+            _project = project;
+            _defaultFormatter = defaultFormatter;
+        }
+
+        protected override ITypeResolverContext CreateContext()
+        {
+            return new CSharpTypeResolverContext(_project, _defaultFormatter);
+        }
+    }
+
+    public class CSharpTypeResolverContext : TypeResolverContextBase
+    {
+        private readonly ICSharpProject _project;
+
+        public CSharpTypeResolverContext(ICSharpProject project, ICollectionFormatter formatter) : base(formatter)
         {
             _project = project;
         }
 
-        public override string DefaultCollectionFormat { get; set; } = "IEnumerable<{0}>";
+        protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
+        {
+            return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
+        }
 
-        protected override IResolvedTypeInfo ResolveType(ITypeReference typeInfo, string collectionFormat = null)
+        protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
         {
             var result = typeInfo.Element.Name;
             var isPrimitive = true;
@@ -91,20 +112,6 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 {
                     result += "?";
                 }
-            }
-
-            if (typeInfo.GenericTypeParameters.Any())
-            {
-                var genericTypeParameters = typeInfo.GenericTypeParameters
-                    .Select(x => Get(x, collectionFormat).Name)
-                    .Aggregate((x, y) => x + ", " + y);
-                result += $"<{genericTypeParameters}>";
-            }
-
-            if (typeInfo.IsCollection)
-            {
-                isPrimitive = false;
-                result = string.Format(collectionFormat ?? DefaultCollectionFormat, result);
             }
 
             return new ResolvedTypeInfo(result, isPrimitive, null);

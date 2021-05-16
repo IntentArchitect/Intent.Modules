@@ -7,6 +7,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Templates;
 
@@ -49,15 +50,17 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
     }
 
-    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge 
+    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings 
     {
         private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
+        private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
+        private List<string> _additionalUsingNamespaces = new List<string>();
 
         protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model)
             : base(templateId, outputTarget, model)
         {
             AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
-            Types = new CSharpTypeResolver(OutputTarget.GetProject());
+            Types = new CSharpTypeResolver(OutputTarget.GetProject(), new CollectionFormatter(x => $"{UseType("System.Collections.Generic.IEnumerable")}<{x}>"));
         }
 
         /// <summary>
@@ -97,6 +100,32 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
         }
 
+        /// <summary>
+        /// Adds the @namespace as a dependent <see cref="@namespace"/> and returns the <see cref="name"/>
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="namespace"></param>
+        /// <returns></returns>
+        public string UseType(string name, string @namespace)
+        {
+            _additionalUsingNamespaces.Add(@namespace);
+            return name;
+        }
+
+        /// <summary>
+        /// Adds the @namespace as a dependent <see cref="@namespace"/> and returns the <see cref="name"/>
+        /// </summary>
+        /// <param name="fullName"></param>
+        /// <returns></returns>
+        public string UseType(string fullName)
+        {
+            var elements = new List<string>(fullName.Split(".", StringSplitOptions.RemoveEmptyEntries));
+            var name = elements.Last();
+            elements.RemoveAt(elements.Count - 1);
+            _additionalUsingNamespaces.Add(string.Join(".", elements));
+            return name;
+        }
+
         public override string RunTemplate()
         {
             var templateOutput = base.RunTemplate();
@@ -111,7 +140,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
         public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            AddTypeSource(CSharpTypeSource.Create(ExecutionContext, templateId, collectionFormat));
+            AddTypeSource(ClassTypeSource.Create(ExecutionContext, templateId, new CollectionFormatter(collectionFormat)));
         }
 
         /// <summary>
@@ -368,7 +397,6 @@ namespace Intent.Modules.Common.CSharp.Templates
             _nugetDependencies.Add(nugetPackageInfo);
         }
 
-        private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
 
 
         public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
@@ -383,6 +411,11 @@ namespace Intent.Modules.Common.CSharp.Templates
         public void AddAssemblyReference(IAssemblyReference assemblyReference)
         {
             _assemblyDependencies.Add(assemblyReference);
+        }
+
+        public IEnumerable<string> DeclareUsings()
+        {
+            return _additionalUsingNamespaces;
         }
     }
 }

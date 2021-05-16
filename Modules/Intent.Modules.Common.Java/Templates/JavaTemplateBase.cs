@@ -8,6 +8,7 @@ using Intent.Engine;
 using Intent.Code.Weaving.Java.Editor;
 using Intent.Modules.Common.Java.TypeResolvers;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Java.Templates
@@ -56,6 +57,7 @@ namespace Intent.Modules.Common.Java.Templates
 
         protected JavaTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
+            Types = new JavaTypeResolver();
         }
 
         public string Package
@@ -94,7 +96,12 @@ namespace Intent.Modules.Common.Java.Templates
 
         public void AddTypeSource(string templateId, Func<string, string> formatCollection)
         {
-            AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, formatCollection));
+            AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, new CollectionFormatter(formatCollection)));
+        }
+
+        public void AddTypeSource(string templateId, ICollectionFormatter collectionFormatter)
+        {
+            AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormatter));
         }
 
         /// <summary>

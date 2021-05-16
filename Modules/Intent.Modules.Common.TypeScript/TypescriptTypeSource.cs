@@ -8,65 +8,26 @@ using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.TypeScript
 {
-    public class TypescriptTypeSource : ITypeSource
+    public class TypescriptTypeSource
     {
-        private readonly Func<TypescriptTypeSource, ITypeReference, IResolvedTypeInfo> _execute;
-        private readonly IList<ITemplateDependency> _templateDependencies = new List<ITemplateDependency>();
-
-        internal TypescriptTypeSource(Func<TypescriptTypeSource, ITypeReference, IResolvedTypeInfo> execute)
+        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId)
         {
-            _execute = execute;
+            return Create(context, templateId, (ICollectionFormatter)null);
         }
 
-        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat = "{0}[]")
+        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat)
         {
-            return new TypescriptTypeSource((_this, typeInfo) =>
-            {
-                var typeName = _this.GetTypeName(context, templateId, typeInfo, collectionFormat);
-
-                return typeName;
-            });
-        }
-        
-        public IResolvedTypeInfo GetType(ITypeReference typeInfo)
-        {
-            return _execute(this, typeInfo);
+            return Create(context, templateId, new CollectionFormatter(collectionFormat));
         }
 
-        public IEnumerable<ITemplateDependency> GetTemplateDependencies()
+        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, Func<string, string> collectionFormatter)
         {
-            return _templateDependencies;
+            return Create(context, templateId, new CollectionFormatter(collectionFormatter));
         }
 
-        private IClassProvider GetTemplateInstance(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo)
+        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, ICollectionFormatter collectionFormatter)
         {
-            var templateInstance = context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(templateId, typeInfo.Element));
-            if (templateInstance != null)
-            {
-                _templateDependencies.Add(TemplateDependency.OnModel(templateId, typeInfo.Element));
-            }
-
-            return templateInstance;
-        }
-
-        private IResolvedTypeInfo GetTypeName(ISoftwareFactoryExecutionContext context, string templateId, ITypeReference typeInfo, string collectionFormat)
-        {
-            var templateInstance = GetTemplateInstance(context, templateId, typeInfo);
-            if (templateInstance == null)
-            {
-                return null;
-            }
-            var name = (string.IsNullOrWhiteSpace(templateInstance.Namespace) ? "" : templateInstance.Namespace + ".") +
-                templateInstance.ClassName + (typeInfo.GenericTypeParameters.Any() 
-                    ? $"<{string.Join(", ", typeInfo.GenericTypeParameters.Select(x => GetTypeName(context, templateId, x, collectionFormat).Name))}>" 
-                    : "");
-
-            if (!string.IsNullOrWhiteSpace(name) && typeInfo.IsCollection)
-            {
-                name = string.Format(collectionFormat, name);
-            }
-
-            return new ResolvedTypeInfo(name, false, templateInstance);
+            return ClassTypeSource.Create(context, templateId, collectionFormatter);
         }
     }
 }

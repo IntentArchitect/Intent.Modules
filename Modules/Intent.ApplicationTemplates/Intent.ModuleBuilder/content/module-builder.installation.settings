@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <targetDesignerId>a1c3dd87-352e-4353-853b-c79853debecb</targetDesignerId>
+  <createPackages>
+    <package type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
+      <name>${application.name}</name>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="76256322-88f1-4efb-8bd6-7cc4a6c54cb9" name="Module Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="4bb9695b-6004-46e1-acea-c48c60c5f8ce" display="Version" value="1.0.0" isActive="true" />
+            <property name="a1a18442-64fd-49da-a2e3-8ef857affd31" display="Icon" isActive="true" />
+            <property name="177a2415-e749-46e7-8257-440e19ecfb5e" display="API Namespace" isActive="true" />
+            <property name="0d2ae582-090e-42d6-a7d6-689144433254" display="NuGet Package Id" isActive="true" />
+            <property name="27cf6544-a9a2-4992-9fef-51d0ed49e66e" display="NuGet Package Version" value="" isActive="true" />
+            <property name="d40394fc-ed23-45a0-9c56-cbcf1c928e47" display="Include in Module" value="false" isActive="true" />
+            <property name="27d378b6-9011-4ced-86b7-b976d690ceb7" display="Reference in Designer" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+    </package>
+  </createPackages>
+</settings>
