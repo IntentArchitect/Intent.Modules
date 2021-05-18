@@ -19,16 +19,19 @@
     </FileLog>
     <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.Metadata.WebApi/Intent.Metadata.WebApi.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Metadata.WebApi.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>9b26c297-0062-4303-b90a-752da4b75de6</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.Metadata.WebApi/Intent.Modules.Metadata.WebApi.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.Metadata.WebApi/README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>

@@ -4,6 +4,11 @@
         <name>Intent.Modules.Common</name>
     </assembly>
     <members>
+        <member name="T:Intent.Modules.Common.Configuration.HostingSettingsCreatedEvent">
+            <summary>
+            Subscribe to this event to be notified of hosting settings published by a Module in this application.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.StereotypeExtensions.GetStereotype(Intent.Metadata.Models.IHasStereotypes,System.String)">
             <summary>
             Lookup only one stereotype with a given name. If more than one is found with the same name, it fails.

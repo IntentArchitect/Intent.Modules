@@ -22,6 +22,17 @@ namespace Intent.Metadata.WebApi.Api
             return model.HasStereotype("Http Service Settings");
         }
 
+        public static Secured GetSecured(this ServiceModel model)
+        {
+            var stereotype = model.GetStereotype("Secured");
+            return stereotype != null ? new Secured(stereotype) : null;
+        }
+
+        public static bool HasSecured(this ServiceModel model)
+        {
+            return model.HasStereotype("Secured");
+        }
+
 
         public class HttpServiceSettings
         {
@@ -37,6 +48,24 @@ namespace Intent.Metadata.WebApi.Api
             public string Route()
             {
                 return _stereotype.GetProperty<string>("Route");
+            }
+
+        }
+
+        public class Secured
+        {
+            private IStereotype _stereotype;
+
+            public Secured(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Roles()
+            {
+                return _stereotype.GetProperty<string>("Roles");
             }
 
         }

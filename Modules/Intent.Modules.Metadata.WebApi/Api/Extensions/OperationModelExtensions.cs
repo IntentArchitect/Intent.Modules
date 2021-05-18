@@ -22,6 +22,28 @@ namespace Intent.Metadata.WebApi.Api
             return model.HasStereotype("Http Settings");
         }
 
+        public static Secured GetSecured(this OperationModel model)
+        {
+            var stereotype = model.GetStereotype("Secured");
+            return stereotype != null ? new Secured(stereotype) : null;
+        }
+
+        public static bool HasSecured(this OperationModel model)
+        {
+            return model.HasStereotype("Secured");
+        }
+
+        public static Unsecured GetUnsecured(this OperationModel model)
+        {
+            var stereotype = model.GetStereotype("Unsecured");
+            return stereotype != null ? new Unsecured(stereotype) : null;
+        }
+
+        public static bool HasUnsecured(this OperationModel model)
+        {
+            return model.HasStereotype("Unsecured");
+        }
+
 
         public class HttpSettings
         {
@@ -70,6 +92,37 @@ namespace Intent.Metadata.WebApi.Api
                     return Value == "DELETE";
                 }
             }
+
+        }
+
+        public class Secured
+        {
+            private IStereotype _stereotype;
+
+            public Secured(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Roles()
+            {
+                return _stereotype.GetProperty<string>("Roles");
+            }
+
+        }
+
+        public class Unsecured
+        {
+            private IStereotype _stereotype;
+
+            public Unsecured(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
 
         }
 
