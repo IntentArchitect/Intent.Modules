@@ -47,7 +47,7 @@ namespace Intent.Modules.Common.Templates
 
         public override string GetCorrelationId()
         {
-            return (Model as IMetadataModel)?.Id;
+            return $"{Id}{(Model as IMetadataModel)?.Id ?? ""}";
         }
 
         public override string ToString()
