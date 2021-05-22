@@ -27,7 +27,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, ICollectionFormatter collectionFormatter)
         {
-            return ClassTypeSource.Create(context, templateId, collectionFormatter);
+            return ClassTypeSource.Create(context, templateId).WithCollectionFormatter(collectionFormatter);
         }
     }
 }

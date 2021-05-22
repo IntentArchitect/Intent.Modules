@@ -58,6 +58,11 @@ namespace Intent.ModuleBuilder.Api
                 return new MapFromOptions(_stereotype.GetProperty<string>("Map From"));
             }
 
+            public bool AutoSyncTypeReferences()
+            {
+                return _stereotype.GetProperty<bool>("Auto-sync Type References");
+            }
+
             public class OptionSourceOptions
             {
                 public readonly string Value;

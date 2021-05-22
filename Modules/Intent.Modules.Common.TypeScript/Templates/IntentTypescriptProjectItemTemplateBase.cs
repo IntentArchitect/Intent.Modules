@@ -5,6 +5,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Templates
 {
+    [Obsolete("Use TypeScriptTemplateBase")]
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IClassProvider
     {
         public IntentTypescriptProjectItemTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
@@ -39,7 +40,8 @@ namespace Intent.Modules.Common.TypeScript.Templates
 
         public string Location => FileMetadata.LocationInProject;
 
-        public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
+        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
+        public new void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }

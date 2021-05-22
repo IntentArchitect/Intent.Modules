@@ -15,6 +15,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlElement("lookupElementFunction")]
         public string LookupElementFunction { get; set; }
 
+        [XmlElement("autoSyncTypeReferences")]
+        public bool? AutoSyncTypeReferences { get; set; }
+
         [XmlArray("targetTypeOptions")]
         [XmlArrayItem("option")]
         public List<TargetTypeOption> LookupTypes { get; set; }

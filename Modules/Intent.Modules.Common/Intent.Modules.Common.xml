@@ -124,6 +124,19 @@
             </summary>
             <param name="typeSource"></param>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)">
+            <summary>
+            Adds a Template source that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>
+            </summary>
+            <param name="templateId"></param>
+            <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String)">
+            <summary>
+            Adds a Template source that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>
+            </summary>
+            <param name="templateId"></param>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.NormalizeTypeName(System.String)">
             <summary>
             Override this to alter Type names after they have been found.
@@ -163,6 +176,14 @@
             <param name="options"></param>
             <returns></returns>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String)">
+            <summary>
+            Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+            Will return null if the template instance cannot be found.
+            </summary>
+            <param name="templateId"></param>
+            <returns></returns>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
             Resolves the type name of the Template with <paramref name="templateId"/> as a string.
@@ -174,6 +195,17 @@
             <param name="options"></param>
             <returns></returns>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,Intent.Metadata.Models.IMetadataModel)">
+            <summary>
+            Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+            This overload assumes that the Template can have many instances and identifies the target instance
+            based on which has the <paramref name="model"/>.
+            Will return null if a template instance cannot be found.
+            </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="model">The model instance that the Template must be bound to.</param>
+            <returns></returns>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
             Resolves the type name of the Template with <paramref name="templateId"/> as a string.
@@ -183,6 +215,17 @@
             <param name="templateId">The unique Template identifier.</param>
             <param name="modelId">The identifier of the model that the Template must be bound to.</param>
             <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,System.String)">
+            <summary>
+            Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+            This overload assumes that the Template can have many instances and identifies the target instance
+            based on which has the <paramref name="modelId"/>.
+            Will return null if a template instance cannot be found.
+            </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="modelId">The identifier of the model that the Template must be bound to.</param>
             <returns></returns>
         </member>
         <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.GenerationEnvironment">

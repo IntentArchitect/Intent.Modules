@@ -60,7 +60,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             : base(templateId, outputTarget, model)
         {
             AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
-            Types = new CSharpTypeResolver(OutputTarget.GetProject(), new CollectionFormatter(x => $"{UseType("System.Collections.Generic.IEnumerable")}<{x}>"));
+            Types = new CSharpTypeResolver(OutputTarget.GetProject(), new CollectionFormatter(x => $"{UseType("System.Collections.Generic.IEnumerable")}<{x.Name}>"));
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Adds the @namespace as a dependent <see cref="@namespace"/> and returns the <see cref="name"/>
+        /// Adds the namespace of the <see cref="fullName"/> as a dependent namespace and returns the normalized name />
         /// </summary>
         /// <param name="fullName"></param>
         /// <returns></returns>
@@ -123,7 +123,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             var name = elements.Last();
             elements.RemoveAt(elements.Count - 1);
             _additionalUsingNamespaces.Add(string.Join(".", elements));
-            return name;
+            return NormalizeNamespace(fullName);
         }
 
         public override string RunTemplate()
@@ -138,9 +138,10 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         /// <param name="templateId"></param>
         /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
-        public void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
+        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
+        public new void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            AddTypeSource(ClassTypeSource.Create(ExecutionContext, templateId, new CollectionFormatter(collectionFormat)));
+            AddTypeSource(ClassTypeSource.Create(ExecutionContext, templateId).WithCollectionFormatter(new CollectionFormatter(collectionFormat)));
         }
 
         /// <summary>

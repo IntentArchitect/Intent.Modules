@@ -71,6 +71,7 @@ namespace Intent.ModuleBuilder.Api
                 OptionsSource = GetOptionsSourceEnumValue(),
                 LookupElementFunction = this.GetMappingSettings().OptionSource().IsLookupElement()
                     ? this.GetMappingSettings().LookupElementFunction() : null,
+                AutoSyncTypeReferences = this.GetMappingSettings().AutoSyncTypeReferences(),
                 LookupTypes = this.GetMappingSettings().OptionSource().IsElementsOfType()
                     ? this.GetMappingSettings().LookupTypes().Select(x => new TargetTypeOption() { SpecializationType = x.Id, DisplayText = x.Name }).ToList() : null,
                 MapFrom = GetMapFromEnumValue(),

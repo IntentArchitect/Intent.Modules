@@ -79,5 +79,15 @@
       <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
+    <property id="02e7f455-ba13-4e99-ac6c-a46490980134">
+      <name>Auto-sync Type References</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

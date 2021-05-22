@@ -89,16 +89,19 @@ namespace Intent.Modules.Common.Java.Templates
         public string Location => FileMetadata.LocationInProject;
         public ICollection<JavaDependency> Dependencies { get; } = new List<JavaDependency>();
 
-        public void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
+        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
+        public new void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
         {
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
+        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
         public void AddTypeSource(string templateId, Func<string, string> formatCollection)
         {
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, new CollectionFormatter(formatCollection)));
         }
 
+        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
         public void AddTypeSource(string templateId, ICollectionFormatter collectionFormatter)
         {
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormatter));

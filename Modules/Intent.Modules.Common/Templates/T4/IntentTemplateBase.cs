@@ -165,14 +165,13 @@ namespace Intent.Modules.Common.Templates
         {
         }
 
-        private readonly ICollection<ITypeSource> _typeSources = new List<ITypeSource>();
 
         public void SetDefaultTypeCollectionFormat(string collectionFormat)
         {
             if (!HasTypeResolver())
             {
                 throw new Exception($"A {nameof(ITypeResolver)} has not been set for this Template at this time. Set {nameof(Types)} before calling this operation.");
-            } 
+            }
             Types.SetDefaultCollectionFormatter(new CollectionFormatter(collectionFormat));
         }
 
@@ -191,8 +190,29 @@ namespace Intent.Modules.Common.Templates
         /// <param name="typeSource"></param>
         public void AddTypeSource(ITypeSource typeSource)
         {
-            _typeSources.Add(typeSource);
             Types.AddTypeSource(typeSource);
+        }
+
+        /// <summary>
+        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// </summary>
+        /// <param name="templateId"></param>
+        /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
+        public ClassTypeSource AddTypeSource(string templateId, string collectionFormat)
+        {
+            return AddTypeSource(templateId)
+                .WithCollectionFormatter(new CollectionFormatter(collectionFormat));
+        }
+
+        /// <summary>
+        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// </summary>
+        /// <param name="templateId"></param>
+        public ClassTypeSource AddTypeSource(string templateId)
+        {
+            var typeSource = ClassTypeSource.Create(ExecutionContext, templateId);
+            AddTypeSource(typeSource);
+            return typeSource;
         }
 
         #region GetTypeName for TypeReference
@@ -287,6 +307,17 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// Will return null if the template instance cannot be found.
+        /// </summary>
+        /// <param name="templateId"></param>
+        /// <returns></returns>
+        public string TryGetTypeName(string templateId)
+        {
+            return GetTypeName(TemplateDependency.OnTemplate(templateId), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
+        }
+
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
         /// This overload assumes that the Template can have many instances and identifies the target instance
         /// based on which has the <paramref name="model"/>.
         /// </summary>
@@ -297,6 +328,20 @@ namespace Intent.Modules.Common.Templates
         public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnModel(templateId, model), options);
+        }
+
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="model"/>.
+        /// Will return null if a template instance cannot be found.
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="model">The model instance that the Template must be bound to.</param>
+        /// <returns></returns>
+        public string TryGetTypeName(string templateId, IMetadataModel model)
+        {
+            return GetTypeName(TemplateDependency.OnModel(templateId, model), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
         }
 
 
@@ -312,6 +357,20 @@ namespace Intent.Modules.Common.Templates
         public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);
+        }
+
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="modelId"/>.
+        /// Will return null if a template instance cannot be found.
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+        /// <returns></returns>
+        public string TryGetTypeName(string templateId, string modelId)
+        {
+            return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
         }
 
         #endregion

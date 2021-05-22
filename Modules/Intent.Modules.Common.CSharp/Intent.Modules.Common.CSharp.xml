@@ -91,7 +91,7 @@
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.UseType(System.String)">
             <summary>
-            Adds the @namespace as a dependent <see cref="!:@namespace"/> and returns the <see cref="!:name"/>
+            Adds the namespace of the <see cref="!:fullName"/> as a dependent namespace and returns the normalized name />
             </summary>
             <param name="fullName"></param>
             <returns></returns>
