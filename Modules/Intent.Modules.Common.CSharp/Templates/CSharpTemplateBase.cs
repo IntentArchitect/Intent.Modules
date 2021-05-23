@@ -193,7 +193,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         private IEnumerable<string> _templateUsings;
-        private IEnumerable<string> TemplateUsings => _templateUsings ?? (_templateUsings = GetUsingsFromContent(GenerationEnvironment.ToString()));
+        private IEnumerable<string> TemplateUsings => _templateUsings ?? (!string.IsNullOrWhiteSpace(GenerationEnvironment.ToString()) ? (_templateUsings = GetUsingsFromContent(GenerationEnvironment.ToString())) : new string[0]);
 
         private IEnumerable<string> _existingContentUsings;
         private IEnumerable<string> ExistingContentUsings
