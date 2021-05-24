@@ -65,16 +65,21 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
 
         private string TemplateBody()
         {
-            return @"
+            return $@"
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
-{
-    public class <#= ClassName #>
-    {
+{{
+    public {(IsForInterface() ? "interface" : "class")} <#= ClassName #>
+    {{
 
-    }
-}";
+    }}
+}}";
+        }
+
+        private bool IsForInterface()
+        {
+            return Model.Name.RemoveSuffix("Template").EndsWith("Interface");
         }
 
         private string GetBaseType()

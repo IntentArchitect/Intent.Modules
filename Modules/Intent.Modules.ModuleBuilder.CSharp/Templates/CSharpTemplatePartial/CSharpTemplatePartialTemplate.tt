@@ -38,7 +38,7 @@ namespace <#= Namespace #>
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.RemoveSuffix("Template") #>",
+                className: $"<#= GetClassName() #>",
                 @namespace: $"{this.GetNamespace()}",
                 relativeLocation: $"{this.GetFolderPath()}");
         }

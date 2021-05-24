@@ -93,5 +93,15 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         {
             return NormalizeNamespace(Model.GetModelName());
         }
+
+        private bool IsForInterface()
+        {
+            return Model.Name.RemoveSuffix("Template").EndsWith("Interface");
+        }
+
+        private string GetClassName()
+        {
+            return $"{(IsForInterface() ? "I" : "")}{(Model.IsFilePerModelTemplateRegistration() ? $"{{Model.Name}}" : Model.Name.RemoveSuffix("Template", "Interface"))}";
+        }
     }
 }
