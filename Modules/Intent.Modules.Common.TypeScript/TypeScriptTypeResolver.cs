@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 
@@ -20,7 +21,7 @@ namespace Intent.Modules.Common.TypeScript
     {
         protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
         {
-            throw new System.NotImplementedException();
+            return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
         }
 
         protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
