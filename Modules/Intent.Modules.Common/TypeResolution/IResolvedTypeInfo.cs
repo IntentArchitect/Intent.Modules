@@ -9,6 +9,7 @@ namespace Intent.Modules.Common.TypeResolution
     {
         string Name { get; }
         bool IsPrimitive { get; }
+        //bool IsSimpleType { get; } // TODO
         ITemplate Template { get; }
     }
 

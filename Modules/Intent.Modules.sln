@@ -74,6 +74,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Eventing", "Intent.Modules.Modelers.Eventing\Intent.Modules.Modelers.Eventing.csproj", "{556E7BCC-4E9B-45EE-8A05-6022C1084A2C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.TypeScript.Weaving.Decorators", "Intent.Modules.TypeScript.Weaving.Decorators\Intent.Modules.TypeScript.Weaving.Decorators.csproj", "{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -196,6 +198,10 @@ Global
 		{556E7BCC-4E9B-45EE-8A05-6022C1084A2C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{556E7BCC-4E9B-45EE-8A05-6022C1084A2C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{556E7BCC-4E9B-45EE-8A05-6022C1084A2C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -235,6 +241,7 @@ Global
 		{9B26C297-0062-4303-B90A-752DA4B75DE6} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
 		{DEC6FF7A-9304-4BBE-9DCC-B8B49B420D0F} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{556E7BCC-4E9B-45EE-8A05-6022C1084A2C} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
+		{68A6B5AA-3C9A-40F6-B191-6D46EA2F9D5F} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

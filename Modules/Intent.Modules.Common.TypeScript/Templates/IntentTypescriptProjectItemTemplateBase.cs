@@ -41,7 +41,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
         public string Location => FileMetadata.LocationInProject;
 
         [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
-        public new void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
+        public new void AddTypeSource(string templateId, string collectionFormat)
         {
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }

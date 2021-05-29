@@ -75,6 +75,16 @@ namespace Intent.Modules.Common.TypeScript.Templates
             Imports.Add(new TypeScriptImport(type, location));
         }
 
+        public string ImportType(string type, string location)
+        {
+            if (Imports.All(x => x.Type != type || x.Location != location))
+            {
+                Imports.Add(new TypeScriptImport(type, location));
+            }
+
+            return type;
+        }
+
         public TypeScriptFile GetTemplateFile()
         {
             try
