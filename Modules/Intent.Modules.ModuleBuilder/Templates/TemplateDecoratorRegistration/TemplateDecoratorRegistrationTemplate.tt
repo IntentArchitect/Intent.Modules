@@ -1,6 +1,5 @@
 <#@ template language="C#" inherits="CSharpTemplateBase<Intent.ModuleBuilder.Api.TemplateDecoratorModel>" #>
 <#@ assembly name="System.Core" #>
-<#@ import namespace="System.Collections.Generic" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="Intent.Modules.Common" #>
 <#@ import namespace="Intent.Modules.Common.Templates" #>
@@ -11,7 +10,7 @@ using System.ComponentModel;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace <#= Namespace #>
 {

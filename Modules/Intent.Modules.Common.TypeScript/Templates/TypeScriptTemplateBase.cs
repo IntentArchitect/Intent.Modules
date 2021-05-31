@@ -55,6 +55,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
         }
 
         public ICollection<TypeScriptImport> Imports = new List<TypeScriptImport>();
+        public ICollection<NpmPackageDependency> Dependencies { get; } = new List<NpmPackageDependency>();
 
         public override string RunTemplate()
         {
@@ -83,6 +84,24 @@ namespace Intent.Modules.Common.TypeScript.Templates
             }
 
             return type;
+        }
+
+        /// <summary>
+        /// Adds the <see cref="NpmPackageDependency"/> which can be use by Intent.Npm to import dependencies.
+        /// </summary>
+        /// <param name="dependency"></param>
+        public void AddDependency(NpmPackageDependency dependency)
+        {
+            Dependencies.Add(dependency);
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            base.BeforeTemplateExecution();
+            foreach (var dependency in Dependencies)
+            {
+                ExecutionContext.EventDispatcher.Publish(dependency);
+            }
         }
 
         public TypeScriptFile GetTemplateFile()
@@ -117,5 +136,19 @@ namespace Intent.Modules.Common.TypeScript.Templates
 
         public string Type { get; set; }
         public string Location { get; set; }
+    }
+
+    public class NpmPackageDependency
+    {
+        public NpmPackageDependency(string name, string version, bool isDevDependency = false)
+        {
+            Name = name;
+            Version = version;
+            IsDevDependency = isDevDependency;
+        }
+
+        public string Name { get; set; }
+        public string Version { get; set; }
+        public bool IsDevDependency { get; set; }
     }
 }
