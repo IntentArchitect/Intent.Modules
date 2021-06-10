@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9fe606d5-0e61-4c7d-b849-cf0d7a9e17ae" type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76">
+  <name>AutoBuild</name>
+  <display>AutoBuild</display>
+  <isAbstract>false</isAbstract>
+  <order>4</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</parentFolderId>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <stereotypes />
+  <childElements />
+</class>

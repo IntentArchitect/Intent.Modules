@@ -63,6 +63,11 @@
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
+      <ProjectId>e8fd8ba8-2ad8-4262-aedb-be0d806778f4</ProjectId>
+      <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/FactoryExtensions/AutoBuild.cs</SolutionRelativeFilePath>
+      <ProjectRelativeFilePath>AutoBuild.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <SolutionRelativeFilePath>../Intent.Modules.ApplicationTemplate.Builder/Intent.ApplicationTemplate.Builder.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ApplicationTemplate.Builder.imodspec</ProjectRelativeFilePath>

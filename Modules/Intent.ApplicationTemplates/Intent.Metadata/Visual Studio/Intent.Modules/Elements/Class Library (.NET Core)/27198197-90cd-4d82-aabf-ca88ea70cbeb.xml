@@ -61,5 +61,29 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="92305218-6ba0-4fbd-94a4-f77f62cd0860" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ApplicationTemplate.Builder.Templates.IatSpecFile</name>
+      <display>Intent.ApplicationTemplate.Builder.Templates.IatSpecFile</display>
+      <externalReference>Intent.ApplicationTemplate.Builder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>27198197-90cd-4d82-aabf-ca88ea70cbeb</parentFolderId>
+      <stereotypes />
+      <childElements />
+    </childElement>
+    <childElement id="5614294d-74f5-4777-929f-23212e4721f2" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ApplicationTemplate.Builder.Templates.InstallationSettingsFile</name>
+      <display>Intent.ApplicationTemplate.Builder.Templates.InstallationSettingsFile</display>
+      <externalReference>Intent.ApplicationTemplate.Builder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>27198197-90cd-4d82-aabf-ca88ea70cbeb</parentFolderId>
+      <stereotypes />
+      <childElements />
+    </childElement>
   </childElements>
 </class>

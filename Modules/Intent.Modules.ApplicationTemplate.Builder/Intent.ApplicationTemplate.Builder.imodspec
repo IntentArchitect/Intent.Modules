@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ApplicationTemplate.Builder</id>
-  <version>3.0.4</version>
+  <version>3.0.5</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Net.</summary>
   <description>A custom module for Intent.Modules.Net.</description>
@@ -28,5 +28,7 @@
     <install target="App Templates" src="Intent.Metadata/Module Builder/Intent.ApplicationTemplate.Builder/Intent.ApplicationTemplate.Builder.pkg.config" externalReference="002e9a7f-e5b7-4392-a60f-b60ae4e86262" />
     <install src="modelers/App Templates.designer.config" externalReference="22091d1e-a855-41af-ba7f-3f0b033c0fc3" />
   </metadata>
-  <factoryExtensions />
+  <factoryExtensions>
+    <factoryExtension id="Intent.ApplicationTemplate.Builder.AutoBuild" externalReference="9fe606d5-0e61-4c7d-b849-cf0d7a9e17ae" />
+  </factoryExtensions>
 </package>

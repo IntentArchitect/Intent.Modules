@@ -4,16 +4,16 @@
   <FileLogs>
     <FileLog>
       <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.ApplicationTemplates\Intent.ApplicationTemplateBuilder\metadata.iatspec</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.ApplicationTemplates/Intent.ApplicationTemplateBuilder/metadata.iatspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ApplicationTemplateBuilder/metadata.iatspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.ApplicationTemplates\Intent.ApplicationTemplates.csproj</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.ApplicationTemplates/Intent.ApplicationTemplates.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ApplicationTemplates.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
-      <SolutionRelativeFilePath>..\Intent.Modules.sln</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.sln</SolutionRelativeFilePath>
     </FileLog>
   </FileLogs>
 </outputLog>
