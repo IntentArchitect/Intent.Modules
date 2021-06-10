@@ -1,10 +1,9 @@
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
-using Intent.Templates;
-using System.Collections.Generic;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -20,6 +19,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public ApiPackageModelTemplate(IOutputTarget outputTarget, PackageSettingsModel model) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
         }
 
         protected override CSharpFileConfig DefineFileConfig()
@@ -29,12 +29,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
                 @namespace: $"{Model.ParentModule.ApiNamespace}");
         }
 
-        private string FormatForCollection(string name, bool asCollection)
+        private static string FormatForCollection(string name, bool asCollection)
         {
             return asCollection ? $"IList<{name}>" : name;
         }
 
-        private string GetCreationOptionName(ElementCreationOptionModel option)
+        private static string GetCreationOptionName(ElementCreationOptionModel option)
         {
             if (option.GetOptionSettings().ApiModelName() != null)
             {

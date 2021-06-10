@@ -2,6 +2,7 @@
 using System.Linq;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
@@ -15,6 +16,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
 
         public CustomTemplateRegistrationTemplate(IOutputTarget project, TemplateRegistrationModel model) : base(TemplateId, project, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
+
             if (!string.IsNullOrWhiteSpace(Model.GetModelType()?.ParentModule.NuGetPackageId))
             {
                 AddNugetDependency(new NugetPackageInfo(Model.GetModelType()?.ParentModule.NuGetPackageId, Model.GetModelType()?.ParentModule.NuGetPackageVersion));
