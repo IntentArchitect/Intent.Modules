@@ -1,17 +1,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
+using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
-using Intent.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Templates.IModSpec;
-using Intent.RoslynWeaver.Attributes;
-using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
 {
@@ -19,8 +15,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
     {
         public const string TemplateId = "Intent.ModuleBuilder.TemplateRegistration.FilePerModel";
 
-        public FilePerModelTemplateRegistrationTemplate(IProject project, TemplateRegistrationModel model) : base(TemplateId, project, model)
+        public FilePerModelTemplateRegistrationTemplate(IOutputTarget outputTarget, TemplateRegistrationModel model) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
+
             if (!string.IsNullOrWhiteSpace(Model.GetModelType()?.ParentModule.NuGetPackageId))
             {
                 AddNugetDependency(new NugetPackageInfo(Model.GetModelType()?.ParentModule.NuGetPackageId, Model.GetModelType()?.ParentModule.NuGetPackageVersion));
@@ -32,8 +30,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+
         public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+
         public string FolderPath => string.Join("/", OutputFolders);
+
         public string FolderNamespace => string.Join(".", OutputFolders);
 
         protected override CSharpFileConfig DefineFileConfig()
@@ -42,16 +43,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
                 className: $"{TemplateName}Registration",
                 @namespace: $"{OutputTarget.GetNamespace()}.{FolderNamespace}",
                 relativeLocation: $"{FolderPath}");
-        }
-
-        public override IEnumerable<INugetPackageInfo> GetNugetDependencies()
-        {
-            return new INugetPackageInfo[]
-            {
-                IntentNugetPackages.IntentModulesCommon
-            }
-            .Union(base.GetNugetDependencies())
-            .ToArray();
         }
 
         private string GetTemplateNameForTemplateId()

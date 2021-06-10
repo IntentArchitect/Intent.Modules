@@ -1,13 +1,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
-using Intent.Modules.Common;
-using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.Templates;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.RoslynWeaver.Attributes;
-using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -24,6 +22,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public ApiElementModelExtensionsTemplate(IOutputTarget outputTarget, ExtensionModel model = null) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
+
             foreach (var module in Model.StereotypeDefinitions
                 .SelectMany(x => x.TargetElements)
                 .Distinct()
@@ -47,39 +47,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public IEnumerable<string> DeclareUsings()
         {
             yield return Model.Type.ApiNamespace;
-        }
-    }
-
-    public class ExtensionModel
-    {
-        public IEnumerable<IStereotypeDefinition> StereotypeDefinitions { get; }
-        public ExtensionModelType Type { get; set; }
-
-        public ExtensionModel(ExtensionModelType type, IEnumerable<IStereotypeDefinition> stereotypeDefinitions)
-        {
-            StereotypeDefinitions = stereotypeDefinitions;
-            Type = type;
-        }
-
-        //public ElementSettingsModel Type { get; }
-
-        //public ExtensionModel(ElementSettingsModel element, IEnumerable<IStereotypeDefinition> stereotypeDefinitions)
-        //{
-        //    StereotypeDefinitions = stereotypeDefinitions;
-        //    Type = element;
-        //}
-    }
-
-    public class ExtensionModelType
-    {
-        private readonly IElement _element;
-        public string Name => _element.Name;
-        public string ApiNamespace => new IntentModuleModel(_element.Package).ApiNamespace;
-        public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
-
-        public ExtensionModelType(IElement element)
-        {
-            _element = element;
         }
     }
 }
