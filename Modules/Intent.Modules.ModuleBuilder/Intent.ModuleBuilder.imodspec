@@ -172,10 +172,10 @@
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common.Types" version="3.0.3" />
-    <dependency id="Intent.Common.CSharp" version="3.0.7" />
+    <dependency id="Intent.Common.Types" version="3.0.5" />
+    <dependency id="Intent.Common.CSharp" version="3.0.10" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.2" />
-    <dependency id="Intent.Common" version="3.0.4" />
+    <dependency id="Intent.Common" version="3.0.6" />
   </dependencies>
   <metadata>
     <install src="modelers/Module Builder.designer.config" externalReference="a1c3dd87-352e-4353-853b-c79853debecb" />

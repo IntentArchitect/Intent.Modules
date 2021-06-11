@@ -10,7 +10,7 @@
     <None Remove="Roslyn\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.7" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.10" />
     <PackageReference Include="Intent.Packager" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

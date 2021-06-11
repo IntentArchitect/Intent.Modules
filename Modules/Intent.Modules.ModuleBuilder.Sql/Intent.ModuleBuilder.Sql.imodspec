@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Sql</id>
-  <version>3.0.4</version>
+  <version>3.0.5</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Lightweight support for creating SQL templates.</summary>
   <description>Lightweight support for creating SQL templates.</description>
@@ -26,12 +26,11 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common.Sql" version="3.0.2" />
-    <dependency id="Intent.ModuleBuilder" version="3.0.6" />
+    <dependency id="Intent.ModuleBuilder" version="3.0.11" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.0" />
-    <dependency id="Intent.Common" version="3.0.4" />
+    <dependency id="Intent.Common" version="3.0.6" />
     <dependency id="Intent.Common.Types" version="3.0.3" />
-    <dependency id="Intent.Common.CSharp" version="3.0.7" />
+    <dependency id="Intent.Common.CSharp" version="3.0.10" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
