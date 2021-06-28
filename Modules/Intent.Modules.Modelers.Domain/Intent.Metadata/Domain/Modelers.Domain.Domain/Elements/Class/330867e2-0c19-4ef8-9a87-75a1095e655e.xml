@@ -167,6 +167,7 @@
       <mappedClass>
         <applicationId>b980295a-75ce-48ac-9ef8-0368f8a1a174</applicationId>
         <metadataId>6ab29b31-27af-4f56-a67c-986d82097d63</metadataId>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="330867e2-0c19-4ef8-9a87-75a1095e655e" name="NewClass1" type="element" specialization="Class" />
         </mappedPath>
@@ -195,6 +196,7 @@
           </typeReference>
           <isMapped>true</isMapped>
           <mappedClass>
+            <autoSyncTypeReference>true</autoSyncTypeReference>
             <mappedPath>
               <target id="304cc83d-7c82-42a1-a985-c68eb52498ce" name="firstAttr" type="element" specialization="Attribute" />
             </mappedPath>
@@ -224,6 +226,7 @@
           </typeReference>
           <isMapped>true</isMapped>
           <mappedClass>
+            <autoSyncTypeReference>true</autoSyncTypeReference>
             <mappedPath>
               <target id="6f48db24-d7fc-419c-8beb-f67b26121014" name="attribute" type="element" specialization="Attribute" />
             </mappedPath>

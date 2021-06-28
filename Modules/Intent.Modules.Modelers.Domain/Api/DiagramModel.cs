@@ -69,5 +69,7 @@ namespace Intent.Modelers.Domain.Api
         public const string SpecializationTypeId = "4d66fecd-e9b8-436f-aa50-c59040ad0879";
 
         public FolderModel Folder { get; }
+
+        public string Comment => _element.Comment;
     }
 }

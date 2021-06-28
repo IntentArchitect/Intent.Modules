@@ -73,5 +73,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
         public const string SpecializationTypeId = "c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b";
+
+        public string Comment => _element.Comment;
     }
 }

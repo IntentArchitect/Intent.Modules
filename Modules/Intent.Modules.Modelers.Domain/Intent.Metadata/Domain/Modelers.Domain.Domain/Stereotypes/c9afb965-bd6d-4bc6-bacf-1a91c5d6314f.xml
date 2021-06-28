@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="c9afb965-bd6d-4bc6-bacf-1a91c5d6314f">
+<stereotypeDefinition id="c9afb965-bd6d-4bc6-bacf-1a91c5d6314f" version="3.1.0">
   <name>Stereotype</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</element>
-  </targetElements>
+  <targetTypes>
+    <type id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>true</displayIcon>

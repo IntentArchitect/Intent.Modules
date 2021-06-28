@@ -66,5 +66,7 @@ namespace Intent.Modelers.Domain.Api
         public bool IsMapped => _element.IsMapped;
 
         public IElementMapping Mapping => _element.MappedElement;
+
+        public string Comment => _element.Comment;
     }
 }

@@ -62,6 +62,7 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_association != null ? _association.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "5de35973-3ac7-4e65-b48c-385605aec561";
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
@@ -131,6 +132,8 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class GeneralizationSourceEndModel : GeneralizationEndModel
     {
+        public const string SpecializationTypeId = "5de35973-3ac7-4e65-b48c-385605aec561";
+
         public GeneralizationSourceEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
         }
@@ -139,6 +142,8 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class GeneralizationTargetEndModel : GeneralizationEndModel
     {
+        public const string SpecializationTypeId = "5de35973-3ac7-4e65-b48c-385605aec561";
+
         public GeneralizationTargetEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
         }

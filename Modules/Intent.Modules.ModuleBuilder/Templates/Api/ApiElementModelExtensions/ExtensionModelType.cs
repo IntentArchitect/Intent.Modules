@@ -18,5 +18,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public string ApiNamespace => new IntentModuleModel(_element.Package).ApiNamespace;
 
         public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
+        public string Id => _element.Id;
     }
 }

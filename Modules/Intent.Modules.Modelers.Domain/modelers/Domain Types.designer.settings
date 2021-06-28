@@ -101,6 +101,7 @@ diagram.loadDiagram();
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -254,6 +255,7 @@ white-space: inherit;`</style>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -283,6 +285,7 @@ white-space: inherit;`</style>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>true</allowMapping>
           <allowSorting>true</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -305,6 +308,7 @@ white-space: inherit;`</style>
             <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
             <optionsSource>lookup-element</optionsSource>
             <lookupElementFunction>return getParent().id</lookupElementFunction>
+            <autoSyncTypeReferences>true</autoSyncTypeReferences>
             <mapFrom>root</mapFrom>
             <mappings>
               <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
@@ -351,6 +355,7 @@ white-space: inherit;`</style>
           <allowGenericTypes>true</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -393,6 +398,7 @@ white-space: inherit;`</style>
               <allowGenericTypes>true</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>true</allowSorting>
+              <sortChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>true</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -426,6 +432,7 @@ white-space: inherit;`</style>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -476,6 +483,7 @@ white-space: inherit;`</style>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />

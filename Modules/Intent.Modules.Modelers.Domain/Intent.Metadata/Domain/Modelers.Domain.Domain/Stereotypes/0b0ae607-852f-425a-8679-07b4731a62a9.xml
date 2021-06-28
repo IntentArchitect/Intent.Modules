@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="0b0ae607-852f-425a-8679-07b4731a62a9">
+<stereotypeDefinition id="0b0ae607-852f-425a-8679-07b4731a62a9" version="3.1.0">
   <name>StereotypeXX</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</element>
-    <element id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</element>
-    <element id="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">Association</element>
-  </targetElements>
+  <targetTypes>
+    <type id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</type>
+    <type id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</type>
+    <type id="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">Association</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>manually</applyMode>
   <icon type="CharacterBox" source="F|#FFF176" />
   <displayIcon>true</displayIcon>
