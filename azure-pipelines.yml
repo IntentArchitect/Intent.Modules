@@ -1,3 +1,7 @@
+# We let the build continue on failure to try publish NuGet packages if possible because if one of
+# the projects depends on a NuGet package in the same solution, which hasn't yet been built and
+# published, then it can't do the restore, which means it can't build the package to publish it to
+# fix the build.
 trigger:
   batch: true
   branches:
@@ -43,6 +47,7 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
+  condition: succeededOrFailed()
   env:
     DOTNET_NOLOGO: 1
   inputs:
@@ -61,7 +66,7 @@ steps:
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet pack'
-  condition: and(succeeded(), ne(variables['targetsToPack'], ''))
+  condition: and(succeededOrFailed(), ne(variables['targetsToPack'], ''))
   env:
     DOTNET_NOLOGO: '1'
   inputs:
@@ -71,7 +76,7 @@ steps:
 
 - task: NuGetCommand@2
   displayName: 'nuget push'
-  condition: and(succeeded(), ne(variables['targetsToPack'], ''))
+  condition: and(succeededOrFailed(), ne(variables['targetsToPack'], ''))
   inputs:
       command: 'push'
       feedsToUse: 'select'
