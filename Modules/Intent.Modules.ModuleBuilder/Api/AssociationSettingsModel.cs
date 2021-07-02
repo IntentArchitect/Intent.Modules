@@ -67,12 +67,12 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
-                Icon = this.SourceEnd.GetSettings().Icon().ToPersistable(),
                 SourceEnd = new AssociationEndSettingsPersistable
                 {
                     SpecializationTypeId = this.SourceEnd.Id,
                     SpecializationType = this.SourceEnd.Name,
                     DisplayFunction = this.SourceEnd.GetSettings().DisplayTextFunction(),
+                    Icon = this.SourceEnd.GetSettings().Icon().ToPersistable(),
                     TypeReferenceSetting = new TypeReferenceSettingPersistable()
                     {
                         TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
@@ -89,6 +89,7 @@ namespace Intent.ModuleBuilder.Api
                     SpecializationTypeId = this.TargetEnd.Id,
                     SpecializationType = this.TargetEnd.Name,
                     DisplayFunction = this.TargetEnd.GetSettings().DisplayTextFunction(),
+                    Icon = this.TargetEnd.GetSettings().Icon().ToPersistable(),
                     TypeReferenceSetting = new TypeReferenceSettingPersistable()
                     {
                         TargetTypes = this.TargetEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),

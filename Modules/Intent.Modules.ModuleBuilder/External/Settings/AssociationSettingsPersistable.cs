@@ -10,9 +10,6 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlAttribute("typeId")]
         public string SpecializationTypeId { get; set; }
 
-        [XmlElement("icon")]
-        public IconModelPersistable Icon { get; set; }
-
         [XmlElement("sourceEnd")]
         public AssociationEndSettingsPersistable SourceEnd { get; set; }
 
@@ -38,6 +35,9 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
         [XmlElement("displayFunction")]
         public string DisplayFunction { get; set; }
+
+        [XmlElement("icon")]
+        public IconModelPersistable Icon { get; set; }
 
         [XmlElement("typeReferenceSetting")]
         public TypeReferenceSettingPersistable TypeReferenceSetting { get; set; }
