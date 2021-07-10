@@ -101,7 +101,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Adds the @namespace as a dependent <see cref="@namespace"/> and returns the <see cref="name"/>
+        /// Add the using clause with the specified <paramref name="namespace"/> to this template's file.
+        /// </summary>
+        /// <param name="namespace"></param>
+        public void AddUsing(string @namespace)
+        {
+            _additionalUsingNamespaces.Add(@namespace);
+        }
+
+        /// <summary>
+        /// Adds the <paramref name="namespace"/> as a dependent using clause and returns the <paramref name="name"/>
         /// </summary>
         /// <param name="name"></param>
         /// <param name="namespace"></param>
@@ -113,7 +122,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Adds the namespace of the <see cref="fullName"/> as a dependent namespace and returns the normalized name />
+        /// Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name />
         /// </summary>
         /// <param name="fullName"></param>
         /// <returns></returns>
