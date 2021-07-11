@@ -31,5 +31,7 @@
     <application id="7f521a90-df6d-409e-b3a4-ff4dc8ef9c45" name="Intent.Modules.ModuleBuilder.AutoCompile" relativePath="Intent.Modules.ModuleBuilder.AutoCompile/Intent.Modules.ModuleBuilder.AutoCompile.application.config" />
     <application id="f7f12dd9-7193-4407-be08-2f7b7d232af3" name="Intent.Modules.Modelers.Eventing" relativePath="Intent.Modules.Modelers.Eventing/Intent.Modules.Modelers.Eventing.application.config" />
     <application id="7cd27b49-d1d3-4c20-85b8-5090b0805098" name="Intent.Modules.TypeScript.Weaving.Decorators" relativePath="Intent.Modules.TypeScript.Weaving.Decorators/Intent.Modules.TypeScript.Weaving.Decorators.application.config" />
+    <application id="57e2ba3f-25e6-4488-8cc8-5fb5573a7f8b" name="Intent.Common.Kotlin" relativePath="Intent.Common.Kotlin/Intent.Common.Kotlin.application.config" />
+    <application id="a951e417-89e5-4185-a5aa-730640fcebef" name="Intent.ModuleBuilder.Kotlin" relativePath="Intent.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.application.config" />
   </applications>
 </solution>

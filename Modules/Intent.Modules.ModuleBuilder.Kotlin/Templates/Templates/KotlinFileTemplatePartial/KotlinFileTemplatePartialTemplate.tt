@@ -1,0 +1,44 @@
+<#@ template language="C#" inherits="CSharpTemplateBase<Intent.ModuleBuilder.Kotlin.Api.KotlinFileTemplateModel>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
+<#@ import namespace="Intent.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+using System.Collections.Generic;
+using Intent.Engine;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Kotlin;
+using Intent.Modules.Common.Kotlin.Templates;
+using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
+<#= Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : "" #>
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+
+namespace <#= Namespace #>
+{
+	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class <#= ClassName #> : <#= GetBaseType() #>
+    {
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "<#= GetTemplateId() #>";
+
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
+        {
+        }
+
+        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        public override ITemplateFileConfig GetTemplateFileConfig()
+        {
+            return new KotlinFileConfig(
+                className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
+                package: $"{OutputTarget.GetPackage()}"
+            );
+        }
+
+    }
+}

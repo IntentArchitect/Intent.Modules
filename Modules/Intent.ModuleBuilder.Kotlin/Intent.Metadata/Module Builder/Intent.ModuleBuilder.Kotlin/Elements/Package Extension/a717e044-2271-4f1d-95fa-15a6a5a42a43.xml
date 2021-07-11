@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="a717e044-2271-4f1d-95fa-15a6a5a42a43" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Intent Module Extension</name>
+  <display>Intent Module Extension: Intent Module</display>
+  <isAbstract>false</isAbstract>
+  <order>2</order>
+  <genericTypes />
+  <typeReference id="f9be4474-323d-458e-a721-5a5e749a2419">
+    <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.ModuleBuilder</typePackageName>
+    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>05b4920c-1004-4605-a38d-eb82f562bc8e</parentFolderId>
+  <packageId>aab55a63-0390-4bad-8c8d-59ddad648524</packageId>
+  <packageName>Intent.ModuleBuilder.Kotlin</packageName>
+  <stereotypes />
+  <childElements>
+    <childElement id="6c5bce7c-e0e9-4a9e-b003-dcc38fca592c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <order>1</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>a717e044-2271-4f1d-95fa-15a6a5a42a43</parentFolderId>
+      <packageId>aab55a63-0390-4bad-8c8d-59ddad648524</packageId>
+      <packageName>Intent.ModuleBuilder.Kotlin</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="e0cbfaf9-bd17-4943-9d87-9d114a0cbb69" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Kotlin File</name>
+          <display>New Kotlin File: Kotlin File Template</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="2edf1824-609d-4913-af95-15b6576f27bb">
+            <typeId>fd5375d4-5380-4a04-b164-0617a8d64624</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder.Kotlin</typePackageName>
+            <typePackageId>aab55a63-0390-4bad-8c8d-59ddad648524</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>6c5bce7c-e0e9-4a9e-b003-dcc38fca592c</parentFolderId>
+          <packageId>aab55a63-0390-4bad-8c8d-59ddad648524</packageId>
+          <packageName>Intent.ModuleBuilder.Kotlin</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="2" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Intent.Modules.Common.Kotlin</name>
+    </assembly>
+    <members>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.AddDependency(Intent.Modules.Common.Kotlin.Templates.KotlinDependency)">
+            <summary>
+            Adds the <see cref="T:Intent.Modules.Common.Kotlin.Templates.KotlinDependency"/> which can be use by Maven or Gradle to import dependencies.
+            </summary>
+            <param name="dependency"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.ImportType(System.String)">
+            <summary>
+            imports the fully qualified type and returns its reference name. For example, java.util.List will import java.util.List and return List.
+            </summary>
+            <param name="fullyQualifiedType"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.AddImport(System.String)">
+            <summary>
+            Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
+            </summary>
+            <param name="fullyQualifiedType"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the type name of the <paramref name="templateDependency"/> as a string. Will automatically import types if necessary.
+            </summary>
+            <param name="templateDependency"></param>
+            <param name="options"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.DeclareImports">
+            <summary>
+            Override this method to add additional imports to this Kotlin template. It is recommended to call base.DeclareImports().
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

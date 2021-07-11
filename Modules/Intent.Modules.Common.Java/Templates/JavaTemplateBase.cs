@@ -123,17 +123,21 @@ namespace Intent.Modules.Common.Java.Templates
         /// <returns></returns>
         public string ImportType(string fullyQualifiedType)
         {
-            return ImportType(fullyQualifiedType.Split('.').Last(), fullyQualifiedType);
+            AddImport(fullyQualifiedType);
+
+            return fullyQualifiedType.Split('.').Last();
         }
 
-        private string ImportType(string typeName, string import)
+        /// <summary>
+        /// Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
+        /// </summary>
+        /// <param name="fullyQualifiedType"></param>
+        public void AddImport(string fullyQualifiedType)
         {
-            if (!_imports.Contains(import))
+            if (!_imports.Contains(fullyQualifiedType))
             {
-                _imports.Add(import);
+                _imports.Add(fullyQualifiedType);
             }
-
-            return typeName;
         }
 
         /// <summary>

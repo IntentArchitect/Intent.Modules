@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c0f01f6e-cf2a-4615-b84c-6c4a5bbc97b5" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <order>2</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>aab55a63-0390-4bad-8c8d-59ddad648524</parentFolderId>
+  <packageId>aab55a63-0390-4bad-8c8d-59ddad648524</packageId>
+  <packageName>Intent.ModuleBuilder.Kotlin</packageName>
+  <stereotypes />
+  <childElements />
+</class>
