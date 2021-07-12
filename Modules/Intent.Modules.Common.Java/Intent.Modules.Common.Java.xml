@@ -17,6 +17,12 @@
             <param name="fullyQualifiedType"></param>
             <returns></returns>
         </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddImport(System.String)">
+            <summary>
+            Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
+            </summary>
+            <param name="fullyQualifiedType"></param>
+        </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
             Resolves the type name of the <paramref name="templateDependency"/> as a string. Will automatically import types if necessary.

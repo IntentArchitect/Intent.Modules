@@ -1,3 +1,7 @@
+using Intent.Metadata.Models;
+using Intent.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
+
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
     public class TemplateRegistrationRequiredEvent
@@ -10,7 +14,22 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             Role = role;
             Location = location;
         }
+
+        public TemplateRegistrationRequiredEvent(IModuleBuilderTemplate template)
+        {
+            SourceTemplateId = template.Id;
+            ModelId = ((IMetadataModel) template.Model).Id;
+            ModelType = template.GetModelType();
+            TemplateId = template.GetTemplateId();
+            TemplateType = template.TemplateType();
+            Role = template.GetRole();
+            Location = ((TemplateRegistrationModel) template.Model).GetLocation();
+
+        }
+
+        public string SourceTemplateId { get; }
         public string ModelId { get; }
+        public string ModelType { get; }
         public string TemplateId { get; set; }
         public string TemplateType { get; set; }
         public string Role { get; }

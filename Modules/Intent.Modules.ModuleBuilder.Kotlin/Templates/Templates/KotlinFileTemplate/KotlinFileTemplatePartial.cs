@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
 
         private string TemplateBody()
         {
-            return @"package <#= Package #>;
+            return @"package <#= Package #>
 
 class <#= ClassName #>() {
 

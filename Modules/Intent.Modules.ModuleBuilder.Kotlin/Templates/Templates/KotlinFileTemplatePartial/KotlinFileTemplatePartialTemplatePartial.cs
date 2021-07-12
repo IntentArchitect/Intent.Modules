@@ -7,6 +7,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
+using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -15,8 +16,8 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemplatePartial
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class KotlinFileTemplatePartialTemplate : CSharpTemplateBase<KotlinFileTemplateModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    partial class KotlinFileTemplatePartialTemplate : CSharpTemplateBase<KotlinFileTemplateModel>, IModuleBuilderTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartial";
@@ -43,12 +44,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
-                modelId: Model.Id,
-                templateId: GetTemplateId(),
-                templateType: "Kotlin Template",
-                role: GetRole(),
-                location: Model.GetLocation()));
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Kotlin",
                 moduleVersion: "3.0.0"));
@@ -69,17 +65,22 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
             return $"KotlinTemplateBase<{Model.GetModelName()}>";
         }
 
+        public string TemplateType()
+        {
+            return "Kotlin Template";
+        }
+
         public string GetTemplateId()
         {
             return $"{Model.GetModule().Name}.{FolderNamespace}";
         }
 
-        private string GetRole()
+        public string GetRole()
         {
             return Model.GetRole();
         }
 
-        private string GetModelType()
+        public string GetModelType()
         {
             return Model.GetModelName();
         }

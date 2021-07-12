@@ -10,6 +10,7 @@ using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Java.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
+using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -18,8 +19,8 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class JavaFileTemplatePartialTemplate : CSharpTemplateBase<JavaFileTemplateModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
+    partial class JavaFileTemplatePartialTemplate : CSharpTemplateBase<JavaFileTemplateModel>, IModuleBuilderTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Java.Templates.JavaFileTemplatePartial";
@@ -46,12 +47,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
-                modelId: Model.Id,
-                templateId: GetTemplateId(),
-                templateType: "Java Template",
-                role: GetRole(),
-                location: Model.GetLocation()));
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Java",
                 moduleVersion: "3.0.5"));
@@ -63,16 +59,12 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             }
         }
 
-        private string GetBaseType()
+        public string TemplateType()
         {
-            if (Model.DecoratorContract != null)
-            {
-                return $"JavaTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
-            }
-            return $"JavaTemplateBase<{Model.GetModelName()}>";
+            return "Java Template";
         }
 
-        private string GetRole()
+        public string GetRole()
         {
             return Model.GetRole();
         }
@@ -82,10 +74,18 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             return $"{Model.GetModule().Name}.{FolderNamespace}";
         }
 
-        private string GetModelType()
+        public string GetModelType()
         {
             return Model.GetModelName();
         }
 
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"JavaTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"JavaTemplateBase<{Model.GetModelName()}>";
+        }
     }
 }

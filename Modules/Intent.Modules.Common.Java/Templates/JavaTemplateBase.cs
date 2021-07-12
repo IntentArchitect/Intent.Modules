@@ -90,7 +90,7 @@ namespace Intent.Modules.Common.Java.Templates
         public ICollection<JavaDependency> Dependencies { get; } = new List<JavaDependency>();
 
         [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
-        public new void AddTypeSource(string templateId, string collectionFormat = "{0}[]")
+        public new void AddTypeSource(string templateId, string collectionFormat)
         {
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }

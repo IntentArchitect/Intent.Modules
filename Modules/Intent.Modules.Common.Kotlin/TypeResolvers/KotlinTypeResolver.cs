@@ -38,6 +38,8 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
             return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
         }
 
+        
+
         protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
         {
             if (typeInfo.Element == null)
@@ -95,7 +97,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "int":
-                        result = $"Integer";
+                        result = $"Int";
                         isPrimitive = !typeInfo.IsNullable;
                         break;
                     case "long":
@@ -127,11 +129,6 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
                 result = !string.IsNullOrWhiteSpace(result)
                     ? result
                     : typeInfo.Element.Name;
-            }
-
-            if (typeInfo.IsNullable)
-            {
-                result += "?";
             }
 
             return new ResolvedTypeInfo(result, isPrimitive, null);

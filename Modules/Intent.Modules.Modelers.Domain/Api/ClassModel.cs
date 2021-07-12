@@ -17,7 +17,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
+    public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName
     {
         private IList<AssociationEndModel> _associatedElements;
         protected readonly IElement _element;
@@ -74,6 +74,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
         public FolderModel Folder { get; }
+        IFolder IHasFolder<IFolder>.Folder => Folder;
 
         [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
@@ -171,6 +172,5 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
         public const string SpecializationTypeId = "04e12b51-ed12-42a3-9667-a6aa81bb6d10";
-
     }
 }

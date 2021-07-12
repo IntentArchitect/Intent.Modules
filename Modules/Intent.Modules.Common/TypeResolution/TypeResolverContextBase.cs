@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.TypeResolution
 {
     public abstract class TypeResolverContextBase : ITypeResolverContext
     {
-        private readonly List<ITypeSource> _classTypeSources = new List<ITypeSource>();
+        private readonly List<ITypeSource> _typeSources = new List<ITypeSource>();
         private ICollectionFormatter _defaultCollectionFormatter;
 
         protected TypeResolverContextBase(ICollectionFormatter defaultCollectionFormatter)
@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         public void AddTypeSource(ITypeSource typeSource)
         {
-            _classTypeSources.Add(typeSource);
+            _typeSources.Add(typeSource);
         }
 
         public void SetCollectionFormatter(ICollectionFormatter formatter)
@@ -25,14 +25,14 @@ namespace Intent.Modules.Common.TypeResolution
             _defaultCollectionFormatter = formatter;
         }
 
-        public IEnumerable<ITypeSource> TypeSources => _classTypeSources;
+        public IEnumerable<ITypeSource> TypeSources => _typeSources;
 
         public IResolvedTypeInfo Get(ITypeReference typeInfo)
         {
             return Get(typeInfo, null);
         }
 
-        public IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+        public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
             if (typeInfo == null)
             {
@@ -41,7 +41,7 @@ namespace Intent.Modules.Common.TypeResolution
 
             ICollectionFormatter collectionFormatter = null;
             ResolvedTypeInfo type = null;
-            foreach (var classLookup in _classTypeSources)
+            foreach (var classLookup in _typeSources)
             {
                 var foundClass = classLookup.GetType(typeInfo);
                 if (foundClass != null)

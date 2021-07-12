@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Intent.Engine;
 using Intent.Code.Weaving.Kotlin.Editor;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.Kotlin.TypeResolvers;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
@@ -131,6 +132,18 @@ namespace Intent.Modules.Common.Kotlin.Templates
         public override string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
             return GetTemplate<IClassProvider>(templateDependency, options).ClassName;
+        }
+
+        // Overriding as no clear way to handle nullable types when are collections. If built into KotlinTypeResolver, then leads to List<String?> instead of List<String>?
+        public override string GetTypeName(ITypeReference typeReference, string collectionFormat)
+        {
+            return $"{base.GetTypeName(typeReference, collectionFormat)}{(typeReference.IsNullable ? "?" : "")}";
+        }
+
+        // Overriding as no clear way to handle nullable types when are collections. If built into KotlinTypeResolver, then leads to List<String?> instead of List<String>?
+        public override string GetTypeName(ITypeReference typeReference)
+        {
+            return $"{base.GetTypeName(typeReference)}{(typeReference.IsNullable ? "?" : "")}";
         }
 
         public override void BeforeTemplateExecution()

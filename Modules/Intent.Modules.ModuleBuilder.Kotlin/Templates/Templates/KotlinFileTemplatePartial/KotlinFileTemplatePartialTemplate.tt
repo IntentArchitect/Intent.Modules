@@ -36,7 +36,7 @@ namespace <#= Namespace #>
         {
             return new KotlinFileConfig(
                 className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                package: $"{OutputTarget.GetPackage()}"
+                package: $"{OutputTarget.GetPackageName()}"
             );
         }
 

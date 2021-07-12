@@ -4,71 +4,85 @@
   <FileLogs>
     <FileLog>
       <ProjectId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#8b6e4792-63ad-47f6-8aa2-78e9f74411bd</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Api/FolderExtensionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#b0785445-b91c-4198-ab06-8974fe97b42b</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Api/IntentModuleExtensionModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>0a230b08-c19a-4aa2-9c08-a904a945b5fc</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Api/JavaFileTemplateModel.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>JavaFileTemplateModel.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#NO-MODEL</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/ApiMetadataProviderExtensions.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Intent.ModuleBuilder.Java.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.Java.imodspec</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Intent.Modules.ModuleBuilder.Java.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Java.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>bdaa5db3-cdd5-4572-9680-07a7262dd842</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#f00bf9aa-2c87-45a2-932d-4b587198a092</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/modelers/Java Types.designer.settings</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Java Types.designer.settings</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/README.txt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#cdbb1d18-782b-4d46-9b3a-42c6114187ec</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Templates/JavaFileTemplate/JavaFileTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplate/JavaFileTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#cdbb1d18-782b-4d46-9b3a-42c6114187ec</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Templates/JavaFileTemplate/JavaFileTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplate/JavaFileTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#70e44e1f-2fd8-4c61-a7aa-d622a7c08eac</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#70e44e1f-2fd8-4c61-a7aa-d622a7c08eac</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.tt</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.tt</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#70e44e1f-2fd8-4c61-a7aa-d622a7c08eac</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplatePartial.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#70e44e1f-2fd8-4c61-a7aa-d622a7c08eac</CorrelationId>
       <SolutionRelativeFilePath>../Intent.Modules.ModuleBuilder.Java/Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplateRegistration.cs</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
     </FileLog>

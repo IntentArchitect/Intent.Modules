@@ -1,0 +1,23 @@
+<#@ template language="C#" inherits="CSharpTemplateBase<object>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.Templates" #>
+using Intent.Modules.Common.Templates;
+
+[assembly: DefaultIntentManaged(Mode.Merge)]
+
+namespace <#= Namespace #>
+{
+    public static class <#= ClassName #>
+    {
+<#  foreach(var template in Templates) { #>
+        public static string Get<#= ((IHasName)GetTemplate<ITemplateWithModel>(template.SourceTemplateId, template.ModelId).Model).Name #>Name<T>(this IntentTemplateBase<T> template) where T: <#= template.ModelType #>
+        {
+            return template.GetTypeName(<#= GetTypeName(template.SourceTemplateId, template.ModelId) #>.TemplateId, template.Model);
+        }
+
+<#  } #>
+    }
+}

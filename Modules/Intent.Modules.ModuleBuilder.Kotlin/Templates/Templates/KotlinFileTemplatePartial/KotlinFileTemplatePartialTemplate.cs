@@ -108,8 +108,8 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
             
             #line default
             #line hidden
-            this.Write("\",\r\n                package: $\"{OutputTarget.GetPackage()}\"\r\n            );\r\n    " +
-                    "    }\r\n\r\n    }\r\n}");
+            this.Write("\",\r\n                package: $\"{OutputTarget.GetPackageName()}\"\r\n            );\r\n" +
+                    "        }\r\n\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

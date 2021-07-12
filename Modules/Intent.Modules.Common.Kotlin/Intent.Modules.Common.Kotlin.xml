@@ -4,6 +4,53 @@
         <name>Intent.Modules.Common.Kotlin</name>
     </assembly>
     <members>
+        <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName``1(Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase{``0})">
+            <summary>
+            Returns the package name based on the <paramref name="template"/>'s Output Target and folder location within the designer.
+            Uses the 'kotlin' folder as the root for the package name.
+            </summary>
+            <param name="template"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName``1(Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase{``0},System.String)">
+            <summary>
+            Returns the package name based on the <paramref name="template"/>'s Output Target and folder location within the designer.
+            </summary>
+            <param name="template"></param>
+            <param name="rootFolder"></param>
+            <typeparam name="T"></typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName(Intent.Engine.IOutputTarget)">
+            <summary>
+            Returns the package name of the <paramref name="target"/>'s using the 'kotlin' folder as the root.
+            </summary>
+            <param name="target"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName(Intent.Engine.IOutputTarget,System.String)">
+            <summary>
+            Returns the package name of the <paramref name="target"/>'s using the <paramref name="rootFolder"/> folder as the root.
+            </summary>
+            <param name="target"></param>
+            <param name="rootFolder"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.ToKotlinPackage(System.String)">
+            <summary>
+            Escapes any invalid characters in the string for a Kotlin package name.
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.ToKotlinIdentifier(System.String)">
+            <summary>
+            Escapes any invalid characters in the string for a Kotlin identifier name (e.g. class, interface, etc.).
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
         <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.AddDependency(Intent.Modules.Common.Kotlin.Templates.KotlinDependency)">
             <summary>
             Adds the <see cref="T:Intent.Modules.Common.Kotlin.Templates.KotlinDependency"/> which can be use by Maven or Gradle to import dependencies.

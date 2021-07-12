@@ -54,11 +54,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ApiMetadataProviderExtensionsTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\TemplateExtensions\TemplateExtensionsTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>TemplateExtensionsTemplate.tt</DependentUpon>
-    </Compile>
     <None Update="Templates\Api\ApiElementModel\ApiElementModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiElementModelTemplate.cs</LastGenOutput>
@@ -210,6 +205,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -271,8 +271,8 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>SingleFileNoModelTemplateRegistrationTemplate.cs</LastGenOutput>
     </None>
-    <None Update="Templates\TemplateExtensions\TemplateExtensionsTemplate.tt">
-      <LastGenOutput>TemplateExtensionsTemplate.cs</LastGenOutput>
+    <None Update="Templates\TemplateExtensions\TemplateExtensionTemplate.tt">
+      <LastGenOutput>FilePerModelTemplateRegistrationTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
   </ItemGroup>
