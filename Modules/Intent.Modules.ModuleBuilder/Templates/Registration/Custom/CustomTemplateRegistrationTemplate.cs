@@ -51,8 +51,8 @@ namespace ");
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n   " +
-                    " public class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n" +
+                    "    public class ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
@@ -76,8 +76,8 @@ namespace ");
             #line default
             #line hidden
             this.Write(".TemplateId;\r\n\r\n        public void DoRegistration(ITemplateInstanceRegistry regi" +
-                    "stery, IApplication applicationManager)\r\n        {\r\n            registery.Regist" +
-                    "er(TemplateId, project => new ");
+                    "stry, IApplication applicationManager)\r\n        {\r\n            registry.Register" +
+                    "Template(TemplateId, project => new ");
             
             #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));

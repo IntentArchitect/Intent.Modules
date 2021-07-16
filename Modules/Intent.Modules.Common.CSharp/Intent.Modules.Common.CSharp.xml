@@ -50,6 +50,11 @@
             C# styling automatically formatted
             </summary>
         </member>
+        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.ApplyNamespaceFormatting">
+            <summary>
+            Whether or not to apply formatting (such as PascalCasing) to namespaces. 
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpOutputTargetExtensions.GetNamespace(Intent.Engine.IOutputTarget)">
             <summary>
             Returns a namespace string based on the full path from the <paramref name="target"/>. This will include folders and C# projects.

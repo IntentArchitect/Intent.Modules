@@ -76,11 +76,22 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             get
             {
-                if (FileMetadata.CustomMetadata.ContainsKey("Namespace"))
+                if (!FileMetadata.CustomMetadata.TryGetValue("Namespace", out var @namespace))
                 {
-                    return FileMetadata.CustomMetadata["Namespace"].ToCSharpNamespace();
+                    @namespace = OutputTarget.Name;
                 }
-                return this.OutputTarget.Name.ToCSharpNamespace();
+
+                // Deliberately assume formatting wanted if not specified
+                if (!FileMetadata.CustomMetadata.TryGetValue(
+                        key: nameof(CSharpFileConfig.ApplyNamespaceFormatting),
+                        value: out var value) ||
+                    bool.TryParse(value, out var parsedBool) &&
+                    parsedBool)
+                {
+                    @namespace = @namespace.ToCSharpNamespace();
+                }
+
+                return @namespace;
             }
         }
 

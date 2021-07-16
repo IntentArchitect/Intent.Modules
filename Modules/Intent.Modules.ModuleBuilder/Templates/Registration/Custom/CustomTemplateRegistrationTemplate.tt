@@ -21,7 +21,7 @@ using Intent.Templates;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class <#= ClassName #> : ITemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
@@ -33,9 +33,9 @@ namespace <#= Namespace #>
 
         public string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
-        public void DoRegistration(ITemplateInstanceRegistry registery, IApplication applicationManager)
+        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
         {
-            registery.Register(TemplateId, project => new <#= GetTemplateNameForTemplateId() #>(project, null));
+            registry.RegisterTemplate(TemplateId, project => new <#= GetTemplateNameForTemplateId() #>(project, null));
         }
     }
 }

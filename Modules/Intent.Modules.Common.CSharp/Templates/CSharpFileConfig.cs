@@ -36,6 +36,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
 
             AutoFormat = true;
+            ApplyNamespaceFormatting = true;
         }
 
         /// <summary>
@@ -53,6 +54,20 @@ namespace Intent.Modules.Common.CSharp.Templates
             {
                 CustomMetadata["AutoFormat"] = value.ToString();
             }
+        }
+
+        /// <summary>
+        /// Whether or not to apply formatting (such as PascalCasing) to namespaces. 
+        /// </summary>
+        public bool ApplyNamespaceFormatting
+        {
+            get
+            {
+                var val = CustomMetadata[nameof(ApplyNamespaceFormatting)];
+                if (string.IsNullOrEmpty(val)) { return false; }
+                return bool.Parse(val);
+            }
+            set => CustomMetadata[nameof(ApplyNamespaceFormatting)] = value.ToString();
         }
     }
 }
