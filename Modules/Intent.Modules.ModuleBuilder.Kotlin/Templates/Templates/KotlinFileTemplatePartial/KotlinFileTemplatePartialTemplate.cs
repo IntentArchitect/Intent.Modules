@@ -32,33 +32,38 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System.Collections.Generic;\r\nusing Intent.Engine;\r\nusing Intent.Modules.Com" +
-                    "mon.Templates;\r\nusing Intent.Modules.Common.Kotlin;\r\nusing Intent.Modules.Common" +
-                    ".Kotlin.Templates;\r\nusing Intent.RoslynWeaver.Attributes;\r\nusing Intent.Template" +
-                    "s;\r\n");
+            this.Write(@"using System.Collections.Generic;
+using Intent.Engine;
+using Intent.Modules.Common;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Kotlin;
+using Intent.Modules.Common.Kotlin.Templates;
+using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
+");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : ""));
             
             #line default
             #line hidden
             this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseType()));
             
             #line default
@@ -66,7 +71,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
             this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templat" +
                     "eId = \"");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
@@ -74,21 +79,21 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
             this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n        public" +
                     " ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IOutputTarget outputTarget, ");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
             this.Write(" model");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() == null ? " = null" : ""));
             
             #line default
@@ -103,13 +108,13 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
             return new KotlinFileConfig(
                 className: $""");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Kotlin\Templates\Templates\KotlinFileTemplatePartial\KotlinFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
-            this.Write("\",\r\n                package: $\"{OutputTarget.GetPackageName()}\"\r\n            );\r\n" +
-                    "        }\r\n\r\n    }\r\n}");
+            this.Write("\",\r\n                package: this.GetPackageName(),\r\n                relativeLoca" +
+                    "tion: this.GetFolderPath()\r\n            );\r\n        }\r\n\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

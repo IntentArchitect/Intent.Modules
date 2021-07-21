@@ -20,7 +20,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
 
         public override string TemplateId => TemplateExtensionsTemplate.TemplateId;
 
-
         public override ITemplate CreateTemplateInstance(IOutputTarget project)
         {
             return new TemplateExtensionsTemplate(project);

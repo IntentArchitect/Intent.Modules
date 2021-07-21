@@ -146,11 +146,19 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
         /// </summary>
         /// <param name="templateId"></param>
+        public ClassTypeSource AddTypeSource(string templateId)
+        {
+            return base.AddTypeSource(templateId);
+        }
+
+        /// <summary>
+        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// </summary>
+        /// <param name="templateId"></param>
         /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
-        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
         public new void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            AddTypeSource(ClassTypeSource.Create(ExecutionContext, templateId).WithCollectionFormatter(new CollectionFormatter(collectionFormat)));
+            AddTypeSource(ClassTypeSource.Create(ExecutionContext, templateId).WithCollectionFormat(collectionFormat));
         }
 
         /// <summary>

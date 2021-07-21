@@ -4,20 +4,33 @@
 <#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.Templates" #>
+<#@ import namespace="Intent.ModuleBuilder.Api" #>
 using Intent.Modules.Common.Templates;
+using System.Collections.Generic;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
     public static class <#= ClassName #>
     {
-<#  foreach(var template in Templates) { #>
-        public static string Get<#= ((IHasName)GetTemplate<ITemplateWithModel>(template.SourceTemplateId, template.ModelId).Model).Name #>Name<T>(this IntentTemplateBase<T> template) where T: <#= template.ModelType #>
+<#  foreach(var template in Templates)
+    {
+        var templateModel = ((TemplateRegistrationModel) template.Model); #>
+<#      if (templateModel.IsSingleFileTemplateRegistration()) { #>
+        public static string Get<#= templateModel.Name #>Name<T>(this IntentTemplateBase<T> template)
         {
-            return template.GetTypeName(<#= GetTypeName(template.SourceTemplateId, template.ModelId) #>.TemplateId, template.Model);
+            return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId);
         }
 
+<#      } #>
+<#      else { #>
+        public static string Get<#= templateModel.Name #>Name<T>(this IntentTemplateBase<T> template) where T: <#= template.GetModelType() #>
+        {
+            return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId, template.Model);
+        }
+
+<#      } #>
 <#  } #>
     }
 }

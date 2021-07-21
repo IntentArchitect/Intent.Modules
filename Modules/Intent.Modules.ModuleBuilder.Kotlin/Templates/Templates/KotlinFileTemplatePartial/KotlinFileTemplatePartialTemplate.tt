@@ -9,6 +9,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 using System.Collections.Generic;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Kotlin;
 using Intent.Modules.Common.Kotlin.Templates;
@@ -36,7 +37,8 @@ namespace <#= Namespace #>
         {
             return new KotlinFileConfig(
                 className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                package: $"{OutputTarget.GetPackageName()}"
+                package: this.GetPackageName(),
+                relativeLocation: this.GetFolderPath()
             );
         }
 

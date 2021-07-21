@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
     partial class TemplateExtensionsTemplate : CSharpTemplateBase<object>, IDeclareUsings
     {
         //protected List<IModuleBuilderTemplate> Templates = new List<IModuleBuilderTemplate>();
-        protected List<TemplateRegistrationRequiredEvent> Templates = new List<TemplateRegistrationRequiredEvent>();
+        protected List<IModuleBuilderTemplate> Templates = new List<IModuleBuilderTemplate>();
 
         public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateExtensions";
 
@@ -43,7 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
                 //}
                 if (@event.SourceTemplateId != null)
                 {
-                    Templates.Add(@event);
+                    Templates.Add(this.GetTemplate<IModuleBuilderTemplate>(@event.SourceTemplateId, @event.ModelId));
                 }
             });
         }

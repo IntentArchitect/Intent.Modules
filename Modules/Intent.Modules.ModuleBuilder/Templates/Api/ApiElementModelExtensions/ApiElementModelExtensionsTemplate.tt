@@ -92,10 +92,24 @@ namespace <#= Namespace #>
                 } #>
 <#              break;
             case StereotypePropertyControlType.MultiSelect:#>
+<#              switch (property.OptionsSource) {
+                    case StereotypePropertyOptionsSource.LookupElement:
+                    case StereotypePropertyOptionsSource.LookupChildren:
+                    case StereotypePropertyOptionsSource.NestedLookup:#>
             public IElement[] <#= property.Name.ToCSharpIdentifier() #>() {
                 return _stereotype.GetProperty<IElement[]>("<#= property.Name #>");
             }
 
+<#                      break;
+                case StereotypePropertyOptionsSource.Options:#>
+            public <#= property.Name.ToCSharpIdentifier() #>Options[] <#= property.Name.ToCSharpIdentifier() #>() {
+                return _stereotype.GetProperty<string[]>("<#= property.Name #>")?.Select(x => new <#= property.Name.ToCSharpIdentifier() #>Options(x)).ToArray() ?? new <#= property.Name.ToCSharpIdentifier() #>Options[0];
+            }
+
+<#                      break;
+                    default:
+                        throw new ArgumentOutOfRangeException(property.OptionsSource.ToString());
+                } #>
 <#              break;
             case StereotypePropertyControlType.Icon:#>
             public IIconModel <#= property.Name.ToCSharpIdentifier() #>() {

@@ -5,14 +5,14 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.CSharp.Api;
-using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
+using CodeGenType = Intent.Modules.Common.CodeGenType;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]

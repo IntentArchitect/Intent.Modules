@@ -13,6 +13,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
     using Intent.Modules.Common.CSharp.Templates;
     using Intent.Metadata.Models;
     using Intent.Templates;
+    using Intent.ModuleBuilder.Api;
     using System;
     
     /// <summary>
@@ -30,52 +31,94 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
         public override string TransformText()
         {
             this.Write("\n");
-            this.Write("using Intent.Modules.Common.Templates;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Me" +
-                    "rge)]\r\n\r\nnamespace ");
+            this.Write("using Intent.Modules.Common.Templates;\r\nusing System.Collections.Generic;\r\n\r\n[ass" +
+                    "embly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 10 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public static class ");
             
-            #line 12 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n");
             
-            #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-  foreach(var template in Templates) { 
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+  foreach(var template in Templates)
+    {
+        var templateModel = ((TemplateRegistrationModel) template.Model); 
+            
+            #line default
+            #line hidden
+            
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+      if (templateModel.IsSingleFileTemplateRegistration()) { 
             
             #line default
             #line hidden
             this.Write("        public static string Get");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(((IHasName)GetTemplate<ITemplateWithModel>(template.SourceTemplateId, template.ModelId).Model).Name));
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateModel.Name));
+            
+            #line default
+            #line hidden
+            this.Write("Name<T>(this IntentTemplateBase<T> template)\r\n        {\r\n            return templ" +
+                    "ate.GetTypeName(");
+            
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(template.Id, templateModel)));
+            
+            #line default
+            #line hidden
+            this.Write(".TemplateId);\r\n        }\r\n\r\n");
+            
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+      } 
+            
+            #line default
+            #line hidden
+            
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+      else { 
+            
+            #line default
+            #line hidden
+            this.Write("        public static string Get");
+            
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateModel.Name));
             
             #line default
             #line hidden
             this.Write("Name<T>(this IntentTemplateBase<T> template) where T: ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(template.ModelType));
+            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(template.GetModelType()));
             
             #line default
             #line hidden
             this.Write("\r\n        {\r\n            return template.GetTypeName(");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(template.SourceTemplateId, template.ModelId)));
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(template.Id, templateModel)));
             
             #line default
             #line hidden
             this.Write(".TemplateId, template.Model);\r\n        }\r\n\r\n");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+      } 
+            
+            #line default
+            #line hidden
+            
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
   } 
             
             #line default

@@ -40,6 +40,11 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
 
         protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
         {
+            if (typeInfo.Element == null)
+            {
+                return new ResolvedTypeInfo("void", false, null);
+            }
+
             var result = typeInfo.Element.Name;
             var isPrimitive = true;
             if (typeInfo.Element.Stereotypes.Any(x => x.Name == "C#"))

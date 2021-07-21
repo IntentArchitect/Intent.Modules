@@ -27,7 +27,7 @@ namespace Intent.Modules.Common.Kotlin.Templates
 
         public static string[] ResolveAllImports<T>(this KotlinTemplateBase<T> template, params string[] importsToIgnore)
         {
-            var usings = template
+            var imports = template
                 .GetAllTemplateDependencies()
                 .SelectMany(template.ExecutionContext.FindTemplateInstances<ITemplate>)
                 .Where(ti => ti is IClassProvider)
@@ -40,19 +40,19 @@ namespace Intent.Modules.Common.Kotlin.Templates
                 .Distinct()
                 .ToArray();
 
-            foreach (var @using in usings.Where(x => x != FixImport(x)))
+            foreach (var @using in imports.Where(x => x != FixImport(x)))
             {
                 Logging.Log.Warning($"When resolving imports for Template Id [{template.Id}] file [{template.GetMetadata().FileName}], " +
                                     $"an import arrived with with the format [{@using}], but should have been in the format " +
                                     $"[{FixImport(@using)}]. The module and/or decorator author should update this module.");
             }
 
-            usings = usings
-                .Select(x => $"import {FixImport(x)};")
+            imports = imports
+                .Select(x => $"import {FixImport(x)}")
                 .Distinct()
                 .ToArray();
 
-            return usings;
+            return imports;
             //return usings.Any()
             //    ? usings.Aggregate((x, y) => x + Environment.NewLine + y)
             //    : string.Empty;

@@ -9,6 +9,7 @@ using Intent.Modules.Common.VisualStudio;
 using Intent.ModuleBuilder.CSharp.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
+using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -18,7 +19,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 {
     [IntentManaged(Mode.Merge)]
-    partial class CSharpTemplatePartialTemplate : CSharpTemplateBase<CSharpTemplateModel>
+    partial class CSharpTemplatePartialTemplate : CSharpTemplateBase<CSharpTemplateModel>, IModuleBuilderTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial";
@@ -46,12 +47,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
-                modelId: Model.Id,
-                templateId: GetTemplateId(),
-                templateType: "C# Template",
-                role: GetRole(),
-                location: Model.GetLocation()));
+            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
 
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.CSharp",
@@ -68,6 +64,21 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }
+        }
+
+        string IModuleBuilderTemplate.GetModelType()
+        {
+            return Model.GetModelName();
+        }
+
+        string IModuleBuilderTemplate.GetRole()
+        {
+            return GetRole();
+        }
+
+        public string TemplateType()
+        {
+            return "C# Template";
         }
 
         private string GetRole()
