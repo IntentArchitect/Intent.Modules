@@ -13,6 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.Sql.Api;
 using Intent.Modules.Common.CSharp.Templates;
+using TemplateExtensions = Intent.Modules.Common.Templates.TemplateExtensions;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -39,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{TemplateName}",
-                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
+                relativeLocation: $"{Common.ModelHasFolderTemplateExtensions.GetFolderPath(this, additionalFolders: Model.Name)}",
                 fileExtension: "tt");
         }
 
