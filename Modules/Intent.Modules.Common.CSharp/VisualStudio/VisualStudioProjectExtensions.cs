@@ -62,7 +62,8 @@ namespace Intent.Modules.Common.VisualStudio
                     VisualStudioProjectTypeIds.NodeJsConsoleApplication,
                     VisualStudioProjectTypeIds.CoreWebApp,
                     VisualStudioProjectTypeIds.CoreCSharpLibrary,
-                    VisualStudioProjectTypeIds.SQLServerDatabaseProject
+                    VisualStudioProjectTypeIds.SQLServerDatabaseProject,
+                    VisualStudioProjectTypeIds.AzureFunctionsProject
             }.Contains(outputTarget.Type);
         }
 

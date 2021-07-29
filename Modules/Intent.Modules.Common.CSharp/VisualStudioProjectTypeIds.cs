@@ -10,5 +10,6 @@
         public const string CoreWebApp = "FFD54A85-9362-48AC-B646-C93AB9AC63D2";
         public const string CoreCSharpLibrary = "52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE";
         public const string SQLServerDatabaseProject = "00D1A9C2-B5F0-4AF3-8072-F6C62B433612";
+        public const string AzureFunctionsProject = "73e51385-5e20-4e2c-aa0b-6eb2dc8de52e";
     }
 }
