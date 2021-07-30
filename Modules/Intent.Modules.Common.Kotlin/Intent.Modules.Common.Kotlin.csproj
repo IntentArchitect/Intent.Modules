@@ -33,7 +33,7 @@
     <PackageReference Include="Intent.Modules.Common" Version="3.0.6" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.6" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
-    <PackageReference Include="Intent.Code.Weaving.Kotlin" Version="1.0.1">
+    <PackageReference Include="Intent.Code.Weaving.Kotlin" Version="1.0.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
