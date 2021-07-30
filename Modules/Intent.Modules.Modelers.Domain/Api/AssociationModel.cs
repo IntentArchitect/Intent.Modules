@@ -122,11 +122,6 @@ namespace Intent.Modelers.Domain.Api
             return this.Equals(_association.SourceEnd) ? (AssociationEndModel)_association.TargetEnd : (AssociationEndModel)_association.SourceEnd;
         }
 
-        //IAssociationEnd IAssociationEnd.OtherEnd()
-        //{
-        //    return this.Equals(_association.SourceEnd) ? (IAssociationEnd)_association.TargetEnd : (IAssociationEnd)_association.SourceEnd;
-        //}
-
         public bool IsTargetEnd()
         {
             return _associationEnd.IsTargetEnd();

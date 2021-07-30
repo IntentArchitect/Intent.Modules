@@ -19,51 +19,21 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName
     {
+        public const string SpecializationType = "Class";
+        public const string SpecializationTypeId = "04e12b51-ed12-42a3-9667-a6aa81bb6d10";
+
         private IList<AssociationEndModel> _associatedElements;
         protected readonly IElement _element;
-        private readonly ICollection<ClassModel> _childClasses = new List<ClassModel>();
-        private readonly ClassModel _parent;
 
         [IntentManaged(Mode.Ignore)]
         public ClassModel(IElement element, string requiredType = SpecializationType)
         {
-            //if (classCache == null)
-            //{
-            //    classCache = new Dictionary<string, ClassModel>();
-            //}
             _element = element;
-            //classCache.Add(_element.UniqueKey(), this);
             Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
-
-            //var generalizedFrom = _element.AssociatedElements
-            //    .Where(x => "Generalization".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase) &&
-            //                x.Association.SourceEnd.Element.Id == _element.Id)
-            //    .ToArray();
-            //if (generalizedFrom.Length > 1)
-            //{
-            //    throw new Exception($"[{_element.Name} - {_element.Id}] is generalized from more than one class.");
-            //}
-
-            //var parent = this.Generalizations().SingleOrDefault()?.Element;
-            //if (parent != null)
-            //{
-            //    _parent = classCache.ContainsKey(parent.UniqueKey()) ? classCache[parent.UniqueKey()] : new ClassModel(parent, classCache);
-            //    _parent._childClasses.Add(this);
-            //}
 
             _associatedElements = this.AssociatedToClasses().Cast<AssociationEndModel>()
                 .Concat(this.AssociatedFromClasses().Where(x => x.Element.Id != Id))
                 .ToList();
-            //_associatedElements = element.AssociatedElements
-            //    .Where(x => "Composition".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase)
-            //    || "Aggregation".Equals(x.Association.SpecializationType, StringComparison.OrdinalIgnoreCase))
-            //    .Where(end => !(end.Association.TargetEnd.Element.Equals(end.Association.SourceEnd.Element) && end == end.Association.SourceEnd))
-            //    .Select(x =>
-            //    {
-            //        var association = new Association(x.Association, classCache);
-            //        return Equals(association.TargetEnd.Class, this) && !association.IsSelfReference() ? association.SourceEnd : association.TargetEnd;
-            //    })
-            //    .ToList();
         }
 
         public string UniqueKey => $"{_element.Application.Id}_{Id}";
@@ -160,9 +130,6 @@ namespace Intent.Modelers.Domain.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-
-        public const string SpecializationType = "Class";
-
         [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
@@ -171,6 +138,5 @@ namespace Intent.Modelers.Domain.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
-        public const string SpecializationTypeId = "04e12b51-ed12-42a3-9667-a6aa81bb6d10";
     }
 }
