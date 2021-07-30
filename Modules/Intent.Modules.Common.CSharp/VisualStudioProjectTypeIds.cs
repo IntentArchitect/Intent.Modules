@@ -7,9 +7,15 @@
         public const string WcfApplication = "3CDFF513-03D8-4BAB-9435-160108A086A3";
         public const string ConsoleAppNetFramework = "673AAE96-C9B1-4B7E-9A52-ADE5F9218CFC";
         public const string NodeJsConsoleApplication = "CC13FD07-C783-4B0D-A641-4A861A22F087";
+        public const string SQLServerDatabaseProject = "00D1A9C2-B5F0-4AF3-8072-F6C62B433612";
+
+        // The above GUIDs are specific project type GUIDs that Visual Studio understands for
+        // old-school non-SDK style .csproj files as per the following:
+        // https://github.com/VISTALL/visual-studio-project-type-guids
+
+        // The GUIDs below are random as SDK style .csproj files don't use project type GUIDs:
         public const string CoreWebApp = "FFD54A85-9362-48AC-B646-C93AB9AC63D2";
         public const string CoreCSharpLibrary = "52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE";
-        public const string SQLServerDatabaseProject = "00D1A9C2-B5F0-4AF3-8072-F6C62B433612";
         public const string AzureFunctionsProject = "73e51385-5e20-4e2c-aa0b-6eb2dc8de52e";
         public const string CoreConsoleApp = "27b265c8-e185-4c33-9908-8d23d5e945d1";
     }
