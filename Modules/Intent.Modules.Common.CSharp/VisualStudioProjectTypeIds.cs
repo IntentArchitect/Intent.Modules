@@ -11,5 +11,6 @@
         public const string CoreCSharpLibrary = "52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE";
         public const string SQLServerDatabaseProject = "00D1A9C2-B5F0-4AF3-8072-F6C62B433612";
         public const string AzureFunctionsProject = "73e51385-5e20-4e2c-aa0b-6eb2dc8de52e";
+        public const string CoreConsoleApp = "27b265c8-e185-4c33-9908-8d23d5e945d1";
     }
 }
