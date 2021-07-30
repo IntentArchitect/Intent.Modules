@@ -3,7 +3,7 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
-    public class ExtensionModel
+    public class ExtensionModel : IMetadataModel
     {
         public ExtensionModel(ExtensionModelType type, IEnumerable<IStereotypeDefinition> stereotypeDefinitions)
         {
@@ -14,5 +14,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public IEnumerable<IStereotypeDefinition> StereotypeDefinitions { get; }
 
         public ExtensionModelType Type { get; set; }
+        public string Id => Type.Id;
     }
 }

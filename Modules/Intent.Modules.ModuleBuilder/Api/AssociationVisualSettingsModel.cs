@@ -133,4 +133,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class AssociationVisualSettingsModelExtensions
+    {
+        public static AssociationVisualSettingsModel AsAssociationVisualSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationVisualSettingsModel.SpecializationTypeId ? new AssociationVisualSettingsModel(element) : null;
+        }
+    }
 }

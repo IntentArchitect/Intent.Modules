@@ -330,7 +330,43 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             #line hidden
             this.Write(")obj);\r\n        }\r\n\r\n        public override int GetHashCode()\r\n        {\r\n      " +
                     "      return (_element != null ? _element.GetHashCode() : 0);\r\n        }\r\n    }\r" +
-                    "\n}");
+                    "\n\r\n    [IntentManaged(Mode.Fully)]\r\n    public static class ");
+            
+            #line 124 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("Extensions {\r\n        public static ");
+            
+            #line 125 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" As");
+            
+            #line 125 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type != null && t" +
+                    "ype is IElement element && element.SpecializationTypeId == ");
+            
+            #line 127 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(".SpecializationTypeId ? new ");
+            
+            #line 127 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("(element) : null;\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

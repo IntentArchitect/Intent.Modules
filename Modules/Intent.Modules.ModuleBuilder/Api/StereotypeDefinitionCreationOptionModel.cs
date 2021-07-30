@@ -97,4 +97,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class StereotypeDefinitionCreationOptionModelExtensions
+    {
+        public static StereotypeDefinitionCreationOptionModel AsStereotypeDefinitionCreationOptionModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == StereotypeDefinitionCreationOptionModel.SpecializationTypeId ? new StereotypeDefinitionCreationOptionModel(element) : null;
+        }
+    }
 }

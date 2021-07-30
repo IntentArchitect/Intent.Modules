@@ -6,6 +6,8 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common.Templates;
+using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -38,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
-                className: $"{Model.Type.ApiClassName}Extensions",
+                className: $"{Model.Type.ApiClassName}StereotypeExtensions",
                 @namespace: new IntentModuleModel(Model.StereotypeDefinitions.First().Package).ApiNamespace);
         }
 

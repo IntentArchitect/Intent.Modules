@@ -66,4 +66,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class FactoryExtensionModelExtensions
+    {
+        public static FactoryExtensionModel AsFactoryExtensionModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == FactoryExtensionModel.SpecializationTypeId ? new FactoryExtensionModel(element) : null;
+        }
+    }
 }

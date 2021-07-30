@@ -111,4 +111,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ElementCreationOptionModelExtensions
+    {
+        public static ElementCreationOptionModel AsElementCreationOptionModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementCreationOptionModel.SpecializationTypeId ? new ElementCreationOptionModel(element) : null;
+        }
+    }
 }

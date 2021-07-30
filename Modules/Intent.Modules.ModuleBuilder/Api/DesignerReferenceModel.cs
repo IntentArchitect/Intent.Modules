@@ -83,4 +83,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DesignerReferenceModelExtensions
+    {
+        public static DesignerReferenceModel AsDesignerReferenceModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DesignerReferenceModel.SpecializationTypeId ? new DesignerReferenceModel(element) : null;
+        }
+    }
 }

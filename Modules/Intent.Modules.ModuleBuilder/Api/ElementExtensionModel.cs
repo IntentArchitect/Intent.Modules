@@ -128,4 +128,13 @@ namespace Intent.ModuleBuilder.Api
                     .Select(x => new ElementEventSettingsModel(x))
                     .SingleOrDefault();
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ElementExtensionModelExtensions
+    {
+        public static ElementExtensionModel AsElementExtensionModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementExtensionModel.SpecializationTypeId ? new ElementExtensionModel(element) : null;
+        }
+    }
 }

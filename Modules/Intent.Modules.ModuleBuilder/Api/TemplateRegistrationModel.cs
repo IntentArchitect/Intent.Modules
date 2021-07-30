@@ -151,4 +151,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class TemplateRegistrationModelExtensions
+    {
+        public static TemplateRegistrationModel AsTemplateRegistrationModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == TemplateRegistrationModel.SpecializationTypeId ? new TemplateRegistrationModel(element) : null;
+        }
+    }
 }

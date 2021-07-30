@@ -80,4 +80,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class PackageEventSettingsModelExtensions
+    {
+        public static PackageEventSettingsModel AsPackageEventSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == PackageEventSettingsModel.SpecializationTypeId ? new PackageEventSettingsModel(element) : null;
+        }
+    }
 }

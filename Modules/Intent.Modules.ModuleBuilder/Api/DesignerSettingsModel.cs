@@ -182,4 +182,13 @@ namespace Intent.ModuleBuilder.Api
             return (Type != null ? Type.GetHashCode() : 0);
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DesignerSettingsModelExtensions
+    {
+        public static DesignerSettingsModel AsDesignerSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DesignerSettingsModel.SpecializationTypeId ? new DesignerSettingsModel(element) : null;
+        }
+    }
 }

@@ -119,4 +119,12 @@ namespace <#= Namespace #>
             return (_element != null ? _element.GetHashCode() : 0);
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class <#= ClassName #>Extensions {
+        public static <#= ClassName #> As<#= ClassName #>(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == <#= ClassName #>.SpecializationTypeId ? new <#= ClassName #>(element) : null;
+        }
+    }
 }

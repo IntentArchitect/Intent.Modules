@@ -4,7 +4,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
-    public class ExtensionModelType
+    public class ExtensionModelType : IMetadataModel
     {
         private readonly IElement _element;
 
@@ -18,5 +18,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public string ApiNamespace => new IntentModuleModel(_element.Package).ApiNamespace;
 
         public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
+
+        public string Id => _element.Id;
     }
 }

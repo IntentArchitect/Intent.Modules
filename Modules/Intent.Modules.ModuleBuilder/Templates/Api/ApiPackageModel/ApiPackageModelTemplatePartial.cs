@@ -4,6 +4,8 @@ using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
+using System.Collections.Generic;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]

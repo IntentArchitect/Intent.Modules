@@ -53,4 +53,13 @@ namespace Intent.ModuleBuilder.Api
         public new const string SpecializationType = "Designer Extension";
         public new const string SpecializationTypeId = "a747162d-696b-49ed-9075-b5da8d852e15";
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DesignerExtensionModelExtensions
+    {
+        public static DesignerExtensionModel AsDesignerExtensionModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DesignerExtensionModel.SpecializationTypeId ? new DesignerExtensionModel(element) : null;
+        }
+    }
 }

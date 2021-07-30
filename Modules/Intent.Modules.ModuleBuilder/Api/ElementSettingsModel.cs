@@ -106,7 +106,7 @@ namespace Intent.ModuleBuilder.Api
         }
 
         private static SortChildrenOptions? ToSortChildrenOptions(
-            ElementSettingsModelExtensions.Settings.SortChildrenOptions options)
+            ElementSettingsModelStereotypeExtensions.Settings.SortChildrenOptions options)
         {
             if (options == null)
             {
@@ -210,5 +210,14 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "727577aa-3e07-4b41-be7d-7359bb1e48c8";
 
         public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ElementSettingsModelExtensions
+    {
+        public static ElementSettingsModel AsElementSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementSettingsModel.SpecializationTypeId ? new ElementSettingsModel(element) : null;
+        }
     }
 }

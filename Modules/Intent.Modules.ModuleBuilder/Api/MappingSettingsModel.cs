@@ -117,4 +117,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class MappingSettingsModelExtensions
+    {
+        public static MappingSettingsModel AsMappingSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == MappingSettingsModel.SpecializationTypeId ? new MappingSettingsModel(element) : null;
+        }
+    }
 }
