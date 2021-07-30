@@ -4,12 +4,12 @@
   <FileLogs>
     <FileLog>
       <ProjectId>dbe0fab1-2720-40f2-9f2c-76719e833d59</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.csproj</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Common.CSharp/Intent.Modules.Common.CSharp.csproj</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ProjectRelativeFilePath>
     </FileLog>
     <FileLog>
       <ProjectId>dbe0fab1-2720-40f2-9f2c-76719e833d59</ProjectId>
-      <SolutionRelativeFilePath>..\Intent.Modules.Common.CSharp\Intent.Modules.Common.CSharp.imodspec</SolutionRelativeFilePath>
+      <SolutionRelativeFilePath>../Intent.Modules.Common.CSharp/Intent.Modules.Common.CSharp.imodspec</SolutionRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.CSharp.imodspec</ProjectRelativeFilePath>
     </FileLog>
   </FileLogs>

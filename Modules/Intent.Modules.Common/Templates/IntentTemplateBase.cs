@@ -18,16 +18,29 @@ namespace Intent.Modules.Common.Templates
         {
         }
 
+        /// <summary>
+        /// Returns all decorators that have been added to this template.
+        /// </summary>
+        /// <returns></returns>
         public IEnumerable<TDecorator> GetDecorators()
         {
             return _decorators.OrderBy(x => x.Priority);
         }
 
+        /// <summary>
+        /// Adds a decorator to this template. This is called automatically by the Intent Architect software factory when a decorator is resolved for this template.
+        /// </summary>
+        /// <param name="decorator"></param>
         public void AddDecorator(TDecorator decorator)
         {
             _decorators.Add(decorator);
         }
 
+        /// <summary>
+        /// Aggregates decorator outputs for the property specified by <paramref name="propertyFunc"/>
+        /// </summary>
+        /// <param name="propertyFunc"></param>
+        /// <returns></returns>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);
@@ -141,6 +154,10 @@ namespace Intent.Modules.Common.Templates
             DetectedDependencies.Add(templateDependency);
         }
 
+        /// <summary>
+        /// Return the dependencies that have been added explicitly through <see cref="AddTemplateDependency(string)"/>, and implicitly from the types resolved through <see cref="GetTypeName(ITypeReference)"/>.
+        /// </summary>
+        /// <returns></returns>
         public virtual IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             if (!HasTypeResolver())
@@ -150,10 +167,16 @@ namespace Intent.Modules.Common.Templates
             return Types.GetTemplateDependencies().Concat(DetectedDependencies); ;
         }
 
+        /// <summary>
+        /// Called after all templates have been configured.
+        /// </summary>
         public virtual void OnConfigured()
         {
         }
 
+        /// <summary>
+        /// Called after all templates have been created.
+        /// </summary>
         public virtual void OnCreated()
         {
         }
@@ -165,7 +188,10 @@ namespace Intent.Modules.Common.Templates
         {
         }
 
-
+        /// <summary>
+        /// Sets the default collection format to be applied to types that are resolved using the <see cref="GetTypeName(ITypeReference)"/> method.
+        /// </summary>
+        /// <param name="collectionFormat"></param>
         public void SetDefaultTypeCollectionFormat(string collectionFormat)
         {
             if (!HasTypeResolver())
@@ -175,6 +201,10 @@ namespace Intent.Modules.Common.Templates
             Types.SetDefaultCollectionFormatter(new CollectionFormatter(collectionFormat));
         }
 
+        /// <summary>
+        /// Sets the default collection formatter to be applied to types that are resolved using the <see cref="GetTypeName(ITypeReference)"/> method.
+        /// </summary>
+        /// <param name="collectionFormatter"></param>
         public void SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter)
         {
             if (!HasTypeResolver())
@@ -185,7 +215,8 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Adds the <see cref="ITypeSource"/> <paramref name="typeSource"/> as a source to find fully qualified types when using the <see cref="GetTypeName(ITypeReference)"/> method.
+        /// Adds the <paramref name="typeSource"/> as a source to find fully qualified types when using the <see cref="GetTypeName(ITypeReference)"/> method.
+        /// If found, the Template will be added as a dependency.
         /// </summary>
         /// <param name="typeSource"></param>
         public void AddTypeSource(ITypeSource typeSource)
@@ -194,10 +225,12 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// Adds a Template source (template instances) that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
+        /// If found, the Template will be added as a dependency.
+        /// Set the desired <see cref="CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
         /// </summary>
-        /// <param name="templateId"></param>
-        /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
+        /// <param name="templateId">The identifier of the template instances to be searched when calling <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/></param>
+        /// <param name="collectionFormat">Sets the collection format to be applied if a type is found.</param>
         public ClassTypeSource AddTypeSource(string templateId, string collectionFormat)
         {
             return AddTypeSource(templateId)
@@ -205,9 +238,12 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
+        /// If found, the Template will be added as a dependency.
+        /// Set the desired <see cref="CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
         /// </summary>
         /// <param name="templateId"></param>
+        /// <returns>Returns the <see cref="ClassTypeSource"/> for use as a fluent api.</returns>
         public ClassTypeSource AddTypeSource(string templateId)
         {
             var typeSource = ClassTypeSource.Create(ExecutionContext, templateId);
@@ -228,7 +264,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Gets the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
+        /// Resolves the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
         /// </summary>
         /// <param name="typeReference"></param>
         /// <returns></returns>
@@ -237,31 +273,73 @@ namespace Intent.Modules.Common.Templates
             return Types.Get(typeReference);
         }
 
+        /// <summary>
+        /// Resolves and normalizes (See <see cref="NormalizeTypeName"/>) the type name for the <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/>s (See <see cref="AddTypeSource(ITypeSource)"/>) will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// </summary>
+        /// <param name="typeReference"></param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        /// <returns></returns>
         public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
             return NormalizeTypeName(Types.Get(typeReference, collectionFormat).Name);
         }
 
+        /// <summary>
+        /// Resolves and normalizes (See <see cref="NormalizeTypeName"/>) the type name for the <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/>s (See <see cref="AddTypeSource(ITypeSource)"/>) will be searched to resolve the type name.
+        /// </summary>
+        /// <param name="typeReference"></param>
+        /// <returns></returns>
         public virtual string GetTypeName(ITypeReference typeReference)
         {
             return NormalizeTypeName(Types.Get(typeReference).Name);
         }
 
+        /// <summary>
+        /// Resolves and normalizes (See <see cref="NormalizeTypeName"/>) the type name for the <paramref name="hasTypeReference."/> parameter.
+        /// Any added <see cref="ITypeSource"/>s (See <see cref="AddTypeSource(ITypeSource)"/>) will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// </summary>
+        /// <param name="hasTypeReference"></param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        /// <returns></returns>
         public virtual string GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat)
         {
             return GetTypeName(hasTypeReference.TypeReference, collectionFormat);
         }
 
+        /// <summary>
+        /// Resolves and normalizes (See <see cref="NormalizeTypeName"/>) the type name for the <paramref name="hasTypeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/>s (See <see cref="AddTypeSource(ITypeSource)"/>) will be searched to resolve the type name.
+        /// </summary>
+        /// <param name="hasTypeReference"></param>
+        /// <returns></returns>
         public virtual string GetTypeName(IHasTypeReference hasTypeReference)
         {
             return GetTypeName(hasTypeReference.TypeReference);
         }
 
+        /// <summary>
+        /// Resolves and normalizes (See <see cref="NormalizeTypeName"/>) the type name for the <paramref name="element"/> parameter.
+        /// Any added <see cref="ITypeSource"/>s (See <see cref="AddTypeSource(ITypeSource)"/>) will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        /// <returns></returns>
         public virtual string GetTypeName(IElement element, string collectionFormat)
         {
             return NormalizeTypeName(Types.Get(element, collectionFormat).Name);
         }
 
+        /// <summary>
+        /// Resolves and normalizes (See <see cref="NormalizeTypeName"/>) the type name for the <paramref name="element"/> parameter.
+        /// Any added <see cref="ITypeSource"/>s (See <see cref="AddTypeSource(ITypeSource)"/>) will be searched to resolve the type name.
+        /// </summary>
+        /// <param name="element"></param>
+        /// <returns></returns>
         public virtual string GetTypeName(ICanBeReferencedType element)
         {
             return NormalizeTypeName(Types.Get(element).Name);

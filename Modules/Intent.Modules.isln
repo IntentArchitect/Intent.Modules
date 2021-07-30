@@ -33,5 +33,6 @@
     <application id="7cd27b49-d1d3-4c20-85b8-5090b0805098" name="Intent.Modules.TypeScript.Weaving.Decorators" relativePath="Intent.Modules.TypeScript.Weaving.Decorators/Intent.Modules.TypeScript.Weaving.Decorators.application.config" />
     <application id="57e2ba3f-25e6-4488-8cc8-5fb5573a7f8b" name="Intent.Common.Kotlin" relativePath="Intent.Common.Kotlin/Intent.Common.Kotlin.application.config" />
     <application id="a951e417-89e5-4185-a5aa-730640fcebef" name="Intent.ModuleBuilder.Kotlin" relativePath="Intent.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.application.config" />
+    <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" name="Common.CSharp" relativePath="Intent.Modules.Common.CSharp/Common.CSharp.application.config" />
   </applications>
 </solution>

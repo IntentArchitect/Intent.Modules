@@ -29,24 +29,29 @@ namespace Intent.Modules.Common.TypeResolution
 
         public IResolvedTypeInfo Get(ITypeReference typeInfo)
         {
-            return Get(typeInfo, null);
+            return Get(typeInfo, default(ICollectionFormatter));
         }
 
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+        {
+            return Get(typeInfo, new CollectionFormatter(collectionFormat));
+        }
+
+        public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, ICollectionFormatter collectionFormatter)
         {
             if (typeInfo == null)
             {
                 return null;
             }
 
-            ICollectionFormatter collectionFormatter = null;
+            ICollectionFormatter typeSourceCollectionFormatter = null;
             ResolvedTypeInfo type = null;
             foreach (var classLookup in _typeSources)
             {
                 var foundClass = classLookup.GetType(typeInfo);
                 if (foundClass != null)
                 {
-                    collectionFormatter = classLookup.CollectionFormatter;
+                    typeSourceCollectionFormatter = classLookup.CollectionFormatter;
                     type = new ResolvedTypeInfo(foundClass);
                     break;
                 }
@@ -55,12 +60,56 @@ namespace Intent.Modules.Common.TypeResolution
             type = type ?? ResolveType(typeInfo);
             if (typeInfo.GenericTypeParameters.Any())
             {
-                type.Name = FormatGenerics(type, typeInfo.GenericTypeParameters.Select(x => Get(x, collectionFormat)));
+                type.Name = FormatGenerics(type, typeInfo.GenericTypeParameters.Select(x => Get(x, collectionFormatter)));
             }
 
             if (typeInfo.IsCollection)
             {
-                collectionFormatter = (collectionFormat != null) ? new CollectionFormatter(collectionFormat) : (collectionFormatter ?? _defaultCollectionFormatter);
+                type.IsPrimitive = false;
+                type.Name = (collectionFormatter ?? typeSourceCollectionFormatter ?? _defaultCollectionFormatter).AsCollection(type);
+            }
+
+            return type;
+        }
+
+        public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, ITypeSource typeSource)
+        {
+            if (typeInfo == null)
+            {
+                return null;
+            }
+
+            ICollectionFormatter collectionFormatter = null;
+            ResolvedTypeInfo type = null;
+            var foundClass = typeSource.GetType(typeInfo);
+            if (foundClass != null)
+            {
+                collectionFormatter = typeSource.CollectionFormatter;
+                type = new ResolvedTypeInfo(foundClass);
+            }
+            else
+            {
+                foreach (var classLookup in _typeSources)
+                {
+                    foundClass = classLookup.GetType(typeInfo);
+                    if (foundClass != null)
+                    {
+                        collectionFormatter = classLookup.CollectionFormatter;
+                        type = new ResolvedTypeInfo(foundClass);
+                        break;
+                    }
+                }
+            }
+
+            type = type ?? ResolveType(typeInfo);
+            if (typeInfo.GenericTypeParameters.Any())
+            {
+                type.Name = FormatGenerics(type, typeInfo.GenericTypeParameters.Select(x => Get(x, typeSource)));
+            }
+
+            if (typeInfo.IsCollection)
+            {
+                collectionFormatter = collectionFormatter ?? _defaultCollectionFormatter;
                 type.IsPrimitive = false;
                 type.Name = collectionFormatter.AsCollection(type);
             }

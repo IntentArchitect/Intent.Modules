@@ -6,6 +6,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.10" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.5" />
     <PackageReference Include="Intent.Packager" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -14,8 +15,6 @@
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
   <ItemGroup>
