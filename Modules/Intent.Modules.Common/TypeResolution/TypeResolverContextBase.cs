@@ -34,7 +34,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
-            return Get(typeInfo, new CollectionFormatter(collectionFormat));
+            return Get(typeInfo, !string.IsNullOrWhiteSpace(collectionFormat) ? new CollectionFormatter(collectionFormat) : null);
         }
 
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, ICollectionFormatter collectionFormatter)

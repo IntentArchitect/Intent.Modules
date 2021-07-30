@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{TemplateName}",
-                relativeLocation: $"{Common.ModelHasFolderTemplateExtensions.GetFolderPath(this, additionalFolders: Model.Name)}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
                 fileExtension: "tt");
         }
 
