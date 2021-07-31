@@ -4,16 +4,12 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Engine;
-using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Types.Api;
-using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.Sql.Api;
-using Intent.Modules.Common.CSharp.Templates;
-using TemplateExtensions = Intent.Modules.Common.Templates.TemplateExtensions;
+using TemplateExtensions = Intent.Modules.Common.CSharp.Templates.TemplateExtensions;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
@@ -31,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
         {
         }
 
-        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+        public string TemplateName => $"{TemplateExtensions.ToCSharpIdentifier(Model.Name.RemoveSuffix("Template"))}Template";
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig GetTemplateFileConfig()
