@@ -104,4 +104,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ElementMappingModelExtensions
+    {
+        public static ElementMappingModel AsElementMappingModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementMappingModel.SpecializationTypeId ? new ElementMappingModel(element) : null;
+        }
+    }
 }

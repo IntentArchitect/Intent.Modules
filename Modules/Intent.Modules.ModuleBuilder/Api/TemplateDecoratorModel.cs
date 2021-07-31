@@ -68,4 +68,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class TemplateDecoratorModelExtensions
+    {
+        public static TemplateDecoratorModel AsTemplateDecoratorModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == TemplateDecoratorModel.SpecializationTypeId ? new TemplateDecoratorModel(element) : null;
+        }
+    }
 }

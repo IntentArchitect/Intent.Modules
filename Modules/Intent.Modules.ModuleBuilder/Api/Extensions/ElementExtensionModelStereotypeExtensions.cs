@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class ElementExtensionModelExtensions
+    public static class ElementExtensionModelStereotypeExtensions
     {
         public static TypeReferenceExtensionSettings GetTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {

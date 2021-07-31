@@ -57,4 +57,13 @@ namespace Intent.ModuleBuilder.Api
         public new const string SpecializationType = "Element Event Handler";
         public new const string SpecializationTypeId = "0ef412e3-d15a-45d3-bcd3-f646165f2eb6";
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ElementEventHandlerModelExtensions
+    {
+        public static ElementEventHandlerModel AsElementEventHandlerModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementEventHandlerModel.SpecializationTypeId ? new ElementEventHandlerModel(element) : null;
+        }
+    }
 }

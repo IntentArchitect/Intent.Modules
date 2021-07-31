@@ -80,4 +80,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DesignersFolderModelExtensions
+    {
+        public static DesignersFolderModel AsDesignersFolderModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DesignersFolderModel.SpecializationTypeId ? new DesignersFolderModel(element) : null;
+        }
+    }
 }

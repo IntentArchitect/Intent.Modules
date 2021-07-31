@@ -8,15 +8,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class ElementVisualSettingsModelExtensions
+    public static class StereotypesVisualSettingsModelStereotypeExtensions
     {
-        public static PositionSettings GetPositionSettings(this ElementVisualSettingsModel model)
+        public static PositionSettings GetPositionSettings(this StereotypesVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Position Settings");
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
-        public static bool HasPositionSettings(this ElementVisualSettingsModel model)
+        public static bool HasPositionSettings(this StereotypesVisualSettingsModel model)
         {
             return model.HasStereotype("Position Settings");
         }

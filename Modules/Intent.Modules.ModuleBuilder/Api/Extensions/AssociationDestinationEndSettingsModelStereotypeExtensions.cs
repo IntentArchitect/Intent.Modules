@@ -8,15 +8,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class AssociationSourceEndSettingsModelExtensions
+    public static class AssociationDestinationEndSettingsModelStereotypeExtensions
     {
-        public static Settings GetSettings(this AssociationSourceEndSettingsModel model)
+        public static Settings GetSettings(this AssociationDestinationEndSettingsModel model)
         {
             var stereotype = model.GetStereotype("Settings");
             return stereotype != null ? new Settings(stereotype) : null;
         }
 
-        public static bool HasSettings(this AssociationSourceEndSettingsModel model)
+        public static bool HasSettings(this AssociationDestinationEndSettingsModel model)
         {
             return model.HasStereotype("Settings");
         }

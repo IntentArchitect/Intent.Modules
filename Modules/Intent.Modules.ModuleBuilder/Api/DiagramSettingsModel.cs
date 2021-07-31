@@ -91,4 +91,13 @@ namespace Intent.ModuleBuilder.Api
                     .Select(x => new ElementEventSettingsModel(x))
                     .SingleOrDefault();
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DiagramSettingsModelExtensions
+    {
+        public static DiagramSettingsModel AsDiagramSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DiagramSettingsModel.SpecializationTypeId ? new DiagramSettingsModel(element) : null;
+        }
+    }
 }

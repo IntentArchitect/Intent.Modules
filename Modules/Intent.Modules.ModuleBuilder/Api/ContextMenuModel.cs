@@ -96,4 +96,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ContextMenuModelExtensions
+    {
+        public static ContextMenuModel AsContextMenuModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ContextMenuModel.SpecializationTypeId ? new ContextMenuModel(element) : null;
+        }
+    }
 }

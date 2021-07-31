@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class MappingSettingsModelExtensions
+    public static class MappingSettingsModelStereotypeExtensions
     {
         public static MappingSettings GetMappingSettings(this MappingSettingsModel model)
         {

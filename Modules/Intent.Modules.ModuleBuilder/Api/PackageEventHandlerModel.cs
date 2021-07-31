@@ -43,4 +43,13 @@ namespace Intent.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class PackageEventHandlerModelExtensions
+    {
+        public static PackageEventHandlerModel AsPackageEventHandlerModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == PackageEventHandlerModel.SpecializationTypeId ? new PackageEventHandlerModel(element) : null;
+        }
+    }
 }

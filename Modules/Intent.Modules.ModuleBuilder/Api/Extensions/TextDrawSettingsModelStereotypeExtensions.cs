@@ -8,17 +8,28 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class StereotypesVisualSettingsModelExtensions
+    public static class TextDrawSettingsModelStereotypeExtensions
     {
-        public static PositionSettings GetPositionSettings(this StereotypesVisualSettingsModel model)
+        public static PositionSettings GetPositionSettings(this TextDrawSettingsModel model)
         {
             var stereotype = model.GetStereotype("Position Settings");
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
-        public static bool HasPositionSettings(this StereotypesVisualSettingsModel model)
+        public static bool HasPositionSettings(this TextDrawSettingsModel model)
         {
             return model.HasStereotype("Position Settings");
+        }
+
+        public static TextSettings GetTextSettings(this TextDrawSettingsModel model)
+        {
+            var stereotype = model.GetStereotype("Text Settings");
+            return stereotype != null ? new TextSettings(stereotype) : null;
+        }
+
+        public static bool HasTextSettings(this TextDrawSettingsModel model)
+        {
+            return model.HasStereotype("Text Settings");
         }
 
 
@@ -51,6 +62,34 @@ namespace Intent.ModuleBuilder.Api
             public string Height()
             {
                 return _stereotype.GetProperty<string>("Height");
+            }
+
+        }
+
+        public class TextSettings
+        {
+            private IStereotype _stereotype;
+
+            public TextSettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Text()
+            {
+                return _stereotype.GetProperty<string>("Text");
+            }
+
+            public string Condition()
+            {
+                return _stereotype.GetProperty<string>("Condition");
+            }
+
+            public string Style()
+            {
+                return _stereotype.GetProperty<string>("Style");
             }
 
         }

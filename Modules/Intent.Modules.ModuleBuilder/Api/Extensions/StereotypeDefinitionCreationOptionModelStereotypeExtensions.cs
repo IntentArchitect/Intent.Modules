@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class StereotypeDefinitionCreationOptionModelExtensions
+    public static class StereotypeDefinitionCreationOptionModelStereotypeExtensions
     {
         public static OptionSettings GetOptionSettings(this StereotypeDefinitionCreationOptionModel model)
         {

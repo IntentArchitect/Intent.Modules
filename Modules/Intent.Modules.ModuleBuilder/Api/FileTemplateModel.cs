@@ -59,4 +59,13 @@ namespace Intent.ModuleBuilder.Api
                     .Select(x => new TemplateDecoratorContractModel(x))
                     .SingleOrDefault();
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class FileTemplateModelExtensions
+    {
+        public static FileTemplateModel AsFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == FileTemplateModel.SpecializationTypeId ? new FileTemplateModel(element) : null;
+        }
+    }
 }

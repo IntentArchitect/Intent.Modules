@@ -8,40 +8,30 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class PathDrawSettingsModelExtensions
+    public static class AssociationVisualSettingsModelStereotypeExtensions
     {
-        public static PathSettings GetPathSettings(this PathDrawSettingsModel model)
+        public static Setting GetSetting(this AssociationVisualSettingsModel model)
         {
-            var stereotype = model.GetStereotype("Path Settings");
-            return stereotype != null ? new PathSettings(stereotype) : null;
+            var stereotype = model.GetStereotype("Setting");
+            return stereotype != null ? new Setting(stereotype) : null;
         }
 
-        public static bool HasPathSettings(this PathDrawSettingsModel model)
+        public static bool HasSetting(this AssociationVisualSettingsModel model)
         {
-            return model.HasStereotype("Path Settings");
+            return model.HasStereotype("Setting");
         }
 
 
-        public class PathSettings
+        public class Setting
         {
             private IStereotype _stereotype;
 
-            public PathSettings(IStereotype stereotype)
+            public Setting(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
 
             public string Name => _stereotype.Name;
-
-            public string Path()
-            {
-                return _stereotype.GetProperty<string>("Path");
-            }
-
-            public string Condition()
-            {
-                return _stereotype.GetProperty<string>("Condition");
-            }
 
             public string LineColor()
             {
@@ -56,11 +46,6 @@ namespace Intent.ModuleBuilder.Api
             public string LineDashArray()
             {
                 return _stereotype.GetProperty<string>("Line Dash Array");
-            }
-
-            public string FillColor()
-            {
-                return _stereotype.GetProperty<string>("Fill Color");
             }
 
         }

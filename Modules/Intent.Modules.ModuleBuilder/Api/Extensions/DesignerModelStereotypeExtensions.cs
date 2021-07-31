@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class DesignerModelExtensions
+    public static class DesignerModelStereotypeExtensions
     {
         public static DesignerConfig GetDesignerConfig(this DesignerModel model)
         {

@@ -102,4 +102,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class AssociationCreationOptionModelExtensions
+    {
+        public static AssociationCreationOptionModel AsAssociationCreationOptionModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationCreationOptionModel.SpecializationTypeId ? new AssociationCreationOptionModel(element) : null;
+        }
+    }
 }

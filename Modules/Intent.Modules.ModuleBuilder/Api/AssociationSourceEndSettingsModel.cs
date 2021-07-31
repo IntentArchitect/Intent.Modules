@@ -84,4 +84,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class AssociationSourceEndSettingsModelExtensions
+    {
+        public static AssociationSourceEndSettingsModel AsAssociationSourceEndSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationSourceEndSettingsModel.SpecializationTypeId ? new AssociationSourceEndSettingsModel(element) : null;
+        }
+    }
 }

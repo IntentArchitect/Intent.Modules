@@ -138,4 +138,13 @@ namespace Intent.ModuleBuilder.Api
 
 
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class PackageSettingsModelExtensions
+    {
+        public static PackageSettingsModel AsPackageSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == PackageSettingsModel.SpecializationTypeId ? new PackageSettingsModel(element) : null;
+        }
+    }
 }

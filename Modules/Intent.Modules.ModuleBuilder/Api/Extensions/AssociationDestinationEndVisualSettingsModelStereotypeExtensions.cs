@@ -8,37 +8,37 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class AssociationSourceEndVisualSettingsModelExtensions
+    public static class AssociationDestinationEndVisualSettingsModelStereotypeExtensions
     {
-        public static LabelSettings GetLabelSettings(this AssociationSourceEndVisualSettingsModel model)
+        public static LabelSettings GetLabelSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Label Settings");
             return stereotype != null ? new LabelSettings(stereotype) : null;
         }
 
-        public static bool HasLabelSettings(this AssociationSourceEndVisualSettingsModel model)
+        public static bool HasLabelSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             return model.HasStereotype("Label Settings");
         }
 
-        public static NavigableIndicatorSettings GetNavigableIndicatorSettings(this AssociationSourceEndVisualSettingsModel model)
+        public static NavigableIndicatorSettings GetNavigableIndicatorSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Navigable Indicator Settings");
             return stereotype != null ? new NavigableIndicatorSettings(stereotype) : null;
         }
 
-        public static bool HasNavigableIndicatorSettings(this AssociationSourceEndVisualSettingsModel model)
+        public static bool HasNavigableIndicatorSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             return model.HasStereotype("Navigable Indicator Settings");
         }
 
-        public static PointSettings GetPointSettings(this AssociationSourceEndVisualSettingsModel model)
+        public static PointSettings GetPointSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Point Settings");
             return stereotype != null ? new PointSettings(stereotype) : null;
         }
 
-        public static bool HasPointSettings(this AssociationSourceEndVisualSettingsModel model)
+        public static bool HasPointSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             return model.HasStereotype("Point Settings");
         }

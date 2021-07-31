@@ -89,4 +89,13 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class TextDrawSettingsModelExtensions
+    {
+        public static TextDrawSettingsModel AsTextDrawSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == TextDrawSettingsModel.SpecializationTypeId ? new TextDrawSettingsModel(element) : null;
+        }
+    }
 }
