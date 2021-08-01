@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="d8f6f331-d4f0-4c75-aa91-f2e715cd9591">
+<stereotypeDefinition id="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" version="3.1.0">
   <name>Type Reference Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="727577aa-3e07-4b41-be7d-7359bb1e48c8">Element Settings</element>
-  </targetElements>
+  <targetTypes>
+    <type id="727577aa-3e07-4b41-be7d-7359bb1e48c8">Element Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

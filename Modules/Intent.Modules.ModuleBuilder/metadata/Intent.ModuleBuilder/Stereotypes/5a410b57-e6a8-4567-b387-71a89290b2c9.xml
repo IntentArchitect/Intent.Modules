@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="5a410b57-e6a8-4567-b387-71a89290b2c9">
+<stereotypeDefinition id="5a410b57-e6a8-4567-b387-71a89290b2c9" version="3.1.0">
   <name>Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">Association Source End Settings</element>
-    <element id="c4c61fdc-464d-41d2-8e0e-5a734d588302">Association Destination End Settings</element>
-  </targetElements>
+  <targetTypes>
+    <type id="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">Association Source End Settings</type>
+    <type id="c4c61fdc-464d-41d2-8e0e-5a734d588302">Association Destination End Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>on-create</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

@@ -6,14 +6,21 @@ using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common.Registrations;
 using Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel;
 using Intent.Templates;
+using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
+using System;
+
+[assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.SingleFileNoModel", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
 {
-    public class TemplateExtensionsTemplateRegistrations : SingleFileTemplateRegistration
+    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
+    public class TemplateExtensionsTemplateRegistration : SingleFileTemplateRegistration
     {
         private readonly IMetadataManager _metadataManager;
 
-        public TemplateExtensionsTemplateRegistrations(IMetadataManager metadataManager)
+        public TemplateExtensionsTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }

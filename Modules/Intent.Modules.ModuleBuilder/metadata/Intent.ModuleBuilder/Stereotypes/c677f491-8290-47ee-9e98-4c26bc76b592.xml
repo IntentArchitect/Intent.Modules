@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="c677f491-8290-47ee-9e98-4c26bc76b592">
+<stereotypeDefinition id="c677f491-8290-47ee-9e98-4c26bc76b592" version="3.1.0">
   <name>Criteria Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="4a16943b-702c-4fb0-bfcc-2afd98b8814c">Element Mapping</element>
-  </targetElements>
+  <targetTypes>
+    <type id="4a16943b-702c-4fb0-bfcc-2afd98b8814c">Element Mapping</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

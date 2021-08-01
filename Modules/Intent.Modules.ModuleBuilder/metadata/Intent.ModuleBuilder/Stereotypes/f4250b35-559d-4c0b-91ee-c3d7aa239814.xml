@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="f4250b35-559d-4c0b-91ee-c3d7aa239814">
+<stereotypeDefinition id="f4250b35-559d-4c0b-91ee-c3d7aa239814" version="3.1.0">
   <comment />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="5fa12f89-da1e-49c5-b8e9-427b22407f19">Element Creation Option</element>
-    <element id="0c721d5d-7721-414c-adaf-4c9f5c5531a9">Stereotype-Definition Creation Option</element>
-  </targetElements>
+  <targetTypes>
+    <type id="5fa12f89-da1e-49c5-b8e9-427b22407f19">Element Creation Option</type>
+    <type id="0c721d5d-7721-414c-adaf-4c9f5c5531a9">Stereotype-Definition Creation Option</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
   <displayIcon>false</displayIcon>

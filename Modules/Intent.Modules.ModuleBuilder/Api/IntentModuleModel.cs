@@ -75,5 +75,10 @@ namespace Intent.ModuleBuilder.Api
             .GetElementsOfType(TemplateDecoratorModel.SpecializationTypeId)
             .Select(x => new TemplateDecoratorModel(x))
             .ToList();
+
+        public IList<ModuleSettingsConfigurationModel> SettingsGroups => UnderlyingPackage.ChildElements
+            .GetElementsOfType(ModuleSettingsConfigurationModel.SpecializationTypeId)
+            .Select(x => new ModuleSettingsConfigurationModel(x))
+            .ToList();
     }
 }

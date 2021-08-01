@@ -248,6 +248,58 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
+            /*--------------------------------- MODULE SETTINGS ---------------------------------*/
+
+            var moduleSettings = doc.XPathSelectElement("package/moduleSettings");
+            if (moduleSettings == null)
+            {
+                moduleSettings = new XElement("moduleSettings");
+                doc.XPathSelectElement("package").Add(moduleSettings);
+            }
+            foreach (var settingsGroup in ModuleModel.SettingsGroups)
+            {
+                var existing = doc.XPathSelectElement($"package/moduleSettings/group[@id=\"{settingsGroup.Id}\"]");
+                if (existing == null)
+                {
+                    existing = new XElement("group", new XAttribute("id", settingsGroup.Id), new XAttribute("title", settingsGroup.Name), new XAttribute("externalReference", settingsGroup.Id));
+                    moduleSettings.Add(existing);
+                }
+                var settings = new XElement("settings");
+                foreach (var settingsField in settingsGroup.Fields)
+                {
+                    var fieldXml = new XElement("setting", 
+                        new XAttribute("id", settingsField.Id), 
+                        new XAttribute("title", settingsField.Name), 
+                        new XAttribute("type", GetControlType(settingsField)));
+                    fieldXml.Add(new XElement("isRequired", new XText(settingsField.GetFieldConfiguration().IsRequired().ToString().ToLower())));
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().Hint()))
+                    {
+                        fieldXml.Add(new XElement("hint", new XText(settingsField.GetFieldConfiguration().Hint())));
+                    }
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
+                    {
+                        fieldXml.Add(new XElement("value", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
+                    }
+                    settings.Add(fieldXml);
+                }
+
+                if (existing.HasElements)
+                {
+                    existing.RemoveNodes();
+                }
+                existing.Add(settings);
+            }
+
+            foreach (var installedSettingsGroup in doc.XPathSelectElements($"package/moduleSettings/group"))
+            {
+                if (installedSettingsGroup.Attribute("externalReference") != null && ModuleModel.SettingsGroups.All(x => x.Id != installedSettingsGroup.Attribute("externalReference").Value))
+                {
+                    installedSettingsGroup.Remove();
+                }
+            }
+
+            /*--------------------------------- METADATA ---------------------------------*/
+
             var metadataRegistrations = doc.XPathSelectElement("package/metadata");
             if (metadataRegistrations == null)
             {
@@ -345,6 +397,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
   <templates></templates>
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
+  <moduleSettings></moduleSettings>
   <dependencies></dependencies>
   <files>
     <file src=""$outDir$/$id$.dll"" />
@@ -362,6 +415,40 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 IntentNugetPackages.IntentSdk,
                 IntentNugetPackages.IntentPackager
             };
+        }
+
+        private string GetControlType(ModuleSettingsFieldConfigurationModel settingsField)
+        {
+            if (settingsField.GetFieldConfiguration().ControlType().IsTextBox())
+            {
+                return "text";
+            }
+            if (settingsField.GetFieldConfiguration().ControlType().IsNumber())
+            {
+                return "number";
+            }
+            if (settingsField.GetFieldConfiguration().ControlType().IsCheckbox())
+            {
+                return "checkbox";
+            }
+            if (settingsField.GetFieldConfiguration().ControlType().IsSwitch())
+            {
+                return "switch";
+            }
+            if (settingsField.GetFieldConfiguration().ControlType().IsTextArea())
+            {
+                return "textarea";
+            }
+            if (settingsField.GetFieldConfiguration().ControlType().IsSelect())
+            {
+                return "select";
+            }
+            if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
+            {
+                return "multi-select";
+            }
+
+            return "text";
         }
     }
 }

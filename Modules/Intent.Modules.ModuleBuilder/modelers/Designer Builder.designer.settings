@@ -8,7 +8,7 @@
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
       <requiredPackages />
       <creationOptions>
-        <option order="0" type="element">
+        <option order="-1" type="element">
           <specializationType>Designers Folder</specializationType>
           <specializationTypeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</specializationTypeId>
           <text>Add Designers Folder</text>
@@ -19,7 +19,7 @@
         </option>
       </creationOptions>
       <typeOrder>
-        <type order="0">Designers Folder</type>
+        <type order="-1">Designers Folder</type>
       </typeOrder>
     </packageExtension>
   </packageExtensions>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="6b16c65c-f348-40b1-96b0-6423917b9356">
+<stereotypeDefinition id="6b16c65c-f348-40b1-96b0-6423917b9356" version="3.1.0">
   <name>Label Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="77fdd377-950a-46e4-8d25-ab3c962d6105">Association Source End Visual Settings</element>
-    <element id="b59113a4-209c-45d6-b395-352362864fd1">Association Destination End Visual Settings</element>
-  </targetElements>
+  <targetTypes>
+    <type id="77fdd377-950a-46e4-8d25-ab3c962d6105">Association Source End Visual Settings</type>
+    <type id="b59113a4-209c-45d6-b395-352362864fd1">Association Destination End Visual Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

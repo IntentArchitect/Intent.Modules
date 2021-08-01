@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="a82e406f-efc6-4d9c-86ea-6c28d9509da4">
+<stereotypeDefinition id="a82e406f-efc6-4d9c-86ea-6c28d9509da4" version="3.1.0">
   <name>Path Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">Path Draw Settings</element>
-  </targetElements>
+  <targetTypes>
+    <type id="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">Path Draw Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

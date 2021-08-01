@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="e21d9a65-36b8-4664-9c61-d70f3615023c">
+<stereotypeDefinition id="e21d9a65-36b8-4664-9c61-d70f3615023c" version="3.1.0">
   <name>Setting</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="153a4063-82a1-4515-87f1-44c189004fad">Association Visual Settings</element>
-  </targetElements>
+  <targetTypes>
+    <type id="153a4063-82a1-4515-87f1-44c189004fad">Association Visual Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

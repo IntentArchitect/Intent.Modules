@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="82a8b98c-0306-4309-b564-146668de0e74">
+<stereotypeDefinition id="82a8b98c-0306-4309-b564-146668de0e74" version="3.1.0">
   <name>Output Configuration</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="7f5fcc9f-c721-4a31-bfe2-7909f4289420">Designer</element>
-  </targetElements>
+  <targetTypes>
+    <type id="7f5fcc9f-c721-4a31-bfe2-7909f4289420">Designer</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>

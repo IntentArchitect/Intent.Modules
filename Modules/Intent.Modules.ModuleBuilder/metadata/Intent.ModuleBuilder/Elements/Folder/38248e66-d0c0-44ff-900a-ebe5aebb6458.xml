@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="05ecfa23-3651-4b87-a09d-e55dfe1f4315" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
-  <name>Registration Types</name>
-  <display>Registration Types</display>
+<class id="38248e66-d0c0-44ff-900a-ebe5aebb6458" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Module Settings</name>
+  <display>Module Settings</display>
   <isAbstract>false</isAbstract>
   <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</parentFolderId>
+  <parentFolderId>ea7ccdb1-1f68-4cf0-87a7-f060b69e364d</parentFolderId>
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <stereotypes />

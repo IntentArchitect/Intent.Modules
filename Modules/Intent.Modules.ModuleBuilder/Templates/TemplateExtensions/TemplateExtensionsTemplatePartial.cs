@@ -10,27 +10,24 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
+using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+
+[assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
 namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
 {
-    public interface IModuleBuilderTemplate : ITemplateWithModel
-    {
-        string Id { get; }
-        string GetTemplateId();
-        string GetModelType();
-        string GetRole();
-        string TemplateType();
-    }
-
-    partial class TemplateExtensionsTemplate : CSharpTemplateBase<object>, IDeclareUsings
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class TemplateExtensionsTemplate : CSharpTemplateBase<object>
     {
         //protected List<IModuleBuilderTemplate> Templates = new List<IModuleBuilderTemplate>();
         protected List<IModuleBuilderTemplate> Templates = new List<IModuleBuilderTemplate>();
-
+        [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateExtensions";
 
-        public TemplateExtensionsTemplate(IOutputTarget outputTarget) : base(TemplateId, outputTarget, null)
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public TemplateExtensionsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, null)
         {
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {

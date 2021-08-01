@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="9682fe8b-bf51-4c87-b198-5fcfe8983852">
+<stereotypeDefinition id="9682fe8b-bf51-4c87-b198-5fcfe8983852" version="3.1.0">
   <comment />
   <name>Option Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="3dcfa78b-17ee-45b6-be03-8407d089ce76">Association Creation Option</element>
-  </targetElements>
+  <targetTypes>
+    <type id="3dcfa78b-17ee-45b6-be03-8407d089ce76">Association Creation Option</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
   <displayIcon>false</displayIcon>

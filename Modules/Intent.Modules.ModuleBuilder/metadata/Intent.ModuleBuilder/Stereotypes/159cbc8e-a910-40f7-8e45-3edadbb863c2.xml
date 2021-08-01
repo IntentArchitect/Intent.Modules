@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="159cbc8e-a910-40f7-8e45-3edadbb863c2">
+<stereotypeDefinition id="159cbc8e-a910-40f7-8e45-3edadbb863c2" version="3.1.0">
   <name>Type Reference Extension Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">Element Extension</element>
-  </targetElements>
+  <targetTypes>
+    <type id="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">Element Extension</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

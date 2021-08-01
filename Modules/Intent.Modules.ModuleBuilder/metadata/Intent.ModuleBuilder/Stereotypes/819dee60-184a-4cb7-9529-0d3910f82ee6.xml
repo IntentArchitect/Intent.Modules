@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="819dee60-184a-4cb7-9529-0d3910f82ee6">
+<stereotypeDefinition id="819dee60-184a-4cb7-9529-0d3910f82ee6" version="3.1.0">
   <name>File Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="43eae4bd-4613-4d15-88ac-52b7e743b7b2">File Template</element>
-  </targetElements>
+  <targetTypes>
+    <type id="43eae4bd-4613-4d15-88ac-52b7e743b7b2">File Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="file" />
   <displayIcon>false</displayIcon>

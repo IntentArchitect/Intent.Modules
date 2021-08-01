@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="76256322-88f1-4efb-8bd6-7cc4a6c54cb9">
+<stereotypeDefinition id="76256322-88f1-4efb-8bd6-7cc4a6c54cb9" version="3.1.0">
   <name>Module Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="d2e543c7-174a-45b4-aebe-a13f9ee90214">Intent Module</element>
-  </targetElements>
+  <targetTypes>
+    <type id="d2e543c7-174a-45b4-aebe-a13f9ee90214">Intent Module</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

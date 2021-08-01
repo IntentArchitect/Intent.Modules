@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="c7683de8-a27a-45ac-b81f-8ac2966a29d9">
+<stereotypeDefinition id="c7683de8-a27a-45ac-b81f-8ac2966a29d9" version="3.1.0">
   <name>Mapping Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="178c2f55-9ca1-484d-be43-a91bdd5554dc">Mapping Settings</element>
-  </targetElements>
+  <targetTypes>
+    <type id="178c2f55-9ca1-484d-be43-a91bdd5554dc">Mapping Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

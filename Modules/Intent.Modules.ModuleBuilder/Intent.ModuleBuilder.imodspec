@@ -172,6 +172,14 @@
       <role>Decorators</role>
       <location>Decorators</location>
     </template>
+    <template id="Intent.ModuleBuilder.Templates.TemplateExtensions" externalReference="05e49224-62c1-45ea-a239-e4e9bf64a00b">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>
@@ -216,4 +224,23 @@
     <!--is this needed?-->
     <file src="$outDir$/Intent.Modules.Common.CSharp.dll" />
   </files>
+  <moduleSettings>
+    <group id="69f90c6a-e490-4513-9430-63964847b9a9" title="Module Settings">
+      <settings>
+        <setting id="649fa44f-9d55-4bf5-94b7-dd30ee5be1c3" title="Enable Partials for Api Models" type="checkbox">
+          <isRequired>false</isRequired>
+          <hint>Creates partial classes for Api Models, separating standard logic from customization.</hint>
+        </setting>
+        <setting id="44cc145f-1d3f-4233-903d-5ffa5c5d87b2" title="Text Field" type="text">
+          <isRequired>true</isRequired>
+          <hint>Testing the hints</hint>
+          <value>hello</value>
+        </setting>
+        <setting id="80c67d4e-292b-4997-9d23-bd90c24be5ce" title="Settings Option" type="select">
+          <isRequired>true</isRequired>
+          <hint>Helloooooo</hint>
+        </setting>
+      </settings>
+    </group>
+  </moduleSettings>
 </package>

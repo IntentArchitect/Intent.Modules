@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="4805c791-5be3-4049-b929-6046d7be9944" version="3.1.0">
+  <name>Field Configuration</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="88e29cab-1342-40c7-b052-5fcd68ffafec">Module Settings Field Configuration</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <autoAdd>false</autoAdd>
+  <parentFolderId>38248e66-d0c0-44ff-900a-ebe5aebb6458</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0">
+      <name>Control Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Text Box</defaultValue>
+      <valueOptions>
+        <option>Text Box</option>
+        <option>Number</option>
+        <option>Checkbox</option>
+        <option>Switch</option>
+        <option>Text Area</option>
+        <option>Select</option>
+        <option>Multi-Select</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="7070a9ce-ff31-422e-9cff-d82876c5efdf">
+      <name>Is Required</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="01489021-8311-43d5-b41b-e7628a512c1d">
+      <name>Hint</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="653d889c-626f-45c5-a6e6-72b74a2f805c">
+      <name>Default Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

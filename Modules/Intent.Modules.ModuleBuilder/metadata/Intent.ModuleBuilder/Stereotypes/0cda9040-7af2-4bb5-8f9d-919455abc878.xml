@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="0cda9040-7af2-4bb5-8f9d-919455abc878">
+<stereotypeDefinition id="0cda9040-7af2-4bb5-8f9d-919455abc878" version="3.1.0">
   <name>Package Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="89333f72-3960-4159-bf61-9c40d4b65088">Package Settings</element>
-  </targetElements>
+  <targetTypes>
+    <type id="89333f72-3960-4159-bf61-9c40d4b65088">Package Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
