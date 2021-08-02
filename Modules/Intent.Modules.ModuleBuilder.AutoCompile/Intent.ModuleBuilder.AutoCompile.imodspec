@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AutoCompile</id>
-  <version>3.0.0</version>
+  <version>3.0.1</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -13,8 +13,8 @@
     <factoryExtension id="Intent.ModuleBuilder.AutoCompile.AutoCompileFactoryExtension" externalReference="e2167dd4-7302-418d-be65-bec84384cf3e" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.3" />
-    <dependency id="Intent.Common.Types" version="3.0.1" />
+    <dependency id="Intent.Common" version="3.0.6" />
+    <dependency id="Intent.Common.Types" version="3.0.5" />
     <dependency id="Intent.ModuleBuilder" version="3.0.8" />
   </dependencies>
   <files>

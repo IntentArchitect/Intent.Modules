@@ -11,7 +11,7 @@ using Intent.Plugins.FactoryExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Utils;
 
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.FactoryExtension", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
@@ -23,6 +23,7 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
         public override string Id => "Intent.ModuleBuilder.AutoCompile.AutoCompileFactoryExtension";
         public override int Order => 100;
 
+        [IntentManaged(Mode.Ignore)]
         public void OnStep(IApplication application, string step)
         {
             if (step == ExecutionLifeCycleSteps.AfterCommitChanges)
@@ -58,8 +59,17 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
                     UseShellExecute = false,
                     WorkingDirectory = location
                 });
+
+                var output = cmd.StandardOutput.ReadToEnd();
                 //cmd.StandardInput.Flush();
-                Logging.Log.Info(cmd.StandardOutput.ReadToEnd());
+                if (cmd.ExitCode == 0)
+                {
+                    Logging.Log.Info(output);
+                }
+                else
+                {
+                    Logging.Log.Failure(output);
+                }
             }
             catch (Exception e)
             {

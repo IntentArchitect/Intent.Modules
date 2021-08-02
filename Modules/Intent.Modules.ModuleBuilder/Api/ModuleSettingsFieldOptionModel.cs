@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ModuleSettingsFieldConfigurationModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ModuleSettingsFieldOptionModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "Module Settings Field Configuration";
-        public const string SpecializationTypeId = "88e29cab-1342-40c7-b052-5fcd68ffafec";
+        public const string SpecializationType = "Module Settings Field Option";
+        public const string SpecializationTypeId = "1592709a-89b1-4cb0-9801-ce9d3b94545a";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Ignore)]
-        public ModuleSettingsFieldConfigurationModel(IElement element, string requiredType = SpecializationType)
+        public ModuleSettingsFieldOptionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -42,7 +42,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(ModuleSettingsFieldConfigurationModel other)
+        public bool Equals(ModuleSettingsFieldOptionModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,26 +52,21 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ModuleSettingsFieldConfigurationModel)obj);
+            return Equals((ModuleSettingsFieldOptionModel)obj);
         }
 
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        public IList<ModuleSettingsFieldOptionModel> Options => _element.ChildElements
-            .GetElementsOfType(ModuleSettingsFieldOptionModel.SpecializationTypeId)
-            .Select(x => new ModuleSettingsFieldOptionModel(x))
-            .ToList();
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ModuleSettingsFieldConfigurationModelExtensions
+    public static class ModuleSettingsFieldOptionModelExtensions
     {
-        public static ModuleSettingsFieldConfigurationModel AsModuleSettingsFieldConfigurationModel(this ICanBeReferencedType type)
+        public static ModuleSettingsFieldOptionModel AsModuleSettingsFieldOptionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ModuleSettingsFieldConfigurationModel.SpecializationTypeId ? new ModuleSettingsFieldConfigurationModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ModuleSettingsFieldOptionModel.SpecializationTypeId ? new ModuleSettingsFieldOptionModel(element) : null;
         }
     }
 }

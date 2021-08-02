@@ -3,7 +3,7 @@
   <name>Intent Module Extension</name>
   <display>Intent Module Extension: Intent Module</display>
   <isAbstract>false</isAbstract>
-  <order>12</order>
+  <order>11</order>
   <genericTypes />
   <typeReference id="dda738b4-48c6-4611-b3a8-83dbe6ef1184">
     <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>

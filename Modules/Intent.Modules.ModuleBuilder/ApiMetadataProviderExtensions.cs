@@ -33,13 +33,6 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
-        public static IList<DesignerExtensionModel> GetDesignerExtensionModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(DesignerExtensionModel.SpecializationTypeId)
-                .Select(x => new DesignerExtensionModel(x))
-                .ToList();
-        }
-
         public static IList<DesignerSettingsModel> GetDesignerSettingsModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(DesignerSettingsModel.SpecializationTypeId)

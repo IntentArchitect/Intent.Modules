@@ -264,6 +264,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     existing = new XElement("group", new XAttribute("id", settingsGroup.Id), new XAttribute("title", settingsGroup.Name), new XAttribute("externalReference", settingsGroup.Id));
                     moduleSettings.Add(existing);
                 }
+                existing.SetAttributeValue("title", settingsGroup.Name);
+
                 var settings = new XElement("settings");
                 foreach (var settingsField in settingsGroup.Fields)
                 {
@@ -279,6 +281,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
                     {
                         fieldXml.Add(new XElement("value", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
+                    }
+
+                    if (settingsField.GetFieldConfiguration().ControlType().IsSelect() ||
+                        settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
+                    {
+                        var options = new XElement("options");
+                        foreach (var fieldOption in settingsField.Options)
+                        {
+                            options.Add(new XElement("option", new XAttribute("value", fieldOption.Id), new XAttribute("description", fieldOption.Name)));
+                        }
+                        fieldXml.Add(options);
                     }
                     settings.Add(fieldXml);
                 }

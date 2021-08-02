@@ -23,7 +23,7 @@ namespace Intent.ModuleBuilder.Api.Factories
         public static DesignerSettingsModel GetDesignerSettings(ICanBeReferencedType forElement)
         {
             var designerElement = ((forElement as IElement) ?? ((IAssociationEnd) forElement).Association.SourceEnd.Element as IElement).GetParentPath()
-                .Single(x => x.SpecializationType == Api.DesignerSettingsModel.SpecializationType || x.SpecializationType == Api.DesignerExtensionModel.SpecializationType);
+                .Single(x => x.SpecializationType == Api.DesignerSettingsModel.SpecializationType);
             return Create(designerElement);
         }
     }

@@ -387,65 +387,6 @@ createElement("Association Destination End Settings", "[destination]", context.i
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
-    <elementSetting type="Designer Extension" typeId="a747162d-696b-49ed-9075-b5da8d852e15">
-      <icon type="CharacterBox" source="X|#00ffc8" />
-      <saveAsOwnFile>true</saveAsOwnFile>
-      <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
-      <allowGenericTypes>false</allowGenericTypes>
-      <allowMapping>false</allowMapping>
-      <allowSorting>false</allowSorting>
-      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowFindInView>true</allowFindInView>
-      <allowTypeReference>true</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowSetValue>false</allowSetValue>
-      <typeReferenceSetting>
-        <isRequired>true</isRequired>
-        <targetTypes>
-          <type>Designer Settings</type>
-        </targetTypes>
-        <allowIsNavigable>true</allowIsNavigable>
-        <allowIsNullable>false</allowIsNullable>
-        <allowIsCollection>false</allowIsCollection>
-        <isNavigableDefault>true</isNavigableDefault>
-        <isNullableDefault>false</isNullableDefault>
-        <isCollectionDefault>false</isCollectionDefault>
-      </typeReferenceSetting>
-      <typeOrder>
-        <type order="0">Element Settings</type>
-        <type order="1">Core Type</type>
-        <type order="2">Association Settings</type>
-      </typeOrder>
-      <creationOptions>
-        <option type="element">
-          <specializationType>Element Settings</specializationType>
-          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
-          <text>New Element Type</text>
-          <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>NewElementType</defaultName>
-          <icon type="CharacterBox" source="E|#095c00" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Core Type</specializationType>
-          <specializationTypeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</specializationTypeId>
-          <text>New Core Type</text>
-          <defaultName>NewCoreType</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Association Settings</specializationType>
-          <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
-          <text>New Association Type</text>
-          <defaultName>NewAssociationSettings</defaultName>
-          <icon type="CharacterBox" source="A|#ff8000" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
-      <childElementSettings />
-    </elementSetting>
     <elementSetting type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
       <icon type="CharacterBox" source="S|#00ffc8" />
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -483,7 +424,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
           <text>New Element Type</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>NewElementType</defaultName>
+          <defaultName>New Element Type</defaultName>
           <icon type="CharacterBox" source="E|#095c00" />
           <allowMultiple>true</allowMultiple>
         </option>
@@ -492,7 +433,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
           <text>New Element Extension</text>
           <shortcut>ctrl + shift + x</shortcut>
-          <defaultName>NewElementExtension</defaultName>
+          <defaultName>New Element Extension</defaultName>
           <icon type="CharacterBox" source="X|#095c00" />
           <allowMultiple>true</allowMultiple>
         </option>
@@ -517,8 +458,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <specializationType>Package Extension</specializationType>
           <specializationTypeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</specializationTypeId>
           <text>New Package Extension</text>
-          <shortcut>ctrl + shift + p</shortcut>
-          <defaultName>Package Settings</defaultName>
+          <defaultName>Package Extension</defaultName>
           <icon type="CharacterBox" source="X|#7d7d7d" />
           <allowMultiple>true</allowMultiple>
         </option>
