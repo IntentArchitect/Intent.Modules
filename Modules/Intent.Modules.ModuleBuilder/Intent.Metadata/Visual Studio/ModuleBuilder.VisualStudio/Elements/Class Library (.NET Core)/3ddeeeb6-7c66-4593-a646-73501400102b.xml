@@ -191,7 +191,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="9c3c81d6-8160-43f1-ae33-09ec7aae0ff6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="39ff6753-d9fa-4d5e-b22a-2b550d12a804" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
@@ -205,7 +205,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="1830bd24-ecbe-4df4-8e97-ce07137139d0" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="bf7f46fb-8e06-4791-a430-d64e92cebfa1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
@@ -219,7 +219,7 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="21c47be7-cbb3-4465-951b-4d8f975bd467" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="c1ac3216-066d-4ae4-acf3-1f12e26c18c1" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
@@ -233,25 +233,11 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="b02d4562-9559-49f4-92dd-4bfece3bcf03" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</name>
-      <display>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <order>20</order>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
-      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
-      <packageName>ModuleBuilder.VisualStudio</packageName>
-      <stereotypes />
-      <childElements />
-    </childElement>
     <childElement id="c4685217-d114-427c-89a0-5dd2dd77a885" type="Role" typeId="025e933b-b602-4b6d-95ab-0ec36ae940da">
       <name>Api</name>
       <display>Api</display>
       <isAbstract>false</isAbstract>
-      <order>21</order>
+      <order>20</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
@@ -264,7 +250,7 @@
       <name>Decorators</name>
       <display>Decorators</display>
       <isAbstract>false</isAbstract>
-      <order>22</order>
+      <order>21</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
@@ -277,7 +263,7 @@
       <name>DesignerConfig</name>
       <display>DesignerConfig</display>
       <isAbstract>false</isAbstract>
-      <order>23</order>
+      <order>22</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
@@ -290,7 +276,7 @@
       <name>IModSpec</name>
       <display>IModSpec</display>
       <isAbstract>false</isAbstract>
-      <order>24</order>
+      <order>23</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>
@@ -303,7 +289,7 @@
       <name>Templates</name>
       <display>Templates</display>
       <isAbstract>false</isAbstract>
-      <order>25</order>
+      <order>24</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3ddeeeb6-7c66-4593-a646-73501400102b</parentFolderId>

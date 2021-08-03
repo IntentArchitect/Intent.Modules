@@ -1,21 +1,22 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.0.12</Version>
+    <Version>3.1.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.0.14" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.1.0" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.1.0" />
     <PackageReference Include="Intent.Packager" Version="3.1.0-pre.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.1.0" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
     <PackageReference Include="NuGet.Versioning" Version="5.6.0" />
   </ItemGroup>
@@ -36,6 +37,10 @@
     <None Remove="Templates\RoslynProjectItemTemplatePartial\**" />
     <None Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
     <None Remove="Templates\RoslynProjectItemTemplate\**" />
+    <None Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ApiElementModelPartialTemplate.cs</LastGenOutput>
+    </None>
     <None Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataDesignerExtensionsTemplate.cs</LastGenOutput>
@@ -44,6 +49,11 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiMetadataProviderExtensionsTemplate.cs</LastGenOutput>
     </None>
+    <Compile Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ApiElementModelPartialTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

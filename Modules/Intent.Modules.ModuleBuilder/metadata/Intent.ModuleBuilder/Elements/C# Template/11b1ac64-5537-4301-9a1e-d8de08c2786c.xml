@@ -3,7 +3,7 @@
   <name>ApiMetadataDesignerExtensions</name>
   <display>ApiMetadataDesignerExtensions: Single File</display>
   <isAbstract>false</isAbstract>
-  <order>5</order>
+  <order>6</order>
   <genericTypes />
   <typeReference id="328ed7db-b7bc-4d36-bab4-b2b572487160">
     <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>

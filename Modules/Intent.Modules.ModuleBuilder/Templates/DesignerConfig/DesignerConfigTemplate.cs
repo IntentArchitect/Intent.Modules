@@ -21,7 +21,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
     {
         public const string TemplateId = "Intent.ModuleBuilder.DesignerConfig";
 
-        public DesignerConfigTemplate(IProject project, DesignerModel model) : base(TemplateId, project, model)
+        public DesignerConfigTemplate(IOutputTarget project, DesignerModel model) : base(TemplateId, project, model)
         {
         }
 

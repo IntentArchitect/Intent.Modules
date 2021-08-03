@@ -13,7 +13,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class DesignerConfigTemplateRegistration : ModelTemplateRegistrationBase<DesignerModel>
+    public class DesignerConfigTemplateRegistration : FilePerModelTemplateRegistration<DesignerModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -24,7 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 
         public override string TemplateId => DesignerConfigTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IProject project, DesignerModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, DesignerModel model)
         {
             return new DesignerConfigTemplate(project, model);
         }

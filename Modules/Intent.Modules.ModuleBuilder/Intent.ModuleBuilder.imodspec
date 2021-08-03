@@ -180,6 +180,14 @@
       <role>Templates</role>
       <location>Templates</location>
     </template>
+    <template id="Intent.ModuleBuilder.Templates.Api.ApiElementModelPartial" externalReference="489694a7-ddf0-40d6-a055-4845826deabd">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Api</role>
+      <location>Api</location>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>
@@ -225,26 +233,11 @@
     <file src="$outDir$/Intent.Modules.Common.CSharp.dll" />
   </files>
   <moduleSettings>
-    <group id="69f90c6a-e490-4513-9430-63964847b9a9" title="Module Builder Settings">
+    <group id="b2c4252b-cfae-43c5-9682-803aa0b84c87" title="Module Builder Settings" externalReference="b2c4252b-cfae-43c5-9682-803aa0b84c87">
       <settings>
-        <setting id="649fa44f-9d55-4bf5-94b7-dd30ee5be1c3" title="Enable Partials for Api Models" type="checkbox">
+        <setting id="b06c3926-23e5-49dd-a59d-93ef16b9777e" title="Create partial API models" type="switch">
           <isRequired>false</isRequired>
-          <hint>Creates partial classes for Api Models, separating standard logic from customization.</hint>
-        </setting>
-        <setting id="44cc145f-1d3f-4233-903d-5ffa5c5d87b2" title="Text Field" type="text">
-          <isRequired>true</isRequired>
-          <hint>Testing the hints</hint>
-          <value>hello</value>
-        </setting>
-        <setting id="80c67d4e-292b-4997-9d23-bd90c24be5ce" title="Surrogate Key Type" type="select">
-          <isRequired>true</isRequired>
-          <hint>Helloooooo</hint>
-          <value>c62e9cf2-d8a6-4531-82a0-229813a1a60b</value>
-          <options>
-            <option value="c62e9cf2-d8a6-4531-82a0-229813a1a60b" description="guid" />
-            <option value="64cda51d-c8f3-42de-a846-cd438ed961b8" description="string" />
-            <option value="73653e10-932c-4da6-8918-bc4b0c1283e8" description="int" />
-          </options>
+          <hint>Creates an ignored partial class for each API model which can be used to for custom logic.</hint>
         </setting>
       </settings>
     </group>

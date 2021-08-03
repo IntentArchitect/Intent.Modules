@@ -280,7 +280,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     }
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
                     {
-                        fieldXml.Add(new XElement("value", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
+                        fieldXml.Add(new XElement("defaultValue", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
                     }
 
                     if (settingsField.GetFieldConfiguration().ControlType().IsSelect() ||

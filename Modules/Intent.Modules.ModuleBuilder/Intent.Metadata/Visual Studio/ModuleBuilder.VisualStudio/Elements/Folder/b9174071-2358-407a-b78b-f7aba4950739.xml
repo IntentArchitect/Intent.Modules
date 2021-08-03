@@ -20,7 +20,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="2eab1e86-03b2-49d5-8ebd-0532627c7aa6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="03e806a1-acb4-4f47-8afd-df3049cc6788" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.FactoryExtension</name>
       <display>Intent.ModuleBuilder.Templates.FactoryExtension</display>
       <externalReference>Intent.ModuleBuilder</externalReference>

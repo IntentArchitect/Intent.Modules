@@ -172,7 +172,7 @@
           <specializationType>Module Settings Field Configuration</specializationType>
           <specializationTypeId>88e29cab-1342-40c7-b052-5fcd68ffafec</specializationTypeId>
           <text>Add Field</text>
-          <defaultName>Settings Option</defaultName>
+          <defaultName>New Settings Field</defaultName>
           <icon type="FontAwesome" source="pencil" />
           <allowMultiple>true</allowMultiple>
         </option>
@@ -199,7 +199,7 @@
               <specializationType>Module Settings Field Option</specializationType>
               <specializationTypeId>1592709a-89b1-4cb0-9801-ce9d3b94545a</specializationTypeId>
               <text>Add Option</text>
-              <defaultName>NewModuleSettingsFieldOption</defaultName>
+              <defaultName>Settings Option</defaultName>
               <icon type="FontAwesome" source="circle" />
               <allowMultiple>true</allowMultiple>
             </option>

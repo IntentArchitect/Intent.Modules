@@ -100,6 +100,12 @@ namespace Intent.Modules.Common.Templates
         /// The OutputTarget of this template. This is determined by a designer with Output Targeting capabilities (e.g. Visual Studio, Folder Structure, etc.)
         /// </summary>
         public IOutputTarget OutputTarget { get; }
+
+        /// <summary>
+        /// If false will prevent the template from being executed and generating an output. Default is true.
+        /// </summary>
+        public bool IsEnabled { get; set; } = true;
+
         public ITemplateBindingContext BindingContext { get; }
         public IFileMetadata FileMetadata { get; private set; }
 
@@ -110,6 +116,11 @@ namespace Intent.Modules.Common.Templates
         }
 
         public abstract ITemplateFileConfig GetTemplateFileConfig();
+
+        public virtual bool CanRunTemplate()
+        {
+            return IsEnabled;
+        }
 
         public virtual string RunTemplate()
         {
