@@ -225,5 +225,39 @@ namespace Intent.Metadata.RDBMS.Api
 
         }
 
+        public class Column
+        {
+            private IStereotype _stereotype;
+
+            public Column(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
+            }
+
+            public string Type()
+            {
+                return _stereotype.GetProperty<string>("Type");
+            }
+
+        }
+
+        public static Column GetColumn(this AttributeModel model)
+        {
+            var stereotype = model.GetStereotype("Column");
+            return stereotype != null ? new Column(stereotype) : null;
+        }
+
+        public static bool HasColumn(this AttributeModel model)
+        {
+            return model.HasStereotype("Column");
+        }
+
     }
 }
