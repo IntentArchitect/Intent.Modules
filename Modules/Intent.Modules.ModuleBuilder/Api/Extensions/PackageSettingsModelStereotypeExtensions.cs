@@ -57,6 +57,23 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public SortingOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Manually":
+                            return SortingOptionsEnum.Manually;
+                        case "By type, then manually":
+                            return SortingOptionsEnum.ByTypeThenManually;
+                        case "By type, then by name":
+                            return SortingOptionsEnum.ByTypeThenByName;
+                        case "By name":
+                            return SortingOptionsEnum.ByName;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsManually()
                 {
                     return Value == "Manually";
@@ -75,6 +92,13 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum SortingOptionsEnum
+            {
+                Manually,
+                ByTypeThenManually,
+                ByTypeThenByName,
+                ByName
+            }
         }
 
     }

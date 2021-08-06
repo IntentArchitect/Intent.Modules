@@ -22,7 +22,7 @@ using Intent.Modules.Common.Types.Api;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge)]
-    public class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #><#= GetInterfaces() #>
+    public<#= HasPartial ? " partial": "" #> class <#= ClassName #> : <#= BaseType != null ? (BaseType + ", ") : "" #><#= GetInterfaces() #>
     {
         public <#= BaseType != null ? "new " : "" #>const string SpecializationType = "<#= Model.Name #>";
         public <#= BaseType != null ? "new " : "" #>const string SpecializationTypeId = "<#= Model.Id #>";

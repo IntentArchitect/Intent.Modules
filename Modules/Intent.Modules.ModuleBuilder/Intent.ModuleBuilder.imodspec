@@ -188,6 +188,14 @@
       <role>Api</role>
       <location>Api</location>
     </template>
+    <template id="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" externalReference="af184995-dba3-463f-8b63-7c38190595f0">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Settings</location>
+    </template>
   </templates>
   <decorators></decorators>
   <dependencies>

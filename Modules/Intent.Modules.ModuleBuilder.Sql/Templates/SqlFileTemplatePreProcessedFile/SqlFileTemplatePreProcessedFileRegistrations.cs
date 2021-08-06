@@ -9,7 +9,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePreProcessedFile
 {
-    public class SqlFileTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<SqlTemplateModel>
+    public class SqlFileTemplatePreProcessedFileRegistrations : FilePerModelTemplateRegistration<SqlTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePreProcessed
 
         public override string TemplateId => "ModuleBuilder.Sql.Templates.SqlFileTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, SqlTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, SqlTemplateModel model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,

@@ -108,6 +108,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public SaveModeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Default":
+                            return SaveModeOptionsEnum.Default;
+                        case "Own File":
+                            return SaveModeOptionsEnum.OwnFile;
+                        case "As Child":
+                            return SaveModeOptionsEnum.AsChild;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsDefault()
                 {
                     return Value == "Default";
@@ -122,6 +137,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum SaveModeOptionsEnum
+            {
+                Default,
+                OwnFile,
+                AsChild
+            }
             public class SortChildrenOptions
             {
                 public readonly string Value;
@@ -129,6 +150,23 @@ namespace Intent.ModuleBuilder.Api
                 public SortChildrenOptions(string value)
                 {
                     Value = value;
+                }
+
+                public SortChildrenOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Manually":
+                            return SortChildrenOptionsEnum.Manually;
+                        case "By type then manually":
+                            return SortChildrenOptionsEnum.ByTypeThenManually;
+                        case "By type then name":
+                            return SortChildrenOptionsEnum.ByTypeThenName;
+                        case "By name":
+                            return SortChildrenOptionsEnum.ByName;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
 
                 public bool IsManually()
@@ -149,6 +187,13 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum SortChildrenOptionsEnum
+            {
+                Manually,
+                ByTypeThenManually,
+                ByTypeThenName,
+                ByName
+            }
         }
 
         public class TypeReferenceSettings
@@ -201,6 +246,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public ModeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Disabled":
+                            return ModeOptionsEnum.Disabled;
+                        case "Optional":
+                            return ModeOptionsEnum.Optional;
+                        case "Required":
+                            return ModeOptionsEnum.Required;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsDisabled()
                 {
                     return Value == "Disabled";
@@ -215,6 +275,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum ModeOptionsEnum
+            {
+                Disabled,
+                Optional,
+                Required
+            }
             public class RepresentsOptions
             {
                 public readonly string Value;
@@ -222,6 +288,19 @@ namespace Intent.ModuleBuilder.Api
                 public RepresentsOptions(string value)
                 {
                     Value = value;
+                }
+
+                public RepresentsOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Reference":
+                            return RepresentsOptionsEnum.Reference;
+                        case "Inheritance":
+                            return RepresentsOptionsEnum.Inheritance;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
 
                 public bool IsReference()
@@ -234,6 +313,11 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum RepresentsOptionsEnum
+            {
+                Reference,
+                Inheritance
+            }
         }
 
     }

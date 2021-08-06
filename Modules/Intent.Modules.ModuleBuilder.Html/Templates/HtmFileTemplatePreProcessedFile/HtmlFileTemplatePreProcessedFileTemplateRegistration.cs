@@ -9,7 +9,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmFileTemplatePreProcessedFile
 {
-    public class HtmlFileTemplatePreProcessedFileTemplateRegistration : ModelTemplateRegistrationBase<HtmlFileTemplateModel>
+    public class HtmlFileTemplatePreProcessedFileTemplateRegistration : FilePerModelTemplateRegistration<HtmlFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmFileTemplatePreProcesse
 
         public override string TemplateId => "ModuleBuilder.Html.Templates.HtmlFileTemplate.T4Template.PreProcessed";
 
-        public override ITemplate CreateTemplateInstance(IProject project, HtmlFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, HtmlFileTemplateModel model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,

@@ -72,6 +72,19 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public OptionSourceOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Elements of Type":
+                            return OptionSourceOptionsEnum.ElementsOfType;
+                        case "Lookup Element":
+                            return OptionSourceOptionsEnum.LookupElement;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsElementsOfType()
                 {
                     return Value == "Elements of Type";
@@ -82,6 +95,11 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum OptionSourceOptionsEnum
+            {
+                ElementsOfType,
+                LookupElement
+            }
             public class MapFromOptions
             {
                 public readonly string Value;
@@ -89,6 +107,19 @@ namespace Intent.ModuleBuilder.Api
                 public MapFromOptions(string value)
                 {
                     Value = value;
+                }
+
+                public MapFromOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Root Element":
+                            return MapFromOptionsEnum.RootElement;
+                        case "Child Elements":
+                            return MapFromOptionsEnum.ChildElements;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
                 }
 
                 public bool IsRootElement()
@@ -101,6 +132,11 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum MapFromOptionsEnum
+            {
+                RootElement,
+                ChildElements
+            }
         }
 
     }

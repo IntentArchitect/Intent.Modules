@@ -11,7 +11,7 @@ using Intent.Modules.Common;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class CoreTypeModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName
+    public partial class CoreTypeModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName
     {
         public const string SpecializationType = "Core Type";
         protected readonly IElement _element;

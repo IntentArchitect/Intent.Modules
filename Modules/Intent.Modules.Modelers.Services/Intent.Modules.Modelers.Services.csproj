@@ -16,18 +16,13 @@
   </PropertyGroup>
   <ItemGroup>
     <!--<PackageReference Include="Intent.SoftwareFactory.SDK" Version="2.1.2" />-->
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.6" />
     <PackageReference Include="Intent.Packager" Version="3.0.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Content Update="modelers\Controllers.modeler.extension.config">

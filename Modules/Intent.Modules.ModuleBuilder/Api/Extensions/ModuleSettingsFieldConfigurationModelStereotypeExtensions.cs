@@ -62,6 +62,29 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public ControlTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Text Box":
+                            return ControlTypeOptionsEnum.TextBox;
+                        case "Number":
+                            return ControlTypeOptionsEnum.Number;
+                        case "Checkbox":
+                            return ControlTypeOptionsEnum.Checkbox;
+                        case "Switch":
+                            return ControlTypeOptionsEnum.Switch;
+                        case "Text Area":
+                            return ControlTypeOptionsEnum.TextArea;
+                        case "Select":
+                            return ControlTypeOptionsEnum.Select;
+                        case "Multi-Select":
+                            return ControlTypeOptionsEnum.MultiSelect;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsTextBox()
                 {
                     return Value == "Text Box";
@@ -92,6 +115,16 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum ControlTypeOptionsEnum
+            {
+                TextBox,
+                Number,
+                Checkbox,
+                Switch,
+                TextArea,
+                Select,
+                MultiSelect
+            }
         }
 
     }

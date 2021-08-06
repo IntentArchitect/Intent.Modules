@@ -69,6 +69,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public AutoSelectChildrenOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Yes":
+                            return AutoSelectChildrenOptionsEnum.Yes;
+                        case "No":
+                            return AutoSelectChildrenOptionsEnum.No;
+                        case "Not Applicable":
+                            return AutoSelectChildrenOptionsEnum.NotApplicable;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsYes()
                 {
                     return Value == "Yes";
@@ -83,6 +98,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum AutoSelectChildrenOptionsEnum
+            {
+                Yes,
+                No,
+                NotApplicable
+            }
         }
 
         public class CriteriaSettings
@@ -125,6 +146,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public HasTypeReferenceOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Yes":
+                            return HasTypeReferenceOptionsEnum.Yes;
+                        case "No":
+                            return HasTypeReferenceOptionsEnum.No;
+                        case "Not Applicable":
+                            return HasTypeReferenceOptionsEnum.NotApplicable;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsYes()
                 {
                     return Value == "Yes";
@@ -139,6 +175,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum HasTypeReferenceOptionsEnum
+            {
+                Yes,
+                No,
+                NotApplicable
+            }
             public class HasChildrenOptions
             {
                 public readonly string Value;
@@ -148,6 +190,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public HasChildrenOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Yes":
+                            return HasChildrenOptionsEnum.Yes;
+                        case "No":
+                            return HasChildrenOptionsEnum.No;
+                        case "Not Applicable":
+                            return HasChildrenOptionsEnum.NotApplicable;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsYes()
                 {
                     return Value == "Yes";
@@ -162,6 +219,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum HasChildrenOptionsEnum
+            {
+                Yes,
+                No,
+                NotApplicable
+            }
             public class IsCollectionOptions
             {
                 public readonly string Value;
@@ -171,6 +234,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public IsCollectionOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Yes":
+                            return IsCollectionOptionsEnum.Yes;
+                        case "No":
+                            return IsCollectionOptionsEnum.No;
+                        case "Not Applicable":
+                            return IsCollectionOptionsEnum.NotApplicable;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsYes()
                 {
                     return Value == "Yes";
@@ -185,6 +263,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum IsCollectionOptionsEnum
+            {
+                Yes,
+                No,
+                NotApplicable
+            }
         }
 
         public class OutputSettings
@@ -222,6 +306,19 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public ChildMappingModeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Map to Type":
+                            return ChildMappingModeOptionsEnum.MapToType;
+                        case "Traverse":
+                            return ChildMappingModeOptionsEnum.Traverse;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsMapToType()
                 {
                     return Value == "Map to Type";
@@ -232,6 +329,11 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum ChildMappingModeOptionsEnum
+            {
+                MapToType,
+                Traverse
+            }
         }
 
     }

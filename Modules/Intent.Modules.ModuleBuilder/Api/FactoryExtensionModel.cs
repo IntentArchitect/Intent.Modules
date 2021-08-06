@@ -11,7 +11,7 @@ using Intent.Modules.Common;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class FactoryExtensionModel : IMetadataModel, IHasStereotypes, IHasName
+    public partial class FactoryExtensionModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Factory Extension";
         public const string SpecializationTypeId = "7d008e84-bb28-4b10-ba28-7439202fca76";

@@ -67,6 +67,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public ModeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Optional":
+                            return ModeOptionsEnum.Optional;
+                        case "Required":
+                            return ModeOptionsEnum.Required;
+                        case "Inherit":
+                            return ModeOptionsEnum.Inherit;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsOptional()
                 {
                     return Value == "Optional";
@@ -81,6 +96,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum ModeOptionsEnum
+            {
+                Optional,
+                Required,
+                Inherit
+            }
             public class AllowCollectionOptions
             {
                 public readonly string Value;
@@ -90,6 +111,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public AllowCollectionOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Inherit":
+                            return AllowCollectionOptionsEnum.Inherit;
+                        case "Allow":
+                            return AllowCollectionOptionsEnum.Allow;
+                        case "Disallow":
+                            return AllowCollectionOptionsEnum.Disallow;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsInherit()
                 {
                     return Value == "Inherit";
@@ -104,6 +140,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum AllowCollectionOptionsEnum
+            {
+                Inherit,
+                Allow,
+                Disallow
+            }
             public class AllowNullableOptions
             {
                 public readonly string Value;
@@ -113,6 +155,21 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public AllowNullableOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Inherit":
+                            return AllowNullableOptionsEnum.Inherit;
+                        case "Allow":
+                            return AllowNullableOptionsEnum.Allow;
+                        case "Disallow":
+                            return AllowNullableOptionsEnum.Disallow;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsInherit()
                 {
                     return Value == "Inherit";
@@ -127,6 +184,12 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum AllowNullableOptionsEnum
+            {
+                Inherit,
+                Allow,
+                Disallow
+            }
         }
 
     }

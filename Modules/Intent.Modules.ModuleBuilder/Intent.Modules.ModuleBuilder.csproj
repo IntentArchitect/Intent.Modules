@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
@@ -9,9 +9,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.1.0" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.1.0" />
-    <PackageReference Include="Intent.Packager" Version="3.1.0-pre.1">
+    <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -199,6 +198,17 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  
+    <None Update="Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>ModuleSettingsExtensionsTemplate.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ModuleSettingsExtensionsTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -285,6 +295,10 @@
       <LastGenOutput>TemplateExtensionsTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Templates\Settings\" />
   </ItemGroup>
 
 </Project>

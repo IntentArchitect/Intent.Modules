@@ -11,7 +11,7 @@ using Intent.Modules.Common;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class TemplateDecoratorModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public partial class TemplateDecoratorModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "Template Decorator";
         public const string SpecializationTypeId = "f0f46278-29ea-42bd-9206-0e7034f623bc";

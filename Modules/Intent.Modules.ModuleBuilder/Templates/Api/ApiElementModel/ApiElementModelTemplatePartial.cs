@@ -5,6 +5,8 @@ using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.ModuleBuilder.Settings;
+using Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -37,13 +39,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public bool HasParentFolder { get; private set; }
 
+        public bool HasPartial => ExecutionContext.Settings.GetModuleBuilderSettings().CreatePartialAPIModels;
+
         public List<AssociationSettingsModel> AssociationSettings { get; }
 
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
                 className: $"{Model.ApiModelName}",
-                @namespace: Model.ParentModule.ApiNamespace);
+                @namespace: Model.ParentModule.ApiNamespace,
+                fileName: $"{Model.ApiModelName}",
+                dependsUpon: (HasPartial) ? $"{Model.ApiModelName}.partial.cs" : null);
         }
 
         public string BaseType => Model.GetInheritedType() != null

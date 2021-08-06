@@ -55,7 +55,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public");
+            
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(HasPartial ? " partial": ""));
+            
+            #line default
+            #line hidden
+            this.Write(" class ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

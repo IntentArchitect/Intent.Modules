@@ -52,6 +52,19 @@ namespace Intent.ModuleBuilder.Api
                     Value = value;
                 }
 
+                public TemplatingMethodOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "T4 Template":
+                            return TemplatingMethodOptionsEnum.T4Template;
+                        case "Custom":
+                            return TemplatingMethodOptionsEnum.Custom;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsT4Template()
                 {
                     return Value == "T4 Template";
@@ -62,6 +75,11 @@ namespace Intent.ModuleBuilder.Api
                 }
             }
 
+            public enum TemplatingMethodOptionsEnum
+            {
+                T4Template,
+                Custom
+            }
         }
 
     }

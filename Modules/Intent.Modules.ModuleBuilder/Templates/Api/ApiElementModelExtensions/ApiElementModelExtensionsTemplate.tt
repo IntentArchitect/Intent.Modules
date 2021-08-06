@@ -131,6 +131,19 @@ namespace <#= Namespace #>
                     Value = value;
                 }
 
+                public <#= property.Name.ToCSharpIdentifier() #>OptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+<#      foreach(var option in property.ValueOptions) { #>
+                        case "<#= option #>":
+                            return <#= property.Name.ToCSharpIdentifier() #>OptionsEnum.<#= option.ToCSharpIdentifier() #>;
+<#      } #>
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
 <#      foreach(var option in property.ValueOptions) { #>
                 public bool Is<#= option.ToCSharpIdentifier() #>()
                 {
@@ -139,6 +152,11 @@ namespace <#= Namespace #>
 <#      } #>
             }
 
+            public enum <#= property.Name.ToCSharpIdentifier() #>OptionsEnum
+            {
+                <#= string.Join(@",
+                ", property.ValueOptions.Select(option => option.ToCSharpIdentifier())) #>
+            }
 <#  } #>
         }
 

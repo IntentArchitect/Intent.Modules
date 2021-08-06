@@ -12,7 +12,7 @@ using Intent.Modules.Common;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class TemplateRegistrationModel : IHasFolder, IHasStereotypes, IMetadataModel, IHasName
+    public partial class TemplateRegistrationModel : IHasFolder, IHasStereotypes, IMetadataModel, IHasName
     {
         public const string SpecializationType = "Template Registration";
         protected readonly IElement _element;

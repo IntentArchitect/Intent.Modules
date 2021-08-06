@@ -13,7 +13,7 @@ using Intent.Modules.Common;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class AssociationSourceEndSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName
+    public partial class AssociationSourceEndSettingsModel : IHasStereotypes, IMetadataModel, ICreatableType, IHasName
     {
         public const string SpecializationType = "Association Source End Settings";
         protected readonly IElement _element;

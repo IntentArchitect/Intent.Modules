@@ -9,7 +9,7 @@ using IApplication = Intent.Engine.IApplication;
 
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePreProcessedFile
 {
-    public class TypescriptTemplatePreProcessedFileRegistrations : ModelTemplateRegistrationBase<TypescriptFileTemplateModel>
+    public class TypescriptTemplatePreProcessedFileRegistrations : FilePerModelTemplateRegistration<TypescriptFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
@@ -20,7 +20,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePr
 
         public override string TemplateId => "ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4";
 
-        public override ITemplate CreateTemplateInstance(IProject project, TypescriptFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, TypescriptFileTemplateModel model)
         {
             return new TemplatePreProcessedFileTemplate(
                 templateId: TemplateId,
