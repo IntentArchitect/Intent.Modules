@@ -12,6 +12,7 @@ variables:
   vstsFeed: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
   targetsToBuild: '**/Intent.Modules.sln'
   targetsToPack: |
+    ;**/Intent.Modules.Common.csproj
     ;**/Intent.Modules.Common.CSharp.csproj
     ;**/Intent.Modules.Common.csproj
     ;**/Intent.Modules.Common.Types.csproj
