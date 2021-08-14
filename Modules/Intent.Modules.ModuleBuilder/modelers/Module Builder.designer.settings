@@ -82,6 +82,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="-10">Module Settings Configuration</type>
         <type order="0">Folder</type>
@@ -149,6 +150,7 @@
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
@@ -177,6 +179,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <childElementSettings>
         <childElementSetting type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
           <icon type="FontAwesome" source="pencil" />
@@ -204,6 +207,7 @@
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
+          <scriptOptions />
           <childElementSettings>
             <childElementSetting type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
               <icon type="FontAwesome" source="circle" />
@@ -220,6 +224,7 @@
               <allowSetValue>false</allowSetValue>
               <typeOrder />
               <creationOptions />
+              <scriptOptions />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -324,6 +329,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type>File Template</type>
         <type>Template Registration</type>

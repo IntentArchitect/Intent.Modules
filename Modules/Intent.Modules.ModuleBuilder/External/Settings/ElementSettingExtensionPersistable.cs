@@ -15,6 +15,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("option")]
         public List<ElementCreationOption> CreationOptions { get; set; }
 
+        [XmlArray("scriptOptions")]
+        [XmlArrayItem("option")]
+        public List<RunScriptOption> ScriptOptions { get; set; }
+
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
         public List<TypeOrderPersistable> TypeOrder { get; set; }

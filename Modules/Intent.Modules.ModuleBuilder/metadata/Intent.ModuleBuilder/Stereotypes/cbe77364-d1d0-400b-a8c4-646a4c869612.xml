@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="cbe77364-d1d0-400b-a8c4-646a4c869612" version="3.1.0">
+  <comment />
+  <name>Option Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="345d46fb-c500-409a-88c7-26720572c9af">Run Script Option</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="check-square" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>var macOsShortcut = properties["Shortcut (macOS)"].value;
+var shortcut = properties["Shortcut"].value;
+
+if (!shortcut) {
+    return "[No Shortcut]";
+}
+
+if (macOsShortcut) {
+    return `[${shortcut} / ${macOsShortcut}]`
+}
+
+return `[${shortcut}]`;</displayFunction>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>ea7ccdb1-1f68-4cf0-87a7-f060b69e364d</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="b2c3a117-23d3-47e5-8b83-5b902c55a226">
+      <name>Icon</name>
+      <type>string</type>
+      <controlType>icon</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="0abff08a-3986-40b1-a28f-4cc03c4fc1ec">
+      <name>Shortcut</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="79f6973f-5e3a-4618-9d4c-d7cc604bffe0">
+      <comment>Optional. If unspecified, then the "Shortcut" property is automatically used with uses of "Ctrl" changed to "Command".</comment>
+      <name>Shortcut (macOS)</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction />
+    </property>
+    <property id="e034a0ca-0101-4594-8384-43048b714578">
+      <comment>Sets the order of the type against the other types</comment>
+      <name>Type Order</name>
+      <type>number</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

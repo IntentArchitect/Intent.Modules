@@ -134,6 +134,10 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         [XmlArrayItem("option")]
         public List<ElementCreationOption> CreationOptions { get; set; }
 
+        [XmlArray("scriptOptions")]
+        [XmlArrayItem("option")]
+        public List<RunScriptOption> ScriptOptions { get; set; }
+
         [XmlArray("typeOrder")]
         [XmlArrayItem("type")]
         public List<TypeOrderPersistable> TypeOrder { get; set; }
@@ -192,5 +196,31 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
         Association = 1,
         [XmlEnum("stereotype-definition")]
         StereotypeDefinition = 2
+    }
+
+    public class RunScriptOption
+    {
+        [XmlAttribute("order")]
+        public string Order { get; set; }
+
+        [XmlElement("text")]
+        public string Text { get; set; }
+
+        [XmlElement("shortcut")]
+        public string Shortcut { get; set; }
+
+        [XmlElement("macShortcut")]
+        public string MacShortcut { get; set; }
+
+        [XmlElement("icon")]
+        public IconModelPersistable Icon { get; set; }
+
+        [XmlElement("script")]
+        public string Script { get; set; }
+
+        public override string ToString()
+        {
+            return $"{nameof(Text)} = '{Text}'";
+        }
     }
 }

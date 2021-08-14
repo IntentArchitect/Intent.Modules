@@ -95,6 +95,11 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "d45e383d-90ba-4b64-aca7-34ca100cea21";
 
         public string Comment => _element.Comment;
+
+        public IList<RunScriptOptionModel> RunScriptOptions => _element.ChildElements
+                    .GetElementsOfType(RunScriptOptionModel.SpecializationTypeId)
+                    .Select(x => new RunScriptOptionModel(x))
+                    .ToList();
     }
 
     [IntentManaged(Mode.Fully)]

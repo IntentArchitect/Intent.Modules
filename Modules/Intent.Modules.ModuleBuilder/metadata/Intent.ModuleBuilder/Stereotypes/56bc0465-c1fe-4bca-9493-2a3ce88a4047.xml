@@ -2,7 +2,10 @@
 <stereotypeDefinition id="56bc0465-c1fe-4bca-9493-2a3ce88a4047" version="3.1.0">
   <name>Script Settings</name>
   <targetMode>that-reference</targetMode>
-  <targetTypes />
+  <targetTypes>
+    <type id="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">Element Event Handler</type>
+    <type id="345d46fb-c500-409a-88c7-26720572c9af">Run Script Option</type>
+  </targetTypes>
   <targetReferenceTypes>
     <type id="043eee26-1591-42ac-9f2c-fc911b070eb1">Script</type>
   </targetReferenceTypes>
