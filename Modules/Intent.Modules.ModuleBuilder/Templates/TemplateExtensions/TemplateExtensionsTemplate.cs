@@ -63,7 +63,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
             this.Write("        public static string Get");
             
             #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(templateModel.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateModel.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
@@ -91,7 +91,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
             this.Write("        public static string Get");
             
             #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(templateModel.Name));
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateModel.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
@@ -109,15 +109,36 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
             
             #line default
             #line hidden
-            this.Write(".TemplateId, template.Model);\r\n        }\r\n\r\n");
+            this.Write(".TemplateId, template.Model);\r\n        }\r\n\r\n        public static string Get");
             
             #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(templateModel.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Name(this IntentTemplateBase template, ");
+            
+            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(template.GetModelType()));
+            
+            #line default
+            #line hidden
+            this.Write(" model)\r\n        {\r\n            return template.GetTypeName(");
+            
+            #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetTypeName(template.Id, templateModel)));
+            
+            #line default
+            #line hidden
+            this.Write(".TemplateId, model);\r\n        }\r\n\r\n");
+            
+            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateExtensions\TemplateExtensionsTemplate.tt"
   } 
             
             #line default
