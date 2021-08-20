@@ -17,7 +17,7 @@
     <Description>CQRS Extensions for the standard Services designer</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Intent.Packager" Version="3.0.1">
+    <PackageReference Include="Intent.Packager" Version="3.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
