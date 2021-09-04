@@ -45,6 +45,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
             });
         }
 
+        public override bool CanRunTemplate()
+        {
+            return Templates.Any();
+        }
+
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

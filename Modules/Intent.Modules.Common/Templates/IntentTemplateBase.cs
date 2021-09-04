@@ -117,9 +117,13 @@ namespace Intent.Modules.Common.Templates
 
         public abstract ITemplateFileConfig GetTemplateFileConfig();
 
+        /// <summary>
+        /// Override this method to control whether the template runs and the file created
+        /// </summary>
+        /// <returns></returns>
         public virtual bool CanRunTemplate()
         {
-            return IsEnabled;
+            return true;
         }
 
         public virtual string RunTemplate()
