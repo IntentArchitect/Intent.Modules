@@ -68,6 +68,12 @@ namespace Intent.IArchitect.Agent.Persistence.Model.Common
 
     public class TypeReferenceSettingPersistable
     {
+        [XmlElement("displayName")]
+        public string DisplayName { get; set; }
+
+        [XmlElement("hint")]
+        public string Hint { get; set; }
+
         [XmlElement("isRequired")]
         public bool IsRequired { get; set; } = true;
 

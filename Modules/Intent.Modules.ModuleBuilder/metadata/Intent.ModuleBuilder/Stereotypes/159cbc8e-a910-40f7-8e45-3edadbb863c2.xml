@@ -31,6 +31,28 @@
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0">
+      <hint>Optional. When set will override the _Type_  text for the property name.</hint>
+      <name>Display Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
+    </property>
+    <property id="17223dbd-8df0-4700-8b81-02274ca3ed7f">
+      <hint>Optional hint text which can be used to explain usage of the type reference. Supports _italic_, **bold** and [link](https://intentarchitect.com/) formatting of markdown.</hint>
+      <name>Hint</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
+    </property>
     <property id="b2cef034-5706-45d2-8554-f4dc582a18ff">
       <name>Target Types</name>
       <type>string</type>

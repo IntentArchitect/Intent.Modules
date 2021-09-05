@@ -86,6 +86,8 @@ namespace Intent.ModuleBuilder.Api
                         DefaultTypeId = string.IsNullOrWhiteSpace(this.GetTypeReferenceExtensionSettings().DefaultTypeId()) ? this.GetTypeReferenceExtensionSettings().DefaultTypeId() : null,
                         AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowNullable().Value, out var allowIsNullable) ? allowIsNullable : BooleanExtensionOptions.Inherit,
                         AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.GetTypeReferenceExtensionSettings().AllowCollection().Value, out var allowIsCollection) ? allowIsCollection : BooleanExtensionOptions.Inherit,
+                        DisplayName = this.GetTypeReferenceExtensionSettings().DisplayName(),
+                        Hint = this.GetTypeReferenceExtensionSettings().Hint()
                     } : null,
                 Macros = this.EventSettings?.ToPersistable()
             };

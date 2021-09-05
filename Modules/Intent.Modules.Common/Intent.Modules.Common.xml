@@ -107,11 +107,6 @@
             The OutputTarget of this template. This is determined by a designer with Output Targeting capabilities (e.g. Visual Studio, Folder Structure, etc.)
             </summary>
         </member>
-        <member name="P:Intent.Modules.Common.Templates.IntentTemplateBase.IsEnabled">
-            <summary>
-            If false will prevent the template from being executed and generating an output. Default is true.
-            </summary>
-        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetCorrelationId">
             <summary>
             Used to identify template outputs between software factory executions.

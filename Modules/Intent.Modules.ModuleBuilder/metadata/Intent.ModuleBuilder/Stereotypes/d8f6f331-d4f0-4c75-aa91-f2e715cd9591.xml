@@ -30,6 +30,26 @@
       </valueOptions>
       <lookupTypes />
     </property>
+    <property id="07613cf6-d1bf-411c-96db-65daad7d07f4">
+      <hint>Optional. When set will override the _Type_  text for the property name.</hint>
+      <name>Display Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="3941cc0b-503e-495a-bef3-9923a6554cee">
+      <hint>Optional hint text which can be used to explain usage of the type reference. Supports _italic_, **bold** and [link](https://intentarchitect.com/) formatting of markdown.</hint>
+      <name>Hint</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="b94f760c-0ce7-4176-bbae-97e26914b39c">
       <name>Target Types</name>
       <type>string</type>

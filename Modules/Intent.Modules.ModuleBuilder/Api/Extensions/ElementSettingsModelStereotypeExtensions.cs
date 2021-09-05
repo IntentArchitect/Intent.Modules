@@ -212,6 +212,16 @@ namespace Intent.ModuleBuilder.Api
                 return new ModeOptions(_stereotype.GetProperty<string>("Mode"));
             }
 
+            public string DisplayName()
+            {
+                return _stereotype.GetProperty<string>("Display Name");
+            }
+
+            public string Hint()
+            {
+                return _stereotype.GetProperty<string>("Hint");
+            }
+
             public IElement[] TargetTypes()
             {
                 return _stereotype.GetProperty<IElement[]>("Target Types");
