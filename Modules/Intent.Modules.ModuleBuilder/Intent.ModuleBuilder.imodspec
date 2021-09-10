@@ -199,10 +199,10 @@
   </templates>
   <decorators></decorators>
   <dependencies>
+    <dependency id="Intent.Common" version="3.0.7" />
+    <dependency id="Intent.Common.CSharp" version="3.0.16" />
     <dependency id="Intent.Common.Types" version="3.0.6" />
-    <dependency id="Intent.Common.CSharp" version="3.0.14" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.2" />
-    <dependency id="Intent.Common" version="3.0.6" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.0.3" />
   </dependencies>
   <designers>
     <designer id="Module Builder" name="Module Builder" src="modelers/Module Builder.designer.config" />
@@ -237,8 +237,6 @@
     <file src="$outDir$/$id$.pdb" />
     <file src="$outDir$/Mono.TextTemplating.dll" />
     <file src="$outDir$/System.CodeDom.dll" />
-    <!--is this needed?-->
-    <file src="$outDir$/Intent.Modules.Common.CSharp.dll" />
   </files>
   <moduleSettings>
     <group id="b2c4252b-cfae-43c5-9682-803aa0b84c87" title="Module Builder Settings" externalReference="b2c4252b-cfae-43c5-9682-803aa0b84c87">

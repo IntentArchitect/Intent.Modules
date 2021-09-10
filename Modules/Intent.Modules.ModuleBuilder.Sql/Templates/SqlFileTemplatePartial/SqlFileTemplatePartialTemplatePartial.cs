@@ -10,6 +10,7 @@ using Intent.ModuleBuilder.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.Sql.Api;
+using Intent.Modules.Common;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]

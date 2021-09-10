@@ -1,45 +1,39 @@
-using System.Collections.Generic;
-using System.Linq;
+using System;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
+using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
+    /// <summary>
+    /// C# template extensions.
+    /// </summary>
     public static class ModelHasFolderTemplateExtensions
     {
         /// <summary>
-        /// Creates a folder path based on the parent folders of this template's model as described in the designer.
+        /// Obsolete, use <see cref="Common.ModelHasFolderTemplateExtensions.GetFolderPath{TModel}(IntentTemplateBase{TModel},string[])"/> instead.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
-        public static string GetFolderPath<TModel>(this IntentTemplateBase<TModel> template, params string[] additionalFolders)
+        [Obsolete("Use the extension method in the Intent.Modules.Common namespace")]
+        public static string GetFolderPath<TModel>(IntentTemplateBase<TModel> template, params string[] additionalFolders)
             where TModel : IHasFolder
         {
             return string.Join("/", template.Model.GetParentFolderNames().Concat(additionalFolders));
         }
 
         /// <summary>
-        /// Creates a folder path based on the <paramref name="additionalFolders"/>.
+        /// Obsolete, use <see cref="Common.ModelHasFolderTemplateExtensions.GetFolderPath(IntentTemplateBase{object},string[])"/> instead.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
-        public static string GetFolderPath(this IntentTemplateBase<object> template, params string[] additionalFolders)
+        [Obsolete("Use the extension method in the Intent.Modules.Common namespace")]
+        public static string GetFolderPath(IntentTemplateBase<object> template, params string[] additionalFolders)
         {
             return string.Join("/", additionalFolders);
         }
 
         /// <summary>
-        /// Creates a folder path based on the <paramref name="additionalFolders"/>.
+        /// Obsolete, use <see cref="Common.ModelHasFolderTemplateExtensions.GetFolderPath(IntentTemplateBase,string[])"/> instead.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
-        public static string GetFolderPath(this IntentTemplateBase template, params string[] additionalFolders)
+        [Obsolete("Use the extension method in the Intent.Modules.Common namespace")]
+        public static string GetFolderPath(IntentTemplateBase template, params string[] additionalFolders)
         {
             return string.Join("/", additionalFolders);
         }
@@ -54,7 +48,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         public static string GetNamespace<TModel>(this CSharpTemplateBase<TModel> template, params string[] additionalFolders)
             where TModel : IHasFolder
         {
-            return string.Join(".", new [] { template.OutputTarget.GetNamespace() }.Concat(template.Model.GetParentFolderNames()).Concat(additionalFolders));
+            return string.Join(".", new[] { template.OutputTarget.GetNamespace() }.Concat(template.Model.GetParentFolderNames()).Concat(additionalFolders));
         }
 
         /// <summary>
