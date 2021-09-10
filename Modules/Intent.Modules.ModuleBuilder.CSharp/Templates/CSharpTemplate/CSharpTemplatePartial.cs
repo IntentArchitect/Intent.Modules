@@ -11,6 +11,7 @@ using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 using Intent.ModuleBuilder.CSharp.Api;
+using Intent.Modules.Common;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using CodeGenType = Intent.Modules.Common.CodeGenType;
 

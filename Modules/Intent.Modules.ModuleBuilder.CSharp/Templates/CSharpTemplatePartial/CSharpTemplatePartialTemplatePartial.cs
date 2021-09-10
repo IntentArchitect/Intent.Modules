@@ -7,6 +7,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
 using Intent.ModuleBuilder.CSharp.Api;
+using Intent.Modules.Common;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
