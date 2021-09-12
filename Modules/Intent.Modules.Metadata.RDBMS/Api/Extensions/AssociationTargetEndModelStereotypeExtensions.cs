@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Metadata.RDBMS.Api
 {
-    public static class AssociationTargetEndModelExtensions
+
+    public static class AssociationTargetEndModelStereotypeExtensions
     {
         public static ForeignKey GetForeignKey(this AssociationTargetEndModel model)
         {

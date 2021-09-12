@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.Common.Types.Api
 {
@@ -39,11 +40,11 @@ namespace Intent.Modules.Common.Types.Api
         [IntentManaged(Mode.Ignore)]
         public FolderModel Folder { get; set; }
 
-        [IntentManaged(Mode.Ignore)] 
+        [IntentManaged(Mode.Ignore)]
         IFolder IHasFolder<IFolder>.Folder => Folder;
 
         public IList<FolderModel> Folders => _element.ChildElements
-            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
             .ToList();
 
@@ -70,5 +71,22 @@ namespace Intent.Modules.Common.Types.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
+        public string Comment => _element.Comment;
+
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class FolderModelExtensions
+    {
+
+        public static bool IsFolderModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == FolderModel.SpecializationTypeId;
+        }
+
+        public static FolderModel ToFolderModel(this ICanBeReferencedType type)
+        {
+            return type.IsFolderModel() ? new FolderModel((IElement)type) : null;
+        }
     }
 }

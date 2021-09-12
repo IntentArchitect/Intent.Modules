@@ -139,4 +139,18 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ClassModelExtensions
+    {
+        public static bool IsClassModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ClassModel.SpecializationTypeId;
+        }
+
+        public static ClassModel AsClassModel(this ICanBeReferencedType type)
+        {
+            return type.IsClassModel() ? new ClassModel((IElement)type) : null;
+        }
+    }
 }

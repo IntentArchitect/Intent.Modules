@@ -72,4 +72,13 @@ namespace Intent.Modelers.Domain.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DiagramModelExtensions
+    {
+        public static DiagramModel AsDiagramModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DiagramModel.SpecializationTypeId ? new DiagramModel(element) : null;
+        }
+    }
 }

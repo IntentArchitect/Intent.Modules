@@ -9,6 +9,7 @@
   <mappedClass>
     <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
     <metadataId>Domain</metadataId>
+    <autoSyncTypeReference>true</autoSyncTypeReference>
     <mappedPath>
       <target id="9a717608-5fb6-4d68-bd21-2dd4dc7613b4" name="NewClass" type="element" specialization="Class" />
     </mappedPath>
@@ -35,6 +36,7 @@
       </typeReference>
       <isMapped>true</isMapped>
       <mappedClass>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="6bb818e0-16e2-4ddf-a817-25b43ee61910" name="isDisputeAllowed" type="element" specialization="Attribute" />
         </mappedPath>
@@ -62,6 +64,7 @@
       </typeReference>
       <isMapped>true</isMapped>
       <mappedClass>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="02b85a61-d9b8-41b7-9509-f909aa9011f9" name="clientResponsePeriod" type="element" specialization="Attribute" />
         </mappedPath>
@@ -89,6 +92,7 @@
       </typeReference>
       <isMapped>true</isMapped>
       <mappedClass>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="3cc273c4-b625-4b77-8f4e-492e0180baaa" name="subjectResponsePeriod" type="element" specialization="Attribute" />
         </mappedPath>
@@ -116,6 +120,7 @@
       </typeReference>
       <isMapped>true</isMapped>
       <mappedClass>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="077d1cbf-7192-4ece-8fc4-8b44106ce6a2" name="monitoringPeriod" type="element" specialization="Attribute" />
         </mappedPath>
@@ -143,6 +148,7 @@
       </typeReference>
       <isMapped>true</isMapped>
       <mappedClass>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="a5005ab4-c80b-4954-ba39-a4beb3471fb7" name="GetSomething" type="element" specialization="Operation" />
         </mappedPath>
@@ -170,6 +176,7 @@
       </typeReference>
       <isMapped>true</isMapped>
       <mappedClass>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="30c897e0-c1d0-43be-824c-8a86b638271f" name="OldClass" type="association" specialization="Association" />
         </mappedPath>

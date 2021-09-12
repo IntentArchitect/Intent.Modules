@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="0b630b29-9513-4bbb-87fa-6cb3e6f65199">
+<stereotypeDefinition id="0b630b29-9513-4bbb-87fa-6cb3e6f65199" version="3.1.0">
   <name>Column</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</element>
-  </targetElements>
+  <targetTypes>
+    <type id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>manually</applyMode>
   <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAACY0lEQVRIS+2VO2jTURTGf+fepPknLR0UH0hxUHCpRRChVnyVqqtNbUcVF8HFxU0cBScHB+koKM7tLH1b24qKaHVw0EGKjwpSg7FJk3uP3JTUNG3EIToUz3oO5/l93xH+gclQOrHHCCfEE1dB61VTFFFDwStDMpyOxlMxjhqpV/pfebzCjyITMtYTqSr1G6Gi19C3CMhIOqrbimrtolTECsTN2pAwYc5Dg4EQU21OYclDZJY7rraChxAjU72RHjq+WPMgTyZSZIp6vejNoBGfLAd6NYsx47ubY3JtoaDnvZc3xmh8JZEzWWPd1aSVXpnpi/TgsdpFnk+m+JrTc12DuXvVnQx3R2c3RXJ3Ie/aOgeWXlX7R9LJW6mYXt5ARab7Iu34zbqeTabI5OVSS27HnS9N843llWz5vjU7F3240JzQ/uwShzfbphffyDeU/R2t+zOjL2duJy0XAxk1oCdh1nKlRCYHkYW4rPYHMBUC+hykLFSTOfjzfhl98vBMpEc6ax9+ajxJ3umAQ54KrHQa0GvRAwkr6ZyTftCPCrY8iUAeOB0X2jfQ4TcOT8Z7InXwXpTXQGyFtYpHaLaGDucJbJ6j4rCAA1qsYa/zTKNkECoVsKhCq4WdJan3yieUd6uSCKqqjXErbUXPW5TPa4oI22KG3QWnsyKSRamUSYewywjb/6OrdLo/VuHHfZG2/0WpbwxSP5qOtLOrtqw8GguywgNVmRVh5SmpUhDRtoTlVN7JfWC+EhhBdgROCrpPhtPJG3GjVxKWeHi3lRYEctFBwkJsnfdaVEIDJNcTyCBejkLBy82fivvLalXUVjgAAAAASUVORK5CYII=" />
   <displayIcon>true</displayIcon>

@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.Common.Types.Api
 {
@@ -57,6 +58,23 @@ namespace Intent.Modules.Common.Types.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class EnumLiteralModelExtensions
+    {
+
+        public static bool IsEnumLiteralModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == EnumLiteralModel.SpecializationTypeId;
+        }
+
+        public static EnumLiteralModel ToEnumLiteralModel(this ICanBeReferencedType type)
+        {
+            return type.IsEnumLiteralModel() ? new EnumLiteralModel((IElement)type) : null;
         }
     }
 }

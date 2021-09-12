@@ -112,6 +112,12 @@ namespace Intent.Modules.Common.Templates
                         sb.Insert(i, char.ToLower(c));
                     }
                 }
+
+                if (i > 0 && (!char.IsNumber(sb[i - 1]) && char.IsNumber(c) || char.IsNumber(sb[i - 1]) && !char.IsNumber(c)))
+                {
+                    sb.Insert(i, separator); 
+                    i++;
+                }
             }
 
             return sb.ToString();

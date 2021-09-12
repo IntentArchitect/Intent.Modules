@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.0.4</version>
+  <version>3.1.0</version>
   <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
   <summary>Metadata for specifying RDBMS related concepts in the domain.</summary>
   <description>Metadata for specifying RDBMS related concepts in the domain.</description>
@@ -12,12 +12,13 @@
   <templates></templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Modelers.Domain" version="3.0.3" />
-    <dependency id="Intent.Common" version="3.0.4" />
-    <dependency id="Intent.Common.Types" version="3.0.3" />
+    <dependency id="Intent.Modelers.Domain" version="3.1.0" />
+    <dependency id="Intent.Common" version="3.1.0" />
+    <dependency id="Intent.Common.Types" version="3.1.0" />
   </dependencies>
   <files></files>
   <metadata>
     <install target="Domain" src="MetaData/Domain/Intent.Metadata.RDBMS.pkg.config" externalReference="AF8F3810-745C-42A2-93C8-798860DC45B1" />
   </metadata>
+  <moduleSettings />
 </package>

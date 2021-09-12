@@ -9,6 +9,7 @@
   <mappedClass>
     <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
     <metadataId>Domain</metadataId>
+    <autoSyncTypeReference>true</autoSyncTypeReference>
     <mappedPath>
       <target id="a97429c9-464a-4618-8692-2d1019bc732c" name="Movie" type="element" specialization="Class" />
     </mappedPath>
@@ -37,6 +38,7 @@
       </typeReference>
       <isMapped>true</isMapped>
       <mappedClass>
+        <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="eb8c7020-3c80-40c2-9dc2-0d066cb9db68" name="Characters" type="association" specialization="Association" />
         </mappedPath>

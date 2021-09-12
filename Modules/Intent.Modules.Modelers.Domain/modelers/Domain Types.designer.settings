@@ -73,6 +73,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="0">Folder</type>
         <type order="1">Class</type>
@@ -158,6 +159,7 @@ diagram.loadDiagram();
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <visualSettings type="Class">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
@@ -304,6 +306,7 @@ white-space: inherit;`</style>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
+          <scriptOptions />
           <mappingSettings>
             <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
             <optionsSource>lookup-element</optionsSource>
@@ -388,6 +391,7 @@ white-space: inherit;`</style>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
+          <scriptOptions />
           <childElementSettings>
             <childElementSetting type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
@@ -450,6 +454,7 @@ white-space: inherit;`</style>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <visualSettings type="Comment">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
@@ -574,6 +579,7 @@ white-space: inherit;`</style>
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="2">Class</type>
         <type order="3">Type-Definition</type>

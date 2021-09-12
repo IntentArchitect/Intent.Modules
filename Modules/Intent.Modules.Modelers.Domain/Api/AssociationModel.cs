@@ -65,11 +65,10 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_association != null ? _association.GetHashCode() : 0);
         }
-        public const string SpecializationTypeId = "eaf9ed4e-0b61-4ac1-ba88-09f912c12087";
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
+    public class AssociationEndModel : IMetadataModel, IHasName, IHasTypeReference, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly AssociationModel _association;
@@ -92,12 +91,12 @@ namespace Intent.Modelers.Domain.Api
         public ICanBeReferencedType Element => _associationEnd.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
-        public ITypeReference TypeReference => this;
+        public ITypeReference TypeReference => _associationEnd;
         public IPackage Package => Element?.Package;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
         [IntentManaged(Mode.Ignore)]
-        public ClassModel Class => new ClassModel((IElement)_associationEnd.Element);
+        public ClassModel Class => _associationEnd.Element.AsClassModel();
 
         [IntentManaged(Mode.Ignore)]
         public Multiplicity Multiplicity
@@ -163,8 +162,6 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class AssociationSourceEndModel : AssociationEndModel
     {
-        public const string SpecializationTypeId = "eaf9ed4e-0b61-4ac1-ba88-09f912c12087";
-
         public AssociationSourceEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {
         }
@@ -173,8 +170,6 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class AssociationTargetEndModel : AssociationEndModel
     {
-        public const string SpecializationTypeId = "eaf9ed4e-0b61-4ac1-ba88-09f912c12087";
-
         public AssociationTargetEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {
         }

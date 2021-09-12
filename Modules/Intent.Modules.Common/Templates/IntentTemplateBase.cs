@@ -101,11 +101,6 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public IOutputTarget OutputTarget { get; }
 
-        /// <summary>
-        /// If false will prevent the template from being executed and generating an output. Default is true.
-        /// </summary>
-        public bool IsEnabled { get; set; } = true;
-
         public ITemplateBindingContext BindingContext { get; }
         public IFileMetadata FileMetadata { get; private set; }
 
@@ -118,7 +113,7 @@ namespace Intent.Modules.Common.Templates
         public abstract ITemplateFileConfig GetTemplateFileConfig();
 
         /// <summary>
-        /// Override this method to control whether the template runs and the file created
+        /// Override this method to control whether the template runs and the creates the output file.
         /// </summary>
         /// <returns></returns>
         public virtual bool CanRunTemplate()

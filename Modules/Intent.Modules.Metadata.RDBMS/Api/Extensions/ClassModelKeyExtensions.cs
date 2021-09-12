@@ -10,7 +10,7 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static IList<AttributeModel> GetExplicitPrimaryKey(this ClassModel @class)
         {
-            return @class.Attributes.Where(x => AttributeModelExtensions.HasPrimaryKey(x)).ToList();
+            return @class.Attributes.Where(x => x.HasPrimaryKey()).ToList();
         }
 
         public static string GetSurrogateKey(this ClassModel @class)

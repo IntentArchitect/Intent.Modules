@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public SqlFileTemplatePartialTemplate(IOutputTarget outputTarget, SqlTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(IntentNugetPackages.IntentCommonSql);
+            AddNugetDependency("Intent.Modules.Common.Sql", "3.0.4");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";

@@ -76,4 +76,13 @@ namespace Intent.Modelers.Domain.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class AttributeModelExtensions
+    {
+        public static AttributeModel AsAttributeModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == AttributeModel.SpecializationTypeId ? new AttributeModel(element) : null;
+        }
+    }
 }

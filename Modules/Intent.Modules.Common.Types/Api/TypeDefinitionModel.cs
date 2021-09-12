@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.Common.Types.Api
 {
@@ -67,5 +68,22 @@ namespace Intent.Modules.Common.Types.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
         public const string SpecializationTypeId = "d4e577cd-ad05-4180-9a2e-fff4ddea0e1e";
+
+        public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class TypeDefinitionModelExtensions
+    {
+
+        public static bool IsTypeDefinitionModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == TypeDefinitionModel.SpecializationTypeId;
+        }
+
+        public static TypeDefinitionModel ToTypeDefinitionModel(this ICanBeReferencedType type)
+        {
+            return type.IsTypeDefinitionModel() ? new TypeDefinitionModel((IElement)type) : null;
+        }
     }
 }

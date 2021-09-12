@@ -84,4 +84,13 @@ namespace Intent.Modelers.Domain.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class OperationModelExtensions
+    {
+        public static OperationModel AsOperationModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId ? new OperationModel(element) : null;
+        }
+    }
 }

@@ -9,17 +9,26 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Metadata.RDBMS.Api
 {
-    [IntentManaged(Mode.Merge)]
-    public static class AttributeModelExtensions
+
+    public static class AttributeModelStereotypeExtensions
     {
-        [IntentManaged(Mode.Ignore)]
+        public static Column GetColumn(this AttributeModel model)
+        {
+            var stereotype = model.GetStereotype("Column");
+            return stereotype != null ? new Column(stereotype) : null;
+        }
+
+        public static bool HasColumn(this AttributeModel model)
+        {
+            return model.HasStereotype("Column");
+        }
+
         public static DecimalConstraints GetDecimalConstraints(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Decimal Constraints");
             return stereotype != null ? new DecimalConstraints(stereotype) : null;
         }
 
-        [IntentManaged(Mode.Ignore)]
         public static bool HasDecimalConstraints(this AttributeModel model)
         {
             return model.HasStereotype("Decimal Constraints");
@@ -58,21 +67,52 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Primary Key");
         }
 
-        [IntentManaged(Mode.Ignore)]
         public static TextConstraints GetTextConstraints(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Text Constraints");
             return stereotype != null ? new TextConstraints(stereotype) : null;
         }
 
-        [IntentManaged(Mode.Ignore)]
         public static bool HasTextConstraints(this AttributeModel model)
         {
             return model.HasStereotype("Text Constraints");
         }
 
+        public static UniqueConstraint GetUniqueConstraint(this AttributeModel model)
+        {
+            var stereotype = model.GetStereotype("Unique Constraint");
+            return stereotype != null ? new UniqueConstraint(stereotype) : null;
+        }
 
-        [IntentManaged(Mode.Ignore)]
+        public static bool HasUniqueConstraint(this AttributeModel model)
+        {
+            return model.HasStereotype("Unique Constraint");
+        }
+
+
+        public class Column
+        {
+            private IStereotype _stereotype;
+
+            public Column(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
+            }
+
+            public string Type()
+            {
+                return _stereotype.GetProperty<string>("Type");
+            }
+
+        }
+
         public class DecimalConstraints
         {
             private IStereotype _stereotype;
@@ -165,7 +205,6 @@ namespace Intent.Metadata.RDBMS.Api
 
         }
 
-        [IntentManaged(Mode.Ignore)]
         public class TextConstraints
         {
             private IStereotype _stereotype;
@@ -201,6 +240,25 @@ namespace Intent.Metadata.RDBMS.Api
                     Value = value;
                 }
 
+                public SQLDataTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "VARCHAR":
+                            return SQLDataTypeOptionsEnum.VARCHAR;
+                        case "NVARCHAR":
+                            return SQLDataTypeOptionsEnum.NVARCHAR;
+                        case "TEXT":
+                            return SQLDataTypeOptionsEnum.TEXT;
+                        case "NTEXT":
+                            return SQLDataTypeOptionsEnum.NTEXT;
+                        case "DEFAULT":
+                            return SQLDataTypeOptionsEnum.DEFAULT;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsVARCHAR()
                 {
                     return Value == "VARCHAR";
@@ -223,13 +281,21 @@ namespace Intent.Metadata.RDBMS.Api
                 }
             }
 
+            public enum SQLDataTypeOptionsEnum
+            {
+                VARCHAR,
+                NVARCHAR,
+                TEXT,
+                NTEXT,
+                DEFAULT
+            }
         }
 
-        public class Column
+        public class UniqueConstraint
         {
             private IStereotype _stereotype;
 
-            public Column(IStereotype stereotype)
+            public UniqueConstraint(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
@@ -241,22 +307,6 @@ namespace Intent.Metadata.RDBMS.Api
                 return _stereotype.GetProperty<string>("Name");
             }
 
-            public string Type()
-            {
-                return _stereotype.GetProperty<string>("Type");
-            }
-
-        }
-
-        public static Column GetColumn(this AttributeModel model)
-        {
-            var stereotype = model.GetStereotype("Column");
-            return stereotype != null ? new Column(stereotype) : null;
-        }
-
-        public static bool HasColumn(this AttributeModel model)
-        {
-            return model.HasStereotype("Column");
         }
 
     }

@@ -107,6 +107,12 @@
             The OutputTarget of this template. This is determined by a designer with Output Targeting capabilities (e.g. Visual Studio, Folder Structure, etc.)
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.CanRunTemplate">
+            <summary>
+            Override this method to control whether the template runs and the creates the output file.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetCorrelationId">
             <summary>
             Used to identify template outputs between software factory executions.

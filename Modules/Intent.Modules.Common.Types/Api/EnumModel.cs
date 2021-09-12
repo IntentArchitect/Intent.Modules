@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.Modules.Common.Types.Api
 {
@@ -35,7 +36,7 @@ namespace Intent.Modules.Common.Types.Api
         public IElement InternalElement => _element;
 
         public IList<EnumLiteralModel> Literals => _element.ChildElements
-            .Where(x => x.SpecializationType == EnumLiteralModel.SpecializationType)
+            .GetElementsOfType(EnumLiteralModel.SpecializationTypeId)
             .Select(x => new EnumLiteralModel(x))
             .ToList();
 
@@ -60,6 +61,23 @@ namespace Intent.Modules.Common.Types.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class EnumModelExtensions
+    {
+
+        public static bool IsEnumModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == EnumModel.SpecializationTypeId;
+        }
+
+        public static EnumModel ToEnumModel(this ICanBeReferencedType type)
+        {
+            return type.IsEnumModel() ? new EnumModel((IElement)type) : null;
         }
     }
 }

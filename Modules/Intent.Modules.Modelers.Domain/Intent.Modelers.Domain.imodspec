@@ -11,8 +11,8 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.7" />
-    <dependency id="Intent.Common.Types" version="3.0.6" />
+    <dependency id="Intent.Common" version="3.1.0" />
+    <dependency id="Intent.Common.Types" version="3.1.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -23,4 +23,5 @@
     <install src="modelers/Domain.designer.config" externalReference="6ab29b31-27af-4f56-a67c-986d82097d63" />
     <install target="Domain;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain/Intent.Modelers.Domain.pkg.config" externalReference="6572b98d-5e13-4d4b-9ffc-820057da974e" />
   </metadata>
+  <moduleSettings />
 </package>

@@ -20,7 +20,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
 
     public class JavaTypeResolverOptions
     {
-        public bool ReturnsPrimitives { get; set; } = true;
+        public bool ReturnsPrimitives { get; set; } = false;
     }
 
     public class JavaTypeResolverContext : TypeResolverContextBase

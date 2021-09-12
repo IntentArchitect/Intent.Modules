@@ -141,7 +141,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             #line default
             #line hidden
             this.Write("(IStereotype stereotype)\r\n            {\r\n                _stereotype = stereotype" +
-                    ";\r\n            }\r\n\r\n            public string Name => _stereotype.Name;\r\n\r\n");
+                    ";\r\n            }\r\n\r\n            public string ");
+            
+            #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(stereotypeDefinition.Properties.Any(x => x.Name.Equals("Name", StringComparison.InvariantCultureIgnoreCase)) ? "StereotypeName" : "Name"));
+            
+            #line default
+            #line hidden
+            this.Write(" => _stereotype.Name;\r\n\r\n");
             
             #line 47 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
       foreach(var property in stereotypeDefinition.Properties) { 

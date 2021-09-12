@@ -37,8 +37,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public override IEnumerable<ExtensionModel> GetModels(IApplication application)
         {
             _stereotypeDefinitions = _metadataManager.ModuleBuilder(application).StereotypeDefinitions;
-            var targetTypes = _stereotypeDefinitions.SelectMany(x => x.TargetElements).Distinct();
-            return targetTypes.Select(x => new ExtensionModel(new ExtensionModelType(x), _stereotypeDefinitions.Where(s => s.TargetElements.Any(t => t.Id.Equals(x.Id, StringComparison.InvariantCultureIgnoreCase))).ToList()));
+            var targetTypes = _stereotypeDefinitions.SelectMany(x => x.TargetTypes).Distinct();
+            return targetTypes.Select(x => new ExtensionModel(new ExtensionModelType(x), _stereotypeDefinitions.Where(s => s.TargetTypes.Any(t => t.Id.Equals(x.Id, StringComparison.InvariantCultureIgnoreCase))).ToList()));
         }
     }
 }

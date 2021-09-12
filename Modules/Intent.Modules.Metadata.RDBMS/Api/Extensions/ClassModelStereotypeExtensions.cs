@@ -9,7 +9,8 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Metadata.RDBMS.Api
 {
-    public static class ClassModelExtensions
+
+    public static class ClassModelStereotypeExtensions
     {
         public static Table GetTable(this ClassModel model)
         {

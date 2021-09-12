@@ -42,7 +42,7 @@ namespace <#= Namespace #>
                 _stereotype = stereotype;
             }
 
-            public string Name => _stereotype.Name;
+            public string <#= stereotypeDefinition.Properties.Any(x => x.Name.Equals("Name", StringComparison.InvariantCultureIgnoreCase)) ? "StereotypeName" : "Name" #> => _stereotype.Name;
 
 <#      foreach(var property in stereotypeDefinition.Properties) { 
         switch (property.ControlType) {

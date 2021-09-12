@@ -123,7 +123,10 @@ namespace Intent.Modules.Common.Java.Templates
         /// <returns></returns>
         public string ImportType(string fullyQualifiedType)
         {
-            AddImport(fullyQualifiedType);
+            if (fullyQualifiedType.Contains('.'))
+            {
+                AddImport(fullyQualifiedType);
+            }
 
             return fullyQualifiedType.Split('.').Last();
         }
@@ -149,6 +152,11 @@ namespace Intent.Modules.Common.Java.Templates
         public override string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
             return GetTemplate<IClassProvider>(templateDependency, options).ClassName;
+        }
+
+        public override string NormalizeTypeName(string name)
+        {
+            return ImportType(name);
         }
 
         public override void BeforeTemplateExecution()

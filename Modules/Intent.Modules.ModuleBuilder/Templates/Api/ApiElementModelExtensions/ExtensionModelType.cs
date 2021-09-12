@@ -6,9 +6,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 {
     public class ExtensionModelType : IMetadataModel
     {
-        private readonly IElement _element;
+        private readonly ICanBeReferencedType _element;
 
-        public ExtensionModelType(IElement element)
+        public ExtensionModelType(ICanBeReferencedType element)
         {
             _element = element;
         }

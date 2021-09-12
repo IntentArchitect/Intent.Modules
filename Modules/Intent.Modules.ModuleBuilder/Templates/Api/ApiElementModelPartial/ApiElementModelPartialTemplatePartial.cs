@@ -21,10 +21,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public ApiElementModelPartialTemplate(IOutputTarget outputTarget, ElementSettingsModel model) : base(TemplateId, outputTarget, model)
         {
-            if (!ExecutionContext.Settings.GetModuleBuilderSettings().CreatePartialAPIModels)
-            {
-                this.IsEnabled = false;
-            }
         }
 
         protected override CSharpFileConfig DefineFileConfig()
@@ -33,6 +29,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial
                 className: $"{Model.ApiModelName}",
                 @namespace: Model.ParentModule.ApiNamespace,
                 fileName: $"{Model.ApiModelName}.partial");
+        }
+
+        public override bool CanRunTemplate()
+        {
+            return ExecutionContext.Settings.GetModuleBuilderSettings().CreatePartialAPIModels;
         }
     }
 }

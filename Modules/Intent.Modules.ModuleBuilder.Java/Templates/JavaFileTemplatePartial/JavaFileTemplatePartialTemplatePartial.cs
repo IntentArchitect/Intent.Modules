@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public JavaFileTemplatePartialTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(IntentNugetPackages.IntentCommonJava);
+            AddNugetDependency("Intent.Modules.Common.Java", "3.0.6");
             AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "1.0.1");
         }
 
