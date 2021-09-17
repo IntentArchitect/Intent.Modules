@@ -77,7 +77,7 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Fully)]
     public class <#=AssociationSourceEndClassName #> : <#=AssociationEndClassName #>
     {
-        public const string SpecializationTypeId = "<#= Model.Id #>";
+        public const string SpecializationTypeId = "<#= Model.SourceEnd.Id #>";
 
         public <#=AssociationSourceEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
@@ -87,7 +87,7 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Fully)]
     public class <#=AssociationTargetEndClassName #> : <#=AssociationEndClassName #>
     {
-        public const string SpecializationTypeId = "<#= Model.Id #>";
+        public const string SpecializationTypeId = "<#= Model.TargetEnd.Id #>";
 
         public <#=AssociationTargetEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
@@ -111,13 +111,13 @@ namespace <#= Namespace #>
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public <#= ClassName #> Association => _association;
-        IAssociationEnd InternalAssociationEnd => _associationEnd;
-        IAssociation InternalAssociation => _association.InternalAssociation;
+        public IAssociationEnd InternalAssociationEnd => _associationEnd;
+        public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
-        public bool IsNullable => _associationEnd.IsNullable;
-        public bool IsCollection => _associationEnd.IsCollection;
-        public ICanBeReferencedType Element => _associationEnd.Element;
-        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
+        public bool IsNullable => _associationEnd.TypeReference.IsNullable;
+        public bool IsCollection => _associationEnd.TypeReference.IsCollection;
+        public ICanBeReferencedType Element => _associationEnd.TypeReference.Element;
+        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.TypeReference.GenericTypeParameters;
         public ITypeReference TypeReference => this;
         public IPackage Package => Element?.Package;
         public string Comment => _associationEnd.Comment;

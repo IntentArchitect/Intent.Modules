@@ -88,9 +88,15 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class OperationModelExtensions
     {
-        public static OperationModel AsOperationModel(this ICanBeReferencedType type)
+
+        public static bool IsOperationModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId ? new OperationModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId;
+        }
+
+        public static OperationModel ToOperationModel(this ICanBeReferencedType type)
+        {
+            return type.IsOperationModel() ? new OperationModel((IElement)type) : null;
         }
     }
 }

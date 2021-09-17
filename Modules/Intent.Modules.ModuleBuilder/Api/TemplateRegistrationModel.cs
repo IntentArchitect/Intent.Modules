@@ -155,9 +155,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class TemplateRegistrationModelExtensions
     {
-        public static TemplateRegistrationModel AsTemplateRegistrationModel(this ICanBeReferencedType type)
+
+        public static bool IsTemplateRegistrationModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == TemplateRegistrationModel.SpecializationTypeId ? new TemplateRegistrationModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == TemplateRegistrationModel.SpecializationTypeId;
+        }
+
+        public static TemplateRegistrationModel ToTemplateRegistrationModel(this ICanBeReferencedType type)
+        {
+            return type.IsTemplateRegistrationModel() ? new TemplateRegistrationModel((IElement)type) : null;
         }
     }
 }

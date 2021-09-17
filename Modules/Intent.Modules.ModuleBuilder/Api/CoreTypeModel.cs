@@ -74,9 +74,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class CoreTypeModelExtensions
     {
-        public static CoreTypeModel AsCoreTypeModel(this ICanBeReferencedType type)
+
+        public static bool IsCoreTypeModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == CoreTypeModel.SpecializationTypeId ? new CoreTypeModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == CoreTypeModel.SpecializationTypeId;
+        }
+
+        public static CoreTypeModel ToCoreTypeModel(this ICanBeReferencedType type)
+        {
+            return type.IsCoreTypeModel() ? new CoreTypeModel((IElement)type) : null;
         }
     }
 }

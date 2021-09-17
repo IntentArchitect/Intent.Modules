@@ -11,7 +11,12 @@ namespace Intent.Modelers.Domain.Api
     {
         public static IDesigner Domain(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetDesigner(application.Id, "Domain");
+            return metadataManager.Domain(application.Id);
+        }
+
+        public static IDesigner Domain(this IMetadataManager metadataManager, string applicationId)
+        {
+            return metadataManager.GetDesigner(applicationId, "Domain");
         }
 
     }

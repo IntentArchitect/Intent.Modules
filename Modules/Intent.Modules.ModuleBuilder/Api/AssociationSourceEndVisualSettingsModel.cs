@@ -72,9 +72,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class AssociationSourceEndVisualSettingsModelExtensions
     {
-        public static AssociationSourceEndVisualSettingsModel AsAssociationSourceEndVisualSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsAssociationSourceEndVisualSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AssociationSourceEndVisualSettingsModel.SpecializationTypeId ? new AssociationSourceEndVisualSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationSourceEndVisualSettingsModel.SpecializationTypeId;
+        }
+
+        public static AssociationSourceEndVisualSettingsModel ToAssociationSourceEndVisualSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsAssociationSourceEndVisualSettingsModel() ? new AssociationSourceEndVisualSettingsModel((IElement)type) : null;
         }
     }
 }

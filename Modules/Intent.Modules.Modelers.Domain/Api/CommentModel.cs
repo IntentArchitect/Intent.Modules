@@ -77,9 +77,15 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class CommentModelExtensions
     {
-        public static CommentModel AsCommentModel(this ICanBeReferencedType type)
+
+        public static bool IsCommentModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == CommentModel.SpecializationTypeId ? new CommentModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == CommentModel.SpecializationTypeId;
+        }
+
+        public static CommentModel ToCommentModel(this ICanBeReferencedType type)
+        {
+            return type.IsCommentModel() ? new CommentModel((IElement)type) : null;
         }
     }
 }

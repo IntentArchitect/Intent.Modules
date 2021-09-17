@@ -62,6 +62,7 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_association != null ? _association.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "5264c135-e856-468d-8bd7-154b75842256";
     }
 
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
@@ -81,13 +82,13 @@ namespace Intent.Modelers.Domain.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public CommentAssociationModel Association => _association;
-        IAssociationEnd InternalAssociationEnd => _associationEnd;
-        IAssociation InternalAssociation => _association.InternalAssociation;
+        public IAssociationEnd InternalAssociationEnd => _associationEnd;
+        public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
-        public bool IsNullable => _associationEnd.IsNullable;
-        public bool IsCollection => _associationEnd.IsCollection;
-        public ICanBeReferencedType Element => _associationEnd.Element;
-        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
+        public bool IsNullable => _associationEnd.TypeReference.IsNullable;
+        public bool IsCollection => _associationEnd.TypeReference.IsCollection;
+        public ICanBeReferencedType Element => _associationEnd.TypeReference.Element;
+        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.TypeReference.GenericTypeParameters;
         public ITypeReference TypeReference => this;
         public IPackage Package => Element?.Package;
         public string Comment => _associationEnd.Comment;
@@ -135,6 +136,8 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class CommentSourceEndModel : CommentAssociationEndModel
     {
+        public const string SpecializationTypeId = "7e98213c-4a9c-4d6f-98fc-f185948cc9e8";
+
         public CommentSourceEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
         {
         }
@@ -143,6 +146,8 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class CommentTargetEndModel : CommentAssociationEndModel
     {
+        public const string SpecializationTypeId = "b7edce45-ccf0-47ed-b79f-86d5145c9f62";
+
         public CommentTargetEndModel(IAssociationEnd associationEnd, CommentAssociationModel association) : base(associationEnd, association)
         {
         }

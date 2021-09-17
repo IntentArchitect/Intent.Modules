@@ -11,7 +11,12 @@ namespace Intent.Modelers.Services.Api
     {
         public static IDesigner Services(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetDesigner(application.Id, "Services");
+            return metadataManager.Services(application.Id);
+        }
+
+        public static IDesigner Services(this IMetadataManager metadataManager, string applicationId)
+        {
+            return metadataManager.GetDesigner(applicationId, "Services");
         }
 
     }

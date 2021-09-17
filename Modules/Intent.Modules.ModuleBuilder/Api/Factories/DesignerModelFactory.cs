@@ -9,22 +9,11 @@ namespace Intent.ModuleBuilder.Api.Factories
 {
     public class DesignerModelFactory
     {
-        public static DesignerSettingsModel Create(IElement element)
-        {
-            switch (element.SpecializationType)
-            {
-                case DesignerSettingsModel.SpecializationType:
-                    return new DesignerSettingsModel(element);
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
-
         public static DesignerSettingsModel GetDesignerSettings(ICanBeReferencedType forElement)
         {
-            var designerElement = ((forElement as IElement) ?? ((IAssociationEnd) forElement).Association.SourceEnd.Element as IElement).GetParentPath()
+            var designerElement = ((forElement as IElement) ?? ((IAssociationEnd) forElement).Association.SourceEnd.TypeReference.Element as IElement).GetParentPath()
                 .Single(x => x.SpecializationType == Api.DesignerSettingsModel.SpecializationType);
-            return Create(designerElement);
+            return new DesignerSettingsModel(designerElement);
         }
     }
 }

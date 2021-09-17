@@ -108,9 +108,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ElementMappingModelExtensions
     {
-        public static ElementMappingModel AsElementMappingModel(this ICanBeReferencedType type)
+
+        public static bool IsElementMappingModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ElementMappingModel.SpecializationTypeId ? new ElementMappingModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementMappingModel.SpecializationTypeId;
+        }
+
+        public static ElementMappingModel ToElementMappingModel(this ICanBeReferencedType type)
+        {
+            return type.IsElementMappingModel() ? new ElementMappingModel((IElement)type) : null;
         }
     }
 }

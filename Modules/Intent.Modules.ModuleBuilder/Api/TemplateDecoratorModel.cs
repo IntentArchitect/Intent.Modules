@@ -72,9 +72,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class TemplateDecoratorModelExtensions
     {
-        public static TemplateDecoratorModel AsTemplateDecoratorModel(this ICanBeReferencedType type)
+
+        public static bool IsTemplateDecoratorModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == TemplateDecoratorModel.SpecializationTypeId ? new TemplateDecoratorModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == TemplateDecoratorModel.SpecializationTypeId;
+        }
+
+        public static TemplateDecoratorModel ToTemplateDecoratorModel(this ICanBeReferencedType type)
+        {
+            return type.IsTemplateDecoratorModel() ? new TemplateDecoratorModel((IElement)type) : null;
         }
     }
 }

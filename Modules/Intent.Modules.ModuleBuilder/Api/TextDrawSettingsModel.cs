@@ -93,9 +93,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class TextDrawSettingsModelExtensions
     {
-        public static TextDrawSettingsModel AsTextDrawSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsTextDrawSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == TextDrawSettingsModel.SpecializationTypeId ? new TextDrawSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == TextDrawSettingsModel.SpecializationTypeId;
+        }
+
+        public static TextDrawSettingsModel ToTextDrawSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsTextDrawSettingsModel() ? new TextDrawSettingsModel((IElement)type) : null;
         }
     }
 }

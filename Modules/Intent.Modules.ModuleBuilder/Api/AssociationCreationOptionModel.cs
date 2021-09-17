@@ -106,9 +106,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class AssociationCreationOptionModelExtensions
     {
-        public static AssociationCreationOptionModel AsAssociationCreationOptionModel(this ICanBeReferencedType type)
+
+        public static bool IsAssociationCreationOptionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AssociationCreationOptionModel.SpecializationTypeId ? new AssociationCreationOptionModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationCreationOptionModel.SpecializationTypeId;
+        }
+
+        public static AssociationCreationOptionModel ToAssociationCreationOptionModel(this ICanBeReferencedType type)
+        {
+            return type.IsAssociationCreationOptionModel() ? new AssociationCreationOptionModel((IElement)type) : null;
         }
     }
 }

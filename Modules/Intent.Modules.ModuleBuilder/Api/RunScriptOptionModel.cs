@@ -64,9 +64,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class RunScriptOptionModelExtensions
     {
-        public static RunScriptOptionModel AsRunScriptOptionModel(this ICanBeReferencedType type)
+
+        public static bool IsRunScriptOptionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == RunScriptOptionModel.SpecializationTypeId ? new RunScriptOptionModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == RunScriptOptionModel.SpecializationTypeId;
+        }
+
+        public static RunScriptOptionModel ToRunScriptOptionModel(this ICanBeReferencedType type)
+        {
+            return type.IsRunScriptOptionModel() ? new RunScriptOptionModel((IElement)type) : null;
         }
     }
 }

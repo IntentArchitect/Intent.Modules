@@ -90,9 +90,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class StereotypesVisualSettingsModelExtensions
     {
-        public static StereotypesVisualSettingsModel AsStereotypesVisualSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsStereotypesVisualSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == StereotypesVisualSettingsModel.SpecializationTypeId ? new StereotypesVisualSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == StereotypesVisualSettingsModel.SpecializationTypeId;
+        }
+
+        public static StereotypesVisualSettingsModel ToStereotypesVisualSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsStereotypesVisualSettingsModel() ? new StereotypesVisualSettingsModel((IElement)type) : null;
         }
     }
 }

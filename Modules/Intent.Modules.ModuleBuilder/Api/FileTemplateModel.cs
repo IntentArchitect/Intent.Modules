@@ -63,9 +63,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class FileTemplateModelExtensions
     {
-        public static FileTemplateModel AsFileTemplateModel(this ICanBeReferencedType type)
+
+        public static bool IsFileTemplateModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == FileTemplateModel.SpecializationTypeId ? new FileTemplateModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == FileTemplateModel.SpecializationTypeId;
+        }
+
+        public static FileTemplateModel ToFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type.IsFileTemplateModel() ? new FileTemplateModel((IElement)type) : null;
         }
     }
 }

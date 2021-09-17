@@ -91,9 +91,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ElementEventSettingsModelExtensions
     {
-        public static ElementEventSettingsModel AsElementEventSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsElementEventSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ElementEventSettingsModel.SpecializationTypeId ? new ElementEventSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementEventSettingsModel.SpecializationTypeId;
+        }
+
+        public static ElementEventSettingsModel ToElementEventSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsElementEventSettingsModel() ? new ElementEventSettingsModel((IElement)type) : null;
         }
     }
 }

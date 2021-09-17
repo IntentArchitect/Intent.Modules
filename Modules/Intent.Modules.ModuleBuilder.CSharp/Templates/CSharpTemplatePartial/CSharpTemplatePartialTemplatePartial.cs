@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
@@ -28,8 +27,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public CSharpTemplatePartialTemplate(IOutputTarget outputTarget, CSharpTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency(IntentNugetPackages.IntentCommonCSharp);
-            AddNugetDependency(IntentNugetPackages.IntentRoslynWeaverAttributes);
+            AddNugetDependency("Intent.Modules.Common.CSharp", "3.1.0");
+            AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";

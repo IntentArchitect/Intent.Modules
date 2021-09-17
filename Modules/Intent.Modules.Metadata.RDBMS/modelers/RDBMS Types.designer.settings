@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings>
+  <id>1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5</id>
+  <name>RDBMS Types</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions />
+  <elementSettings>
+    <elementSetting type="Unique Constraint" typeId="c760d0f5-d8a1-4c16-9e2b-e654c2860154">
+      <icon type="UrlImagePath" source="data:image/png;base64,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" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>true</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren>manually</sortChildren>
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Unique Constraint Column</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Unique Constraint Column</specializationType>
+          <specializationTypeId>d32bc804-8f5e-463f-9cc5-d3b8f3536402</specializationTypeId>
+          <text>Add Column</text>
+          <defaultName>NewUniqueConstraintColumn</defaultName>
+          <icon type="FontAwesome" source="file-o" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingSettings>
+        <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+        <optionsSource>lookup-element</optionsSource>
+        <lookupElementFunction>return getParent().id</lookupElementFunction>
+        <autoSyncTypeReferences>false</autoSyncTypeReferences>
+        <mapFrom>root</mapFrom>
+        <mappings>
+          <mapping id="1299add5-30f8-42a2-a92b-a11db78dd8a1">
+            <criteria specializationType="Class">
+              <hasTypeReference d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <isCollection d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <hasChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+            </criteria>
+            <mapTo specializationType="Unique Constraint" childMappingMode="map-to-child" />
+            <behaviour autoSelectChildren="false" />
+            <childMappings>
+              <mapping id="189d9422-d272-44da-bcd7-8a7bd093f428">
+                <criteria specializationType="Attribute">
+                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <isCollection d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
+                <behaviour autoSelectChildren="false" />
+                <childMappings />
+              </mapping>
+              <mapping id="4047d84f-b7ce-4e2f-95d9-6a6eb54c12d1">
+                <criteria specializationType="Association Target End">
+                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <isCollection>false</isCollection>
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
+                <behaviour autoSelectChildren="false" />
+                <childMappings />
+              </mapping>
+              <mapping id="d70e85cb-5526-4ab0-aa0c-f6caacb05f41">
+                <criteria specializationType="Association Source End">
+                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  <isCollection>false</isCollection>
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
+                <behaviour autoSelectChildren="false" />
+                <childMappings />
+              </mapping>
+              <mapping id="613921ae-f918-416e-b2e0-ffa4f65924ef">
+                <criteria specializationType="Generalization Target End">
+                  <hasTypeReference>true</hasTypeReference>
+                  <isCollection>false</isCollection>
+                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
+                </criteria>
+                <mapTo childMappingMode="traverse" useMappingSettings="1299add5-30f8-42a2-a92b-a11db78dd8a1" />
+                <behaviour autoSelectChildren="false" />
+                <childMappings />
+              </mapping>
+            </childMappings>
+          </mapping>
+        </mappings>
+      </mappingSettings>
+      <childElementSettings>
+        <childElementSetting type="Unique Constraint Column" typeId="d32bc804-8f5e-463f-9cc5-d3b8f3536402">
+          <icon type="FontAwesome" source="file-o" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder />
+          <creationOptions />
+          <scriptOptions />
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+      <creationOptions>
+        <option type="element">
+          <specializationType>Unique Constraint</specializationType>
+          <specializationTypeId>c760d0f5-d8a1-4c16-9e2b-e654c2860154</specializationTypeId>
+          <text>Add Unique Constraint</text>
+          <defaultName>NewUniqueConstraint</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Unique Constraint</type>
+      </typeOrder>
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+</settings>

@@ -11,7 +11,7 @@ using Intent.Modules.Common;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public partial class OperationModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "Operation";
         protected readonly IElement _element;
@@ -84,5 +84,20 @@ namespace Intent.Modelers.Services.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
         public const string SpecializationTypeId = "e030c97a-e066-40a7-8188-808c275df3cb";
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class OperationModelExtensions
+    {
+
+        public static bool IsOperationModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId;
+        }
+
+        public static OperationModel ToOperationModel(this ICanBeReferencedType type)
+        {
+            return type.IsOperationModel() ? new OperationModel((IElement)type) : null;
+        }
     }
 }

@@ -34,6 +34,17 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Index");
         }
 
+        public static UniqueConstraint GetUniqueConstraint(this AssociationTargetEndModel model)
+        {
+            var stereotype = model.GetStereotype("Unique Constraint");
+            return stereotype != null ? new UniqueConstraint(stereotype) : null;
+        }
+
+        public static bool HasUniqueConstraint(this AssociationTargetEndModel model)
+        {
+            return model.HasStereotype("Unique Constraint");
+        }
+
 
         public class ForeignKey
         {
@@ -77,6 +88,24 @@ namespace Intent.Metadata.RDBMS.Api
             public bool IsUnique()
             {
                 return _stereotype.GetProperty<bool>("IsUnique");
+            }
+
+        }
+
+        public class UniqueConstraint
+        {
+            private IStereotype _stereotype;
+
+            public UniqueConstraint(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
             }
 
         }

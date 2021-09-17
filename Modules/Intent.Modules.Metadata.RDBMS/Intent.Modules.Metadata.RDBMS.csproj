@@ -14,6 +14,11 @@
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <WarningLevel>5</WarningLevel>
+    <DocumentationFile>C:\Dev\Intent.Modules\Modules\Intent.Modules.Metadata.RDBMS\Intent.Modules.Metadata.RDBMS.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.1.0" />
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.1.0" />

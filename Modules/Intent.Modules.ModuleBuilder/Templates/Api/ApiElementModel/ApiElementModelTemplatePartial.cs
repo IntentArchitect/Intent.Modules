@@ -9,6 +9,7 @@ using Intent.Modules.ModuleBuilder.Settings;
 using Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]

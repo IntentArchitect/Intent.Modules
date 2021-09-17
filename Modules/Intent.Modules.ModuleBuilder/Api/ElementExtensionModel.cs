@@ -135,9 +135,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ElementExtensionModelExtensions
     {
-        public static ElementExtensionModel AsElementExtensionModel(this ICanBeReferencedType type)
+
+        public static bool IsElementExtensionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ElementExtensionModel.SpecializationTypeId ? new ElementExtensionModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementExtensionModel.SpecializationTypeId;
+        }
+
+        public static ElementExtensionModel ToElementExtensionModel(this ICanBeReferencedType type)
+        {
+            return type.IsElementExtensionModel() ? new ElementExtensionModel((IElement)type) : null;
         }
     }
 }

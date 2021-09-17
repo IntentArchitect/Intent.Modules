@@ -128,9 +128,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ElementVisualSettingsModelExtensions
     {
-        public static ElementVisualSettingsModel AsElementVisualSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsElementVisualSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ElementVisualSettingsModel.SpecializationTypeId ? new ElementVisualSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementVisualSettingsModel.SpecializationTypeId;
+        }
+
+        public static ElementVisualSettingsModel ToElementVisualSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsElementVisualSettingsModel() ? new ElementVisualSettingsModel((IElement)type) : null;
         }
     }
 }

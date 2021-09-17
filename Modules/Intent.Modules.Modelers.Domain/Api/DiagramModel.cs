@@ -76,9 +76,15 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class DiagramModelExtensions
     {
-        public static DiagramModel AsDiagramModel(this ICanBeReferencedType type)
+
+        public static bool IsDiagramModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DiagramModel.SpecializationTypeId ? new DiagramModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == DiagramModel.SpecializationTypeId;
+        }
+
+        public static DiagramModel ToDiagramModel(this ICanBeReferencedType type)
+        {
+            return type.IsDiagramModel() ? new DiagramModel((IElement)type) : null;
         }
     }
 }

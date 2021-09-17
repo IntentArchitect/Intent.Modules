@@ -256,14 +256,6 @@
             <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
             <returns></returns>
         </member>
-        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ICanBeReferencedType)">
-            <summary>
-            Resolves and normalizes (See <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.NormalizeTypeName(System.String)"/>) the type name for the <paramref name="element"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/>s (See <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/>) will be searched to resolve the type name.
-            </summary>
-            <param name="element"></param>
-            <returns></returns>
-        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
             Resolves the type name of the <paramref name="templateDependency"/> as a string.

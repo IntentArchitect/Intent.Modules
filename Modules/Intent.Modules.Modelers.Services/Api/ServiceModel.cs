@@ -12,7 +12,7 @@ using Intent.Modules.Common;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class ServiceModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
+    public partial class ServiceModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName
     {
         public const string SpecializationType = "Service";
         public const string SpecializationTypeId = "b16578a5-27b1-4047-a8df-f0b783d706bd";
@@ -79,5 +79,20 @@ namespace Intent.Modelers.Services.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ServiceModelExtensions
+    {
+
+        public static bool IsServiceModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ServiceModel.SpecializationTypeId;
+        }
+
+        public static ServiceModel ToServiceModel(this ICanBeReferencedType type)
+        {
+            return type.IsServiceModel() ? new ServiceModel((IElement)type) : null;
+        }
     }
 }

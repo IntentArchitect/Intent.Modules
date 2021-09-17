@@ -80,9 +80,15 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class ParameterModelExtensions
     {
-        public static ParameterModel AsParameterModel(this ICanBeReferencedType type)
+
+        public static bool IsParameterModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId ? new ParameterModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId;
+        }
+
+        public static ParameterModel ToParameterModel(this ICanBeReferencedType type)
+        {
+            return type.IsParameterModel() ? new ParameterModel((IElement)type) : null;
         }
     }
 }

@@ -88,9 +88,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class AssociationDestinationEndSettingsModelExtensions
     {
-        public static AssociationDestinationEndSettingsModel AsAssociationDestinationEndSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsAssociationDestinationEndSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AssociationDestinationEndSettingsModel.SpecializationTypeId ? new AssociationDestinationEndSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationDestinationEndSettingsModel.SpecializationTypeId;
+        }
+
+        public static AssociationDestinationEndSettingsModel ToAssociationDestinationEndSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsAssociationDestinationEndSettingsModel() ? new AssociationDestinationEndSettingsModel((IElement)type) : null;
         }
     }
 }

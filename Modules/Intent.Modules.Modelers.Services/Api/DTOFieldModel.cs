@@ -11,7 +11,7 @@ using Intent.Modules.Common;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class DTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public partial class DTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "DTO-Field";
         protected readonly IElement _element;
@@ -72,5 +72,20 @@ namespace Intent.Modelers.Services.Api
         public const string SpecializationTypeId = "7baed1fd-469b-4980-8fd9-4cefb8331eb2";
 
         public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DTOFieldModelExtensions
+    {
+
+        public static bool IsDTOFieldModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DTOFieldModel.SpecializationTypeId;
+        }
+
+        public static DTOFieldModel ToDTOFieldModel(this ICanBeReferencedType type)
+        {
+            return type.IsDTOFieldModel() ? new DTOFieldModel((IElement)type) : null;
+        }
     }
 }

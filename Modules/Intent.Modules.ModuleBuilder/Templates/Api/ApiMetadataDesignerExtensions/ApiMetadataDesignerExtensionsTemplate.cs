@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
     
     #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "16.0.0.0")]
-    public partial class ApiMetadataDesignerExtensionsTemplate : CSharpTemplateBase<IList<DesignerModel>>
+    public partial class ApiMetadataDesignerExtensionsTemplate : CSharpTemplateBase<IList<Intent.ModuleBuilder.Api.DesignerModel>>
     {
 #line hidden
         /// <summary>
@@ -63,16 +63,31 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
             #line default
             #line hidden
             this.Write("(this IMetadataManager metadataManager, IApplication application)\r\n        {\r\n   " +
-                    "         return metadataManager.GetDesigner(application.Id, \"");
+                    "         return metadataManager.");
             
             #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(designer.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("(application.Id);\r\n        }\r\n\r\n        public static IDesigner ");
+            
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(designer.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("(this IMetadataManager metadataManager, string applicationId)\r\n        {\r\n       " +
+                    "     return metadataManager.GetDesigner(applicationId, \"");
+            
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(designer.Name));
             
             #line default
             #line hidden
             this.Write("\");\r\n        }\r\n\r\n");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiMetadataDesignerExtensions\ApiMetadataDesignerExtensionsTemplate.tt"
   } 
             
             #line default

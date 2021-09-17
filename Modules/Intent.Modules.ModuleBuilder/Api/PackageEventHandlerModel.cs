@@ -47,9 +47,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class PackageEventHandlerModelExtensions
     {
-        public static PackageEventHandlerModel AsPackageEventHandlerModel(this ICanBeReferencedType type)
+
+        public static bool IsPackageEventHandlerModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == PackageEventHandlerModel.SpecializationTypeId ? new PackageEventHandlerModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == PackageEventHandlerModel.SpecializationTypeId;
+        }
+
+        public static PackageEventHandlerModel ToPackageEventHandlerModel(this ICanBeReferencedType type)
+        {
+            return type.IsPackageEventHandlerModel() ? new PackageEventHandlerModel((IElement)type) : null;
         }
     }
 }

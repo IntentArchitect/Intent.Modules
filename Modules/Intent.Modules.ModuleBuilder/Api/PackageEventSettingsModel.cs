@@ -84,9 +84,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class PackageEventSettingsModelExtensions
     {
-        public static PackageEventSettingsModel AsPackageEventSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsPackageEventSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == PackageEventSettingsModel.SpecializationTypeId ? new PackageEventSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == PackageEventSettingsModel.SpecializationTypeId;
+        }
+
+        public static PackageEventSettingsModel ToPackageEventSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsPackageEventSettingsModel() ? new PackageEventSettingsModel((IElement)type) : null;
         }
     }
 }

@@ -74,9 +74,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ScriptModelExtensions
     {
-        public static ScriptModel AsScriptModel(this ICanBeReferencedType type)
+
+        public static bool IsScriptModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ScriptModel.SpecializationTypeId ? new ScriptModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ScriptModel.SpecializationTypeId;
+        }
+
+        public static ScriptModel ToScriptModel(this ICanBeReferencedType type)
+        {
+            return type.IsScriptModel() ? new ScriptModel((IElement)type) : null;
         }
     }
 }

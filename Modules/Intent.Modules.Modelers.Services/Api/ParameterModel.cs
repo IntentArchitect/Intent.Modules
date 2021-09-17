@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public partial class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "Parameter";
         protected readonly IElement _element;
@@ -73,5 +73,20 @@ namespace Intent.Modelers.Services.Api
         public const string SpecializationTypeId = "00208d20-469d-41cb-8501-768fd5eb796b";
 
         public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ParameterModelExtensions
+    {
+
+        public static bool IsParameterModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId;
+        }
+
+        public static ParameterModel ToParameterModel(this ICanBeReferencedType type)
+        {
+            return type.IsParameterModel() ? new ParameterModel((IElement)type) : null;
+        }
     }
 }

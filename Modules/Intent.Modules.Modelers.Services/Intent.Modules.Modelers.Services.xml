@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Intent.Modules.Modelers.Services</name>
+    </assembly>
+    <members>
+        <member name="M:Intent.Modelers.Services.Api.DTOModel.GetAllFieldsInHierarchy">
+            <summary>
+            Returns fields contained in this <see cref="T:Intent.Modelers.Services.Api.DTOModel"/> instance, as well as those in its <see cref="P:Intent.Modelers.Services.Api.DTOModel.BaseType"/> hierarchy.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Intent.Modelers.Services.Api.DTOModel.BaseType">
+            <summary>
+            Returns the base <see cref="T:Intent.Modelers.Services.Api.DTOModel"/> for this entity, if specified.
+            </summary>
+        </member>
+    </members>
+</doc>

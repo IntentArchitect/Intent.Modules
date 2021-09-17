@@ -20,7 +20,12 @@ namespace <#= Namespace #>
 <#  foreach(var designer in Model) { #>
         public static IDesigner <#= designer.Name.ToCSharpIdentifier() #>(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetDesigner(application.Id, "<#= designer.Name #>");
+            return metadataManager.<#= designer.Name.ToCSharpIdentifier() #>(application.Id);
+        }
+
+        public static IDesigner <#= designer.Name.ToCSharpIdentifier() #>(this IMetadataManager metadataManager, string applicationId)
+        {
+            return metadataManager.GetDesigner(applicationId, "<#= designer.Name #>");
         }
 
 <#  } #>

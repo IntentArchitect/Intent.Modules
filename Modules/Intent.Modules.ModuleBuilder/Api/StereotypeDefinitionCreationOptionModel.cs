@@ -101,9 +101,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class StereotypeDefinitionCreationOptionModelExtensions
     {
-        public static StereotypeDefinitionCreationOptionModel AsStereotypeDefinitionCreationOptionModel(this ICanBeReferencedType type)
+
+        public static bool IsStereotypeDefinitionCreationOptionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == StereotypeDefinitionCreationOptionModel.SpecializationTypeId ? new StereotypeDefinitionCreationOptionModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == StereotypeDefinitionCreationOptionModel.SpecializationTypeId;
+        }
+
+        public static StereotypeDefinitionCreationOptionModel ToStereotypeDefinitionCreationOptionModel(this ICanBeReferencedType type)
+        {
+            return type.IsStereotypeDefinitionCreationOptionModel() ? new StereotypeDefinitionCreationOptionModel((IElement)type) : null;
         }
     }
 }

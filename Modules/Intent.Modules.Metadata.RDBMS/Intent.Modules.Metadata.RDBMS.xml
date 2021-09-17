@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Intent.Modules.Metadata.RDBMS</name>
+    </assembly>
+    <members>
+        <member name="M:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.GetUniqueConstraints(Intent.Modelers.Domain.Api.ClassModel)">
+            <summary>
+            Gets the unique constraints specified for this class in the Domain designer.
+            </summary>
+            <param name="class"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint">
+            <summary>
+            Represents a unique constraint.
+            </summary>
+        </member>
+        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint.ConstraintName">
+            <summary>
+            The name of the constraint. Will be null if it was not specified.
+            </summary>
+        </member>
+        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint.Fields">
+            <summary>
+            The fields grouped by the <see cref="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint.ConstraintName"/>
+            </summary>
+        </member>
+        <member name="T:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField">
+            <summary>
+            Represents a field associated by a unique constraint.
+            </summary>
+        </member>
+        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField.Name">
+            <summary>
+            Name of the Attribute or Association
+            </summary>
+        </member>
+        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField.ColumnName">
+            <summary>
+            The column name specified. Will be null unless explicitly specified by a Column or Foreign Key stereotype.
+            </summary>
+        </member>
+        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField.Element">
+            <summary>
+            The underlying element type
+            </summary>
+        </member>
+    </members>
+</doc>

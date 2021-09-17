@@ -62,6 +62,7 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_association != null ? _association.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "5de35973-3ac7-4e65-b48c-385605aec561";
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
@@ -100,11 +101,11 @@ namespace Intent.Modelers.Domain.Api
         private readonly GeneralizationModel _association;
         public GeneralizationModel Association => _association;
         public string Comment => _associationEnd.Comment;
-        public ICanBeReferencedType Element => _associationEnd.Element;
-        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
-        public bool IsCollection => _associationEnd.IsCollection;
+        public ICanBeReferencedType Element => _associationEnd.TypeReference.Element;
+        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.TypeReference.GenericTypeParameters;
+        public bool IsCollection => _associationEnd.TypeReference.IsCollection;
         public bool IsNavigable => _associationEnd.IsNavigable;
-        public bool IsNullable => _associationEnd.IsNullable;
+        public bool IsNullable => _associationEnd.TypeReference.IsNullable;
 
         public bool IsSourceEnd()
         {
@@ -126,9 +127,9 @@ namespace Intent.Modelers.Domain.Api
             return _associationEnd.ToString();
         }
 
-        IAssociation InternalAssociation => _association.InternalAssociation;
+        public IAssociation InternalAssociation => _association.InternalAssociation;
 
-        IAssociationEnd InternalAssociationEnd => _associationEnd;
+        public IAssociationEnd InternalAssociationEnd => _associationEnd;
 
         public IPackage Package => Element?.Package;
 
@@ -142,6 +143,8 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class GeneralizationSourceEndModel : GeneralizationEndModel
     {
+        public const string SpecializationTypeId = "8190bf43-222c-4b53-8a44-14626efe3574";
+
         public GeneralizationSourceEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
         }
@@ -150,6 +153,8 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class GeneralizationTargetEndModel : GeneralizationEndModel
     {
+        public const string SpecializationTypeId = "4686cc1d-b4d8-4b99-b45b-f77bd5496946";
+
         public GeneralizationTargetEndModel(IAssociationEnd associationEnd, GeneralizationModel association) : base(associationEnd, association)
         {
         }

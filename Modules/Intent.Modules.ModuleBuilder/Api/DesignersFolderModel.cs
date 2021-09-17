@@ -84,9 +84,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class DesignersFolderModelExtensions
     {
-        public static DesignersFolderModel AsDesignersFolderModel(this ICanBeReferencedType type)
+
+        public static bool IsDesignersFolderModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DesignersFolderModel.SpecializationTypeId ? new DesignersFolderModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == DesignersFolderModel.SpecializationTypeId;
+        }
+
+        public static DesignersFolderModel ToDesignersFolderModel(this ICanBeReferencedType type)
+        {
+            return type.IsDesignersFolderModel() ? new DesignersFolderModel((IElement)type) : null;
         }
     }
 }

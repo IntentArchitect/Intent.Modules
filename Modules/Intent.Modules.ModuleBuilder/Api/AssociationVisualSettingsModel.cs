@@ -137,9 +137,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class AssociationVisualSettingsModelExtensions
     {
-        public static AssociationVisualSettingsModel AsAssociationVisualSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsAssociationVisualSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AssociationVisualSettingsModel.SpecializationTypeId ? new AssociationVisualSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationVisualSettingsModel.SpecializationTypeId;
+        }
+
+        public static AssociationVisualSettingsModel ToAssociationVisualSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsAssociationVisualSettingsModel() ? new AssociationVisualSettingsModel((IElement)type) : null;
         }
     }
 }

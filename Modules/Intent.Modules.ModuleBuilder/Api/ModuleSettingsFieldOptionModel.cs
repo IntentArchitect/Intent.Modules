@@ -64,9 +64,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ModuleSettingsFieldOptionModelExtensions
     {
-        public static ModuleSettingsFieldOptionModel AsModuleSettingsFieldOptionModel(this ICanBeReferencedType type)
+
+        public static bool IsModuleSettingsFieldOptionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ModuleSettingsFieldOptionModel.SpecializationTypeId ? new ModuleSettingsFieldOptionModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ModuleSettingsFieldOptionModel.SpecializationTypeId;
+        }
+
+        public static ModuleSettingsFieldOptionModel ToModuleSettingsFieldOptionModel(this ICanBeReferencedType type)
+        {
+            return type.IsModuleSettingsFieldOptionModel() ? new ModuleSettingsFieldOptionModel((IElement)type) : null;
         }
     }
 }

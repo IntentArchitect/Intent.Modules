@@ -29,9 +29,20 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
-        public static bool HasForeignKey(this AssociationSourceEndModel model)
+        public static bool HasForeignKey(this AssociationEndModel model)
         {
             return model.HasStereotype("Foreign Key");
+        }
+
+        public static UniqueConstraint GetUniqueConstraint(this AssociationEndModel model)
+        {
+            var stereotype = model.GetStereotype("Unique Constraint");
+            return stereotype != null ? new UniqueConstraint(stereotype) : null;
+        }
+
+        public static bool HasUniqueConstraint(this AssociationEndModel model)
+        {
+            return model.HasStereotype("Unique Constraint");
         }
 
         public class ForeignKey
@@ -48,6 +59,24 @@ namespace Intent.Metadata.RDBMS.Api
             public string ColumnName()
             {
                 return _stereotype.GetProperty<string>("Column Name");
+            }
+
+        }
+
+        public class UniqueConstraint
+        {
+            private IStereotype _stereotype;
+
+            public UniqueConstraint(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
             }
 
         }

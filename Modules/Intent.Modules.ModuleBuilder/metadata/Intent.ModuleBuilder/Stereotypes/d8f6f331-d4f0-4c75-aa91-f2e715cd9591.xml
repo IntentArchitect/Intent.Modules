@@ -39,6 +39,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="3941cc0b-503e-495a-bef3-9923a6554cee">
       <hint>Optional hint text which can be used to explain usage of the type reference. Supports _italic_, **bold** and [link](https://intentarchitect.com/) formatting of markdown.</hint>
@@ -49,6 +50,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <isActiveFunction>return properties['Mode'].value == 'Optional' || properties['Mode'].value == 'Required';</isActiveFunction>
     </property>
     <property id="b94f760c-0ce7-4176-bbae-97e26914b39c">
       <name>Target Types</name>

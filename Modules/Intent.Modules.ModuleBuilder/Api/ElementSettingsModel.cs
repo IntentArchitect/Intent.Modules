@@ -218,9 +218,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ElementSettingsModelExtensions
     {
-        public static ElementSettingsModel AsElementSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsElementSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ElementSettingsModel.SpecializationTypeId ? new ElementSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementSettingsModel.SpecializationTypeId;
+        }
+
+        public static ElementSettingsModel ToElementSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsElementSettingsModel() ? new ElementSettingsModel((IElement)type) : null;
         }
     }
 }

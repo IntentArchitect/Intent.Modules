@@ -64,6 +64,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="0">Folder</type>
         <type order="1">Service</type>
@@ -79,15 +80,30 @@
     <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
       <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>return `${name}${(typeReference.typeId ? " : " + typeReference.display : "")}`;</displayFunction>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>true</allowMapping>
       <allowSorting>true</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
-      <allowTypeReference>false</allowTypeReference>
+      <allowTypeReference>true</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <displayName>Base Type</displayName>
+        <isRequired>false</isRequired>
+        <targetTypes>
+          <type>DTO</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
       <typeOrder>
         <type order="0">DTO-Field</type>
       </typeOrder>
@@ -102,9 +118,11 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <mappingSettings>
         <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
         <optionsSource>elements-of-type</optionsSource>
+        <autoSyncTypeReferences>true</autoSyncTypeReferences>
         <targetTypeOptions>
           <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
         </targetTypeOptions>
@@ -203,6 +221,7 @@
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -234,6 +253,7 @@
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -252,6 +272,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <childElementSettings>
         <childElementSetting type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
           <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
@@ -262,6 +283,7 @@
           <allowGenericTypes>true</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -294,6 +316,7 @@
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
+          <scriptOptions />
           <childElementSettings>
             <childElementSetting type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
@@ -304,6 +327,7 @@
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
+              <sortChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>true</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -378,6 +402,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type>Service</type>
         <type>DTO</type>

@@ -69,9 +69,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ModuleSettingsConfigurationModelExtensions
     {
-        public static ModuleSettingsConfigurationModel AsModuleSettingsConfigurationModel(this ICanBeReferencedType type)
+
+        public static bool IsModuleSettingsConfigurationModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ModuleSettingsConfigurationModel.SpecializationTypeId ? new ModuleSettingsConfigurationModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ModuleSettingsConfigurationModel.SpecializationTypeId;
+        }
+
+        public static ModuleSettingsConfigurationModel ToModuleSettingsConfigurationModel(this ICanBeReferencedType type)
+        {
+            return type.IsModuleSettingsConfigurationModel() ? new ModuleSettingsConfigurationModel((IElement)type) : null;
         }
     }
 }

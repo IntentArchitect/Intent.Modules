@@ -355,10 +355,10 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="element"></param>
         /// <returns></returns>
-        public virtual string GetTypeName(ICanBeReferencedType element)
-        {
-            return NormalizeTypeName(Types.Get(element).Name);
-        }
+        //public virtual string GetTypeName(ICanBeReferencedType element)
+        //{
+        //    return NormalizeTypeName(Types.Get(element).Name);
+        //}
 
         #endregion
         #region GetTypeName for Template

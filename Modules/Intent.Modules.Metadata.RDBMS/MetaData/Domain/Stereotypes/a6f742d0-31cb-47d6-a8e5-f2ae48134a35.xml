@@ -4,6 +4,8 @@
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</type>
+    <type id="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">Association Source End</type>
+    <type id="0a66489f-30aa-417b-a75d-b945863366fd">Association Target End</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

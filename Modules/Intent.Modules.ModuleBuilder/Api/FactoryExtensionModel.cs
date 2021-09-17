@@ -70,9 +70,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class FactoryExtensionModelExtensions
     {
-        public static FactoryExtensionModel AsFactoryExtensionModel(this ICanBeReferencedType type)
+
+        public static bool IsFactoryExtensionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == FactoryExtensionModel.SpecializationTypeId ? new FactoryExtensionModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == FactoryExtensionModel.SpecializationTypeId;
+        }
+
+        public static FactoryExtensionModel ToFactoryExtensionModel(this ICanBeReferencedType type)
+        {
+            return type.IsFactoryExtensionModel() ? new FactoryExtensionModel((IElement)type) : null;
         }
     }
 }

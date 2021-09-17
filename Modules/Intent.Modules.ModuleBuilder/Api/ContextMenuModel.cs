@@ -105,9 +105,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ContextMenuModelExtensions
     {
-        public static ContextMenuModel AsContextMenuModel(this ICanBeReferencedType type)
+
+        public static bool IsContextMenuModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ContextMenuModel.SpecializationTypeId ? new ContextMenuModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ContextMenuModel.SpecializationTypeId;
+        }
+
+        public static ContextMenuModel ToContextMenuModel(this ICanBeReferencedType type)
+        {
+            return type.IsContextMenuModel() ? new ContextMenuModel((IElement)type) : null;
         }
     }
 }

@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         public override IEnumerable<AssociationSettingsModel> GetModels(IApplication application)
         {
             return _metadataManager.ModuleBuilder(application).GetAssociationSettingsModels()
-                .Where(x => !x.Designer.IsReference())
+                .Where(x => !x.DesignerSettings.IsReference())
                 ;
         }
     }

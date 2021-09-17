@@ -95,9 +95,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class DiagramSettingsModelExtensions
     {
-        public static DiagramSettingsModel AsDiagramSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsDiagramSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DiagramSettingsModel.SpecializationTypeId ? new DiagramSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == DiagramSettingsModel.SpecializationTypeId;
+        }
+
+        public static DiagramSettingsModel ToDiagramSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsDiagramSettingsModel() ? new DiagramSettingsModel((IElement)type) : null;
         }
     }
 }

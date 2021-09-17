@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="c760d0f5-d8a1-4c16-9e2b-e654c2860154" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Unique Constraint</name>
+  <display>Unique Constraint</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5</parentFolderId>
+  <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+  <packageName>Intent.Metadata.RDBMS</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAALYElEQVR4Xu2deVDU5xnHv+9ewLKcKgoqKILK5c3gMZruImKqieYojTZpGo06sSZOnERNMznajEnbRBPbWMdoatOJR6uJVadNMvE+44EXKKCDCHKugsCyu7DL7tt5f7DL4R6/329X5dj3H4F93ud9388+7/u85yPBQ0yU0pEAFF4q0kwIyfOSLtFqiOicIjJSSq8BiBGR1VEWK4CXCCG7vaRPlBqPAFJKVQCyAETzLH05gFCesnzE6gB8xkfQgYwBwG5CyE2R+blsogBSSmUAVgJYI6bwDV/vxa6LelDC1AhP4+Ij8PHL0yCTSoRnvj/HQWYEhJAaMcoEA6SUBgD4LwC1mAJZnnc/XIt9R7JhGTJdNMS0EQOwafl0b0HUApgkxhrFANwOYB4DcVt7D5/sOIQv9p0SxVKhCEBk1FDIZHJR+Rsa6qCtKgalVHD+UXEDsWbRLKjHxkPaZskjCCHXhSgTBJBSmgrgLCugsLwaU175FHUNRiHl3SerkPthcAxzzuKSydSI0ts3QCnzKcKSREKwbtlTWDJnCpexqqpKl5OTk5yRkVHCV5NQgKUABjYYmzD1t+uRX1zFlRM9WY2IhFEgEnFjktVgRP3li7A2NvKtdwc5eZ8+UCUmgvCxZEpxr7gQVbkXoatgzQF2vv8bzJmawv189OhRg9Vq1Wg0mjN8KsMbIKU0HEABgL63KmqQ8PwaEIkUo+cthFwZyKcslzJWkwl1Z34CbW4WpUsWHIyg0WNAZPwd04Wv/gaLqQkz0xLw7ZqXQQiQnZ0NnU6HO3fuKLOystx2LyEAWT87B0C1auM+/GX3UYQMisHwmU+BK9kLiVlg3bmz4iEGBUGVMgoSPz9etTFUa3H1222IH9QPJze+jiClH27evImSkhI2rm7UaDRL3Sni3XJKaSIAZtaqrHe3Yv/JXIQNiUNcxhPuyhD0ObVYUH/uLCxGt1++Q72ykBCokpJ5QTQb9Li07QtE9Q1B9pdvIlQVgKKiIhQXc47pECEkU61Wu+wSHgHsE5+I2J9lCgLER5h143vHj/ERdSgj8fdH8NhxYP+6Sgzg5R1bEBkedB9AAGyATFGr1bWudHRJgKzCDGJ99nlYDGzBIDxJA1VQJSRAGhTkNLMbgNVKpXJEWlpadbcEyFWaecyTJ0DNZuEEAa4bB48b79QSez5AAJx3PntGPESFAoFJyZCH3r8E7xUAbabHpjhiu7NEoeC8M5vqtE+9CiDzzpxjEbFsY9CIVIqgMWM7QOxVALkhkU1xmGPR60WNiUQqQ2BiIhR9+3L5ex1AG7Xa06dEL/vYcjN4wgQwL91rAVrNZuguZIseE9nKSZWUBBIY6Goe2AOmMW46av2FbDTXsU1pEYkQ+MfH49r33zibSPd8gJ6OiQx7eflNhCkljlYiPR8g51isFjTk5sJc7XLB4NJEpc21OLp+EbcWZjsxOTk5MJlMvQOgjYzuymWPIO56ezYSotmOHVBZWYn8/PzeBZCtnfUFBTBpWzZ5xSQbRK1Wi2vXrulMJlNcZmYmOy9xmrrsZoIYACyPviAfTeXlorJvem06piRFoRUgCCHlJpMpdcaMGU4V9jiAsFphKCpCY0mxYIidATIFVqt1fnp6+g5nynoeQM6zUBiLimAsviUIog9gJ1zG2yUwFhbyXj/7AHa2N0rRWF4Ow3V2FuY++QA6YdRYehuGGzfcEvQBdIaIUphrasDmiq6SD6AbG2uqKIc+P9+plA+g204KmO7eRUNujkPH4gPIAyATMVVXo8FBd/YB5AmQiTVVVUJ/jV2YbUs+gAIAMlGLToe68+y2SkvyARQIkG3pF+7fjYiIwT6AAtlx4rYzkQB/JSKjYrHptYwOmwlMpneuhXnStAFUSizoa7mLrX/9IyYltO3GeAyQUhoJYEJrfZidrwXgb7ud9aAuF/Fsv8dijk7lmFLbdpY3AD7DngJ0rqkPYBsRl9tZlFI7wLv1RpibW+4hL133bxw4V4CwofGInviYx5bAWwEBJHIFIPIqcedyHFlgbW0tysrK2A1VTtyjMbA9wOc++h9yb93l3dYHKkgIAkcmcDcMhFzp5QPQdsHSJtszAba2jl2g9IuKQkDMEFHfl5ubCZQQUmu1WhdpNJpvnBXAuwt3KQvs1JqA2FhREB/41Y4u24UdmIMqOQWKfv0EWWKXBhgfFYo97z3ZoUHl1Q3YdjgfX/3YtgbdumIGUkcM6CD33blbeHOLsDvSUpWKu43KrrHxTd0C4LINh3DkSsuDlhVPj8eCzCS8sfkYvj/fcuDDAMb0D4ZmVctsaWryQGx8NR37fyrEW1tP8mXByYVOmuz2Ynl7hd0OoIQQnPr0lzCaLFCv3OUQIPtj7qZfo+qeHumrnY7dDsH6RUZy3plv6nYAWcOWzx2LRY+nIHnJP+0Ahw8Kw9v/aLG2uKgwPK8ZiZfW/YCiynq+LOxy4WoN7zzdEuCCGUlY8cz4DgA7j4FNZgue/mA/iqt8ANF+DGSmsSorFS+kJ3QA2H4MZDJsDBwd2w9zf78P2lr+70SYAwmbxn9l1O0sUCGT4sKGX6FaZ8RjbzgfA5fOHo0ls0Zh8fofcSa/kneX9I+OgXLYMN7y3QLgyi3HcfJqGQaEq/C751I5y1q24TBOXC2zj4FDI0Mw5729XACC2AEh+ODFKQgJ9MOsd/ag3mDiDSR08mRI/Fw/7+o2XnhYZCi2r37cXl9TsxWF5bX417Hr+O5ckf3vG5ZpMC4uwv47G/+KKurw513nkXebfxgD9sgweMxYQRsNXdoCpRLCWZEtWSlFg9GMZkvHl+VBAYoOcQ+YnL7xfjl3Zhg6eQqvF5rdxgLdNdhbn7NnC4HJyVD0aXn7ISR1aQsU0hCxskQuR8jESZAIeKXus0AWOyoiAor+/SEPCQWDKDY9VAvMzSvA8tXvo6S0DNLBY1Gsk6Ennom021D1/JI5pZTNCXLYCot9yw0Nevzh4/XYd7nKB7DV7N1e8aWUsj6yGMDntq6ieeVPOH1d67NAIbGz8vPzNw8fPnwhIYT05FM5r3bh9oOzyWQaLZfLWYwnpQ9gGxm3Xdgm6ijsic+JCAh/5wPoeLLks0DncWM8n8a0Z+7IAsOHjcAwzc/FzmMfeT4uctH2zYjqE/xQnruywwYW+k716me7sWX/aYRGxyI+c84jByG2ArbQT7FRfXB60woEK/3tsbMAeN0C2Z4Ti5obnnuzHKmL1kKq8EPi3HnwDwkT24ZHls/abMbVPdvRWFuD6RNGYO9Hi8DiCV66dAnsfsyDAMjGS3Y+GVWvb0Ta4rW4VVkDmZ8/4jKeRFDkwEcGQ0zB13/4D+pKWvYlP3/9WSycPYn7+ciRIzZ13rVAppVS+gIA7jht1+FLeHHN1/bwm35BIfAPDRfg18U02/M8lqZG6LWV9nrPmz4ef39rPqe4urqae63e2tYyg8GQMnv27HuuSuXthdvNB9n542T2+9WiCvzina3Q1upgbBQX38pzJMI1sOi/IaoALJg1Ee8vaNs1v3LlCmpq7LvgJ+7cuZOelZXl8kxBDEB2anMBgD2OUl5xFUq1bNwQHgxWePM9zxEY4IeU2Cgu4GKrtSEvL4+7mdou7VKr1SxGtsskGGBrgUqj0bhTLpc/IRO5memuYg/r87q6Oi7gYjvLY0XrAESo1Wq3QV1FAWQlHD582F+hUBRIpdLoyMhIKJXKh9Vmj8tpbm7mbqCyCB1ms7lzGGXWjear1eqdfAoSDZApP3jwYIxEIvkEwLN8CusGMhUAPlSr1fatO3d19gigTfmBAwdmymSyLyml7H9qYJuwXtHrrvKefs4CeBNCmPczUkrPajSauUJ1erWhx48fD7NarQMsFou4gNJCa+8FealUWj9t2rRSQogoD/h/EPy4yTjODuUAAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="Manually" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <childElements>
+    <childElement id="3bab1f3f-df90-47cd-ba8b-0b7e3eadcd2c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <order>0</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c760d0f5-d8a1-4c16-9e2b-e654c2860154</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="e4fbca41-16e6-4eb4-beb1-a1e4523741da" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Column</name>
+          <display>Add Column: Unique Constraint Column</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="48b56554-3197-49b4-8cfc-cb748fc1a1ab">
+            <typeId>d32bc804-8f5e-463f-9cc5-d3b8f3536402</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Metadata.RDBMS</typePackageName>
+            <typePackageId>AF8F3810-745C-42A2-93C8-798860DC45B1</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3bab1f3f-df90-47cd-ba8b-0b7e3eadcd2c</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="43488ce4-4542-4d85-9939-8b0db04cf744" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+      <name>NewMappingSettings</name>
+      <display>[mappings]</display>
+      <isAbstract>false</isAbstract>
+      <order>2</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c760d0f5-d8a1-4c16-9e2b-e654c2860154</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="6ab29b31-27af-4f56-a67c-986d82097d63" isActive="true" />
+            <property name="39d623e0-b8c5-4d23-8d78-75a7e2fa0c9d" display="Option Source" value="Lookup Element" isActive="true" />
+            <property name="5bed7f14-ebd8-4055-be29-3a2f8407eb5d" display="Lookup Element Function" value="return getParent().id" isActive="true" />
+            <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="false" />
+            <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
+            <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="false" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <childElements>
+        <childElement id="1299add5-30f8-42a2-a92b-a11db78dd8a1" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Class -&gt; Unique Constraint</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>43488ce4-4542-4d85-9939-8b0db04cf744</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="c760d0f5-d8a1-4c16-9e2b-e654c2860154" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="04e12b51-ed12-42a3-9667-a6aa81bb6d10" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements>
+            <childElement id="189d9422-d272-44da-bcd7-8a7bd093f428" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Attribute -&gt; Unique Constraint Column</display>
+              <isAbstract>false</isAbstract>
+              <order>0</order>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>1299add5-30f8-42a2-a92b-a11db78dd8a1</parentFolderId>
+              <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+              <packageName>Intent.Metadata.RDBMS</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="d32bc804-8f5e-463f-9cc5-d3b8f3536402" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0090fb93-483e-41af-a11d-5ad2dc796adf" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+            <childElement id="4047d84f-b7ce-4e2f-95d9-6a6eb54c12d1" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Association Target End -&gt; Unique Constraint Column</display>
+              <isAbstract>false</isAbstract>
+              <order>1</order>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>1299add5-30f8-42a2-a92b-a11db78dd8a1</parentFolderId>
+              <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+              <packageName>Intent.Metadata.RDBMS</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="d32bc804-8f5e-463f-9cc5-d3b8f3536402" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0a66489f-30aa-417b-a75d-b945863366fd" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+            <childElement id="d70e85cb-5526-4ab0-aa0c-f6caacb05f41" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Association Source End -&gt; Unique Constraint Column</display>
+              <isAbstract>false</isAbstract>
+              <order>2</order>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>1299add5-30f8-42a2-a92b-a11db78dd8a1</parentFolderId>
+              <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+              <packageName>Intent.Metadata.RDBMS</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="d32bc804-8f5e-463f-9cc5-d3b8f3536402" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+            <childElement id="613921ae-f918-416e-b2e0-ffa4f65924ef" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Generalization Target End -&gt; (Traverse)</display>
+              <isAbstract>false</isAbstract>
+              <order>3</order>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>1299add5-30f8-42a2-a92b-a11db78dd8a1</parentFolderId>
+              <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+              <packageName>Intent.Metadata.RDBMS</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="1299add5-30f8-42a2-a92b-a11db78dd8a1" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="4686cc1d-b4d8-4b99-b45b-f77bd5496946" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

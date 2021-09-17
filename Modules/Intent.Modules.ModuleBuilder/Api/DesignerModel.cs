@@ -81,9 +81,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class DesignerModelExtensions
     {
-        public static DesignerModel AsDesignerModel(this ICanBeReferencedType type)
+
+        public static bool IsDesignerModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DesignerModel.SpecializationTypeId ? new DesignerModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == DesignerModel.SpecializationTypeId;
+        }
+
+        public static DesignerModel ToDesignerModel(this ICanBeReferencedType type)
+        {
+            return type.IsDesignerModel() ? new DesignerModel((IElement)type) : null;
         }
     }
 }

@@ -15,6 +15,7 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.6" />
+    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.0.3" />
     <PackageReference Include="Intent.Packager" Version="3.0.4">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -23,12 +24,12 @@
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="..\..\logo.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Types.ServiceProxies\Intent.Modules.Modelers.Types.ServiceProxies.csproj" />
   </ItemGroup>
 </Project>

@@ -115,9 +115,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class ElementCreationOptionModelExtensions
     {
-        public static ElementCreationOptionModel AsElementCreationOptionModel(this ICanBeReferencedType type)
+
+        public static bool IsElementCreationOptionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ElementCreationOptionModel.SpecializationTypeId ? new ElementCreationOptionModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ElementCreationOptionModel.SpecializationTypeId;
+        }
+
+        public static ElementCreationOptionModel ToElementCreationOptionModel(this ICanBeReferencedType type)
+        {
+            return type.IsElementCreationOptionModel() ? new ElementCreationOptionModel((IElement)type) : null;
         }
     }
 }

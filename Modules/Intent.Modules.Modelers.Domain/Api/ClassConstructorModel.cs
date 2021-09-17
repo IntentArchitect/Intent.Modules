@@ -73,9 +73,15 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class ClassConstructorModelExtensions
     {
-        public static ClassConstructorModel AsClassConstructorModel(this ICanBeReferencedType type)
+
+        public static bool IsClassConstructorModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ClassConstructorModel.SpecializationTypeId ? new ClassConstructorModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == ClassConstructorModel.SpecializationTypeId;
+        }
+
+        public static ClassConstructorModel ToClassConstructorModel(this ICanBeReferencedType type)
+        {
+            return type.IsClassConstructorModel() ? new ClassConstructorModel((IElement)type) : null;
         }
     }
 }

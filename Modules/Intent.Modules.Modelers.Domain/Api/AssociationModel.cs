@@ -65,10 +65,11 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_association != null ? _association.GetHashCode() : 0);
         }
+        public const string SpecializationTypeId = "eaf9ed4e-0b61-4ac1-ba88-09f912c12087";
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationEndModel : IMetadataModel, IHasName, IHasTypeReference, IHasStereotypes
+    public class AssociationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly AssociationModel _association;
@@ -86,17 +87,19 @@ namespace Intent.Modelers.Domain.Api
         public string Name => _associationEnd.Name;
         public AssociationModel Association => _association;
         public bool IsNavigable => _associationEnd.IsNavigable;
-        public bool IsNullable => _associationEnd.IsNullable;
-        public bool IsCollection => _associationEnd.IsCollection;
-        public ICanBeReferencedType Element => _associationEnd.Element;
-        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.GenericTypeParameters;
+        public bool IsNullable => _associationEnd.TypeReference.IsNullable;
+        public bool IsCollection => _associationEnd.TypeReference.IsCollection;
+        public ICanBeReferencedType Element => _associationEnd.TypeReference.Element;
+        public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.TypeReference.GenericTypeParameters;
         public string Comment => _associationEnd.Comment;
-        public ITypeReference TypeReference => _associationEnd;
+        public ITypeReference TypeReference => this;
         public IPackage Package => Element?.Package;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
+        public IAssociation InternalAssociation => _association.InternalAssociation;
+        public IAssociationEnd InternalAssociationEnd => _associationEnd;
 
         [IntentManaged(Mode.Ignore)]
-        public ClassModel Class => _associationEnd.Element.AsClassModel();
+        public ClassModel Class => _associationEnd.TypeReference.Element.ToClassModel();
 
         [IntentManaged(Mode.Ignore)]
         public Multiplicity Multiplicity
@@ -153,15 +156,13 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);
         }
-
-        IAssociation InternalAssociation => _association.InternalAssociation;
-
-        IAssociationEnd InternalAssociationEnd => _associationEnd;
     }
 
     [IntentManaged(Mode.Fully)]
     public class AssociationSourceEndModel : AssociationEndModel
     {
+        public const string SpecializationTypeId = "8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58";
+
         public AssociationSourceEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {
         }
@@ -170,6 +171,8 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public class AssociationTargetEndModel : AssociationEndModel
     {
+        public const string SpecializationTypeId = "0a66489f-30aa-417b-a75d-b945863366fd";
+
         public AssociationTargetEndModel(IAssociationEnd associationEnd, AssociationModel association) : base(associationEnd, association)
         {
         }

@@ -47,7 +47,7 @@ namespace Intent.ModuleBuilder.Api
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public DesignerSettingsModel Designer => DesignerModelFactory.GetDesignerSettings(_element);
+        public DesignerSettingsModel DesignerSettings => DesignerModelFactory.GetDesignerSettings(_element);
 
         [IntentManaged(Mode.Fully)]
         public AssociationSourceEndSettingsModel SourceEnd => _element.ChildElements
@@ -148,9 +148,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class AssociationSettingsModelExtensions
     {
-        public static AssociationSettingsModel AsAssociationSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsAssociationSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AssociationSettingsModel.SpecializationTypeId ? new AssociationSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == AssociationSettingsModel.SpecializationTypeId;
+        }
+
+        public static AssociationSettingsModel ToAssociationSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsAssociationSettingsModel() ? new AssociationSettingsModel((IElement)type) : null;
         }
     }
 }

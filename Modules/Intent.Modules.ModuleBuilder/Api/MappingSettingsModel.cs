@@ -121,9 +121,15 @@ namespace Intent.ModuleBuilder.Api
     [IntentManaged(Mode.Fully)]
     public static class MappingSettingsModelExtensions
     {
-        public static MappingSettingsModel AsMappingSettingsModel(this ICanBeReferencedType type)
+
+        public static bool IsMappingSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == MappingSettingsModel.SpecializationTypeId ? new MappingSettingsModel(element) : null;
+            return type != null && type is IElement element && element.SpecializationTypeId == MappingSettingsModel.SpecializationTypeId;
+        }
+
+        public static MappingSettingsModel ToMappingSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsMappingSettingsModel() ? new MappingSettingsModel((IElement)type) : null;
         }
     }
 }
