@@ -18,7 +18,7 @@
     </factoryExtension>
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.0.4" />
+    <dependency id="Intent.Common" version="3.1.0" />
   </dependencies>
   <files>
     <file src="bin/$configuration$/$id$.dll" />

@@ -53,25 +53,25 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DTOModel.partial.cs</DependentUpon>
     </Compile>
-  
+
     <Compile Update="Api\DTOFieldModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DTOFieldModel.partial.cs</DependentUpon>
     </Compile>
-  
+
     <Compile Update="Api\OperationModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>OperationModel.partial.cs</DependentUpon>
     </Compile>
-  
+
     <Compile Update="Api\ParameterModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ParameterModel.partial.cs</DependentUpon>
     </Compile>
-  
+
     <Compile Update="Api\ServiceModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Metadata.RDBMS</id>
   <version>3.1.0</version>
-  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.1.0,4.0.0)</supportedClientVersions>
   <summary>Metadata for specifying RDBMS related concepts in the domain.</summary>
   <description>Metadata for specifying RDBMS related concepts in the domain.</description>
   <authors>Intent Architect</authors>
