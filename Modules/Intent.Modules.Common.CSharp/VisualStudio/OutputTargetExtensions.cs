@@ -101,6 +101,11 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             return _outputTarget.GetSupportedFrameworks();
         }
 
+        public ITemplateTargetInfo AsTarget(string subLocation = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool HasTemplateInstances(string templateId)
         {
             return _outputTarget.HasTemplateInstances(templateId);
