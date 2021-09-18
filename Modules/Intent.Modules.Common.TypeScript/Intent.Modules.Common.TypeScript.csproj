@@ -20,7 +20,7 @@
     </PackageReference>
     <PackageReference Include="Intent.Modules.Common" Version="3.0.6" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.0.5" />
-    <PackageReference Include="Intent.Packager" Version="3.0.4">
+    <PackageReference Include="Intent.Packager" Version="3.0.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
