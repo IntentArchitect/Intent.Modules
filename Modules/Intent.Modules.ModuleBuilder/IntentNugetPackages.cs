@@ -1,6 +1,6 @@
 ﻿using Intent.Modules.Common.VisualStudio;
 
-namespace Intent.Modules.Common.CSharp
+namespace Intent.Modules.ModuleBuilder
 {
     public static class IntentNugetPackages
     {
