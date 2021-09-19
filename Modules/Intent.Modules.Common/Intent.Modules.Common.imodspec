@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Common</id>
   <version>3.1.0</version>
-  <supportedClientVersions>[3.1.0,4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.1.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Architect</authors>
@@ -14,7 +14,7 @@
     <factoryExtension id="Intent.Common.DecoratorExecutionHooks" />
   </factoryExtensions>
   <files>
-    <file src="$outDir$/$id$.dll"/>
-    <file src="$outDir$/$id$.pdb"/>
+    <file src="$outDir$/$id$.dll" />
+    <file src="$outDir$/$id$.pdb" />
   </files>
 </package>

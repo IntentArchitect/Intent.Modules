@@ -1,13 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
   </PropertyGroup>
+
   <ItemGroup>
     <Content Update="modelers\Typescript.modeler.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
   <ItemGroup>
     <None Update="Templates\TypescriptTemplate\TypescriptTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
@@ -18,19 +20,23 @@
       <LastGenOutput>TypescriptTemplatePartialTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
+
   <ItemGroup>
-    <PackageReference Include="Intent.Packager" Version="3.0.5">
+    <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
+
   <ItemGroup>
     <Compile Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
@@ -38,4 +44,5 @@
       <DependentUpon>TypescriptTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
+
 </Project>
