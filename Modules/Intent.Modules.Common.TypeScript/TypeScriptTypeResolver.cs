@@ -70,7 +70,7 @@ namespace Intent.Modules.Common.TypeScript
                     : typeInfo.Element.Name;
             }
 
-            return new ResolvedTypeInfo(result, isPrimitive, null);
+            return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
         }
 
         public TypeScriptTypeResolverContext(ICollectionFormatter defaultCollectionFormatter) : base(defaultCollectionFormatter)

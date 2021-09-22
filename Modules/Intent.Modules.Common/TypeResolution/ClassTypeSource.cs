@@ -60,9 +60,9 @@ namespace Intent.Modules.Common.TypeResolution
             return _templateDependencies;
         }
 
-        private IResolvedTypeInfo TryGetType(ITypeReference typeInfo)
+        private IResolvedTypeInfo TryGetType(ITypeReference typeReference)
         {
-            var templateInstance = TryGetTemplateInstance(typeInfo);
+            var templateInstance = TryGetTemplateInstance(typeReference);
             if (templateInstance == null)
             {
                 return null;
@@ -70,10 +70,10 @@ namespace Intent.Modules.Common.TypeResolution
 
             if (_options.TrackDependencies)
             {
-                _templateDependencies.Add(TemplateDependency.OnModel(_templateId, typeInfo.Element));
+                _templateDependencies.Add(TemplateDependency.OnModel(_templateId, typeReference.Element));
             }
 
-            return new ResolvedTypeInfo(templateInstance.ClassName, false, templateInstance);
+            return new ResolvedTypeInfo(templateInstance.ClassName, false, typeReference, templateInstance);
         }
 
         private IClassProvider TryGetTemplateInstance(ITypeReference typeInfo)

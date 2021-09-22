@@ -69,7 +69,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
+    public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly AssociationModel _association;

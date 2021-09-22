@@ -47,20 +47,20 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
+            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
 
-            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.CSharp",
-                moduleVersion: "3.0.10"));
+                moduleVersion: "3.1.0"));
             if (Model.GetDesigner() != null)
             {
-                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetDesigner().ParentModule.Name,
                     moduleVersion: Model.GetDesigner().ParentModule.Version));
             }
             if (Model.GetModelType() != null)
             {
-                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }

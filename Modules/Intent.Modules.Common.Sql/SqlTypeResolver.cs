@@ -37,7 +37,7 @@ namespace Intent.Modules.Common.Sql
 
             if (typeInfo.HasStereotype("SQL Type Override"))
             {
-                return new ResolvedTypeInfo(typeInfo.GetStereotypeProperty<string>("SQL Type Override", "Type Name"), true, null);
+                return new ResolvedTypeInfo(typeInfo.GetStereotypeProperty<string>("SQL Type Override", "Type Name"), true, typeInfo, null);
             }
 
             string result = null;
@@ -96,7 +96,7 @@ namespace Intent.Modules.Common.Sql
 
             result += $" {(typeInfo.IsNullable ? "NULL" : "NOT NULL")}";
 
-            return new ResolvedTypeInfo(result, true, null);
+            return new ResolvedTypeInfo(result, true, typeInfo, null);
         }
     }
 }

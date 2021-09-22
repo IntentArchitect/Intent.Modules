@@ -60,12 +60,13 @@ namespace Intent.Modules.Common.TypeResolution
             type = type ?? ResolveType(typeInfo);
             if (typeInfo.GenericTypeParameters.Any())
             {
-                type.Name = FormatGenerics(type, typeInfo.GenericTypeParameters.Select(x => Get(x, collectionFormatter)));
+                var resolvedGenerics = typeInfo.GenericTypeParameters.Select(x => Get(x, collectionFormatter)).ToList();
+                type.GenericTypes = resolvedGenerics;
+                type.Name = FormatGenerics(type, resolvedGenerics);
             }
 
             if (typeInfo.IsCollection)
             {
-                type.IsPrimitive = false;
                 type.Name = (collectionFormatter ?? typeSourceCollectionFormatter ?? _defaultCollectionFormatter).AsCollection(type);
             }
 
@@ -110,7 +111,6 @@ namespace Intent.Modules.Common.TypeResolution
             if (typeInfo.IsCollection)
             {
                 collectionFormatter = collectionFormatter ?? _defaultCollectionFormatter;
-                type.IsPrimitive = false;
                 type.Name = collectionFormatter.AsCollection(type);
             }
 

@@ -42,7 +42,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         {
             if (typeInfo.Element == null)
             {
-                return new ResolvedTypeInfo("void", false, null);
+                return new ResolvedTypeInfo("void", true, typeInfo, null);
             }
 
             var result = typeInfo.Element.Name;
@@ -119,7 +119,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 }
             }
 
-            return new ResolvedTypeInfo(result, isPrimitive, null);
+            return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
         }
     }
 }

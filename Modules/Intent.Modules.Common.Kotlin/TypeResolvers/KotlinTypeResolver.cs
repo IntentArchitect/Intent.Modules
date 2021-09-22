@@ -44,7 +44,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
         {
             if (typeInfo.Element == null)
             {
-                return new ResolvedTypeInfo("void", false, null);
+                return new ResolvedTypeInfo("void", false, typeInfo,  null);
             }
             var result = typeInfo.Element.Name;
             var isPrimitive = false;
@@ -131,7 +131,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
                     : typeInfo.Element.Name;
             }
 
-            return new ResolvedTypeInfo(result, isPrimitive, null);
+            return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
         }
     }
 }
