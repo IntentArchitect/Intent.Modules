@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         public TypescriptTemplatePartialTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             // whichever his higher:
-            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.0.8"); 
+            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.1.0"); 
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";

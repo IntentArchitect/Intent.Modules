@@ -47,7 +47,7 @@ namespace Intent.Modules.Common.TypeResolution
         public ResolvedTypeInfo(string name, bool isPrimitive, ITypeReference typeReference, ITemplate template)
         {
             Name = name;
-            IsPrimitive = isPrimitive && !typeReference.IsCollection && !typeReference.IsNullable;
+            IsPrimitive = isPrimitive && !typeReference.IsCollection;
             IsNullable = typeReference.IsNullable;
             IsCollection = typeReference.IsCollection;
             TypeReference = typeReference;

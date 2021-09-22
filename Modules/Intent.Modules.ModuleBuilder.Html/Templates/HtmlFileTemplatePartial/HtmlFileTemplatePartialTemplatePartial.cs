@@ -26,7 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public HtmlFileTemplatePartialTemplate(IOutputTarget outputTarget, HtmlFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Html", "3.0.2");
+            AddNugetDependency("Intent.Modules.Common.Html", "3.1.0");
             //if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
             //{
             //    AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));

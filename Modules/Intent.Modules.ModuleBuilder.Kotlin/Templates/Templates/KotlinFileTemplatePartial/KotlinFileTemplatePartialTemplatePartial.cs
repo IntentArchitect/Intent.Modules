@@ -25,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public KotlinFileTemplatePartialTemplate(IOutputTarget outputTarget, KotlinFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Kotlin", "3.0.0");
+            AddNugetDependency("Intent.Modules.Common.Kotlin", "3.1.0");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
