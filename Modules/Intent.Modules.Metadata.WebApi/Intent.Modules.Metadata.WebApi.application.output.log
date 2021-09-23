@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>0f9ab3ec-dfce-4320-ac37-19c5b8d05528</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
+      <ApplicationRelativeFilePath>Api/Extensions/OperationModelExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OperationModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
+      <ApplicationRelativeFilePath>Api/Extensions/ParameterModelExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ParameterModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
+      <ApplicationRelativeFilePath>Api/Extensions/ServiceModelExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceModelExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <ApplicationRelativeFilePath>Intent.Metadata.WebApi.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Metadata.WebApi.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>9b26c297-0062-4303-b90a-752da4b75de6</CorrelationId>
+      <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

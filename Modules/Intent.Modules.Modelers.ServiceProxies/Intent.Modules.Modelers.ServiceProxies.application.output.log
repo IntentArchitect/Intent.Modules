@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>9ca2cdd8-34c3-4fc7-96aa-a1a6815c2117</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>d7402e31-7c2f-421c-85d6-de7c51965d8f</ProjectId>
+      <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d7402e31-7c2f-421c-85d6-de7c51965d8f</ProjectId>
+      <ApplicationRelativeFilePath>Api/ServiceProxiesPackageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceProxiesPackageModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>eaafffbe-65b4-4c99-93e8-dde525b241ce</ProjectId>
+      <ApplicationRelativeFilePath>modelers/Service Proxies Core Types.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Service Proxies Core Types.designer.settings</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>eaafffbe-65b4-4c99-93e8-dde525b241ce</ProjectId>
+      <ApplicationRelativeFilePath>modelers/Service Proxies.designer.config</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Service Proxies.designer.config</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

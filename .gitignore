@@ -242,6 +242,8 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 
+# INTENT FILES:
 *.imod
 *.iat
+!*.application.output.log
 .intent/

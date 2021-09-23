@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="6e2b0cb0-3abd-4fce-b72e-d81c325a2632">
+<stereotypeDefinition id="6e2b0cb0-3abd-4fce-b72e-d81c325a2632" version="3.1.0">
   <name>Application Template Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="cf385bd9-e92f-453d-a3e1-00b9922b57b3">Application Template</element>
-  </targetElements>
+  <targetTypes>
+    <type id="cf385bd9-e92f-453d-a3e1-00b9922b57b3">Application Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

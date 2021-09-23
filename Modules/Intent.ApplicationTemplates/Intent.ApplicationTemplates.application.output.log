@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>0158d6dc-b471-421a-bb3e-57347f7c6275</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
+      <ApplicationRelativeFilePath>Intent.ApplicationTemplate.ModuleBuilder/metadata.iatspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ApplicationTemplate.ModuleBuilder/metadata.iatspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
+      <ApplicationRelativeFilePath>Intent.ApplicationTemplateBuilder/metadata.iatspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ApplicationTemplateBuilder/metadata.iatspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
+      <ApplicationRelativeFilePath>Intent.ApplicationTemplates.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ApplicationTemplates.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

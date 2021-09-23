@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>57e2ba3f-25e6-4488-8cc8-5fb5573a7f8b</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/Intent.Common.Kotlin.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Common.Kotlin.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9d30551d-7f63-4c5b-b11b-43c3d536ed19</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/Intent.Modules.Common.Kotlin.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Kotlin.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/README.txt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

@@ -13,7 +13,12 @@ namespace Intent.ModuleBuilder.Api
     {
         public static IDesigner ModuleBuilder(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetDesigner(application.Id, "Module Builder");
+            return metadataManager.ModuleBuilder(application.Id);
+        }
+
+        public static IDesigner ModuleBuilder(this IMetadataManager metadataManager, string applicationId)
+        {
+            return metadataManager.GetDesigner(applicationId, "Module Builder");
         }
 
     }

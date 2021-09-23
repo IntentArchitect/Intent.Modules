@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="7033e6f4-2a22-4357-bd65-f0ec06c516d5">
+<stereotypeDefinition id="7033e6f4-2a22-4357-bd65-f0ec06c516d5" version="3.1.0">
   <name>Module Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">Module</element>
-  </targetElements>
+  <targetTypes>
+    <type id="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">Module</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

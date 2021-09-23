@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="d01df110-1208-4af8-a913-92a49d219552">
+<stereotypeDefinition id="d01df110-1208-4af8-a913-92a49d219552" version="3.1.0">
   <name>Parameter Settings</name>
   <targetMode>of-type</targetMode>
-  <targetElements>
-    <element id="00208d20-469d-41cb-8501-768fd5eb796b">Parameter</element>
-  </targetElements>
+  <targetTypes>
+    <type id="00208d20-469d-41cb-8501-768fd5eb796b">Parameter</type>
+  </targetTypes>
+  <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>

@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -11,7 +12,7 @@ using Intent.Modules.Common;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public partial class TemplateDecoratorModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public partial class TemplateDecoratorModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
     {
         public const string SpecializationType = "Template Decorator";
         public const string SpecializationTypeId = "f0f46278-29ea-42bd-9206-0e7034f623bc";
@@ -67,6 +68,8 @@ namespace Intent.ModuleBuilder.Api
         }
 
         public string Comment => _element.Comment;
+
+        public FolderModel Folder { get; }
     }
 
     [IntentManaged(Mode.Fully)]

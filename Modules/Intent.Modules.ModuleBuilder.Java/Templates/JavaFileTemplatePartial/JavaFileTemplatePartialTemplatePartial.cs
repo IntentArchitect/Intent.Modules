@@ -29,7 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         public JavaFileTemplatePartialTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency("Intent.Modules.Common.Java", "3.1.0");
-            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "1.0.1");
+            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "1.0.2");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";

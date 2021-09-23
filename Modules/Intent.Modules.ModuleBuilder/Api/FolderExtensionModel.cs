@@ -34,5 +34,10 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new TypeDefinitionModel(x))
             .ToList();
 
+        public IList<TemplateDecoratorModel> TemplateDecorators => _element.ChildElements
+            .GetElementsOfType(TemplateDecoratorModel.SpecializationTypeId)
+            .Select(x => new TemplateDecoratorModel(x))
+            .ToList();
+
     }
 }

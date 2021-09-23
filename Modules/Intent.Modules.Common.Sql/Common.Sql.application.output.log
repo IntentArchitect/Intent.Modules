@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>4c43397f-638c-4889-bb6b-fb7b064d5562</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
+      <ApplicationRelativeFilePath>Intent.Modules.Common.Sql.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Sql.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
+      <ApplicationRelativeFilePath>Intent.Modules.Common.Sql.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Common.Sql.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>

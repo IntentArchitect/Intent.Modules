@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ApplicationId>be31373a-86a5-41f4-8bf4-468cc0c481d0</ApplicationId>
+  <FileLogs>
+    <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <ApplicationRelativeFilePath>Api/DomainEventModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainEventModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <ApplicationRelativeFilePath>Api/PropertyModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PropertyModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
+      <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
+      <ApplicationRelativeFilePath>DomainPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainPackageExtensionModel.cs</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
+      <ApplicationRelativeFilePath>Intent.Modelers.Domain.Events.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modelers.Domain.Events.imodspec</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Domain.Events.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.Domain.Events.csproj</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ad0b2ec3-c568-46c4-a03a-300bba6b6e2d</ProjectId>
+      <ApplicationRelativeFilePath>modelers/Domain Events.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Domain Events.designer.settings</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
+      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+    </FileLog>
+    <FileLog>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+    </FileLog>
+  </FileLogs>
+</outputLog>
