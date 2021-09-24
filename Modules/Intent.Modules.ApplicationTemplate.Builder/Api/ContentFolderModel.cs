@@ -65,4 +65,19 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ContentFolderModelExtensions
+    {
+
+        public static bool IsContentFolderModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ContentFolderModel.SpecializationTypeId;
+        }
+
+        public static ContentFolderModel AsContentFolderModel(this ICanBeReferencedType type)
+        {
+            return type.IsContentFolderModel() ? new ContentFolderModel((IElement)type) : null;
+        }
+    }
 }

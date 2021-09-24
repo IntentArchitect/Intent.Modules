@@ -11,7 +11,12 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
     {
         public static IDesigner AppTemplates(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetDesigner(application.Id, "App Templates");
+            return metadataManager.AppTemplates(application.Id);
+        }
+
+        public static IDesigner AppTemplates(this IMetadataManager metadataManager, string applicationId)
+        {
+            return metadataManager.GetDesigner(applicationId, "App Templates");
         }
 
     }

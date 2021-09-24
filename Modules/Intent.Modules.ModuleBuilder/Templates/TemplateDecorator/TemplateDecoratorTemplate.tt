@@ -22,7 +22,7 @@ namespace <#= Namespace #>
         private readonly <#= GetTemplateTypeName() #> _template;
         private readonly IApplication _application;
 
-        [IntentManaged(Mode.Merge)]
+        [IntentManaged(Mode.Merge, Body = Mode.Fully)]
         public <#= ClassName #>(<#= GetTemplateTypeName() #> template, IApplication application)
         {
             _template = template;

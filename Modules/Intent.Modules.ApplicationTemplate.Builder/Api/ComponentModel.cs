@@ -74,4 +74,19 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ComponentModelExtensions
+    {
+
+        public static bool IsComponentModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ComponentModel.SpecializationTypeId;
+        }
+
+        public static ComponentModel AsComponentModel(this ICanBeReferencedType type)
+        {
+            return type.IsComponentModel() ? new ComponentModel((IElement)type) : null;
+        }
+    }
 }

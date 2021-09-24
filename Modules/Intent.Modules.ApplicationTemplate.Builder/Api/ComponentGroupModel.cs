@@ -65,4 +65,19 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ComponentGroupModelExtensions
+    {
+
+        public static bool IsComponentGroupModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ComponentGroupModel.SpecializationTypeId;
+        }
+
+        public static ComponentGroupModel AsComponentGroupModel(this ICanBeReferencedType type)
+        {
+            return type.IsComponentGroupModel() ? new ComponentGroupModel((IElement)type) : null;
+        }
+    }
 }

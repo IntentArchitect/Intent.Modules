@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.CSharp</id>
   <version>3.1.0</version>
@@ -19,4 +19,5 @@
   <metadata>
     <install src="Intent.Metadata/Module Builder/Intent.Common.CSharp/Intent.Common.CSharp.pkg.config" externalReference="730e1275-0c32-44f7-991a-9619d07ca68d" />
   </metadata>
+  <moduleSettings />
 </package>

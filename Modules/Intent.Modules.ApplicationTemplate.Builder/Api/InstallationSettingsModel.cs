@@ -60,4 +60,19 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class InstallationSettingsModelExtensions
+    {
+
+        public static bool IsInstallationSettingsModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == InstallationSettingsModel.SpecializationTypeId;
+        }
+
+        public static InstallationSettingsModel AsInstallationSettingsModel(this ICanBeReferencedType type)
+        {
+            return type.IsInstallationSettingsModel() ? new InstallationSettingsModel((IElement)type) : null;
+        }
+    }
 }

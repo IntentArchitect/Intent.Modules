@@ -86,6 +86,11 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <returns></returns>
         public static string ToCSharpIdentifier(this string @string)
         {
+            if (string.IsNullOrWhiteSpace(@string))
+            {
+                return string.Empty;
+            }
+
             @string = @string
                 .Replace("#", "Sharp")
                 .Replace("&", "And")
@@ -106,6 +111,11 @@ namespace Intent.Modules.Common.CSharp.Templates
             while (@string.Contains("  "))
             {
                 @string = @string.Replace("  ", " ");
+            }
+
+            if (char.IsNumber(@string[0]))
+            {
+                @string = $"_{@string}";
             }
 
             return string.Concat(@string.Split(' ').Select(x => x.ToPascalCase()));

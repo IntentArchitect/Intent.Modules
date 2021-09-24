@@ -15,5 +15,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 
         public ExtensionModelType Type { get; set; }
         public string Id => Type.Id;
+
+        public override string ToString()
+        {
+            return Type.ToString();
+        }
     }
 }

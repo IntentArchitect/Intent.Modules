@@ -518,10 +518,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             
             #line default
             #line hidden
-            this.Write("                public bool Is");
+            this.Write("                public bool ");
             
             #line 148 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(option.ToCSharpIdentifier()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(("Is" + option.ToPascalCase()).ToCSharpIdentifier()));
             
             #line default
             #line hidden

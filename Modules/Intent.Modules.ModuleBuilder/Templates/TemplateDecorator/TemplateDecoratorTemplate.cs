@@ -70,7 +70,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
             #line default
             #line hidden
             this.Write(" _template;\r\n        private readonly IApplication _application;\r\n\r\n        [Inte" +
-                    "ntManaged(Mode.Merge)]\r\n        public ");
+                    "ntManaged(Mode.Merge, Body = Mode.Fully)]\r\n        public ");
             
             #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecorator\TemplateDecoratorTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

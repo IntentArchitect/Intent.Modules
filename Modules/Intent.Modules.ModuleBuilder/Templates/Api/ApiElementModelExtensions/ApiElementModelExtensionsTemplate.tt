@@ -145,7 +145,7 @@ namespace <#= Namespace #>
                 }
 
 <#      foreach(var option in property.ValueOptions) { #>
-                public bool Is<#= option.ToCSharpIdentifier() #>()
+                public bool <#= ("Is" + option.ToPascalCase()).ToCSharpIdentifier() #>()
                 {
                     return Value == "<#= option #>";
                 }

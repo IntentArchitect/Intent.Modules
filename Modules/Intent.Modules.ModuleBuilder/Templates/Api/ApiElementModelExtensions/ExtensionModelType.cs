@@ -20,5 +20,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         public string ApiClassName => $"{Name.ToCSharpIdentifier()}Model";
 
         public string Id => _element.Id;
+
+        public override string ToString()
+        {
+            return $"{nameof(ExtensionModelType)}: {_element}";
+        }
     }
 }

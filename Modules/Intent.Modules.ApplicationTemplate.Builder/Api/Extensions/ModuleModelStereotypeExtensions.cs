@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
-    public static class ModuleModelExtensions
+    public static class ModuleModelStereotypeExtensions
     {
         public static ModuleSettings GetModuleSettings(this ModuleModel model)
         {

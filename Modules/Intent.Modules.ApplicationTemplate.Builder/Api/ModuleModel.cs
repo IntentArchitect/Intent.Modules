@@ -63,4 +63,19 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ModuleModelExtensions
+    {
+
+        public static bool IsModuleModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ModuleModel.SpecializationTypeId;
+        }
+
+        public static ModuleModel AsModuleModel(this ICanBeReferencedType type)
+        {
+            return type.IsModuleModel() ? new ModuleModel((IElement)type) : null;
+        }
+    }
 }

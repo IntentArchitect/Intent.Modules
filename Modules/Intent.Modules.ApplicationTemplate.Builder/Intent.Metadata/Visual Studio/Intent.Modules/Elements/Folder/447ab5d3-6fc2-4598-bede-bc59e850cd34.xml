@@ -62,12 +62,26 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="4d92bddb-2066-43da-9c01-6a2ecc185885" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.Api.ApiElementModelPartial</name>
+      <display>Intent.ModuleBuilder.Templates.Api.ApiElementModelPartial</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>4</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>447ab5d3-6fc2-4598-bede-bc59e850cd34</parentFolderId>
+      <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
     <childElement id="9e383614-2586-43bc-a934-d4520160115b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel</name>
       <display>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>4</order>
+      <order>5</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>447ab5d3-6fc2-4598-bede-bc59e850cd34</parentFolderId>
@@ -81,24 +95,12 @@
       <display>Intent.ModuleBuilder.Templates.Api.ApiPackageModel</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>5</order>
+      <order>6</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>447ab5d3-6fc2-4598-bede-bc59e850cd34</parentFolderId>
       <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
       <packageName>Intent.Modules</packageName>
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="4d92bddb-2066-43da-9c01-6a2ecc185885" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.Api.ApiElementModelPartial</name>
-      <display>Intent.ModuleBuilder.Templates.Api.ApiElementModelPartial</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <order>0</order>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>447ab5d3-6fc2-4598-bede-bc59e850cd34</parentFolderId>
       <stereotypes />
       <childElements />
     </childElement>
