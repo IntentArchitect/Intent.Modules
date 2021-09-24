@@ -121,7 +121,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ElementCreationOptionModel.SpecializationTypeId;
         }
 
-        public static ElementCreationOptionModel ToElementCreationOptionModel(this ICanBeReferencedType type)
+        public static ElementCreationOptionModel AsElementCreationOptionModel(this ICanBeReferencedType type)
         {
             return type.IsElementCreationOptionModel() ? new ElementCreationOptionModel((IElement)type) : null;
         }

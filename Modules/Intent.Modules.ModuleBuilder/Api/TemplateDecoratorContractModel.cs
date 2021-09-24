@@ -73,7 +73,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == TemplateDecoratorContractModel.SpecializationTypeId;
         }
 
-        public static TemplateDecoratorContractModel ToTemplateDecoratorContractModel(this ICanBeReferencedType type)
+        public static TemplateDecoratorContractModel AsTemplateDecoratorContractModel(this ICanBeReferencedType type)
         {
             return type.IsTemplateDecoratorContractModel() ? new TemplateDecoratorContractModel((IElement)type) : null;
         }

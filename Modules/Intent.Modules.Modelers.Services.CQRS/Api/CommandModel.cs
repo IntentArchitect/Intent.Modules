@@ -76,5 +76,22 @@ namespace Intent.Modelers.Services.CQRS.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class CommandModelExtensions
+    {
+
+        public static bool IsCommandModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == CommandModel.SpecializationTypeId;
+        }
+
+        public static CommandModel AsCommandModel(this ICanBeReferencedType type)
+        {
+            return type.IsCommandModel() ? new CommandModel((IElement)type) : null;
+        }
     }
 }

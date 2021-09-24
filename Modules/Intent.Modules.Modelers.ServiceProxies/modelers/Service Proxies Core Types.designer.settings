@@ -25,6 +25,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="0">Service Proxy</type>
         <type order="1">Folder</type>
@@ -45,6 +46,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type>Service Proxy</type>
       </typeOrder>

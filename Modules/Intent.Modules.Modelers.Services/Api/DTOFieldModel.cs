@@ -83,7 +83,7 @@ namespace Intent.Modelers.Services.Api
             return type != null && type is IElement element && element.SpecializationTypeId == DTOFieldModel.SpecializationTypeId;
         }
 
-        public static DTOFieldModel ToDTOFieldModel(this ICanBeReferencedType type)
+        public static DTOFieldModel AsDTOFieldModel(this ICanBeReferencedType type)
         {
             return type.IsDTOFieldModel() ? new DTOFieldModel((IElement)type) : null;
         }

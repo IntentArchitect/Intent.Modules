@@ -99,7 +99,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == TextDrawSettingsModel.SpecializationTypeId;
         }
 
-        public static TextDrawSettingsModel ToTextDrawSettingsModel(this ICanBeReferencedType type)
+        public static TextDrawSettingsModel AsTextDrawSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsTextDrawSettingsModel() ? new TextDrawSettingsModel((IElement)type) : null;
         }

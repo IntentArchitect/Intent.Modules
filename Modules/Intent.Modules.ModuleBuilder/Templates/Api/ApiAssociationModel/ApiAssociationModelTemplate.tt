@@ -95,7 +95,7 @@ namespace <#= Namespace #>
     }
 
     [IntentManaged(Mode.Fully)]
-    public class <#=AssociationEndClassName #> : ITypeReference, ICanBeReferencedType, IHasStereotypes
+    public class <#=AssociationEndClassName #> : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly <#= ClassName #> _association;

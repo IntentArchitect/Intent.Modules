@@ -127,7 +127,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == MappingSettingsModel.SpecializationTypeId;
         }
 
-        public static MappingSettingsModel ToMappingSettingsModel(this ICanBeReferencedType type)
+        public static MappingSettingsModel AsMappingSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsMappingSettingsModel() ? new MappingSettingsModel((IElement)type) : null;
         }

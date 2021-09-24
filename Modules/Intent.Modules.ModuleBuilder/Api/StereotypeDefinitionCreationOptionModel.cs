@@ -107,7 +107,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == StereotypeDefinitionCreationOptionModel.SpecializationTypeId;
         }
 
-        public static StereotypeDefinitionCreationOptionModel ToStereotypeDefinitionCreationOptionModel(this ICanBeReferencedType type)
+        public static StereotypeDefinitionCreationOptionModel AsStereotypeDefinitionCreationOptionModel(this ICanBeReferencedType type)
         {
             return type.IsStereotypeDefinitionCreationOptionModel() ? new StereotypeDefinitionCreationOptionModel((IElement)type) : null;
         }

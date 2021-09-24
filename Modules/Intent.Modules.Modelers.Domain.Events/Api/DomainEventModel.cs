@@ -66,5 +66,22 @@ namespace Intent.Modelers.Domain.Events.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class DomainEventModelExtensions
+    {
+
+        public static bool IsDomainEventModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == DomainEventModel.SpecializationTypeId;
+        }
+
+        public static DomainEventModel AsDomainEventModel(this ICanBeReferencedType type)
+        {
+            return type.IsDomainEventModel() ? new DomainEventModel((IElement)type) : null;
+        }
     }
 }

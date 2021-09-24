@@ -86,7 +86,7 @@ namespace Intent.Modelers.Domain.Api
             return type != null && type is IElement element && element.SpecializationTypeId == AttributeModel.SpecializationTypeId;
         }
 
-        public static AttributeModel ToAttributeModel(this ICanBeReferencedType type)
+        public static AttributeModel AsAttributeModel(this ICanBeReferencedType type)
         {
             return type.IsAttributeModel() ? new AttributeModel((IElement)type) : null;
         }

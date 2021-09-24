@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.ServiceProxies</id>
   <version>3.1.0</version>
@@ -22,4 +22,5 @@
     <install src="modelers/Service Proxies.designer.config" externalReference="2799aa83-e256-46fe-9589-b96f7d6b09f7" />
   </metadata>
   <factoryExtensions />
+  <moduleSettings />
 </package>

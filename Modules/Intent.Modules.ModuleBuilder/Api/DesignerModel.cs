@@ -87,7 +87,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == DesignerModel.SpecializationTypeId;
         }
 
-        public static DesignerModel ToDesignerModel(this ICanBeReferencedType type)
+        public static DesignerModel AsDesignerModel(this ICanBeReferencedType type)
         {
             return type.IsDesignerModel() ? new DesignerModel((IElement)type) : null;
         }

@@ -59,5 +59,22 @@ namespace Intent.Modelers.Domain.Events.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class PropertyModelExtensions
+    {
+
+        public static bool IsPropertyModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == PropertyModel.SpecializationTypeId;
+        }
+
+        public static PropertyModel AsPropertyModel(this ICanBeReferencedType type)
+        {
+            return type.IsPropertyModel() ? new PropertyModel((IElement)type) : null;
+        }
     }
 }

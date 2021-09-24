@@ -76,7 +76,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == FactoryExtensionModel.SpecializationTypeId;
         }
 
-        public static FactoryExtensionModel ToFactoryExtensionModel(this ICanBeReferencedType type)
+        public static FactoryExtensionModel AsFactoryExtensionModel(this ICanBeReferencedType type)
         {
             return type.IsFactoryExtensionModel() ? new FactoryExtensionModel((IElement)type) : null;
         }

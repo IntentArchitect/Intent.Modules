@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain.Events</id>
   <version>3.1.0</version>
@@ -23,4 +23,5 @@
     <install src="modelers/Domain Events.designer.settings" externalReference="79480502-761f-4883-a4f3-3b03654db367" target="Domain" />
     <install target="Module Builder;Domain" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain.Events/Intent.Modelers.Domain.Events.pkg.config" externalReference="31710880-215c-4fed-9c79-a129a4b9cdb1" />
   </metadata>
+  <moduleSettings />
 </package>

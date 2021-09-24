@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.TypeScript.Weaving.Decorators</id>
   <version>3.1.0</version>
@@ -24,4 +24,5 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata />
+  <moduleSettings />
 </package>

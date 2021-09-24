@@ -13,6 +13,7 @@ using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]

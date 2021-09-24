@@ -149,7 +149,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == PackageSettingsModel.SpecializationTypeId;
         }
 
-        public static PackageSettingsModel ToPackageSettingsModel(this ICanBeReferencedType type)
+        public static PackageSettingsModel AsPackageSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsPackageSettingsModel() ? new PackageSettingsModel((IElement)type) : null;
         }

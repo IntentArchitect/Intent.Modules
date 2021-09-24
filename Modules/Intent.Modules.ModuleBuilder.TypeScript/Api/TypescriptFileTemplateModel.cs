@@ -54,4 +54,19 @@ namespace Intent.ModuleBuilder.TypeScript.Api
                     .Select(x => new TemplateDecoratorContractModel(x))
                     .SingleOrDefault();
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class TypescriptFileTemplateModelExtensions
+    {
+
+        public static bool IsTypescriptFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == TypescriptFileTemplateModel.SpecializationTypeId;
+        }
+
+        public static TypescriptFileTemplateModel AsTypescriptFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type.IsTypescriptFileTemplateModel() ? new TypescriptFileTemplateModel((IElement)type) : null;
+        }
+    }
 }

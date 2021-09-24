@@ -66,7 +66,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class GeneralizationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
+    public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
 

@@ -76,5 +76,22 @@ namespace Intent.Modelers.Services.CQRS.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Comment => _element.Comment;
+    }
+
+    [IntentManaged(Mode.Fully)]
+    public static class QueryModelExtensions
+    {
+
+        public static bool IsQueryModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == QueryModel.SpecializationTypeId;
+        }
+
+        public static QueryModel AsQueryModel(this ICanBeReferencedType type)
+        {
+            return type.IsQueryModel() ? new QueryModel((IElement)type) : null;
+        }
     }
 }

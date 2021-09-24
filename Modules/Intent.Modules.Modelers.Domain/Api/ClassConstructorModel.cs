@@ -79,7 +79,7 @@ namespace Intent.Modelers.Domain.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ClassConstructorModel.SpecializationTypeId;
         }
 
-        public static ClassConstructorModel ToClassConstructorModel(this ICanBeReferencedType type)
+        public static ClassConstructorModel AsClassConstructorModel(this ICanBeReferencedType type)
         {
             return type.IsClassConstructorModel() ? new ClassConstructorModel((IElement)type) : null;
         }

@@ -69,7 +69,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == FileTemplateModel.SpecializationTypeId;
         }
 
-        public static FileTemplateModel ToFileTemplateModel(this ICanBeReferencedType type)
+        public static FileTemplateModel AsFileTemplateModel(this ICanBeReferencedType type)
         {
             return type.IsFileTemplateModel() ? new FileTemplateModel((IElement)type) : null;
         }

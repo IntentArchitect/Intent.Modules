@@ -80,7 +80,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == CoreTypeModel.SpecializationTypeId;
         }
 
-        public static CoreTypeModel ToCoreTypeModel(this ICanBeReferencedType type)
+        public static CoreTypeModel AsCoreTypeModel(this ICanBeReferencedType type)
         {
             return type.IsCoreTypeModel() ? new CoreTypeModel((IElement)type) : null;
         }

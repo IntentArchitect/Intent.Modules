@@ -94,7 +94,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == AssociationDestinationEndSettingsModel.SpecializationTypeId;
         }
 
-        public static AssociationDestinationEndSettingsModel ToAssociationDestinationEndSettingsModel(this ICanBeReferencedType type)
+        public static AssociationDestinationEndSettingsModel AsAssociationDestinationEndSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsAssociationDestinationEndSettingsModel() ? new AssociationDestinationEndSettingsModel((IElement)type) : null;
         }

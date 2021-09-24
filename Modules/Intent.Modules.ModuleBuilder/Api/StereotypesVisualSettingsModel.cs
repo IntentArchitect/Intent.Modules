@@ -96,7 +96,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == StereotypesVisualSettingsModel.SpecializationTypeId;
         }
 
-        public static StereotypesVisualSettingsModel ToStereotypesVisualSettingsModel(this ICanBeReferencedType type)
+        public static StereotypesVisualSettingsModel AsStereotypesVisualSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsStereotypesVisualSettingsModel() ? new StereotypesVisualSettingsModel((IElement)type) : null;
         }

@@ -143,7 +143,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == AssociationVisualSettingsModel.SpecializationTypeId;
         }
 
-        public static AssociationVisualSettingsModel ToAssociationVisualSettingsModel(this ICanBeReferencedType type)
+        public static AssociationVisualSettingsModel AsAssociationVisualSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsAssociationVisualSettingsModel() ? new AssociationVisualSettingsModel((IElement)type) : null;
         }

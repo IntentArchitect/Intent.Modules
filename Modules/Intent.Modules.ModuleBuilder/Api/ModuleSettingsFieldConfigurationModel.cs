@@ -75,7 +75,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ModuleSettingsFieldConfigurationModel.SpecializationTypeId;
         }
 
-        public static ModuleSettingsFieldConfigurationModel ToModuleSettingsFieldConfigurationModel(this ICanBeReferencedType type)
+        public static ModuleSettingsFieldConfigurationModel AsModuleSettingsFieldConfigurationModel(this ICanBeReferencedType type)
         {
             return type.IsModuleSettingsFieldConfigurationModel() ? new ModuleSettingsFieldConfigurationModel((IElement)type) : null;
         }

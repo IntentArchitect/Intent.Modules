@@ -36,6 +36,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="0">Folder</type>
         <type order="1">Template Output</type>
@@ -53,12 +54,14 @@
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder />
       <creationOptions />
+      <scriptOptions />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Template Output" typeId="09de2192-2507-41a2-8044-286c7ecadec2">
@@ -69,12 +72,14 @@
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder />
       <creationOptions />
+      <scriptOptions />
       <childElementSettings />
     </elementSetting>
   </elementSettings>
@@ -98,6 +103,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type>Template Output</type>
         <type>Role</type>

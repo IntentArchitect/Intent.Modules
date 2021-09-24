@@ -11,7 +11,12 @@ namespace Intent.Modules.OutputTargets.Folders.Api
     {
         public static IDesigner FolderStructure(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetDesigner(application.Id, "Folder Structure");
+            return metadataManager.FolderStructure(application.Id);
+        }
+
+        public static IDesigner FolderStructure(this IMetadataManager metadataManager, string applicationId)
+        {
+            return metadataManager.GetDesigner(applicationId, "Folder Structure");
         }
 
     }

@@ -78,7 +78,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == AssociationSourceEndVisualSettingsModel.SpecializationTypeId;
         }
 
-        public static AssociationSourceEndVisualSettingsModel ToAssociationSourceEndVisualSettingsModel(this ICanBeReferencedType type)
+        public static AssociationSourceEndVisualSettingsModel AsAssociationSourceEndVisualSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsAssociationSourceEndVisualSettingsModel() ? new AssociationSourceEndVisualSettingsModel((IElement)type) : null;
         }

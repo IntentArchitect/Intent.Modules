@@ -111,7 +111,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ContextMenuModel.SpecializationTypeId;
         }
 
-        public static ContextMenuModel ToContextMenuModel(this ICanBeReferencedType type)
+        public static ContextMenuModel AsContextMenuModel(this ICanBeReferencedType type)
         {
             return type.IsContextMenuModel() ? new ContextMenuModel((IElement)type) : null;
         }

@@ -95,7 +95,7 @@ namespace Intent.Modelers.Services.Api
             return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId;
         }
 
-        public static OperationModel ToOperationModel(this ICanBeReferencedType type)
+        public static OperationModel AsOperationModel(this ICanBeReferencedType type)
         {
             return type.IsOperationModel() ? new OperationModel((IElement)type) : null;
         }

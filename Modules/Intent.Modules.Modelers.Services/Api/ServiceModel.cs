@@ -90,7 +90,7 @@ namespace Intent.Modelers.Services.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ServiceModel.SpecializationTypeId;
         }
 
-        public static ServiceModel ToServiceModel(this ICanBeReferencedType type)
+        public static ServiceModel AsServiceModel(this ICanBeReferencedType type)
         {
             return type.IsServiceModel() ? new ServiceModel((IElement)type) : null;
         }

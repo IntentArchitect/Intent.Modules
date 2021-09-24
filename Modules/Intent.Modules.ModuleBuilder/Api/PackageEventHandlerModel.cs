@@ -53,7 +53,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == PackageEventHandlerModel.SpecializationTypeId;
         }
 
-        public static PackageEventHandlerModel ToPackageEventHandlerModel(this ICanBeReferencedType type)
+        public static PackageEventHandlerModel AsPackageEventHandlerModel(this ICanBeReferencedType type)
         {
             return type.IsPackageEventHandlerModel() ? new PackageEventHandlerModel((IElement)type) : null;
         }

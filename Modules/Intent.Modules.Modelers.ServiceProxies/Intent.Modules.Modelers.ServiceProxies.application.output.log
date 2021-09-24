@@ -1,54 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<outputLog>
   <ApplicationId>9ca2cdd8-34c3-4fc7-96aa-a1a6815c2117</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>d7402e31-7c2f-421c-85d6-de7c51965d8f</ProjectId>
-      <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d7402e31-7c2f-421c-85d6-de7c51965d8f</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#049091c3-753f-474c-b3d1-861ef6a57e51</CorrelationId>
+      <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d7402e31-7c2f-421c-85d6-de7c51965d8f</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#46ef9b5e-e38c-48f2-8516-ea48c310ce23</CorrelationId>
       <ApplicationRelativeFilePath>Api/ServiceProxiesPackageModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ServiceProxiesPackageModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <ApplicationRelativeFilePath>Intent.Modelers.ServiceProxies.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modelers.ServiceProxies.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#817ec71f-a91d-4598-9a09-e05373ef4333</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.csproj</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.imodspec</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>eaafffbe-65b4-4c99-93e8-dde525b241ce</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#acd93869-aa05-4bca-879d-a3efe397e534</CorrelationId>
       <ApplicationRelativeFilePath>modelers/Service Proxies Core Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Service Proxies Core Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>eaafffbe-65b4-4c99-93e8-dde525b241ce</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerConfig#2799aa83-e256-46fe-9589-b96f7d6b09f7</CorrelationId>
       <ApplicationRelativeFilePath>modelers/Service Proxies.designer.config</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Service Proxies.designer.config</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>

@@ -66,7 +66,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class CommentAssociationEndModel : ITypeReference, ICanBeReferencedType, IHasStereotypes
+    public class CommentAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly CommentAssociationModel _association;

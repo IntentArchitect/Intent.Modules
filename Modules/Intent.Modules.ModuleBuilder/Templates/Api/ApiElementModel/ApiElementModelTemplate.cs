@@ -366,7 +366,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             
             #line default
             #line hidden
-            this.Write(" To");
+            this.Write(" As");
             
             #line 131 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

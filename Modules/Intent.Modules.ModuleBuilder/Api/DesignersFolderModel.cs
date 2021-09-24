@@ -90,7 +90,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == DesignersFolderModel.SpecializationTypeId;
         }
 
-        public static DesignersFolderModel ToDesignersFolderModel(this ICanBeReferencedType type)
+        public static DesignersFolderModel AsDesignersFolderModel(this ICanBeReferencedType type)
         {
             return type.IsDesignersFolderModel() ? new DesignersFolderModel((IElement)type) : null;
         }

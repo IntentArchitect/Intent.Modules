@@ -5,9 +5,10 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Types.ServiceProxies.Api;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: IntentTemplate("ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
 
 namespace Intent.Modelers.ServiceProxies.Api
 {
@@ -35,12 +36,12 @@ namespace Intent.Modelers.ServiceProxies.Api
         public string FileLocation => UnderlyingPackage.FileLocation;
 
         public IList<ServiceProxyModel> ServiceProxies => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == ServiceProxyModel.SpecializationType)
+            .GetElementsOfType(ServiceProxyModel.SpecializationTypeId)
             .Select(x => new ServiceProxyModel(x))
             .ToList();
 
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
-            .Where(x => x.SpecializationType == FolderModel.SpecializationType)
+            .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
             .ToList();
 

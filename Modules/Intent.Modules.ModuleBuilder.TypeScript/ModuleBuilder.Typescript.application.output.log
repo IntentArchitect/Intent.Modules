@@ -1,76 +1,109 @@
 <?xml version="1.0" encoding="utf-8"?>
-<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<outputLog>
   <ApplicationId>4e2487dd-3fec-4611-95fb-d49687929743</ApplicationId>
   <FileLogs>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#ba880228-ad4a-4f38-a1a4-0d3fb87e4d89</CorrelationId>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#5e929cc8-2e93-47e9-beb7-b84a81f08b53</CorrelationId>
       <ApplicationRelativeFilePath>Api/PackageExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PackageExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e6e41d88-2829-41b6-a791-065d2bb44eb3</CorrelationId>
       <ApplicationRelativeFilePath>Api/TypescriptFileTemplateModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TypescriptFileTemplateModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.TypeScript.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.TypeScript.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#653969db-6597-4b32-a1f6-029c69da6903</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.TypeScript.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.TypeScript.csproj</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>32572de3-c0a7-4680-8ad3-8cbd5033b2b5</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#ac7fa580-f66f-4257-a160-0bb82b56f4f9</CorrelationId>
       <ApplicationRelativeFilePath>modelers/Typescript.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Typescript.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>4020fdfa-9a4d-47a0-a428-224fe8bcf03e</ProjectId>
+      <ApplicationRelativeFilePath>Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#17b9a627-3b97-4cdb-86a2-93686d20150e</CorrelationId>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplatePartial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#17b9a627-3b97-4cdb-86a2-93686d20150e</CorrelationId>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>

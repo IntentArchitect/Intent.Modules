@@ -50,4 +50,19 @@ namespace Intent.ModuleBuilder.Kotlin.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class KotlinFileTemplateModelExtensions
+    {
+
+        public static bool IsKotlinFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == KotlinFileTemplateModel.SpecializationTypeId;
+        }
+
+        public static KotlinFileTemplateModel AsKotlinFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type.IsKotlinFileTemplateModel() ? new KotlinFileTemplateModel((IElement)type) : null;
+        }
+    }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<outputLog>
   <ApplicationId>a951e417-89e5-4185-a5aa-730640fcebef</ApplicationId>
   <FileLogs>
     <FileLog>
@@ -7,87 +7,107 @@
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#097b3c52-e056-43ca-b3a7-1708a558d09a</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>4ff6c570-24e4-4fae-b906-d486c554cf61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#a717e044-2271-4f1d-95fa-15a6a5a42a43</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Api/IntentModuleExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IntentModuleExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>4ff6c570-24e4-4fae-b906-d486c554cf61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#fd5375d4-5380-4a04-b164-0617a8d64624</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Api/KotlinFileTemplateModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>KotlinFileTemplateModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions#NO-MODEL</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.Kotlin.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#430da63e-e53b-4257-9ea7-b62823d045ef</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Intent.Modules.ModuleBuilder.Kotlin.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Kotlin.csproj</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>c341fc80-3d17-4f57-b7c1-d4fa20a5b5f6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#05b4920c-1004-4605-a38d-eb82f562bc8e</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/modelers/Kotlin Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Kotlin Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
+      <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#dd6c7fe3-cfd5-4bc1-8ea8-1f09e206147e</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/Templates/KotlinFileTemplate/KotlinFileTemplatePartial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/KotlinFileTemplate/KotlinFileTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#dd6c7fe3-cfd5-4bc1-8ea8-1f09e206147e</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/Templates/KotlinFileTemplate/KotlinFileTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/KotlinFileTemplate/KotlinFileTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#d7e8356d-8cfc-45da-928d-437c9a25627f</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#d7e8356d-8cfc-45da-928d-437c9a25627f</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#d7e8356d-8cfc-45da-928d-437c9a25627f</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#d7e8356d-8cfc-45da-928d-437c9a25627f</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/KotlinFileTemplatePartial/KotlinFileTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>

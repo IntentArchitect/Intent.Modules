@@ -17,6 +17,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="2">Html File Template</type>
       </typeOrder>
@@ -31,6 +32,7 @@
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>true</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -62,6 +64,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="2">Html File Template</type>
       </typeOrder>

@@ -97,7 +97,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ElementEventSettingsModel.SpecializationTypeId;
         }
 
-        public static ElementEventSettingsModel ToElementEventSettingsModel(this ICanBeReferencedType type)
+        public static ElementEventSettingsModel AsElementEventSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsElementEventSettingsModel() ? new ElementEventSettingsModel((IElement)type) : null;
         }

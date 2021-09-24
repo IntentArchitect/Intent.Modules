@@ -33,6 +33,6 @@ namespace Intent.Modelers.Services.Api
         /// Returns the base <see cref="DTOModel"/> for this entity, if specified.
         /// </summary>
         [CanBeNull]
-        public DTOModel BaseType => TypeReference.Element?.ToDTOModel();
+        public DTOModel BaseType => TypeReference.Element?.AsDTOModel();
     }
 }

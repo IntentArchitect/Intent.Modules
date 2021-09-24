@@ -245,8 +245,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             
             #line default
             #line hidden
-            this.Write(" : ITypeReference, ICanBeReferencedType, IHasStereotypes\r\n    {\r\n        protecte" +
-                    "d readonly IAssociationEnd _associationEnd;\r\n        private readonly ");
+            this.Write(" : ITypeReference, IMetadataModel, IHasName, IHasStereotypes\r\n    {\r\n        prot" +
+                    "ected readonly IAssociationEnd _associationEnd;\r\n        private readonly ");
             
             #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));

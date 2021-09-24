@@ -92,7 +92,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == PathDrawSettingsModel.SpecializationTypeId;
         }
 
-        public static PathDrawSettingsModel ToPathDrawSettingsModel(this ICanBeReferencedType type)
+        public static PathDrawSettingsModel AsPathDrawSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsPathDrawSettingsModel() ? new PathDrawSettingsModel((IElement)type) : null;
         }

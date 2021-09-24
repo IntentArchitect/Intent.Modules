@@ -80,7 +80,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ScriptModel.SpecializationTypeId;
         }
 
-        public static ScriptModel ToScriptModel(this ICanBeReferencedType type)
+        public static ScriptModel AsScriptModel(this ICanBeReferencedType type)
         {
             return type.IsScriptModel() ? new ScriptModel((IElement)type) : null;
         }

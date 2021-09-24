@@ -83,7 +83,7 @@ namespace Intent.Modelers.Domain.Api
             return type != null && type is IElement element && element.SpecializationTypeId == CommentModel.SpecializationTypeId;
         }
 
-        public static CommentModel ToCommentModel(this ICanBeReferencedType type)
+        public static CommentModel AsCommentModel(this ICanBeReferencedType type)
         {
             return type.IsCommentModel() ? new CommentModel((IElement)type) : null;
         }

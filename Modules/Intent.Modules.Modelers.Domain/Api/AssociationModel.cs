@@ -99,7 +99,7 @@ namespace Intent.Modelers.Domain.Api
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
 
         [IntentManaged(Mode.Ignore)]
-        public ClassModel Class => _associationEnd.TypeReference.Element.ToClassModel();
+        public ClassModel Class => _associationEnd.TypeReference.Element.AsClassModel();
 
         [IntentManaged(Mode.Ignore)]
         public Multiplicity Multiplicity

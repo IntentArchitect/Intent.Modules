@@ -55,4 +55,19 @@ namespace Intent.ModuleBuilder.CSharp.Api
                     .Select(x => new TemplateDecoratorContractModel(x))
                     .SingleOrDefault();
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class CSharpTemplateModelExtensions
+    {
+
+        public static bool IsCSharpTemplateModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == CSharpTemplateModel.SpecializationTypeId;
+        }
+
+        public static CSharpTemplateModel AsCSharpTemplateModel(this ICanBeReferencedType type)
+        {
+            return type.IsCSharpTemplateModel() ? new CSharpTemplateModel((IElement)type) : null;
+        }
+    }
 }

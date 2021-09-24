@@ -17,6 +17,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="2">Kotlin File Template</type>
       </typeOrder>
@@ -61,6 +62,7 @@
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <childElementSettings />
     </elementSetting>
   </elementSettings>
@@ -76,6 +78,7 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
+      <scriptOptions />
       <typeOrder>
         <type order="2">Kotlin File Template</type>
       </typeOrder>

@@ -3,7 +3,7 @@
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <order>6</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>817ec71f-a91d-4598-9a09-e05373ef4333</parentFolderId>
@@ -116,10 +116,12 @@
       <display>Intent.ModuleBuilder.Templates.TemplateDecoratorContract</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>7</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3aa711df-f7ab-46e6-8b30-f95d303cc10d</parentFolderId>
+      <packageId>c01cc91b-7048-4348-af8e-2a811a3344cd</packageId>
+      <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />
     </childElement>
@@ -128,10 +130,12 @@
       <display>Intent.ModuleBuilder.Templates.TemplateExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <order>8</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3aa711df-f7ab-46e6-8b30-f95d303cc10d</parentFolderId>
+      <packageId>c01cc91b-7048-4348-af8e-2a811a3344cd</packageId>
+      <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />
     </childElement>

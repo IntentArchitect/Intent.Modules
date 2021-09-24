@@ -11,6 +11,7 @@ using Intent.ModuleBuilder.Html.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]

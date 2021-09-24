@@ -1,61 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
-<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<outputLog>
   <ApplicationId>6c53239e-354a-4005-baa3-1fabf4a5dc11</ApplicationId>
   <FileLogs>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#728ec7bd-3292-413f-bdac-2ebf40e6f47b</CorrelationId>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#8663c9f9-2852-45e7-aaa1-0883a2e6f1da</CorrelationId>
       <ApplicationRelativeFilePath>Api/RoleModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>RoleModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#fbca4a65-b376-482c-a23d-32da9908cac9</CorrelationId>
       <ApplicationRelativeFilePath>Api/RootLocationPackageModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>RootLocationPackageModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>940db473-d0e0-4dfb-b19c-270a53025376</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#09de2192-2507-41a2-8044-286c7ecadec2</CorrelationId>
       <ApplicationRelativeFilePath>Api/TemplateOutputModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TemplateOutputModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#576b0748-e723-411b-a944-7cfedbeb9498</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.OutputTargets.Folders.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.OutputTargets.Folders.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.OutputTargets.Folders.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.OutputTargets.Folders.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>19da46e6-b338-40d0-a02a-e8f3e43e76aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerConfig#27916ede-58c6-4356-87b1-0b0628d1e2a7</CorrelationId>
       <ApplicationRelativeFilePath>modelers/Folder Structure.designer.config</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Folder Structure.designer.config</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>19da46e6-b338-40d0-a02a-e8f3e43e76aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#055be48d-e085-4a52-b6bf-80dd34e9abf4</CorrelationId>
       <ApplicationRelativeFilePath>modelers/Output Folder Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Output Folder Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>

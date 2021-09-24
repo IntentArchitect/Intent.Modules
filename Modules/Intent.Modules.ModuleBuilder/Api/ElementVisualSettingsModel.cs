@@ -134,7 +134,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ElementVisualSettingsModel.SpecializationTypeId;
         }
 
-        public static ElementVisualSettingsModel ToElementVisualSettingsModel(this ICanBeReferencedType type)
+        public static ElementVisualSettingsModel AsElementVisualSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsElementVisualSettingsModel() ? new ElementVisualSettingsModel((IElement)type) : null;
         }

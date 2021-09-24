@@ -84,7 +84,7 @@ namespace Intent.Modelers.Services.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId;
         }
 
-        public static ParameterModel ToParameterModel(this ICanBeReferencedType type)
+        public static ParameterModel AsParameterModel(this ICanBeReferencedType type)
         {
             return type.IsParameterModel() ? new ParameterModel((IElement)type) : null;
         }

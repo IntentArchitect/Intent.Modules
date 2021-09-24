@@ -101,7 +101,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == DiagramSettingsModel.SpecializationTypeId;
         }
 
-        public static DiagramSettingsModel ToDiagramSettingsModel(this ICanBeReferencedType type)
+        public static DiagramSettingsModel AsDiagramSettingsModel(this ICanBeReferencedType type)
         {
             return type.IsDiagramSettingsModel() ? new DiagramSettingsModel((IElement)type) : null;
         }

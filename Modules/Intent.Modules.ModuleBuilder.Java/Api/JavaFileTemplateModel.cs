@@ -64,4 +64,19 @@ namespace Intent.ModuleBuilder.Java.Api
                     .Select(x => new TemplateDecoratorContractModel(x))
                     .SingleOrDefault();
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class JavaFileTemplateModelExtensions
+    {
+
+        public static bool IsJavaFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == JavaFileTemplateModel.SpecializationTypeId;
+        }
+
+        public static JavaFileTemplateModel AsJavaFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type.IsJavaFileTemplateModel() ? new JavaFileTemplateModel((IElement)type) : null;
+        }
+    }
 }

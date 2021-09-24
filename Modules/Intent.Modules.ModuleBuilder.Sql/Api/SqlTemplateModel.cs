@@ -49,4 +49,19 @@ namespace Intent.ModuleBuilder.Sql.Api
         }
         public new const string SpecializationTypeId = "f3e581f7-96eb-439f-8bc4-9103128f0bd7";
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class SqlTemplateModelExtensions
+    {
+
+        public static bool IsSqlTemplateModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == SqlTemplateModel.SpecializationTypeId;
+        }
+
+        public static SqlTemplateModel AsSqlTemplateModel(this ICanBeReferencedType type)
+        {
+            return type.IsSqlTemplateModel() ? new SqlTemplateModel((IElement)type) : null;
+        }
+    }
 }

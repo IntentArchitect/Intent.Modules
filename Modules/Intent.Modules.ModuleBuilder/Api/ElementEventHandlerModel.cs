@@ -67,7 +67,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ElementEventHandlerModel.SpecializationTypeId;
         }
 
-        public static ElementEventHandlerModel ToElementEventHandlerModel(this ICanBeReferencedType type)
+        public static ElementEventHandlerModel AsElementEventHandlerModel(this ICanBeReferencedType type)
         {
             return type.IsElementEventHandlerModel() ? new ElementEventHandlerModel((IElement)type) : null;
         }

@@ -70,7 +70,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == RunScriptOptionModel.SpecializationTypeId;
         }
 
-        public static RunScriptOptionModel ToRunScriptOptionModel(this ICanBeReferencedType type)
+        public static RunScriptOptionModel AsRunScriptOptionModel(this ICanBeReferencedType type)
         {
             return type.IsRunScriptOptionModel() ? new RunScriptOptionModel((IElement)type) : null;
         }

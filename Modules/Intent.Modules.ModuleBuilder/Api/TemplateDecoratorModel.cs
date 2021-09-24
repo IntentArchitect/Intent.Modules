@@ -81,7 +81,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == TemplateDecoratorModel.SpecializationTypeId;
         }
 
-        public static TemplateDecoratorModel ToTemplateDecoratorModel(this ICanBeReferencedType type)
+        public static TemplateDecoratorModel AsTemplateDecoratorModel(this ICanBeReferencedType type)
         {
             return type.IsTemplateDecoratorModel() ? new TemplateDecoratorModel((IElement)type) : null;
         }

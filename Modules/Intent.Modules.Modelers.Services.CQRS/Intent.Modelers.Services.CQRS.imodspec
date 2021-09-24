@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.CQRS</id>
   <version>3.1.0</version>
@@ -23,4 +23,5 @@
     <install target="Services" src="modelers/Services CQRS Extension.designer.settings" externalReference="6ac83417-e6d5-4699-b88c-aa1d7f894326" />
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.CQRS/Intent.Modelers.Services.CQRS.pkg.config" externalReference="45fb22e9-f493-4de5-9fe0-845f783aa9d4" />
   </metadata>
+  <moduleSettings />
 </package>

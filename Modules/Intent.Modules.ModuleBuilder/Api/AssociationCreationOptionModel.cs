@@ -112,7 +112,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == AssociationCreationOptionModel.SpecializationTypeId;
         }
 
-        public static AssociationCreationOptionModel ToAssociationCreationOptionModel(this ICanBeReferencedType type)
+        public static AssociationCreationOptionModel AsAssociationCreationOptionModel(this ICanBeReferencedType type)
         {
             return type.IsAssociationCreationOptionModel() ? new AssociationCreationOptionModel((IElement)type) : null;
         }

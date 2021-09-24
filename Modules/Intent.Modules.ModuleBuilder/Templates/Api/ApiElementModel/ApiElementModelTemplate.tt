@@ -128,7 +128,7 @@ namespace <#= Namespace #>
             return type != null && type is IElement element && element.SpecializationTypeId == <#= ClassName #>.SpecializationTypeId;
         }
 
-        public static <#= ClassName #> To<#= ClassName #>(this ICanBeReferencedType type)
+        public static <#= ClassName #> As<#= ClassName #>(this ICanBeReferencedType type)
         {
             return type.Is<#= ClassName #>() ? new <#= ClassName #>((IElement)type) : null;
         }

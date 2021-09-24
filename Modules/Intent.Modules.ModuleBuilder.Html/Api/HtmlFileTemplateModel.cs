@@ -49,4 +49,19 @@ namespace Intent.ModuleBuilder.Html.Api
         }
         public new const string SpecializationTypeId = "af3fe721-86c5-41e3-9daf-1e79209ed345";
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class HtmlFileTemplateModelExtensions
+    {
+
+        public static bool IsHtmlFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == HtmlFileTemplateModel.SpecializationTypeId;
+        }
+
+        public static HtmlFileTemplateModel AsHtmlFileTemplateModel(this ICanBeReferencedType type)
+        {
+            return type.IsHtmlFileTemplateModel() ? new HtmlFileTemplateModel((IElement)type) : null;
+        }
+    }
 }

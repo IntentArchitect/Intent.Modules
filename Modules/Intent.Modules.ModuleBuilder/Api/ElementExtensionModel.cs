@@ -141,7 +141,7 @@ namespace Intent.ModuleBuilder.Api
             return type != null && type is IElement element && element.SpecializationTypeId == ElementExtensionModel.SpecializationTypeId;
         }
 
-        public static ElementExtensionModel ToElementExtensionModel(this ICanBeReferencedType type)
+        public static ElementExtensionModel AsElementExtensionModel(this ICanBeReferencedType type)
         {
             return type.IsElementExtensionModel() ? new ElementExtensionModel((IElement)type) : null;
         }
