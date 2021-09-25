@@ -7,6 +7,10 @@ namespace Intent.Modules.Common.Registrations
 {
     /// <summary>
     /// Template Registration that produces a file per module that is returned by the <see cref="GetModels"/> method.
+    /// <para>
+    /// Learn more about template registrations in
+    /// <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#3-template-registration-file">this article</seealso>.
+    /// </para>
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
     public abstract class FilePerModelTemplateRegistration<TModel> : TemplateRegistrationBase

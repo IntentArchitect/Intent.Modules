@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -63,6 +64,11 @@ namespace Intent.Modules.Common.Templates
             if (Model is IMetadataModel model)
             {
                 return $"{Id}#{model.Id}";
+            }
+
+            if (Model == null || Model is IEnumerable)
+            {
+                return Id;
             }
 
             return null;

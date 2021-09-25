@@ -27,6 +27,10 @@
         <member name="T:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1">
             <summary>
             Template Registration that produces a file per module that is returned by the <see cref="M:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1.GetModels(Intent.Engine.IApplication)"/> method.
+            <para>
+            Learn more about template registrations in
+            <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#3-template-registration-file">this article</seealso>.
+            </para>
             </summary>
             <typeparam name="TModel"></typeparam>
         </member>
@@ -54,11 +58,47 @@
         <member name="T:Intent.Modules.Common.Registrations.SingleFileListModelTemplateRegistration`1">
             <summary>
             Template Registration that produces as single file. Passes in a list of models into the template.
+            <para>
+            Learn more about template registrations in
+            <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#3-template-registration-file">this article</seealso>.
+            </para>
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Registrations.SingleFileTemplateRegistration">
             <summary>
             Template Registration that produces as single file.
+            <para>
+            Learn more about template registrations in
+            <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#3-template-registration-file">this article</seealso>.
+            </para>
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Registrations.TemplateRegistrationBase">
+            <summary>
+            A generic base implementation of <seealso cref="T:Intent.Registrations.ITemplateRegistration"/>.
+            <para>
+            The <see cref="M:Intent.Modules.Common.Registrations.TemplateRegistrationBase.Register(Intent.Registrations.ITemplateInstanceRegistry,Intent.Engine.IApplication)"/> method will be called once by the Software Factory Execution.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Registrations.TemplateRegistrationBase.Register(Intent.Registrations.ITemplateInstanceRegistry,Intent.Engine.IApplication)">
+            <summary>
+            This method is called once by the Software Factory Execution.
+            <para>
+            Registration of template instances can be done by invoking
+            the <see cref="M:Intent.Registrations.ITemplateInstanceRegistry.RegisterTemplate(System.String,System.Func{Intent.Engine.IOutputTarget,Intent.Templates.ITemplate})"/>
+            on the provided <paramref name="registry"/> parameter.
+            </para>
+            </summary>
+            <param name="registry"></param>
+            <param name="application"></param>
+        </member>
+        <member name="M:Intent.Modules.Common.Registrations.TemplateRegistrationBase.AbortRegistration">
+            <summary>
+            This method indicates that the registration process must not occur for this template.
+            <para>
+            Note that this must be called BEFORE the registration process has begun.
+            </para>
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Templates.IClassProvider">

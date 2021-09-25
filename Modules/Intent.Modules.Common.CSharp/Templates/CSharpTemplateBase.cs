@@ -50,6 +50,13 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
     }
 
+    /// <summary>
+    /// Template base for CSharp files, which invokes code-management to make updates to existing files.
+    /// <para>
+    /// Learn more about templates in <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#2-template-partial-file">this article</seealso>.
+    /// </para>
+    /// </summary>
+    /// <typeparam name="TModel"></typeparam>
     public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings 
     {
         private readonly ICollection<ITemplateDependency> _detectedDependencies = new List<ITemplateDependency>();
