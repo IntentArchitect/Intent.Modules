@@ -3,7 +3,7 @@
   <name>Services Package Extension</name>
   <display>Services Package Extension: Services Package</display>
   <isAbstract>false</isAbstract>
-  <order>5</order>
+  <order>6</order>
   <genericTypes />
   <typeReference id="9a2d32cb-7c5a-42a1-a2d7-4c5986b30600">
     <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
@@ -34,52 +34,14 @@
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
       <childElements>
-        <childElement id="501e836a-4264-4598-83f2-bdf4540cf300" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Command</name>
-          <display>New Command: Command</display>
+        <childElement id="9aa476ec-bdac-42cd-b44f-30a505b34d98" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New CQRS Service</name>
+          <display>New CQRS Service: CQRS Service</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
-          <typeReference id="a1f1edc8-bf8e-437f-940d-3ef9084da3e4">
-            <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
-            <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>7059c2a5-23d1-467d-bcc5-17c58adf24b1</parentFolderId>
-          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
-          <packageName>Intent.Modelers.Services.CQRS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="25936bd0-450c-4be5-ace1-c578b959d2e0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Query</name>
-          <display>New Query: Query</display>
-          <isAbstract>false</isAbstract>
-          <order>1</order>
-          <genericTypes />
-          <typeReference id="01e38abf-e98c-4b06-a5e9-69843eddbfab">
-            <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+          <typeReference id="fd1ae06c-1953-4f65-a4c8-84219c301818">
+            <typeId>3a2ed4aa-0cf0-4e99-9dfa-a0a34c63214d</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -101,8 +63,9 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + q" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" value="1" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
               </properties>

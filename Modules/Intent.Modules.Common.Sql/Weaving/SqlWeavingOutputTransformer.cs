@@ -13,11 +13,16 @@ namespace Intent.Modules.Common.Sql.Weaving
     {
         public override string Id => "Intent.Common.Sql.OutputWeaver";
 
+        public bool CanTransform(IOutputFile output)
+        {
+            return output.Template is ISqlTemplate;
+        }
+
         public void Transform(IOutputFile output)
         {
             if (!(output.Template is ISqlTemplate sqlTemplate))
             {
-                return;
+                throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(ISqlTemplate)}");
             }
 
             var existingFile = sqlTemplate.GetExistingFile();

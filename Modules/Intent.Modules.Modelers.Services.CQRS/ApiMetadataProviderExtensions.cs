@@ -18,6 +18,13 @@ namespace Intent.Modelers.Services.CQRS.Api
                 .ToList();
         }
 
+        public static IList<CQRSServiceModel> GetCQRSServiceModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(CQRSServiceModel.SpecializationTypeId)
+                .Select(x => new CQRSServiceModel(x))
+                .ToList();
+        }
+
         public static IList<QueryModel> GetQueryModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(QueryModel.SpecializationTypeId)

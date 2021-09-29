@@ -17,11 +17,16 @@ namespace Intent.Modules.Common.Java.Weaving
     {
         public override string Id => "Intent.Common.Java.OutputWeaver";
 
+        public bool CanTransform(IOutputFile output)
+        {
+            return output.Template is IJavaMerged;
+        }
+
         public void Transform(IOutputFile output)
         {
             if (!(output.Template is IJavaMerged javaMerged))
             {
-                return;
+                throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(IJavaMerged)}");
             }
 
             var existingFile = javaMerged.GetExistingFile();

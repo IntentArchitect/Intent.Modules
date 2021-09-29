@@ -11,8 +11,8 @@ using Intent.Modules.Common;
 
 namespace Intent.Modelers.Services.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public partial class DTOModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasName, IHasTypeReference
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    public partial class DTOModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         protected readonly IElement _element;
         public const string SpecializationType = "DTO";
@@ -37,8 +37,6 @@ namespace Intent.Modelers.Services.Api
         public bool IsMapped => _element.IsMapped;
 
         public IElementMapping Mapping => _element.MappedElement;
-
-        public ITypeReference TypeReference => _element.TypeReference;
 
         public IList<DTOFieldModel> Fields => _element.ChildElements
             .GetElementsOfType(DTOFieldModel.SpecializationTypeId)

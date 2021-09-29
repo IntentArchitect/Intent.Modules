@@ -20,14 +20,9 @@ namespace Intent.Modelers.Services.CQRS.Api
         {
         }
 
-        public IList<CommandModel> Commands => UnderlyingPackage.ChildElements
-            .GetElementsOfType(CommandModel.SpecializationTypeId)
-            .Select(x => new CommandModel(x))
-            .ToList();
-
-        public IList<QueryModel> Queries => UnderlyingPackage.ChildElements
-            .GetElementsOfType(QueryModel.SpecializationTypeId)
-            .Select(x => new QueryModel(x))
+        public IList<CQRSServiceModel> CQRSServices => UnderlyingPackage.ChildElements
+            .GetElementsOfType(CQRSServiceModel.SpecializationTypeId)
+            .Select(x => new CQRSServiceModel(x))
             .ToList();
 
     }

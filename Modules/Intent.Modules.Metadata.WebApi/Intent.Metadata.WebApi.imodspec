@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.WebApi</id>
   <version>3.1.0</version>
@@ -22,4 +22,5 @@
   <metadata>
     <install target="Services" src="Intent.Metadata/Module Builder/Intent.Metadata.WebApi/Intent.Metadata.WebApi.pkg.config" externalReference="0011387a-b122-45d7-9cdb-8e21b315ab9f" />
   </metadata>
+  <moduleSettings />
 </package>

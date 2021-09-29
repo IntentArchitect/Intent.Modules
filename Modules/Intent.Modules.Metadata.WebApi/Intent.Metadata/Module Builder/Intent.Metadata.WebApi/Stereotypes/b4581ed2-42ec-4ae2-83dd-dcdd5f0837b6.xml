@@ -4,6 +4,8 @@
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="e030c97a-e066-40a7-8188-808c275df3cb">Operation</type>
+    <type id="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">Command</type>
+    <type id="e71b0662-e29d-4db2-868b-8a12464b25d0">Query</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
@@ -30,6 +32,7 @@
         <option>DELETE</option>
       </valueOptions>
       <lookupTypes />
+      <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="5dd3e07d-76eb-45d4-9956-4325fb068acc">
@@ -41,6 +44,7 @@
       <defaultValue />
       <valueOptions />
       <lookupTypes />
+      <isActiveFunction />
     </property>
   </properties>
 </stereotypeDefinition>

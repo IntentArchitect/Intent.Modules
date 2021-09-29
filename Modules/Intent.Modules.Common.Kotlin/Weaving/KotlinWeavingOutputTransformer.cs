@@ -17,14 +17,20 @@ namespace Intent.Modules.Common.Kotlin.Weaving
     {
         public override string Id => "Intent.Common.Kotlin.OutputWeaver";
 
+        public bool CanTransform(IOutputFile output)
+        {
+            return output.Template is IKotlinMerged;
+        }
+
+
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is IKotlinMerged KotlinMerged))
+            if (!(output.Template is IKotlinMerged kotlinMerged))
             {
-                return;
+                throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(IKotlinMerged)}");
             }
 
-            var existingFile = KotlinMerged.GetExistingFile();
+            var existingFile = kotlinMerged.GetExistingFile();
 
             if (existingFile == null)
             {

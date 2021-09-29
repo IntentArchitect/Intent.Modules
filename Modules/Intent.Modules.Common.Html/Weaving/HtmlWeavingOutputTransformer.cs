@@ -16,11 +16,16 @@ namespace Intent.Modules.Common.Html.Weaving
     {
         public override string Id => "Intent.Common.Html.OutputWeaver";
 
+        public bool CanTransform(IOutputFile output)
+        {
+            return output.Template is IHtmlFileMerge;
+        }
+
         public void Transform(IOutputFile output)
         {
             if (!(output.Template is IHtmlFileMerge htmlFileMerge))
             {
-                return;
+                throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(IHtmlFileMerge)}");
             }
 
             var existingFile = htmlFileMerge.GetExistingFile();

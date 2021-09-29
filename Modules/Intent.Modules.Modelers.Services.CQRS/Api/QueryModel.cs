@@ -37,8 +37,6 @@ namespace Intent.Modelers.Services.CQRS.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public FolderModel Folder { get; }
-
         public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
@@ -78,6 +76,8 @@ namespace Intent.Modelers.Services.CQRS.Api
         }
 
         public string Comment => _element.Comment;
+
+        public FolderModel Folder { get; }
     }
 
     [IntentManaged(Mode.Fully)]

@@ -4,52 +4,47 @@ using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
+[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
+
 namespace Intent.Metadata.WebApi.Api
 {
-    [Obsolete]
-    public static class OperationModelExtensions
+    public static class OperationModelStereotypeExtensions
     {
-        [Obsolete]
-        public static HttpSettings GetHttpSettings(OperationModel model)
+        public static HttpSettings GetHttpSettings(this OperationModel model)
         {
             var stereotype = model.GetStereotype("Http Settings");
             return stereotype != null ? new HttpSettings(stereotype) : null;
         }
 
-        [Obsolete]
-        public static bool HasHttpSettings(OperationModel model)
+        public static bool HasHttpSettings(this OperationModel model)
         {
             return model.HasStereotype("Http Settings");
         }
 
-        [Obsolete]
-        public static Secured GetSecured(OperationModel model)
+        public static Secured GetSecured(this OperationModel model)
         {
             var stereotype = model.GetStereotype("Secured");
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
-        [Obsolete]
-        public static bool HasSecured(OperationModel model)
+        public static bool HasSecured(this OperationModel model)
         {
             return model.HasStereotype("Secured");
         }
 
-        [Obsolete]
-        public static Unsecured GetUnsecured(OperationModel model)
+        public static Unsecured GetUnsecured(this OperationModel model)
         {
             var stereotype = model.GetStereotype("Unsecured");
             return stereotype != null ? new Unsecured(stereotype) : null;
         }
 
-        [Obsolete]
-        public static bool HasUnsecured(OperationModel model)
+        public static bool HasUnsecured(this OperationModel model)
         {
             return model.HasStereotype("Unsecured");
         }
 
 
-        [Obsolete]
         public class HttpSettings
         {
             private IStereotype _stereotype;
@@ -80,6 +75,23 @@ namespace Intent.Metadata.WebApi.Api
                     Value = value;
                 }
 
+                public VerbOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "GET":
+                            return VerbOptionsEnum.GET;
+                        case "POST":
+                            return VerbOptionsEnum.POST;
+                        case "PUT":
+                            return VerbOptionsEnum.PUT;
+                        case "DELETE":
+                            return VerbOptionsEnum.DELETE;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsGET()
                 {
                     return Value == "GET";
@@ -98,9 +110,15 @@ namespace Intent.Metadata.WebApi.Api
                 }
             }
 
+            public enum VerbOptionsEnum
+            {
+                GET,
+                POST,
+                PUT,
+                DELETE
+            }
         }
 
-        [Obsolete]
         public class Secured
         {
             private IStereotype _stereotype;
@@ -119,7 +137,6 @@ namespace Intent.Metadata.WebApi.Api
 
         }
 
-        [Obsolete]
         public class Unsecured
         {
             private IStereotype _stereotype;

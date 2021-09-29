@@ -9,24 +9,20 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Metadata.WebApi.Api
 {
-        [Obsolete]
-    public static class ParameterModelExtensions
+    public static class ParameterModelStereotypeExtensions
     {
-        [Obsolete]
-        public static ParameterSettings GetParameterSettings(ParameterModel model)
+        public static ParameterSettings GetParameterSettings(this ParameterModel model)
         {
             var stereotype = model.GetStereotype("Parameter Settings");
             return stereotype != null ? new ParameterSettings(stereotype) : null;
         }
 
-        [Obsolete]
-        public static bool HasParameterSettings(ParameterModel model)
+        public static bool HasParameterSettings(this ParameterModel model)
         {
             return model.HasStereotype("Parameter Settings");
         }
 
 
-        [Obsolete]
         public class ParameterSettings
         {
             private IStereotype _stereotype;
@@ -52,6 +48,25 @@ namespace Intent.Metadata.WebApi.Api
                     Value = value;
                 }
 
+                public SourceOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Default":
+                            return SourceOptionsEnum.Default;
+                        case "From Query":
+                            return SourceOptionsEnum.FromQuery;
+                        case "From Body":
+                            return SourceOptionsEnum.FromBody;
+                        case "From Route":
+                            return SourceOptionsEnum.FromRoute;
+                        case "From Header":
+                            return SourceOptionsEnum.FromHeader;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
                 public bool IsDefault()
                 {
                     return Value == "Default";
@@ -74,6 +89,14 @@ namespace Intent.Metadata.WebApi.Api
                 }
             }
 
+            public enum SourceOptionsEnum
+            {
+                Default,
+                FromQuery,
+                FromBody,
+                FromRoute,
+                FromHeader
+            }
         }
 
     }

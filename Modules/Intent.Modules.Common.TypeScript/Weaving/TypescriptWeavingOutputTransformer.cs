@@ -16,10 +16,16 @@ namespace Intent.Modules.Common.TypeScript.Weaving
     {
         public override string Id => "Intent.Common.TypeScript.OutputWeaver";
 
+        public bool CanTransform(IOutputFile output)
+        {
+            return output.Template is ITypeScriptMerged;
+        }
+
         public void Transform(IOutputFile output)
         {
             if (!(output.Template is ITypeScriptMerged typeScriptMerged))
             {
+                throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(ITypeScriptMerged)}");
                 return;
             }
             try

@@ -9,37 +9,31 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Metadata.WebApi.Api
 {
-        [Obsolete]
-    public static class ServiceModelExtensions
+    public static class ServiceModelStereotypeExtensions
     {
-        [Obsolete]
-        public static HttpServiceSettings GetHttpServiceSettings(ServiceModel model)
+        public static HttpServiceSettings GetHttpServiceSettings(this ServiceModel model)
         {
             var stereotype = model.GetStereotype("Http Service Settings");
             return stereotype != null ? new HttpServiceSettings(stereotype) : null;
         }
 
-        [Obsolete]
-        public static bool HasHttpServiceSettings(ServiceModel model)
+        public static bool HasHttpServiceSettings(this ServiceModel model)
         {
             return model.HasStereotype("Http Service Settings");
         }
 
-        [Obsolete]
-        public static Secured GetSecured(ServiceModel model)
+        public static Secured GetSecured(this ServiceModel model)
         {
             var stereotype = model.GetStereotype("Secured");
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
-        [Obsolete]
-        public static bool HasSecured(ServiceModel model)
+        public static bool HasSecured(this ServiceModel model)
         {
             return model.HasStereotype("Secured");
         }
 
 
-        [Obsolete]
         public class HttpServiceSettings
         {
             private IStereotype _stereotype;
@@ -58,7 +52,6 @@ namespace Intent.Metadata.WebApi.Api
 
         }
 
-        [Obsolete]
         public class Secured
         {
             private IStereotype _stereotype;
