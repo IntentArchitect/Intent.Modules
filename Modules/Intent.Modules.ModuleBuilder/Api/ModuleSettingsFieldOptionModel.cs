@@ -59,6 +59,8 @@ namespace Intent.ModuleBuilder.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
+
+        public string Value => _element.Value;
     }
 
     [IntentManaged(Mode.Fully)]

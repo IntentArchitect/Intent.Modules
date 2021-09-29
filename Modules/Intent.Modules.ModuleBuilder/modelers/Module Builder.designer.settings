@@ -221,7 +221,7 @@
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowSetValue>false</allowSetValue>
+              <allowSetValue>true</allowSetValue>
               <typeOrder />
               <creationOptions />
               <scriptOptions />

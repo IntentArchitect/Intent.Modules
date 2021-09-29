@@ -8,6 +8,8 @@
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.ModuleBuilder.Api" #>
+using Intent.Configuration;
+using Intent.Engine;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -41,7 +43,7 @@ namespace <#= Namespace #>
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Select:
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Number:#>
 
-        public bool <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #> => _groupSettings.GetSetting("<#= settingsField.Id #>")?.Value;
+        public string <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #> => _groupSettings.GetSetting("<#= settingsField.Id #>")?.Value;
 <#                    break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Checkbox:
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Switch:#>

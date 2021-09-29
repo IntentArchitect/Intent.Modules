@@ -289,7 +289,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         var options = new XElement("options");
                         foreach (var fieldOption in settingsField.Options)
                         {
-                            options.Add(new XElement("option", new XAttribute("value", fieldOption.Id), new XAttribute("description", fieldOption.Name)));
+                            options.Add(new XElement("option", new XAttribute("value", fieldOption.Value ?? fieldOption.Name), new XAttribute("description", fieldOption.Name)));
                         }
                         fieldXml.Add(options);
                     }
