@@ -40,10 +40,9 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Aggregates the specified <see cref="propertyFunc"/> property of all Decorators. Ignores Decorators where the property returns null.
+        /// Aggregates the specified <paramref name="propertyFunc"/> property of all Decorators.
+        /// Ignores Decorators where the property returns null.
         /// </summary>
-        /// <param name="propertyFunc"></param>
-        /// <returns></returns>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);
@@ -53,7 +52,9 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// <summary>
     /// Template base for CSharp files, which invokes code-management to make updates to existing files.
     /// <para>
-    /// Learn more about templates in <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#2-template-partial-file">this article</seealso>.
+    /// Learn more about templates in
+    /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common.csharp&amp;additionalData=templates">
+    /// this article</seealso>.
     /// </para>
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
@@ -71,13 +72,13 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Returns the csproj file <see cref="IOutputTarget"/> that contains this file.
+        /// Returns the <see cref="IOutputTarget"/> for the .csproj file that contains this file.
         /// </summary>
         public IOutputTarget Project => OutputTarget.GetProject();
 
         /// <summary>
-        /// Returns the class' namespace as specified in the <see cref="CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
-        /// May be overriden.
+        /// Returns the class' namespace as specified in the <see cref="CSharpFileConfig"/>.
+        /// Escapes any invalid characters and enforces pascal-case. May be overriden.
         /// </summary>
         public virtual string Namespace
         {
@@ -103,8 +104,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Returns the class name as specified in the <see cref="CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
-        /// May be overriden.
+        /// Returns the class name as specified in the <see cref="CSharpFileConfig"/>. Escapes
+        /// any invalid characters and enforces pascal-case. May be overriden.
         /// </summary>
         public virtual string ClassName
         {
@@ -121,18 +122,14 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Add the using clause with the specified <paramref name="namespace"/> to this template's file.
         /// </summary>
-        /// <param name="namespace"></param>
         public void AddUsing(string @namespace)
         {
             _additionalUsingNamespaces.Add(@namespace);
         }
 
         /// <summary>
-        /// Adds the <paramref name="namespace"/> as a dependent using clause and returns the <paramref name="name"/>
+        /// Adds the <paramref name="namespace"/> as a dependent using clause and returns the <paramref name="name"/>.
         /// </summary>
-        /// <param name="name"></param>
-        /// <param name="namespace"></param>
-        /// <returns></returns>
         public string UseType(string name, string @namespace)
         {
             _additionalUsingNamespaces.Add(@namespace);
@@ -140,10 +137,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name />
+        /// Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name.
         /// </summary>
-        /// <param name="fullName"></param>
-        /// <returns></returns>
         public string UseType(string fullName)
         {
             var elements = new List<string>(fullName.Split(".", StringSplitOptions.RemoveEmptyEntries));
@@ -161,18 +156,18 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// Adds a Template source that will be searched when resolving <see cref="ITypeReference"/>
+        /// types through <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
         /// </summary>
-        /// <param name="templateId"></param>
         public ClassTypeSource AddTypeSource(string templateId)
         {
             return base.AddTypeSource(templateId);
         }
 
         /// <summary>
-        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>
+        /// Adds a Template source that will be searched when resolving <see cref="ITypeReference"/>
+        /// types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
         /// </summary>
-        /// <param name="templateId"></param>
         /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
         public new void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
@@ -180,21 +175,18 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Called once a type has been resolved in the <see cref="IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
+        /// Called once a type has been resolved in the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
         /// Override to alter the resulting string.
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
         public override string NormalizeTypeName(string name)
         {
             return NormalizeNamespace(name);
         }
 
         /// <summary>
-        /// Converts the namespace of a fully qualified class name to the relative namespace for this class instance
+        /// Converts the namespace of a fully qualified class name to the relative namespace for this class instance.
         /// </summary>
         /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
-        /// <returns></returns>
         public virtual string NormalizeNamespace(string foreignType)
         {
             // Handle Generics recursively:
@@ -414,9 +406,6 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Registers that the specified NuGet package should be installed in the csproj file where this file resides.
         /// </summary>
-        /// <param name="packageName"></param>
-        /// <param name="packageVersion"></param>
-        /// <returns></returns>
         public NugetPackageInfo AddNugetDependency(string packageName, string packageVersion)
         {
             var package = new NugetPackageInfo(packageName, packageVersion);
@@ -425,9 +414,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Registers that the specified NuGet package should be installed in the csproj file where this file resides.
+        /// Registers that the specified NuGet package should be installed in the .csproj file where this file resides.
         /// </summary>
-        /// <param name="nugetPackageInfo"></param>
         public void AddNugetDependency(INugetPackageInfo nugetPackageInfo)
         {
             _nugetDependencies.Add(nugetPackageInfo);
@@ -441,9 +429,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Registers that the specified GAC assembly should be installed in the csproj file where this file resides.
+        /// Registers that the specified GAC assembly should be installed in the .csproj file where this file resides.
         /// </summary>
-        /// <param name="assemblyReference"></param>
         public void AddAssemblyReference(IAssemblyReference assemblyReference)
         {
             _assemblyDependencies.Add(assemblyReference);

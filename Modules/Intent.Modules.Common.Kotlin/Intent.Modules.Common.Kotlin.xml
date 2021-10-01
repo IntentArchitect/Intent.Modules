@@ -4,85 +4,83 @@
         <name>Intent.Modules.Common.Kotlin</name>
     </assembly>
     <members>
+        <member name="T:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase"/>.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName``1(Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase{``0})">
             <summary>
-            Returns the package name based on the <paramref name="template"/>'s Output Target and folder location within the designer.
+            Returns the package name based on the <paramref name="template"/>'s
+            <see cref="P:Intent.Modules.Common.Templates.IntentTemplateBase.OutputTarget"/> and folder location within the designer.
             Uses the 'kotlin' folder as the root for the package name.
             </summary>
-            <param name="template"></param>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName``1(Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase{``0},System.String)">
             <summary>
             Returns the package name based on the <paramref name="template"/>'s Output Target and folder location within the designer.
             </summary>
-            <param name="template"></param>
-            <param name="rootFolder"></param>
-            <typeparam name="T"></typeparam>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName(Intent.Engine.IOutputTarget)">
             <summary>
             Returns the package name of the <paramref name="target"/>'s using the 'kotlin' folder as the root.
             </summary>
-            <param name="target"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.GetPackageName(Intent.Engine.IOutputTarget,System.String)">
             <summary>
             Returns the package name of the <paramref name="target"/>'s using the <paramref name="rootFolder"/> folder as the root.
             </summary>
-            <param name="target"></param>
-            <param name="rootFolder"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.ToKotlinPackage(System.String)">
             <summary>
             Escapes any invalid characters in the string for a Kotlin package name.
             </summary>
-            <param name="s"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.KotlinTemplateExtensions.ToKotlinIdentifier(System.String)">
             <summary>
             Escapes any invalid characters in the string for a Kotlin identifier name (e.g. class, interface, etc.).
             </summary>
-            <param name="s"></param>
-            <returns></returns>
+        </member>
+        <member name="P:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.Location">
+            <inheritdoc cref="P:Intent.Templates.IFileMetadata.LocationInProject"/>.
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.AddDependency(Intent.Modules.Common.Kotlin.Templates.KotlinDependency)">
             <summary>
-            Adds the <see cref="T:Intent.Modules.Common.Kotlin.Templates.KotlinDependency"/> which can be use by Maven or Gradle to import dependencies.
+            Adds a <see cref="T:Intent.Modules.Common.Kotlin.Templates.KotlinDependency"/> which can be use by Maven or Gradle to import dependencies.
             </summary>
-            <param name="dependency"></param>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.ImportType(System.String)">
             <summary>
-            imports the fully qualified type and returns its reference name. For example, java.util.List will import java.util.List and return List.
+            Imports the fully qualified type and returns its reference name. For example,
+            java.util.List will import java.util.List and return List.
             </summary>
-            <param name="fullyQualifiedType"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.AddImport(System.String)">
             <summary>
             Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
             </summary>
-            <param name="fullyQualifiedType"></param>
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
             Resolves the type name of the <paramref name="templateDependency"/> as a string. Will automatically import types if necessary.
             </summary>
-            <param name="templateDependency"></param>
-            <param name="options"></param>
-            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.GetTypeName(Intent.Metadata.Models.ITypeReference,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.GetTypeName(Intent.Metadata.Models.ITypeReference)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.BeforeTemplateExecution">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.RunTemplate">
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.DeclareImports">
             <summary>
             Override this method to add additional imports to this Kotlin template. It is recommended to call base.DeclareImports().
             </summary>
-            <returns></returns>
         </member>
     </members>
 </doc>

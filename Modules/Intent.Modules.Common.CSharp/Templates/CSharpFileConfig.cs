@@ -11,7 +11,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     public class CSharpFileConfig : TemplateFileConfig
     {
         /// <summary>
-        /// Sets the C# file configuration
+        /// Sets the C# file configuration.
         /// </summary>
         public CSharpFileConfig(
             string className,
@@ -40,7 +40,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// C# styling automatically formatted
+        /// Whether or not to automatically apply formatting to C# files.
         /// </summary>
         public bool AutoFormat
         {

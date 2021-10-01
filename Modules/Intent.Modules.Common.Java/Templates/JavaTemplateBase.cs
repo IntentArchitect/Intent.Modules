@@ -89,18 +89,27 @@ namespace Intent.Modules.Common.Java.Templates
         public string Location => FileMetadata.LocationInProject;
         public ICollection<JavaDependency> Dependencies { get; } = new List<JavaDependency>();
 
+        /// <summary>
+        /// Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+        /// </summary>
         [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
         public new void AddTypeSource(string templateId, string collectionFormat)
         {
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
+        /// <summary>
+        /// Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+        /// </summary>
         [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
         public void AddTypeSource(string templateId, Func<string, string> formatCollection)
         {
             AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, new CollectionFormatter(formatCollection)));
         }
 
+        /// <summary>
+        /// Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+        /// </summary>
         [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
         public void AddTypeSource(string templateId, ICollectionFormatter collectionFormatter)
         {
@@ -108,19 +117,18 @@ namespace Intent.Modules.Common.Java.Templates
         }
 
         /// <summary>
-        /// Adds the <see cref="JavaDependency"/> which can be use by Maven or Gradle to import dependencies.
+        /// Adds the <see cref="JavaDependency"/> which can be use by Maven or Gradle to import
+        /// dependencies.
         /// </summary>
-        /// <param name="dependency"></param>
         public void AddDependency(JavaDependency dependency)
         {
             Dependencies.Add(dependency);
         }
 
         /// <summary>
-        /// imports the fully qualified type and returns its reference name. For example, java.util.List will import java.util.List and return List.
+        /// Imports the fully qualified type and returns its reference name. For example,
+        /// java.util.List will import java.util.List and return List.
         /// </summary>
-        /// <param name="fullyQualifiedType"></param>
-        /// <returns></returns>
         public string ImportType(string fullyQualifiedType)
         {
             if (fullyQualifiedType.Contains('.'))
@@ -134,7 +142,6 @@ namespace Intent.Modules.Common.Java.Templates
         /// <summary>
         /// Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
         /// </summary>
-        /// <param name="fullyQualifiedType"></param>
         public void AddImport(string fullyQualifiedType)
         {
             if (!_imports.Contains(fullyQualifiedType))
@@ -144,21 +151,21 @@ namespace Intent.Modules.Common.Java.Templates
         }
 
         /// <summary>
-        /// Resolves the type name of the <paramref name="templateDependency"/> as a string. Will automatically import types if necessary.
+        /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
+        /// Will automatically import types if necessary.
         /// </summary>
-        /// <param name="templateDependency"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
         public override string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
             return GetTemplate<IClassProvider>(templateDependency, options).ClassName;
         }
 
+        /// <inheritdoc />
         public override string NormalizeTypeName(string name)
         {
             return ImportType(name);
         }
 
+        /// <inheritdoc />
         public override void BeforeTemplateExecution()
         {
             base.BeforeTemplateExecution();
@@ -168,6 +175,7 @@ namespace Intent.Modules.Common.Java.Templates
             }
         }
 
+        /// <inheritdoc />
         public override string RunTemplate()
         {
             var file = CreateOutputFile();
@@ -195,9 +203,9 @@ namespace Intent.Modules.Common.Java.Templates
         }
 
         /// <summary>
-        /// Override this method to add additional imports to this java template. It is recommended to call base.DeclareImports().
+        /// Override this method to add additional imports to this Java template. It is
+        /// recommended to call base.DeclareImports().
         /// </summary>
-        /// <returns></returns>
         public virtual IEnumerable<string> DeclareImports() => _imports;
     }
 }

@@ -39,8 +39,6 @@ namespace Intent.Modules.Common.TypeScript.Templates
         /// <summary>
         /// Aggregates the specified <see cref="propertyFunc"/> property of all Decorators. Ignores Decorators where the property returns null.
         /// </summary>
-        /// <param name="propertyFunc"></param>
-        /// <returns></returns>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);
@@ -89,7 +87,6 @@ namespace Intent.Modules.Common.TypeScript.Templates
         /// <summary>
         /// Adds the <see cref="NpmPackageDependency"/> which can be use by Intent.Npm to import dependencies.
         /// </summary>
-        /// <param name="dependency"></param>
         public void AddDependency(NpmPackageDependency dependency)
         {
             Dependencies.Add(dependency);

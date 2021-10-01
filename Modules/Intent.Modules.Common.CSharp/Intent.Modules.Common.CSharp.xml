@@ -4,35 +4,25 @@
         <name>Intent.Modules.Common.CSharp</name>
     </assembly>
     <members>
+        <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpCodeExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1"/>.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpCodeExtensions.GetMethodParameters``2(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0},System.Collections.Generic.IEnumerable{``1})">
             <summary>
             Returns a comma separated list of parameters for a method or constructor based on the <paramref name="parameters"/> argument.
             </summary>
-            <param name="template"></param>
-            <param name="parameters"></param>
-            <typeparam name="TModel"></typeparam>
-            <typeparam name="TParameterModel"></typeparam>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpCodeExtensions.GetParameters``2(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0},System.Collections.Generic.IEnumerable{``1})">
             <summary>
             Returns a comma separated list of parameters for a method or constructor based on the <paramref name="parameters"/> argument.
             </summary>
-            <param name="template"></param>
-            <param name="parameters"></param>
-            <typeparam name="TModel"></typeparam>
-            <typeparam name="TParameterModel"></typeparam>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpCodeExtensions.GetArguments``2(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0},System.Collections.Generic.IEnumerable{``1})">
             <summary>
             Returns a comma separated list of arguments to be passed into a method or constructor based on the <paramref name="parameters"/> argument.
             </summary>
-            <typeparam name="TModel"></typeparam>
-            <typeparam name="TParameterModel"></typeparam>
-            <param name="template"></param>
-            <param name="parameters"></param>
-            <returns></returns>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig">
             <summary>
@@ -42,12 +32,12 @@
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.#ctor(System.String,System.String,System.String,Intent.Templates.OverwriteBehaviour,System.String,System.String,System.String)">
             <summary>
-            Sets the C# file configuration
+            Sets the C# file configuration.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.AutoFormat">
             <summary>
-            C# styling automatically formatted
+            Whether or not to automatically apply formatting to C# files.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.ApplyNamespaceFormatting">
@@ -55,78 +45,76 @@
             Whether or not to apply formatting (such as PascalCasing) to namespaces. 
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpOutputTargetExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Engine.IOutputTarget"/> for use with C# templates.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpOutputTargetExtensions.GetNamespace(Intent.Engine.IOutputTarget)">
             <summary>
             Returns a namespace string based on the full path from the <paramref name="target"/>. This will include folders and C# projects.
             </summary>
-            <param name="target"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`2.GetDecoratorsOutput(System.Func{`1,System.String})">
             <summary>
-            Aggregates the specified <see cref="!:propertyFunc"/> property of all Decorators. Ignores Decorators where the property returns null.
+            Aggregates the specified <paramref name="propertyFunc"/> property of all Decorators.
+            Ignores Decorators where the property returns null.
             </summary>
-            <param name="propertyFunc"></param>
-            <returns></returns>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1">
             <summary>
             Template base for CSharp files, which invokes code-management to make updates to existing files.
             <para>
-            Learn more about templates in <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#2-template-partial-file">this article</seealso>.
+            Learn more about templates in
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common.csharp&amp;additionalData=templates">
+            this article</seealso>.
             </para>
             </summary>
             <typeparam name="TModel"></typeparam>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.Project">
             <summary>
-            Returns the csproj file <see cref="T:Intent.Engine.IOutputTarget"/> that contains this file.
+            Returns the <see cref="T:Intent.Engine.IOutputTarget"/> for the .csproj file that contains this file.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.Namespace">
             <summary>
-            Returns the class' namespace as specified in the <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
-            May be overriden.
+            Returns the class' namespace as specified in the <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/>.
+            Escapes any invalid characters and enforces pascal-case. May be overriden.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.ClassName">
             <summary>
-            Returns the class name as specified in the <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/>. Escapes any invalid characters and enforces pascal-case.
-            May be overriden.
+            Returns the class name as specified in the <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/>. Escapes
+            any invalid characters and enforces pascal-case. May be overriden.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddUsing(System.String)">
             <summary>
             Add the using clause with the specified <paramref name="namespace"/> to this template's file.
             </summary>
-            <param name="namespace"></param>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.UseType(System.String,System.String)">
             <summary>
-            Adds the <paramref name="namespace"/> as a dependent using clause and returns the <paramref name="name"/>
+            Adds the <paramref name="namespace"/> as a dependent using clause and returns the <paramref name="name"/>.
             </summary>
-            <param name="name"></param>
-            <param name="namespace"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.UseType(System.String)">
             <summary>
-            Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name />
+            Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name.
             </summary>
-            <param name="fullName"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String)">
             <summary>
-            Adds a Template source that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>
+            Adds a Template source that will be searched when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/>
+            types through <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
             </summary>
-            <param name="templateId"></param>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String,System.String)">
             <summary>
-            Adds a Template source that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>
+            Adds a Template source that will be searched when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/>
+            types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
             </summary>
-            <param name="templateId"></param>
             <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.NormalizeTypeName(System.String)">
@@ -134,15 +122,12 @@
             Called once a type has been resolved in the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
             Override to alter the resulting string.
             </summary>
-            <param name="name"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.NormalizeNamespace(System.String)">
             <summary>
-            Converts the namespace of a fully qualified class name to the relative namespace for this class instance
+            Converts the namespace of a fully qualified class name to the relative namespace for this class instance.
             </summary>
             <param name="foreignType">The foreign type which is ideally fully qualified</param>
-            <returns></returns>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.DependencyUsings">
             <summary>
@@ -153,21 +138,16 @@
             <summary>
             Registers that the specified NuGet package should be installed in the csproj file where this file resides.
             </summary>
-            <param name="packageName"></param>
-            <param name="packageVersion"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddNugetDependency(Intent.Modules.Common.VisualStudio.INugetPackageInfo)">
             <summary>
-            Registers that the specified NuGet package should be installed in the csproj file where this file resides.
+            Registers that the specified NuGet package should be installed in the .csproj file where this file resides.
             </summary>
-            <param name="nugetPackageInfo"></param>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddAssemblyReference(Intent.Modules.Common.VisualStudio.IAssemblyReference)">
             <summary>
-            Registers that the specified GAC assembly should be installed in the csproj file where this file resides.
+            Registers that the specified GAC assembly should be installed in the .csproj file where this file resides.
             </summary>
-            <param name="assemblyReference"></param>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.ModelHasFolderTemplateExtensions">
             <summary>
@@ -193,40 +173,26 @@
             <summary>
             Creates a fully qualified namespace based on the OutputTarget location and the parent folders of this template's model as described in the designer.
             </summary>
-            <typeparam name="TModel"></typeparam>
-            <param name="template"></param>
-            <param name="additionalFolders"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.ModelHasFolderTemplateExtensions.GetNamespace(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{System.Object},System.String[])">
             <summary>
             Creates a fully qualified namespace based on the OutputTarget location and the <paramref name="additionalFolders"/>.
             </summary>
-            <param name="template"></param>
-            <param name="additionalFolders"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.ModelHasFolderTemplateExtensions.GetNamespace(Intent.Modules.Common.Templates.IntentTemplateBase,System.String[])">
             <summary>
             Creates a fully qualified namespace based on the OutputTarget location and the <paramref name="additionalFolders"/>.
             </summary>
-            <param name="template"></param>
-            <param name="additionalFolders"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToPrivateMember(System.String)">
             <summary>
             Camel-cases input parameter <paramref name="s"/> and prefixes with an underscore.
             </summary>
-            <param name="s"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String)">
             <summary>
-            Converts <paramref name="string"/> to a valid C# reference type (e.g. removes and disallowed characters).
+            Converts <paramref name="string"/> to a valid C# reference type (e.g. removes disallowed characters).
             </summary>
-            <param name="string"></param>
-            <returns></returns>
         </member>
         <member name="T:Intent.Modules.Common.IDeclareUsings">
             <summary>
@@ -235,10 +201,10 @@
         </member>
         <member name="M:Intent.Modules.Common.IDeclareUsings.DeclareUsings">
             <summary>
-            Returns collection of namespaces that should be included in the using clauses section of this Template (or Decorator's Template).
-            Do not include the "using" or semi-colon, just the namespace.
+            The returned collection of namespaces that should be included in the using clauses
+            section of this Template (or Decorator's Template). Do not include the "using"
+            or semi-colon, just the namespace (EG: "System.Linq").
             </summary>
-            <returns></returns>
         </member>
         <member name="P:Intent.Modules.Common.VisualStudio.INugetPackageInfo.AssemblyRedirects">
             <summary>
@@ -247,23 +213,32 @@
         </member>
         <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.BlockAddingOfAllFiles">
             <summary>
-            By default, all files allowed to be added.
+            No files can be added.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.AllowAddingOfAllFiles">
             <summary>
-            By default, all files allowed to be added.
+            All files can be added.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.BlockAddingOfAllFilesExcept(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            By default, all files allowed to be added.
+            No files will be added except for the specified <paramref name="files"/>.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.AllowAddingOfAllFilesExcept(System.Collections.Generic.IEnumerable{System.String})">
             <summary>
-            By default, all files allowed to be added.
+            All files will be added except for the specified <paramref name="files"/>.
             </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.Equals(Intent.Modules.Common.VisualStudio.NugetPackageInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.GetHashCode">
+            <inheritdoc />
         </member>
     </members>
 </doc>

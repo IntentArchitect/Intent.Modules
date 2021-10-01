@@ -4,17 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
+    /// <summary>
+    /// A base class for templates which use both models and decorators.
+    /// </summary>
     public abstract class IntentTemplateBase<TModel, TDecorator> : IntentTemplateBase<TModel>, IHasDecorators<TDecorator>
         where TDecorator : ITemplateDecorator
     {
         private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
 
+        /// <summary>
+        /// Constructor for <see cref="IntentTemplateBase{TModel,TDecorator}"/>.
+        /// </summary>
         protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
         }
@@ -22,7 +27,6 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Returns all decorators that have been added to this template.
         /// </summary>
-        /// <returns></returns>
         public IEnumerable<TDecorator> GetDecorators()
         {
             return _decorators.OrderBy(x => x.Priority);
@@ -31,7 +35,6 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Adds a decorator to this template. This is called automatically by the Intent Architect software factory when a decorator is resolved for this template.
         /// </summary>
-        /// <param name="decorator"></param>
         public void AddDecorator(TDecorator decorator)
         {
             _decorators.Add(decorator);
@@ -40,25 +43,33 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Aggregates decorator outputs for the property specified by <paramref name="propertyFunc"/>
         /// </summary>
-        /// <param name="propertyFunc"></param>
-        /// <returns></returns>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);
         }
     }
 
+    /// <summary>
+    /// A base class for templates which use models.
+    /// </summary>
     public abstract class IntentTemplateBase<TModel> : IntentTemplateBase, ITemplateWithModel
     {
+        /// <summary>
+        /// Constructor for <see cref="IntentTemplateBase{TModel}"/>.
+        /// </summary>
         protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget)
         {
             Model = model;
         }
 
+        /// <summary>
+        /// Model
+        /// </summary>
         public TModel Model { get; }
 
         object ITemplateWithModel.Model => Model;
 
+        /// <inheritdoc />
         public override string GetCorrelationId()
         {
             if (Model is IMetadataModel model)
@@ -74,16 +85,26 @@ namespace Intent.Modules.Common.Templates
             return null;
         }
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return $"{Id} [{Model?.ToString()}]";
         }
     }
 
+    /// <summary>
+    /// Base class for templates.
+    /// </summary>
     public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
+        /// <summary>
+        /// Detected dependencies.
+        /// </summary>
         protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
 
+        /// <summary>
+        /// Constructor for <see cref="IntentTemplateBase"/>.
+        /// </summary>
         protected IntentTemplateBase(string templateId, IOutputTarget outputTarget)
         {
             ExecutionContext = outputTarget.ExecutionContext;
@@ -107,26 +128,33 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public IOutputTarget OutputTarget { get; }
 
+        /// <inheritdoc />
         public ITemplateBindingContext BindingContext { get; }
+
+        /// <summary>
+        /// Metadata of the template.
+        /// </summary>
         public IFileMetadata FileMetadata { get; private set; }
 
+        /// <inheritdoc />
         public void ConfigureFileMetadata(IFileMetadata fileMetadata)
         {
             FileMetadata = fileMetadata;
             FileMetadata.CustomMetadata.TryAdd("CorrelationId", GetCorrelationId());
         }
 
+        /// <inheritdoc />
         public abstract ITemplateFileConfig GetTemplateFileConfig();
 
         /// <summary>
         /// Override this method to control whether the template runs and the creates the output file.
         /// </summary>
-        /// <returns></returns>
         public virtual bool CanRunTemplate()
         {
             return true;
         }
 
+        /// <inheritdoc />
         public virtual string RunTemplate()
         {
             // NOTE: If this method is run multiple times for a template instance, the output is duplicated. Perhaps put in a check here?
@@ -136,12 +164,12 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Used to identify template outputs between software factory executions.
         /// </summary>
-        /// <returns></returns>
         public virtual string GetCorrelationId()
         {
             return Id;
         }
 
+        /// <inheritdoc />
         public IFileMetadata GetMetadata()
         {
             return FileMetadata;
@@ -150,7 +178,6 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Adds the Template with <paramref name="templateId"/> as a dependency of this template.
         /// </summary>
-        /// <param name="templateId"></param>
         public void AddTemplateDependency(string templateId)
         {
             AddTemplateDependency(TemplateDependency.OnTemplate(templateId));
@@ -159,8 +186,8 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Adds the Template with <paramref name="templateId"/> and <paramref name="model"/> as a dependency of this template.
         /// </summary>
-        /// <param name="templateId"></param>
-        /// <param name="model">The metadata modle instance that the Template must be bound to.</param>
+        /// <param name="templateId">The id of the template to be dependent upon.</param>
+        /// <param name="model">The metadata module instance that the Template must be bound to.</param>
         public void AddTemplateDependency(string templateId, IMetadataModel model)
         {
             AddTemplateDependency(TemplateDependency.OnModel(templateId, model));
@@ -169,7 +196,6 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Adds the <see cref="ITemplateDependency"/> <paramref name="templateDependency"/> as a dependency of this template.
         /// </summary>
-        /// <param name="templateDependency"></param>
         public void AddTemplateDependency(ITemplateDependency templateDependency)
         {
             DetectedDependencies.Add(templateDependency);
@@ -178,14 +204,14 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Return the dependencies that have been added explicitly through <see cref="AddTemplateDependency(string)"/>, and implicitly from the types resolved through <see cref="GetTypeName(ITypeReference)"/>.
         /// </summary>
-        /// <returns></returns>
         public virtual IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             if (!HasTypeResolver())
             {
                 return DetectedDependencies;
             }
-            return Types.GetTemplateDependencies().Concat(DetectedDependencies); ;
+
+            return Types.GetTemplateDependencies().Concat(DetectedDependencies);
         }
 
         /// <summary>
@@ -212,7 +238,6 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Sets the default collection format to be applied to types that are resolved using the <see cref="GetTypeName(ITypeReference)"/> method.
         /// </summary>
-        /// <param name="collectionFormat"></param>
         public void SetDefaultTypeCollectionFormat(string collectionFormat)
         {
             if (!HasTypeResolver())
@@ -225,7 +250,6 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Sets the default collection formatter to be applied to types that are resolved using the <see cref="GetTypeName(ITypeReference)"/> method.
         /// </summary>
-        /// <param name="collectionFormatter"></param>
         public void SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter)
         {
             if (!HasTypeResolver())
@@ -239,7 +263,6 @@ namespace Intent.Modules.Common.Templates
         /// Adds the <paramref name="typeSource"/> as a source to find fully qualified types when using the <see cref="GetTypeName(ITypeReference)"/> method.
         /// If found, the Template will be added as a dependency.
         /// </summary>
-        /// <param name="typeSource"></param>
         public void AddTypeSource(ITypeSource typeSource)
         {
             Types.AddTypeSource(typeSource);
@@ -259,11 +282,11 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Adds a Template source that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
+        /// Adds a Template source that will be searched when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
         /// If found, the Template will be added as a dependency.
         /// Set the desired <see cref="CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
         /// </summary>
-        /// <param name="templateId"></param>
+        /// <param name="templateId">The identifier of the template instances to be searched when calling <see cref="GetTypeName(ITypeReference)"/>.</param>
         /// <returns>Returns the <see cref="ClassTypeSource"/> for use as a fluent api.</returns>
         public ClassTypeSource AddTypeSource(string templateId)
         {
@@ -277,8 +300,6 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Override this to alter Type names after they have been found.
         /// </summary>
-        /// <param name="name"></param>
-        /// <returns></returns>
         public virtual string NormalizeTypeName(string name)
         {
             return name;
@@ -287,12 +308,11 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Resolves the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="typeReference"></param>
-        /// <returns></returns>
         public virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference)
         {
             return Types.Get(typeReference);
@@ -303,13 +323,13 @@ namespace Intent.Modules.Common.Templates
         /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="typeReference"></param>
+        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        /// <returns></returns>
         public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
             return NormalizeTypeName(Types.Get(typeReference, collectionFormat).Name);
@@ -321,12 +341,12 @@ namespace Intent.Modules.Common.Templates
         /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// </para>
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="typeReference"></param>
-        /// <returns></returns>
+        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
         public virtual string GetTypeName(ITypeReference typeReference)
         {
             return NormalizeTypeName(Types.Get(typeReference).Name);
@@ -337,13 +357,13 @@ namespace Intent.Modules.Common.Templates
         /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="hasTypeReference"></param>
+        /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        /// <returns></returns>
         public virtual string GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat)
         {
             return GetTypeName(hasTypeReference.TypeReference, collectionFormat);
@@ -353,12 +373,12 @@ namespace Intent.Modules.Common.Templates
         /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="hasTypeReference"/> parameter.
         /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="hasTypeReference"></param>
-        /// <returns></returns>
+        /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
         public virtual string GetTypeName(IHasTypeReference hasTypeReference)
         {
             return GetTypeName(hasTypeReference.TypeReference);
@@ -369,46 +389,44 @@ namespace Intent.Modules.Common.Templates
         /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="element"></param>
+        /// <param name="element">The <see cref="IElement"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        /// <returns></returns>
         public virtual string GetTypeName(IElement element, string collectionFormat)
         {
             return NormalizeTypeName(Types.Get(element, collectionFormat).Name);
         }
 
-        /// <summary>
-        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="element"/> parameter.
-        /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
-        /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
-        /// </para>
-        /// </summary>
-        /// <param name="element"></param>
-        /// <returns></returns>
+        ///// <summary>
+        ///// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="element"/> parameter.
+        ///// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        ///// <para>
+        ///// See the
+        ///// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        ///// GetTypeName article</seealso> for more information.
+        ///// </para>
+        ///// </summary>
         //public virtual string GetTypeName(ICanBeReferencedType element)
         //{
         //    return NormalizeTypeName(Types.Get(element).Name);
         //}
 
         #endregion
+
         #region GetTypeName for Template
 
         /// <summary>
         /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="templateDependency"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
         public virtual string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
             var name = GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName();
@@ -418,13 +436,11 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Resolves the type name of the <paramref name="template"/> as a string.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="template"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
         public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnTemplate(template), options);
@@ -433,14 +449,12 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// Will throw an exception if more than one template instance exists.
         /// </summary>
-        /// <param name="templateId"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
         public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnTemplate(templateId), options);
@@ -450,12 +464,11 @@ namespace Intent.Modules.Common.Templates
         /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
         /// Will return null if the template instance cannot be found.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="templateId"></param>
-        /// <returns></returns>
         public string TryGetTypeName(string templateId)
         {
             return GetTypeName(TemplateDependency.OnTemplate(templateId), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
@@ -466,14 +479,14 @@ namespace Intent.Modules.Common.Templates
         /// This overload assumes that the Template can have many instances and identifies the target instance
         /// based on which has the <paramref name="model"/>.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="model">The model instance that the Template must be bound to.</param>
-        /// <param name="options"></param>
-        /// <returns></returns>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnModel(templateId, model), options);
@@ -485,13 +498,13 @@ namespace Intent.Modules.Common.Templates
         /// based on which has the <paramref name="model"/>.
         /// Will return null if a template instance cannot be found.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="model">The model instance that the Template must be bound to.</param>
-        /// <returns></returns>
         public string TryGetTypeName(string templateId, IMetadataModel model)
         {
             return GetTypeName(TemplateDependency.OnModel(templateId, model), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
@@ -503,14 +516,14 @@ namespace Intent.Modules.Common.Templates
         /// This overload assumes that the Template can have many instances and identifies the target instance
         /// based on which has the <paramref name="modelId"/>.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
-        /// <param name="options"></param>
-        /// <returns></returns>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
         {
             return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);
@@ -522,36 +535,43 @@ namespace Intent.Modules.Common.Templates
         /// based on which has the <paramref name="modelId"/>.
         /// Will return null if a template instance cannot be found.
         /// <para>
-        /// See also thee <seealso href="https://intentarchitect.com/docs/articles/how-to-guides/get-type-names/get-type-names.html">GetTypeName article</seealso>
-        /// for more information.
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
-        /// <returns></returns>
         public string TryGetTypeName(string templateId, string modelId)
         {
             return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
         }
 
         #endregion
+
         #region GetTemplate
 
+        /// <summary>
+        /// Retrieve an instance of an <see cref="ITemplate"/>.
+        /// </summary>
         public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
             return GetTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId), options);
         }
 
+        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
         public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
             return GetTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model), options);
         }
 
+        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
         public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
             return GetTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);
         }
 
+        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
         public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null) where TTemplate : class
         {
             if (options == null)
@@ -582,15 +602,26 @@ namespace Intent.Modules.Common.Templates
 
         #endregion
 
+        /// <inheritdoc />
         public override string ToString()
         {
             return $"{Id}";
         }
     }
 
+    /// <summary>
+    /// Template discovery options.
+    /// </summary>
     public class TemplateDiscoveryOptions
     {
+        /// <summary>
+        /// Throw an exception if the template is not found. Defaults to <see langword="true"/>.
+        /// </summary>
         public bool ThrowIfNotFound { get; set; } = true;
+
+        /// <summary>
+        /// Whether or not to automatically track the template as a dependency. Defaults to <see langword="true"/>.
+        /// </summary>
         public bool TrackDependency { get; set; } = true;
     }
 

@@ -7,17 +7,25 @@ namespace Intent.Modules.Common.Templates
     /// </summary>
     public interface IClassProvider : ITemplate
     {
+        /// <summary>
+        /// Namespace
+        /// </summary>
         string Namespace { get; }
+
+        /// <summary>
+        /// Class name
+        /// </summary>
         string ClassName { get; }
     }
 
+    /// <summary>
+    /// Extension methods for <see cref="IClassProvider"/>.
+    /// </summary>
     public static class IClassProviderExtensions
     {
         /// <summary>
         /// Returns the fully qualified class name.
         /// </summary>
-        /// <param name="item"></param>
-        /// <returns></returns>
         public static string FullTypeName(this IClassProvider item)
         {
             if (string.IsNullOrWhiteSpace(item.Namespace))

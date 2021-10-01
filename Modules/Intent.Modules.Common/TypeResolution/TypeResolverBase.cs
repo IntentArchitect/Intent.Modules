@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -124,13 +123,14 @@ namespace Intent.Modules.Common.TypeResolution
         }
     }
 
+    /// <summary>
+    /// Extension methods for <see cref="ICanBeReferencedType"/>.
+    /// </summary>
     public static class CanBeReferencedTypeExtensions
     {
         /// <summary>
         /// Converts <see cref="ICanBeReferencedType"/> to type of <see cref="ITypeReference"/>
         /// </summary>
-        /// <param name="type"></param>
-        /// <returns></returns>
         public static ITypeReference AsTypeReference(this ICanBeReferencedType type)
         {
             return new ElementTypeReference(type);
@@ -148,11 +148,9 @@ namespace Intent.Modules.Common.TypeResolution
             public bool IsNullable { get; }
             public bool IsCollection { get; }
             public ICanBeReferencedType Element { get; }
-            public IEnumerable<ITypeReference> GenericTypeParameters { get; } = new ITypeReference[0];
+            public IEnumerable<ITypeReference> GenericTypeParameters { get; } = Array.Empty<ITypeReference>();
             public string Comment { get; } = null;
             public IEnumerable<IStereotype> Stereotypes { get; } = new List<IStereotype>();
         }
     }
-
-    
 }

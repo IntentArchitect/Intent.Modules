@@ -4,38 +4,58 @@
         <name>Intent.Modules.Common.Java</name>
     </assembly>
     <members>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddTypeSource(System.String,System.String)">
+            <summary>
+            Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddTypeSource(System.String,System.Func{System.String,System.String})">
+            <summary>
+            Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddTypeSource(System.String,Intent.Modules.Common.TypeResolution.ICollectionFormatter)">
+            <summary>
+            Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddDependency(Intent.Modules.Common.Java.Templates.JavaDependency)">
             <summary>
-            Adds the <see cref="T:Intent.Modules.Common.Java.Templates.JavaDependency"/> which can be use by Maven or Gradle to import dependencies.
+            Adds the <see cref="T:Intent.Modules.Common.Java.Templates.JavaDependency"/> which can be use by Maven or Gradle to import
+            dependencies.
             </summary>
-            <param name="dependency"></param>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.ImportType(System.String)">
             <summary>
-            imports the fully qualified type and returns its reference name. For example, java.util.List will import java.util.List and return List.
+            Imports the fully qualified type and returns its reference name. For example,
+            java.util.List will import java.util.List and return List.
             </summary>
-            <param name="fullyQualifiedType"></param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddImport(System.String)">
             <summary>
             Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
             </summary>
-            <param name="fullyQualifiedType"></param>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves the type name of the <paramref name="templateDependency"/> as a string. Will automatically import types if necessary.
+            Resolves the type name of the <paramref name="templateDependency"/> as a string.
+            Will automatically import types if necessary.
             </summary>
-            <param name="templateDependency"></param>
-            <param name="options"></param>
-            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.NormalizeTypeName(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.BeforeTemplateExecution">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.RunTemplate">
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.DeclareImports">
             <summary>
-            Override this method to add additional imports to this java template. It is recommended to call base.DeclareImports().
+            Override this method to add additional imports to this Java template. It is
+            recommended to call base.DeclareImports().
             </summary>
-            <returns></returns>
         </member>
     </members>
 </doc>

@@ -8,7 +8,8 @@ namespace Intent.Modules.Common.Registrations
     /// Template Registration that produces as single file.
     /// <para>
     /// Learn more about template registrations in
-    /// <seealso href="https://intentarchitect.com/docs/articles/references/templates-csharp/templates-csharp.html#3-template-registration-file">this article</seealso>.
+    /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=templateRegistrations">
+    /// this article</seealso>.
     /// </para>
     /// </summary>
     public abstract class SingleFileTemplateRegistration : TemplateRegistrationBase

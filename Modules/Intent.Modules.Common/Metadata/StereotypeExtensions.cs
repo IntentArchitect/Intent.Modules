@@ -5,15 +5,25 @@ using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common
 {
+    /// <summary>
+    /// Extension methods for <see cref="IStereotype"/> and <see cref="IHasStereotypes"/>.
+    /// </summary>
     public static class StereotypeExtensions
     {
+        /// <summary>
+        /// Obsolete. Use <see cref="GetStereotypeProperty{T}"/> instead.
+        /// </summary>
         [Obsolete("Use GetStereotypeProperty")]
-        public static T GetPropertyValue<T>(this IHasStereotypes model, string stereotypeName, string propertyName, T defaultIfNotFound = default(T))
+        public static T GetPropertyValue<T>(this IHasStereotypes model, string stereotypeName, string propertyName, T defaultIfNotFound = default)
         {
             return model.GetStereotypeProperty(stereotypeName, propertyName, defaultIfNotFound);
         }
 
-        public static T GetStereotypeProperty<T>(this IHasStereotypes model, string stereotypeName, string propertyName, T defaultIfNotFound = default(T))
+        /// <summary>
+        /// Retrieve the value of the property with the provided <paramref name="propertyName"/>
+        /// on the provided <paramref name="stereotypeName"/> on the provided <paramref name="model"/>.
+        /// </summary>
+        public static T GetStereotypeProperty<T>(this IHasStereotypes model, string stereotypeName, string propertyName, T defaultIfNotFound = default)
         {
             try
             {
@@ -26,7 +36,7 @@ namespace Intent.Modules.Common
         }
 
         /// <summary>
-        /// Lookup only one stereotype with a given name. If more than one is found with the same name, it fails.
+        /// Lookup only one stereotype with a given name. If more than one is found with the same name an exception is thrown.
         /// </summary>
         public static IStereotype GetStereotype(this IHasStereotypes model, string stereotypeName)
         {
@@ -49,7 +59,11 @@ namespace Intent.Modules.Common
             return model.Stereotypes.Where(p => p.Name == stereotypeName).ToArray();
         }
 
-        public static T GetProperty<T>(this IStereotype stereotype, string propertyName, T defaultIfNotFound = default(T))
+        /// <summary>
+        /// Retrieve the value of the property with the provided <paramref name="propertyName"/>
+        /// on the provided <paramref name="stereotype"/>.
+        /// </summary>
+        public static T GetProperty<T>(this IStereotype stereotype, string propertyName, T defaultIfNotFound = default)
         {
             if (stereotype == null)
             {
@@ -73,70 +87,12 @@ namespace Intent.Modules.Common
             return defaultIfNotFound;
         }
 
+        /// <summary>
+        /// Used to query whether or not a stereotype with a particular name is present.
+        /// </summary>
         public static bool HasStereotype(this IHasStereotypes model, string stereotypeName)
         {
             return model.Stereotypes.Any(x => x.Name == stereotypeName);
         }
     }
-
-    //public static class CommonExtensions
-    //{
-    //    public static string ToPascalCase(this string s)
-    //    {
-    //        if (string.IsNullOrWhiteSpace(s))
-    //        {
-    //            return s;
-    //        }
-    //        if (Char.IsUpper(s[0]))
-    //        {
-    //            return s;
-    //        }
-    //        else
-    //        {
-    //            return Char.ToUpper(s[0]) + s.Substring(1);
-    //        }
-    //    }
-
-    //    public static string ToCamelCase(this string s)
-    //    {
-    //        return s.ToCamelCase(true);
-    //    }
-
-    //    public static string ToCamelCase(this string s, bool reservedWordEscape)
-    //    {
-    //        if (string.IsNullOrWhiteSpace(s))
-    //        {
-    //            return s;
-    //        }
-    //        string result;
-    //        if (Char.IsLower(s[0]))
-    //        {
-    //            result = s;
-    //        }
-    //        else
-    //        {
-    //            result = Char.ToLower(s[0]) + s.Substring(1);
-    //        }
-
-    //        if (reservedWordEscape)
-    //        {
-    //            switch (result)
-    //            {
-    //                case "class":
-    //                case "namespace":
-    //                    return "@" + result;
-    //            }
-    //        }
-    //        return result;
-    //    }
-
-    //    public static string ToPrivateMember(this string s)
-    //    {
-    //        if (string.IsNullOrWhiteSpace(s))
-    //        {
-    //            return s;
-    //        }
-    //        return "_" + ToCamelCase(s, false);
-    //    }
-    //}
 }

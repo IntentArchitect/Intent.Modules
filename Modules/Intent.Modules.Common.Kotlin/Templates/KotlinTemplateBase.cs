@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.IO;
 using System.Linq;
-using System.Text;
-using Intent.Engine;
 using Intent.Code.Weaving.Kotlin.Editor;
+using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Kotlin.TypeResolvers;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Kotlin.Templates
@@ -87,23 +84,23 @@ namespace Intent.Modules.Common.Kotlin.Templates
             }
         }
 
+        /// <inheritdoc cref="IFileMetadata.LocationInProject"/>.
         public string Location => FileMetadata.LocationInProject;
+
         public ICollection<KotlinDependency> Dependencies { get; } = new List<KotlinDependency>();
 
         /// <summary>
-        /// Adds the <see cref="KotlinDependency"/> which can be use by Maven or Gradle to import dependencies.
+        /// Adds a <see cref="KotlinDependency"/> which can be use by Maven or Gradle to import dependencies.
         /// </summary>
-        /// <param name="dependency"></param>
         public void AddDependency(KotlinDependency dependency)
         {
             Dependencies.Add(dependency);
         }
 
         /// <summary>
-        /// imports the fully qualified type and returns its reference name. For example, java.util.List will import java.util.List and return List.
+        /// Imports the fully qualified type and returns its reference name. For example,
+        /// java.util.List will import java.util.List and return List.
         /// </summary>
-        /// <param name="fullyQualifiedType"></param>
-        /// <returns></returns>
         public string ImportType(string fullyQualifiedType)
         {
             AddImport(fullyQualifiedType);
@@ -114,7 +111,6 @@ namespace Intent.Modules.Common.Kotlin.Templates
         /// <summary>
         /// Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
         /// </summary>
-        /// <param name="fullyQualifiedType"></param>
         public void AddImport(string fullyQualifiedType)
         {
             if (!_imports.Contains(fullyQualifiedType))
@@ -126,26 +122,26 @@ namespace Intent.Modules.Common.Kotlin.Templates
         /// <summary>
         /// Resolves the type name of the <paramref name="templateDependency"/> as a string. Will automatically import types if necessary.
         /// </summary>
-        /// <param name="templateDependency"></param>
-        /// <param name="options"></param>
-        /// <returns></returns>
         public override string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
             return GetTemplate<IClassProvider>(templateDependency, options).ClassName;
         }
 
         // Overriding as no clear way to handle nullable types when are collections. If built into KotlinTypeResolver, then leads to List<String?> instead of List<String>?
+        /// <inheritdoc />
         public override string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
             return $"{base.GetTypeName(typeReference, collectionFormat)}{(typeReference.IsNullable ? "?" : "")}";
         }
 
         // Overriding as no clear way to handle nullable types when are collections. If built into KotlinTypeResolver, then leads to List<String?> instead of List<String>?
+        /// <inheritdoc />
         public override string GetTypeName(ITypeReference typeReference)
         {
             return $"{base.GetTypeName(typeReference)}{(typeReference.IsNullable ? "?" : "")}";
         }
 
+        /// <inheritdoc />
         public override void BeforeTemplateExecution()
         {
             base.BeforeTemplateExecution();
@@ -155,6 +151,7 @@ namespace Intent.Modules.Common.Kotlin.Templates
             }
         }
 
+        /// <inheritdoc />
         public override string RunTemplate()
         {
             var file = CreateOutputFile();
@@ -184,7 +181,6 @@ namespace Intent.Modules.Common.Kotlin.Templates
         /// <summary>
         /// Override this method to add additional imports to this Kotlin template. It is recommended to call base.DeclareImports().
         /// </summary>
-        /// <returns></returns>
         public virtual IEnumerable<string> DeclareImports() => _imports;
     }
 }

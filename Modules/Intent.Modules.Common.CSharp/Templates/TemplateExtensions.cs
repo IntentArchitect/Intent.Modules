@@ -41,8 +41,6 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Camel-cases input parameter <paramref name="s"/> and prefixes with an underscore.
         /// </summary>
-        /// <param name="s"></param>
-        /// <returns></returns>
         public static string ToPrivateMember(this string s)
         {
             if (string.IsNullOrWhiteSpace(s))
@@ -80,10 +78,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Converts <paramref name="string"/> to a valid C# reference type (e.g. removes and disallowed characters).
+        /// Converts <paramref name="string"/> to a valid C# reference type (e.g. removes disallowed characters).
         /// </summary>
-        /// <param name="string"></param>
-        /// <returns></returns>
         public static string ToCSharpIdentifier(this string @string)
         {
             if (string.IsNullOrWhiteSpace(@string))

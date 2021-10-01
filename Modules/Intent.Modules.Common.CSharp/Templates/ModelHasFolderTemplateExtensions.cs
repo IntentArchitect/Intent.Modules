@@ -41,10 +41,6 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Creates a fully qualified namespace based on the OutputTarget location and the parent folders of this template's model as described in the designer.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
         public static string GetNamespace<TModel>(this CSharpTemplateBase<TModel> template, params string[] additionalFolders)
             where TModel : IHasFolder
         {
@@ -54,9 +50,6 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Creates a fully qualified namespace based on the OutputTarget location and the <paramref name="additionalFolders"/>.
         /// </summary>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
         public static string GetNamespace(this CSharpTemplateBase<object> template, params string[] additionalFolders)
         {
             return string.Join(".", new[] { template.OutputTarget.GetNamespace() }.Concat(additionalFolders));
@@ -65,9 +58,6 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Creates a fully qualified namespace based on the OutputTarget location and the <paramref name="additionalFolders"/>.
         /// </summary>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
         public static string GetNamespace(this IntentTemplateBase template, params string[] additionalFolders)
         {
             return string.Join(".", new[] { template.OutputTarget.GetNamespace() }.Concat(additionalFolders));

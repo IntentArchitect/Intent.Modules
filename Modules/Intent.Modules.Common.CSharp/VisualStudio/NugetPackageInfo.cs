@@ -47,7 +47,7 @@ namespace Intent.Modules.Common.VisualStudio
         }
 
         /// <summary>
-        /// By default, all files allowed to be added.
+        /// No files can be added.
         /// </summary>
         public NugetPackageInfo BlockAddingOfAllFiles()
         {
@@ -57,7 +57,7 @@ namespace Intent.Modules.Common.VisualStudio
         }
 
         /// <summary>
-        /// By default, all files allowed to be added.
+        /// All files can be added.
         /// </summary>
         public NugetPackageInfo AllowAddingOfAllFiles()
         {
@@ -67,7 +67,7 @@ namespace Intent.Modules.Common.VisualStudio
         }
 
         /// <summary>
-        /// By default, all files allowed to be added.
+        /// No files will be added except for the specified <paramref name="files"/>.
         /// </summary>
         public NugetPackageInfo BlockAddingOfAllFilesExcept(IEnumerable<string> files)
         {
@@ -77,7 +77,7 @@ namespace Intent.Modules.Common.VisualStudio
         }
 
         /// <summary>
-        /// By default, all files allowed to be added.
+        /// All files will be added except for the specified <paramref name="files"/>.
         /// </summary>
         public NugetPackageInfo AllowAddingOfAllFilesExcept(IEnumerable<string> files)
         {
@@ -106,6 +106,7 @@ namespace Intent.Modules.Common.VisualStudio
             Only = 3,
         }
 
+        /// <inheritdoc />
         public bool Equals(NugetPackageInfo other)
         {
             if (ReferenceEquals(null, other)) return false;
@@ -113,6 +114,7 @@ namespace Intent.Modules.Common.VisualStudio
             return string.Equals(Name, other.Name);
         }
 
+        /// <inheritdoc />
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -121,6 +123,7 @@ namespace Intent.Modules.Common.VisualStudio
             return Equals((NugetPackageInfo) obj);
         }
 
+        /// <inheritdoc />
         public override int GetHashCode()
         {
             return (Name != null ? Name.GetHashCode() : 0);

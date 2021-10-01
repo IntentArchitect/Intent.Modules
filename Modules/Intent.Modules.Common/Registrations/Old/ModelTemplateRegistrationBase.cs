@@ -11,7 +11,7 @@ using Intent.Utils;
 namespace Intent.Modules.Common.Registrations
 {
     /// <summary>
-    /// Use <see cref="FilePerModelTemplateRegistration{TModel}"/> instead.
+    /// Obsolete. Use <see cref="FilePerModelTemplateRegistration{TModel}"/> instead.
     /// </summary>
     [Obsolete("Use " + nameof(FilePerModelTemplateRegistration<TModel>) + " instead.")]
     public abstract class ModelTemplateRegistrationBase<TModel> : ITemplateRegistration, ISupportsConfiguration

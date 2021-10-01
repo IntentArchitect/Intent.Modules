@@ -9,10 +9,6 @@ namespace Intent.Modules.Common
         /// <summary>
         /// Creates a folder path based on the parent folders of this template's model as described in the designer.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
         public static string GetFolderPath<TModel>(this IntentTemplateBase<TModel> template, params string[] additionalFolders)
             where TModel : IHasFolder
         {
@@ -22,10 +18,6 @@ namespace Intent.Modules.Common
         /// <summary>
         /// Creates a folder path based on the <paramref name="additionalFolders"/>.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
         public static string GetFolderPath(this IntentTemplateBase<object> template, params string[] additionalFolders)
         {
             return string.Join("/", additionalFolders);
@@ -34,10 +26,6 @@ namespace Intent.Modules.Common
         /// <summary>
         /// Creates a folder path based on the <paramref name="additionalFolders"/>.
         /// </summary>
-        /// <typeparam name="TModel"></typeparam>
-        /// <param name="template"></param>
-        /// <param name="additionalFolders"></param>
-        /// <returns></returns>
         public static string GetFolderPath(this IntentTemplateBase template, params string[] additionalFolders)
         {
             return string.Join("/", additionalFolders);

@@ -5,6 +5,9 @@
     /// </summary>
     public class HostingSettingsCreatedEvent
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="HostingSettingsCreatedEvent"/>.
+        /// </summary>
         public HostingSettingsCreatedEvent(string applicationUrl, int port, int sslPort)
         {
             ApplicationUrl = applicationUrl;
@@ -12,8 +15,19 @@
             SslPort = sslPort;
         }
 
+        /// <summary>
+        /// Application URL
+        /// </summary>
         public string ApplicationUrl { get; }
+
+        /// <summary>
+        /// Port
+        /// </summary>
         public int Port { get; }
+
+        /// <summary>
+        /// SSL port
+        /// </summary>
         public int SslPort { get; }
     }
 }

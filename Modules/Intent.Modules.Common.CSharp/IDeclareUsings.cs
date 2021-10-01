@@ -1,7 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using System.Threading;
-using Intent.Engine;
 
 namespace Intent.Modules.Common
 {
@@ -11,10 +8,10 @@ namespace Intent.Modules.Common
     public interface IDeclareUsings
     {
         /// <summary>
-        /// Returns collection of namespaces that should be included in the using clauses section of this Template (or Decorator's Template).
-        /// Do not include the "using" or semi-colon, just the namespace.
+        /// The returned collection of namespaces that should be included in the using clauses
+        /// section of this Template (or Decorator's Template). Do not include the "using"
+        /// or semi-colon, just the namespace (EG: "System.Linq").
         /// </summary>
-        /// <returns></returns>
         IEnumerable<string> DeclareUsings();
     }
 }
