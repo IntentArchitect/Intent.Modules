@@ -53,4 +53,19 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         {
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ServiceProxyDTOModelExtensions
+    {
+
+        public static bool IsServiceProxyDTOModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ServiceProxyDTOModel.SpecializationTypeId;
+        }
+
+        public static ServiceProxyDTOModel AsServiceProxyDTOModel(this ICanBeReferencedType type)
+        {
+            return type.IsServiceProxyDTOModel() ? new ServiceProxyDTOModel((IElement)type) : null;
+        }
+    }
 }

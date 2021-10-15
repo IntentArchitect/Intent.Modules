@@ -73,4 +73,19 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ServiceProxyModelExtensions
+    {
+
+        public static bool IsServiceProxyModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ServiceProxyModel.SpecializationTypeId;
+        }
+
+        public static ServiceProxyModel AsServiceProxyModel(this ICanBeReferencedType type)
+        {
+            return type.IsServiceProxyModel() ? new ServiceProxyModel((IElement)type) : null;
+        }
+    }
 }

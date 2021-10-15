@@ -82,4 +82,19 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class OperationModelExtensions
+    {
+
+        public static bool IsOperationModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == OperationModel.SpecializationTypeId;
+        }
+
+        public static OperationModel AsOperationModel(this ICanBeReferencedType type)
+        {
+            return type.IsOperationModel() ? new OperationModel((IElement)type) : null;
+        }
+    }
 }

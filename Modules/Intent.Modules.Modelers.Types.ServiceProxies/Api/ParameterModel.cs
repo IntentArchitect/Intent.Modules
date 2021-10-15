@@ -68,4 +68,19 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 
         public string Comment => _element.Comment;
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ParameterModelExtensions
+    {
+
+        public static bool IsParameterModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId;
+        }
+
+        public static ParameterModel AsParameterModel(this ICanBeReferencedType type)
+        {
+            return type.IsParameterModel() ? new ParameterModel((IElement)type) : null;
+        }
+    }
 }
