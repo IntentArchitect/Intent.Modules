@@ -15,12 +15,20 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
 
         public string AsNullable(IResolvedTypeInfo typeInfo)
         {
-            if (typeInfo.IsNullable && (typeInfo.IsPrimitive || _project.IsNullableAwareContext() || typeInfo.TypeReference.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
+            if (typeInfo.IsNullable && !IsInterface(typeInfo) &&
+                (typeInfo.IsPrimitive || 
+                 _project.IsNullableAwareContext() || 
+                 typeInfo.TypeReference.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
             {
                 return $"{typeInfo.Name}?";
             }
 
             return typeInfo.Name;
+        }
+
+        private bool IsInterface(IResolvedTypeInfo typeInfo)
+        {
+            return (!typeInfo.IsPrimitive && typeInfo.Name.StartsWith("I") && typeInfo.Name.Length >= 2 && char.IsUpper(typeInfo.Name[1]));
         }
     }
 }
