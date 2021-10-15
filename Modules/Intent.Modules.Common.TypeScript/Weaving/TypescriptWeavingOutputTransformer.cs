@@ -1,8 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 using Intent.Code.Weaving.TypeScript;
+using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
@@ -23,14 +22,16 @@ namespace Intent.Modules.Common.TypeScript.Weaving
 
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is ITypeScriptMerged typeScriptMerged))
+            if (!(output.Template is ITypeScriptMerged))
             {
                 throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(ITypeScriptMerged)}");
-                return;
             }
+
             try
             {
-                var existingFile = typeScriptMerged.GetExistingFile();
+                var existingFile = output.TargetFileExists()
+                    ? new TypeScriptFileEditor(output.GetExistingFileContent()).File
+                    : null;
 
                 if (existingFile == null)
                 {

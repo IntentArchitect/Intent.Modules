@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-using Intent.Engine;
+﻿using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
@@ -21,16 +19,10 @@ namespace Intent.Modules.Common.Sql.Templates
 
             return templateOutput;
         }
-
-        public string GetExistingFile()
-        {
-            return File.Exists(GetMetadata().GetFilePath()) ? File.ReadAllText(GetMetadata().GetFilePath()) : null;
-        }
     }
 
     public interface ISqlTemplate
     {
-        string GetExistingFile();
     }
 
     public class SqlFileConfig : TemplateFileConfig
@@ -42,9 +34,9 @@ namespace Intent.Modules.Common.Sql.Templates
                     string fileExtension = "sql",
                     string codeGenType = Common.CodeGenType.Basic
                     )
-            : base(overwriteBehaviour: overwriteBehaviour, 
-                  codeGenType: codeGenType, 
-                  fileName: fileName, 
+            : base(overwriteBehaviour: overwriteBehaviour,
+                  codeGenType: codeGenType,
+                  fileName: fileName,
                   fileExtension: fileExtension,
                   relativeLocation: relativeLocation)
         {

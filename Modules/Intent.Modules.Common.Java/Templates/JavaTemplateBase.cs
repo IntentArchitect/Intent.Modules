@@ -1,11 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.IO;
 using System.Linq;
-using System.Text;
-using Intent.Engine;
 using Intent.Code.Weaving.Java.Editor;
+using Intent.Engine;
 using Intent.Modules.Common.Java.TypeResolvers;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
@@ -29,11 +26,13 @@ namespace Intent.Modules.Common.Java.Templates
         {
         }
 
+        /// <inheritdoc />
         public IEnumerable<TDecorator> GetDecorators()
         {
             return _decorators.OrderBy(x => x.Priority);
         }
 
+        /// <inheritdoc />
         public void AddDecorator(TDecorator decorator)
         {
             _decorators.Add(decorator);
@@ -72,8 +71,10 @@ namespace Intent.Modules.Common.Java.Templates
             }
         }
 
+        /// <inheritdoc />
         public string Namespace => Package;
 
+        /// <inheritdoc />
         public string ClassName
         {
             get
@@ -193,13 +194,6 @@ namespace Intent.Modules.Common.Java.Templates
         public JavaFile GetTemplateFile()
         {
             return JavaFile.Parse(base.RunTemplate());
-        }
-
-        public JavaFile GetExistingFile()
-        {
-            var metadata = GetMetadata();
-            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-            return File.Exists(fullFileName) ? JavaFile.Parse(File.ReadAllText(fullFileName)) : null;
         }
 
         /// <summary>

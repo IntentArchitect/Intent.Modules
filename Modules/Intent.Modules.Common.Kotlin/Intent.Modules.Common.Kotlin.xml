@@ -41,6 +41,18 @@
             Escapes any invalid characters in the string for a Kotlin identifier name (e.g. class, interface, etc.).
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`2.GetDecorators">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`2.AddDecorator(`1)">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.Namespace">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.ClassName">
+            <inheritdoc />
+        </member>
         <member name="P:Intent.Modules.Common.Kotlin.Templates.KotlinTemplateBase`1.Location">
             <inheritdoc cref="P:Intent.Templates.IFileMetadata.LocationInProject"/>.
         </member>
@@ -81,6 +93,21 @@
             <summary>
             Override this method to add additional imports to this Kotlin template. It is recommended to call base.DeclareImports().
             </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Kotlin.Weaving.KotlinWeavingOutputTransformer">
+            <summary>
+            An <see cref="T:Intent.Plugins.FactoryExtensions.ITransformOutput"/> which will weave changes between an existing file
+            and the output of a template respecting annotations in the files.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Kotlin.Weaving.KotlinWeavingOutputTransformer.Id">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Weaving.KotlinWeavingOutputTransformer.CanTransform(Intent.Engine.IOutputFile)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Kotlin.Weaving.KotlinWeavingOutputTransformer.Transform(Intent.Engine.IOutputFile)">
+            <inheritdoc />
         </member>
     </members>
 </doc>

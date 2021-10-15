@@ -4,6 +4,18 @@
         <name>Intent.Modules.Common.Java</name>
     </assembly>
     <members>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.GetDecorators">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.AddDecorator(`1)">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.Namespace">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.ClassName">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddTypeSource(System.String,System.String)">
             <summary>
             Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
@@ -56,6 +68,21 @@
             Override this method to add additional imports to this Java template. It is
             recommended to call base.DeclareImports().
             </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.Weaving.JavaWeavingOutputTransformer">
+            <summary>
+            An <see cref="T:Intent.Plugins.FactoryExtensions.ITransformOutput"/> which will weave changes between an existing file
+            and the output of a template respecting annotations in the files.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Java.Weaving.JavaWeavingOutputTransformer.Id">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Weaving.JavaWeavingOutputTransformer.CanTransform(Intent.Engine.IOutputFile)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Weaving.JavaWeavingOutputTransformer.Transform(Intent.Engine.IOutputFile)">
+            <inheritdoc />
         </member>
     </members>
 </doc>

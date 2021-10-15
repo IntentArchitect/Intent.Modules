@@ -1,36 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Text;
 using Intent.Code.Weaving.Kotlin;
+using Intent.Code.Weaving.Kotlin.Editor;
 using Intent.Engine;
+using Intent.Modules.Common.Kotlin.Templates;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Kotlin.Templates;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 
 namespace Intent.Modules.Common.Kotlin.Weaving
 {
+    /// <summary>
+    /// An <see cref="ITransformOutput"/> which will weave changes between an existing file
+    /// and the output of a template respecting annotations in the files.
+    /// </summary>
     public class KotlinWeavingOutputTransformer : FactoryExtensionBase, ITransformOutput
     {
+        /// <inheritdoc />
         public override string Id => "Intent.Common.Kotlin.OutputWeaver";
 
+        /// <inheritdoc />
         public bool CanTransform(IOutputFile output)
         {
             return output.Template is IKotlinMerged;
         }
 
-
+        /// <inheritdoc />
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is IKotlinMerged kotlinMerged))
+            if (!(output.Template is IKotlinMerged))
             {
                 throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(IKotlinMerged)}");
             }
 
-            var existingFile = kotlinMerged.GetExistingFile();
+            var existingFile = output.TargetFileExists()
+                ? KotlinFile.Parse(output.GetExistingFileContent())
+                : null;
 
             if (existingFile == null)
             {

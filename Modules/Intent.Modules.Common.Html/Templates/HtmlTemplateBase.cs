@@ -1,4 +1,3 @@
-using System.IO;
 using Intent.Code.Weaving.Html.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
@@ -33,13 +32,6 @@ namespace Intent.Modules.Common.Html.Templates
         public HtmlFile GetTemplateFile()
         {
             return new HtmlFile(base.RunTemplate());
-        }
-
-        public HtmlFile GetExistingFile()
-        {
-            var metadata = GetMetadata();
-            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-            return File.Exists(fullFileName) ? new HtmlFile(File.ReadAllText(fullFileName)) : null;
         }
     }
 }

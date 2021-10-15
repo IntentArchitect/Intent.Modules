@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using Intent.Engine;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Sql.Templates;
@@ -20,12 +19,12 @@ namespace Intent.Modules.Common.Sql.Weaving
 
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is ISqlTemplate sqlTemplate))
+            if (!(output.Template is ISqlTemplate))
             {
                 throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(ISqlTemplate)}");
             }
 
-            var existingFile = sqlTemplate.GetExistingFile();
+            var existingFile = output.GetExistingFileContent();
 
             if (existingFile == null)
             {

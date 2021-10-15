@@ -1,35 +1,42 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
-using System.Text;
 using Intent.Code.Weaving.Java;
+using Intent.Code.Weaving.Java.Editor;
 using Intent.Engine;
+using Intent.Modules.Common.Java.Templates;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Java.Templates;
 using Intent.Plugins.FactoryExtensions;
 using Intent.Utils;
 
 namespace Intent.Modules.Common.Java.Weaving
 {
+    /// <summary>
+    /// An <see cref="ITransformOutput"/> which will weave changes between an existing file
+    /// and the output of a template respecting annotations in the files.
+    /// </summary>
     public class JavaWeavingOutputTransformer : FactoryExtensionBase, ITransformOutput
     {
+        /// <inheritdoc />
         public override string Id => "Intent.Common.Java.OutputWeaver";
 
+        /// <inheritdoc />
         public bool CanTransform(IOutputFile output)
         {
             return output.Template is IJavaMerged;
         }
 
+        /// <inheritdoc />
         public void Transform(IOutputFile output)
         {
-            if (!(output.Template is IJavaMerged javaMerged))
+            if (!(output.Template is IJavaMerged))
             {
                 throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(IJavaMerged)}");
             }
 
-            var existingFile = javaMerged.GetExistingFile();
+            var existingFile = output.TargetFileExists()
+                ? JavaFile.Parse(output.GetExistingFileContent())
+                : null;
 
             if (existingFile == null)
             {

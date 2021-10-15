@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Intent.Code.Weaving.Kotlin.Editor;
 using Intent.Engine;
@@ -27,11 +26,13 @@ namespace Intent.Modules.Common.Kotlin.Templates
         {
         }
 
+        /// <inheritdoc />
         public IEnumerable<TDecorator> GetDecorators()
         {
             return _decorators.OrderBy(x => x.Priority);
         }
 
+        /// <inheritdoc />
         public void AddDecorator(TDecorator decorator)
         {
             _decorators.Add(decorator);
@@ -70,8 +71,10 @@ namespace Intent.Modules.Common.Kotlin.Templates
             }
         }
 
+        /// <inheritdoc />
         public string Namespace => Package;
 
+        /// <inheritdoc />
         public string ClassName
         {
             get
@@ -169,13 +172,6 @@ namespace Intent.Modules.Common.Kotlin.Templates
         public KotlinFile GetTemplateFile()
         {
             return KotlinFile.Parse(base.RunTemplate());
-        }
-
-        public KotlinFile GetExistingFile()
-        {
-            var metadata = GetMetadata();
-            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-            return File.Exists(fullFileName) ? KotlinFile.Parse(File.ReadAllText(fullFileName)) : null;
         }
 
         /// <summary>

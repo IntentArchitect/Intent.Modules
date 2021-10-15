@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
@@ -113,13 +112,6 @@ namespace Intent.Modules.Common.TypeScript.Templates
 {base.RunTemplate()}");
                 throw;
             }
-        }
-
-        public TypeScriptFile GetExistingFile()
-        {
-            var metadata = GetMetadata();
-            var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-            return File.Exists(fullFileName) ? new TypeScriptFileEditor(File.ReadAllText(fullFileName)).File : null;
         }
     }
 
