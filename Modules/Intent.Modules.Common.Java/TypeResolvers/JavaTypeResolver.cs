@@ -26,7 +26,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
     public class JavaTypeResolverContext : TypeResolverContextBase
     {
 
-        public JavaTypeResolverContext(JavaTypeResolverOptions options) : base(new CollectionFormatter("{0}[]"))
+        public JavaTypeResolverContext(JavaTypeResolverOptions options) : base(new CollectionFormatter("{0}[]"), new DefaultNullableFormatter())
         {
             Options = options;
         }

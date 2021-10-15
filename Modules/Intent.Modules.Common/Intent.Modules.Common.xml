@@ -639,6 +639,16 @@
             Helper to produce culture-oriented representation of an object as a string
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.TypeResolution.CollectionFormatter">
+            <summary>
+            Generic collection formatter implementation which accepts the collection formatter as a string or function.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.TypeResolution.DefaultNullableFormatter">
+            <summary>
+            Does not alter the name of the resolved type.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo">
             <summary>
             Information about the resolved type.
@@ -797,6 +807,11 @@
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.SetCollectionFormatter(Intent.Modules.Common.TypeResolution.ICollectionFormatter)">
+            <summary>
+            Default collection formatter to use when the typeInfo.IsCollection is true;
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.SetNullableFormatter(Intent.Modules.Common.TypeResolution.INullableFormatter)">
             <summary>
             Default collection formatter to use when the typeInfo.IsCollection is true;
             </summary>

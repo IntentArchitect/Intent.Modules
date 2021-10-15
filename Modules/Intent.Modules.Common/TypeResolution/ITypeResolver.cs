@@ -9,11 +9,17 @@ namespace Intent.Modules.Common.TypeResolution
         IResolvedTypeInfo GetType(ITypeReference typeInfo);
         IEnumerable<ITemplateDependency> GetTemplateDependencies();
         ICollectionFormatter CollectionFormatter { get; }
+        INullableFormatter NullableFormatter { get; }
     }
 
     public interface ICollectionFormatter
     {
         string AsCollection(IResolvedTypeInfo typeInfo);
+    }
+
+    public interface INullableFormatter
+    {
+        string AsNullable(IResolvedTypeInfo typeInfo);
     }
 
     public interface ITypeResolver
@@ -24,6 +30,8 @@ namespace Intent.Modules.Common.TypeResolution
         string DefaultCollectionFormat { set; }
 
         void SetDefaultCollectionFormatter(ICollectionFormatter formatter);
+
+        void SetDefaultNullableFormatter(INullableFormatter formatter);
 
         /// <summary>
         /// Adds a default <see cref="ITypeSource"/> that is used when resolving type names of classes.

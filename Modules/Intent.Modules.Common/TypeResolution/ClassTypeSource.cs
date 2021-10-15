@@ -13,6 +13,7 @@ namespace Intent.Modules.Common.TypeResolution
         private readonly ClassTypeSourceOptions _options;
         private readonly IList<ITemplateDependency> _templateDependencies = new List<ITemplateDependency>();
         public ICollectionFormatter CollectionFormatter => _options.CollectionFormatter;
+        public INullableFormatter NullableFormatter => _options.NullableFormatter;
 
         internal ClassTypeSource(ISoftwareFactoryExecutionContext context, string templateId, ClassTypeSourceOptions options = null)
         {
@@ -47,6 +48,12 @@ namespace Intent.Modules.Common.TypeResolution
         public ClassTypeSource WithCollectionFormatter(ICollectionFormatter formatter)
         {
             _options.CollectionFormatter = formatter;
+            return this;
+        }
+
+        public ClassTypeSource WithNullFormatter(INullableFormatter formatter)
+        {
+            _options.NullableFormatter = formatter;
             return this;
         }
 
@@ -92,6 +99,7 @@ namespace Intent.Modules.Common.TypeResolution
     public class ClassTypeSourceOptions
     {
         public ICollectionFormatter CollectionFormatter { get; set; }
+        public INullableFormatter NullableFormatter { get; set; }
         public bool TrackDependencies { get; set; } = true;
     }
 }

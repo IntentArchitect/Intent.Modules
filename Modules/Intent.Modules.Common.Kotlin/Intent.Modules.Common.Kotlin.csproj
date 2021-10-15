@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <Version>3.1.2</Version>
+    <Version>3.1.3</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Intent Architect</Authors>
     <Description>Base classes and weaving capabilities for modules that output Kotlin files for Intent Architect.</Description>
@@ -30,7 +30,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="3.1.2" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.1.3" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.1.0" />
     <PackageReference Include="Intent.Code.Weaving.Kotlin" Version="1.0.1">
       <PrivateAssets>all</PrivateAssets>

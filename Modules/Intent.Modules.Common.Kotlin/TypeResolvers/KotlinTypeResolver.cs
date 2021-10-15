@@ -26,7 +26,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
     public class KotlinTypeResolverContext : TypeResolverContextBase
     {
 
-        public KotlinTypeResolverContext(KotlinTypeResolverOptions options) : base(new CollectionFormatter("List<{0}>"))
+        public KotlinTypeResolverContext(KotlinTypeResolverOptions options) : base(new CollectionFormatter("List<{0}>"), new DefaultNullableFormatter())
         {
             Options = options;
         }

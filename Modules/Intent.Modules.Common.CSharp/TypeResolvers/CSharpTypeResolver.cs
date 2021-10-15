@@ -1,36 +1,32 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.CSharp.TypeResolvers
 {
     public class CSharpTypeResolver : TypeResolverBase, ITypeResolver
     {
-        private readonly ICSharpProject _project;
-        private readonly ICollectionFormatter _defaultFormatter;
+        private readonly ICollectionFormatter _defaultCollectionFormatter;
+        private readonly INullableFormatter _defaultNullableFormatter;
 
-        public CSharpTypeResolver(ICSharpProject project, ICollectionFormatter defaultFormatter) : base(new CSharpTypeResolverContext(project, defaultFormatter))
+        public CSharpTypeResolver(ICollectionFormatter defaultCollectionFormatter, INullableFormatter defaultNullableFormatter) : base(new CSharpTypeResolverContext(defaultCollectionFormatter, defaultNullableFormatter))
         {
-            _project = project;
-            _defaultFormatter = defaultFormatter;
+            _defaultCollectionFormatter = defaultCollectionFormatter;
+            _defaultNullableFormatter = defaultNullableFormatter;
         }
 
         protected override ITypeResolverContext CreateContext()
         {
-            return new CSharpTypeResolverContext(_project, _defaultFormatter);
+            return new CSharpTypeResolverContext(_defaultCollectionFormatter, _defaultNullableFormatter);
         }
     }
 
+
     public class CSharpTypeResolverContext : TypeResolverContextBase
     {
-        private readonly ICSharpProject _project;
-
-        public CSharpTypeResolverContext(ICSharpProject project, ICollectionFormatter formatter) : base(formatter)
+        public CSharpTypeResolverContext(ICollectionFormatter collectionFormatter, INullableFormatter nullableFormatter) : base(collectionFormatter, nullableFormatter)
         {
-            _project = project;
         }
 
         protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
@@ -54,10 +50,11 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 isPrimitive = typeInfo.Element.GetStereotypeProperty("C#", "Is Primitive", true);
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
 
-                if (typeInfo.IsNullable && isPrimitive)
-                {
-                    result += "?";
-                }
+                // Moved to NullFormatter
+                //if (typeInfo.IsNullable && isPrimitive)
+                //{
+                //    result += "?";
+                //}
             }
             else
             {
@@ -111,12 +108,16 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                         result = "string";
                         isPrimitive = false;
                         break;
+                    default:
+                        isPrimitive = false;
+                        break;
                 }
 
-                if (typeInfo.IsNullable && (isPrimitive || _project.IsNullableAwareContext() || typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
-                {
-                    result += "?";
-                }
+                // Moved to the NullFormatter:
+                //if (typeInfo.IsNullable && (isPrimitive || _project.IsNullableAwareContext() || typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
+                //{
+                //    result += "?";
+                //}
             }
 
             return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);

@@ -9,10 +9,12 @@ namespace Intent.Modules.Common.TypeResolution
     {
         private readonly List<ITypeSource> _typeSources = new List<ITypeSource>();
         private ICollectionFormatter _defaultCollectionFormatter;
+        private INullableFormatter _defaultNullableFormatter;
 
-        protected TypeResolverContextBase(ICollectionFormatter defaultCollectionFormatter)
+        protected TypeResolverContextBase(ICollectionFormatter defaultCollectionFormatter, INullableFormatter nullableFormatter)
         {
             _defaultCollectionFormatter = defaultCollectionFormatter;
+            _defaultNullableFormatter = nullableFormatter;
         }
 
         public void AddTypeSource(ITypeSource typeSource)
@@ -23,6 +25,11 @@ namespace Intent.Modules.Common.TypeResolution
         public void SetCollectionFormatter(ICollectionFormatter formatter)
         {
             _defaultCollectionFormatter = formatter;
+        }
+
+        public void SetNullableFormatter(INullableFormatter formatter)
+        {
+            _defaultNullableFormatter = formatter;
         }
 
         public IEnumerable<ITypeSource> TypeSources => _typeSources;
@@ -45,6 +52,7 @@ namespace Intent.Modules.Common.TypeResolution
             }
 
             ICollectionFormatter typeSourceCollectionFormatter = null;
+            INullableFormatter nullableFormatter = null;
             ResolvedTypeInfo type = null;
             foreach (var classLookup in _typeSources)
             {
@@ -52,6 +60,7 @@ namespace Intent.Modules.Common.TypeResolution
                 if (foundClass != null)
                 {
                     typeSourceCollectionFormatter = classLookup.CollectionFormatter;
+                    nullableFormatter = classLookup.NullableFormatter;
                     type = new ResolvedTypeInfo(foundClass);
                     break;
                 }
@@ -70,6 +79,12 @@ namespace Intent.Modules.Common.TypeResolution
                 type.Name = (collectionFormatter ?? typeSourceCollectionFormatter ?? _defaultCollectionFormatter).AsCollection(type);
             }
 
+            if (typeInfo.IsNullable)
+            {
+                nullableFormatter = nullableFormatter ?? _defaultNullableFormatter;
+                type.Name = nullableFormatter.AsNullable(type);
+            }
+
             return type;
         }
 
@@ -81,6 +96,7 @@ namespace Intent.Modules.Common.TypeResolution
             }
 
             ICollectionFormatter collectionFormatter = null;
+            INullableFormatter nullableFormatter = null;
             ResolvedTypeInfo type = null;
             var foundClass = typeSource.GetType(typeInfo);
             if (foundClass != null)
@@ -96,6 +112,7 @@ namespace Intent.Modules.Common.TypeResolution
                     if (foundClass != null)
                     {
                         collectionFormatter = classLookup.CollectionFormatter;
+                        nullableFormatter = classLookup.NullableFormatter;
                         type = new ResolvedTypeInfo(foundClass);
                         break;
                     }
@@ -112,6 +129,12 @@ namespace Intent.Modules.Common.TypeResolution
             {
                 collectionFormatter = collectionFormatter ?? _defaultCollectionFormatter;
                 type.Name = collectionFormatter.AsCollection(type);
+            }
+
+            if (typeInfo.IsNullable)
+            {
+                nullableFormatter = nullableFormatter ?? _defaultNullableFormatter;
+                type.Name = nullableFormatter.AsNullable(type);
             }
 
             return type;

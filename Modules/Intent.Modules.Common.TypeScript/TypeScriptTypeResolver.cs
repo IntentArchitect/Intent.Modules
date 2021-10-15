@@ -8,13 +8,13 @@ namespace Intent.Modules.Common.TypeScript
     public class TypeScriptTypeResolver : TypeResolverBase, ITypeResolver
     {
 
-        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(new CollectionFormatter("{0}[]")))
+        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(new CollectionFormatter("{0}[]"), new DefaultNullableFormatter()))
         {
         }
 
         protected override ITypeResolverContext CreateContext()
         {
-            return new TypeScriptTypeResolverContext(new CollectionFormatter("{0}[]"));
+            return new TypeScriptTypeResolverContext(new CollectionFormatter("{0}[]"), new DefaultNullableFormatter());
         }
     }
     public class TypeScriptTypeResolverContext : TypeResolverContextBase
@@ -73,7 +73,9 @@ namespace Intent.Modules.Common.TypeScript
             return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
         }
 
-        public TypeScriptTypeResolverContext(ICollectionFormatter defaultCollectionFormatter) : base(defaultCollectionFormatter)
+        public TypeScriptTypeResolverContext(
+            ICollectionFormatter defaultCollectionFormatter,
+            INullableFormatter defaultNullableFormatter) : base(defaultCollectionFormatter, defaultNullableFormatter)
         {
         }
     }

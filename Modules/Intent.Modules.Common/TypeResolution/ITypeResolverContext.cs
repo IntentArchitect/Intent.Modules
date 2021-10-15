@@ -37,7 +37,12 @@ namespace Intent.Modules.Common.TypeResolution
         /// Default collection formatter to use when the typeInfo.IsCollection is true;
         /// </summary>
         void SetCollectionFormatter(ICollectionFormatter formatter);
-        
+
+        /// <summary>
+        /// Default collection formatter to use when the typeInfo.IsCollection is true;
+        /// </summary>
+        void SetNullableFormatter(INullableFormatter formatter);
+
         /// <summary>
         /// Returns the list of added <see cref="ITypeSource"/>s
         /// </summary>
