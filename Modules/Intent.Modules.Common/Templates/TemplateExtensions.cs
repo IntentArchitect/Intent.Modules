@@ -19,35 +19,24 @@ namespace Intent.Modules.Common.Templates
             return template.GetAll<IHasAdditionalHeaderInformation, string>((i) => i.GetAdditionalHeaderInformation());
         }
 
-        /*
-        public static IEnumerable<IBowerPackageInfo> GetAllBowerDependencies(this ITemplate template)
-        {
-            return template.GetAll<IHasBowerDependencies, IBowerPackageInfo>((i) => i.GetBowerDependencies());
-        }*/
-
-
         public static IEnumerable<TResult> GetAll<TInterface, TResult>(this ITemplate template, Func<TInterface, IEnumerable<TResult>> invoke)
         {
             if (template == null)
             {
                 return new TResult[] { };
             }
-            var interfaceType = typeof(TInterface);
-            var templateType = template.GetType();
             var result = new List<TResult>();
-            var supportsInterface = interfaceType.IsAssignableFrom(templateType);
-            if (supportsInterface)
+            if (template is TInterface tInterface)
             {
-                result.AddRange(invoke((TInterface)template));
+                result.AddRange(invoke(tInterface));
             }
 
             if (template is IExposesDecorators<ITemplateDecorator> hasDecorators)
             {
                 result.AddRange(
                     hasDecorators.GetDecorators()
-                        .Where(x => interfaceType.IsInstanceOfType(x))
                         .OrderByDescending(d => d.Priority) // Higher value = Higher priority
-                        .Cast<TInterface>()
+                        .OfType<TInterface>()
                         .SelectMany(invoke)
                         .Distinct()
                         .ToArray()

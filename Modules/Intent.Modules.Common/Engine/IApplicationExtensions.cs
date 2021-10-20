@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common
@@ -12,57 +14,97 @@ namespace Intent.Modules.Common
         bool IsMatch(ITemplate template);
     }
 
+    /// <summary>
+    /// Has dependencies on other <see cref="ITemplate"/> instances.
+    /// </summary>
     public interface IHasTemplateDependencies
     {
+        /// <summary>
+        /// Gets all the <see cref="ITemplateDependency"/> items for this template..
+        /// </summary>
         IEnumerable<ITemplateDependency> GetTemplateDependencies();
     }
 
+    /// <summary>
+    /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions"/> instead.
+    /// </summary>
+    [Obsolete(WillBeRemovedIn.Version_3_2_0)]
     public static class IApplicationExtensions
     {
-        public static ITemplate FindTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model)
+        /// <summary>
+        /// Obsolete. Use <see cref="ISoftwareFactoryExecutionContext.FindTemplateInstance(string,object)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        public static ITemplate FindTemplateInstance(ISoftwareFactoryExecutionContext executionContext, string templateId, object model)
         {
-            return FindTemplateInstance(executionContext, TemplateDependency.OnModel(templateId, model));
+            return executionContext.FindTemplateInstance(templateId, model);
         }
 
-        //public static ITemplate FindTemplateInstance(this IApplication executionContext, string templateId, string className)
-        //{
-        //    return executionContext.FindTemplateInstance(templateId, TemplateDependency.OnClassName(templateId, className));
-        //}
-
-        public static ITemplate FindTemplateInstance(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
+        /// <summary>
+        /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindTemplateInstance(ISoftwareFactoryExecutionContext,ITemplateDependency)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        public static ITemplate FindTemplateInstance(ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
         {
-            return executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch);
+            return executionContext.FindTemplateInstance(templateDependency);
         }
 
         //Typed Overloads
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, string className) where TTemplate : class
+
+        /// <summary>
+        /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindTemplateInstance{TTemplate}(ISoftwareFactoryExecutionContext,string,string)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        public static TTemplate FindTemplateInstance<TTemplate>(ISoftwareFactoryExecutionContext executionContext, string templateId, string className)
+            where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateId, className) as TTemplate;
+            return executionContext.FindTemplateInstance<TTemplate>(templateId, className);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model) where TTemplate : class
+        /// <summary>
+        /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindTemplateInstance{TTemplate}(ISoftwareFactoryExecutionContext,string,object)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        public static TTemplate FindTemplateInstance<TTemplate>(ISoftwareFactoryExecutionContext executionContext, string templateId, object model)
+            where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateId, model) as TTemplate;
+            return executionContext.FindTemplateInstance<TTemplate>(templateId, model);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId) where TTemplate : class
+        /// <summary>
+        /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindTemplateInstance{TTemplate}(ISoftwareFactoryExecutionContext,string)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        public static TTemplate FindTemplateInstance<TTemplate>(ISoftwareFactoryExecutionContext executionContext, string templateId) where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(TemplateDependency.OnTemplate(templateId)) as TTemplate;
+            return executionContext.FindTemplateInstance<TTemplate>(templateId);
         }
 
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency) where TTemplate : class
+        /// <summary>
+        /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindTemplateInstance{TTemplate}(ISoftwareFactoryExecutionContext,ITemplateDependency)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        public static TTemplate FindTemplateInstance<TTemplate>(ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
+            where TTemplate : ITemplate
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateDependency.TemplateId, templateDependency.IsMatch);
+            return executionContext.FindTemplateInstance<TTemplate>(templateDependency);
         }
 
-        public static IOutputTarget FindOutputTargetWithTemplate(this ISoftwareFactoryExecutionContext executionContext, string templateId, IMetadataModel hasModel)
+        /// <summary>
+        /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(ISoftwareFactoryExecutionContext,string,IMetadataModel)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        public static IOutputTarget FindOutputTargetWithTemplate(ISoftwareFactoryExecutionContext executionContext, string templateId, IMetadataModel hasModel)
         {
-            return FindOutputTargetWithTemplate(executionContext, TemplateDependency.OnModel(templateId, hasModel));
+            return executionContext.FindOutputTargetWithTemplate(templateId, hasModel);
         }
 
-        public static IOutputTarget FindOutputTargetWithTemplate(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
+        /// <summary>
+        /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(ISoftwareFactoryExecutionContext,ITemplateDependency)"/> instead.
+        /// </summary>
+        public static IOutputTarget FindOutputTargetWithTemplate(ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
         {
-            return executionContext.FindOutputTargetWithTemplate(templateDependency.TemplateId, templateDependency.IsMatch);
+            return executionContext.FindOutputTargetWithTemplate(templateDependency);
         }
     }
 }

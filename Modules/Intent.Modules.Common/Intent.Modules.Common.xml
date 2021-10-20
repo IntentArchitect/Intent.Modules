@@ -29,6 +29,124 @@
             SSL port
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.IHasTemplateDependencies">
+            <summary>
+            Has dependencies on other <see cref="T:Intent.Templates.ITemplate"/> instances.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IHasTemplateDependencies.GetTemplateDependencies">
+            <summary>
+            Gets all the <see cref="T:Intent.Modules.Common.ITemplateDependency"/> items for this template..
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.IApplicationExtensions">
+            <summary>
+            Obsolete. Use <see cref="T:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindTemplateInstance(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.Object)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Engine.ISoftwareFactoryExecutionContext.FindTemplateInstance(System.String,System.Object)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindTemplateInstance(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.String)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.Object)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.Object)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,Intent.Metadata.Models.IMetadataModel)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,Intent.Metadata.Models.IMetadataModel)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IApplicationExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)"/> instead.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.IOutputTargetExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Engine.IOutputTarget"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.IOutputTargetExtensions.FindTemplateInstances``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstances``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)"/> instead.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Engine.ISoftwareFactoryExecutionContext"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Finds a template instance which matches the provided <paramref name="templateDependency"/>.<br/>
+            <br/>
+            If more than once instance is found an exception is thrown.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.String)">
+            <summary>
+            Finds a template instance which has the provided <paramref name="templateId"/> and
+            <paramref name="className"/> and casts the result to the specified <typeparamref name="TTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.Object)">
+            <summary>
+            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id" /> of <paramref name="templateId" />
+            which is also a <see cref="T:Intent.Templates.ITemplateWithModel" /> whose
+            <see cref="P:Intent.Templates.ITemplateWithModel.Model" />'s reference matches that of the provided
+            <paramref name="model" /> and casts the result to the specified <typeparamref name="TTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String)">
+            <summary>
+            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id" /> of <paramref name="templateId" />
+            and casts the result to the specified <typeparamref name="TTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Finds a template instance which matches the provided <paramref name="templateDependency"/>
+            and casts the result to the specified <typeparamref name="TTemplate"/>.<br/>
+            <br/>
+            If more than once instance is found an exception is thrown.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,Intent.Metadata.Models.IMetadataModel)">
+            <summary>
+            Finds the <see cref="T:Intent.Engine.IOutputTarget" /> that is targeted by the template with the provided
+            <paramref name="templateId" /> which is also a <see cref="T:Intent.Templates.ITemplateWithModel" /> and whose
+            <see cref="P:Intent.Templates.ITemplateWithModel.Model" /> is a <see cref="T:Intent.Metadata.Models.IMetadataModel" /> whose
+            <see cref="P:Intent.Metadata.Models.IMetadataModel.Id" /> matches that of the provided <paramref name="hasModel" />.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Finds the <see cref="T:Intent.Engine.IOutputTarget"/> that is targeted by the provided <paramref name="templateDependency"/>.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.StereotypeExtensions">
             <summary>
             Extension methods for <see cref="T:Intent.Metadata.Models.IStereotype"/> and <see cref="T:Intent.Metadata.Models.IHasStereotypes"/>.
@@ -223,7 +341,8 @@
         </member>
         <member name="F:Intent.Modules.Common.Templates.IntentTemplateBase.DetectedDependencies">
             <summary>
-            Detected dependencies.
+            Obsolete. Use <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase._detectedDependencies"/> instead. See <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplateDependencies"/>
+            for more information.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.#ctor(System.String,Intent.Engine.IOutputTarget)">
@@ -295,7 +414,22 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplateDependencies">
             <summary>
-            Return the dependencies that have been added explicitly through <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTemplateDependency(System.String)"/>, and implicitly from the types resolved through <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
+            For 3.2.0, change this to return <see cref="T:System.Collections.Generic.IEnumerable`1"/> and
+            use <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase._detectedDependencies"/> instead of <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase.DetectedDependencies"/>,
+            so the method becomes:
+            <code>
+            <![CDATA[
+            public IEnumerable<ITemplate> GetTemplateDependencies()
+            {
+                if (!HasTypeResolver())
+                {
+                    return _detectedDependencies;
+                }
+            
+                return Types.GetTemplateDependencies().Concat(_detectedDependencies);
+            }
+            ]]>
+            </code>
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.OnConfigured">
@@ -537,10 +671,10 @@
             Retrieve an instance of an <see cref="T:Intent.Templates.ITemplate"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)"/>
         </member>
-        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)"/>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
@@ -562,6 +696,11 @@
         <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.TrackDependency">
             <summary>
             Whether or not to automatically track the template as a dependency. Defaults to <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.DoNotThrow">
+            <summary>
+            An instance of <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> where <see cref="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.ThrowIfNotFound"/> is set to false.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.GenerationEnvironment">
@@ -637,6 +776,57 @@
         <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.ToStringHelper">
             <summary>
             Helper to produce culture-oriented representation of an object as a string
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.TemplateDependency">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.TemplateDependency.TemplateId">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.TemplateDependency.Context">
+            <summary>
+            This will be changed to a private member, please contact support@intentarchitect.com if you have a need for this.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateDependency.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateDependency.OnTemplate(System.String)">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.ITemplateDependency"/> which finds templates which have the
+            provided <paramref name="templateIdOrName"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateDependency.OnTemplate(Intent.Templates.ITemplate)">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.ITemplateDependency"/> which finds a template whose reference
+            matches the provided <see cref="T:Intent.Templates.ITemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateDependency.OnModel(System.String,System.Object)">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.ITemplateDependency"/> which finds templates which have the
+            provided <paramref name="templateIdOrName"/> and which are a <see cref="T:Intent.Templates.ITemplateWithModel"/>
+            whose <see cref="P:Intent.Templates.ITemplateWithModel.Model"/>'s reference matches that of the provided
+            <paramref name="metadataModel"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateDependency.OnModel(System.String,Intent.Metadata.Models.IMetadataModel)">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.ITemplateDependency"/> which finds templates which have the
+            provided <paramref name="templateIdOrName"/> and which are a
+            <see cref="T:Intent.Templates.ITemplateWithModel"/> whose <see cref="P:Intent.Templates.ITemplateWithModel.Model"/> is a
+            <see cref="T:Intent.Metadata.Models.IMetadataModel"/> with its <see cref="P:Intent.Metadata.Models.IMetadataModel.Id"/> matching that
+            the provided <paramref name="metadataModel"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateDependency.IsMatch(Intent.Templates.ITemplate)">
+            <inheritdoc />
+        </member>
+        <member name="F:Intent.Modules.Common.Templates.TemplateDependency.FastLookupTemplateDependency`2.InstanceCache">
+            <summary>
+            Avoids additional memory allocations and also improves effectiveness of <see cref="F:Intent.Modules.Common.Templates.TemplateDependency.FastLookupTemplateDependency`2._cachedLookupTemplateInstance"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.TypeResolution.CollectionFormatter">
@@ -820,6 +1010,48 @@
             <summary>
             Returns the list of added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/>s
             </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.TypeResolution.TypeResolverBase">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.TypeResolverBase.DefaultCollectionFormat">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.SetDefaultCollectionFormatter(Intent.Modules.Common.TypeResolution.ICollectionFormatter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.SetDefaultNullableFormatter(Intent.Modules.Common.TypeResolution.INullableFormatter)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.InContext(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.GetTemplateDependencies">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ITypeReference)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ITypeReference,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ICanBeReferencedType)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ICanBeReferencedType,System.String)">
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.TypeResolution.CanBeReferencedTypeExtensions">
             <summary>

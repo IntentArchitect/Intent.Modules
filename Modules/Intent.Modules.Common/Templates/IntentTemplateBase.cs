@@ -5,6 +5,7 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
@@ -97,9 +98,13 @@ namespace Intent.Modules.Common.Templates
     /// </summary>
     public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
+        private readonly HashSet<ITemplate> _detectedDependencies = new HashSet<ITemplate>();
+
         /// <summary>
-        /// Detected dependencies.
+        /// Obsolete. Use <see cref="_detectedDependencies"/> instead. See <see cref="GetTemplateDependencies"/>
+        /// for more information.
         /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
         protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
 
         /// <summary>
@@ -180,7 +185,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(string templateId)
         {
-            AddTemplateDependency(TemplateDependency.OnTemplate(templateId));
+            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId));
         }
 
         /// <summary>
@@ -190,7 +195,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The metadata module instance that the Template must be bound to.</param>
         public void AddTemplateDependency(string templateId, IMetadataModel model)
         {
-            AddTemplateDependency(TemplateDependency.OnModel(templateId, model));
+            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId, model.Id));
         }
 
         /// <summary>
@@ -198,12 +203,37 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(ITemplateDependency templateDependency)
         {
-            DetectedDependencies.Add(templateDependency);
+            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateDependency));
+        }
+
+        private void AddTemplateDependency(ITemplate template)
+        {
+#pragma warning disable CS0618
+            DetectedDependencies.Add(TemplateDependency.OnTemplate(template));
+#pragma warning restore CS0618
+            _detectedDependencies.Add(template);
         }
 
         /// <summary>
-        /// Return the dependencies that have been added explicitly through <see cref="AddTemplateDependency(string)"/>, and implicitly from the types resolved through <see cref="GetTypeName(ITypeReference)"/>.
+        /// For 3.2.0, change this to return <see cref="IEnumerable{ITemplate}"/> and
+        /// use <see cref="_detectedDependencies"/> instead of <see cref="DetectedDependencies"/>,
+        /// so the method becomes:
+        /// <code>
+        /// <![CDATA[
+        /// public IEnumerable<ITemplate> GetTemplateDependencies()
+        /// {
+        ///     if (!HasTypeResolver())
+        ///     {
+        ///         return _detectedDependencies;
+        ///     }
+        /// 
+        ///     return Types.GetTemplateDependencies().Concat(_detectedDependencies);
+        /// }
+        /// ]]>
+        /// </code>
         /// </summary>
+        [Obsolete(WillBeRemovedIn.Version_3_3_0)]
+        [FixFor_3_2_0]
         public virtual IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             if (!HasTypeResolver())
@@ -429,8 +459,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public virtual string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
-            var name = GetTemplate<IClassProvider>(templateDependency, options)?.FullTypeName();
-            return name != null ? NormalizeTypeName(name) : null;
+            return GetTypeName(GetTemplate<IClassProvider>(templateDependency, options));
         }
 
         /// <summary>
@@ -443,7 +472,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnTemplate(template), options);
+            return GetTypeName(GetTemplate<IClassProvider>(template, options));
         }
 
         /// <summary>
@@ -457,7 +486,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnTemplate(templateId), options);
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, options));
         }
 
         /// <summary>
@@ -471,7 +500,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public string TryGetTypeName(string templateId)
         {
-            return GetTypeName(TemplateDependency.OnTemplate(templateId), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow));
         }
 
         /// <summary>
@@ -489,7 +518,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnModel(templateId, model), options);
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, model, options));
         }
 
         /// <summary>
@@ -507,9 +536,8 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The model instance that the Template must be bound to.</param>
         public string TryGetTypeName(string templateId, IMetadataModel model)
         {
-            return GetTypeName(TemplateDependency.OnModel(templateId, model), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow));
         }
-
 
         /// <summary>
         /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
@@ -526,7 +554,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, modelId, options));
         }
 
         /// <summary>
@@ -544,7 +572,18 @@ namespace Intent.Modules.Common.Templates
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         public string TryGetTypeName(string templateId, string modelId)
         {
-            return GetTypeName(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow));
+        }
+
+        private string GetTypeName(IClassProvider classProvider)
+        {
+            var name = classProvider.FullTypeName();
+            if (name == null)
+            {
+                return null;
+            }
+
+            return NormalizeTypeName(name);
         }
 
         #endregion
@@ -554,47 +593,72 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Retrieve an instance of an <see cref="ITemplate"/>.
         /// </summary>
-        public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null) where TTemplate : class
+        public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null)
+            where TTemplate : class, ITemplate
         {
-            return GetTemplate<TTemplate>(TemplateDependency.OnTemplate(templateId), options);
+            return GetTemplate(
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
+                getDependencyDescriptionForException: () => $"TemplateId = {templateId}",
+                options: options);
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null) where TTemplate : class
+        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+            where TTemplate : class, ITemplate
         {
-            return GetTemplate<TTemplate>(TemplateDependency.OnModel(templateId, model), options);
+            return GetTemplate(
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId),
+                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, ModelId = {modelId}",
+                options: options);
+
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null) where TTemplate : class
+        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null) where TTemplate : class, ITemplate
         {
-            return GetTemplate<TTemplate>(TemplateDependency.OnModel<IMetadataModel>(templateId, x => x.Id == modelId, $"Model Id: {modelId}"), options);
+            return GetTemplate(
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id),
+                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, model.Id = {model.Id}",
+                options: options);
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null) where TTemplate : class
+        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null) where TTemplate : ITemplate
+        {
+            return GetTemplate(
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(dependency),
+                getDependencyDescriptionForException: dependency.ToString,
+                options: options);
+        }
+
+        private TTemplate GetTemplate<TTemplate>(ITemplate template, TemplateDiscoveryOptions options = null)
+            where TTemplate : class, ITemplate
+        {
+            return GetTemplate(
+                getTemplate: () => template as TTemplate,
+                getDependencyDescriptionForException: () => $"{template} as is not a {typeof(TTemplate).Name}",
+                options: options);
+        }
+
+        private TTemplate GetTemplate<TTemplate>(
+            Func<TTemplate> getTemplate,
+            Func<string> getDependencyDescriptionForException,
+            TemplateDiscoveryOptions options = null) where TTemplate : ITemplate
         {
             if (options == null)
             {
                 options = new TemplateDiscoveryOptions();
             }
-            // TODO: Bring this back to prevent unexpected behaviour.
-            //if (!_onCreatedHasHappened)
-            //{
-            //    throw new Exception($"{nameof(GetTypeName)} cannot be called during template instantiation.");
-            //}
 
-            var template = ExecutionContext.FindTemplateInstance<TTemplate>(dependency);
-
+            var template = getTemplate();
             if (template == null && options.ThrowIfNotFound)
             {
-                throw new Exception($"Could not find template from dependency: {dependency}");
+                throw new Exception($"Could not find template from dependency: {getDependencyDescriptionForException()}");
             }
 
             if (options.TrackDependency && template != null)
             {
-                DetectedDependencies.Add(dependency);
-                return template;
+                AddTemplateDependency(template);
             }
 
             return template;
@@ -623,6 +687,11 @@ namespace Intent.Modules.Common.Templates
         /// Whether or not to automatically track the template as a dependency. Defaults to <see langword="true"/>.
         /// </summary>
         public bool TrackDependency { get; set; } = true;
+
+        /// <summary>
+        /// An instance of <see cref="TemplateDiscoveryOptions"/> where <see cref="ThrowIfNotFound"/> is set to false.
+        /// </summary>
+        public static TemplateDiscoveryOptions DoNotThrow { get; } = new TemplateDiscoveryOptions { ThrowIfNotFound = false };
     }
 
     public class TemplateBindingContext : ITemplateBindingContext
