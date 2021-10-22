@@ -680,6 +680,23 @@
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)"/>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.Func{``0},System.Func{System.String},Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <remarks>
+            For 3.2.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
+            must of type <see cref="T:Intent.Templates.ITemplate"/>.<br/>
+            <br/>
+            By implication, all the public overloads of this will need the same constraint applied.<br/>
+            <br/>
+            A blocker for this is that some code in other modules is as follows:
+            <code>
+            <![CDATA[
+            GetTemplate<IModuleBuilderTemplate>
+            ]]>
+            </code>
+            Which means that we will probably need to make IModuleBuilderTemplate derive from
+            <see cref="T:Intent.Templates.ITemplate"/>.
+            </remarks>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.ToString">
             <inheritdoc />
         </member>
@@ -1010,48 +1027,6 @@
             <summary>
             Returns the list of added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/>s
             </summary>
-        </member>
-        <member name="T:Intent.Modules.Common.TypeResolution.TypeResolverBase">
-            <inheritdoc />
-        </member>
-        <member name="P:Intent.Modules.Common.TypeResolution.TypeResolverBase.DefaultCollectionFormat">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.SetDefaultCollectionFormatter(Intent.Modules.Common.TypeResolution.ICollectionFormatter)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.SetDefaultNullableFormatter(Intent.Modules.Common.TypeResolution.INullableFormatter)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.InContext(System.String)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.GetTemplateDependencies">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ITypeReference)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ITypeReference,System.String)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ICanBeReferencedType)">
-            <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverBase.Get(Intent.Metadata.Models.ICanBeReferencedType,System.String)">
-            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.TypeResolution.CanBeReferencedTypeExtensions">
             <summary>

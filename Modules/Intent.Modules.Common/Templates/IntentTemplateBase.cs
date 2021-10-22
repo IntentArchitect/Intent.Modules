@@ -594,7 +594,7 @@ namespace Intent.Modules.Common.Templates
         /// Retrieve an instance of an <see cref="ITemplate"/>.
         /// </summary>
         public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null)
-            where TTemplate : class, ITemplate
+            where TTemplate : class
         {
             return GetTemplate(
                 getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
@@ -604,7 +604,7 @@ namespace Intent.Modules.Common.Templates
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
         public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null)
-            where TTemplate : class, ITemplate
+            where TTemplate : class
         {
             return GetTemplate(
                 getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId),
@@ -614,7 +614,8 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null) where TTemplate : class, ITemplate
+        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+            where TTemplate : class
         {
             return GetTemplate(
                 getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id),
@@ -623,16 +624,17 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null) where TTemplate : ITemplate
+        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null)
+            where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(dependency),
+                getTemplate: () => (TTemplate)ExecutionContext.FindTemplateInstance<ITemplate>(dependency),
                 getDependencyDescriptionForException: dependency.ToString,
                 options: options);
         }
 
         private TTemplate GetTemplate<TTemplate>(ITemplate template, TemplateDiscoveryOptions options = null)
-            where TTemplate : class, ITemplate
+            where TTemplate : class
         {
             return GetTemplate(
                 getTemplate: () => template as TTemplate,
@@ -640,10 +642,26 @@ namespace Intent.Modules.Common.Templates
                 options: options);
         }
 
+        /// <remarks>
+        /// For 3.2.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
+        /// must of type <see cref="ITemplate"/>.<br/>
+        /// <br/>
+        /// By implication, all the public overloads of this will need the same constraint applied.<br/>
+        /// <br/>
+        /// A blocker for this is that some code in other modules is as follows:
+        /// <code>
+        /// <![CDATA[
+        /// GetTemplate<IModuleBuilderTemplate>
+        /// ]]>
+        /// </code>
+        /// Which means that we will probably need to make IModuleBuilderTemplate derive from
+        /// <see cref="ITemplate"/>.
+        /// </remarks>
+        [FixFor_3_2_0]
         private TTemplate GetTemplate<TTemplate>(
             Func<TTemplate> getTemplate,
             Func<string> getDependencyDescriptionForException,
-            TemplateDiscoveryOptions options = null) where TTemplate : ITemplate
+            TemplateDiscoveryOptions options = null)
         {
             if (options == null)
             {
@@ -658,7 +676,7 @@ namespace Intent.Modules.Common.Templates
 
             if (options.TrackDependency && template != null)
             {
-                AddTemplateDependency(template);
+                AddTemplateDependency((ITemplate)template);
             }
 
             return template;
