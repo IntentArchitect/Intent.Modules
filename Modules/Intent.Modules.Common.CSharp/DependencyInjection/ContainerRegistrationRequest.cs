@@ -20,7 +20,6 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
         {
             ConcreteType = concreteType;
             Lifetime = LifeTime.Transient;
-            _templateDependencies.Add(TemplateDependency.OnTemplate(concreteType));
         }
 
         public static ContainerRegistrationRequest ToRegister(IClassProvider concreteType)
