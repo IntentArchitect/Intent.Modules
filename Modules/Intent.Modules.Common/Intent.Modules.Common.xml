@@ -99,6 +99,12 @@
             Extension methods for <see cref="T:Intent.Engine.ISoftwareFactoryExecutionContext"/>.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstances``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Finds all template instances which match the provided <paramref name="templateDependency"/>
+            and casts the results to the specified <typeparamref name="TTemplate"/>.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
             <summary>
             Finds a template instance which matches the provided <paramref name="templateDependency"/>.<br/>

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
+// ReSharper disable CheckNamespace
 namespace Intent.Modules.Common
 {
     /// <summary>
@@ -13,10 +13,18 @@ namespace Intent.Modules.Common
     /// </summary>
     public static class SoftwareFactoryExecutionContextExtensions
     {
+        /// <summary>
+        /// Finds all template instances which match the provided <paramref name="templateDependency"/>
+        /// and casts the results to the specified <typeparamref name="TTemplate"/>.
+        /// </summary>
         public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
             where TTemplate : class
         {
-            return executionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch).Cast<TTemplate>();
+            var templateInstances = templateDependency is IFastLookupTemplateDependency fastLookupTemplateDependency
+                ? fastLookupTemplateDependency.LookupTemplateInstances(executionContext)
+                : executionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch);
+
+            return templateInstances.Cast<TTemplate>();
         }
 
         /// <summary>

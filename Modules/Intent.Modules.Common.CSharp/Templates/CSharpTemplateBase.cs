@@ -183,8 +183,6 @@ namespace Intent.Modules.Common.CSharp.Templates
             return NormalizeNamespace(name);
         }
 
-        private string[] _usingPaths;
-
         /// <summary>
         /// Converts the namespace of a fully qualified class name to the relative namespace for this class instance.
         /// </summary>
@@ -203,7 +201,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 foreignType = $"{foreignType.Substring(0, foreignType.IndexOf("<", StringComparison.Ordinal))}";
             }
 
-            _usingPaths = _usingPaths ?? DependencyUsings
+            var usingPaths = DependencyUsings
                 .Split(';')
                 .Select(x => x.Trim().Replace("using ", ""))
                 .Where(x => !string.IsNullOrWhiteSpace(x))
@@ -212,13 +210,13 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .Distinct()
                 .ToArray();
             var localNamespace = Namespace;
-            var knownOtherPaths = _usingPaths
+            var knownOtherPaths = usingPaths
                 .Concat(ExecutionContext.OutputTargets.Select(x => x.Name))
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Distinct()
                 .ToArray();
 
-            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, _usingPaths) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
+            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
 
         private IEnumerable<string> _templateUsings;
