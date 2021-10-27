@@ -644,7 +644,7 @@ namespace Intent.Modules.Common.Templates
 
         /// <remarks>
         /// For 3.2.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
-        /// must of type <see cref="ITemplate"/>.<br/>
+        /// must be of type <see cref="ITemplate"/>.<br/>
         /// <br/>
         /// By implication, all the public overloads of this will need the same constraint applied.<br/>
         /// <br/>
@@ -688,81 +688,6 @@ namespace Intent.Modules.Common.Templates
         public override string ToString()
         {
             return $"{Id}";
-        }
-    }
-
-    /// <summary>
-    /// Template discovery options.
-    /// </summary>
-    public class TemplateDiscoveryOptions
-    {
-        /// <summary>
-        /// Throw an exception if the template is not found. Defaults to <see langword="true"/>.
-        /// </summary>
-        public bool ThrowIfNotFound { get; set; } = true;
-
-        /// <summary>
-        /// Whether or not to automatically track the template as a dependency. Defaults to <see langword="true"/>.
-        /// </summary>
-        public bool TrackDependency { get; set; } = true;
-
-        /// <summary>
-        /// An instance of <see cref="TemplateDiscoveryOptions"/> where <see cref="ThrowIfNotFound"/> is set to false.
-        /// </summary>
-        public static TemplateDiscoveryOptions DoNotThrow { get; } = new TemplateDiscoveryOptions { ThrowIfNotFound = false };
-    }
-
-    public class TemplateBindingContext : ITemplateBindingContext
-    {
-        private object _defaultModelContext;
-        private Dictionary<string, object> _prefixLookup;
-
-        public TemplateBindingContext(object defaultModelContext)
-        {
-            _defaultModelContext = defaultModelContext;
-        }
-
-        public TemplateBindingContext() : this(null)
-        {
-        }
-
-        public void SetDefaultModel(object modelContext)
-        {
-            _defaultModelContext = modelContext;
-        }
-
-        public void AddFakeProperty<T>(string fakePropertyName, T obj)
-        {
-            if (_prefixLookup == null)
-            {
-                _prefixLookup = new Dictionary<string, object>();
-            }
-            _prefixLookup[fakePropertyName] = obj;
-        }
-
-        public object GetProperty(string propertyName)
-        {
-            if (_prefixLookup != null && _prefixLookup.ContainsKey(propertyName))
-            {
-                return _prefixLookup[propertyName];
-            }
-
-            return null;
-            //if (_prefixLookup != null && _prefixLookup.ContainsKey(propertyName))
-            //{
-            //    isDefault = false;
-            //    return _prefixLookup[propertyName];
-            //}
-            //else
-            //{
-            //    isDefault = true;
-            //    return _defaultModelContext;
-            //}
-        }
-
-        public object GetRootModel()
-        {
-            return _defaultModelContext;
         }
     }
 }

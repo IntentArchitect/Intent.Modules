@@ -683,7 +683,7 @@
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.Func{``0},System.Func{System.String},Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <remarks>
             For 3.2.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
-            must of type <see cref="T:Intent.Templates.ITemplate"/>.<br/>
+            must be of type <see cref="T:Intent.Templates.ITemplate"/>.<br/>
             <br/>
             By implication, all the public overloads of this will need the same constraint applied.<br/>
             <br/>
@@ -699,26 +699,6 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.ToString">
             <inheritdoc />
-        </member>
-        <member name="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions">
-            <summary>
-            Template discovery options.
-            </summary>
-        </member>
-        <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.ThrowIfNotFound">
-            <summary>
-            Throw an exception if the template is not found. Defaults to <see langword="true"/>.
-            </summary>
-        </member>
-        <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.TrackDependency">
-            <summary>
-            Whether or not to automatically track the template as a dependency. Defaults to <see langword="true"/>.
-            </summary>
-        </member>
-        <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.DoNotThrow">
-            <summary>
-            An instance of <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> where <see cref="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.ThrowIfNotFound"/> is set to false.
-            </summary>
         </member>
         <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.GenerationEnvironment">
             <summary>
@@ -844,6 +824,26 @@
         <member name="F:Intent.Modules.Common.Templates.TemplateDependency.FastLookupTemplateDependency`2.InstanceCache">
             <summary>
             Avoids additional memory allocations and also improves effectiveness of <see cref="F:Intent.Modules.Common.Templates.TemplateDependency.FastLookupTemplateDependency`2._cachedLookupTemplateInstance"/>.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions">
+            <summary>
+            Template discovery options.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.ThrowIfNotFound">
+            <summary>
+            Throw an exception if the template is not found. Defaults to <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.TrackDependency">
+            <summary>
+            Whether or not to automatically track the template as a dependency. Defaults to <see langword="true"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.DoNotThrow">
+            <summary>
+            An instance of <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> where <see cref="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.ThrowIfNotFound"/> is set to false.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.TypeResolution.CollectionFormatter">
