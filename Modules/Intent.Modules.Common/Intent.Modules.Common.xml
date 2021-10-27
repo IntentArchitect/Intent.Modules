@@ -99,45 +99,9 @@
             Extension methods for <see cref="T:Intent.Engine.ISoftwareFactoryExecutionContext"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstances``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
             <summary>
-            Finds all template instances which match the provided <paramref name="templateDependency"/>
-            and casts the results to the specified <typeparamref name="TTemplate"/>.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
-            <summary>
-            Finds a template instance which matches the provided <paramref name="templateDependency"/>.<br/>
-            <br/>
-            If more than once instance is found an exception is thrown.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.String)">
-            <summary>
-            Finds a template instance which has the provided <paramref name="templateId"/> and
-            <paramref name="className"/> and casts the result to the specified <typeparamref name="TTemplate"/>.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.Object)">
-            <summary>
-            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id" /> of <paramref name="templateId" />
-            which is also a <see cref="T:Intent.Templates.ITemplateWithModel" /> whose
-            <see cref="P:Intent.Templates.ITemplateWithModel.Model" />'s reference matches that of the provided
-            <paramref name="model" /> and casts the result to the specified <typeparamref name="TTemplate"/>.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String)">
-            <summary>
-            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id" /> of <paramref name="templateId" />
-            and casts the result to the specified <typeparamref name="TTemplate"/>.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
-            <summary>
-            Finds a template instance which matches the provided <paramref name="templateDependency"/>
-            and casts the result to the specified <typeparamref name="TTemplate"/>.<br/>
-            <br/>
-            If more than once instance is found an exception is thrown.
+            Finds the <see cref="T:Intent.Engine.IOutputTarget"/> that is targeted by the provided <paramref name="templateDependency"/>.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,Intent.Metadata.Models.IMetadataModel)">
@@ -148,9 +112,45 @@
             <see cref="P:Intent.Metadata.Models.IMetadataModel.Id" /> matches that of the provided <paramref name="hasModel" />.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindOutputTargetWithTemplate(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
             <summary>
-            Finds the <see cref="T:Intent.Engine.IOutputTarget"/> that is targeted by the provided <paramref name="templateDependency"/>.
+            Finds a template instance which matches the provided <paramref name="templateDependency"/>.<br/>
+            <br/>
+            If more than once instance is found an exception is thrown.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Finds a template instance which matches the provided <paramref name="templateDependency"/>
+            and casts the result to the specified <typeparamref name="TTemplate"/>.<br/>
+            <br/>
+            If more than once instance is found an exception is thrown.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String)">
+            <summary>
+            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id" /> of <paramref name="templateId" />
+            and casts the result to the specified <typeparamref name="TTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.Object)">
+            <summary>
+            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id" /> of <paramref name="templateId" />
+            which is also a <see cref="T:Intent.Templates.ITemplateWithModel" /> whose
+            <see cref="P:Intent.Templates.ITemplateWithModel.Model" />'s reference matches that of the provided
+            <paramref name="model" /> and casts the result to the specified <typeparamref name="TTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstance``1(Intent.Engine.ISoftwareFactoryExecutionContext,System.String,System.String)">
+            <summary>
+            Finds a template instance which has the provided <paramref name="templateId"/> and
+            <paramref name="className"/> and casts the result to the specified <typeparamref name="TTemplate"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.SoftwareFactoryExecutionContextExtensions.FindTemplateInstances``1(Intent.Engine.ISoftwareFactoryExecutionContext,Intent.Modules.Common.ITemplateDependency)">
+            <summary>
+            Finds all template instances which match the provided <paramref name="templateDependency"/>
+            and casts the results to the specified <typeparamref name="TTemplate"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.StereotypeExtensions">
