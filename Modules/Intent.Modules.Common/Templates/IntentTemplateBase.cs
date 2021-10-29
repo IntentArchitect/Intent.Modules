@@ -500,7 +500,11 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public string TryGetTypeName(string templateId)
         {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow));
+            var classProvider = GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow);
+
+            return classProvider != null
+                ? GetTypeName(classProvider)
+                : null;
         }
 
         /// <summary>
@@ -536,7 +540,11 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The model instance that the Template must be bound to.</param>
         public string TryGetTypeName(string templateId, IMetadataModel model)
         {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow));
+            var classProvider = GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow);
+
+            return classProvider != null
+                ? GetTypeName(classProvider)
+                : null;
         }
 
         /// <summary>
@@ -572,7 +580,11 @@ namespace Intent.Modules.Common.Templates
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         public string TryGetTypeName(string templateId, string modelId)
         {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow));
+            var classProvider = GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow);
+
+            return classProvider != null
+                ? GetTypeName(classProvider)
+                : null;
         }
 
         private string GetTypeName(IClassProvider classProvider)
