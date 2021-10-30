@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9dc7a39d-dc03-44d9-8e69-1b21498cfded" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+  <name>GenericDTO</name>
+  <display>GenericDTO&lt;T&gt;</display>
+  <isAbstract>false</isAbstract>
+  <order>4</order>
+  <genericTypes>
+    <genericType id="dfef258c-4006-4ca0-82af-8e25ebe31fbc">
+      <name>T</name>
+    </genericType>
+  </genericTypes>
+  <isMapped>false</isMapped>
+  <parentFolderId>7ed452ae-334c-48f7-b0aa-0426fc21e243</parentFolderId>
+  <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
+  <packageName>Services</packageName>
+  <stereotypes />
+  <childElements />
+</class>

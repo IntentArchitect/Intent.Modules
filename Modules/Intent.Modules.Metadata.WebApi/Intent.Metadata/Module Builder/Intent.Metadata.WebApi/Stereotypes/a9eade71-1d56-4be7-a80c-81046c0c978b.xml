@@ -19,6 +19,7 @@
   <properties>
     <property id="2b39acef-6079-48c9-b85e-2b0981f9de70">
       <comment>A comma delimited list of roles that are allowed to access the resource</comment>
+      <hint>A comma separated list of roles</hint>
       <name>Roles</name>
       <type>string</type>
       <controlType>text</controlType>

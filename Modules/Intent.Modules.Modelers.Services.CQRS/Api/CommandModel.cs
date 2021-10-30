@@ -78,6 +78,10 @@ namespace Intent.Modelers.Services.CQRS.Api
         public string Comment => _element.Comment;
 
         public FolderModel Folder { get; }
+
+        public bool IsMapped => _element.IsMapped;
+
+        public IElementMapping Mapping => _element.MappedElement;
     }
 
     [IntentManaged(Mode.Fully)]

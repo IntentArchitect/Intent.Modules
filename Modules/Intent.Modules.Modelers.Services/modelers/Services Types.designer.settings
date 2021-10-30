@@ -80,7 +80,7 @@
     <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
       <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <displayFunction>return `${name}${(typeReference.typeId ? " : " + typeReference.display : "")}`;</displayFunction>
+      <displayFunction>return `${name}${genericTypes}${(typeReference.typeId ? " : " + typeReference.display : "")}`;</displayFunction>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowGenericTypes>true</allowGenericTypes>

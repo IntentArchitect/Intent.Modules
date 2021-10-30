@@ -3,12 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.1.0</Version>
+    <Version>3.1.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Architect.Persistence" Version="3.1.0" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.1.0" />
     <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
@@ -21,16 +22,19 @@
 
   <ItemGroup>
     <Compile Remove="Api\Modeler\**" />
+    <Compile Remove="External\Settings\**" />
     <Compile Remove="Intent.Metadata\**" />
     <Compile Remove="Templates\RoslynProjectItemTemplatePartial\**" />
     <Compile Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
     <Compile Remove="Templates\RoslynProjectItemTemplate\**" />
     <EmbeddedResource Remove="Api\Modeler\**" />
+    <EmbeddedResource Remove="External\Settings\**" />
     <EmbeddedResource Remove="Intent.Metadata\**" />
     <EmbeddedResource Remove="Templates\RoslynProjectItemTemplatePartial\**" />
     <EmbeddedResource Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
     <EmbeddedResource Remove="Templates\RoslynProjectItemTemplate\**" />
     <None Remove="Api\Modeler\**" />
+    <None Remove="External\Settings\**" />
     <None Remove="Intent.Metadata\**" />
     <None Remove="Templates\RoslynProjectItemTemplatePartial\**" />
     <None Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />

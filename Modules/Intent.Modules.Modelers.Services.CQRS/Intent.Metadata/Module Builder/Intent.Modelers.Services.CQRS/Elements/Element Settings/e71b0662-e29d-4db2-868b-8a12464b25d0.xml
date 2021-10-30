@@ -3,7 +3,7 @@
   <name>Query</name>
   <display>Query</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>6ac83417-e6d5-4699-b88c-aa1d7f894326</parentFolderId>

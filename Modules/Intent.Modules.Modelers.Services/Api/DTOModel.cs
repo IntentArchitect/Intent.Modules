@@ -38,6 +38,8 @@ namespace Intent.Modelers.Services.Api
 
         public IElementMapping Mapping => _element.MappedElement;
 
+        public IElement InternalElement => _element;
+
         public IList<DTOFieldModel> Fields => _element.ChildElements
             .GetElementsOfType(DTOFieldModel.SpecializationTypeId)
             .Select(x => new DTOFieldModel(x))
@@ -62,8 +64,6 @@ namespace Intent.Modelers.Services.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        public IElement InternalElement => _element;
 
         public override string ToString()
         {

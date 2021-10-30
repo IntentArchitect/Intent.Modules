@@ -42,12 +42,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 
         public override string TransformText()
         {
-            var path = FileMetadata.GetFilePath();
-            var designer = ApplicationDesignerPersistable.Create(
-                id: Model.Id,
-                name: Model.Name,
-                order: Model.GetDesignerConfig().DisplayOrder() ?? 0,
-                icon: Model.GetDesignerConfig().Icon().ToPersistable());
+            var designer = new ApplicationDesignerPersistable {
+                Id = Model.Id,
+                Name = Model.Name,
+                Order = Model.GetDesignerConfig().DisplayOrder() ?? 0,
+                Icon = Model.GetDesignerConfig().Icon().ToPersistable()
+            };
 
             if (Model.GetOutputConfiguration() != null)
             {

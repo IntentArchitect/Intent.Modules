@@ -75,7 +75,8 @@ namespace Intent.ModuleBuilder.Api
                 LookupTypes = this.GetMappingSettings().OptionSource().IsElementsOfType()
                     ? this.GetMappingSettings().LookupTypes().Select(x => new TargetTypeOption() { SpecializationType = x.Id, DisplayText = x.Name }).ToList() : null,
                 MapFrom = GetMapFromEnumValue(),
-                MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList()
+                Symbol = this.GetMappingSettings().Symbol(),
+                MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList(),
             };
         }
 

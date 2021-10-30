@@ -33,6 +33,17 @@ namespace Intent.Metadata.WebApi.Api
             return model.HasStereotype("Secured");
         }
 
+        public static Unsecured GetUnsecured(this ServiceModel model)
+        {
+            var stereotype = model.GetStereotype("Unsecured");
+            return stereotype != null ? new Unsecured(stereotype) : null;
+        }
+
+        public static bool HasUnsecured(this ServiceModel model)
+        {
+            return model.HasStereotype("Unsecured");
+        }
+
 
         public class HttpServiceSettings
         {
@@ -67,6 +78,19 @@ namespace Intent.Metadata.WebApi.Api
             {
                 return _stereotype.GetProperty<string>("Roles");
             }
+
+        }
+
+        public class Unsecured
+        {
+            private IStereotype _stereotype;
+
+            public Unsecured(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
 
         }
 

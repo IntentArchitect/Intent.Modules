@@ -3,6 +3,7 @@
   <name>Unsecured</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
+    <type id="b16578a5-27b1-4047-a8df-f0b783d706bd">Service</type>
     <type id="e030c97a-e066-40a7-8188-808c275df3cb">Operation</type>
   </targetTypes>
   <targetReferenceTypes />

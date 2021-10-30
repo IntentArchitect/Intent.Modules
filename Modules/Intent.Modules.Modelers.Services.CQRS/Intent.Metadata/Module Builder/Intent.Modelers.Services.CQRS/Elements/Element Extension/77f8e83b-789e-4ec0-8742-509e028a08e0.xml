@@ -3,7 +3,7 @@
   <name>Parameter Extension</name>
   <display>Parameter Extension: Parameter</display>
   <isAbstract>false</isAbstract>
-  <order>5</order>
+  <order>4</order>
   <genericTypes />
   <typeReference id="92c82272-1056-4269-80b3-afaf53400e3d">
     <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>

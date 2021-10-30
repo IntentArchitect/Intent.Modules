@@ -34,7 +34,6 @@ namespace Intent.ModuleBuilder.Api
                 Id = TypeReference.Element.Id,
                 Name = TypeReference.Element.Name,
                 Module = TypeReference.Element.Package.Name,
-                Type = DesignerSettingsReferenceType.Reference
             };
         }
 

@@ -3,7 +3,7 @@
   <name>NewDTO</name>
   <display>NewDTO</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>7</order>
   <genericTypes />
   <isMapped>true</isMapped>
   <mappedClass>

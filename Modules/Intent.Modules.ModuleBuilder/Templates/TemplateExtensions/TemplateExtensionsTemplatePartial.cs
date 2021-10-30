@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
         public const string TemplateId = "Intent.ModuleBuilder.Templates.TemplateExtensions";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TemplateExtensionsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, null)
+        public TemplateExtensionsTemplate(IOutputTarget outputTarget, object model = null) : base(TemplateId, outputTarget, model)
         {
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {

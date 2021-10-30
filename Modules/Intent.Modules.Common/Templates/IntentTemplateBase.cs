@@ -350,7 +350,7 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="typeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the
@@ -368,7 +368,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// <para>
         /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="typeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// </para>
         /// <para>
         /// See the
@@ -384,7 +384,7 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="hasTypeReference."/> parameter.
-        /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the
@@ -401,7 +401,7 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="hasTypeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -416,7 +416,7 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="element"/> parameter.
-        /// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the
@@ -433,7 +433,7 @@ namespace Intent.Modules.Common.Templates
 
         ///// <summary>
         ///// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="element"/> parameter.
-        ///// Any added <see cref="ITypeSource"/> added by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        ///// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         ///// <para>
         ///// See the
         ///// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -546,6 +546,7 @@ namespace Intent.Modules.Common.Templates
                 ? GetTypeName(classProvider)
                 : null;
         }
+            
 
         /// <summary>
         /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.

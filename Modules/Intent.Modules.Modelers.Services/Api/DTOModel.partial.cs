@@ -12,7 +12,7 @@ namespace Intent.Modelers.Services.Api
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public partial class DTOModel
     {
-        //public IElementApplication Application => _element.Application;
+        public IElementApplication Application => _element.Application;
 
         /// <summary>
         /// Returns fields contained in this <see cref="DTOModel"/> instance, as well as those in its <see cref="BaseType"/> hierarchy.

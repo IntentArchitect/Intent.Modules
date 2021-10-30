@@ -16,8 +16,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         public string AsNullable(IResolvedTypeInfo typeInfo)
         {
             if (typeInfo.IsNullable && !IsInterface(typeInfo) &&
-                (typeInfo.IsPrimitive || 
-                 _project.IsNullableAwareContext() || 
+                (typeInfo.IsPrimitive || _project.IsNullableAwareContext() || 
                  typeInfo.TypeReference.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
             {
                 return $"{typeInfo.Name}?";

@@ -63,6 +63,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Auto-sync Type References");
             }
 
+            public string Symbol()
+            {
+                return _stereotype.GetProperty<string>("Symbol");
+            }
+
             public class OptionSourceOptions
             {
                 public readonly string Value;

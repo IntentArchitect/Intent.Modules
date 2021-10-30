@@ -90,5 +90,14 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="d881ebc8-282a-4d04-91af-4aba9f040804">
+      <name>Symbol</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

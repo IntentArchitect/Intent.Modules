@@ -3,7 +3,7 @@
   <name>Operation Extension</name>
   <display>Operation Extension: Operation</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <order>3</order>
   <genericTypes />
   <typeReference id="922a2560-24ec-4df3-82d3-871922d35a40">
     <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
@@ -59,6 +59,7 @@
             <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" value="[&quot;ccf14eb6-3a55-4d81-b5b9-d27311c70cb9&quot;,&quot;e71b0662-e29d-4db2-868b-8a12464b25d0&quot;]" isActive="true" />
             <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
+            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

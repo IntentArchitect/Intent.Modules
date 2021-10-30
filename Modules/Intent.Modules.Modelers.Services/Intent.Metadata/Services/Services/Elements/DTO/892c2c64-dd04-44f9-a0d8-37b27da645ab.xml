@@ -3,7 +3,7 @@
   <name>MyDTO</name>
   <display>MyDTO</display>
   <isAbstract>true</isAbstract>
-  <order>0</order>
+  <order>5</order>
   <genericTypes />
   <isMapped>true</isMapped>
   <mappedClass>
@@ -31,6 +31,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -51,7 +53,7 @@
       <name>isDisputeAllowed</name>
       <display>isDisputeAllowed: bool</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>1</order>
       <genericTypes />
       <typeReference id="55749bb8-a9c6-45b3-a812-094385cb1f25">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -59,6 +61,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -80,7 +84,7 @@
       <name>isShownExternally</name>
       <display>isShownExternally: bool</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>2</order>
       <genericTypes />
       <typeReference id="0ae8f6e5-2fdf-4eac-8e83-59e713b30f98">
         <typeId>e6f92b09-b2c5-4536-8270-a4d9e5bbd930</typeId>
@@ -88,6 +92,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -109,7 +115,7 @@
       <name>clientResponsePeriod</name>
       <display>clientResponsePeriod: int?</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>3</order>
       <genericTypes />
       <typeReference id="dd17bfb5-3c22-4a75-8bb0-71341c33bcf7">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -117,6 +123,8 @@
         <isNullable>true</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -137,7 +145,7 @@
       <name>subjectResponsePeriod</name>
       <display>subjectResponsePeriod: int?</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>4</order>
       <genericTypes />
       <typeReference id="a1292b61-3bcf-4ab4-bd39-6b9a0e1780dd">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -145,6 +153,8 @@
         <isNullable>true</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -165,7 +175,7 @@
       <name>monitoringPeriod</name>
       <display>monitoringPeriod: int?</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>5</order>
       <genericTypes />
       <typeReference id="15e09bed-40cb-47ab-82fb-9c7e72a6de79">
         <typeId>fb0a362d-e9e2-40de-b6ff-5ce8167cbe74</typeId>
@@ -173,6 +183,8 @@
         <isNullable>true</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -193,7 +205,7 @@
       <name>GetSomething</name>
       <display>GetSomething: string</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>6</order>
       <genericTypes />
       <typeReference id="d0b07aa1-05ef-4b89-bfab-36411691ed47">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -201,6 +213,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -221,7 +235,7 @@
       <name>xxx</name>
       <display>xxx: string</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>7</order>
       <genericTypes />
       <typeReference id="c67412fe-3f1b-484e-888f-cce877fd7a5e">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -229,6 +243,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -252,7 +268,7 @@
       <name>field</name>
       <display>field: string</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>8</order>
       <genericTypes />
       <typeReference id="8c0502ac-8c47-4617-91de-0075ae771243">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -260,6 +276,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
@@ -282,7 +300,7 @@
       <name>association</name>
       <display>association: string</display>
       <isAbstract>true</isAbstract>
-      <order>0</order>
+      <order>9</order>
       <genericTypes />
       <typeReference id="7dfd9096-3d84-474b-9d31-a8864247f2fb">
         <typeId>d384db9c-a279-45e1-801e-e4e8099625f2</typeId>
@@ -290,6 +308,8 @@
         <isNullable>false</isNullable>
         <isCollection>false</isCollection>
         <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
         <stereotypes />
         <genericTypeParameters />
       </typeReference>
