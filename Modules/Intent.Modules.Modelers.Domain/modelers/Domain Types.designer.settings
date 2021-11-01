@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
+<settings version="3.1.1">
   <id>db2f5755-5256-46d1-bb45-72bf2c7cde42</id>
   <name>Domain Types</name>
   <designerReferences />
@@ -160,6 +160,7 @@ diagram.loadDiagram();
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <visualSettings type="Class">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
@@ -276,6 +277,7 @@ white-space: inherit;`</style>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
@@ -308,44 +310,49 @@ white-space: inherit;`</style>
           </creationOptions>
           <scriptOptions />
           <mappingSettings>
-            <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
-            <optionsSource>lookup-element</optionsSource>
-            <lookupElementFunction>return getParent().id</lookupElementFunction>
-            <autoSyncTypeReferences>true</autoSyncTypeReferences>
-            <mapFrom>root</mapFrom>
-            <mappings>
-              <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
-                <criteria specializationType="Class">
-                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                  <isCollection d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                </criteria>
-                <mapTo specializationType="Class Constructor" childMappingMode="map-to-child" />
-                <behaviour autoSelectChildren="true" />
-                <childMappings>
-                  <mapping id="5601382d-8b87-465f-bc8c-d41fcc28185d">
-                    <criteria specializationType="Attribute">
-                      <hasTypeReference d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
-                      <isCollection d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
-                      <hasChildren d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
-                    </criteria>
-                    <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
-                    <behaviour autoSelectChildren="false" />
-                    <childMappings />
-                  </mapping>
-                  <mapping id="6a1129e9-e2a3-4df5-9678-98bc9d839836">
-                    <criteria specializationType="Association Target End">
-                      <hasTypeReference d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
-                      <isCollection d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
-                      <hasChildren d12p1:nil="true" xmlns:d12p1="http://www.w3.org/2001/XMLSchema-instance" />
-                    </criteria>
-                    <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
-                    <behaviour autoSelectChildren="false" />
-                    <childMappings />
-                  </mapping>
-                </childMappings>
-              </mapping>
-            </mappings>
+            <mappingSetting id="d6d0abfd-893c-4bec-92cb-419934ba5ba8">
+              <name>Map Constructor</name>
+              <shortcut>ctrl + shift + m</shortcut>
+              <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+              <optionsSource>lookup-element</optionsSource>
+              <lookupElementFunction>return getParent().id</lookupElementFunction>
+              <autoSyncTypeReferences>true</autoSyncTypeReferences>
+              <symbol>fa-long-arrow-right</symbol>
+              <mapFrom>root</mapFrom>
+              <mappings>
+                <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
+                  <criteria specializationType="Class">
+                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Class Constructor" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="5601382d-8b87-465f-bc8c-d41fcc28185d">
+                      <criteria specializationType="Attribute">
+                        <hasTypeReference d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="6a1129e9-e2a3-4df5-9678-98bc9d839836">
+                      <criteria specializationType="Association Target End">
+                        <hasTypeReference d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </mappings>
+            </mappingSetting>
           </mappingSettings>
           <childElementSettings />
         </childElementSetting>
@@ -392,6 +399,7 @@ white-space: inherit;`</style>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
@@ -422,6 +430,7 @@ white-space: inherit;`</style>
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -455,6 +464,7 @@ white-space: inherit;`</style>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <visualSettings type="Comment">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
@@ -493,6 +503,7 @@ white-space: inherit;`</style>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
         <creationOptions>
@@ -588,6 +599,7 @@ white-space: inherit;`</style>
         <type>Diagram</type>
         <type>Stereotype-Definition</type>
       </typeOrder>
+      <mappingSettings />
     </elementExtension>
   </elementExtensions>
   <associationSettings>

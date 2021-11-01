@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <association id="166031d4-e264-4452-8b2d-cff447062713">
-  <sourceEnd id="0f45336f-2628-4a4d-9931-e75871eef159">
+  <sourceEnd id="0f45336f-2628-4a4d-9931-e75871eef159" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
     <name>NewClass2</name>
     <display>NewClass2: NewClass2</display>
     <typeReference id="91cace3b-6022-4288-b8ca-9b17c80d17ad">
@@ -16,7 +16,7 @@
     </typeReference>
     <stereotypes />
   </sourceEnd>
-  <targetEnd id="166031d4-e264-4452-8b2d-cff447062713">
+  <targetEnd id="166031d4-e264-4452-8b2d-cff447062713" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>EmptyClass</name>
     <display>EmptyClass: EmptyClass</display>
     <typeReference id="19a359fd-340b-4a6b-8383-5eebf10539e5">

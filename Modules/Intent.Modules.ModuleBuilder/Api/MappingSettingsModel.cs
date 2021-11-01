@@ -63,10 +63,13 @@ namespace Intent.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        public MappingSettingsPersistable ToPersistable()
+        public MappingSettingPersistable ToPersistable()
         {
-            return new MappingSettingsPersistable()
+            return new MappingSettingPersistable()
             {
+                Id = Id,
+                Name = Name,
+                Shortcut = this.GetMappingSettings().Shortcut(),
                 DefaultModeler = this.GetMappingSettings().DefaultDesigner().Id,
                 OptionsSource = GetOptionsSourceEnumValue(),
                 LookupElementFunction = this.GetMappingSettings().OptionSource().IsLookupElement()
@@ -76,6 +79,7 @@ namespace Intent.ModuleBuilder.Api
                     ? this.GetMappingSettings().LookupTypes().Select(x => new TargetTypeOption() { SpecializationType = x.Id, DisplayText = x.Name }).ToList() : null,
                 MapFrom = GetMapFromEnumValue(),
                 Symbol = this.GetMappingSettings().Symbol(),
+                StyleFunction = this.GetMappingSettings().Style(),
                 MappedTypes = this.Mappings.Select(x => x.ToPersistable()).ToList(),
             };
         }

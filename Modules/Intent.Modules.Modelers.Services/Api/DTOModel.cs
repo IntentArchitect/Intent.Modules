@@ -84,5 +84,25 @@ namespace Intent.Modelers.Services.Api
         {
             return type.IsDTOModel() ? new DTOModel((IElement)type) : null;
         }
+
+        public static bool HasProjectFromDomainMapping(this DTOModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "1f747d14-681c-4a20-8c68-34223f41b825";
+        }
+
+        public static IElementMapping GetProjectFromDomainMapping(this DTOModel type)
+        {
+            return type.HasProjectFromDomainMapping() ? type.Mapping : null;
+        }
+
+        public static bool HasMapToDomainMapping(this DTOModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "06f5b559-1912-4e90-b903-dbca9e540dae";
+        }
+
+        public static IElementMapping GetMapToDomainMapping(this DTOModel type)
+        {
+            return type.HasMapToDomainMapping() ? type.Mapping : null;
+        }
     }
 }

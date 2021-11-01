@@ -66,7 +66,7 @@ namespace Intent.ModuleBuilder.Api
                 AllowAbstract = this.GetSettings().AllowAbstract(),
                 AllowSetValue = this.GetSettings().AllowSetValue(),
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
-                AllowMapping = this.MappingSettings != null,
+                AllowMapping = this.MappingSettings.Any(),
                 AllowSorting = this.GetSettings().AllowSorting(),
                 SortChildren = ToSortChildrenOptions(this.GetSettings().SortChildren()),
                 AllowFindInView = this.GetSettings().AllowFindInView(),
@@ -83,7 +83,7 @@ namespace Intent.ModuleBuilder.Api
                 } : null,
                 DiagramSettings = DiagramSettings?.ToPersistable(),
                 ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
-                MappingSettings = this.MappingSettings?.ToPersistable(),
+                MappingSettings = this.MappingSettings.Select(x => x.ToPersistable()).ToList(),
                 CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
@@ -155,10 +155,10 @@ namespace Intent.ModuleBuilder.Api
             .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
-        public MappingSettingsModel MappingSettings => _element.ChildElements
+        public IList<MappingSettingsModel> MappingSettings => _element.ChildElements
             .GetElementsOfType(MappingSettingsModel.SpecializationTypeId)
             .Select(x => new MappingSettingsModel(x))
-            .SingleOrDefault();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()

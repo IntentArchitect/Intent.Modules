@@ -1,14 +1,13 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <Version>3.1.0</Version>
+    <Version>3.1.2</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Services Modeller</Product>
-    <Copyright>Copyright 2019</Copyright>
+    <Copyright>Copyright 2021</Copyright>
     <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
     <PackageTags>Intent Architect Software Factory SDK Modules Services Modeler</PackageTags>
     <RootNamespace>Intent.Modelers.Services</RootNamespace>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
@@ -21,13 +20,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.1.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.1.8" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.1.0" />
     <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.1.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,25 +52,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>DTOModel.partial.cs</DependentUpon>
     </Compile>
-
     <Compile Update="Api\DTOFieldModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DTOFieldModel.partial.cs</DependentUpon>
     </Compile>
-
     <Compile Update="Api\OperationModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>OperationModel.partial.cs</DependentUpon>
     </Compile>
-
     <Compile Update="Api\ParameterModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ParameterModel.partial.cs</DependentUpon>
     </Compile>
-
     <Compile Update="Api\ServiceModel.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

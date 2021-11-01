@@ -16,6 +16,15 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
+    <property id="b986d2ea-50ff-4314-afc0-cb14ae7aad71">
+      <name>Shortcut</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="d233d3f9-934a-4690-a476-778e0c4927ef">
       <name>Default Designer</name>
       <type>string</type>
@@ -81,6 +90,7 @@
       <isRequiredFunction>return true</isRequiredFunction>
     </property>
     <property id="02e7f455-ba13-4e99-ac6c-a46490980134">
+      <hint />
       <name>Auto-sync Type References</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -91,7 +101,18 @@
       <lookupTypes />
     </property>
     <property id="d881ebc8-282a-4d04-91af-4aba9f040804">
+      <hint>Uses font-awesome icons (e.g. fa-long-arrow-right)</hint>
       <name>Symbol</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="5ced3423-774f-427e-b93e-67b5a16bdf7d">
+      <hint>Optional specification for styling in CSS</hint>
+      <name>Style</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>

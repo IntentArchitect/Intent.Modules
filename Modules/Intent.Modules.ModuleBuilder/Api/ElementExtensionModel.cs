@@ -45,10 +45,10 @@ namespace Intent.ModuleBuilder.Api
         public string Id => _element.Id;
 
         [IntentManaged(Mode.Fully)]
-        public MappingSettingsModel MappingSettings => _element.ChildElements
+        public IList<MappingSettingsModel> MappingSettings => _element.ChildElements
             .GetElementsOfType(MappingSettingsModel.SpecializationTypeId)
             .Select(x => new MappingSettingsModel(x))
-            .SingleOrDefault();
+            .ToList();
 
         [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements
@@ -77,7 +77,7 @@ namespace Intent.ModuleBuilder.Api
                     .ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
-                MappingSettings = MappingSettings?.ToPersistable(),
+                MappingSettings = MappingSettings.Select(x => x.ToPersistable()).ToList(),
                 TypeReferenceExtensionSetting = !this.GetTypeReferenceExtensionSettings().Mode().IsInherit() ?
                     new TypeReferenceExtensionSettingPersistable()
                     {

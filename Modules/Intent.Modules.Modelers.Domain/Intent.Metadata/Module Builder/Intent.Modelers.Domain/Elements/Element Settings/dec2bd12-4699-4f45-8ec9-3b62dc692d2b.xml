@@ -99,8 +99,8 @@
       </childElements>
     </childElement>
     <childElement id="d6d0abfd-893c-4bec-92cb-419934ba5ba8" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
-      <name>NewMappingSettings</name>
-      <display>[mappings]</display>
+      <name>Map Constructor</name>
+      <display>[mappings]: Map Constructor</display>
       <isAbstract>false</isAbstract>
       <order>1</order>
       <genericTypes />
@@ -114,19 +114,22 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
+            <property name="b986d2ea-50ff-4314-afc0-cb14ae7aad71" display="Shortcut" value="ctrl + shift + m" isActive="true" />
             <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="6ab29b31-27af-4f56-a67c-986d82097d63" isActive="true" />
             <property name="39d623e0-b8c5-4d23-8d78-75a7e2fa0c9d" display="Option Source" value="Lookup Element" isActive="true" />
             <property name="5bed7f14-ebd8-4055-be29-3a2f8407eb5d" display="Lookup Element Function" value="return getParent().id" isActive="true" />
             <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" isActive="false" />
             <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
+            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
+            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <childElements>
         <childElement id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Class -&gt; Class Constructor</display>
+          <display>[mapping]: Class -&gt; Class Constructor (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
@@ -168,7 +171,7 @@
           <childElements>
             <childElement id="5601382d-8b87-465f-bc8c-d41fcc28185d" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Attribute -&gt; Parameter</display>
+              <display>[mapping]: Attribute -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <order>0</order>
               <genericTypes />
@@ -211,7 +214,7 @@
             </childElement>
             <childElement id="6a1129e9-e2a3-4df5-9678-98bc9d839836" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Target End -&gt; Parameter</display>
+              <display>[mapping]: Association Target End -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <order>1</order>
               <genericTypes />

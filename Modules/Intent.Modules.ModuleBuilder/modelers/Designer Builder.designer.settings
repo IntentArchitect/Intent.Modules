@@ -622,7 +622,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <shortcut>ctrl + shift + m</shortcut>
           <defaultName>NewMappingSettings</defaultName>
           <icon type="CharacterBox" source="M|#1A237E" />
-          <allowMultiple>false</allowMultiple>
+          <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
           <specializationType>Element Event Settings</specializationType>
@@ -682,7 +682,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <shortcut>ctrl + shift + m</shortcut>
           <defaultName>NewMappingSettings</defaultName>
           <icon type="CharacterBox" source="M|#1A237E" />
-          <allowMultiple>false</allowMultiple>
+          <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
           <specializationType>Diagram Settings</specializationType>
@@ -720,8 +720,8 @@ createElement("Association Destination End Settings", "[destination]", context.i
         <childElementSetting type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
           <icon type="CharacterBox" source="M|#1A237E" />
           <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>[mappings]</displayFunction>
-          <allowRename>false</allowRename>
+          <displayFunction>return `[mappings]: ${name}`;</displayFunction>
+          <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
@@ -757,7 +757,7 @@ function getTypeName(stereotypeName, propertyName) {
         return type.name;
     }
 }
-return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getTypeName("Output Settings", "To Type") || "(Traverse)"}`;</displayFunction>
+return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getTypeName("Output Settings", "To Type") || "[None]"} (${ getStereotype("Output Settings").properties["Child Mapping Mode"].value })`;</displayFunction>
               <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
@@ -925,8 +925,8 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <childElementSetting type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
               <icon type="CharacterBox" source="T|#FBC02D" />
               <saveAsOwnFile>false</saveAsOwnFile>
-              <displayFunction>[draw text]</displayFunction>
-              <allowRename>false</allowRename>
+              <displayFunction>return `[draw text]: ${name}`;</displayFunction>
+              <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
@@ -941,8 +941,8 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <childElementSetting type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
               <icon type="CharacterBox" source="S|#FBC02D" />
               <saveAsOwnFile>false</saveAsOwnFile>
-              <displayFunction>[stereotypes]</displayFunction>
-              <allowRename>false</allowRename>
+              <displayFunction>return `[stereotypes]: ${name}`;</displayFunction>
+              <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
@@ -957,8 +957,8 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <childElementSetting type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
               <icon type="CharacterBox" source="D|#FBC02D" />
               <saveAsOwnFile>false</saveAsOwnFile>
-              <displayFunction>[draw path]</displayFunction>
-              <allowRename>false</allowRename>
+              <displayFunction>return `[draw path]: ${name}`;</displayFunction>
+              <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>

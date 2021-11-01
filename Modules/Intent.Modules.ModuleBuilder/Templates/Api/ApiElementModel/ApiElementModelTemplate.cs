@@ -17,6 +17,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
     using Intent.Templates;
     using Intent.Metadata.Models;
     using Intent.ModuleBuilder.Api;
+    using Intent.RoslynWeaver.Attributes;
     using System;
     
     /// <summary>
@@ -36,83 +37,83 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             this.Write("using System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Inten" +
                     "t.Metadata.Models;\r\nusing Intent.Modules.Common;\r\n");
             
-            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
   if (HasParentFolder) { 
             
             #line default
             #line hidden
             this.Write("using Intent.Modules.Common.Types.Api;\r\n");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge)]\r\n    public");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(HasPartial ? " partial": ""));
             
             #line default
             #line hidden
             this.Write(" class ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? (BaseType + ", ") : ""));
             
             #line default
             #line hidden
             
-            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetInterfaces()));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public ");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? "new " : ""));
             
             #line default
             #line hidden
             this.Write("const string SpecializationType = \"");
             
-            #line 27 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
             
             #line default
             #line hidden
             this.Write("\";\r\n        public ");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(BaseType != null ? "new " : ""));
             
             #line default
             #line hidden
             this.Write("const string SpecializationTypeId = \"");
             
-            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.Id));
             
             #line default
             #line hidden
             this.Write("\";\r\n");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
   if (BaseType == null) { 
             
             #line default
@@ -120,7 +121,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             this.Write("        protected readonly IElement _element;\r\n\r\n        [IntentManaged(Mode.Igno" +
                     "re)]\r\n        public ");
             
-            #line 33 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -134,7 +135,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             _element = element;
 ");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 41 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       if (HasParentFolder) { 
             
             #line default
@@ -142,7 +143,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             this.Write("            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel." +
                     "SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;\r\n");
             
-            #line 42 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       } 
             
             #line default
@@ -152,33 +153,33 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
                     "t;\r\n        \r\n        public IEnumerable<IStereotype> Stereotypes => _element.St" +
                     "ereotypes;\r\n\r\n");
             
-            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 54 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       if (HasParentFolder) { 
             
             #line default
             #line hidden
             this.Write("        public FolderModel Folder { get; }\r\n\r\n");
             
-            #line 56 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       if (Model.GetSettings().AllowSetValue()) { 
             
             #line default
             #line hidden
             this.Write("        public string Value => _element.Value;\r\n\r\n");
             
-            #line 60 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 62 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       if (Model.GetSettings().AllowGenericTypes()) { 
             
             #line default
@@ -186,61 +187,61 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             this.Write("        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x" +
                     " => x.Name);\r\n\r\n");
             
-            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 65 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       if (!Model.GetTypeReferenceSettings().Mode().IsDisabled()) { 
             
             #line default
             #line hidden
             this.Write("        public ITypeReference TypeReference => _element.TypeReference;\r\n\r\n");
             
-            #line 68 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 69 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
-      if (Model.MappingSettings != null) { 
+            #line 70 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+      if (Model.MappingSettings.Any()) { 
             
             #line default
             #line hidden
             this.Write("        public bool IsMapped => _element.IsMapped;\r\n\r\n        public IElementMapp" +
                     "ing Mapping => _element.MappedElement;\r\n\r\n");
             
-            #line 74 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 75 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             this.Write("        public IElement InternalElement => _element;\r\n\r\n");
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 78 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
   } else { 
             
             #line default
             #line hidden
             this.Write("\r\n        public ");
             
-            #line 79 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 80 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IElement element) : base(element, SpecializationType)\r\n        {\r\n        }\r\n\r\n");
             
-            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 85 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
   if (Model.MenuOptions != null) {
         foreach(var creationOption in Model.MenuOptions.ElementCreations) { 
             if (ExistsInBase(creationOption))
@@ -250,62 +251,62 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             #line hidden
             this.Write("        public ");
             
-            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple())));
             
             #line default
             #line hidden
             this.Write(" ");
             
-            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
             
             #line default
             #line hidden
             this.Write(" => _element.ChildElements\r\n            .GetElementsOfType(");
             
-            #line 89 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 90 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
             
             #line default
             #line hidden
             this.Write(".SpecializationTypeId)\r\n            .Select(x => new ");
             
-            #line 90 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));
             
             #line default
             #line hidden
             this.Write("(x))\r\n");
             
-            #line 91 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 92 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
           if (creationOption.GetOptionSettings().AllowMultiple()) { 
             
             #line default
             #line hidden
             this.Write("            .ToList();\r\n");
             
-            #line 93 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 94 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
           } else { 
             
             #line default
             #line hidden
             this.Write("            .SingleOrDefault();\r\n");
             
-            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 96 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
           } 
             
             #line default
             #line hidden
             this.Write("\r\n");
             
-            #line 97 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 98 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
       } 
             
             #line default
             #line hidden
             
-            #line 98 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 99 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
   } 
             
             #line default
@@ -313,7 +314,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             this.Write("        public override string ToString()\r\n        {\r\n            return _element" +
                     ".ToString();\r\n        }\r\n\r\n        public bool Equals(");
             
-            #line 104 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 105 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -330,7 +331,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             if (obj.GetType() != this.GetType()) return false;
             return Equals((");
             
-            #line 114 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 115 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -339,14 +340,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
                     "      return (_element != null ? _element.GetHashCode() : 0);\r\n        }\r\n    }\r" +
                     "\n\r\n    [IntentManaged(Mode.Fully)]\r\n    public static class ");
             
-            #line 124 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 125 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("Extensions {\r\n\r\n        public static bool Is");
             
-            #line 126 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 127 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -354,40 +355,96 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type != null && t" +
                     "ype is IElement element && element.SpecializationTypeId == ");
             
-            #line 128 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 129 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(".SpecializationTypeId;\r\n        }\r\n\r\n        public static ");
             
-            #line 131 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 132 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" As");
             
-            #line 131 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 132 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type.Is");
             
-            #line 133 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 134 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("() ? new ");
             
-            #line 133 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            #line 134 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("((IElement)type) : null;\r\n        }\r\n    }\r\n}");
+            this.Write("((IElement)type) : null;\r\n        }\r\n");
+            
+            #line 136 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+  foreach(var mapping in Model.MappingSettings) { 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        public static bool Has");
+            
+            #line 138 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Mapping(this ");
+            
+            #line 138 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" type)\r\n        {\r\n            return type.Mapping?.MappingSettingsId == \"");
+            
+            #line 140 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\";\r\n        }\r\n\r\n        public static IElementMapping Get");
+            
+            #line 143 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Mapping(this ");
+            
+            #line 143 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" type)\r\n        {\r\n            return type.Has");
+            
+            #line 145 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Mapping() ? type.Mapping : null;\r\n        }\r\n");
+            
+            #line 147 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }

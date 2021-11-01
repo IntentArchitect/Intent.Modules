@@ -8,6 +8,7 @@
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.ModuleBuilder.Api" #>
+<#@ import namespace="Intent.RoslynWeaver.Attributes" #>
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -66,7 +67,7 @@ namespace <#= Namespace #>
         public ITypeReference TypeReference => _element.TypeReference;
 
 <#      } #>
-<#      if (Model.MappingSettings != null) { #>
+<#      if (Model.MappingSettings.Any()) { #>
         public bool IsMapped => _element.IsMapped;
 
         public IElementMapping Mapping => _element.MappedElement;
@@ -132,5 +133,17 @@ namespace <#= Namespace #>
         {
             return type.Is<#= ClassName #>() ? new <#= ClassName #>((IElement)type) : null;
         }
+<#  foreach(var mapping in Model.MappingSettings) { #>
+
+        public static bool Has<#= mapping.Name.ToCSharpIdentifier() #>Mapping(this <#= ClassName #> type)
+        {
+            return type.Mapping?.MappingSettingsId == "<#= mapping.Id #>";
+        }
+
+        public static IElementMapping Get<#= mapping.Name.ToCSharpIdentifier() #>Mapping(this <#= ClassName #> type)
+        {
+            return type.Has<#= mapping.Name.ToCSharpIdentifier() #>Mapping() ? type.Mapping : null;
+        }
+<#  } #>
     }
 }

@@ -33,6 +33,11 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
+            public string Shortcut()
+            {
+                return _stereotype.GetProperty<string>("Shortcut");
+            }
+
             public IElement DefaultDesigner()
             {
                 return _stereotype.GetProperty<IElement>("Default Designer");
@@ -66,6 +71,11 @@ namespace Intent.ModuleBuilder.Api
             public string Symbol()
             {
                 return _stereotype.GetProperty<string>("Symbol");
+            }
+
+            public string Style()
+            {
+                return _stereotype.GetProperty<string>("Style");
             }
 
             public class OptionSourceOptions

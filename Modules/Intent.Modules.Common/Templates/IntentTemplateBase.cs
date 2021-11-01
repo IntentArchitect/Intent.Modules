@@ -590,7 +590,7 @@ namespace Intent.Modules.Common.Templates
 
         private string GetTypeName(IClassProvider classProvider)
         {
-            var name = classProvider.FullTypeName();
+            var name = classProvider?.FullTypeName();
             if (name == null)
             {
                 return null;

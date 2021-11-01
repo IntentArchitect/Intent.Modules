@@ -288,8 +288,8 @@
       </stereotypes>
       <childElements>
         <childElement id="8355a358-21fe-47fd-87d3-a98aadfe403f" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-          <name>NewPathDrawSettings</name>
-          <display>[draw path]</display>
+          <name>Rectangle</name>
+          <display>[draw path]: Rectangle</display>
           <isAbstract>false</isAbstract>
           <order>1</order>
           <genericTypes />
@@ -315,8 +315,8 @@
           <childElements />
         </childElement>
         <childElement id="ca8c2de4-0d05-48a1-95f0-9485abc923e7" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-          <name>[draw text]</name>
-          <display>[draw text]</display>
+          <name>Display Text</name>
+          <display>[draw text]: Display Text</display>
           <isAbstract>false</isAbstract>
           <order>2</order>
           <genericTypes />
@@ -350,8 +350,8 @@
           <childElements />
         </childElement>
         <childElement id="c99bff24-412d-4c3e-8844-26a2ae3f52c5" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
-          <name>NewStereotypesVisualSettings</name>
-          <display>[stereotypes]</display>
+          <name>Stereotype Icons</name>
+          <display>[stereotypes]: Stereotype Icons</display>
           <isAbstract>false</isAbstract>
           <order>3</order>
           <genericTypes />
@@ -410,8 +410,8 @@
           </stereotypes>
           <childElements>
             <childElement id="f3f9b685-95b0-46b9-a2cf-14e2a95ae1f5" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-              <name>NewPathDrawSettings</name>
-              <display>[draw path]</display>
+              <name>Separator</name>
+              <display>[draw path]: Separator</display>
               <isAbstract>false</isAbstract>
               <order>1</order>
               <genericTypes />
@@ -437,8 +437,8 @@
               <childElements />
             </childElement>
             <childElement id="be845898-4da4-4bf0-a98b-124a6cbed342" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-              <name>[draw text]</name>
-              <display>[draw text]</display>
+              <name>Display Text</name>
+              <display>[draw text]: Display Text</display>
               <isAbstract>false</isAbstract>
               <order>2</order>
               <genericTypes />
@@ -472,8 +472,8 @@
               <childElements />
             </childElement>
             <childElement id="06e8842d-a15f-4a99-8047-db90d70a9b75" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
-              <name>NewStereotypesVisualSettings</name>
-              <display>[stereotypes]</display>
+              <name>Stereotype Icons</name>
+              <display>[stereotypes]: Stereotype Icons</display>
               <isAbstract>false</isAbstract>
               <order>3</order>
               <genericTypes />
@@ -534,8 +534,8 @@
           </stereotypes>
           <childElements>
             <childElement id="e7e6636f-24de-4358-89e5-96ed92f7f7d8" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-              <name>NewPathDrawSettings</name>
-              <display>[draw path]</display>
+              <name>Separator</name>
+              <display>[draw path]: Separator</display>
               <isAbstract>false</isAbstract>
               <order>1</order>
               <genericTypes />
@@ -561,8 +561,8 @@
               <childElements />
             </childElement>
             <childElement id="ca267679-fed5-498b-82a6-f3d565644dce" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-              <name>[draw text]</name>
-              <display>[draw text]</display>
+              <name>Display Text</name>
+              <display>[draw text]: Display Text</display>
               <isAbstract>false</isAbstract>
               <order>2</order>
               <genericTypes />
@@ -596,8 +596,8 @@
               <childElements />
             </childElement>
             <childElement id="b5972382-b524-4a25-ad54-f09f2dc5e8b0" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
-              <name>NewStereotypesVisualSettings</name>
-              <display>[stereotypes]</display>
+              <name>Stereotype Icons</name>
+              <display>[stereotypes]: Stereotype Icons</display>
               <isAbstract>false</isAbstract>
               <order>3</order>
               <genericTypes />
@@ -658,8 +658,8 @@
           </stereotypes>
           <childElements>
             <childElement id="a9cfa4e4-31ca-4f4f-81fb-1a25380841bb" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-              <name>NewPathDrawSettings</name>
-              <display>[draw path]</display>
+              <name>Separator</name>
+              <display>[draw path]: Separator</display>
               <isAbstract>false</isAbstract>
               <order>1</order>
               <genericTypes />
@@ -685,8 +685,8 @@
               <childElements />
             </childElement>
             <childElement id="0870b207-eed3-4724-8314-88f5e54cac75" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-              <name>[draw text]</name>
-              <display>[draw text]</display>
+              <name>Display Text</name>
+              <display>[draw text]: Display Text</display>
               <isAbstract>false</isAbstract>
               <order>2</order>
               <genericTypes />
@@ -720,8 +720,8 @@
               <childElements />
             </childElement>
             <childElement id="b1f12cc1-b82d-4422-bbe3-3cf24958811d" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
-              <name>NewStereotypesVisualSettings</name>
-              <display>[stereotypes]</display>
+              <name>Stereotype Icons</name>
+              <display>[stereotypes]: Stereotype Icons</display>
               <isAbstract>false</isAbstract>
               <order>3</order>
               <genericTypes />

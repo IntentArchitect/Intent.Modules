@@ -40,4 +40,23 @@ namespace <#= Namespace #>
 <#      } #>
 <#  } #>
     }
+<#  if (Model.MappingSettings.Any()) { #>
+
+    [IntentManaged(Mode.Fully)]
+    public static class <#= ClassName #>Extensions
+    {
+<#      foreach(var mapping in Model.MappingSettings) { #>
+
+        public static bool Has<#= mapping.Name.ToCSharpIdentifier() #>Mapping(this <#= GetBaseElementModel().ApiModelName #> type)
+        {
+            return type.InternalElement.Mapping?.MappingSettingsId == "<#= mapping.Id #>";
+        }
+
+        public static IElementMapping Get<#= mapping.Name.ToCSharpIdentifier() #>Mapping(this <#= GetBaseElementModel().ApiModelName #> type)
+        {
+            return type.InternalElement.Has<#= mapping.Name.ToCSharpIdentifier() #>Mapping() ? type.Mapping : null;
+        }
+<#      } #>
+    }
+<#  } #>
 }

@@ -133,7 +133,85 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
             
             #line default
             #line hidden
-            this.Write("    }\r\n}");
+            this.Write("    }\r\n");
+            
+            #line 43 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+  if (Model.MappingSettings.Any()) { 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n    [IntentManaged(Mode.Fully)]\r\n    public static class ");
+            
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("Extensions\r\n    {\r\n");
+            
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+      foreach(var mapping in Model.MappingSettings) { 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n        public static bool Has");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Mapping(this ");
+            
+            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseElementModel().ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write(" type)\r\n        {\r\n            return type.InternalElement.Mapping?.MappingSettin" +
+                    "gsId == \"");
+            
+            #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Id));
+            
+            #line default
+            #line hidden
+            this.Write("\";\r\n        }\r\n\r\n        public static IElementMapping Get");
+            
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Mapping(this ");
+            
+            #line 55 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseElementModel().ApiModelName));
+            
+            #line default
+            #line hidden
+            this.Write(" type)\r\n        {\r\n            return type.InternalElement.Has");
+            
+            #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Name.ToCSharpIdentifier()));
+            
+            #line default
+            #line hidden
+            this.Write("Mapping() ? type.Mapping : null;\r\n        }\r\n");
+            
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+      } 
+            
+            #line default
+            #line hidden
+            this.Write("    }\r\n");
+            
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
+  } 
+            
+            #line default
+            #line hidden
+            this.Write("}");
             return this.GenerationEnvironment.ToString();
         }
     }

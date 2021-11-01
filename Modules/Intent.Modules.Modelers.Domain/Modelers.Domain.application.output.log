@@ -28,7 +28,7 @@
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#04e12b51-ed12-42a3-9667-a6aa81bb6d10</CorrelationId>
       <ApplicationRelativeFilePath>Api/ClassModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ClassModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
@@ -84,7 +84,7 @@
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#dcc3e76d-d7c3-4674-8fe6-1e774e577908</CorrelationId>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
@@ -109,21 +109,24 @@
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>
@@ -137,7 +140,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9767fed7-a950-4ba5-81f4-98098705c830</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Domain.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Domain.csproj</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>a3d2d01f-b6e2-4edd-8332-54920af009f7</ProjectId>

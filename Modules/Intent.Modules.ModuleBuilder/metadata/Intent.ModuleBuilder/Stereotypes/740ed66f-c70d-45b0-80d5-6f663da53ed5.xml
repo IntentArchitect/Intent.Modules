@@ -46,12 +46,13 @@
       <name>Use Mapping Settings</name>
       <type>string</type>
       <controlType>select</controlType>
-      <optionsSource>lookup-element</optionsSource>
+      <optionsSource>lookup-children</optionsSource>
       <placeholder />
       <valueOptions />
       <lookupTypes>
         <type>4a16943b-702c-4fb0-bfcc-2afd98b8814c</type>
       </lookupTypes>
+      <lookupInternalTargetPropertyId>return element.getParent("Mapping Settings").id;</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>
