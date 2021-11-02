@@ -168,8 +168,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
             
             #line default
             #line hidden
-            this.Write(" type)\r\n        {\r\n            return type.InternalElement.Mapping?.MappingSettin" +
-                    "gsId == \"");
+            this.Write(" type)\r\n        {\r\n            return type.InternalElement.MappedElement?.Mapping" +
+                    "SettingsId == \"");
             
             #line 52 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Id));
@@ -190,14 +190,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementExtensionModel
             
             #line default
             #line hidden
-            this.Write(" type)\r\n        {\r\n            return type.InternalElement.Has");
+            this.Write(" type)\r\n        {\r\n            return type.Has");
             
             #line 57 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(mapping.Name.ToCSharpIdentifier()));
             
             #line default
             #line hidden
-            this.Write("Mapping() ? type.Mapping : null;\r\n        }\r\n");
+            this.Write("Mapping() ? type.InternalElement.MappedElement : null;\r\n        }\r\n");
             
             #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementExtensionModel\ApiElementExtensionModelTemplate.tt"
       } 

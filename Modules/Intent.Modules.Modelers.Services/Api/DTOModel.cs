@@ -5,6 +5,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common;
+using Intent.Utils;
 
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -23,6 +24,13 @@ namespace Intent.Modelers.Services.Api
         {
             _element = element;
             Folder = _element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(_element.ParentElement) : null;
+
+            // Intent.Modelers.Service.3.1.2: as part of 
+            if (IsMapped && Mapping?.MappingSettingsId == null)
+            {
+                Logging.Log.Warning($@"DTO [{Name}] is mapped, but has not specified mapping settings. This may cause unexpected changes in the software factory execution. 
+To fix this, open and re-save your Services designer. If this warning persists then please reach out to Intent Architect support.");
+            }
         }
 
         public string Id => _element.Id;
@@ -85,24 +93,14 @@ namespace Intent.Modelers.Services.Api
             return type.IsDTOModel() ? new DTOModel((IElement)type) : null;
         }
 
-        public static bool HasProjectFromDomainMapping(this DTOModel type)
+        public static bool HasMapFromDomainMapping(this DTOModel type)
         {
             return type.Mapping?.MappingSettingsId == "1f747d14-681c-4a20-8c68-34223f41b825";
         }
 
-        public static IElementMapping GetProjectFromDomainMapping(this DTOModel type)
+        public static IElementMapping GetMapFromDomainMapping(this DTOModel type)
         {
-            return type.HasProjectFromDomainMapping() ? type.Mapping : null;
-        }
-
-        public static bool HasMapToDomainMapping(this DTOModel type)
-        {
-            return type.Mapping?.MappingSettingsId == "06f5b559-1912-4e90-b903-dbca9e540dae";
-        }
-
-        public static IElementMapping GetMapToDomainMapping(this DTOModel type)
-        {
-            return type.HasMapToDomainMapping() ? type.Mapping : null;
+            return type.HasMapFromDomainMapping() ? type.Mapping : null;
         }
     }
 }

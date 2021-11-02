@@ -140,7 +140,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9767fed7-a950-4ba5-81f4-98098705c830</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Domain.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Domain.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>a3d2d01f-b6e2-4edd-8332-54920af009f7</ProjectId>

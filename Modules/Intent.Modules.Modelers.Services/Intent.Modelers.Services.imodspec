@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Modelers.Services</id>
   <version>3.1.2</version>
-  <supportedClientVersions>[3.1.0-pre.0, 4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.1.6-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Services modeler for describing an application's web services.</summary>
   <description>Services modeler for describing an application's web services.</description>
   <authors>Intent Architect</authors>

@@ -68,7 +68,7 @@
       <childElements>
         <childElement id="40142180-9e8f-4121-8f65-00259875d3bc" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Command -&gt; Operation</display>
+          <display>[mapping]: Command -&gt; Operation (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
@@ -110,7 +110,7 @@
           <childElements>
             <childElement id="a544f9b1-a158-4e03-83c4-718c4f304cce" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: DTO-Field -&gt; Parameter</display>
+              <display>[mapping]: DTO-Field -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <order>0</order>
               <genericTypes />
@@ -155,7 +155,7 @@
         </childElement>
         <childElement id="d9c56b34-ec0d-47f0-b8a3-fe6efd176b9f" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Query -&gt; Operation</display>
+          <display>[mapping]: Query -&gt; Operation (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <order>1</order>
           <genericTypes />
@@ -197,7 +197,7 @@
           <childElements>
             <childElement id="f52b112e-d0f1-4120-9c59-ee50f1ad4eb8" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: DTO-Field -&gt; Parameter</display>
+              <display>[mapping]: DTO-Field -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <order>0</order>
               <genericTypes />

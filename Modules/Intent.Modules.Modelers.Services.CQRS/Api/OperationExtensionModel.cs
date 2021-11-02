@@ -20,4 +20,19 @@ namespace Intent.Modelers.Services.CQRS.Api
         }
 
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class OperationExtensionModelExtensions
+    {
+
+        public static bool HasMapToRequestMapping(this OperationModel type)
+        {
+            return type.InternalElement.MappedElement?.MappingSettingsId == "f15fa935-434e-4983-b283-25cde2cb440e";
+        }
+
+        public static IElementMapping GetMapToRequestMapping(this OperationModel type)
+        {
+            return type.HasMapToRequestMapping() ? type.InternalElement.MappedElement : null;
+        }
+    }
 }

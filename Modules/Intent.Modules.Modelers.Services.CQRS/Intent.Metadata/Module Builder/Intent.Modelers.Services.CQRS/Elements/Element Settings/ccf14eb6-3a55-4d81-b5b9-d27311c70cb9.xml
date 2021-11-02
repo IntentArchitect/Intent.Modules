@@ -129,7 +129,7 @@
       <childElements>
         <childElement id="d16444c3-ab59-4830-8e0e-f6025685e673" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Class -&gt; Command</display>
+          <display>[mapping]: Class -&gt; Command (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
@@ -171,7 +171,7 @@
           <childElements>
             <childElement id="910ee573-26c4-40e3-bfd3-03b93a1b5999" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Attribute -&gt; DTO-Field</display>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <order>0</order>
               <genericTypes />
@@ -214,7 +214,7 @@
             </childElement>
             <childElement id="646e306f-ff15-49e4-8600-b51cb730f999" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Target End -&gt; DTO-Field</display>
+              <display>[mapping]: Association Target End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <order>1</order>
               <genericTypes />
@@ -257,7 +257,7 @@
             </childElement>
             <childElement id="e4385dbd-00ad-474d-8b80-6a439d05dfbd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Source End -&gt; DTO-Field</display>
+              <display>[mapping]: Association Source End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <order>2</order>
               <genericTypes />

@@ -83,5 +83,15 @@ namespace Intent.Modelers.Domain.Api
         {
             return type.IsClassConstructorModel() ? new ClassConstructorModel((IElement)type) : null;
         }
+
+        public static bool HasMapConstructorMapping(this ClassConstructorModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "d6d0abfd-893c-4bec-92cb-419934ba5ba8";
+        }
+
+        public static IElementMapping GetMapConstructorMapping(this ClassConstructorModel type)
+        {
+            return type.HasMapConstructorMapping() ? type.Mapping : null;
+        }
     }
 }

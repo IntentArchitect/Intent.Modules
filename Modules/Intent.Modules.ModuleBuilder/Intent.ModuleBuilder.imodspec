@@ -2,7 +2,7 @@
 <package>
   <id>Intent.ModuleBuilder</id>
   <version>3.1.1</version>
-  <supportedClientVersions>[3.1.0-pre.0, 4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.1.6-pre.0, 4.0.0)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
   <authors>Intent Architect</authors>

@@ -49,12 +49,12 @@ namespace <#= Namespace #>
 
         public static bool Has<#= mapping.Name.ToCSharpIdentifier() #>Mapping(this <#= GetBaseElementModel().ApiModelName #> type)
         {
-            return type.InternalElement.Mapping?.MappingSettingsId == "<#= mapping.Id #>";
+            return type.InternalElement.MappedElement?.MappingSettingsId == "<#= mapping.Id #>";
         }
 
         public static IElementMapping Get<#= mapping.Name.ToCSharpIdentifier() #>Mapping(this <#= GetBaseElementModel().ApiModelName #> type)
         {
-            return type.InternalElement.Has<#= mapping.Name.ToCSharpIdentifier() #>Mapping() ? type.Mapping : null;
+            return type.Has<#= mapping.Name.ToCSharpIdentifier() #>Mapping() ? type.InternalElement.MappedElement : null;
         }
 <#      } #>
     }

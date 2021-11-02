@@ -97,5 +97,15 @@ namespace Intent.Modelers.Services.CQRS.Api
         {
             return type.IsCommandModel() ? new CommandModel((IElement)type) : null;
         }
+
+        public static bool HasMapToDomainMapping(this CommandModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "735c87d0-06fc-4491-8b5f-5adc6f953c54";
+        }
+
+        public static IElementMapping GetMapToDomainMapping(this CommandModel type)
+        {
+            return type.HasMapToDomainMapping() ? type.Mapping : null;
+        }
     }
 }

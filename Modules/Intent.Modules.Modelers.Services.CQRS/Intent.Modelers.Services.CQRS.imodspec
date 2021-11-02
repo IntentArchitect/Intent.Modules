@@ -11,7 +11,7 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.1.0" />
+    <dependency id="Intent.Common" version="3.1.8" />
     <dependency id="Intent.Common.Types" version="3.1.0" />
     <dependency id="Intent.Modelers.Services" version="3.1.0" />
   </dependencies>
