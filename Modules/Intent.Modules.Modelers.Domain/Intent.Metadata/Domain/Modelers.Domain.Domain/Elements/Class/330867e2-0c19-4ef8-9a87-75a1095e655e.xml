@@ -167,6 +167,7 @@
       <mappedClass>
         <applicationId>b980295a-75ce-48ac-9ef8-0368f8a1a174</applicationId>
         <metadataId>6ab29b31-27af-4f56-a67c-986d82097d63</metadataId>
+        <mappingSettingsId>d6d0abfd-893c-4bec-92cb-419934ba5ba8</mappingSettingsId>
         <autoSyncTypeReference>true</autoSyncTypeReference>
         <mappedPath>
           <target id="330867e2-0c19-4ef8-9a87-75a1095e655e" name="NewClass1" type="element" specialization="Class" />
