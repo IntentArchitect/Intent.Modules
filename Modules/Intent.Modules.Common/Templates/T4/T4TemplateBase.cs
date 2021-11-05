@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.RegularExpressions;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.Templates
 {
     public abstract class T4TemplateBase : IRequireTypeResolver
     {
+        private static readonly Regex NewlinePattern = new Regex(@"\r\n|\r|\n", RegexOptions.Compiled);
+
         #region Fields
         private StringBuilder generationEnvironmentField;
         private List<int> indentLengthsField;
@@ -85,6 +88,10 @@ namespace Intent.Modules.Common.Templates
             {
                 return;
             }
+
+            // Normalize line endings to that of the current platform
+            textToAppend = NewlinePattern.Replace(textToAppend, Environment.NewLine);
+
             // If we're starting off, or if the previous text ended with a newline,
             // we have to append the current indent first.
             if (((this.GenerationEnvironment.Length == 0)
