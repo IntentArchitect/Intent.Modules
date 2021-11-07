@@ -10,6 +10,8 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction>return (properties["Source"].value == "Default") ? "" : `[${properties["Source"].value}]`;</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <parentFolderId>0011387a-b122-45d7-9cdb-8e21b315ab9f</parentFolderId>
   <order>0</order>
