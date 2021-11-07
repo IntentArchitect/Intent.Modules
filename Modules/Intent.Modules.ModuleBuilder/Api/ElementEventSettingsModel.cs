@@ -78,6 +78,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ElementEventHandlerModel(x))
             .ToList();
 
+        public IList<ElementEventHandlerModel> OnNameChangedEvents => _element.ChildElements
+            .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
+
         public List<ElementMacroPersistable> ToPersistable()
         {
             // TODO: The OnCreatedEvents & OnLoadedEvents returns all ElementMacroModels. Need solution
@@ -86,6 +91,7 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "3c628ab0-2407-4fb0-8507-ddde986cff2e";
 
         public string Comment => _element.Comment;
+
     }
 
     [IntentManaged(Mode.Fully)]
