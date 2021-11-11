@@ -180,6 +180,24 @@ namespace Intent.Modules.Common.Templates
             return FileMetadata;
         }
 
+        #region AddTemplateDependency
+
+        private void AddTemplateDependency(ITemplate template)
+        {
+#pragma warning disable CS0618
+            DetectedDependencies.Add(TemplateDependency.OnTemplate(template));
+#pragma warning restore CS0618
+            _detectedDependencies.Add(template);
+        }
+
+        /// <summary>
+        /// Adds the <see cref="ITemplateDependency"/> <paramref name="templateDependency"/> as a dependency of this template.
+        /// </summary>
+        public void AddTemplateDependency(ITemplateDependency templateDependency)
+        {
+            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateDependency));
+        }
+
         /// <summary>
         /// Adds the Template with <paramref name="templateId"/> as a dependency of this template.
         /// </summary>
@@ -198,21 +216,7 @@ namespace Intent.Modules.Common.Templates
             AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId, model.Id));
         }
 
-        /// <summary>
-        /// Adds the <see cref="ITemplateDependency"/> <paramref name="templateDependency"/> as a dependency of this template.
-        /// </summary>
-        public void AddTemplateDependency(ITemplateDependency templateDependency)
-        {
-            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateDependency));
-        }
-
-        private void AddTemplateDependency(ITemplate template)
-        {
-#pragma warning disable CS0618
-            DetectedDependencies.Add(TemplateDependency.OnTemplate(template));
-#pragma warning restore CS0618
-            _detectedDependencies.Add(template);
-        }
+        #endregion
 
         /// <summary>
         /// For 3.2.0, change this to return <see cref="IEnumerable{ITemplate}"/> and
@@ -325,15 +329,19 @@ namespace Intent.Modules.Common.Templates
             return typeSource;
         }
 
-        #region GetTypeName for TypeReference
+        #region NormalizeTypeName
 
         /// <summary>
-        /// Override this to alter Type names after they have been found.
+        /// Called once a type has been resolved in the <see cref="GetTypeName(ITypeReference)"/>.
+        /// Override to alter the resulting string.
+        /// <param name="name">The type name to normalize</param>
         /// </summary>
         public virtual string NormalizeTypeName(string name)
         {
             return name;
         }
+
+        #endregion
 
         /// <summary>
         /// Resolves the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
@@ -348,8 +356,21 @@ namespace Intent.Modules.Common.Templates
             return Types.Get(typeReference);
         }
 
+        #region GetTypeName
+
+        private string GetTypeName(IClassProvider classProvider)
+        {
+            var name = classProvider?.FullTypeName();
+            if (name == null)
+            {
+                return null;
+            }
+
+            return NormalizeTypeName(name);
+        }
+
         /// <summary>
-        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="typeReference"/> parameter.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="element"/> parameter.
         /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
@@ -358,28 +379,26 @@ namespace Intent.Modules.Common.Templates
         /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
+        /// <param name="element">The <see cref="IElement"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
+        public virtual string GetTypeName(IElement element, string collectionFormat)
         {
-            return NormalizeTypeName(Types.Get(typeReference, collectionFormat).Name);
+            return NormalizeTypeName(Types.Get(element, collectionFormat).Name);
         }
 
         /// <summary>
-        /// <para>
-        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="typeReference"/> parameter.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="hasTypeReference"/> parameter.
         /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
-        /// </para>
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
         /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
-        public virtual string GetTypeName(ITypeReference typeReference)
+        /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
+        public virtual string GetTypeName(IHasTypeReference hasTypeReference)
         {
-            return NormalizeTypeName(Types.Get(typeReference).Name);
+            return GetTypeName(hasTypeReference.TypeReference);
         }
 
         /// <summary>
@@ -400,54 +419,17 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="hasTypeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Resolves the type name of the <paramref name="template"/> as a string.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
         /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
-        public virtual string GetTypeName(IHasTypeReference hasTypeReference)
+        public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(hasTypeReference.TypeReference);
+            return GetTypeName(GetTemplate<IClassProvider>(template, options));
         }
-
-        /// <summary>
-        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="element"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
-        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
-        /// <para>
-        /// See the
-        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
-        /// </para>
-        /// </summary>
-        /// <param name="element">The <see cref="IElement"/> for which to get the type name.</param>
-        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        public virtual string GetTypeName(IElement element, string collectionFormat)
-        {
-            return NormalizeTypeName(Types.Get(element, collectionFormat).Name);
-        }
-
-        ///// <summary>
-        ///// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="element"/> parameter.
-        ///// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
-        ///// <para>
-        ///// See the
-        ///// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        ///// GetTypeName article</seealso> for more information.
-        ///// </para>
-        ///// </summary>
-        //public virtual string GetTypeName(ICanBeReferencedType element)
-        //{
-        //    return NormalizeTypeName(Types.Get(element).Name);
-        //}
-
-        #endregion
-
-        #region GetTypeName for Template
 
         /// <summary>
         /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
@@ -463,48 +445,37 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves the type name of the <paramref name="template"/> as a string.
+        /// <para>
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// </para>
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
         /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
+        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
+        public virtual string GetTypeName(ITypeReference typeReference)
         {
-            return GetTypeName(GetTemplate<IClassProvider>(template, options));
+            return NormalizeTypeName(Types.Get(typeReference).Name);
         }
 
         /// <summary>
-        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
-        /// <para>
-        /// See the
-        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
-        /// </para>
-        /// Will throw an exception if more than one template instance exists.
-        /// </summary>
-        public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
-        {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, options));
-        }
-
-        /// <summary>
-        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
-        /// Will return null if the template instance cannot be found.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
         /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        public string TryGetTypeName(string templateId)
+        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
-            var classProvider = GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow);
-
-            return classProvider != null
-                ? GetTypeName(classProvider)
-                : null;
+            return NormalizeTypeName(Types.Get(typeReference, collectionFormat).Name);
         }
 
         /// <summary>
@@ -528,6 +499,60 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
         /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="modelId"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
+        public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+        {
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, modelId, options));
+        }
+
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// Will throw an exception if more than one template instance exists.
+        /// </summary>
+        public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
+        {
+            return GetTypeName(GetTemplate<IClassProvider>(templateId, options));
+        }
+
+        #endregion
+
+        #region TryGetTypeName
+
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// Will return null if the template instance cannot be found.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        public string TryGetTypeName(string templateId)
+        {
+            var classProvider = GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow);
+
+            return classProvider != null
+                ? GetTypeName(classProvider)
+                : null;
+        }
+
+        /// <summary>
+        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
         /// based on which has the <paramref name="model"/>.
         /// Will return null if a template instance cannot be found.
         /// <para>
@@ -545,25 +570,6 @@ namespace Intent.Modules.Common.Templates
             return classProvider != null
                 ? GetTypeName(classProvider)
                 : null;
-        }
-            
-
-        /// <summary>
-        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
-        /// This overload assumes that the Template can have many instances and identifies the target instance
-        /// based on which has the <paramref name="modelId"/>.
-        /// <para>
-        /// See the
-        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
-        /// </para>
-        /// </summary>
-        /// <param name="templateId">The unique Template identifier.</param>
-        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
-        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
-        {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, modelId, options));
         }
 
         /// <summary>
@@ -588,72 +594,9 @@ namespace Intent.Modules.Common.Templates
                 : null;
         }
 
-        private string GetTypeName(IClassProvider classProvider)
-        {
-            var name = classProvider?.FullTypeName();
-            if (name == null)
-            {
-                return null;
-            }
-
-            return NormalizeTypeName(name);
-        }
-
         #endregion
 
         #region GetTemplate
-
-        /// <summary>
-        /// Retrieve an instance of an <see cref="ITemplate"/>.
-        /// </summary>
-        public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null)
-            where TTemplate : class
-        {
-            return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
-                getDependencyDescriptionForException: () => $"TemplateId = {templateId}",
-                options: options);
-        }
-
-        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null)
-            where TTemplate : class
-        {
-            return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId),
-                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, ModelId = {modelId}",
-                options: options);
-
-        }
-
-        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
-            where TTemplate : class
-        {
-            return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id),
-                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, model.Id = {model.Id}",
-                options: options);
-        }
-
-        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null)
-            where TTemplate : class
-        {
-            return GetTemplate(
-                getTemplate: () => (TTemplate)ExecutionContext.FindTemplateInstance<ITemplate>(dependency),
-                getDependencyDescriptionForException: dependency.ToString,
-                options: options);
-        }
-
-        private TTemplate GetTemplate<TTemplate>(ITemplate template, TemplateDiscoveryOptions options = null)
-            where TTemplate : class
-        {
-            return GetTemplate(
-                getTemplate: () => template as TTemplate,
-                getDependencyDescriptionForException: () => $"{template} as is not a {typeof(TTemplate).Name}",
-                options: options);
-        }
 
         /// <remarks>
         /// For 3.2.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
@@ -693,6 +636,58 @@ namespace Intent.Modules.Common.Templates
             }
 
             return template;
+        }
+
+        private TTemplate GetTemplate<TTemplate>(ITemplate template, TemplateDiscoveryOptions options = null)
+            where TTemplate : class
+        {
+            return GetTemplate(
+                getTemplate: () => template as TTemplate,
+                getDependencyDescriptionForException: () => $"{template} as is not a {typeof(TTemplate).Name}",
+                options: options);
+        }
+
+        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
+        public TTemplate GetTemplate<TTemplate>(ITemplateDependency dependency, TemplateDiscoveryOptions options = null)
+            where TTemplate : class
+        {
+            return GetTemplate(
+                getTemplate: () => (TTemplate)ExecutionContext.FindTemplateInstance<ITemplate>(dependency),
+                getDependencyDescriptionForException: dependency.ToString,
+                options: options);
+        }
+
+        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
+        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+            where TTemplate : class
+        {
+            return GetTemplate(
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id),
+                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, model.Id = {model.Id}",
+                options: options);
+        }
+
+        /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
+        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+            where TTemplate : class
+        {
+            return GetTemplate(
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId),
+                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, ModelId = {modelId}",
+                options: options);
+
+        }
+
+        /// <summary>
+        /// Retrieve an instance of an <see cref="ITemplate"/>.
+        /// </summary>
+        public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null)
+            where TTemplate : class
+        {
+            return GetTemplate(
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
+                getDependencyDescriptionForException: () => $"TemplateId = {templateId}",
+                options: options);
         }
 
         #endregion

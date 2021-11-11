@@ -20,7 +20,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
     }
 
-    public abstract class CSharpTemplateBase<TModel, TDecorator> : CSharpTemplateBase<TModel>, IHasDecorators<TDecorator> 
+    public abstract class CSharpTemplateBase<TModel, TDecorator> : CSharpTemplateBase<TModel>, IHasDecorators<TDecorator>
         where TDecorator : ITemplateDecorator
     {
         private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
@@ -58,7 +58,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// </para>
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings 
+    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
         private List<string> _additionalUsingNamespaces = new List<string>();
@@ -382,7 +382,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         public virtual RoslynMergeConfig ConfigureRoslynMerger()
         {
-            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1,0)));
+            return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
         }
 
         public override ITemplateFileConfig GetTemplateFileConfig()
