@@ -28,6 +28,13 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#448fb601-3afc-4514-b70f-195d037b69de</CorrelationId>
+      <ApplicationRelativeFilePath>Api/OperationExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OperationExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Metadata.WebApi.imodspec</ApplicationRelativeFilePath>
@@ -40,6 +47,13 @@
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbbe3c09-70f6-47d7-af27-c18d9712d6a7</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#6bd5bdad-d8af-4a4c-97bc-6b5436bd7eb4</CorrelationId>
+      <ApplicationRelativeFilePath>modelers/WebApi Extension.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>WebApi Extension.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
