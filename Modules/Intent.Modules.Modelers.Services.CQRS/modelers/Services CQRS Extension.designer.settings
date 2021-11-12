@@ -214,29 +214,28 @@
     </elementExtension>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <mappingSettings>
-        <mappingSetting id="f15fa935-434e-4983-b283-25cde2cb440e">
-          <name>Map to request</name>
-          <shortcut>ctrl + shift + m</shortcut>
+        <mappingSetting id="e4e36072-a2ce-42d3-93c5-0b496d79ef43">
+          <name>Map to Command</name>
+          <shortcut>ctrl + shift + c</shortcut>
           <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>
           <symbol>fa-long-arrow-right</symbol>
           <targetTypeOptions>
             <option specializationType="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" displayText="Command" />
-            <option specializationType="e71b0662-e29d-4db2-868b-8a12464b25d0" displayText="Query" />
           </targetTypeOptions>
           <mapFrom>root</mapFrom>
           <mappings>
-            <mapping id="40142180-9e8f-4121-8f65-00259875d3bc">
+            <mapping id="073b842f-4b1e-461f-b92d-435994383518">
               <criteria specializationType="Command">
                 <hasTypeReference d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
                 <isCollection d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
                 <hasChildren d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
               </criteria>
               <mapTo specializationType="Operation" childMappingMode="map-to-child" />
-              <behaviour autoSelectChildren="true" />
+              <behaviour autoSelectChildren="false" />
               <childMappings>
-                <mapping id="a544f9b1-a158-4e03-83c4-718c4f304cce">
+                <mapping id="75979ba9-f342-4b35-981d-3a0d3cbb1b0d">
                   <criteria specializationType="DTO-Field">
                     <hasTypeReference>true</hasTypeReference>
                     <isCollection>false</isCollection>
@@ -248,6 +247,20 @@
                 </mapping>
               </childMappings>
             </mapping>
+          </mappings>
+        </mappingSetting>
+        <mappingSetting id="f15fa935-434e-4983-b283-25cde2cb440e">
+          <name>Map to Query</name>
+          <shortcut>ctrl + shift + q</shortcut>
+          <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-right</symbol>
+          <targetTypeOptions>
+            <option specializationType="e71b0662-e29d-4db2-868b-8a12464b25d0" displayText="Query" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
             <mapping id="d9c56b34-ec0d-47f0-b8a3-fe6efd176b9f">
               <criteria specializationType="Query">
                 <hasTypeReference d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
@@ -287,6 +300,117 @@
         <allowIsNullable>inherit</allowIsNullable>
         <allowIsCollection>inherit</allowIsCollection>
       </typeReferenceSetting>
+    </elementExtension>
+    <elementExtension type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
+      <creationOptions />
+      <scriptOptions>
+        <option>
+          <text>Add Command Operation</text>
+          <icon type="FontAwesome" source="code" />
+          <script>let operation = createElement("Operation", "Post", element.id);
+operation.launchMappingDialog("e4e36072-a2ce-42d3-93c5-0b496d79ef43").then(() =&gt; { // id of command mapping settings
+    if (operation.isMapped()) {
+        let command = operation.getMapping().getElement();
+        operation.setName(removeSuffix(command.name, "Command"));
+
+        if (command.getChildren().length !== operation.getChildren().length) { // command param is required to ensure all data is received.
+            let param = createElement("Parameter", "command", operation.id);
+            param.typeReference.setType(command.id);
+        }
+
+        let stereotype = operation.getStereotype("Http Settings");
+        if (stereotype) {
+            stereotype.getProperty("Verb").setValue("POST");
+            stereotype.getProperty("Route").setValue(operation.getName().toLowerCase());
+        }
+    }
+});</script>
+        </option>
+        <option>
+          <text>Add Query Operation</text>
+          <icon type="FontAwesome" source="code" />
+          <script>let operation = createElement("Operation", "Get", element.id);
+operation.launchMappingDialog("f15fa935-434e-4983-b283-25cde2cb440e").then(() =&gt; { // id of command mapping settings
+    if (operation.isMapped()) {
+        let query = operation.getMapping().getElement();
+        operation.setName(removeSuffix(query.name, "Query"));
+        let stereotype = operation.getStereotype("Http Settings");
+        if (stereotype) {
+            stereotype.getProperty("Verb").setValue("GET");
+            stereotype.getProperty("Route").setValue(operation.getName().toLowerCase());
+        }
+    }
+});</script>
+        </option>
+      </scriptOptions>
+      <typeOrder />
+      <mappingSettings>
+        <mappingSetting id="0c594279-e76c-4c49-8512-dd362a49f302">
+          <name>Map from Folder</name>
+          <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <targetTypeOptions>
+            <option specializationType="4d95d53a-8855-4f35-aa82-e312643f5c5f" displayText="Folder" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="aa3b0bc7-9c25-4128-bb92-149bf702cf01">
+              <criteria specializationType="Folder">
+                <hasTypeReference d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="Service" childMappingMode="map-to-child" />
+              <behaviour autoSelectChildren="false" />
+              <childMappings>
+                <mapping id="51625982-66b4-418a-be70-f3bece21ad0d">
+                  <criteria specializationType="Command">
+                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Operation" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings>
+                    <mapping id="52902944-13be-4155-830c-a5d92a0c333f">
+                      <criteria specializationType="DTO-Field">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection>false</isCollection>
+                        <hasChildren d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+                <mapping id="142bf242-b811-4d72-8aa7-3cebefff77e9">
+                  <criteria specializationType="Query">
+                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Operation" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="339eabd5-955d-4c1d-b70d-530e022fbe31">
+                      <criteria specializationType="DTO-Field">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection>false</isCollection>
+                        <hasChildren d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
+      </mappingSettings>
     </elementExtension>
   </elementExtensions>
   <associationSettings />

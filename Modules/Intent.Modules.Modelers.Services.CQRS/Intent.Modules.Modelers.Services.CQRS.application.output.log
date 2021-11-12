@@ -42,6 +42,13 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#b18f069e-0a19-4f1d-8be3-693239d2438b</CorrelationId>
+      <ApplicationRelativeFilePath>Api/ServiceExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>ffbf27c5-a296-4dbc-9af5-acf0bff187a2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>

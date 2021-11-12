@@ -3,7 +3,7 @@
   <name>Services Package Extension</name>
   <display>Services Package Extension: Services Package</display>
   <isAbstract>false</isAbstract>
-  <order>5</order>
+  <order>6</order>
   <genericTypes />
   <typeReference id="9a2d32cb-7c5a-42a1-a2d7-4c5986b30600">
     <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
