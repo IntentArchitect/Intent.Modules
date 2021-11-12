@@ -10,6 +10,8 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction>return ``;</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <parentFolderId>86ed4b79-2a1d-4717-b925-4a12291606a9</parentFolderId>
   <order>1</order>

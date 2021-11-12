@@ -92,6 +92,11 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
 
+        public IList<ElementEventHandlerModel> OnMappedEvents => _element.ChildElements
+                    .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+                    .Select(x => new ElementEventHandlerModel(x))
+                    .ToList();
+
     }
 
     [IntentManaged(Mode.Fully)]

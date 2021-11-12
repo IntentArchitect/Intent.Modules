@@ -11,6 +11,8 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <parentFolderId>963f40e1-0be9-4450-bbc3-60fd501f5329</parentFolderId>
   <order>0</order>

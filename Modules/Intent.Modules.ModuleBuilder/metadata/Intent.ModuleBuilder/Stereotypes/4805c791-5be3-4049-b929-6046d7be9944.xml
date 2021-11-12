@@ -10,6 +10,8 @@
   <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
   <displayIcon>false</displayIcon>
   <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <parentFolderId>38248e66-d0c0-44ff-900a-ebe5aebb6458</parentFolderId>
   <order>0</order>

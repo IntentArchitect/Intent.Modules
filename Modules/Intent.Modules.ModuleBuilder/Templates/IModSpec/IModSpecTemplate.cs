@@ -50,7 +50,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommon.Name, IntentModule.IntentCommon.Version));
             _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommonTypes.Name, IntentModule.IntentCommonTypes.Version));
-            
+
+            foreach (var module in ExecutionContext.InstalledModules.Where(x => x.InstalledMetadataOnly))
+            {
+                _moduleDependencies.Add(new ModuleDependencyRequiredEvent(module.ModuleId, module.Version));
+            }
+
             ExecutionContext.EventDispatcher.Subscribe<ModuleDependencyRequiredEvent>(@event =>
             {
                 if (@event.ModuleId == ModuleModel.Name)
@@ -89,6 +94,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 versionFromDesigner > moduleVersion)
             {
                 doc.Element("package").SetElementValue("version", ModuleModel.Version);
+            }
+
+            if (ExecutionContext.GetApplicationConfig().Description != null)
+            {
+                doc.Element("package").SetElementValue("summary", ExecutionContext.GetApplicationConfig().Description);
+                doc.Element("package").SetElementValue("description", ExecutionContext.GetApplicationConfig().Description);
             }
 
             var templatesElement = doc.Element("package").Element("templates");
@@ -402,9 +413,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 <package>
   <id>{ModuleModel.Name}</id>
   <version>{ModuleModel.GetModuleSettings().Version()}</version>
-  <supportedClientVersions>[3.0.0,4.0.0)</supportedClientVersions>
-  <summary>A custom module for {OutputTarget.Application.SolutionName}.</summary>
-  <description>A custom module for {OutputTarget.Application.SolutionName}.</description>
+  <supportedClientVersions>[3.1.0,4.0.0)</supportedClientVersions>
+  <summary>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</summary>
+  <description>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</description>
   <authors>{OutputTarget.Application.SolutionName}</authors>
   <iconUrl></iconUrl>
   <templates></templates>
