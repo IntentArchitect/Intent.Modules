@@ -95,11 +95,4 @@ namespace Intent.Modules.Common.TypeResolution
             return templateInstance;
         }
     }
-
-    public class ClassTypeSourceOptions
-    {
-        public ICollectionFormatter CollectionFormatter { get; set; }
-        public INullableFormatter NullableFormatter { get; set; }
-        public bool TrackDependencies { get; set; } = true;
-    }
 }

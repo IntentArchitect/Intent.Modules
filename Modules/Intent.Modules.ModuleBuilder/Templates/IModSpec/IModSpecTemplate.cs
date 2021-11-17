@@ -20,6 +20,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
     public class IModSpecTemplate : IntentFileTemplateBase, IHasNugetDependencies
     {
         private readonly IMetadataManager _metadataManager;
+        private readonly ICollection<INugetPackageInfo> _nugetPackages = new List<INugetPackageInfo>();
         private readonly ICollection<TemplateRegistrationRequiredEvent> _templatesToRegister = new List<TemplateRegistrationRequiredEvent>();
         private readonly ICollection<DecoratorRegistrationRequiredEvent> _decoratorsToRegister = new List<DecoratorRegistrationRequiredEvent>();
         private readonly ICollection<FactoryExtensionRegistrationRequiredEvent> _extensionsToRegister = new List<FactoryExtensionRegistrationRequiredEvent>();
@@ -32,6 +33,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             : base(TemplateId, project)
         {
             _metadataManager = metadataManager;
+            _nugetPackages.Add(IntentNugetPackages.IntentSdk);
+            _nugetPackages.Add(IntentNugetPackages.IntentPackager);
             ModuleModel = model;
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {
@@ -53,6 +56,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var module in ExecutionContext.InstalledModules.Where(x => x.InstalledMetadataOnly))
             {
+                // TODO: GCB - find a way to discover Module Dependencies based on references to the package - these are the actual dependencies (NuGet included)
                 _moduleDependencies.Add(new ModuleDependencyRequiredEvent(module.ModuleId, module.Version));
             }
 
@@ -280,9 +284,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 var settings = new XElement("settings");
                 foreach (var settingsField in settingsGroup.Fields)
                 {
-                    var fieldXml = new XElement("setting", 
-                        new XAttribute("id", settingsField.Id), 
-                        new XAttribute("title", settingsField.Name), 
+                    var fieldXml = new XElement("setting",
+                        new XAttribute("id", settingsField.Id),
+                        new XAttribute("title", settingsField.Name),
                         new XAttribute("type", GetControlType(settingsField)));
                     fieldXml.Add(new XElement("isRequired", new XText(settingsField.GetFieldConfiguration().IsRequired().ToString().ToLower())));
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().Hint()))
@@ -434,11 +438,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
-            return new INugetPackageInfo[]
-            {
-                IntentNugetPackages.IntentSdk,
-                IntentNugetPackages.IntentPackager
-            };
+            return _nugetPackages;
         }
 
         private string GetControlType(ModuleSettingsFieldConfigurationModel settingsField)
