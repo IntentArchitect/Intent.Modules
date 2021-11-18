@@ -8,18 +8,18 @@ namespace Intent.Modules.Common.TypeResolution
 {
     public class ClassTypeSource : ITypeSource
     {
-        private readonly ISoftwareFactoryExecutionContext _context;
-        private readonly string _templateId;
-        private readonly ClassTypeSourceOptions _options;
-        private readonly IList<ITemplateDependency> _templateDependencies = new List<ITemplateDependency>();
-        public ICollectionFormatter CollectionFormatter => _options.CollectionFormatter;
-        public INullableFormatter NullableFormatter => _options.NullableFormatter;
+        protected readonly ISoftwareFactoryExecutionContext Context;
+        protected readonly string TemplateId;
+        protected readonly ClassTypeSourceOptions Options;
+        protected readonly List<ITemplateDependency> TemplateDependencies = new List<ITemplateDependency>();
+        public ICollectionFormatter CollectionFormatter => Options.CollectionFormatter;
+        public INullableFormatter NullableFormatter => Options.NullableFormatter;
 
-        internal ClassTypeSource(ISoftwareFactoryExecutionContext context, string templateId, ClassTypeSourceOptions options = null)
+        protected ClassTypeSource(ISoftwareFactoryExecutionContext context, string templateId, ClassTypeSourceOptions options = null)
         {
-            _context = context;
-            _templateId = templateId;
-            _options = options ?? new ClassTypeSourceOptions();
+            Context = context;
+            TemplateId = templateId;
+            Options = options ?? new ClassTypeSourceOptions();
         }
 
         public static ClassTypeSource Create(ISoftwareFactoryExecutionContext context, string templateId)
@@ -29,31 +29,31 @@ namespace Intent.Modules.Common.TypeResolution
 
         public ClassTypeSource TrackDependencies(bool track)
         {
-            _options.TrackDependencies = track;
+            Options.TrackDependencies = track;
             return this;
         }
 
         public ClassTypeSource WithCollectionFormat(string format)
         {
-            _options.CollectionFormatter = new CollectionFormatter(format);
+            Options.CollectionFormatter = new CollectionFormatter(format);
             return this;
         }
 
         public ClassTypeSource WithCollectionFormatter(Func<IResolvedTypeInfo, string> formatter)
         {
-            _options.CollectionFormatter = new CollectionFormatter(formatter);
+            Options.CollectionFormatter = new CollectionFormatter(formatter);
             return this;
         }
 
         public ClassTypeSource WithCollectionFormatter(ICollectionFormatter formatter)
         {
-            _options.CollectionFormatter = formatter;
+            Options.CollectionFormatter = formatter;
             return this;
         }
 
         public ClassTypeSource WithNullFormatter(INullableFormatter formatter)
         {
-            _options.NullableFormatter = formatter;
+            Options.NullableFormatter = formatter;
             return this;
         }
 
@@ -64,7 +64,30 @@ namespace Intent.Modules.Common.TypeResolution
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
-            return _templateDependencies;
+            return TemplateDependencies;
+        }
+
+        protected virtual ResolvedTypeInfo CreateResolvedTypeInfo(ITypeReference typeReference, IClassProvider templateInstance)
+        {
+            return new ResolvedTypeInfo(templateInstance.FullTypeName(), false, typeReference, templateInstance);
+        }
+
+        protected virtual IClassProvider TryGetTemplateInstance(ITypeReference typeInfo)
+        {
+            if (typeInfo.Element == null)
+            {
+                return null;
+            }
+
+            var templateInstance = Context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(TemplateId, typeInfo.Element));
+
+            return templateInstance;
+        }
+
+        protected virtual IEnumerable<ITemplateDependency> GetTemplateDependencies(ITypeReference typeReference,
+            IClassProvider templateInstance)
+        {
+            return new[] {TemplateDependency.OnTemplate(templateInstance)};
         }
 
         private IResolvedTypeInfo TryGetType(ITypeReference typeReference)
@@ -75,24 +98,19 @@ namespace Intent.Modules.Common.TypeResolution
                 return null;
             }
 
-            if (_options.TrackDependencies)
+            if (Options.TrackDependencies)
             {
-                _templateDependencies.Add(TemplateDependency.OnModel(_templateId, typeReference.Element));
+                TemplateDependencies.AddRange(GetTemplateDependencies(typeReference, templateInstance));
             }
 
-            return new ResolvedTypeInfo(templateInstance.ClassName, false, typeReference, templateInstance);
+            return CreateResolvedTypeInfo(typeReference, templateInstance);
         }
+    }
 
-        private IClassProvider TryGetTemplateInstance(ITypeReference typeInfo)
-        {
-            if (typeInfo.Element == null)
-            {
-                return null;
-            }
-            var templateInstance = _context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(_templateId, typeInfo.Element));
-            
-
-            return templateInstance;
-        }
+    public class ClassTypeSourceOptions
+    {
+        public ICollectionFormatter CollectionFormatter { get; set; }
+        public INullableFormatter NullableFormatter { get; set; }
+        public bool TrackDependencies { get; set; } = true;
     }
 }
