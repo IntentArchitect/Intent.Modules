@@ -118,10 +118,7 @@
             <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.NormalizeTypeName(System.String)">
-            <summary>
-            Called once a type has been resolved in the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
-            Override to alter the resulting string.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.NormalizeNamespace(System.String)">
             <summary>

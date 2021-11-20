@@ -174,10 +174,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             AddTypeSource(ClassTypeSource.Create(ExecutionContext, templateId).WithCollectionFormat(collectionFormat));
         }
 
-        /// <summary>
-        /// Called once a type has been resolved in the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
-        /// Override to alter the resulting string.
-        /// </summary>
+        /// <inheritdoc />
         public override string NormalizeTypeName(string name)
         {
             return NormalizeNamespace(name);
@@ -189,11 +186,19 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
         public virtual string NormalizeNamespace(string foreignType)
         {
+            var isNullable = false;
+            if (foreignType.EndsWith("?", StringComparison.OrdinalIgnoreCase))
+            {
+                isNullable = true;
+                foreignType = foreignType.Substring(0, foreignType.Length - 1);
+            }
+
             // Handle Generics recursively:
             string normalizedGenericTypes = null;
             if (foreignType.Contains("<") && foreignType.Contains(">"))
             {
                 var genericTypes = foreignType.Substring(foreignType.IndexOf("<", StringComparison.Ordinal) + 1, foreignType.Length - foreignType.IndexOf("<", StringComparison.Ordinal) - 2);
+
                 normalizedGenericTypes = genericTypes
                     .Split(',')
                     .Select(NormalizeNamespace)
@@ -216,7 +221,10 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .Distinct()
                 .ToArray();
 
-            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
+            var nullable = isNullable ? "?" : string.Empty;
+
+            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) +
+                   (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>{nullable}" : nullable);
         }
 
         private IEnumerable<string> _templateUsings;
