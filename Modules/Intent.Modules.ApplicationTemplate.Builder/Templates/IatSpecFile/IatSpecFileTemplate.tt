@@ -16,9 +16,9 @@
   <shortDescription><#= SecurityElement.Escape(Model.Description) ?? "" #></shortDescription>
   <authors><#= SecurityElement.Escape(Model.Authors) ?? "" #></authors>
   <priority><#= Model.Priority ?? "0" #></priority>
+  <icon type="<#= Icon.Type #>" source="<#= Icon.Source #>" />
   <defaultName><#= SecurityElement.Escape(Model.DefaultName) #></defaultName>
   <relativeOutputLocation><#= SecurityElement.Escape(Model.DefaultOutputLocation) #></relativeOutputLocation>
-  <icon type="<#= Icon.Type #>" source="<#= Icon.Source #>" />
   <componentGroups>
 <#  foreach(var @group in Model.Groups) { #>
     <group name="<#= SecurityElement.Escape(@group.Name) #>">
@@ -26,7 +26,7 @@
 <#      foreach(var component in @group.Components) { #>
         <component name="<#= SecurityElement.Escape(component.Name) #>" included="<#= component.IncludeByDefault.ToString().ToLower() #>">
           <description><#= SecurityElement.Escape(component.Description) ?? "" #></description>
-          <icon type="<#= component.Icon.Type #>" source="<#= component.Icon.Source #>"/>
+          <icon type="<#= component.Icon.Type #>" source="<#= component.Icon.Source #>" />
           <modules>
 <#          foreach(var module in component.Modules) { #>
             <module id="<#= module.Name #>" version="<#= module.Version #>" />
