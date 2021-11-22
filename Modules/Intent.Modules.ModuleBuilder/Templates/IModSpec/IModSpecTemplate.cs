@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
         private readonly ICollection<MetadataRegistrationRequiredEvent> _metadataToRegister = new List<MetadataRegistrationRequiredEvent>();
         private readonly ICollection<ModuleDependencyRequiredEvent> _moduleDependencies = new List<ModuleDependencyRequiredEvent>();
 
-        public const string TemplateId = "Intent.ModuleBuilder.IModeSpecFile";
+        public const string TemplateId = "Intent.ModuleBuilder.IModSpecFile";
 
         public IModSpecTemplate(IOutputTarget project, IntentModuleModel model, IMetadataManager metadataManager)
             : base(TemplateId, project)

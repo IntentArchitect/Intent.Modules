@@ -501,7 +501,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
