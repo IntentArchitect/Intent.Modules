@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <settings>
   <targetDesignerId>a1c3dd87-352e-4353-853b-c79853debecb</targetDesignerId>
   <createPackages>
-    <package type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
+    <package typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214" type="Intent Module">
       <name>${application.name}</name>
       <stereotypes>
         <stereotype stereotypeDefinitionId="76256322-88f1-4efb-8bd6-7cc4a6c54cb9" name="Module Settings">
@@ -20,6 +20,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <childElements />
     </package>
   </createPackages>
 </settings>
