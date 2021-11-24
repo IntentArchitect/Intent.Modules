@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Humanizer;
 using Humanizer.Inflections;
 using Intent.Templates;
 
@@ -175,12 +176,12 @@ namespace Intent.Modules.Common.Templates
 
         public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
         {
-            return Vocabularies.Default.Pluralize(word, inputIsKnownToBeSingular);
+            return InflectorExtensions.Pluralize(word, inputIsKnownToBeSingular);
         }
 
         public static string Singularize(this string word, bool inputIsKnownToBePlural = true)
         {
-            return Vocabularies.Default.Singularize(word, inputIsKnownToBePlural);
+            return InflectorExtensions.Singularize(word, inputIsKnownToBePlural);
         }
     }
 

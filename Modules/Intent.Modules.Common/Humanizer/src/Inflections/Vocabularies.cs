@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Threading;
 
 namespace Humanizer.Inflections
@@ -6,7 +6,7 @@ namespace Humanizer.Inflections
     /// <summary>
     /// Container for registered Vocabularies.  At present, only a single vocabulary is supported: Default.
     /// </summary>
-    public static class Vocabularies
+    internal static class Vocabularies
     {
         private static readonly Lazy<Vocabulary> Instance;
 
@@ -38,8 +38,8 @@ namespace Humanizer.Inflections
             _default.AddPlural("(hive)$", "$1s");
             _default.AddPlural("([^aeiouy]|qu)y$", "$1ies");
             _default.AddPlural("(x|ch|ss|sh)$", "$1es");
-            _default.AddPlural("(matr|vert|ind|d)ix|ex$", "$1ices");
-            _default.AddPlural("([m|l])ouse$", "$1ice");
+            _default.AddPlural("(matr|vert|ind|d)(ix|ex)$", "$1ices");
+            _default.AddPlural("(^[m|l])ouse$", "$1ice");
             _default.AddPlural("^(ox)$", "$1en");
             _default.AddPlural("(quiz)$", "$1zes");
             _default.AddPlural("(buz|blit|walt)z$", "$1zes");
@@ -59,8 +59,8 @@ namespace Humanizer.Inflections
             _default.AddSingular("(s)eries$", "$1eries");
             _default.AddSingular("(m)ovies$", "$1ovie");
             _default.AddSingular("(x|ch|ss|sh)es$", "$1");
-            _default.AddSingular("([m|l])ice$", "$1ouse");
-            _default.AddSingular("(o)es$", "$1");
+            _default.AddSingular("(^[m|l])ice$", "$1ouse");
+            _default.AddSingular("(?<!^[a-z])(o)es$", "$1");
             _default.AddSingular("(shoe)s$", "$1");
             _default.AddSingular("(cris|ax|test)es$", "$1is");
             _default.AddSingular("(octop|vir|alumn|fung|cact|foc|hippopotam|radi|stimul|syllab|nucle)i$", "$1us");
@@ -79,24 +79,34 @@ namespace Humanizer.Inflections
             _default.AddIrregular("human", "humans");
             _default.AddIrregular("child", "children");
             _default.AddIrregular("sex", "sexes");
+            _default.AddIrregular("glove", "gloves");
             _default.AddIrregular("move", "moves");
             _default.AddIrregular("goose", "geese");
             _default.AddIrregular("wave", "waves");
-            _default.AddIrregular("die", "dice");
             _default.AddIrregular("foot", "feet");
             _default.AddIrregular("tooth", "teeth");
             _default.AddIrregular("curriculum", "curricula");
             _default.AddIrregular("database", "databases");
             _default.AddIrregular("zombie", "zombies");
             _default.AddIrregular("personnel", "personnel");
+            //Fix #789
+            _default.AddIrregular("cache", "caches");
 
+            //Fix 975
+            _default.AddIrregular("ex", "exes", matchEnding: false);
             _default.AddIrregular("is", "are", matchEnding: false);
             _default.AddIrregular("that", "those", matchEnding: false);
             _default.AddIrregular("this", "these", matchEnding: false);
             _default.AddIrregular("bus", "buses", matchEnding: false);
+            _default.AddIrregular("die", "dice", matchEnding: false);
+            _default.AddIrregular("tie", "ties", matchEnding: false);
 
+            _default.AddUncountable("staff");
+            _default.AddUncountable("training");
             _default.AddUncountable("equipment");
             _default.AddUncountable("information");
+            _default.AddUncountable("corn");
+            _default.AddUncountable("milk");
             _default.AddUncountable("rice");
             _default.AddUncountable("money");
             _default.AddUncountable("species");
@@ -131,6 +141,10 @@ namespace Humanizer.Inflections
             _default.AddUncountable("corps");
             _default.AddUncountable("scissors");
             _default.AddUncountable("means");
+            _default.AddUncountable("mail");
+
+            //Fix 1132
+            _default.AddUncountable("metadata");
 
             return _default;
         }

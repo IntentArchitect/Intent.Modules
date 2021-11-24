@@ -1729,6 +1729,19 @@
             https://github.com/castleproject/Core/blob/netcore/src/Castle.Core/Compatibility/IntrospectionExtensions.cs
             </summary>
         </member>
+        <member name="T:Humanizer.CasingExtensions">
+            <summary>
+            ApplyCase method to allow changing the case of a sentence easily
+            </summary>
+        </member>
+        <member name="M:Humanizer.CasingExtensions.ApplyCase(System.String,Humanizer.LetterCasing)">
+            <summary>
+            Changes the casing of the provided input
+            </summary>
+            <param name="input"></param>
+            <param name="casing"></param>
+            <returns></returns>
+        </member>
         <member name="T:Humanizer.Inflections.Vocabularies">
             <summary>
             Container for registered Vocabularies.  At present, only a single vocabulary is supported: Default.
@@ -1782,13 +1795,211 @@
             </summary>
             <param name="word">Word to be pluralized</param>
             <param name="inputIsKnownToBeSingular">Normally you call Pluralize on singular words; but if you're unsure call it with false</param>
+            <returns></returns>
         </member>
-        <member name="M:Humanizer.Inflections.Vocabulary.Singularize(System.String,System.Boolean)">
+        <member name="M:Humanizer.Inflections.Vocabulary.Singularize(System.String,System.Boolean,System.Boolean)">
             <summary>
             Singularizes the provided input considering irregular words
             </summary>
             <param name="word">Word to be singularized</param>
             <param name="inputIsKnownToBePlural">Normally you call Singularize on plural words; but if you're unsure call it with false</param>
+            <param name="skipSimpleWords">Skip singularizing single words that have an 's' on the end</param>
+            <returns></returns>
+        </member>
+        <member name="T:Humanizer.InflectorExtensions">
+            <summary>
+            Inflector extensions
+            </summary>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Pluralize(System.String,System.Boolean)">
+            <summary>
+            Pluralizes the provided input considering irregular words
+            </summary>
+            <param name="word">Word to be pluralized</param>
+            <param name="inputIsKnownToBeSingular">Normally you call Pluralize on singular words; but if you're unsure call it with false</param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Singularize(System.String,System.Boolean,System.Boolean)">
+            <summary>
+            Singularizes the provided input considering irregular words
+            </summary>
+            <param name="word">Word to be singularized</param>
+            <param name="inputIsKnownToBePlural">Normally you call Singularize on plural words; but if you're unsure call it with false</param>
+            <param name="skipSimpleWords">Skip singularizing single words that have an 's' on the end</param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Titleize(System.String)">
+            <summary>
+            Humanizes the input with Title casing
+            </summary>
+            <param name="input">The string to be titleized</param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Pascalize(System.String)">
+            <summary>
+            By default, pascalize converts strings to UpperCamelCase also removing underscores
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Camelize(System.String)">
+            <summary>
+            Same as Pascalize except that the first character is lower case
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Underscore(System.String)">
+            <summary>
+            Separates the input words with underscore
+            </summary>
+            <param name="input">The string to be underscored</param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Dasherize(System.String)">
+            <summary>
+            Replaces underscores with dashes in the string
+            </summary>
+            <param name="underscoredWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Hyphenate(System.String)">
+            <summary>
+            Replaces underscores with hyphens in the string
+            </summary>
+            <param name="underscoredWord"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.InflectorExtensions.Kebaberize(System.String)">
+            <summary>
+            Separates the input words with hyphens and all the words are converted to lowercase
+            </summary>
+            <param name="input"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Humanizer.LetterCasing">
+            <summary>
+            Options for specifying the desired letter casing for the output string 
+            </summary>
+        </member>
+        <member name="F:Humanizer.LetterCasing.Title">
+            <summary>
+            SomeString -> Some String
+            </summary>
+        </member>
+        <member name="F:Humanizer.LetterCasing.AllCaps">
+            <summary>
+            SomeString -> SOME STRING
+            </summary>
+        </member>
+        <member name="F:Humanizer.LetterCasing.LowerCase">
+            <summary>
+            SomeString -> some string
+            </summary>
+        </member>
+        <member name="F:Humanizer.LetterCasing.Sentence">
+            <summary>
+            SomeString -> Some string
+            </summary>
+        </member>
+        <member name="T:Humanizer.StringHumanizeExtensions">
+            <summary>
+            Contains extension methods for humanizing string values.
+            </summary>
+        </member>
+        <member name="M:Humanizer.StringHumanizeExtensions.Humanize(System.String)">
+            <summary>
+            Humanizes the input string; e.g. Underscored_input_String_is_turned_INTO_sentence -> 'Underscored input String is turned INTO sentence'
+            </summary>
+            <param name="input">The string to be humanized</param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.StringHumanizeExtensions.Humanize(System.String,Humanizer.LetterCasing)">
+            <summary>
+            Humanized the input string based on the provided casing
+            </summary>
+            <param name="input">The string to be humanized</param>
+            <param name="casing">The desired casing for the output</param>
+            <returns></returns>
+        </member>
+        <member name="T:Humanizer.ICulturedStringTransformer">
+            <summary>
+            Can transform a string with the given culture
+            </summary>
+        </member>
+        <member name="M:Humanizer.ICulturedStringTransformer.Transform(System.String,System.Globalization.CultureInfo)">
+            <summary>
+            Transform the input
+            </summary>
+            <param name="input">String to be transformed</param>
+            <param name="culture">The culture</param>
+            <returns></returns>
+        </member>
+        <member name="T:Humanizer.IStringTransformer">
+            <summary>
+            Can transform a string
+            </summary>
+        </member>
+        <member name="M:Humanizer.IStringTransformer.Transform(System.String)">
+            <summary>
+            Transform the input
+            </summary>
+            <param name="input">String to be transformed</param>
+            <returns></returns>
+        </member>
+        <member name="T:Humanizer.To">
+            <summary>
+            A portal to string transformation using IStringTransformer
+            </summary>
+        </member>
+        <member name="M:Humanizer.To.Transform(System.String,Humanizer.IStringTransformer[])">
+            <summary>
+            Transforms a string using the provided transformers. Transformations are applied in the provided order.
+            </summary>
+            <param name="input"></param>
+            <param name="transformers"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Humanizer.To.Transform(System.String,System.Globalization.CultureInfo,Humanizer.ICulturedStringTransformer[])">
+            <summary>
+            Transforms a string using the provided transformers. Transformations are applied in the provided order.
+            </summary>
+            <param name="input"></param>
+            <param name="culture"></param>
+            <param name="transformers"></param>
+            <returns></returns>
+        </member>
+        <member name="P:Humanizer.To.TitleCase">
+            <summary>
+            Changes string to title case
+            </summary>
+            <example>
+            "INvalid caSEs arE corrected" -> "Invalid Cases Are Corrected"
+            </example>
+        </member>
+        <member name="P:Humanizer.To.LowerCase">
+            <summary>
+            Changes the string to lower case
+            </summary>
+            <example>
+            "Sentence casing" -> "sentence casing"
+            </example>
+        </member>
+        <member name="P:Humanizer.To.UpperCase">
+            <summary>
+            Changes the string to upper case
+            </summary>
+            <example>
+            "lower case statement" -> "LOWER CASE STATEMENT"
+            </example>
+        </member>
+        <member name="P:Humanizer.To.SentenceCase">
+            <summary>
+            Changes the string to sentence case
+            </summary>
+            <example>
+            "lower case statement" -> "Lower case statement"
+            </example>
         </member>
     </members>
 </doc>
