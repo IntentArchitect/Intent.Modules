@@ -31,12 +31,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
         {
             return new CSharpFileConfig(
                 className: $"{Model.Name}",
-                @namespace: $"{OutputTarget.GetNamespace()}");
+                @namespace: $"{this.GetNamespaceWithSingleOnlyOf("Decorators")}",
+                relativeLocation: $"{this.GetFolderPathWithout("Decorators")}");
         }
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new DecoratorRegistrationRequiredEvent(
+            OutputTarget.ExecutionContext.EventDispatcher.Publish(new DecoratorRegistrationRequiredEvent(
                 modelId: Model.Id,
                 decoratorId: GetDecoratorId()));
         }

@@ -32,7 +32,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
         {
             return new CSharpFileConfig(
                 className: $"{Model.Name}Registration",
-                @namespace: $"{OutputTarget.GetNamespace()}");
+                @namespace: $"{this.GetNamespaceWithSingleOnlyOf("Decorators")}",
+                relativeLocation: $"{this.GetFolderPathWithout("Decorators")}");
         }
 
         private string GetDecoratorTypeName()

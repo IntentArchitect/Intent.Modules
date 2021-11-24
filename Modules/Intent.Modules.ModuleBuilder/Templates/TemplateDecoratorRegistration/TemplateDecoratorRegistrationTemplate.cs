@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
         public override string TransformText()
         {
             this.Write("using System.ComponentModel;\r\nusing Intent.Engine;\r\nusing Intent.Modules.Common.R" +
-                    "egistrations;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Merge)]\r\n\r\nnamespace ");
+                    "egistrations;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
             #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorRegistration\TemplateDecoratorRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
