@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
@@ -42,9 +44,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
                 decoratorId: GetDecoratorId()));
         }
 
-        private string GetDecoratorId()
+        public string GetDecoratorId()
         {
-            return $"{Model.GetModule().Name}.{Model.Name}";
+            return $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Where(x => x != "Decorators").Concat(new[] { Model.Name }))}";
         }
 
         private string GetTemplateTypeName()
