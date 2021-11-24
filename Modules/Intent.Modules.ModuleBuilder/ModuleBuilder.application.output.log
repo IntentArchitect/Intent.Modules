@@ -525,7 +525,7 @@
       <CorrelationId>Intent.ModuleBuilder.DesignerConfig#a1c3dd87-352e-4353-853b-c79853debecb</CorrelationId>
       <ApplicationRelativeFilePath>modelers/Module Builder.designer.config</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Module Builder.designer.config</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2b827469-c59a-4981-b034-3591f1380859</ProjectId>

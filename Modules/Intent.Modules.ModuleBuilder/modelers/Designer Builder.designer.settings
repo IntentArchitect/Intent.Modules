@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
+<settings version="3.1.1">
   <id>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</id>
   <name>Designer Builder</name>
   <designerReferences />
@@ -72,6 +72,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <macros>
         <macro trigger="on-created">
           <script>createElement("Association Source End Settings", "[source]", context.id);
@@ -116,6 +117,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
               <icon type="CharacterBox" source="S|#BA68C8" />
@@ -131,6 +133,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
             <childElementSetting type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
@@ -147,6 +150,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -164,6 +168,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
@@ -179,6 +184,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -241,6 +247,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
           <icon type="CharacterBox" source="S|#04007a" />
@@ -268,6 +275,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
@@ -299,6 +307,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
@@ -326,6 +335,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -353,6 +363,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -370,6 +381,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Designer" typeId="7f5fcc9f-c721-4a31-bfe2-7909f4289420">
@@ -399,6 +411,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
           <icon type="CharacterBox" source="R|#00BFA5" />
@@ -428,6 +441,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -525,6 +539,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
@@ -564,6 +579,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
@@ -634,6 +650,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
@@ -711,6 +728,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <macros>
         <macro trigger="on-created">
           <script>createElement("Context Menu", "[context menu]", context.id)</script>
@@ -746,6 +764,7 @@ createElement("Association Destination End Settings", "[destination]", context.i
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <icon type="CharacterBox" source="M|#095cff" />
@@ -783,6 +802,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 </option>
               </creationOptions>
               <scriptOptions />
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -839,6 +859,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
               <icon type="FontAwesome" source="code" />
@@ -866,6 +887,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -937,6 +959,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
               <icon type="CharacterBox" source="T|#FBC02D" />
@@ -952,6 +975,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
             <childElementSetting type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
@@ -968,6 +992,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
             <childElementSetting type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
@@ -984,6 +1009,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -1017,6 +1043,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -1070,6 +1097,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <macros>
         <macro trigger="on-created">
           <script>createElement("Context Menu", "[context menu]", context.id)</script>
@@ -1114,6 +1142,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <macros>
         <macro trigger="on-created">
           <script>createElement("Context Menu", "[context menu]", context.id)</script>
@@ -1156,6 +1185,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Package Event Handler" typeId="e59f6c30-69ba-427c-9a73-33d69e44f765">
               <icon type="FontAwesome" source="code" />
@@ -1183,6 +1213,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -1202,6 +1233,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
   </elementSettings>

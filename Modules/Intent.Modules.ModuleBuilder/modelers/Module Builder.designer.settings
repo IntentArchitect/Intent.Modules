@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
+<settings version="3.1.1">
   <id>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</id>
   <name>Module Builder</name>
   <designerReferences />
@@ -110,6 +110,7 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="File Template" typeId="43eae4bd-4613-4d15-88ac-52b7e743b7b2">
@@ -151,6 +152,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
@@ -180,6 +182,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
           <icon type="FontAwesome" source="pencil" />
@@ -208,6 +211,7 @@
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
               <icon type="FontAwesome" source="circle" />
@@ -225,6 +229,7 @@
               <typeOrder />
               <creationOptions />
               <scriptOptions />
+              <mappingSettings />
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
@@ -256,6 +261,7 @@
         <isNullableDefault>false</isNullableDefault>
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Template Decorator Contract" typeId="ac1da322-377e-45cf-a2d9-d147a4d91457">
@@ -271,6 +277,7 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Template Registration" typeId="502551f7-c2d7-4d65-ad9f-13bd1e9e96d5">
@@ -286,6 +293,7 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
   </elementSettings>
@@ -346,6 +354,7 @@
         <type>Type-Definition</type>
         <type>Stereotype-Definition</type>
       </typeOrder>
+      <mappingSettings />
     </elementExtension>
   </elementExtensions>
   <associationSettings />

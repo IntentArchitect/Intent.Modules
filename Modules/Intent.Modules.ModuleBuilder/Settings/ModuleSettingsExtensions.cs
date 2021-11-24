@@ -1,7 +1,7 @@
 using Intent.Configuration;
 using Intent.Engine;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common.Templates;
+using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions", Version = "1.0")]

@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
-using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
 using System.Linq;
-using Intent.Modules.Common.Types.Api;
+using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
+using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
