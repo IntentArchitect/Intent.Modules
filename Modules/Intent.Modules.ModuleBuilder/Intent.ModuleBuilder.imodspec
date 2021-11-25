@@ -200,9 +200,9 @@
   <decorators></decorators>
   <dependencies>
     <dependency id="Intent.Common.Types" version="3.1.0" />
-    <dependency id="Intent.Common.CSharp" version="3.1.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.1.5" />
-    <dependency id="Intent.Common" version="3.1.8" />
+    <dependency id="Intent.Common.CSharp" version="3.1.7" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.1.6" />
+    <dependency id="Intent.Common" version="3.1.11" />
   </dependencies>
   <designers>
     <designer id="Module Builder" name="Module Builder" src="modelers/Module Builder.designer.config" />

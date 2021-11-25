@@ -25,6 +25,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -101,6 +102,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>44e387e6-ba89-4596-af80-4311779f06e4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.TemplateExtensions</CorrelationId>
       <ApplicationRelativeFilePath>Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

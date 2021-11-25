@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
+<settings version="3.1.1">
   <id>1e3cc0d3-8901-498a-960b-4a51f915b92b</id>
   <name>CSharp</name>
   <designerReferences />
@@ -64,6 +64,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
   </elementSettings>
@@ -84,6 +85,7 @@
       <typeOrder>
         <type order="1">C# Template</type>
       </typeOrder>
+      <mappingSettings />
     </elementExtension>
   </elementExtensions>
   <associationSettings />
