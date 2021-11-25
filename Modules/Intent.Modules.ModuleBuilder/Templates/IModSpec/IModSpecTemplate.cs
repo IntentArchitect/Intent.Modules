@@ -171,6 +171,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     specificTemplate.SetElementValue("location", template.Location);
                 }
             }
+            SortChildElementsByAttribute(templatesElement, "id");
 
             var factoryExtensions = doc.Element("package").Element("factoryExtensions");
             if (_extensionsToRegister.Any() && factoryExtensions == null)
@@ -195,6 +196,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     specificExtension.Add(new XAttribute("externalReference", extension.ModelId));
                 }
             }
+            SortChildElementsByAttribute(factoryExtensions, "id");
 
             foreach (var extension in doc.XPathSelectElements($"package/factoryExtensions/factoryExtension").ToList())
             {
@@ -208,6 +210,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentRoslynWeaver.Name, IntentModule.IntentRoslynWeaver.Version));
             }
+
+            var dependencies = doc.XPathSelectElement("package/dependencies");
             foreach (var moduleDependency in _moduleDependencies)
             {
                 if (moduleDependency.ModuleId != doc.XPathSelectElement("package/id").Value)
@@ -215,7 +219,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     var existing = doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]");
                     if (existing == null)
                     {
-                        var dependencies = doc.XPathSelectElement("package/dependencies");
                         existing = CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion));
                         dependencies.Add(existing);
                     }
@@ -225,6 +228,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     }
                 }
             }
+            SortChildElementsByAttribute(dependencies, "id");
 
             foreach (var template in doc.XPathSelectElements($"package/templates/template").ToList())
             {
@@ -234,9 +238,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
+            var decoratorsElement = doc.Element("package").Element("decorators");
             if (_decoratorsToRegister.Any())
             {
-                var decoratorsElement = doc.Element("package").Element("decorators");
                 if (decoratorsElement == null)
                 {
                     decoratorsElement = new XElement("decorators");
@@ -254,6 +258,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     specificDecorator.SetAttributeValue("id", decorator.DecoratorId);
                 }
             }
+            SortChildElementsByAttribute(decoratorsElement, "id");
 
             foreach (var decorator in doc.XPathSelectElements($"package/decorators/decorator").ToList())
             {
@@ -317,6 +322,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
                 existing.Add(settings);
             }
+            SortChildElementsByAttribute(moduleSettings, "id");
 
             foreach (var installedSettingsGroup in doc.XPathSelectElements($"package/moduleSettings/group"))
             {
@@ -399,6 +405,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             }
 
             return doc.ToStringUTF8();
+        }
+
+        private static void SortChildElementsByAttribute(XElement element, string attributeName)
+        {
+            if (!element.HasElements)
+            {
+                return;
+            }
+
+            var sortedElements = element.Elements().OrderBy(x => x.Attribute(attributeName).Value).ToArray();
+            element.RemoveNodes();
+            element.Add(sortedElements);
         }
 
         private static XElement CreateDependency(IntentModule intentModule)
