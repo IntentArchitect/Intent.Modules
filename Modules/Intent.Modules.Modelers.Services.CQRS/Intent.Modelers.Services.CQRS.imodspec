@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services.CQRS</id>
-  <version>3.1.2</version>
+  <version>3.1.3</version>
   <supportedClientVersions>[3.1.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.Net.</summary>
   <description>A custom module for Intent.Modules.Net.</description>
@@ -11,9 +11,10 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.1.8" />
+    <dependency id="Intent.Common" version="3.1.11" />
     <dependency id="Intent.Common.Types" version="3.1.0" />
-    <dependency id="Intent.Modelers.Services" version="3.1.0" />
+    <dependency id="Intent.Modelers.Services" version="3.1.2" />
+    <dependency id="Intent.Modelers.Domain" version="3.1.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

@@ -112,7 +112,7 @@
                 <mapping id="646e306f-ff15-49e4-8600-b51cb730f999">
                   <criteria specializationType="Association Target End">
                     <hasTypeReference>true</hasTypeReference>
-                    <isCollection>true</isCollection>
+                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
@@ -122,10 +122,20 @@
                 <mapping id="e4385dbd-00ad-474d-8b80-6a439d05dfbd">
                   <criteria specializationType="Association Source End">
                     <hasTypeReference>true</hasTypeReference>
-                    <isCollection>true</isCollection>
+                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="99349688-8662-4f74-8896-44ef5b0a5fab">
+                  <criteria specializationType="Generalization Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo childMappingMode="traverse" useMappingSettings="d16444c3-ab59-4830-8e0e-f6025685e673" />
                   <behaviour autoSelectChildren="false" />
                   <childMappings />
                 </mapping>
