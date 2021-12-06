@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.0-pre.2</Version>
+    <Version>1.0.0-pre.21</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Eventing Modeller</Product>
@@ -24,13 +24,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common.Types" Version="3.1.0" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.1.1" />
     <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.0.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.1.0" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.1.8" />
   </ItemGroup>
 
 </Project>

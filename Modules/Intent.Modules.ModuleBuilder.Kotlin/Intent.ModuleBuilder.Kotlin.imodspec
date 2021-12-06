@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Kotlin</id>
-  <version>3.1.0</version>
+  <version>3.1.1</version>
   <supportedClientVersions>[3.1.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>For the creation of Kotlin Templates in the Intent Module Builder</summary>
   <description>For the creation of Kotlin Templates in the Intent Module Builder</description>
@@ -28,7 +28,7 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.ModuleBuilder" version="3.1.0" />
+    <dependency id="Intent.ModuleBuilder" version="3.1.4" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

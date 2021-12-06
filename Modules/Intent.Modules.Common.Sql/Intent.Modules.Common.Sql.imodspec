@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Sql</id>
-  <version>3.1.3</version>
+  <version>3.1.4</version>
   <supportedClientVersions>[3.1.2, 4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -12,9 +12,9 @@
     <factoryExtension id="Intent.Common.Sql.OutputWeaver" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.1.3" />
-    <dependency id="Intent.Common.Types" version="3.1.0" />
-    <dependency id="Intent.Metadata.RDBMS" version="3.1.0" />
+    <dependency id="Intent.Common" version="3.1.11" />
+    <dependency id="Intent.Common.Types" version="3.1.1" />
+    <dependency id="Intent.Metadata.RDBMS" version="3.1.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
