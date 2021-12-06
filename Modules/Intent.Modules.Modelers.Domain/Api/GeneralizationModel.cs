@@ -159,4 +159,28 @@ namespace Intent.Modelers.Domain.Api
         {
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class GeneralizationEndModelExtensions
+    {
+        public static bool IsGeneralizationTargetEndModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == GeneralizationTargetEndModel.SpecializationTypeId;
+        }
+
+        public static GeneralizationTargetEndModel AsGeneralizationTargetEndModel(this ICanBeReferencedType type)
+        {
+            return type.IsGeneralizationTargetEndModel() ? new GeneralizationModel(((IAssociationEnd)type).Association).TargetEnd : null;
+        }
+
+        public static bool IsGeneralizationSourceEndModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == GeneralizationSourceEndModel.SpecializationTypeId;
+        }
+
+        public static GeneralizationSourceEndModel AsGeneralizationSourceEndModel(this ICanBeReferencedType type)
+        {
+            return type.IsGeneralizationSourceEndModel() ? new GeneralizationModel(((IAssociationEnd)type).Association).SourceEnd : null;
+        }
+    }
 }

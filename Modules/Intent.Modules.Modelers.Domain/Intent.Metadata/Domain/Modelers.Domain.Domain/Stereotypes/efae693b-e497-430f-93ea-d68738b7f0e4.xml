@@ -11,6 +11,8 @@
   <icon type="CharacterBox" source="A|#8BC34A" />
   <displayIcon>true</displayIcon>
   <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <order>0</order>

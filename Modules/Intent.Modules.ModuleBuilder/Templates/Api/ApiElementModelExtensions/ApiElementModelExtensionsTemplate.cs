@@ -360,7 +360,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             
             #line default
             #line hidden
-            this.Write("\");\r\n            }\r\n\r\n");
+            this.Write("\") ?? new IElement[0];\r\n            }\r\n\r\n");
             
             #line 103 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
                       break;

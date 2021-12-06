@@ -152,4 +152,28 @@ namespace Intent.Modelers.Domain.Api
         {
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class CommentAssociationEndModelExtensions
+    {
+        public static bool IsCommentTargetEndModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == CommentTargetEndModel.SpecializationTypeId;
+        }
+
+        public static CommentTargetEndModel AsCommentTargetEndModel(this ICanBeReferencedType type)
+        {
+            return type.IsCommentTargetEndModel() ? new CommentAssociationModel(((IAssociationEnd)type).Association).TargetEnd : null;
+        }
+
+        public static bool IsCommentSourceEndModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == CommentSourceEndModel.SpecializationTypeId;
+        }
+
+        public static CommentSourceEndModel AsCommentSourceEndModel(this ICanBeReferencedType type)
+        {
+            return type.IsCommentSourceEndModel() ? new CommentAssociationModel(((IAssociationEnd)type).Association).SourceEnd : null;
+        }
+    }
 }

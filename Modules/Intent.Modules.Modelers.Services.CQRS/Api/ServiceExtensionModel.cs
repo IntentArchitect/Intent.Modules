@@ -20,19 +20,4 @@ namespace Intent.Modelers.Services.CQRS.Api
         }
 
     }
-
-    [IntentManaged(Mode.Fully)]
-    public static class ServiceExtensionModelExtensions
-    {
-
-        public static bool HasMapFromFolderMapping(this ServiceModel type)
-        {
-            return type.InternalElement.MappedElement?.MappingSettingsId == "0c594279-e76c-4c49-8512-dd362a49f302";
-        }
-
-        public static IElementMapping GetMapFromFolderMapping(this ServiceModel type)
-        {
-            return type.HasMapFromFolderMapping() ? type.InternalElement.MappedElement : null;
-        }
-    }
 }

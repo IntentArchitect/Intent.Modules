@@ -161,9 +161,20 @@ namespace Intent.Modules.Common.Java.Templates
         }
 
         /// <inheritdoc />
-        public override string NormalizeTypeName(string name)
+        public override string NormalizeTypeName(string fullyQualifiedType)
         {
-            return ImportType(name);
+            string normalizedGenericTypes = null;
+            if (fullyQualifiedType.Contains("<") && fullyQualifiedType.Contains(">"))
+            {
+                var genericTypes = fullyQualifiedType.Substring(fullyQualifiedType.IndexOf("<", StringComparison.Ordinal) + 1, fullyQualifiedType.Length - fullyQualifiedType.IndexOf("<", StringComparison.Ordinal) - 2);
+
+                normalizedGenericTypes = genericTypes
+                    .Split(',')
+                    .Select(NormalizeTypeName)
+                    .Aggregate((x, y) => x + ", " + y);
+                fullyQualifiedType = $"{fullyQualifiedType.Substring(0, fullyQualifiedType.IndexOf("<", StringComparison.Ordinal))}";
+            }
+            return ImportType(fullyQualifiedType) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
         }
 
         /// <inheritdoc />

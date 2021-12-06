@@ -161,4 +161,28 @@ namespace <#= Namespace #>
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class <#=AssociationEndClassName #>Extensions
+    {
+        public static bool Is<#=AssociationTargetEndClassName #>(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == <#=AssociationTargetEndClassName #>.SpecializationTypeId;
+        }
+
+        public static <#=AssociationTargetEndClassName #> As<#=AssociationTargetEndClassName #>(this ICanBeReferencedType type)
+        {
+            return type.Is<#=AssociationTargetEndClassName #>() ? new <#= ClassName #>(((IAssociationEnd)type).Association).TargetEnd : null;
+        }
+
+        public static bool Is<#=AssociationSourceEndClassName #>(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == <#=AssociationSourceEndClassName #>.SpecializationTypeId;
+        }
+
+        public static <#=AssociationSourceEndClassName #> As<#=AssociationSourceEndClassName #>(this ICanBeReferencedType type)
+        {
+            return type.Is<#=AssociationSourceEndClassName #>() ? new <#= ClassName #>(((IAssociationEnd)type).Association).SourceEnd : null;
+        }
+    }
 }

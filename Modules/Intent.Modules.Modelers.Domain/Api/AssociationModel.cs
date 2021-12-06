@@ -177,4 +177,28 @@ namespace Intent.Modelers.Domain.Api
         {
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class AssociationEndModelExtensions
+    {
+        public static bool IsAssociationTargetEndModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == AssociationTargetEndModel.SpecializationTypeId;
+        }
+
+        public static AssociationTargetEndModel AsAssociationTargetEndModel(this ICanBeReferencedType type)
+        {
+            return type.IsAssociationTargetEndModel() ? new AssociationModel(((IAssociationEnd)type).Association).TargetEnd : null;
+        }
+
+        public static bool IsAssociationSourceEndModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == AssociationSourceEndModel.SpecializationTypeId;
+        }
+
+        public static AssociationSourceEndModel AsAssociationSourceEndModel(this ICanBeReferencedType type)
+        {
+            return type.IsAssociationSourceEndModel() ? new AssociationModel(((IAssociationEnd)type).Association).SourceEnd : null;
+        }
+    }
 }

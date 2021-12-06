@@ -73,6 +73,40 @@ namespace Intent.Modules.Common.TypeScript.Templates
             Imports.Add(new TypeScriptImport(type, location));
         }
 
+        public override string NormalizeTypeName(string fullyQualifiedType)
+        {
+            if (string.IsNullOrWhiteSpace(Namespace))
+            {
+                return fullyQualifiedType;
+            }
+            string normalizedGenericTypes = null;
+            if (fullyQualifiedType.Contains("<") && fullyQualifiedType.Contains(">"))
+            {
+                var genericTypes = fullyQualifiedType.Substring(fullyQualifiedType.IndexOf("<", StringComparison.Ordinal) + 1, fullyQualifiedType.Length - fullyQualifiedType.IndexOf("<", StringComparison.Ordinal) - 2);
+
+                normalizedGenericTypes = genericTypes
+                    .Split(',')
+                    .Select(NormalizeTypeName)
+                    .Aggregate((x, y) => x + ", " + y);
+                fullyQualifiedType = $"{fullyQualifiedType.Substring(0, fullyQualifiedType.IndexOf("<", StringComparison.Ordinal))}";
+            }
+
+            var typeParts = fullyQualifiedType.Split('.').ToList();
+            var localNamespaceParts = Namespace.Split('.').ToList();
+            foreach (var part in localNamespaceParts)
+            {
+                if (part.Equals(typeParts[0]))
+                {
+                    typeParts.RemoveAt(0);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            return string.Join(".", typeParts) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
+        }
+
         public string ImportType(string type, string location)
         {
             if (Imports.All(x => x.Type != type || x.Location != location))

@@ -97,7 +97,7 @@ namespace <#= Namespace #>
                     case StereotypePropertyOptionsSource.LookupChildren:
                     case StereotypePropertyOptionsSource.NestedLookup:#>
             public IElement[] <#= property.Name.ToCSharpIdentifier() #>() {
-                return _stereotype.GetProperty<IElement[]>("<#= property.Name #>");
+                return _stereotype.GetProperty<IElement[]>("<#= property.Name #>") ?? new IElement[0];
             }
 
 <#                      break;
