@@ -9,7 +9,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 using Intent.Engine;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Ignore)]
 
 namespace <#= Namespace #>
 {
@@ -19,6 +19,7 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully)]
         public const string DecoratorId = "<#= GetDecoratorId() #>";
 
+        [IntentManaged(Mode.Fully)]
         private readonly <#= GetTemplateTypeName() #> _template;
         private readonly IApplication _application;
 
@@ -28,6 +29,5 @@ namespace <#= Namespace #>
             _template = template;
             _application = application;
         }
-
     }
 }
