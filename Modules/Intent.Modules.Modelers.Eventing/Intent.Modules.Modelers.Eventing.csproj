@@ -2,26 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>1.0.0-pre.21</Version>
-    <Authors>Intent Architect</Authors>
-    <Company>Intent Architect</Company>
-    <Product>Intent - Modules Eventing Modeller</Product>
-    <Copyright>Copyright 2021</Copyright>
-    <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
-    <PackageIconUrl></PackageIconUrl>
-    <PackageTags>Intent Architect Software Factory SDK Modules Eventing Modeler</PackageTags>
-    <RootNamespace>Intent.Modelers.Eventing</RootNamespace>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageId>Intent.Modules.Modelers.Eventing</PackageId>
-    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
-
-  <ItemGroup>
-    <None Include="..\..\logo.png" Link="logo.png">
-      <PackagePath></PackagePath>
-      <Pack>True</Pack>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.1.1" />
