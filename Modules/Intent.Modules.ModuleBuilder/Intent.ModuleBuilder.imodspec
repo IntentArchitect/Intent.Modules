@@ -13,7 +13,7 @@
     <factoryExtension id="Intent.ModuleBuilder.AutoCompile" enabled="false" />
   </factoryExtensions>
   <templates>
-    <template id="Intent.ModuleBuilder.IModeSpecFile">
+    <template id="Intent.ModuleBuilder.IModSpecFile">
       <role>IModSpec</role>
     </template>
     <template id="Intent.ModuleBuilder.ReadMe">
