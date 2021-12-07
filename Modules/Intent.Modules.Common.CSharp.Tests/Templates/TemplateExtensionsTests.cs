@@ -9,6 +9,9 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
         {
             [Theory]
             [InlineData("Shortcut (macOS)", "ShortcutMacOS")]
+            [InlineData("4something", "_4something")]
+            [InlineData("Hello!@#$%^&**(){}[]:\"|;'\\<>?,./", "HelloSharpAnd")]
+            [InlineData("@string", "@string")]
             public void ItShouldDoItCorrectly(string input, string expected)
             {
                 // Act

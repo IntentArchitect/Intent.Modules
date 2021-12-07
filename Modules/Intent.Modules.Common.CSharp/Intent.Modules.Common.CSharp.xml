@@ -186,6 +186,11 @@
             Camel-cases input parameter <paramref name="s"/> and prefixes with an underscore.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpNamespace(System.String)">
+            <summary>
+            Converts <paramref name="string"/> to a valid C# namespace (e.g. removes disallowed characters).
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String)">
             <summary>
             Converts <paramref name="string"/> to a valid C# reference type (e.g. removes disallowed characters).
