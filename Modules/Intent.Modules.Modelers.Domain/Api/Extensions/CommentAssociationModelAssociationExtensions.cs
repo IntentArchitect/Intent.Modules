@@ -27,5 +27,14 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
+        [IntentManaged(Mode.Fully)]
+        public static IList<CommentSourceEndModel> AssociatedComments(this CommentModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == CommentAssociationModel.SpecializationType && x.IsSourceEnd())
+                .Select(x => CommentAssociationModel.CreateFromEnd(x).SourceEnd)
+                .ToList();
+        }
+
     }
 }

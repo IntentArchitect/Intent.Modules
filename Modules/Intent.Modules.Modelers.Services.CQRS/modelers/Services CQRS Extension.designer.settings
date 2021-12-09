@@ -297,7 +297,34 @@
       </mappingSettings>
       <macros>
         <macro trigger="on-mapped">
-          <script>// Camelcases all parameters
+          <script>if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == "e4e36072-a2ce-42d3-93c5-0b496d79ef43") {
+    let command = element.getMapping().getElement();
+    if (command.getChildren().length !== element.getChildren().length) { // then command param is required to ensure all data is received.
+        let param = createElement("Parameter", "command", element.id);
+        param.typeReference.setType(command.id);
+    }
+
+    let stereotype = element.getStereotype("Http Settings");
+    if (stereotype) {
+        stereotype.getProperty("Verb").setValue("POST");
+        stereotype.getProperty("Route").setValue(element.getName().toLowerCase());
+    }
+}
+if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == "f15fa935-434e-4983-b283-25cde2cb440e") {
+    let query = element.getMapping().getElement();
+    if (query.getChildren().length !== element.getChildren().length) { // then query param is required to ensure all data is received.
+        let param = createElement("Parameter", "query", element.id);
+        param.typeReference.setType(query.id);
+    }
+
+    let stereotype = element.getStereotype("Http Settings");
+    if (stereotype) {
+        stereotype.getProperty("Verb").setValue("GET");
+        stereotype.getProperty("Route").setValue(element.getName().toLowerCase());
+    }
+}
+
+// Camelcases all parameters
 for(var param of element.getChildren("Parameter")) {
     param.setName(param.name[0].toLowerCase() + param.name.substring(1));
 }</script>
@@ -330,11 +357,6 @@ operation.launchMappingDialog("e4e36072-a2ce-42d3-93c5-0b496d79ef43").then(() =&
     if (operation.isMapped()) {
         let command = operation.getMapping().getElement();
         operation.setName(removeSuffix(command.name, "Command"));
-
-        if (command.getChildren().length !== operation.getChildren().length) { // command param is required to ensure all data is received.
-            let param = createElement("Parameter", "command", operation.id);
-            param.typeReference.setType(command.id);
-        }
 
         let stereotype = operation.getStereotype("Http Settings");
         if (stereotype) {

@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="515a51b6-0359-49e7-9f5f-4f5586a92fca" type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
-  <name>NewDiagram</name>
-  <display>NewDiagram</display>
+<class id="6d618522-361c-49ee-b530-ea15fc3d0292" type="Comment" typeId="c4c0c77f-720b-4e91-9c48-b58d2164d30a">
+  <comment>This is to test associations between two comments.
+
+On another line</comment>
+  <name>Connecting Comment</name>
+  <display>Connecting Comment</display>
   <isAbstract>false</isAbstract>
-  <order>9</order>
+  <order>7</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
   <packageName>Modelers.Domain.Domain</packageName>
   <stereotypes />
-  <diagram>
-    <targetPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</targetPackageId>
-  </diagram>
   <childElements />
 </class>

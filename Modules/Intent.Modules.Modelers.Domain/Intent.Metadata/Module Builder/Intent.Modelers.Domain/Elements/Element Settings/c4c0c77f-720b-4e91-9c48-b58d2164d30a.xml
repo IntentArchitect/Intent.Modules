@@ -212,7 +212,7 @@
               <properties>
                 <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return comment;" isActive="true" />
                 <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
-                <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: normal;`" isActive="true" />
+                <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: pre-line;`" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">

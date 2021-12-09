@@ -480,7 +480,7 @@ white-space: inherit;`</style>
           </drawText>
           <drawText>
             <text>return comment;</text>
-            <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: normal;`</style>
+            <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: pre-line;`</style>
             <size width="${w - 20}" height="${h - 40}" />
             <position x="${x + 10}" y="${y + 32}" />
           </drawText>
@@ -675,6 +675,7 @@ white-space: inherit;`</style>
           <isRequired>true</isRequired>
           <targetTypes>
             <type>Class</type>
+            <type>Comment</type>
           </targetTypes>
           <allowIsNavigable>true</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>
