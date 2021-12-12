@@ -156,6 +156,16 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class CommentAssociationEndModelExtensions
     {
+        public static bool IsCommentAssociationEndModel(this ICanBeReferencedType type)
+        {
+            return IsCommentTargetEndModel(type) || IsCommentSourceEndModel(type);
+        }
+
+        public static CommentAssociationEndModel AsCommentAssociationEndModel(this ICanBeReferencedType type)
+        {
+            return (CommentAssociationEndModel)type.AsCommentTargetEndModel() ?? (CommentAssociationEndModel)type.AsCommentSourceEndModel();
+        }
+
         public static bool IsCommentTargetEndModel(this ICanBeReferencedType type)
         {
             return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == CommentTargetEndModel.SpecializationTypeId;

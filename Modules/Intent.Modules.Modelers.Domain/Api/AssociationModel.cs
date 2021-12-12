@@ -181,6 +181,16 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class AssociationEndModelExtensions
     {
+        public static bool IsAssociationEndModel(this ICanBeReferencedType type)
+        {
+            return IsAssociationTargetEndModel(type) || IsAssociationSourceEndModel(type);
+        }
+
+        public static AssociationEndModel AsAssociationEndModel(this ICanBeReferencedType type)
+        {
+            return (AssociationEndModel)type.AsAssociationTargetEndModel() ?? (AssociationEndModel)type.AsAssociationSourceEndModel();
+        }
+
         public static bool IsAssociationTargetEndModel(this ICanBeReferencedType type)
         {
             return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == AssociationTargetEndModel.SpecializationTypeId;

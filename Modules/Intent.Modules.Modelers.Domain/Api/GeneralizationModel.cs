@@ -163,6 +163,16 @@ namespace Intent.Modelers.Domain.Api
     [IntentManaged(Mode.Fully)]
     public static class GeneralizationEndModelExtensions
     {
+        public static bool IsGeneralizationEndModel(this ICanBeReferencedType type)
+        {
+            return IsGeneralizationTargetEndModel(type) || IsGeneralizationSourceEndModel(type);
+        }
+
+        public static GeneralizationEndModel AsGeneralizationEndModel(this ICanBeReferencedType type)
+        {
+            return (GeneralizationEndModel)type.AsGeneralizationTargetEndModel() ?? (GeneralizationEndModel)type.AsGeneralizationSourceEndModel();
+        }
+
         public static bool IsGeneralizationTargetEndModel(this ICanBeReferencedType type)
         {
             return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == GeneralizationTargetEndModel.SpecializationTypeId;
