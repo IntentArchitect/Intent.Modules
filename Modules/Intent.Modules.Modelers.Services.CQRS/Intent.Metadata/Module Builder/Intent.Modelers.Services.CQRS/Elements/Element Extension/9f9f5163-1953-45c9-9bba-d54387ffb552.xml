@@ -145,7 +145,7 @@
                     <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
-                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
@@ -263,7 +263,7 @@
                     <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
                     <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
                     <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
-                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
