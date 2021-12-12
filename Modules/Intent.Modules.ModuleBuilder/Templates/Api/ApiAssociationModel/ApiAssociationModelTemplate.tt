@@ -165,6 +165,16 @@ namespace <#= Namespace #>
     [IntentManaged(Mode.Fully)]
     public static class <#=AssociationEndClassName #>Extensions
     {
+        public static bool Is<#=AssociationEndClassName #>(this ICanBeReferencedType type)
+        {
+            return Is<#=AssociationTargetEndClassName #>(type) || Is<#=AssociationSourceEndClassName #>(type);
+        }
+
+        public static <#=AssociationEndClassName #> As<#=AssociationEndClassName #>(this ICanBeReferencedType type)
+        {
+            return (<#=AssociationEndClassName #>) type.As<#=AssociationTargetEndClassName #>() ?? (<#=AssociationEndClassName #>)type.As<#=AssociationSourceEndClassName #>();
+        }
+
         public static bool Is<#=AssociationTargetEndClassName #>(this ICanBeReferencedType type)
         {
             return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == <#=AssociationTargetEndClassName #>.SpecializationTypeId;

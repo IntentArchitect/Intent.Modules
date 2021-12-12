@@ -409,7 +409,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         private static void SortChildElementsByAttribute(XElement element, string attributeName)
         {
-            if (!element.HasElements)
+            if (element == null || !element.HasElements)
             {
                 return;
             }

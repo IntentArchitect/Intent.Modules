@@ -373,52 +373,70 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
             this.Write("Extensions\r\n    {\r\n        public static bool Is");
             
             #line 168 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
             #line hidden
-            this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type != null && t" +
-                    "ype is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == " +
-                    "");
+            this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return Is");
             
             #line 170 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
-            this.Write(".SpecializationTypeId;\r\n        }\r\n\r\n        public static ");
+            this.Write("(type) || Is");
+            
+            #line 170 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write("(type);\r\n        }\r\n\r\n        public static ");
             
             #line 173 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
             #line hidden
             this.Write(" As");
             
             #line 173 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
             #line hidden
-            this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type.Is");
+            this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return (");
+            
+            #line 175 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write(") type.As");
             
             #line 175 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
-            this.Write("() ? new ");
+            this.Write("() ?? (");
             
             #line 175 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationEndClassName));
             
             #line default
             #line hidden
-            this.Write("(((IAssociationEnd)type).Association).TargetEnd : null;\r\n        }\r\n\r\n        pub" +
-                    "lic static bool Is");
+            this.Write(")type.As");
+            
+            #line 175 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write("();\r\n        }\r\n\r\n        public static bool Is");
             
             #line 178 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
@@ -427,34 +445,79 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
                     "");
             
             #line 180 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write(".SpecializationTypeId;\r\n        }\r\n\r\n        public static ");
             
             #line 183 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write(" As");
             
             #line 183 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type.Is");
             
             #line 185 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationTargetEndClassName));
             
             #line default
             #line hidden
             this.Write("() ? new ");
             
             #line 185 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            
+            #line default
+            #line hidden
+            this.Write("(((IAssociationEnd)type).Association).TargetEnd : null;\r\n        }\r\n\r\n        pub" +
+                    "lic static bool Is");
+            
+            #line 188 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type != null && t" +
+                    "ype is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == " +
+                    "");
+            
+            #line 190 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write(".SpecializationTypeId;\r\n        }\r\n\r\n        public static ");
+            
+            #line 193 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write(" As");
+            
+            #line 193 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write("(this ICanBeReferencedType type)\r\n        {\r\n            return type.Is");
+            
+            #line 195 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(AssociationSourceEndClassName));
+            
+            #line default
+            #line hidden
+            this.Write("() ? new ");
+            
+            #line 195 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiAssociationModel\ApiAssociationModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
