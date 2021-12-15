@@ -16,7 +16,7 @@ using Intent.Engine;
 namespace <#= Namespace #>
 {
     public static class <#= ClassName #>
-    {<#  
+    {<#
     foreach(var settingsGroup in Model) { #>
 
         public static <#= settingsGroup.Name.ToCSharpIdentifier().ToPascalCase() #> Get<#= settingsGroup.Name.ToCSharpIdentifier().ToPascalCase() #>(this IApplicationSettingsProvider settings)
@@ -34,21 +34,81 @@ namespace <#= Namespace #>
         public <#= settingsGroup.Name.ToCSharpIdentifier().ToPascalCase() #>(IGroupSettings groupSettings)
         {
             _groupSettings = groupSettings;
-        }<#      
-        foreach(var settingsField in settingsGroup.Fields) { #>
-<#          switch (settingsField.GetFieldConfiguration().ControlType().AsEnum())
+        }
+<#
+        foreach(var settingsField in settingsGroup.Fields)
+        {
+            switch (settingsField.GetFieldConfiguration().ControlType().AsEnum())
             {
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.TextBox:
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.TextArea:
-                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Select:
-                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Number:#>
+                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Number:
+#>
 
-        public string <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #> => _groupSettings.GetSetting("<#= settingsField.Id #>")?.Value;
+        public string <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => _groupSettings.GetSetting("<#= settingsField.Id #>")?.Value;
 <#                    break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Checkbox:
-                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Switch:#>
+                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Switch:
+#>
 
-        public bool <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #> => bool.TryParse(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value.ToPascalCase(), out var result) && result;
+        public bool <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => bool.TryParse(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value.ToPascalCase(), out var result) && result;
+<#                    break;
+                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Select:
+                    var optionsClassName = $"{settingsField.Name.ToCSharpIdentifier().ToPascalCase()}Options";
+                    var optionsEnumName = $"{optionsClassName}Enum";
+#>
+
+        public <#= optionsClassName #> <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => new <#= optionsClassName #>(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value);
+
+        public class <#= optionsClassName #>
+        {
+            public readonly string Value;
+
+            public <#= optionsClassName #>(string value)
+            {
+                Value = value;
+            }
+
+            public <#= optionsEnumName #> AsEnum()
+            {
+                return Value switch
+                {
+<#
+                    foreach (var option in settingsField.Options)
+                    {
+#>
+                    "<#= option.Value #>" => <#= optionsEnumName #>.<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>,
+<#
+                    }
+#>
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+<#
+                    foreach (var option in settingsField.Options)
+                    {
+#>
+
+            public bool Is<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>()
+            {
+                return Value == "<#= option.Value #>";
+            }
+<#
+                    }
+#>
+        }
+
+        public enum <#= optionsEnumName#>
+        {
+<#
+                    foreach (var option in settingsField.Options)
+                    {
+#>
+            <#= option.Name.ToCSharpIdentifier().ToPascalCase() #>,
+<#
+                    }
+#>
+        }
 <#                    break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.MultiSelect:#>
 <#                    break;
