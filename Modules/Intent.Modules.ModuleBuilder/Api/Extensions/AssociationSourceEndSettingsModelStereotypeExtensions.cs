@@ -40,7 +40,7 @@ namespace Intent.ModuleBuilder.Api
 
             public IElement[] TargetTypes()
             {
-                return _stereotype.GetProperty<IElement[]>("Target Types");
+                return _stereotype.GetProperty<IElement[]>("Target Types") ?? new IElement[0];
             }
 
             public string DisplayTextFunction()

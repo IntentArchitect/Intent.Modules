@@ -40,7 +40,7 @@ namespace Intent.ModuleBuilder.Api
 
             public IElement[] ExtendDesigners()
             {
-                return _stereotype.GetProperty<IElement[]>("Extend Designers");
+                return _stereotype.GetProperty<IElement[]>("Extend Designers") ?? new IElement[0];
             }
 
         }

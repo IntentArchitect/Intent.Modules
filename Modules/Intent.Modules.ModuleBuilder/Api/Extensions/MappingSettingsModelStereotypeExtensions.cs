@@ -55,7 +55,7 @@ namespace Intent.ModuleBuilder.Api
 
             public IElement[] LookupTypes()
             {
-                return _stereotype.GetProperty<IElement[]>("Lookup Types");
+                return _stereotype.GetProperty<IElement[]>("Lookup Types") ?? new IElement[0];
             }
 
             public MapFromOptions MapFrom()

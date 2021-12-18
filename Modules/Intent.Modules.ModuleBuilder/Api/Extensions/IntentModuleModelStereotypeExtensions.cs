@@ -65,7 +65,7 @@ namespace Intent.ModuleBuilder.Api
 
             public IElement[] ReferenceInDesigner()
             {
-                return _stereotype.GetProperty<IElement[]>("Reference in Designer");
+                return _stereotype.GetProperty<IElement[]>("Reference in Designer") ?? new IElement[0];
             }
 
         }
