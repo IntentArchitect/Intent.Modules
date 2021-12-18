@@ -161,11 +161,11 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="l 7 10 l -14 0 Z" isActive="true" />
+                <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `l 7 10 l -14 0 Z`" isActive="true" />
                 <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" value="" isActive="true" />
                 <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
                 <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
-                <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" value="#ffffff" isActive="true" />
+                <property name="d33f3ffe-8d9b-4ae4-a8e9-296f7380961f" display="Fill Color" value="return `#ffffff`;" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="6b16c65c-f348-40b1-96b0-6423917b9356" name="Label Settings">

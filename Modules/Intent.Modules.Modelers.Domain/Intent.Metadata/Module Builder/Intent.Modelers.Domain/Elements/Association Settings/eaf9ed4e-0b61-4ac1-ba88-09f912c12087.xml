@@ -114,7 +114,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z" isActive="true" />
+                <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z`" isActive="true" />
                 <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" value="" isActive="true" />
                 <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
                 <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
@@ -135,11 +135,11 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z" isActive="true" />
+                <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="return `m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
                 <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="" isActive="true" />
                 <property name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
                 <property name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
-                <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" value="#000000" isActive="true" />
+                <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" value="return `#000000`" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -174,7 +174,7 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="9f8acd0f-c6b5-4ce7-b420-f78e9646fb61" display="Primary Label" value="${name &amp;&amp; typeReference.isNavigable ? name : &quot;&quot;}" isActive="true" />
-                <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" value="${typeReference.isCollection ? &quot;*&quot; : typeReference.isNullable ? &quot;0..1&quot; : &quot;1&quot;}" isActive="true" />
+                <property name="9c086eb0-801b-413b-a666-24a96cfabe49" display="Secondary Label" value="return `${typeReference.isCollection ? &quot;*&quot; : typeReference.isNullable ? &quot;0..1&quot; : &quot;1&quot;}`" isActive="true" />
               </properties>
             </stereotype>
             <stereotype stereotypeDefinitionId="dc5496ee-e524-41ef-8b17-0125a25d0349" name="Navigable Indicator Settings">
@@ -182,11 +182,11 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="`l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
+                <property name="18b35949-3dda-46d2-8296-490214e3b687" display="Path" value="return `l 5 10 l -5 -2.5 l -5 2.5 Z`" isActive="true" />
                 <property name="369ff6b9-dc1c-4291-9c63-d50735315c42" display="Line Color" value="" isActive="true" />
                 <property name="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51" display="Line Width" isActive="true" />
                 <property name="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29" display="Line Dash Array" isActive="true" />
-                <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" value="#000000" isActive="true" />
+                <property name="f72d804d-a243-4df6-a718-fb9d3327bd7a" display="Fill Color" value="return `#000000`" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

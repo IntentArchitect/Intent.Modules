@@ -11,6 +11,13 @@ On the MOU for this 6 months. Any chance we can revisit those % per step in 2 we
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
   <packageName>Modelers.Domain.Domain</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="de33cc50-2606-415b-889d-bd049d9c0e04" name="Comment Flag">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+      <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
+      <properties />
+    </stereotype>
+  </stereotypes>
   <childElements />
 </class>

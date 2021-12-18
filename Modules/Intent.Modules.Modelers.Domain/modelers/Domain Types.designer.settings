@@ -471,20 +471,24 @@ white-space: inherit;`</style>
         <display>
           <drawPath>
             <path>`M${x + 10},${y} h${w - 10} v${h} h-${w} v-${h - 10} l10,-10 v10 h-10 z`</path>
-            <fillColor>#ffffdd</fillColor>
+            <fillColor>return theme.isDark ? '#30475E' : '#ffffdd';</fillColor>
           </drawPath>
           <drawText>
-            <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; font-weight: bold; text-align: center; white-space: normal;`</style>
+            <style>`font-size: 12px; font-family: Helvetica; font-style: italics; font-weight: bold; text-align: center; white-space: normal;`</style>
             <size width="${w - 20}" height="${h - 16}" />
             <position x="${x + 10}" y="${y + 8}" />
           </drawText>
           <drawText>
             <text>return comment;</text>
-            <style>`font-size: 12px; font-family: Helvetica; color: black; font-style: italics; text-align: center; white-space: pre-line;`</style>
+            <style>`font-size: 12px; font-family: Helvetica; font-style: italics; text-align: center; white-space: pre-line;`</style>
             <size width="${w - 20}" height="${h - 40}" />
             <position x="${x + 10}" y="${y + 32}" />
           </drawText>
         </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
         <defaultSize width="${x}" height="${y}" />
         <childElementVisualSettings />
       </visualSettings>
@@ -638,19 +642,19 @@ white-space: inherit;`</style>
           <secondaryLabel>${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}</secondaryLabel>
           <pointIndicator>
             <fillColor>!typeReference.isNullable &amp;&amp; !typeReference.isCollection ? '#000000' : '#ffffff'</fillColor>
-            <path>l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z</path>
+            <path>return `l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z`</path>
           </pointIndicator>
           <navigableIndicator>
-            <fillColor>#000000</fillColor>
-            <path>m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z</path>
+            <fillColor>return `#000000`</fillColor>
+            <path>return `m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
           </navigableIndicator>
         </sourceEnd>
         <targetEnd>
           <primaryLabel>${name &amp;&amp; typeReference.isNavigable ? name : ""}</primaryLabel>
-          <secondaryLabel>${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}</secondaryLabel>
+          <secondaryLabel>return `${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}`</secondaryLabel>
           <navigableIndicator>
-            <fillColor>#000000</fillColor>
-            <path>`l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+            <fillColor>return `#000000`</fillColor>
+            <path>return `l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
           </navigableIndicator>
         </targetEnd>
       </visualSettings>
@@ -690,7 +694,7 @@ white-space: inherit;`</style>
         <sourceEnd />
         <targetEnd>
           <pointIndicator>
-            <path>l 3 5 l -6 0 l 3 -5 Z</path>
+            <path>return `l 3 5 l -6 0 l 3 -5 Z`</path>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
@@ -728,8 +732,8 @@ white-space: inherit;`</style>
         <sourceEnd />
         <targetEnd>
           <pointIndicator>
-            <fillColor>#ffffff</fillColor>
-            <path>l 7 10 l -14 0 Z</path>
+            <fillColor>return `#ffffff`;</fillColor>
+            <path>return `l 7 10 l -14 0 Z`</path>
           </pointIndicator>
         </targetEnd>
       </visualSettings>
