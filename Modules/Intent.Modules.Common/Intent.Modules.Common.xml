@@ -347,8 +347,7 @@
         </member>
         <member name="F:Intent.Modules.Common.Templates.IntentTemplateBase.DetectedDependencies">
             <summary>
-            Obsolete. Use <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase._detectedDependencies"/> instead. See <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplateDependencies"/>
-            for more information.
+            Returns the known template dependencies added for this template.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.#ctor(System.String,Intent.Engine.IOutputTarget)">
@@ -385,6 +384,11 @@
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplateFileConfig">
             <inheritdoc />
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetExistingFilePath">
+            <summary>
+            Returns the file path of the existing file for this template, if it exists. If it doesn't exist, or can't be found, will return null.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.CanRunTemplate">
             <summary>
             Override this method to control whether the template runs and the creates the output file.
@@ -420,23 +424,9 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplateDependencies">
             <summary>
-            For 3.2.0, change this to return <see cref="T:System.Collections.Generic.IEnumerable`1"/> and
-            use <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase._detectedDependencies"/> instead of <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase.DetectedDependencies"/>,
-            so the method becomes:
-            <code>
-            <![CDATA[
-            public IEnumerable<ITemplate> GetTemplateDependencies()
-            {
-                if (!HasTypeResolver())
-                {
-                    return _detectedDependencies;
-                }
-            
-                return Types.GetTemplateDependencies().Concat(_detectedDependencies);
-            }
-            ]]>
-            </code>
+            Returns all template dependencies detected for this template.
             </summary>
+            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.OnConfigured">
             <summary>
@@ -1042,6 +1032,11 @@
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.CanBeReferencedTypeExtensions.AsTypeReference(Intent.Metadata.Models.ICanBeReferencedType)">
+            <summary>
+            Converts <see cref="T:Intent.Metadata.Models.ICanBeReferencedType"/> to type of <see cref="T:Intent.Metadata.Models.ITypeReference"/>
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.CanBeReferencedTypeExtensions.AsTypeReference(Intent.Metadata.Models.ICanBeReferencedType,System.Boolean,System.Boolean)">
             <summary>
             Converts <see cref="T:Intent.Metadata.Models.ICanBeReferencedType"/> to type of <see cref="T:Intent.Metadata.Models.ITypeReference"/>
             </summary>

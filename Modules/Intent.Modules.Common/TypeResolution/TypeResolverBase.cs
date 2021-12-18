@@ -116,6 +116,14 @@ namespace Intent.Modules.Common.TypeResolution
             return new ElementTypeReference(type);
         }
 
+        /// <summary>
+        /// Converts <see cref="ICanBeReferencedType"/> to type of <see cref="ITypeReference"/>
+        /// </summary>
+        public static ITypeReference AsTypeReference(this ICanBeReferencedType type, bool isNullable, bool isCollection)
+        {
+            return new ElementTypeReference(type, isNullable, isCollection);
+        }
+
         private class ElementTypeReference : ITypeReference, IHasStereotypes
         {
             public ElementTypeReference(ICanBeReferencedType element, bool isNullable = false, bool isCollection = false)

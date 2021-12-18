@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
@@ -98,13 +99,10 @@ namespace Intent.Modules.Common.Templates
     /// </summary>
     public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
-        private readonly HashSet<ITemplate> _detectedDependencies = new HashSet<ITemplate>();
-
         /// <summary>
-        /// Obsolete. Use <see cref="_detectedDependencies"/> instead. See <see cref="GetTemplateDependencies"/>
-        /// for more information.
+        /// Returns the known template dependencies added for this template.
         /// </summary>
-        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        [FixFor_3_2_0("Change name to KnownTemplateDependencies. Consider making private.")]
         protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
 
         /// <summary>
@@ -152,6 +150,15 @@ namespace Intent.Modules.Common.Templates
         public abstract ITemplateFileConfig GetTemplateFileConfig();
 
         /// <summary>
+        /// Returns the file path of the existing file for this template, if it exists. If it doesn't exist, or can't be found, will return null.
+        /// </summary>
+        public virtual string GetExistingFilePath()
+        {
+            var filePath = ExecutionContext.GetPreviousExecutionLog().TryGetFileLog(this)?.FilePath ?? FileMetadata.GetFilePath();
+            return File.Exists(filePath) ? filePath : null;
+        }
+        
+        /// <summary>
         /// Override this method to control whether the template runs and the creates the output file.
         /// </summary>
         public virtual bool CanRunTemplate()
@@ -184,10 +191,7 @@ namespace Intent.Modules.Common.Templates
 
         private void AddTemplateDependency(ITemplate template)
         {
-#pragma warning disable CS0618
             DetectedDependencies.Add(TemplateDependency.OnTemplate(template));
-#pragma warning restore CS0618
-            _detectedDependencies.Add(template);
         }
 
         /// <summary>
@@ -195,7 +199,10 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(ITemplateDependency templateDependency)
         {
-            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateDependency));
+            // Can't use this because this method is often called from constructors, and the FindTemplateInstance has the chance of not
+            // finding the template and then throwing an error. If no bugs found in Intent.Common 3.1.12 then this code can be removed.
+            //AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateDependency));
+            DetectedDependencies.Add(templateDependency);
         }
 
         /// <summary>
@@ -203,7 +210,10 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void AddTemplateDependency(string templateId)
         {
-            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId));
+            // Can't use this because this method is often called from constructors, and the FindTemplateInstance has the chance of not
+            // finding the template and then throwing an error. If no bugs found in Intent.Common 3.1.12 then this code can be removed.
+            //AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId));
+            DetectedDependencies.Add(TemplateDependency.OnTemplate(templateId));
         }
 
         /// <summary>
@@ -213,31 +223,18 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The metadata module instance that the Template must be bound to.</param>
         public void AddTemplateDependency(string templateId, IMetadataModel model)
         {
-            AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId, model.Id));
+            // Can't use this because this method is often called from constructors, and the FindTemplateInstance has the chance of not
+            // finding the template and then throwing an error. If no bugs found in Intent.Common 3.1.12 then this code can be removed.
+            //AddTemplateDependency(ExecutionContext.FindTemplateInstance(templateId, model.Id));
+            DetectedDependencies.Add(TemplateDependency.OnModel(templateId, model));
         }
 
         #endregion
 
         /// <summary>
-        /// For 3.2.0, change this to return <see cref="IEnumerable{ITemplate}"/> and
-        /// use <see cref="_detectedDependencies"/> instead of <see cref="DetectedDependencies"/>,
-        /// so the method becomes:
-        /// <code>
-        /// <![CDATA[
-        /// public IEnumerable<ITemplate> GetTemplateDependencies()
-        /// {
-        ///     if (!HasTypeResolver())
-        ///     {
-        ///         return _detectedDependencies;
-        ///     }
-        /// 
-        ///     return Types.GetTemplateDependencies().Concat(_detectedDependencies);
-        /// }
-        /// ]]>
-        /// </code>
+        /// Returns all template dependencies detected for this template.
         /// </summary>
-        [Obsolete(WillBeRemovedIn.Version_3_3_0)]
-        [FixFor_3_2_0]
+        /// <returns></returns>
         public virtual IEnumerable<ITemplateDependency> GetTemplateDependencies()
         {
             if (!HasTypeResolver())
@@ -619,10 +616,7 @@ namespace Intent.Modules.Common.Templates
             Func<string> getDependencyDescriptionForException,
             TemplateDiscoveryOptions options = null)
         {
-            if (options == null)
-            {
-                options = new TemplateDiscoveryOptions();
-            }
+            options ??= new TemplateDiscoveryOptions();
 
             var template = getTemplate();
             if (template == null && options.ThrowIfNotFound)
