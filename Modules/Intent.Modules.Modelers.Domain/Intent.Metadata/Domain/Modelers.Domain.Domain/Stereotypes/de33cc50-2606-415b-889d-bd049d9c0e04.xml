@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="de33cc50-2606-415b-889d-bd049d9c0e04" version="3.1.0">
+  <name>Comment Flag</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="c4c0c77f-720b-4e91-9c48-b58d2164d30a">Comment</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="flag" />
+  <displayIcon>true</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
+  <order>0</order>
+  <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
+  <packageName>Modelers.Domain.Domain</packageName>
+  <properties />
+</stereotypeDefinition>
