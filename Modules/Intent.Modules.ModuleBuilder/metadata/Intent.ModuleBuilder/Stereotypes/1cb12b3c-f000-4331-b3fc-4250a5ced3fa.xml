@@ -27,6 +27,7 @@
       <defaultValue />
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
       <isRequiredFunction />
     </property>
     <property id="3b7f711f-8a28-42c0-903d-c683a2eea56e">
@@ -37,6 +38,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
       <isRequiredFunction />
     </property>
     <property id="9d47b9f2-f715-4762-b276-1dc702dad067">
@@ -47,6 +49,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
     </property>
   </properties>
 </stereotypeDefinition>

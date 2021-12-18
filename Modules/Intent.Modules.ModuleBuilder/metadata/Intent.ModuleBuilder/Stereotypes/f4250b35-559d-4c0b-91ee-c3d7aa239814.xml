@@ -62,6 +62,7 @@ return `[${shortcut}]`;</displayFunction>
       <defaultValue />
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="A43F388B-DAFF-422C-BD8D-FB433EFEC51B">
       <comment>Sets the order of the type against the other types</comment>

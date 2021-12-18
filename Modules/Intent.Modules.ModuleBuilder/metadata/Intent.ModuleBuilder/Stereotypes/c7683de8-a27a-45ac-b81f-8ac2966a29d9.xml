@@ -61,6 +61,7 @@
       <placeholder>(E.g getParent().id)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
       <isActiveFunction>return properties["Option Source"].value == "Lookup Element";</isActiveFunction>
       <isRequiredFunction>return true</isRequiredFunction>
     </property>

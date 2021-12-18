@@ -29,6 +29,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isRequiredFunction>true</isRequiredFunction>
     </property>
   </properties>

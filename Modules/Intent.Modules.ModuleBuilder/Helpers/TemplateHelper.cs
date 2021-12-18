@@ -8,9 +8,9 @@ namespace Intent.ModuleBuilder.Helpers
     {
         public static string GetExistingTemplateContent<T>(IntentFileTemplateBase<T> template)
         {
-            var fileLocation = template.FileMetadata.GetFullLocationPathWithFileName();
+            var fileLocation = template.GetExistingFilePath();
 
-            if (File.Exists(fileLocation))
+            if (fileLocation != null)
             {
                 return File.ReadAllText(fileLocation);
             }

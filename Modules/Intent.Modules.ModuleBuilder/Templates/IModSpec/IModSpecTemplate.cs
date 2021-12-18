@@ -87,7 +87,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public override string TransformText()
         {
-            var location = FileMetadata.GetFilePath();
+            var location = GetExistingFilePath();
 
             var doc = LoadOrCreateImodSpecFile(location);
 
@@ -429,7 +429,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         private XDocument LoadOrCreateImodSpecFile(string filePath)
         {
-            var doc = File.Exists(filePath)
+            var doc = filePath != null
                 ? XDocument.Load(filePath)
                 : XDocument.Parse($@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <package>

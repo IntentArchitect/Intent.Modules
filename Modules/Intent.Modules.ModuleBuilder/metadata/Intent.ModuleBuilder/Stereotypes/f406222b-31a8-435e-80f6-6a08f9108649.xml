@@ -62,6 +62,7 @@
       <defaultValue />
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="c48d9593-c1f4-4610-9cb3-54de9c2f0c06">
       <name>Allow Rename</name>

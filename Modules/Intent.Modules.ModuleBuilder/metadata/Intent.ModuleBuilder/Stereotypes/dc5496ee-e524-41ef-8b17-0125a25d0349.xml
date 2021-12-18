@@ -27,6 +27,7 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
       <isRequiredFunction />
     </property>
     <property id="369ff6b9-dc1c-4291-9c63-d50735315c42">
@@ -37,6 +38,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="8a72a4c5-b4e8-4eb0-9db2-59dff1e9fb51">
       <name>Line Width</name>
@@ -46,6 +48,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="fa857edd-c8ac-4044-8cf6-c8ee9de1ec29">
       <name>Line Dash Array</name>
@@ -55,6 +58,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="f72d804d-a243-4df6-a718-fb9d3327bd7a">
       <name>Fill Color</name>
@@ -64,6 +68,7 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
   </properties>
 </stereotypeDefinition>

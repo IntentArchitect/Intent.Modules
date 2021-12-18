@@ -50,6 +50,7 @@
       <defaultValue />
       <valueOptions />
       <lookupTypes />
+      <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
     <property id="b534060a-c8a3-4631-b4a9-db0baeecd1b3">
       <name>Api Property Name</name>
