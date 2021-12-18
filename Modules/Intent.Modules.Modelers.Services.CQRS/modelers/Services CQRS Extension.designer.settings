@@ -307,7 +307,7 @@
     let stereotype = element.getStereotype("Http Settings");
     if (stereotype) {
         stereotype.getProperty("Verb").setValue("POST");
-        stereotype.getProperty("Route").setValue(element.getName().toLowerCase());
+        stereotype.getProperty("Route").setValue("[action]");
     }
 }
 if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == "f15fa935-434e-4983-b283-25cde2cb440e") {
@@ -320,7 +320,7 @@ if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == "f
     let stereotype = element.getStereotype("Http Settings");
     if (stereotype) {
         stereotype.getProperty("Verb").setValue("GET");
-        stereotype.getProperty("Route").setValue(element.getName().toLowerCase());
+        stereotype.getProperty("Route").setValue("[action]");
     }
 }
 

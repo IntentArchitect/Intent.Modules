@@ -58,7 +58,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffbf27c5-a296-4dbc-9af5-acf0bff187a2</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modelers.Services.CQRS.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.Services.CQRS.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
