@@ -79,7 +79,7 @@ namespace Intent.Metadata.RDBMS.Api
             return type != null && type is IElement element && element.SpecializationTypeId == UniqueConstraintModel.SpecializationTypeId;
         }
 
-        public static UniqueConstraintModel ToUniqueConstraintModel(this ICanBeReferencedType type)
+        public static UniqueConstraintModel AsUniqueConstraintModel(this ICanBeReferencedType type)
         {
             return type.IsUniqueConstraintModel() ? new UniqueConstraintModel((IElement)type) : null;
         }

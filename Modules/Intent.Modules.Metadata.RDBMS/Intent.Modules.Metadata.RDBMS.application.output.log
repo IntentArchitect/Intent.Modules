@@ -1,44 +1,94 @@
 <?xml version="1.0" encoding="utf-8"?>
-<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<outputLog>
   <ApplicationId>765236f6-13a2-40be-90d3-38674e01f4a7</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
-      <ApplicationRelativeFilePath>Api/Extensions/AssociationSourceEndModelExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AssociationSourceEndModelExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d69223e1-2c8c-4cce-af02-cc90cfb0ecf0</CorrelationId>
+      <ApplicationRelativeFilePath>Api/ClassExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ClassExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
-      <ApplicationRelativeFilePath>Api/Extensions/AssociationTargetEndModelExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AssociationTargetEndModelExtensions.cs</ProjectRelativeFilePath>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/AssociationSourceEndModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSourceEndModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
-      <ApplicationRelativeFilePath>Api/Extensions/AttributeModelExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AttributeModelExtensions.cs</ProjectRelativeFilePath>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#0a66489f-30aa-417b-a75d-b945863366fd</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/AssociationTargetEndModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationTargetEndModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
-      <ApplicationRelativeFilePath>Api/Extensions/ClassModelExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ClassModelExtensions.cs</ProjectRelativeFilePath>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#0090fb93-483e-41af-a11d-5ad2dc796adf</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/AttributeModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AttributeModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#04e12b51-ed12-42a3-9667-a6aa81bb6d10</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/ClassModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ClassModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d32bc804-8f5e-463f-9cc5-d3b8f3536402</CorrelationId>
+      <ApplicationRelativeFilePath>Api/UniqueConstraintColumnModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>UniqueConstraintColumnModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c760d0f5-d8a1-4c16-9e2b-e654c2860154</CorrelationId>
+      <ApplicationRelativeFilePath>Api/UniqueConstraintModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>UniqueConstraintModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Metadata.RDBMS.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Metadata.RDBMS.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#c84fa137-4d52-451f-aba4-8ec00d1525f6</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>cb5bb8ab-1a66-4abe-945c-a843e36cb839</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5</CorrelationId>
+      <ApplicationRelativeFilePath>modelers/RDBMS Types.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RDBMS Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>
