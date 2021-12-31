@@ -196,6 +196,16 @@
             Converts <paramref name="string"/> to a valid C# reference type (e.g. removes disallowed characters).
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.CSharpProject.DefaultSupportsNullable(System.String)">
+            <summary>
+            Based on data from the below links, returns true if the default language version for
+            the provided <paramref name="frameworkMoniker"/> is at least 8.0.
+            <br/>
+            https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#defaults
+            <br/>
+            https://docs.microsoft.com/dotnet/standard/frameworks#supported-target-frameworks
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.IDeclareUsings">
             <summary>
             Signifies that this Template or Decorator introduces additional using clauses.
