@@ -11,7 +11,7 @@
   <ItemGroup>
     <PackageReference Include="Intent.Architect.Persistence" Version="3.1.1" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.1.9" />
-    <PackageReference Include="Intent.Modules.Common" Version="3.1.12" />    <PackageReference Include="Intent.Packager" Version="3.1.0">
+    <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -19,6 +19,10 @@
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.1.9" />
     <PackageReference Include="Mono.TextTemplating" Version="2.0.4" />
     <PackageReference Include="NuGet.Versioning" Version="5.6.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -299,10 +303,6 @@
       <LastGenOutput>TemplateExtensionsTemplate.cs</LastGenOutput>
       <Generator>TextTemplatingFilePreprocessor</Generator>
     </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Templates\Settings\" />
   </ItemGroup>
 
 </Project>
