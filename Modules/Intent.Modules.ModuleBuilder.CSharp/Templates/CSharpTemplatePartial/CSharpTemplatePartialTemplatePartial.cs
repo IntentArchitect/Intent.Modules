@@ -28,7 +28,6 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         public CSharpTemplatePartialTemplate(IOutputTarget outputTarget, CSharpTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             AddNugetDependency("Intent.Modules.Common.CSharp", "3.1.7");
-            AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";

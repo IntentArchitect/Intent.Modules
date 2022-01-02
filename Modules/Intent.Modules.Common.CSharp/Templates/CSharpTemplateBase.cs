@@ -66,7 +66,6 @@ namespace Intent.Modules.Common.CSharp.Templates
         protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model)
             : base(templateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.RoslynWeaver.Attributes", "1.0.0");
             Types = new CSharpTypeResolver(new CollectionFormatter(x => $"{UseType("System.Collections.Generic.IEnumerable")}<{x.Name}>"),
                 new CSharpNullableFormatter(OutputTarget.GetProject()));
         }
