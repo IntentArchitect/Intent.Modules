@@ -562,6 +562,8 @@ namespace Intent.Modules.Common.Templates
         /// <param name="model">The model instance that the Template must be bound to.</param>
         public string TryGetTypeName(string templateId, IMetadataModel model)
         {
+            if (model == null) throw new ArgumentNullException(nameof(model));
+
             var classProvider = GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow);
 
             return classProvider != null
