@@ -42,7 +42,7 @@ using Intent.Engine;
 using Intent.Registrations;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace ");
             

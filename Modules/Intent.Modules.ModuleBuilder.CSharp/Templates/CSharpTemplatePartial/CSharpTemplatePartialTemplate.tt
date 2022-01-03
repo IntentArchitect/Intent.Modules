@@ -42,5 +42,12 @@ namespace <#= Namespace #>
                 @namespace: $"{this.GetNamespace()}",
                 relativeLocation: $"{this.GetFolderPath()}");
         }
+<#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCustom() == true) { #>
+
+        public override string TransformText()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
+<#  } #>
     }
 }

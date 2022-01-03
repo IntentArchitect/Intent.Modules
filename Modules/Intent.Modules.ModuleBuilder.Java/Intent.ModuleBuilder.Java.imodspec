@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Java</id>
-  <version>3.1.1</version>
-  <supportedClientVersions>[3.1.0-pre.0, 4.0.0)</supportedClientVersions>
+  <version>3.1.2</version>
+  <supportedClientVersions>[3.1.10-pre.0, 4.0.0)</supportedClientVersions>
   <summary>For the creation of Java Templates in the Intent Module Builder</summary>
   <description>For the creation of Java Templates in the Intent Module Builder</description>
   <authors>Intent Architect</authors>
@@ -26,7 +26,7 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.ModuleBuilder" version="3.1.4" />
+    <dependency id="Intent.ModuleBuilder" version="3.1.7" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

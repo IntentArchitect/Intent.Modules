@@ -94,11 +94,11 @@ namespace <#= Namespace #>
 
         private string GetExistingTemplateContent()
         {
-            var fileLocation = FileMetadata.GetFilePath();
+            var existingFile = GetExistingFilePath();
 
-            if (File.Exists(fileLocation))
+            if (existingFile != null)
             {
-                return File.ReadAllText(fileLocation);
+                return File.ReadAllText(existingFile);
             }
 
             return null;

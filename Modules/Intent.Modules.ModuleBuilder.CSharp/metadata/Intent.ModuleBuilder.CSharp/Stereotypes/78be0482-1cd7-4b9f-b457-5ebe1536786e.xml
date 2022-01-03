@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="78be0482-1cd7-4b9f-b457-5ebe1536786e" version="3.1.0">
+  <name>C# Template Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="f6456232-0f1b-4235-b5f8-b4cce548ca59">C# Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="file" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>f2bfb0f7-d304-466f-b923-021d4016b48d</parentFolderId>
+  <order>0</order>
+  <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
+  <packageName>Intent.ModuleBuilder.CSharp</packageName>
+  <properties>
+    <property id="3b9e1f1b-e253-4c04-89aa-30fef0a9bfa8">
+      <name>Templating Method</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>T4 Template</defaultValue>
+      <valueOptions>
+        <option>T4 Template</option>
+        <option>Custom</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -24,6 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Settings
         {
             _groupSettings = groupSettings;
         }
-        public bool CreatePartialAPIModels => bool.TryParse(_groupSettings.GetSetting("b06c3926-23e5-49dd-a59d-93ef16b9777e")?.Value.ToPascalCase(), out var result) && result;
+
+        public bool CreatePartialAPIModels() => bool.TryParse(_groupSettings.GetSetting("b06c3926-23e5-49dd-a59d-93ef16b9777e")?.Value.ToPascalCase(), out var result) && result;
     }
 }

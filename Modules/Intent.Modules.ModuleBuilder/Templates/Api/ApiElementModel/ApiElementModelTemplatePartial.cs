@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public bool HasParentFolder { get; private set; }
 
-        public bool HasPartial => ExecutionContext.Settings.GetModuleBuilderSettings().CreatePartialAPIModels;
+        public bool HasPartial => ExecutionContext.Settings.GetModuleBuilderSettings().CreatePartialAPIModels();
 
         public List<AssociationSettingsModel> AssociationSettings { get; }
 

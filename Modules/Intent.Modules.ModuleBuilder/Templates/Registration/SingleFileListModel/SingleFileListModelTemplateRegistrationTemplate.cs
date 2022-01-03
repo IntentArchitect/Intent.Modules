@@ -41,7 +41,7 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Engine;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace ");
             

@@ -25,6 +25,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -59,6 +60,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>5211ae40-61be-4758-b881-99394d7d40a6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.TemplateExtensions</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

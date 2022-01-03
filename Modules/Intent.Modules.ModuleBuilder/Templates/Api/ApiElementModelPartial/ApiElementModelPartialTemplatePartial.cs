@@ -34,7 +34,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial
 
         public override bool CanRunTemplate()
         {
-            return ExecutionContext.Settings.GetModuleBuilderSettings().CreatePartialAPIModels;
+            return ExecutionContext.Settings.GetModuleBuilderSettings().CreatePartialAPIModels();
         }
     }
 }
