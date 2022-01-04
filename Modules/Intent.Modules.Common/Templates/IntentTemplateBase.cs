@@ -154,7 +154,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public virtual string GetExistingFilePath()
         {
-            var filePath = ExecutionContext.GetPreviousExecutionLog().TryGetFileLog(this)?.FilePath ?? FileMetadata.GetFilePath();
+            var filePath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath ?? FileMetadata.GetFilePath();
             return File.Exists(filePath) ? filePath : null;
         }
         
