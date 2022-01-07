@@ -2,7 +2,7 @@
 <package>
   <id>Intent.ModuleBuilder.Kotlin</id>
   <version>3.1.2</version>
-  <supportedClientVersions>[3.1.10-pre.0, 4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.2.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>For the creation of Kotlin Templates in the Intent Module Builder</summary>
   <description>For the creation of Kotlin Templates in the Intent Module Builder</description>
   <authors>Intent Architect</authors>
