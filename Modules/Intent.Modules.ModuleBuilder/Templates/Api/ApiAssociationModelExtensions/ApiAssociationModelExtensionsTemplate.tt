@@ -39,5 +39,16 @@ namespace <#= Namespace #>
         }
 
 <#  }  #>
+<#  foreach(var targetType in Model.TargetEnd.TargetTypes().Intersect(Model.SourceEnd.TargetTypes())) {  #>
+        [IntentManaged(Mode.Fully)]
+        public static IList<<#= Model.Name.ToCSharpIdentifier() #>EndModel> <#= Model.Name.ToCSharpIdentifier() #>Ends(this <#= targetType.ApiModelName #> model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Is<#= Model.Name.ToCSharpIdentifier() #>EndModel())
+                .Select(<#= Model.Name.ToCSharpIdentifier() #>EndModel.Create)
+                .ToList();
+        }
+
+<#  }  #>
     }
 }

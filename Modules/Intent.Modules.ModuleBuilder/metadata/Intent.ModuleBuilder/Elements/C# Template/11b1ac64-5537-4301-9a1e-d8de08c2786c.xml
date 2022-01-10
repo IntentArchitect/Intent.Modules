@@ -34,6 +34,14 @@
         <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" value="" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="78be0482-1cd7-4b9f-b457-5ebe1536786e" name="C# Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder.CSharp</definitionPackageName>
+      <definitionPackageId>f2bfb0f7-d304-466f-b923-021d4016b48d</definitionPackageId>
+      <properties>
+        <property name="3b9e1f1b-e253-4c04-89aa-30fef0a9bfa8" display="Templating Method" value="T4 Template" isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <childElements />
 </class>

@@ -918,6 +918,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <isRequired>true</isRequired>
             <targetTypes>
               <type>Element Settings</type>
+              <type>Association Destination End Settings</type>
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>false</allowIsNullable>

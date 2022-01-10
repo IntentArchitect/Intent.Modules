@@ -30,7 +30,7 @@ namespace <#= Namespace #>
 <#  if (BaseType == null) { #>
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
+        [IntentManaged(Mode.Fully)]
         public <#= ClassName #>(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))

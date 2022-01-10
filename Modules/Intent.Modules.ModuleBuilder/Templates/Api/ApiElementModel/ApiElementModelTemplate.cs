@@ -118,8 +118,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             
             #line default
             #line hidden
-            this.Write("        protected readonly IElement _element;\r\n\r\n        [IntentManaged(Mode.Igno" +
-                    "re)]\r\n        public ");
+            this.Write("        protected readonly IElement _element;\r\n\r\n        [IntentManaged(Mode.Full" +
+                    "y)]\r\n        public ");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModel\ApiElementModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
