@@ -4,7 +4,7 @@
   <FileLogs>
     <FileLog>
       <ProjectId>dbe0fab1-2720-40f2-9f2c-76719e833d59</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Common.CSharp.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.CSharp.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
