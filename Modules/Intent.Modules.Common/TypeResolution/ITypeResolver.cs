@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -67,6 +68,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// Resolves the type name for the specified <paramref name="element"/>
         /// </summary>
         /// <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
+        [FixFor_3_2_0("Makes no sense to have this overload - the collectionFormat will never be used.")]
         IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat);
 
         /// <summary>
