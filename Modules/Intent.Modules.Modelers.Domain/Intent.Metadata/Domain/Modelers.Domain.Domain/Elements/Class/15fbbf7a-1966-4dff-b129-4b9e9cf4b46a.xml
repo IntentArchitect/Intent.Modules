@@ -9,6 +9,13 @@
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
   <packageName>Modelers.Domain.Domain</packageName>
-  <stereotypes />
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="c9afb965-bd6d-4bc6-bacf-1a91c5d6314f" name="Stereotype">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Modelers.Domain.Domain</definitionPackageName>
+      <definitionPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</definitionPackageId>
+      <properties />
+    </stereotype>
+  </stereotypes>
   <childElements />
 </class>

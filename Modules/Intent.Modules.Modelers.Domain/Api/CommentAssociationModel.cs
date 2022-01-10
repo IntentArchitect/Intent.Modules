@@ -77,6 +77,12 @@ namespace Intent.Modelers.Domain.Api
             _association = association;
         }
 
+        public static CommentAssociationEndModel Create(IAssociationEnd associationEnd)
+        {
+            var association = new CommentAssociationModel(associationEnd.Association);
+            return association.TargetEnd.Id == associationEnd.Id ? (CommentAssociationEndModel)association.TargetEnd : association.SourceEnd;
+        }
+
         public string Id => _associationEnd.Id;
         public string SpecializationType => _associationEnd.SpecializationType;
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;

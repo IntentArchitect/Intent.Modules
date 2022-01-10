@@ -3,6 +3,7 @@
   <sourceEnd id="29350c14-ba26-4545-b7b7-ba445f48b8cc" type="Comment Source End" typeId="7e98213c-4a9c-4d6f-98fc-f185948cc9e8">
     <name>NewComment</name>
     <display>NewComment: NewComment</display>
+    <order>5</order>
     <typeReference id="ad470a3b-6c92-47a5-a863-55fa2de5c0f6">
       <typeId>52035416-9fc3-4e1c-8da7-bb23bdbf2b41</typeId>
       <isNavigable>true</isNavigable>
@@ -19,6 +20,7 @@
   <targetEnd id="c63a8424-0576-4291-90a8-5031722956a4" type="Comment Target End" typeId="b7edce45-ccf0-47ed-b79f-86d5145c9f62">
     <name>EmptyClass</name>
     <display>EmptyClass: EmptyClass</display>
+    <order>0</order>
     <typeReference id="dcaf7048-764c-4aa5-8f83-cceea9a69e4e">
       <typeId>e3ab1103-695b-43cb-9dad-feea553c2711</typeId>
       <isNavigable>true</isNavigable>

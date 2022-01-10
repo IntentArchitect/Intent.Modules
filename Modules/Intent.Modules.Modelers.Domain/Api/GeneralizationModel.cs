@@ -138,6 +138,12 @@ namespace Intent.Modelers.Domain.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
 
         public ITypeReference TypeReference => this;
+
+        public static GeneralizationEndModel Create(IAssociationEnd associationEnd)
+        {
+            var association = new GeneralizationModel(associationEnd.Association);
+            return association.TargetEnd.Id == associationEnd.Id ? (GeneralizationEndModel)association.TargetEnd : association.SourceEnd;
+        }
     }
 
     [IntentManaged(Mode.Fully)]

@@ -36,5 +36,14 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
+        [IntentManaged(Mode.Fully)]
+        public static IList<CommentAssociationEndModel> CommentAssociationEnds(this CommentModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.IsCommentAssociationEndModel())
+                .Select(CommentAssociationEndModel.Create)
+                .ToList();
+        }
+
     }
 }

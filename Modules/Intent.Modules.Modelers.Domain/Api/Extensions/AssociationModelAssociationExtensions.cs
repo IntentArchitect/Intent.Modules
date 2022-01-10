@@ -27,5 +27,14 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
+        [IntentManaged(Mode.Fully)]
+        public static IList<AssociationEndModel> AssociationEnds(this ClassModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.IsAssociationEndModel())
+                .Select(AssociationEndModel.Create)
+                .ToList();
+        }
+
     }
 }

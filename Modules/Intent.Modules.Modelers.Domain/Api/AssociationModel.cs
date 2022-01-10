@@ -156,6 +156,12 @@ namespace Intent.Modelers.Domain.Api
         {
             return (_associationEnd != null ? _associationEnd.GetHashCode() : 0);
         }
+
+        public static AssociationEndModel Create(IAssociationEnd associationEnd)
+        {
+            var association = new AssociationModel(associationEnd.Association);
+            return association.TargetEnd.Id == associationEnd.Id ? (AssociationEndModel)association.TargetEnd : association.SourceEnd;
+        }
     }
 
     [IntentManaged(Mode.Fully)]
