@@ -666,7 +666,7 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.Func{``0},System.Func{System.String},Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <remarks>
-            For 3.2.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
+            For 4.0.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
             must be of type <see cref="T:Intent.Templates.ITemplate"/>.<br/>
             <br/>
             By implication, all the public overloads of this will need the same constraint applied.<br/>

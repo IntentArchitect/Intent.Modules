@@ -68,7 +68,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// Resolves the type name for the specified <paramref name="element"/>
         /// </summary>
         /// <param name="collectionFormat">The collection format provided if the typeInfo.IsCollection is true</param>
-        [FixFor_3_2_0("Makes no sense to have this overload - the collectionFormat will never be used.")]
+        [FixFor_Version4("Makes no sense to have this overload - the collectionFormat will never be used.")]
         IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat);
 
         /// <summary>

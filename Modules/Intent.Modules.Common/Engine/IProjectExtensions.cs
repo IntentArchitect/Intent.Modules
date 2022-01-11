@@ -56,7 +56,7 @@ namespace Intent.Modules.Common
         /// <summary>
         /// Obsolete. Use <see cref="SoftwareFactoryExecutionContextExtensions.FindTemplateInstances{TTemplate}"/> instead.
         /// </summary>
-        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(ISoftwareFactoryExecutionContext context, ITemplateDependency templateDependency) where TTemplate : class
         {
             return context.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch).Cast<TTemplate>();

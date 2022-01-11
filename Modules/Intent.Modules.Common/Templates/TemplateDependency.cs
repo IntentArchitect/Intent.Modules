@@ -27,7 +27,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// This will be changed to a private member, please contact support@intentarchitect.com if you have a need for this.
         /// </summary>
-        [Obsolete(WillBeRemovedIn.Version_3_2_0)]
+        [Obsolete(WillBeRemovedIn.Version4)]
         public object Context => _context;
 
         /// <inheritdoc />

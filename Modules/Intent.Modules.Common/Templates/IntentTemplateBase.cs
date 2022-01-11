@@ -102,7 +102,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Returns the known template dependencies added for this template.
         /// </summary>
-        [FixFor_3_2_0("Change name to KnownTemplateDependencies. Consider making private.")]
+        [FixFor_Version4("Change name to KnownTemplateDependencies. Consider making private.")]
         protected readonly ICollection<ITemplateDependency> DetectedDependencies = new List<ITemplateDependency>();
 
         /// <summary>
@@ -598,7 +598,7 @@ namespace Intent.Modules.Common.Templates
         #region GetTemplate
 
         /// <remarks>
-        /// For 3.2.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
+        /// For 4.0.0 we want to add a generic type parameter constraint where <typeparamref name="TTemplate"/>
         /// must be of type <see cref="ITemplate"/>.<br/>
         /// <br/>
         /// By implication, all the public overloads of this will need the same constraint applied.<br/>
@@ -612,7 +612,7 @@ namespace Intent.Modules.Common.Templates
         /// Which means that we will probably need to make IModuleBuilderTemplate derive from
         /// <see cref="ITemplate"/>.
         /// </remarks>
-        [FixFor_3_2_0]
+        [FixFor_Version4]
         private TTemplate GetTemplate<TTemplate>(
             Func<TTemplate> getTemplate,
             Func<string> getDependencyDescriptionForException,
