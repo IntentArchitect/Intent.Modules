@@ -2,6 +2,7 @@ using System;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Api;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
@@ -44,7 +45,11 @@ namespace Intent.Modules.Common.CSharp.Templates
         public static string GetNamespace<TModel>(this CSharpTemplateBase<TModel> template, params string[] additionalFolders)
             where TModel : IHasFolder
         {
-            return string.Join(".", new[] { template.OutputTarget.GetNamespace() }.Concat(template.Model.GetParentFolderNames()).Concat(additionalFolders));
+            return string.Join(".", new[] { template.OutputTarget.GetNamespace() }
+                .Concat(template.Model.GetParentFolders()
+                    .Where(x => !string.IsNullOrWhiteSpace(x.Name) && (!x.HasFolderOptions() || x.GetFolderOptions().NamespaceProvider()))
+                    .Select(x => x.Name))
+                .Concat(additionalFolders));
         }
 
         /// <summary>
