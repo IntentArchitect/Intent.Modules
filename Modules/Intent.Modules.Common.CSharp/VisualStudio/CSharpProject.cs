@@ -57,7 +57,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                 case "default":
                     return TargetFrameworks.All(DefaultSupportsNullable);
                 default:
-                    return float.Parse(LanguageVersion, CultureInfo.InvariantCulture) >= 8.0f;
+                    return decimal.Parse(LanguageVersion, CultureInfo.InvariantCulture) >= 8.0m;
             }
         }
 
@@ -120,7 +120,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             // net5.0 is version 9.0
             if (frameworkMoniker.StartsWith("net") &&
                 frameworkMoniker.Contains(".") &&
-                float.TryParse(frameworkMoniker.Substring(3), NumberStyles.Any, CultureInfo.InvariantCulture, out _))
+                decimal.TryParse(frameworkMoniker.Substring(3), NumberStyles.Any, CultureInfo.InvariantCulture, out _))
             {
                 return true;
             }
