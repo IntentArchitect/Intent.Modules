@@ -70,7 +70,13 @@ namespace Intent.Modules.Common.VisualStudio
 
         public static List<INugetPackageInfo> NugetPackages(this IOutputTarget outputTarget)
         {
-            return outputTarget.Metadata[NUGET_PACKAGES] as List<INugetPackageInfo>;
+            if (outputTarget.Metadata.TryGetValue(NUGET_PACKAGES, out var value) &&
+                value is List<INugetPackageInfo> nugetPackages)
+            {
+                return nugetPackages;
+            }
+
+            return new List<INugetPackageInfo>();
         }
 
         /*
