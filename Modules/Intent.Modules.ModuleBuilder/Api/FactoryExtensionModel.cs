@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public partial class FactoryExtensionModel : IMetadataModel, IHasStereotypes, IHasName
+    public partial class FactoryExtensionModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public const string SpecializationType = "Factory Extension";
         public const string SpecializationTypeId = "7d008e84-bb28-4b10-ba28-7439202fca76";
@@ -32,6 +33,8 @@ namespace Intent.ModuleBuilder.Api
         public string Name => _element.Name;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 
