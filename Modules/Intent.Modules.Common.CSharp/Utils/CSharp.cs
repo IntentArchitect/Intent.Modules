@@ -2,9 +2,14 @@
 
 namespace Intent.Modules.Common.Templates
 {
+    /// <summary>
+    /// Helpers for C# code.
+    /// </summary>
     public static class CSharp
     {
-        // As per https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/
+        /// <summary>
+        /// List of C# keywords as per <see href="https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/"/>.
+        /// </summary>
         public static readonly HashSet<string> ReservedWords = new HashSet<string>
         {
             "abstract",

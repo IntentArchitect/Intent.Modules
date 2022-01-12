@@ -1,14 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
+    /// <summary>
+    /// Extensions methods for authoring C# templates.
+    /// </summary>
     public static class TemplateExtensions
     {
         public static IEnumerable<INugetPackageInfo> GetAllNugetDependencies(this ITemplate template)
@@ -21,17 +24,28 @@ namespace Intent.Modules.Common.CSharp.Templates
             return template.GetAll<IHasAssemblyDependencies, IAssemblyReference>((i) => i.GetAssemblyDependencies());
         }
 
+        /// <summary>
+        /// Obsolete, use <see cref="ToLocalVariableName"/> or <see cref="ToParameterName"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static string ToCamelCase(this string s, bool reservedWordEscape)
         {
             var result = s.ToCamelCase();
 
-            if (reservedWordEscape && Common.Templates.CSharp.ReservedWords.Contains(result))
+            if (reservedWordEscape)
             {
-                return $"@{result}";
+                result = result.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterLower);
             }
+
             return result;
         }
 
+        /// <summary>
+        /// Changes the type name from being for an interface to instead be for a class.
+        /// </summary>
+        /// <remarks>
+        /// A leading 'I' is removed so long as the 2nd character is also uppercase.
+        /// </remarks>
         public static string AsClassName(this string s)
         {
             if (s.StartsWith("I") && s.Length >= 2 && char.IsUpper(s[1]))
@@ -42,15 +56,56 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Camel-cases input parameter <paramref name="s"/> and prefixes with an underscore.
+        /// Obsolete, use <see cref="ToPrivateMemberName"/> instead.
         /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static string ToPrivateMember(this string s)
         {
-            if (string.IsNullOrWhiteSpace(s))
+            return s.ToPrivateMemberName();
+        }
+
+        /// <summary>
+        /// Applies <see cref="ToCSharpIdentifier(string,CapitalizationBehaviour)"/> to
+        /// <paramref name="identifier"/> with <see cref="CapitalizationBehaviour.MakeFirstLetterLower"/>
+        /// and ensures the result is prefixed with an '_'.
+        /// </summary>
+        public static string ToPrivateMemberName(this string identifier)
+        {
+            identifier = identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterLower);
+
+            if (identifier[0] != '_')
             {
-                return s;
+                identifier = $"_{identifier}";
             }
-            return "_" + ToCamelCase(s, false);
+
+            return identifier;
+        }
+
+        /// <summary>
+        /// Applies <see cref="ToCSharpIdentifier(string,CapitalizationBehaviour)"/> to
+        /// <paramref name="identifier"/> with <see cref="CapitalizationBehaviour.MakeFirstLetterLower"/>.
+        /// </summary>
+        public static string ToParameterName(this string identifier)
+        {
+            return identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterLower);
+        }
+
+        /// <summary>
+        /// Applies <see cref="ToCSharpIdentifier(string,CapitalizationBehaviour)"/> to
+        /// <paramref name="identifier"/> with <see cref="CapitalizationBehaviour.MakeFirstLetterLower"/>.
+        /// </summary>
+        public static string ToLocalVariableName(this string identifier)
+        {
+            return identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterLower);
+        }
+
+        /// <summary>
+        /// Applies <see cref="ToCSharpIdentifier(string,CapitalizationBehaviour)"/> to
+        /// <paramref name="identifier"/> with <see cref="CapitalizationBehaviour.MakeFirstLetterUpper"/>.
+        /// </summary>
+        public static string ToTypeName(this string identifier)
+        {
+            return identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterUpper);
         }
 
         /// <summary>
@@ -62,54 +117,42 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Converts <paramref name="string"/> to a valid C# reference type (e.g. removes disallowed characters).
+        /// An overload of <see cref="ToCSharpIdentifier(string,CapitalizationBehaviour)"/> where
+        /// <see cref="CapitalizationBehaviour"/> is set to <see cref="CapitalizationBehaviour.MakeFirstLetterUpper"/>.
         /// </summary>
+        /// <remarks>
+        /// See also: <seealso cref="ToTypeName"/>.
+        /// </remarks>
+        [FixFor_Version4("Remove this and give the overload's capitalizationBehaviour parameter a default value instead")]
         public static string ToCSharpIdentifier(this string @string)
         {
-            if (string.IsNullOrWhiteSpace(@string))
+            return @string.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterUpper);
+        }
+
+        /// <summary>
+        /// Converts <paramref name="identifier"/> to a valid C#
+        /// <see href="https://docs.microsoft.com/dotnet/csharp/fundamentals/coding-style/identifier-names">identifier name</see>.
+        /// </summary>
+        /// <remarks>
+        /// The following rules are applied to the <paramref name="identifier"/> in the following order:
+        /// <list type="bullet">
+        /// <item>If the string is null or whitespace, an empty string is returned.</item>
+        /// <item>Occurrences of '#' are replaced with 'Sharp`.</item>
+        /// <item>Occurrences of '&amp;' are replaced with 'And`.</item>
+        /// <item>Any invalid characters are replaced with a ' ' (these spaces are removed in a subsequent step).</item>
+        /// <item>Any occurrences of contiguous '_' characters become a single '_' character.</item>
+        /// <item>In the event there are multiple words, each except for the first has its first letter capitalized and are then joined together.</item>
+        /// <item><paramref name="capitalizationBehaviour"/> is applied to first character.</item>
+        /// <item>If the first character is a number, then an '_' prefix is applied.</item>
+        /// <item>If the identifier is a <see href="https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/">C# keyword</see>, then an '@' prefix is applied.</item>
+        /// </list>
+        /// </remarks>>
+        [FixFor_Version4("Remove the overload and give the capitalizationBehaviour parameter a default value instead")]
+        public static string ToCSharpIdentifier(this string identifier, CapitalizationBehaviour capitalizationBehaviour)
+        {
+            if (string.IsNullOrWhiteSpace(identifier))
             {
                 return string.Empty;
-            }
-
-            bool IsLetter(char @char)
-            {
-                switch (char.GetUnicodeCategory(@char))
-                {
-                    case UnicodeCategory.LetterNumber:
-                    case UnicodeCategory.LowercaseLetter:
-                    case UnicodeCategory.ModifierLetter:
-                    case UnicodeCategory.OtherLetter:
-                    case UnicodeCategory.TitlecaseLetter:
-                    case UnicodeCategory.UppercaseLetter:
-                        return true;
-                    case UnicodeCategory.ClosePunctuation:
-                    case UnicodeCategory.ConnectorPunctuation:
-                    case UnicodeCategory.Control:
-                    case UnicodeCategory.CurrencySymbol:
-                    case UnicodeCategory.DashPunctuation:
-                    case UnicodeCategory.DecimalDigitNumber:
-                    case UnicodeCategory.EnclosingMark:
-                    case UnicodeCategory.FinalQuotePunctuation:
-                    case UnicodeCategory.Format:
-                    case UnicodeCategory.InitialQuotePunctuation:
-                    case UnicodeCategory.LineSeparator:
-                    case UnicodeCategory.MathSymbol:
-                    case UnicodeCategory.ModifierSymbol:
-                    case UnicodeCategory.NonSpacingMark:
-                    case UnicodeCategory.OpenPunctuation:
-                    case UnicodeCategory.OtherNotAssigned:
-                    case UnicodeCategory.OtherNumber:
-                    case UnicodeCategory.OtherPunctuation:
-                    case UnicodeCategory.OtherSymbol:
-                    case UnicodeCategory.ParagraphSeparator:
-                    case UnicodeCategory.PrivateUse:
-                    case UnicodeCategory.SpaceSeparator:
-                    case UnicodeCategory.SpacingCombiningMark:
-                    case UnicodeCategory.Surrogate:
-                        return false;
-                    default:
-                        return false;
-                };
             }
 
             // https://docs.microsoft.com/dotnet/csharp/fundamentals/coding-style/identifier-names
@@ -122,28 +165,15 @@ namespace Intent.Modules.Common.CSharp.Templates
             //   declares an identifier named if. These verbatim identifiers are primarily for
             //   interoperability with identifiers declared in other languages.
 
-            @string = @string
+            identifier = identifier
                 .Replace("#", "Sharp")
                 .Replace("&", "And");
 
-            if (@string[0] != '_' &&
-                @string[0] != '@' &&
-                !IsLetter(@string[0]))
-            {
-                @string = $"_{@string}";
-            }
-
-            var asCharArray = @string.ToCharArray();
+            var asCharArray = identifier.ToCharArray();
             for (var i = 0; i < asCharArray.Length; i++)
             {
                 // Underscore character is allowed
                 if (asCharArray[i] == '_')
-                {
-                    continue;
-                }
-
-                // First character being an @ is allowed
-                if (i == 0 && asCharArray[i] == '@')
                 {
                     continue;
                 }
@@ -189,22 +219,58 @@ namespace Intent.Modules.Common.CSharp.Templates
                 }
             }
 
-            @string = new string(asCharArray);
+            identifier = new string(asCharArray);
 
             // Replace double spaces
-            while (@string.Contains("  "))
+            while (identifier.Contains("  "))
             {
-                @string = @string.Replace("  ", " ");
+                identifier = identifier.Replace("  ", " ");
             }
 
             // Replace double underscores
-            while (@string.Contains("__"))
+            while (identifier.Contains("__"))
             {
-                @string = @string.Replace("__", "_");
+                identifier = identifier.Replace("__", "_");
             }
 
-            return string.Concat(@string.Split(' ').Select(x => x.ToPascalCase()));
+            identifier = string.Concat(identifier
+                .Split(' ')
+                .Where(element => !string.IsNullOrWhiteSpace(element))
+                .Select((element, index) => index == 0
+                    ? element
+                    : element.ToPascalCase()));
+
+            switch (capitalizationBehaviour)
+            {
+                case CapitalizationBehaviour.AsIs:
+                    break;
+                case CapitalizationBehaviour.MakeFirstLetterUpper:
+                    if (!char.IsUpper(identifier[0]))
+                    {
+                        identifier = $"{char.ToUpperInvariant(identifier[0])}{identifier.Substring(1)}";
+                    }
+                    break;
+                case CapitalizationBehaviour.MakeFirstLetterLower:
+                    if (!char.IsLower(identifier[0]))
+                    {
+                        identifier = $"{char.ToLowerInvariant(identifier[0])}{identifier.Substring(1)}";
+                    }
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(capitalizationBehaviour), capitalizationBehaviour, null);
+            }
+
+            if (char.IsNumber(identifier[0]))
+            {
+                identifier = $"_{identifier}";
+            }
+
+            if (Common.Templates.CSharp.ReservedWords.Contains(identifier))
+            {
+                identifier = $"@{identifier}";
+            }
+
+            return identifier;
         }
     }
-
 }

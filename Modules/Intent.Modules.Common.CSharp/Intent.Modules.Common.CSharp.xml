@@ -4,6 +4,28 @@
         <name>Intent.Modules.Common.CSharp</name>
     </assembly>
     <members>
+        <member name="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour">
+            <summary>
+            Controls casing behaviour of <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/>
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.AsIs">
+            <summary>
+            Do not change casing.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.MakeFirstLetterLower">
+            <summary>
+            Ensures that first letter is lowercase, i.e., the result will be
+            <see href="https://en.wikipedia.org/wiki/Camel_case">camelCased</see>.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.MakeFirstLetterUpper">
+            <summary>
+            Ensures that first letter is uppercase, i.e., the result will be
+            <see href="https://en.wikipedia.org/wiki/Pascal_case">PascalCased</see>.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpCodeExtensions">
             <summary>
             Extension methods for <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1"/>.
@@ -181,9 +203,52 @@
             Creates a fully qualified namespace based on the OutputTarget location and the <paramref name="additionalFolders"/>.
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.Templates.TemplateExtensions">
+            <summary>
+            Extensions methods for authoring C# templates.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCamelCase(System.String,System.Boolean)">
+            <summary>
+            Obsolete, use <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToLocalVariableName(System.String)"/> or <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToParameterName(System.String)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.AsClassName(System.String)">
+            <summary>
+            Changes the type name from being for an interface to instead be for a class.
+            </summary>
+            <remarks>
+            A leading 'I' is removed so long as the 2nd character is also uppercase.
+            </remarks>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToPrivateMember(System.String)">
             <summary>
-            Camel-cases input parameter <paramref name="s"/> and prefixes with an underscore.
+            Obsolete, use <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToPrivateMemberName(System.String)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToPrivateMemberName(System.String)">
+            <summary>
+            Applies <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/> to
+            <paramref name="identifier"/> with <see cref="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.MakeFirstLetterLower"/>
+            and ensures the result is prefixed with an '_'.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToParameterName(System.String)">
+            <summary>
+            Applies <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/> to
+            <paramref name="identifier"/> with <see cref="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.MakeFirstLetterLower"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToLocalVariableName(System.String)">
+            <summary>
+            Applies <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/> to
+            <paramref name="identifier"/> with <see cref="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.MakeFirstLetterLower"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToTypeName(System.String)">
+            <summary>
+            Applies <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/> to
+            <paramref name="identifier"/> with <see cref="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.MakeFirstLetterUpper"/>.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpNamespace(System.String)">
@@ -193,8 +258,32 @@
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String)">
             <summary>
-            Converts <paramref name="string"/> to a valid C# reference type (e.g. removes disallowed characters).
+            An overload of <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/> where
+            <see cref="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour"/> is set to <see cref="F:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour.MakeFirstLetterUpper"/>.
             </summary>
+            <remarks>
+            See also: <seealso cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToTypeName(System.String)"/>.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)">
+            <summary>
+            Converts <paramref name="identifier"/> to a valid C#
+            <see href="https://docs.microsoft.com/dotnet/csharp/fundamentals/coding-style/identifier-names">identifier name</see>.
+            </summary>
+            <remarks>
+            The following rules are applied to the <paramref name="identifier"/> in the following order:
+            <list type="bullet">
+            <item>If the string is null or whitespace, an empty string is returned.</item>
+            <item>Occurrences of '#' are replaced with 'Sharp`.</item>
+            <item>Occurrences of '&amp;' are replaced with 'And`.</item>
+            <item>Any invalid characters are replaced with a ' ' (these spaces are removed in a subsequent step).</item>
+            <item>Any occurrences of contiguous '_' characters become a single '_' character.</item>
+            <item>In the event there are multiple words, each except for the first has its first letter capitalized and are then joined together.</item>
+            <item><paramref name="capitalizationBehaviour"/> is applied to first character.</item>
+            <item>If the first character is a number, then an '_' prefix is applied.</item>
+            <item>If the identifier is a <see href="https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/">C# keyword</see>, then an '@' prefix is applied.</item>
+            </list>
+            </remarks>>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.CSharpProject.DefaultSupportsNullable(System.String)">
             <summary>
@@ -204,6 +293,16 @@
             https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#defaults
             <br/>
             https://docs.microsoft.com/dotnet/standard/frameworks#supported-target-frameworks
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.CSharp">
+            <summary>
+            Helpers for C# code.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.Templates.CSharp.ReservedWords">
+            <summary>
+            List of C# keywords as per <see href="https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.IDeclareUsings">
