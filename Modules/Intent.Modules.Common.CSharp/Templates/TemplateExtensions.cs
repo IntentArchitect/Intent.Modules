@@ -229,12 +229,6 @@ namespace Intent.Modules.Common.CSharp.Templates
                 identifier = identifier.Replace("  ", " ");
             }
 
-            // Replace double underscores
-            while (identifier.Contains("__"))
-            {
-                identifier = identifier.Replace("__", "_");
-            }
-
             identifier = string.Concat(identifier
                 .Split(' ')
                 .Where(element => !string.IsNullOrWhiteSpace(element))
@@ -260,6 +254,11 @@ namespace Intent.Modules.Common.CSharp.Templates
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(capitalizationBehaviour), capitalizationBehaviour, null);
+            }
+
+            if (char.IsNumber(identifier[0]))
+            {
+                identifier = $"_{identifier}";
             }
 
             if (Common.Templates.CSharp.ReservedWords.Contains(identifier))
