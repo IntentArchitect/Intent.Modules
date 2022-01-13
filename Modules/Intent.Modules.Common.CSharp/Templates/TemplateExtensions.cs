@@ -140,13 +140,15 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <item>Occurrences of '#' are replaced with 'Sharp`.</item>
         /// <item>Occurrences of '&amp;' are replaced with 'And`.</item>
         /// <item>Any invalid characters are replaced with a ' ' (these spaces are removed in a subsequent step).</item>
-        /// <item>Any occurrences of contiguous '_' characters become a single '_' character.</item>
         /// <item>In the event there are multiple words, each except for the first has its first letter capitalized and are then joined together.</item>
         /// <item><paramref name="capitalizationBehaviour"/> is applied to first character.</item>
         /// <item>If the first character is a number, then an '_' prefix is applied.</item>
         /// <item>If the identifier is a <see href="https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/">C# keyword</see>, then an '@' prefix is applied.</item>
         /// </list>
-        /// </remarks>>
+        /// </remarks>
+        /// <param name="identifier">The value to change into a C# identifier.</param>
+        /// <param name="capitalizationBehaviour">The <see cref="CapitalizationBehaviour"/> to use.</param>
+        /// <returns>A valid C# identifier.</returns>
         [FixFor_Version4("Remove the overload and give the capitalizationBehaviour parameter a default value instead")]
         public static string ToCSharpIdentifier(this string identifier, CapitalizationBehaviour capitalizationBehaviour)
         {
@@ -258,11 +260,6 @@ namespace Intent.Modules.Common.CSharp.Templates
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(capitalizationBehaviour), capitalizationBehaviour, null);
-            }
-
-            if (char.IsNumber(identifier[0]))
-            {
-                identifier = $"_{identifier}";
             }
 
             if (Common.Templates.CSharp.ReservedWords.Contains(identifier))

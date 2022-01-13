@@ -277,13 +277,15 @@
             <item>Occurrences of '#' are replaced with 'Sharp`.</item>
             <item>Occurrences of '&amp;' are replaced with 'And`.</item>
             <item>Any invalid characters are replaced with a ' ' (these spaces are removed in a subsequent step).</item>
-            <item>Any occurrences of contiguous '_' characters become a single '_' character.</item>
             <item>In the event there are multiple words, each except for the first has its first letter capitalized and are then joined together.</item>
             <item><paramref name="capitalizationBehaviour"/> is applied to first character.</item>
             <item>If the first character is a number, then an '_' prefix is applied.</item>
             <item>If the identifier is a <see href="https://docs.microsoft.com/dotnet/csharp/language-reference/keywords/">C# keyword</see>, then an '@' prefix is applied.</item>
             </list>
-            </remarks>>
+            </remarks>
+            <param name="identifier">The value to change into a C# identifier.</param>
+            <param name="capitalizationBehaviour">The <see cref="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour"/> to use.</param>
+            <returns>A valid C# identifier.</returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.CSharpProject.DefaultSupportsNullable(System.String)">
             <summary>
