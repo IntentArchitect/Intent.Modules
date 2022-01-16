@@ -19,7 +19,7 @@
   </sourceEnd>
   <targetEnd id="166031d4-e264-4452-8b2d-cff447062713" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>EmptyClass</name>
-    <display>EmptyClass: EmptyClass</display>
+    <display>EmptyClass: TestClass</display>
     <order>2</order>
     <typeReference id="19a359fd-340b-4a6b-8383-5eebf10539e5">
       <typeId>e3ab1103-695b-43cb-9dad-feea553c2711</typeId>

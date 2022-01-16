@@ -3,7 +3,7 @@
   <name>NewClass1</name>
   <display>NewClass1</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
@@ -159,7 +159,7 @@
     </childElement>
     <childElement id="428014ce-840f-40fd-9d51-c279480ae806" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
       <name>Constructor</name>
-      <display>NewClass1(firstAttr: string, attribute: string, EmptyClass: EmptyClass)</display>
+      <display>NewClass1(firstAttr: string, attribute: string, EmptyClass: TestClass)</display>
       <isAbstract>false</isAbstract>
       <order>5</order>
       <genericTypes />
@@ -240,7 +240,7 @@
         </childElement>
         <childElement id="65f2f4a3-91e8-4c50-b89c-232a34166df5" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
           <name>EmptyClass</name>
-          <display>in : EmptyClass: EmptyClass</display>
+          <display>in : EmptyClass: TestClass</display>
           <isAbstract>false</isAbstract>
           <order>2</order>
           <genericTypes />

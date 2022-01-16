@@ -2,7 +2,7 @@
 <association id="59dc1d86-0cc3-422d-805c-21a0d275902b">
   <sourceEnd id="40b1b5ba-63bb-41f7-a483-fe79a2937a6b" type="Generalization Source End" typeId="8190bf43-222c-4b53-8a44-14626efe3574">
     <name>EmptyClass</name>
-    <display>EmptyClass: EmptyClass</display>
+    <display>EmptyClass: TestClass</display>
     <order>5</order>
     <typeReference id="8ffcf3b3-fbe1-4d8c-9e3a-0fb62583b3eb">
       <typeId>e3ab1103-695b-43cb-9dad-feea553c2711</typeId>
