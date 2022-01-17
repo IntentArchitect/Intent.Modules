@@ -14,14 +14,28 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// </summary>
     public static class TemplateExtensions
     {
+        /// <summary>
+        /// Aggregates all results from <see cref="IHasNugetDependencies.GetNugetDependencies"/> for a template, including those specified on decorators.
+        /// </summary>
         public static IEnumerable<INugetPackageInfo> GetAllNugetDependencies(this ITemplate template)
         {
             return template.GetAll<IHasNugetDependencies, INugetPackageInfo>((i) => i.GetNugetDependencies());
         }
 
+        /// <summary>
+        /// Aggregates all results from <see cref="IHasAssemblyDependencies.GetAssemblyDependencies"/> for a template, including those specified on decorators.
+        /// </summary>
         public static IEnumerable<IAssemblyReference> GetAllAssemblyDependencies(this ITemplate template)
         {
             return template.GetAll<IHasAssemblyDependencies, IAssemblyReference>((i) => i.GetAssemblyDependencies());
+        }
+
+        /// <summary>
+        /// Aggregates all results from <see cref="IHasFrameworkDependencies.GetFrameworkDependencies"/> for a template, including those specified on decorators.
+        /// </summary>
+        public static IEnumerable<string> GetAllFrameworkDependencies(this ITemplate template)
+        {
+            return template.GetAll<IHasFrameworkDependencies, string>(i => i.GetFrameworkDependencies());
         }
 
         /// <summary>

@@ -58,7 +58,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// </para>
     /// </summary>
     /// <typeparam name="TModel"></typeparam>
-    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings
+    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings, IHasFrameworkDependencies
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
         private List<string> _additionalUsingNamespaces = new List<string>();
@@ -428,7 +428,21 @@ namespace Intent.Modules.Common.CSharp.Templates
             _nugetDependencies.Add(nugetPackageInfo);
         }
 
+        private ICollection<string> _frameworkDependency = new HashSet<string>();
 
+        /// <summary>
+        /// Registers that the specified <FrameworkReference/> element should be add in the .csproj file where this file resides.
+        /// </summary>
+        public void AddFrameworkDependency(string id)
+        {
+            _frameworkDependency.Add(id);
+        }
+
+        /// <inheritdoc />
+        public IEnumerable<string> GetFrameworkDependencies()
+        {
+            return _frameworkDependency;
+        }
 
         public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
         {

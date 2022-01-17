@@ -13,12 +13,24 @@ namespace Intent.Modules.Common.VisualStudio
         private const string DEPENDENCIES = "VS.Dependencies";
         private const string NUGET_PACKAGES = "VS.NugetPackages";
         private const string REFERENCES = "VS.References";
+        private const string FRAMEWORK_DEPENDENCY = "VS.FrameworkReferences";
 
         public static void InitializeVSMetadata(this IOutputTarget outputTarget)
         {
             outputTarget.Metadata[NUGET_PACKAGES] = new List<INugetPackageInfo>();
             outputTarget.Metadata[DEPENDENCIES] = new List<IOutputTarget>();
             outputTarget.Metadata[REFERENCES] = new List<IAssemblyReference>();
+            outputTarget.Metadata[FRAMEWORK_DEPENDENCY] = new HashSet<string>();
+        }
+
+        public static void AddFrameworkDependency(this IOutputTarget outputTarget, string frameworkDependency)
+        {
+            ((HashSet<string>)outputTarget.Metadata[FRAMEWORK_DEPENDENCY]).Add(frameworkDependency);
+        }
+
+        public static IEnumerable<string> FrameworkDependencies(this IOutputTarget outputTarget)
+        {
+            return ((HashSet<string>)outputTarget.Metadata[FRAMEWORK_DEPENDENCY]).OrderBy(x => x).ToArray();
         }
 
         public static IList<IOutputTarget> Dependencies(this IOutputTarget outputTarget)

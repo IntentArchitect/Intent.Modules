@@ -163,6 +163,14 @@
             Registers that the specified NuGet package should be installed in the .csproj file where this file resides.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddFrameworkDependency(System.String)">
+            <summary>
+            Registers that the specified <FrameworkReference/> element should be add in the .csproj file where this file resides.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFrameworkDependencies">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddAssemblyReference(Intent.Modules.Common.VisualStudio.IAssemblyReference)">
             <summary>
             Registers that the specified GAC assembly should be installed in the .csproj file where this file resides.
@@ -206,6 +214,21 @@
         <member name="T:Intent.Modules.Common.CSharp.Templates.TemplateExtensions">
             <summary>
             Extensions methods for authoring C# templates.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.GetAllNugetDependencies(Intent.Templates.ITemplate)">
+            <summary>
+            Aggregates all results from <see cref="M:Intent.Modules.Common.VisualStudio.IHasNugetDependencies.GetNugetDependencies"/> for a template, including those specified on decorators.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.GetAllAssemblyDependencies(Intent.Templates.ITemplate)">
+            <summary>
+            Aggregates all results from <see cref="M:Intent.Modules.Common.VisualStudio.IHasAssemblyDependencies.GetAssemblyDependencies"/> for a template, including those specified on decorators.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.GetAllFrameworkDependencies(Intent.Templates.ITemplate)">
+            <summary>
+            Aggregates all results from <see cref="M:Intent.Modules.Common.VisualStudio.IHasFrameworkDependencies.GetFrameworkDependencies"/> for a template, including those specified on decorators.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCamelCase(System.String,System.Boolean)">
@@ -317,6 +340,16 @@
             The returned collection of namespaces that should be included in the using clauses
             section of this Template (or Decorator's Template). Do not include the "using"
             or semi-colon, just the namespace (EG: "System.Linq").
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.VisualStudio.IHasFrameworkDependencies">
+            <summary>
+            Used to specify that has dependencies which require adding &lt;FrameworkReference /&gt; elements to the containing.csproj.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.VisualStudio.IHasFrameworkDependencies.GetFrameworkDependencies">
+            <summary>
+            Used to specify that has dependencies which require adding &lt;FrameworkReference /&gt; elements to the containing.csproj.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.VisualStudio.INugetPackageInfo.AssemblyRedirects">
