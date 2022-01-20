@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
-        public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name }).ToList();
+        public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier() }).ToList();
         public string FolderPath => string.Join("/", OutputFolders);
         public string FolderNamespace => string.Join(".", OutputFolders);
 
@@ -37,7 +37,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial
 
         public string GetTemplateId()
         {
-            return $"{Model.GetModule().Name}.{FolderNamespace}";
+            return $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Concat(new[] { Model.Name }))}";
         }
 
         public override void BeforeTemplateExecution()

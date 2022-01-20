@@ -39,8 +39,8 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         {
             return new CSharpFileConfig(
                 className: $"{TemplateName}",
-                @namespace: $"{this.GetNamespace(additionalFolders: Model.Name)}",
-                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
+                @namespace: $"{this.GetNamespace(additionalFolders: Model.Name.ToCSharpIdentifier())}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name.ToCSharpIdentifier())}",
                 fileName: $"{TemplateName}Partial");
         }
 
