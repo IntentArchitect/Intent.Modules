@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
+<settings version="3.1.1">
   <id>55d06096-83fe-4acf-86ef-586d254e5170</id>
   <name>Common Types</name>
   <designerReferences />
@@ -34,6 +34,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Enum-Literal" typeId="4215f417-25d2-4509-9309-5076a1452eaa">
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
@@ -49,6 +50,7 @@
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>true</allowSetValue>
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -82,6 +84,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
@@ -97,6 +100,7 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
   </elementSettings>

@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -72,7 +72,7 @@ namespace Intent.Modules.Common.Types.Api
             return type != null && type is IElement element && element.SpecializationTypeId == EnumLiteralModel.SpecializationTypeId;
         }
 
-        public static EnumLiteralModel ToEnumLiteralModel(this ICanBeReferencedType type)
+        public static EnumLiteralModel AsEnumLiteralModel(this ICanBeReferencedType type)
         {
             return type.IsEnumLiteralModel() ? new EnumLiteralModel((IElement)type) : null;
         }

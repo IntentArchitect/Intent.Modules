@@ -1,46 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<outputLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<outputLog>
   <ApplicationId>ff3070c6-4626-4a8b-85ab-7d56887a1445</ApplicationId>
   <FileLogs>
     <FileLog>
       <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4215f417-25d2-4509-9309-5076a1452eaa</CorrelationId>
       <ApplicationRelativeFilePath>Api/EnumLiteralModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>EnumLiteralModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#85fba0e9-9161-4c85-a603-a229ef312beb</CorrelationId>
       <ApplicationRelativeFilePath>Api/EnumModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>EnumModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
       <ApplicationRelativeFilePath>Api/FolderModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</CorrelationId>
       <ApplicationRelativeFilePath>Api/TypeDefinitionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TypeDefinitionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <ApplicationRelativeFilePath>Intent.Common.Types.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Common.Types.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#8cc9168a-63e5-4b42-8c7e-fb8e12875801</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Common.Types.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.csproj</ProjectRelativeFilePath>
-    </FileLog>
-    <FileLog>
-      <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>
-      <ApplicationRelativeFilePath>Intent.Modules.Common.Types.imodspec</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Common.Types.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>17425481-e9c3-4b0a-aade-259fb47f4cc9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#55d06096-83fe-4acf-86ef-586d254e5170</CorrelationId>
       <ApplicationRelativeFilePath>modelers/Common Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Common Types.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>
 </outputLog>

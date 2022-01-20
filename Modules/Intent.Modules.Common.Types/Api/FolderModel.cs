@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -84,7 +84,7 @@ namespace Intent.Modules.Common.Types.Api
             return type != null && type is IElement element && element.SpecializationTypeId == FolderModel.SpecializationTypeId;
         }
 
-        public static FolderModel ToFolderModel(this ICanBeReferencedType type)
+        public static FolderModel AsFolderModel(this ICanBeReferencedType type)
         {
             return type.IsFolderModel() ? new FolderModel((IElement)type) : null;
         }
