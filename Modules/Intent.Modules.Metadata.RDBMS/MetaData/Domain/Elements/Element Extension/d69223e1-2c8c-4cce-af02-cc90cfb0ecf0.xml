@@ -49,14 +49,14 @@
       <packageName>Intent.Metadata.RDBMS</packageName>
       <stereotypes />
       <childElements>
-        <childElement id="df7342df-3913-4b6c-a056-0f81d494b8cd" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Unique Constraint</name>
-          <display>Add Unique Constraint: Unique Constraint</display>
+        <childElement id="27da3217-1035-4f7e-a04d-e6fb6f7739e0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Index</name>
+          <display>Add Index: Index</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
-          <typeReference id="c2e8ceba-1615-4aba-b860-31714583f339">
-            <typeId>c760d0f5-d8a1-4c16-9e2b-e654c2860154</typeId>
+          <typeReference id="f6a456e0-d38c-46c1-b492-bcd62fdc0dd4">
+            <typeId>436e3afe-b4ef-481c-b803-0d1e7d263561</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

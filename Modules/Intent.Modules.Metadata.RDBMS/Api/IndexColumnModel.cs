@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.RDBMS.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class UniqueConstraintColumnModel : IMetadataModel, IHasStereotypes, IHasName
+    public class IndexColumnModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "Unique Constraint Column";
-        public const string SpecializationTypeId = "d32bc804-8f5e-463f-9cc5-d3b8f3536402";
+        public const string SpecializationType = "Index Column";
+        public const string SpecializationTypeId = "c5ba925d-5c08-4809-a848-585a0cd4ddd3";
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
-        public UniqueConstraintColumnModel(IElement element, string requiredType = SpecializationType)
+        [IntentManaged(Mode.Fully)]
+        public IndexColumnModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -42,7 +42,7 @@ namespace Intent.Metadata.RDBMS.Api
             return _element.ToString();
         }
 
-        public bool Equals(UniqueConstraintColumnModel other)
+        public bool Equals(IndexColumnModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +52,7 @@ namespace Intent.Metadata.RDBMS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((UniqueConstraintColumnModel)obj);
+            return Equals((IndexColumnModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +62,17 @@ namespace Intent.Metadata.RDBMS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class UniqueConstraintColumnModelExtensions
+    public static class IndexColumnModelExtensions
     {
 
-        public static bool IsUniqueConstraintColumnModel(this ICanBeReferencedType type)
+        public static bool IsIndexColumnModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == UniqueConstraintColumnModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == IndexColumnModel.SpecializationTypeId;
         }
 
-        public static UniqueConstraintColumnModel AsUniqueConstraintColumnModel(this ICanBeReferencedType type)
+        public static IndexColumnModel AsIndexColumnModel(this ICanBeReferencedType type)
         {
-            return type.IsUniqueConstraintColumnModel() ? new UniqueConstraintColumnModel((IElement)type) : null;
+            return type.IsIndexColumnModel() ? new IndexColumnModel((IElement)type) : null;
         }
     }
 }

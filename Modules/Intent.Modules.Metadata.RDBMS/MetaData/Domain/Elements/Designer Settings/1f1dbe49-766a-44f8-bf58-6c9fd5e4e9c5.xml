@@ -16,7 +16,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
-        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[]" isActive="true" />
+        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[&quot;6ab29b31-27af-4f56-a67c-986d82097d63&quot;]" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

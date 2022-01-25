@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="d32bc804-8f5e-463f-9cc5-d3b8f3536402" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Unique Constraint Column</name>
-  <display>Unique Constraint Column</display>
+<class id="c5ba925d-5c08-4809-a848-585a0cd4ddd3" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Index Column</name>
+  <display>Index Column</display>
   <isAbstract>false</isAbstract>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>c760d0f5-d8a1-4c16-9e2b-e654c2860154</parentFolderId>
+  <parentFolderId>436e3afe-b4ef-481c-b803-0d1e7d263561</parentFolderId>
   <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
   <packageName>Intent.Metadata.RDBMS</packageName>
   <stereotypes>
@@ -30,11 +30,11 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="As Child" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAYAAADE6YVjAAACY0lEQVRIS+2VO2jTURTGf+fepPknLR0UH0hxUHCpRRChVnyVqqtNbUcVF8HFxU0cBScHB+koKM7tLH1b24qKaHVw0EGKjwpSg7FJk3uP3JTUNG3EIToUz3oO5/l93xH+gclQOrHHCCfEE1dB61VTFFFDwStDMpyOxlMxjhqpV/pfebzCjyITMtYTqSr1G6Gi19C3CMhIOqrbimrtolTECsTN2pAwYc5Dg4EQU21OYclDZJY7rraChxAjU72RHjq+WPMgTyZSZIp6vejNoBGfLAd6NYsx47ubY3JtoaDnvZc3xmh8JZEzWWPd1aSVXpnpi/TgsdpFnk+m+JrTc12DuXvVnQx3R2c3RXJ3Ie/aOgeWXlX7R9LJW6mYXt5ARab7Iu34zbqeTabI5OVSS27HnS9N843llWz5vjU7F3240JzQ/uwShzfbphffyDeU/R2t+zOjL2duJy0XAxk1oCdh1nKlRCYHkYW4rPYHMBUC+hykLFSTOfjzfhl98vBMpEc6ax9+ajxJ3umAQ54KrHQa0GvRAwkr6ZyTftCPCrY8iUAeOB0X2jfQ4TcOT8Z7InXwXpTXQGyFtYpHaLaGDucJbJ6j4rCAA1qsYa/zTKNkECoVsKhCq4WdJan3yieUd6uSCKqqjXErbUXPW5TPa4oI22KG3QWnsyKSRamUSYewywjb/6OrdLo/VuHHfZG2/0WpbwxSP5qOtLOrtqw8GguywgNVmRVh5SmpUhDRtoTlVN7JfWC+EhhBdgROCrpPhtPJG3GjVxKWeHi3lRYEctFBwkJsnfdaVEIDJNcTyCBejkLBy82fivvLalXUVjgAAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
@@ -45,14 +45,14 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="2f5b796e-0b79-4a16-b41b-415aa5a48534" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="36ba5186-653f-47c1-a757-244655856170" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>d32bc804-8f5e-463f-9cc5-d3b8f3536402</parentFolderId>
+      <parentFolderId>c5ba925d-5c08-4809-a848-585a0cd4ddd3</parentFolderId>
       <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
       <packageName>Intent.Metadata.RDBMS</packageName>
       <stereotypes />

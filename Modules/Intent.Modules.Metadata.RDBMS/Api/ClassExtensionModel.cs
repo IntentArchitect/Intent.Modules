@@ -19,10 +19,9 @@ namespace Intent.Metadata.RDBMS.Api
         {
         }
 
-        public IList<UniqueConstraintModel> UniqueConstraints => _element.ChildElements
-            .GetElementsOfType(UniqueConstraintModel.SpecializationTypeId)
-            .Select(x => new UniqueConstraintModel(x))
+        public IList<IndexModel> Indexes => _element.ChildElements
+            .GetElementsOfType(IndexModel.SpecializationTypeId)
+            .Select(x => new IndexModel(x))
             .ToList();
-
     }
 }

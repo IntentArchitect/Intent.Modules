@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.RDBMS.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class UniqueConstraintModel : IMetadataModel, IHasStereotypes, IHasName
+    public class IndexModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "Unique Constraint";
-        public const string SpecializationTypeId = "c760d0f5-d8a1-4c16-9e2b-e654c2860154";
+        public const string SpecializationType = "Index";
+        public const string SpecializationTypeId = "436e3afe-b4ef-481c-b803-0d1e7d263561";
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
-        public UniqueConstraintModel(IElement element, string requiredType = SpecializationType)
+        [IntentManaged(Mode.Fully)]
+        public IndexModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -41,9 +41,9 @@ namespace Intent.Metadata.RDBMS.Api
 
         public IElement InternalElement => _element;
 
-        public IList<UniqueConstraintColumnModel> Columns => _element.ChildElements
-            .GetElementsOfType(UniqueConstraintColumnModel.SpecializationTypeId)
-            .Select(x => new UniqueConstraintColumnModel(x))
+        public IList<IndexColumnModel> Columns => _element.ChildElements
+            .GetElementsOfType(IndexColumnModel.SpecializationTypeId)
+            .Select(x => new IndexColumnModel(x))
             .ToList();
 
         public override string ToString()
@@ -51,7 +51,7 @@ namespace Intent.Metadata.RDBMS.Api
             return _element.ToString();
         }
 
-        public bool Equals(UniqueConstraintModel other)
+        public bool Equals(IndexModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -61,7 +61,7 @@ namespace Intent.Metadata.RDBMS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((UniqueConstraintModel)obj);
+            return Equals((IndexModel)obj);
         }
 
         public override int GetHashCode()
@@ -71,27 +71,27 @@ namespace Intent.Metadata.RDBMS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class UniqueConstraintModelExtensions
+    public static class IndexModelExtensions
     {
 
-        public static bool IsUniqueConstraintModel(this ICanBeReferencedType type)
+        public static bool IsIndexModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == UniqueConstraintModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == IndexModel.SpecializationTypeId;
         }
 
-        public static UniqueConstraintModel AsUniqueConstraintModel(this ICanBeReferencedType type)
+        public static IndexModel AsIndexModel(this ICanBeReferencedType type)
         {
-            return type.IsUniqueConstraintModel() ? new UniqueConstraintModel((IElement)type) : null;
+            return type.IsIndexModel() ? new IndexModel((IElement)type) : null;
         }
 
-        public static bool HasNewMappingSettingsMapping(this UniqueConstraintModel type)
+        public static bool HasSelectColumnsMapping(this IndexModel type)
         {
-            return type.Mapping?.MappingSettingsId == "43488ce4-4542-4d85-9939-8b0db04cf744";
+            return type.Mapping?.MappingSettingsId == "30f4278f-1d74-4e7e-bfdb-39c8e120f24c";
         }
 
-        public static IElementMapping GetNewMappingSettingsMapping(this UniqueConstraintModel type)
+        public static IElementMapping GetSelectColumnsMapping(this IndexModel type)
         {
-            return type.HasNewMappingSettingsMapping() ? type.Mapping : null;
+            return type.HasSelectColumnsMapping() ? type.Mapping : null;
         }
     }
 }

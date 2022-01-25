@@ -46,5 +46,11 @@
             The underlying element type
             </summary>
         </member>
+        <member name="M:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Metadata.RDBMS.Api.Indexes.IndexColumn.ToString">
+            <inheritdoc />
+        </member>
     </members>
 </doc>
