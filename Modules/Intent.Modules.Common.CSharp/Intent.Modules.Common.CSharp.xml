@@ -320,6 +320,39 @@
             https://docs.microsoft.com/dotnet/standard/frameworks#supported-target-frameworks
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyLaunchProfile(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String,System.Boolean,System.String,System.String)">
+            <summary>
+            Adds a profile to <see href="https://docs.microsoft.com/aspnet/core/fundamentals/environments#lsj"/>
+            if it does not already exist.
+            </summary>
+            <remarks>
+            This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyAppSetting(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.Object)">
+             <summary>
+             Adds an item to <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
+             if it does not already exist.
+             </summary>
+             <remarks>
+             <para>
+             This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
+             </para>
+            
+             <para>
+             Any kind of value can be used for <paramref name="value"/>, including an anonymous object, and it will be output as a JSON structure.
+             </para>
+             </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyConnectionString(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String,System.String)">
+            <summary>
+            Adds an entry to the "connectionStrings" item of <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
+            if it does not already exist.
+            </summary>
+            <remarks>
+            This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
+            </remarks>
+        </member>
         <member name="T:Intent.Modules.Common.Templates.CSharp">
             <summary>
             Helpers for C# code.
