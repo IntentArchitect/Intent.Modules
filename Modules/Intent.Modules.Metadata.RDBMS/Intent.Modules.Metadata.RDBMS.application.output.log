@@ -3,6 +3,7 @@
   <ApplicationId>765236f6-13a2-40be-90d3-38674e01f4a7</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#435e4d4a-0648-46fb-b0aa-719ad439a343</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
@@ -64,7 +65,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Metadata.RDBMS.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Metadata.RDBMS.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -74,7 +75,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#c84fa137-4d52-451f-aba4-8ec00d1525f6</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>cb5bb8ab-1a66-4abe-945c-a843e36cb839</ProjectId>

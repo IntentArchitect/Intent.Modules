@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
+<settings version="3.1.1">
   <id>1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5</id>
   <name>RDBMS Types</name>
   <designerReferences />
@@ -34,64 +34,67 @@
       </creationOptions>
       <scriptOptions />
       <mappingSettings>
-        <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
-        <optionsSource>lookup-element</optionsSource>
-        <lookupElementFunction>return getParent().id</lookupElementFunction>
-        <autoSyncTypeReferences>false</autoSyncTypeReferences>
-        <mapFrom>root</mapFrom>
-        <mappings>
-          <mapping id="1299add5-30f8-42a2-a92b-a11db78dd8a1">
-            <criteria specializationType="Class">
-              <hasTypeReference d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
-              <isCollection d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
-              <hasChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
-            </criteria>
-            <mapTo specializationType="Unique Constraint" childMappingMode="map-to-child" />
-            <behaviour autoSelectChildren="false" />
-            <childMappings>
-              <mapping id="189d9422-d272-44da-bcd7-8a7bd093f428">
-                <criteria specializationType="Attribute">
-                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                  <isCollection d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                </criteria>
-                <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
-                <behaviour autoSelectChildren="false" />
-                <childMappings />
-              </mapping>
-              <mapping id="4047d84f-b7ce-4e2f-95d9-6a6eb54c12d1">
-                <criteria specializationType="Association Target End">
-                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                  <isCollection>false</isCollection>
-                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                </criteria>
-                <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
-                <behaviour autoSelectChildren="false" />
-                <childMappings />
-              </mapping>
-              <mapping id="d70e85cb-5526-4ab0-aa0c-f6caacb05f41">
-                <criteria specializationType="Association Source End">
-                  <hasTypeReference d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                  <isCollection>false</isCollection>
-                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                </criteria>
-                <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
-                <behaviour autoSelectChildren="false" />
-                <childMappings />
-              </mapping>
-              <mapping id="613921ae-f918-416e-b2e0-ffa4f65924ef">
-                <criteria specializationType="Generalization Target End">
-                  <hasTypeReference>true</hasTypeReference>
-                  <isCollection>false</isCollection>
-                  <hasChildren d10p1:nil="true" xmlns:d10p1="http://www.w3.org/2001/XMLSchema-instance" />
-                </criteria>
-                <mapTo childMappingMode="traverse" useMappingSettings="1299add5-30f8-42a2-a92b-a11db78dd8a1" />
-                <behaviour autoSelectChildren="false" />
-                <childMappings />
-              </mapping>
-            </childMappings>
-          </mapping>
-        </mappings>
+        <mappingSetting id="43488ce4-4542-4d85-9939-8b0db04cf744">
+          <name>NewMappingSettings</name>
+          <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+          <optionsSource>lookup-element</optionsSource>
+          <lookupElementFunction>return getParent().id</lookupElementFunction>
+          <autoSyncTypeReferences>false</autoSyncTypeReferences>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="1299add5-30f8-42a2-a92b-a11db78dd8a1">
+              <criteria specializationType="Class">
+                <hasTypeReference d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="Unique Constraint" childMappingMode="map-to-child" />
+              <behaviour autoSelectChildren="false" />
+              <childMappings>
+                <mapping id="189d9422-d272-44da-bcd7-8a7bd093f428">
+                  <criteria specializationType="Attribute">
+                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="4047d84f-b7ce-4e2f-95d9-6a6eb54c12d1">
+                  <criteria specializationType="Association Target End">
+                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection>false</isCollection>
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="d70e85cb-5526-4ab0-aa0c-f6caacb05f41">
+                  <criteria specializationType="Association Source End">
+                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection>false</isCollection>
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Unique Constraint Column" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="613921ae-f918-416e-b2e0-ffa4f65924ef">
+                  <criteria specializationType="Generalization Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo childMappingMode="traverse" useMappingSettings="1299add5-30f8-42a2-a92b-a11db78dd8a1" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
       </mappingSettings>
       <childElementSettings>
         <childElementSetting type="Unique Constraint Column" typeId="d32bc804-8f5e-463f-9cc5-d3b8f3536402">
@@ -110,6 +113,7 @@
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -131,6 +135,7 @@
       <typeOrder>
         <type>Unique Constraint</type>
       </typeOrder>
+      <mappingSettings />
     </elementExtension>
   </elementExtensions>
   <associationSettings />

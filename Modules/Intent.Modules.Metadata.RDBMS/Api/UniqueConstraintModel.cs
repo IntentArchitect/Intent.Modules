@@ -83,5 +83,15 @@ namespace Intent.Metadata.RDBMS.Api
         {
             return type.IsUniqueConstraintModel() ? new UniqueConstraintModel((IElement)type) : null;
         }
+
+        public static bool HasNewMappingSettingsMapping(this UniqueConstraintModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "43488ce4-4542-4d85-9939-8b0db04cf744";
+        }
+
+        public static IElementMapping GetNewMappingSettingsMapping(this UniqueConstraintModel type)
+        {
+            return type.HasNewMappingSettingsMapping() ? type.Mapping : null;
+        }
     }
 }
