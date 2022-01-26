@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -10,28 +12,33 @@ namespace Intent.Metadata.RDBMS.Api
 {
     public static class IndexModelStereotypeExtensions
     {
-        public static Index GetIndex(this IndexModel model)
+        public static Settings GetSettings(this IndexModel model)
         {
-            var stereotype = model.GetStereotype("Index");
-            return stereotype != null ? new Index(stereotype) : null;
+            var stereotype = model.GetStereotype("Settings");
+            return stereotype != null ? new Settings(stereotype) : null;
         }
 
-        public static bool HasIndex(this IndexModel model)
+        public static bool HasSettings(this IndexModel model)
         {
-            return model.HasStereotype("Index");
+            return model.HasStereotype("Settings");
         }
 
 
-        public class Index
+        public class Settings
         {
             private IStereotype _stereotype;
 
-            public Index(IStereotype stereotype)
+            public Settings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }
 
             public string Name => _stereotype.Name;
+
+            public bool UseDefaultName()
+            {
+                return _stereotype.GetProperty<bool>("Use Default Name");
+            }
 
             public bool Unique()
             {

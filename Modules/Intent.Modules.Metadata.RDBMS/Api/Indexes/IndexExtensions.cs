@@ -6,8 +6,14 @@ using Intent.Modelers.Domain.Api;
 
 namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
 {
+    /// <summary>
+    /// Extension methods for getting <see cref="Index">Indexes</see> from a class.
+    /// </summary>
     public static class IndexExtensions
     {
+        /// <summary>
+        /// Retrieves the all the <see cref="Index"/> entries for a <see cref="ClassModel"/>.
+        /// </summary>
         public static IReadOnlyList<Index> GetIndexes(this ClassModel model)
         {
             var results = new List<Index>();
@@ -18,16 +24,17 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
             results.AddRange(indexElements
                 .Select(indexModel => new Index
                 {
-                    IsUnique = indexModel.GetIndex().Unique(),
+                    IsUnique = indexModel.GetSettings().Unique(),
                     Name = indexModel.Name,
-                    FilterOption = GetFilterOption(indexModel.GetIndex().Filter().AsEnum()),
-                    Filter = indexModel.GetIndex().FilterCustomValue(),
+                    UseDefaultName = indexModel.GetSettings().UseDefaultName(),
+                    FilterOption = GetFilterOption(indexModel.GetSettings().Filter().AsEnum()),
+                    Filter = indexModel.GetSettings().FilterCustomValue(),
                     KeyColumns = indexModel.Columns
-                        .Where(x => x.GetIndexColumn().Type().AsEnum() == IndexColumnModelStereotypeExtensions.IndexColumn.TypeOptionsEnum.Key)
+                        .Where(x => x.GetSettings().Type().AsEnum() == IndexColumnModelStereotypeExtensions.Settings.TypeOptionsEnum.Key)
                         .Select(GetIndexColumn)
                         .ToArray(),
                     IncludedColumns = indexModel.Columns
-                        .Where(x => x.GetIndexColumn().Type().AsEnum() == IndexColumnModelStereotypeExtensions.IndexColumn.TypeOptionsEnum.Included)
+                        .Where(x => x.GetSettings().Type().AsEnum() == IndexColumnModelStereotypeExtensions.Settings.TypeOptionsEnum.Included)
                         .Select(GetIndexColumn)
                         .ToArray()
                 }));
@@ -35,11 +42,12 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
             // Legacy stereotypes:
             results.AddRange(model.Attributes
                 .Where(x => x.HasIndex())
-                .GroupBy(x => x.GetIndex().UniqueKey() ?? "IX_" + model.Name + "_" + x.Name)
+                .GroupBy(x => x.GetIndex().UniqueKey() ?? string.Empty)
                 .Select(index => new Index
                 {
                     IsUnique = index.First().GetIndex().IsUnique(),
                     Name = index.Key,
+                    UseDefaultName = !string.IsNullOrWhiteSpace(index.Key),
                     FilterOption = FilterOption.Default,
                     Filter = null,
                     KeyColumns = index
@@ -47,8 +55,7 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
                         .Select(x => new IndexColumn
                         {
                             Name = x.Name,
-                            Type = IndexColumnType.Attribute,
-                            IsDerived = false,
+                            SourceType = x.InternalElement
                         })
                         .ToArray(),
                     IncludedColumns = Array.Empty<IndexColumn>()
@@ -59,46 +66,22 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
 
         private static IndexColumn GetIndexColumn(IndexColumnModel model)
         {
-            if (!model.InternalElement.IsMapped)
-            {
-                return new IndexColumn
-                {
-                    Name = model.Name,
-                    Type = IndexColumnType.Unknown
-                };
-            }
-
-            IndexColumnType type;
-            switch (model.InternalElement.MappedElement?.Element.SpecializationType)
-            {
-                case "Attribute":
-                    type = IndexColumnType.Attribute;
-                    break;
-                case "Association Target End":
-                    type = IndexColumnType.Association;
-                    break;
-                default:
-                    type = IndexColumnType.Unknown;
-                    break;
-            }
-
             return new IndexColumn
             {
                 Name = model.Name,
-                Type = type,
-                IsDerived = model.InternalElement.MappedElement?.Path.Count > 1
+                SourceType = model.InternalElement.MappedElement?.Element,
             };
         }
 
-        private static FilterOption GetFilterOption(IndexModelStereotypeExtensions.Index.FilterOptionsEnum filter)
+        private static FilterOption GetFilterOption(IndexModelStereotypeExtensions.Settings.FilterOptionsEnum filter)
         {
             switch (filter)
             {
-                case IndexModelStereotypeExtensions.Index.FilterOptionsEnum.Default:
+                case IndexModelStereotypeExtensions.Settings.FilterOptionsEnum.Default:
                     return FilterOption.Default;
-                case IndexModelStereotypeExtensions.Index.FilterOptionsEnum.None:
+                case IndexModelStereotypeExtensions.Settings.FilterOptionsEnum.None:
                     return FilterOption.None;
-                case IndexModelStereotypeExtensions.Index.FilterOptionsEnum.Custom:
+                case IndexModelStereotypeExtensions.Settings.FilterOptionsEnum.Custom:
                     return FilterOption.Custom;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(filter), filter, null);

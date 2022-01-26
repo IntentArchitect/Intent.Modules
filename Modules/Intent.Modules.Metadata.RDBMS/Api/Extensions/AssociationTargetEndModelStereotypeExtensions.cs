@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
@@ -18,6 +20,16 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
+        public static IReadOnlyCollection<ForeignKey> GetForeignKeys(this AssociationTargetEndModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Foreign Key")
+                .Select(stereotype => new ForeignKey(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
         public static bool HasForeignKey(this AssociationTargetEndModel model)
         {
             return model.HasStereotype("Foreign Key");
@@ -29,20 +41,19 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new Index(stereotype) : null;
         }
 
+        public static IReadOnlyCollection<Index> GetIndices(this AssociationTargetEndModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Index")
+                .Select(stereotype => new Index(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
         public static bool HasIndex(this AssociationTargetEndModel model)
         {
             return model.HasStereotype("Index");
-        }
-
-        public static UniqueConstraint GetUniqueConstraint(this AssociationTargetEndModel model)
-        {
-            var stereotype = model.GetStereotype("Unique Constraint");
-            return stereotype != null ? new UniqueConstraint(stereotype) : null;
-        }
-
-        public static bool HasUniqueConstraint(this AssociationTargetEndModel model)
-        {
-            return model.HasStereotype("Unique Constraint");
         }
 
 
@@ -88,24 +99,6 @@ namespace Intent.Metadata.RDBMS.Api
             public bool IsUnique()
             {
                 return _stereotype.GetProperty<bool>("IsUnique");
-            }
-
-        }
-
-        public class UniqueConstraint
-        {
-            private IStereotype _stereotype;
-
-            public UniqueConstraint(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string StereotypeName => _stereotype.Name;
-
-            public string Name()
-            {
-                return _stereotype.GetProperty<string>("Name");
             }
 
         }

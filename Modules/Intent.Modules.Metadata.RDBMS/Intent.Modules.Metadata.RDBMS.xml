@@ -4,53 +4,86 @@
         <name>Intent.Modules.Metadata.RDBMS</name>
     </assembly>
     <members>
-        <member name="M:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.GetUniqueConstraints(Intent.Modelers.Domain.Api.ClassModel)">
+        <member name="T:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index">
             <summary>
-            Gets the unique constraints specified for this class in the Domain designer.
-            </summary>
-            <param name="class"></param>
-            <returns></returns>
-        </member>
-        <member name="T:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint">
-            <summary>
-            Represents a unique constraint.
+            Details of an index.
             </summary>
         </member>
-        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint.ConstraintName">
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.IsUnique">
             <summary>
-            The name of the constraint. Will be null if it was not specified.
+            Whether or not multiple rows are allowed to have the same value(s) for the index's column set.
             </summary>
         </member>
-        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint.Fields">
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.Name">
             <summary>
-            The fields grouped by the <see cref="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraint.ConstraintName"/>
+            The name as captured for the index in the designer. Should be ignored when
+            <see cref="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.UseDefaultName"/> is <see langword="true"/>.
             </summary>
         </member>
-        <member name="T:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField">
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.UseDefaultName">
             <summary>
-            Represents a field associated by a unique constraint.
+            Whether or not to use the default conventional name for the index.
+            </summary>
+            <remarks>
+            By convention, indexes created in a relational database are named
+            IX_&lt;type name&gt;_&lt;property name&gt;. For composite indexes, &lt;property name&gt;
+            becomes an underscore separated list of property names.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.FilterOption">
+            <summary>
+            Filtering option for the index.
             </summary>
         </member>
-        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField.Name">
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.Filter">
             <summary>
-            Name of the Attribute or Association
+            The value to use when <see cref="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.FilterOption"/> is set to
+            <see cref="F:Intent.Modules.Metadata.RDBMS.Api.Indexes.FilterOption.Custom"/>.
             </summary>
         </member>
-        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField.ColumnName">
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.KeyColumns">
             <summary>
-            The column name specified. Will be null unless explicitly specified by a Column or Foreign Key stereotype.
+            One or more key columns for the index.
             </summary>
         </member>
-        <member name="P:Intent.Metadata.RDBMS.Api.ClassModelUniqueConstraintExtensions.UniqueConstraintField.Element">
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.IncludedColumns">
             <summary>
-            The underlying element type
+            Some relational databases allow you to configure a set of columns which get included
+            in the index, but aren't part of its "key". This can significantly improve query
+            performance when all columns in the query are included in the index either as key or
+            non-key columns, as the table itself doesn't need to be accessed.
             </summary>
         </member>
         <member name="M:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index.ToString">
             <inheritdoc />
         </member>
+        <member name="T:Intent.Modules.Metadata.RDBMS.Api.Indexes.IndexColumn">
+            <summary>
+            Details of an indexed column.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.IndexColumn.Name">
+            <summary>
+            The name of the column.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Metadata.RDBMS.Api.Indexes.IndexColumn.SourceType">
+            <summary>
+            The element to which the index column is mapped to in Intent Architect.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Metadata.RDBMS.Api.Indexes.IndexColumn.ToString">
             <inheritdoc />
+        </member>
+        <member name="T:Intent.Modules.Metadata.RDBMS.Api.Indexes.IndexExtensions">
+            <summary>
+            Extension methods for getting <see cref="T:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index">Indexes</see> from a class.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Metadata.RDBMS.Api.Indexes.IndexExtensions.GetIndexes(Intent.Modelers.Domain.Api.ClassModel)">
+            <summary>
+            Retrieves the all the <see cref="T:Intent.Modules.Metadata.RDBMS.Api.Indexes.Index"/> entries for a <see cref="T:Intent.Modelers.Domain.Api.ClassModel"/>.
+            </summary>
         </member>
     </members>
 </doc>

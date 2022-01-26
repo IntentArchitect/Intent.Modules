@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
@@ -16,6 +18,16 @@ namespace Intent.Metadata.RDBMS.Api
         {
             var stereotype = model.GetStereotype("Column");
             return stereotype != null ? new Column(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<Column> GetColumns(this AttributeModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Column")
+                .Select(stereotype => new Column(stereotype))
+                .ToArray();
+
+            return stereotypes;
         }
 
         public static bool HasColumn(this AttributeModel model)
@@ -40,6 +52,16 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new DefaultConstraint(stereotype) : null;
         }
 
+        public static IReadOnlyCollection<DefaultConstraint> GetDefaultConstraints(this AttributeModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Default Constraint")
+                .Select(stereotype => new DefaultConstraint(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
         public static bool HasDefaultConstraint(this AttributeModel model)
         {
             return model.HasStereotype("Default Constraint");
@@ -51,6 +73,16 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new Index(stereotype) : null;
         }
 
+        public static IReadOnlyCollection<Index> GetIndices(this AttributeModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Index")
+                .Select(stereotype => new Index(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
         public static bool HasIndex(this AttributeModel model)
         {
             return model.HasStereotype("Index");
@@ -60,6 +92,16 @@ namespace Intent.Metadata.RDBMS.Api
         {
             var stereotype = model.GetStereotype("Primary Key");
             return stereotype != null ? new PrimaryKey(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<PrimaryKey> GetPrimaryKeys(this AttributeModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Primary Key")
+                .Select(stereotype => new PrimaryKey(stereotype))
+                .ToArray();
+
+            return stereotypes;
         }
 
         public static bool HasPrimaryKey(this AttributeModel model)
@@ -76,17 +118,6 @@ namespace Intent.Metadata.RDBMS.Api
         public static bool HasTextConstraints(this AttributeModel model)
         {
             return model.HasStereotype("Text Constraints");
-        }
-
-        public static UniqueConstraint GetUniqueConstraint(this AttributeModel model)
-        {
-            var stereotype = model.GetStereotype("Unique Constraint");
-            return stereotype != null ? new UniqueConstraint(stereotype) : null;
-        }
-
-        public static bool HasUniqueConstraint(this AttributeModel model)
-        {
-            return model.HasStereotype("Unique Constraint");
         }
 
 
@@ -289,24 +320,6 @@ namespace Intent.Metadata.RDBMS.Api
                 NTEXT,
                 DEFAULT
             }
-        }
-
-        public class UniqueConstraint
-        {
-            private IStereotype _stereotype;
-
-            public UniqueConstraint(IStereotype stereotype)
-            {
-                _stereotype = stereotype;
-            }
-
-            public string StereotypeName => _stereotype.Name;
-
-            public string Name()
-            {
-                return _stereotype.GetProperty<string>("Name");
-            }
-
         }
 
     }
