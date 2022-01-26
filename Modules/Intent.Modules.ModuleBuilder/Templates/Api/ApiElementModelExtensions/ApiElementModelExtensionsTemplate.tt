@@ -10,6 +10,8 @@
 <#@ import namespace="Intent.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.ModuleBuilder.Helpers" #>
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 
@@ -24,6 +26,16 @@ namespace <#= Namespace #>
         {
             var stereotype = model.GetStereotype("<#= stereotypeDefinition.Name #>");
             return stereotype != null ? new <#= stereotypeDefinition.Name.  ToCSharpIdentifier() #>(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier().Pluralize() #>(this <#= ModelClassName #> model)
+        {
+            var stereotypes = model
+                .GetStereotypes("<#= stereotypeDefinition.Name #>")
+                .Select(stereotype => new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype))
+                .ToArray();
+
+            return stereotypes;
         }
 
         public static bool Has<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
