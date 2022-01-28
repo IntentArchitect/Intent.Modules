@@ -79,7 +79,8 @@ namespace Intent.Modules.Common.TypeResolution
         {
             return _contexts.Values
                 .SelectMany(x => x.TypeSources)
-                .SelectMany(x => x.GetTemplateDependencies()).ToList();
+                .SelectMany(x => x.GetTemplateDependencies())
+                .ToList();
         }
 
         public IResolvedTypeInfo Get(ITypeReference typeInfo)
@@ -89,7 +90,9 @@ namespace Intent.Modules.Common.TypeResolution
 
         public IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
-            return InContext(DEFAULT_CONTEXT).Get(typeInfo, collectionFormat);
+            var context = InContext(DEFAULT_CONTEXT);
+
+            return context.Get(typeInfo, collectionFormat);
         }
 
         public IResolvedTypeInfo Get(ICanBeReferencedType element)
@@ -99,7 +102,10 @@ namespace Intent.Modules.Common.TypeResolution
 
         public IResolvedTypeInfo Get(ICanBeReferencedType element, string collectionFormat)
         {
-            return InContext(DEFAULT_CONTEXT).Get(element.AsTypeReference(), collectionFormat);
+            var context = InContext(DEFAULT_CONTEXT);
+            var typeReference = element.AsTypeReference();
+
+            return context.Get(typeReference, collectionFormat);
         }
     }
 

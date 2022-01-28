@@ -455,7 +455,9 @@ namespace Intent.Modules.Common.Templates
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
         public virtual string GetTypeName(ITypeReference typeReference)
         {
-            return NormalizeTypeName(Types.Get(typeReference).Name);
+            var resolvedTypeInfo = Types.Get(typeReference);
+
+            return NormalizeTypeName(resolvedTypeInfo.Name);
         }
 
         /// <summary>
