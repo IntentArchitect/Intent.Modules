@@ -22,7 +22,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         /// <inheritdoc />
         public string AsNullable(IResolvedTypeInfo typeInfo)
         {
-            if (typeInfo.IsNullable && !IsInterface(typeInfo) &&
+            if (typeInfo.IsNullable &&
                 (typeInfo.IsPrimitive || _project.IsNullableAwareContext() || 
                  typeInfo.TypeReference.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
             {
@@ -30,11 +30,6 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             }
 
             return typeInfo.Name;
-        }
-
-        private static bool IsInterface(IResolvedTypeInfo typeInfo)
-        {
-            return (!typeInfo.IsPrimitive && typeInfo.Name.StartsWith("I") && typeInfo.Name.Length >= 2 && char.IsUpper(typeInfo.Name[1]));
         }
     }
 }
