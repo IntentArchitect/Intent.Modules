@@ -310,6 +310,19 @@
             <param name="capitalizationBehaviour">The <see cref="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour"/> to use.</param>
             <returns>A valid C# identifier.</returns>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter">
+            <summary>
+            C# implementation of <see cref="T:Intent.Modules.Common.TypeResolution.INullableFormatter"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.#ctor(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.AsNullable(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.CSharpProject.DefaultSupportsNullable(System.String)">
             <summary>
             Based on data from the below links, returns true if the default language version for
