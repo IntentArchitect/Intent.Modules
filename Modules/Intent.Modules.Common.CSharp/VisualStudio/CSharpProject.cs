@@ -9,11 +9,14 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
 {
     internal class CSharpProject : ICSharpProject
     {
+        private readonly Lazy<bool> _isNullableAwareContext;
         private readonly IOutputTarget _outputTarget;
 
         public CSharpProject(IOutputTarget outputTarget)
         {
             _outputTarget = outputTarget;
+            _isNullableAwareContext = new Lazy<bool>(GetIsNullableAwareContext);
+
             if (_outputTarget.Metadata.TryGetValue("Language Version", out var languageVersion))
             {
                 LanguageVersion = languageVersion as string;
@@ -41,8 +44,48 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public string LanguageVersion { get; }
         public bool NullableEnabled { get; }
         public IEnumerable<string> TargetFrameworks { get; }
+        public bool IsNullableAwareContext() => _isNullableAwareContext.Value;
+        public bool IsNetCore2App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp2"));
+        public bool IsNetCore3App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
+        public bool IsNet4App => GetSupportedFrameworks().Any(x => x.StartsWith("net4"));
+        public bool IsNet5App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
 
-        public bool IsNullableAwareContext()
+        public bool Equals(IOutputTarget other)
+        {
+            return _outputTarget.Equals(other);
+        }
+
+        public IList<IOutputTarget> GetTargetPath()
+        {
+            return _outputTarget.GetTargetPath();
+        }
+
+        public bool HasRole(string role)
+        {
+            return _outputTarget.HasRole(role);
+        }
+
+        public bool OutputsTemplate(string templateId)
+        {
+            return _outputTarget.OutputsTemplate(templateId);
+        }
+
+        public IEnumerable<string> GetSupportedFrameworks()
+        {
+            return _outputTarget.GetSupportedFrameworks();
+        }
+
+        public bool HasTemplateInstances(string templateId)
+        {
+            return _outputTarget.HasTemplateInstances(templateId);
+        }
+
+        public bool HasTemplateInstances(string templateId, Func<ITemplate, bool> predicate)
+        {
+            return _outputTarget.HasTemplateInstances(templateId, predicate);
+        }
+
+        private bool GetIsNullableAwareContext()
         {
             if (!NullableEnabled)
             {
@@ -126,49 +169,6 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
             }
 
             throw new Exception($"Could not determine default language version for framework moniker '{frameworkMoniker}'");
-        }
-
-        public bool IsNetCore2App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp2"));
-
-        public bool IsNetCore3App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
-
-        public bool IsNet4App => GetSupportedFrameworks().Any(x => x.StartsWith("net4"));
-
-        public bool IsNet5App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
-
-        public bool Equals(IOutputTarget other)
-        {
-            return _outputTarget.Equals(other);
-        }
-
-        public IList<IOutputTarget> GetTargetPath()
-        {
-            return _outputTarget.GetTargetPath();
-        }
-
-        public bool HasRole(string role)
-        {
-            return _outputTarget.HasRole(role);
-        }
-
-        public bool OutputsTemplate(string templateId)
-        {
-            return _outputTarget.OutputsTemplate(templateId);
-        }
-
-        public IEnumerable<string> GetSupportedFrameworks()
-        {
-            return _outputTarget.GetSupportedFrameworks();
-        }
-
-        public bool HasTemplateInstances(string templateId)
-        {
-            return _outputTarget.HasTemplateInstances(templateId);
-        }
-
-        public bool HasTemplateInstances(string templateId, Func<ITemplate, bool> predicate)
-        {
-            return _outputTarget.HasTemplateInstances(templateId, predicate);
         }
     }
 }
