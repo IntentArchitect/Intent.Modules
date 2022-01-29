@@ -136,5 +136,10 @@ namespace Intent.Modules.Common.VisualStudio
         {
             return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
         }
+
+        public static bool IsNet6App(this IOutputTarget outputTarget)
+        {
+            return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith("net6"));
+        }
     }
 }
