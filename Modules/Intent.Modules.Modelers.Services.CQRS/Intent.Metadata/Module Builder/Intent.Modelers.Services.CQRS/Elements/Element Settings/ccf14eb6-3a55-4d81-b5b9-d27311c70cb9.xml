@@ -99,8 +99,8 @@
       </childElements>
     </childElement>
     <childElement id="735c87d0-06fc-4491-8b5f-5adc6f953c54" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
-      <name>Map to domain</name>
-      <display>[mappings]: Map to domain</display>
+      <name>Map to Domain</name>
+      <display>[mappings]: Map to Domain</display>
       <isAbstract>false</isAbstract>
       <order>1</order>
       <genericTypes />
