@@ -29,8 +29,8 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public JavaFileTemplatePartialTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Java", "3.1.0");
-            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "1.0.2");
+            AddNugetDependency("Intent.Modules.Common.Java", "3.1.4");
+            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "3.1.1");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
