@@ -1,5 +1,6 @@
 ﻿using Intent.Modules.Common.CSharp.Templates;
 using Xunit;
+using Shouldly;
 
 namespace Intent.Modules.Common.CSharp.Tests.Templates
 {
@@ -20,7 +21,22 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 var actual = input.ToCSharpIdentifier(CapitalizationBehaviour.AsIs);
 
                 // Assert
-                Assert.Equal(expected, actual);
+                actual.ShouldBe(expected);
+            }
+        }
+
+        public class DescribeToPrivateMemberName
+        {
+            [Theory]
+            [InlineData("event", "_event")]
+            [InlineData("Field", "_field")]
+            public void ItShouldDoItCorrectly(string input, string expected)
+            {
+                // Act
+                var actual = input.ToPrivateMemberName();
+
+                // Assert
+                actual.ShouldBe(expected);
             }
         }
     }

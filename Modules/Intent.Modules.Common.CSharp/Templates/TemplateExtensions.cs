@@ -85,12 +85,12 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public static string ToPrivateMemberName(this string identifier)
         {
-            identifier = identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterLower);
-
             if (identifier[0] != '_')
             {
                 identifier = $"_{identifier}";
             }
+
+            identifier = identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterLower);
 
             return identifier;
         }
@@ -250,6 +250,19 @@ namespace Intent.Modules.Common.CSharp.Templates
                     ? element
                     : element.ToPascalCase()));
 
+            var leadingUnderscores = string.Empty;
+            for (var i = 0; i < identifier.Length; i++)
+            {
+                if (identifier[i] == '_')
+                {
+                    continue;
+                }
+
+                leadingUnderscores = identifier.Substring(0, i);
+                identifier = identifier.Substring(i);
+                break;
+            }
+
             switch (capitalizationBehaviour)
             {
                 case CapitalizationBehaviour.AsIs:
@@ -269,6 +282,8 @@ namespace Intent.Modules.Common.CSharp.Templates
                 default:
                     throw new ArgumentOutOfRangeException(nameof(capitalizationBehaviour), capitalizationBehaviour, null);
             }
+
+            identifier = $"{leadingUnderscores}{identifier}";
 
             if (char.IsNumber(identifier[0]))
             {
