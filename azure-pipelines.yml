@@ -22,14 +22,15 @@ steps:
   fetchDepth: 1
   submodules: 'recursive'
 
-- task: NuGetCommand@2
-  displayName: 'nuget restore'
+- task: DotNetCoreCLI@2
+  displayName: 'dotnet restore'
+  env:
+    DOTNET_NOLOGO: '1'
   inputs:
     command: 'restore'
     feedsToUse: 'select'
     vstsFeed: $(vstsFeed)
-    includeNuGetOrg: true
-    restoreSolution: $(targetsToBuild)
+    projects: $(targetsToBuild)
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
