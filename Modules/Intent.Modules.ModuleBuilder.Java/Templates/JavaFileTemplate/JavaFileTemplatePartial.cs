@@ -71,13 +71,13 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
             return @"package <#= Package #>;
 
 public class <#= ClassName #> {
-    private String exampleFiled;
+    private String exampleField;
 
     public <#= ClassName #>() {
 
     }
 
-    public void setExampleFiled(String value) {
+    public void setExampleField(String value) {
         this.exampleField = value;
     }
 
