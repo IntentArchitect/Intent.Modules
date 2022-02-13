@@ -34,8 +34,8 @@ namespace Intent.Modules.Common.Java.Weaving
                 throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(IJavaMerged)}");
             }
 
-            var existingFile = output.TargetFileExists()
-                ? JavaFile.Parse(output.GetExistingFileContent())
+            var existingFile = output.PreviousFilePathExists()
+                ? JavaFile.Parse(output.GetPreviousFilePathContent())
                 : null;
 
             if (existingFile == null)

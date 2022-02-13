@@ -69,6 +69,16 @@
             recommended to call base.DeclareImports().
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.Java.Templates.ModelHasFolderTemplateExtensions">
+            <summary>
+            Java extension methods.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.ModelHasFolderTemplateExtensions.GetPackage``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},System.String[])">
+            <summary>
+            Creates a fully qualified package based on the OutputTarget location and the parent folders of this template's model as described in the designer.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.Java.Weaving.JavaWeavingOutputTransformer">
             <summary>
             An <see cref="T:Intent.Plugins.FactoryExtensions.ITransformOutput"/> which will weave changes between an existing file
