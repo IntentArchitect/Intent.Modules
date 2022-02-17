@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Eventing;
-using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Configuration;
-using Intent.Modules.Common.CSharp.Templates;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 using Intent.Utils;
 
@@ -97,20 +96,105 @@ namespace Intent.Modules.Common.Templates
         /// if it does not already exist.
         /// </summary>
         /// <remarks>
-        /// <para>
         /// This needs to be called within the <see cref="IntentTemplateBase.BeforeTemplateExecution"/> method.
-        /// </para>
-        ///
-        /// <para>
-        /// Any kind of value can be used for <paramref name="value"/>, including an anonymous object, and it will be output as a JSON structure.
-        /// </para>
         /// </remarks>
+        ///
+        /// <param name="template">
+        /// An instance of a type derived from <see cref="IntentTemplateBase"/> with an accessible
+        /// instance of <see cref="IApplicationEventDispatcher"/> which is used to make the request.
+        /// </param>
+        ///
+        /// <param name="field">
+        /// The top most level field of the json file to add.
+        /// </param>
+        ///
+        /// <param name="value">
+        /// The <paramref name="value"/> to set for the <paramref name="field"/>, the provided value
+        /// (including anonymous objects) will be output as a JSON structure.
+        /// </param>
+        [FixFor_Version4("Remove this overload so that there is a single method with optional parameters.")]
         public static void ApplyAppSetting(
             this IntentTemplateBase template,
-            string key,
+            string field,
             object value)
         {
-            template.OutputTarget.ExecutionContext.EventDispatcher.Publish(new AppSettingRegistrationRequest(key, value));
+            template.ApplyAppSetting(field, value, null, null);
+        }
+
+        /// <summary>
+        /// Adds an item to <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
+        /// if it does not already exist.
+        /// </summary>
+        /// <remarks>
+        /// This needs to be called within the <see cref="IntentTemplateBase.BeforeTemplateExecution"/> method.
+        /// </remarks>
+        ///
+        /// <param name="template">
+        /// An instance of a type derived from <see cref="IntentTemplateBase"/> with an accessible
+        /// instance of <see cref="IApplicationEventDispatcher"/> which is used to make the request.
+        /// </param>
+        ///
+        /// <param name="field">
+        /// The top most level field of the json file to add.
+        /// </param>
+        ///
+        /// <param name="value">
+        /// The <paramref name="value"/> to set for the <paramref name="field"/>, the provided value
+        /// (including anonymous objects) will be output as a JSON structure.
+        /// </param>
+        ///
+        /// <param name="runtimeEnvironment">
+        /// Optional. The specific appsettings.&lt;<paramref name="runtimeEnvironment"/>&gt;.json
+        /// file to apply to, when not specified then the default appsettings.json file is applied
+        /// to.
+        /// </param>
+        ///
+        /// <param name="forProjectWithRole">
+        /// Optional. Name of the output target 'Role' which must be present in the project within
+        /// the Intent Architect Visual Studio designer.
+        /// <remarks>
+        /// Used for disambiguating which appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json
+        /// file to apply to when a solution has multiple projects each with their own
+        /// appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json file(s).
+        /// </remarks>
+        /// </param>
+        [FixFor_Version4("Make the 'runtimeEnvironment' parameter have a default value of null")]
+        public static void ApplyAppSetting(
+            this IntentTemplateBase template,
+            string field,
+            object value,
+            string runtimeEnvironment,
+            string forProjectWithRole = null)
+        {
+            var request = new AppSettingRegistrationRequest(
+                key: field,
+                value: value,
+                runtimeEnvironment: runtimeEnvironment,
+                forProjectWithRole: forProjectWithRole);
+
+            template.OutputTarget.ExecutionContext.EventDispatcher.Publish(request);
+
+            if (!request.WasHandled)
+            {
+                Logging.Log.Warning($"{nameof(ApplyAppSetting)} for {nameof(field)}='{field}',{nameof(runtimeEnvironment)}='{runtimeEnvironment}',{nameof(forProjectWithRole)}='{forProjectWithRole}' " +
+                                    $"was not handled. Ensure in the Visual Studio designer that you have:{Environment.NewLine}" +
+                                    $" - at least one ASP.NET project{Environment.NewLine}" +
+                                    (!string.IsNullOrWhiteSpace(runtimeEnvironment) ? $" - a matching 'Runtime Environment' element under the project{Environment.NewLine}" : string.Empty) +
+                                    (!string.IsNullOrWhiteSpace(forProjectWithRole) ? $" - a matching 'Role' element under the project{Environment.NewLine}" : string.Empty).TrimEnd());
+            }
+        }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="ApplyConnectionString(IntentTemplateBase,string,string)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public static void ApplyConnectionString(
+            this IntentTemplateBase template,
+            string name,
+            string connectionString,
+            string providerName)
+        {
+            template.ApplyConnectionString(name, connectionString, null, null);
         }
 
         /// <summary>
@@ -120,13 +204,89 @@ namespace Intent.Modules.Common.Templates
         /// <remarks>
         /// This needs to be called within the <see cref="IntentTemplateBase.BeforeTemplateExecution"/> method.
         /// </remarks>
+        ///
+        /// <param name="template">
+        /// An instance of a type derived from <see cref="IntentTemplateBase"/> with an accessible
+        /// instance of <see cref="IApplicationEventDispatcher"/> which is used to make the request.
+        /// </param>
+        ///
+        /// <param name="name">
+        /// The name of the connection string.
+        /// </param>
+        ///
+        /// <param name="connectionString">
+        /// The connection string value.
+        /// </param>
+        [FixFor_Version4("Remove this overload so that there is a single method with optional parameters.")]
+        public static void ApplyConnectionString(
+            this IntentTemplateBase template,
+            string name,
+            string connectionString)
+        {
+            template.ApplyConnectionString(name, connectionString, null, null);
+        }
+
+        /// <summary>
+        /// Adds an entry to the "connectionStrings" item of <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
+        /// if it does not already exist.
+        /// </summary>
+        /// <remarks>
+        /// This needs to be called within the <see cref="IntentTemplateBase.BeforeTemplateExecution"/> method.
+        /// </remarks>
+        ///
+        /// <param name="template">
+        /// An instance of a type derived from <see cref="IntentTemplateBase"/> with an accessible
+        /// instance of <see cref="IApplicationEventDispatcher"/> which is used to make the request.
+        /// </param>
+        ///
+        /// <param name="name">
+        /// The name of the connection string.
+        /// </param>
+        ///
+        /// <param name="connectionString">
+        /// The connection string value.
+        /// </param>
+        ///
+        /// <param name="runtimeEnvironment">
+        /// Optional. The specific appsettings.&lt;<paramref name="runtimeEnvironment"/>&gt;.json
+        /// file to apply to, when not specified then the default appsettings.json file is applied
+        /// to.
+        /// </param>
+        ///
+        /// <param name="forProjectWithRole">
+        /// Optional. Name of the output target 'Role' which must be present in the project within
+        /// the Intent Architect Visual Studio designer.
+        /// <remarks>
+        /// Used for disambiguating which appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json
+        /// file to apply to when a solution has multiple projects each with their own
+        /// appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json file(s).
+        /// </remarks>
+        /// </param>
+        [FixFor_Version4("Make the 'runtimeEnvironment' and 'forProjectWithRole' parameters have a default value of null")]
         public static void ApplyConnectionString(
             this IntentTemplateBase template,
             string name,
             string connectionString,
-            string providerName)
+            string runtimeEnvironment,
+            string forProjectWithRole)
         {
-            template.OutputTarget.ExecutionContext.EventDispatcher.Publish(new ConnectionStringRegistrationRequest(name, connectionString, providerName));
+            var request = new ConnectionStringRegistrationRequest(
+                name: name,
+                connectionString: connectionString,
+                providerName: null,
+                runtimeEnvironment: runtimeEnvironment,
+                forProjectWithRole: forProjectWithRole);
+
+            template.OutputTarget.ExecutionContext.EventDispatcher.Publish(request);
+
+            if (!request.WasHandled)
+            {
+                Logging.Log.Warning($"{nameof(ApplyConnectionString)} for {nameof(name)}='{name}',{nameof(runtimeEnvironment)}='{runtimeEnvironment}',{nameof(forProjectWithRole)}='{forProjectWithRole}' " +
+                                    $"was not handled. Ensure in the Visual Studio designer that you have:{Environment.NewLine}" +
+                                    $" - at least one ASP.NET project{Environment.NewLine}" +
+                                    (!string.IsNullOrWhiteSpace(runtimeEnvironment) ? $" - a matching 'Runtime Environment' element under the project{Environment.NewLine}" : string.Empty) +
+                                    (!string.IsNullOrWhiteSpace(forProjectWithRole) ? $" - a matching 'Role' element under the project{Environment.NewLine}" : string.Empty).TrimEnd());
+            }
         }
     }
 }

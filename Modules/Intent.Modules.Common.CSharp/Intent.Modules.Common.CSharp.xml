@@ -4,6 +4,153 @@
         <name>Intent.Modules.Common.CSharp</name>
     </assembly>
     <members>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest">
+            <summary>
+            For adding a section or key to a .NET configuration file. If the configuration file already
+            contains a section or key with the provided <see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.Key"/>, it is left untouched.
+            </summary>
+            <remarks>
+            Templates for appsettings[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].json and
+            Web/App[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].config files may listen for these
+            requests and update themselves accordingly.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.#ctor(System.String,System.Object)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.#ctor(System.String,System.Object,System.String,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.Key">
+            <summary>
+            For appsettings[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].json files, this is the top
+            level section name to add. For Web/App[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].config
+            files, this is "key" attribute value for the &lt;settings /&gt; element to add.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.Value">
+            <summary>
+            The value to add for the <see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.Key"/>.
+            </summary>
+            <remarks>
+            For appsettings[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].json files, the object will
+            be serialized to json (even an anonymous object works fine). For
+            Web/App[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].config files, this needs to be a
+            string as it's placed in the "key" attribute value for the &lt;settings /&gt; element
+            being added.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment">
+            <summary>
+            Optional. The specific appsettings.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;.json or
+            Web/App.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;.config file to apply to, when not
+            specified then the default appsettings.json or Web/App.config file is applied to.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.ForProjectWithRole">
+            <summary>
+            Optional. Name of the output target 'Role' which must be present in the project within
+            the Intent Architect Visual Studio designer.
+            </summary>
+            <remarks>
+            Used for disambiguating which appsettings[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].json
+            or Web/App[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.RuntimeEnvironment"/>&gt;].config file to apply to when a
+            solution has multiple projects each with their own configuration file(s).
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.WasHandled">
+            <summary>
+            Whether or not <see cref="M:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.MarkHandled"/> has been called.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.MarkHandled">
+            <summary>
+            Sets <see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.WasHandled"/> to <see langword="true"/> if it wasn't already.
+            </summary>
+            <remarks>
+            Should be called by handlers so that publishers can query <see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.WasHandled"/>
+            and potentially show warnings when its value is <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest">
+            <summary>
+            For adding a connection string to a .NET configuration file. If the configuration file
+            already contains a connection string with the provided <see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.Name"/>, it is left
+            untouched.
+            </summary>
+            <remarks>
+            Templates for appsettings[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment"/>&gt;].json and
+            Web/App[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment"/>&gt;].config files may listen for these
+            requests and update themselves accordingly.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.#ctor(System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.#ctor(System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.Name">
+            <summary>
+            The name of the connection string.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.ConnectionString">
+            <summary>
+            The connection string value.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.ProviderName">
+            <summary>
+            Only applicable for Web/App[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment"/>&gt;].config files
+            and is used to populate the "providerName" attribute.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment">
+            <summary>
+            Optional. The specific appsettings.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment"/>&gt;.json or
+            Web/App.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment"/>&gt;.config file to apply to, when not
+            specified then the default appsettings.json or Web/App.config file is applied to.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.ForProjectWithRole">
+            <summary>
+            Optional. Name of the output target 'Role' which must be present in the project within
+            the Intent Architect Visual Studio designer.
+            </summary>
+            <remarks>
+            Used for disambiguating which appsettings.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment"/>&gt;.json
+            or Web/App[.&lt;<see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.RuntimeEnvironment"/>&gt;].config file to apply to when a
+            solution has multiple projects each with their own configuration file(s).
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.WasHandled">
+            <summary>
+            Whether or not <see cref="M:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.MarkHandled"/> has been called.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.MarkHandled">
+            <summary>
+            Sets <see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.WasHandled"/> to <see langword="true"/> if it wasn't already.
+            </summary>
+            <remarks>
+            Should be called by handlers so that publishers can query <see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.WasHandled"/>
+            and potentially show warnings when its value is <see langword="false"/>.
+            </remarks>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour">
             <summary>
             Controls casing behaviour of <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/>
@@ -348,23 +495,126 @@
              if it does not already exist.
              </summary>
              <remarks>
-             <para>
              This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
-             </para>
-            
-             <para>
-             Any kind of value can be used for <paramref name="value"/>, including an anonymous object, and it will be output as a JSON structure.
-             </para>
              </remarks>
+            
+             <param name="template">
+             An instance of a type derived from <see cref="T:Intent.Modules.Common.Templates.IntentTemplateBase"/> with an accessible
+             instance of <see cref="T:Intent.Eventing.IApplicationEventDispatcher"/> which is used to make the request.
+             </param>
+            
+             <param name="field">
+             The top most level field of the json file to add.
+             </param>
+            
+             <param name="value">
+             The <paramref name="value"/> to set for the <paramref name="field"/>, the provided value
+             (including anonymous objects) will be output as a JSON structure.
+             </param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyAppSetting(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.Object,System.String,System.String)">
+             <summary>
+             Adds an item to <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
+             if it does not already exist.
+             </summary>
+             <remarks>
+             This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
+             </remarks>
+            
+             <param name="template">
+             An instance of a type derived from <see cref="T:Intent.Modules.Common.Templates.IntentTemplateBase"/> with an accessible
+             instance of <see cref="T:Intent.Eventing.IApplicationEventDispatcher"/> which is used to make the request.
+             </param>
+            
+             <param name="field">
+             The top most level field of the json file to add.
+             </param>
+            
+             <param name="value">
+             The <paramref name="value"/> to set for the <paramref name="field"/>, the provided value
+             (including anonymous objects) will be output as a JSON structure.
+             </param>
+            
+             <param name="runtimeEnvironment">
+             Optional. The specific appsettings.&lt;<paramref name="runtimeEnvironment"/>&gt;.json
+             file to apply to, when not specified then the default appsettings.json file is applied
+             to.
+             </param>
+            
+             <param name="forProjectWithRole">
+             Optional. Name of the output target 'Role' which must be present in the project within
+             the Intent Architect Visual Studio designer.
+             <remarks>
+             Used for disambiguating which appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json
+             file to apply to when a solution has multiple projects each with their own
+             appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json file(s).
+             </remarks>
+             </param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyConnectionString(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String,System.String)">
             <summary>
-            Adds an entry to the "connectionStrings" item of <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
-            if it does not already exist.
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyConnectionString(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String)"/> instead.
             </summary>
-            <remarks>
-            This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
-            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyConnectionString(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String)">
+             <summary>
+             Adds an entry to the "connectionStrings" item of <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
+             if it does not already exist.
+             </summary>
+             <remarks>
+             This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
+             </remarks>
+            
+             <param name="template">
+             An instance of a type derived from <see cref="T:Intent.Modules.Common.Templates.IntentTemplateBase"/> with an accessible
+             instance of <see cref="T:Intent.Eventing.IApplicationEventDispatcher"/> which is used to make the request.
+             </param>
+            
+             <param name="name">
+             The name of the connection string.
+             </param>
+            
+             <param name="connectionString">
+             The connection string value.
+             </param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyConnectionString(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String,System.String,System.String)">
+             <summary>
+             Adds an entry to the "connectionStrings" item of <see href="https://docs.microsoft.com/aspnet/core/fundamentals/configuration#appsettingsjson"/>
+             if it does not already exist.
+             </summary>
+             <remarks>
+             This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
+             </remarks>
+            
+             <param name="template">
+             An instance of a type derived from <see cref="T:Intent.Modules.Common.Templates.IntentTemplateBase"/> with an accessible
+             instance of <see cref="T:Intent.Eventing.IApplicationEventDispatcher"/> which is used to make the request.
+             </param>
+            
+             <param name="name">
+             The name of the connection string.
+             </param>
+            
+             <param name="connectionString">
+             The connection string value.
+             </param>
+            
+             <param name="runtimeEnvironment">
+             Optional. The specific appsettings.&lt;<paramref name="runtimeEnvironment"/>&gt;.json
+             file to apply to, when not specified then the default appsettings.json file is applied
+             to.
+             </param>
+            
+             <param name="forProjectWithRole">
+             Optional. Name of the output target 'Role' which must be present in the project within
+             the Intent Architect Visual Studio designer.
+             <remarks>
+             Used for disambiguating which appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json
+             file to apply to when a solution has multiple projects each with their own
+             appsettings[.&lt;<paramref name="runtimeEnvironment"/>&gt;].json file(s).
+             </remarks>
+             </param>
         </member>
         <member name="T:Intent.Modules.Common.Templates.CSharp">
             <summary>
