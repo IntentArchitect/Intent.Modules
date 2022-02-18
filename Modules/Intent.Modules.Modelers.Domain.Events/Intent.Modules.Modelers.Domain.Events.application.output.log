@@ -3,6 +3,7 @@
   <ApplicationId>be31373a-86a5-41f4-8bf4-468cc0c481d0</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#3f775bea-df7c-4026-9eb6-ef9e1880517f</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
@@ -29,6 +30,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -42,7 +44,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modelers.Domain.Events.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.Domain.Events.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

@@ -3,7 +3,7 @@
   <targetDesignerId>0701433c-36c0-4569-b1f4-9204986b587d</targetDesignerId>
   <createPackages>
     <package typeId="07e7b690-a59d-4b72-8440-4308a121d32c" type="Visual Studio Solution">
-      <name>${application.name}</name>
+      <name>${solution.name}</name>
       <stereotypes />
       <childElements>
         <element typeId="52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE" type="Class Library (.NET Core)">

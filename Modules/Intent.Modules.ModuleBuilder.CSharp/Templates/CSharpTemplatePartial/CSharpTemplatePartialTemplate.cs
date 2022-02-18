@@ -74,7 +74,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             
             #line default
             #line hidden
-            this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge)]\r\n        public ");
+            this.Write("\";\r\n\r\n        [IntentManaged(Mode.Ignore, Signature = Mode.Fully)]\r\n        publi" +
+                    "c ");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
