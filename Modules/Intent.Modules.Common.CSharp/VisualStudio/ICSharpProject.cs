@@ -1,4 +1,5 @@
-﻿using Intent.Engine;
+﻿using System;
+using Intent.Engine;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
@@ -10,6 +11,9 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         bool IsNetCore3App { get; }
         bool IsNet4App { get; }
         bool IsNet5App { get; }
+        bool IsNet6App { get; }
+
+        Version[] TargetDotNetFrameworks { get; }
         bool IsNullableAwareContext();
     }
 }

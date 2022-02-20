@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Intent.Engine;
+using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
@@ -49,6 +50,13 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public bool IsNetCore3App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
         public bool IsNet4App => GetSupportedFrameworks().Any(x => x.StartsWith("net4"));
         public bool IsNet5App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
+        public bool IsNet6App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
+
+        public Version[] TargetDotNetFrameworks => GetSupportedFrameworks().Select(x =>
+        {
+            Version.TryParse($"{x.RemovePrefix("netcoreapp", "net")}.0", out var ver);
+            return ver;
+        }).Where(x => x != null).ToArray();
 
         public bool Equals(IOutputTarget other)
         {

@@ -81,6 +81,12 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
             return this;
         }
 
+        public ContainerRegistrationRequest WithPriority(int priority)
+        {
+            Priority = priority;
+            return this;
+        }
+
         public void MarkAsHandled()
         {
             IsHandled = true;
@@ -95,6 +101,8 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
         public string ConcreteType { get; private set; }
 
         public string Lifetime { get; private set; }
+
+        public int Priority { get; private set; }
 
         public IEnumerable<ITemplateDependency> TemplateDependencies => _templateDependencies;
 
