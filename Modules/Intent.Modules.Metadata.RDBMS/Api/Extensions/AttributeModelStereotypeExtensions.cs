@@ -35,6 +35,27 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Column");
         }
 
+        public static ComputedValue GetComputedValue(this AttributeModel model)
+        {
+            var stereotype = model.GetStereotype("Computed Value");
+            return stereotype != null ? new ComputedValue(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<ComputedValue> GetComputedValues(this AttributeModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Computed Value")
+                .Select(stereotype => new ComputedValue(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
+        public static bool HasComputedValue(this AttributeModel model)
+        {
+            return model.HasStereotype("Computed Value");
+        }
+
         public static DecimalConstraints GetDecimalConstraints(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Decimal Constraints");
@@ -140,6 +161,29 @@ namespace Intent.Metadata.RDBMS.Api
             public string Type()
             {
                 return _stereotype.GetProperty<string>("Type");
+            }
+
+        }
+
+        public class ComputedValue
+        {
+            private IStereotype _stereotype;
+
+            public ComputedValue(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string SQL()
+            {
+                return _stereotype.GetProperty<string>("SQL");
+            }
+
+            public bool Stored()
+            {
+                return _stereotype.GetProperty<bool>("Stored");
             }
 
         }
