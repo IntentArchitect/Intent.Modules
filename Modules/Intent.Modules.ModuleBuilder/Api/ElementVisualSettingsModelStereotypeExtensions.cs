@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -8,15 +10,15 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class StereotypesVisualSettingsModelStereotypeExtensions
+    public static class ElementVisualSettingsModelStereotypeExtensions
     {
-        public static PositionSettings GetPositionSettings(this StereotypesVisualSettingsModel model)
+        public static PositionSettings GetPositionSettings(this ElementVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Position Settings");
             return stereotype != null ? new PositionSettings(stereotype) : null;
         }
 
-        public static bool HasPositionSettings(this StereotypesVisualSettingsModel model)
+        public static bool HasPositionSettings(this ElementVisualSettingsModel model)
         {
             return model.HasStereotype("Position Settings");
         }

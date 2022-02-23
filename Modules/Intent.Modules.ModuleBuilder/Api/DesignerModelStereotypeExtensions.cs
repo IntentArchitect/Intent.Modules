@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -25,6 +27,16 @@ namespace Intent.ModuleBuilder.Api
         {
             var stereotype = model.GetStereotype("Output Configuration");
             return stereotype != null ? new OutputConfiguration(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<OutputConfiguration> GetOutputConfigurations(this DesignerModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Output Configuration")
+                .Select(stereotype => new OutputConfiguration(stereotype))
+                .ToArray();
+
+            return stereotypes;
         }
 
         public static bool HasOutputConfiguration(this DesignerModel model)

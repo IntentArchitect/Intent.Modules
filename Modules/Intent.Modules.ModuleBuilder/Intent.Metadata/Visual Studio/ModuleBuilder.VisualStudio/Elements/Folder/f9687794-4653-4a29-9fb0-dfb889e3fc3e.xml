@@ -46,31 +46,27 @@
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="74b4560d-a34d-4acc-b05f-97dd377f2ed6" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="b74f05b2-93a8-4f0d-a858-eba58414ce0f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.TemplateDecorator</name>
       <display>Intent.ModuleBuilder.Templates.TemplateDecorator</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>f9687794-4653-4a29-9fb0-dfb889e3fc3e</parentFolderId>
-      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
-      <packageName>ModuleBuilder.VisualStudio</packageName>
       <stereotypes />
       <childElements />
     </childElement>
-    <childElement id="7466cd6b-009f-4f91-a12b-38a0e121eb39" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="3214ea1a-25ed-4911-8866-76fd3d509548" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</name>
       <display>Intent.ModuleBuilder.Templates.TemplateDecoratorRegistration</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>f9687794-4653-4a29-9fb0-dfb889e3fc3e</parentFolderId>
-      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
-      <packageName>ModuleBuilder.VisualStudio</packageName>
       <stereotypes />
       <childElements />
     </childElement>

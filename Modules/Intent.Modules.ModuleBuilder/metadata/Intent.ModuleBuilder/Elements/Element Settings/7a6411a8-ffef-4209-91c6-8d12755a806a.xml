@@ -3,7 +3,7 @@
   <name>Designer Settings</name>
   <display>Designer Settings</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <order>5</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -213,11 +213,50 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="f6ff9acf-0370-4f9d-b774-154c95aa59a0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Association Extension</name>
+          <display>New Association Extension: Association Extension</display>
+          <isAbstract>false</isAbstract>
+          <order>4</order>
+          <genericTypes />
+          <typeReference id="0ead5ce7-4145-42c7-ac73-1df196dd4bb8">
+            <typeId>41cb9c1a-063e-4ff4-889a-7501235351eb</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>b7e38d21-ff61-4d05-a709-567dd77f2ee6</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="2251df99-6a5f-4304-96e9-8241ba0f17e2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Package Type</name>
           <display>New Package Type: Package Settings</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
+          <order>5</order>
           <genericTypes />
           <typeReference id="900421b6-2fe4-4fce-afe8-5761bd4ca283">
             <typeId>89333f72-3960-4159-bf61-9c40d4b65088</typeId>
@@ -256,7 +295,7 @@
           <name>New Package Extension</name>
           <display>New Package Extension: Package Extension</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
+          <order>6</order>
           <genericTypes />
           <typeReference id="86cc6e65-3fd0-437a-a188-ecd96a477f90">
             <typeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</typeId>
@@ -295,7 +334,7 @@
           <name>New Core Type</name>
           <display>New Core Type: Core Type</display>
           <isAbstract>false</isAbstract>
-          <order>6</order>
+          <order>7</order>
           <genericTypes />
           <typeReference id="9a9d9391-d892-49c7-bdbc-a9ef5ecededc">
             <typeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</typeId>
@@ -334,7 +373,7 @@
           <name>New Script Type</name>
           <display>New Script Type: Script</display>
           <isAbstract>false</isAbstract>
-          <order>7</order>
+          <order>8</order>
           <genericTypes />
           <typeReference id="fbb2d4c2-23ee-402a-9466-f20f8659c6f2">
             <typeId>101fd5b6-3159-4810-9490-a103ef323e9c</typeId>

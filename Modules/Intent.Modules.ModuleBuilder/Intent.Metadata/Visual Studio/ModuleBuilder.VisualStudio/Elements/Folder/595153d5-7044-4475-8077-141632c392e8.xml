@@ -20,7 +20,7 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="29a57ce1-9514-41a7-9bd6-d98db8e8d31f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="757012f2-0c62-419a-a0e1-28eeec54afdf" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
@@ -29,8 +29,6 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>595153d5-7044-4475-8077-141632c392e8</parentFolderId>
-      <packageId>82102275-5703-4063-af56-14ae960258bb</packageId>
-      <packageName>ModuleBuilder.VisualStudio</packageName>
       <stereotypes />
       <childElements />
     </childElement>

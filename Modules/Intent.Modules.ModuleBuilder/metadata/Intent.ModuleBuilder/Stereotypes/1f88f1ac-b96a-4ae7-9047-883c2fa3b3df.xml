@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" version="3.1.0">
+  <name>Script Settings</name>
+  <targetMode>that-reference</targetMode>
+  <targetTypes>
+    <type id="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">Association Event Handler</type>
+  </targetTypes>
+  <targetReferenceTypes>
+    <type id="043eee26-1591-42ac-9f2c-fc911b070eb1">Script</type>
+  </targetReferenceTypes>
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>95cdc7db-12ec-4520-8fa0-a096a1fdcc7d</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="d418d372-ae82-4852-81b1-20b78a26eb6c">
+      <name>Script</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>association-macro-api</apiTypeDefinition>
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

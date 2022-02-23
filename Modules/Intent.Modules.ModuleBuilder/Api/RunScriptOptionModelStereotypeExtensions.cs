@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -8,17 +10,28 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class StereotypeDefinitionCreationOptionModelStereotypeExtensions
+    public static class RunScriptOptionModelStereotypeExtensions
     {
-        public static OptionSettings GetOptionSettings(this StereotypeDefinitionCreationOptionModel model)
+        public static OptionSettings GetOptionSettings(this RunScriptOptionModel model)
         {
             var stereotype = model.GetStereotype("Option Settings");
             return stereotype != null ? new OptionSettings(stereotype) : null;
         }
 
-        public static bool HasOptionSettings(this StereotypeDefinitionCreationOptionModel model)
+        public static bool HasOptionSettings(this RunScriptOptionModel model)
         {
             return model.HasStereotype("Option Settings");
+        }
+
+        public static ScriptSettings GetScriptSettings(this RunScriptOptionModel model)
+        {
+            var stereotype = model.GetStereotype("Script Settings");
+            return stereotype != null ? new ScriptSettings(stereotype) : null;
+        }
+
+        public static bool HasScriptSettings(this RunScriptOptionModel model)
+        {
+            return model.HasStereotype("Script Settings");
         }
 
 
@@ -33,6 +46,11 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
+            public IIconModel Icon()
+            {
+                return _stereotype.GetProperty<IIconModel>("Icon");
+            }
+
             public string Shortcut()
             {
                 return _stereotype.GetProperty<string>("Shortcut");
@@ -43,24 +61,27 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Shortcut (macOS)");
             }
 
-            public string DefaultName()
-            {
-                return _stereotype.GetProperty<string>("Default Name");
-            }
-
             public int? TypeOrder()
             {
                 return _stereotype.GetProperty<int?>("Type Order");
             }
 
-            public bool AllowMultiple()
+        }
+
+        public class ScriptSettings
+        {
+            private IStereotype _stereotype;
+
+            public ScriptSettings(IStereotype stereotype)
             {
-                return _stereotype.GetProperty<bool>("Allow Multiple");
+                _stereotype = stereotype;
             }
 
-            public string ApiModelName()
+            public string Name => _stereotype.Name;
+
+            public string Script()
             {
-                return _stereotype.GetProperty<string>("Api Model Name");
+                return _stereotype.GetProperty<string>("Script");
             }
 
         }

@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -8,37 +10,37 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.Api
 {
-    public static class AssociationDestinationEndVisualSettingsModelStereotypeExtensions
+    public static class AssociationSourceEndVisualSettingsModelStereotypeExtensions
     {
-        public static LabelSettings GetLabelSettings(this AssociationDestinationEndVisualSettingsModel model)
+        public static LabelSettings GetLabelSettings(this AssociationSourceEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Label Settings");
             return stereotype != null ? new LabelSettings(stereotype) : null;
         }
 
-        public static bool HasLabelSettings(this AssociationDestinationEndVisualSettingsModel model)
+        public static bool HasLabelSettings(this AssociationSourceEndVisualSettingsModel model)
         {
             return model.HasStereotype("Label Settings");
         }
 
-        public static NavigableIndicatorSettings GetNavigableIndicatorSettings(this AssociationDestinationEndVisualSettingsModel model)
+        public static NavigableIndicatorSettings GetNavigableIndicatorSettings(this AssociationSourceEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Navigable Indicator Settings");
             return stereotype != null ? new NavigableIndicatorSettings(stereotype) : null;
         }
 
-        public static bool HasNavigableIndicatorSettings(this AssociationDestinationEndVisualSettingsModel model)
+        public static bool HasNavigableIndicatorSettings(this AssociationSourceEndVisualSettingsModel model)
         {
             return model.HasStereotype("Navigable Indicator Settings");
         }
 
-        public static PointSettings GetPointSettings(this AssociationDestinationEndVisualSettingsModel model)
+        public static PointSettings GetPointSettings(this AssociationSourceEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Point Settings");
             return stereotype != null ? new PointSettings(stereotype) : null;
         }
 
-        public static bool HasPointSettings(this AssociationDestinationEndVisualSettingsModel model)
+        public static bool HasPointSettings(this AssociationSourceEndVisualSettingsModel model)
         {
             return model.HasStereotype("Point Settings");
         }

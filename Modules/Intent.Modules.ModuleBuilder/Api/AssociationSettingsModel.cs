@@ -101,7 +101,8 @@ namespace Intent.ModuleBuilder.Api
                         AllowIsNullable = this.TargetEnd.GetSettings().IsNullableEnabled()
                     }
                 },
-                VisualSettings = VisualSettings?.ToPersistable()
+                VisualSettings = VisualSettings?.ToPersistable(),
+                Macros = this.EventSettings?.ToPersistable()
             };
         }
 
@@ -139,6 +140,11 @@ namespace Intent.ModuleBuilder.Api
         public AssociationVisualSettingsModel VisualSettings => _element.ChildElements
             .GetElementsOfType(AssociationVisualSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationVisualSettingsModel(x))
+            .SingleOrDefault();
+
+        public AssociationEventSettingsModel EventSettings => _element.ChildElements
+            .GetElementsOfType(AssociationEventSettingsModel.SpecializationTypeId)
+            .Select(x => new AssociationEventSettingsModel(x))
             .SingleOrDefault();
 
         public string Comment => _element.Comment;

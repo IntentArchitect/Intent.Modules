@@ -59,6 +59,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new AssociationSettingsModel(x))
             .ToList();
 
+        public IList<AssociationExtensionModel> AssociationExtensions => _element.ChildElements
+            .GetElementsOfType(AssociationExtensionModel.SpecializationTypeId)
+            .Select(x => new AssociationExtensionModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public IList<ElementSettingsModel> ElementTypes => _element.ChildElements
             .GetElementsOfType(ElementSettingsModel.SpecializationTypeId)
