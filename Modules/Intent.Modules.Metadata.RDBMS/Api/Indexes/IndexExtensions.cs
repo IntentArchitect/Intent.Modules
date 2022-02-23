@@ -47,7 +47,7 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
                 {
                     IsUnique = index.First().GetIndex().IsUnique(),
                     Name = index.Key,
-                    UseDefaultName = !string.IsNullOrWhiteSpace(index.Key),
+                    UseDefaultName = string.IsNullOrWhiteSpace(index.Key),
                     FilterOption = FilterOption.Default,
                     Filter = null,
                     KeyColumns = index
