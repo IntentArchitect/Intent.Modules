@@ -18,17 +18,9 @@ namespace Intent.Modules.Common.Sql
         }
     }
 
-    public class SqlNullableFormatter : INullableFormatter
-    {
-        public string AsNullable(IResolvedTypeInfo typeInfo)
-        {
-            return $" {(typeInfo.IsNullable ? "NULL" : "NOT NULL")}";
-        }
-    }
-
     public class SqlTypeResolverContext : TypeResolverContextBase
     {
-        public SqlTypeResolverContext() : base(new CollectionFormatter("{0}"), new SqlNullableFormatter())
+        public SqlTypeResolverContext() : base(new CollectionFormatter("{0}"), new DefaultNullableFormatter())
         {
         }
 
