@@ -854,6 +854,19 @@
             Does not alter the name of the resolved type.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.DefaultNullableFormatter.#ctor">
+            <summary>
+            Obsolete. Use <see cref="P:Intent.Modules.Common.TypeResolution.DefaultNullableFormatter.Instance"/> instead.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.DefaultNullableFormatter.Instance">
+            <summary>
+            Singleton instance of <see cref="T:Intent.Modules.Common.TypeResolution.DefaultNullableFormatter"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.DefaultNullableFormatter.AsNullable(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+            <inheritdoc />
+        </member>
         <member name="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo">
             <summary>
             Information about the resolved type.
