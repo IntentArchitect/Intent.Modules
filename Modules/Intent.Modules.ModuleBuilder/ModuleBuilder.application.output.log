@@ -81,6 +81,20 @@
     </FileLog>
     <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</CorrelationId>
+      <ApplicationRelativeFilePath>Api/AssociationSourceEndExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSourceEndExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</CorrelationId>
+      <ApplicationRelativeFilePath>Api/AssociationSourceEndExtensionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationSourceEndExtensionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</CorrelationId>
       <ApplicationRelativeFilePath>Api/AssociationSourceEndSettingsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AssociationSourceEndSettingsModel.cs</ProjectRelativeFilePath>
@@ -105,6 +119,20 @@
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#77fdd377-950a-46e4-8d25-ab3c962d6105</CorrelationId>
       <ApplicationRelativeFilePath>Api/AssociationSourceEndVisualSettingsModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AssociationSourceEndVisualSettingsModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#1cc6c731-af5f-41a0-9e82-44486f45b903</CorrelationId>
+      <ApplicationRelativeFilePath>Api/AssociationTargetEndExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationTargetEndExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#1cc6c731-af5f-41a0-9e82-44486f45b903</CorrelationId>
+      <ApplicationRelativeFilePath>Api/AssociationTargetEndExtensionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationTargetEndExtensionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

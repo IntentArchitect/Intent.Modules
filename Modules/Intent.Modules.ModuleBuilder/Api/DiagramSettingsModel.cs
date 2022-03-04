@@ -49,10 +49,8 @@ namespace Intent.ModuleBuilder.Api
         {
             return new DiagramSettings()
             {
-                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToArray(),
+                CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
                 AddNewElementsTo = DiagramAddNewElementsTo.Package,
-                ClassVisualSettings = new ElementVisualSettingsPersistable[0],
-                AssociationVisualSettings = new AssociationVisualSettingsPersistable[0]
             };
         }
 

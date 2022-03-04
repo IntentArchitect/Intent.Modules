@@ -46,9 +46,9 @@ namespace Intent.ModuleBuilder.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        public MacroPersistable ToPersistable()
+        public ElementMacroPersistable ToPersistable()
         {
-            return new MacroPersistable()
+            return new ElementMacroPersistable()
             {
                 Trigger = Name.Trim().Replace(" ", "").ToKebabCase(),
                 Script = Script

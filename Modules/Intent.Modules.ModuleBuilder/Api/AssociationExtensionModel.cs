@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -39,19 +40,14 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
-        public AssociationSourceEndSettingsModel SourceEnd => _element.ChildElements
-            .GetElementsOfType(AssociationSourceEndSettingsModel.SpecializationTypeId)
-            .Select(x => new AssociationSourceEndSettingsModel(x))
+        public AssociationSourceEndExtensionModel SourceEnd => _element.ChildElements
+            .GetElementsOfType(AssociationSourceEndExtensionModel.SpecializationTypeId)
+            .Select(x => new AssociationSourceEndExtensionModel(x))
             .SingleOrDefault();
 
-        public AssociationDestinationEndSettingsModel TargetEnd => _element.ChildElements
-            .GetElementsOfType(AssociationDestinationEndSettingsModel.SpecializationTypeId)
-            .Select(x => new AssociationDestinationEndSettingsModel(x))
-            .SingleOrDefault();
-
-        public AssociationVisualSettingsModel VisualSettings => _element.ChildElements
-            .GetElementsOfType(AssociationVisualSettingsModel.SpecializationTypeId)
-            .Select(x => new AssociationVisualSettingsModel(x))
+        public AssociationTargetEndExtensionModel TargetEnd => _element.ChildElements
+            .GetElementsOfType(AssociationTargetEndExtensionModel.SpecializationTypeId)
+            .Select(x => new AssociationTargetEndExtensionModel(x))
             .SingleOrDefault();
 
         public AssociationEventSettingsModel EventSettings => _element.ChildElements
@@ -67,6 +63,45 @@ namespace Intent.ModuleBuilder.Api
         public bool Equals(AssociationExtensionModel other)
         {
             return Equals(_element, other?._element);
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        public AssociationSettingExtensionPersistable ToPersistable()
+        {
+            return new AssociationSettingExtensionPersistable
+            {
+                SpecializationTypeId = this.TypeReference.Element.Id,
+                SpecializationType = this.TypeReference.Element.Name,
+                SourceEndExtension = new AssociationEndSettingExtensionPersistable
+                {
+                    TypeReferenceExtension = new TypeReferenceExtensionSettingPersistable()
+                    {
+                        IsRequired = true,
+                        TargetTypes = this.SourceEnd.GetAssociationEndExtensionSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                        DefaultTypeId = string.IsNullOrWhiteSpace(this.SourceEnd.GetAssociationEndExtensionSettings().DefaultTypeId()) ? this.SourceEnd.GetAssociationEndExtensionSettings().DefaultTypeId() : null,
+                        AllowIsNavigable = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowSourceIsNavigable) ? allowSourceIsNavigable : BooleanExtensionOptions.Inherit,
+                        AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowSourceIsNullable) ? allowSourceIsNullable : BooleanExtensionOptions.Inherit,
+                        AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowCollection().Value, out var allowSourceIsCollection) ? allowSourceIsCollection : BooleanExtensionOptions.Inherit,
+                        DisplayName = this.SourceEnd.GetAssociationEndExtensionSettings().DisplayName(),
+                        Hint = this.SourceEnd.GetAssociationEndExtensionSettings().Hint()
+                    },
+                },
+                TargetEndExtension = new AssociationEndSettingExtensionPersistable
+                {
+                    TypeReferenceExtension = new TypeReferenceExtensionSettingPersistable()
+                    {
+                        IsRequired = true,
+                        TargetTypes = this.SourceEnd.GetAssociationEndExtensionSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                        DefaultTypeId = string.IsNullOrWhiteSpace(this.SourceEnd.GetAssociationEndExtensionSettings().DefaultTypeId()) ? this.SourceEnd.GetAssociationEndExtensionSettings().DefaultTypeId() : null,
+                        AllowIsNavigable = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowTargetIsNavigable) ? allowTargetIsNavigable : BooleanExtensionOptions.Inherit,
+                        AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowTargetIsNullable) ? allowTargetIsNullable : BooleanExtensionOptions.Inherit,
+                        AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowCollection().Value, out var allowTargetIsCollection) ? allowTargetIsCollection : BooleanExtensionOptions.Inherit,
+                        DisplayName = this.SourceEnd.GetAssociationEndExtensionSettings().DisplayName(),
+                        Hint = this.SourceEnd.GetAssociationEndExtensionSettings().Hint()
+                    },
+                },
+                Macros = this.EventSettings?.ToPersistable()
+            };
         }
 
         public override bool Equals(object obj)

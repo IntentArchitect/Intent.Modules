@@ -59,12 +59,12 @@
       <childElements>
         <childElement id="c4530b77-7b4a-4964-a4a5-803cecab97f1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Source End</name>
-          <display>Add Source End: Association Source End Settings</display>
+          <display>Add Source End: Association Source End Extension</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
           <typeReference id="3a1cdf38-2620-4548-85a9-4ba96b3c2bb1">
-            <typeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</typeId>
+            <typeId>66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -85,7 +85,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="${name} Source End" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
@@ -98,12 +98,12 @@
         </childElement>
         <childElement id="908ab38b-b60c-4cce-98cd-bd5b72ba8ace" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Target End</name>
-          <display>Add Target End: Association Destination End Settings</display>
+          <display>Add Target End: Association Target End Extension</display>
           <isAbstract>false</isAbstract>
           <order>1</order>
           <genericTypes />
           <typeReference id="02699e82-d1a6-488d-9104-993f899ff026">
-            <typeId>c4c61fdc-464d-41d2-8e0e-5a734d588302</typeId>
+            <typeId>1cc6c731-af5f-41a0-9e82-44486f45b903</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -124,48 +124,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + d" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="${name} Target End" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <childElements />
-        </childElement>
-        <childElement id="1985bf85-f939-42d1-b081-470e67f5c102" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Visual Settings</name>
-          <display>Add Visual Settings: Association Visual Settings</display>
-          <isAbstract>false</isAbstract>
-          <order>2</order>
-          <genericTypes />
-          <typeReference id="572d5812-6710-4935-b675-adfefed8b529">
-            <typeId>153a4063-82a1-4515-87f1-44c189004fad</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>6d31d812-95f3-4eca-8d95-150e2addb510</parentFolderId>
-          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
-          <packageName>Intent.ModuleBuilder</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment>Overrides the default creation option settings.</comment>
-              <addedByDefault>false</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[visual]" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="[target end extension]" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
@@ -178,7 +139,7 @@
           <name>Add Event Settings</name>
           <display>Add Event Settings: Association Event Settings</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
+          <order>2</order>
           <genericTypes />
           <typeReference id="45e83449-0f04-425d-b73f-ada0b589931b">
             <typeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</typeId>
@@ -208,6 +169,53 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="1fc36ed4-a689-4b4b-95ef-4522f82729ae" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <order>3</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>41cb9c1a-063e-4ff4-889a-7501235351eb</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes />
+      <childElements>
+        <childElement id="0f5d2378-6610-4a4b-a69f-eb9aaba7c7fd" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="e73b087e-9525-4a66-b021-36deedfa3a80">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1fc36ed4-a689-4b4b-95ef-4522f82729ae</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;Association Source End Extension&quot;, &quot;[source]&quot;, element.id);&#xD;&#xA;createElement(&quot;Association Target End Extension&quot;, &quot;[destination]&quot;, element.id);&#xD;&#xA;createElement(&quot;Association Event Settings&quot;, &quot;[events]&quot;, element.id);" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

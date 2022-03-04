@@ -23,9 +23,9 @@ namespace Intent.ModuleBuilder.Api
         }
 
         [IntentManaged(Mode.Ignore)]
-        public MacroPersistable ToPersistable()
+        public ElementMacroPersistable ToPersistable()
         {
-            return new MacroPersistable()
+            return new ElementMacroPersistable()
             {
                 Trigger = Name.Trim().Replace(" ", "").ToKebabCase(),
                 Script = Script

@@ -7,7 +7,7 @@
     <type id="c4c61fdc-464d-41d2-8e0e-5a734d588302">Association Destination End Settings</type>
   </targetTypes>
   <targetReferenceTypes />
-  <applyMode>on-create</applyMode>
+  <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction>return ``;</displayFunction>
