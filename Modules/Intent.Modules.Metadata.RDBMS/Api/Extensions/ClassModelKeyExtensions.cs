@@ -30,7 +30,7 @@ namespace Intent.Metadata.RDBMS.Api
                 throw new Exception($"{nameof(ClassModel)} [{@class}] does not have a surrogate key");
             }
 
-            return @class.GetExplicitPrimaryKey().Any() ? typeResolver.Get(@class.GetExplicitPrimaryKey().SingleOrDefault()?.Type.Element).Name : null;
+            return @class.GetExplicitPrimaryKey().Any() ? typeResolver.Get(@class.GetExplicitPrimaryKey().FirstOrDefault()?.Type.Element).Name : null;
         }
 
         public static bool HasSurrogateKey(this ClassModel @class)
