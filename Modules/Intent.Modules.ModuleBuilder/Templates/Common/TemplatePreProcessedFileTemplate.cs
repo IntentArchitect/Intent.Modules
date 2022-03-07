@@ -1,18 +1,16 @@
 using System;
 using System.CodeDom.Compiler;
-using System.Linq;
-using Intent.Engine;
-using Intent.Metadata.Models;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using Intent.Templates;
-using Mono.TextTemplating;
 using System.Collections.Generic;
 using System.IO;
-using System.Text;
-using Intent.Modules.Common.Types.Api;
+using System.Linq;
+using Intent.Engine;
 using Intent.ModuleBuilder.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
+using Intent.Templates;
+using Mono.TextTemplating;
 
 namespace Intent.Modules.ModuleBuilder.Templates.Common
 {
@@ -39,16 +37,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
 
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
-            var Metadata = new TemplateFileConfig(
-                overwriteBehaviour: OverwriteBehaviour.Always,
-                codeGenType: CodeGenType.Basic,
+            var metadata = new TemplateFileConfig(
                 fileName: $"{TemplateName}",
                 fileExtension: "cs",
-                relativeLocation: $"{FolderPath}");
+                relativeLocation: $"{FolderPath}",
+                overwriteBehaviour: OverwriteBehaviour.Always,
+                codeGenType: CodeGenType.Basic);
 
-            Metadata.CustomMetadata.Add("Depends On", $"{TemplateName}.tt");
+            metadata.CustomMetadata.Add("Depends On", $"{TemplateName}.tt");
 
-            return Metadata;
+            return metadata;
         }
 
         public override string TransformText()
