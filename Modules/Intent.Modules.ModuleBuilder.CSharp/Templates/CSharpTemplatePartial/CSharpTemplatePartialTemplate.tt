@@ -17,24 +17,24 @@ using Intent.Engine;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.CSharp.Templates;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 <#= Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().Namespace) : "" #>
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
+    [IntentManaged(Mode.Fully, Body = Mode.Merge)]
     partial class <#= ClassName #> : <#= GetBaseType() #>
     {
-        [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-        [IntentManaged(Mode.Ignore, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(
@@ -44,6 +44,7 @@ namespace <#= Namespace #>
         }
 <#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCustom() == true) { #>
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             throw new NotImplementedException("Implement custom template here");

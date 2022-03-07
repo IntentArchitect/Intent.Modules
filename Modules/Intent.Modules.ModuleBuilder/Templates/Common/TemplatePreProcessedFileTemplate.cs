@@ -8,6 +8,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Templates;
 using Mono.TextTemplating;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
@@ -39,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             var Metadata = new TemplateFileConfig(
-                overwriteBehaviour: OverwriteBehaviour.OnceOff,
+                overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{TemplateName}",
                 fileExtension: "cs",
@@ -52,16 +53,29 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
 
         public override string TransformText()
         {
-            var t4TemplateInstance = Project.FindTemplateInstance(_t4TemplateId, Model);
+            var t4TemplateInstance = (IntentTemplateBase)Project.FindTemplateInstance(_t4TemplateId, Model);
             var partialTemplateInstance = Project.FindTemplateInstance(_partialTemplateId, Model);
             var partialTemplateMetadata = partialTemplateInstance.GetMetadata();
             var templateGenerator = new TemplateGenerator();
+
+            var generatedT4Content = t4TemplateInstance.RunTemplate();
+            var existingT4Content = File.Exists(t4TemplateInstance.GetExistingFilePath())
+                ? File.ReadAllText(t4TemplateInstance.GetExistingFilePath())
+                : null;
+            var t4TemplateIsDifferent = generatedT4Content.Trim() != existingT4Content?.Trim();
+
+            // The output of pre-processing below is slightly different to how it happens when done in VS itself, so we don't
+            // want to re-run the pre-processing unless something is different.
+            if (File.Exists(GetExistingFilePath()) && !t4TemplateIsDifferent)
+            {
+                return File.ReadAllText(GetExistingFilePath());
+            }
 
             var hasErrors = !templateGenerator.PreprocessTemplate(
                 inputFileName: string.Empty,
                 className: partialTemplateMetadata.CustomMetadata["ClassName"],
                 classNamespace: partialTemplateMetadata.CustomMetadata["Namespace"],
-                inputContent: t4TemplateInstance.RunTemplate(),
+                inputContent: generatedT4Content,
                 language: out _,
                 references: out _,
                 outputContent: out var outputContent);
