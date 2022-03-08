@@ -9,6 +9,7 @@ using Intent.Modules.Common.Templates;
 using System.Collections.Generic;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 
 namespace <#= Namespace #>
 {

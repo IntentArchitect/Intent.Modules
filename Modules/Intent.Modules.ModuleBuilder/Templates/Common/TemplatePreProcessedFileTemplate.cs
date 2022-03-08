@@ -3,6 +3,7 @@ using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection.Metadata.Ecma335;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
@@ -64,7 +65,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
 
             // The output of pre-processing below is slightly different to how it happens when done in VS itself, so we don't
             // want to re-run the pre-processing unless something is different.
-            if (File.Exists(GetExistingFilePath()) && !t4TemplateIsDifferent)
+            if (File.Exists(GetExistingFilePath()) &&
+                !t4TemplateIsDifferent &&
+                !PathHasChanged())
             {
                 return File.ReadAllText(GetExistingFilePath());
             }
@@ -84,6 +87,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             }
 
             return outputContent;
+        }
+
+        private bool PathHasChanged()
+        {
+            var fileLog = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this);
+            var result = Path.GetFullPath(fileLog?.FilePath) != Path.GetFullPath(FileMetadata.GetFilePath());
+
+            return result;
         }
     }
 }
