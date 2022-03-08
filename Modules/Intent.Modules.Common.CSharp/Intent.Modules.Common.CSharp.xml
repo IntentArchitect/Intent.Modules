@@ -151,6 +151,56 @@
             and potentially show warnings when its value is <see langword="false"/>.
             </remarks>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest">
+            <summary>
+            For adding a section or key to an Azure Functions host.json file. If the file already
+            has the provided <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Key"/> defined, it is left untouched.
+            </summary>
+            <remarks>
+            Templates for host.json files may listen for these requests and update themselves
+            accordingly.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.#ctor(System.String,System.Object,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Key">
+            <summary>
+            The key within the JSON file under which the the <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Value"/> will be applied.
+            May be dot separated to target nested objects.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Value">
+            <summary>
+            The value to set the <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Key"/> to.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.ForProjectWithRole">
+            <summary>
+            Optional. Name of the output target 'Role' which must be present in the project within
+            the Intent Architect Visual Studio designer.
+            </summary>
+            <remarks>
+            Used for disambiguating which host.json file to apply to when a solution has multiple
+            projects each with their own host.json file.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.WasHandled">
+            <summary>
+            Whether or not <see cref="M:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.MarkHandled"/> has been called.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.MarkHandled">
+            <summary>
+            Sets <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.WasHandled"/> to <see langword="true"/> if it wasn't already.
+            </summary>
+            <remarks>
+            Should be called by handlers so that publishers can query <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.WasHandled"/>
+            and potentially show warnings when its value is <see langword="false"/>.
+            </remarks>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour">
             <summary>
             Controls casing behaviour of <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/>
