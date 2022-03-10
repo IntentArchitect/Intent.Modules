@@ -157,7 +157,7 @@ namespace Intent.Modules.Common.Templates
             var filePath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath ?? FileMetadata.GetFilePath();
             return File.Exists(filePath) ? filePath : null;
         }
-        
+
         /// <summary>
         /// Override this method to control whether the template runs and the creates the output file.
         /// </summary>
@@ -341,6 +341,17 @@ namespace Intent.Modules.Common.Templates
         #endregion
 
         /// <summary>
+        /// Signifies that this template fulfills the specified <paramref name="role"/> in the architecture. Other templates can search for templates that
+        /// fulfill roles and thereby find them in a decoupled way. This method is deprecated since registering templates against their
+        /// roles will be done automatically by the Software Factory execution in future releases.
+        /// </summary>
+        [Obsolete("Will be done automatically from Intent Architect V3.3 onwards.")]
+        public void FulfillsRole(string role)
+        {
+            TemplateRoleRegistries.Register(role, this);
+        }
+
+        /// <summary>
         /// Resolves the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
         /// <para>
         /// See the
@@ -427,6 +438,21 @@ namespace Intent.Modules.Common.Templates
         {
             return GetTypeName(GetTemplate<IClassProvider>(template, options));
         }
+
+        public string GetTypeNameForRole(string role)
+        {
+            return GetTypeName(TemplateRoleRegistries.FindTemplateInstanceForRole(role));
+        }
+        public string GetTypeNameForRole(string role, string modelId)
+        {
+            return GetTypeName(TemplateRoleRegistries.FindTemplateInstanceForRole(role, modelId));
+        }
+        public string GetTypeNameForRole(string role, object model)
+        {
+            return GetTypeName(TemplateRoleRegistries.FindTemplateInstanceForRole(role, model));
+        }
+
+        
 
         /// <summary>
         /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
