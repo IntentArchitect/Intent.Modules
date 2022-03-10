@@ -4,7 +4,7 @@
   <targetMode>of-type</targetMode>
   <targetTypes>
     <type id="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3">Association Source End Extension</type>
-    <type id="1cc6c731-af5f-41a0-9e82-44486f45b903">Association Destination End Extension</type>
+    <type id="1cc6c731-af5f-41a0-9e82-44486f45b903">Association Target End Extension</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>

@@ -368,4 +368,5 @@
     </elementExtension>
   </elementExtensions>
   <associationSettings />
+  <associationExtensions />
 </settings>

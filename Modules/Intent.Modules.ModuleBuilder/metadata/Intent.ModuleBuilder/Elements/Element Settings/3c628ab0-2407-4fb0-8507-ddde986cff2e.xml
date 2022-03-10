@@ -135,11 +135,50 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="21de2067-8d58-4685-bc66-f8b68b7c1f8d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>On Changed Event</name>
+          <display>On Changed Event: Element Event Handler</display>
+          <isAbstract>false</isAbstract>
+          <order>2</order>
+          <genericTypes />
+          <typeReference id="f2ee1d31-849c-4946-aeb4-321a259f4e57">
+            <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>f23144af-5fab-4095-ad4b-2e6db108c606</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="On Changed" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="b200ca14-8e53-4068-9524-66d89b9e4afd" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>On Name Changed Event</name>
           <display>On Name Changed Event: Element Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
+          <order>3</order>
           <genericTypes />
           <typeReference id="c40037b0-41be-4fc2-a177-59c696ab32e2">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
@@ -178,7 +217,7 @@
           <name>On Type Changed Event</name>
           <display>On Type Changed Event: Element Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
+          <order>4</order>
           <genericTypes />
           <typeReference id="2d5deaa9-2900-4057-b522-4b3bdbe5b114">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
@@ -217,7 +256,7 @@
           <name>On Mapped Event</name>
           <display>On Mapped Event: Element Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
+          <order>5</order>
           <genericTypes />
           <typeReference id="1fe587da-53b1-4883-a1fb-a7d9c22024c8">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
@@ -256,7 +295,7 @@
           <name>On Deleted</name>
           <display>On Deleted: Element Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
+          <order>6</order>
           <genericTypes />
           <typeReference id="dc31f622-a741-40d0-9b1b-a22e77c60ac5">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>

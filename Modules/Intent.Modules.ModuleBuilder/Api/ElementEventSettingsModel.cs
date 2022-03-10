@@ -74,6 +74,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ElementEventHandlerModel(x))
             .ToList();
 
+        public IList<ElementEventHandlerModel> OnChangedEvents => _element.ChildElements
+            .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public IList<ElementEventHandlerModel> OnLoadedEvents => _element.ChildElements
             .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)

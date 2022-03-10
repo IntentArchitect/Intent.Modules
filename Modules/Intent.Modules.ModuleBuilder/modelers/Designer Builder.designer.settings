@@ -1073,6 +1073,14 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <option type="element">
               <specializationType>Element Event Handler</specializationType>
               <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Changed Event</text>
+              <defaultName>On Changed</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Name Changed Event</text>
               <defaultName>On Name Changed</defaultName>
               <icon type="FontAwesome" source="code" />
@@ -1485,4 +1493,5 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
   </elementSettings>
   <elementExtensions />
   <associationSettings />
+  <associationExtensions />
 </settings>
