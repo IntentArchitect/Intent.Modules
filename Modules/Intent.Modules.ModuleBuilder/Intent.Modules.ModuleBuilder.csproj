@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Architect.Persistence" Version="3.1.1" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.2.0" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.2.8" />
     <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
