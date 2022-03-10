@@ -6,7 +6,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
-    internal static class TemplateRoleRegistries
+    internal static class TemplateRoleRegistry
     {
         private static readonly IDictionary<string, IList<ITemplate>> _templatesByRole = new Dictionary<string, IList<ITemplate>>();
         private static readonly IDictionary<(string Role, string ModelId), IList<ITemplate>> _templatesByRoleAndModelId = new Dictionary<(string Role, string ModelId), IList<ITemplate>>();
@@ -26,7 +26,7 @@ namespace Intent.Modules.Common.Templates
                     templateWithModel.Model is IMetadataModel metadataModel &&
                     metadataModel.Id != null)
                 {
-                    var key = (templateInstance.Id, metadataModel.Id);
+                    var key = (role, metadataModel.Id);
                     if (!_templatesByRoleAndModelId.TryGetValue(key, out var templateInstances))
                     {
                         _templatesByRoleAndModelId.Add(key, templateInstances = new List<ITemplate>());
@@ -39,7 +39,7 @@ namespace Intent.Modules.Common.Templates
                 if (templateInstance is ITemplateWithModel templateWithModel &&
                     templateWithModel.Model != null)
                 {
-                    var key = (templateInstance.Id, templateWithModel.Model);
+                    var key = (role, templateWithModel.Model);
                     if (!_templatesByRoleAndModel.TryGetValue(key, out var templateInstances))
                     {
                         _templatesByRoleAndModel.Add(key, templateInstances = new List<ITemplate>());
@@ -90,6 +90,10 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public static IEnumerable<ITemplate> FindTemplateInstancesForRole(string role, object model)
         {
+            if (model is IMetadataModel metadataModel)
+            {
+                return FindTemplateInstancesForRole(role, metadataModel.Id);
+            }
             if (_templatesByRoleAndModel.TryGetValue((role, model), out var templates))
             {
                 return templates;

@@ -79,7 +79,8 @@ namespace Intent.Modules.Common.TypeResolution
                 return null;
             }
 
-            var templateInstance = Context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(TemplateId, typeInfo.Element));
+            var templateInstance = Context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(TemplateId, typeInfo.Element)) ??
+                TemplateRoleRegistries.FindTemplateInstanceForRole(TemplateId, typeInfo.Element) as IClassProvider;
 
             return templateInstance;
         }
@@ -92,6 +93,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         private IResolvedTypeInfo TryGetType(ITypeReference typeReference)
         {
+            var elementId = typeReference.Element?.Id;
             var templateInstance = TryGetTemplateInstance(typeReference);
             if (templateInstance == null)
             {
