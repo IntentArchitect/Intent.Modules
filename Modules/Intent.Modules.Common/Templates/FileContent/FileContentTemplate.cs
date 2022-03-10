@@ -32,8 +32,6 @@ namespace Intent.Modules.Common.Templates.FileContent
                 ["ApplicationNameAllLowerCase"] = outputTarget.ApplicationName().ToLowerInvariant()
             };
             _relativeOutputPath = relativeOutputPath.NormalizePath();
-
-            ApplicationName = outputTarget.ApplicationName();
         }
 
         /// <inheritdoc />
@@ -49,6 +47,7 @@ namespace Intent.Modules.Common.Templates.FileContent
             return result;
         }
 
+        /// <inheritdoc />
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(
@@ -62,7 +61,5 @@ namespace Intent.Modules.Common.Templates.FileContent
         {
             return $"{Id}#{_relativeOutputPath}";
         }
-
-        public string ApplicationName { get; }
     }
 }

@@ -8,11 +8,15 @@ using SearchOption = System.IO.SearchOption;
 
 namespace Intent.Modules.Common.Templates.FileContent
 {
+    /// <summary>
+    /// Inherit from this class to generate static content for each file in a folder and it's sub-folders
+    /// in your module.
+    /// </summary>
     public abstract class ModuleContentFilesTemplateRegistrations : TemplateRegistrationBase
     {
         /// <summary>
         /// Allows to sub-divide the "content" folder, in the event of other Template Registrations
-        /// of type <see cref="Intent.Modules.Common.Templates.FileContent.ModuleContentFilesTemplateRegistrations"/>
+        /// of type <see cref="ModuleContentFilesTemplateRegistrations"/>
         /// having to scan for files, by specifying the sub-folder path where the relevant content is located.
         /// Specify only the sub-folder name (or sub-path, using '/' as path delimiter).
         /// </summary>
@@ -30,6 +34,7 @@ namespace Intent.Modules.Common.Templates.FileContent
         /// </summary>
         public virtual IReadOnlyDictionary<string, string> Replacements => null;
 
+        /// <inheritdoc />
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
         {
             var location = Path.GetFullPath(Path.Join(Path.GetDirectoryName(GetType().Assembly.Location), "../content", ContentSubFolder.NormalizePath()));

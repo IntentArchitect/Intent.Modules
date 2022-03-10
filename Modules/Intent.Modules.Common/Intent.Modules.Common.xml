@@ -283,8 +283,17 @@
         <member name="M:Intent.Modules.Common.Templates.FileContent.FileContentTemplate.TransformText">
             <inheritdoc />
         </member>
+        <member name="M:Intent.Modules.Common.Templates.FileContent.FileContentTemplate.GetTemplateFileConfig">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.Templates.FileContent.FileContentTemplate.GetCorrelationId">
             <inheritdoc />
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.FileContent.ModuleContentFilesTemplateRegistrations">
+            <summary>
+            Inherit from this class to generate static content for each file in a folder and it's sub-folders
+            in your module.
+            </summary>
         </member>
         <member name="P:Intent.Modules.Common.Templates.FileContent.ModuleContentFilesTemplateRegistrations.ContentSubFolder">
             <summary>
@@ -305,6 +314,9 @@
             <summary>
             Will look for entries strings with <code>&lt;#= {element.Key} #&gt;</code> and replace them with <code>{element.Value}</code>.
             </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.FileContent.ModuleContentFilesTemplateRegistrations.Register(Intent.Registrations.ITemplateInstanceRegistry,Intent.Engine.IApplication)">
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.Templates.IClassProvider">
             <summary>
