@@ -43,7 +43,7 @@ namespace Intent.Modules.Common.Templates.FileContent
                 .Select(x => new
                 {
                     FullPath = x,
-                    RelativePath = x.Substring(location.Length)
+                    RelativePath = x.Substring(location.Length).Trim(Path.DirectorySeparatorChar)
                 })
                 .ToArray();
 

@@ -2,7 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
-    <PackageId>Intent.Modules.Common</PackageId>
     <Version>3.2.2</Version>
     <Authors>Intent Architect</Authors>
     <Product>Intent - Modules Common</Product>
@@ -13,8 +12,6 @@
     <PackageTags>Intent Architect Software Factory SDK Modules Common</PackageTags>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
-    <LangVersion>8</LangVersion>
-    <PackageVersion>3.2.2</PackageVersion>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Dev\Intent.Modules\Modules\Intent.Modules.Common\Intent.Modules.Common.xml</DocumentationFile>
