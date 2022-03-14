@@ -110,7 +110,14 @@ namespace Intent.Modules.Common.Templates
         /// <returns></returns>
         public static ITemplate FindTemplateInstanceForRole(string role)
         {
-            return FindTemplateInstancesForRole(role).SingleOrDefault();
+            var results = FindTemplateInstancesForRole(role);
+            if (results.Count() > 1)
+            {
+                throw new Exception(@$"Multiple templates found for role [{role}]:
+    {string.Join(@"
+    ", results.Select(x => x.ToString()))}");
+            }
+            return results.SingleOrDefault();
         }
 
         /// <summary>
@@ -122,7 +129,14 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public static ITemplate FindTemplateInstanceForRole(string role, string metadataModelId)
         {
-            return FindTemplateInstancesForRole(role, metadataModelId).SingleOrDefault();
+            var results = FindTemplateInstancesForRole(role, metadataModelId);
+            if (results.Count() > 1)
+            {
+                throw new Exception(@$"Multiple templates found for role [{role}]:
+    {string.Join(@"
+    ", results.Select(x => x.ToString()))}");
+            }
+            return results.SingleOrDefault();
         }
 
         /// <summary>
@@ -133,7 +147,14 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public static ITemplate FindTemplateInstanceForRole(string role, object model)
         {
-            return FindTemplateInstancesForRole(role, model).SingleOrDefault();
+            var results = FindTemplateInstancesForRole(role, model);
+            if (results.Count() > 1)
+            {
+                throw new Exception(@$"Multiple templates found for role [{role}]:
+    {string.Join(@"
+    ", results.Select(x => x.ToString()))}");
+            }
+            return results.SingleOrDefault();
         }
     }
 }

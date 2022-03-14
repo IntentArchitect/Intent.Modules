@@ -345,10 +345,9 @@ namespace Intent.Modules.Common.Templates
         /// fulfill roles and thereby find them in a decoupled way. This method is deprecated since registering templates against their
         /// roles will be done automatically by the Software Factory execution in future releases.
         /// </summary>
-        [Obsolete("Will be done automatically from Intent Architect V3.3 onwards.")]
         public void FulfillsRole(string role)
         {
-            TemplateRoleRegistries.Register(role, this);
+            TemplateRoleRegistry.Register(role, this);
         }
 
         /// <summary>
@@ -671,7 +670,7 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id) ?? TemplateRoleRegistries.FindTemplateInstanceForRole(templateId, model) as TTemplate,
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, model) as TTemplate,
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, model.Id = {model.Id}",
                 options: options);
         }
@@ -681,7 +680,7 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId) ?? TemplateRoleRegistries.FindTemplateInstanceForRole(templateId, modelId) as TTemplate,
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, modelId) as TTemplate,
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, ModelId = {modelId}",
                 options: options);
 
@@ -694,7 +693,7 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId) ?? TemplateRoleRegistries.FindTemplateInstanceForRole(templateId) as TTemplate,
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId) as TTemplate,
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}",
                 options: options);
         }

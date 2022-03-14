@@ -32,8 +32,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using Intent.Templates;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Ignore)]\r\n\r\nnames" +
-                    "pace ");
+            this.Write("using Intent.Templates;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamesp" +
+                    "ace ");
             
             #line 14 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\TemplateDecoratorContract\TemplateDecoratorContractTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));

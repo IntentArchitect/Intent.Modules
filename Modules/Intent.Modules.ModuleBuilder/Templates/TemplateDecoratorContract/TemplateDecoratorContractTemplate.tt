@@ -9,7 +9,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Ignore)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
