@@ -92,7 +92,12 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
         private bool PathHasChanged()
         {
             var fileLog = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this);
-            var result = Path.GetFullPath(fileLog?.FilePath) != Path.GetFullPath(FileMetadata.GetFilePath());
+            if (fileLog == null)
+            {
+                return true;
+            }
+
+            var result = Path.GetFullPath(fileLog.FilePath) != Path.GetFullPath(FileMetadata.GetFilePath());
 
             return result;
         }
