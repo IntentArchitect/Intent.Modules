@@ -5,14 +5,6 @@ using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.TypeResolution
 {
-    public interface ITypeSource
-    {
-        IResolvedTypeInfo GetType(ITypeReference typeInfo);
-        IEnumerable<ITemplateDependency> GetTemplateDependencies();
-        ICollectionFormatter CollectionFormatter { get; }
-        INullableFormatter NullableFormatter { get; }
-    }
-
     public interface ICollectionFormatter
     {
         string AsCollection(IResolvedTypeInfo typeInfo);
