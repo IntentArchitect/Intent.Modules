@@ -151,6 +151,34 @@
             and potentially show warnings when its value is <see langword="false"/>.
             </remarks>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest">
+            <summary>
+            A request for the key/value pair to be added to the environment variables of the application's launchSettings.json file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.#ctor(System.String,System.Object,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates the <see cref="T:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest"/>.
+            </summary>
+            <param name="key">The key string for the variable.</param>
+            <param name="value">The value object for the variable.</param>
+            <param name="targetProfiles">The target profiles that should register this environment variable. If null, the variable will be registered with all profiles.</param>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.Key">
+            <summary>
+            The key string for the variable.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.Value">
+            <summary>
+            The value object for the variable. 
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.TargetProfiles">
+            <summary>
+            The target profiles that should register this environment variable. If null, the variable will be registered with all profiles.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest">
             <summary>
             For adding a section or key to an Azure Functions host.json file. If the file already
