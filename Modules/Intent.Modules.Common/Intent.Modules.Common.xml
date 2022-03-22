@@ -1144,6 +1144,34 @@
             Returns the list of added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/>s
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.TypeResolution.ITypeSource">
+            <summary>
+            Provides a source to resolve types.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeSource.GetType(Intent.Metadata.Models.ITypeReference)">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> type if this type source resolves a type. If not, this method should return null.
+            </summary>
+            <param name="typeInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ITypeSource.GetTemplateDependencies">
+            <summary>
+            Returns any template dependencies that were found when the <see cref="M:Intent.Modules.Common.TypeResolution.ITypeSource.GetType(Intent.Metadata.Models.ITypeReference)"/> method was called.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.ITypeSource.CollectionFormatter">
+            <summary>
+            A formatter for if the <see cref="T:Intent.Metadata.Models.ITypeReference"/> provided to the <see cref="M:Intent.Modules.Common.TypeResolution.ITypeSource.GetType(Intent.Metadata.Models.ITypeReference)"/> method is marked as a collection.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.ITypeSource.NullableFormatter">
+            <summary>
+            A formatter for if the <see cref="T:Intent.Metadata.Models.ITypeReference"/> provided to the <see cref="M:Intent.Modules.Common.TypeResolution.ITypeSource.GetType(Intent.Metadata.Models.ITypeReference)"/> method is marked as nullable.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.TypeResolution.CanBeReferencedTypeExtensions">
             <summary>
             Extension methods for <see cref="T:Intent.Metadata.Models.ICanBeReferencedType"/>.
