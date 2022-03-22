@@ -1,5 +1,0 @@
-1. ) Can't put modules into a folder because our packager is assuming solution dir is ..\. This is in the project files not sure how this is happening.
-2. ) Meta data Loaders can't be configured, if they there they load.
-3. ) Can't crate a sterotype definition which targets projects
-4. ) Application Meta Model has ApplicationName instead of Name
-5. ) Association Ends don't have a ITypeRef
