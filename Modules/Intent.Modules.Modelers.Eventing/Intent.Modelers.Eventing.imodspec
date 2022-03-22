@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Eventing</id>
   <version>1.0.0-pre.21</version>
@@ -23,4 +23,5 @@
     <install src="modelers/Eventing.designer.config" externalReference="822e4254-9ced-4dd1-ad56-500b861f7e4d" />
     <install target="Module Builder;Eventing" src="Intent.Metadata/Module Builder/Intent.Modelers.Eventing/Intent.Modelers.Eventing.pkg.config" externalReference="73db16ce-8cc2-4b89-8348-9a8bda3fda4c" />
   </metadata>
+  <moduleSettings />
 </package>

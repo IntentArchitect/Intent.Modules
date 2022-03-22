@@ -3,11 +3,22 @@
   <name>Settings</name>
   <display>Settings</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</parentFolderId>
-  <stereotypes />
+  <packageId>b8a18b98-fe91-4375-95cd-ef8ba7d0497c</packageId>
+  <packageName>Intent.Modules</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="61132551-825d-4c6e-b9f1-0f95249d08d4" name="Folder Options">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.VisualStudio.Projects</definitionPackageName>
+      <definitionPackageId>a0636ab7-d3a1-430b-9609-11a18aa3cc7f</definitionPackageId>
+      <properties>
+        <property name="4bfbefd0-d22e-4ca0-9723-92ae273feca4" display="Namespace Provider" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
   <childElements>
     <childElement id="d3fa5219-37e3-4985-aba8-69827f88d445" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</name>
@@ -18,6 +29,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e7ff38b5-b752-47ad-8d20-18c4d58b33ac</parentFolderId>
+      <packageId>b8a18b98-fe91-4375-95cd-ef8ba7d0497c</packageId>
+      <packageName>Intent.Modules</packageName>
       <stereotypes />
       <childElements />
     </childElement>

@@ -3,6 +3,11 @@
   <ApplicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#6e118a7e-7636-4d2d-8cdd-0086bd0c6af2</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>3043ab47-170b-4d78-ba2d-3673f8381213</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7baed1fd-469b-4980-8fd9-4cefb8331eb2</CorrelationId>
       <ApplicationRelativeFilePath>Api/DTOFieldModel.cs</ApplicationRelativeFilePath>

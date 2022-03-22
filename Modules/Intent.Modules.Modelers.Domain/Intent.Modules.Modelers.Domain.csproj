@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <Version>3.2.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
@@ -23,7 +23,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.0" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.1" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.2.0" />
   </ItemGroup>
 

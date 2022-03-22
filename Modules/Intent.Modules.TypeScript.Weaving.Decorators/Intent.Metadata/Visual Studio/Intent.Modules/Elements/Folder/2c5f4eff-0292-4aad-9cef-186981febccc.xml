@@ -3,7 +3,7 @@
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <order>5</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>68a6b5aa-3c9a-40f6-b191-6d46ea2f9d5f</parentFolderId>
@@ -132,12 +132,26 @@
       <stereotypes />
       <childElements />
     </childElement>
+    <childElement id="5edf7939-3f58-44bc-8222-2e4c6d75786c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+      <name>Intent.ModuleBuilder.Templates.TemplateExtensions</name>
+      <display>Intent.ModuleBuilder.Templates.TemplateExtensions</display>
+      <externalReference>Intent.ModuleBuilder</externalReference>
+      <isAbstract>false</isAbstract>
+      <order>8</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>2c5f4eff-0292-4aad-9cef-186981febccc</parentFolderId>
+      <packageId>f7a28819-512e-42c2-90c7-9fd845997fd2</packageId>
+      <packageName>Intent.Modules</packageName>
+      <stereotypes />
+      <childElements />
+    </childElement>
     <childElement id="76c9eeef-9fc6-4025-b205-3514b1339667" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplate</name>
       <display>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplate</display>
       <externalReference>Intent.ModuleBuilder.TypeScript</externalReference>
       <isAbstract>false</isAbstract>
-      <order>8</order>
+      <order>9</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>2c5f4eff-0292-4aad-9cef-186981febccc</parentFolderId>
@@ -151,7 +165,7 @@
       <display>Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial</display>
       <externalReference>Intent.ModuleBuilder.TypeScript</externalReference>
       <isAbstract>false</isAbstract>
-      <order>9</order>
+      <order>10</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>2c5f4eff-0292-4aad-9cef-186981febccc</parentFolderId>
@@ -165,24 +179,12 @@
       <display>ModuleBuilder.Typescript.Templates.TypescriptTemplate.PreProcessT4</display>
       <externalReference>Intent.ModuleBuilder.TypeScript</externalReference>
       <isAbstract>false</isAbstract>
-      <order>10</order>
+      <order>11</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>2c5f4eff-0292-4aad-9cef-186981febccc</parentFolderId>
       <packageId>f7a28819-512e-42c2-90c7-9fd845997fd2</packageId>
       <packageName>Intent.Modules</packageName>
-      <stereotypes />
-      <childElements />
-    </childElement>
-    <childElement id="5edf7939-3f58-44bc-8222-2e4c6d75786c" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.TemplateExtensions</name>
-      <display>Intent.ModuleBuilder.Templates.TemplateExtensions</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <order>0</order>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>2c5f4eff-0292-4aad-9cef-186981febccc</parentFolderId>
       <stereotypes />
       <childElements />
     </childElement>

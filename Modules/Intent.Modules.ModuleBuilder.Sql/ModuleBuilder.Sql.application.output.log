@@ -3,6 +3,11 @@
   <ApplicationId>c5d9d6eb-8953-4b30-8e4d-a8d2890d31b4</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#cc0b0700-7d5c-4b2b-b8ed-c934c246e05a</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>6bc95a70-83a2-40e8-bcdc-176d231beb7d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e1111ae0-0781-409a-bced-ce6130f2c155</CorrelationId>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
@@ -42,7 +47,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#d2d4fd91-e669-4bc0-a558-78d334492481</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.Sql.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Sql.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d62c7c10-ba5c-44c6-9ed8-5adc01662e84</ProjectId>

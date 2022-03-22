@@ -3,6 +3,7 @@
   <ApplicationId>7cd27b49-d1d3-4c20-85b8-5090b0805098</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#f7a28819-512e-42c2-90c7-9fd845997fd2</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>

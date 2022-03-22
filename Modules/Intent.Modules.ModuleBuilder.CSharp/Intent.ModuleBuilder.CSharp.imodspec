@@ -10,19 +10,19 @@
   <projectUrl>https://intentarchitect.com/</projectUrl>
   <tags>Intent Module Builder C# Roslyn</tags>
   <templates>
-    <template id="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial" externalReference="9aec9ff4-b28f-4865-87aa-5d6e31d91afd">
-      <config>
-        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
-        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
-      </config>
-      <role>Templates</role>
-      <location>Templates</location>
-    </template>
     <template id="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate" externalReference="f82844d8-1693-45b4-ba36-e1fb512b42e1">
       <role>Templates</role>
       <location>Templates</location>
     </template>
     <template id="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed">
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
+    <template id="Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial" externalReference="9aec9ff4-b28f-4865-87aa-5d6e31d91afd">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
       <role>Templates</role>
       <location>Templates</location>
     </template>

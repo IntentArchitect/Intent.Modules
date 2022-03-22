@@ -3,6 +3,11 @@
   <ApplicationId>275030c0-f660-4c46-8156-ce592d267b38</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#7515cbbf-1364-4616-9a0a-0d8330e3b3de</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>1ea44e7b-c146-478b-8549-23b1969fb10d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#75de55cf-e031-4035-aae3-ef6f2627426e</CorrelationId>
       <ApplicationRelativeFilePath>Api/FolderExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -42,7 +47,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#59b4ba79-7979-4102-ac26-426a9de6eb12</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.Html.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Html.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>0b5c7803-b049-406e-964f-050489bf41ab</ProjectId>

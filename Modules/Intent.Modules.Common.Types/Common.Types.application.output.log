@@ -3,6 +3,11 @@
   <ApplicationId>ff3070c6-4626-4a8b-85ab-7d56887a1445</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#eae2d6bc-9572-4814-8feb-43953ea41f6a</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>d11b92cd-21a8-4496-9586-923945cc93c2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4215f417-25d2-4509-9309-5076a1452eaa</CorrelationId>
       <ApplicationRelativeFilePath>Api/EnumLiteralModel.cs</ApplicationRelativeFilePath>
@@ -49,7 +54,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#8cc9168a-63e5-4b42-8c7e-fb8e12875801</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Common.Types.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Types.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>17425481-e9c3-4b0a-aade-259fb47f4cc9</ProjectId>

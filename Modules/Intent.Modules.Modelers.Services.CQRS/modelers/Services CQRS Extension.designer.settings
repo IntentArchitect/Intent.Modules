@@ -79,7 +79,7 @@
       <scriptOptions />
       <mappingSettings>
         <mappingSetting id="735c87d0-06fc-4491-8b5f-5adc6f953c54">
-          <name>Map to domain</name>
+          <name>Map to Domain</name>
           <shortcut>ctrl + shift + m</shortcut>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>

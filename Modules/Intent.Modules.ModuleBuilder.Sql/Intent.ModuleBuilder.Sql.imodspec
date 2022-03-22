@@ -37,4 +37,5 @@
     <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.ModuleBuilder.Sql/Intent.ModuleBuilder.Sql.pkg.config" externalReference="fb002b11-41c0-43ea-afeb-f26c3346ce87" />
   </metadata>
   <factoryExtensions />
+  <moduleSettings />
 </package>

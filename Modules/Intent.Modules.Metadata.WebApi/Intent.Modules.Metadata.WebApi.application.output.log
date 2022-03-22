@@ -3,6 +3,7 @@
   <ApplicationId>0f9ab3ec-dfce-4320-ac37-19c5b8d05528</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#9ce150c8-2497-4ab1-93c3-b2edc624196c</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
@@ -46,7 +47,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9b26c297-0062-4303-b90a-752da4b75de6</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>fbbe3c09-70f6-47d7-af27-c18d9712d6a7</ProjectId>

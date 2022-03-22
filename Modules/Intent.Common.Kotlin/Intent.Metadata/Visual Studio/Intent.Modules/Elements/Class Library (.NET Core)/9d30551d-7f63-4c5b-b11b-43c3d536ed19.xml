@@ -3,10 +3,10 @@
   <name>Intent.Modules.Common.Kotlin</name>
   <display>Intent.Modules.Common.Kotlin</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>c19ef5a0-9b32-4d31-b01d-305e44e87020</parentFolderId>
+  <parentFolderId>e5561b2f-e3a5-48b7-ab0d-83c122a90179</parentFolderId>
   <packageId>c19ef5a0-9b32-4d31-b01d-305e44e87020</packageId>
   <packageName>Intent.Modules</packageName>
   <stereotypes>
@@ -37,7 +37,7 @@
       <display>Intent.ModuleBuilder.IModeSpecFile</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>5</order>
+      <order>6</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -51,7 +51,7 @@
       <display>Intent.ModuleBuilder.ReadMe</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>6</order>
+      <order>7</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -65,7 +65,7 @@
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>7</order>
+      <order>8</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -79,7 +79,7 @@
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>8</order>
+      <order>9</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -93,7 +93,7 @@
       <display>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>9</order>
+      <order>10</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -106,7 +106,7 @@
       <name>Api</name>
       <display>Api</display>
       <isAbstract>false</isAbstract>
-      <order>10</order>
+      <order>11</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -119,7 +119,7 @@
       <name>Decorators</name>
       <display>Decorators</display>
       <isAbstract>false</isAbstract>
-      <order>11</order>
+      <order>12</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -132,7 +132,7 @@
       <name>DesignerConfig</name>
       <display>DesignerConfig</display>
       <isAbstract>false</isAbstract>
-      <order>12</order>
+      <order>13</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -145,7 +145,7 @@
       <name>IModSpec</name>
       <display>IModSpec</display>
       <isAbstract>false</isAbstract>
-      <order>13</order>
+      <order>14</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>
@@ -158,7 +158,7 @@
       <name>Templates</name>
       <display>Templates</display>
       <isAbstract>false</isAbstract>
-      <order>14</order>
+      <order>15</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</parentFolderId>

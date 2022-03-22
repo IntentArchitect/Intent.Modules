@@ -37,4 +37,5 @@
   <metadata>
     <install target="Module Builder" src="modelers/Kotlin Types.designer.settings" externalReference="05b4920c-1004-4605-a38d-eb82f562bc8e" />
   </metadata>
+  <moduleSettings />
 </package>

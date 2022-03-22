@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="22db2bb5-d0df-44bb-a43a-6eb2b5e5126e" type="Solution Folder" typeId="0dc2b846-c968-49eb-99b7-8776919313a8">
+  <name>Modules</name>
+  <display>Modules</display>
+  <isAbstract>false</isAbstract>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>fd7613a5-5e37-4c81-aa13-cd19531650d5</parentFolderId>
+  <packageId>fd7613a5-5e37-4c81-aa13-cd19531650d5</packageId>
+  <packageName>Intent.Modules</packageName>
+  <stereotypes />
+  <childElements />
+</class>

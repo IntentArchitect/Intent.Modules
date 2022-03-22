@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="411084f9-45eb-4b95-89de-06cf8a5d27fb" type="Solution Folder" typeId="0dc2b846-c968-49eb-99b7-8776919313a8">
+  <name>Application Template Builder</name>
+  <display>Application Template Builder</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>eee71a22-a6b2-43e1-a8e8-68c954f2e76e</parentFolderId>
+  <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
+  <packageName>Intent.Modules</packageName>
+  <stereotypes />
+  <childElements />
+</class>

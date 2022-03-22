@@ -36,4 +36,5 @@
     <install src="modelers/Html Types.designer.settings" externalReference="a24d301b-f0f5-4899-b1ab-4bc5087bd4b2" target="Module Builder" />
   </metadata>
   <factoryExtensions />
+  <moduleSettings />
 </package>

@@ -36,4 +36,5 @@
     <install target="Module Builder" src="modelers/Java Types.designer.settings" externalReference="f00bf9aa-2c87-45a2-932d-4b587198a092" />
   </metadata>
   <factoryExtensions />
+  <moduleSettings />
 </package>

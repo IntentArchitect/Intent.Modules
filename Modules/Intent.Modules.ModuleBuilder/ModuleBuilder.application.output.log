@@ -3,6 +3,11 @@
   <ApplicationId>a415ef85-982f-4a87-a356-ddcb8ef34446</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#82102275-5703-4063-af56-14ae960258bb</CorrelationId>
+      <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3dcfa78b-17ee-45b6-be03-8407d089ce76</CorrelationId>
       <ApplicationRelativeFilePath>Api/AssociationCreationOptionModel.cs</ApplicationRelativeFilePath>

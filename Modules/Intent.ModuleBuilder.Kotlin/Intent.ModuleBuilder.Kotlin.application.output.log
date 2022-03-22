@@ -42,7 +42,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#430da63e-e53b-4257-9ea7-b62823d045ef</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Intent.Modules.ModuleBuilder.Kotlin.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Kotlin.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>c341fc80-3d17-4f57-b7c1-d4fa20a5b5f6</ProjectId>
@@ -108,6 +108,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#8bf30047-22ff-4a7e-a629-72747dc92a4a</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>

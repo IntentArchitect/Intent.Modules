@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.TypeScript</id>
   <version>3.1.4</version>
@@ -12,7 +12,7 @@
     <factoryExtension id="Intent.Common.TypeScript.OutputWeaver" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.1.11" />
+    <dependency id="Intent.Common" version="3.2.0" />
     <dependency id="Intent.Common.Types" version="3.1.1" />
   </dependencies>
   <files>
@@ -24,4 +24,5 @@
   <metadata>
     <install src="Intent.Metadata/Module Builder/Intent.Common.TypeScript/Intent.Common.TypeScript.pkg.config" externalReference="2debfc4c-f15d-47a6-88c1-8597b2ca8e50" />
   </metadata>
+  <moduleSettings />
 </package>

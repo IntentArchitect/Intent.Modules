@@ -36,4 +36,5 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <factoryExtensions />
+  <moduleSettings />
 </package>
