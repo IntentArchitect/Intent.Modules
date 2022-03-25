@@ -39,6 +39,7 @@
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Property</type>
+        <type order="1">Domain Event Association</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -50,11 +51,20 @@
           <icon type="UrlImagePath" source="./img/icons/uml/Attribute_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
+        <option type="association">
+          <specializationType>Domain Event Association</specializationType>
+          <specializationTypeId>8014b71d-627b-4349-b6d7-5011dfa1bb09</specializationTypeId>
+          <text>Add Consumer</text>
+          <shortcut>ctrl + shift + c</shortcut>
+          <defaultName>NewDomainEventAssociation</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
       <visualSettings type="Domain Event">
-        <size width="${w}" height="${h}" />
+        <size width="${w}" height="120" />
         <position x="${x}" y="${y}" />
         <display>
           <drawPath>
@@ -75,7 +85,7 @@ white-space: inherit;`</style>
           <size width="${w}" height="18" />
           <position x="${x}" y="${y}" />
         </stereotypesVisualSettings>
-        <defaultSize width="${x}" height="${y}" />
+        <defaultSize width="${x}" height="120" />
         <childElementVisualSettings>
           <childElementVisualSetting type="Property">
             <size width="`${parent.w}`" height="18" />
@@ -138,6 +148,9 @@ white-space: inherit;`</style>
     </elementSetting>
   </elementSettings>
   <elementExtensions>
+    <elementExtension type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
+      <mappingSettings />
+    </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
         <option type="element">
@@ -156,5 +169,45 @@ white-space: inherit;`</style>
       <mappingSettings />
     </elementExtension>
   </elementExtensions>
-  <associationSettings />
+  <associationSettings>
+    <associationSetting type="Domain Event Association" typeId="8014b71d-627b-4349-b6d7-5011dfa1bb09">
+      <sourceEnd type="Domain Event Association Source End" typeId="ad8998ec-ee85-4544-9267-8ec150a2f257">
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Domain Event</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>false</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Domain Event Association Target End" typeId="fe0d0f78-fb7e-4685-ab2d-bae88054a78e">
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Class</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>false</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+      <visualSettings>
+        <lineDashArray>3,8</lineDashArray>
+        <sourceEnd />
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 3 5 l -6 0 l 3 -5 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
+    </associationSetting>
+  </associationSettings>
 </settings>

@@ -3,7 +3,7 @@
   <name>Domain Package Extension</name>
   <display>Domain Package Extension: Domain Package</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>4</order>
   <genericTypes />
   <typeReference id="6d7e48b5-95f7-438f-80f6-6f4f3fbf5bcb">
     <typeId>1a824508-4623-45d9-accc-f572091ade5a</typeId>
