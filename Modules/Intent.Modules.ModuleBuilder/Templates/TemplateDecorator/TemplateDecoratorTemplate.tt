@@ -9,7 +9,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 using Intent.Engine;
 
-[assembly: DefaultIntentManaged(Mode.Ignore)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
@@ -21,9 +21,10 @@ namespace <#= Namespace #>
 
         [IntentManaged(Mode.Fully)]
         private readonly <#= GetTemplateTypeName() #> _template;
+        [IntentManaged(Mode.Fully)]
         private readonly IApplication _application;
 
-        [IntentManaged(Mode.Merge, Body = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Fully)]
         public <#= ClassName #>(<#= GetTemplateTypeName() #> template, IApplication application)
         {
             _template = template;

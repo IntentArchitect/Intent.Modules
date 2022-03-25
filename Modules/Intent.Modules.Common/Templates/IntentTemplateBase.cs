@@ -157,7 +157,7 @@ namespace Intent.Modules.Common.Templates
             var filePath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath ?? FileMetadata.GetFilePath();
             return File.Exists(filePath) ? filePath : null;
         }
-        
+
         /// <summary>
         /// Override this method to control whether the template runs and the creates the output file.
         /// </summary>
@@ -341,6 +341,16 @@ namespace Intent.Modules.Common.Templates
         #endregion
 
         /// <summary>
+        /// Signifies that this template fulfills the specified <paramref name="role"/> in the architecture. Other templates can search for templates that
+        /// fulfill roles and thereby find them in a decoupled way. This method is deprecated since registering templates against their
+        /// roles will be done automatically by the Software Factory execution in future releases.
+        /// </summary>
+        public void FulfillsRole(string role)
+        {
+            TemplateRoleRegistry.Register(role, this);
+        }
+
+        /// <summary>
         /// Resolves the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
         /// <para>
         /// See the
@@ -427,7 +437,7 @@ namespace Intent.Modules.Common.Templates
         {
             return GetTypeName(GetTemplate<IClassProvider>(template, options));
         }
-
+        
         /// <summary>
         /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
         /// <para>
@@ -660,8 +670,8 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id),
-                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, model.Id = {model.Id}",
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, model) as TTemplate,
+                getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, model.Id = {model.Id}",
                 options: options);
         }
 
@@ -670,8 +680,8 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId),
-                getDependencyDescriptionForException: () => $"TemplateId = {templateId}, ModelId = {modelId}",
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, modelId) as TTemplate,
+                getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, ModelId = {modelId}",
                 options: options);
 
         }
@@ -683,8 +693,8 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
-                getDependencyDescriptionForException: () => $"TemplateId = {templateId}",
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId) as TTemplate,
+                getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}",
                 options: options);
         }
 

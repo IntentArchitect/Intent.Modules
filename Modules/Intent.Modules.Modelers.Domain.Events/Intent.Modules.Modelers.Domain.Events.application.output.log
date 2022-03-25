@@ -9,9 +9,30 @@
     </FileLog>
     <FileLog>
       <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#fe52fa70-a8f4-4ecb-974f-122d1bd3cb8e</CorrelationId>
+      <ApplicationRelativeFilePath>Api/DiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#8014b71d-627b-4349-b6d7-5011dfa1bb09</CorrelationId>
+      <ApplicationRelativeFilePath>Api/DomainEventAssociationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainEventAssociationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0814e459-fb9b-47db-b7eb-32ce30397e8a</CorrelationId>
       <ApplicationRelativeFilePath>Api/DomainEventModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DomainEventModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fc65166b-e61b-4b0f-bf59-d5c8d45547f2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#8014b71d-627b-4349-b6d7-5011dfa1bb09</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/DomainEventAssociationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainEventAssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

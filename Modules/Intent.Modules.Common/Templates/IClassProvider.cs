@@ -1,10 +1,12 @@
-﻿using Intent.Templates;
+﻿using Intent.SdkEvolutionHelpers;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
     /// <summary>
     /// Template that provides a OOP class type - Class name and namespace (package).
     /// </summary>
+    [FixFor_Version4("This should be ITypeProvider / ITypeProviderTemplate")]
     public interface IClassProvider : ITemplate
     {
         /// <summary>
