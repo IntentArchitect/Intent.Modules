@@ -50,6 +50,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
             return Templates.Any();
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

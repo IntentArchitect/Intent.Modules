@@ -28,6 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorRegistration
             AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

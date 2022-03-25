@@ -29,6 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
             return new RoslynMergeConfig(new TemplateMetadata(Id, "1.0"));
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

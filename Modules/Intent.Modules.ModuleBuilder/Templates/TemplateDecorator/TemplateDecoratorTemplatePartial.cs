@@ -29,6 +29,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
             AddTypeSource(TemplateDecoratorContractTemplate.TemplateId);
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

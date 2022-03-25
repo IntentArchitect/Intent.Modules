@@ -25,6 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
             AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

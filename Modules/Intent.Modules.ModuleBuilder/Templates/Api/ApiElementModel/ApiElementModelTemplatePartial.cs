@@ -44,6 +44,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public List<AssociationSettingsModel> AssociationSettings { get; }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

@@ -31,6 +31,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
             ExecutionContext.EventDispatcher.Publish(new FactoryExtensionRegistrationRequiredEvent(Model.Id, GetId()));
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

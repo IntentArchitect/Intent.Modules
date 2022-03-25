@@ -858,7 +858,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <text>Add Diagram Settings</text>
           <defaultName>NewDiagramSettings</defaultName>
           <icon type="CharacterBox" source="D|#21abad" />
-          <allowMultiple>true</allowMultiple>
+          <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
           <specializationType>Mapping Settings</specializationType>
@@ -1493,5 +1493,4 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
   </elementSettings>
   <elementExtensions />
   <associationSettings />
-  <associationExtensions />
 </settings>

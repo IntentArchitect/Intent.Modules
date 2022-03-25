@@ -36,10 +36,10 @@ namespace Intent.ModuleBuilder.Api
         public IntentModuleModel ParentModule => new IntentModuleModel(_element.Package);
 
         [IntentManaged(Mode.Fully)]
-        public IList<DiagramSettingsModel> DiagramSettings => _element.ChildElements
+        public DiagramSettingsModel DiagramSettings => _element.ChildElements
             .GetElementsOfType(DiagramSettingsModel.SpecializationTypeId)
             .Select(x => new DiagramSettingsModel(x))
-            .ToList();
+            .SingleOrDefault();
 
         [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
@@ -78,6 +78,7 @@ namespace Intent.ModuleBuilder.Api
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 TypeOrder = MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
                 MappingSettings = MappingSettings.Select(x => x.ToPersistable()).ToList(),
+                DiagramSettings = DiagramSettings?.ToPersistable(),
                 TypeReferenceExtensionSetting = !this.GetTypeReferenceExtensionSettings().Mode().IsInherit() ?
                     new TypeReferenceExtensionSettingPersistable()
                     {

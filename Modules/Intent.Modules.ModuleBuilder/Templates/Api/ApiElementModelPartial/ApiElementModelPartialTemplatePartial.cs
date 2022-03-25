@@ -24,6 +24,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial
         {
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

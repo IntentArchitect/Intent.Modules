@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Xml;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
@@ -26,8 +27,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
         {
             base.OnCreated();
             Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
-                Model.Id, 
-                Model.GetDesignerSettings().ExtendDesigners()?.Select(x => (x.Id, x.Name)).ToList() ?? new List<(string Id, string Name)>(), 
+                Model.Id,
+                Model.GetDesignerSettings().ExtendDesigners()?.Select(x => (x.Id, x.Name)).ToList() ?? new List<(string Id, string Name)>(),
                 GetMetadata().GetFilePath()));
             //Project.Application.EventDispatcher.Publish("MetadataRegistrationRequired", new Dictionary<string, string>()
             //{
@@ -67,17 +68,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
 
         private static string Serialize<T>(T @object)
         {
-            using (var stringWriter = new Utf8StringWriter())
+            //using (var stringWriter = new Utf8StringWriter())
+            //{
+            //    var serializer = new XmlSerializer(typeof(T));
+            //    var serializerNamespaces = new XmlSerializerNamespaces();
+            //    serializerNamespaces.Add("", "");
+
+            //    serializer.Serialize(stringWriter, @object, serializerNamespaces);
+            //    stringWriter.Close();
+
+            //    return stringWriter.ToString();
+            //}
+            using var memoryStream = new MemoryStream();
+            var serializer = new XmlSerializer(typeof(T));
+            var serializerNamespaces = new XmlSerializerNamespaces();
+            serializerNamespaces.Add("", "");
+            var streamWriter = XmlWriter.Create(memoryStream, new()
             {
-                var serializer = new XmlSerializer(typeof(T));
-                var serializerNamespaces = new XmlSerializerNamespaces();
-                serializerNamespaces.Add("", "");
-
-                serializer.Serialize(stringWriter, @object, serializerNamespaces);
-                stringWriter.Close();
-
-                return stringWriter.ToString();
-            }
+                Encoding = Encoding.UTF8,
+                Indent = true
+            });
+            serializer.Serialize(streamWriter, @object, serializerNamespaces);
+            return Encoding.UTF8.GetString(memoryStream.ToArray());
         }
 
         private class Utf8StringWriter : StringWriter
