@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Intent.IArchitect.Common.Types;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -57,6 +56,11 @@ namespace Intent.ModuleBuilder.Api
         public IList<AssociationSettingsModel> AssociationTypes => _element.ChildElements
             .GetElementsOfType(AssociationSettingsModel.SpecializationTypeId)
             .Select(x => new AssociationSettingsModel(x))
+            .ToList();
+
+        public IList<AssociationExtensionModel> AssociationExtensions => _element.ChildElements
+            .GetElementsOfType(AssociationExtensionModel.SpecializationTypeId)
+            .Select(x => new AssociationExtensionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]

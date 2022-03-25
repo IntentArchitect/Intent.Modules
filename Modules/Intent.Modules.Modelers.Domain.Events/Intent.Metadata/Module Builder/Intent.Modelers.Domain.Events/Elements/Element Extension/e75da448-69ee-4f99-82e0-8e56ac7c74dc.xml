@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <order>2</order>
   <genericTypes />
   <typeReference id="a21a1b23-d76c-454e-9370-610db74ee542">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>

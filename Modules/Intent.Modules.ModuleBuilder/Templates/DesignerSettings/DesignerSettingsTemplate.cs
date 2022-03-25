@@ -6,8 +6,6 @@ using System.Text;
 using System.Xml.Serialization;
 using Intent.Engine;
 using Intent.IArchitect.Agent.Persistence.Model.Common;
-using Intent.IArchitect.Agent.Persistence.Model.Settings;
-using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.ModuleBuilder.Api;
@@ -51,6 +49,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerSettings
                 ElementSettings = Model.ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 ElementExtensions = Model.ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
                 AssociationSettings = Model.AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                AssociationExtensions = Model.AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
             };
 
             return Serialize(modelerSettings);

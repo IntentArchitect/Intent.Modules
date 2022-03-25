@@ -1,3 +1,4 @@
+using System;
 using Intent.Configuration;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;

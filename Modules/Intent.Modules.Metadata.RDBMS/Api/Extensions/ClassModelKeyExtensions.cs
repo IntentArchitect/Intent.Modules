@@ -13,7 +13,13 @@ namespace Intent.Metadata.RDBMS.Api
             return @class.Attributes.Where(x => x.HasPrimaryKey()).ToList();
         }
 
+        [Obsolete("Use GetSurrogateKeyName extension method")]
         public static string GetSurrogateKey(this ClassModel @class)
+        {
+            return GetSurrogateKeyName(@class);
+        }
+
+        public static string GetSurrogateKeyName(this ClassModel @class)
         {
             if (!HasSurrogateKey(@class))
             {
@@ -35,7 +41,7 @@ namespace Intent.Metadata.RDBMS.Api
 
         public static bool HasSurrogateKey(this ClassModel @class)
         {
-            return @class.Attributes.Count(x => x.HasPrimaryKey() && x.Name.EndsWith("id", StringComparison.InvariantCultureIgnoreCase)) <= 1; // 0 = implicit
+            return @class.Attributes.Count(x => x.HasPrimaryKey()) <= 1; // less than or equal to 1, because 0 = implicit surrogate key
         }
     }
 }

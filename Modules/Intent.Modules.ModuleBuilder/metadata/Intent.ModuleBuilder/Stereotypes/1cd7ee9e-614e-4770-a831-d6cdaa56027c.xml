@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1cd7ee9e-614e-4770-a831-d6cdaa56027c" version="3.1.0">
+  <name>Association End Extension Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3">Association Source End Extension</type>
+    <type id="1cc6c731-af5f-41a0-9e82-44486f45b903">Association Target End Extension</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction>return ``;</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>f9c93dac-243c-4308-b2fc-6d30fcfbae1d</parentFolderId>
+  <order>1</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="e7d1e8c5-6748-4f56-8a92-4f413b598412">
+      <hint>Optional. When set will override the _Type_  text for the property name.</hint>
+      <name>Display Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction />
+    </property>
+    <property id="f957891b-3aef-48b2-9241-71c8a45a8fbb">
+      <hint>Optional hint text which can be used to explain usage of the type reference. Supports _italic_, **bold** and [link](https://intentarchitect.com/) formatting of markdown.</hint>
+      <name>Hint</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction />
+    </property>
+    <property id="05d63939-2d01-4b12-8bcf-d6751c7c32b8">
+      <name>Target Types</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>(Inherit from base element)</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+      </lookupTypes>
+      <isActiveFunction />
+      <isRequiredFunction />
+    </property>
+    <property id="ced53770-7796-42de-850e-5cd523e368f9">
+      <name>Default Type Id</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Inherit from base element)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction />
+    </property>
+    <property id="585f6851-b6a5-4d39-9804-256cefcb10ab">
+      <name>Allow Navigable</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Inherit</defaultValue>
+      <valueOptions>
+        <option>Inherit</option>
+        <option>Allow</option>
+        <option>Disallow</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="c5da195d-90af-4d23-9a62-6aca60a9b304">
+      <name>Allow Nullable</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Inherit</defaultValue>
+      <valueOptions>
+        <option>Inherit</option>
+        <option>Allow</option>
+        <option>Disallow</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="558c27e8-dc8b-40ae-8633-fd42f0077268">
+      <name>Allow Collection</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Inherit</defaultValue>
+      <valueOptions>
+        <option>Inherit</option>
+        <option>Allow</option>
+        <option>Disallow</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

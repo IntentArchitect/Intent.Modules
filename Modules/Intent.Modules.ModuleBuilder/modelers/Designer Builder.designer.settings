@@ -24,6 +24,108 @@
     </packageExtension>
   </packageExtensions>
   <elementSettings>
+    <elementSetting type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
+      <icon type="CharacterBox" source="X|#ff8000" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>true</allowTypeReference>
+      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Association Settings</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
+      <typeOrder>
+        <type order="0">Association Source End Extension</type>
+        <type order="1">Association Target End Extension</type>
+        <type order="2">Association Event Settings</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Association Source End Extension</specializationType>
+          <specializationTypeId>66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</specializationTypeId>
+          <text>Add Source End</text>
+          <defaultName>${name} Source End</defaultName>
+          <icon type="CharacterBox" source="S|#00f7ff" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Target End Extension</specializationType>
+          <specializationTypeId>1cc6c731-af5f-41a0-9e82-44486f45b903</specializationTypeId>
+          <text>Add Target End</text>
+          <defaultName>[target end extension]</defaultName>
+          <icon type="CharacterBox" source="D|#00f7ff" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Event Settings</specializationType>
+          <specializationTypeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</specializationTypeId>
+          <text>Add Event Settings</text>
+          <defaultName>NewAssociationEventSettings</defaultName>
+          <icon type="FontAwesome" source="bolt" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-created">
+          <script>createElement("Association Source End Extension", "[source]", element.id);
+createElement("Association Target End Extension", "[destination]", element.id);
+createElement("Association Event Settings", "[events]", element.id);</script>
+        </macro>
+      </macros>
+      <childElementSettings>
+        <childElementSetting type="Association Target End Extension" typeId="1cc6c731-af5f-41a0-9e82-44486f45b903">
+          <icon type="CharacterBox" source="D|#00f7ff" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>return "[target end extension]";</displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Association Source End Extension" typeId="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3">
+          <icon type="CharacterBox" source="S|#00f7ff" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>return "[source end extension]";</displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
+    </elementSetting>
     <elementSetting type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
       <icon type="CharacterBox" source="A|#ff8000" />
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -41,6 +143,7 @@
         <type order="0">Association Source End Settings</type>
         <type order="1">Association Destination End Settings</type>
         <type order="2">Association Visual Settings</type>
+        <type order="3">Association Event Settings</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -70,13 +173,29 @@
           <icon type="CharacterBox" source="V|#AB47BC" />
           <allowMultiple>false</allowMultiple>
         </option>
+        <option type="element">
+          <specializationType>Association Event Settings</specializationType>
+          <specializationTypeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</specializationTypeId>
+          <text>Add Event Settings</text>
+          <defaultName>NewAssociationEventSettings</defaultName>
+          <icon type="FontAwesome" source="bolt" />
+          <allowMultiple>false</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
-          <script>createElement("Association Source End Settings", "[source]", context.id);
-createElement("Association Destination End Settings", "[destination]", context.id);</script>
+          <script>createElement("Association Source End Settings", `${element.getName()} Source End`, element.id);
+createElement("Association Destination End Settings", `${element.getName()} Target End`, element.id);
+createElement("Association Event Settings", "[events]", element.id);</script>
+        </macro>
+        <macro trigger="on-name-changed">
+          <script>var sourceEnd = element.getChildren("Association Source End Settings")[0];
+sourceEnd.setName(`${element.getName()} Source End`);
+
+var sourceEnd = element.getChildren("Association Destination End Settings")[0];
+sourceEnd.setName(`${element.getName()} Target End`);</script>
         </macro>
       </macros>
       <childElementSettings>
@@ -150,6 +269,107 @@ createElement("Association Destination End Settings", "[destination]", context.i
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingSettings />
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+        <childElementSetting type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+          <icon type="FontAwesome" source="bolt" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>[events]</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Association Event Handler</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <text>On Loaded Event</text>
+              <defaultName>On Loaded</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <text>On Created Event</text>
+              <defaultName>On Created</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <text>On Changed Event</text>
+              <defaultName>On Changed</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <text>On Name Changed Event</text>
+              <defaultName>On Name Changed</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <text>On Type Changed Event</text>
+              <defaultName>On Type Changed</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <text>On Deleted</text>
+              <defaultName>On Deleted</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingSettings />
+          <childElementSettings>
+            <childElementSetting type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+              <icon type="FontAwesome" source="code" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <allowRename>false</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>false</allowMapping>
+              <allowSorting>false</allowSorting>
+              <sortChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type>Script</type>
+                </targetTypes>
+                <defaultTypeId>043eee26-1591-42ac-9f2c-fc911b070eb1</defaultTypeId>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>false</allowIsNullable>
+                <allowIsCollection>false</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -464,10 +684,11 @@ createElement("Association Destination End Settings", "[destination]", context.i
         <type order="1">Element Settings</type>
         <type order="2">Element Extension</type>
         <type order="3">Association Settings</type>
-        <type order="4">Package Settings</type>
-        <type order="5">Package Extension</type>
-        <type order="6">Core Type</type>
-        <type order="7">Script</type>
+        <type order="4">Association Extension</type>
+        <type order="5">Package Settings</type>
+        <type order="6">Package Extension</type>
+        <type order="7">Core Type</type>
+        <type order="8">Script</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -500,8 +721,16 @@ createElement("Association Destination End Settings", "[destination]", context.i
           <specializationType>Association Settings</specializationType>
           <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
           <text>New Association Type</text>
-          <defaultName>NewAssociationSettings</defaultName>
+          <defaultName>NewAssociationType</defaultName>
           <icon type="CharacterBox" source="A|#ff8000" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Association Extension</specializationType>
+          <specializationTypeId>41cb9c1a-063e-4ff4-889a-7501235351eb</specializationTypeId>
+          <text>New Association Extension</text>
+          <defaultName>NewAssociationExtension</defaultName>
+          <icon type="CharacterBox" source="X|#ff8000" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
@@ -844,6 +1073,14 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             <option type="element">
               <specializationType>Element Event Handler</specializationType>
               <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Changed Event</text>
+              <defaultName>On Changed</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Name Changed Event</text>
               <defaultName>On Name Changed</defaultName>
               <icon type="FontAwesome" source="code" />
@@ -862,6 +1099,14 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Mapped Event</text>
               <defaultName>On Mapped</defaultName>
+              <icon type="FontAwesome" source="code" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <text>On Deleted</text>
+              <defaultName>On Deleted</defaultName>
               <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
@@ -1248,4 +1493,5 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
   </elementSettings>
   <elementExtensions />
   <associationSettings />
+  <associationExtensions />
 </settings>

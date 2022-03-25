@@ -12,6 +12,12 @@ namespace Intent.ModuleBuilder.Api
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<AssociationExtensionModel> GetAssociationExtensionModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(AssociationExtensionModel.SpecializationTypeId)
+                .Select(x => new AssociationExtensionModel(x))
+                .ToList();
+        }
         public static IList<AssociationSettingsModel> GetAssociationSettingsModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(AssociationSettingsModel.SpecializationTypeId)

@@ -15,6 +15,7 @@ namespace Intent.ModuleBuilder.Api
     public class ElementEventSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Element Event Settings";
+        public const string SpecializationTypeId = "3c628ab0-2407-4fb0-8507-ddde986cff2e";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Ignore)]
@@ -35,6 +36,7 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+        public string Comment => _element.Comment;
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
@@ -72,6 +74,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ElementEventHandlerModel(x))
             .ToList();
 
+        public IList<ElementEventHandlerModel> OnChangedEvents => _element.ChildElements
+            .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public IList<ElementEventHandlerModel> OnLoadedEvents => _element.ChildElements
             .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
@@ -83,25 +90,26 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ElementEventHandlerModel(x))
             .ToList();
 
-        public List<ElementMacroPersistable> ToPersistable()
-        {
-            // TODO: The OnCreatedEvents & OnLoadedEvents returns all ElementMacroModels. Need solution
-            return OnCreatedEvents.Select(x => x.ToPersistable()).ToList();
-        }
-        public const string SpecializationTypeId = "3c628ab0-2407-4fb0-8507-ddde986cff2e";
-
-        public string Comment => _element.Comment;
-
         public IList<ElementEventHandlerModel> OnMappedEvents => _element.ChildElements
                     .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
                     .Select(x => new ElementEventHandlerModel(x))
                     .ToList();
+
+        public IList<ElementEventHandlerModel> OnDeleteds => _element.ChildElements
+            .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
 
         public IList<ElementEventHandlerModel> OnTypeChangedEvents => _element.ChildElements
                     .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
                     .Select(x => new ElementEventHandlerModel(x))
                     .ToList();
 
+        public List<ElementMacroPersistable> ToPersistable()
+        {
+            // TODO: The OnCreatedEvents & OnLoadedEvents returns all ElementMacroModels. Need solution
+            return OnCreatedEvents.Select(x => x.ToPersistable()).ToList();
+        }
     }
 
     [IntentManaged(Mode.Fully)]
