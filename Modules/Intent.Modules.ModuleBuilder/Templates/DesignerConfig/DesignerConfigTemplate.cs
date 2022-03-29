@@ -91,34 +91,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
 
         private static string Serialize<T>(T @object)
         {
-            //using (var stringWriter = new Utf8StringWriter())
-            //{
-            //    var serializer = new XmlSerializer(typeof(T));
-            //    var serializerNamespaces = new XmlSerializerNamespaces();
-            //    serializerNamespaces.Add("", "");
+            using var stringWriter = new Utf8StringWriter();
+            var xmlSerializer = new XmlSerializer(typeof(T));
 
-            //    serializer.Serialize(stringWriter, @object, serializerNamespaces);
-            //    stringWriter.Close();
-
-            //    return stringWriter.ToString();
-            //}
-            using var memoryStream = new MemoryStream();
-            var serializer = new XmlSerializer(typeof(T));
-            var serializerNamespaces = new XmlSerializerNamespaces();
-            serializerNamespaces.Add("", "");
-            var streamWriter = XmlWriter.Create(memoryStream, new()
+            var writer = XmlWriter.Create(stringWriter, new XmlWriterSettings
             {
                 Encoding = Encoding.UTF8,
                 Indent = true
             });
-            serializer.Serialize(streamWriter, @object, serializerNamespaces);
-            return Encoding.UTF8.GetString(memoryStream.ToArray());
+
+            var xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+
+            xmlSerializer.Serialize(writer, @object, xmlSerializerNamespaces);
+
+            stringWriter.Close();
+            return stringWriter.ToString();
         }
 
         private class Utf8StringWriter : StringWriter
         {
             public override Encoding Encoding => Encoding.UTF8;
         }
-
     }
 }
