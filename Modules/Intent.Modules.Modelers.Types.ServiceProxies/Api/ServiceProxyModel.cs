@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
-using Intent.RoslynWeaver.Attributes;
 using Intent.Modules.Common;
+using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -86,6 +86,16 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         public static ServiceProxyModel AsServiceProxyModel(this ICanBeReferencedType type)
         {
             return type.IsServiceProxyModel() ? new ServiceProxyModel((IElement)type) : null;
+        }
+
+        public static bool HasNewMappingSettingsMapping(this ServiceProxyModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "df491bea-8a85-4bc9-a93d-41b7abb80ffb";
+        }
+
+        public static IElementMapping GetNewMappingSettingsMapping(this ServiceProxyModel type)
+        {
+            return type.HasNewMappingSettingsMapping() ? type.Mapping : null;
         }
     }
 }

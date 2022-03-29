@@ -37,10 +37,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.Sql.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.Sql.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>d2d4fd91-e669-4bc0-a558-78d334492481</ProjectId>

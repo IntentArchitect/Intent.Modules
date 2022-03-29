@@ -17,7 +17,7 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install target="*" src="Intent.Metadata/Module Builder/Intent.Common.Types/Intent.Common.Types.pkg.config" externalReference="870ad967-cbd4-4ea9-b86d-9c3a5d55ea67" />
+    <install src="Intent.Metadata/Module Builder/Intent.Common.Types/Intent.Common.Types.pkg.config" externalReference="870ad967-cbd4-4ea9-b86d-9c3a5d55ea67" />
     <install target="Module Builder" src="modelers/Common Types.designer.settings" externalReference="55d06096-83fe-4acf-86ef-586d254e5170" />
   </metadata>
   <templates />

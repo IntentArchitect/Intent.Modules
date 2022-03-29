@@ -37,10 +37,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.Java.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.Java.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>

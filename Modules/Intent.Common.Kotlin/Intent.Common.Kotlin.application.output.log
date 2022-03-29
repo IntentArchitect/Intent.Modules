@@ -4,7 +4,7 @@
   <FileLogs>
     <FileLog>
       <ProjectId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/Intent.Common.Kotlin.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Kotlin.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

@@ -35,6 +35,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         //public string FolderPath => string.Join("/", OutputFolder);
         //public string FolderNamespace => string.Join(".", OutputFolder);
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

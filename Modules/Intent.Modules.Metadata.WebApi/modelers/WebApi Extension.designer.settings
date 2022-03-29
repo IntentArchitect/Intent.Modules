@@ -27,4 +27,5 @@ if (!httpVerb) {
     </elementExtension>
   </elementExtensions>
   <associationSettings />
+  <associationExtensions />
 </settings>

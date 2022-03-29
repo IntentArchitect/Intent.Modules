@@ -93,7 +93,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modelers.Eventing.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.Eventing.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

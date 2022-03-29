@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Types.Api;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Html.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 

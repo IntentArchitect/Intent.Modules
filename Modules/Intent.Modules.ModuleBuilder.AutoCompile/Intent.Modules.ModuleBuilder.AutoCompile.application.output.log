@@ -16,7 +16,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>dec6ff7a-9304-4bbe-9dcc-b8b49b420d0f</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.AutoCompile.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.AutoCompile.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

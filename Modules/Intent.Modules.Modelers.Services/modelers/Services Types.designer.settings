@@ -86,10 +86,10 @@
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>true</allowMapping>
       <allowSorting>true</allowSorting>
-      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">DTO-Field</type>
@@ -121,9 +121,9 @@
           <mappings>
             <mapping id="e45defc1-8775-49c0-bf70-5ec59684e944">
               <criteria specializationType="Class">
-                <hasTypeReference d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
-                <isCollection d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
-                <hasChildren d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
               </criteria>
               <mapTo specializationType="DTO" childMappingMode="map-to-child" />
               <behaviour autoSelectChildren="true" />
@@ -131,7 +131,7 @@
                 <mapping id="a4c91030-1ba4-4939-8896-1a219e98de3e">
                   <criteria specializationType="Attribute">
                     <hasTypeReference>true</hasTypeReference>
-                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren>false</hasChildren>
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
@@ -141,7 +141,7 @@
                 <mapping id="8988ddc1-c496-4ff3-9606-bebef9015fcd">
                   <criteria specializationType="Operation">
                     <hasTypeReference>true</hasTypeReference>
-                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <hasChildren>false</hasChildren>
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
@@ -152,7 +152,7 @@
                   <criteria specializationType="Association Target End">
                     <hasTypeReference>true</hasTypeReference>
                     <isCollection>true</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="false" />
@@ -162,7 +162,7 @@
                   <criteria specializationType="Association Target End">
                     <hasTypeReference>true</hasTypeReference>
                     <isCollection>false</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="e45defc1-8775-49c0-bf70-5ec59684e944" />
                   <behaviour autoSelectChildren="false" />
@@ -172,7 +172,7 @@
                   <criteria specializationType="Association Source End">
                     <hasTypeReference>true</hasTypeReference>
                     <isCollection>true</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="false" />
@@ -182,7 +182,7 @@
                   <criteria specializationType="Association Source End">
                     <hasTypeReference>true</hasTypeReference>
                     <isCollection>false</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="e45defc1-8775-49c0-bf70-5ec59684e944" />
                   <behaviour autoSelectChildren="false" />
@@ -192,7 +192,7 @@
                   <criteria specializationType="Generalization Target End">
                     <hasTypeReference>true</hasTypeReference>
                     <isCollection>false</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo childMappingMode="traverse" useMappingSettings="e45defc1-8775-49c0-bf70-5ec59684e944" />
                   <behaviour autoSelectChildren="true" />
@@ -213,10 +213,10 @@
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
-          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
@@ -246,10 +246,10 @@
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
-      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Operation</type>
@@ -277,10 +277,10 @@
           <allowGenericTypes>true</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>false</isRequired>
@@ -322,10 +322,10 @@
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>false</allowSorting>
-              <sortChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>true</allowTypeReference>
-              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
@@ -410,4 +410,5 @@
     </elementExtension>
   </elementExtensions>
   <associationSettings />
+  <associationExtensions />
 </settings>

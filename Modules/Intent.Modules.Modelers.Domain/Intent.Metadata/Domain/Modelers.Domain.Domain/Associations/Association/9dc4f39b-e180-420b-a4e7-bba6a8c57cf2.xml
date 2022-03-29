@@ -2,7 +2,7 @@
 <association id="9dc4f39b-e180-420b-a4e7-bba6a8c57cf2">
   <sourceEnd id="a184c047-caf2-4353-92de-d236b1bc12cc" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
     <name>NewClass1</name>
-    <display>NewClass1: NewClass1?[*]</display>
+    <display>NewClass1: NewClass1[*]?</display>
     <order>0</order>
     <typeReference id="e17d7e96-a777-4b64-84b1-7b173b3267a9">
       <typeId>330867e2-0c19-4ef8-9a87-75a1095e655e</typeId>

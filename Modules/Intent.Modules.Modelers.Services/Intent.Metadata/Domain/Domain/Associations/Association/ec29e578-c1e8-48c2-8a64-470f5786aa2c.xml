@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <association id="ec29e578-c1e8-48c2-8a64-470f5786aa2c">
-  <sourceEnd id="79ee1a40-2cb4-412a-aa87-e83583df9ac9">
+  <sourceEnd id="79ee1a40-2cb4-412a-aa87-e83583df9ac9" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
     <name>Movie</name>
-    <display>Movie : Movie</display>
+    <display>Movie: Movie</display>
+    <order>1</order>
     <typeReference id="82aa79a8-e279-4a1d-8706-e5fbfb769e04">
       <typeId>a97429c9-464a-4618-8692-2d1019bc732c</typeId>
       <isNavigable>false</isNavigable>
@@ -16,9 +17,10 @@
     </typeReference>
     <stereotypes />
   </sourceEnd>
-  <targetEnd id="ec29e578-c1e8-48c2-8a64-470f5786aa2c">
+  <targetEnd id="ec29e578-c1e8-48c2-8a64-470f5786aa2c" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>Subclasses</name>
-    <display>Subclasses : Subclass?[*]</display>
+    <display>Subclasses: Subclass[*]?</display>
+    <order>5</order>
     <typeReference id="9eeeebcb-4990-4cf6-b961-48e328af48e7">
       <typeId>7cc0a505-5ee0-41f3-8141-9a2cc640e626</typeId>
       <isNavigable>true</isNavigable>

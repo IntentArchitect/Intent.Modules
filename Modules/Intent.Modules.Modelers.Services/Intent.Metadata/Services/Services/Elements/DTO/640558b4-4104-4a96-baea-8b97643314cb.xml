@@ -9,6 +9,7 @@
   <mappedClass>
     <applicationId>a08d31d9-4b5c-47e0-aad6-906e5a9e1bcb</applicationId>
     <metadataId>Domain</metadataId>
+    <mappingSettingsId>1f747d14-681c-4a20-8c68-34223f41b825</mappingSettingsId>
     <autoSyncTypeReference>true</autoSyncTypeReference>
     <mappedPath>
       <target id="06919864-4a6b-4894-ab64-f660d41e583d" name="Character" type="element" specialization="Class" />

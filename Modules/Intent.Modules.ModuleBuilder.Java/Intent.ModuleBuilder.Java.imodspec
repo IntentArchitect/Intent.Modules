@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Java</id>
   <version>3.2.2</version>
@@ -26,9 +26,11 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.ModuleBuilder" version="3.2.0" />
-    <dependency id="Intent.Common" version="3.1.0" />
-    <dependency id="Intent.Common.Types" version="3.1.0" />
+    <dependency id="Intent.Common" version="3.2.0" />
+    <dependency id="Intent.Common.CSharp" version="3.2.0" />
+    <dependency id="Intent.Common.Types" version="3.2.0" />
+    <dependency id="Intent.ModuleBuilder" version="3.3.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.2.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

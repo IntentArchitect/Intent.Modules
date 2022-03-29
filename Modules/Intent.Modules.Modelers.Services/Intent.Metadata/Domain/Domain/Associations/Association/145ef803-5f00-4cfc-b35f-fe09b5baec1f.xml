@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <association id="145ef803-5f00-4cfc-b35f-fe09b5baec1f">
-  <sourceEnd id="9eeb65f2-f6c4-4451-b59f-686479a57637">
+  <sourceEnd id="9eeb65f2-f6c4-4451-b59f-686479a57637" type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
     <name>OldClasses</name>
-    <display>OldClasses : OldClass?[*]</display>
+    <display>OldClasses: OldClass[*]?</display>
+    <order>6</order>
     <typeReference id="a259597c-e904-471d-a54e-d573d1c0719e">
       <typeId>4579d512-e91e-4582-a0d3-d0137d328164</typeId>
       <isNavigable>false</isNavigable>
@@ -16,9 +17,10 @@
     </typeReference>
     <stereotypes />
   </sourceEnd>
-  <targetEnd id="145ef803-5f00-4cfc-b35f-fe09b5baec1f">
+  <targetEnd id="145ef803-5f00-4cfc-b35f-fe09b5baec1f" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>asdf</name>
-    <display>asdf : Movie</display>
+    <display>asdf: Movie</display>
+    <order>1</order>
     <typeReference id="3e1ec93a-47cb-4a8f-b9c7-7097abcfb029">
       <typeId>a97429c9-464a-4618-8692-2d1019bc732c</typeId>
       <isNavigable>true</isNavigable>

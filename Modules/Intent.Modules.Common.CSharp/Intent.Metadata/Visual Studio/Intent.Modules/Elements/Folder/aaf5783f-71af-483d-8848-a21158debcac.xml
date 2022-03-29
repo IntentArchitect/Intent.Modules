@@ -1,25 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="aaf5783f-71af-483d-8848-a21158debcac" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+<class id="aaf5783f-71af-483d-8848-a21158debcac" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
   <name>Settings</name>
   <display>Settings</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <order>8</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>dbe0fab1-2720-40f2-9f2c-76719e833d59</parentFolderId>
+  <packageId>d7572075-96b5-4374-89fc-f4c831ee3147</packageId>
+  <packageName>Intent.Modules</packageName>
   <stereotypes />
-  <childElements>
-    <childElement id="0cb02e37-da33-4d07-b41a-866247e67436" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
-      <name>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</name>
-      <display>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</display>
-      <externalReference>Intent.ModuleBuilder</externalReference>
-      <isAbstract>false</isAbstract>
-      <order>0</order>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>aaf5783f-71af-483d-8848-a21158debcac</parentFolderId>
-      <stereotypes />
-      <childElements />
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

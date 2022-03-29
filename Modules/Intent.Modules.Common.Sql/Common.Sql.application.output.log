@@ -4,7 +4,7 @@
   <FileLogs>
     <FileLog>
       <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Common.Sql.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Sql.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

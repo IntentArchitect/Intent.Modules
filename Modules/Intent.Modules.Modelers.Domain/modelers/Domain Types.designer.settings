@@ -102,10 +102,10 @@ diagram.loadDiagram();
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
-      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Attribute</type>
@@ -258,10 +258,10 @@ white-space: inherit;`</style>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>false</allowSorting>
-          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
@@ -289,10 +289,10 @@ white-space: inherit;`</style>
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>true</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
             <type order="0">Parameter</type>
@@ -322,18 +322,18 @@ white-space: inherit;`</style>
               <mappings>
                 <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
                   <criteria specializationType="Class">
-                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
-                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="Class Constructor" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="true" />
                   <childMappings>
                     <mapping id="5601382d-8b87-465f-bc8c-d41fcc28185d">
                       <criteria specializationType="Attribute">
-                        <hasTypeReference d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
-                        <isCollection d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
                       <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
@@ -341,9 +341,9 @@ white-space: inherit;`</style>
                     </mapping>
                     <mapping id="6a1129e9-e2a3-4df5-9678-98bc9d839836">
                       <criteria specializationType="Association Target End">
-                        <hasTypeReference d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
-                        <isCollection d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren d13p1:nil="true" xmlns:d13p1="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
                       <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
@@ -365,10 +365,10 @@ white-space: inherit;`</style>
           <allowGenericTypes>true</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
             <isRequired>false</isRequired>
@@ -410,10 +410,10 @@ white-space: inherit;`</style>
               <allowGenericTypes>true</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>true</allowSorting>
-              <sortChildren d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>true</allowTypeReference>
-              <allowConvertToType d8p1:nil="true" xmlns:d8p1="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
@@ -445,10 +445,10 @@ white-space: inherit;`</style>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
-      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Comment Association</type>
@@ -502,10 +502,10 @@ white-space: inherit;`</style>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
-      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <mappingSettings />
       <diagramSettings>
@@ -530,8 +530,6 @@ white-space: inherit;`</style>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
-        <classVisualSettings />
-        <associationVisualSettings />
       </diagramSettings>
       <childElementSettings />
     </elementSetting>
@@ -739,4 +737,5 @@ white-space: inherit;`</style>
       </visualSettings>
     </associationSetting>
   </associationSettings>
+  <associationExtensions />
 </settings>

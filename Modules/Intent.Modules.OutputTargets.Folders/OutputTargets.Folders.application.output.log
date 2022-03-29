@@ -58,7 +58,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>576b0748-e723-411b-a944-7cfedbeb9498</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.OutputTargets.Folders.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.OutputTargets.Folders.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

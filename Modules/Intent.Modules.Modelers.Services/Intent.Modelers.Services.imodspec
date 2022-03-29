@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
   <version>3.1.3</version>
@@ -12,8 +12,8 @@
   <templates></templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.1.11" />
-    <dependency id="Intent.Common.Types" version="3.1.1" />
+    <dependency id="Intent.Common" version="3.2.0" />
+    <dependency id="Intent.Common.Types" version="3.2.0" />
   </dependencies>
   <metadata>
     <install src="modelers/Services Types.designer.settings" externalReference="55e213e3-1e43-4bb5-abe6-6ff77af23f39" />

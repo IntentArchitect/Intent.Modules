@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<settings>
+<settings version="3.1.1">
   <id>a24d301b-f0f5-4899-b1ab-4bc5087bd4b2</id>
   <name>Html Types</name>
   <designerReferences />
@@ -32,10 +32,10 @@
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
       <allowSorting>false</allowSorting>
-      <sortChildren d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>true</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeReferenceSetting>
         <isRequired>true</isRequired>
@@ -49,6 +49,7 @@
         <isNullableDefault>false</isNullableDefault>
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
+      <mappingSettings />
       <childElementSettings />
     </elementSetting>
   </elementSettings>
@@ -68,7 +69,9 @@
       <typeOrder>
         <type order="2">Html File Template</type>
       </typeOrder>
+      <mappingSettings />
     </elementExtension>
   </elementExtensions>
   <associationSettings />
+  <associationExtensions />
 </settings>

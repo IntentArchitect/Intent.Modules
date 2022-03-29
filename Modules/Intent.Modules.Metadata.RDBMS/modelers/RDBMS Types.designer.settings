@@ -17,7 +17,7 @@
       <sortChildren>manually</sortChildren>
       <allowFindInView>false</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
-      <allowConvertToType d4p1:nil="true" xmlns:d4p1="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Index Column</type>
@@ -44,18 +44,18 @@
           <mappings>
             <mapping id="0f543188-543a-4a5b-9cfc-361ec6c4756e">
               <criteria specializationType="Class">
-                <hasTypeReference d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
-                <isCollection d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
-                <hasChildren d9p1:nil="true" xmlns:d9p1="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
               </criteria>
               <mapTo specializationType="Index Column" childMappingMode="map-to-child" />
               <behaviour autoSelectChildren="false" />
               <childMappings>
                 <mapping id="8a28da51-6a06-48ee-a119-a117324c04f3">
                   <criteria specializationType="Attribute">
-                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
-                    <isCollection d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="Index Column" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="false" />
@@ -63,9 +63,9 @@
                 </mapping>
                 <mapping id="c6c0adf2-4dae-4b83-8715-ef852f4249d5">
                   <criteria specializationType="Association Target End">
-                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection>false</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="Index Column" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="false" />
@@ -73,9 +73,9 @@
                 </mapping>
                 <mapping id="ee35b994-0380-4dcd-9dfa-0badd77d17d6">
                   <criteria specializationType="Association Source End">
-                    <hasTypeReference d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection>false</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="Index Column" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="false" />
@@ -85,7 +85,7 @@
                   <criteria specializationType="Generalization Target End">
                     <hasTypeReference>true</hasTypeReference>
                     <isCollection>false</isCollection>
-                    <hasChildren d11p1:nil="true" xmlns:d11p1="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo childMappingMode="traverse" useMappingSettings="0f543188-543a-4a5b-9cfc-361ec6c4756e" />
                   <behaviour autoSelectChildren="false" />
@@ -110,10 +110,10 @@
           <allowGenericTypes>false</allowGenericTypes>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
-          <sortChildren d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
           <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType d6p1:nil="true" xmlns:d6p1="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder />
           <creationOptions />
@@ -144,4 +144,5 @@
     </elementExtension>
   </elementExtensions>
   <associationSettings />
+  <associationExtensions />
 </settings>

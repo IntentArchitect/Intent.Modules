@@ -37,7 +37,7 @@
     </childElement>
     <childElement id="ad502434-d3e4-4446-9696-53e84a1676e9" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
       <name>Constructor</name>
-      <display>EmptyClass(param: string)</display>
+      <display>TestClass(param: string)</display>
       <isAbstract>false</isAbstract>
       <order>1</order>
       <genericTypes />

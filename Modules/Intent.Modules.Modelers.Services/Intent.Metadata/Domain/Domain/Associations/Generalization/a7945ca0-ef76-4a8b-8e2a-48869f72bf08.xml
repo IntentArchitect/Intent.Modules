@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <association id="a7945ca0-ef76-4a8b-8e2a-48869f72bf08">
-  <sourceEnd id="979108a5-bec7-4d4b-ac21-50e7bf7722dd">
+  <sourceEnd id="979108a5-bec7-4d4b-ac21-50e7bf7722dd" type="Generalization Source End" typeId="8190bf43-222c-4b53-8a44-14626efe3574">
     <name>NewClass</name>
-    <display>NewClass : NewClass</display>
+    <display>NewClass: NewClass</display>
+    <order>2</order>
     <typeReference id="7daf4a3c-4c20-458f-b3c7-fe0f9ef42c9c">
       <typeId>9a717608-5fb6-4d68-bd21-2dd4dc7613b4</typeId>
       <isNavigable>false</isNavigable>
@@ -16,9 +17,10 @@
     </typeReference>
     <stereotypes />
   </sourceEnd>
-  <targetEnd id="a7945ca0-ef76-4a8b-8e2a-48869f72bf08">
+  <targetEnd id="a7945ca0-ef76-4a8b-8e2a-48869f72bf08" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
     <name>Subclass</name>
-    <display>Subclass : Subclass</display>
+    <display>Subclass: Subclass</display>
+    <order>12</order>
     <typeReference id="4617b43c-7264-4d9d-8964-d4ad4729ca70">
       <typeId>7cc0a505-5ee0-41f3-8141-9a2cc640e626</typeId>
       <isNavigable>true</isNavigable>

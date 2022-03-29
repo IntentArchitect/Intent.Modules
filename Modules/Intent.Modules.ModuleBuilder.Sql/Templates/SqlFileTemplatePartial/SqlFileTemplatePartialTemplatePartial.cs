@@ -1,17 +1,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.Sql.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
-using Intent.ModuleBuilder.Api;
+using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-using Intent.ModuleBuilder.Sql.Api;
-using Intent.Modules.Common;
-using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -35,6 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         //public string FolderPath => string.Join("/", OutputFolder);
         //public string FolderNamespace => string.Join(".", OutputFolder);
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             return new CSharpFileConfig(

@@ -4,13 +4,13 @@ using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Engine;
+using Intent.Metadata.Models;
+using Intent.ModuleBuilder.Sql.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-using Intent.ModuleBuilder.Sql.Api;
-using Intent.Metadata.Models;
-using Intent.Modules.Common.CSharp.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]

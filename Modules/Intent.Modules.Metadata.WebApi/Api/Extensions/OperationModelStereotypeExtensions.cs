@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
@@ -28,6 +30,16 @@ namespace Intent.Metadata.WebApi.Api
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
+        public static IReadOnlyCollection<Secured> GetSecureds(this OperationModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Secured")
+                .Select(stereotype => new Secured(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
         public static bool HasSecured(this OperationModel model)
         {
             return model.HasStereotype("Secured");
@@ -37,6 +49,16 @@ namespace Intent.Metadata.WebApi.Api
         {
             var stereotype = model.GetStereotype("Unsecured");
             return stereotype != null ? new Unsecured(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<Unsecured> GetUnsecureds(this OperationModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Unsecured")
+                .Select(stereotype => new Unsecured(stereotype))
+                .ToArray();
+
+            return stereotypes;
         }
 
         public static bool HasUnsecured(this OperationModel model)

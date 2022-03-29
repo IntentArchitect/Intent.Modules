@@ -1,19 +1,19 @@
-using System.Collections.Generic;
-using Intent.Engine;
-using Intent.Modules.Common.Templates;
-using Intent.ModuleBuilder.TypeScript.Api;
-using Intent.RoslynWeaver.Attributes;
-using Intent.Templates;
-using Intent.Metadata.Models;
-using Intent.Modules.Common;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Intent.Modules.Common.Types.Api;
+using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
+using Intent.ModuleBuilder.TypeScript.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
+using Intent.RoslynWeaver.Attributes;
+using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]

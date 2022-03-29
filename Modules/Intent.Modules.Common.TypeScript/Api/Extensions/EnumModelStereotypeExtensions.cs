@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
@@ -15,6 +17,16 @@ namespace Intent.Modules.Common.TypeScript.Api
         {
             var stereotype = model.GetStereotype("TypeScript");
             return stereotype != null ? new TypeScript(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<TypeScript> GetTypeScripts(this EnumModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("TypeScript")
+                .Select(stereotype => new TypeScript(stereotype))
+                .ToArray();
+
+            return stereotypes;
         }
 
         public static bool HasTypeScript(this EnumModel model)

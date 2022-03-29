@@ -16,7 +16,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>68a6b5aa-3c9a-40f6-b191-6d46ea2f9d5f</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.TypeScript.Weaving.Decorators.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.TypeScript.Weaving.Decorators.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

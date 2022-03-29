@@ -32,10 +32,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModeSpecFile</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.Kotlin.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>430da63e-e53b-4257-9ea7-b62823d045ef</ProjectId>
