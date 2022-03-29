@@ -29,7 +29,7 @@ namespace <#= Namespace #>
         }
 <#      if (stereotypeDefinition.ApplyMode == StereotypeApplyMode.Manually) { #>
 
-        public static IReadOnlyCollection<<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier().Pluralize() #>(this <#= ModelClassName #> model)
+        public static IReadOnlyCollection<<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>> Get<#= ForcePluralize(stereotypeDefinition.Name.ToCSharpIdentifier()) #>(this <#= ModelClassName #> model)
         {
             var stereotypes = model
                 .GetStereotypes("<#= stereotypeDefinition.Name #>")

@@ -68,18 +68,10 @@
             </remarks>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.WasHandled">
-            <summary>
-            Whether or not <see cref="M:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.MarkHandled"/> has been called.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.MarkHandled">
-            <summary>
-            Sets <see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.WasHandled"/> to <see langword="true"/> if it wasn't already.
-            </summary>
-            <remarks>
-            Should be called by handlers so that publishers can query <see cref="P:Intent.Modules.Common.CSharp.Configuration.AppSettingRegistrationRequest.WasHandled"/>
-            and potentially show warnings when its value is <see langword="false"/>.
-            </remarks>
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest">
             <summary>
@@ -138,18 +130,10 @@
             </remarks>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.WasHandled">
-            <summary>
-            Whether or not <see cref="M:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.MarkHandled"/> has been called.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.MarkHandled">
-            <summary>
-            Sets <see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.WasHandled"/> to <see langword="true"/> if it wasn't already.
-            </summary>
-            <remarks>
-            Should be called by handlers so that publishers can query <see cref="P:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.WasHandled"/>
-            and potentially show warnings when its value is <see langword="false"/>.
-            </remarks>
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest">
             <summary>
@@ -163,6 +147,15 @@
             <param name="key">The key string for the variable.</param>
             <param name="value">The value object for the variable.</param>
             <param name="targetProfiles">The target profiles that should register this environment variable. If null, the variable will be registered with all profiles.</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.#ctor(System.String,System.Object,System.Collections.Generic.IEnumerable{System.String},System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest"/>.
+            </summary>
+            <param name="key">The key string for the variable.</param>
+            <param name="value">The value object for the variable.</param>
+            <param name="targetProfiles">The target profiles that should register this environment variable. If null, the variable will be registered with all profiles.</param>
+            <param name="forProjectWithRole">The <see cref="P:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.ForProjectWithRole"/> value.</param>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.Key">
             <summary>
@@ -178,6 +171,22 @@
             <summary>
             The target profiles that should register this environment variable. If null, the variable will be registered with all profiles.
             </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.ForProjectWithRole">
+            <summary>
+            Optional. Name of the output target 'Role' which must be present in the project within
+            the Intent Architect Visual Studio designer.
+            </summary>
+            <remarks>
+            Used for disambiguating which <c>launchSettings.json</c> file to apply to when a solution has multiple
+            projects each with their own <c>launchSettings.json</c> file.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.WasHandled">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest.MarkHandled">
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest">
             <summary>
@@ -216,18 +225,110 @@
             </remarks>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.WasHandled">
-            <summary>
-            Whether or not <see cref="M:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.MarkHandled"/> has been called.
-            </summary>
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.MarkHandled">
+            <inheritdoc />
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.IForProjectWithRoleRequest">
             <summary>
-            Sets <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.WasHandled"/> to <see langword="true"/> if it wasn't already.
+            Used for requests which should only apply to template instances under a project with a
+            particular output target 'Role' present under it within Intent Architect Visual Studio
+            designer.
             </summary>
             <remarks>
-            Should be called by handlers so that publishers can query <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.WasHandled"/>
+            Used for disambiguating which file to apply to when a solution has multiple
+            projects each with their own file.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.IForProjectWithRoleRequest.ForProjectWithRole">
+            <summary>
+            Optional. Name of the output target 'Role' which must be present in the project within
+            the Intent Architect Visual Studio designer.
+            </summary>
+            <remarks>
+            Used for disambiguating which file to apply to when a solution has multiple
+            projects each with their own file.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.IForProjectWithRoleRequest.WasHandled">
+            <summary>
+            Whether or not <see cref="M:Intent.Modules.Common.CSharp.Configuration.IForProjectWithRoleRequest.MarkHandled"/> has been called.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.IForProjectWithRoleRequest.MarkHandled">
+            <summary>
+            Sets <see cref="P:Intent.Modules.Common.CSharp.Configuration.IForProjectWithRoleRequest.WasHandled"/> to <see langword="true"/> if it wasn't already.
+            </summary>
+            <remarks>
+            Should be called by handlers so that publishers can query <see cref="P:Intent.Modules.Common.CSharp.Configuration.IForProjectWithRoleRequest.WasHandled"/>
             and potentially show warnings when its value is <see langword="false"/>.
             </remarks>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest">
+            <summary>
+            For adding a profile to a <c>launchSettings.json</c>.
+            </summary>
+            <remarks>
+            Templates for <c>launchSettings.json</c> files may listen for these
+            requests and update themselves accordingly.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.Name">
+            <summary>
+            The name of the profile to add.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.CommandName">
+            <summary>
+            The value to populate in the <c>commandName</c> field.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.LaunchBrowser">
+            <summary>
+            The value to populate in the <c>launchBrowser</c> field.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.LaunchUrl">
+            <summary>
+            The value to populate in the <c>launchUrl</c> field.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.ApplicationUrl">
+            <summary>
+            The value to populate in the <c>applicationUrl</c> field.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.PublishAllPorts">
+            <summary>
+            The value to populate in the <c>publishAllPorts</c> field.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.UseSsl">
+            <summary>
+            The value to populate in the <c>useSSL</c> field.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.EnvironmentVariables">
+            <summary>
+            Key/value pairs of environment variables to be added to profile.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.ForProjectWithRole">
+            <summary>
+            Optional. Name of the output target 'Role' which must be present in the project within
+            the Intent Architect Visual Studio designer.
+            </summary>
+            <remarks>
+            Used for disambiguating which <c>launchSettings.json</c> file to apply to when a solution has multiple
+            projects each with their own <c>launchSettings.json</c> file.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.WasHandled">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.MarkHandled">
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour">
             <summary>
@@ -535,6 +636,35 @@
             <param name="capitalizationBehaviour">The <see cref="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour"/> to use.</param>
             <returns>A valid C# identifier.</returns>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.CollectionFormatters">
+            <summary>
+            Common CSharp collection formatters
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.ListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+            <summary>
+            Formats collections using <see cref="T:System.Collections.Generic.List`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.IListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+            <summary>
+            Formats collections using <see cref="T:System.Collections.Generic.IList`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.ICollectionFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+            <summary>
+            Formats collections using <see cref="T:System.Collections.Generic.ICollection`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.CSharpCollectionFormatter`1">
             <summary>
             A collection formatter that uses a specified type.
@@ -545,35 +675,6 @@
             <summary>
             A collection formatter that uses the <paramref name="fullyQualifiedTypeName"/>.
             </summary>
-        </member>
-        <member name="T:Intent.Modules.Common.CSharp.CSharpCollections">
-            <summary>
-            Common CSharp collection formatters
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.CSharp.CSharpCollections.ListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
-            <summary>
-            Formats collections using <see cref="T:System.Collections.Generic.List`1"/>
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="template"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Intent.Modules.Common.CSharp.CSharpCollections.IListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
-            <summary>
-            Formats collections using <see cref="T:System.Collections.Generic.IList`1"/>
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="template"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Intent.Modules.Common.CSharp.CSharpCollections.ICollectionFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
-            <summary>
-            Formats collections using <see cref="T:System.Collections.Generic.ICollection`1"/>
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="template"></param>
-            <returns></returns>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter">
             <summary>

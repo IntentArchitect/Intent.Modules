@@ -51,5 +51,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
         {
             yield return Model.Type.ApiNamespace;
         }
+
+        private static string ForcePluralize(string value)
+        {
+            var pluralized = value.Pluralize();
+
+            return value == pluralized
+                ? $"{value}s"
+                : pluralized;
+        }
     }
 }
