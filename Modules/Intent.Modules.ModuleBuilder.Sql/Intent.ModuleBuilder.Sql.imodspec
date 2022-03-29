@@ -27,6 +27,8 @@
   </templates>
   <dependencies>
     <dependency id="Intent.ModuleBuilder" version="3.2.0" />
+    <dependency id="Intent.Common" version="3.1.0" />
+    <dependency id="Intent.Common.Types" version="3.1.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

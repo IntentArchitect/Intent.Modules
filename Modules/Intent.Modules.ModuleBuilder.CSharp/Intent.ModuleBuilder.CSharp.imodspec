@@ -28,7 +28,10 @@
     </template>
   </templates>
   <dependencies>
+    <dependency id="Intent.Common" version="3.1.11" />
+    <dependency id="Intent.Common.Types" version="3.1.0" />
     <dependency id="Intent.ModuleBuilder" version="3.1.7" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.1.6" />
   </dependencies>
   <metadata>
     <install target="Module Builder" src="modelers/CSharp.designer.settings" externalReference="1e3cc0d3-8901-498a-960b-4a51f915b92b" />
