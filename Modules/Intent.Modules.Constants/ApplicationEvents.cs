@@ -1,4 +1,7 @@
-﻿namespace Intent.Modules.Constants
+﻿using System;
+using Intent.SdkEvolutionHelpers;
+
+namespace Intent.Modules.Constants
 {
     public static class SoftwareFactoryEvents
     {
@@ -76,6 +79,10 @@
         public const string SeedDataRequiredEventKey = "EntityFrameworkEvents.SeedDataRequiredEvent.Key";
     }
 
+    /// <summary>
+    /// Obsolete. Use <c>Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest</c> instead.
+    /// </summary>
+    [Obsolete(WillBeRemovedIn.Version4)]
     public static class LaunchProfileRegistrationEvent
     {
         public const string EventId = nameof(LaunchProfileRegistrationEvent);

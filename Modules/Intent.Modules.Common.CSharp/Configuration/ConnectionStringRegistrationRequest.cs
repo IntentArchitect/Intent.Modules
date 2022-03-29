@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.CSharp.Configuration
     /// Web/App[.&lt;<see cref="RuntimeEnvironment"/>&gt;].config files may listen for these
     /// requests and update themselves accordingly.
     /// </remarks>
-    public class ConnectionStringRegistrationRequest
+    public class ConnectionStringRegistrationRequest : IForProjectWithRoleRequest
     {
         /// <summary>
         /// Creates a new instance of <see cref="ConnectionStringRegistrationRequest"/>.
@@ -70,18 +70,10 @@ namespace Intent.Modules.Common.CSharp.Configuration
         /// </remarks>
         public string ForProjectWithRole { get; set; }
 
-        /// <summary>
-        /// Whether or not <see cref="MarkHandled"/> has been called.
-        /// </summary>
+        /// <inheritdoc />
         public bool WasHandled { get; private set; }
 
-        /// <summary>
-        /// Sets <see cref="WasHandled"/> to <see langword="true"/> if it wasn't already.
-        /// </summary>
-        /// <remarks>
-        /// Should be called by handlers so that publishers can query <see cref="WasHandled"/>
-        /// and potentially show warnings when its value is <see langword="false"/>.
-        /// </remarks>
+        /// <inheritdoc />
         public void MarkHandled() => WasHandled = true;
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Intent.Modules.Common.CSharp.Configuration
+﻿namespace Intent.Modules.Common.CSharp.Configuration
 {
     /// <summary>
     /// For adding a section or key to an Azure Functions host.json file. If the file already
@@ -10,7 +8,7 @@ namespace Intent.Modules.Common.CSharp.Configuration
     /// Templates for host.json files may listen for these requests and update themselves
     /// accordingly.
     /// </remarks>
-    public class HostSettingRegistrationRequest
+    public class HostSettingRegistrationRequest : IForProjectWithRoleRequest
     {
         /// <summary>
         /// Creates a new instance of <see cref="HostSettingRegistrationRequest"/>.
@@ -46,18 +44,10 @@ namespace Intent.Modules.Common.CSharp.Configuration
         /// </remarks>
         public string ForProjectWithRole { get; }
 
-        /// <summary>
-        /// Whether or not <see cref="MarkHandled"/> has been called.
-        /// </summary>
+        /// <inheritdoc />
         public bool WasHandled { get; private set; }
 
-        /// <summary>
-        /// Sets <see cref="WasHandled"/> to <see langword="true"/> if it wasn't already.
-        /// </summary>
-        /// <remarks>
-        /// Should be called by handlers so that publishers can query <see cref="WasHandled"/>
-        /// and potentially show warnings when its value is <see langword="false"/>.
-        /// </remarks>
+        /// <inheritdoc />
         public void MarkHandled() => WasHandled = true;
     }
 }
