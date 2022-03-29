@@ -60,6 +60,7 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationType = this.Name,
                 SaveAsOwnFile = MustSaveInOwnFile(),
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
+                ValidateFunction = this.GetSettings().ValidateFunction(),
                 Icon = GetIcon(this.GetSettings().Icon()) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
                 ExpandedIcon = GetIcon(this.GetSettings().ExpandedIcon()),
                 AllowRename = this.GetSettings().AllowRename(),

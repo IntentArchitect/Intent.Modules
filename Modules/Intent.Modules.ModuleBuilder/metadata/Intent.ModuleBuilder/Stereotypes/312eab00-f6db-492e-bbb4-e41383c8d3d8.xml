@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="312eab00-f6db-492e-bbb4-e41383c8d3d8" version="3.1.0">
+  <name>Extension Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">Element Extension</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>86ed4b79-2a1d-4717-b925-4a12291606a9</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="8c964307-9d03-4a14-9fd3-40ea2607955a">
+      <name>Display Text Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(inherit)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
+    <property id="996ed45f-2318-4587-9618-73db3d7cfed0">
+      <name>Validate Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(inherit)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
+    </property>
+  </properties>
+</stereotypeDefinition>

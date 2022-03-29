@@ -66,6 +66,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Display Text Function");
             }
 
+            public string ValidateFunction()
+            {
+                return _stereotype.GetProperty<string>("Validate Function");
+            }
+
             public bool AllowRename()
             {
                 return _stereotype.GetProperty<bool>("Allow Rename");

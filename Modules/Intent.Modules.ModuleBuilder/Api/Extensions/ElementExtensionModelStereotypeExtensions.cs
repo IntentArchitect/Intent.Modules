@@ -12,6 +12,17 @@ namespace Intent.ModuleBuilder.Api
 {
     public static class ElementExtensionModelStereotypeExtensions
     {
+        public static ExtensionSettings GetExtensionSettings(this ElementExtensionModel model)
+        {
+            var stereotype = model.GetStereotype("Extension Settings");
+            return stereotype != null ? new ExtensionSettings(stereotype) : null;
+        }
+
+
+        public static bool HasExtensionSettings(this ElementExtensionModel model)
+        {
+            return model.HasStereotype("Extension Settings");
+        }
         public static TypeReferenceExtensionSettings GetTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
             var stereotype = model.GetStereotype("Type Reference Extension Settings");
@@ -21,6 +32,30 @@ namespace Intent.ModuleBuilder.Api
         public static bool HasTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
             return model.HasStereotype("Type Reference Extension Settings");
+        }
+
+
+        public class ExtensionSettings
+        {
+            private IStereotype _stereotype;
+
+            public ExtensionSettings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string DisplayTextFunction()
+            {
+                return _stereotype.GetProperty<string>("Display Text Function");
+            }
+
+            public string ValidateFunction()
+            {
+                return _stereotype.GetProperty<string>("Validate Function");
+            }
+
         }
 
 

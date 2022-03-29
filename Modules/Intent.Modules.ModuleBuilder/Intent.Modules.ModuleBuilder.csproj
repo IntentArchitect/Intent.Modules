@@ -42,7 +42,6 @@
     <None Remove="Templates\RoslynProjectItemTemplatePartial\**" />
     <None Remove="Templates\RoslynProjectItemTemplatePreProcessedFile\**" />
     <None Remove="Templates\RoslynProjectItemTemplate\**" />
-    
     <None Update="Templates\Api\ApiElementModelPartial\ApiElementModelPartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ApiElementModelPartialTemplate.cs</LastGenOutput>
