@@ -4,4 +4,8 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.2.0" />
+  </ItemGroup>
+
 </Project>
