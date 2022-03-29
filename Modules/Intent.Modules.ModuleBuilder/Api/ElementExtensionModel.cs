@@ -71,8 +71,8 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationType = TypeReference.Element.Name,
                 SpecializationTypeId = TypeReference.Element.Id,
-                DisplayFunctionOverride = this.GetExtensionSettings().DisplayTextFunction(),
-                ValidateFunctionOverride = this.GetExtensionSettings().ValidateFunction(),
+                DisplayFunctionOverride = this.GetExtensionSettings()?.DisplayTextFunction(),
+                ValidateFunctionOverride = this.GetExtensionSettings()?.ValidateFunction(),
                 CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
