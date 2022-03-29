@@ -24,7 +24,7 @@ namespace Intent.Modules.Common.TypeResolution
             _formatCollection = formatCollection;
         }
 
-        public string AsCollection(IResolvedTypeInfo typeInfo)
+        public virtual string AsCollection(IResolvedTypeInfo typeInfo)
         {
             return _formatCollection(typeInfo);
         }

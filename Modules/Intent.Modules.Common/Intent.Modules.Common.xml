@@ -1020,6 +1020,11 @@
             Implementation of <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate)">
+            <summary>
+            Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.#ctor(System.String,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate)">
             <summary>
             Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.

@@ -38,16 +38,18 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         {
             if (typeInfo.Element == null)
             {
-                return new ResolvedTypeInfo("void", true, typeInfo, null);
+                return new ResolvedTypeInfo("void", true, typeInfo.IsNullable, typeInfo.IsCollection, typeInfo, null);
             }
 
             var result = typeInfo.Element.Name;
             var isPrimitive = true;
+            var isCollection = typeInfo.IsCollection;
             if (typeInfo.Element.Stereotypes.Any(x => x.Name == "C#"))
             {
                 string typeName = typeInfo.Element.GetStereotypeProperty<string>("C#", "Type", typeInfo.Element.Name);
                 string @namespace = typeInfo.Element.GetStereotypeProperty<string>("C#", "Namespace");
                 isPrimitive = typeInfo.Element.GetStereotypeProperty("C#", "Is Primitive", true);
+                isCollection = typeInfo.Element.GetStereotypeProperty("C#", "Is Collection", typeInfo.IsCollection);
                 result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
 
                 // Moved to NullFormatter
@@ -120,7 +122,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 //}
             }
 
-            return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
+            return new ResolvedTypeInfo(result, isPrimitive, typeInfo.IsNullable, isCollection, typeInfo, null);
         }
     }
 }

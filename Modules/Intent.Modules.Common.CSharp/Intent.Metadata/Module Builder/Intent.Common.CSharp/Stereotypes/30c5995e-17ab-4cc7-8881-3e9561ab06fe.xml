@@ -44,5 +44,16 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="0a577584-e2d4-4e5a-8649-296036a91575">
+      <hint>Does this type represent a collection</hint>
+      <name>Is Collection</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

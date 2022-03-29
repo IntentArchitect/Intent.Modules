@@ -66,7 +66,7 @@ namespace Intent.Modules.Common.TypeResolution
                 }
             }
 
-            type = type ?? ResolveType(typeInfo);
+            type ??= ResolveType(typeInfo);
             if (typeInfo.GenericTypeParameters.Any())
             {
                 var resolvedGenerics = typeInfo.GenericTypeParameters.Select(x => Get(x, collectionFormatter)).ToList();
@@ -81,7 +81,7 @@ namespace Intent.Modules.Common.TypeResolution
 
             if (typeInfo.IsNullable)
             {
-                nullableFormatter = nullableFormatter ?? _defaultNullableFormatter;
+                nullableFormatter ??= _defaultNullableFormatter;
                 type.Name = nullableFormatter.AsNullable(type);
             }
 

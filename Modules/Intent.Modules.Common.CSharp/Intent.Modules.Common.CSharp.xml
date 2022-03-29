@@ -535,6 +535,46 @@
             <param name="capitalizationBehaviour">The <see cref="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour"/> to use.</param>
             <returns>A valid C# identifier.</returns>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.CSharpCollectionFormatter`1">
+            <summary>
+            A collection formatter that uses a specified type.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.CSharpCollectionFormatter`1.#ctor(System.String,Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{`0})">
+            <summary>
+            A collection formatter that uses the <paramref name="fullyQualifiedTypeName"/>.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.CSharpCollections">
+            <summary>
+            Common CSharp collection formatters
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.CSharpCollections.ListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+            <summary>
+            Formats collections using <see cref="T:System.Collections.Generic.List`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.CSharpCollections.IListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+            <summary>
+            Formats collections using <see cref="T:System.Collections.Generic.IList`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.CSharpCollections.ICollectionFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+            <summary>
+            Formats collections using <see cref="T:System.Collections.Generic.ICollection`1"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="template"></param>
+            <returns></returns>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter">
             <summary>
             C# implementation of <see cref="T:Intent.Modules.Common.TypeResolution.INullableFormatter"/>.

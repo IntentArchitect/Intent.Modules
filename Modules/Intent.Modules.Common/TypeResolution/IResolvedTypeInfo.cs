@@ -56,12 +56,12 @@ namespace Intent.Modules.Common.TypeResolution
         /// <summary>
         /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
         /// </summary>
-        public ResolvedTypeInfo(string name, bool isPrimitive, ITypeReference typeReference, ITemplate template)
+        public ResolvedTypeInfo(string name, bool isPrimitive, bool isNullable, bool isCollection, ITypeReference typeReference, ITemplate template)
         {
             Name = name;
             IsPrimitive = isPrimitive && !typeReference.IsCollection;
-            IsNullable = typeReference.IsNullable;
-            IsCollection = typeReference.IsCollection;
+            IsNullable = isNullable;
+            IsCollection = isCollection;
             TypeReference = typeReference;
             Template = template;
         }
@@ -69,7 +69,14 @@ namespace Intent.Modules.Common.TypeResolution
         /// <summary>
         /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
         /// </summary>
-        public ResolvedTypeInfo(IResolvedTypeInfo typeInfo) : this(typeInfo.Name, typeInfo.IsPrimitive, typeInfo.TypeReference, typeInfo.Template)
+        public ResolvedTypeInfo(string name, bool isPrimitive, ITypeReference typeReference, ITemplate template) : this(name, isPrimitive, typeReference.IsNullable, typeReference.IsCollection, typeReference, template)
+        {
+        }
+
+        /// <summary>
+        /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
+        /// </summary>
+        public ResolvedTypeInfo(IResolvedTypeInfo typeInfo) : this(typeInfo.Name, typeInfo.IsPrimitive, typeInfo.IsNullable, typeInfo.IsCollection, typeInfo.TypeReference, typeInfo.Template)
         {
         }
 

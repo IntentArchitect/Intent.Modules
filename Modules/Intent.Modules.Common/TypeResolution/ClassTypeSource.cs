@@ -69,7 +69,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         protected virtual ResolvedTypeInfo CreateResolvedTypeInfo(ITypeReference typeReference, IClassProvider templateInstance)
         {
-            return new ResolvedTypeInfo(templateInstance.ClassName, false, typeReference, templateInstance);
+            return new ResolvedTypeInfo(templateInstance.ClassName, false, typeReference.IsNullable, typeReference.IsCollection, typeReference, templateInstance);
         }
 
         protected virtual IClassProvider TryGetTemplateInstance(ITypeReference typeInfo)
