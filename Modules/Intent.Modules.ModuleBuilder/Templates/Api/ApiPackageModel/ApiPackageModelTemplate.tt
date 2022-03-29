@@ -17,7 +17,7 @@ using Intent.Modules.Common;
 
 namespace <#= Namespace #>
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Fully)]
     public class <#= ClassName #> : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "<#= Model.Name #>";

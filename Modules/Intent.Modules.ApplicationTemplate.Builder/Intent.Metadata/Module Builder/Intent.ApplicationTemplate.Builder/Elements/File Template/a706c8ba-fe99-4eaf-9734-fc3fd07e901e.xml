@@ -27,7 +27,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="iatspec" isActive="true" />
-        <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="T4 Template" isActive="true" />
+        <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="Custom" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">

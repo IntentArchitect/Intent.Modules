@@ -11,6 +11,12 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<ApplicationTemplateSettingsConfigurationModel> GetApplicationTemplateSettingsConfigurationModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ApplicationTemplateSettingsConfigurationModel.SpecializationTypeId)
+                .Select(x => new ApplicationTemplateSettingsConfigurationModel(x))
+                .ToList();
+        }
         public static IList<ComponentGroupModel> GetComponentGroupModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(ComponentGroupModel.SpecializationTypeId)

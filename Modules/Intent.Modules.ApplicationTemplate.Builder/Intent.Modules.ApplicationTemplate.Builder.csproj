@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Architect.Persistence" Version="3.3.0" />
     <PackageReference Include="Intent.Modules.Common" Version="3.2.2" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.2.8" />
     <PackageReference Include="Intent.Packager" Version="3.2.0">
@@ -16,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\IatSpecFile\IatSpecFileTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>IatSpecFileTemplate.cs</LastGenOutput>
-    </None>
     <None Update="Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>InstallationSettingsFileTemplate.cs</LastGenOutput>
@@ -27,11 +24,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\IatSpecFile\IatSpecFileTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>IatSpecFileTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Update="Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

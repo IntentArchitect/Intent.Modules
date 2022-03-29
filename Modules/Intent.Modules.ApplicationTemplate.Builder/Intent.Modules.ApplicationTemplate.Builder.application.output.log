@@ -16,6 +16,27 @@
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#69000b7e-8bc8-49d0-80f5-eb65a6f7653a</CorrelationId>
+      <ApplicationRelativeFilePath>Api/ApplicationTemplateSettingsConfigurationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApplicationTemplateSettingsConfigurationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#053d28c8-18c9-45b9-b3cb-184ec4b19679</CorrelationId>
+      <ApplicationRelativeFilePath>Api/ApplicationTemplateSettingsFieldConfigurationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApplicationTemplateSettingsFieldConfigurationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7194651e-45da-4a0c-b1ab-0351a5c08fc8</CorrelationId>
+      <ApplicationRelativeFilePath>Api/ApplicationTemplateSettingsFieldOptionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApplicationTemplateSettingsFieldOptionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#027f8bb9-9b28-4c1d-a516-8c3daa70e46d</CorrelationId>
       <ApplicationRelativeFilePath>Api/ComponentGroupModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ComponentGroupModel.cs</ProjectRelativeFilePath>
@@ -40,6 +61,20 @@
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#cf385bd9-e92f-453d-a3e1-00b9922b57b3</CorrelationId>
       <ApplicationRelativeFilePath>Api/Extensions/ApplicationTemplateModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#053d28c8-18c9-45b9-b3cb-184ec4b19679</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#027f8bb9-9b28-4c1d-a516-8c3daa70e46d</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/ComponentGroupModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ComponentGroupModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -131,20 +166,6 @@
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed#a706c8ba-fe99-4eaf-9734-fc3fd07e901e</CorrelationId>
-      <ApplicationRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplate.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplate.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.T4Template#a706c8ba-fe99-4eaf-9734-fc3fd07e901e</CorrelationId>
-      <ApplicationRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplate.tt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplate.tt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

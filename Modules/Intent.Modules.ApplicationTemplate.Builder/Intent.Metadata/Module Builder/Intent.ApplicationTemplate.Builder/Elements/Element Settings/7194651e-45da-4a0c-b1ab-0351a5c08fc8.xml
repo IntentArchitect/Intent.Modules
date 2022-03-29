@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="76db4fe8-5c95-4240-8f25-48b8079fa4ae" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Installation Settings</name>
-  <display>Installation Settings</display>
+<class id="7194651e-45da-4a0c-b1ab-0351a5c08fc8" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Application Template Settings Field Option</name>
+  <display>Application Template Settings Field Option</display>
   <isAbstract>false</isAbstract>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>08725da5-d0cf-4ec8-ad65-a58d9927d32f</parentFolderId>
+  <parentFolderId>053d28c8-18c9-45b9-b3cb-184ec4b19679</parentFolderId>
   <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
   <packageName>Intent.ApplicationTemplate.Builder</packageName>
   <stereotypes>
@@ -30,14 +30,14 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Own File" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;cog&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;circle&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
-        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="true" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
         <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
@@ -46,14 +46,14 @@
     </stereotype>
   </stereotypes>
   <childElements>
-    <childElement id="3907b041-920a-4169-90d4-37b1d7d3463d" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="37fdd66c-7567-4d64-91b1-6af64939d548" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>76db4fe8-5c95-4240-8f25-48b8079fa4ae</parentFolderId>
+      <parentFolderId>7194651e-45da-4a0c-b1ab-0351a5c08fc8</parentFolderId>
       <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
       <packageName>Intent.ApplicationTemplate.Builder</packageName>
       <stereotypes />

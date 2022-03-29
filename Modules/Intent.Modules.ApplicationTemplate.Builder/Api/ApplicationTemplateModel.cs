@@ -10,7 +10,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class ApplicationTemplateModel : IHasStereotypes, IMetadataModel
     {
         public const string SpecializationType = "Application Template";
@@ -36,6 +36,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public IList<ComponentGroupModel> Groups => UnderlyingPackage.ChildElements
             .GetElementsOfType(ComponentGroupModel.SpecializationTypeId)
             .Select(x => new ComponentGroupModel(x))
+            .ToList();
+
+        public IList<ApplicationTemplateSettingsConfigurationModel> SettingsConfigurations => UnderlyingPackage.ChildElements
+            .GetElementsOfType(ApplicationTemplateSettingsConfigurationModel.SpecializationTypeId)
+            .Select(x => new ApplicationTemplateSettingsConfigurationModel(x))
             .ToList();
 
         [IntentManaged(Mode.Ignore)]

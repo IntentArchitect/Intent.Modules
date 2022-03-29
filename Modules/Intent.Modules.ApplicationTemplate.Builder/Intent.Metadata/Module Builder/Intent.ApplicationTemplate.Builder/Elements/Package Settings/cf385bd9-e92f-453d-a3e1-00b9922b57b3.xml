@@ -3,7 +3,7 @@
   <name>Application Template</name>
   <display>Application Template</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c75eea8b-43c3-477d-9bbf-83ada9809113</parentFolderId>
@@ -34,11 +34,50 @@
       <packageName>Intent.ApplicationTemplate.Builder</packageName>
       <stereotypes />
       <childElements>
+        <childElement id="bb2879fc-a640-4505-8b97-bfe7da0bb188" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Settings Configuration</name>
+          <display>New Settings Configuration: Application Template Settings Configuration</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="f8091328-d066-4f47-8e8b-fc7336f9a2dc">
+            <typeId>69000b7e-8bc8-49d0-80f5-eb65a6f7653a</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ApplicationTemplate.Builder</typePackageName>
+            <typePackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>836c5724-15e5-4704-a638-0cb23a06dde4</parentFolderId>
+          <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+          <packageName>Intent.ApplicationTemplate.Builder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Installation settings" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="9050bc58-6ea5-4232-a885-8df533134800" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Group</name>
           <display>New Group: Component Group</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <order>1</order>
           <genericTypes />
           <typeReference id="b1d66ac9-a615-4139-b4b7-1b536b7b1901">
             <typeId>027f8bb9-9b28-4c1d-a516-8c3daa70e46d</typeId>
@@ -62,7 +101,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + a" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />

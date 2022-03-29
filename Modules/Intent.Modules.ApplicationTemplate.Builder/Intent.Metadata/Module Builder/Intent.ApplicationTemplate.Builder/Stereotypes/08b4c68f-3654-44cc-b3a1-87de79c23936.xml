@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="08b4c68f-3654-44cc-b3a1-87de79c23936" version="3.1.0">
+  <name>Component Group Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="027f8bb9-9b28-4c1d-a516-8c3daa70e46d">Component Group</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>0</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="54b29a03-082b-407a-b42e-cbacbcfa7fd7">
+      <hint>Determines how many components can be selected</hint>
+      <name>Selection Mode</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Allow Multiple</defaultValue>
+      <valueOptions>
+        <option>Allow Multiple</option>
+        <option>Allow Single Only</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="97f6fe89-5973-447c-93b8-ac18fe446047" version="3.1.0">
+  <name>Settings Field Configuration</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="053d28c8-18c9-45b9-b3cb-184ec4b19679">Application Template Settings Field Configuration</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>0</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="ad6b372c-58e6-4fe0-b6fe-aa7d70f95ebc">
+      <name>Control Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Text Box</defaultValue>
+      <valueOptions>
+        <option>Text Box</option>
+        <option>Number</option>
+        <option>Checkbox</option>
+        <option>Switch</option>
+        <option>Text Area</option>
+        <option>Select</option>
+        <option>Multi-Select</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="f0689c97-cb23-4ae1-8bb1-8b6af69b1504">
+      <name>Is Required</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="95738255-b024-4b7f-b789-26eb8c30665f">
+      <name>Hint</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="980bae71-ac8a-4a52-9888-9bac41f126ba">
+      <name>Default Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.ApplicationTemplate.Builder.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ComponentModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ApplicationTemplateSettingsConfigurationModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "Component";
-        public const string SpecializationTypeId = "47064ef1-2295-4287-8301-c446910a1b1e";
+        public const string SpecializationType = "Application Template Settings Configuration";
+        public const string SpecializationTypeId = "69000b7e-8bc8-49d0-80f5-eb65a6f7653a";
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
-        public ComponentModel(IElement element, string requiredType = SpecializationType)
+        [IntentManaged(Mode.Fully)]
+        public ApplicationTemplateSettingsConfigurationModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -31,33 +31,25 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
 
         public string Name => _element.Name;
 
+        public string Comment => _element.Comment;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public string Value => _element.Value;
 
         public IElement InternalElement => _element;
 
-        public IList<ModuleModel> Modules => _element.ChildElements
-            .GetElementsOfType(ModuleModel.SpecializationTypeId)
-            .Select(x => new ModuleModel(x))
+        public IList<ApplicationTemplateSettingsFieldConfigurationModel> Fields => _element.ChildElements
+            .GetElementsOfType(ApplicationTemplateSettingsFieldConfigurationModel.SpecializationTypeId)
+            .Select(x => new ApplicationTemplateSettingsFieldConfigurationModel(x))
             .ToList();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool IncludeByDefault => this.GetComponentSettings().IncludeByDefault();
-
-        [IntentManaged(Mode.Ignore)]
-        public bool IsRequired => this.GetComponentSettings().IsRequired();
-
-        [IntentManaged(Mode.Ignore)]
-        public string Description => this.GetComponentSettings().Description();
-
-        [IntentManaged(Mode.Ignore)]
-        public IIconModel Icon => this.GetComponentSettings().Icon();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(ComponentModel other)
+        public bool Equals(ApplicationTemplateSettingsConfigurationModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -67,29 +59,27 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ComponentModel)obj);
+            return Equals((ApplicationTemplateSettingsConfigurationModel)obj);
         }
 
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        public string Comment => _element.Comment;
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ComponentModelExtensions
+    public static class ApplicationTemplateSettingsConfigurationModelExtensions
     {
 
-        public static bool IsComponentModel(this ICanBeReferencedType type)
+        public static bool IsApplicationTemplateSettingsConfigurationModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ComponentModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ApplicationTemplateSettingsConfigurationModel.SpecializationTypeId;
         }
 
-        public static ComponentModel AsComponentModel(this ICanBeReferencedType type)
+        public static ApplicationTemplateSettingsConfigurationModel AsApplicationTemplateSettingsConfigurationModel(this ICanBeReferencedType type)
         {
-            return type.IsComponentModel() ? new ComponentModel((IElement)type) : null;
+            return type.IsApplicationTemplateSettingsConfigurationModel() ? new ApplicationTemplateSettingsConfigurationModel((IElement)type) : null;
         }
     }
 }

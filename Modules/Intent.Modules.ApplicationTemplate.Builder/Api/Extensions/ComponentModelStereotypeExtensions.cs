@@ -50,6 +50,16 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<bool>("Include by Default");
             }
 
+            public bool IsRequired()
+            {
+                return _stereotype.GetProperty<bool>("Is Required");
+            }
+
+            public IElement[] Dependencies()
+            {
+                return _stereotype.GetProperty<IElement[]>("Dependencies") ?? new IElement[0];
+            }
+
         }
 
     }
