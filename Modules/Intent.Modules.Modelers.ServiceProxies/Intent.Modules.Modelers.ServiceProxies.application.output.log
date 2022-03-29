@@ -3,6 +3,7 @@
   <ApplicationId>9ca2cdd8-34c3-4fc7-96aa-a1a6815c2117</ApplicationId>
   <FileLogs>
     <FileLog>
+      <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#c01cc91b-7048-4348-af8e-2a811a3344cd</CorrelationId>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
@@ -22,12 +23,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>817ec71f-a91d-4598-9a09-e05373ef4333</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -44,7 +47,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#817ec71f-a91d-4598-9a09-e05373ef4333</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.ServiceProxies.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>eaafffbe-65b4-4c99-93e8-dde525b241ce</ProjectId>

@@ -68,7 +68,7 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#ffbf27c5-a296-4dbc-9af5-acf0bff187a2</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.CQRS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.CQRS.csproj</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>e6b22230-24fd-4b6c-8ad3-acb527181cd3</ProjectId>

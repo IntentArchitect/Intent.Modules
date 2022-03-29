@@ -70,4 +70,19 @@ namespace Intent.Modelers.Eventing.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ProducerModelExtensions
+    {
+
+        public static bool IsProducerModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ProducerModel.SpecializationTypeId;
+        }
+
+        public static ProducerModel AsProducerModel(this ICanBeReferencedType type)
+        {
+            return type.IsProducerModel() ? new ProducerModel((IElement)type) : null;
+        }
+    }
 }

@@ -62,4 +62,19 @@ namespace Intent.Modelers.Eventing.Api
             return (_element != null ? _element.GetHashCode() : 0);
         }
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class SendMessageModelExtensions
+    {
+
+        public static bool IsSendMessageModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == SendMessageModel.SpecializationTypeId;
+        }
+
+        public static SendMessageModel AsSendMessageModel(this ICanBeReferencedType type)
+        {
+            return type.IsSendMessageModel() ? new SendMessageModel((IElement)type) : null;
+        }
+    }
 }

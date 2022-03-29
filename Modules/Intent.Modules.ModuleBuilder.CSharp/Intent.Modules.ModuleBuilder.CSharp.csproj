@@ -11,15 +11,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Modules.Common" Version="3.2.2" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.2.8" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.2.0" />
     <PackageReference Include="Intent.Packager" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.1" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.2.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common.Types\Intent.Modules.Common.Types.csproj" />
     <ProjectReference Include="..\Intent.Modules.ModuleBuilder\Intent.Modules.ModuleBuilder.csproj" />
   </ItemGroup>
 

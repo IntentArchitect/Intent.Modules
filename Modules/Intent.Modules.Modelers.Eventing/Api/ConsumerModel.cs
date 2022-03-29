@@ -65,4 +65,19 @@ namespace Intent.Modelers.Eventing.Api
             .Select(x => new MessageHandlerModel(x))
             .ToList();
     }
+
+    [IntentManaged(Mode.Fully)]
+    public static class ConsumerModelExtensions
+    {
+
+        public static bool IsConsumerModel(this ICanBeReferencedType type)
+        {
+            return type != null && type is IElement element && element.SpecializationTypeId == ConsumerModel.SpecializationTypeId;
+        }
+
+        public static ConsumerModel AsConsumerModel(this ICanBeReferencedType type)
+        {
+            return type.IsConsumerModel() ? new ConsumerModel((IElement)type) : null;
+        }
+    }
 }

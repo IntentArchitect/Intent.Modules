@@ -11,7 +11,12 @@ namespace Intent.Modelers.Eventing.Api
     {
         public static IDesigner Eventing(this IMetadataManager metadataManager, IApplication application)
         {
-            return metadataManager.GetDesigner(application.Id, "Eventing");
+            return metadataManager.Eventing(application.Id);
+        }
+
+        public static IDesigner Eventing(this IMetadataManager metadataManager, string applicationId)
+        {
+            return metadataManager.GetDesigner(applicationId, "Eventing");
         }
 
     }
