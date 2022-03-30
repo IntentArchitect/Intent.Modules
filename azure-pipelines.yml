@@ -22,25 +22,6 @@ steps:
   fetchDepth: 1
   submodules: 'recursive'
 
-# Because 2.1.x is now deprecated, `dotnet test` fails with the following error:
-# The framework 'Microsoft.NETCore.App', version '2.1.0' (x64) was not found.
-# So we install it and other frameworks we use.
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 2.1.x'
-  inputs:
-    version: 2.1.x
-    performMultiLevelLookup: true
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 3.x'
-  inputs:
-    version: 3.x
-    performMultiLevelLookup: true
-- task: UseDotNet@2
-  displayName: 'Use .NET Core sdk 5.x'
-  inputs:
-    version: 5.x
-    performMultiLevelLookup: true
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   env:
