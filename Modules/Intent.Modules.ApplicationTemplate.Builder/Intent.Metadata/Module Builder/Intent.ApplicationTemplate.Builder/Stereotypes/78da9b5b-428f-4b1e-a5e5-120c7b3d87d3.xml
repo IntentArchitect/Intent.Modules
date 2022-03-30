@@ -14,8 +14,6 @@
 return "";</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
-  <displayAsAnnotation>false</displayAsAnnotation>
-  <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
   <order>0</order>

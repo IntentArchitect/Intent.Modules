@@ -142,17 +142,22 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
 
         private static string Serialize<T>(T @object)
         {
-            using var memoryStream = new MemoryStream();
-            var serializer = new XmlSerializer(typeof(T));
-            var serializerNamespaces = new XmlSerializerNamespaces();
-            serializerNamespaces.Add("", "");
-            var streamWriter = XmlWriter.Create(memoryStream, new()
+            using var stringWriter = new Utf8StringWriter();
+            var xmlSerializer = new XmlSerializer(typeof(T));
+
+            var writer = XmlWriter.Create(stringWriter, new XmlWriterSettings
             {
                 Encoding = Encoding.UTF8,
                 Indent = true
             });
-            serializer.Serialize(streamWriter, @object, serializerNamespaces);
-            return Encoding.UTF8.GetString(memoryStream.ToArray());
+
+            var xmlSerializerNamespaces = new XmlSerializerNamespaces();
+            xmlSerializerNamespaces.Add(string.Empty, string.Empty);
+
+            xmlSerializer.Serialize(writer, @object, xmlSerializerNamespaces);
+
+            stringWriter.Close();
+            return stringWriter.ToString();
         }
 
         private ComponentGroupSelectionMode GetSelectionMode(ComponentGroupModel @group)
@@ -191,6 +196,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
                 default:
                     throw new ArgumentOutOfRangeException(nameof(settingsField), settingsField, null);
             }
+        }
+
+        private class Utf8StringWriter : StringWriter
+        {
+            public override Encoding Encoding => Encoding.UTF8;
         }
     }
 }
