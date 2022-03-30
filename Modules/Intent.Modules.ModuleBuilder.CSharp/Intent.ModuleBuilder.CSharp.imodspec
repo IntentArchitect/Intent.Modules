@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.CSharp</id>
-  <version>3.2.1</version>
-  <supportedClientVersions>[3.2.0-pre.0, 4.0.0)</supportedClientVersions>
+  <version>3.3.0</version>
+  <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Module Builder support for C# files that use Roslyn for intelligent code generation</summary>
   <description>Module Builder support for C# files that use Roslyn for intelligent code generation</description>
   <authors>Intent Software</authors>
@@ -28,11 +28,11 @@
     </template>
   </templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.2.0" />
-    <dependency id="Intent.Common.CSharp" version="3.2.0" />
-    <dependency id="Intent.Common.Types" version="3.2.0" />
+    <dependency id="Intent.Common" version="3.3.0" />
+    <dependency id="Intent.Common.CSharp" version="3.3.0" />
+    <dependency id="Intent.Common.Types" version="3.3.0" />
     <dependency id="Intent.ModuleBuilder" version="3.3.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.2.0" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.0" />
   </dependencies>
   <metadata>
     <install target="Module Builder" src="modelers/CSharp.designer.settings" externalReference="1e3cc0d3-8901-498a-960b-4a51f915b92b" />

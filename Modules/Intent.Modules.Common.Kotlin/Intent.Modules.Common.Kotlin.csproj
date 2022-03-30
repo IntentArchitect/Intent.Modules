@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.1.4</Version>
+    <Version>3.3.0</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Intent Architect</Authors>
     <Description>Base classes and weaving capabilities for modules that output Kotlin files for Intent Architect.</Description>
@@ -26,17 +26,17 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Code.Weaving.Kotlin" Version="1.0.1">
+    <PackageReference Include="Intent.Code.Weaving.Kotlin" Version="1.0.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="3.2.2" />
-    <PackageReference Include="Intent.Modules.Common.Types" Version="3.2.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.0" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.0" />
     <PackageReference Include="Intent.Packager" Version="3.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.1" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.2.0" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.2" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.0" />
   </ItemGroup>
 
 </Project>
