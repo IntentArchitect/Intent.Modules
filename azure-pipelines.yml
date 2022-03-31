@@ -10,7 +10,7 @@ trigger:
 
 variables:
   vstsFeed: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
-  targetsToBuild: '**/Intent.Modules.sln'
+  targetsToBuild: '**/*.sln'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -50,121 +50,15 @@ steps:
     projects: $(targetsToBuild)
     arguments: '--no-build'
 
-# "dotnet pack" all projects for uploading to the internal NuGet repository. We want to dynamically
-# work out which projects to pack so that if new projects to pack are added to the repository, then
-# they will also be included automatically as opposed to us needing to update a list in this .yml
-# file.
-#
-# It seemed easiest to me to work out compilation order based on project dependencies using C# due
-# to my familiarity with it. We also already use .NET Core, so it's not needlessly adding a new
-# dependency anyway. The following guide was used to work out how to use C# from PowerShell:
-# https://blog.adamfurmanek.pl/2016/03/19/executing-c-code-using-powershell-script/
-#
-# Finally, we manually call "dotnet pack" in the correct order because DotNetCoreCLI@2 with
-# `command: 'pack'` unfortunately doesn't work for us because regardless of the order of the
-# .csproj files in `searchPatternPack`, it will always process the projects ordered by their full
-# path, but we need projects to be packed in the order of their dependencies.
 - task: PowerShell@2
   displayName: 'dotnet pack'
   condition: succeededOrFailed()
   inputs:
-    targetType: 'inline'
     pwsh: true
     failOnStderr: true
     ignoreLASTEXITCODE: true
-    script: |
-      $id = [System.Guid]::NewGuid().ToString("N")
-      $code = @"
-          using System;
-          using System.Collections.Generic;
-          using System.IO;
-          using System.Linq;
-          using System.Xml.Linq;
-          using System.Xml.XPath;
-          
-          namespace Intent$id
-          {
-              public class Program
-              {
-                  public static string[] Main()
-                  {
-                      var files = Directory.GetFiles(Directory.GetCurrentDirectory(), "*.csproj", SearchOption.AllDirectories);
-
-                      var projects = files
-                          .Select(GetDetail)
-                          .Where(x => x != null)
-                          .Select(x => x.Value)
-                          .ToArray();
-
-                      var stillToOrderForCompilation = projects
-                          .Select(item => (
-                              item.fullPath,
-                              item.packageId,
-                              referencedPackageNames: item.referencedPackageNames
-                                  .Where(packageName => projects.Any(project => project.packageId == packageName))
-                                  .ToArray())
-                          )
-                          .ToList();
-
-                      var orderedForCompilation = new List<(string fullPath, string packageId, IReadOnlyCollection<string> referencedPackageNames)>();
-                      var handledPackageIds = new HashSet<string>();
-
-                      while (stillToOrderForCompilation.Any())
-                      {
-                          var toUpdate = stillToOrderForCompilation
-                              .Where(item => item.referencedPackageNames.All(handledPackageIds.Contains))
-                              .OrderBy(x => x.packageId)
-                              .ToArray();
-
-                          if (!toUpdate.Any())
-                          {
-                              throw new Exception("");
-                          }
-
-                          foreach (var item in toUpdate)
-                          {
-                              Console.WriteLine($"Adding {item.packageId}");
-                              orderedForCompilation.Add(item);
-                              handledPackageIds.Add(item.packageId);
-                              stillToOrderForCompilation.Remove(item);
-                          }
-                      }
-
-                      return orderedForCompilation.Select(x => x.fullPath).ToArray();
-                  }
-
-                  private static (string fullPath, string packageId, IReadOnlyCollection<string> referencedPackageNames)? GetDetail(string path)
-                  {
-                      var xDocument = XDocument.Load(path);
-
-                      // If the project file doesn't contain a Version or PackageVersion element, then
-                      // we assume it's not intended to be packed.
-                      if (xDocument.XPathSelectElement(".//Version") == null &&
-                          xDocument.XPathSelectElement(".//PackageVersion") == null)
-                      {
-                          return null;
-                      }
-
-                      var packageId = xDocument.XPathSelectElement(".//PackageId")?.Value ??
-                                      Path.GetFileNameWithoutExtension(path);
-
-                      var dependencies = xDocument
-                          .XPathSelectElements(".//PackageReference")
-                          .Select(x => x.Attribute("Include")!.Value.ToLowerInvariant())
-                          .ToArray();
-
-                      return (path, packageId.ToLowerInvariant(), dependencies);
-                  }
-              }
-          }
-      "@
-      Add-Type -TypeDefinition $code -Language CSharp
-      iex "`$projects = [Intent$id.Program]::Main()"
-
-      foreach ($project in $projects) {
-          dotnet build $project --verbosity normal
-          dotnet pack $project --output $(Build.ArtifactStagingDirectory) --verbosity normal
-      }
+    filePath: 'dotnet-pack-all.ps1'
+    arguments: '-dotnetPackOutputDirectory $(Build.ArtifactStagingDirectory)'
 
 - task: NuGetCommand@2
   displayName: 'nuget push'
