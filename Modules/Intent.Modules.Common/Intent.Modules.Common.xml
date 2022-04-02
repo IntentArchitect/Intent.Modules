@@ -900,6 +900,13 @@
             An instance of <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> where <see cref="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.ThrowIfNotFound"/> is set to false.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateExtensions.ToSentenceCase(System.String)">
+            <summary>
+            Converts the input to sense casing (e.g. SomeString -> Some string).
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstancesForRole(System.String)">
             <summary>
             Finds all templates with id of <paramref name="role"/>

@@ -46,6 +46,16 @@ namespace Intent.Modules.Common.Templates
             return result.Distinct();
         }
 
+        /// <summary>
+        /// Converts the input to sense casing (e.g. SomeString -> Some string).
+        /// </summary>
+        /// <param name="s"></param>
+        /// <returns></returns>
+        public static string ToSentenceCase(this string s)
+        {
+            return s.Humanize(LetterCasing.Sentence);
+        }
+
         public static string ToPascalCase(this string s)
         {
             if (string.IsNullOrWhiteSpace(s))
