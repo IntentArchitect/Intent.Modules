@@ -18,7 +18,7 @@ using Intent.Metadata.Models;
 
 namespace <#= Namespace #>
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class <#= ClassName #> : IMetadataModel
     {
         public const string SpecializationType = "<#= Model.Name #>";

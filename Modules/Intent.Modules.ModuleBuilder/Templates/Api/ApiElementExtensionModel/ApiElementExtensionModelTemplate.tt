@@ -18,10 +18,10 @@ using Intent.Modules.Common;
 
 namespace <#= Namespace #>
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class <#= ClassName #> : <#= GetBaseElementModel().ApiModelName #>
     {
-        [IntentManaged(Mode.Ignore)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public <#= ClassName #>(IElement element) : base(element)
         {
         }
