@@ -15,10 +15,15 @@ namespace Intent.Modules.Common.Templates.FileContent
     public abstract class ModuleContentFilesTemplateRegistrations : TemplateRegistrationBase
     {
         /// <summary>
+        /// <para>
+        /// Location of source in the "content" folder.
+        /// </para>
+        /// <para>
         /// Allows to sub-divide the "content" folder, in the event of other Template Registrations
         /// of type <see cref="ModuleContentFilesTemplateRegistrations"/>
         /// having to scan for files, by specifying the sub-folder path where the relevant content is located.
         /// Specify only the sub-folder name (or sub-path, using '/' as path delimiter).
+        /// </para>
         /// </summary>
         /// <remarks>
         /// By default it will scan all files inside the "content" folder.
