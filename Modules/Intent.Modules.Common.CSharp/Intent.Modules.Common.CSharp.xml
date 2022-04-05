@@ -489,6 +489,12 @@
             Registers that the specified NuGet package should be installed in the .csproj file where this file resides.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddProjectDependency(System.String)">
+            <summary>
+            Registers that a <c>.csproj</c> containing a Role named <paramref name="roleName"/>
+            should be a dependency of the <c>.csproj</c> where this file resides.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddFrameworkDependency(System.String)">
             <summary>
             Registers that the specified <FrameworkReference/> element should be add in the .csproj file where this file resides.

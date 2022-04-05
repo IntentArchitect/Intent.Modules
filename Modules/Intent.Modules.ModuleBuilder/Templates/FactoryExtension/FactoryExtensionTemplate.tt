@@ -16,19 +16,26 @@ using Intent.Plugins.FactoryExtensions;
 
 namespace <#= Namespace #>
 {
-    [IntentManaged(Mode.Merge)]
-    public class <#= ClassName #> : FactoryExtensionBase, IExecutionLifeCycle
+    [IntentManaged(Mode.Fully, Body = Mode.Merge)]
+    public class <#= ClassName #> : FactoryExtensionBase
     {
         public override string Id => "<#= GetId() #>";
-        public override int Order => 0;
 
         [IntentManaged(Mode.Ignore)]
-        public void OnStep(IApplication application, string step)
+        public override int Order => 0;
+
+        /// <summary>
+        /// This is an example override which would extend the
+        /// <see cref="ExecutionLifeCycleSteps.Start"/> phase of the Software Factory execution.
+        /// See <see cref="FactoryExtensionBase"/> for all available overrides.
+        /// </summary>
+        /// <remarks>
+        /// It is safe to update or delete this method.
+        /// </remarks>
+        [IntentInitialGen]
+        protected override void OnBeforeTemplateExecution(IApplication application)
         {
-            if (step == ExecutionLifeCycleSteps.AfterCommitChanges)
-            {
-                // will run after code changes has been accepted.
-            }
+            // Your custom logic here.
         }
     }
 }

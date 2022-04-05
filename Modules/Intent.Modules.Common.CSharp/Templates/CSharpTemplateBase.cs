@@ -428,6 +428,22 @@ namespace Intent.Modules.Common.CSharp.Templates
             _nugetDependencies.Add(nugetPackageInfo);
         }
 
+        /// <summary>
+        /// Registers that a <c>.csproj</c> containing a Role named <paramref name="roleName"/>
+        /// should be a dependency of the <c>.csproj</c> where this file resides.
+        /// </summary>
+        public void AddProjectDependency(string roleName)
+        {
+            var project = ExecutionContext.OutputTargets
+                .SingleOrDefault(x => x.HasRole(roleName));
+            if (project == null)
+            {
+                throw new Exception($"Could not find project with role {roleName}");
+            }
+
+            OutputTarget.AddDependency(project.GetProject());
+        }
+
         private ICollection<string> _frameworkDependency = new HashSet<string>();
 
         /// <summary>

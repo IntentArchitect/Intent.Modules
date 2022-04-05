@@ -195,6 +195,161 @@
             Windows accepts "\" as path seperators, but other platforms do not, so we always convert everything to "/".
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.Plugins.FactoryExtensionBase">
+            <summary>
+            Use implementations of this to extend the Software Factory execution process by overriding
+            one or more of the following:
+            <list type="bullet">
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnStep(Intent.Engine.IApplication,System.String)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnStart(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeMetadataLoad(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterMetadataLoad(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeTemplateRegistrations(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterTemplateRegistrations(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeTemplateExecution(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterTemplateExecution(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeCommitChanges(Intent.Engine.IApplication)"/></description></item>
+            <item><description><see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterCommitChanges(Intent.Engine.IApplication)"/></description></item>
+            </list>
+            <example>
+            For example, to override <see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnStart(Intent.Engine.IApplication)"/>, add a member to your implementation as follows:
+            <code>
+            <![CDATA[
+            protected override void OnStart(IApplication application)
+            {
+                base.OnStart(application);
+            }
+            ]]>
+            </code>
+            </example>
+            </summary>
+            <remarks>
+            The Software Factory uses assembly scanning and reflection to automatically instantiate and
+            register implementations of this class.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.Plugins.FactoryExtensionBase.Id">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Plugins.FactoryExtensionBase.Order">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.Configure(System.Collections.Generic.IDictionary{System.String,System.String})">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnStep(Intent.Engine.IApplication,System.String)">
+            <summary>
+            Called for each phase of the Software Factory execution. The
+            <paramref name="step"/> parameter will be populated with the current phase/step of the
+            Software Factory. See <see cref="T:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps"/> for possible values.
+            </summary>
+            <remarks>
+            After <see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnStep(Intent.Engine.IApplication,System.String)"/>, has been called, then the step specific virtual method
+            (for example <see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeTemplateExecution(Intent.Engine.IApplication)"/>) is also always called.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnStart(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.Start"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.Start"/> is the first phase of the Software Factory
+            execution process and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeMetadataLoad"/> phase.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeMetadataLoad(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeMetadataLoad"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeMetadataLoad"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.Start"/> phase and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterMetadataLoad"/> phase.
+            </remarks>
+            <remarks>
+            Called after <see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnStart(Intent.Engine.IApplication)"/> and before <see cref="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterMetadataLoad(Intent.Engine.IApplication)"/>.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterMetadataLoad(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterMetadataLoad"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterMetadataLoad"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeMetadataLoad"/> phase and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateRegistrations"/> phase.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeTemplateRegistrations(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateRegistrations"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateRegistrations"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterMetadataLoad"/> phase and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateRegistrations"/> phase.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterTemplateRegistrations(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateRegistrations"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateRegistrations"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateRegistrations"/> phase and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateExecution"/> phase.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeTemplateExecution(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateExecution"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateExecution"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateRegistrations"/> phase and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateExecution"/> phase.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterTemplateExecution(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateExecution"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateExecution"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeTemplateExecution"/> phase and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeCommitChanges"/> phase.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnBeforeCommitChanges(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeCommitChanges"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeCommitChanges"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterTemplateExecution"/> phase and precedes the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterCommitChanges"/> phase.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Plugins.FactoryExtensionBase.OnAfterCommitChanges(Intent.Engine.IApplication)">
+            <summary>
+            Called during the <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterCommitChanges"/> phase of the Software
+            Factory execution.
+            </summary>
+            <remarks>
+            The <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.AfterCommitChanges"/> phase proceeds the
+            <see cref="F:Intent.Plugins.FactoryExtensions.ExecutionLifeCycleSteps.BeforeCommitChanges"/> phase and is the last phase of the Software
+            Factory execution process.
+            </remarks>
+        </member>
         <member name="T:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1">
             <summary>
             Template Registration that produces a file per module that is returned by the <see cref="M:Intent.Modules.Common.Registrations.FilePerModelTemplateRegistration`1.GetModels(Intent.Engine.IApplication)"/> method.
@@ -297,10 +452,15 @@
         </member>
         <member name="P:Intent.Modules.Common.Templates.FileContent.ModuleContentFilesTemplateRegistrations.ContentSubFolder">
             <summary>
+            <para>
+            Location of source in the "content" folder.
+            </para>
+            <para>
             Allows to sub-divide the "content" folder, in the event of other Template Registrations
             of type <see cref="T:Intent.Modules.Common.Templates.FileContent.ModuleContentFilesTemplateRegistrations"/>
             having to scan for files, by specifying the sub-folder path where the relevant content is located.
             Specify only the sub-folder name (or sub-path, using '/' as path delimiter).
+            </para>
             </summary>
             <remarks>
             By default it will scan all files inside the "content" folder.
@@ -899,6 +1059,13 @@
             <summary>
             An instance of <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> where <see cref="P:Intent.Modules.Common.Templates.TemplateDiscoveryOptions.ThrowIfNotFound"/> is set to false.
             </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateExtensions.ToSentenceCase(System.String)">
+            <summary>
+            Converts the input to sense casing (e.g. SomeString -> Some string).
+            </summary>
+            <param name="s"></param>
+            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstancesForRole(System.String)">
             <summary>
