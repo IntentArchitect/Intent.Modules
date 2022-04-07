@@ -3,22 +3,22 @@ using System.IO;
 using Intent.Engine;
 using Intent.Templates;
 
-namespace Intent.Modules.Common.Templates.FileContent
+namespace Intent.Modules.Common.Templates.StaticContent
 {
     /// <summary>
     /// Outputs the contents of the file as per the path provided in 'sourcePath' constructor
     /// parameter.
     /// </summary>
-    public class FileContentTemplate : IntentTemplateBase
+    public class StaticContentTemplate : IntentTemplateBase
     {
         private readonly string _sourcePath;
         private readonly IReadOnlyDictionary<string, string> _replacements;
         private readonly string _relativeOutputPath;
 
         /// <summary>
-        /// Creates a new instance of <see cref="FileContentTemplate"/>.
+        /// Creates a new instance of <see cref="StaticContentTemplate"/>.
         /// </summary>
-        public FileContentTemplate(
+        public StaticContentTemplate(
             string sourcePath,
             string relativeOutputPath,
             string templateId,

@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.Registrations
         private bool _doRegistrationCalled = false;
 
         public abstract string TemplateId { get; }
-        
+
         public virtual void DoRegistration(ITemplateInstanceRegistry registry, IApplication application)
         {
             _doRegistrationCalled = true;

@@ -164,11 +164,16 @@ namespace Intent.Modules.Common.Templates
 
         public static string RemoveSuffix(this string word, params string[] suffixes)
         {
-            foreach (var suffix in suffixes)
+            // Because the suffixes could appear in a different order, we want to run the removals
+            // also for the number of suffixes to remove.
+            foreach (var _ in suffixes)
             {
-                if (word.EndsWith(suffix))
+                foreach (var suffix in suffixes)
                 {
-                    word = word.Substring(0, word.Length - suffix.Length);
+                    if (word.EndsWith(suffix))
+                    {
+                        word = word.Substring(0, word.Length - suffix.Length);
+                    }
                 }
             }
 
@@ -179,7 +184,7 @@ namespace Intent.Modules.Common.Templates
         {
             @string = @string.RemoveSuffix(suffixesToRemove);
 
-            return @string.EndsWith(@string)
+            return @string.EndsWith(suffix)
                 ? @string
                 : $"{@string}{suffix}";
         }

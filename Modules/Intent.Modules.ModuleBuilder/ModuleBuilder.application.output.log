@@ -366,6 +366,13 @@
     </FileLog>
     <FileLog>
       <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#b795a763-296d-476f-ab0a-1a52710444db</CorrelationId>
+      <ApplicationRelativeFilePath>Api/Extensions/StaticContentTemplateModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StaticContentTemplateModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>24c22b5a-51f5-4576-b89f-657fef7c665d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#0c721d5d-7721-414c-adaf-4c9f5c5531a9</CorrelationId>
       <ApplicationRelativeFilePath>Api/Extensions/StereotypeDefinitionCreationOptionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>StereotypeDefinitionCreationOptionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
@@ -495,6 +502,13 @@
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#101fd5b6-3159-4810-9490-a103ef323e9c</CorrelationId>
       <ApplicationRelativeFilePath>Api/ScriptModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ScriptModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>99ad535e-de46-4e05-b018-c7dee149a2b0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b795a763-296d-476f-ab0a-1a52710444db</CorrelationId>
+      <ApplicationRelativeFilePath>Api/StaticContentTemplateModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StaticContentTemplateModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -964,6 +978,34 @@
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel#af184995-dba3-463f-8b63-7c38190595f0</CorrelationId>
       <ApplicationRelativeFilePath>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#b8c74c43-2d73-483f-b938-f20a986f7acf</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#b8c74c43-2d73-483f-b938-f20a986f7acf</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#b8c74c43-2d73-483f-b938-f20a986f7acf</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#b8c74c43-2d73-483f-b938-f20a986f7acf</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

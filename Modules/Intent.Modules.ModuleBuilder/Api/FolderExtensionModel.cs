@@ -24,6 +24,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new FileTemplateModel(x))
             .ToList();
 
+        public IList<StaticContentTemplateModel> StaticContentTemplates => _element.ChildElements
+            .GetElementsOfType(StaticContentTemplateModel.SpecializationTypeId)
+            .Select(x => new StaticContentTemplateModel(x))
+            .ToList();
+
         public IList<TemplateRegistrationModel> TemplateRegistrations => _element.ChildElements
             .GetElementsOfType(TemplateRegistrationModel.SpecializationTypeId)
             .Select(x => new TemplateRegistrationModel(x))

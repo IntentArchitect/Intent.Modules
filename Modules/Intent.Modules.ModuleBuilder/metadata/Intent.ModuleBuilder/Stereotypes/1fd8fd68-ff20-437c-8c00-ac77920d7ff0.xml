@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1fd8fd68-ff20-437c-8c00-ac77920d7ff0" version="3.1.0">
+  <name>Template Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="b795a763-296d-476f-ab0a-1a52710444db">Static Content Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <parentFolderId>7f6c3c9b-b131-41a6-bddc-fc644cab7852</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="a9b100cb-f133-4061-a7be-63fec8159369">
+      <hint>Optional. Subfolder within the "content" folder to use for the source files.</hint>
+      <name>Content Subfolder</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="db0f79b6-2905-4771-9400-ed2bc024d1e1">
+      <name>Role</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>true</isRequiredFunction>
+    </property>
+    <property id="1b9fff50-1498-482a-a64d-11c5b92d0856">
+      <name>Default Location</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

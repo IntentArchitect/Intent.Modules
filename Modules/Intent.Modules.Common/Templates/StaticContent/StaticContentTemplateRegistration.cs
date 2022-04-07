@@ -6,21 +6,32 @@ using Intent.Modules.Common.Registrations;
 using Intent.Registrations;
 using SearchOption = System.IO.SearchOption;
 
-namespace Intent.Modules.Common.Templates.FileContent
+namespace Intent.Modules.Common.Templates.StaticContent
 {
     /// <summary>
     /// Inherit from this class to generate static content for each file in a folder and it's sub-folders
     /// in your module.
     /// </summary>
-    public abstract class ModuleContentFilesTemplateRegistrations : TemplateRegistrationBase
+    public abstract class StaticContentTemplateRegistration : TemplateRegistrationBase
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="StaticContentTemplateRegistration"/>.
+        /// </summary>
+        protected StaticContentTemplateRegistration(string templateId)
+        {
+            TemplateId = templateId;
+        }
+
+        /// <inheritdoc />
+        public sealed override string TemplateId { get; }
+
         /// <summary>
         /// <para>
         /// Location of source in the "content" folder.
         /// </para>
         /// <para>
         /// Allows to sub-divide the "content" folder, in the event of other Template Registrations
-        /// of type <see cref="ModuleContentFilesTemplateRegistrations"/>
+        /// of type <see cref="StaticContentTemplateRegistration"/>
         /// having to scan for files, by specifying the sub-folder path where the relevant content is located.
         /// Specify only the sub-folder name (or sub-path, using '/' as path delimiter).
         /// </para>
@@ -54,7 +65,7 @@ namespace Intent.Modules.Common.Templates.FileContent
 
             foreach (var file in files)
             {
-                registry.RegisterTemplate(TemplateId, o => new FileContentTemplate(
+                registry.RegisterTemplate(TemplateId, o => new StaticContentTemplate(
                     sourcePath: file.FullPath,
                     relativeOutputPath: file.RelativePath,
                     templateId: TemplateId, outputTarget: o,
