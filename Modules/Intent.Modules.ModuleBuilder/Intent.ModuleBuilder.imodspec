@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.2.7</version>
+  <version>3.2.8</version>
   <supportedClientVersions>[3.2.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
@@ -164,6 +164,14 @@
       <role>Templates</role>
       <location>Settings</location>
     </template>
+    <template id="Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration" externalReference="b8c74c43-2d73-483f-b938-f20a986f7acf">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
     <template id="Intent.ModuleBuilder.Templates.TemplateDecorator" externalReference="f5648642-e1bb-43fa-b522-150cc3878589">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
@@ -199,7 +207,7 @@
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.2.1" />
+    <dependency id="Intent.Common" version="3.2.5" />
     <dependency id="Intent.Common.CSharp" version="3.2.8" />
     <dependency id="Intent.Common.Types" version="3.2.0" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.2.3" />

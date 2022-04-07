@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.2.7</Version>
+    <Version>3.2.8</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
@@ -216,6 +216,28 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>ModuleSettingsExtensionsTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <None Update="Templates\StaticContentFilesRegistration\StaticContentFilesRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StaticContentFilesRegistrationTemplate.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\StaticContentFilesRegistration\StaticContentFilesRegistrationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StaticContentFilesRegistrationTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <None Update="Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StaticContentTemplateRegistrationTemplate.cs</LastGenOutput>
+    </None>
+  
+    <Compile Update="Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StaticContentTemplateRegistrationTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

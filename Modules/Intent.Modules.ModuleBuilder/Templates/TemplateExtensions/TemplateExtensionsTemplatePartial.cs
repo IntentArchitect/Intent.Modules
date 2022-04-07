@@ -31,16 +31,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
         {
             ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
             {
-                //var template = @event.ModelId != null
-                //    ? GetTemplate<IModuleBuilderTemplate>(@event.TemplateId, @event.ModelId, new TemplateDiscoveryOptions() { ThrowIfNotFound = false })
-                //    : GetTemplate<IModuleBuilderTemplate>(@event.TemplateId, new TemplateDiscoveryOptions() { ThrowIfNotFound = false });
-                //if (template != null)
-                //{
-                //    Templates.Add(template);
-                //}
                 if (@event.SourceTemplateId != null)
                 {
-                    Templates.Add(this.GetTemplate<IModuleBuilderTemplate>(@event.SourceTemplateId, @event.ModelId));
+                    var template = GetTemplate<IModuleBuilderTemplate>(@event.SourceTemplateId, @event.ModelId);
+                    if (template.Model is not TemplateRegistrationModel)
+                    {
+                        return;
+                    }
+
+                    Templates.Add(template);
                 }
             });
         }

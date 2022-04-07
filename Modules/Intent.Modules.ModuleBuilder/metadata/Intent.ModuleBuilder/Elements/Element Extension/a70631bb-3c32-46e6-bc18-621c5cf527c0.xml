@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>6</order>
+  <order>7</order>
   <genericTypes />
   <typeReference id="cd943cfc-d65f-4d00-9b14-34dfe469cf9a">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -88,11 +88,50 @@
           </stereotypes>
           <childElements />
         </childElement>
+        <childElement id="be84ae3e-e590-46e5-b5f5-d226712fe897" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Static Content Template</name>
+          <display>New Static Content Template: Static Content Template</display>
+          <isAbstract>false</isAbstract>
+          <order>1</order>
+          <genericTypes />
+          <typeReference id="1b184f13-02a1-462b-a480-5698272b0aca">
+            <typeId>b795a763-296d-476f-ab0a-1a52710444db</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>85ed99ae-7ed9-4112-812e-ea68ea21f8f6</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <childElements />
+        </childElement>
         <childElement id="477741cd-f720-4202-b9ec-f7480c500bd7" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Template Decorator</name>
           <display>New Template Decorator: Template Decorator</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
+          <order>2</order>
           <genericTypes />
           <typeReference id="02364e82-d9d7-44a7-8404-37f46b3ffa5a">
             <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
@@ -131,7 +170,7 @@
           <name>New Template Registration</name>
           <display>New Template Registration: Template Registration</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
+          <order>3</order>
           <genericTypes />
           <typeReference id="ab24fbf7-69a3-4fc4-95d4-611211526901">
             <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
@@ -170,7 +209,7 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
+          <order>4</order>
           <genericTypes />
           <typeReference id="3f6e52e1-17bf-496f-bd04-dd00ae7d817f">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -209,7 +248,7 @@
           <name>New Factory Extension</name>
           <display>New Factory Extension: Factory Extension</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
+          <order>5</order>
           <genericTypes />
           <typeReference id="881e0a60-3bc1-4b91-ab97-a9ecdaacce56">
             <typeId>7d008e84-bb28-4b10-ba28-7439202fca76</typeId>
@@ -248,7 +287,7 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
+          <order>6</order>
           <genericTypes />
           <typeReference id="c20d2250-5954-4fa0-8210-5a2fa6602e49">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

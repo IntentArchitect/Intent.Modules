@@ -110,6 +110,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<StaticContentTemplateModel> GetStaticContentTemplateModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(StaticContentTemplateModel.SpecializationTypeId)
+                .Select(x => new StaticContentTemplateModel(x))
+                .ToList();
+        }
+
         public static IList<TemplateDecoratorModel> GetTemplateDecoratorModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(TemplateDecoratorModel.SpecializationTypeId)

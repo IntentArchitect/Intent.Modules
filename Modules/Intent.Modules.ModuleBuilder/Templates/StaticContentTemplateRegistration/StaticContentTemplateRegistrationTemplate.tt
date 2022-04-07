@@ -1,0 +1,34 @@
+<#@ template language="C#" inherits="CSharpTemplateBase<Intent.ModuleBuilder.Api.StaticContentTemplateModel>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Modules.Common.CSharp.Templates" #>
+<#@ import namespace="Intent.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.ModuleBuilder.Api" #>
+
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace <#= Namespace #>
+{
+    public class <#= ClassName #> : <#= UseType("Intent.Modules.Common.Templates.StaticContent.StaticContentTemplateRegistration") #>
+    {
+        public new const string TemplateId = "<#= GetTemplateId() #>";
+
+        public <#= ClassName #>() : base(TemplateId)
+        {
+        }
+<#
+	var contentSubfolder = Model.GetTemplateSettings().ContentSubfolder();
+	if (!string.IsNullOrWhiteSpace(contentSubfolder))
+	{
+#>
+
+        public override string ContentSubFolder => "<#= contentSubfolder #>";
+<#
+	}
+#>
+    }
+}

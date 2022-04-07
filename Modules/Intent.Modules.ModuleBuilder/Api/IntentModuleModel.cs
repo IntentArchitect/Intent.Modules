@@ -51,6 +51,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new FileTemplateModel(x))
             .ToList();
 
+        public IList<StaticContentTemplateModel> StaticContentTemplates => UnderlyingPackage.ChildElements
+            .GetElementsOfType(StaticContentTemplateModel.SpecializationTypeId)
+            .Select(x => new StaticContentTemplateModel(x))
+            .ToList();
+
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
             .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
