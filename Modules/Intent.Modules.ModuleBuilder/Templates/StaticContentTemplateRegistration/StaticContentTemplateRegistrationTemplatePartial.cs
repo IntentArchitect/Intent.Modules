@@ -14,7 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistration
 {
-    partial class StaticContentTemplateRegistrationTemplate : CSharpTemplateBase<StaticContentTemplateModel>, IModuleBuilderTemplateWithDefaultLocation
+    partial class StaticContentTemplateRegistrationTemplate : CSharpTemplateBase<StaticContentTemplateModel>, IModuleBuilderTemplate
     {
         private const string AdditionalFolderName = "StaticContentTemplateRegistrations";
         [IntentManaged(Mode.Fully)]

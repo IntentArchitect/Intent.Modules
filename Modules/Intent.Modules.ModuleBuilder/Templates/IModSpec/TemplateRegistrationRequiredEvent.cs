@@ -1,8 +1,5 @@
-using System;
 using Intent.Metadata.Models;
-using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
-using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 {
@@ -17,21 +14,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             Location = location;
         }
 
-        [FixFor_Version4("Remove need to check for TemplateRegistrationModel by having everything else use the interface method instead.")]
         public TemplateRegistrationRequiredEvent(IModuleBuilderTemplate template)
         {
             SourceTemplateId = template.Id;
-            ModelId = ((IMetadataModel) template.Model).Id;
+            ModelId = ((IMetadataModel)template.Model).Id;
             ModelType = template.GetModelType();
             TemplateId = template.GetTemplateId();
             TemplateType = template.TemplateType();
             Role = template.GetRole();
-            Location = template switch
-            {
-                IModuleBuilderTemplateWithDefaultLocation templateWithDefaultLocation => templateWithDefaultLocation.GetDefaultLocation(),
-                _ when template.Model is TemplateRegistrationModel model => model.GetLocation(),
-                _ => throw new ArgumentOutOfRangeException()
-            };
+            Location = template.GetDefaultLocation();
         }
 
         public string SourceTemplateId { get; }

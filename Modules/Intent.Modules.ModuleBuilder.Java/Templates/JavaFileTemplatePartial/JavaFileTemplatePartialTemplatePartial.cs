@@ -67,6 +67,11 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             return "Java Template";
         }
 
+        public string GetDefaultLocation()
+        {
+            return Model.GetLocation();
+        }
+
         public string GetRole()
         {
             return Model.GetRole();

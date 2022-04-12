@@ -6,7 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.3.0-pre.1" />
-    <PackageReference Include="Intent.Modules.ModuleBuilder" Version="3.3.0-pre.1" />
+    <PackageReference Include="Intent.Modules.ModuleBuilder" Version="3.3.0-pre.2" />
     <PackageReference Include="Intent.Packager" Version="3.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

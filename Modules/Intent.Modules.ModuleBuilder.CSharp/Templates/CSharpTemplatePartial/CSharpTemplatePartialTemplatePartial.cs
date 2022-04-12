@@ -81,6 +81,11 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             return "C# Template";
         }
 
+        public string GetDefaultLocation()
+        {
+            return Model.GetLocation();
+        }
+
         private string GetRole()
         {
             return Model.GetRole();

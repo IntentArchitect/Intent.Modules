@@ -72,6 +72,11 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemp
             return "Kotlin Template";
         }
 
+        public string GetDefaultLocation()
+        {
+            return Model.GetLocation();
+        }
+
         public string GetTemplateId()
         {
             return $"{Model.GetModule().Name}.{FolderNamespace}";
