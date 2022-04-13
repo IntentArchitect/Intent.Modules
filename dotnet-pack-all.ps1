@@ -14,12 +14,14 @@
 
 param(
     [string]$dotnetPackOutputDirectory,
+    [string]$vstsFeedUrl,
     [string]$workingDirectory = $(Get-Location),
     # https://docs.microsoft.com/en-us/azure/devops/pipelines/build/variables?view=azure-devops&tabs=yaml#system-variables-devops-services
     [bool]$isOnBuildAgent = $($env:TF_BUILD -eq "True")
 )
 
 Write-Host "`$dotnetPackOutputDirectory=$dotnetPackOutputDirectory"
+Write-Host "`$vstsFeedUrl=$vstsFeedUrl"
 Write-Host "`$workingDirectory=$workingDirectory"
 Write-Host "`$isOnBuildAgent=$isOnBuildAgent"
 
@@ -125,12 +127,15 @@ if ($isOnBuildAgent) {
 <configuration>
     <packageSources>
         <add key="dotnet pack output directory" value="$dotnetPackOutputDirectory" />
+        <!-- Requires "NuGetAuthenticate@0" task to be called first in Azure Pipelines -->
+        <add key="vsts feed" value="$vstsFeedUrl" />
     </packageSources>
 </configuration>
 "@
 }
 
 foreach ($project in $projects) {
+    Invoke-Expression "dotnet restore $project --verbosity normal"
     Invoke-Expression "dotnet build $project --verbosity normal"
     Invoke-Expression "dotnet pack $project --verbosity normal$packOutputParam"
 }

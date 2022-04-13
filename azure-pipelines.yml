@@ -1,7 +1,3 @@
-# We let the build continue on failure to try publish NuGet packages if possible because if one of
-# the projects depends on a NuGet package in the same solution, which hasn't yet been built and
-# published, then it can't do the restore, which means it can't build the package to publish it to
-# fix the build.
 trigger:
   batch: true
   branches:
@@ -10,6 +6,7 @@ trigger:
 
 variables:
   vstsFeed: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
+  vstsFeedUrl: https://pkgs.dev.azure.com/intentarchitect/4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/_packaging/intentarchitect-feed/nuget/v3/index.json
   targetsToBuild: '**/*.sln'
 
 pool:
@@ -21,6 +18,33 @@ steps:
   persistCredentials: true
   fetchDepth: 1
   submodules: 'recursive'
+
+# Required for entry in NuGet.Config that is generated as part of 'dotnet pack'.
+- task: NuGetAuthenticate@0
+
+# We pack upfront as some projects rely on NuGet packages from this same solution.
+- task: PowerShell@2
+  displayName: 'dotnet pack'
+  inputs:
+    pwsh: true
+    failOnStderr: true
+    ignoreLASTEXITCODE: true
+    filePath: 'dotnet-pack-all.ps1'
+    arguments: '-dotnetPackOutputDirectory $(Build.ArtifactStagingDirectory) -vstsFeedUrl $(vstsFeedUrl)'
+
+# Push the NuGet packages so that regardless of whether or not this build succeeds, they are 
+# available to other pipelines.
+- task: NuGetCommand@2
+  displayName: 'nuget push'
+  condition: succeededOrFailed()
+  inputs:
+      command: 'push'
+      feedsToUse: 'select'
+      includeNuGetOrg: false
+      publishVstsFeed: $(vstsFeed)
+      allowPackageConflicts: true
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nuGetFeedType: 'internal'
 
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
@@ -49,25 +73,3 @@ steps:
     command: 'test'
     projects: $(targetsToBuild)
     arguments: '--no-build'
-
-- task: PowerShell@2
-  displayName: 'dotnet pack'
-  condition: succeededOrFailed()
-  inputs:
-    pwsh: true
-    failOnStderr: true
-    ignoreLASTEXITCODE: true
-    filePath: 'dotnet-pack-all.ps1'
-    arguments: '-dotnetPackOutputDirectory $(Build.ArtifactStagingDirectory)'
-
-- task: NuGetCommand@2
-  displayName: 'nuget push'
-  condition: succeededOrFailed()
-  inputs:
-      command: 'push'
-      feedsToUse: 'select'
-      includeNuGetOrg: false
-      publishVstsFeed: $(vstsFeed)
-      allowPackageConflicts: true
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
