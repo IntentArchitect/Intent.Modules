@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="4bc8e4cc-a4cc-4f33-91af-459483f3f732" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
       <packageName>Intent.Metadata.RDBMS</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="d91c5607-c989-405c-ba31-53f3302a116b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Column</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -127,6 +130,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements>
         <childElement id="0f543188-543a-4a5b-9cfc-361ec6c4756e" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
@@ -169,6 +173,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements>
             <childElement id="8a28da51-6a06-48ee-a119-a117324c04f3" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
@@ -211,6 +216,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="c6c0adf2-4dae-4b83-8715-ef852f4249d5" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -254,6 +260,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="ee35b994-0380-4dcd-9dfa-0badd77d17d6" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -297,6 +304,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="ee69c19c-0767-48c4-98fb-3068ede9b2d0" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -340,6 +348,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
           </childElements>
@@ -357,6 +366,7 @@
       <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
       <packageName>Intent.Metadata.RDBMS</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="c917c8ec-b3e6-45e6-a3ba-97cb806e5920" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
@@ -389,6 +399,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

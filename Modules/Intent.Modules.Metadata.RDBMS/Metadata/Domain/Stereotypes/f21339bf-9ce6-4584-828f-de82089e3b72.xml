@@ -18,8 +18,8 @@
   <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
   <packageName>Intent.Metadata.RDBMS</packageName>
   <properties>
-    <property id="a1a18b91-6ad7-4828-9d2c-d77e40638e4d">
-      <name>Name</name>
+    <property id="0b03f735-394c-4c12-8f10-bd14f9ab2dd0">
+      <name>Value</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
@@ -27,12 +27,13 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="0b03f735-394c-4c12-8f10-bd14f9ab2dd0">
-      <name>Value</name>
+    <property id="c213fe57-1d8c-4e3b-9714-21237e526e24">
+      <name>Treat as SQL Expression</name>
       <type>string</type>
-      <controlType>text</controlType>
+      <controlType>checkbox</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
+      <defaultValue>false</defaultValue>
       <valueOptions />
       <lookupTypes />
     </property>

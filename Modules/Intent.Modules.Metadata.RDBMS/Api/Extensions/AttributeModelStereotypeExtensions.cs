@@ -220,16 +220,16 @@ namespace Intent.Metadata.RDBMS.Api
                 _stereotype = stereotype;
             }
 
-            public string StereotypeName => _stereotype.Name;
-
-            public string Name()
-            {
-                return _stereotype.GetProperty<string>("Name");
-            }
+            public string Name => _stereotype.Name;
 
             public string Value()
             {
                 return _stereotype.GetProperty<string>("Value");
+            }
+
+            public bool TreatAsSQLExpression()
+            {
+                return _stereotype.GetProperty<bool>("Treat as SQL Expression");
             }
 
         }
