@@ -21,6 +21,8 @@
     <file src="$outDir$/Antlr4.Runtime.Standard.dll" inspect="false" />
     <file src="$outDir$/Intent.Code.Weaving.Java.dll" inspect="false" />
   </files>
-  <metadata />
+  <metadata>
+    <install src="../Common.Java/Intent.Metadata/Module Builder/Intent.Common.Java/Intent.Common.Java.pkg.config" externalReference="1b8f2b45-99c0-42dc-b28e-bcd4621c3e71" />
+  </metadata>
   <moduleSettings />
 </package>

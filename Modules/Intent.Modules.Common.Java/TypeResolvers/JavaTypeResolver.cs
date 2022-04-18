@@ -45,13 +45,18 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                 return new ResolvedTypeInfo("void", true, typeInfo, null);
             }
             var result = typeInfo.Element.Name;
-            var isPrimitive = false;
+            bool isPrimitive;
             if (typeInfo.Element.HasStereotype("Java"))
             {
-                string typeName = typeInfo.Element.GetStereotypeProperty<string>("Java", "Type");
-                string @namespace = typeInfo.Element.GetStereotypeProperty<string>("Java", "Namespace");
-                isPrimitive = typeInfo.Element.GetStereotypeProperty<bool>("Java", "Is Primitive", false);
-                result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
+                var typeName = typeInfo.Element.GetStereotypeProperty<string>("Java", "Type");
+                if (string.IsNullOrWhiteSpace(typeName))
+                {
+                    typeName = typeInfo.Element.Name;
+                }
+
+                var package = typeInfo.Element.GetStereotypeProperty<string>("Java", "Package");
+                isPrimitive = typeInfo.Element.GetStereotypeProperty("Java", "Is Primitive", false);
+                result = !string.IsNullOrWhiteSpace(package) ? $"{package}.{typeName}" : typeName;
             }
             else
             {
