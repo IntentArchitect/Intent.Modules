@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="f0e13f3d-4860-4f10-a107-71480c8a9b26" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
       <packageName>Intent.Modelers.Eventing</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="400294e3-d612-4d13-bfca-0a3309f217be" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Property</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

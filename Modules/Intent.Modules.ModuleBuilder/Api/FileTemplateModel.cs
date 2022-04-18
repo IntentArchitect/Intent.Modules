@@ -55,9 +55,9 @@ namespace Intent.ModuleBuilder.Api
                     .ToList();
 
         public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
-                    .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
-                    .Select(x => new TemplateDecoratorContractModel(x))
-                    .SingleOrDefault();
+            .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
+            .Select(x => new TemplateDecoratorContractModel(x))
+            .SingleOrDefault();
     }
 
     [IntentManaged(Mode.Fully)]

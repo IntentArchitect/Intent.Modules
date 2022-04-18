@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="59f70da0-36f9-498b-a611-39a68528e395" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
@@ -57,6 +58,7 @@
       <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
       <packageName>Intent.Modelers.Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="792d5ace-8307-46b5-bc9c-5960d5927378" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Service</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="d4e0c7d7-04a9-4a09-877b-7cd458e29cc3" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -134,6 +137,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="3b3fc1ff-3bdf-4aed-bd4f-21dce0ac6e92" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -173,6 +177,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="8c3215d9-82d0-4970-a94f-3c6e2dadb639" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -212,6 +217,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="5ae15350-4343-4e93-b194-c92383869c15" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
@@ -251,6 +257,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="4e05c53c-0caa-41ff-a169-a6be196a512b" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
       <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="31920e8e-f566-463f-87a9-794b62df8563" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Parameter</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

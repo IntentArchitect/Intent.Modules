@@ -19,6 +19,7 @@
   <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
   <packageName>Services</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="9adf9d1b-4f89-4492-bb4b-f265677baeab" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>id</name>
@@ -48,6 +49,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="a56ec91e-9481-4bc5-b45f-00181e3e6433" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -79,6 +81,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="6db690a3-8ac0-41a3-bcca-aaeebee55383" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -110,6 +113,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="457cc509-6b72-414a-8ea5-c75f307182b4" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -140,6 +144,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="ed1abbab-7aef-461e-aa8c-8f830f766317" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -170,6 +175,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="bb628d2b-3c87-4304-8cd8-407649e435a4" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -200,6 +206,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="94936afe-b2aa-45cf-a325-4e844a038eb2" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -230,6 +237,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="b0c48a90-258f-4a5c-a262-186138af84b1" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -263,6 +271,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="7e1b8a53-7118-4d1c-ae92-a566ad94af0c" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -295,6 +304,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="8fb747f7-a9a5-4430-b669-140a4be35370" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -325,6 +335,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

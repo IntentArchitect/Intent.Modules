@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="c6ba1aa0-63cc-4e9f-b7cf-02cb27a72d8f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
       <packageName>Intent.ModuleBuilder</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="84ac9c53-794e-4dde-9534-892c4819ab83" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Path</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="5da56bfd-6c4a-4c9f-8e02-5e7598100ea0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -134,6 +137,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="7d6b9a3c-4a94-4579-92a7-5ca51679570c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -173,6 +177,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="f70372c0-e7f8-499e-9626-e1423283f959" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -212,6 +217,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

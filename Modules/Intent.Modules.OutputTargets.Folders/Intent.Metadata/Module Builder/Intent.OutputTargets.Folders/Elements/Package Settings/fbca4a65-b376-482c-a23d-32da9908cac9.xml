@@ -21,6 +21,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="05d9da33-a99c-4be4-aea1-12b163919a9f" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -33,6 +34,7 @@
       <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
       <packageName>Intent.OutputTargets.Folders</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="1e1c3ee4-7083-470d-bec3-1e248dbc8c83" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Folder</name>
@@ -71,6 +73,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="4f3d0dd1-55e6-4f85-907d-371a3b0b2856" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -110,6 +113,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="a865e64a-7470-4930-9a41-240acb57c85d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -149,6 +153,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

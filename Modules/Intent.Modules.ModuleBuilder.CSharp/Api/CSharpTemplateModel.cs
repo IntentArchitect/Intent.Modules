@@ -51,9 +51,9 @@ namespace Intent.ModuleBuilder.CSharp.Api
         public new const string SpecializationTypeId = "f6456232-0f1b-4235-b5f8-b4cce548ca59";
 
         public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
-                    .Where(x => x.SpecializationType == TemplateDecoratorContractModel.SpecializationType)
-                    .Select(x => new TemplateDecoratorContractModel(x))
-                    .SingleOrDefault();
+            .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
+            .Select(x => new TemplateDecoratorContractModel(x))
+            .SingleOrDefault();
     }
 
     [IntentManaged(Mode.Fully)]

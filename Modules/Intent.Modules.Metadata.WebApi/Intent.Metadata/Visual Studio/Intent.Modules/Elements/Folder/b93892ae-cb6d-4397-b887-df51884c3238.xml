@@ -19,6 +19,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="08c33339-233a-4be7-a1d9-a9c1d68e8162" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.DecoratorRegistration.Template</name>
@@ -32,6 +33,7 @@
       <packageId>9ce150c8-2497-4ab1-93c3-b2edc624196c</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="e414f923-91ef-4018-b698-f6289853e2ba" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -46,6 +48,7 @@
       <packageId>9ce150c8-2497-4ab1-93c3-b2edc624196c</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="48547740-e077-45e0-82f2-598e4af4dfb9" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -60,6 +63,7 @@
       <packageId>9ce150c8-2497-4ab1-93c3-b2edc624196c</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="de405828-f730-4ea0-98fd-c92db7202309" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -74,6 +78,7 @@
       <packageId>9ce150c8-2497-4ab1-93c3-b2edc624196c</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

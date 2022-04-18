@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="fe0a6375-7177-4070-b759-98321e85ee85" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</packageId>
       <packageName>Intent.Common.Types</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="293b0a25-7293-46ca-a19c-0d469e911135" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Literal</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

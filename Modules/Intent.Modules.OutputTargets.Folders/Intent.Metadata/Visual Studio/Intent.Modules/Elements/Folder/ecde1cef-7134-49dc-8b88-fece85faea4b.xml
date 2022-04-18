@@ -19,6 +19,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="21820d02-ca2d-46a9-a466-8080d8e06045" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>ModuleBuilder.Templates.Api.ApiAssociationModelExtensions</name>
@@ -31,6 +32,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="bff841fe-07e4-453e-9742-06f924a7424b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -44,6 +46,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

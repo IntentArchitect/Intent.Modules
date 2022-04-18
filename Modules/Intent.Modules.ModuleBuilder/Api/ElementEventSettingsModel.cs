@@ -91,9 +91,9 @@ namespace Intent.ModuleBuilder.Api
             .ToList();
 
         public IList<ElementEventHandlerModel> OnMappedEvents => _element.ChildElements
-                    .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
-                    .Select(x => new ElementEventHandlerModel(x))
-                    .ToList();
+            .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
 
         public IList<ElementEventHandlerModel> OnDeleteds => _element.ChildElements
             .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
@@ -101,9 +101,9 @@ namespace Intent.ModuleBuilder.Api
             .ToList();
 
         public IList<ElementEventHandlerModel> OnTypeChangedEvents => _element.ChildElements
-                    .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
-                    .Select(x => new ElementEventHandlerModel(x))
-                    .ToList();
+            .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
 
         public List<ElementMacroPersistable> ToPersistable()
         {

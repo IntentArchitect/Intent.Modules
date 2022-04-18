@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="2fdccc1a-8336-4b0e-8c44-7fa7776b62a2" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
       <packageName>Intent.ModuleBuilder</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="07934334-7fc2-4454-a534-21b9f069b92e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Decorator Contract</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

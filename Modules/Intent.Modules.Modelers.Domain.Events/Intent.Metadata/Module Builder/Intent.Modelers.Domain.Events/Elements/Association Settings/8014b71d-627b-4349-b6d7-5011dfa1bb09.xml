@@ -10,6 +10,7 @@
   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
   <packageName>Intent.Modelers.Domain.Events</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="ad8998ec-ee85-4544-9267-8ec150a2f257" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
       <name>Domain Event Association Source End</name>
@@ -41,6 +42,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="fe0d0f78-fb7e-4685-ab2d-bae88054a78e" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
@@ -73,6 +75,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="b3505e6c-d16c-4464-a896-ebd53d8551e8" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
@@ -97,6 +100,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements>
         <childElement id="1622512d-4673-4116-aaca-c932f1c87029" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
           <name>[source]</name>
@@ -143,6 +147,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="21f40049-0a1e-4032-b375-1d1c79612f22" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
@@ -190,6 +195,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

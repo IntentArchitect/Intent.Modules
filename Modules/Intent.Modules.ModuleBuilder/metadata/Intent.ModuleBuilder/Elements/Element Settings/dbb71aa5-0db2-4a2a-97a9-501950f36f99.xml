@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="2f9ce669-d9ee-45ae-be5c-ed7a3ad68614" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
@@ -57,6 +58,7 @@
       <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
       <packageName>Intent.ModuleBuilder</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="2f4cc6a5-6e24-498d-bf51-10639e54829d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Designer</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="2f7eaf64-da41-4534-bbea-82a37bdcfb70" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -134,6 +137,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

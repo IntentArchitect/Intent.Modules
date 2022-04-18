@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="ab58337c-93cc-4e3c-aa97-8a9750dddfe2" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
       <packageName>Intent.OutputTargets.Folders</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="8461f96b-3b9a-46ee-b7c9-71e1faf28af7" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Template Output</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="bded132d-bf47-4fa6-a4bd-45e13b55ba81" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -134,6 +137,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="689d90a9-618b-439d-8e77-1a9c3ced29d4" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
       <packageName>Intent.Modelers.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="be13f288-ddf4-4872-8d94-79f11aa579ae" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Parameter</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -127,6 +130,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements>
         <childElement id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
@@ -169,6 +173,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements>
             <childElement id="5601382d-8b87-465f-bc8c-d41fcc28185d" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
@@ -211,6 +216,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="6a1129e9-e2a3-4df5-9678-98bc9d839836" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -254,6 +260,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
           </childElements>

@@ -50,9 +50,9 @@ namespace Intent.ModuleBuilder.TypeScript.Api
         public new const string SpecializationTypeId = "e6e41d88-2829-41b6-a791-065d2bb44eb3";
 
         public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
-                    .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
-                    .Select(x => new TemplateDecoratorContractModel(x))
-                    .SingleOrDefault();
+            .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
+            .Select(x => new TemplateDecoratorContractModel(x))
+            .SingleOrDefault();
     }
 
     [IntentManaged(Mode.Fully)]

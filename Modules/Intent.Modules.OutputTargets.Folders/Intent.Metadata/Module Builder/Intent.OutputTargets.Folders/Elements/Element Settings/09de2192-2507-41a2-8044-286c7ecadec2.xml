@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="ce495042-c13f-40f2-a752-79704e080d85" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
       <packageName>Intent.OutputTargets.Folders</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

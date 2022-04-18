@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="7e02d6ad-9180-4f62-b118-af349005f18b" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
@@ -57,6 +58,7 @@
       <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
       <packageName>Intent.ModuleBuilder</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="bef5aae8-3fc2-4890-91ec-c48cabc66ca2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Child Mapping</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

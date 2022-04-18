@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="c4451f43-f06b-4eb1-88b8-3a4a4c374303" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>
@@ -57,6 +58,7 @@
       <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
       <packageName>Intent.Metadata.WebApi</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="d1a9d51d-c249-4c76-896e-2f20721159ad" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Name Changed</name>
@@ -89,6 +91,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

@@ -21,6 +21,7 @@
   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
   <packageName>Intent.Modelers.Services.CQRS</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="7059c2a5-23d1-467d-bcc5-17c58adf24b1" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -33,6 +34,7 @@
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="ec89e25a-8213-486d-a9c5-583ba8f34a11" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Command</name>
@@ -71,6 +73,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="15ae9dfc-2961-4d90-804b-e175a32a64ca" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -110,6 +113,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

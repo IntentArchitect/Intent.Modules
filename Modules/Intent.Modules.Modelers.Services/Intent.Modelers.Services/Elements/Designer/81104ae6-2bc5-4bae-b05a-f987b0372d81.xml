@@ -20,6 +20,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="0c91f86f-8a6f-4386-87be-217789016b8f" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
       <name>reference</name>
@@ -43,6 +44,7 @@
       <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
       <packageName>Intent.Modelers.Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="8ccf6171-c6f2-453d-b2ae-f135dc997213" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
@@ -67,6 +69,7 @@
       <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
       <packageName>Intent.Modelers.Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="bfc26967-7cbd-40c5-a062-c779ba2eefbc" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
@@ -57,6 +58,7 @@
       <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
       <packageName>Intent.Modelers.Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="e94b8cca-7cac-4f63-acb9-b4fd371dac1b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Operation</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

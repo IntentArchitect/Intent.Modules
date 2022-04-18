@@ -20,6 +20,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="06602580-5978-4525-b4d0-1216abe2c5e1" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
       <name>reference</name>
@@ -43,6 +44,7 @@
       <packageId>f4710958-060a-42e9-a987-48af8f90324a</packageId>
       <packageName>Intent.Modelers.ServiceProxies</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="7d86fe1a-e7d1-48a8-9945-70b5af540c59" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
@@ -67,6 +69,7 @@
       <packageId>f4710958-060a-42e9-a987-48af8f90324a</packageId>
       <packageName>Intent.Modelers.ServiceProxies</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="fae88dc6-a14b-49d1-b1f8-4844f076d7fe" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
@@ -91,6 +94,7 @@
       <packageId>f4710958-060a-42e9-a987-48af8f90324a</packageId>
       <packageName>Intent.Modelers.ServiceProxies</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

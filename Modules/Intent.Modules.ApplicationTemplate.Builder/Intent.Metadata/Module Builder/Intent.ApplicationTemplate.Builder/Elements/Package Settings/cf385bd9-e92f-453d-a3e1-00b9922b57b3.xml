@@ -21,6 +21,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="836c5724-15e5-4704-a638-0cb23a06dde4" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -33,6 +34,7 @@
       <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
       <packageName>Intent.ApplicationTemplate.Builder</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="bb2879fc-a640-4505-8b97-bfe7da0bb188" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Settings Configuration</name>
@@ -71,6 +73,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="9050bc58-6ea5-4232-a885-8df533134800" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -110,6 +113,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -125,6 +129,7 @@
       <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
       <packageName>Intent.ApplicationTemplate.Builder</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

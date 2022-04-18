@@ -19,6 +19,7 @@
   <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
   <packageName>Services</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="4662bb04-f0f5-4b94-87f0-49e1b29de1a3" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>name</name>
@@ -48,6 +49,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="e340b47b-0fad-4c7d-96ff-b210b03b9833" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
@@ -78,6 +80,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

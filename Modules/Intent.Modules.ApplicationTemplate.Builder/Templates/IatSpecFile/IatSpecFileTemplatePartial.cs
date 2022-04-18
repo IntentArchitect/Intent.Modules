@@ -162,7 +162,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
 
         private ComponentGroupSelectionMode GetSelectionMode(ComponentGroupModel @group)
         {
-            switch (@group.GetComponentGroupSettings().SelectionMode().AsEnum())
+            switch (@group.GetComponentGroupSettings()?.SelectionMode().AsEnum())
             {
                 case ComponentGroupModelStereotypeExtensions.ComponentGroupSettings.SelectionModeOptionsEnum.AllowMultiple:
                     return ComponentGroupSelectionMode.AllowSelectMultiple;
@@ -171,8 +171,9 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
                     return ComponentGroupSelectionMode.AllowSingleOnly;
                 //return "allow-single-only";
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    return ComponentGroupSelectionMode.AllowSelectMultiple;
             }
+
         }
 
         private ModuleSettingControlType GetControlType(ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum settingsField)

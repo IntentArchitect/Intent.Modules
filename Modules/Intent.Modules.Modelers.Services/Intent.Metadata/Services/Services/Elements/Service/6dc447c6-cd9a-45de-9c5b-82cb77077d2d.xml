@@ -10,6 +10,7 @@
   <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
   <packageName>Services</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="3dd4d1e7-a64f-4433-b4bc-6694224f7ce6" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
       <name>GetSomeShit</name>
@@ -33,6 +34,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="3ae4da8b-f27c-4fc8-ab25-6c43f1856695" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
@@ -54,6 +56,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="bbeb812f-57e8-4276-8f02-f3d6784bd647" type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
@@ -78,6 +81,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="1979068f-3d35-4d93-9838-580c90727bff" type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
           <name>param</name>
@@ -101,6 +105,7 @@
           <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
           <packageName>Services</packageName>
           <stereotypes />
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="bdf51a70-aa3d-4f2e-ae02-117e2a51e918" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
@@ -57,6 +58,7 @@
       <packageId>f2bfb0f7-d304-466f-b923-021d4016b48d</packageId>
       <packageName>Intent.ModuleBuilder.CSharp</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="2b6e17ad-80ce-4851-a661-90163d3a6ff7" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New C# Template</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

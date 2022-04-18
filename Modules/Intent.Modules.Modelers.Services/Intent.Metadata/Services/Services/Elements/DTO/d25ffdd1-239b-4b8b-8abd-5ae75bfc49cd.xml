@@ -19,6 +19,7 @@
   <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
   <packageName>Services</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="b59f20e5-b9bc-4aac-94e3-d9a09f341710" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
       <name>xxx</name>
@@ -48,6 +49,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

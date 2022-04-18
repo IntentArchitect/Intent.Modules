@@ -10,6 +10,7 @@
   <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
   <packageName>Domain</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="4df91bc2-dbee-4ded-9e82-0f3b4371a543" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>isVillain</name>
@@ -33,6 +34,7 @@
       <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
       <packageName>Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="69c58551-e882-45e4-905f-a90f164a0948" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
@@ -57,6 +59,7 @@
       <packageId>c0f064ad-b3dd-4242-acda-b9cfe1f35589</packageId>
       <packageName>Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="54122204-5712-47d6-87b5-e2547d81318a" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>aab55a63-0390-4bad-8c8d-59ddad648524</packageId>
       <packageName>Intent.ModuleBuilder.Kotlin</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="b4d43811-8b3b-4692-abb2-dfd38db4600e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Kotlin File</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

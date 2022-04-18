@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="5e848cef-7ef6-4221-ad46-8adb4c249a8b" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
       <packageName>Intent.Modelers.Domain.Events</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="3dc132fe-95a5-4229-8a0a-c20e66e9ca35" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Property</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="672a163b-7008-4f9e-b94a-2a4e7d683bc5" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
@@ -133,6 +136,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -172,6 +176,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements>
         <childElement id="5087b7a7-4dd3-4c81-94ee-6be860e810dd" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
           <name>Rectangle</name>
@@ -198,6 +203,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="768bebc0-22d2-4cac-adb2-2c9077e9bcfc" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
@@ -233,6 +239,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="fa190c49-4fc8-4aa0-8aaa-72bf4f0539e5" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
@@ -258,6 +265,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="b3c50c83-5249-49f0-8b25-5d319eeab529" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
@@ -294,6 +302,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements>
             <childElement id="8aaf22e9-bd9e-441c-8415-2e51b4154a58" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
               <name>Separator</name>
@@ -320,6 +329,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="54439b59-d8bc-43b5-bce6-d9b18c636dc7" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
@@ -355,6 +365,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="9c5ba327-65a1-4908-8ef3-f6fda1a09304" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
@@ -380,6 +391,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
           </childElements>

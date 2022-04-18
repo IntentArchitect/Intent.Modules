@@ -19,6 +19,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="304cc83d-7c82-42a1-a985-c68eb52498ce" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>firstAttr</name>
@@ -42,6 +43,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="6f48db24-d7fc-419c-8beb-f67b26121014" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
@@ -66,6 +68,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="7507ff07-7f7c-4e9a-bce7-5962ca1c76a8" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
@@ -107,6 +110,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="7733c257-c6e3-4ee6-9e7e-6a641dcac66a" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
@@ -131,6 +135,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="bb9e704b-b83a-4ec5-83fc-931a517f6771" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
@@ -155,6 +160,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="428014ce-840f-40fd-9d51-c279480ae806" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
@@ -177,6 +183,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="9a9a107a-eac8-4790-bc7e-9b44e2921888" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
           <name>firstAttr</name>
@@ -206,6 +213,7 @@
           <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
           <packageName>Modelers.Domain.Domain</packageName>
           <stereotypes />
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="1681d680-3e3e-4ad8-8cb7-3d263b11c6c0" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
@@ -236,6 +244,7 @@
           <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
           <packageName>Modelers.Domain.Domain</packageName>
           <stereotypes />
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="65f2f4a3-91e8-4c50-b89c-232a34166df5" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
@@ -266,6 +275,7 @@
           <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
           <packageName>Modelers.Domain.Domain</packageName>
           <stereotypes />
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -289,6 +299,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="fc18591a-dec0-4a35-8a05-84b7425eded3" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
           <name>param</name>
@@ -312,6 +323,7 @@
           <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
           <packageName>Modelers.Domain.Domain</packageName>
           <stereotypes />
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="722460a0-e8ea-402a-9788-a9c09775346d" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
@@ -336,6 +348,7 @@
           <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
           <packageName>Modelers.Domain.Domain</packageName>
           <stereotypes />
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -359,6 +372,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="c5cdd0da-c691-4278-b5d2-78c81d5d75b3" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
@@ -380,6 +394,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

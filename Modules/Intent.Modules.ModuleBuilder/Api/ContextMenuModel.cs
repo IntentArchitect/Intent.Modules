@@ -97,9 +97,9 @@ namespace Intent.ModuleBuilder.Api
         public string Comment => _element.Comment;
 
         public IList<RunScriptOptionModel> RunScriptOptions => _element.ChildElements
-                    .GetElementsOfType(RunScriptOptionModel.SpecializationTypeId)
-                    .Select(x => new RunScriptOptionModel(x))
-                    .ToList();
+            .GetElementsOfType(RunScriptOptionModel.SpecializationTypeId)
+            .Select(x => new RunScriptOptionModel(x))
+            .ToList();
     }
 
     [IntentManaged(Mode.Fully)]

@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="653571f2-3bd2-4257-bd77-edaebb99e9a6" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="e0672ea6-642b-416c-b840-0af309e98261" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Command</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="c3e341da-3e4e-438d-bb4a-dfa2dabf8691" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -134,6 +137,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

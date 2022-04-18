@@ -19,6 +19,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="86aa7bd1-8627-4ffe-810a-8c0ffbba5969" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.ProjectItemTemplate.Partial</name>
@@ -31,6 +32,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="90239bb8-e959-4a34-b77a-3b1c60ffc897" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -44,6 +46,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="61788367-a000-4966-9f0a-0deb2c60e08d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -57,6 +60,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="65d54652-7f15-4aa1-9d54-762e414af00a" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -70,6 +74,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="6d75dc3d-9752-4b1e-bb60-abe84c11871e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -83,6 +88,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="c5228dd0-84ff-4647-979b-af3bd2eba47f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -96,6 +102,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="a0be147e-8e42-43fb-be69-02e9e9262703" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -109,6 +116,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="c2b83a87-39ee-48c2-b2af-3cc36d7e214e" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -123,6 +131,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="d8702938-7cc8-4ead-b8eb-edf5d9956e1b" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -137,6 +146,7 @@
       <packageId>b1d9a270-6cce-4636-9826-ad375771dc1e</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

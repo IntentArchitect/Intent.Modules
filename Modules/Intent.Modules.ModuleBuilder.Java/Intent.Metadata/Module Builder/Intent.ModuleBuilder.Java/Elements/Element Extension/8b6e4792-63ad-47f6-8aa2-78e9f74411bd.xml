@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="a3b9ee72-fd62-4134-a15d-74b9f4dabc78" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>b6978589-6e21-40a6-88b3-0854c11f4388</packageId>
       <packageName>Intent.ModuleBuilder.Java</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="0fbcb658-66f1-4a1a-88ac-dc178e703af0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Java File</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

@@ -10,6 +10,7 @@
   <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
   <packageName>Intent.Modelers.Domain</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="8190bf43-222c-4b53-8a44-14626efe3574" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
       <name>Generalization Source End</name>
@@ -41,6 +42,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="4686cc1d-b4d8-4b99-b45b-f77bd5496946" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
@@ -73,6 +75,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="4f08a3b7-adcb-4e3d-9b27-8306925a7e9f" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
@@ -97,6 +100,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements>
         <childElement id="3bf98e55-c57c-4013-a893-efca99b12234" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
           <name>[source]</name>
@@ -143,6 +147,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="bdc22779-4ae3-4a6d-8cc3-d2abb5c5b5a2" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
@@ -190,6 +195,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

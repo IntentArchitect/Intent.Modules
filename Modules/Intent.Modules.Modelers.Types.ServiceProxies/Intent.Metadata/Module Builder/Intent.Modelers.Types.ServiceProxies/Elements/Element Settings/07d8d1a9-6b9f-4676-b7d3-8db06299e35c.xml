@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="fe178093-a654-43bd-b403-f273a588af7c" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
       <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="0bdac6eb-8e3a-43ba-add1-a5eb0cf65a65" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Operation</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -127,6 +130,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements>
         <childElement id="ae3e8569-4f13-41f5-b15f-1c9144b9d482" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
@@ -169,6 +173,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements>
             <childElement id="ff7f2a97-e7e4-48e3-960d-521171d1a77b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
@@ -211,6 +216,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements>
                 <childElement id="7d8db837-a62c-41b2-b9e5-f81b9f61469a" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
@@ -253,6 +259,7 @@
                       </properties>
                     </stereotype>
                   </stereotypes>
+                  <metadata />
                   <childElements />
                 </childElement>
               </childElements>

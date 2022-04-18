@@ -9,9 +9,10 @@
   <parentFolderId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</parentFolderId>
   <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
   <packageName>Modelers.Domain.Domain</packageName>
-  <stereotypes />
   <diagram>
     <targetPackageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</targetPackageId>
   </diagram>
+  <stereotypes />
+  <metadata />
   <childElements />
 </class>

@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="97bb497f-b10e-4718-9876-8b4b808dcfa8" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="8ceac7dc-923c-4abb-83e6-905aec798d80" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Property</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -127,6 +130,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements>
         <childElement id="d16444c3-ab59-4830-8e0e-f6025685e673" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
@@ -169,6 +173,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements>
             <childElement id="910ee573-26c4-40e3-bfd3-03b93a1b5999" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
@@ -211,6 +216,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="646e306f-ff15-49e4-8600-b51cb730f999" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -254,6 +260,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="e4385dbd-00ad-474d-8b80-6a439d05dfbd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -297,6 +304,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
             <childElement id="99349688-8662-4f74-8896-44ef5b0a5fab" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -340,6 +348,7 @@
                   </properties>
                 </stereotype>
               </stereotypes>
+              <metadata />
               <childElements />
             </childElement>
           </childElements>

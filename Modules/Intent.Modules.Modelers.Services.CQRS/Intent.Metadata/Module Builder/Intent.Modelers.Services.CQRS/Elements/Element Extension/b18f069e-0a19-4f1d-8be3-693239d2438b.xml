@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="aa2e3f09-8346-41c5-b0bb-3b4a1147bdc8" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="cc5d4ec2-edf3-4c90-a1ca-a8490859eafd" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
           <name>Add Command Operation</name>
@@ -101,6 +103,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="126c7c10-721f-4c77-9a13-1c9ebab40d7c" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
@@ -146,6 +149,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

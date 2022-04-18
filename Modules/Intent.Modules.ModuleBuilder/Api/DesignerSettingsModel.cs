@@ -136,9 +136,9 @@ namespace Intent.ModuleBuilder.Api
         public const string SpecializationTypeId = "7a6411a8-ffef-4209-91c6-8d12755a806a";
 
         public IList<DesignerReferenceModel> DesignerReferences => _element.ChildElements
-                    .Where(x => x.SpecializationType == DesignerReferenceModel.SpecializationType)
-                    .Select(x => new DesignerReferenceModel(x))
-                    .ToList();
+            .GetElementsOfType(DesignerReferenceModel.SpecializationTypeId)
+            .Select(x => new DesignerReferenceModel(x))
+            .ToList();
 
         public string Comment => _element.Comment;
     }

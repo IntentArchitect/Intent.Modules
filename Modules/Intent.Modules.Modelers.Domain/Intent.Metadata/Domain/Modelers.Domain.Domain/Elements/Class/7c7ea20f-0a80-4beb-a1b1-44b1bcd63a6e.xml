@@ -25,6 +25,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="7627151d-224f-4aed-8465-9da33234d451" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <name>attribute</name>
@@ -57,6 +58,7 @@
           </properties>
         </stereotype>
       </stereotypes>
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="d1452b39-e063-48b4-a746-f08c1594cbfe" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
@@ -78,6 +80,7 @@
       <packageId>bb18d2a1-e6b1-4002-98fa-14f74ec78512</packageId>
       <packageName>Modelers.Domain.Domain</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

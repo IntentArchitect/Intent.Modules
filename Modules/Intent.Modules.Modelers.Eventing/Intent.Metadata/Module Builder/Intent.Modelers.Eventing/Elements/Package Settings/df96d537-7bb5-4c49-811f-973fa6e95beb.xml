@@ -21,6 +21,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="73a1c99e-89aa-4be9-848b-4c6d2ffa78bf" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -33,6 +34,7 @@
       <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
       <packageName>Intent.Modelers.Eventing</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="29024d64-c2b4-44ff-8eac-8484fb35e6eb" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Producer</name>
@@ -71,6 +73,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="e74fd6bf-a193-408e-b7e0-8eca87da2aec" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -110,6 +113,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="2269ee5a-4377-4084-9f46-cab13b1d3c93" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -149,6 +153,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="6c08a4b2-d44f-4e5b-8ad4-dee385156b1f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -188,6 +193,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="05635745-33a7-43f9-abcb-b40dc6fc7eee" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -227,6 +233,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="2682229f-ce62-4f8b-adca-1b8d411b1048" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
@@ -266,6 +273,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
         <childElement id="a1ad7a2b-070a-4411-a49d-2e6357593c88" type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
@@ -305,6 +313,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
@@ -320,6 +329,7 @@
       <packageId>73db16ce-8cc2-4b89-8348-9a8bda3fda4c</packageId>
       <packageName>Intent.Modelers.Eventing</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="327a409c-0178-48aa-b505-b9fa3b4401a9" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
@@ -352,6 +362,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

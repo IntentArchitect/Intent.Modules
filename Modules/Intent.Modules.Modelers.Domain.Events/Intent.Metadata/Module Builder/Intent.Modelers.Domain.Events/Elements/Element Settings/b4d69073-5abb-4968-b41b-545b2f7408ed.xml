@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="317a7d48-40ac-4133-bc2f-1b77458402f3" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -57,6 +58,7 @@
       <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
       <packageName>Intent.Modelers.Domain.Events</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

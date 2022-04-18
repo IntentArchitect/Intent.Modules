@@ -8,6 +8,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>dbe0fab1-2720-40f2-9f2c-76719e833d59</parentFolderId>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="a942b9e7-ab32-423d-9f4b-c82bb7e5315f" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.ProjectItemTemplate.Partial</name>
@@ -19,6 +20,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="84139f13-3b9d-4d5d-b5fe-6c5ef01d826d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -31,6 +33,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="e2bb1bd8-8e74-4012-8e53-3ac0cc3d1c7d" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -43,6 +46,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="3ddd639a-ea7f-49a8-b93e-f1c641eb9bc7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -55,6 +59,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="a990197c-bf7f-4336-828a-1cd4e5d2c7c7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -67,6 +72,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="e84eaabb-0575-4bbb-8b29-4d10430a1f65" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -79,6 +85,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="6a179586-d1c6-468e-b118-40482db3e985" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -91,6 +98,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="0a7fceee-bcb5-4962-baad-40cc9a598947" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -103,6 +111,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="2a163137-e732-4fad-a821-7c08cc0fad57" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
@@ -115,6 +124,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>ba710f1a-1f77-4a5d-b72e-35075852053b</parentFolderId>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

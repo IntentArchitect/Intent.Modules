@@ -31,6 +31,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="5bf26fca-a9d6-459f-af46-737a4e89eb5f" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
       <name>reference</name>
@@ -54,6 +55,7 @@
       <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
       <packageName>Intent.OutputTargets.Folders</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
     <childElement id="af69c671-7ced-4fe9-a4f1-ad3df7e5ec5e" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
@@ -78,6 +80,7 @@
       <packageId>a3e2dddd-9f5f-4b9a-b13e-40e0252f0882</packageId>
       <packageName>Intent.OutputTargets.Folders</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

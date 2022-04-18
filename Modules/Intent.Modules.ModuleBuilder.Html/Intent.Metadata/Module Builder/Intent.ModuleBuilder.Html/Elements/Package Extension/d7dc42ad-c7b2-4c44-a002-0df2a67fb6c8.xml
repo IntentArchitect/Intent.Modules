@@ -21,6 +21,7 @@
   <packageId>2a4dd22e-663b-4ef9-8797-3749268224cb</packageId>
   <packageName>Intent.ModuleBuilder.Html</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="90fa118a-2018-4d2e-9be5-21d64a80b262" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -33,6 +34,7 @@
       <packageId>2a4dd22e-663b-4ef9-8797-3749268224cb</packageId>
       <packageName>Intent.ModuleBuilder.Html</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="67a8c9ae-380e-4636-857b-ba1948928300" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Html File</name>
@@ -71,6 +73,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

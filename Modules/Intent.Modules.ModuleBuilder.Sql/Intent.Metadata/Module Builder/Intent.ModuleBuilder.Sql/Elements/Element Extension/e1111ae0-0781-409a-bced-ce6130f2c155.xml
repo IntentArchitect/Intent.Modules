@@ -45,6 +45,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="2e06ac62-01b7-49bf-a30a-fcf5ce768ca5" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>Creation Options</name>
@@ -57,6 +58,7 @@
       <packageId>fb002b11-41c0-43ea-afeb-f26c3346ce87</packageId>
       <packageName>Intent.ModuleBuilder.Sql</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="9ca103b2-c514-4f96-bd8f-c7ec49f47303" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Sql Template</name>
@@ -95,6 +97,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>

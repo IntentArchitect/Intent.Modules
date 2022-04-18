@@ -14,6 +14,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistration
 {
+    [IntentManaged(Mode.Fully, Body = Mode.Merge, Signature = Mode.Merge)]
     partial class StaticContentTemplateRegistrationTemplate : CSharpTemplateBase<StaticContentTemplateModel>, IModuleBuilderTemplate
     {
         private const string AdditionalFolderName = "StaticContentTemplateRegistrations";
@@ -31,6 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistrati
             ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
             var name = Model.Name

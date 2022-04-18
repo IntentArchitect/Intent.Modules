@@ -128,7 +128,7 @@ diagram.loadDiagram();
           <specializationType>Class Constructor</specializationType>
           <specializationTypeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</specializationTypeId>
           <text>Add Constructor</text>
-          <shortcut>ctrl + shift + c</shortcut>
+          <shortcut>ctrl + shift + u</shortcut>
           <defaultName>Constructor</defaultName>
           <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -146,6 +146,7 @@ diagram.loadDiagram();
           <specializationType>Association</specializationType>
           <specializationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</specializationTypeId>
           <text>New Association</text>
+          <shortcut>ctrl + shift + c</shortcut>
           <defaultName>NewAssociation</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -154,6 +155,7 @@ diagram.loadDiagram();
           <specializationType>Generalization</specializationType>
           <specializationTypeId>5de35973-3ac7-4e65-b48c-385605aec561</specializationTypeId>
           <text>New Inheritance</text>
+          <shortcut>ctrl + shift + i</shortcut>
           <defaultName>NewGeneralization</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -458,6 +460,7 @@ white-space: inherit;`</style>
           <specializationType>Comment Association</specializationType>
           <specializationTypeId>5264c135-e856-468d-8bd7-154b75842256</specializationTypeId>
           <text>New Association</text>
+          <shortcut>ctrl + shift + c</shortcut>
           <defaultName>NewCommentAssociation</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
           <allowMultiple>true</allowMultiple>

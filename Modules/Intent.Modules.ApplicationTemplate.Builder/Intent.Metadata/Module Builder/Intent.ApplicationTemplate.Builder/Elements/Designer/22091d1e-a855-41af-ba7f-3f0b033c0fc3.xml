@@ -20,6 +20,7 @@
       </properties>
     </stereotype>
   </stereotypes>
+  <metadata />
   <childElements>
     <childElement id="ba3c22df-765b-4a84-9627-1463837676bf" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
       <name>reference</name>
@@ -43,6 +44,7 @@
       <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
       <packageName>Intent.ApplicationTemplate.Builder</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

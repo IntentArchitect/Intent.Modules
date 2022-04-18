@@ -10,6 +10,7 @@
   <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
   <packageName>Services</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="d0070731-7f67-49b8-a195-5ea706af1631" type="Enum-Literal" typeId="4215f417-25d2-4509-9309-5076a1452eaa">
       <name>NewEnumLiteral</name>
@@ -23,6 +24,7 @@
       <packageId>7ed452ae-334c-48f7-b0aa-0426fc21e243</packageId>
       <packageName>Services</packageName>
       <stereotypes />
+      <metadata />
       <childElements />
     </childElement>
   </childElements>

@@ -8,7 +8,7 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>589c3b0e-590f-4250-96f0-df0a677b596a</ProjectId>
+      <ProjectId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
       <ApplicationRelativeFilePath>Api/FolderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderModelStereotypeExtensions.cs</ProjectRelativeFilePath>

@@ -21,6 +21,7 @@
   <packageId>fb002b11-41c0-43ea-afeb-f26c3346ce87</packageId>
   <packageName>Intent.ModuleBuilder.Sql</packageName>
   <stereotypes />
+  <metadata />
   <childElements>
     <childElement id="166a89ab-2a86-4be2-87b1-d146f5af54ab" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
@@ -33,6 +34,7 @@
       <packageId>fb002b11-41c0-43ea-afeb-f26c3346ce87</packageId>
       <packageName>Intent.ModuleBuilder.Sql</packageName>
       <stereotypes />
+      <metadata />
       <childElements>
         <childElement id="d6c2d034-a6ad-40a1-b9cc-fef6ebccd331" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>New Sql Template</name>
@@ -71,6 +73,7 @@
               </properties>
             </stereotype>
           </stereotypes>
+          <metadata />
           <childElements />
         </childElement>
       </childElements>
