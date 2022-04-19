@@ -14,7 +14,7 @@ namespace Intent.Modules.Common.CSharp
         /// <typeparam name="T"></typeparam>
         /// <param name="template"></param>
         /// <returns></returns>
-        public static ICollectionFormatter ListFormatter<T>(this CSharpTemplateBase<T> template)
+        public static ICollectionFormatter CreateListFormatter<T>(this CSharpTemplateBase<T> template)
         {
             return new CSharpCollectionFormatter<T>("System.Collections.Generic.List", template);
         }
@@ -25,7 +25,7 @@ namespace Intent.Modules.Common.CSharp
         /// <typeparam name="T"></typeparam>
         /// <param name="template"></param>
         /// <returns></returns>
-        public static ICollectionFormatter IListFormatter<T>(this CSharpTemplateBase<T> template)
+        public static ICollectionFormatter CreateIListFormatter<T>(this CSharpTemplateBase<T> template)
         {
             return new CSharpCollectionFormatter<T>("System.Collections.Generic.IList", template);
         }
@@ -36,7 +36,7 @@ namespace Intent.Modules.Common.CSharp
         /// <typeparam name="T"></typeparam>
         /// <param name="template"></param>
         /// <returns></returns>
-        public static ICollectionFormatter ICollectionFormatter<T>(this CSharpTemplateBase<T> template)
+        public static ICollectionFormatter CreateICollectionFormatter<T>(this CSharpTemplateBase<T> template)
         {
             return new CSharpCollectionFormatter<T>("System.Collections.Generic.ICollection", template);
         }

@@ -647,7 +647,7 @@
             Common CSharp collection formatters
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.ListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.CreateListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
             <summary>
             Formats collections using <see cref="T:System.Collections.Generic.List`1"/>
             </summary>
@@ -655,7 +655,7 @@
             <param name="template"></param>
             <returns></returns>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.IListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.CreateIListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
             <summary>
             Formats collections using <see cref="T:System.Collections.Generic.IList`1"/>
             </summary>
@@ -663,7 +663,7 @@
             <param name="template"></param>
             <returns></returns>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.ICollectionFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.CreateICollectionFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
             <summary>
             Formats collections using <see cref="T:System.Collections.Generic.ICollection`1"/>
             </summary>
