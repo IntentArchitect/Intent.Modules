@@ -5,14 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.0-pre.1" />
-    <PackageReference Include="Intent.Modules.ModuleBuilder" Version="3.3.0-pre.2" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.0" />
+    <PackageReference Include="Intent.Modules.ModuleBuilder" Version="3.3.0" />
     <PackageReference Include="Intent.Packager" Version="3.2.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.2" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.0-pre.1" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.0" />
   </ItemGroup>
 
 </Project>
