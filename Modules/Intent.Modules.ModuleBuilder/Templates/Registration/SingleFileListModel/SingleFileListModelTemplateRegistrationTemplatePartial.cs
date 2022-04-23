@@ -5,6 +5,7 @@ using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Common.VisualStudio;
@@ -19,11 +20,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.SingleFileListMode
         {
             AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
 
-            if (!string.IsNullOrWhiteSpace(Model.GetModelType()?.ParentModule.NuGetPackageId))
+            if (!string.IsNullOrWhiteSpace(Model.GetModelType()?.ParentModule.NuGetPackageId) &&
+                outputTarget.GetProject().Name != Model.GetModelType().ParentModule.NuGetPackageId)
             {
                 AddNugetDependency(new NugetPackageInfo(Model.GetModelType()?.ParentModule.NuGetPackageId, Model.GetModelType()?.ParentModule.NuGetPackageVersion));
             }
-            if (!string.IsNullOrWhiteSpace(Model.GetDesigner()?.ParentModule.NuGetPackageId))
+            if (!string.IsNullOrWhiteSpace(Model.GetDesigner()?.ParentModule.NuGetPackageId) &&
+                outputTarget.GetProject().Name != Model.GetDesigner().ParentModule.NuGetPackageId)
             {
                 AddNugetDependency(new NugetPackageInfo(Model.GetDesigner()?.ParentModule.NuGetPackageId, Model.GetDesigner()?.ParentModule.NuGetPackageVersion));
             }

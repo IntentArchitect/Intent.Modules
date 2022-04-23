@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="37e678f8-370a-4b05-ae44-69bb3d2b39b6" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Module Settings Configuration</name>
-  <display>Module Settings Configuration</display>
+<class id="72044cdf-1f96-4ad2-86be-8d5468725e67" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Module Settings Extension</name>
+  <display>Module Settings Extension</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>
@@ -15,14 +15,14 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
-        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
-        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
-        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
-        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
-        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
-        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Required" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="true" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;37e678f8-370a-4b05-ae44-69bb3d2b39b6&quot;]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="true" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
@@ -47,26 +47,26 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="b40c5b26-3e01-43c1-bb8a-8963ce3762a3" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="2af09de2-ae0b-4655-82e1-799d4d7693e4" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>37e678f8-370a-4b05-ae44-69bb3d2b39b6</parentFolderId>
+      <parentFolderId>72044cdf-1f96-4ad2-86be-8d5468725e67</parentFolderId>
       <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
       <packageName>Intent.ModuleBuilder</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="e9df16a1-6403-4ed0-a76c-88b163baa3a9" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+        <childElement id="72c6ca60-f985-45aa-8b96-02242161bc0c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Field</name>
           <display>Add Field: Module Settings Field Configuration</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
-          <typeReference id="aee64f5b-a293-4378-a4a6-8c156dbf02f3">
+          <typeReference id="638deed7-8626-483e-89f7-9f944dc21aba">
             <typeId>88e29cab-1342-40c7-b052-5fcd68ffafec</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -78,7 +78,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>b40c5b26-3e01-43c1-bb8a-8963ce3762a3</parentFolderId>
+          <parentFolderId>2af09de2-ae0b-4655-82e1-799d4d7693e4</parentFolderId>
           <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
           <packageName>Intent.ModuleBuilder</packageName>
           <stereotypes>

@@ -332,6 +332,70 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
             }
 
+            /*--------------------------------- MODULE SETTINGS EXTENSIONS ---------------------------------*/
+
+            var moduleSettingsExtensions = doc.XPathSelectElement("package/moduleSettingsExtensions");
+            if (moduleSettingsExtensions == null)
+            {
+                moduleSettingsExtensions = new XElement("moduleSettingsExtensions");
+                doc.XPathSelectElement("package").Add(moduleSettingsExtensions);
+            }
+            foreach (var groupExtension in ModuleModel.SettingsExtensions)
+            {
+                var existing = doc.XPathSelectElement($"package/moduleSettingsExtensions/groupExtension[@id=\"{groupExtension.Id}\"]");
+                if (existing == null)
+                {
+                    existing = new XElement("groupExtension", new XAttribute("id", groupExtension.Id), new XAttribute("groupId", groupExtension.TypeReference.Element.Id), new XAttribute("externalReference", groupExtension.Id));
+                    moduleSettingsExtensions.Add(existing);
+                }
+                existing.SetAttributeValue("groupId", groupExtension.TypeReference.Element.Id);
+
+                var settings = new XElement("settings");
+                foreach (var settingsField in groupExtension.Fields)
+                {
+                    var fieldXml = new XElement("setting",
+                        new XAttribute("id", settingsField.Id),
+                        new XAttribute("title", settingsField.Name),
+                        new XAttribute("type", GetControlType(settingsField)));
+                    fieldXml.Add(new XElement("isRequired", new XText(settingsField.GetFieldConfiguration().IsRequired().ToString().ToLower())));
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().Hint()))
+                    {
+                        fieldXml.Add(new XElement("hint", new XText(settingsField.GetFieldConfiguration().Hint())));
+                    }
+                    if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
+                    {
+                        fieldXml.Add(new XElement("defaultValue", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
+                    }
+
+                    if (settingsField.GetFieldConfiguration().ControlType().IsSelect() ||
+                        settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
+                    {
+                        var options = new XElement("options");
+                        foreach (var fieldOption in settingsField.Options)
+                        {
+                            options.Add(new XElement("option", new XAttribute("value", fieldOption.Value ?? fieldOption.Name), new XAttribute("description", fieldOption.Name)));
+                        }
+                        fieldXml.Add(options);
+                    }
+                    settings.Add(fieldXml);
+                }
+
+                if (existing.HasElements)
+                {
+                    existing.RemoveNodes();
+                }
+                existing.Add(settings);
+            }
+            SortChildElementsByAttribute(moduleSettingsExtensions, "id");
+
+            foreach (var installedExtension in doc.XPathSelectElements($"package/moduleSettingsExtensions/groupExtension"))
+            {
+                if (installedExtension.Attribute("externalReference") != null && ModuleModel.SettingsExtensions.All(x => x.Id != installedExtension.Attribute("externalReference").Value))
+                {
+                    installedExtension.Remove();
+                }
+            }
+
             /*--------------------------------- METADATA ---------------------------------*/
 
             var metadataRegistrations = doc.XPathSelectElement("package/metadata");

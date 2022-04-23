@@ -10,12 +10,12 @@ using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.SingleFileListModel", Version = "1.0")]
+[assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class ModuleSettingsExtensionsTemplateRegistration : SingleFileListModelTemplateRegistration<ModuleSettingsConfigurationModel>
+    public class ModuleSettingsExtensionsTemplateRegistration : FilePerModelTemplateRegistration<IntentModuleModel>
     {
         public override string TemplateId => ModuleSettingsExtensionsTemplate.TemplateId;
         private readonly IMetadataManager _metadataManager;
@@ -25,15 +25,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             _metadataManager = metadataManager;
         }
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, IList<ModuleSettingsConfigurationModel> model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, IntentModuleModel model)
         {
             return new ModuleSettingsExtensionsTemplate(outputTarget, model);
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IList<ModuleSettingsConfigurationModel> GetModels(IApplication application)
+        [IntentManaged(Mode.Merge, Body = Mode.Fully, Signature = Mode.Fully)]
+        public override IEnumerable<IntentModuleModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetModuleSettingsConfigurationModels().ToList();
+            return _metadataManager.ModuleBuilder(application).GetIntentModuleModels();
         }
     }
 }

@@ -95,6 +95,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<ModuleSettingsExtensionModel> GetModuleSettingsExtensionModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ModuleSettingsExtensionModel.SpecializationTypeId)
+                .Select(x => new ModuleSettingsExtensionModel(x))
+                .ToList();
+        }
+
         public static IList<PackageExtensionModel> GetPackageExtensionModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(PackageExtensionModel.SpecializationTypeId)

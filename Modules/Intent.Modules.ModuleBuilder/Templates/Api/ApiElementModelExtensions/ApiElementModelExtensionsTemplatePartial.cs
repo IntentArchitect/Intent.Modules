@@ -5,6 +5,7 @@ using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -31,7 +32,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
                 .Distinct()
                 .Select(x => new IntentModuleModel(x.Package))
                 .Distinct()
-                .Where(x => !string.IsNullOrWhiteSpace(x.NuGetPackageId) && !string.IsNullOrWhiteSpace(x.NuGetPackageVersion)))
+                .Where(x => !string.IsNullOrWhiteSpace(x.NuGetPackageId) && !string.IsNullOrWhiteSpace(x.NuGetPackageVersion) &&
+                            outputTarget.GetProject().Name != x.NuGetPackageId))
             {
                 AddNugetDependency(module.NuGetPackageId, module.NuGetPackageVersion);
             }

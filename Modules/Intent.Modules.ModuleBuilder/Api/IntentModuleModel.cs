@@ -85,5 +85,10 @@ namespace Intent.ModuleBuilder.Api
             .GetElementsOfType(ModuleSettingsConfigurationModel.SpecializationTypeId)
             .Select(x => new ModuleSettingsConfigurationModel(x))
             .ToList();
+
+        public IList<ModuleSettingsExtensionModel> SettingsExtensions => UnderlyingPackage.ChildElements
+            .GetElementsOfType(ModuleSettingsExtensionModel.SpecializationTypeId)
+            .Select(x => new ModuleSettingsExtensionModel(x))
+            .ToList();
     }
 }
