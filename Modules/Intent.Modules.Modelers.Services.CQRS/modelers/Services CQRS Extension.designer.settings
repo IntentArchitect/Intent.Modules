@@ -352,40 +352,44 @@ for(var param of element.getChildren("Parameter")) {
       <scriptOptions>
         <option>
           <text>Add Command Operation</text>
+          <shortcut>ctrl + shift + c</shortcut>
           <icon type="FontAwesome" source="code" />
           <script>let operation = createElement("Operation", "Post", element.id);
-operation.launchMappingDialog("e4e36072-a2ce-42d3-93c5-0b496d79ef43").then(() =&gt; { // id of command mapping settings
-    if (operation.isMapped()) {
-        let command = operation.getMapping().getElement();
-        operation.setName(removeSuffix(command.name, "Command"));
-
-        let stereotype = operation.getStereotype("Http Settings");
-        if (stereotype) {
-            stereotype.getProperty("Verb").setValue("POST");
-            stereotype.getProperty("Route").setValue("[action]");
-        }
-    }
-}).catch(() =&gt; {
+try {
+    await operation.launchMappingDialog("e4e36072-a2ce-42d3-93c5-0b496d79ef43");
+} catch (e) {
     operation.delete();
-});</script>
+}
+if (operation.isMapped()) {
+    let command = operation.getMapping().getElement();
+    operation.setName(removeSuffix(command.name, "Command"));
+
+    let stereotype = operation.getStereotype("Http Settings");
+    if (stereotype) {
+        stereotype.getProperty("Verb").setValue("POST");
+        stereotype.getProperty("Route").setValue("[action]");
+    }
+}</script>
         </option>
         <option>
           <text>Add Query Operation</text>
+          <shortcut>ctrl + shift + q</shortcut>
           <icon type="FontAwesome" source="code" />
           <script>let operation = createElement("Operation", "Get", element.id);
-operation.launchMappingDialog("f15fa935-434e-4983-b283-25cde2cb440e").then(() =&gt; { // id of command mapping settings
-    if (operation.isMapped()) {
-        let query = operation.getMapping().getElement();
-        operation.setName(removeSuffix(query.name, "Query"));
-        let stereotype = operation.getStereotype("Http Settings");
-        if (stereotype) {
-            stereotype.getProperty("Verb").setValue("GET");
-            stereotype.getProperty("Route").setValue("[action]");
-        }
-    }
-}).catch(() =&gt; {
+try {
+    await operation.launchMappingDialog("f15fa935-434e-4983-b283-25cde2cb440e");
+} catch (e) {
     operation.delete();
-});</script>
+}
+if (operation.isMapped()) {
+    let query = operation.getMapping().getElement();
+    operation.setName(removeSuffix(query.name, "Query"));
+    let stereotype = operation.getStereotype("Http Settings");
+    if (stereotype) {
+        stereotype.getProperty("Verb").setValue("GET");
+        stereotype.getProperty("Route").setValue("[action]");
+    }
+}</script>
         </option>
       </scriptOptions>
       <typeOrder />
