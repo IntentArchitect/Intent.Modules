@@ -22,7 +22,7 @@
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.3.0" />
     <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.3.0" />
-    <PackageReference Include="Intent.Packager" Version="3.2.0">
+    <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>

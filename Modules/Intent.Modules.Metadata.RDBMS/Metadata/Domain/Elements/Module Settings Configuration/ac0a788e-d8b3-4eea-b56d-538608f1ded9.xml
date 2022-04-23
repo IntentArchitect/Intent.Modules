@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="6bb04f32-27ca-495a-8d0d-c4c57c252567" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
-  <name>designers</name>
-  <display>designers</display>
+<class id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
+  <name>Database Settings</name>
+  <display>Database Settings</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>AF8F3810-745C-42A2-93C8-798860DC45B1</parentFolderId>

@@ -125,6 +125,26 @@
     </elementSetting>
   </elementSettings>
   <elementExtensions>
+    <elementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-created">
+          <script>if (element.getParent().specialization == "Class") {
+    element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Primary Key
+}</script>
+        </macro>
+        <macro trigger="on-type-changed">
+          <script>if (element.getParent().specialization == "Class" &amp;&amp; 
+    element.typeReference.typeId == "d384db9c-a279-45e1-801e-e4e8099625f2" &amp;&amp; // string
+    !element.hasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")) {
+        
+    element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Primary key
+} else {
+    element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
+}</script>
+        </macro>
+      </macros>
+    </elementExtension>
     <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
       <creationOptions>
         <option type="element">

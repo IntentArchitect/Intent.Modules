@@ -136,6 +136,16 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new TextConstraints(stereotype) : null;
         }
 
+        public static IReadOnlyCollection<TextConstraints> GetTextConstraintss(this AttributeModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Text Constraints")
+                .Select(stereotype => new TextConstraints(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
         public static bool HasTextConstraints(this AttributeModel model)
         {
             return model.HasStereotype("Text Constraints");
