@@ -32,7 +32,7 @@ namespace Intent.Modelers.Domain.Api
             Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
 
             _associatedElements = this.AssociatedToClasses().Cast<AssociationEndModel>()
-                .Concat(this.AssociatedFromClasses().Where(x => x.Element.Id != Id))
+                .Concat(this.AssociatedFromClasses())
                 .ToList();
         }
 
