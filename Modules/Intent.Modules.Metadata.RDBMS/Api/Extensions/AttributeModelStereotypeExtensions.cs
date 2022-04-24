@@ -88,6 +88,28 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Default Constraint");
         }
 
+        public static ForeignKey GetForeignKey(this AttributeModel model)
+        {
+            var stereotype = model.GetStereotype("Foreign Key");
+            return stereotype != null ? new ForeignKey(stereotype) : null;
+        }
+
+        public static IReadOnlyCollection<ForeignKey> GetForeignKeys(this AttributeModel model)
+        {
+            var stereotypes = model
+                .GetStereotypes("Foreign Key")
+                .Select(stereotype => new ForeignKey(stereotype))
+                .ToArray();
+
+            return stereotypes;
+        }
+
+
+        public static bool HasForeignKey(this AttributeModel model)
+        {
+            return model.HasStereotype("Foreign Key");
+        }
+
         public static Index GetIndex(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Index");
@@ -241,6 +263,19 @@ namespace Intent.Metadata.RDBMS.Api
             {
                 return _stereotype.GetProperty<bool>("Treat as SQL Expression");
             }
+
+        }
+
+        public class ForeignKey
+        {
+            private IStereotype _stereotype;
+
+            public ForeignKey(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
 
         }
 

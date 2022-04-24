@@ -10,8 +10,15 @@
     <elementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
       <mappingSettings />
       <macros>
-        <macro trigger="on-type-changed">
-          <script>if (element.getName() == "Id" &amp;&amp; element.hasStereotype("Primary Key") &amp;&amp; element.typeReference.getType()) {
+        <macro trigger="on-changed">
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+    return;
+}
+
+if (element.getName().toLocaleLowerCase() == "id" &amp;&amp; 
+    element.hasStereotype("Primary Key") &amp;&amp; 
+    element.typeReference.getType()) {
+
     if (element.typeReference.getType()?.getName() != application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Type")?.value) {
         element.setMetadata("is-managed-key", "false");
     } else {
@@ -25,7 +32,7 @@
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
-          <script>if (!application || application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
     return;
 }
 
@@ -144,6 +151,8 @@ if (sourceType &amp;&amp; targetType) {
             fk.setName(`${namingConvetion == "pascal-case" ? toPascalCase(association.getName()) : toCamelCase(association.getName()) }${toPascalCase(pk.getName())}`);
             fk.setMetadata("association", association.id);
             fk.setMetadata("is-managed-key", "true");
+            if (!fk.hasStereotype("793a5128-57a1-440b-a206-af5722b752a6"))
+                fk.addStereotype("793a5128-57a1-440b-a206-af5722b752a6");
             fk.typeReference.setType(pk.typeReference.typeId);
             fk.typeReference.setIsNullable(association.typeReference.isNullable);
         });
@@ -151,7 +160,9 @@ if (sourceType &amp;&amp; targetType) {
             if (index &gt;= pks.length)
                 x.delete();
         })
-        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        if (targetType.id !== sourceType.id) {
+            targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        }
     }
     else if (requiresForeignKey(association.getOtherEnd())) {
         let pks = sourceType.getChildren("Attribute").filter(x =&gt; x.getStereotype("Primary Key") != null);
@@ -161,6 +172,8 @@ if (sourceType &amp;&amp; targetType) {
             fk.setName(`${namingConvetion == "pascal-case" ? toPascalCase(association.getOtherEnd().getName()) : toCamelCase(association.getOtherEnd().getName()) }${toPascalCase(pk.getName())}`);
             fk.setMetadata("association", association.id);
             fk.setMetadata("is-managed-key", "true");
+            if (!fk.hasStereotype("793a5128-57a1-440b-a206-af5722b752a6"))
+                fk.addStereotype("793a5128-57a1-440b-a206-af5722b752a6");
             fk.typeReference.setType(pk.typeReference.typeId);
             fk.typeReference.setIsNullable(association.getOtherEnd().typeReference.isNullable);
         });
@@ -168,7 +181,9 @@ if (sourceType &amp;&amp; targetType) {
             if (index &gt;= pks.length)
                 x.delete();
         })
-        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        if (sourceType.id !== targetType.id) {
+            sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        }
     }
     else { // many-to-many
         targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());

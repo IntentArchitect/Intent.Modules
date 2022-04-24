@@ -60,13 +60,13 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="1bec069a-6693-4279-a6ca-50cf08e0ab45" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Type Changed</name>
-          <display>On Type Changed: Script</display>
+        <childElement id="591ee4d9-7c47-4703-97b6-f9df45a0d417" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
           <isAbstract>false</isAbstract>
           <order>0</order>
           <genericTypes />
-          <typeReference id="f79064dc-dfe1-45c3-8722-fff0a957f10d">
+          <typeReference id="ff613fec-1c4e-4935-8fdb-2f9adc53dd54">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -87,7 +87,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName() == &quot;Id&quot; &amp;&amp; element.hasStereotype(&quot;Primary Key&quot;) &amp;&amp; element.typeReference.getType()) {&#xD;&#xA;    if (element.typeReference.getType()?.getName() != application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Type&quot;)?.value) {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;false&quot;);&#xD;&#xA;    } else {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot;){&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (element.getName().toLocaleLowerCase() == &quot;id&quot; &amp;&amp; &#xD;&#xA;    element.hasStereotype(&quot;Primary Key&quot;) &amp;&amp; &#xD;&#xA;    element.typeReference.getType()) {&#xD;&#xA;&#xD;&#xA;    if (element.typeReference.getType()?.getName() != application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Type&quot;)?.value) {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;false&quot;);&#xD;&#xA;    } else {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
