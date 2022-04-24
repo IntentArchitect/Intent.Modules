@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1da42774-fe46-4bde-b372-75d70e5bce45" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Attribute Key Extension</name>
+  <display>Attribute Key Extension: Attribute</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <typeReference id="17e67977-793c-438a-a365-3b9823020a05">
+    <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3</parentFolderId>
+  <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+  <packageName>Intent.Metadata.RDBMS</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="73a27efb-3700-4bbb-a0b6-9e77da44c472" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <order>1</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>1da42774-fe46-4bde-b372-75d70e5bce45</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="1bec069a-6693-4279-a6ca-50cf08e0ab45" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Type Changed</name>
+          <display>On Type Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="f79064dc-dfe1-45c3-8722-fff0a957f10d">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73a27efb-3700-4bbb-a0b6-9e77da44c472</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getName() == &quot;Id&quot; &amp;&amp; element.hasStereotype(&quot;Primary Key&quot;) &amp;&amp; element.typeReference.getType()) {&#xD;&#xA;    if (element.typeReference.getType()?.getName() != application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Type&quot;)?.value) {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;false&quot;);&#xD;&#xA;    } else {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="79fa2793-ab52-4f45-a9e9-c15877ee1730" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
+  <name>Generalization Extension</name>
+  <display>Generalization Extension: Generalization</display>
+  <isAbstract>false</isAbstract>
+  <order>3</order>
+  <genericTypes />
+  <typeReference id="52b38207-5618-4ea5-91e1-f6d50c6c4bcb">
+    <typeId>5de35973-3ac7-4e65-b48c-385605aec561</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3</parentFolderId>
+  <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+  <packageName>Intent.Metadata.RDBMS</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="3ea9dcbf-df22-48bb-b995-ae458ae7d31e" type="Association Source End Extension" typeId="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3">
+      <name>[source]</name>
+      <display>[source end extension]</display>
+      <isAbstract>false</isAbstract>
+      <order>1</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>79fa2793-ab52-4f45-a9e9-c15877ee1730</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cd7ee9e-614e-4770-a831-d6cdaa56027c" name="Association End Extension Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
+            <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
+            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" isActive="true" />
+            <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
+            <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
+            <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
+            <property name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="1ab414fb-c21d-4f74-ac3e-d24824b1e931" type="Association Target End Extension" typeId="1cc6c731-af5f-41a0-9e82-44486f45b903">
+      <name>[destination]</name>
+      <display>[target end extension]</display>
+      <isAbstract>false</isAbstract>
+      <order>2</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>79fa2793-ab52-4f45-a9e9-c15877ee1730</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cd7ee9e-614e-4770-a831-d6cdaa56027c" name="Association End Extension Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
+            <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
+            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" isActive="true" />
+            <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
+            <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
+            <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
+            <property name="558c27e8-dc8b-40ae-8633-fd42f0077268" display="Allow Collection" value="Inherit" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="a94cd39a-b662-47f8-92a0-7eb1e61d3ada" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>[events]</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <order>3</order>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>79fa2793-ab52-4f45-a9e9-c15877ee1730</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="0dddef3c-c62b-40cf-8092-e83e4c8290a4" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="33b14f6a-d734-42de-bba4-9896b6f53c9a">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>a94cd39a-b662-47f8-92a0-7eb1e61d3ada</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot;){&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let sourceType = association.getOtherEnd().typeReference.getType();&#xD;&#xA;let targetType = association.typeReference.getType();&#xD;&#xA;&#xD;&#xA;if (sourceType &amp;&amp; targetType) {&#xD;&#xA;    var pks = sourceType.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.hasStereotype(&quot;Primary Key&quot;) &amp;&amp; x.getMetadata(&quot;is-managed-key&quot;) == &quot;true&quot;);&#xD;&#xA;    pks.forEach(x =&gt; x.delete());&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="bb2c618c-cec6-465e-9c74-14a91354aa90" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Deleted</name>
+          <display>On Deleted: Script</display>
+          <isAbstract>false</isAbstract>
+          <order>1</order>
+          <genericTypes />
+          <typeReference id="a4c6697c-6cbb-444b-b180-de0a88a3eec9">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>a94cd39a-b662-47f8-92a0-7eb1e61d3ada</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot;){&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let sourceType = association.getOtherEnd().typeReference.getType();&#xD;&#xA;let targetType = association.typeReference.getType();&#xD;&#xA;&#xD;&#xA;if (sourceType &amp;&amp; targetType) {&#xD;&#xA;    var pks = sourceType.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;    if (pks.length == 0) {&#xD;&#xA;        let keyType = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;).getField(&quot;Key Type&quot;).value;&#xD;&#xA;        let namingConvetion = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;).getField(&quot;Key Naming Convention&quot;)?.value ?? &quot;pascal-case&quot;;&#xD;&#xA;&#xD;&#xA;        let pk = createElement(&quot;Attribute&quot;, namingConvetion == &quot;pascal-case&quot; ? &quot;Id&quot; : &quot;id&quot;, sourceType.id);&#xD;&#xA;        if (keyType == &quot;guid&quot;)&#xD;&#xA;            pk.typeReference.setType(&quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;); // guid id&#xD;&#xA;        if (keyType == &quot;int&quot;)&#xD;&#xA;            pk.typeReference.setType(&quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;); // int id&#xD;&#xA;        if (keyType == &quot;long&quot;)&#xD;&#xA;            pk.typeReference.setType(&quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;); // guid id&#xD;&#xA;        pk.addStereotype(&quot;b99aac21-9ca4-467f-a3a6-046255a9eed6&quot;);&#xD;&#xA;        pk.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;        pk.setOrder(0);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

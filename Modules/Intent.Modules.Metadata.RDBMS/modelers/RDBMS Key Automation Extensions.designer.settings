@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3</id>
+  <name>RDBMS Key Automation Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions />
+  <elementSettings />
+  <elementExtensions>
+    <elementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-type-changed">
+          <script>if (element.getName() == "Id" &amp;&amp; element.hasStereotype("Primary Key") &amp;&amp; element.typeReference.getType()) {
+    if (element.typeReference.getType()?.getName() != application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Type")?.value) {
+        element.setMetadata("is-managed-key", "false");
+    } else {
+        element.setMetadata("is-managed-key", "true");
+    }
+}</script>
+        </macro>
+      </macros>
+    </elementExtension>
+    <elementExtension type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+      <mappingSettings />
+      <macros>
+        <macro trigger="on-created">
+          <script>if (!application || application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+    return;
+}
+
+let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
+var namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
+
+let pk = createElement("Attribute", namingConvetion == "pascal-case" ? "Id" : "id", element.id);
+if (keyType == "guid")
+    pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
+if (keyType == "int")
+    pk.typeReference.setType("fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"); // int id
+if (keyType == "long")
+    pk.typeReference.setType("33013006-E404-48C2-AC46-24EF5A5774FD"); // guid id
+pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
+pk.setMetadata("is-managed-key", "true");</script>
+        </macro>
+        <macro trigger="on-loaded">
+          <script>let primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+    if (application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value == "implicit") {
+        let pks = element.getChildren("Attribute").filter(x =&gt; x.getMetadata("is-managed-key") == "true")
+        pks.forEach(pk =&gt; pk.delete())
+    }
+    return;
+}
+
+var namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
+let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
+
+if (element.getChildren("Attribute").some(x =&gt; x.hasStereotype(primaryKeyStereotypeId))) {
+    let pk = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.getMetadata("is-managed-key") == "true")[0]
+    if (pk) {
+        if (keyType == "guid")
+            pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
+        if (keyType == "int")
+            pk.typeReference.setType("fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"); // int id
+        if (keyType == "long")
+            pk.typeReference.setType("33013006-E404-48C2-AC46-24EF5A5774FD"); // guid id
+    }
+    return;
+}
+
+// If this class inherits from another, don't create PK:
+if (element.getAssociations("Generalization Target End").some(x =&gt; x.getOtherEnd().typeReference.typeId == element.id)) {
+    return;
+}
+
+let pk = createElement("Attribute", namingConvetion == "pascal-case" ? "Id" : "id", element.id);
+pk.setMetadata("is-managed-key", "true");
+pk.setOrder(0);
+if (keyType == "guid")
+    pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
+if (keyType == "int")
+    pk.typeReference.setType("fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"); // int id
+if (keyType == "long")
+    pk.typeReference.setType("33013006-E404-48C2-AC46-24EF5A5774FD"); // guid id
+pk.addStereotype(primaryKeyStereotypeId);</script>
+        </macro>
+      </macros>
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions>
+    <associationExtension type="Association" typeId="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">
+      <sourceEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </targetEndExtension>
+      <macros>
+        <macro trigger="on-changed">
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+    return;
+}
+
+function requiresForeignKey(associationEnd)
+{
+    return isManyToVariantsOfOne(associationEnd) || isSelfReferencingZeroToOne(associationEnd);
+}
+
+function isManyToVariantsOfOne(associationEnd)
+{
+    return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.getOtherEnd().typeReference.isCollection;
+}
+
+function isSelfReferencingZeroToOne(associationEnd)
+{
+    return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.typeReference.isNullable &amp;&amp; 
+            associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+}
+
+let sourceType = association.getOtherEnd().typeReference.getType();
+let targetType = association.typeReference.getType();
+
+if (sourceType &amp;&amp; targetType) {
+    let namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
+    
+    if (requiresForeignKey(association)) {
+        let pks = targetType.getChildren("Attribute").filter(x =&gt; x.getStereotype("Primary Key") != null);
+        pks.forEach((pk, index) =&gt; {
+        let fk = sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id)[index] ||
+                 createElement("Attribute", "", sourceType.id);
+            fk.setName(`${namingConvetion == "pascal-case" ? toPascalCase(association.getName()) : toCamelCase(association.getName()) }${toPascalCase(pk.getName())}`);
+            fk.setMetadata("association", association.id);
+            fk.setMetadata("is-managed-key", "true");
+            fk.typeReference.setType(pk.typeReference.typeId);
+            fk.typeReference.setIsNullable(association.typeReference.isNullable);
+        });
+        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach((x, index) =&gt; {
+            if (index &gt;= pks.length)
+                x.delete();
+        })
+        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+    }
+    else if (requiresForeignKey(association.getOtherEnd())) {
+        let pks = sourceType.getChildren("Attribute").filter(x =&gt; x.getStereotype("Primary Key") != null);
+        pks.forEach((pk, index) =&gt; {
+        let fk = targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id)[index] ||
+                 createElement("Attribute", "", targetType.id);
+            fk.setName(`${namingConvetion == "pascal-case" ? toPascalCase(association.getOtherEnd().getName()) : toCamelCase(association.getOtherEnd().getName()) }${toPascalCase(pk.getName())}`);
+            fk.setMetadata("association", association.id);
+            fk.setMetadata("is-managed-key", "true");
+            fk.typeReference.setType(pk.typeReference.typeId);
+            fk.typeReference.setIsNullable(association.getOtherEnd().typeReference.isNullable);
+        });
+        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach((x, index) =&gt; {
+            if (index &gt;= pks.length)
+                x.delete();
+        })
+        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+    }
+    else { // many-to-many
+        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+    }
+}</script>
+        </macro>
+        <macro trigger="on-deleted">
+          <script>
+association.typeReference.getType()?.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+association.getOtherEnd().typeReference.getType()?.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+</script>
+        </macro>
+        <macro trigger="on-loaded">
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+    return;
+}
+
+return;
+
+function requiresForeignKey(associationEnd)
+{
+    return isManyToVariantsOfOne(associationEnd) || isSelfReferencingZeroToOne(associationEnd);
+}
+
+function isManyToVariantsOfOne(associationEnd)
+{
+    return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.getOtherEnd().typeReference.isCollection;
+}
+
+function isSelfReferencingZeroToOne(associationEnd)
+{
+    return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.typeReference.isNullable &amp;&amp; 
+            associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+}
+
+let sourceType = association.getOtherEnd().typeReference.getType();
+let targetType = association.typeReference.getType();
+
+if (sourceType &amp;&amp; targetType) {
+
+    if (requiresForeignKey(association)) {
+        let pks = targetType.getChildren("Attribute").filter(x =&gt; x.getStereotype("Primary Key") != null);
+        pks.forEach((pk, index) =&gt; {
+        let fk = sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id)[index] ||
+                 createElement("Attribute", "", sourceType.id);
+            fk.setName(`${association.getName()}${toPascalCase(pk.getName())}`);
+            fk.setMetadata("association", association.id);
+            fk.setMetadata("is-managed-key", "true");
+            fk.typeReference.setType(pk.typeReference.typeId);
+            fk.typeReference.setIsNullable(association.typeReference.isNullable);
+        });
+        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach((x, index) =&gt; {
+            if (index &gt;= pks.length)
+                x.delete();
+        })
+        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+    }
+    else if (requiresForeignKey(association.getOtherEnd())) {
+        let pks = sourceType.getChildren("Attribute").filter(x =&gt; x.getStereotype("Primary Key") != null);
+        pks.forEach((pk, index) =&gt; {
+        let fk = targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id)[index] ||
+                 createElement("Attribute", "", targetType.id);
+            fk.setName(`${association.getOtherEnd().getName()}${toPascalCase(pk.getName())}`);
+            fk.setMetadata("association", association.id);
+            fk.setMetadata("is-managed-key", "true");
+            fk.typeReference.setType(pk.typeReference.typeId);
+            fk.typeReference.setIsNullable(association.getOtherEnd().typeReference.isNullable);
+        });
+        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach((x, index) =&gt; {
+            if (index &gt;= pks.length)
+                x.delete();
+        })
+        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+    }
+    else { // many-to-many
+        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+    }
+}</script>
+        </macro>
+      </macros>
+    </associationExtension>
+    <associationExtension type="Generalization" typeId="5de35973-3ac7-4e65-b48c-385605aec561">
+      <sourceEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </targetEndExtension>
+      <macros>
+        <macro trigger="on-changed">
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+    return;
+}
+
+let sourceType = association.getOtherEnd().typeReference.getType();
+let targetType = association.typeReference.getType();
+
+if (sourceType &amp;&amp; targetType) {
+    var pks = sourceType.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key") &amp;&amp; x.getMetadata("is-managed-key") == "true");
+    pks.forEach(x =&gt; x.delete());
+}</script>
+        </macro>
+        <macro trigger="on-deleted">
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+    return;
+}
+
+let sourceType = association.getOtherEnd().typeReference.getType();
+let targetType = association.typeReference.getType();
+
+if (sourceType &amp;&amp; targetType) {
+    var pks = sourceType.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+    if (pks.length == 0) {
+        let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
+        let namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
+
+        let pk = createElement("Attribute", namingConvetion == "pascal-case" ? "Id" : "id", sourceType.id);
+        if (keyType == "guid")
+            pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
+        if (keyType == "int")
+            pk.typeReference.setType("fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"); // int id
+        if (keyType == "long")
+            pk.typeReference.setType("33013006-E404-48C2-AC46-24EF5A5774FD"); // guid id
+        pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
+        pk.setMetadata("is-managed-key", "true");
+        pk.setOrder(0);
+    }
+}</script>
+        </macro>
+      </macros>
+    </associationExtension>
+  </associationExtensions>
+</settings>

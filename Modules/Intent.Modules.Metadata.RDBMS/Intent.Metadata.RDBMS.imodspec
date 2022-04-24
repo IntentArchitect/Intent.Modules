@@ -20,10 +20,41 @@
   <metadata>
     <install target="Domain;Module Builder" src="Metadata/Domain/Intent.Metadata.RDBMS.pkg.config" externalReference="AF8F3810-745C-42A2-93C8-798860DC45B1" />
     <install src="modelers/RDBMS Types.designer.settings" externalReference="1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5" target="Domain" />
+    <install target="Domain" src="modelers/RDBMS Key Automation Extensions.designer.settings" externalReference="ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3" />
   </metadata>
   <moduleSettings>
     <group id="ac0a788e-d8b3-4eea-b56d-538608f1ded9" title="Database Settings" externalReference="ac0a788e-d8b3-4eea-b56d-538608f1ded9">
-      <settings />
+      <settings>
+        <setting id="ef83f85d-bb8d-4b10-8842-9f35f9f54165" title="Key Type" type="select">
+          <isRequired>false</isRequired>
+          <hint>Select the data type to be used for all surrogate and foreign keys.</hint>
+          <defaultValue>System.Guid</defaultValue>
+          <options>
+            <option value="guid" description="guid" />
+            <option value="long" description="long" />
+            <option value="int" description="int" />
+          </options>
+        </setting>
+        <setting id="5aca6e0c-1b64-425b-9046-f0bc81c44311" title="Key Creation Mode" type="select">
+          <isRequired>false</isRequired>
+          <hint>If and how the designer should create and manage the PKs and FKs</hint>
+          <defaultValue>Manual</defaultValue>
+          <options>
+            <option value="manual" description="Manual" />
+            <option value="implicit" description="Implicit" />
+            <option value="explicit" description="Explicit" />
+          </options>
+        </setting>
+        <setting id="cf991e8c-de2c-4b60-a4a4-baa4770e0ac9" title="Key Naming Convention" type="select">
+          <isRequired>false</isRequired>
+          <hint>Naming convention options for created PKs and FKs.</hint>
+          <defaultValue>pascal-case</defaultValue>
+          <options>
+            <option value="pascal-case" description="Pascal Case" />
+            <option value="camel-case" description="Camel Case" />
+          </options>
+        </setting>
+      </settings>
     </group>
   </moduleSettings>
   <moduleSettingsExtensions />

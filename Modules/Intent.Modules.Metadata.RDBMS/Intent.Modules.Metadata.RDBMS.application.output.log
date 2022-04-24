@@ -16,9 +16,23 @@
     </FileLog>
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#1da42774-fe46-4bde-b372-75d70e5bce45</CorrelationId>
+      <ApplicationRelativeFilePath>Api/AttributeKeyExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AttributeKeyExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d69223e1-2c8c-4cce-af02-cc90cfb0ecf0</CorrelationId>
       <ApplicationRelativeFilePath>Api/ClassExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ClassExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e7d6ec8a-49a1-40b2-9075-8c91a2b298bb</CorrelationId>
+      <ApplicationRelativeFilePath>Api/ClassKeyExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ClassKeyExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -89,6 +103,13 @@
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#c84fa137-4d52-451f-aba4-8ec00d1525f6</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>cb5bb8ab-1a66-4abe-945c-a843e36cb839</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3</CorrelationId>
+      <ApplicationRelativeFilePath>modelers/RDBMS Key Automation Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RDBMS Key Automation Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

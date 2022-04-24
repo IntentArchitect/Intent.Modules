@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
-  <name>RDBMS Types</name>
-  <display>RDBMS Types</display>
+<class id="ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+  <name>RDBMS Key Automation Extensions</name>
+  <display>RDBMS Key Automation Extensions</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>6bb04f32-27ca-495a-8d0d-c4c57c252567</parentFolderId>
