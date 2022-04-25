@@ -787,6 +787,11 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String)">
             <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,System.String@)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,System.String@)">
+            <summary>
             Resolves the type name of the Template with <paramref name="templateId"/> as a string.
             Will return null if the template instance cannot be found.
             <para>
@@ -795,8 +800,14 @@
             GetTypeName article</seealso> for more information.
             </para>
             </summary>
+            <returns><see langword="true"/> if the type name could be resolved.</returns>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,Intent.Metadata.Models.IMetadataModel)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,Intent.Metadata.Models.IMetadataModel,System.String@)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,Intent.Metadata.Models.IMetadataModel,System.String@)">
             <summary>
             Resolves the type name of the Template with <paramref name="templateId"/> as a string.
             This overload assumes that the Template can have many instances and identifies the target instance
@@ -810,8 +821,15 @@
             </summary>
             <param name="templateId">The unique Template identifier.</param>
             <param name="model">The model instance that the Template must be bound to.</param>
+            <param name="typeName">The resolved type name.</param>
+            <returns><see langword="true"/> if the type name could be resolved.</returns>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,System.String,System.String@)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String,System.String,System.String@)">
             <summary>
             Resolves the type name of the Template with <paramref name="templateId"/> as a string.
             This overload assumes that the Template can have many instances and identifies the target instance
@@ -825,6 +843,8 @@
             </summary>
             <param name="templateId">The unique Template identifier.</param>
             <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+            <param name="typeName">The resolved type name.</param>
+            <returns><see langword="true"/> if the type name could be resolved.</returns>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.Func{``0},System.Func{System.String},Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <remarks>

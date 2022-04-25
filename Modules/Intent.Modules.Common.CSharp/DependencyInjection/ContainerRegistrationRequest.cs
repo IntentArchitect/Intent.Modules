@@ -69,6 +69,12 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
             return this;
         }
 
+        public ContainerRegistrationRequest WithResolveFromContainer()
+        {
+            ResolveFromContainer = true;
+            return this;
+        }
+
         public ContainerRegistrationRequest RequiresUsingNamespaces(params string[] namespaces)
         {
             _requiredNamespaces.AddRange(namespaces);
@@ -98,15 +104,17 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
 
         public string InterfaceType { get; private set; }
 
-        public string ConcreteType { get; private set; }
+        public string ConcreteType { get; }
 
         public string Lifetime { get; private set; }
 
         public int Priority { get; private set; }
 
+        public bool ResolveFromContainer { get; private set; }
+
         public IEnumerable<ITemplateDependency> TemplateDependencies => _templateDependencies;
 
-        public bool IsHandled { get; private set; } = false;
+        public bool IsHandled { get; private set; }
 
         public static class LifeTime
         {

@@ -540,6 +540,17 @@ namespace Intent.Modules.Common.Templates
         #endregion
 
         #region TryGetTypeName
+        
+        /// <summary>
+        /// Obsolete. Use <see cref="TryGetTypeName(string,out string)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public string TryGetTypeName(string templateId)
+        {
+            return TryGetTypeName(templateId, out var typeName)
+                ? typeName
+                : null;
+        }
 
         /// <summary>
         /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
@@ -550,12 +561,28 @@ namespace Intent.Modules.Common.Templates
         /// GetTypeName article</seealso> for more information.
         /// </para>
         /// </summary>
-        public string TryGetTypeName(string templateId)
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetTypeName(string templateId, out string typeName)
         {
             var classProvider = GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow);
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
 
-            return classProvider != null
-                ? GetTypeName(classProvider)
+            typeName = GetTypeName(classProvider);
+            return true;
+        }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="TryGetTypeName(string,IMetadataModel,out string)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public string TryGetTypeName(string templateId, IMetadataModel model)
+        {
+            return TryGetTypeName(templateId, model, out var typeName)
+                ? typeName
                 : null;
         }
 
@@ -572,14 +599,31 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="model">The model instance that the Template must be bound to.</param>
-        public string TryGetTypeName(string templateId, IMetadataModel model)
+        /// <param name="typeName">The resolved type name.</param>
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetTypeName(string templateId, IMetadataModel model, out string typeName)
         {
             if (model == null) throw new ArgumentNullException(nameof(model));
 
             var classProvider = GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow);
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
 
-            return classProvider != null
-                ? GetTypeName(classProvider)
+            typeName = GetTypeName(classProvider);
+            return true;
+        }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="TryGetTypeName(string,string,out string)"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public string TryGetTypeName(string templateId, string modelId)
+        {
+            return TryGetTypeName(templateId, modelId, out var typeName)
+                ? typeName
                 : null;
         }
 
@@ -596,13 +640,19 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
-        public string TryGetTypeName(string templateId, string modelId)
+        /// <param name="typeName">The resolved type name.</param>
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetTypeName(string templateId, string modelId, out string typeName)
         {
             var classProvider = GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow);
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
 
-            return classProvider != null
-                ? GetTypeName(classProvider)
-                : null;
+            typeName = GetTypeName(classProvider);
+            return true;
         }
 
         #endregion
