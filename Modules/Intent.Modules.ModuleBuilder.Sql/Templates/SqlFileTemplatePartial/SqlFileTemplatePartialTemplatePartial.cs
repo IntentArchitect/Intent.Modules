@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public SqlFileTemplatePartialTemplate(IOutputTarget outputTarget, SqlTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Sql", "3.1.0");
+            AddNugetDependency("Intent.Modules.Common.Sql", "3.3.0");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -47,19 +47,19 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "Sql Template",
                 role: GetRole(),
                 location: Model.GetLocation()));
 
-            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Sql",
-                moduleVersion: "3.0.3"));
+                moduleVersion: "3.3.0"));
             if (Model.GetModelType() != null)
             {
-                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }

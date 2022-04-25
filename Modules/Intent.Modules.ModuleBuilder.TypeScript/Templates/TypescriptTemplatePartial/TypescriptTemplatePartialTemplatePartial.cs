@@ -1,14 +1,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.TypeScript.Api;
-using Intent.Modules.Common;
-using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
-using Intent.Modules.Common.VisualStudio;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
@@ -29,7 +25,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         public TypescriptTemplatePartialTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             // whichever his higher:
-            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.1.0");
+            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.3.0");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -49,18 +45,18 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "Typescript Template",
                 role: GetRole(),
                 location: Model.GetLocation()));
-            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.TypeScript",
-                moduleVersion: "3.0.8"));
+                moduleVersion: "3.3.0"));
             if (Model.GetModelType() != null)
             {
-                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }

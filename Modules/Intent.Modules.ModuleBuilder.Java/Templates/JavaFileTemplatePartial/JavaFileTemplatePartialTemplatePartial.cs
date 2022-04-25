@@ -29,8 +29,8 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public JavaFileTemplatePartialTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Java", "3.1.4");
-            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "3.1.1");
+            AddNugetDependency("Intent.Modules.Common.Java", "3.3.0");
+            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "3.3.0");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -53,7 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Java",
-                moduleVersion: "3.0.5"));
+                moduleVersion: "3.3.0"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

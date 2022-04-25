@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public HtmlFileTemplatePartialTemplate(IOutputTarget outputTarget, HtmlFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Html", "3.1.0");
+            AddNugetDependency("Intent.Modules.Common.Html", "3.3.0");
             //if (!string.IsNullOrWhiteSpace(Model.GetModule().NuGetPackageId))
             //{
             //    AddNugetDependency(new NugetPackageInfo(Model.GetModule().NuGetPackageId, Model.GetModule().NuGetPackageVersion));
@@ -51,18 +51,18 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplatePartial
 
         public override void BeforeTemplateExecution()
         {
-            Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
                 modelId: Model.Id,
                 templateId: GetTemplateId(),
                 templateType: "Html Template",
                 role: GetRole(),
                 location: Model.GetLocation()));
-            Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+            ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Html",
-                moduleVersion: "3.0.2"));
+                moduleVersion: "3.3.0"));
             if (Model.GetModelType() != null)
             {
-                Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
+                ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }
