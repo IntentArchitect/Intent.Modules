@@ -36,16 +36,21 @@ if (element.getName().toLocaleLowerCase() == "id" &amp;&amp;
     return;
 }
 
-let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
+function getSurrogateKeyType() {
+    let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
+    if (keyType == "guid")
+        return "6b649125-18ea-48fd-a6ba-0bfff0d8f488"; // guid id
+    if (keyType == "int")
+        return "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"; // int id
+    if (keyType == "long")
+        return "33013006-E404-48C2-AC46-24EF5A5774FD"; // long id
+    return "6b649125-18ea-48fd-a6ba-0bfff0d8f488"; // guid id
+}
+
 var namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
 
 let pk = createElement("Attribute", namingConvetion == "pascal-case" ? "Id" : "id", element.id);
-if (keyType == "guid")
-    pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
-if (keyType == "int")
-    pk.typeReference.setType("fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"); // int id
-if (keyType == "long")
-    pk.typeReference.setType("33013006-E404-48C2-AC46-24EF5A5774FD"); // guid id
+pk.typeReference.setType(getSurrogateKeyType()); 
 pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
 pk.setMetadata("is-managed-key", "true");</script>
         </macro>
@@ -59,18 +64,22 @@ if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("
     return;
 }
 
+function getSurrogateKeyType() {
+    let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
+    if (keyType == "guid")
+        return "6b649125-18ea-48fd-a6ba-0bfff0d8f488"; // guid id
+    if (keyType == "int")
+        return "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"; // int id
+    if (keyType == "long")
+        return "33013006-E404-48C2-AC46-24EF5A5774FD"; // guid id
+}
+
 var namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
-let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
 
 if (element.getChildren("Attribute").some(x =&gt; x.hasStereotype(primaryKeyStereotypeId))) {
     let pk = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.getMetadata("is-managed-key") == "true")[0]
     if (pk) {
-        if (keyType == "guid")
-            pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
-        if (keyType == "int")
-            pk.typeReference.setType("fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"); // int id
-        if (keyType == "long")
-            pk.typeReference.setType("33013006-E404-48C2-AC46-24EF5A5774FD"); // guid id
+        pk.typeReference.setType(getSurrogateKeyType());
     }
     return;
 }
@@ -83,12 +92,7 @@ if (element.getAssociations("Generalization Target End").some(x =&gt; x.getOther
 let pk = createElement("Attribute", namingConvetion == "pascal-case" ? "Id" : "id", element.id);
 pk.setMetadata("is-managed-key", "true");
 pk.setOrder(0);
-if (keyType == "guid")
-    pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
-if (keyType == "int")
-    pk.typeReference.setType("fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"); // int id
-if (keyType == "long")
-    pk.typeReference.setType("33013006-E404-48C2-AC46-24EF5A5774FD"); // guid id
+pk.typeReference.setType(getSurrogateKeyType());
 pk.addStereotype(primaryKeyStereotypeId);</script>
         </macro>
       </macros>

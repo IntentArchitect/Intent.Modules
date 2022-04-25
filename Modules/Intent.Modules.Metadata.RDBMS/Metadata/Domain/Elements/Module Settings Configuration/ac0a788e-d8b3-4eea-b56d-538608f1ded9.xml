@@ -31,7 +31,7 @@
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Select the data type to be used for all surrogate and foreign keys." isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="System.Guid" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="guid" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -103,7 +103,7 @@
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="If and how the designer should create and manage the PKs and FKs" isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="Manual" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="manual" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

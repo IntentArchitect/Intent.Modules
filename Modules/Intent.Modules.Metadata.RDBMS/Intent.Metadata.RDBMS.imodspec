@@ -28,7 +28,7 @@
         <setting id="ef83f85d-bb8d-4b10-8842-9f35f9f54165" title="Key Type" type="select">
           <isRequired>false</isRequired>
           <hint>Select the data type to be used for all surrogate and foreign keys.</hint>
-          <defaultValue>System.Guid</defaultValue>
+          <defaultValue>guid</defaultValue>
           <options>
             <option value="guid" description="guid" />
             <option value="long" description="long" />
@@ -38,7 +38,7 @@
         <setting id="5aca6e0c-1b64-425b-9046-f0bc81c44311" title="Key Creation Mode" type="select">
           <isRequired>false</isRequired>
           <hint>If and how the designer should create and manage the PKs and FKs</hint>
-          <defaultValue>Manual</defaultValue>
+          <defaultValue>manual</defaultValue>
           <options>
             <option value="manual" description="Manual" />
             <option value="implicit" description="Implicit" />
