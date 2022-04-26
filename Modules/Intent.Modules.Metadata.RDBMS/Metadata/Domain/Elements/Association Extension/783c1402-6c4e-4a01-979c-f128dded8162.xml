@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="783c1402-6c4e-4a01-979c-f128dded8162" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
-  <name>Association Extension</name>
-  <display>Association Extension: Association</display>
+  <name>Association Key Extension</name>
+  <display>Association Key Extension: Association</display>
   <isAbstract>false</isAbstract>
   <order>2</order>
   <genericTypes />

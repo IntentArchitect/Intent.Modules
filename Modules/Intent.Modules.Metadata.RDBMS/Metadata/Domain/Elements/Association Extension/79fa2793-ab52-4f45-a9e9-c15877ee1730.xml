@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="79fa2793-ab52-4f45-a9e9-c15877ee1730" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
-  <name>Generalization Extension</name>
-  <display>Generalization Extension: Generalization</display>
+  <name>Generalization Key Extension</name>
+  <display>Generalization Key Extension: Generalization</display>
   <isAbstract>false</isAbstract>
   <order>3</order>
   <genericTypes />
