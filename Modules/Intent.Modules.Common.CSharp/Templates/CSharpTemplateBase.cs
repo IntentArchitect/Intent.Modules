@@ -149,9 +149,12 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         public override string RunTemplate()
         {
-            var templateOutput = base.RunTemplate();
-            return $@"{DependencyUsings}
-{templateOutput}".TrimStart();
+            var templateOutput = base.RunTemplate().TrimStart();
+            var dependencyUsings = DependencyUsings;
+
+            return dependencyUsings == string.Empty
+                ? templateOutput
+                : $"{dependencyUsings}{Environment.NewLine}{templateOutput}";
         }
 
         /// <summary>
