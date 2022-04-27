@@ -16,6 +16,7 @@
       <genericTypeParameters />
     </typeReference>
     <stereotypes />
+    <metadata />
   </sourceEnd>
   <targetEnd id="bff90e72-3f59-4682-9b7f-2d0f52845654" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>bbb</name>
@@ -33,6 +34,7 @@
       <genericTypeParameters />
     </typeReference>
     <stereotypes />
+    <metadata />
   </targetEnd>
   <associationType>Association</associationType>
   <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>

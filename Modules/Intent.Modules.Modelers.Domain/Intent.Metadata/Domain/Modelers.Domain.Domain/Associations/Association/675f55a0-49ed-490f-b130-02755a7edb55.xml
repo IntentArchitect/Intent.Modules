@@ -16,6 +16,7 @@
       <genericTypeParameters />
     </typeReference>
     <stereotypes />
+    <metadata />
   </sourceEnd>
   <targetEnd id="675f55a0-49ed-490f-b130-02755a7edb55" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>EmptyClass</name>
@@ -40,6 +41,7 @@
         <properties />
       </stereotype>
     </stereotypes>
+    <metadata />
   </targetEnd>
   <associationType>Association</associationType>
   <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>

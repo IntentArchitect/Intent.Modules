@@ -16,6 +16,7 @@
       <genericTypeParameters />
     </typeReference>
     <stereotypes />
+    <metadata />
   </sourceEnd>
   <targetEnd id="a7945ca0-ef76-4a8b-8e2a-48869f72bf08" type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
     <name>Subclass</name>
@@ -33,6 +34,7 @@
       <genericTypeParameters />
     </typeReference>
     <stereotypes />
+    <metadata />
   </targetEnd>
   <associationType>Generalization</associationType>
   <associationTypeId>5de35973-3ac7-4e65-b48c-385605aec561</associationTypeId>

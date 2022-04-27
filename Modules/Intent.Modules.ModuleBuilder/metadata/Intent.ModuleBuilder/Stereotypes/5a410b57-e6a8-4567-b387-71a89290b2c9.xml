@@ -14,6 +14,7 @@
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>f9c93dac-243c-4308-b2fc-6d30fcfbae1d</parentFolderId>
   <order>0</order>
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
