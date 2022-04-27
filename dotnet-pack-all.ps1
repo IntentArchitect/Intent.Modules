@@ -135,6 +135,10 @@ if ($isOnBuildAgent) {
 }
 
 foreach ($project in $projects) {
+    Invoke-Expression "dotnet clean $project --verbosity normal"
+}
+
+foreach ($project in $projects) {
     Invoke-Expression "dotnet restore $project --verbosity normal"
     Invoke-Expression "dotnet build $project --verbosity normal"
     Invoke-Expression "dotnet pack $project --verbosity normal$packOutputParam"
