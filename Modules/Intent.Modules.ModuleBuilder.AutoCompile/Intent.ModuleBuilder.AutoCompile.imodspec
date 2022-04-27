@@ -13,7 +13,7 @@
     <factoryExtension id="Intent.ModuleBuilder.AutoCompile.AutoCompileFactoryExtension" externalReference="e2167dd4-7302-418d-be65-bec84384cf3e" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.0" />
+    <dependency id="Intent.Common" version="3.3.1" />
     <dependency id="Intent.Common.Types" version="3.3.0" />
     <dependency id="Intent.ModuleBuilder" version="3.3.0" />
   </dependencies>

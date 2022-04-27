@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Services</id>
   <version>3.3.0</version>
@@ -12,7 +12,7 @@
   <templates></templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.0" />
+    <dependency id="Intent.Common" version="3.3.1" />
     <dependency id="Intent.Common.Types" version="3.3.0" />
   </dependencies>
   <metadata>
