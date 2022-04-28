@@ -695,6 +695,30 @@
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.AsNullable(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
             <inheritdoc />
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.VisualStudio.CopyToOutputDirectory">
+            <summary>
+            Possible values for <see cref="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithCopyToOutputDirectory``1(``0,Intent.Modules.Common.CSharp.VisualStudio.CopyToOutputDirectory)"/> which correlates with the
+            "Copy to Output Directory" file property in Visual Studio.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CopyToOutputDirectory.DoNotCopy">
+            <summary>
+            Adds <c>&lt;CopyToOutputDirectory&gt;Never&lt;/CopyToOutputDirectory&gt;</c>
+            as per the "Do not copy" option in Visual Studio.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CopyToOutputDirectory.CopyAlways">
+            <summary>
+            Adds <c>&lt;CopyToOutputDirectory&gt;Always&lt;/CopyToOutputDirectory&gt;</c>
+            as per the "Copy always" option in Visual Studio.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CopyToOutputDirectory.CopyIfNewer">
+            <summary>
+            Adds <c>&lt;CopyToOutputDirectory&gt;PreserveNewest&lt;/CopyToOutputDirectory&gt;</c>
+            as per the "Copy if newer" option in Visual Studio.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.CSharpProject.DefaultSupportsNullable(System.String)">
             <summary>
             Based on data from the below links, returns true if the default language version for
@@ -703,6 +727,109 @@
             https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#defaults
             <br/>
             https://docs.microsoft.com/dotnet/standard/frameworks#supported-target-frameworks
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys">
+            <summary>
+            Dictionary keys <see cref="P:Intent.Templates.ITemplateFileConfig.CustomMetadata"/>.
+            </summary>
+            <remarks>
+            All are intentionally <see keyword="static"/> as <see keyword="const"/> embeds the
+            value at compile time meaning that if this changes, then referenced modules which were
+            compiled with the older value would no longer be in alignment.
+            </remarks>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.ElementPrefix">
+            <summary>
+            Prefix for keys for <see cref="P:Intent.Templates.ITemplateFileConfig.CustomMetadata"/> to indicate they
+            should be applied as nested elements for the file in the MSBuild file.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.AttributePrefix">
+            <summary>
+            Prefix for keys for <see cref="P:Intent.Templates.ITemplateFileConfig.CustomMetadata"/> to indicate they
+            should be applied as attributes for the file in the MSBuild file.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.ItemType">
+            <summary>
+            Key value for <see cref="P:Intent.Templates.ITemplateFileConfig.CustomMetadata"/> to indicate the element
+            type for the file in the MSBuild file.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.AlwaysGenerateProjectItem">
+            <summary>
+            Key value for <see cref="P:Intent.Templates.ITemplateFileConfig.CustomMetadata"/> to indicate that an
+            entry should always be created in the MSBuild file regardless of whether or not it was
+            implicitly included (for example in an SDK style project).
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Templates.ITemplateFileConfig"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithAlwaysGenerateProjectItem``1(``0)">
+            <summary>
+            Indicate that an entry should always be created in the MSBuild file regardless of
+            whether or not it was implicitly included (for example in an SDK style project).
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithAttribute``1(``0,System.String,System.String)">
+            <summary>
+            Adds an attribute to the file item in the MSBuild file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithAutoFormatting``1(``0,System.Boolean)">
+            <summary>
+            Disables auto formatting of the file after code merging.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithAutoGen``1(``0)">
+            <summary>
+            Adds a <c>&lt;AutoGen&gt;True&lt;/AutoGen&gt;</c> element to the file item in the MSBuild file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithCopyToOutputDirectory``1(``0,Intent.Modules.Common.CSharp.VisualStudio.CopyToOutputDirectory)">
+            <summary>
+            Controls the value of the <c>&lt;CopyToOutputDirectory/ &gt;</c> element for a file item in the MSBuild file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithDependsOn``1(``0,Intent.Templates.ITemplate)">
+            <summary>
+            Adds a <c>&lt;DependentUpon/ &gt;</c> element to the file item in the MSBuild file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithDependsOn``1(``0,System.String)">
+            <summary>
+            Adds a <c>&lt;DependentUpon/ &gt;</c> element to the file item in the MSBuild file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithDesignTime``1(``0)">
+            <summary>
+            Adds a <c>&lt;DesignTime&gt;True&lt;/DesignTime&gt;</c> element to the file item in the MSBuild file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithItemType``1(``0,System.String)">
+            <summary>
+            Indicate that the file in the MSBuild file is never implicitly present in SDK style
+            projects.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithNestedProjectElement``1(``0,System.String,System.String,System.Boolean)">
+            <summary>
+            Adds a nested element to the file item in the MSBuild file.
+            </summary>
+            <param name="templateFileConfig">The <see cref="T:Intent.Templates.ITemplateFileConfig"/> onto which to apply the configuration.</param>
+            <param name="elementName">The name of element nested element.</param>
+            <param name="elementValue">The value of the nested element.</param>
+            <param name="isPath">Whether or not the value is a path, in which case it should be normalized for MS Build such that all folder separators are backslashes.</param>
+            <returns>The <see cref="T:Intent.Templates.ITemplateFileConfig"/> with the configuration applied.</returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithTextTemplatingFilePreprocessor``1(``0)">
+            <summary>
+            Adds the necessary elements to the file item in the MSBuild file for a pre-processed
+            <c>.tt</c>
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyLaunchProfile(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String,System.Boolean,System.String,System.String)">

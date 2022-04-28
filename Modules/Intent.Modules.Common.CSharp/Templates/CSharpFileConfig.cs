@@ -1,5 +1,7 @@
 ﻿using System;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.Templates
@@ -37,6 +39,8 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             AutoFormat = true;
             ApplyNamespaceFormatting = true;
+
+            this.WithItemType("Compile");
         }
 
         /// <summary>
@@ -44,29 +48,17 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public bool AutoFormat
         {
-            get
-            {
-                var val = CustomMetadata["AutoFormat"];
-                if (string.IsNullOrEmpty(val)) { return false; }
-                return bool.Parse(val);
-            }
-            set 
-            {
-                CustomMetadata["AutoFormat"] = value.ToString();
-            }
+            get => bool.TryParse(CustomMetadata[nameof(AutoFormat)], out var parsed) && parsed;
+            set => CustomMetadata[nameof(AutoFormat)] = value.ToString();
         }
 
         /// <summary>
         /// Whether or not to apply formatting (such as PascalCasing) to namespaces. 
         /// </summary>
+        [FixFor_Version4] // See if we can get rid of this, not sure what it's even being used for.
         public bool ApplyNamespaceFormatting
         {
-            get
-            {
-                var val = CustomMetadata[nameof(ApplyNamespaceFormatting)];
-                if (string.IsNullOrEmpty(val)) { return false; }
-                return bool.Parse(val);
-            }
+            get => bool.TryParse(CustomMetadata[nameof(ApplyNamespaceFormatting)], out var parsed) && parsed;
             set => CustomMetadata[nameof(ApplyNamespaceFormatting)] = value.ToString();
         }
     }
