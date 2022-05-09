@@ -27,7 +27,7 @@
           <specializationType>Enum-Literal</specializationType>
           <specializationTypeId>4215f417-25d2-4509-9309-5076a1452eaa</specializationTypeId>
           <text>Add Literal</text>
-          <shortcut>ctrl + shift + l</shortcut>
+          <shortcut>ctrl + shift + a</shortcut>
           <defaultName>NewEnumLiteral</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
           <allowMultiple>true</allowMultiple>

@@ -47,7 +47,7 @@
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <ApplicationRelativeFilePath>Intent.Common.Types.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Types.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>8cc9168a-63e5-4b42-8c7e-fb8e12875801</ProjectId>

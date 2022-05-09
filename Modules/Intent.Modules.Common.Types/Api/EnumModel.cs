@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Common.Types.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class EnumModel : IHasStereotypes, IMetadataModel, IHasName
+    public class EnumModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName
     {
         public const string SpecializationType = "Enum";
         public const string SpecializationTypeId = "85fba0e9-9161-4c85-a603-a229ef312beb";
@@ -25,11 +25,15 @@ namespace Intent.Modules.Common.Types.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = element.ParentElement?.SpecializationType == FolderModel.SpecializationType ? new FolderModel(element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
 
         public string Name => _element.Name;
+
+        public FolderModel Folder { get; }
+        IFolder IHasFolder<IFolder>.Folder => Folder;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
@@ -64,6 +68,7 @@ namespace Intent.Modules.Common.Types.Api
         }
 
         public string Comment => _element.Comment;
+
     }
 
     [IntentManaged(Mode.Fully)]
