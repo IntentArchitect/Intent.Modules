@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain</id>
-  <version>3.3.0</version>
+  <version>3.3.1</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>A domain designer based on UML class diagrams for expressing entity relationships.</summary>
   <description>A domain designer based on UML class diagrams for expressing entity relationships.</description>
@@ -12,7 +12,7 @@
   <factoryExtensions></factoryExtensions>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.1" />
-    <dependency id="Intent.Common.Types" version="3.3.0" />
+    <dependency id="Intent.Common.Types" version="3.3.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -24,4 +24,5 @@
     <install target="Domain;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain/Intent.Modelers.Domain.pkg.config" externalReference="6572b98d-5e13-4d4b-9ffc-820057da974e" />
   </metadata>
   <moduleSettings />
+  <moduleSettingsExtensions />
 </package>

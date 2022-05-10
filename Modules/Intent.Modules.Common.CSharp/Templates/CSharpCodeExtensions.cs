@@ -15,7 +15,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         public static string GetMethodParameters<TModel, TParameterModel>(this CSharpTemplateBase<TModel> template, IEnumerable<TParameterModel> parameters)
             where TParameterModel : IHasName, IHasTypeReference
         {
-            return string.Join(", ", parameters.Select(x => $"{template.GetTypeName(x)} {x.Name.ToCamelCase(true)}"));
+            return string.Join(", ", parameters.Select(x => $"{template.GetTypeName(x)} {x.Name.ToParameterName()}"));
         }
 
         /// <summary>
@@ -24,7 +24,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         public static string GetParameters<TModel, TParameterModel>(this CSharpTemplateBase<TModel> template, IEnumerable<TParameterModel> parameters)
             where TParameterModel : IHasName, IHasTypeReference
         {
-            return string.Join(", ", parameters.Select(x => $"{template.GetTypeName(x)} {x.Name.ToCamelCase(true)}"));
+            return string.Join(", ", parameters.Select(x => $"{template.GetTypeName(x)} {x.Name.ToParameterName()}"));
         }
 
         /// <summary>
