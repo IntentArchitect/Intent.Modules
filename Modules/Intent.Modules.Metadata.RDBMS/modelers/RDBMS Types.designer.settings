@@ -100,13 +100,14 @@
         <macro trigger="on-changed">
           <script>let useDefaultName = element.getStereotype("Settings").getProperty("Use Default Name").getValue() == true;
 if (useDefaultName) {
-    let allNames = element.getChildren().map(x =&gt; x.getName());
+    let elementName = pluralize(element.getMapping().getElement().getName());
+    let allNames = element.getChildren().map(x =&gt; toPascalCase(x.getName()));
     element.addMetadata("index_name_set", true);
     if (allNames.length &gt; 0) {
         let namesList = allNames.join('_');
-        element.setName(`Index_${namesList}`);
+        element.setName(`IX_${elementName}_${namesList}`);
     } else {
-        element.setName(`Index`);
+        element.setName(`IX_${elementName}`);
     }
     element.removeMetadata("index_name_set")
 }</script>
