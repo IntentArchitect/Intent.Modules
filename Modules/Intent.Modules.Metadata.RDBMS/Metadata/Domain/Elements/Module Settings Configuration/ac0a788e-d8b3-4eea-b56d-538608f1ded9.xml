@@ -39,7 +39,7 @@
       <childElements>
         <childElement id="7c216890-3f73-4de3-b10d-04dbca2db4a5" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>guid</name>
-          <display>guid</display>
+          <display>guid = guid</display>
           <isAbstract>false</isAbstract>
           <value>guid</value>
           <order>0</order>
@@ -54,7 +54,7 @@
         </childElement>
         <childElement id="155d19d9-6021-4123-ba8e-38d4f088602b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>long</name>
-          <display>long</display>
+          <display>long = long</display>
           <isAbstract>false</isAbstract>
           <value>long</value>
           <order>1</order>
@@ -69,7 +69,7 @@
         </childElement>
         <childElement id="836ace2d-f119-4fc9-9df2-5aba083a5d3b" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>int</name>
-          <display>int</display>
+          <display>int = int</display>
           <isAbstract>false</isAbstract>
           <value>int</value>
           <order>2</order>
@@ -111,7 +111,7 @@
       <childElements>
         <childElement id="80f5cb0d-327d-4767-a066-089ce2534974" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Manual</name>
-          <display>Manual</display>
+          <display>Manual = manual</display>
           <isAbstract>false</isAbstract>
           <value>manual</value>
           <order>0</order>
@@ -126,7 +126,7 @@
         </childElement>
         <childElement id="8ecefc89-95dd-4dc8-9ad4-1e6ab1b1aa53" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Implicit</name>
-          <display>Implicit</display>
+          <display>Implicit = implicit</display>
           <isAbstract>false</isAbstract>
           <value>implicit</value>
           <order>1</order>
@@ -141,7 +141,7 @@
         </childElement>
         <childElement id="b0baec9c-8f61-4f81-ab93-68e30c7c767c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Explicit</name>
-          <display>Explicit</display>
+          <display>Explicit = explicit</display>
           <isAbstract>false</isAbstract>
           <value>explicit</value>
           <order>2</order>
@@ -183,7 +183,7 @@
       <childElements>
         <childElement id="c6bca269-c334-4f1e-a5f3-7e0d8acdaf4c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Pascal Case</name>
-          <display>Pascal Case</display>
+          <display>Pascal Case = pascal-case</display>
           <isAbstract>false</isAbstract>
           <value>pascal-case</value>
           <order>0</order>
@@ -198,7 +198,7 @@
         </childElement>
         <childElement id="6b32dd51-4789-4135-92a2-c38b329ffc24" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
           <name>Camel Case</name>
-          <display>Camel Case</display>
+          <display>Camel Case = camel-case</display>
           <isAbstract>false</isAbstract>
           <value>camel-case</value>
           <order>1</order>

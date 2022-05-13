@@ -368,11 +368,45 @@
       <stereotypes />
       <metadata />
       <childElements>
+        <childElement id="3995d455-b045-4b2f-a0d3-fcaac4829a54" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <order>0</order>
+          <genericTypes />
+          <typeReference id="5bfa9562-8dcb-4e32-8af4-47fe3429a8b5">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>309d1047-139f-45f3-8ebc-938cce0c0363</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let useDefaultName = element.getStereotype(&quot;Settings&quot;).getProperty(&quot;Use Default Name&quot;).getValue() == true;&#xD;&#xA;if (useDefaultName) {&#xD;&#xA;    let elementName = pluralize(element.getMapping().getElement().getName());&#xD;&#xA;    let allNames = element.getChildren().map(x =&gt; toPascalCase(x.getName()));&#xD;&#xA;    element.addMetadata(&quot;index_name_set&quot;, true);&#xD;&#xA;    if (allNames.length &gt; 0) {&#xD;&#xA;        let namesList = allNames.join('_');&#xD;&#xA;        element.setName(`IX_${elementName}_${namesList}`);&#xD;&#xA;    } else {&#xD;&#xA;        element.setName(`IX_${elementName}`);&#xD;&#xA;    }&#xD;&#xA;    element.removeMetadata(&quot;index_name_set&quot;)&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="c917c8ec-b3e6-45e6-a3ba-97cb806e5920" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <order>1</order>
           <genericTypes />
           <typeReference id="f0e18593-2ec1-4c77-b377-1dbd607010fb">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -396,6 +430,40 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.launchMappingDialog(&quot;30f4278f-1d74-4e7e-bfdb-39c8e120f24c&quot;);" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="bb2f1979-03ae-4f35-b881-c8ff2ec67ad2" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Name Changed</name>
+          <display>On Name Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <order>2</order>
+          <genericTypes />
+          <typeReference id="d47849f4-4ad5-40ef-9e73-4e2cdd4bf265">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>309d1047-139f-45f3-8ebc-938cce0c0363</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (!element.hasMetadata(&quot;index_name_set&quot;)) {&#xD;&#xA;    element.getStereotype(&quot;Settings&quot;).getProperty(&quot;Use Default Name&quot;).setValue(false)&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

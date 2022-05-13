@@ -10,7 +10,10 @@ namespace Intent.Metadata.RDBMS.Api
     {
         public static IList<AttributeModel> GetExplicitPrimaryKey(this ClassModel @class)
         {
-            return @class.Attributes.Where(x => x.HasPrimaryKey()).ToList();
+            return GetSelfAndParents(@class)
+                .SelectMany(s => s.Attributes)
+                .Where(p => p.HasPrimaryKey())
+                .ToList();
         }
 
         [Obsolete("Use GetSurrogateKeyName extension method")]
@@ -36,12 +39,26 @@ namespace Intent.Metadata.RDBMS.Api
                 throw new Exception($"{nameof(ClassModel)} [{@class}] does not have a surrogate key");
             }
 
-            return @class.GetExplicitPrimaryKey().Any() ? typeResolver.Get(@class.GetExplicitPrimaryKey().SingleOrDefault()?.Type.Element).Name : null;
+            return @class.GetExplicitPrimaryKey().Any()
+                ? typeResolver.Get(@class.GetExplicitPrimaryKey().SingleOrDefault()?.Type.Element).Name
+                : null;
         }
 
         public static bool HasSurrogateKey(this ClassModel @class)
         {
-            return @class.Attributes.Count(x => x.HasPrimaryKey()) <= 1; // less than or equal to 1, because 0 = implicit surrogate key
+            return @class.Attributes.Count(x => x.HasPrimaryKey()) <=
+                   1; // less than or equal to 1, because 0 = implicit surrogate key
+        }
+
+        private static IEnumerable<ClassModel> GetSelfAndParents(ClassModel @classModel)
+        {
+            yield return @classModel;
+            var parent = @classModel.ParentClass;
+            while (parent != null)
+            {
+                yield return parent;
+                parent = parent.ParentClass;
+            }
         }
     }
 }
