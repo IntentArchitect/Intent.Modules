@@ -539,6 +539,33 @@ namespace Intent.Modules.Common.Templates
 
         #endregion
 
+        /// <summary>
+        /// Tries to get existing file content of this template's output.
+        /// </summary>
+        /// <remarks>
+        /// This method takes into account that the output path may have changed since the previous
+        /// Software Factory execution.
+        /// </remarks>
+        /// <param name="content">The contents of the file if it exists.</param>
+        /// <returns>Whether or not there was an existing file for this template's output.</returns>
+        public bool TryGetExistingFileContent(out string content)
+        {
+            if (File.Exists(FileMetadata.GetFullLocationPath()))
+            {
+                content = File.ReadAllText(FileMetadata.GetFullLocationPath());
+                return true;
+            }
+
+            if (File.Exists(GetExistingFilePath()))
+            {
+                content = File.ReadAllText(GetExistingFilePath());
+                return true;
+            }
+
+            content = default;
+            return false;
+        }
+        
         #region TryGetTypeName
         
         /// <summary>
