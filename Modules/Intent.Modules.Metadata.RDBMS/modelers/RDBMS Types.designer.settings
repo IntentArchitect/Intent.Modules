@@ -97,8 +97,27 @@
         </mappingSetting>
       </mappingSettings>
       <macros>
+        <macro trigger="on-changed">
+          <script>let useDefaultName = element.getStereotype("Settings").getProperty("Use Default Name").getValue() == true;
+if (useDefaultName) {
+    let allNames = element.getChildren().map(x =&gt; x.getName());
+    element.addMetadata("index_name_set", true);
+    if (allNames.length &gt; 0) {
+        let namesList = allNames.join('_');
+        element.setName(`Index_${namesList}`);
+    } else {
+        element.setName(`Index`);
+    }
+    element.removeMetadata("index_name_set")
+}</script>
+        </macro>
         <macro trigger="on-created">
           <script>element.launchMappingDialog("30f4278f-1d74-4e7e-bfdb-39c8e120f24c");</script>
+        </macro>
+        <macro trigger="on-name-changed">
+          <script>if (!element.hasMetadata("index_name_set")) {
+    element.getStereotype("Settings").getProperty("Use Default Name").setValue(false)
+}</script>
         </macro>
       </macros>
       <childElementSettings>
