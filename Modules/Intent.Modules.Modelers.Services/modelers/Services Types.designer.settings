@@ -207,7 +207,6 @@
         <childElementSetting type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
           <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>${name}: ${typeReference.display}</displayFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
           <allowGenericTypes>false</allowGenericTypes>
@@ -217,7 +216,7 @@
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
+          <allowSetValue>true</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
@@ -312,6 +311,13 @@
           </creationOptions>
           <scriptOptions />
           <mappingSettings />
+          <macros>
+            <macro trigger="on-changed">
+              <script>element.getChildren().forEach(x =&gt; {
+    x.setName(toCamelCase(x.getName()));
+});</script>
+            </macro>
+          </macros>
           <childElementSettings>
             <childElementSetting type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
