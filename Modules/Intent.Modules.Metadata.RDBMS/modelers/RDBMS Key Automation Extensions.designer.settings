@@ -141,8 +141,8 @@ function isSelfReferencingZeroToOne(associationEnd)
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
 }
 
-let sourceType = association.getOtherEnd().typeReference.getType();
-let targetType = association.typeReference.getType();
+let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
+let targetType = lookup(association.typeReference.typeId);
 
 if (sourceType &amp;&amp; targetType) {
     let namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
