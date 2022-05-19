@@ -1,49 +1,61 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 
 namespace Intent.Modules.Common.TypeResolution
 {
+    /// <summary>
+    /// Base abstract implementation of <see cref="ITypeResolverContext"/>.
+    /// </summary>
     public abstract class TypeResolverContextBase : ITypeResolverContext
     {
-        private readonly List<ITypeSource> _typeSources = new List<ITypeSource>();
+        private readonly List<ITypeSource> _typeSources = new();
         private ICollectionFormatter _defaultCollectionFormatter;
         private INullableFormatter _defaultNullableFormatter;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="TypeResolverContextBase"/>.
+        /// </summary>
         protected TypeResolverContextBase(ICollectionFormatter defaultCollectionFormatter, INullableFormatter nullableFormatter)
         {
             _defaultCollectionFormatter = defaultCollectionFormatter;
             _defaultNullableFormatter = nullableFormatter;
         }
 
+        /// <inheritdoc />
         public void AddTypeSource(ITypeSource typeSource)
         {
             _typeSources.Add(typeSource);
         }
 
+        /// <inheritdoc />
         public void SetCollectionFormatter(ICollectionFormatter formatter)
         {
             _defaultCollectionFormatter = formatter;
         }
 
+        /// <inheritdoc />
         public void SetNullableFormatter(INullableFormatter formatter)
         {
             _defaultNullableFormatter = formatter;
         }
 
+        /// <inheritdoc />
         public IEnumerable<ITypeSource> TypeSources => _typeSources;
 
+        /// <inheritdoc />
         public IResolvedTypeInfo Get(ITypeReference typeInfo)
         {
             return Get(typeInfo, default(ICollectionFormatter));
         }
 
+        /// <inheritdoc />
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
             return Get(typeInfo, !string.IsNullOrWhiteSpace(collectionFormat) ? new CollectionFormatter(collectionFormat) : null);
         }
 
+        /// <inheritdoc />
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, ICollectionFormatter collectionFormatter)
         {
             if (typeInfo == null)
@@ -88,6 +100,7 @@ namespace Intent.Modules.Common.TypeResolution
             return type;
         }
 
+        /// <inheritdoc />
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, ITypeSource typeSource)
         {
             if (typeInfo == null)
@@ -119,7 +132,7 @@ namespace Intent.Modules.Common.TypeResolution
                 }
             }
 
-            type = type ?? ResolveType(typeInfo);
+            type ??= ResolveType(typeInfo);
             if (typeInfo.GenericTypeParameters.Any())
             {
                 type.Name = FormatGenerics(type, typeInfo.GenericTypeParameters.Select(x => Get(x, typeSource)));
@@ -127,21 +140,28 @@ namespace Intent.Modules.Common.TypeResolution
 
             if (typeInfo.IsCollection)
             {
-                collectionFormatter = collectionFormatter ?? _defaultCollectionFormatter;
+                collectionFormatter ??= _defaultCollectionFormatter;
                 type.Name = collectionFormatter.AsCollection(type);
             }
 
             if (typeInfo.IsNullable)
             {
-                nullableFormatter = nullableFormatter ?? _defaultNullableFormatter;
+                nullableFormatter ??= _defaultNullableFormatter;
                 type.Name = nullableFormatter.AsNullable(type);
             }
 
             return type;
         }
 
+        /// <summary>
+        /// Return the type as a string with generic type parameters formatted correctly for the
+        /// particular language being used.
+        /// </summary>
         protected abstract string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes);
 
+        /// <summary>
+        /// Resolve a <see cref="ResolvedTypeInfo"/> for the provided <paramref name="typeInfo"/>.
+        /// </summary>
         protected abstract ResolvedTypeInfo ResolveType(ITypeReference typeInfo);
     }
 }
