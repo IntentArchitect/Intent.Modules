@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Code.Weaving.Java.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 using Intent.Utils;
 
@@ -65,8 +66,15 @@ namespace Intent.Modules.Common.Java.Templates
             return @using.RemovePrefix("import ").RemoveSuffix(";");
         }
 
+        /// <summary>
+        /// This member will be changed to be only privately accessible or possibly removed
+        /// entirely, please contact Intent Architect support should you have a dependency on it.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [FixFor_Version4("See comments in method.")]
         public static IEnumerable<string> GetAllDeclareUsing(this ITemplate template)
         {
+            // No apparent reason this can't be private or possibly even a local method.
             return template.GetAll<IDeclareImports, string>((i) => i.DeclareImports());
         }
     }

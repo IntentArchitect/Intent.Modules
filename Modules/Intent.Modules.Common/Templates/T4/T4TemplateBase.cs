@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Text.RegularExpressions;
 using Intent.Modules.Common.TypeResolution;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.Templates
 {
@@ -254,8 +255,13 @@ namespace Intent.Modules.Common.Templates
             return _types != null;
         }
 
+        [FixFor_Version4("See comments.")]
         public virtual ITypeResolver Types
         {
+            // Try not to make it virtual so as to avoid the ReSharper pointed out problem about a
+            // virtual member call in a constructor in "CSharpTemplateBase<TModel>". Also, it might
+            // be nicer if these type resolver concerns are not mixed with the T4 concerns, perhaps
+            // make this derive from a base class with the IRequireTypeResolver implementation?
             get
             {
                 if (_types == null)

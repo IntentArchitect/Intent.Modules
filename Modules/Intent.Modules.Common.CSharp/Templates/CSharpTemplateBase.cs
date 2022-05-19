@@ -1,39 +1,48 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.VisualStudio;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
+    /// <inheritdoc />
     public abstract class CSharpTemplateBase : CSharpTemplateBase<object>
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="CSharpTemplateBase"/>.
+        /// </summary>
         protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
         {
         }
     }
 
+    /// <inheritdoc cref="CSharpTemplateBase{TModel}"/>
     public abstract class CSharpTemplateBase<TModel, TDecorator> : CSharpTemplateBase<TModel>, IHasDecorators<TDecorator>
         where TDecorator : ITemplateDecorator
     {
         private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
 
+        /// <summary>
+        /// Creates a new instance of <see cref="CSharpTemplateBase{TModel,TDecorator}"/>.
+        /// </summary>
         protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
         }
 
+        /// <inheritdoc />
         public IEnumerable<TDecorator> GetDecorators()
         {
             return _decorators.OrderBy(x => x.Priority);
         }
 
+        /// <inheritdoc />
         public void AddDecorator(TDecorator decorator)
         {
             _decorators.Add(decorator);
@@ -57,12 +66,16 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// this article</seealso>.
     /// </para>
     /// </summary>
-    /// <typeparam name="TModel"></typeparam>
     public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings, IHasFrameworkDependencies
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
-        private List<string> _additionalUsingNamespaces = new List<string>();
+        private readonly List<string> _additionalUsingNamespaces = new();
+        private IEnumerable<string> _templateUsings;
+        private IEnumerable<string> _existingContentUsings;
 
+        /// <summary>
+        /// Creates a new instance of <see cref="CSharpTemplateBase{TModel}"/>.
+        /// </summary>
         protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model)
             : base(templateId, outputTarget, model)
         {
@@ -141,12 +154,12 @@ namespace Intent.Modules.Common.CSharp.Templates
         public string UseType(string fullName)
         {
             var elements = new List<string>(fullName.Split(".", StringSplitOptions.RemoveEmptyEntries));
-            var name = elements.Last();
             elements.RemoveAt(elements.Count - 1);
             _additionalUsingNamespaces.Add(string.Join(".", elements));
             return NormalizeNamespace(fullName);
         }
 
+        /// <inheritdoc />
         public override string RunTemplate()
         {
             var templateOutput = base.RunTemplate().TrimStart();
@@ -158,22 +171,23 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Adds a Template source that will be searched when resolving <see cref="ITypeReference"/>
-        /// types through <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
+        /// Calls <see cref="IntentTemplateBase.AddTypeSource(string,string)"/> with
+        /// <c>IEnumerable&lt;{0}&gt;</c> for the <c>collectionFormat</c> value.
         /// </summary>
-        public ClassTypeSource AddTypeSource(string templateId)
+        public new ClassTypeSource AddTypeSource(string templateId)
         {
-            return base.AddTypeSource(templateId);
+            return base.AddTypeSource(templateId, "IEnumerable<{0}>");
         }
 
-        /// <summary>
-        /// Adds a Template source that will be searched when resolving <see cref="ITypeReference"/>
-        /// types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
-        /// </summary>
-        /// <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
+        /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string,string)" />
+        [FixFor_Version4("See comments within method.")]
+        // ReSharper disable once MethodOverloadWithOptionalParameter
         public new void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
         {
-            AddTypeSource(ClassTypeSource.Create(ExecutionContext, templateId).WithCollectionFormat(collectionFormat));
+            // This method is actually hidden by the "AddTypeSource(string)" overload, so is
+            // probably unused by any recently compiled code. Only keeping for now so as to avoid
+            // possible MethodNotFoundExceptions for code compiled against it a long time ago.
+            base.AddTypeSource(templateId, collectionFormat);
         }
 
         /// <inheritdoc />
@@ -192,7 +206,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             if (foreignType.EndsWith("?", StringComparison.OrdinalIgnoreCase))
             {
                 isNullable = true;
-                foreignType = foreignType.Substring(0, foreignType.Length - 1);
+                foreignType = foreignType[..^1];
             }
 
             // Handle Generics recursively:
@@ -205,15 +219,15 @@ namespace Intent.Modules.Common.CSharp.Templates
                     .Split(',')
                     .Select(NormalizeNamespace)
                     .Aggregate((x, y) => x + ", " + y);
-                foreignType = $"{foreignType.Substring(0, foreignType.IndexOf("<", StringComparison.Ordinal))}";
+                foreignType = $"{foreignType[..foreignType.IndexOf("<", StringComparison.Ordinal)]}";
             }
 
             var usingPaths = DependencyUsings
                 .Split(';')
                 .Select(x => x.Trim().Replace("using ", ""))
                 .Where(x => !string.IsNullOrWhiteSpace(x))
-                .Union(TemplateUsings)
-                .Union(ExistingContentUsings)
+                .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
+                .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
                 .Distinct()
                 .ToArray();
             var localNamespace = Namespace;
@@ -227,29 +241,6 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) +
                    (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>{nullable}" : nullable);
-        }
-
-        private IEnumerable<string> _templateUsings;
-        private IEnumerable<string> TemplateUsings => _templateUsings ?? (!string.IsNullOrWhiteSpace(GenerationEnvironment.ToString()) ? (_templateUsings = GetUsingsFromContent(GenerationEnvironment.ToString())) : new string[0]);
-
-        private IEnumerable<string> _existingContentUsings;
-        private IEnumerable<string> ExistingContentUsings
-        {
-            get
-            {
-                if (_existingContentUsings != null)
-                {
-                    return _existingContentUsings;
-                }
-
-                var filepath = FileMetadata.GetFullLocationPathWithFileName();
-                if (!File.Exists(filepath))
-                {
-                    return _existingContentUsings = new string[0];
-                }
-
-                return _existingContentUsings = GetUsingsFromContent(File.ReadAllText(filepath));
-            }
         }
 
         internal static string NormalizeNamespace(
@@ -283,18 +274,17 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
 
             var otherPathsToCheck = knownOtherPaths
-                .Concat(new[] { localNamespace })
+                .Append(localNamespace)
                 .Concat(usingPaths)
                 .Distinct()
                 .ToArray();
-
 
             // To minimize the chance that simplifying the path of the foreign type causes a compile time error due to a
             // conflicting path, we pre-compute known sub paths for each part of the namespace.To try summarize the logic,
             // for each part of the local namespace, find all their respective immediate sub path parts and select with
             // some other data for easier debugging.
             var namespacePartsSubPaths = localNamespaceParts
-                .Select((localNamespacePart, index) =>
+                .Select((_, index) =>
                 {
                     var namespacePartPath = localNamespaceParts
                         .Take(index + 1)
@@ -307,7 +297,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                             .Where(y => y.StartsWith(namespacePartPath + "."))
                             .Select(otherPath => new
                             {
-                                OtherPathSubPart = otherPath.Substring((namespacePartPath + ".").Length).Split('.').First(),
+                                OtherPathSubPart = otherPath[(namespacePartPath + ".").Length..].Split('.').First(),
                                 OtherPathFull = otherPath,
                                 LocalNamespacePartPath = namespacePartPath,
                             })
@@ -332,12 +322,18 @@ namespace Intent.Modules.Common.CSharp.Templates
                     break;
                 }
 
+                if (proposedFirstForeignPart == null)
+                {
+                    commonPartsCount++;
+                    continue;
+                }
+
                 var conflicts = namespacePartsSubPaths
-                    // C# gives precendence to resolving types from the most to the least specific from the namespace
+                    // C# gives precedence to resolving types from the most to the least specific from the namespace
                     .Skip(i + 1)
 
                     // For namespaces with a matching sub-part:
-                    .Where(x => proposedFirstForeignPart != null && x.LocalNamespacePartSubPaths.ContainsKey(proposedFirstForeignPart))
+                    .Where(x => x.LocalNamespacePartSubPaths.ContainsKey(proposedFirstForeignPart))
 
                     // Select filtered results (for easier debugging):
                     .Select(x => new
@@ -349,10 +345,10 @@ namespace Intent.Modules.Common.CSharp.Templates
                     })
 
                     // Where not empty:
-                    .Where(x => x.Conflicts.Any())
+                    .Where(x => x.Conflicts.Length != 0)
                     .ToArray();
 
-                if (conflicts.Any())
+                if (conflicts.Length != 0)
                 {
                     break;
                 }
@@ -365,6 +361,11 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         private static IEnumerable<string> GetUsingsFromContent(string existingContent)
         {
+            if (string.IsNullOrWhiteSpace(existingContent))
+            {
+                return Enumerable.Empty<string>();
+            }
+
             var lines = existingContent
                 .Replace("\r\n", "\n")
                 .Split('\n');
@@ -390,16 +391,25 @@ namespace Intent.Modules.Common.CSharp.Templates
             return relevantContent;
         }
 
+        /// <inheritdoc />
         public virtual RoslynMergeConfig ConfigureRoslynMerger()
         {
             return new RoslynMergeConfig(new TemplateMetadata(Id, new TemplateVersion(1, 0)));
         }
 
+        /// <inheritdoc />
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return DefineFileConfig();
         }
 
+        /// <summary>
+        /// Factory method for creating a <see cref="CSharpFileConfig"/> for a template.
+        /// </summary>
+        /// <remarks>
+        /// <see cref="CSharpFileConfig"/> is used to specify configuration such as its
+        /// type name, namespace and relative output location.
+        /// </remarks>
         protected abstract CSharpFileConfig DefineFileConfig();
 
         /// <summary>
@@ -408,6 +418,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         public virtual string DependencyUsings => this.ResolveAllUsings(ExecutionContext, namespacesToIgnore: Namespace);
 
         private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
+
+        /// <inheritdoc />
         public virtual IEnumerable<INugetPackageInfo> GetNugetDependencies()
         {
             return _nugetDependencies;
@@ -447,7 +459,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             OutputTarget.AddDependency(project.GetProject());
         }
 
-        private ICollection<string> _frameworkDependency = new HashSet<string>();
+        private readonly ICollection<string> _frameworkDependency = new HashSet<string>();
 
         /// <summary>
         /// Registers that the specified <FrameworkReference/> element should be add in the .csproj file where this file resides.
@@ -463,6 +475,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             return _frameworkDependency;
         }
 
+        /// <inheritdoc />
         public IEnumerable<IAssemblyReference> GetAssemblyDependencies()
         {
             return _assemblyDependencies;
@@ -476,6 +489,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             _assemblyDependencies.Add(assemblyReference);
         }
 
+        /// <inheritdoc />
         public IEnumerable<string> DeclareUsings()
         {
             return _additionalUsingNamespaces;

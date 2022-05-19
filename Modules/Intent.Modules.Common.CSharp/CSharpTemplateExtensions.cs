@@ -4,23 +4,31 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Eventing;
 using Intent.Modules.Common.CSharp.Configuration;
+using Intent.Modules.Common.CSharp.Templates;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 using Intent.Utils;
 
+// ReSharper disable once CheckNamespace - This is intentionally in this namespace to avoid requiring a using directive needing to be added any time it's used.
 namespace Intent.Modules.Common.Templates
 {
+    /// <summary>
+    /// Extension methods for <see cref="CSharpTemplateBase{TModel}"/>.
+    /// </summary>
     public static class CSharpTemplateExtensions
     {
+        /// <summary>
+        /// Resolves all usings for the provided <paramref name="template"/>.
+        /// </summary>
         public static string ResolveAllUsings(this ITemplate template, ISoftwareFactoryExecutionContext context, params string[] namespacesToIgnore)
         {
             var usings = template
                 .GetAllTemplateDependencies()
                 .SelectMany(context.FindTemplateInstances<ITemplate>)
-                .Where(ti => ti != null && ti.GetMetadata().CustomMetadata.ContainsKey("Namespace"))
-                .ToList()
-                .Select(x => x.GetMetadata().CustomMetadata["Namespace"])
-                .Union(template.GetAllDeclareUsing())
+                .Select(ti => ti?.GetMetadata().CustomMetadata.ContainsKey("Namespace") == true ? ti.GetMetadata().CustomMetadata["Namespace"] : null)
+#pragma warning disable CS0618
+                .Concat(template.GetAllDeclareUsing())
+#pragma warning restore CS0618
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Except(namespacesToIgnore)
                 .Distinct()
@@ -47,20 +55,27 @@ namespace Intent.Modules.Common.Templates
         {
             if (@using.StartsWith("using "))
             {
-                @using = @using.Substring("using ".Length, @using.Length - "using ".Length);
+                @using = @using["using ".Length..];
             }
 
             if (@using.EndsWith(";"))
             {
-                @using = @using.Substring(0, @using.Length - ";".Length);
+                @using = @using[..^";".Length];
             }
 
             return @using;
         }
 
+        /// <summary>
+        /// This member will be changed to be only privately accessible or possibly removed
+        /// entirely, please contact Intent Architect support should you have a dependency on it.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [FixFor_Version4("See comments in method.")]
         public static IEnumerable<string> GetAllDeclareUsing(this ITemplate template)
         {
-            return template.GetAll<IDeclareUsings, string>((i) => i.DeclareUsings());
+            // No apparent reason this can't be private or possibly even a local method.
+            return template.GetAll<IDeclareUsings, string>(i => i.DeclareUsings());
         }
 
         /// <summary>
@@ -118,7 +133,7 @@ namespace Intent.Modules.Common.Templates
             string field,
             object value)
         {
-            template.ApplyAppSetting(field, value, null, null);
+            template.ApplyAppSetting(field, value, null);
         }
 
         /// <summary>
