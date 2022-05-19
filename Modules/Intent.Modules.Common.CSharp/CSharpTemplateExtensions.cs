@@ -22,60 +22,32 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public static string ResolveAllUsings(this ITemplate template, ISoftwareFactoryExecutionContext context, params string[] namespacesToIgnore)
         {
-            var usings = template
+            var usingDirectives = template
                 .GetAllTemplateDependencies()
                 .SelectMany(context.FindTemplateInstances<ITemplate>)
-                .Select(ti => ti?.GetMetadata().CustomMetadata.ContainsKey("Namespace") == true ? ti.GetMetadata().CustomMetadata["Namespace"] : null)
-#pragma warning disable CS0618
-                .Concat(template.GetAllDeclareUsing())
-#pragma warning restore CS0618
-                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(templateInstance => templateInstance?.GetMetadata().CustomMetadata.TryGetValue("Namespace", out var @namespace) == true
+                    ? @namespace
+                    : null)
+                .Concat(template.GetAll<IDeclareUsings, string>(item => item.DeclareUsings()))
+                .Where(@namespace => !string.IsNullOrWhiteSpace(@namespace))
                 .Except(namespacesToIgnore)
-                .Distinct()
-                .ToArray();
+                .Select(@namespace => $"using {@namespace};")
+                .Distinct();
 
-            foreach (var @using in usings.Where(x => x != FixUsing(x)))
-            {
-                Logging.Log.Warning($"When resolving usings for Template Id [{template.Id}] file [{template.GetMetadata().FileName}], " +
-                                    $"a using arrived with with the format [{@using}], but should have been in the format " +
-                                    $"[{FixUsing(@using)}]. The module and/or decorator author should update this module.");
-            }
-
-            usings = usings
-                .Select(x => $"using {FixUsing(x)};")
-                .Distinct()
-                .ToArray();
-
-            return usings.Any()
-                ? usings.Aggregate((x, y) => x + Environment.NewLine + y)
-                : string.Empty;
-        }
-
-        private static string FixUsing(string @using)
-        {
-            if (@using.StartsWith("using "))
-            {
-                @using = @using["using ".Length..];
-            }
-
-            if (@using.EndsWith(";"))
-            {
-                @using = @using[..^";".Length];
-            }
-
-            return @using;
+            return string.Join(Environment.NewLine, usingDirectives);
         }
 
         /// <summary>
-        /// This member will be changed to be only privately accessible or possibly removed
-        /// entirely, please contact Intent Architect support should you have a dependency on it.
+        /// This member will be removed entirely, please contact Intent Architect support should
+        /// you have a dependency on it.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
         [FixFor_Version4("See comments in method.")]
         public static IEnumerable<string> GetAllDeclareUsing(this ITemplate template)
         {
-            // No apparent reason this can't be private or possibly even a local method.
-            return template.GetAll<IDeclareUsings, string>(i => i.DeclareUsings());
+            // This was used in "ResolveAllUsings" above, only keeping method for now as it's
+            // public and there is possibly a client using it.
+            return template.GetAll<IDeclareUsings, string>(item => item.DeclareUsings());
         }
 
         /// <summary>
