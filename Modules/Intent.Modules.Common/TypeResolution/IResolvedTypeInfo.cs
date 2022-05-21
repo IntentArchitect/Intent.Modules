@@ -10,6 +10,25 @@ namespace Intent.Modules.Common.TypeResolution
     public interface IResolvedTypeInfo
     {
         /// <summary>
+        /// If <see cref="Template"/> has <c>Namespace</c> in its <see cref="IFileMetadata.CustomMetadata"/>,
+        /// then this returns the <see cref="Name"/> prefixed with the <c>Namespace</c> and <c>.</c>. Otherwise
+        /// it returns just <see cref="Name"/>.
+        /// </summary>
+        string FullTypeName
+        {
+            get
+            {
+                if (Template?.GetMetadata().CustomMetadata.TryGetValue("Namespace", out var @namespace) != true ||
+                    string.IsNullOrWhiteSpace(@namespace))
+                {
+                    return Name;
+                }
+
+                return $"{@namespace}.{Name}";
+            }
+        }
+
+        /// <summary>
         /// The resolved name of the type.
         /// </summary>
         string Name { get; }

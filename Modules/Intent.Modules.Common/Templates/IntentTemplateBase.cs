@@ -99,6 +99,9 @@ namespace Intent.Modules.Common.Templates
     /// </summary>
     public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
     {
+        private readonly Lazy<string> _getExistingFilePathCache;
+        private readonly Lazy<(bool result, string content)> _tryGetExistingFileContentCache;
+
         /// <summary>
         /// Returns the known template dependencies added for this template.
         /// </summary>
@@ -114,6 +117,8 @@ namespace Intent.Modules.Common.Templates
             OutputTarget = outputTarget;
             Id = templateId;
             BindingContext = new TemplateBindingContext(this);
+            _getExistingFilePathCache = new Lazy<string>(GetExistingFilePathInternal);
+            _tryGetExistingFileContentCache = new Lazy<(bool result, string content)>(TryGetExistingFileContentInternal);
         }
 
         /// <summary>
@@ -152,7 +157,9 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Returns the file path of the existing file for this template, if it exists. If it doesn't exist, or can't be found, will return null.
         /// </summary>
-        public virtual string GetExistingFilePath()
+        public virtual string GetExistingFilePath() => _getExistingFilePathCache.Value;
+
+        private string GetExistingFilePathInternal()
         {
             var filePath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath ?? FileMetadata.GetFilePath();
             return File.Exists(filePath) ? filePath : null;
@@ -350,6 +357,186 @@ namespace Intent.Modules.Common.Templates
             TemplateRoleRegistry.Register(role, this);
         }
 
+        #region GetFullyQualifiedTypeName
+
+        private static string GetFullyQualifiedTypeName(IClassProvider classProvider)
+        {
+            return classProvider?.FullTypeName();
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="element"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="element">The <see cref="IElement"/> for which to get the type name.</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        public string GetFullyQualifiedTypeName(IElement element, string collectionFormat)
+        {
+            var resolvedTypeInfo = Types.Get(element, collectionFormat);
+
+            return resolvedTypeInfo.FullTypeName;
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="hasTypeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
+        public string GetFullyQualifiedTypeName(IHasTypeReference hasTypeReference)
+        {
+            return GetFullyQualifiedTypeName(hasTypeReference.TypeReference);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="hasTypeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        public string GetFullyQualifiedTypeName(IHasTypeReference hasTypeReference, string collectionFormat)
+        {
+            return GetFullyQualifiedTypeName(hasTypeReference.TypeReference, collectionFormat);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="template"/> parameter.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        public string GetFullyQualifiedTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
+        {
+            return GetFullyQualifiedTypeName(GetTemplate<IClassProvider>(template, options));
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="templateDependency"/> parameter.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        public string GetFullyQualifiedTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
+        {
+            return GetFullyQualifiedTypeName(GetTemplate<IClassProvider>(templateDependency, options));
+        }
+
+        /// <summary>
+        /// <para>
+        /// Resolves the fully qualified type name for the <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// </para>
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
+        public string GetFullyQualifiedTypeName(ITypeReference typeReference)
+        {
+            var resolvedTypeInfo = Types.Get(typeReference);
+
+            return resolvedTypeInfo.FullTypeName;
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        public string GetFullyQualifiedTypeName(ITypeReference typeReference, string collectionFormat)
+        {
+            var resolvedTypeInfo = Types.Get(typeReference, collectionFormat);
+
+            return resolvedTypeInfo.FullTypeName;
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="model"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="model">The model instance that the Template must be bound to.</param>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
+        public string GetFullyQualifiedTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+        {
+            var classProvider = GetTemplate<IClassProvider>(templateId, model, options);
+
+            return GetFullyQualifiedTypeName(classProvider);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="modelId"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
+        public string GetFullyQualifiedTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+        {
+            var classProvider = GetTemplate<IClassProvider>(templateId, modelId, options);
+
+            return GetFullyQualifiedTypeName(classProvider);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// Will throw an exception if more than one template instance exists.
+        /// </summary>
+        public string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null)
+        {
+            var classProvider = GetTemplate<IClassProvider>(templateId, options);
+
+            return GetFullyQualifiedTypeName(classProvider);
+        }
+
+        #endregion
+
         /// <summary>
         /// Resolves the <see cref="IResolvedTypeInfo"/> for the resolved <paramref name="typeReference"/>.
         /// <para>
@@ -367,13 +554,13 @@ namespace Intent.Modules.Common.Templates
 
         private string GetTypeName(IClassProvider classProvider)
         {
-            var name = classProvider?.FullTypeName();
-            if (name == null)
+            var fullyQualifiedTypeName = GetFullyQualifiedTypeName(classProvider);
+            if (fullyQualifiedTypeName == null)
             {
                 return null;
             }
 
-            return NormalizeTypeName(name);
+            return NormalizeTypeName(fullyQualifiedTypeName);
         }
 
         /// <summary>
@@ -390,7 +577,9 @@ namespace Intent.Modules.Common.Templates
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
         public virtual string GetTypeName(IElement element, string collectionFormat)
         {
-            return NormalizeTypeName(Types.Get(element, collectionFormat).Name);
+            var fullyQualifiedTypeName = GetFullyQualifiedTypeName(element, collectionFormat);
+
+            return NormalizeTypeName(fullyQualifiedTypeName);
         }
 
         /// <summary>
@@ -409,7 +598,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="hasTypeReference."/> parameter.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="hasTypeReference"/> parameter.
         /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
@@ -426,7 +615,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves the type name of the <paramref name="template"/> as a string.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="template"/> parameter.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -437,9 +626,9 @@ namespace Intent.Modules.Common.Templates
         {
             return GetTypeName(GetTemplate<IClassProvider>(template, options));
         }
-        
+
         /// <summary>
-        /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name for the <paramref name="templateDependency"/> parameter.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -465,9 +654,9 @@ namespace Intent.Modules.Common.Templates
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
         public virtual string GetTypeName(ITypeReference typeReference)
         {
-            var resolvedTypeInfo = Types.Get(typeReference);
+            var fullyQualifiedTypeName = GetFullyQualifiedTypeName(typeReference);
 
-            return NormalizeTypeName(resolvedTypeInfo.Name);
+            return NormalizeTypeName(fullyQualifiedTypeName);
         }
 
         /// <summary>
@@ -484,7 +673,9 @@ namespace Intent.Modules.Common.Templates
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
         public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
         {
-            return NormalizeTypeName(Types.Get(typeReference, collectionFormat).Name);
+            var fullyQualifiedTypeName = GetFullyQualifiedTypeName(typeReference, collectionFormat);
+
+            return NormalizeTypeName(fullyQualifiedTypeName);
         }
 
         /// <summary>
@@ -502,7 +693,9 @@ namespace Intent.Modules.Common.Templates
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, model, options));
+            var classProvider = GetTemplate<IClassProvider>(templateId, model, options);
+
+            return GetTypeName(classProvider);
         }
 
         /// <summary>
@@ -520,7 +713,9 @@ namespace Intent.Modules.Common.Templates
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, modelId, options));
+            var classProvider = GetTemplate<IClassProvider>(templateId, modelId, options);
+
+            return GetTypeName(classProvider);
         }
 
         /// <summary>
@@ -534,7 +729,92 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeName(GetTemplate<IClassProvider>(templateId, options));
+            var classProvider = GetTemplate<IClassProvider>(templateId, options);
+
+            return GetTypeName(classProvider);
+        }
+
+        #endregion
+
+        #region TryGetFullyQualifiedTypeName
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetFullyQualifiedTypeName(string templateId, out string typeName)
+        {
+            var classProvider = GetTemplate<IClassProvider>(templateId, TemplateDiscoveryOptions.DoNotThrow);
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
+
+            typeName = GetFullyQualifiedTypeName(classProvider);
+            return true;
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="model"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="model">The model instance that the Template must be bound to.</param>
+        /// <param name="typeName">The resolved type name.</param>
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetFullyQualifiedTypeName(string templateId, IMetadataModel model, out string typeName)
+        {
+            if (model == null) throw new ArgumentNullException(nameof(model));
+
+            var classProvider = GetTemplate<IClassProvider>(templateId, model, TemplateDiscoveryOptions.DoNotThrow);
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
+
+            typeName = GetFullyQualifiedTypeName(classProvider);
+            return true;
+        }
+
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="modelId"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+        /// <param name="typeName">The resolved type name.</param>
+        /// <returns><see langword="true"/> if the type name could be resolved.</returns>
+        public bool TryGetFullyQualifiedTypeName(string templateId, string modelId, out string typeName)
+        {
+            var classProvider = GetTemplate<IClassProvider>(templateId, modelId, TemplateDiscoveryOptions.DoNotThrow);
+            if (classProvider == null)
+            {
+                typeName = null;
+                return false;
+            }
+
+            typeName = GetFullyQualifiedTypeName(classProvider);
+            return true;
         }
 
         #endregion
@@ -550,24 +830,28 @@ namespace Intent.Modules.Common.Templates
         /// <returns>Whether or not there was an existing file for this template's output.</returns>
         public bool TryGetExistingFileContent(out string content)
         {
+            (var result, content) = _tryGetExistingFileContentCache.Value;
+
+            return result;
+        }
+
+        private (bool result, string content) TryGetExistingFileContentInternal()
+        {
             if (File.Exists(FileMetadata.GetFullLocationPath()))
             {
-                content = File.ReadAllText(FileMetadata.GetFullLocationPath());
-                return true;
+                return (true, File.ReadAllText(FileMetadata.GetFullLocationPath()));
             }
 
             if (File.Exists(GetExistingFilePath()))
             {
-                content = File.ReadAllText(GetExistingFilePath());
-                return true;
+                return (true, File.ReadAllText(GetExistingFilePath()));
             }
 
-            content = default;
-            return false;
+            return (false, default);
         }
-        
+
         #region TryGetTypeName
-        
+
         /// <summary>
         /// Obsolete. Use <see cref="TryGetTypeName(string,out string)"/> instead.
         /// </summary>
@@ -580,8 +864,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
-        /// Will return null if the template instance cannot be found.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name of the Template with <paramref name="templateId"/> as a string.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -614,10 +897,9 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name of the Template with <paramref name="templateId"/> as a string.
         /// This overload assumes that the Template can have many instances and identifies the target instance
         /// based on which has the <paramref name="model"/>.
-        /// Will return null if a template instance cannot be found.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -655,10 +937,9 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves the type name of the Template with <paramref name="templateId"/> as a string.
+        /// Resolves and <see cref="NormalizeTypeName">normalizes</see> the type name of the Template with <paramref name="templateId"/> as a string.
         /// This overload assumes that the Template can have many instances and identifies the target instance
         /// based on which has the <paramref name="modelId"/>.
-        /// Will return null if a template instance cannot be found.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">

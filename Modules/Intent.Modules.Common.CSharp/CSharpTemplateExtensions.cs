@@ -18,18 +18,36 @@ namespace Intent.Modules.Common.Templates
     public static class CSharpTemplateExtensions
     {
         /// <summary>
-        /// Resolves all usings for the provided <paramref name="template"/>.
+        /// Obsolete. Use <see cref="ResolveAllUsings(ITemplate,string[])"/> instead.
         /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static string ResolveAllUsings(this ITemplate template, ISoftwareFactoryExecutionContext context, params string[] namespacesToIgnore)
         {
-            var usingDirectives = template
-                .GetAllTemplateDependencies()
-                .SelectMany(context.FindTemplateInstances<ITemplate>)
-                .Select(templateInstance => templateInstance?.GetMetadata().CustomMetadata.TryGetValue("Namespace", out var @namespace) == true
+            return ResolveAllUsings(template, namespacesToIgnore);
+        }
+
+        /// <summary>
+        /// Resolves all usings for the provided <paramref name="template"/>.
+        /// </summary>
+        public static string ResolveAllUsings(this ITemplate template, params string[] namespacesToIgnore)
+        {
+            static string GetNamespace(ITemplate templateInstance)
+            {
+                return templateInstance?.GetMetadata().CustomMetadata.TryGetValue("Namespace", out var @namespace) == true
                     ? @namespace
-                    : null)
-                .Concat(template.GetAll<IDeclareUsings, string>(item => item.DeclareUsings()))
-                .Where(@namespace => !string.IsNullOrWhiteSpace(@namespace))
+                    : null;
+            }
+
+            static bool IsRedundant(string otherNamespace, string templateNamespace)
+            {
+                return templateNamespace == otherNamespace ||
+                       templateNamespace.StartsWith($"{otherNamespace}.");
+            }
+
+            var templateNamespace = GetNamespace(template) ?? string.Empty;
+
+            var usingDirectives = template.GetAll<IDeclareUsings, string>(item => item.DeclareUsings())
+                .Where(@namespace => !string.IsNullOrWhiteSpace(@namespace) && !IsRedundant(@namespace, templateNamespace))
                 .Except(namespacesToIgnore)
                 .Select(@namespace => $"using {@namespace};")
                 .Distinct();
@@ -38,16 +56,15 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// This member will be removed entirely, please contact Intent Architect support should
-        /// you have a dependency on it.
+        /// This member will be changed to be only privately accessible or possibly removed
+        /// entirely, please contact Intent Architect support should you have a dependency on it.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
         [FixFor_Version4("See comments in method.")]
         public static IEnumerable<string> GetAllDeclareUsing(this ITemplate template)
         {
-            // This was used in "ResolveAllUsings" above, only keeping method for now as it's
-            // public and there is possibly a client using it.
-            return template.GetAll<IDeclareUsings, string>(item => item.DeclareUsings());
+            // No apparent reason this can't be private or possibly even a local method.
+            return template.GetAll<IDeclareUsings, string>(i => i.DeclareUsings());
         }
 
         /// <summary>

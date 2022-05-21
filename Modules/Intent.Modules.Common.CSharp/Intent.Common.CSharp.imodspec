@@ -9,7 +9,7 @@
   <authors>Intent.Modules</authors>
   <templates></templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.2" />
+    <dependency id="Intent.Common" version="3.3.3" />
     <dependency id="Intent.Common.Types" version="3.3.0" />
   </dependencies>
   <files>

@@ -69,7 +69,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings, IHasFrameworkDependencies
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
-        private readonly List<string> _additionalUsingNamespaces = new();
+        private readonly HashSet<string> _additionalUsingNamespaces = new();
         private IEnumerable<string> _templateUsings;
         private IEnumerable<string> _existingContentUsings;
 
@@ -200,8 +200,11 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Converts the namespace of a fully qualified class name to the relative namespace for this class instance.
         /// </summary>
         /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
+        [FixFor_Version4("See comment in method.")]
         public virtual string NormalizeNamespace(string foreignType)
         {
+            // FixFor_Version4: See comment prefixed with "JL: ".
+
             var isNullable = false;
             if (foreignType.EndsWith("?", StringComparison.OrdinalIgnoreCase))
             {
@@ -220,6 +223,23 @@ namespace Intent.Modules.Common.CSharp.Templates
                     .Select(NormalizeNamespace)
                     .Aggregate((x, y) => x + ", " + y);
                 foreignType = $"{foreignType[..foreignType.IndexOf("<", StringComparison.Ordinal)]}";
+            }
+
+            // Add using directives for qualified types
+            if (foreignType.Contains('.'))
+            {
+                // JL: With this if control structure added, the code after is probably more
+                // complex than is actually now needed. We haven't changed it yet due to the high
+                // risk of changing something in anything less than a major version bump.
+                //
+                // The only concern I can think of that it needs to worry about is dealing with
+                // ambiguous type names, for example the type name clashes with a namespace
+                // component, or another known type from somewhere with the same name.
+
+                var split = foreignType.Split('.');
+                var @namespace = string.Join('.', split[..^1]);
+                AddUsing(@namespace);
+                foreignType = split[^1];
             }
 
             var usingPaths = DependencyUsings
@@ -415,7 +435,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <summary>
         /// Returns all using statements that are introduced through dependencies.
         /// </summary>
-        public virtual string DependencyUsings => this.ResolveAllUsings(ExecutionContext, namespacesToIgnore: Namespace);
+        public virtual string DependencyUsings => this.ResolveAllUsings(namespacesToIgnore: Namespace);
 
         private readonly ICollection<INugetPackageInfo> _nugetDependencies = new List<INugetPackageInfo>();
 
