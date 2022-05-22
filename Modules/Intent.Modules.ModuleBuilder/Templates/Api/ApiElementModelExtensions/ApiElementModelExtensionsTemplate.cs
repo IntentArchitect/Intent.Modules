@@ -95,7 +95,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
             this.Write("(stereotype) : null;\r\n        }\r\n");
             
             #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiElementModelExtensions\ApiElementModelExtensionsTemplate.tt"
-      if (stereotypeDefinition.ApplyMode == StereotypeApplyMode.Manually) { 
+      if (stereotypeDefinition.AllowMultipleApplies) { 
             
             #line default
             #line hidden

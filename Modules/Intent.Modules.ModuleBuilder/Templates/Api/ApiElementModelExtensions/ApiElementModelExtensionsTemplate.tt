@@ -27,7 +27,7 @@ namespace <#= Namespace #>
             var stereotype = model.GetStereotype("<#= stereotypeDefinition.Name #>");
             return stereotype != null ? new <#= stereotypeDefinition.Name.  ToCSharpIdentifier() #>(stereotype) : null;
         }
-<#      if (stereotypeDefinition.ApplyMode == StereotypeApplyMode.Manually) { #>
+<#      if (stereotypeDefinition.AllowMultipleApplies) { #>
 
         public static IReadOnlyCollection<<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>> Get<#= ForcePluralize(stereotypeDefinition.Name.ToCSharpIdentifier()) #>(this <#= ModelClassName #> model)
         {
