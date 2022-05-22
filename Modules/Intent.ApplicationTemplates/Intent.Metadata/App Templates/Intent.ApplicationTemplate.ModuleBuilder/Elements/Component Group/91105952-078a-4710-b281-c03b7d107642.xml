@@ -3,7 +3,7 @@
   <name>Additional Language Support</name>
   <display>Additional Language Support</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</parentFolderId>
@@ -15,7 +15,7 @@
       <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
       <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
       <properties>
-        <property name="54b29a03-082b-407a-b42e-cbacbcfa7fd7" display="Selection Mode" value="Allow Single Only" isActive="true" />
+        <property name="54b29a03-082b-407a-b42e-cbacbcfa7fd7" display="Selection Mode" value="Allow Multiple" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>

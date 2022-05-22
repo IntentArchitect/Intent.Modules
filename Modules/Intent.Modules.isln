@@ -35,5 +35,6 @@
     <application id="a951e417-89e5-4185-a5aa-730640fcebef" name="Intent.ModuleBuilder.Kotlin" relativePath="Intent.ModuleBuilder.Kotlin/Intent.ModuleBuilder.Kotlin.application.config" />
     <application id="3517d53b-f6f7-4d96-8315-efcc6d5622ec" name="Common.CSharp" relativePath="Intent.Modules.Common.CSharp/Common.CSharp.application.config" />
     <application id="e52a0850-142f-406c-aa52-8c8bc5b261ed" name="Common.Java" relativePath="Common.Java/Common.Java.application.config" />
+    <application id="ac4c4f4d-6091-4b04-9201-07a98b58f3ff" name="Intent.ApplicationTemplates.Metadata.ModuleBuilder" relativePath="Intent.ApplicationTemplates.Metadata.ModuleBuilder/Intent.ApplicationTemplates.Metadata.ModuleBuilder.application.config" />
   </applications>
 </solution>

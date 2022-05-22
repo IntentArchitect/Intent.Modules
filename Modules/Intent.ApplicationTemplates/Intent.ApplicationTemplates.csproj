@@ -11,10 +11,4 @@
     </PackageReference>
   </ItemGroup>
 
-  <ItemGroup>
-    <None Update="Intent.ApplicationTemplate.ModuleBuilder\content\module-builder.installation.config">
-      <Generator>SettingsSingleFileGenerator</Generator>
-    </None>
-  </ItemGroup>
-
 </Project>

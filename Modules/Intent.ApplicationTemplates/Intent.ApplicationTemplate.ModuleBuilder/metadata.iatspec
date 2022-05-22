@@ -25,7 +25,7 @@
       </components>
     </group>
     <group name="Additional Language Support">
-      <selectionMode>allow-single-only</selectionMode>
+      <selectionMode>allow-multiple</selectionMode>
       <components>
         <component id="0544ce11-fd3d-4411-af63-06bf253f9957" name="Module Builder - C#" included="false" required="false">
           <description>Support for granular control of code-generation in C# files.</description>
@@ -99,5 +99,19 @@
       </components>
     </group>
   </componentGroups>
-  <additionalSettings />
+  <additionalSettings>
+    <group id="ef08465f-71d9-4f4a-810a-94d37d51b41d" title="Basic Settings">
+      <settings>
+        <setting id="target-framework" title="Target Framework" type="select">
+          <defaultValue>16d99e3e-7b91-42f8-ae3b-2686edde94b7</defaultValue>
+          <isRequired>true</isRequired>
+          <options>
+            <option value="16d99e3e-7b91-42f8-ae3b-2686edde94b7" description=".NET 6.0" />
+            <option value="9880b776-9b13-4ff6-87b3-2219cfa66652" description=".NET 5.0" />
+            <option value="d603dbfd-3361-4406-b5c0-efc2ac6f33fc" description=".NET Core 3.1" />
+          </options>
+        </setting>
+      </settings>
+    </group>
+  </additionalSettings>
 </applicationTemplate>
