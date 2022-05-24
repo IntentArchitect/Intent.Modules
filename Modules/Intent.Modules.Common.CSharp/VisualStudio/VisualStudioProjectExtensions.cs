@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Constants;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.VisualStudio
 {
@@ -51,6 +52,10 @@ namespace Intent.Modules.Common.VisualStudio
             }
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="AddNugetPackages(ICSharpProject,IEnumerable{INugetPackageInfo})"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static void AddNugetPackages(this IOutputTarget outputTarget, IEnumerable<INugetPackageInfo> packages)
         {
             var collection = outputTarget.NugetPackages();
