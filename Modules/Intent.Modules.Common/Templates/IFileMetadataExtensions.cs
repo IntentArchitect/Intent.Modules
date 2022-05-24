@@ -8,7 +8,9 @@ namespace Intent.Modules.Common.Templates
     {
         public static string FileNameWithExtension(this IFileMetadata fm)
         {
-            return $"{fm.FileName}.{fm.FileExtension}";
+            return string.IsNullOrWhiteSpace(fm.FileExtension)
+                ? fm.FileName
+                : $"{fm.FileName}.{fm.FileExtension}";
         }
 
         [Obsolete("Use GetFilePath")]
