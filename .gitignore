@@ -247,3 +247,4 @@ ModelManifest.xml
 *.iat
 !*.application.output.log
 .intent/
+.idea/
