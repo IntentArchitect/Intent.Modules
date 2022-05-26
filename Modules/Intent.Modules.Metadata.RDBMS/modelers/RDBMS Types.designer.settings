@@ -99,7 +99,7 @@
       <macros>
         <macro trigger="on-changed">
           <script>let useDefaultName = element.getStereotype("Settings").getProperty("Use Default Name").getValue() == true;
-if (useDefaultName) {
+if (useDefaultName &amp;&amp; element.getMapping() != null) {
     let elementName = pluralize(element.getMapping().getElement().getName());
     let allNames = element.getChildren().map(x =&gt; toPascalCase(x.getName()));
     element.addMetadata("index_name_set", true);
