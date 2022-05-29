@@ -1,44 +1,36 @@
-﻿using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.TypeResolution;
+﻿//using Intent.Modules.Common.CSharp.Templates;
+//using Intent.Modules.Common.CSharp.TypeResolvers;
+//using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.Common.CSharp
-{
-    /// <summary>
-    /// Common CSharp collection formatters
-    /// </summary>
-    public static class CollectionFormatters
-    {
-        /// <summary>
-        /// Formats collections using <see cref="System.Collections.Generic.List{T}"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="template"></param>
-        /// <returns></returns>
-        public static ICollectionFormatter CreateListFormatter<T>(this CSharpTemplateBase<T> template)
-        {
-            return new CSharpCollectionFormatter<T>("System.Collections.Generic.List", template);
-        }
+//namespace Intent.Modules.Common.CSharp
+//{
+//    /// <summary>
+//    /// Common CSharp collection formatters
+//    /// </summary>
+//    public static class CollectionFormatters
+//    {
+//        /// <summary>
+//        /// Formats collections using <see cref="System.Collections.Generic.List{T}"/>
+//        /// </summary>
+//        public static ICollectionFormatter GetListFormatter()
+//        {
+//            return CSharpCollectionFormatter.GetOrCreate("System.Collections.Generic.List<{0}>");
+//        }
 
-        /// <summary>
-        /// Formats collections using <see cref="System.Collections.Generic.IList{T}"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="template"></param>
-        /// <returns></returns>
-        public static ICollectionFormatter CreateIListFormatter<T>(this CSharpTemplateBase<T> template)
-        {
-            return new CSharpCollectionFormatter<T>("System.Collections.Generic.IList", template);
-        }
+//        /// <summary>
+//        /// Formats collections using <see cref="System.Collections.Generic.IList{T}"/>
+//        /// </summary>
+//        public static ICollectionFormatter GetIListFormatter()
+//        {
+//            return CSharpCollectionFormatter.GetOrCreate("System.Collections.Generic.IList<{0}>");
+//        }
 
-        /// <summary>
-        /// Formats collections using <see cref="System.Collections.Generic.ICollection{T}"/>
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="template"></param>
-        /// <returns></returns>
-        public static ICollectionFormatter CreateICollectionFormatter<T>(this CSharpTemplateBase<T> template)
-        {
-            return new CSharpCollectionFormatter<T>("System.Collections.Generic.ICollection", template);
-        }
-    }
-}
+//        /// <summary>
+//        /// Formats collections using <see cref="System.Collections.Generic.ICollection{T}"/>
+//        /// </summary>
+//        public static ICollectionFormatter GetICollectionFormatter()
+//        {
+//            return CSharpCollectionFormatter.GetOrCreate("System.Collections.Generic.ICollection<{0}>");
+//        }
+//    }
+//}

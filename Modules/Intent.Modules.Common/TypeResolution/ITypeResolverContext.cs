@@ -1,10 +1,16 @@
 ﻿using System.Collections.Generic;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
     public interface ITypeResolverContext
     {
+        /// <summary>
+        /// Resolves the type information for the specified <paramref name="classProvider"/>.
+        /// </summary>
+        IResolvedTypeInfo Get(IClassProvider classProvider);
+
         /// <summary>
         /// Resolves the type name for the specified <paramref name="typeInfo"/>
         /// </summary>
@@ -47,5 +53,15 @@ namespace Intent.Modules.Common.TypeResolution
         /// Returns the list of added <see cref="ITypeSource"/>s
         /// </summary>
         IEnumerable<ITypeSource> TypeSources { get; }
+
+        /// <summary>
+        /// The default <see cref="ICollectionFormatter"/>.
+        /// </summary>
+        ICollectionFormatter DefaultCollectionFormatter { get; }
+
+        /// <summary>
+        /// The default <see cref="INullableFormatter"/>.
+        /// </summary>
+        INullableFormatter DefaultNullableFormatter { get; }
     }
 }

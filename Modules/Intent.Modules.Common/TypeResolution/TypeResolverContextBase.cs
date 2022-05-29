@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -10,17 +10,21 @@ namespace Intent.Modules.Common.TypeResolution
     public abstract class TypeResolverContextBase : ITypeResolverContext
     {
         private readonly List<ITypeSource> _typeSources = new();
-        private ICollectionFormatter _defaultCollectionFormatter;
-        private INullableFormatter _defaultNullableFormatter;
 
         /// <summary>
         /// Creates a new instance of <see cref="TypeResolverContextBase"/>.
         /// </summary>
         protected TypeResolverContextBase(ICollectionFormatter defaultCollectionFormatter, INullableFormatter nullableFormatter)
         {
-            _defaultCollectionFormatter = defaultCollectionFormatter;
-            _defaultNullableFormatter = nullableFormatter;
+            DefaultCollectionFormatter = defaultCollectionFormatter;
+            DefaultNullableFormatter = nullableFormatter;
         }
+
+        /// <inheritdoc />
+        public ICollectionFormatter DefaultCollectionFormatter { get; private set; }
+
+        /// <inheritdoc />
+        public INullableFormatter DefaultNullableFormatter { get; private set; }
 
         /// <inheritdoc />
         public void AddTypeSource(ITypeSource typeSource)
@@ -31,17 +35,30 @@ namespace Intent.Modules.Common.TypeResolution
         /// <inheritdoc />
         public void SetCollectionFormatter(ICollectionFormatter formatter)
         {
-            _defaultCollectionFormatter = formatter;
+            DefaultCollectionFormatter = formatter;
         }
 
         /// <inheritdoc />
         public void SetNullableFormatter(INullableFormatter formatter)
         {
-            _defaultNullableFormatter = formatter;
+            DefaultNullableFormatter = formatter;
         }
 
         /// <inheritdoc />
         public IEnumerable<ITypeSource> TypeSources => _typeSources;
+
+        /// <inheritdoc />
+        public virtual IResolvedTypeInfo Get(IClassProvider classProvider)
+        {
+            return new ResolvedTypeInfo(
+                name: classProvider.FullTypeName(),
+                isPrimitive: false,
+                isNullable: false,
+                isCollection: false,
+                typeReference: null,
+                template: classProvider,
+                nullableFormatter: null);
+        }
 
         /// <inheritdoc />
         public IResolvedTypeInfo Get(ITypeReference typeInfo)
@@ -52,116 +69,111 @@ namespace Intent.Modules.Common.TypeResolution
         /// <inheritdoc />
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
-            return Get(typeInfo, !string.IsNullOrWhiteSpace(collectionFormat) ? new CollectionFormatter(collectionFormat) : null);
+            var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
+                ? CollectionFormatter.Create(collectionFormat)
+                : null;
+
+            return Get(typeInfo, collectionFormatter);
         }
 
         /// <inheritdoc />
-        public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, ICollectionFormatter collectionFormatter)
+        public virtual IResolvedTypeInfo Get(ITypeReference typeReference, ICollectionFormatter collectionFormatter)
         {
-            if (typeInfo == null)
+            if (typeReference == null)
             {
                 return null;
             }
 
-            ICollectionFormatter typeSourceCollectionFormatter = null;
-            INullableFormatter nullableFormatter = null;
-            ResolvedTypeInfo type = null;
-            foreach (var classLookup in _typeSources)
+            IResolvedTypeInfo resolvedTypeInfo = null;
+            foreach (var classLookup in TypeSources)
             {
-                var foundClass = classLookup.GetType(typeInfo);
-                if (foundClass != null)
+                var foundClass = classLookup.GetType(typeReference);
+                if (foundClass == null)
                 {
-                    typeSourceCollectionFormatter = classLookup.CollectionFormatter;
-                    nullableFormatter = classLookup.NullableFormatter;
-                    type = new ResolvedTypeInfo(foundClass);
-                    break;
+                    continue;
                 }
+
+                collectionFormatter ??= classLookup.CollectionFormatter;
+                resolvedTypeInfo = Get(foundClass);
+                break;
             }
 
-            type ??= ResolveType(typeInfo);
-            if (typeInfo.GenericTypeParameters.Any())
+            collectionFormatter ??= DefaultCollectionFormatter;
+
+            resolvedTypeInfo ??= ResolveType(
+                typeReference: typeReference,
+                nullableFormatter: DefaultNullableFormatter);
+
+            if (typeReference.IsCollection)
             {
-                var resolvedGenerics = typeInfo.GenericTypeParameters.Select(x => Get(x, collectionFormatter)).ToList();
-                type.GenericTypes = resolvedGenerics;
-                type.Name = FormatGenerics(type, resolvedGenerics);
+                resolvedTypeInfo = collectionFormatter.ApplyTo(resolvedTypeInfo);
             }
 
-            if (typeInfo.IsCollection)
-            {
-                type.Name = (collectionFormatter ?? typeSourceCollectionFormatter ?? _defaultCollectionFormatter).AsCollection(type);
-            }
-
-            if (typeInfo.IsNullable)
-            {
-                nullableFormatter ??= _defaultNullableFormatter;
-                type.Name = nullableFormatter.AsNullable(type);
-            }
-
-            return type;
+            return resolvedTypeInfo;
         }
 
         /// <inheritdoc />
-        public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, ITypeSource typeSource)
+        public virtual IResolvedTypeInfo Get(ITypeReference typeReference, ITypeSource typeSource)
         {
-            if (typeInfo == null)
+            if (typeReference == null)
             {
                 return null;
             }
 
             ICollectionFormatter collectionFormatter = null;
-            INullableFormatter nullableFormatter = null;
-            ResolvedTypeInfo type = null;
-            var foundClass = typeSource.GetType(typeInfo);
+            IResolvedTypeInfo resolvedTypeInfo = null;
+            var foundClass = typeSource.GetType(typeReference);
             if (foundClass != null)
             {
                 collectionFormatter = typeSource.CollectionFormatter;
-                type = new ResolvedTypeInfo(foundClass);
+                resolvedTypeInfo = Get(foundClass);
             }
             else
             {
-                foreach (var classLookup in _typeSources)
+                foreach (var classLookup in TypeSources)
                 {
-                    foundClass = classLookup.GetType(typeInfo);
-                    if (foundClass != null)
+                    foundClass = classLookup.GetType(typeReference);
+                    if (foundClass == null)
                     {
-                        collectionFormatter = classLookup.CollectionFormatter;
-                        nullableFormatter = classLookup.NullableFormatter;
-                        type = new ResolvedTypeInfo(foundClass);
-                        break;
+                        continue;
                     }
+
+                    collectionFormatter = classLookup.CollectionFormatter;
+                    resolvedTypeInfo = Get(foundClass);
+                    break;
                 }
             }
 
-            type ??= ResolveType(typeInfo);
-            if (typeInfo.GenericTypeParameters.Any())
+            collectionFormatter ??= DefaultCollectionFormatter;
+
+            resolvedTypeInfo ??= ResolveType(
+                typeReference: typeReference,
+                nullableFormatter: DefaultNullableFormatter);
+
+            if (typeReference.IsCollection)
             {
-                type.Name = FormatGenerics(type, typeInfo.GenericTypeParameters.Select(x => Get(x, typeSource)));
+                resolvedTypeInfo = collectionFormatter.ApplyTo(resolvedTypeInfo);
             }
 
-            if (typeInfo.IsCollection)
-            {
-                collectionFormatter ??= _defaultCollectionFormatter;
-                type.Name = collectionFormatter.AsCollection(type);
-            }
-
-            if (typeInfo.IsNullable)
-            {
-                nullableFormatter ??= _defaultNullableFormatter;
-                type.Name = nullableFormatter.AsNullable(type);
-            }
-
-            return type;
+            return resolvedTypeInfo;
         }
 
         /// <summary>
-        /// Return the type as a string with generic type parameters formatted correctly for the
-        /// particular language being used.
+        /// Resolve a <see cref="IResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
         /// </summary>
-        protected abstract string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes);
+        /// <remarks>
+        /// Override this method to return a different specialized implementation of <see cref="IResolvedTypeInfo"/>.
+        /// </remarks>
+        protected virtual IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+        {
+            return new ResolvedTypeInfo(resolvedTypeInfo);
+        }
 
         /// <summary>
-        /// Resolve a <see cref="ResolvedTypeInfo"/> for the provided <paramref name="typeInfo"/>.
+        /// Resolve a <see cref="ResolvedTypeInfo"/> for the provided <paramref name="typeReference"/>.
         /// </summary>
-        protected abstract ResolvedTypeInfo ResolveType(ITypeReference typeInfo);
+        protected abstract IResolvedTypeInfo ResolveType(
+            ITypeReference typeReference,
+            INullableFormatter nullableFormatter);
     }
 }

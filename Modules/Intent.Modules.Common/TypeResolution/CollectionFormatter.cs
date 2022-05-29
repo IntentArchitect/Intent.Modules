@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -7,26 +8,54 @@ namespace Intent.Modules.Common.TypeResolution
     /// </summary>
     public class CollectionFormatter : ICollectionFormatter
     {
-        private readonly Func<IResolvedTypeInfo, string> _formatCollection;
+        private static readonly ConcurrentDictionary<string, CollectionFormatter> Cache = new();
+        private readonly Func<string, string> _formatter;
 
-        public CollectionFormatter(string collectionFormat)
+        private CollectionFormatter(string collectionFormat)
         {
-            _formatCollection = (type) => string.Format(collectionFormat, type.Name);
+            _formatter = typeName => string.Format(collectionFormat, typeName);
         }
 
+        /// <summary>
+        /// Creates a new instance of <see cref="CollectionFormatter"/>.
+        /// </summary>
         public CollectionFormatter(Func<string, string> formatCollection)
         {
-            _formatCollection = (type) => formatCollection(type.Name);
+            _formatter = formatCollection;
         }
 
-        public CollectionFormatter(Func<IResolvedTypeInfo, string> formatCollection)
+        /// <summary>
+        /// Returns an instance of <see cref="CollectionFormatter"/> with the specified
+        /// <paramref name="collectionFormat"/>.
+        /// </summary>
+        /// <remarks>
+        /// A cache of <see cref="CollectionFormatter"/> instances is first checked for an already
+        /// existing instance, if an instance is found then that is returned, otherwise a new
+        /// instance is created, placed in the cache and returned.
+        /// </remarks>
+        public static CollectionFormatter Create(string collectionFormat)
         {
-            _formatCollection = formatCollection;
+            return Cache.GetOrAdd(collectionFormat, _ => new CollectionFormatter(collectionFormat));
         }
 
-        public virtual string AsCollection(IResolvedTypeInfo typeInfo)
+        /// <inheritdoc />
+        public virtual string Format(string typeName)
         {
-            return _formatCollection(typeInfo);
+            return _formatter(typeName);
+        }
+
+        /// <inheritdoc />
+        public virtual IResolvedTypeInfo ApplyTo(IResolvedTypeInfo typeInfo)
+        {
+            return new ResolvedTypeInfo(
+                name: typeInfo.Name,
+                isPrimitive: typeInfo.IsPrimitive,
+                isNullable: typeInfo.IsNullable,
+                isCollection: typeInfo.IsCollection,
+                typeReference: typeInfo.TypeReference,
+                template: typeInfo.Template,
+                nullableFormatter: typeInfo.NullableFormatter,
+                genericTypeParameters: typeInfo.GenericTypeParameters);
         }
     }
 }

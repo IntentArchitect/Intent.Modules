@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.VisualStudio;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.CSharp.TypeResolvers
@@ -12,112 +15,223 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
     {
         private readonly ICollectionFormatter _defaultCollectionFormatter;
         private readonly INullableFormatter _defaultNullableFormatter;
+        private readonly ICSharpProject _csharpProject;
 
         /// <summary>
         /// Creates a new instance of <see cref="CSharpTypeResolver"/>.
         /// </summary>
-        /// <param name="defaultCollectionFormatter"></param>
-        /// <param name="defaultNullableFormatter"></param>
-        public CSharpTypeResolver(ICollectionFormatter defaultCollectionFormatter, INullableFormatter defaultNullableFormatter) : base(new CSharpTypeResolverContext(defaultCollectionFormatter, defaultNullableFormatter))
+        public CSharpTypeResolver(
+            ICollectionFormatter defaultCollectionFormatter,
+            INullableFormatter defaultNullableFormatter,
+            ICSharpProject csharpProject)
+            : base(
+                new CSharpTypeResolverContext(defaultCollectionFormatter, defaultNullableFormatter, csharpProject))
         {
             _defaultCollectionFormatter = defaultCollectionFormatter;
             _defaultNullableFormatter = defaultNullableFormatter;
+            _csharpProject = csharpProject;
         }
 
         /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
-            return new CSharpTypeResolverContext(_defaultCollectionFormatter, _defaultNullableFormatter);
+            return new CSharpTypeResolverContext(_defaultCollectionFormatter, _defaultNullableFormatter, _csharpProject);
         }
 
         private class CSharpTypeResolverContext : TypeResolverContextBase
         {
-            public CSharpTypeResolverContext(ICollectionFormatter collectionFormatter, INullableFormatter nullableFormatter) : base(collectionFormatter, nullableFormatter)
+            private readonly ICSharpProject _csharpProject;
+
+            public CSharpTypeResolverContext(
+                ICollectionFormatter collectionFormatter,
+                INullableFormatter nullableFormatter,
+                ICSharpProject csharpProject)
+                : base(
+                    collectionFormatter,
+                    nullableFormatter)
             {
+                _csharpProject = csharpProject;
             }
 
-            protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
+            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
-                return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
+                var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
+                    ? CSharpCollectionFormatter.GetOrCreate(collectionFormat)
+                    : null;
+
+                return Get(typeInfo, collectionFormatter);
             }
 
-            protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
+            public override IResolvedTypeInfo Get(IClassProvider classProvider)
             {
-                if (typeInfo.Element == null)
+                return CSharpResolvedTypeInfo.Create(
+                    name: classProvider.ClassName,
+                    @namespace: classProvider.Namespace,
+                    isPrimitive: false,
+                    isNullable: false,
+                    isCollection: false,
+                    typeReference: null,
+                    nullableFormatter: null,
+                    template: classProvider,
+                    genericTypeParameters: null);
+            }
+
+            protected override IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+            {
+                return CSharpResolvedTypeInfo.Create(resolvedTypeInfo);
+            }
+
+            protected override IResolvedTypeInfo ResolveType(
+                ITypeReference typeReference,
+                INullableFormatter nullableFormatter)
+            {
+                return ResolveTypeInternal(
+                    typeReference: typeReference,
+                    nullableFormatter: nullableFormatter,
+                    cSharpProject: _csharpProject);
+            }
+
+            private static CSharpResolvedTypeInfo ResolveTypeInternal(
+                ITypeReference typeReference,
+                INullableFormatter nullableFormatter,
+                ICSharpProject cSharpProject)
+            {
+                static bool IsAtLeastDotNet6(ICSharpProject project)
                 {
-                    return new ResolvedTypeInfo("void", true, typeInfo.IsNullable, typeInfo.IsCollection, typeInfo, null);
+                    return project.TargetDotNetFrameworks
+                        .DefaultIfEmpty()
+                        .Max() >= Version.Parse("6.0");
                 }
 
-                var result = typeInfo.Element.Name;
-                var isPrimitive = true;
-                var isCollection = typeInfo.IsCollection;
-                if (typeInfo.Element.Stereotypes.Any(x => x.Name == "C#"))
+                IReadOnlyList<CSharpResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
-                    var typeName = typeInfo.Element.GetStereotypeProperty("C#", "Type", typeInfo.Element.Name);
-                    var @namespace = typeInfo.Element.GetStereotypeProperty<string>("C#", "Namespace");
-                    isPrimitive = typeInfo.Element.GetStereotypeProperty("C#", "Is Primitive", true);
-                    isCollection = typeInfo.Element.GetStereotypeProperty("C#", "Is Collection", typeInfo.IsCollection);
-                    result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
-                }
-                else
-                {
-                    switch (typeInfo.Element.Name)
-                    {
-                        case "bool":
-                            result = "bool";
-                            break;
-                        case "date":
-                        case "datetime":
-                            result = "System.DateTime";
-                            break;
-                        case "char":
-                            result = "char";
-                            break;
-                        case "byte":
-                            result = "byte";
-                            break;
-                        case "decimal":
-                            result = "decimal";
-                            break;
-                        case "double":
-                            result = "double";
-                            break;
-                        case "float":
-                            result = "float";
-                            break;
-                        case "short":
-                            result = "short";
-                            break;
-                        case "int":
-                            result = "int";
-                            break;
-                        case "long":
-                            result = "long";
-                            break;
-                        case "datetimeoffset":
-                            result = "System.DateTimeOffset";
-                            break;
-                        case "binary":
-                            result = "byte[]";
-                            isPrimitive = false;
-                            break;
-                        case "object":
-                            result = "object";
-                            break;
-                        case "guid":
-                            result = "System.Guid";
-                            break;
-                        case "string":
-                            result = "string";
-                            isPrimitive = false;
-                            break;
-                        default:
-                            isPrimitive = false;
-                            break;
-                    }
+                    return genericTypeParameters
+                        .Select(type => ResolveTypeInternal(
+                            type,
+                            nullableFormatter,
+                            cSharpProject))
+                        .ToArray();
                 }
 
-                return new ResolvedTypeInfo(result, isPrimitive, typeInfo.IsNullable, isCollection, typeInfo, null);
+                if (typeReference.Element == null)
+                {
+                    return CSharpResolvedTypeInfo.Create(
+                        name: "void",
+                        @namespace: string.Empty,
+                        isPrimitive: true,
+                        isNullable: false,
+                        isCollection: false,
+                        typeReference: typeReference,
+                        nullableFormatter: nullableFormatter,
+                        template: null);
+                }
+
+                if (typeReference.Element.Stereotypes.Any(x => x.Name == "C#"))
+                {
+                    return CSharpResolvedTypeInfo.Create(
+                        name: typeReference.Element.GetStereotypeProperty("C#", "Type", typeReference.Element.Name),
+                        @namespace: typeReference.Element.GetStereotypeProperty("C#", "Namespace", string.Empty),
+                        isPrimitive: typeReference.Element.GetStereotypeProperty("C#", "Is Primitive", true),
+                        isNullable: typeReference.IsNullable,
+                        isCollection: typeReference.Element.GetStereotypeProperty("C#", "Is Collection", typeReference.IsCollection),
+                        typeReference: typeReference,
+                        nullableFormatter: nullableFormatter,
+                        genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
+                }
+
+                switch (typeReference.Element.Name)
+                {
+                    case "bool":
+                    case "char":
+                    case "byte":
+                    case "decimal":
+                    case "double":
+                    case "float":
+                    case "short":
+                    case "int":
+                    case "long":
+                        return CSharpResolvedTypeInfo.Create(
+                            name: typeReference.Element.Name,
+                            @namespace: string.Empty,
+                            isPrimitive: true,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            nullableFormatter: nullableFormatter,
+                            typeReference: typeReference);
+                    case "binary":
+                        return CSharpResolvedTypeInfo.CreateForArray(
+                            forResolvedType: CSharpResolvedTypeInfo.Create(
+                                name: "byte",
+                                @namespace: string.Empty,
+                                isPrimitive: true,
+                                isNullable: false,
+                                isCollection: false,
+                                nullableFormatter: nullableFormatter,
+                                typeReference: typeReference),
+                            isNullable: typeReference.IsNullable,
+                            nullableFormatter: nullableFormatter,
+                            jaggedArrays: new[]
+                            {
+                                new CSharpJaggedArray()
+                            });
+                    case "object":
+                    case "string":
+                        return CSharpResolvedTypeInfo.Create(
+                            name: typeReference.Element.Name,
+                            @namespace: string.Empty,
+                            isPrimitive: false,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            typeReference: typeReference,
+                            nullableFormatter: nullableFormatter);
+                    case "guid":
+                        return CSharpResolvedTypeInfo.Create(
+                            name: "Guid",
+                            @namespace: "System",
+                            isPrimitive: true,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            typeReference: typeReference,
+                            nullableFormatter: nullableFormatter);
+                    case "datetimeoffset":
+                        return CSharpResolvedTypeInfo.Create(
+                            name: "DateTimeOffset",
+                            @namespace: "System",
+                            isPrimitive: true,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            typeReference: typeReference,
+                            nullableFormatter: nullableFormatter);
+                    case "date" when IsAtLeastDotNet6(cSharpProject):
+                        return CSharpResolvedTypeInfo.Create(
+                            name: "DateOnly",
+                            @namespace: "System",
+                            isPrimitive: true,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            typeReference: typeReference,
+                            nullableFormatter: nullableFormatter);
+                    case "date":
+                    case "datetime":
+                        return CSharpResolvedTypeInfo.Create(
+                            name: "DateTime",
+                            @namespace: "System",
+                            isPrimitive: true,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            typeReference: typeReference,
+                            nullableFormatter: nullableFormatter);
+                    default:
+                        return CSharpResolvedTypeInfo.Create(
+                            name: typeReference.Element.Name,
+                            @namespace: string.Empty,
+                            isPrimitive: false,
+                            isNullable: typeReference.IsNullable,
+                            isCollection: false,
+                            typeReference: typeReference,
+                            nullableFormatter: nullableFormatter,
+                            genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
+                }
             }
         }
     }

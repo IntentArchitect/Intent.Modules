@@ -1,7 +1,4 @@
-﻿using System;
-using Intent.SdkEvolutionHelpers;
-
-namespace Intent.Modules.Common.TypeResolution
+﻿namespace Intent.Modules.Common.TypeResolution
 {
     /// <summary>
     /// Does not alter the name of the resolved type.
@@ -11,9 +8,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// <summary>
         /// Obsolete. Use <see cref="Instance"/> instead.
         /// </summary>
-        [Obsolete(WillBeRemovedIn.Version4)]
-        [FixFor_Version4("Make this constructor private.")]
-        public DefaultNullableFormatter()
+        private DefaultNullableFormatter()
         {
         }
 
@@ -23,9 +18,9 @@ namespace Intent.Modules.Common.TypeResolution
         public static INullableFormatter Instance { get; } = new DefaultNullableFormatter();
 
         /// <inheritdoc />
-        public string AsNullable(IResolvedTypeInfo typeInfo)
+        public string AsNullable(IResolvedTypeInfo typeInfo, string type)
         {
-            return typeInfo.Name;
+            return type;
         }
     }
 }

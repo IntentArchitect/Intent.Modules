@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -23,8 +24,14 @@ namespace Intent.Modules.Common.TypeResolution
 
         public virtual string DefaultCollectionFormat
         {
-            set => SetDefaultCollectionFormatter(new CollectionFormatter(value));
+            set => SetDefaultCollectionFormatter(CollectionFormatter.Create(value));
         }
+
+        /// <inheritdoc />
+        public ICollectionFormatter DefaultCollectionFormatter => _contexts[DEFAULT_CONTEXT].DefaultCollectionFormatter;
+
+        /// <inheritdoc />
+        public INullableFormatter DefaultNullableFormatter => _contexts[DEFAULT_CONTEXT].DefaultNullableFormatter;
 
         public void SetDefaultCollectionFormatter(ICollectionFormatter formatter)
         {
@@ -81,6 +88,13 @@ namespace Intent.Modules.Common.TypeResolution
                 .SelectMany(x => x.TypeSources)
                 .SelectMany(x => x.GetTemplateDependencies())
                 .ToList();
+        }
+
+        public IResolvedTypeInfo Get(IClassProvider classProvider)
+        {
+            var context = InContext(DEFAULT_CONTEXT);
+
+            return context.Get(classProvider);
         }
 
         public IResolvedTypeInfo Get(ITypeReference typeInfo)

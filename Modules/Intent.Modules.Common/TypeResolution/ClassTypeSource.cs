@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
@@ -35,13 +34,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         public ClassTypeSource WithCollectionFormat(string format)
         {
-            Options.CollectionFormatter = new CollectionFormatter(format);
-            return this;
-        }
-
-        public ClassTypeSource WithCollectionFormatter(Func<IResolvedTypeInfo, string> formatter)
-        {
-            Options.CollectionFormatter = new CollectionFormatter(formatter);
+            Options.CollectionFormatter = TypeResolution.CollectionFormatter.Create(format);
             return this;
         }
 
@@ -69,7 +62,14 @@ namespace Intent.Modules.Common.TypeResolution
 
         protected virtual ResolvedTypeInfo CreateResolvedTypeInfo(ITypeReference typeReference, IClassProvider templateInstance)
         {
-            return new ResolvedTypeInfo(templateInstance.ClassName, false, typeReference.IsNullable, typeReference.IsCollection, typeReference, templateInstance);
+            return new ResolvedTypeInfo(
+                name: templateInstance.ClassName,
+                isPrimitive: false,
+                isNullable: typeReference.IsNullable,
+                isCollection: typeReference.IsCollection,
+                typeReference: typeReference,
+                template: templateInstance,
+                nullableFormatter: NullableFormatter);
         }
 
         protected virtual IClassProvider TryGetTemplateInstance(ITypeReference typeInfo)
@@ -88,7 +88,7 @@ namespace Intent.Modules.Common.TypeResolution
         protected virtual IEnumerable<ITemplateDependency> GetTemplateDependencies(ITypeReference typeReference,
             IClassProvider templateInstance)
         {
-            return new[] {TemplateDependency.OnTemplate(templateInstance)};
+            return new[] { TemplateDependency.OnTemplate(templateInstance) };
         }
 
         private IResolvedTypeInfo TryGetType(ITypeReference typeReference)

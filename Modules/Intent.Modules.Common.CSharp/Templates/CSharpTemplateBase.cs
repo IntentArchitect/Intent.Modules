@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
@@ -79,8 +80,10 @@ namespace Intent.Modules.Common.CSharp.Templates
         protected CSharpTemplateBase(string templateId, IOutputTarget outputTarget, TModel model)
             : base(templateId, outputTarget, model)
         {
-            Types = new CSharpTypeResolver(new CollectionFormatter(x => $"{UseType("System.Collections.Generic.IEnumerable")}<{x.Name}>"),
-                new CSharpNullableFormatter(OutputTarget.GetProject()));
+            Types = new CSharpTypeResolver(
+                defaultCollectionFormatter: CSharpCollectionFormatter.GetOrCreate("System.Collections.Generic.IEnumerable<{0}>"),
+                defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(OutputTarget.GetProject()),
+                csharpProject: OutputTarget.GetProject());
         }
 
         /// <summary>
@@ -144,7 +147,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public string UseType(string name, string @namespace)
         {
-            _additionalUsingNamespaces.Add(@namespace);
+            AddUsing(@namespace);
             return name;
         }
 
@@ -155,7 +158,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             var elements = new List<string>(fullName.Split(".", StringSplitOptions.RemoveEmptyEntries));
             elements.RemoveAt(elements.Count - 1);
-            _additionalUsingNamespaces.Add(string.Join(".", elements));
+            AddUsing(string.Join(".", elements));
             return NormalizeNamespace(fullName);
         }
 
@@ -176,13 +179,19 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </summary>
         public new ClassTypeSource AddTypeSource(string templateId)
         {
-            return base.AddTypeSource(templateId, "IEnumerable<{0}>");
+            return base.AddTypeSource(templateId, "System.Collections.Generic.IEnumerable<{0}>");
+        }
+
+        /// <inheritdoc />
+        protected override ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
+        {
+            return CSharpCollectionFormatter.GetOrCreate(collectionFormat);
         }
 
         /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string,string)" />
         [FixFor_Version4("See comments within method.")]
         // ReSharper disable once MethodOverloadWithOptionalParameter
-        public new void AddTypeSource(string templateId, string collectionFormat = "IEnumerable<{0}>")
+        public new void AddTypeSource(string templateId, string collectionFormat = "System.Collections.Generic.IEnumerable<{0}>")
         {
             // This method is actually hidden by the "AddTypeSource(string)" overload, so is
             // probably unused by any recently compiled code. Only keeping for now so as to avoid
@@ -200,11 +209,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Converts the namespace of a fully qualified class name to the relative namespace for this class instance.
         /// </summary>
         /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
-        [FixFor_Version4("See comment in method.")]
         public virtual string NormalizeNamespace(string foreignType)
         {
-            // FixFor_Version4: See comment prefixed with "JL: ".
-
             var isNullable = false;
             if (foreignType.EndsWith("?", StringComparison.OrdinalIgnoreCase))
             {
@@ -223,23 +229,6 @@ namespace Intent.Modules.Common.CSharp.Templates
                     .Select(NormalizeNamespace)
                     .Aggregate((x, y) => x + ", " + y);
                 foreignType = $"{foreignType[..foreignType.IndexOf("<", StringComparison.Ordinal)]}";
-            }
-
-            // Add using directives for qualified types
-            if (foreignType.Contains('.'))
-            {
-                // JL: With this if control structure added, the code after is probably more
-                // complex than is actually now needed. We haven't changed it yet due to the high
-                // risk of changing something in anything less than a major version bump.
-                //
-                // The only concern I can think of that it needs to worry about is dealing with
-                // ambiguous type names, for example the type name clashes with a namespace
-                // component, or another known type from somewhere with the same name.
-
-                var split = foreignType.Split('.');
-                var @namespace = string.Join('.', split[..^1]);
-                AddUsing(@namespace);
-                foreignType = split[^1];
             }
 
             var usingPaths = DependencyUsings
@@ -424,6 +413,23 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
+        /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
+        /// adds any required usings and applicable template dependencies.
+        /// </summary>
+        protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        {
+            if (resolvedTypeInfo is CSharpResolvedTypeInfo cSharpResolvedTypeInfo)
+            {
+                foreach (var @namespace in cSharpResolvedTypeInfo.GetNamespaces())
+                {
+                    AddUsing(@namespace);
+                }
+            }
+
+            return base.UseType(resolvedTypeInfo);
+        }
+
+        /// <summary>
         /// Factory method for creating a <see cref="CSharpFileConfig"/> for a template.
         /// </summary>
         /// <remarks>
@@ -514,5 +520,173 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             return _additionalUsingNamespaces;
         }
+
+        #region GetFullyQualifiedTypeName
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="classProvider"></param>
+        /// <returns></returns>
+        protected virtual string GetFullyQualifiedTypeName(IClassProvider classProvider)
+        {
+            var resolvedTypeInfo = GetTypeInfo(classProvider);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="element"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="element">The <see cref="IElement"/> for which to get the type name.</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        public string GetFullyQualifiedTypeName(IElement element, string collectionFormat = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(element, collectionFormat);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="hasTypeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        public string GetFullyQualifiedTypeName(IHasTypeReference hasTypeReference, string collectionFormat = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        private string GetFullyQualifiedTypeName(IResolvedTypeInfo resolvedTypeInfo)
+        {
+            base.UseType(resolvedTypeInfo);
+
+            return resolvedTypeInfo is CSharpResolvedTypeInfo cSharpResolvedTypeInfo
+                ? cSharpResolvedTypeInfo.GetFullyQualifiedTypeName()
+                : resolvedTypeInfo.ToString();
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="template"/> parameter.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        public string GetFullyQualifiedTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(template, options);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="templateDependency"/> parameter.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        public string GetFullyQualifiedTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(templateDependency, options);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name for the <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        public string GetFullyQualifiedTypeName(ITypeReference typeReference, string collectionFormat = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(typeReference, collectionFormat);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="model"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="model">The model instance that the Template must be bound to.</param>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
+        public string GetFullyQualifiedTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(templateId, model, options);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// This overload assumes that the Template can have many instances and identifies the target instance
+        /// based on which has the <paramref name="modelId"/>.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
+        public string GetFullyQualifiedTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(templateId, modelId, options);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// GetTypeName article</seealso> for more information.
+        /// </para>
+        /// Will throw an exception if more than one template instance exists.
+        /// </summary>
+        public string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null)
+        {
+            var resolvedTypeInfo = GetTypeInfo(templateId, options);
+
+            return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        #endregion
     }
 }

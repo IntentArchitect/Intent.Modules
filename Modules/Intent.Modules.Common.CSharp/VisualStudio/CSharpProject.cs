@@ -5,11 +5,14 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Templates;
+using Intent.Utils;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
     internal class CSharpProject : ICSharpProject
     {
+        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(10, 0);
+        private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(11, 0);
         private readonly Lazy<bool> _isNullableAwareContext;
         private readonly IOutputTarget _outputTarget;
 
@@ -50,13 +53,14 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public bool IsNetCore3App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
         public bool IsNet4App => GetSupportedFrameworks().Any(x => x.StartsWith("net4"));
         public bool IsNet5App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
-        public bool IsNet6App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
+        public bool IsNet6App => GetSupportedFrameworks().Any(x => x.StartsWith("net6"));
 
-        public Version[] TargetDotNetFrameworks => GetSupportedFrameworks().Select(x =>
-        {
-            Version.TryParse($"{x.RemovePrefix("netcoreapp", "net")}.0", out var ver);
-            return ver;
-        }).Where(x => x != null).ToArray();
+        public Version[] TargetDotNetFrameworks => GetSupportedFrameworks()
+            .Select(x => Version.TryParse($"{x.RemovePrefix("netcoreapp", "net")}.0", out var ver)
+                ? ver
+                : null)
+            .Where(x => x != null)
+            .ToArray();
 
         public bool Equals(IOutputTarget other)
         {
@@ -100,27 +104,29 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                 return false;
             }
 
-            switch (LanguageVersion)
+            return GetLanguageVersion() >= MajorMinorVersion.Create(8, 0);
+        }
+
+        public MajorMinorVersion GetLanguageVersion()
+        {
+            return LanguageVersion switch
             {
-                case "latest":
-                case "preview":
-                    return true;
-                case "default":
-                    return TargetFrameworks.All(DefaultSupportsNullable);
-                default:
-                    return decimal.Parse(LanguageVersion, CultureInfo.InvariantCulture) >= 8.0m;
-            }
+                "latest" => LatestLanguageVersion,
+                "preview" => PreviewLanguageVersion,
+                "default" => TargetFrameworks.Select(GetDefaultLanguageVersion).DefaultIfEmpty().Min(),
+                _ => MajorMinorVersion.Parse(LanguageVersion)
+            };
         }
 
         /// <summary>
-        /// Based on data from the below links, returns true if the default language version for
-        /// the provided <paramref name="frameworkMoniker"/> is at least 8.0.
+        /// Based on data from the below links, returns the default language version for the
+        /// provided <paramref name="frameworkMoniker"/>.
         /// <br/>
         /// https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#defaults
         /// <br/>
         /// https://docs.microsoft.com/dotnet/standard/frameworks#supported-target-frameworks
         /// </summary>
-        private static bool DefaultSupportsNullable(string frameworkMoniker)
+        private MajorMinorVersion GetDefaultLanguageVersion(string frameworkMoniker)
         {
             switch (frameworkMoniker)
             {
@@ -139,19 +145,16 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                 case "net471":
                 case "net472":
                 case "net48":
-                    // Language version 7.3
-                    return false;
+                    return MajorMinorVersion.Create(7, 3);
                 case "netcoreapp1.0":
                 case "netcoreapp1.1":
                 case "netcoreapp2.0":
                 case "netcoreapp2.1":
                 case "netcoreapp2.2":
-                    // Language version 7.3
-                    return false;
+                    return MajorMinorVersion.Create(7, 3);
                 case "netcoreapp3.0":
                 case "netcoreapp3.1":
-                    // Language version 8.0
-                    return true;
+                    return MajorMinorVersion.Create(8, 0);
                 case "netstandard1.0":
                 case "netstandard1.1":
                 case "netstandard1.2":
@@ -160,23 +163,38 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
                 case "netstandard1.5":
                 case "netstandard1.6":
                 case "netstandard2.0":
-                    // Language version 7.3
-                    return false;
+                    return MajorMinorVersion.Create(7, 3);
                 case "netstandard2.1":
                     // Language version 8.0
-                    return true;
+                    return MajorMinorVersion.Create(8, 0);
             }
 
             // Match for strings like net5.0, net6.0, etc.
             // net5.0 is version 9.0
             if (frameworkMoniker.StartsWith("net") &&
                 frameworkMoniker.Contains(".") &&
-                decimal.TryParse(frameworkMoniker.Substring(3), NumberStyles.Any, CultureInfo.InvariantCulture, out _))
+                decimal.TryParse(frameworkMoniker[3..], NumberStyles.Any, CultureInfo.InvariantCulture, out var version) &&
+                version >= 5)
             {
-                return true;
+                switch (version)
+                {
+                    case 5:
+                        return MajorMinorVersion.Create(9, 0);
+                    case 6:
+                        return MajorMinorVersion.Create(10, 0);
+                    case 7:
+                        return MajorMinorVersion.Create(11, 0);
+                    default:
+                        Logging.Log.Warning(
+                            $"Assuming language version \"{PreviewLanguageVersion}\" for project \"{Name}\" targeting " +
+                            $"\"{frameworkMoniker}\". Try seeing if a new version of the \"Intent.Modules.Common.CSharp\"" +
+                            " module is available or notify Intent Architect support.");
+
+                        return PreviewLanguageVersion;
+                }
             }
 
-            throw new Exception($"Could not determine default language version for framework moniker '{frameworkMoniker}'");
+            throw new Exception($"Could not determine default language version for framework moniker \"{frameworkMoniker}\"");
         }
     }
 }

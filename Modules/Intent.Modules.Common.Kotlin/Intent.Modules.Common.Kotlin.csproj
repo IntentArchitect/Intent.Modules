@@ -29,7 +29,8 @@
     <PackageReference Include="Intent.Code.Weaving.Kotlin" Version="1.0.2">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.1" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+    <!--<PackageReference Include="Intent.Modules.Common" Version="3.3.3" />-->
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.0" />
     <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
