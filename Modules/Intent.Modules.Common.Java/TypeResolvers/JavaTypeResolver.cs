@@ -5,13 +5,19 @@ using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.Java.TypeResolvers
 {
+    /// <summary>
+    /// Java specialization of <see cref="TypeResolverBase"/>.
+    /// </summary>
     public class JavaTypeResolver : TypeResolverBase, ITypeResolver
     {
-
+        /// <summary>
+        /// Creates a new instance of <see cref="JavaTypeResolver"/>.
+        /// </summary>
         public JavaTypeResolver() : base(defaultContext: new JavaTypeResolverContext(new JavaTypeResolverOptions()))
         {
         }
 
+        /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
             return new JavaTypeResolverContext(new JavaTypeResolverOptions());

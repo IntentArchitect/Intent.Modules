@@ -32,6 +32,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 typeReference: typeReference,
                 template: template,
                 nullableFormatter: nullableFormatter,
+                collectionFormatter: null,
                 genericTypeParameters: genericTypeParameters)
         {
             Namespace = @namespace;
@@ -114,11 +115,14 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 jaggedArrays: jaggedArrays);
         }
 
-        /// <summary>
-        /// Returns a clone of this instance with <see cref="ResolvedTypeInfo.IsNullable"/> set
-        /// to the provided <paramref name="isNullable"/>.
-        /// </summary>
-        public CSharpResolvedTypeInfo WithIsNullable(bool isNullable)
+        /// <inheritdoc cref="IResolvedTypeInfo.WithIsNullable" />
+        public new CSharpResolvedTypeInfo WithIsNullable(bool isNullable)
+        {
+            return (CSharpResolvedTypeInfo)WithIsNullableProtected(isNullable);
+        }
+
+        /// <inheritdoc />
+        protected override IResolvedTypeInfo WithIsNullableProtected(bool isNullable)
         {
             return new CSharpResolvedTypeInfo(
                 name: Name,

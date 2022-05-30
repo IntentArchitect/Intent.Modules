@@ -34,7 +34,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         public ClassTypeSource WithCollectionFormat(string format)
         {
-            Options.CollectionFormatter = TypeResolution.CollectionFormatter.Create(format);
+            Options.CollectionFormatter = TypeResolution.CollectionFormatter.GetOrCreate(format);
             return this;
         }
 
@@ -62,14 +62,15 @@ namespace Intent.Modules.Common.TypeResolution
 
         protected virtual ResolvedTypeInfo CreateResolvedTypeInfo(ITypeReference typeReference, IClassProvider templateInstance)
         {
-            return new ResolvedTypeInfo(
+            return ResolvedTypeInfo.Create(
                 name: templateInstance.ClassName,
                 isPrimitive: false,
                 isNullable: typeReference.IsNullable,
                 isCollection: typeReference.IsCollection,
                 typeReference: typeReference,
                 template: templateInstance,
-                nullableFormatter: NullableFormatter);
+                nullableFormatter: NullableFormatter,
+                collectionFormatter: CollectionFormatter);
         }
 
         protected virtual IClassProvider TryGetTemplateInstance(ITypeReference typeInfo)

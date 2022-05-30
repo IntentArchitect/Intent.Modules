@@ -25,5 +25,10 @@ namespace Intent.Modelers.ServiceProxies.Api
             .Select(x => new ServiceProxyModel(x))
             .ToList();
 
+        public IList<TypeDefinitionModel> Types => _element.ChildElements
+            .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
+            .Select(x => new TypeDefinitionModel(x))
+            .ToList();
+
     }
 }

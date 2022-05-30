@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
@@ -158,7 +157,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         protected virtual ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
         {
-            return CollectionFormatter.Create(collectionFormat);
+            return CollectionFormatter.GetOrCreate(collectionFormat);
         }
 
         /// <inheritdoc />
@@ -317,19 +316,6 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Adds a Template source (template instances) that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
-        /// If found, the Template will be added as a dependency.
-        /// Set the desired <see cref="CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
-        /// </summary>
-        /// <param name="templateId">The identifier of the template instances to be searched when calling <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/></param>
-        /// <param name="collectionFormat">Sets the collection format to be applied if a type is found.</param>
-        public ClassTypeSource AddTypeSource(string templateId, string collectionFormat)
-        {
-            return AddTypeSource(templateId)
-                .WithCollectionFormatter(CreateCollectionFormatter(collectionFormat));
-        }
-
-        /// <summary>
         /// Adds a Template source that will be searched when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
         /// If found, the Template will be added as a dependency.
         /// Set the desired <see cref="CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
@@ -338,9 +324,29 @@ namespace Intent.Modules.Common.Templates
         /// <returns>Returns the <see cref="ClassTypeSource"/> for use as a fluent api.</returns>
         public ClassTypeSource AddTypeSource(string templateId)
         {
+            return AddTypeSource(templateId, null);
+        }
+
+        /// <summary>
+        /// Adds a Template source (template instances) that will be search when resolving <see cref="ITypeReference"/> types through the <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/>.
+        /// If found, the Template will be added as a dependency.
+        /// Set the desired <see cref="CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
+        /// </summary>
+        /// <param name="templateId">The identifier of the template instances to be searched when calling <see cref="IntentTemplateBase.GetTypeName(ITypeReference)"/></param>
+        /// <param name="collectionFormat">Sets the collection format to be applied if a type is found.</param>
+        [FixFor_Version4("Make \"collectionFormat\" have a default value of null and delete conflicting overload")]
+        public virtual ClassTypeSource AddTypeSource(string templateId, string collectionFormat)
+        {
             var typeSource = ClassTypeSource.Create(ExecutionContext, templateId)
                 .WithNullFormatter(Types.DefaultNullableFormatter);
-            AddTypeSource(typeSource);
+
+            if (!string.IsNullOrWhiteSpace(collectionFormat))
+            {
+                typeSource = typeSource.WithCollectionFormatter(CreateCollectionFormatter(collectionFormat));
+            }
+
+            Types.AddTypeSource(typeSource);
+
             return typeSource;
         }
 
@@ -469,6 +475,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
         [FixFor_Version4("Remove the overload that is hiding this method with the default parameter value.")]
+        // ReSharper disable once MethodOverloadWithOptionalParameter
         protected virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string collectionFormat = null)
         {
             return Types.Get(typeReference, collectionFormat);

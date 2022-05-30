@@ -128,9 +128,21 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
 
                 if (typeReference.Element.Stereotypes.Any(x => x.Name == "C#"))
                 {
+                    var name = typeReference.Element.GetStereotypeProperty("C#", "Type", typeReference.Element.Name);
+                    var @namespace = typeReference.Element.GetStereotypeProperty("C#", "Namespace", string.Empty);
+
+                    var lastIndexOfPeriod = name.LastIndexOf('.');
+                    if (lastIndexOfPeriod >= 0)
+                    {
+                        @namespace = string.IsNullOrWhiteSpace(@namespace)
+                            ? name[..lastIndexOfPeriod]
+                            : $"{@namespace}.{name[..lastIndexOfPeriod]}";
+                        name = name[(lastIndexOfPeriod + 1)..];
+                    }
+
                     return CSharpResolvedTypeInfo.Create(
-                        name: typeReference.Element.GetStereotypeProperty("C#", "Type", typeReference.Element.Name),
-                        @namespace: typeReference.Element.GetStereotypeProperty("C#", "Namespace", string.Empty),
+                        name: name,
+                        @namespace: @namespace,
                         isPrimitive: typeReference.Element.GetStereotypeProperty("C#", "Is Primitive", true),
                         isNullable: typeReference.IsNullable,
                         isCollection: typeReference.Element.GetStereotypeProperty("C#", "Is Collection", typeReference.IsCollection),

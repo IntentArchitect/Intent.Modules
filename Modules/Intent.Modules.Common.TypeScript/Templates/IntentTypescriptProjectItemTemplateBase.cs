@@ -1,6 +1,7 @@
 ﻿using System;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Templates
@@ -44,6 +45,13 @@ namespace Intent.Modules.Common.TypeScript.Templates
         public new void AddTypeSource(string templateId, string collectionFormat)
         {
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, templateId, collectionFormat));
+        }
+
+        protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        {
+            var normalizedTypeName = NormalizeTypeName(resolvedTypeInfo.ToString());
+
+            return normalizedTypeName;
         }
 
         public override string RunTemplate()

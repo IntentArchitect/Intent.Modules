@@ -482,16 +482,13 @@
             <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String)">
-            <summary>
-            Calls <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/> with
-            <c>IEnumerable&lt;{0}&gt;</c> for the <c>collectionFormat</c> value.
-            </summary>
+            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String,System.String)">
+            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.CreateCollectionFormatter(System.String)">
             <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String,System.String)">
-            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)" />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.NormalizeTypeName(System.String)">
             <inheritdoc />
@@ -920,10 +917,10 @@
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.WithIsNullable(System.Boolean)">
-            <summary>
-            Returns a clone of this instance with <see cref="P:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.IsNullable"/> set
-            to the provided <paramref name="isNullable"/>.
-            </summary>
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.WithIsNullable(System.Boolean)" />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.WithIsNullableProtected(System.Boolean)">
+            <inheritdoc />
         </member>
         <member name="P:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Namespace">
             <summary>

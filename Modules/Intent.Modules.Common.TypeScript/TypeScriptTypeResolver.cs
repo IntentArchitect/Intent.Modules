@@ -1,82 +1,95 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.TypeScript
 {
+    /// <summary>
+    /// TypeScript specialization of <see cref="TypeResolverBase"/>.
+    /// </summary>
     public class TypeScriptTypeResolver : TypeResolverBase, ITypeResolver
     {
-
-        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(new CollectionFormatter("{0}[]"), new DefaultNullableFormatter()))
+        /// <summary>
+        /// Creates a new instance of <see cref="TypeScriptTypeResolver"/>.
+        /// </summary>
+        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(CollectionFormatter.GetOrCreate("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance))
         {
         }
 
         protected override ITypeResolverContext CreateContext()
         {
-            return new TypeScriptTypeResolverContext(new CollectionFormatter("{0}[]"), new DefaultNullableFormatter());
-        }
-    }
-    public class TypeScriptTypeResolverContext : TypeResolverContextBase
-    {
-        protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
-        {
-            return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
+            return new TypeScriptTypeResolverContext(CollectionFormatter.GetOrCreate("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);
         }
 
-        protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
+        private class TypeScriptTypeResolverContext : TypeResolverContextBase
         {
-            string result = null;
-            bool isPrimitive = false;
-            if (typeInfo.Element.HasStereotype("TypeScript"))
+            public TypeScriptTypeResolverContext(
+                ICollectionFormatter defaultCollectionFormatter,
+                INullableFormatter defaultNullableFormatter)
+                : base(
+                    defaultCollectionFormatter,
+                    defaultNullableFormatter)
             {
-                result = typeInfo.Element.GetStereotypeProperty<string>("TypeScript", "Type");
             }
-            else
+
+            protected override IResolvedTypeInfo ResolveType(ITypeReference typeReference, INullableFormatter nullableFormatter)
             {
-                isPrimitive = true;
-                switch (typeInfo.Element.Name)
+                string name = null;
+                bool isPrimitive = false;
+                if (typeReference.Element.HasStereotype("TypeScript"))
                 {
-                    case "bool":
-                        result = "boolean";
-                        break;
-                    case "date":
-                    case "datetime":
-                        result = "Date";
-                        break;
-                    case "char":
-                    case "byte":
-                    case "decimal":
-                    case "double":
-                    case "float":
-                    case "short":
-                    case "int":
-                    case "long":
-                        result = "number";
-                        break;
-                    case "datetimeoffset":
-                    case "binary":
-                    case "object":
-                        result = "any";
-                        break;
-                    case "guid":
-                    case "string":
-                        result = "string";
-                        break;
+                    name = typeReference.Element.GetStereotypeProperty<string>("TypeScript", "Type");
+                }
+                else
+                {
+                    isPrimitive = true;
+                    switch (typeReference.Element.Name)
+                    {
+                        case "bool":
+                            name = "boolean";
+                            break;
+                        case "date":
+                        case "datetime":
+                            name = "Date";
+                            break;
+                        case "char":
+                        case "byte":
+                        case "decimal":
+                        case "double":
+                        case "float":
+                        case "short":
+                        case "int":
+                        case "long":
+                            name = "number";
+                            break;
+                        case "datetimeoffset":
+                        case "binary":
+                        case "object":
+                            name = "any";
+                            break;
+                        case "guid":
+                        case "string":
+                            name = "string";
+                            break;
+                    }
+
+                    name = !string.IsNullOrWhiteSpace(name)
+                        ? name
+                        : typeReference.Element.Name;
                 }
 
-                result = !string.IsNullOrWhiteSpace(result)
-                    ? result
-                    : typeInfo.Element.Name;
+                return ResolvedTypeInfo.Create(
+                    name: name,
+                    isPrimitive: isPrimitive,
+                    typeReference: typeReference,
+                    template: null,
+                    nullableFormatter: nullableFormatter,
+                    collectionFormatter: null,
+                    genericTypeParameters: (typeReference.GenericTypeParameters ?? Enumerable.Empty<ITypeReference>())
+                        .Select(Get)
+                        .ToArray()
+                    );
             }
-
-            return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
-        }
-
-        public TypeScriptTypeResolverContext(
-            ICollectionFormatter defaultCollectionFormatter,
-            INullableFormatter defaultNullableFormatter) : base(defaultCollectionFormatter, defaultNullableFormatter)
-        {
         }
     }
 }

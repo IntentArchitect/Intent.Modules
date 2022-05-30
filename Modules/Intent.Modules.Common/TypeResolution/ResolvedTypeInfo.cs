@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.TypeResolution;
@@ -14,7 +15,7 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     /// <summary>
     /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
     /// </summary>
-    public ResolvedTypeInfo(
+    protected ResolvedTypeInfo(
         string name,
         bool isPrimitive,
         bool isNullable,
@@ -22,7 +23,8 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
         ITypeReference typeReference,
         ITemplate template,
         INullableFormatter nullableFormatter,
-        IReadOnlyList<IResolvedTypeInfo> genericTypeParameters = null)
+        ICollectionFormatter collectionFormatter,
+        IReadOnlyList<IResolvedTypeInfo> genericTypeParameters)
     {
         Name = name;
         IsPrimitive = isPrimitive && !typeReference.IsCollection;
@@ -31,27 +33,82 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
         TypeReference = typeReference;
         Template = template;
         NullableFormatter = nullableFormatter;
+        CollectionFormatter = collectionFormatter;
         GenericTypeParameters = genericTypeParameters ?? Array.Empty<IResolvedTypeInfo>();
     }
 
     /// <summary>
     /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
     /// </summary>
-    public ResolvedTypeInfo(
+    public static ResolvedTypeInfo Create(
         string name,
         bool isPrimitive,
         ITypeReference typeReference,
         ITemplate template,
-        INullableFormatter nullableFormatter)
-        : this(
-            name,
-            isPrimitive,
-            typeReference.IsNullable,
-            typeReference.IsCollection,
-            typeReference,
-            template,
-            nullableFormatter)
+        INullableFormatter nullableFormatter,
+        ICollectionFormatter collectionFormatter,
+        IReadOnlyList<IResolvedTypeInfo> genericTypeParameters = null)
     {
+        return new ResolvedTypeInfo(
+            name: name,
+            isPrimitive: isPrimitive,
+            isNullable: typeReference.IsNullable,
+            isCollection: typeReference.IsCollection,
+            typeReference: typeReference,
+            template: template,
+            nullableFormatter: nullableFormatter,
+            collectionFormatter: collectionFormatter,
+            genericTypeParameters: genericTypeParameters);
+    }
+
+    /// <summary>
+    /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
+    /// </summary>
+    public static ResolvedTypeInfo Create(
+        string name,
+        bool isPrimitive,
+        bool isNullable,
+        bool isCollection,
+        ITypeReference typeReference,
+        ITemplate template,
+        INullableFormatter nullableFormatter,
+        ICollectionFormatter collectionFormatter,
+        IReadOnlyList<IResolvedTypeInfo> genericTypeParameters = null)
+    {
+        return new ResolvedTypeInfo(
+            name: name,
+            isPrimitive: isPrimitive,
+            isNullable: isNullable,
+            isCollection: isCollection,
+            typeReference: typeReference,
+            template: template,
+            nullableFormatter: nullableFormatter,
+            collectionFormatter: collectionFormatter,
+            genericTypeParameters: genericTypeParameters);
+    }
+
+    /// <summary>
+    /// Creates an instance of <see cref="ResolvedTypeInfo"/> for use with collections.
+    /// </summary>
+    public static ResolvedTypeInfo CreateForCollection(
+        IResolvedTypeInfo forResolvedType,
+        bool isNullable,
+        INullableFormatter nullableFormatter,
+        ICollectionFormatter collectionFormatter)
+    {
+        return new ResolvedTypeInfo(
+            name: string.Empty,
+            isPrimitive: false,
+            isNullable: isNullable,
+            isCollection: true,
+            typeReference: null,
+            template: null,
+            nullableFormatter: nullableFormatter,
+            collectionFormatter: collectionFormatter,
+            genericTypeParameters: new[]
+            {
+                forResolvedType
+            });
     }
 
     /// <summary>
@@ -59,16 +116,52 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     /// </summary>
     public ResolvedTypeInfo(IResolvedTypeInfo typeInfo)
         : this(
-            name: typeInfo.Name,
+            name: typeInfo.Template is IClassProvider classProvider
+                ? classProvider.FullTypeName()
+                : typeInfo.Name,
             isPrimitive: typeInfo.IsPrimitive,
             isNullable: typeInfo.IsNullable,
             isCollection: typeInfo.IsCollection,
             typeReference: typeInfo.TypeReference,
             template: typeInfo.Template,
             nullableFormatter: typeInfo.NullableFormatter,
+            collectionFormatter: typeInfo.CollectionFormatter,
             genericTypeParameters: typeInfo.GenericTypeParameters)
     {
     }
+
+    IResolvedTypeInfo IResolvedTypeInfo.WithIsNullable(bool isNullable)
+    {
+        return WithIsNullableProtected(isNullable);
+    }
+
+    /// <inheritdoc cref="IResolvedTypeInfo.WithIsNullable" />
+    public ResolvedTypeInfo WithIsNullable(bool isNullable)
+    {
+        return (ResolvedTypeInfo)WithIsNullableProtected(isNullable);
+    }
+
+    /// <summary>
+    /// Called by <see cref="IResolvedTypeInfo.WithIsNullable" />.
+    /// </summary>
+    /// <remarks>
+    /// By having this method be the virtual overridable one, the "WithIsNullable" is left open to
+    /// be safely hide-able in specializations of this class.
+    /// </remarks>
+    protected virtual IResolvedTypeInfo WithIsNullableProtected(bool isNullable)
+    {
+        return new ResolvedTypeInfo(
+            name: Name,
+            isPrimitive: IsPrimitive,
+            isNullable: isNullable,
+            isCollection: IsCollection,
+            typeReference: TypeReference,
+            template: Template,
+            nullableFormatter: NullableFormatter,
+            collectionFormatter: CollectionFormatter,
+            genericTypeParameters: GenericTypeParameters);
+    }
+
 
     /// <inheritdoc />
     public string Name { get; }
@@ -95,6 +188,9 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     public INullableFormatter NullableFormatter { get; }
 
     /// <inheritdoc />
+    public ICollectionFormatter CollectionFormatter { get; }
+
+    /// <inheritdoc />
     public IEnumerable<ITemplate> GetTemplateDependencies()
     {
         if (Template != null)
@@ -113,7 +209,11 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     {
         var typeName = Name;
 
-        if (GenericTypeParameters.Count > 0)
+        if (IsCollection && CollectionFormatter != null)
+        {
+            typeName = CollectionFormatter.Format(GenericTypeParameters.Single().ToString());
+        }
+        else if (GenericTypeParameters.Count > 0)
         {
             typeName = $"{typeName}<{string.Join(", ", GenericTypeParameters.Select(x => x.ToString()))}>";
         }

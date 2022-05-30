@@ -173,30 +173,24 @@ namespace Intent.Modules.Common.CSharp.Templates
                 : $"{dependencyUsings}{Environment.NewLine}{templateOutput}";
         }
 
-        /// <summary>
-        /// Calls <see cref="IntentTemplateBase.AddTypeSource(string,string)"/> with
-        /// <c>IEnumerable&lt;{0}&gt;</c> for the <c>collectionFormat</c> value.
-        /// </summary>
-        public new ClassTypeSource AddTypeSource(string templateId)
+        /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string)"/>
+        [FixFor_Version4("Remove this method and let the override below to the necessary work")]
+        public ClassTypeSource AddTypeSource(string templateId)
         {
             return base.AddTypeSource(templateId, "System.Collections.Generic.IEnumerable<{0}>");
+        }
+
+        /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string,string)"/>
+        [FixFor_Version4("Change this to an override which returns ClassTypeSource")]
+        public new void AddTypeSource(string templateId, string collectionFormat)
+        {
+            base.AddTypeSource(templateId, collectionFormat ?? "System.Collections.Generic.IEnumerable<{0}>");
         }
 
         /// <inheritdoc />
         protected override ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
         {
             return CSharpCollectionFormatter.GetOrCreate(collectionFormat);
-        }
-
-        /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string,string)" />
-        [FixFor_Version4("See comments within method.")]
-        // ReSharper disable once MethodOverloadWithOptionalParameter
-        public new void AddTypeSource(string templateId, string collectionFormat = "System.Collections.Generic.IEnumerable<{0}>")
-        {
-            // This method is actually hidden by the "AddTypeSource(string)" overload, so is
-            // probably unused by any recently compiled code. Only keeping for now so as to avoid
-            // possible MethodNotFoundExceptions for code compiled against it a long time ago.
-            base.AddTypeSource(templateId, collectionFormat);
         }
 
         /// <inheritdoc />

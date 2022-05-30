@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Engine;
-using Intent.Metadata.Models;
-using Intent.Modules.Common.Templates;
+﻿using Intent.Engine;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.TypeScript
@@ -17,13 +12,13 @@ namespace Intent.Modules.Common.TypeScript
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat)
         {
-            return Create(context, templateId, new CollectionFormatter(collectionFormat));
+            return Create(context, templateId, CollectionFormatter.GetOrCreate(collectionFormat));
         }
 
-        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, Func<string, string> collectionFormatter)
-        {
-            return Create(context, templateId, new CollectionFormatter(collectionFormatter));
-        }
+        //public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, Func<string, string> collectionFormatter)
+        //{
+        //    return Create(context, templateId, CollectionFormatter.GetOrCreate(collectionFormatter));
+        //}
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, ICollectionFormatter collectionFormatter)
         {

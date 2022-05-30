@@ -58,9 +58,20 @@ namespace Intent.Modules.Common.TypeResolution
         INullableFormatter NullableFormatter { get; }
 
         /// <summary>
+        /// Collection formatter to apply to the type.
+        /// </summary>
+        ICollectionFormatter CollectionFormatter { get; }
+
+        /// <summary>
         /// Finds all templates this resolved type is dependent on by checking itself as well as
         /// recursively checking generic type parameters as well.
         /// </summary>
         IEnumerable<ITemplate> GetTemplateDependencies();
+
+        /// <summary>
+        /// Returns a clone of this instance with <see cref="IsNullable"/> set
+        /// to the provided <paramref name="isNullable"/>.
+        /// </summary>
+        IResolvedTypeInfo WithIsNullable(bool isNullable);
     }
 }

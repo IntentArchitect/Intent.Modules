@@ -620,15 +620,6 @@
             If found, the Template will be added as a dependency.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)">
-            <summary>
-            Adds a Template source (template instances) that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
-            If found, the Template will be added as a dependency.
-            Set the desired <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
-            </summary>
-            <param name="templateId">The identifier of the template instances to be searched when calling <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/></param>
-            <param name="collectionFormat">Sets the collection format to be applied if a type is found.</param>
-        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String)">
             <summary>
             Adds a Template source that will be searched when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
@@ -637,6 +628,15 @@
             </summary>
             <param name="templateId">The identifier of the template instances to be searched when calling <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.</param>
             <returns>Returns the <see cref="T:Intent.Modules.Common.TypeResolution.ClassTypeSource"/> for use as a fluent api.</returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)">
+            <summary>
+            Adds a Template source (template instances) that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
+            If found, the Template will be added as a dependency.
+            Set the desired <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
+            </summary>
+            <param name="templateId">The identifier of the template instances to be searched when calling <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/></param>
+            <param name="collectionFormat">Sets the collection format to be applied if a type is found.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.NormalizeTypeName(System.String)">
             <summary>
@@ -1292,7 +1292,7 @@
             Creates a new instance of <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.Create(System.String)">
+        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.GetOrCreate(System.String)">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> with the specified
             <paramref name="collectionFormat"/>.
@@ -1375,10 +1375,21 @@
             Nullable formatter to apply to the type.
             </summary>
         </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.CollectionFormatter">
+            <summary>
+            Collection formatter to apply to the type.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.GetTemplateDependencies">
             <summary>
             Finds all templates this resolved type is dependent on by checking itself as well as
             recursively checking generic type parameters as well.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.WithIsNullable(System.Boolean)">
+            <summary>
+            Returns a clone of this instance with <see cref="P:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.IsNullable"/> set
+            to the provided <paramref name="isNullable"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.TypeResolution.ICollectionFormatter">
@@ -1586,20 +1597,42 @@
             Implementation of <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,Intent.Modules.Common.TypeResolution.INullableFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.TypeResolution.IResolvedTypeInfo})">
+        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.#ctor(System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.TypeResolution.ICollectionFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.TypeResolution.IResolvedTypeInfo})">
             <summary>
             Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.#ctor(System.String,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,Intent.Modules.Common.TypeResolution.INullableFormatter)">
+        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.Create(System.String,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.TypeResolution.ICollectionFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.TypeResolution.IResolvedTypeInfo})">
             <summary>
             Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.Create(System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.TypeResolution.ICollectionFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.TypeResolution.IResolvedTypeInfo})">
+            <summary>
+            Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.CreateForCollection(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo,System.Boolean,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.TypeResolution.ICollectionFormatter)">
+            <summary>
+            Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/> for use with collections.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.#ctor(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
             <summary>
             Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
             </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.WithIsNullable(System.Boolean)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.WithIsNullable(System.Boolean)" />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.WithIsNullableProtected(System.Boolean)">
+            <summary>
+            Called by <see cref="M:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.WithIsNullable(System.Boolean)" />.
+            </summary>
+            <remarks>
+            By having this method be the virtual overridable one, the "WithIsNullable" is left open to
+            be safely hide-able in specializations of this class.
+            </remarks>
         </member>
         <member name="P:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.Name">
             <inheritdoc />
@@ -1623,6 +1656,9 @@
             <inheritdoc />
         </member>
         <member name="P:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.NullableFormatter">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.CollectionFormatter">
             <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.GetTemplateDependencies">

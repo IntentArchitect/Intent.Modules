@@ -33,7 +33,7 @@ namespace Intent.Modules.Common.TypeResolution
         /// existing instance, if an instance is found then that is returned, otherwise a new
         /// instance is created, placed in the cache and returned.
         /// </remarks>
-        public static CollectionFormatter Create(string collectionFormat)
+        public static CollectionFormatter GetOrCreate(string collectionFormat)
         {
             return Cache.GetOrAdd(collectionFormat, _ => new CollectionFormatter(collectionFormat));
         }
@@ -47,15 +47,11 @@ namespace Intent.Modules.Common.TypeResolution
         /// <inheritdoc />
         public virtual IResolvedTypeInfo ApplyTo(IResolvedTypeInfo typeInfo)
         {
-            return new ResolvedTypeInfo(
-                name: typeInfo.Name,
-                isPrimitive: typeInfo.IsPrimitive,
+            return ResolvedTypeInfo.CreateForCollection(
+                forResolvedType: typeInfo.WithIsNullable(false),
                 isNullable: typeInfo.IsNullable,
-                isCollection: typeInfo.IsCollection,
-                typeReference: typeInfo.TypeReference,
-                template: typeInfo.Template,
                 nullableFormatter: typeInfo.NullableFormatter,
-                genericTypeParameters: typeInfo.GenericTypeParameters);
+                collectionFormatter: this);
         }
     }
 }

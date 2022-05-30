@@ -45,5 +45,10 @@ namespace Intent.Modelers.ServiceProxies.Api
             .Select(x => new FolderModel(x))
             .ToList();
 
+        public IList<TypeDefinitionModel> Types => UnderlyingPackage.ChildElements
+            .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
+            .Select(x => new TypeDefinitionModel(x))
+            .ToList();
+
     }
 }

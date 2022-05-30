@@ -50,14 +50,15 @@ namespace Intent.Modules.Common.TypeResolution
         /// <inheritdoc />
         public virtual IResolvedTypeInfo Get(IClassProvider classProvider)
         {
-            return new ResolvedTypeInfo(
+            return ResolvedTypeInfo.Create(
                 name: classProvider.FullTypeName(),
                 isPrimitive: false,
                 isNullable: false,
                 isCollection: false,
                 typeReference: null,
                 template: classProvider,
-                nullableFormatter: null);
+                nullableFormatter: null,
+                collectionFormatter: null);
         }
 
         /// <inheritdoc />
@@ -70,7 +71,7 @@ namespace Intent.Modules.Common.TypeResolution
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
             var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
-                ? CollectionFormatter.Create(collectionFormat)
+                ? CollectionFormatter.GetOrCreate(collectionFormat)
                 : null;
 
             return Get(typeInfo, collectionFormatter);

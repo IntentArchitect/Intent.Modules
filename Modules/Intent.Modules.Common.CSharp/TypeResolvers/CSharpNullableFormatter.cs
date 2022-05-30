@@ -39,7 +39,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         {
             if (typeInfo.IsNullable &&
                 (typeInfo.IsPrimitive || _project.IsNullableAwareContext() || 
-                 typeInfo.TypeReference.Element.SpecializationType.EndsWith("Enum", StringComparison.OrdinalIgnoreCase)))
+                 typeInfo.TypeReference?.Element.SpecializationType.EndsWith("Enum", StringComparison.OrdinalIgnoreCase) == true))
             {
                 return $"{type}?";
             }
