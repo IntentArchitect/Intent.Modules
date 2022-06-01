@@ -39,10 +39,29 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
                         .ToArray()
                 }));
 
-            // Legacy stereotypes:
             results.AddRange(model.Attributes
-                .Where(x => x.HasIndex())
-                .GroupBy(x => x.GetIndex().UniqueKey() ?? string.Empty)
+                .Where(x => x.HasIndex() && string.IsNullOrWhiteSpace(x.GetIndex().UniqueKey()))
+                .Select(index => new Index
+                {
+                    IsUnique = index.GetIndex().IsUnique(),
+                    Name = string.Empty,
+                    UseDefaultName = true,
+                    FilterOption = FilterOption.Default,
+                    Filter = null,
+                    KeyColumns = new[] {
+                        new IndexColumn
+                        {
+                            Name = index.Name,
+                            SourceType = index.InternalElement
+                        }
+                    },
+                    IncludedColumns = Array.Empty<IndexColumn>()
+                }));
+
+            // Legacy stereotypes (where Unique Key used):
+            results.AddRange(model.Attributes
+                .Where(x => x.HasIndex() && !string.IsNullOrWhiteSpace(x.GetIndex().UniqueKey()))
+                .GroupBy(x => x.GetIndex().UniqueKey())
                 .Select(index => new Index
                 {
                     IsUnique = index.First().GetIndex().IsUnique(),

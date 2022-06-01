@@ -2,6 +2,7 @@ using System;
 using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Metadata.RDBMS.Api
 {
@@ -23,23 +24,27 @@ namespace Intent.Metadata.RDBMS.Api
             return associationEnd.Multiplicity == Multiplicity.ZeroToOne && associationEnd.Association.TargetEnd.Class == associationEnd.Association.SourceEnd.Class;
         }
 
+        [Obsolete("Foreign keys are no longer managed via the associations. Use explicit Foreign Keys in your model.")]
         public static ForeignKey GetForeignKey(this AssociationEndModel model)
         {
             var stereotype = model.GetStereotype("Foreign Key");
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
+        [Obsolete("Foreign keys are no longer managed via the associations. Use explicit Foreign Keys in your model.")]
         public static bool HasForeignKey(this AssociationEndModel model)
         {
             return model.HasStereotype("Foreign Key");
         }
 
+        [Obsolete("Unique constraint stereotypes are replaced by unique indexes")]
         public static UniqueConstraint GetUniqueConstraint(this AssociationEndModel model)
         {
             var stereotype = model.GetStereotype("Unique Constraint");
             return stereotype != null ? new UniqueConstraint(stereotype) : null;
         }
 
+        [Obsolete("Unique constraint stereotypes are replaced by unique indexes")]
         public static bool HasUniqueConstraint(this AssociationEndModel model)
         {
             return model.HasStereotype("Unique Constraint");
