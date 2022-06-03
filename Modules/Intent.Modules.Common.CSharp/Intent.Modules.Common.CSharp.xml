@@ -813,19 +813,7 @@
             as well as the <c>[]</c> syntax.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)">
-            <summary>
-            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> which works 
-            </summary>
-            <remarks>
-            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
-            already existing instance, if an instance is found then that is returned, otherwise a new
-            instance is created, placed in the cache and returned.
-            </remarks>
-            <param name="collectionFormat">The collection type, for example:
-            <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-            <param name="nullableFormatter"><see cref="T:Intent.Modules.Common.TypeResolution.INullableFormatter"/> to use.</param>
-        </member>
+        <!-- Badly formed XML comment ignored for member "M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)" -->
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> constructed with the

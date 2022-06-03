@@ -13,7 +13,6 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers;
 public class CSharpCollectionFormatter : ICollectionFormatter
 {
     private readonly CSharpResolvedTypeInfo _typeInfo;
-    //private static readonly CSharpResolvedTypeInfo[] NullOnlyGenericTypeParameters = { null };
     private static readonly ConcurrentDictionary<string, CSharpCollectionFormatter> Cache = new();
 
     private CSharpCollectionFormatter(CSharpResolvedTypeInfo typeInfo)
@@ -124,7 +123,7 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> which works 
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> based on the provided <"/>
     /// </summary>
     /// <remarks>
     /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an

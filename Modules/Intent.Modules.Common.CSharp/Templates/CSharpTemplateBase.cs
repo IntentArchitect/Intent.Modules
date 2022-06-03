@@ -86,6 +86,11 @@ namespace Intent.Modules.Common.CSharp.Templates
                 csharpProject: OutputTarget.GetProject());
         }
 
+        protected new CSharpResolvedTypeInfo GetTypeInfo(IClassProvider classProvider)
+        {
+            return (CSharpResolvedTypeInfo)base.GetTypeInfo(classProvider);
+        }
+
         /// <summary>
         /// Returns the <see cref="IOutputTarget"/> for the .csproj file that contains this file.
         /// </summary>

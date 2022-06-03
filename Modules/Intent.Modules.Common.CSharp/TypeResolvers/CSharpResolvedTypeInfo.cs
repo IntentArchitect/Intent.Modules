@@ -186,7 +186,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             {
                 fullyQualifiedTypeName = NullableFormatter.AsNullable(this, fullyQualifiedTypeName);
             }
-
+             
             return fullyQualifiedTypeName;
         }
 
