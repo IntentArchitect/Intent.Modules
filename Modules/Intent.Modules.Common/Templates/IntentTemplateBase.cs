@@ -386,6 +386,19 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         protected virtual IResolvedTypeInfo GetTypeInfo(IClassProvider classProvider)
         {
+            if (!HasTypeResolver())
+            {
+                return ResolvedTypeInfo.Create(
+                    name: classProvider.FullTypeName(),
+                    isPrimitive: false,
+                    isNullable: false,
+                    isCollection: false,
+                    typeReference: null,
+                    template: classProvider,
+                    nullableFormatter: null,
+                    collectionFormatter: null);
+            }
+
             return Types.Get(classProvider);
         }
 
