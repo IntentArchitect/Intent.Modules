@@ -764,6 +764,27 @@
             implicitly included (for example in an SDK style project).
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.OutputTargetExtensions.AddNugetPackages(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject,System.Collections.Generic.IEnumerable{Intent.Modules.Common.VisualStudio.INugetPackageInfo})">
+            <summary>
+            Adds a NuGet package dependency to a project.
+            <para>
+            Example usage:
+            <code>
+                var project = ExecutionContext.OutputTargets.Single(x => x.HasRole("Role")).GetProject();
+                project.AddNugetPackages(nugetPackages);
+            </code>
+            </para>
+            </summary>
+            <example>
+            Example usage:
+            <code>
+                var project = ExecutionContext.OutputTargets.Single(x => x.HasRole("Role")).GetProject();
+                project.AddNugetPackages(nugetPackages);
+            </code>
+            </example>
+            <param name="csharpProject"></param>
+            <param name="packages"></param>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions">
             <summary>
             Extension methods for <see cref="T:Intent.Templates.ITemplateFileConfig"/>.
@@ -1033,6 +1054,11 @@
         </member>
         <member name="M:Intent.Modules.Common.VisualStudio.NugetPackageInfo.GetHashCode">
             <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.VisualStudio.VisualStudioProjectExtensions.AddNugetPackages(Intent.Engine.IOutputTarget,System.Collections.Generic.IEnumerable{Intent.Modules.Common.VisualStudio.INugetPackageInfo})">
+            <summary>
+            Obsolete. Use <see cref="!:AddNugetPackages(ICSharpProject,IEnumerable&lt;INugetPackageInfo&gt;)"/> instead.
+            </summary>
         </member>
     </members>
 </doc>

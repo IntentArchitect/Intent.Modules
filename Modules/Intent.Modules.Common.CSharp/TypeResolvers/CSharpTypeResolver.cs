@@ -114,12 +114,6 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                         isPrimitive = false;
                         break;
                 }
-
-                // Moved to the NullFormatter:
-                //if (typeInfo.IsNullable && (isPrimitive || _project.IsNullableAwareContext() || typeInfo.Element.SpecializationType.Equals("Enum", StringComparison.InvariantCultureIgnoreCase)))
-                //{
-                //    result += "?";
-                //}
             }
 
             return new ResolvedTypeInfo(result, isPrimitive, typeInfo.IsNullable, isCollection, typeInfo, null);
