@@ -1,28 +1,27 @@
 ﻿using System;
 using System.Collections.Concurrent;
-using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.Common.CSharp.TypeResolvers;
+namespace Intent.Modules.Common.Java.TypeResolvers;
 
 /// <summary>
-/// C# <see cref="ICollectionFormatter"/> which recognizes collection types with generic parameters
+/// Java <see cref="ICollectionFormatter"/> which recognizes collection types with generic parameters
 /// as well as the <c>[]</c> syntax.
 /// </summary>
-public class CSharpCollectionFormatter : ICollectionFormatter
+public class JavaCollectionFormatter : ICollectionFormatter
 {
-    private readonly CSharpResolvedTypeInfo _typeInfo;
-    private static readonly ConcurrentDictionary<string, CSharpCollectionFormatter> Cache = new();
+    private readonly JavaResolvedTypeInfo _typeInfo;
+    private static readonly ConcurrentDictionary<string, JavaCollectionFormatter> Cache = new();
 
-    private CSharpCollectionFormatter(CSharpResolvedTypeInfo typeInfo)
+    private JavaCollectionFormatter(JavaResolvedTypeInfo typeInfo)
     {
         _typeInfo = typeInfo;
     }
 
-    private CSharpCollectionFormatter(string collectionFormat)
+    private JavaCollectionFormatter(string collectionFormat)
     {
-        static CSharpResolvedTypeInfo Parse(string type)
+        static JavaResolvedTypeInfo Parse(string type)
         {
             static bool TryGetBracketedContentFromEnd(char openingBracket, char closingBracket, string type, out string innerContent)
             {
@@ -62,33 +61,21 @@ public class CSharpCollectionFormatter : ICollectionFormatter
                 return null;
             }
 
-            var isNullable = false;
-            if (type[^1] == '?')
+            var arrayDimensionCount = 0;
+            while (TryGetBracketedContentFromEnd('[', ']', type, out _))
             {
-                type = type[..^1];
-                isNullable = true;
+                arrayDimensionCount++;
             }
 
-            var jaggedArrays = new List<CSharpJaggedArray>();
-            while (TryGetBracketedContentFromEnd('[', ']', type, out var squareBracketsContent))
+            if (arrayDimensionCount > 0)
             {
-                var arrayDimensionCount = squareBracketsContent.Count(@char => @char == ',');
-
-                jaggedArrays.Add(new CSharpJaggedArray(arrayDimensionCount));
-
-                type = type[..^(squareBracketsContent.Length + 2)];
-            }
-
-            if (jaggedArrays.Count > 0)
-            {
-                return CSharpResolvedTypeInfo.CreateForArray(
+                return JavaResolvedTypeInfo.CreateForArray(
                     forResolvedType: Parse(type),
-                    isNullable: isNullable,
-                    nullableFormatter: null,
-                    jaggedArrays: jaggedArrays);
+                    isNullable: false,
+                    arrayDimensionCount: arrayDimensionCount);
             }
 
-            var genericTypeParameters = Array.Empty<CSharpResolvedTypeInfo>();
+            var genericTypeParameters = Array.Empty<JavaResolvedTypeInfo>();
             if (TryGetBracketedContentFromEnd('<', '>', type, out var angledBracketsContent))
             {
                 genericTypeParameters = angledBracketsContent
@@ -99,23 +86,22 @@ public class CSharpCollectionFormatter : ICollectionFormatter
                 type = type[..^(angledBracketsContent.Length + 2)];
             }
 
-            var @namespace = string.Empty;
+            var package = string.Empty;
             var lastIndexOfPeriod = type.LastIndexOf(".", StringComparison.Ordinal);
             if (lastIndexOfPeriod >= 0)
             {
-                @namespace = type[..lastIndexOfPeriod];
+                package = type[..lastIndexOfPeriod];
                 type = type[(lastIndexOfPeriod + 1)..];
             }
 
-            return CSharpResolvedTypeInfo.Create(
+            return JavaResolvedTypeInfo.Create(
                 name: type,
-                @namespace: @namespace,
+                package: package,
                 isPrimitive: false,
-                isNullable: isNullable,
+                isNullable: false,
                 isCollection: true,
                 typeReference: null,
                 template: null,
-                nullableFormatter: null,
                 genericTypeParameters: genericTypeParameters);
         }
 
@@ -123,42 +109,40 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> based on the provided
+    /// Returns an instance of <see cref="JavaCollectionFormatter"/> based on the provided
     /// <paramref name="collectionFormat"/>.
     /// </summary>
     /// <remarks>
-    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
+    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
     /// already existing instance, if an instance is found then that is returned, otherwise a new
     /// instance is created, placed in the cache and returned.
     /// </remarks>
-    /// <param name="collectionFormat">The collection type, for example:
-    /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-    public static CSharpCollectionFormatter GetOrCreate(string collectionFormat)
+    /// <param name="collectionFormat">The collection type</param>
+    public static JavaCollectionFormatter GetOrCreate(string collectionFormat)
     {
         return Cache.GetOrAdd(
             collectionFormat,
-            _ => new CSharpCollectionFormatter(collectionFormat));
+            _ => new JavaCollectionFormatter(collectionFormat));
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> constructed with the
+    /// Returns an instance of <see cref="JavaCollectionFormatter"/> constructed with the
     /// specified parameters.
     /// </summary>
     /// <remarks>
-    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
+    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
     /// already existing instance, if an instance is found then that is returned, otherwise a new
     /// instance is created, placed in the cache and returned.
     /// <para>
-    /// If any of the values of <see cref="CSharpResolvedTypeInfo.GenericTypeParameters"/> is null,
-    /// they will be substituted by the provided <see cref="CSharpResolvedTypeInfo"/> in the
+    /// If any of the values of <see cref="JavaResolvedTypeInfo.GenericTypeParameters"/> is null,
+    /// they will be substituted by the provided <see cref="JavaResolvedTypeInfo"/> in the
     /// <see cref="ApplyTo"/> method.
     /// </para>
     /// </remarks>
-    /// <param name="typeInfo">The collection type, for example:
-    /// <c>System.Collection.Generic.Dictionary&lt;TKey, TValue&gt;</c>.</param>
-    public static CSharpCollectionFormatter GetOrCreate(CSharpResolvedTypeInfo typeInfo)
+    /// <param name="typeInfo">The collection type</param>
+    public static JavaCollectionFormatter GetOrCreate(JavaResolvedTypeInfo typeInfo)
     {
-        return Cache.GetOrAdd(typeInfo.ToString(), _ => new CSharpCollectionFormatter(typeInfo));
+        return Cache.GetOrAdd(typeInfo.ToString(), _ => new JavaCollectionFormatter(typeInfo));
     }
 
     /// <inheritdoc />
@@ -169,13 +153,13 @@ public class CSharpCollectionFormatter : ICollectionFormatter
 
     IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
     {
-        return ApplyTo((CSharpResolvedTypeInfo)typeInfo);
+        return ApplyTo((JavaResolvedTypeInfo)typeInfo);
     }
 
     /// <summary>
-    /// Returns a <see cref="CSharpResolvedTypeInfo"/> with the TODO
+    /// Returns a <see cref="JavaResolvedTypeInfo"/> with the provided TODO
     /// </summary>
-    public CSharpResolvedTypeInfo ApplyTo(CSharpResolvedTypeInfo typeInfo)
+    public JavaResolvedTypeInfo ApplyTo(JavaResolvedTypeInfo typeInfo)
     {
         if (_typeInfo == null)
         {
@@ -185,26 +169,24 @@ public class CSharpCollectionFormatter : ICollectionFormatter
         var isNullable = typeInfo.IsNullable;
         typeInfo = typeInfo.WithIsNullable(false);
 
-        if (_typeInfo.JaggedArrays != null)
+        if (_typeInfo.ArrayDimensionCount > 0)
         {
-            return CSharpResolvedTypeInfo.CreateForArray(
+            return JavaResolvedTypeInfo.CreateForArray(
                 forResolvedType: typeInfo,
                 isNullable: isNullable,
-                nullableFormatter: typeInfo.NullableFormatter,
-                jaggedArrays: _typeInfo.JaggedArrays);
+                arrayDimensionCount: _typeInfo.ArrayDimensionCount);
         }
 
-        return CSharpResolvedTypeInfo.Create(
+        return JavaResolvedTypeInfo.Create(
             name: _typeInfo.Name,
-            @namespace: _typeInfo.Namespace,
+            package: _typeInfo.Package,
             isPrimitive: _typeInfo.IsPrimitive,
             isNullable: isNullable,
             isCollection: true,
             typeReference: _typeInfo.TypeReference,
             template: _typeInfo.Template,
-            nullableFormatter: typeInfo.NullableFormatter,
             genericTypeParameters: _typeInfo.GenericTypeParameters.Count == 0
-                ? Array.Empty<CSharpResolvedTypeInfo>()
+                ? Array.Empty<JavaResolvedTypeInfo>()
                 : _typeInfo.GenericTypeParameters
                     .Select(genericTypeParameter => genericTypeParameter ?? typeInfo)
                     .ToArray());

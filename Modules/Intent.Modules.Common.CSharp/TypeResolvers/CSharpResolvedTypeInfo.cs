@@ -177,7 +177,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 : $"{Namespace}.{Name}";
 
             fullyQualifiedTypeName = JaggedArrays != null
-                ? $"{GenericTypeParameters[0].GetFullyQualifiedTypeName()}{string.Join(null, JaggedArrays.Select(x => x.ToString()))}"
+                ? $"{GenericTypeParameters[0].GetFullyQualifiedTypeName()}{string.Concat(JaggedArrays.Select(x => x.ToString()))}"
                 : GenericTypeParameters.Count > 0
                     ? $"{fullyQualifiedTypeName}<{string.Join(", ", GenericTypeParameters.Select(x => x.GetFullyQualifiedTypeName()))}>"
                     : fullyQualifiedTypeName;
@@ -196,7 +196,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             var typeName = Name;
 
             typeName = JaggedArrays != null
-                ? $"{GenericTypeParameters[0]}{string.Join(null, JaggedArrays.Select(x => x.ToString()))}"
+                ? $"{GenericTypeParameters[0]}{string.Concat(JaggedArrays.Select(x => x.ToString()))}"
                 : GenericTypeParameters.Count > 0
                     ? $"{typeName}<{string.Join(", ", GenericTypeParameters.Select(x => x.ToString()))}>"
                     : typeName;

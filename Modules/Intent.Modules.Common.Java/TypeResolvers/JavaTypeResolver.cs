@@ -22,56 +22,83 @@ namespace Intent.Modules.Common.Java.TypeResolvers
         {
             return new JavaTypeResolverContext(new JavaTypeResolverOptions());
         }
-    }
 
-    public class JavaTypeResolverOptions
-    {
-        public bool ReturnsPrimitives { get; set; } = false;
-    }
-
-    public class JavaTypeResolverContext : TypeResolverContextBase
-    {
-
-        public JavaTypeResolverContext(JavaTypeResolverOptions options) : base(new CollectionFormatter("{0}[]"), new DefaultNullableFormatter())
+        private class JavaTypeResolverContext : TypeResolverContextBase
         {
-            Options = options;
-        }
 
-        public JavaTypeResolverOptions Options { get; set; }
-
-        protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
-        {
-            return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
-        }
-
-        protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
-        {
-            if (typeInfo.Element == null)
+            public JavaTypeResolverContext(JavaTypeResolverOptions options) : base(new CollectionFormatter("{0}[]"), new DefaultNullableFormatter())
             {
-                return new ResolvedTypeInfo("void", true, typeInfo, null);
+                Options = options;
             }
-            var result = typeInfo.Element.Name;
-            bool isPrimitive;
-            if (typeInfo.Element.HasStereotype("Java"))
+
+            public JavaTypeResolverOptions Options { get; }
+
+            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
-                var typeName = typeInfo.Element.GetStereotypeProperty<string>("Java", "Type");
-                if (string.IsNullOrWhiteSpace(typeName))
+                var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
+                    ? JavaCollectionFormatter.GetOrCreate(collectionFormat)
+                    : null;
+
+                return Get(typeInfo, collectionFormatter);
+            }
+
+            protected override IResolvedTypeInfo ResolveType(
+                ITypeReference typeReference,
+                INullableFormatter nullableFormatter)
+            {
+                return ResolveTypeInternal(typeReference);
+            }
+
+            private JavaResolvedTypeInfo ResolveTypeInternal(ITypeReference typeReference)
+            {
+                IReadOnlyList<JavaResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
-                    typeName = typeInfo.Element.Name;
+                    return genericTypeParameters.Select(ResolveTypeInternal).ToArray();
                 }
 
-                var package = typeInfo.Element.GetStereotypeProperty<string>("Java", "Package");
-                isPrimitive = typeInfo.Element.GetStereotypeProperty("Java", "Is Primitive", false);
-                result = !string.IsNullOrWhiteSpace(package) ? $"{package}.{typeName}" : typeName;
-            }
-            else
-            {
-                isPrimitive = true;
-                switch (typeInfo.Element.Name)
+                if (typeReference.Element == null)
+                {
+                    return JavaResolvedTypeInfo.Create(
+                        name: "void",
+                        package: string.Empty,
+                        isPrimitive: true,
+                        isNullable: false,
+                        isCollection: false,
+                        typeReference: typeReference,
+                        template: null);
+                }
+
+                if (typeReference.Element.HasStereotype("Java"))
+                {
+                    var name = typeReference.Element.GetStereotypeProperty("Java", "Type", typeReference.Element.Name);
+                    var package = typeReference.Element.GetStereotypeProperty("Java", "Package", string.Empty);
+
+                    var lastIndexOfPeriod = name.LastIndexOf('.');
+                    if (lastIndexOfPeriod >= 0)
+                    {
+                        package = string.IsNullOrWhiteSpace(package)
+                            ? name[..lastIndexOfPeriod]
+                            : $"{package}.{name[..lastIndexOfPeriod]}";
+                        name = name[(lastIndexOfPeriod + 1)..];
+                    }
+
+                    return JavaResolvedTypeInfo.Create(
+                        name: name,
+                        package: package,
+                        isPrimitive: typeReference.Element.GetStereotypeProperty("Java", "Is Primitive", false),
+                        isNullable: typeReference.IsNullable,
+                        isCollection: typeReference.IsCollection,
+                        typeReference: typeReference,
+                        genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
+                }
+
+                var result = typeReference.Element.Name;
+                var isPrimitive = true;
+                switch (typeReference.Element.Name)
                 {
                     case "bool":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Boolean" : "boolean";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Boolean" : "boolean";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "date":
                         result = "java.time.LocalDate";
@@ -82,36 +109,36 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                         isPrimitive = false;
                         break;
                     case "char":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Char" : "char";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Char" : "char";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "byte":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Byte" : "byte";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Byte" : "byte";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "decimal":
                         result = "java.math.BigDecimal";
                         isPrimitive = false;
                         break;
                     case "double":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Double" : "double";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Double" : "double";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "float":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Float" : "float";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Float" : "float";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "short":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Short" : "short";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Short" : "short";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "int":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Integer" : "int";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Integer" : "int";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "long":
-                        result = typeInfo.IsNullable || !Options.ReturnsPrimitives ? "Long" : "long";
-                        isPrimitive = !typeInfo.IsNullable;
+                        result = typeReference.IsNullable || !Options.ReturnsPrimitives ? "Long" : "long";
+                        isPrimitive = !typeReference.IsNullable;
                         break;
                     case "datetimeoffset":
                         result = "java.time.OffsetDateTime";
@@ -137,10 +164,15 @@ namespace Intent.Modules.Common.Java.TypeResolvers
 
                 result = !string.IsNullOrWhiteSpace(result)
                     ? result
-                    : typeInfo.Element.Name;
-            }
+                    : typeReference.Element.Name;
 
-            return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
+                return new JavaResolvedTypeInfo(result, isPrimitive, typeReference, null);
+            }
         }
+    }
+
+    public class JavaTypeResolverOptions
+    {
+        public bool ReturnsPrimitives { get; set; } = false;
     }
 }
