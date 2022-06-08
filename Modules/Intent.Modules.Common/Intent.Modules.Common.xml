@@ -885,8 +885,20 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTemplate``1(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Retrieve an instance of an <see cref="T:Intent.Templates.ITemplate"/>.
+            Retrieve an instance of an <see cref="T:Intent.Templates.ITemplate"/>. By default an exception will be thrown if the template is not found.
+            This can be changed in the <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/>.
             </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTemplate``1(System.String,``0@)">
+            <summary>
+            Try to retrieve an instance of <see cref="T:Intent.Templates.ITemplate"/>. Returns true if the template is found.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTemplate``1(System.String,Intent.Metadata.Models.IMetadataModel,``0@)">
+            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTemplate``1(System.String,``0@)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTemplate``1(System.String,System.String,``0@)">
+            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTemplate``1(System.String,``0@)"/>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.ToString">
             <inheritdoc />

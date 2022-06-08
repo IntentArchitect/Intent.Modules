@@ -764,7 +764,8 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Retrieve an instance of an <see cref="ITemplate"/>.
+        /// Retrieve an instance of an <see cref="ITemplate"/>. By default an exception will be thrown if the template is not found.
+        /// This can be changed in the <see cref="TemplateDiscoveryOptions"/>.
         /// </summary>
         public TTemplate GetTemplate<TTemplate>(string templateId, TemplateDiscoveryOptions options = null)
             where TTemplate : class
@@ -773,6 +774,33 @@ namespace Intent.Modules.Common.Templates
                 getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId) as TTemplate,
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}",
                 options: options);
+        }
+
+        /// <summary>
+        /// Try to retrieve an instance of <see cref="ITemplate"/>. Returns true if the template is found.
+        /// </summary>
+        public bool TryGetTemplate<TTemplate>(string templateId, out TTemplate template)
+            where TTemplate : class
+        {
+            template = GetTemplate<TTemplate>(templateId: templateId, options: TemplateDiscoveryOptions.DoNotThrow);
+            return template != null;
+        }
+
+        /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
+
+        public bool TryGetTemplate<TTemplate>(string templateId, IMetadataModel model, out TTemplate template)
+            where TTemplate : class
+        {
+            template = GetTemplate<TTemplate>(templateId: templateId, model: model, options: TemplateDiscoveryOptions.DoNotThrow);
+            return template != null;
+        }
+
+        /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
+        public bool TryGetTemplate<TTemplate>(string templateId, string modelId, out TTemplate template)
+            where TTemplate : class
+        {
+            template = GetTemplate<TTemplate>(templateId: templateId, modelId: modelId, options: TemplateDiscoveryOptions.DoNotThrow);
+            return template != null;
         }
 
         #endregion
