@@ -74,7 +74,7 @@ namespace Intent.Modules.Common.TypeResolution
         void AddClassTypeSource(ITypeSource typeSource);
 
         /// <summary>
-        /// Adds an <see cref="ITypeSource"/> that is only used to resolve type names when <see cref="InContext(string)"/> is called for the specific <see cref="contextName"/>.
+        /// Adds an <see cref="ITypeSource"/> that is only used to resolve type names when <see cref="InContext(string)"/> is called for the specific <paramref name="contextName"/>.
         /// </summary>
         void AddTypeSource(ITypeSource typeSource, string contextName);
 

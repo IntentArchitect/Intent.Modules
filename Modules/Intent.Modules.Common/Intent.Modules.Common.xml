@@ -777,7 +777,7 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Modules.Common.Templates.IClassProvider)">
             <summary>
-            Resolves the type name for the provided <see cref="!:classProvider"/>.
+            Resolves the type name for the provided <paramref name="classProvider"/>.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IElement,System.String)">
@@ -1458,7 +1458,7 @@
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">
             <summary>
-            Adds an <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> that is only used to resolve type names when <see cref="M:Intent.Modules.Common.TypeResolution.ITypeResolver.InContext(System.String)"/> is called for the specific <see cref="!:contextName"/>.
+            Adds an <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> that is only used to resolve type names when <see cref="M:Intent.Modules.Common.TypeResolution.ITypeResolver.InContext(System.String)"/> is called for the specific <paramref name="contextName"/>.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolver.AddClassTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource,System.String)">

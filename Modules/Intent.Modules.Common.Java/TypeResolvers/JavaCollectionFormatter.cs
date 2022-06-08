@@ -62,9 +62,10 @@ public class JavaCollectionFormatter : ICollectionFormatter
             }
 
             var arrayDimensionCount = 0;
-            while (TryGetBracketedContentFromEnd('[', ']', type, out _))
+            while (TryGetBracketedContentFromEnd('[', ']', type, out var squareBracketsContent))
             {
                 arrayDimensionCount++;
+                type = type[..^(squareBracketsContent.Length + 2)];
             }
 
             if (arrayDimensionCount > 0)

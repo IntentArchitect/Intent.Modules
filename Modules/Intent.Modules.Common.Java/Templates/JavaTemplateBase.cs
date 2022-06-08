@@ -10,26 +10,28 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Java.Templates
 {
+    /// <inheritdoc />
     public abstract class JavaTemplateBase : JavaTemplateBase<object>
     {
+        /// <summary>
+        /// Creates a new instance of <see cref="JavaTemplateBase"/>.
+        /// </summary>
         protected JavaTemplateBase(string templateId, IOutputTarget outputTarget) : base(templateId, outputTarget, null)
         {
         }
     }
 
+    /// <inheritdoc cref="JavaTemplateBase{TModel}"/>
     public abstract class JavaTemplateBase<TModel, TDecorator> : JavaTemplateBase<TModel>, IHasDecorators<TDecorator>
         where TDecorator : ITemplateDecorator
     {
         private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
 
+        /// <summary>
+        /// Creates a new instance of <see cref="JavaTemplateBase{TModel,TDecorator}"/>.
+        /// </summary>
         protected JavaTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
-        }
-
-        /// <inheritdoc />
-        public IEnumerable<TDecorator> GetDecorators()
-        {
-            return _decorators.OrderBy(x => x.Priority);
         }
 
         /// <inheritdoc />
@@ -38,11 +40,31 @@ namespace Intent.Modules.Common.Java.Templates
             _decorators.Add(decorator);
         }
 
+        /// <inheritdoc />
+        public IEnumerable<TDecorator> GetDecorators()
+        {
+            return _decorators.OrderBy(x => x.Priority);
+        }
+
+        /// <summary>
+        /// Aggregates the specified <paramref name="propertyFunc"/> property of all decorators.
+        /// </summary>
+        /// <remarks>
+        /// Ignores Decorators where the property returns null.
+        /// </remarks>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);
         }
 
+        /// <summary>
+        /// Aggregates the specified <paramref name="propertyFunc"/> property of all decorators and
+        /// suffixes the result with <paramref name="suffixIfFound"/> provided that there is output
+        /// from one or more decorators.
+        /// </summary>
+        /// <remarks>
+        /// Ignores Decorators where the property returns null.
+        /// </remarks>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc, string suffixIfFound)
         {
             var output = GetDecorators().Aggregate(propertyFunc);
@@ -50,29 +72,20 @@ namespace Intent.Modules.Common.Java.Templates
         }
     }
 
+    /// <summary>
+    /// Template base for Java files, which invokes code-management to make updates to existing files.
+    /// </summary>
     public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged, IClassProvider, IDeclareImports
     {
-        private readonly ICollection<string> _imports = new List<string>();
+        private readonly HashSet<string> _imports = new();
 
+        /// <summary>
+        /// Creates a new instance of <see cref="JavaTemplateBase{TModel}"/>.
+        /// </summary>
         protected JavaTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
             Types = new JavaTypeResolver();
         }
-
-        public string Package
-        {
-            get
-            {
-                if (FileMetadata.CustomMetadata.ContainsKey("Package"))
-                {
-                    return FileMetadata.CustomMetadata["Package"];
-                }
-                return null;
-            }
-        }
-
-        /// <inheritdoc />
-        public string Namespace => Package;
 
         /// <inheritdoc />
         public string ClassName
@@ -87,35 +100,27 @@ namespace Intent.Modules.Common.Java.Templates
             }
         }
 
-        public string Location => FileMetadata.LocationInProject;
-        public ICollection<JavaDependency> Dependencies { get; } = new List<JavaDependency>();
+        /// <summary>
+        /// Java packages this template depends upon.
+        /// </summary>
+        public ICollection<JavaDependency> Dependencies => new List<JavaDependency>();
 
         /// <summary>
-        /// Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+        /// The Java package.
         /// </summary>
-        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
-        public new void AddTypeSource(string templateId, string collectionFormat)
+        public string Package
         {
-            AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormat));
+            get
+            {
+                if (FileMetadata.CustomMetadata.ContainsKey("Package"))
+                {
+                    return FileMetadata.CustomMetadata["Package"];
+                }
+                return null;
+            }
         }
 
-        /// <summary>
-        /// Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
-        /// </summary>
-        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
-        public void AddTypeSource(string templateId, Func<string, string> formatCollection)
-        {
-            AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, new CollectionFormatter(formatCollection)));
-        }
-
-        /// <summary>
-        /// Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
-        /// </summary>
-        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
-        public void AddTypeSource(string templateId, ICollectionFormatter collectionFormatter)
-        {
-            AddTypeSource(JavaTypeSource.Create(ExecutionContext, templateId, collectionFormatter));
-        }
+        string IClassProvider.Namespace => Package;
 
         /// <summary>
         /// Adds the <see cref="JavaDependency"/> which can be use by Maven or Gradle to import
@@ -124,6 +129,53 @@ namespace Intent.Modules.Common.Java.Templates
         public void AddDependency(JavaDependency dependency)
         {
             Dependencies.Add(dependency);
+        }
+
+        /// <summary>
+        /// Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
+        /// </summary>
+        public void AddImport(string fullyQualifiedType)
+        {
+            _imports.Add(fullyQualifiedType);
+        }
+
+        /// <inheritdoc />
+        public override void BeforeTemplateExecution()
+        {
+            base.BeforeTemplateExecution();
+            foreach (var dependency in Dependencies)
+            {
+                ExecutionContext.EventDispatcher.Publish(dependency);
+            }
+        }
+
+        /// <inheritdoc />
+        protected override ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
+        {
+            return JavaCollectionFormatter.GetOrCreate(collectionFormat);
+        }
+
+        /// <summary>
+        /// Override this method to add additional imports to this Java template. It is
+        /// recommended to call base.DeclareImports().
+        /// </summary>
+        public virtual IEnumerable<string> DeclareImports() => _imports;
+
+        /// <summary>
+        /// Gets the <see cref="JavaFile"/> of the template output.
+        /// </summary>
+        public JavaFile GetTemplateFile()
+        {
+            return JavaFile.Parse(base.RunTemplate());
+        }
+
+        /// <summary>
+        /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
+        /// Will automatically import types if necessary.
+        /// </summary>
+        public override string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
+        {
+            return GetTemplate<IClassProvider>(templateDependency, options).ClassName;
         }
 
         /// <summary>
@@ -138,26 +190,6 @@ namespace Intent.Modules.Common.Java.Templates
             }
 
             return fullyQualifiedType.Split('.').Last();
-        }
-
-        /// <summary>
-        /// Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
-        /// </summary>
-        public void AddImport(string fullyQualifiedType)
-        {
-            if (!_imports.Contains(fullyQualifiedType))
-            {
-                _imports.Add(fullyQualifiedType);
-            }
-        }
-
-        /// <summary>
-        /// Resolves the type name of the <paramref name="templateDependency"/> as a string.
-        /// Will automatically import types if necessary.
-        /// </summary>
-        public override string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
-        {
-            return GetTemplate<IClassProvider>(templateDependency, options).ClassName;
         }
 
         /// <inheritdoc />
@@ -178,39 +210,31 @@ namespace Intent.Modules.Common.Java.Templates
         }
 
         /// <inheritdoc />
-        public override void BeforeTemplateExecution()
-        {
-            base.BeforeTemplateExecution();
-            foreach (var dependency in Dependencies)
-            {
-                ExecutionContext.EventDispatcher.Publish(dependency);
-            }
-        }
-
-        /// <inheritdoc />
         public override string RunTemplate()
         {
-            var file = CreateOutputFile();
+            var file = GetTemplateFile();
 
             this.ResolveAndAddImports(file);
 
             return file.GetSource();
         }
 
-        protected virtual JavaFile CreateOutputFile()
-        {
-            return GetTemplateFile();
-        }
-
-        public JavaFile GetTemplateFile()
-        {
-            return JavaFile.Parse(base.RunTemplate());
-        }
-
         /// <summary>
-        /// Override this method to add additional imports to this Java template. It is
-        /// recommended to call base.DeclareImports().
+        /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
+        /// adds any required imports and applicable template dependencies.
         /// </summary>
-        public virtual IEnumerable<string> DeclareImports() => _imports;
+        protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        {
+            if (resolvedTypeInfo is JavaResolvedTypeInfo { IsPrimitive: false } javaResolvedTypeInfo &&
+                !string.IsNullOrWhiteSpace(javaResolvedTypeInfo.Package))
+            {
+                foreach (var fullyQualifiedTypeName in javaResolvedTypeInfo.GetAllFullyQualifiedTypeNames())
+                {
+                    AddImport(fullyQualifiedTypeName);
+                }
+            }
+
+            return base.UseType(resolvedTypeInfo);
+        }
     }
 }

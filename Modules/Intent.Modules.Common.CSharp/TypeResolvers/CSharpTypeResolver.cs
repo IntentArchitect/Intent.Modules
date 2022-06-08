@@ -53,15 +53,6 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 _csharpProject = csharpProject;
             }
 
-            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
-            {
-                var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
-                    ? CSharpCollectionFormatter.GetOrCreate(collectionFormat)
-                    : null;
-
-                return Get(typeInfo, collectionFormatter);
-            }
-
             public override IResolvedTypeInfo Get(IClassProvider classProvider)
             {
                 return CSharpResolvedTypeInfo.Create(
@@ -79,6 +70,15 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             protected override IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
             {
                 return CSharpResolvedTypeInfo.Create(resolvedTypeInfo);
+            }
+
+            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+            {
+                var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
+                    ? CSharpCollectionFormatter.GetOrCreate(collectionFormat)
+                    : null;
+
+                return Get(typeInfo, collectionFormatter);
             }
 
             protected override IResolvedTypeInfo ResolveType(

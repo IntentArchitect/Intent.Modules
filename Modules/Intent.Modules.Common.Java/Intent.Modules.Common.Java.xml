@@ -4,31 +4,78 @@
         <name>Intent.Modules.Common.Java</name>
     </assembly>
     <members>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.GetDecorators">
+        <member name="T:Intent.Modules.Common.Java.Templates.IDeclareImports">
+            <summary>
+            The implemented type declares imports.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.IDeclareImports.DeclareImports">
+            <summary>
+            The imports declared, must in the format of the fully qualified type with no "import"
+            or ";" in it.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase">
             <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase.#ctor(System.String,Intent.Engine.IOutputTarget)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase"/>.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2">
+            <inheritdoc cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1"/>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.#ctor(System.String,Intent.Engine.IOutputTarget,`0)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2"/>.
+            </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.AddDecorator(`1)">
             <inheritdoc />
         </member>
-        <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.Namespace">
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.GetDecorators">
             <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.GetDecoratorsOutput(System.Func{`1,System.String})">
+            <summary>
+            Aggregates the specified <paramref name="propertyFunc"/> property of all decorators.
+            </summary>
+            <remarks>
+            Ignores Decorators where the property returns null.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`2.GetDecoratorsOutput(System.Func{`1,System.String},System.String)">
+            <summary>
+            Aggregates the specified <paramref name="propertyFunc"/> property of all decorators and
+            suffixes the result with <paramref name="suffixIfFound"/> provided that there is output
+            from one or more decorators.
+            </summary>
+            <remarks>
+            Ignores Decorators where the property returns null.
+            </remarks>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1">
+            <summary>
+            Template base for Java files, which invokes code-management to make updates to existing files.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.#ctor(System.String,Intent.Engine.IOutputTarget,`0)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1"/>.
+            </summary>
         </member>
         <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.ClassName">
             <inheritdoc />
         </member>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddTypeSource(System.String,System.String)">
+        <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.Dependencies">
             <summary>
-            Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+            Java packages this template depends upon.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddTypeSource(System.String,System.Func{System.String,System.String})">
+        <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.Package">
             <summary>
-            Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddTypeSource(System.String,Intent.Modules.Common.TypeResolution.ICollectionFormatter)">
-            <summary>
-            Obsolete. Specify using fluent api (e.g. `AddTypeSource(...).WithCollectionFormat(...);`.
+            The Java package.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddDependency(Intent.Modules.Common.Java.Templates.JavaDependency)">
@@ -37,15 +84,26 @@
             dependencies.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.ImportType(System.String)">
-            <summary>
-            Imports the fully qualified type and returns its reference name. For example,
-            java.util.List will import java.util.List and return List.
-            </summary>
-        </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddImport(System.String)">
             <summary>
             Imports the fully qualified type name <paramref name="fullyQualifiedType"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.BeforeTemplateExecution">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.CreateCollectionFormatter(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.DeclareImports">
+            <summary>
+            Override this method to add additional imports to this Java template. It is
+            recommended to call base.DeclareImports().
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.GetTemplateFile">
+            <summary>
+            Gets the <see cref="T:Intent.Code.Weaving.Java.Editor.JavaFile"/> of the template output.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
@@ -54,19 +112,33 @@
             Will automatically import types if necessary.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.NormalizeTypeName(System.String)">
-            <inheritdoc />
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.ImportType(System.String)">
+            <summary>
+            Imports the fully qualified type and returns its reference name. For example,
+            java.util.List will import java.util.List and return List.
+            </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.BeforeTemplateExecution">
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.NormalizeTypeName(System.String)">
             <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.RunTemplate">
             <inheritdoc />
         </member>
-        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.DeclareImports">
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
             <summary>
-            Override this method to add additional imports to this Java template. It is
-            recommended to call base.DeclareImports().
+            Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
+            adds any required imports and applicable template dependencies.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods">
+            <summary>
+            Extension methods for <see cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.ResolveAndAddImports``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},Intent.Code.Weaving.Java.Editor.JavaFile)">
+            <summary>
+            Determines all imports for the provided <paramref name="template"/> and adds them to
+            the provided <paramref name="file"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Java.Templates.ModelHasFolderTemplateExtensions">
@@ -78,6 +150,115 @@
             <summary>
             Creates a fully qualified package based on the OutputTarget location and the parent folders of this template's model as described in the designer.
             </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter">
+            <summary>
+            Java <see cref="T:Intent.Modules.Common.TypeResolution.ICollectionFormatter"/> which recognizes collection types with generic parameters
+            as well as the <c>[]</c> syntax.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.GetOrCreate(System.String)">
+            <summary>
+            Returns an instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> based on the provided
+            <paramref name="collectionFormat"/>.
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+            <param name="collectionFormat">The collection type</param>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.GetOrCreate(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
+            <summary>
+            Returns an instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> constructed with the
+            specified parameters.
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            <para>
+            If any of the values of <see cref="P:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GenericTypeParameters"/> is null,
+            they will be substituted by the provided <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> in the
+            <see cref="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.ApplyTo(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)"/> method.
+            </para>
+            </remarks>
+            <param name="typeInfo">The collection type</param>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.Format(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.ApplyTo(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> with the provided TODO
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo">
+            <summary>
+            Java specialization of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.Create(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo})">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.Create(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.CreateForArray(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo,System.Boolean,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> for an array resolved type.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.WithIsNullable(System.Boolean)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.WithIsNullable(System.Boolean)" />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.WithIsNullableProtected(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.Package">
+            <summary>
+            The package of the type.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.ArrayDimensionCount">
+            <summary>
+            The number of dimensions of the array for the type, or <c>0</c> if the type is not an array.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GenericTypeParameters">
+            <inheritdoc cref="P:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.GenericTypeParameters"/>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GetAllFullyQualifiedTypeNames">
+            <summary>
+            Returns the the fully qualified name for this this type as well as the recursively acquired
+            packages of this type's <see cref="P:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GenericTypeParameters"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GetFullyQualifiedTypeName">
+            <summary>
+            Gets the fully qualified type name.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.TypeResolvers.JavaTypeResolver">
+            <summary>
+            Java specialization of <see cref="T:Intent.Modules.Common.TypeResolution.TypeResolverBase"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaTypeResolver.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaTypeResolver"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaTypeResolver.CreateContext">
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.Java.Weaving.JavaWeavingOutputTransformer">
             <summary>

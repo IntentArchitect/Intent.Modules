@@ -60,7 +60,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     }
 
     /// <summary>
-    /// Template base for CSharp files, which invokes code-management to make updates to existing files.
+    /// Template base for C# files, which invokes code-management to make updates to existing files.
     /// <para>
     /// Learn more about templates in
     /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common.csharp&amp;additionalData=templates">
@@ -86,6 +86,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 csharpProject: OutputTarget.GetProject());
         }
 
+        /// <inheritdoc cref="IntentTemplateBase.GetTypeInfo(IClassProvider)"/>
         protected new CSharpResolvedTypeInfo GetTypeInfo(IClassProvider classProvider)
         {
             return (CSharpResolvedTypeInfo)base.GetTypeInfo(classProvider);
@@ -179,8 +180,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string)"/>
-        [FixFor_Version4("Remove this method and let the override below to the necessary work")]
-        public ClassTypeSource AddTypeSource(string templateId)
+        [FixFor_Version4("Remove this method and let the override below do the necessary work")]
+        public new ClassTypeSource AddTypeSource(string templateId)
         {
             return base.AddTypeSource(templateId, "System.Collections.Generic.IEnumerable<{0}>");
         }
@@ -536,7 +537,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         /// <summary>
         /// Resolves the fully qualified type name for the <paramref name="element"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the
@@ -555,7 +556,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         /// <summary>
         /// Resolves the fully qualified type name for the <paramref name="hasTypeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the
@@ -613,7 +614,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         /// <summary>
         /// Resolves the fully qualified type name for the <paramref name="typeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Any added <see cref="ITypeSource"/> by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the

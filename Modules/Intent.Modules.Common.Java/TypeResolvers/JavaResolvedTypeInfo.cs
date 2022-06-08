@@ -141,22 +141,20 @@ public class JavaResolvedTypeInfo : ResolvedTypeInfo
     public int ArrayDimensionCount { get; }
 
     /// <inheritdoc cref="IResolvedTypeInfo.GenericTypeParameters"/>
-    public new IReadOnlyList<JavaResolvedTypeInfo> GenericTypeParameters => (IReadOnlyList<JavaResolvedTypeInfo>)base.GenericTypeParameters;
+    public new IReadOnlyList<JavaResolvedTypeInfo> GenericTypeParameters =>
+        (IReadOnlyList<JavaResolvedTypeInfo>)base.GenericTypeParameters;
 
     /// <summary>
-    /// Returns the package for this this type as well as the recursively acquired packages
-    /// of this type's <see cref="GenericTypeParameters"/>.
+    /// Returns the the fully qualified name for this this type as well as the recursively acquired
+    /// packages of this type's <see cref="GenericTypeParameters"/>.
     /// </summary>
-    public IEnumerable<string> GetPackages()
+    public IEnumerable<string> GetAllFullyQualifiedTypeNames()
     {
-        if (!string.IsNullOrWhiteSpace(Package))
-        {
-            yield return Package;
-        }
+        yield return GetFullyQualifiedTypeName();
 
-        foreach (var package in GenericTypeParameters.SelectMany(x => x.GetPackages()))
+        foreach (var fullyQualifiedTypeName in GenericTypeParameters.SelectMany(x => x.GetAllFullyQualifiedTypeNames()))
         {
-            yield return package;
+            yield return fullyQualifiedTypeName;
         }
     }
 
@@ -168,5 +166,15 @@ public class JavaResolvedTypeInfo : ResolvedTypeInfo
             : GenericTypeParameters.Count > 0
                 ? $"{Name}<{string.Join(", ", GenericTypeParameters.Select(x => x.ToString()))}>"
                 : Name;
+    }
+
+    /// <summary>
+    /// Gets the fully qualified type name.
+    /// </summary>
+    public string GetFullyQualifiedTypeName()
+    {
+        return string.IsNullOrWhiteSpace(Package)
+            ? Name
+            : $"{Package}.{Name}";
     }
 }

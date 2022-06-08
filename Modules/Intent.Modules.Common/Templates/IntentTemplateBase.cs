@@ -555,7 +555,7 @@ namespace Intent.Modules.Common.Templates
         #region GetTypeName
 
         /// <summary>
-        /// Resolves the type name for the provided <see cref="classProvider"/>.
+        /// Resolves the type name for the provided <paramref name="classProvider"/>.
         /// </summary>
         protected virtual string GetTypeName(IClassProvider classProvider)
         {
