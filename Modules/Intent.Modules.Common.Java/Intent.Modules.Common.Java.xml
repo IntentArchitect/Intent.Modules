@@ -70,12 +70,12 @@
         </member>
         <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.Dependencies">
             <summary>
-            Java packages this template depends upon.
+            Library dependencies of this template.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.Package">
             <summary>
-            The Java package.
+            The package for the type defined by this template.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1.AddDependency(Intent.Modules.Common.Java.Templates.JavaDependency)">
@@ -191,7 +191,8 @@
         </member>
         <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.ApplyTo(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
             <summary>
-            Returns a <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> with the provided TODO
+            Returns a <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> with the provided
+            TODO JL
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo">
