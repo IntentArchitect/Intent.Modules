@@ -3,25 +3,25 @@ using System.Collections.Concurrent;
 using System.Linq;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.Common.Java.TypeResolvers;
+namespace Intent.Modules.Common.Kotlin.TypeResolvers;
 
 /// <summary>
-/// Java <see cref="ICollectionFormatter"/> which recognizes collection types with generic parameters
+/// Kotlin <see cref="ICollectionFormatter"/> which recognizes collection types with generic parameters
 /// as well as the <c>[]</c> syntax.
 /// </summary>
-public class JavaCollectionFormatter : ICollectionFormatter
+public class KotlinCollectionFormatter : ICollectionFormatter
 {
-    private readonly JavaResolvedTypeInfo _typeInfo;
-    private static readonly ConcurrentDictionary<string, JavaCollectionFormatter> Cache = new();
+    private readonly KotlinResolvedTypeInfo _typeInfo;
+    private static readonly ConcurrentDictionary<string, KotlinCollectionFormatter> Cache = new();
 
-    private JavaCollectionFormatter(JavaResolvedTypeInfo typeInfo)
+    private KotlinCollectionFormatter(KotlinResolvedTypeInfo typeInfo)
     {
         _typeInfo = typeInfo;
     }
 
-    private JavaCollectionFormatter(string collectionFormat)
+    private KotlinCollectionFormatter(string collectionFormat)
     {
-        static JavaResolvedTypeInfo Parse(string type)
+        static KotlinResolvedTypeInfo Parse(string type)
         {
             static bool TryGetBracketedContentFromEnd(char openingBracket, char closingBracket, string type, out string innerContent)
             {
@@ -61,22 +61,7 @@ public class JavaCollectionFormatter : ICollectionFormatter
                 return null;
             }
 
-            var arrayDimensionCount = 0;
-            while (TryGetBracketedContentFromEnd('[', ']', type, out var squareBracketsContent))
-            {
-                arrayDimensionCount++;
-                type = type[..^(squareBracketsContent.Length + 2)];
-            }
-
-            if (arrayDimensionCount > 0)
-            {
-                return JavaResolvedTypeInfo.CreateForArray(
-                    forResolvedType: Parse(type),
-                    isNullable: false,
-                    arrayDimensionCount: arrayDimensionCount);
-            }
-
-            var genericTypeParameters = Array.Empty<JavaResolvedTypeInfo>();
+            var genericTypeParameters = Array.Empty<KotlinResolvedTypeInfo>();
             if (TryGetBracketedContentFromEnd('<', '>', type, out var angledBracketsContent))
             {
                 genericTypeParameters = angledBracketsContent
@@ -95,7 +80,7 @@ public class JavaCollectionFormatter : ICollectionFormatter
                 type = type[(lastIndexOfPeriod + 1)..];
             }
 
-            return JavaResolvedTypeInfo.Create(
+            return KotlinResolvedTypeInfo.Create(
                 name: type,
                 package: package,
                 isPrimitive: false,
@@ -110,40 +95,40 @@ public class JavaCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="JavaCollectionFormatter"/> based on the provided
+    /// Returns an instance of <see cref="KotlinCollectionFormatter"/> based on the provided
     /// <paramref name="collectionFormat"/>.
     /// </summary>
     /// <remarks>
-    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
+    /// A cache of <see cref="KotlinCollectionFormatter"/> instances is first checked for an
     /// already existing instance, if an instance is found then that is returned, otherwise a new
     /// instance is created, placed in the cache and returned.
     /// </remarks>
     /// <param name="collectionFormat">The collection type</param>
-    public static JavaCollectionFormatter GetOrCreate(string collectionFormat)
+    public static KotlinCollectionFormatter GetOrCreate(string collectionFormat)
     {
         return Cache.GetOrAdd(
             collectionFormat,
-            _ => new JavaCollectionFormatter(collectionFormat));
+            _ => new KotlinCollectionFormatter(collectionFormat));
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="JavaCollectionFormatter"/> constructed with the
+    /// Returns an instance of <see cref="KotlinCollectionFormatter"/> constructed with the
     /// specified parameters.
     /// </summary>
     /// <remarks>
-    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
+    /// A cache of <see cref="KotlinCollectionFormatter"/> instances is first checked for an
     /// already existing instance, if an instance is found then that is returned, otherwise a new
     /// instance is created, placed in the cache and returned.
     /// <para>
-    /// If any of the values of <see cref="JavaResolvedTypeInfo.GenericTypeParameters"/> is null,
-    /// they will be substituted by the provided <see cref="JavaResolvedTypeInfo"/> in the
+    /// If any of the values of <see cref="KotlinResolvedTypeInfo.GenericTypeParameters"/> is null,
+    /// they will be substituted by the provided <see cref="KotlinResolvedTypeInfo"/> in the
     /// <see cref="ApplyTo"/> method.
     /// </para>
     /// </remarks>
     /// <param name="typeInfo">The collection type</param>
-    public static JavaCollectionFormatter GetOrCreate(JavaResolvedTypeInfo typeInfo)
+    public static KotlinCollectionFormatter GetOrCreate(KotlinResolvedTypeInfo typeInfo)
     {
-        return Cache.GetOrAdd(typeInfo.ToString(), _ => new JavaCollectionFormatter(typeInfo));
+        return Cache.GetOrAdd(typeInfo.ToString(), _ => new KotlinCollectionFormatter(typeInfo));
     }
 
     /// <inheritdoc />
@@ -154,14 +139,14 @@ public class JavaCollectionFormatter : ICollectionFormatter
 
     IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
     {
-        return ApplyTo((JavaResolvedTypeInfo)typeInfo);
+        return ApplyTo((KotlinResolvedTypeInfo)typeInfo);
     }
 
     /// <summary>
-    /// Returns a <see cref="JavaResolvedTypeInfo"/> with the provided
+    /// Returns a <see cref="KotlinResolvedTypeInfo"/> with the provided
     /// TODO JL
     /// </summary>
-    public JavaResolvedTypeInfo ApplyTo(JavaResolvedTypeInfo typeInfo)
+    public KotlinResolvedTypeInfo ApplyTo(KotlinResolvedTypeInfo typeInfo)
     {
         if (_typeInfo == null)
         {
@@ -171,15 +156,7 @@ public class JavaCollectionFormatter : ICollectionFormatter
         var isNullable = typeInfo.IsNullable;
         typeInfo = typeInfo.WithIsNullable(false);
 
-        if (_typeInfo.ArrayDimensionCount > 0)
-        {
-            return JavaResolvedTypeInfo.CreateForArray(
-                forResolvedType: typeInfo,
-                isNullable: isNullable,
-                arrayDimensionCount: _typeInfo.ArrayDimensionCount);
-        }
-
-        return JavaResolvedTypeInfo.Create(
+        return KotlinResolvedTypeInfo.Create(
             name: _typeInfo.Name,
             package: _typeInfo.Package,
             isPrimitive: _typeInfo.IsPrimitive,
@@ -188,7 +165,7 @@ public class JavaCollectionFormatter : ICollectionFormatter
             typeReference: _typeInfo.TypeReference,
             template: _typeInfo.Template,
             genericTypeParameters: _typeInfo.GenericTypeParameters.Count == 0
-                ? Array.Empty<JavaResolvedTypeInfo>()
+                ? Array.Empty<KotlinResolvedTypeInfo>()
                 : _typeInfo.GenericTypeParameters
                     .Select(genericTypeParameter => genericTypeParameter ?? typeInfo)
                     .ToArray());

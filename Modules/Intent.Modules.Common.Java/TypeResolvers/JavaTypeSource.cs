@@ -15,11 +15,6 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             return Create(context, templateId, JavaCollectionFormatter.GetOrCreate(collectionFormat));
         }
 
-        //public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, Func<string, string> collectionFormatter)
-        //{
-        //    return Create(context, templateId, new CollectionFormatter(collectionFormatter));
-        //}
-
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, JavaCollectionFormatter collectionFormatter)
         {
             return ClassTypeSource.Create(context, templateId, JavaCollectionFormatter.GetOrCreate).WithCollectionFormatter(collectionFormatter);

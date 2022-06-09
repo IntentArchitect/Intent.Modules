@@ -1,137 +1,178 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 
 namespace Intent.Modules.Common.Kotlin.TypeResolvers
 {
+    /// <summary>
+    /// Kotlin specialization of <see cref="TypeResolverBase"/>.
+    /// </summary>
     public class KotlinTypeResolver : TypeResolverBase, ITypeResolver
     {
-
-        public KotlinTypeResolver() : base(defaultContext: new KotlinTypeResolverContext(new KotlinTypeResolverOptions()))
+        /// <summary>
+        /// Creates a new instance of <see cref="KotlinTypeResolver"/>.
+        /// </summary>
+        public KotlinTypeResolver() : base(defaultContext: new KotlinTypeResolverContext())
         {
         }
 
+        /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
-            return new KotlinTypeResolverContext(new KotlinTypeResolverOptions());
-        }
-    }
-
-    public class KotlinTypeResolverOptions
-    {
-        public bool ReturnsPrimitives { get; set; } = true;
-    }
-
-    public class KotlinTypeResolverContext : TypeResolverContextBase
-    {
-
-        public KotlinTypeResolverContext(KotlinTypeResolverOptions options) : base(new CollectionFormatter("List<{0}>"), new DefaultNullableFormatter())
-        {
-            Options = options;
+            return new KotlinTypeResolverContext();
         }
 
-        public KotlinTypeResolverOptions Options { get; set; }
-
-        protected override string FormatGenerics(IResolvedTypeInfo type, IEnumerable<IResolvedTypeInfo> genericTypes)
+        private class KotlinTypeResolverContext : TypeResolverContextBase
         {
-            return $"{type.Name}<{string.Join(", ", genericTypes.Select(x => x.Name))}>";
-        }
-
-        
-
-        protected override ResolvedTypeInfo ResolveType(ITypeReference typeInfo)
-        {
-            if (typeInfo.Element == null)
+            private static readonly Dictionary<string, string> PrimitivesTypeMap = new()
             {
-                return new ResolvedTypeInfo("void", false, typeInfo,  null);
+                ["byte"] = "Byte",
+                ["short"] = "Short",
+                ["int"] = "Int",
+                ["long"] = "Long",
+                ["float"] = "Float",
+                ["double"] = "Double",
+                ["bool"] = "Boolean",
+                ["char"] = "Char"
+            };
+
+            private static readonly Dictionary<string, (string Package, string TypeName)> ObjectsTypeMap = new()
+            {
+                ["string"] = (string.Empty, "String"),
+                ["object"] = (string.Empty, "Object"),
+                ["datetime"] = ("java.time", "LocalDateTime"),
+                ["date"] = ("java.time", "LocalDate"),
+                ["decimal"] = ("java.math", "BigDecimal"),
+                ["datetimeoffset"] = ("java.time", "OffsetDateTime"),
+                ["guid"] = ("java.util", "UUID")
+            };
+
+            public KotlinTypeResolverContext()
+                : base(KotlinCollectionFormatter.GetOrCreate("List<{0}>"), TypeResolution.DefaultNullableFormatter.Instance)
+            {
             }
-            var result = typeInfo.Element.Name;
-            var isPrimitive = false;
-            if (typeInfo.Element.HasStereotype("Kotlin"))
+
+            public override IResolvedTypeInfo Get(IClassProvider classProvider)
             {
-                string typeName = typeInfo.Element.GetStereotypeProperty<string>("Kotlin", "Type");
-                string @namespace = typeInfo.Element.GetStereotypeProperty<string>("Kotlin", "Namespace");
-                isPrimitive = typeInfo.Element.GetStereotypeProperty<bool>("Kotlin", "Is Primitive", false);
-                result = !string.IsNullOrWhiteSpace(@namespace) ? $"{@namespace}.{typeName}" : typeName;
+                return KotlinResolvedTypeInfo.Create(
+                    name: classProvider.ClassName,
+                    package: classProvider.Namespace,
+                    isPrimitive: false,
+                    isNullable: false,
+                    isCollection: false,
+                    typeReference: null,
+                    template: classProvider,
+                    genericTypeParameters: null);
             }
-            else
+
+            protected override IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
             {
-                isPrimitive = true;
-                switch (typeInfo.Element.Name)
+                return KotlinResolvedTypeInfo.Create(resolvedTypeInfo);
+            }
+
+            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+            {
+                var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
+                    ? KotlinCollectionFormatter.GetOrCreate(collectionFormat)
+                    : null;
+
+                return Get(typeInfo, collectionFormatter);
+            }
+
+            protected override IResolvedTypeInfo ResolveType(
+                ITypeReference typeReference,
+                INullableFormatter nullableFormatter)
+            {
+                return ResolveTypeInternal(typeReference);
+            }
+
+            private static KotlinResolvedTypeInfo ResolveTypeInternal(ITypeReference typeReference)
+            {
+                IReadOnlyList<KotlinResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
-                    case "bool":
-                        result = "Boolean";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "date":
-                        result = $"java.time.LocalDate";
-                        isPrimitive = false;
-                        break;
-                    case "datetime":
-                        result = $"java.time.LocalDateTime";
-                        isPrimitive = false;
-                        break;
-                    case "char":
-                        result = "Char";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "byte":
-                        result = "Byte";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "decimal":
-                        result = $"java.math.BigDecimal{(typeInfo.IsNullable ? " ? " : "")}";
-                        isPrimitive = false;
-                        break;
-                    case "double":
-                        result = $"Double";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "float":
-                        result = $"Float";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "short":
-                        result = $"Short";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "int":
-                        result = $"Int";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "long":
-                        result = $"Long";
-                        isPrimitive = !typeInfo.IsNullable;
-                        break;
-                    case "datetimeoffset":
-                        result = $"java.time.OffsetDateTime";
-                        isPrimitive = false;
-                        break;
-                    case "binary":
-                        result = "byte[]";
-                        isPrimitive = false;
-                        break;
-                    case "object":
-                        result = $"Object";
-                        isPrimitive = false;
-                        break;
-                    case "guid":
-                        result = $"java.util.UUID";
-                        isPrimitive = false;
-                        break;
-                    case "string":
-                        result = $"String";
-                        isPrimitive = false;
-                        break;
+                    return genericTypeParameters.Select(ResolveTypeInternal).ToArray();
                 }
 
-                result = !string.IsNullOrWhiteSpace(result)
-                    ? result
-                    : typeInfo.Element.Name;
-            }
+                if (typeReference.Element == null)
+                {
+                    return KotlinResolvedTypeInfo.Create(
+                        name: "void",
+                        package: string.Empty,
+                        isPrimitive: true,
+                        isNullable: false,
+                        isCollection: false,
+                        typeReference: typeReference,
+                        template: null);
+                }
 
-            return new ResolvedTypeInfo(result, isPrimitive, typeInfo, null);
+                if (typeReference.Element.HasStereotype("Kotlin"))
+                {
+                    var name = typeReference.Element.GetStereotypeProperty<string>("Kotlin", "Type");
+                    var package = typeReference.Element.GetStereotypeProperty<string>("Kotlin", "Namespace");
+
+                    var lastIndexOfPeriod = name.LastIndexOf('.');
+                    if (lastIndexOfPeriod >= 0)
+                    {
+                        package = string.IsNullOrWhiteSpace(package)
+                            ? name[..lastIndexOfPeriod]
+                            : $"{package}.{name[..lastIndexOfPeriod]}";
+                        name = name[(lastIndexOfPeriod + 1)..];
+                    }
+
+                    return KotlinResolvedTypeInfo.Create(
+                        name: name,
+                        package: package,
+                        isPrimitive: typeReference.Element.GetStereotypeProperty<bool>("Kotlin", "Is Primitive", false),
+                        isNullable: typeReference.IsNullable,
+                        isCollection: typeReference.IsCollection,
+                        typeReference: typeReference,
+                        genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
+                }
+
+                if (PrimitivesTypeMap.TryGetValue(typeReference.Element.Name, out var primitiveTypeName))
+                {
+                    return KotlinResolvedTypeInfo.Create(
+                        name: primitiveTypeName,
+                        package: string.Empty,
+                        isPrimitive: !typeReference.IsNullable,
+                        isNullable: typeReference.IsNullable,
+                        isCollection: false,
+                        typeReference: typeReference);
+                }
+
+                if (ObjectsTypeMap.TryGetValue(typeReference.Element.Name, out var objectType))
+                {
+                    return KotlinResolvedTypeInfo.Create(
+                        name: objectType.TypeName,
+                        package: objectType.Package,
+                        isPrimitive: false,
+                        isNullable: typeReference.IsNullable,
+                        isCollection: false,
+                        typeReference: typeReference);
+                }
+
+                if (typeReference.Element.Name == "binary")
+                {
+                    return KotlinResolvedTypeInfo.Create(
+                        name: "ByteArray",
+                        package: string.Empty,
+                        isPrimitive: false,
+                        isNullable: typeReference.IsNullable,
+                        isCollection: true,
+                        typeReference: typeReference);
+                }
+
+                return KotlinResolvedTypeInfo.Create(
+                    name: typeReference.Element.Name,
+                    package: string.Empty,
+                    isPrimitive: false,
+                    isNullable: typeReference.IsNullable,
+                    isCollection: false,
+                    typeReference: typeReference,
+                    genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
+            }
         }
     }
 }

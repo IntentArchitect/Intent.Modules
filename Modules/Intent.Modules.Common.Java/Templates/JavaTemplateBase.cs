@@ -101,12 +101,12 @@ namespace Intent.Modules.Common.Java.Templates
         }
 
         /// <summary>
-        /// Java packages this template depends upon.
+        /// Library dependencies of this template.
         /// </summary>
         public ICollection<JavaDependency> Dependencies { get; } = new List<JavaDependency>();
 
         /// <summary>
-        /// The Java package.
+        /// The package for the type defined by this template.
         /// </summary>
         public string Package
         {

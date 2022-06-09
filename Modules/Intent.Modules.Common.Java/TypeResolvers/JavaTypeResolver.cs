@@ -26,6 +26,29 @@ namespace Intent.Modules.Common.Java.TypeResolvers
 
         private class JavaTypeResolverContext : TypeResolverContextBase
         {
+            private static readonly Dictionary<string, string> PrimitivesTypeMap = new()
+            {
+                ["byte"] = "byte",
+                ["short"] = "short",
+                ["int"] = "int",
+                ["long"] = "long",
+                ["float"] = "float",
+                ["double"] = "double",
+                ["bool"] = "boolean",
+                ["char"] = "char"
+            };
+
+            private static readonly Dictionary<string, (string Package, string TypeName)> ObjectsTypeMap = new()
+            {
+                ["string"] = (string.Empty, "String"),
+                ["object"] = (string.Empty, "Object"),
+                ["datetime"] = ("java.time", "LocalDateTime"),
+                ["date"] = ("java.time", "LocalDate"),
+                ["decimal"] = ("java.math", "BigDecimal"),
+                ["datetimeoffset"] = ("java.time", "OffsetDateTime"),
+                ["guid"] = ("java.util", "UUID")
+            };
+
             public JavaTypeResolverContext()
                 : base(JavaCollectionFormatter.GetOrCreate("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance)
             {
@@ -108,105 +131,50 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                         genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
                 }
 
-                switch (typeReference.Element.Name)
+                if (PrimitivesTypeMap.TryGetValue(typeReference.Element.Name, out var primitiveTypeName))
                 {
-                    case "byte":
-                    case "short":
-                    case "int":
-                    case "long":
-                    case "float":
-                    case "double":
-                    case "char":
-                    case "bool":
-                    case "boolean":
-                        return JavaResolvedTypeInfo.Create(
-                            name: typeReference.Element.Name switch
-                            {
-                                "bool" => "boolean",
-                                _ => typeReference.Element.Name
-                            },
+                    return JavaResolvedTypeInfo.Create(
+                        name: primitiveTypeName,
+                        package: string.Empty,
+                        isPrimitive: true,
+                        isNullable: typeReference.IsNullable,
+                        isCollection: false,
+                        typeReference: typeReference);
+                }
+
+                if (ObjectsTypeMap.TryGetValue(typeReference.Element.Name, out var objectType))
+                {
+                    return JavaResolvedTypeInfo.Create(
+                        name: objectType.TypeName,
+                        package: objectType.Package,
+                        isPrimitive: false,
+                        isNullable: typeReference.IsNullable,
+                        isCollection: false,
+                        typeReference: typeReference);
+                }
+
+                if (typeReference.Element.Name == "binary")
+                {
+                    return JavaResolvedTypeInfo.CreateForArray(
+                        forResolvedType: JavaResolvedTypeInfo.Create(
+                            name: "byte",
                             package: string.Empty,
                             isPrimitive: true,
-                            isNullable: typeReference.IsNullable,
+                            isNullable: false,
                             isCollection: false,
-                            typeReference: typeReference);
-                    case "binary":
-                        return JavaResolvedTypeInfo.CreateForArray(
-                            forResolvedType: JavaResolvedTypeInfo.Create(
-                                name: "byte",
-                                package: string.Empty,
-                                isPrimitive: true,
-                                isNullable: false,
-                                isCollection: false,
-                                typeReference: typeReference),
-                            isNullable: typeReference.IsNullable,
-                            arrayDimensionCount: 1);
-                    case "date":
-                        return JavaResolvedTypeInfo.Create(
-                            name: "LocalDate",
-                            package: "java.time",
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference);
-                    case "datetime":
-                        return JavaResolvedTypeInfo.Create(
-                            name: "LocalDateTime",
-                            package: "java.time",
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference);
-                    case "decimal":
-                        return JavaResolvedTypeInfo.Create(
-                            name: "BigDecimal",
-                            package: "java.math",
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference);
-                    case "datetimeoffset":
-                        return JavaResolvedTypeInfo.Create(
-                            name: "OffsetDateTime",
-                            package: "java.time",
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference);
-                    case "object":
-                        return JavaResolvedTypeInfo.Create(
-                            name: "Object",
-                            package: string.Empty,
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference);
-                    case "guid":
-                        return JavaResolvedTypeInfo.Create(
-                            name: "UUID",
-                            package: "java.util",
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference);
-                    case "string":
-                        return JavaResolvedTypeInfo.Create(
-                            name: "String",
-                            package: string.Empty,
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference);
-                    default:
-                        return JavaResolvedTypeInfo.Create(
-                            name: typeReference.Element.Name,
-                            package: string.Empty,
-                            isPrimitive: false,
-                            isNullable: typeReference.IsNullable,
-                            isCollection: false,
-                            typeReference: typeReference,
-                            genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
+                            typeReference: typeReference),
+                        isNullable: typeReference.IsNullable,
+                        arrayDimensionCount: 1);
                 }
+
+                return JavaResolvedTypeInfo.Create(
+                    name: typeReference.Element.Name,
+                    package: string.Empty,
+                    isPrimitive: false,
+                    isNullable: typeReference.IsNullable,
+                    isCollection: false,
+                    typeReference: typeReference,
+                    genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
             }
         }
     }
