@@ -337,7 +337,7 @@ namespace Intent.Modules.Common.Templates
         [FixFor_Version4("Make \"collectionFormat\" have a default value of null and delete conflicting overload")]
         public virtual ClassTypeSource AddTypeSource(string templateId, string collectionFormat)
         {
-            var typeSource = ClassTypeSource.Create(ExecutionContext, templateId)
+            var typeSource = ClassTypeSource.Create(ExecutionContext, templateId, CreateCollectionFormatter)
                 .WithNullFormatter(Types.DefaultNullableFormatter);
 
             if (!string.IsNullOrWhiteSpace(collectionFormat))

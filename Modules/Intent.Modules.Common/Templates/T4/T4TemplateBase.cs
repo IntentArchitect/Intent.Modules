@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using System.Text.RegularExpressions;
 using Intent.Modules.Common.TypeResolution;
@@ -262,6 +263,7 @@ namespace Intent.Modules.Common.Templates
             // virtual member call in a constructor in "CSharpTemplateBase<TModel>". Also, it might
             // be nicer if these type resolver concerns are not mixed with the T4 concerns, perhaps
             // make this derive from a base class with the IRequireTypeResolver implementation?
+            [DebuggerStepThrough]
             get
             {
                 if (_types == null)
@@ -271,6 +273,7 @@ namespace Intent.Modules.Common.Templates
                 return _types;
             }
 
+            [DebuggerStepThrough]
             set => _types = value;
         }
 

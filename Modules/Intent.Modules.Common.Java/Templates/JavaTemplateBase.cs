@@ -103,7 +103,7 @@ namespace Intent.Modules.Common.Java.Templates
         /// <summary>
         /// Java packages this template depends upon.
         /// </summary>
-        public ICollection<JavaDependency> Dependencies => new List<JavaDependency>();
+        public ICollection<JavaDependency> Dependencies { get; } = new List<JavaDependency>();
 
         /// <summary>
         /// The Java package.

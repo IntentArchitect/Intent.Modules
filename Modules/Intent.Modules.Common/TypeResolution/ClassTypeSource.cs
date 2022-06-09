@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
@@ -7,23 +8,42 @@ namespace Intent.Modules.Common.TypeResolution
 {
     public class ClassTypeSource : ITypeSource
     {
+        /// <summary>
+        /// Delegate which returns a <see cref="ICollectionFormatter"/> from the provided
+        /// <paramref name="collectionFormat"/>.
+        /// </summary>
+        public delegate ICollectionFormatter StringToCollectionFormatterFactory(string collectionFormat);
+
         protected readonly ISoftwareFactoryExecutionContext Context;
         protected readonly string TemplateId;
+        private readonly StringToCollectionFormatterFactory _stringToCollectionFormatterFactory;
         protected readonly ClassTypeSourceOptions Options;
         protected readonly List<ITemplateDependency> TemplateDependencies = new List<ITemplateDependency>();
         public ICollectionFormatter CollectionFormatter => Options.CollectionFormatter;
         public INullableFormatter NullableFormatter => Options.NullableFormatter;
 
-        protected ClassTypeSource(ISoftwareFactoryExecutionContext context, string templateId, ClassTypeSourceOptions options = null)
+        protected ClassTypeSource(
+            ISoftwareFactoryExecutionContext context,
+            string templateId,
+            ClassTypeSourceOptions options = null,
+            StringToCollectionFormatterFactory stringToCollectionFormatterFactory = null)
         {
             Context = context;
             TemplateId = templateId;
+            _stringToCollectionFormatterFactory = stringToCollectionFormatterFactory ??
+                                                  TypeResolution.CollectionFormatter.GetOrCreate;
             Options = options ?? new ClassTypeSourceOptions();
         }
 
-        public static ClassTypeSource Create(ISoftwareFactoryExecutionContext context, string templateId)
+        public static ClassTypeSource Create(
+            ISoftwareFactoryExecutionContext context,
+            string templateId,
+            StringToCollectionFormatterFactory stringToCollectionFormatterFactory = null)
         {
-            return new ClassTypeSource(context, templateId);
+            return new ClassTypeSource(
+                context: context,
+                templateId: templateId,
+                stringToCollectionFormatterFactory: stringToCollectionFormatterFactory);
         }
 
         public ClassTypeSource TrackDependencies(bool track)
@@ -34,7 +54,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         public ClassTypeSource WithCollectionFormat(string format)
         {
-            Options.CollectionFormatter = TypeResolution.CollectionFormatter.GetOrCreate(format);
+            Options.CollectionFormatter = _stringToCollectionFormatterFactory(format);
             return this;
         }
 

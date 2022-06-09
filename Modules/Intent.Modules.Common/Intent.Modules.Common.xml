@@ -1282,6 +1282,12 @@
             <paramref name="model"/>.
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.TypeResolution.ClassTypeSource.StringToCollectionFormatterFactory">
+            <summary>
+            Delegate which returns a <see cref="T:Intent.Modules.Common.TypeResolution.ICollectionFormatter"/> from the provided
+            <paramref name="collectionFormat"/>.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.TypeResolution.CollectionFormatter">
             <summary>
             Generic collection formatter implementation which accepts the collection formatter as a string or function.

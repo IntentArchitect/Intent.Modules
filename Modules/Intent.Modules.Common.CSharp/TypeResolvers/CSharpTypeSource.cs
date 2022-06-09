@@ -23,7 +23,7 @@ namespace Intent.Modules.Common.CSharp
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, CSharpCollectionFormatter collectionFormatter)
         {
-            return ClassTypeSource.Create(context, templateId).WithCollectionFormatter(collectionFormatter);
+            return ClassTypeSource.Create(context, templateId, CSharpCollectionFormatter.GetOrCreate).WithCollectionFormatter(collectionFormatter);
         }
     }
 }

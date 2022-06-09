@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
     {
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId)
         {
-            return Create(context, templateId, (ICollectionFormatter)null);
+            return Create(context, templateId, (JavaCollectionFormatter)null);
         }
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat)
@@ -20,9 +20,9 @@ namespace Intent.Modules.Common.Java.TypeResolvers
         //    return Create(context, templateId, new CollectionFormatter(collectionFormatter));
         //}
 
-        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, ICollectionFormatter collectionFormatter)
+        public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, JavaCollectionFormatter collectionFormatter)
         {
-            return ClassTypeSource.Create(context, templateId).WithCollectionFormatter(collectionFormatter);
+            return ClassTypeSource.Create(context, templateId, JavaCollectionFormatter.GetOrCreate).WithCollectionFormatter(collectionFormatter);
         }
     }
 }
