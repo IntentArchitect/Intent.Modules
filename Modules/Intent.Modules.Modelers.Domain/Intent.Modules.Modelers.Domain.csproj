@@ -14,6 +14,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>Intent.Modules.Modelers.Domain</PackageId>
     <PackageIcon>logo.png</PackageIcon>
+    <PackageVersion>3.3.2</PackageVersion>
   </PropertyGroup>
 
   <ItemGroup>

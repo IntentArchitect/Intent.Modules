@@ -264,7 +264,7 @@ white-space: inherit;`</style>
           <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
+          <allowSetValue>true</allowSetValue>
           <typeReferenceSetting>
             <isRequired>true</isRequired>
             <targetTypes>
