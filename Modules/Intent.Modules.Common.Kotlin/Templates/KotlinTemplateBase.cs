@@ -225,7 +225,7 @@ namespace Intent.Modules.Common.Kotlin.Templates
         /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
         /// adds any required imports and applicable template dependencies.
         /// </summary>
-        protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        public override string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
             if (resolvedTypeInfo is KotlinResolvedTypeInfo kotlinResolvedTypeInfo)
             {

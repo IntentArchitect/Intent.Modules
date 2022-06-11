@@ -1016,7 +1016,7 @@ namespace Intent.Modules.Common.Templates
         /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/> and
         /// adds any applicable template dependencies.
         /// </summary>
-        protected virtual string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        public virtual string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
             foreach (var templateDependency in resolvedTypeInfo.GetTemplateDependencies())
             {

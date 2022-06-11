@@ -70,7 +70,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
         }
 
         /// <inheritdoc />
-        protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        public override string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
             var normalizedTypeName = NormalizeTypeName(resolvedTypeInfo.ToString());
 

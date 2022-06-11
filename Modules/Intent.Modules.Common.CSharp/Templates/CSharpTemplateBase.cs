@@ -418,7 +418,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
         /// adds any required usings and applicable template dependencies.
         /// </summary>
-        protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        public override string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
             if (resolvedTypeInfo is CSharpResolvedTypeInfo cSharpResolvedTypeInfo)
             {

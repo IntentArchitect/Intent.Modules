@@ -246,7 +246,7 @@
         <member name="P:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo.GenericTypeParameters">
             <inheritdoc cref="P:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.GenericTypeParameters"/>
         </member>
-        <member name="M:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo.GetAllFullyQualifiedTypeNames">
+        <member name="M:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo.GetAllResolvedTypes">
             <summary>
             Returns the the fully qualified name for this this type as well as the recursively acquired
             packages of this type's <see cref="P:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo.GenericTypeParameters"/>.

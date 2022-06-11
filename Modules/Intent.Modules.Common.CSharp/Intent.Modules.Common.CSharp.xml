@@ -403,22 +403,53 @@
             Returns a namespace string based on the full path from the <paramref name="target"/>. This will include folders and C# projects.
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase.#ctor(System.String,Intent.Engine.IOutputTarget)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase"/>.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`2">
+            <inheritdoc cref="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1"/>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`2.#ctor(System.String,Intent.Engine.IOutputTarget,`0)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`2"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`2.GetDecorators">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`2.AddDecorator(`1)">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`2.GetDecoratorsOutput(System.Func{`1,System.String})">
             <summary>
-            Aggregates the specified <paramref name="propertyFunc"/> property of all Decorators.
-            Ignores Decorators where the property returns null.
+            Aggregates the specified <paramref name="propertyFunc"/> property of all decorators.
             </summary>
+            <remarks>
+            Ignores Decorators where the property returns null.
+            </remarks>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1">
             <summary>
-            Template base for CSharp files, which invokes code-management to make updates to existing files.
+            Template base for C# files, which invokes code-management to make updates to existing files.
             <para>
             Learn more about templates in
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common.csharp&amp;additionalData=templates">
             this article</seealso>.
             </para>
             </summary>
-            <typeparam name="TModel"></typeparam>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.#ctor(System.String,Intent.Engine.IOutputTarget,`0)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetTypeInfo(Intent.Modules.Common.Templates.IClassProvider)">
+            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Modules.Common.Templates.IClassProvider)"/>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.Project">
             <summary>
@@ -452,18 +483,17 @@
             Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.RunTemplate">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String)">
-            <summary>
-            Adds a Template source that will be searched when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/>
-            types through <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
-            </summary>
+            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String)"/>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddTypeSource(System.String,System.String)">
-            <summary>
-            Adds a Template source that will be searched when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/>
-            types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
-            </summary>
-            <param name="collectionFormat">Sets the collection type to be used if a type is found.</param>
+            <inheritdoc cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.CreateCollectionFormatter(System.String)">
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.NormalizeTypeName(System.String)">
             <inheritdoc />
@@ -474,10 +504,34 @@
             </summary>
             <param name="foreignType">The foreign type which is ideally fully qualified</param>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.ConfigureRoslynMerger">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetTemplateFileConfig">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+            <summary>
+            Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
+            adds any required usings and applicable template dependencies.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.DefineFileConfig">
+            <summary>
+            Factory method for creating a <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/> for a template.
+            </summary>
+            <remarks>
+            <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig"/> is used to specify configuration such as its
+            type name, namespace and relative output location.
+            </remarks>
+        </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.DependencyUsings">
             <summary>
             Returns all using statements that are introduced through dependencies.
             </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetNugetDependencies">
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddNugetDependency(System.String,System.String)">
             <summary>
@@ -503,9 +557,125 @@
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFrameworkDependencies">
             <inheritdoc />
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetAssemblyDependencies">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AddAssemblyReference(Intent.Modules.Common.VisualStudio.IAssemblyReference)">
             <summary>
             Registers that the specified GAC assembly should be installed in the .csproj file where this file resides.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.DeclareUsings">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Modules.Common.Templates.IClassProvider)">
+            <summary>
+            
+            </summary>
+            <param name="classProvider"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.IElement,System.String)">
+            <summary>
+            Resolves the fully qualified type name for the <paramref name="element"/> parameter.
+            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
+            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            </summary>
+            <param name="element">The <see cref="T:Intent.Metadata.Models.IElement"/> for which to get the type name.</param>
+            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.IHasTypeReference,System.String)">
+            <summary>
+            Resolves the fully qualified type name for the <paramref name="hasTypeReference"/> parameter.
+            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
+            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            </summary>
+            <param name="hasTypeReference">The <see cref="T:Intent.Metadata.Models.IHasTypeReference"/> for which to get the type name.</param>
+            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Templates.ITemplate,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the fully qualified type name for the <paramref name="template"/> parameter.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the fully qualified type name for the <paramref name="templateDependency"/> parameter.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.ITypeReference,System.String)">
+            <summary>
+            Resolves the fully qualified type name for the <paramref name="typeReference"/> parameter.
+            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
+            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            </summary>
+            <param name="typeReference">The <see cref="T:Intent.Metadata.Models.ITypeReference"/> for which to get the type name.</param>
+            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+            This overload assumes that the Template can have many instances and identifies the target instance
+            based on which has the <paramref name="model"/>.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="model">The model instance that the Template must be bound to.</param>
+            <param name="options">Optional <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to apply.</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(System.String,System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+            This overload assumes that the Template can have many instances and identifies the target instance
+            based on which has the <paramref name="modelId"/>.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="modelId">The identifier of the model that the Template must be bound to.</param>
+            <param name="options">Optional <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to apply.</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
+            <summary>
+            Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            GetTypeName article</seealso> for more information.
+            </para>
+            Will throw an exception if more than one template instance exists.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.ModelHasFolderTemplateExtensions">
@@ -642,57 +812,158 @@
             <param name="capitalizationBehaviour">The <see cref="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour"/> to use.</param>
             <returns>A valid C# identifier.</returns>
         </member>
-        <member name="T:Intent.Modules.Common.CSharp.CollectionFormatters">
+        <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter">
             <summary>
-            Common CSharp collection formatters
+            C# <see cref="T:Intent.Modules.Common.TypeResolution.ICollectionFormatter"/> which recognizes collection types with generic parameters
+            as well as the <c>[]</c> syntax.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.CreateListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)">
             <summary>
-            Formats collections using <see cref="T:System.Collections.Generic.List`1"/>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> based on the provided
+            <paramref name="collectionFormat"/>.
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="template"></param>
-            <returns></returns>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+            <param name="collectionFormat">The collection type, for example:
+            <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.CreateIListFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
-            Formats collections using <see cref="T:System.Collections.Generic.IList`1"/>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> constructed with the
+            specified parameters.
             </summary>
-            <typeparam name="T"></typeparam>
-            <param name="template"></param>
-            <returns></returns>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            <para>
+            If any of the values of <see cref="P:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.GenericTypeParameters"/> is null,
+            they will be substituted by the provided <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> in the
+            <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.ApplyTo(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)"/> method.
+            </para>
+            </remarks>
+            <param name="typeInfo">The collection type, for example:
+            <c>System.Collection.Generic.Dictionary&lt;TKey, TValue&gt;</c>.</param>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.CollectionFormatters.CreateICollectionFormatter``1(Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{``0})">
-            <summary>
-            Formats collections using <see cref="T:System.Collections.Generic.ICollection`1"/>
-            </summary>
-            <typeparam name="T"></typeparam>
-            <param name="template"></param>
-            <returns></returns>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Format(System.String)">
+            <inheritdoc />
         </member>
-        <member name="T:Intent.Modules.Common.CSharp.CSharpCollectionFormatter`1">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.ApplyTo(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
-            A collection formatter that uses a specified type.
+            Returns a <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> with the
+            TODO JL
             </summary>
-            <typeparam name="T"></typeparam>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.CSharpCollectionFormatter`1.#ctor(System.String,Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase{`0})">
+        <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray">
             <summary>
-            A collection formatter that uses the <paramref name="fullyQualifiedTypeName"/>.
+            An array dimension for <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/>.
             </summary>
+            <remarks>
+            See <see href="https://docs.microsoft.com/dotnet/csharp/programming-guide/arrays/multidimensional-arrays">Multidimensional Arrays</see>
+            and <see href="https://docs.microsoft.com/dotnet/csharp/programming-guide/arrays/jagged-arrays">Jagged Arrays</see>
+            for more information on arrays in C#.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray.#ctor(System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray.Dimensions">
+            <summary>
+            The number of dimensions of this jagged array.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray.ToString">
+            <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter">
             <summary>
             C# implementation of <see cref="T:Intent.Modules.Common.TypeResolution.INullableFormatter"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.#ctor(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.GetOrCreate(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
             <summary>
-            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter"/>.
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter"/> constructed with the
+            specified <paramref name="project"/>.
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.AsNullable(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo">
+            <summary>
+            C# specialization of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.AsNullable(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Create(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Templates.ITemplate,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo})">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> for a non-array resolved type.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Create(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.CreateForArray(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo,System.Boolean,Intent.Modules.Common.TypeResolution.INullableFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray})">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> for an array resolved type.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.WithIsNullable(System.Boolean)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.WithIsNullable(System.Boolean)" />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.WithIsNullableProtected(System.Boolean)">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Namespace">
+            <summary>
+            The namespace for the type.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.JaggedArrays">
+            <summary>
+            The <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray"/> of the type, could be empty.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.GenericTypeParameters">
+            <inheritdoc cref="P:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.GenericTypeParameters"/>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.GetNamespaces">
+            <summary>
+            Returns the namespace for this this type as well as the recursively acquired namespaces
+            of this type's <see cref="P:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.GenericTypeParameters"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.GetFullyQualifiedTypeName">
+            <summary>
+            Gets the fully qualified type name.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.ToString">
+            <inheritdoc />
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpTypeResolver">
+            <summary>
+            C# specialization of <see cref="T:Intent.Modules.Common.TypeResolution.TypeResolverBase"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpTypeResolver.#ctor(Intent.Modules.Common.TypeResolution.ICollectionFormatter,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpTypeResolver"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpTypeResolver.CreateContext">
             <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.CSharp.VisualStudio.CopyToOutputDirectory">
@@ -719,10 +990,10 @@
             as per the "Copy if newer" option in Visual Studio.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.CSharpProject.DefaultSupportsNullable(System.String)">
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.CSharpProject.GetDefaultLanguageVersion(System.String)">
             <summary>
-            Based on data from the below links, returns true if the default language version for
-            the provided <paramref name="frameworkMoniker"/> is at least 8.0.
+            Based on data from the below links, returns the default language version for the
+            provided <paramref name="frameworkMoniker"/>.
             <br/>
             https://docs.microsoft.com/dotnet/csharp/language-reference/configure-language-version#defaults
             <br/>
@@ -763,6 +1034,87 @@
             entry should always be created in the MSBuild file regardless of whether or not it was
             implicitly included (for example in an SDK style project).
             </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion">
+            <summary>
+            Represents a C# language version which is composed of a minor and major version and is
+            <see cref="T:System.IComparable"/> and <see cref="T:System.IEquatable`1"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.Create(System.Int32,System.Int32)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.TryParse(System.String,Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion@)">
+            <summary>
+            Tries to parse the provided <paramref name="version"/> as a <see cref="T:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion"/>.
+            </summary>
+            <returns><see langword="true"/> if the version could be parsed.</returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.Parse(System.String)">
+            <summary>
+            Parse the provided <paramref name="version"/> as a <see cref="T:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion"/> or
+            throw an exception on failure.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.Major">
+            <summary>
+            The major version.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.Minor">
+            <summary>
+            The minor version.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.Equals(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.op_Equality(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion,Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <summary>
+            Equal to operator.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.op_Inequality(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion,Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <summary>
+            Not equal to operator.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.CompareTo(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.CompareTo(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.op_LessThan(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion,Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <summary>
+            Less than operator.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.op_GreaterThan(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion,Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <summary>
+            Greater than operator.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.op_LessThanOrEqual(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion,Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <summary>
+            Less than or equal to operator.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.op_GreaterThanOrEqual(Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion,Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion)">
+            <summary>
+            Greater than or equal to operator.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.ToString">
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.OutputTargetExtensions.AddNugetPackages(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject,System.Collections.Generic.IEnumerable{Intent.Modules.Common.VisualStudio.INugetPackageInfo})">
             <summary>
@@ -851,6 +1203,27 @@
             <summary>
             Adds the necessary elements to the file item in the MSBuild file for a pre-processed
             <c>.tt</c>
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.CSharpTemplateExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ResolveAllUsings(Intent.Templates.ITemplate,Intent.Engine.ISoftwareFactoryExecutionContext,System.String[])">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ResolveAllUsings(Intent.Templates.ITemplate,System.String[])"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ResolveAllUsings(Intent.Templates.ITemplate,System.String[])">
+            <summary>
+            Resolves all usings for the provided <paramref name="template"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.GetAllDeclareUsing(Intent.Templates.ITemplate)">
+            <summary>
+            This member will be changed to be only privately accessible or possibly removed
+            entirely, please contact Intent Architect support should you have a dependency on it.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.CSharpTemplateExtensions.ApplyLaunchProfile(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String,System.Boolean,System.String,System.String)">
