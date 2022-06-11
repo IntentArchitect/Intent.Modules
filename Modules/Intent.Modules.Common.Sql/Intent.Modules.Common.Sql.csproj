@@ -2,14 +2,13 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.3.2</Version>
+    <Version>3.3.2-alpha.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
-    <!--<PackageReference Include="Intent.Modules.Common" Version="3.3.3" />-->
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.3-alpha.2" />
     <PackageReference Include="Intent.Modules.Metadata.RDBMS" Version="3.3.1" />
     <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
