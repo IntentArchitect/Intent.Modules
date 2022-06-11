@@ -50,9 +50,11 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Aggregates the specified <paramref name="propertyFunc"/> property of all Decorators.
-        /// Ignores Decorators where the property returns null.
+        /// Aggregates the specified <paramref name="propertyFunc"/> property of all decorators.
         /// </summary>
+        /// <remarks>
+        /// Ignores Decorators where the property returns null.
+        /// </remarks>
         protected string GetDecoratorsOutput(Func<TDecorator, string> propertyFunc)
         {
             return GetDecorators().Aggregate(propertyFunc);

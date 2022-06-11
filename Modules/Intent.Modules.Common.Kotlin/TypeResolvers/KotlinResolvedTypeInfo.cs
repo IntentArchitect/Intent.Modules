@@ -137,13 +137,13 @@ public class KotlinResolvedTypeInfo : ResolvedTypeInfo
     /// Returns the the fully qualified name for this this type as well as the recursively acquired
     /// packages of this type's <see cref="GenericTypeParameters"/>.
     /// </summary>
-    public IEnumerable<string> GetAllFullyQualifiedTypeNames()
+    public IEnumerable<KotlinResolvedTypeInfo> GetAllResolvedTypes()
     {
-        yield return GetFullyQualifiedTypeName();
+        yield return this;
 
-        foreach (var fullyQualifiedTypeName in GenericTypeParameters.SelectMany(x => x.GetAllFullyQualifiedTypeNames()))
+        foreach (var resolvedType in GenericTypeParameters.SelectMany(x => x.GetAllResolvedTypes()))
         {
-            yield return fullyQualifiedTypeName;
+            yield return resolvedType;
         }
     }
 

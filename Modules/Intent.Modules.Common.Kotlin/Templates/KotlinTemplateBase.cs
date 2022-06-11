@@ -227,12 +227,16 @@ namespace Intent.Modules.Common.Kotlin.Templates
         /// </summary>
         protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
-            if (resolvedTypeInfo is KotlinResolvedTypeInfo { IsPrimitive: false } kotlinResolvedTypeInfo &&
-                !string.IsNullOrWhiteSpace(kotlinResolvedTypeInfo.Package))
+            if (resolvedTypeInfo is KotlinResolvedTypeInfo kotlinResolvedTypeInfo)
             {
-                foreach (var fullyQualifiedTypeName in kotlinResolvedTypeInfo.GetAllFullyQualifiedTypeNames())
+                foreach (var resolveTypeInfo in kotlinResolvedTypeInfo.GetAllResolvedTypes())
                 {
-                    AddImport(fullyQualifiedTypeName);
+                    if (resolveTypeInfo.IsPrimitive || string.IsNullOrWhiteSpace(resolveTypeInfo.Package))
+                    {
+                        continue;
+                    }
+
+                    AddImport(resolveTypeInfo.GetFullyQualifiedTypeName());
                 }
             }
 
