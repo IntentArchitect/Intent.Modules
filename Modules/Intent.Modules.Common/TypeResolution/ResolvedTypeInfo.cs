@@ -27,7 +27,7 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
         IReadOnlyList<IResolvedTypeInfo> genericTypeParameters)
     {
         Name = name;
-        IsPrimitive = isPrimitive && !typeReference.IsCollection;
+        IsPrimitive = isPrimitive && !isCollection;
         IsNullable = isNullable;
         IsCollection = isCollection;
         TypeReference = typeReference;

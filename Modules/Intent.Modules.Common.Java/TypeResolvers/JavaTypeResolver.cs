@@ -11,6 +11,18 @@ namespace Intent.Modules.Common.Java.TypeResolvers
     /// </summary>
     public class JavaTypeResolver : TypeResolverBase, ITypeResolver
     {
+        private static readonly Dictionary<string, (string PrimitiveTypeName, string WrapperTypeName)> PrimitivesTypeMap = new()
+        {
+            ["byte"] = ("byte", "Byte"),
+            ["short"] = ("short", "Short"),
+            ["int"] = ("int", "Integer"),
+            ["long"] = ("long", "Long"),
+            ["float"] = ("float", "Float"),
+            ["double"] = ("double", "Double"),
+            ["bool"] = ("boolean", "Boolean"),
+            ["char"] = ("char", "Character")
+        };
+
         /// <summary>
         /// Creates a new instance of <see cref="JavaTypeResolver"/>.
         /// </summary>
@@ -24,20 +36,53 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             return new JavaTypeResolverContext();
         }
 
+        /// <summary>
+        /// Returns a non-primitive type version of the provided <paramref name="typeInfo"/>.
+        /// </summary>
+        /// <remarks>
+        /// Will return the same instance of <paramref name="typeInfo"/> if its
+        /// <see cref="ResolvedTypeInfo.IsPrimitive"/> value is <see langword="false"/>.
+        /// </remarks>
+        public static JavaResolvedTypeInfo ToNonPrimitive(JavaResolvedTypeInfo typeInfo)
+        {
+            if (!typeInfo.IsPrimitive || typeInfo.ArrayDimensionCount > 0)
+            {
+                return typeInfo;
+            }
+
+            return JavaResolvedTypeInfo.Create(
+                name: PrimitivesTypeMap[typeInfo.Name].WrapperTypeName,
+                package: typeInfo.Package,
+                isPrimitive: false,
+                isNullable: typeInfo.IsNullable,
+                isCollection: typeInfo.IsCollection,
+                typeReference: typeInfo.TypeReference,
+                template: typeInfo.Template,
+                genericTypeParameters: typeInfo.GenericTypeParameters);
+        }
+
+        /// <summary>
+        /// Retrieves the wrapped type name for the provided <paramref name="typeName"/> if it is a
+        /// primitive.
+        /// </summary>
+        /// <returns>
+        /// <see langword="true"/> if the provided <paramref name="typeName"/> is a primitive or
+        /// otherwise <see langword="false"/>.
+        /// </returns>
+        public static bool TryGetWrapperTypeName(string typeName, out string wrappedTypeName)
+        {
+            if (!PrimitivesTypeMap.TryGetValue(typeName, out var primitiveType))
+            {
+                wrappedTypeName = null;
+                return false;
+            }
+
+            wrappedTypeName = primitiveType.WrapperTypeName;
+            return true;
+        }
+
         private class JavaTypeResolverContext : TypeResolverContextBase
         {
-            private static readonly Dictionary<string, string> PrimitivesTypeMap = new()
-            {
-                ["byte"] = "byte",
-                ["short"] = "short",
-                ["int"] = "int",
-                ["long"] = "long",
-                ["float"] = "float",
-                ["double"] = "double",
-                ["bool"] = "boolean",
-                ["char"] = "char"
-            };
-
             private static readonly Dictionary<string, (string Package, string TypeName)> ObjectsTypeMap = new()
             {
                 ["string"] = (string.Empty, "String"),
@@ -131,10 +176,12 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                         genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
                 }
 
-                if (PrimitivesTypeMap.TryGetValue(typeReference.Element.Name, out var primitiveTypeName))
+                if (PrimitivesTypeMap.TryGetValue(typeReference.Element.Name, out var primitiveType))
                 {
                     return JavaResolvedTypeInfo.Create(
-                        name: primitiveTypeName,
+                        name: !typeReference.IsNullable
+                            ? primitiveType.PrimitiveTypeName
+                            : primitiveType.WrapperTypeName,
                         package: string.Empty,
                         isPrimitive: true,
                         isNullable: typeReference.IsNullable,

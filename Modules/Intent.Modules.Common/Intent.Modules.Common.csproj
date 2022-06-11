@@ -13,6 +13,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
+
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DocumentationFile>C:\Dev\Intent.Modules\Modules\Intent.Modules.Common\Intent.Modules.Common.xml</DocumentationFile>
   </PropertyGroup>

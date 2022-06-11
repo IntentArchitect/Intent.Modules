@@ -51,6 +51,11 @@ public class JavaResolvedTypeInfo : ResolvedTypeInfo
         ITemplate template = null,
         IReadOnlyList<JavaResolvedTypeInfo> genericTypeParameters = null)
     {
+        if (genericTypeParameters?.Any(x => x?.IsPrimitive == true) == true)
+        {
+            throw new ArgumentException("Java does not support primitive types as generic type parameter arguments.");
+        }
+
         return new JavaResolvedTypeInfo(
             name: name,
             package: package,
@@ -148,13 +153,13 @@ public class JavaResolvedTypeInfo : ResolvedTypeInfo
     /// Returns the the fully qualified name for this this type as well as the recursively acquired
     /// packages of this type's <see cref="GenericTypeParameters"/>.
     /// </summary>
-    public IEnumerable<string> GetAllFullyQualifiedTypeNames()
+    public IEnumerable<JavaResolvedTypeInfo> GetAllResolvedTypes()
     {
-        yield return GetFullyQualifiedTypeName();
+        yield return this;
 
-        foreach (var fullyQualifiedTypeName in GenericTypeParameters.SelectMany(x => x.GetAllFullyQualifiedTypeNames()))
+        foreach (var resolvedType in GenericTypeParameters.SelectMany(x => x.GetAllResolvedTypes()))
         {
-            yield return fullyQualifiedTypeName;
+            yield return resolvedType;
         }
     }
 

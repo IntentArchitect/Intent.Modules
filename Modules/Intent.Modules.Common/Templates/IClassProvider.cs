@@ -10,12 +10,12 @@ namespace Intent.Modules.Common.Templates
     public interface IClassProvider : ITemplate
     {
         /// <summary>
-        /// Namespace
+        /// The namespace for the type defined by this class provider.
         /// </summary>
         string Namespace { get; }
 
         /// <summary>
-        /// Class name
+        /// The type name for the type defined by this class provider.
         /// </summary>
         string ClassName { get; }
     }

@@ -431,12 +431,12 @@
         </member>
         <member name="P:Intent.Modules.Common.Templates.IClassProvider.Namespace">
             <summary>
-            Namespace
+            The namespace for the type defined by this class provider.
             </summary>
         </member>
         <member name="P:Intent.Modules.Common.Templates.IClassProvider.ClassName">
             <summary>
-            Class name
+            The type name for the type defined by this class provider.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Templates.IClassProviderExtensions">

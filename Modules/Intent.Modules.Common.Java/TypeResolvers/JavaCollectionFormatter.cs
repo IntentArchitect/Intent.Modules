@@ -21,7 +21,7 @@ public class JavaCollectionFormatter : ICollectionFormatter
 
     private JavaCollectionFormatter(string collectionFormat)
     {
-        static JavaResolvedTypeInfo Parse(string type)
+        static JavaResolvedTypeInfo Parse(string type, bool disallowPrimitives = false)
         {
             static bool TryGetBracketedContentFromEnd(char openingBracket, char closingBracket, string type, out string innerContent)
             {
@@ -81,7 +81,7 @@ public class JavaCollectionFormatter : ICollectionFormatter
             {
                 genericTypeParameters = angledBracketsContent
                     .Split(',')
-                    .Select(Parse)
+                    .Select(unparsedType => Parse(unparsedType, disallowPrimitives: true))
                     .ToArray();
 
                 type = type[..^(angledBracketsContent.Length + 2)];
@@ -96,7 +96,9 @@ public class JavaCollectionFormatter : ICollectionFormatter
             }
 
             return JavaResolvedTypeInfo.Create(
-                name: type,
+                name: disallowPrimitives && JavaTypeResolver.TryGetWrapperTypeName(type, out var wrapperTypeName)
+                    ? wrapperTypeName
+                    : type,
                 package: package,
                 isPrimitive: false,
                 isNullable: false,
@@ -182,7 +184,7 @@ public class JavaCollectionFormatter : ICollectionFormatter
         return JavaResolvedTypeInfo.Create(
             name: _typeInfo.Name,
             package: _typeInfo.Package,
-            isPrimitive: _typeInfo.IsPrimitive,
+            isPrimitive: false,
             isNullable: isNullable,
             isCollection: true,
             typeReference: _typeInfo.TypeReference,
@@ -190,7 +192,11 @@ public class JavaCollectionFormatter : ICollectionFormatter
             genericTypeParameters: _typeInfo.GenericTypeParameters.Count == 0
                 ? Array.Empty<JavaResolvedTypeInfo>()
                 : _typeInfo.GenericTypeParameters
-                    .Select(genericTypeParameter => genericTypeParameter ?? typeInfo)
+                    .Select(genericTypeParameter =>
+                        genericTypeParameter ??
+                        (typeInfo.IsPrimitive
+                            ? JavaTypeResolver.ToNonPrimitive(typeInfo)
+                            : typeInfo))
                     .ToArray());
     }
 }

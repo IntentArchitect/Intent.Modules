@@ -234,7 +234,7 @@
         <member name="P:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GenericTypeParameters">
             <inheritdoc cref="P:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo.GenericTypeParameters"/>
         </member>
-        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GetAllFullyQualifiedTypeNames">
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GetAllResolvedTypes">
             <summary>
             Returns the the fully qualified name for this this type as well as the recursively acquired
             packages of this type's <see cref="P:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo.GenericTypeParameters"/>.
@@ -260,6 +260,40 @@
         </member>
         <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaTypeResolver.CreateContext">
             <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaTypeResolver.ToNonPrimitive(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
+            <summary>
+            Returns a non-primitive type version of the provided <paramref name="typeInfo"/>.
+            </summary>
+            <remarks>
+            Will return the same instance of <paramref name="typeInfo"/> if its
+            <see cref="P:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.IsPrimitive"/> value is <see langword="false"/>.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaTypeResolver.TryGetWrapperTypeName(System.String,System.String@)">
+            <summary>
+            Retrieves the wrapped type name for the provided <paramref name="typeName"/> if it is a
+            primitive.
+            </summary>
+            <returns>
+            <see langword="true"/> if the provided <paramref name="typeName"/> is a primitive or
+            otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="T:Intent.Modules.Common.Java.Java">
+            <summary>
+            Helper methods for working with Java templates.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Java.AsReferenceType(System.String)">
+            <summary>
+            If the provided <paramref name="typeName"/> is a primitive, its wrapper type name is
+            returned, otherwise the original <paramref name="typeName"/> is returned.
+            </summary>
+            <remarks>
+            This is typically used when generating type names for use as generic type parameters
+            as Java only supports use of reference types.
+            </remarks>
         </member>
         <member name="T:Intent.Modules.Common.Java.Weaving.JavaWeavingOutputTransformer">
             <summary>

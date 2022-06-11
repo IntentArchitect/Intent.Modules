@@ -77,7 +77,7 @@ namespace Intent.Modules.Common.Java.Templates
     /// </summary>
     public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged, IClassProvider, IDeclareImports
     {
-        private readonly HashSet<string> _imports = new();
+        private readonly SortedSet<string> _imports = new();
 
         /// <summary>
         /// Creates a new instance of <see cref="JavaTemplateBase{TModel}"/>.
@@ -225,12 +225,16 @@ namespace Intent.Modules.Common.Java.Templates
         /// </summary>
         protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
-            if (resolvedTypeInfo is JavaResolvedTypeInfo { IsPrimitive: false } javaResolvedTypeInfo &&
-                !string.IsNullOrWhiteSpace(javaResolvedTypeInfo.Package))
+            if (resolvedTypeInfo is JavaResolvedTypeInfo javaResolvedTypeInfo)
             {
-                foreach (var fullyQualifiedTypeName in javaResolvedTypeInfo.GetAllFullyQualifiedTypeNames())
+                foreach (var resolveTypeInfo in javaResolvedTypeInfo.GetAllResolvedTypes())
                 {
-                    AddImport(fullyQualifiedTypeName);
+                    if (resolveTypeInfo.IsPrimitive || string.IsNullOrWhiteSpace(resolveTypeInfo.Package))
+                    {
+                        continue;
+                    }
+
+                    AddImport(resolveTypeInfo.GetFullyQualifiedTypeName());
                 }
             }
 
