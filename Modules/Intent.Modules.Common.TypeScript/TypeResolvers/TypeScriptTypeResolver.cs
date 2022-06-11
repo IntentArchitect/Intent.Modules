@@ -2,7 +2,7 @@
 using Intent.Metadata.Models;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.Common.TypeScript
+namespace Intent.Modules.Common.TypeScript.TypeResolvers
 {
     /// <summary>
     /// TypeScript specialization of <see cref="TypeResolverBase"/>.
@@ -16,6 +16,7 @@ namespace Intent.Modules.Common.TypeScript
         {
         }
 
+        /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
             return new TypeScriptTypeResolverContext(CollectionFormatter.GetOrCreate("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);

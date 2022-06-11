@@ -2,17 +2,25 @@
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
-using Intent.Templates;
+using Intent.Modules.Common.TypeScript.TypeResolvers;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.TypeScript.Templates
 {
-    [Obsolete("Use TypeScriptTemplateBase")]
+    /// <summary>
+    /// Obsolete. Use <see cref="TypeScriptTemplateBase"/> instead.
+    /// </summary>
+    [Obsolete(WillBeRemovedIn.Version4)]
     public abstract class IntentTypescriptProjectItemTemplateBase<TModel> : IntentTemplateBase<TModel>, IClassProvider
     {
-        public IntentTypescriptProjectItemTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
+        /// <summary>
+        /// Creates a new instance of <see cref="IntentTypescriptProjectItemTemplateBase{TModel}"/>.
+        /// </summary>
+        protected IntentTypescriptProjectItemTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
         {
         }
 
+        /// <inheritdoc />
         public string Namespace
         {
             get
@@ -25,6 +33,7 @@ namespace Intent.Modules.Common.TypeScript.Templates
             }
         }
 
+        /// <inheritdoc />
         public string ClassName
         {
             get
@@ -37,16 +46,30 @@ namespace Intent.Modules.Common.TypeScript.Templates
             }
         }
 
+        /// <summary>
+        /// The type name for the type defined by this template.
+        /// </summary>
         public string TypeName => string.IsNullOrWhiteSpace(Namespace) ? ClassName : $"{Namespace}.{ClassName}";
 
+        /// <summary>
+        /// Obsolete. Please notify Intent Architect employees if you still have a need for this.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public string Location => FileMetadata.LocationInProject;
 
-        [Obsolete("Specify using fluent api (e.g. AddTypeSource(...).WithCollectionFormat(...);")]
+        /// <summary>
+        /// Obsolete. Use <see cref="ClassTypeSource.WithCollectionFormat"/> instead. For example:
+        /// <code>
+        /// AddTypeSource(...).WithCollectionFormat(...);
+        /// </code>
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public new void AddTypeSource(string templateId, string collectionFormat)
         {
             AddTypeSource(TypescriptTypeSource.Create(ExecutionContext, templateId, collectionFormat));
         }
 
+        /// <inheritdoc />
         protected override string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
             var normalizedTypeName = NormalizeTypeName(resolvedTypeInfo.ToString());
@@ -54,23 +77,12 @@ namespace Intent.Modules.Common.TypeScript.Templates
             return normalizedTypeName;
         }
 
+        /// <inheritdoc />
         public override string RunTemplate()
         {
             var templateOutput = base.RunTemplate();
 
             return templateOutput;
-//            return $@"{DependencyImports}
-//{templateOutput}";
         }
     }
-
-    //public static class PathExtensions
-    //{
-    //    public static string GetRelativePath(this string from, string to)
-    //    {
-    //        var url = new Uri("http://localhost/" + to, UriKind.Absolute);
-    //        var relativeUrl = new Uri("http://localhost/" + from, UriKind.Absolute).MakeRelativeUri(url);
-    //        return "./" + relativeUrl.ToString();
-    //    }
-    //}
 }

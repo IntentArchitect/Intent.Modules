@@ -1,7 +1,7 @@
 ﻿using Intent.Engine;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.Common.TypeScript
+namespace Intent.Modules.Common.TypeScript.TypeResolvers
 {
     public class TypescriptTypeSource
     {
@@ -14,11 +14,6 @@ namespace Intent.Modules.Common.TypeScript
         {
             return Create(context, templateId, CollectionFormatter.GetOrCreate(collectionFormat));
         }
-
-        //public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, Func<string, string> collectionFormatter)
-        //{
-        //    return Create(context, templateId, CollectionFormatter.GetOrCreate(collectionFormatter));
-        //}
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, ICollectionFormatter collectionFormatter)
         {
