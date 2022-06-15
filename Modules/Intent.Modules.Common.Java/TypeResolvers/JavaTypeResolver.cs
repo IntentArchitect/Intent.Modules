@@ -20,6 +20,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             ["float"] = ("float", "Float"),
             ["double"] = ("double", "Double"),
             ["bool"] = ("boolean", "Boolean"),
+            ["boolean"] = ("boolean", "Boolean"),
             ["char"] = ("char", "Character")
         };
 
@@ -135,9 +136,11 @@ namespace Intent.Modules.Common.Java.TypeResolvers
 
             private static JavaResolvedTypeInfo ResolveTypeInternal(ITypeReference typeReference)
             {
-                IReadOnlyList<JavaResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
+                static IReadOnlyList<JavaResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
-                    return genericTypeParameters.Select(ResolveTypeInternal).ToArray();
+                    return genericTypeParameters
+                        .Select(reference => ToNonPrimitive(ResolveTypeInternal(reference)))
+                        .ToArray();
                 }
 
                 if (typeReference.Element == null)
