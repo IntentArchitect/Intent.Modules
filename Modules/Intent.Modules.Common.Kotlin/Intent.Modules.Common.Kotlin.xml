@@ -208,8 +208,9 @@
         </member>
         <member name="M:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinCollectionFormatter.ApplyTo(Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo)">
             <summary>
-            Returns a <see cref="T:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo"/> with the provided
-            TODO JL
+            Returns a <see cref="T:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo"/> which is the type of collection for this
+            instance of the <see cref="T:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinCollectionFormatter"/> of the provided
+            <paramref name="typeInfo"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo">

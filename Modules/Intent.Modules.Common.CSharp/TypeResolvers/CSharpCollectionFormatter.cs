@@ -173,8 +173,9 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns a <see cref="CSharpResolvedTypeInfo"/> with the
-    /// TODO JL
+    /// Returns a <see cref="CSharpResolvedTypeInfo"/> which is the type of collection for this
+    /// instance of the <see cref="CSharpCollectionFormatter"/> of the provided
+    /// <paramref name="typeInfo"/>.
     /// </summary>
     public CSharpResolvedTypeInfo ApplyTo(CSharpResolvedTypeInfo typeInfo)
     {

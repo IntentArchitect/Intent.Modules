@@ -854,8 +854,9 @@
         </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.ApplyTo(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
-            Returns a <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> with the
-            TODO JL
+            Returns a <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> which is the type of collection for this
+            instance of the <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> of the provided
+            <paramref name="typeInfo"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray">

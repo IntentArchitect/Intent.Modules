@@ -160,8 +160,9 @@ public class JavaCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns a <see cref="JavaResolvedTypeInfo"/> with the provided
-    /// TODO JL
+    /// Returns a <see cref="JavaResolvedTypeInfo"/> which is the type of collection for this
+    /// instance of the <see cref="JavaCollectionFormatter"/> of the provided
+    /// <paramref name="typeInfo"/>.
     /// </summary>
     public JavaResolvedTypeInfo ApplyTo(JavaResolvedTypeInfo typeInfo)
     {

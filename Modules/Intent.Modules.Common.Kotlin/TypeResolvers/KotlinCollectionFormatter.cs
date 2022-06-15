@@ -143,8 +143,9 @@ public class KotlinCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns a <see cref="KotlinResolvedTypeInfo"/> with the provided
-    /// TODO JL
+    /// Returns a <see cref="KotlinResolvedTypeInfo"/> which is the type of collection for this
+    /// instance of the <see cref="KotlinCollectionFormatter"/> of the provided
+    /// <paramref name="typeInfo"/>.
     /// </summary>
     public KotlinResolvedTypeInfo ApplyTo(KotlinResolvedTypeInfo typeInfo)
     {

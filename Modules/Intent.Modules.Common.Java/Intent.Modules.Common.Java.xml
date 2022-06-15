@@ -191,8 +191,9 @@
         </member>
         <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.ApplyTo(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
             <summary>
-            Returns a <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> with the provided
-            TODO JL
+            Returns a <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> which is the type of collection for this
+            instance of the <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> of the provided
+            <paramref name="typeInfo"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo">
