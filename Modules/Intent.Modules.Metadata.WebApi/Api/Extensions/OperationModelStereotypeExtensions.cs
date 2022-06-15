@@ -107,6 +107,8 @@ namespace Intent.Metadata.WebApi.Api
                             return VerbOptionsEnum.POST;
                         case "PUT":
                             return VerbOptionsEnum.PUT;
+                        case "PATCH":
+                            return VerbOptionsEnum.PATCH;
                         case "DELETE":
                             return VerbOptionsEnum.DELETE;
                         default:
@@ -126,6 +128,10 @@ namespace Intent.Metadata.WebApi.Api
                 {
                     return Value == "PUT";
                 }
+                public bool IsPATCH()
+                {
+                    return Value == "PATCH";
+                }
                 public bool IsDELETE()
                 {
                     return Value == "DELETE";
@@ -137,6 +143,7 @@ namespace Intent.Metadata.WebApi.Api
                 GET,
                 POST,
                 PUT,
+                PATCH,
                 DELETE
             }
         }
