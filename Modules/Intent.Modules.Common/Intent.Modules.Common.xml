@@ -1118,6 +1118,14 @@
         <member name="M:Intent.Modules.Common.Templates.StaticContent.StaticContentTemplateRegistration.Register(Intent.Registrations.ITemplateInstanceRegistry,Intent.Engine.IApplication)">
             <inheritdoc />
         </member>
+        <member name="M:Intent.Modules.Common.Templates.StaticContent.StaticContentTemplateRegistration.CreateTemplate(Intent.Engine.IOutputTarget,System.String,System.String)">
+            <summary>
+            Factory method for creating the template instance.
+            </summary>
+            <remarks>
+            The default implementation creates an instance of <see cref="T:Intent.Modules.Common.Templates.StaticContent.StaticContentTemplate"/>.
+            </remarks>
+        </member>
         <member name="P:Intent.Modules.Common.Templates.T4TemplateBase.GenerationEnvironment">
             <summary>
             The string builder that generation-time code is using to assemble generated output

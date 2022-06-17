@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
 using Intent.Registrations;
+using Intent.Templates;
 using SearchOption = System.IO.SearchOption;
 
 namespace Intent.Modules.Common.Templates.StaticContent
@@ -65,12 +66,24 @@ namespace Intent.Modules.Common.Templates.StaticContent
 
             foreach (var file in files)
             {
-                registry.RegisterTemplate(TemplateId, o => new StaticContentTemplate(
-                    sourcePath: file.FullPath,
-                    relativeOutputPath: file.RelativePath,
-                    templateId: TemplateId, outputTarget: o,
-                    replacements: Replacements));
+                registry.RegisterTemplate(TemplateId, outputTarget => CreateTemplate(outputTarget, file.FullPath, file.RelativePath));
             }
+        }
+
+        /// <summary>
+        /// Factory method for creating the template instance.
+        /// </summary>
+        /// <remarks>
+        /// The default implementation creates an instance of <see cref="StaticContentTemplate"/>.
+        /// </remarks>
+        protected virtual ITemplate CreateTemplate(IOutputTarget outputTarget, string fileFullPath, string fileRelativePath)
+        {
+            return new StaticContentTemplate(
+                sourcePath: fileFullPath,
+                relativeOutputPath: fileRelativePath,
+                templateId: TemplateId,
+                outputTarget: outputTarget,
+                replacements: Replacements);
         }
     }
 }
