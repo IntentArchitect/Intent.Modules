@@ -12,7 +12,7 @@
     <factoryExtension id="Intent.Common.TypeScript.OutputWeaver" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.3" />
+    <dependency id="Intent.Common" version="3.3.4" />
     <dependency id="Intent.Common.Types" version="3.3.0" />
   </dependencies>
   <files>
