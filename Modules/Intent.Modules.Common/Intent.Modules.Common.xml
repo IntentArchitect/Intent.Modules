@@ -1796,6 +1796,62 @@
             Resolve a <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/> for the provided <paramref name="typeReference"/>.
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2">
+            <summary>
+            Base abstract implementation of <see cref="T:Intent.Modules.Common.TypeResolution.ITypeResolverContext"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.#ctor(`0,Intent.Modules.Common.TypeResolution.INullableFormatter)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.TypeResolution.TypeResolverContextBase"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.DefaultCollectionFormatter">
+            <inheritdoc cref="P:Intent.Modules.Common.TypeResolution.ITypeResolverContext.DefaultCollectionFormatter"/>
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.DefaultNullableFormatter">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.SetCollectionFormatter(`0)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.SetCollectionFormatter(Intent.Modules.Common.TypeResolution.ICollectionFormatter)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.SetNullableFormatter(Intent.Modules.Common.TypeResolution.INullableFormatter)">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.TypeSources">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Modules.Common.Templates.IClassProvider)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Modules.Common.Templates.IClassProvider)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Metadata.Models.ITypeReference)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Metadata.Models.ITypeReference,System.String)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference,System.String)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Metadata.Models.ITypeReference,`0)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.ICollectionFormatter)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.ITypeSource)">
+            <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.ITypeSource)"/>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+            <summary>
+            Resolve a <typeparamref name="TResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
+            </summary>
+            <remarks>
+            Override this method to return a different specialized implementation of <typeparamref name="TResolvedTypeInfo"/>.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.ResolveType(Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.INullableFormatter,`0)">
+            <summary>
+            Resolve a <typeparamref name="TResolvedTypeInfo"/> for the provided <paramref name="typeReference"/>.
+            </summary>
+        </member>
         <member name="M:System.Linq.Dynamic.Core.AssemblyBuilderFactory.DefineDynamicAssembly(System.Reflection.AssemblyName,System.Reflection.Emit.AssemblyBuilderAccess)">
             <summary>
             Defines a dynamic assembly that has the specified name and access rights.

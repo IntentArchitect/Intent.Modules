@@ -82,7 +82,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             return true;
         }
 
-        private class JavaTypeResolverContext : TypeResolverContextBase
+        private class JavaTypeResolverContext : TypeResolverContextBase<JavaCollectionFormatter, JavaResolvedTypeInfo>
         {
             private static readonly Dictionary<string, (string Package, string TypeName)> ObjectsTypeMap = new()
             {
@@ -100,7 +100,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             {
             }
 
-            public override IResolvedTypeInfo Get(IClassProvider classProvider)
+            protected override JavaResolvedTypeInfo Get(IClassProvider classProvider)
             {
                 return JavaResolvedTypeInfo.Create(
                     name: classProvider.ClassName,
@@ -113,12 +113,12 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                     genericTypeParameters: null);
             }
 
-            protected override IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+            protected override JavaResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
             {
                 return JavaResolvedTypeInfo.Create(resolvedTypeInfo);
             }
 
-            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+            protected override JavaResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
                 var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
                     ? JavaCollectionFormatter.GetOrCreate(collectionFormat)
@@ -127,19 +127,15 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                 return Get(typeInfo, collectionFormatter);
             }
 
-            protected override IResolvedTypeInfo ResolveType(
+            protected override JavaResolvedTypeInfo ResolveType(
                 ITypeReference typeReference,
-                INullableFormatter nullableFormatter)
+                INullableFormatter nullableFormatter,
+                JavaCollectionFormatter collectionFormatter)
             {
-                return ResolveTypeInternal(typeReference);
-            }
-
-            private static JavaResolvedTypeInfo ResolveTypeInternal(ITypeReference typeReference)
-            {
-                static IReadOnlyList<JavaResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
+                IReadOnlyList<JavaResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
                     return genericTypeParameters
-                        .Select(reference => ToNonPrimitive(ResolveTypeInternal(reference)))
+                        .Select(type => ToNonPrimitive(Get(type, collectionFormatter)))
                         .ToArray();
                 }
 

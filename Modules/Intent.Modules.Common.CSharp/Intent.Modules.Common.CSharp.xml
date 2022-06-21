@@ -959,7 +959,7 @@
             C# specialization of <see cref="T:Intent.Modules.Common.TypeResolution.TypeResolverBase"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpTypeResolver.#ctor(Intent.Modules.Common.TypeResolution.ICollectionFormatter,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpTypeResolver.#ctor(Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
             <summary>
             Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpTypeResolver"/>.
             </summary>

@@ -18,7 +18,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.4" />
+    <ProjectReference Include="..\Intent.Modules.Common\Intent.Modules.Common.csproj" />
+    <!--<PackageReference Include="Intent.Modules.Common" Version="3.3.4" />-->
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.0" />
     <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>

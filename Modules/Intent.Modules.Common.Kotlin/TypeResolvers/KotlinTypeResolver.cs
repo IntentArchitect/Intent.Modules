@@ -24,7 +24,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
             return new KotlinTypeResolverContext();
         }
 
-        private class KotlinTypeResolverContext : TypeResolverContextBase
+        private class KotlinTypeResolverContext : TypeResolverContextBase<KotlinCollectionFormatter, KotlinResolvedTypeInfo>
         {
             private static readonly Dictionary<string, string> PrimitivesTypeMap = new()
             {
@@ -54,7 +54,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
             {
             }
 
-            public override IResolvedTypeInfo Get(IClassProvider classProvider)
+            protected override KotlinResolvedTypeInfo Get(IClassProvider classProvider)
             {
                 return KotlinResolvedTypeInfo.Create(
                     name: classProvider.ClassName,
@@ -67,12 +67,12 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
                     genericTypeParameters: null);
             }
 
-            protected override IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+            protected override KotlinResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
             {
                 return KotlinResolvedTypeInfo.Create(resolvedTypeInfo);
             }
 
-            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+            protected override KotlinResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
                 var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
                     ? KotlinCollectionFormatter.GetOrCreate(collectionFormat)
@@ -81,18 +81,16 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
                 return Get(typeInfo, collectionFormatter);
             }
 
-            protected override IResolvedTypeInfo ResolveType(
+            protected override KotlinResolvedTypeInfo ResolveType(
                 ITypeReference typeReference,
-                INullableFormatter nullableFormatter)
-            {
-                return ResolveTypeInternal(typeReference);
-            }
-
-            private static KotlinResolvedTypeInfo ResolveTypeInternal(ITypeReference typeReference)
+                INullableFormatter nullableFormatter,
+                KotlinCollectionFormatter collectionFormatter)
             {
                 IReadOnlyList<KotlinResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
-                    return genericTypeParameters.Select(ResolveTypeInternal).ToArray();
+                    return genericTypeParameters
+                        .Select(type => Get(type, collectionFormatter))
+                        .ToArray();
                 }
 
                 if (typeReference.Element == null)
@@ -124,7 +122,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
                     return KotlinResolvedTypeInfo.Create(
                         name: name,
                         package: package,
-                        isPrimitive: typeReference.Element.GetStereotypeProperty<bool>("Kotlin", "Is Primitive", false),
+                        isPrimitive: typeReference.Element.GetStereotypeProperty("Kotlin", "Is Primitive", false),
                         isNullable: typeReference.IsNullable,
                         isCollection: typeReference.IsCollection,
                         typeReference: typeReference,

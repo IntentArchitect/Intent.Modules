@@ -13,7 +13,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
     /// </summary>
     public class CSharpTypeResolver : TypeResolverBase
     {
-        private readonly ICollectionFormatter _defaultCollectionFormatter;
+        private readonly CSharpCollectionFormatter _defaultCollectionFormatter;
         private readonly INullableFormatter _defaultNullableFormatter;
         private readonly ICSharpProject _csharpProject;
 
@@ -21,7 +21,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         /// Creates a new instance of <see cref="CSharpTypeResolver"/>.
         /// </summary>
         public CSharpTypeResolver(
-            ICollectionFormatter defaultCollectionFormatter,
+            CSharpCollectionFormatter defaultCollectionFormatter,
             INullableFormatter defaultNullableFormatter,
             ICSharpProject csharpProject)
             : base(
@@ -38,12 +38,12 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             return new CSharpTypeResolverContext(_defaultCollectionFormatter, _defaultNullableFormatter, _csharpProject);
         }
 
-        private class CSharpTypeResolverContext : TypeResolverContextBase
+        private class CSharpTypeResolverContext : TypeResolverContextBase<CSharpCollectionFormatter, CSharpResolvedTypeInfo>
         {
             private readonly ICSharpProject _csharpProject;
 
             public CSharpTypeResolverContext(
-                ICollectionFormatter collectionFormatter,
+                CSharpCollectionFormatter collectionFormatter,
                 INullableFormatter nullableFormatter,
                 ICSharpProject csharpProject)
                 : base(
@@ -53,7 +53,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 _csharpProject = csharpProject;
             }
 
-            public override IResolvedTypeInfo Get(IClassProvider classProvider)
+            protected override CSharpResolvedTypeInfo Get(IClassProvider classProvider)
             {
                 return CSharpResolvedTypeInfo.Create(
                     name: classProvider.ClassName,
@@ -67,12 +67,12 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                     genericTypeParameters: null);
             }
 
-            protected override IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+            protected override CSharpResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
             {
                 return CSharpResolvedTypeInfo.Create(resolvedTypeInfo);
             }
 
-            public override IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+            protected override CSharpResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
                 var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
                     ? CSharpCollectionFormatter.GetOrCreate(collectionFormat)
@@ -81,20 +81,10 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 return Get(typeInfo, collectionFormatter);
             }
 
-            protected override IResolvedTypeInfo ResolveType(
-                ITypeReference typeReference,
-                INullableFormatter nullableFormatter)
-            {
-                return ResolveTypeInternal(
-                    typeReference: typeReference,
-                    nullableFormatter: nullableFormatter,
-                    cSharpProject: _csharpProject);
-            }
-
-            private static CSharpResolvedTypeInfo ResolveTypeInternal(
+            protected override CSharpResolvedTypeInfo ResolveType(
                 ITypeReference typeReference,
                 INullableFormatter nullableFormatter,
-                ICSharpProject cSharpProject)
+                CSharpCollectionFormatter collectionFormatter)
             {
                 static bool IsAtLeastDotNet6(ICSharpProject project)
                 {
@@ -106,10 +96,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 IReadOnlyList<CSharpResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
                     return genericTypeParameters
-                        .Select(type => ResolveTypeInternal(
-                            type,
-                            nullableFormatter,
-                            cSharpProject))
+                        .Select(type => Get(type, collectionFormatter))
                         .ToArray();
                 }
 
@@ -214,7 +201,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                             isCollection: false,
                             typeReference: typeReference,
                             nullableFormatter: nullableFormatter);
-                    case "date" when IsAtLeastDotNet6(cSharpProject):
+                    case "date" when IsAtLeastDotNet6(_csharpProject):
                         return CSharpResolvedTypeInfo.Create(
                             name: "DateOnly",
                             @namespace: "System",
