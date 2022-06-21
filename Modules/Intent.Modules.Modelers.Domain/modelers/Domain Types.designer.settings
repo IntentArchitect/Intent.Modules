@@ -373,6 +373,7 @@ white-space: inherit;`</style>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeReferenceSetting>
+            <displayName>Return Type</displayName>
             <isRequired>false</isRequired>
             <targetTypes>
               <type>Enum</type>

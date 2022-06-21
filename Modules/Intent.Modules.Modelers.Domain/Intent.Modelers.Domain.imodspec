@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain</id>
-  <version>3.3.2</version>
+  <version>3.3.3</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>A domain designer based on UML class diagrams for expressing entity relationships.</summary>
   <description>A domain designer based on UML class diagrams for expressing entity relationships.</description>
