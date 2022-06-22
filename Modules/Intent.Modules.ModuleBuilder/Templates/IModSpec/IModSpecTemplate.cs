@@ -161,15 +161,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     specificTemplate.Add(new XAttribute("externalReference", template.ModelId));
                 }
-
-                if (template.Role != null)
-                {
-                    specificTemplate.SetElementValue("role", template.Role);
-                }
-                if (!string.IsNullOrWhiteSpace(template.Location))
-                {
-                    specificTemplate.SetElementValue("location", template.Location);
-                }
+                
+                specificTemplate.SetElementValue("role", template.Role ?? string.Empty);
+                specificTemplate.SetElementValue("location", template.Location ?? string.Empty);
             }
             SortChildElementsByAttribute(templatesElement, "id");
 
