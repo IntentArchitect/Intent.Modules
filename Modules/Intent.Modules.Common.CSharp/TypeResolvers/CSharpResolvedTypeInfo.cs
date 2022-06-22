@@ -69,7 +69,9 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         /// <summary>
         /// Creates a new instance of <see cref="CSharpResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
         /// </summary>
-        public static CSharpResolvedTypeInfo Create(IResolvedTypeInfo resolvedTypeInfo)
+        public static CSharpResolvedTypeInfo Create(
+            IResolvedTypeInfo resolvedTypeInfo,
+            IReadOnlyList<CSharpResolvedTypeInfo> genericTypeParameters)
         {
             var (name, @namespace) = resolvedTypeInfo.Template is IClassProvider classProvider
                 ? (classProvider.ClassName, classProvider.Namespace)
@@ -84,7 +86,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 typeReference: resolvedTypeInfo.TypeReference,
                 template: resolvedTypeInfo.Template,
                 nullableFormatter: resolvedTypeInfo.NullableFormatter,
-                genericTypeParameters: resolvedTypeInfo.GenericTypeParameters.Select(Create).ToArray(),
+                genericTypeParameters: genericTypeParameters,
                 jaggedArrays: null);
         }
 

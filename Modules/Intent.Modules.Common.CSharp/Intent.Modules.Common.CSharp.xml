@@ -911,7 +911,7 @@
             Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> for a non-array resolved type.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Create(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Create(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo})">
             <summary>
             Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
             </summary>

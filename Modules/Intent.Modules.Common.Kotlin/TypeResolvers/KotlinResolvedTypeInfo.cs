@@ -63,7 +63,9 @@ public class KotlinResolvedTypeInfo : ResolvedTypeInfo
     /// <summary>
     /// Creates a new instance of <see cref="KotlinResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
     /// </summary>
-    public static KotlinResolvedTypeInfo Create(IResolvedTypeInfo resolvedTypeInfo)
+    public static KotlinResolvedTypeInfo Create(
+        IResolvedTypeInfo resolvedTypeInfo,
+        IReadOnlyList<KotlinResolvedTypeInfo> genericTypeParameters)
     {
         var (name, package) = resolvedTypeInfo.Template is IClassProvider classProvider
             ? (classProvider.ClassName, classProvider.Namespace)
@@ -77,7 +79,7 @@ public class KotlinResolvedTypeInfo : ResolvedTypeInfo
             isCollection: resolvedTypeInfo.IsCollection,
             typeReference: resolvedTypeInfo.TypeReference,
             template: resolvedTypeInfo.Template,
-            genericTypeParameters: resolvedTypeInfo.GenericTypeParameters.Select(Create).ToArray());
+            genericTypeParameters: genericTypeParameters);
     }
 
     /// <summary>

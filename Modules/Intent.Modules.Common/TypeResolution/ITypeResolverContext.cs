@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -29,9 +31,9 @@ namespace Intent.Modules.Common.TypeResolution
         IResolvedTypeInfo Get(ITypeReference typeInfo, ICollectionFormatter collectionFormatter);
 
         /// <summary>
-        /// Resolves the type name for the specified <paramref name="typeInfo"/>
+        /// Obsolete. This method will be removed, please notify Intent Architect should have a need for this.
         /// </summary>
-        /// <param name="typeSource">The <paramref name="typeSource"/> to search for the <paramref name="typeInfo"/>. If not found, will then search added <see cref="TypeSources"/>.</param>
+        [Obsolete(WillBeRemovedIn.Version4)]
         IResolvedTypeInfo Get(ITypeReference typeInfo, ITypeSource typeSource);
 
         /// <summary>

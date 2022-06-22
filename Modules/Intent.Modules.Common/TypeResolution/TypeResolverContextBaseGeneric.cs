@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 
@@ -82,7 +84,7 @@ namespace Intent.Modules.Common.TypeResolution
                 }
 
                 collectionFormatter ??= (TCollectionFormatter)classLookup.CollectionFormatter;
-                resolvedTypeInfo = Get(foundClass);
+                resolvedTypeInfo = Get(foundClass, typeReference.GenericTypeParameters, collectionFormatter);
                 break;
             }
 
@@ -115,7 +117,7 @@ namespace Intent.Modules.Common.TypeResolution
             if (foundClass != null)
             {
                 collectionFormatter = (TCollectionFormatter)typeSource.CollectionFormatter;
-                resolvedTypeInfo = Get(foundClass);
+                resolvedTypeInfo = Get(foundClass, typeReference.GenericTypeParameters, null);
             }
             else
             {
@@ -128,7 +130,7 @@ namespace Intent.Modules.Common.TypeResolution
                     }
 
                     collectionFormatter = (TCollectionFormatter)classLookup.CollectionFormatter;
-                    resolvedTypeInfo = Get(foundClass);
+                    resolvedTypeInfo = Get(foundClass, typeReference.GenericTypeParameters, null);
                     break;
                 }
             }
@@ -154,7 +156,10 @@ namespace Intent.Modules.Common.TypeResolution
         /// <remarks>
         /// Override this method to return a different specialized implementation of <typeparamref name="TResolvedTypeInfo"/>.
         /// </remarks>
-        protected abstract TResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo);
+        protected abstract TResolvedTypeInfo Get(
+            IResolvedTypeInfo resolvedTypeInfo,
+            IEnumerable<ITypeReference> genericTypeParameters,
+            TCollectionFormatter collectionFormatter);
 
         /// <summary>
         /// Resolve a <typeparamref name="TResolvedTypeInfo"/> for the provided <paramref name="typeReference"/>.

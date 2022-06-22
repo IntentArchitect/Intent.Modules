@@ -67,9 +67,16 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                     genericTypeParameters: null);
             }
 
-            protected override CSharpResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+            protected override CSharpResolvedTypeInfo Get(
+                IResolvedTypeInfo resolvedTypeInfo,
+                IEnumerable<ITypeReference> genericTypeParameters,
+                CSharpCollectionFormatter collectionFormatter)
             {
-                return CSharpResolvedTypeInfo.Create(resolvedTypeInfo);
+                return CSharpResolvedTypeInfo.Create(
+                    resolvedTypeInfo: resolvedTypeInfo,
+                    genericTypeParameters: genericTypeParameters
+                        .Select(type => Get(type, collectionFormatter))
+                        .ToArray());
             }
 
             protected override CSharpResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)

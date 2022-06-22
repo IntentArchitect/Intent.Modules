@@ -223,7 +223,7 @@
             Creates a new instance of <see cref="T:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo.Create(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo.Create(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo})">
             <summary>
             Creates a new instance of <see cref="T:Intent.Modules.Common.Kotlin.TypeResolvers.KotlinResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
             </summary>

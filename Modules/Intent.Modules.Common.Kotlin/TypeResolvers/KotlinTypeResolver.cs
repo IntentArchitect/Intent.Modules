@@ -67,9 +67,16 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
                     genericTypeParameters: null);
             }
 
-            protected override KotlinResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+            protected override KotlinResolvedTypeInfo Get(
+                IResolvedTypeInfo resolvedTypeInfo,
+                IEnumerable<ITypeReference> genericTypeParameters,
+                KotlinCollectionFormatter collectionFormatter)
             {
-                return KotlinResolvedTypeInfo.Create(resolvedTypeInfo);
+                return KotlinResolvedTypeInfo.Create(
+                    resolvedTypeInfo: resolvedTypeInfo,
+                    genericTypeParameters: genericTypeParameters
+                        .Select(type => Get(type, collectionFormatter))
+                        .ToArray());
             }
 
             protected override KotlinResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)

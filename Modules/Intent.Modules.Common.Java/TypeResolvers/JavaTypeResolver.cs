@@ -113,9 +113,16 @@ namespace Intent.Modules.Common.Java.TypeResolvers
                     genericTypeParameters: null);
             }
 
-            protected override JavaResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+            protected override JavaResolvedTypeInfo Get(
+                IResolvedTypeInfo resolvedTypeInfo,
+                IEnumerable<ITypeReference> genericTypeParameters,
+                JavaCollectionFormatter collectionFormatter)
             {
-                return JavaResolvedTypeInfo.Create(resolvedTypeInfo);
+                return JavaResolvedTypeInfo.Create(
+                    resolvedTypeInfo: resolvedTypeInfo,
+                    genericTypeParameters: genericTypeParameters
+                        .Select(type => Get(type, collectionFormatter))
+                        .ToArray());
             }
 
             protected override JavaResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)

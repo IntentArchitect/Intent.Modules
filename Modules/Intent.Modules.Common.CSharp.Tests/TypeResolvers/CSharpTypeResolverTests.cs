@@ -42,6 +42,34 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
             cSharpResolvedTypeInfo.GetNamespaces().ShouldContain("GenericTypeNamespace");
         }
 
+        [Fact]
+        public void ItShouldAddGenericTypeParametersToTypeSourceTypes()
+        {
+            // Arrange
+            var project = Substitute.For<ICSharpProject>();
+
+            var typeResolver = new CSharpTypeResolver(
+                defaultCollectionFormatter: CSharpCollectionFormatter.GetOrCreate("List<{0}>"),
+                defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(project),
+                csharpProject: project);
+
+            typeResolver.AddTypeSource(new TypeSource());
+
+            var typeReference = TypeReference.ForTypeSource("Type", "Namespace", new[]
+            {
+                TypeReference.ForTypeDefinition("GenericType", "GenericTypeNamespace")
+            });
+
+            // Act
+            var resolvedTypeInfo = typeResolver.Get(typeReference);
+
+            // Assert
+            var cSharpResolvedTypeInfo = resolvedTypeInfo.ShouldBeOfType<CSharpResolvedTypeInfo>();
+            cSharpResolvedTypeInfo.ToString().ShouldBe("Type<GenericType>");
+            cSharpResolvedTypeInfo.GetNamespaces().ShouldContain("Namespace");
+            cSharpResolvedTypeInfo.GetNamespaces().ShouldContain("GenericTypeNamespace");
+        }
+
         private class TypeSource : ITypeSource
         {
             public IResolvedTypeInfo GetType(ITypeReference typeInfo)

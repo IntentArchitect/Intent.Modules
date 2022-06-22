@@ -1582,9 +1582,8 @@
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.ITypeSource)">
             <summary>
-            Resolves the type name for the specified <paramref name="typeInfo"/>
+            Obsolete. This method will be removed, please notify Intent Architect should have a need for this.
             </summary>
-            <param name="typeSource">The <paramref name="typeSource"/> to search for the <paramref name="typeInfo"/>. If not found, will then search added <see cref="P:Intent.Modules.Common.TypeResolution.ITypeResolverContext.TypeSources"/>.</param>
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)">
             <summary>
@@ -1839,7 +1838,7 @@
         <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.ITypeSource)">
             <inheritdoc cref="M:Intent.Modules.Common.TypeResolution.ITypeResolverContext.Get(Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.ITypeSource)"/>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.TypeResolution.TypeResolverContextBase`2.Get(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo,System.Collections.Generic.IEnumerable{Intent.Metadata.Models.ITypeReference},`0)">
             <summary>
             Resolve a <typeparamref name="TResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
             </summary>

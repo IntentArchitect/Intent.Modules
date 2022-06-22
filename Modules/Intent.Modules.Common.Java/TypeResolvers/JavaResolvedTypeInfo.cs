@@ -71,7 +71,9 @@ public class JavaResolvedTypeInfo : ResolvedTypeInfo
     /// <summary>
     /// Creates a new instance of <see cref="JavaResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
     /// </summary>
-    public static JavaResolvedTypeInfo Create(IResolvedTypeInfo resolvedTypeInfo)
+    public static JavaResolvedTypeInfo Create(
+        IResolvedTypeInfo resolvedTypeInfo,
+        IReadOnlyList<IResolvedTypeInfo> genericTypeParameters)
     {
         var (name, package) = resolvedTypeInfo.Template is IClassProvider classProvider
             ? (classProvider.ClassName, classProvider.Namespace)
@@ -85,7 +87,7 @@ public class JavaResolvedTypeInfo : ResolvedTypeInfo
             isCollection: resolvedTypeInfo.IsCollection,
             typeReference: resolvedTypeInfo.TypeReference,
             template: resolvedTypeInfo.Template,
-            genericTypeParameters: resolvedTypeInfo.GenericTypeParameters.Select(Create).ToArray(),
+            genericTypeParameters: genericTypeParameters,
             arrayDimensionCount: 0);
     }
 
