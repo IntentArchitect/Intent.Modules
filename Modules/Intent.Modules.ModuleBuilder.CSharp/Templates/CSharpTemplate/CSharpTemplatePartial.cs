@@ -40,7 +40,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplate
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{TemplateName}",
-                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name.ToCSharpIdentifier().RemoveSuffix("Template"))}",
                 fileExtension: "tt");
         }
 

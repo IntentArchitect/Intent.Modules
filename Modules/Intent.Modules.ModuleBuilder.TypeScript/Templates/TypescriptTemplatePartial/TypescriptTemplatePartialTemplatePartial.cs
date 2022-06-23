@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.ModuleBuilder.TypeScript.Api;
+using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
@@ -25,11 +26,11 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         public TypescriptTemplatePartialTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
             // whichever his higher:
-            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.3.0");
+            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.3.2");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
-        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier() }).ToList();
+        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
@@ -53,7 +54,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                 location: Model.GetLocation()));
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.TypeScript",
-                moduleVersion: "3.3.0"));
+                moduleVersion: "3.3.2"));
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

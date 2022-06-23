@@ -8,7 +8,7 @@
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
       <requiredPackages />
       <creationOptions>
-        <option order="2" type="element">
+        <option order="3" type="element">
           <specializationType>Java File Template</specializationType>
           <specializationTypeId>e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a</specializationTypeId>
           <text>New Java File</text>
@@ -19,7 +19,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type order="2">Java File Template</type>
+        <type order="3">Java File Template</type>
       </typeOrder>
     </packageExtension>
   </packageExtensions>

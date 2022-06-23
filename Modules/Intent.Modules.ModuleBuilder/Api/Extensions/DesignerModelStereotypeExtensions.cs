@@ -29,16 +29,6 @@ namespace Intent.ModuleBuilder.Api
             return stereotype != null ? new OutputConfiguration(stereotype) : null;
         }
 
-        public static IReadOnlyCollection<OutputConfiguration> GetOutputConfigurations(this DesignerModel model)
-        {
-            var stereotypes = model
-                .GetStereotypes("Output Configuration")
-                .Select(stereotype => new OutputConfiguration(stereotype))
-                .ToArray();
-
-            return stereotypes;
-        }
-
         public static bool HasOutputConfiguration(this DesignerModel model)
         {
             return model.HasStereotype("Output Configuration");

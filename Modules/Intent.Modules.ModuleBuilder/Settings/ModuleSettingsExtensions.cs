@@ -17,13 +17,26 @@ namespace Intent.Modules.ModuleBuilder.Settings
         }
     }
 
-    public class ModuleBuilderSettings
+    public class ModuleBuilderSettings : IGroupSettings
     {
         private readonly IGroupSettings _groupSettings;
 
         public ModuleBuilderSettings(IGroupSettings groupSettings)
         {
             _groupSettings = groupSettings;
+        }
+
+        public string Id => _groupSettings.Id;
+
+        public string Title
+        {
+            get => _groupSettings.Title;
+            set => _groupSettings.Title = value;
+        }
+
+        public ISetting GetSetting(string settingId)
+        {
+            return _groupSettings.GetSetting(settingId);
         }
 
         public bool CreatePartialAPIModels() => bool.TryParse(_groupSettings.GetSetting("b06c3926-23e5-49dd-a59d-93ef16b9777e")?.Value.ToPascalCase(), out var result) && result;

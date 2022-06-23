@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,9 +10,9 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Architect.Persistence" Version="3.3.1" />
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.1" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.2" />
-    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.5" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.6" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.1" />
     <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -213,23 +213,19 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ModuleSettingsExtensionsTemplate.tt</DependentUpon>
     </Compile>
-
     <None Update="Templates\StaticContentFilesRegistration\StaticContentFilesRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>StaticContentFilesRegistrationTemplate.cs</LastGenOutput>
     </None>
-
     <Compile Update="Templates\StaticContentFilesRegistration\StaticContentFilesRegistrationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>StaticContentFilesRegistrationTemplate.tt</DependentUpon>
     </Compile>
-
     <None Update="Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>StaticContentTemplateRegistrationTemplate.cs</LastGenOutput>
     </None>
-
     <Compile Update="Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>

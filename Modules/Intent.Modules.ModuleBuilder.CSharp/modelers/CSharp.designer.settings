@@ -8,7 +8,7 @@
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
       <requiredPackages />
       <creationOptions>
-        <option order="1" type="element">
+        <option order="2" type="element">
           <specializationType>C# Template</specializationType>
           <specializationTypeId>f6456232-0f1b-4235-b5f8-b4cce548ca59</specializationTypeId>
           <text>New C# Template</text>
@@ -20,7 +20,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type order="1">C# Template</type>
+        <type order="2">C# Template</type>
       </typeOrder>
     </packageExtension>
   </packageExtensions>

@@ -8,7 +8,7 @@
     <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
       <requiredPackages />
       <creationOptions>
-        <option order="2" type="element">
+        <option order="3" type="element">
           <specializationType>Typescript File Template</specializationType>
           <specializationTypeId>e6e41d88-2829-41b6-a791-065d2bb44eb3</specializationTypeId>
           <text>New Typescript Template</text>
@@ -19,7 +19,7 @@
       </creationOptions>
       <scriptOptions />
       <typeOrder>
-        <type order="2">Typescript File Template</type>
+        <type order="3">Typescript File Template</type>
       </typeOrder>
     </packageExtension>
   </packageExtensions>

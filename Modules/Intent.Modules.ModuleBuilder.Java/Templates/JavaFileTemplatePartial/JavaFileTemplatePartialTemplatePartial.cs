@@ -29,12 +29,12 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public JavaFileTemplatePartialTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Java", "3.3.0");
-            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "3.3.0");
+            AddNugetDependency("Intent.Modules.Common.Java", "3.3.5");
+            AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "3.3.1");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
-        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier() }).ToList();
+        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
         public string FolderPath => string.Join("/", OutputFolder);
         public string FolderNamespace => string.Join(".", OutputFolder);
 
@@ -53,7 +53,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             Project.Application.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
             Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Java",
-                moduleVersion: "3.3.0"));
+                moduleVersion: "3.3.5"));
             if (Model.GetModelType() != null)
             {
                 Project.Application.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(

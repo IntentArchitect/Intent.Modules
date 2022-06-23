@@ -618,7 +618,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>595153d5-7044-4475-8077-141632c392e8</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#9972b2a9-b749-4bba-b5c8-824bf694c6ef</CorrelationId>
       <ApplicationRelativeFilePath>Settings/ModuleSettingsExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ModuleSettingsExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

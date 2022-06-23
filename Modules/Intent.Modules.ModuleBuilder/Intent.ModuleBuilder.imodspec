@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
   <version>3.3.2</version>
@@ -117,6 +117,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location></location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions" externalReference="51ff3bbd-74dc-4f6c-996a-c8502814570a">
       <config>
@@ -124,6 +125,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location></location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions" externalReference="ff86b4fd-d613-4983-8066-605f97b58581">
       <config>
@@ -131,6 +133,7 @@
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
       </config>
       <role>Api</role>
+      <location></location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel" externalReference="5a307c40-0d05-4dac-a83e-6a3a553c5b9e">
       <config>
@@ -207,10 +210,10 @@
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.1" />
-    <dependency id="Intent.Common.CSharp" version="3.3.2" />
-    <dependency id="Intent.Common.Types" version="3.3.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.0" />
+    <dependency id="Intent.Common" version="3.3.5" />
+    <dependency id="Intent.Common.CSharp" version="3.3.6" />
+    <dependency id="Intent.Common.Types" version="3.3.1" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.1" />
   </dependencies>
   <designers>
     <designer id="Module Builder" name="Module Builder" src="modelers/Module Builder.designer.config" />

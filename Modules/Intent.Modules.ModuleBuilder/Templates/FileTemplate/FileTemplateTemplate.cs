@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
 
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
-        public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier() }).ToList();
+        public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
         public string FolderPath => string.Join("/", OutputFolders);
 
         public override ITemplateFileConfig GetTemplateFileConfig()

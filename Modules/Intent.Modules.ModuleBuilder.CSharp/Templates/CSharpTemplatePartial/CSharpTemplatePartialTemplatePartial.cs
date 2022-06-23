@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public CSharpTemplatePartialTemplate(IOutputTarget outputTarget, CSharpTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.CSharp", "3.3.0");
+            AddNugetDependency("Intent.Modules.Common.CSharp", "3.3.6");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -40,8 +40,8 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         {
             return new CSharpFileConfig(
                 className: $"{TemplateName}",
-                @namespace: $"{this.GetNamespace(additionalFolders: Model.Name.ToCSharpIdentifier())}",
-                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name.ToCSharpIdentifier())}",
+                @namespace: $"{this.GetNamespace(additionalFolders: Model.Name.ToCSharpIdentifier().RemoveSuffix("Template"))}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name.ToCSharpIdentifier().RemoveSuffix("Template"))}",
                 fileName: $"{TemplateName}Partial");
         }
 
@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.CSharp",
-                moduleVersion: "3.3.0"));
+                moduleVersion: "3.3.6"));
             if (Model.GetDesigner() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
