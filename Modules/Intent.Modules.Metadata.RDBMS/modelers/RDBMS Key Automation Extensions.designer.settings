@@ -11,7 +11,7 @@
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getParent().getMetadata("auto-manage-keys") == "false"){
     return;
 }
 
@@ -32,7 +32,7 @@ if (element.getName().toLocaleLowerCase() == "id" &amp;&amp;
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
-          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getMetadata("auto-manage-keys") == "false"){
     return;
 }
 
@@ -56,7 +56,7 @@ pk.setMetadata("is-managed-key", "true");</script>
         </macro>
         <macro trigger="on-loaded">
           <script>let primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
-if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getMetadata("auto-manage-keys") == "false"){
     if (application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value == "implicit") {
         let pks = element.getChildren("Attribute").filter(x =&gt; x.getMetadata("is-managed-key") == "true")
         pks.forEach(pk =&gt; pk.delete())
@@ -147,7 +147,7 @@ let targetType = lookup(association.typeReference.typeId);
 if (sourceType &amp;&amp; targetType) {
     let namingConvetion = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Naming Convention")?.value ?? "pascal-case";
     
-    if (requiresForeignKey(association)) {
+    if (requiresForeignKey(association) &amp;&amp; sourceType.getMetadata("auto-manage-keys") != "false") {
         let pks = targetType.getChildren("Attribute").filter(x =&gt; x.getStereotype("Primary Key") != null);
         pks.forEach((pk, index) =&gt; {
         let fk = sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id)[index] ||
@@ -164,11 +164,11 @@ if (sourceType &amp;&amp; targetType) {
             if (index &gt;= pks.length)
                 x.delete();
         })
-        if (targetType.id !== sourceType.id) {
+        if (targetType.id !== sourceType.id &amp;&amp; targetType.getMetadata("auto-manage-keys") != "false") {
             targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
         }
     }
-    else if (requiresForeignKey(association.getOtherEnd())) {
+    else if (requiresForeignKey(association.getOtherEnd()) &amp;&amp; targetType.getMetadata("auto-manage-keys") != "false") {
         let pks = sourceType.getChildren("Attribute").filter(x =&gt; x.getStereotype("Primary Key") != null);
         pks.forEach((pk, index) =&gt; {
         let fk = targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id)[index] ||
@@ -185,20 +185,29 @@ if (sourceType &amp;&amp; targetType) {
             if (index &gt;= pks.length)
                 x.delete();
         })
-        if (sourceType.id !== targetType.id) {
+        if (sourceType.id !== targetType.id &amp;&amp; sourceType.getMetadata("auto-manage-keys") != "false") {
             sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
         }
     }
     else { // many-to-many
-        targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
-        sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        if (targetType.getMetadata("auto-manage-keys") != "false") {
+            targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        }
+        if (sourceType.getMetadata("auto-manage-keys") != "false") {
+            sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+        }
     }
 }</script>
         </macro>
         <macro trigger="on-deleted">
-          <script>
-association.typeReference.getType()?.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
-association.getOtherEnd().typeReference.getType()?.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+          <script>let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
+let targetType = lookup(association.typeReference.typeId);
+if (targetType?.getMetadata("auto-manage-keys") != "false") {
+    targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+}
+if (sourceType?.getMetadata("auto-manage-keys") != "false") {
+    sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
+}
 </script>
         </macro>
         <macro trigger="on-loaded">
@@ -299,6 +308,10 @@ if (sourceType &amp;&amp; targetType) {
 let sourceType = association.getOtherEnd().typeReference.getType();
 let targetType = association.typeReference.getType();
 
+if (sourceType.getMetadata("auto-manage-keys") == "false") {
+    return;
+}
+
 if (sourceType &amp;&amp; targetType) {
     var pks = sourceType.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key") &amp;&amp; x.getMetadata("is-managed-key") == "true");
     pks.forEach(x =&gt; x.delete());
@@ -311,6 +324,10 @@ if (sourceType &amp;&amp; targetType) {
 
 let sourceType = association.getOtherEnd().typeReference.getType();
 let targetType = association.typeReference.getType();
+
+if (sourceType.getMetadata("auto-manage-keys") == "false") {
+    return;
+}
 
 if (sourceType &amp;&amp; targetType) {
     var pks = sourceType.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));

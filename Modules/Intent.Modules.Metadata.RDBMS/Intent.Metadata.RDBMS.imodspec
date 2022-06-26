@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.3.3</version>
+  <version>3.3.4</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Metadata for specifying RDBMS related concepts in the domain.</summary>
   <description>Metadata for specifying RDBMS related concepts in the domain.</description>
