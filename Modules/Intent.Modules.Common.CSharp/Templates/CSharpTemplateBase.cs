@@ -184,14 +184,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         [FixFor_Version4("Remove this method and let the override below do the necessary work")]
         public new ClassTypeSource AddTypeSource(string templateId)
         {
-            return base.AddTypeSource(templateId, "System.Collections.Generic.IEnumerable<{0}>");
+            return base.AddTypeSource(templateId);
         }
 
         /// <inheritdoc cref="IntentTemplateBase.AddTypeSource(string,string)"/>
-        [FixFor_Version4("Change this to an override which returns ClassTypeSource")]
+        [FixFor_Version4(
+            "Change this to an override which returns ClassTypeSource and make collectionFormat " +
+            "have a default value of null")]
         public new void AddTypeSource(string templateId, string collectionFormat)
         {
-            base.AddTypeSource(templateId, collectionFormat ?? "System.Collections.Generic.IEnumerable<{0}>");
+            base.AddTypeSource(templateId, collectionFormat);
         }
 
         /// <inheritdoc />
