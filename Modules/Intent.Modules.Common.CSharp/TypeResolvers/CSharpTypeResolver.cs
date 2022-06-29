@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 
@@ -15,42 +13,35 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
     {
         private readonly CSharpCollectionFormatter _defaultCollectionFormatter;
         private readonly INullableFormatter _defaultNullableFormatter;
-        private readonly ICSharpProject _csharpProject;
 
         /// <summary>
         /// Creates a new instance of <see cref="CSharpTypeResolver"/>.
         /// </summary>
         public CSharpTypeResolver(
             CSharpCollectionFormatter defaultCollectionFormatter,
-            INullableFormatter defaultNullableFormatter,
-            ICSharpProject csharpProject)
+            INullableFormatter defaultNullableFormatter)
             : base(
-                new CSharpTypeResolverContext(defaultCollectionFormatter, defaultNullableFormatter, csharpProject))
+                new CSharpTypeResolverContext(defaultCollectionFormatter, defaultNullableFormatter))
         {
             _defaultCollectionFormatter = defaultCollectionFormatter;
             _defaultNullableFormatter = defaultNullableFormatter;
-            _csharpProject = csharpProject;
         }
 
         /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
-            return new CSharpTypeResolverContext(_defaultCollectionFormatter, _defaultNullableFormatter, _csharpProject);
+            return new CSharpTypeResolverContext(_defaultCollectionFormatter, _defaultNullableFormatter);
         }
 
         private class CSharpTypeResolverContext : TypeResolverContextBase<CSharpCollectionFormatter, CSharpResolvedTypeInfo>
         {
-            private readonly ICSharpProject _csharpProject;
-
             public CSharpTypeResolverContext(
                 CSharpCollectionFormatter collectionFormatter,
-                INullableFormatter nullableFormatter,
-                ICSharpProject csharpProject)
+                INullableFormatter nullableFormatter)
                 : base(
                     collectionFormatter,
                     nullableFormatter)
             {
-                _csharpProject = csharpProject;
             }
 
             protected override CSharpResolvedTypeInfo Get(IClassProvider classProvider)
@@ -93,13 +84,6 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                 INullableFormatter nullableFormatter,
                 CSharpCollectionFormatter collectionFormatter)
             {
-                static bool IsAtLeastDotNet6(ICSharpProject project)
-                {
-                    return project.TargetDotNetFrameworks
-                        .DefaultIfEmpty()
-                        .Max() >= Version.Parse("6.0");
-                }
-
                 IReadOnlyList<CSharpResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
                 {
                     return genericTypeParameters

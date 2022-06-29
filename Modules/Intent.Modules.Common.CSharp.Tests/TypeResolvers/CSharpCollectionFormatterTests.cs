@@ -18,7 +18,7 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
             var formatter = CSharpCollectionFormatter.GetOrCreate("{0}");
 
             var typeInfo = CSharpResolvedTypeInfo.Create(
-                name: "Jon",
+                name: "TypeName",
                 @namespace: "Namespace",
                 isPrimitive: default,
                 isNullable: true,

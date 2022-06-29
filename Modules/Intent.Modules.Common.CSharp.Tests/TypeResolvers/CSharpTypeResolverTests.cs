@@ -23,8 +23,7 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
 
             var typeResolver = new CSharpTypeResolver(
                 defaultCollectionFormatter: CSharpCollectionFormatter.GetOrCreate("List<{0}>"),
-                defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(project),
-                csharpProject: project);
+                defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(project));
 
             typeResolver.AddTypeSource(new TypeSource());
 
@@ -50,8 +49,7 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
 
             var typeResolver = new CSharpTypeResolver(
                 defaultCollectionFormatter: CSharpCollectionFormatter.GetOrCreate("List<{0}>"),
-                defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(project),
-                csharpProject: project);
+                defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(project));
 
             typeResolver.AddTypeSource(new TypeSource());
 
