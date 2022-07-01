@@ -34,13 +34,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentOutputReadme
             // This is a complicated setup but necessary in order to ensure that the correct subfolder
             // is created in the beginning and doesn't continue to pester the developer if the readme file is removed.
             var outputTargets = applicationManager.OutputTargets.Where(p => p.OutputsTemplate(TemplateId)).ToArray();
-            if (outputTargets.Length > 1)
+            var outputTarget = outputTargets.Length switch
             {
-                throw new NotSupportedException(
-                    $"More than one output target instance of {TemplateId} was found but it's not supported.");
-            }
+                0 => null,
+                1 => outputTargets[0],
+                _ => throw new NotSupportedException(
+                    $"More than one output target instance of {TemplateId} was found but it's not supported.")
+            };
 
-            var outputTarget = outputTargets.FirstOrDefault();
             if (outputTarget == null)
             {
                 return;
