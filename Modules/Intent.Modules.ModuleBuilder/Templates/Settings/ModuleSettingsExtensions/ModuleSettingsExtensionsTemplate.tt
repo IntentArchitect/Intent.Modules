@@ -71,11 +71,15 @@ namespace <#= Namespace #>
         public bool <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => bool.TryParse(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value.ToPascalCase(), out var result) && result;
 <#                    break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Select:
+                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.MultiSelect:
                     var optionsClassName = $"{settingsField.Name.ToCSharpIdentifier().ToPascalCase()}Options";
                     var optionsEnumName = $"{optionsClassName}Enum";
 #>
-
+<#                  if (settingsField.GetFieldConfiguration().ControlType().IsSelect()) { #>
         public <#= optionsClassName #> <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => new <#= optionsClassName #>(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value);
+<#                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect()) { #>
+        public <#= optionsClassName #>[] <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>() => JsonSerializer.Deserialize<string[]>(_groupSettings.GetSetting("<#= settingsField.Id #>")?.Value ?? "[]")?.Select(x => new <#= optionsClassName #>(x)).ToArray();
+<#                  } #>
 
         public class <#= optionsClassName #>
         {
@@ -108,7 +112,7 @@ namespace <#= Namespace #>
 
             public bool Is<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>()
             {
-                return Value == "<#= option.Value #>";
+                return Value == "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>";
             }
 <#
                     }
@@ -126,8 +130,6 @@ namespace <#= Namespace #>
                     }
 #>
         }
-<#                    break;
-                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.MultiSelect:#>
 <#                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -158,11 +160,15 @@ namespace <#= Namespace #>
         public static bool <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>(this <#= settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase() #> groupSettings) => bool.TryParse(groupSettings.GetSetting("<#= settingsField.Id #>")?.Value.ToPascalCase(), out var result) && result;
 <#                    break;
                 case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.Select:
+                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.MultiSelect:
                     var optionsClassName = $"{settingsField.Name.ToCSharpIdentifier().ToPascalCase()}Options";
                     var optionsEnumName = $"{optionsClassName}Enum";
 #>
-
+<#                  if (settingsField.GetFieldConfiguration().ControlType().IsSelect()) { #>
         public static <#= optionsClassName #> <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>(this <#= settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase() #> groupSettings) => new <#= optionsClassName #>(groupSettings.GetSetting("<#= settingsField.Id #>")?.Value);
+<#                  } else if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect()) { #>
+        public static <#= optionsClassName #>[] <#= settingsField.Name.ToCSharpIdentifier().ToPascalCase() #>(this <#= settingsExtension.TypeReference.Element.Name.ToCSharpIdentifier().ToPascalCase() #> groupSettings) => JsonSerializer.Deserialize<string[]>(groupSettings.GetSetting("<#= settingsField.Id #>")?.Value ?? "[]")?.Select(x => new <#= optionsClassName #>(x)).ToArray();
+<#                  } #>
 
         public class <#= optionsClassName #>
         {
@@ -195,7 +201,7 @@ namespace <#= Namespace #>
 
             public bool Is<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>()
             {
-                return Value == "<#= option.Value #>";
+                return Value == "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>";
             }
 <#
                     }
@@ -213,8 +219,6 @@ namespace <#= Namespace #>
                     }
 #>
         }
-<#                    break;
-                case ModuleSettingsFieldConfigurationModelStereotypeExtensions.FieldConfiguration.ControlTypeOptionsEnum.MultiSelect:#>
 <#                    break;
                 default:
                     throw new ArgumentOutOfRangeException();
