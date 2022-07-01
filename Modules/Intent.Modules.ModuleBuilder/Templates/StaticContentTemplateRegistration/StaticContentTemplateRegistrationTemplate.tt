@@ -30,5 +30,10 @@ namespace <#= Namespace #>
 <#
 	}
 #>
+
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.Ignore)]
+        public override IReadOnlyDictionary<string, string> Replacements => new Dictionary<string, string>
+        {
+        };
     }
 }
