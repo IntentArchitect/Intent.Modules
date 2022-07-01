@@ -35,6 +35,53 @@
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
+      <visualSettings type="Enum">
+        <size width="${w}" height="${h}" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawPath>
+            <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+            <fillColor>return theme.isDark ? "#63230e" : "#ffe5dd"</fillColor>
+          </drawPath>
+          <drawText>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 8}" />
+          </drawText>
+        </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
+        <defaultSize width="${x}" height="${y}" />
+        <childElementVisualSettings>
+          <childElementVisualSetting type="Enum-Literal">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
+            <display>
+              <drawPath>
+                <condition>return $firstOfType;</condition>
+                <path>`M${x},${y - 6} h${w}`</path>
+              </drawPath>
+              <drawText>
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
+                <size width="${w}" height="${h}" />
+                <position x="${x}" y="${y}" />
+              </drawText>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <childElementVisualSettings />
+          </childElementVisualSetting>
+        </childElementVisualSettings>
+      </visualSettings>
       <childElementSettings>
         <childElementSetting type="Enum-Literal" typeId="4215f417-25d2-4509-9309-5076a1452eaa">
           <icon type="UrlImagePath" source="./img/icons/uml/Enumeration_256x.png" />
