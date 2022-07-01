@@ -25,6 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistrati
         [IntentManaged(Mode.Merge)]
         public StaticContentTemplateRegistrationTemplate(IOutputTarget outputTarget, StaticContentTemplateModel model) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
         }
 
         public override void BeforeTemplateExecution()

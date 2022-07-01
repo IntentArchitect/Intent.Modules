@@ -231,6 +231,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StaticContentTemplateRegistrationTemplate.tt</DependentUpon>
     </Compile>
+    <None Update="Templates\StaticContentOutputReadme\StaticContentOutputReadmeTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StaticContentOutputReadmeTemplate.cs</LastGenOutput>
+    </None>
+    <Compile Update="Templates\StaticContentOutputReadme\StaticContentOutputReadmeTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StaticContentOutputReadmeTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>

@@ -167,6 +167,10 @@
       <role>Templates</role>
       <location>Settings</location>
     </template>
+    <template id="Intent.ModuleBuilder.Templates.StaticContentOutputReadme" externalReference="ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf">
+      <role>Templates</role>
+      <location></location>
+    </template>
     <template id="Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration" externalReference="b8c74c43-2d73-483f-b938-f20a986f7acf">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
