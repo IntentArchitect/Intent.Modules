@@ -6,9 +6,9 @@ public static class ClassModelAssociationExtensions
 {
     public static bool IsAggregateRoot(this ClassModel classModel)
     {
-        var otherSources = classModel.AssociationEnds()
-            .Where(p => p.IsSourceEnd())
+        var owningAssociations = classModel.AssociationEnds()
+            .Where(x => x.IsSourceEnd() && !x.IsCollection && !x.IsNullable)
             .ToArray();
-        return !otherSources.Any() || otherSources.All(x => x.IsCollection || x.IsNullable);
+        return !owningAssociations.Any();
     }
 }

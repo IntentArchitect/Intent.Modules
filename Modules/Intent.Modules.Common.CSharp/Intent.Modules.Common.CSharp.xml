@@ -818,7 +818,7 @@
             as well as the <c>[]</c> syntax.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> based on the provided
             <paramref name="collectionFormat"/>.
@@ -831,7 +831,15 @@
             <param name="collectionFormat">The collection type, for example:
             <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)">
+            <summary>
+            Obsolete. Please use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)"/>
+            </summary>
+            <param name="collectionFormat">The collection type, for example:
+            <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> constructed with the
             specified parameters.
@@ -848,6 +856,43 @@
             </remarks>
             <param name="typeInfo">The collection type, for example:
             <c>System.Collection.Generic.Dictionary&lt;TKey, TValue&gt;</c>.</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
+            <summary>
+            Obsolete. Please use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)"/>
+            </summary>
+            <param name="typeInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateList">
+            <summary>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.List`1"/>
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateIList">
+            <summary>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.IList`1"/>
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateICollection">
+            <summary>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.ICollection`1"/>
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Format(System.String)">
             <inheritdoc />

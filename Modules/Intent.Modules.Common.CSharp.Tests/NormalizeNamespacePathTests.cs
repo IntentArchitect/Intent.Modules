@@ -177,5 +177,37 @@ namespace Intent.Modules.Common.Tests
 
             Assert.Equal("DependencyInjectionDecorator", result);
         }
+
+        [Fact]
+        public void Scenario8()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "Intent.Modules.Application",
+                foreignType: "Intent.Modules.Application.MyModel.MyModel",
+                knownOtherPaths: new string[]
+                {
+                    "System",
+                    "System.Collections.Generic",
+                    "Intent.Engine",
+                    "Intent.Modules.Common",
+                    "Intent.Modules.Common.CSharp.Templates",
+                    "Intent.Modules.Common.Templates",
+                    "Intent.RoslynWeaver.Attributes",
+                    "Intent.Templates",
+                },
+                usingPaths: new string[]
+                {
+                    "System",
+                    "System.Collections.Generic",
+                    "Intent.Engine",
+                    "Intent.Modules.Common",
+                    "Intent.Modules.Common.CSharp.Templates",
+                    "Intent.Modules.Common.Templates",
+                    "Intent.RoslynWeaver.Attributes",
+                    "Intent.Templates",
+                });
+
+            Assert.Equal("MyModel.MyModel", result);
+        }
     }
 }

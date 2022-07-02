@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.TypeResolution;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.CSharp.TypeResolvers;
 
@@ -133,12 +134,25 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     /// </remarks>
     /// <param name="collectionFormat">The collection type, for example:
     /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-    public static CSharpCollectionFormatter GetOrCreate(string collectionFormat)
+    public static CSharpCollectionFormatter Create(string collectionFormat)
     {
         return Cache.GetOrAdd(
             collectionFormat,
             _ => new CSharpCollectionFormatter(collectionFormat));
     }
+
+    /// <summary>
+    /// Obsolete. Please use <see cref="Create(string)"/>
+    /// </summary>
+    /// <param name="collectionFormat">The collection type, for example:
+    /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
+    /// <returns></returns>
+    [Obsolete(WillBeRemovedIn.Version4)]
+    public static CSharpCollectionFormatter GetOrCreate(string collectionFormat)
+    {
+        return Create(collectionFormat);
+    }
+
 
     /// <summary>
     /// Returns an instance of <see cref="CSharpCollectionFormatter"/> constructed with the
@@ -156,9 +170,59 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     /// </remarks>
     /// <param name="typeInfo">The collection type, for example:
     /// <c>System.Collection.Generic.Dictionary&lt;TKey, TValue&gt;</c>.</param>
-    public static CSharpCollectionFormatter GetOrCreate(CSharpResolvedTypeInfo typeInfo)
+    public static CSharpCollectionFormatter Create(CSharpResolvedTypeInfo typeInfo)
     {
         return Cache.GetOrAdd(typeInfo.ToString(), _ => new CSharpCollectionFormatter(typeInfo));
+    }
+
+    /// <summary>
+    /// Obsolete. Please use <see cref="Create(CSharpResolvedTypeInfo)"/>
+    /// </summary>
+    /// <param name="typeInfo"></param>
+    /// <returns></returns>
+    [Obsolete(WillBeRemovedIn.Version4)]
+    public static CSharpCollectionFormatter GetOrCreate(CSharpResolvedTypeInfo typeInfo)
+    {
+        return Create(typeInfo);
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.List{T}"/>
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// </remarks>
+    public static CSharpCollectionFormatter CreateList()
+    {
+        return Create("System.Collections.Generic.List<{0}>");
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.IList{T}"/>
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// </remarks>
+    public static CSharpCollectionFormatter CreateIList()
+    {
+        return Create("System.Collections.Generic.IList<{0}>");
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.ICollection{T}"/>
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// </remarks>
+    public static CSharpCollectionFormatter CreateICollection()
+    {
+        return Create("System.Collections.Generic.ICollection<{0}>");
     }
 
     /// <inheritdoc />
