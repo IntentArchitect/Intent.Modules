@@ -677,11 +677,10 @@
             </para>
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IElement,System.String)">
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IElement)">
             <summary>
             Resolves the fully qualified type name for the provided <paramref name="element"/> parameter.
             Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
-            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -689,7 +688,15 @@
             </para>
             </summary>
             <param name="element">The <see cref="T:Intent.Metadata.Models.IElement"/> for which to get the type name.</param>
-            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IElement,System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IElement)"/> instead.
+            </summary>
+            <remarks>
+            Even before this method was marked as obsolete, the <paramref name="collectionFormat"/>
+            value actually had no effect.
+            </remarks>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IHasTypeReference,System.String)">
             <summary>
@@ -785,14 +792,12 @@
             Resolves the type name for the provided <paramref name="classProvider"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IElement,System.String)">
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IElement)">
             <summary>
             Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
             <paramref name="element"/> parameter.
             Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be
             searched to resolve the type name.
-            Applies the <paramref name="collectionFormat"/> if the resolved type's
-            <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
@@ -800,7 +805,15 @@
             </para>
             </summary>
             <param name="element">The <see cref="T:Intent.Metadata.Models.IElement"/> for which to get the type name.</param>
-            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IElement,System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IElement)"/> instead.
+            </summary>
+            <remarks>
+            Even before this method was marked as obsolete, the <paramref name="collectionFormat"/>
+            value actually had no effect.
+            </remarks>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IHasTypeReference)">
             <summary>

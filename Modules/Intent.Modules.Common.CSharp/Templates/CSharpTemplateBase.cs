@@ -83,7 +83,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             : base(templateId, outputTarget, model)
         {
             Types = new CSharpTypeResolver(
-                defaultCollectionFormatter: CSharpCollectionFormatter.GetOrCreate("System.Collections.Generic.IEnumerable<{0}>"),
+                defaultCollectionFormatter: CSharpCollectionFormatter.Create("System.Collections.Generic.IEnumerable<{0}>"),
                 defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(OutputTarget.GetProject()));
         }
 
@@ -199,7 +199,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <inheritdoc />
         protected override ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
         {
-            return CSharpCollectionFormatter.GetOrCreate(collectionFormat);
+            return CSharpCollectionFormatter.Create(collectionFormat);
         }
 
         /// <inheritdoc />
@@ -277,12 +277,22 @@ namespace Intent.Modules.Common.CSharp.Templates
             }
 
             // Is there already a using which matches qualifier:
-            // (It's not immediately clear what scenario "usings.All(x => x != foreignType)" covers, if you know, please document)
-            // localNamespaceParts.Contains(foreignTypeParts.Last()) - if name exists in local namespace, can't use name as is.
-            var foreignTypeQualifier = foreignTypeParts.Take(foreignTypeParts.Length - 1).DefaultIfEmpty().Aggregate((x, y) => x + "." + y);
-            if (usingPaths.Contains(foreignTypeQualifier) && usingPaths.All(x => x != foreignType) && !localNamespaceParts.Contains(foreignTypeParts.Last()))
             {
-                return foreignTypeParts.Last();
+                var foreignTypeQualifier = string.Join('.', foreignTypeParts.Take(foreignTypeParts.Length - 1));
+
+                // It's not immediately clear what scenario this covers, if you know/find out, please
+                // document by adding unit test to cover scenario.
+                bool AllUsingPathsAreNotForeignType() => usingPaths.All(x => x != foreignType);
+
+                // If name exists in local namespace, can't use name as is.
+                bool LocalNamespacePartsDoNotContainType() => !localNamespaceParts.Contains(foreignTypeParts.Last());
+
+                if (usingPaths.Contains(foreignTypeQualifier) &&
+                    AllUsingPathsAreNotForeignType() &&
+                    LocalNamespacePartsDoNotContainType())
+                {
+                    return foreignTypeParts.Last();
+                }
             }
 
             var otherPathsToCheck = knownOtherPaths
@@ -298,9 +308,7 @@ namespace Intent.Modules.Common.CSharp.Templates
             var namespacePartsSubPaths = localNamespaceParts
                 .Select((_, index) =>
                 {
-                    var namespacePartPath = localNamespaceParts
-                        .Take(index + 1)
-                        .Aggregate((x, y) => x + "." + y);
+                    var namespacePartPath = string.Join('.', localNamespaceParts.Take(index + 1));
 
                     return new
                     {
@@ -317,7 +325,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                             .ToDictionary(x => x.Key, x => x.ToList())
                     };
                 })
-                .Where(x => x.LocalNamespacePartSubPaths.Any())
+                .Where(x => x.LocalNamespacePartSubPaths.Count > 0)
                 .ToArray();
 
             var commonPartsCount = 0;
@@ -326,7 +334,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 var localPart = localNamespaceParts[i];
                 var foreignPart = foreignTypeParts[i];
                 var proposedFirstForeignPart = foreignTypeParts.Skip(i + 1).FirstOrDefault();
-                var proposedPathToOmit = foreignTypeParts.Take(i + 1).Aggregate((x, y) => x + "." + y);
+                var proposedPathToOmit = string.Join('.', foreignTypeParts.Take(i + 1));
 
                 // Simple check first:
                 if (localPart != foreignPart)
@@ -368,7 +376,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 commonPartsCount++;
             }
 
-            return foreignTypeParts.Skip(commonPartsCount).Aggregate((x, y) => x + "." + y);
+            return string.Join('.', foreignTypeParts.Skip(commonPartsCount));
         }
 
         private static IEnumerable<string> GetUsingsFromContent(string existingContent)
@@ -417,19 +425,27 @@ namespace Intent.Modules.Common.CSharp.Templates
 
         /// <summary>
         /// Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
-        /// adds any required usings and applicable template dependencies.
+        /// adds any required usings, applicable template dependencies and makes a best effort to
+        /// avoid conflicts between the type name and known other types and namespaces.
         /// </summary>
         public override string UseType(IResolvedTypeInfo resolvedTypeInfo)
         {
-            if (resolvedTypeInfo is CSharpResolvedTypeInfo cSharpResolvedTypeInfo)
+            if (resolvedTypeInfo is not CSharpResolvedTypeInfo cSharpResolvedTypeInfo)
             {
-                foreach (var @namespace in cSharpResolvedTypeInfo.GetNamespaces())
-                {
-                    AddUsing(@namespace);
-                }
+                return base.UseType(resolvedTypeInfo);
             }
 
-            return base.UseType(resolvedTypeInfo);
+            // Adds template usings etc, but we ignore the returned string since we will do different logic
+            base.UseType(resolvedTypeInfo);
+
+            foreach (var @namespace in cSharpResolvedTypeInfo.GetNamespaces())
+            {
+                AddUsing(@namespace);
+            }
+
+            var fullyQualifiedTypeName = cSharpResolvedTypeInfo.GetFullyQualifiedTypeName();
+
+            return NormalizeNamespace(fullyQualifiedTypeName);
         }
 
         /// <summary>
@@ -549,12 +565,25 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// </para>
         /// </summary>
         /// <param name="element">The <see cref="IElement"/> for which to get the type name.</param>
-        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        public string GetFullyQualifiedTypeName(IElement element, string collectionFormat = null)
+        public string GetFullyQualifiedTypeName(IElement element)
         {
-            var resolvedTypeInfo = GetTypeInfo(element, collectionFormat);
+            var resolvedTypeInfo = GetTypeInfo(element);
 
             return GetFullyQualifiedTypeName(resolvedTypeInfo);
+        }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="GetFullyQualifiedTypeName(IElement)"/> instead.
+        /// </summary>
+        /// <remarks>
+        /// Even before this method was marked as obsolete, the <paramref name="collectionFormat"/>
+        /// value actually had no effect.
+        /// </remarks>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        // ReSharper disable once MethodOverloadWithOptionalParameter
+        public string GetFullyQualifiedTypeName(IElement element, string collectionFormat = null)
+        {
+            return GetFullyQualifiedTypeName(element);
         }
 
         /// <summary>

@@ -142,11 +142,10 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Obsolete. Please use <see cref="Create(string)"/>
+    /// Obsolete. Use <see cref="Create(string)"/> instead.
     /// </summary>
     /// <param name="collectionFormat">The collection type, for example:
     /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-    /// <returns></returns>
     [Obsolete(WillBeRemovedIn.Version4)]
     public static CSharpCollectionFormatter GetOrCreate(string collectionFormat)
     {

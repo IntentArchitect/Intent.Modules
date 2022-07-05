@@ -73,7 +73,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             protected override CSharpResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
                 var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
-                    ? CSharpCollectionFormatter.GetOrCreate(collectionFormat)
+                    ? CSharpCollectionFormatter.Create(collectionFormat)
                     : null;
 
                 return Get(typeInfo, collectionFormatter);

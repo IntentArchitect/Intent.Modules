@@ -13,12 +13,12 @@ namespace Intent.Modules.Common.CSharp
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat)
         {
-            return Create(context, templateId, CSharpCollectionFormatter.GetOrCreate(collectionFormat));
+            return Create(context, templateId, CSharpCollectionFormatter.Create(collectionFormat));
         }
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, CSharpCollectionFormatter collectionFormatter)
         {
-            return ClassTypeSource.Create(context, templateId, CSharpCollectionFormatter.GetOrCreate).WithCollectionFormatter(collectionFormatter);
+            return ClassTypeSource.Create(context, templateId, CSharpCollectionFormatter.Create).WithCollectionFormatter(collectionFormatter);
         }
     }
 }

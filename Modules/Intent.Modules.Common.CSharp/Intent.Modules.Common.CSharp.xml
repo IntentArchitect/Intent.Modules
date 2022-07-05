@@ -575,7 +575,7 @@
             <param name="classProvider"></param>
             <returns></returns>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.IElement,System.String)">
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.IElement)">
             <summary>
             Resolves the fully qualified type name for the <paramref name="element"/> parameter.
             Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
@@ -587,7 +587,15 @@
             </para>
             </summary>
             <param name="element">The <see cref="T:Intent.Metadata.Models.IElement"/> for which to get the type name.</param>
-            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.IElement,System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.IElement)"/> instead.
+            </summary>
+            <remarks>
+            Even before this method was marked as obsolete, the <paramref name="collectionFormat"/>
+            value actually had no effect.
+            </remarks>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.GetFullyQualifiedTypeName(Intent.Metadata.Models.IHasTypeReference,System.String)">
             <summary>
@@ -833,11 +841,10 @@
         </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)">
             <summary>
-            Obsolete. Please use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)"/>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)"/> instead.
             </summary>
             <param name="collectionFormat">The collection type, for example:
             <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-            <returns></returns>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
