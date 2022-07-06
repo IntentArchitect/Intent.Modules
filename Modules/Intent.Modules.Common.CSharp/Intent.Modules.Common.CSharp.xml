@@ -513,7 +513,8 @@
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
             <summary>
             Returns a string representation of the provided <paramref name="resolvedTypeInfo"/>,
-            adds any required usings and applicable template dependencies.
+            adds any required usings, applicable template dependencies and makes a best effort to
+            avoid conflicts between the type name and known other types and namespaces.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.DefineFileConfig">
@@ -826,25 +827,12 @@
             as well as the <c>[]</c> syntax.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.ApplyTo(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
-            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> based on the provided
-            <paramref name="collectionFormat"/>.
+            Returns a <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> which is the type of collection for this
+            instance of the <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> of the provided
+            <paramref name="typeInfo"/>.
             </summary>
-            <remarks>
-            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
-            already existing instance, if an instance is found then that is returned, otherwise a new
-            instance is created, placed in the cache and returned.
-            </remarks>
-            <param name="collectionFormat">The collection type, for example:
-            <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-        </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)">
-            <summary>
-            Obsolete. Use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)"/> instead.
-            </summary>
-            <param name="collectionFormat">The collection type, for example:
-            <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
@@ -864,16 +852,22 @@
             <param name="typeInfo">The collection type, for example:
             <c>System.Collection.Generic.Dictionary&lt;TKey, TValue&gt;</c>.</param>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)">
             <summary>
-            Obsolete. Please use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)"/>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> based on the provided
+            <paramref name="collectionFormat"/>.
             </summary>
-            <param name="typeInfo"></param>
-            <returns></returns>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+            <param name="collectionFormat">The collection type, for example:
+            <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateList">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateICollection">
             <summary>
-            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.List`1"/>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.ICollection`1"/>
             </summary>
             <remarks>
             A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
@@ -891,9 +885,9 @@
             instance is created, placed in the cache and returned.
             </remarks>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateICollection">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateList">
             <summary>
-            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.ICollection`1"/>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.List`1"/>
             </summary>
             <remarks>
             A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
@@ -904,12 +898,19 @@
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Format(System.String)">
             <inheritdoc />
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.ApplyTo(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)">
             <summary>
-            Returns a <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> which is the type of collection for this
-            instance of the <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> of the provided
-            <paramref name="typeInfo"/>.
+            Obsolete. Please use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo)"/>
             </summary>
+            <param name="typeInfo"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.GetOrCreate(System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.Create(System.String)"/> instead.
+            </summary>
+            <param name="collectionFormat">The collection type, for example:
+            <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray">
             <summary>
@@ -939,7 +940,7 @@
             C# implementation of <see cref="T:Intent.Modules.Common.TypeResolution.INullableFormatter"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.GetOrCreate(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.Create(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter"/> constructed with the
             specified <paramref name="project"/>.
@@ -950,6 +951,11 @@
             instance is created, placed in the cache and returned.
             </remarks>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.GetOrCreate(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.Create(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject)"/> instead.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpNullableFormatter.AsNullable(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo,System.String)">
             <inheritdoc />
         </member>
@@ -958,17 +964,23 @@
             C# specialization of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Create(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Templates.ITemplate,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo})">
-            <summary>
-            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> for a non-array resolved type.
-            </summary>
-        </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Create(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo})">
             <summary>
             Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.Create(System.String,System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Templates.ITemplate,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo})">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> for a non-array resolved type.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.CreateForArray(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo,System.Boolean,Intent.Modules.Common.TypeResolution.INullableFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray})">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.CreateForArray(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo,System.Boolean,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray},Intent.Modules.Common.TypeResolution.INullableFormatter)"/>
+            instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo.CreateForArray(Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo,System.Boolean,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.CSharp.TypeResolvers.CSharpJaggedArray},Intent.Modules.Common.TypeResolution.INullableFormatter)">
             <summary>
             Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpResolvedTypeInfo"/> for an array resolved type.
             </summary>

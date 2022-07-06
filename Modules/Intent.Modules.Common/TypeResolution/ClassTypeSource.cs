@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.TypeResolution
             Context = context;
             TemplateId = templateId;
             _stringToCollectionFormatterFactory = stringToCollectionFormatterFactory ??
-                                                  TypeResolution.CollectionFormatter.GetOrCreate;
+                                                  TypeResolution.CollectionFormatter.Create;
             Options = options ?? new ClassTypeSourceOptions();
         }
 

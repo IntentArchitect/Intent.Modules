@@ -157,7 +157,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         protected virtual ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
         {
-            return CollectionFormatter.GetOrCreate(collectionFormat);
+            return CollectionFormatter.Create(collectionFormat);
         }
 
         /// <inheritdoc />

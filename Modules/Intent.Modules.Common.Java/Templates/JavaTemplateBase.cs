@@ -152,7 +152,7 @@ namespace Intent.Modules.Common.Java.Templates
         /// <inheritdoc />
         protected override ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
         {
-            return JavaCollectionFormatter.GetOrCreate(collectionFormat);
+            return JavaCollectionFormatter.Create(collectionFormat);
         }
 
         /// <summary>

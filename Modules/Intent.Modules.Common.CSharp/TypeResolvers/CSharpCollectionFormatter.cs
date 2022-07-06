@@ -85,7 +85,6 @@ public class CSharpCollectionFormatter : ICollectionFormatter
                 return CSharpResolvedTypeInfo.CreateForArray(
                     forResolvedType: Parse(type),
                     isNullable: isNullable,
-                    nullableFormatter: null,
                     jaggedArrays: jaggedArrays);
             }
 
@@ -124,34 +123,44 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> based on the provided
-    /// <paramref name="collectionFormat"/>.
+    /// Returns a <see cref="CSharpResolvedTypeInfo"/> which is the type of collection for this
+    /// instance of the <see cref="CSharpCollectionFormatter"/> of the provided
+    /// <paramref name="typeInfo"/>.
     /// </summary>
-    /// <remarks>
-    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
-    /// already existing instance, if an instance is found then that is returned, otherwise a new
-    /// instance is created, placed in the cache and returned.
-    /// </remarks>
-    /// <param name="collectionFormat">The collection type, for example:
-    /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-    public static CSharpCollectionFormatter Create(string collectionFormat)
+    public CSharpResolvedTypeInfo ApplyTo(CSharpResolvedTypeInfo typeInfo)
     {
-        return Cache.GetOrAdd(
-            collectionFormat,
-            _ => new CSharpCollectionFormatter(collectionFormat));
-    }
+        if (_typeInfo == null)
+        {
+            return typeInfo;
+        }
 
-    /// <summary>
-    /// Obsolete. Use <see cref="Create(string)"/> instead.
-    /// </summary>
-    /// <param name="collectionFormat">The collection type, for example:
-    /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
-    [Obsolete(WillBeRemovedIn.Version4)]
-    public static CSharpCollectionFormatter GetOrCreate(string collectionFormat)
-    {
-        return Create(collectionFormat);
-    }
+        var isNullable = typeInfo.IsNullable;
+        typeInfo = typeInfo.WithIsNullable(false);
 
+        if (_typeInfo.JaggedArrays != null)
+        {
+            return CSharpResolvedTypeInfo.CreateForArray(
+                forResolvedType: typeInfo,
+                isNullable: isNullable,
+                jaggedArrays: _typeInfo.JaggedArrays,
+                typeInfo.NullableFormatter);
+        }
+
+        return CSharpResolvedTypeInfo.Create(
+            name: _typeInfo.Name,
+            @namespace: _typeInfo.Namespace,
+            isPrimitive: _typeInfo.IsPrimitive,
+            isNullable: isNullable,
+            isCollection: true,
+            typeReference: _typeInfo.TypeReference,
+            template: _typeInfo.Template,
+            nullableFormatter: typeInfo.NullableFormatter,
+            genericTypeParameters: _typeInfo.GenericTypeParameters.Count == 0
+                ? Array.Empty<CSharpResolvedTypeInfo>()
+                : _typeInfo.GenericTypeParameters
+                    .Select(genericTypeParameter => genericTypeParameter ?? typeInfo)
+                    .ToArray());
+    }
 
     /// <summary>
     /// Returns an instance of <see cref="CSharpCollectionFormatter"/> constructed with the
@@ -175,27 +184,34 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Obsolete. Please use <see cref="Create(CSharpResolvedTypeInfo)"/>
-    /// </summary>
-    /// <param name="typeInfo"></param>
-    /// <returns></returns>
-    [Obsolete(WillBeRemovedIn.Version4)]
-    public static CSharpCollectionFormatter GetOrCreate(CSharpResolvedTypeInfo typeInfo)
-    {
-        return Create(typeInfo);
-    }
-
-    /// <summary>
-    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.List{T}"/>
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> based on the provided
+    /// <paramref name="collectionFormat"/>.
     /// </summary>
     /// <remarks>
     /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
     /// already existing instance, if an instance is found then that is returned, otherwise a new
     /// instance is created, placed in the cache and returned.
     /// </remarks>
-    public static CSharpCollectionFormatter CreateList()
+    /// <param name="collectionFormat">The collection type, for example:
+    /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
+    public static CSharpCollectionFormatter Create(string collectionFormat)
     {
-        return Create("System.Collections.Generic.List<{0}>");
+        return Cache.GetOrAdd(
+            collectionFormat,
+            _ => new CSharpCollectionFormatter(collectionFormat));
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.ICollection{T}"/>
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// </remarks>
+    public static CSharpCollectionFormatter CreateICollection()
+    {
+        return Create("System.Collections.Generic.ICollection<{0}>");
     }
 
     /// <summary>
@@ -212,16 +228,16 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.ICollection{T}"/>
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.List{T}"/>
     /// </summary>
     /// <remarks>
     /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
     /// already existing instance, if an instance is found then that is returned, otherwise a new
     /// instance is created, placed in the cache and returned.
     /// </remarks>
-    public static CSharpCollectionFormatter CreateICollection()
+    public static CSharpCollectionFormatter CreateList()
     {
-        return Create("System.Collections.Generic.ICollection<{0}>");
+        return Create("System.Collections.Generic.List<{0}>");
     }
 
     /// <inheritdoc />
@@ -230,48 +246,30 @@ public class CSharpCollectionFormatter : ICollectionFormatter
         return type;
     }
 
-    IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
+    /// <summary>
+    /// Obsolete. Please use <see cref="Create(CSharpResolvedTypeInfo)"/>
+    /// </summary>
+    /// <param name="typeInfo"></param>
+    /// <returns></returns>
+    [Obsolete(WillBeRemovedIn.Version4)]
+    public static CSharpCollectionFormatter GetOrCreate(CSharpResolvedTypeInfo typeInfo)
     {
-        return ApplyTo((CSharpResolvedTypeInfo)typeInfo);
+        return Create(typeInfo);
     }
 
     /// <summary>
-    /// Returns a <see cref="CSharpResolvedTypeInfo"/> which is the type of collection for this
-    /// instance of the <see cref="CSharpCollectionFormatter"/> of the provided
-    /// <paramref name="typeInfo"/>.
+    /// Obsolete. Use <see cref="Create(string)"/> instead.
     /// </summary>
-    public CSharpResolvedTypeInfo ApplyTo(CSharpResolvedTypeInfo typeInfo)
+    /// <param name="collectionFormat">The collection type, for example:
+    /// <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
+    [Obsolete(WillBeRemovedIn.Version4)]
+    public static CSharpCollectionFormatter GetOrCreate(string collectionFormat)
     {
-        if (_typeInfo == null)
-        {
-            return typeInfo;
-        }
+        return Create(collectionFormat);
+    }
 
-        var isNullable = typeInfo.IsNullable;
-        typeInfo = typeInfo.WithIsNullable(false);
-
-        if (_typeInfo.JaggedArrays != null)
-        {
-            return CSharpResolvedTypeInfo.CreateForArray(
-                forResolvedType: typeInfo,
-                isNullable: isNullable,
-                nullableFormatter: typeInfo.NullableFormatter,
-                jaggedArrays: _typeInfo.JaggedArrays);
-        }
-
-        return CSharpResolvedTypeInfo.Create(
-            name: _typeInfo.Name,
-            @namespace: _typeInfo.Namespace,
-            isPrimitive: _typeInfo.IsPrimitive,
-            isNullable: isNullable,
-            isCollection: true,
-            typeReference: _typeInfo.TypeReference,
-            template: _typeInfo.Template,
-            nullableFormatter: typeInfo.NullableFormatter,
-            genericTypeParameters: _typeInfo.GenericTypeParameters.Count == 0
-                ? Array.Empty<CSharpResolvedTypeInfo>()
-                : _typeInfo.GenericTypeParameters
-                    .Select(genericTypeParameter => genericTypeParameter ?? typeInfo)
-                    .ToArray());
+    IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
+    {
+        return ApplyTo((CSharpResolvedTypeInfo)typeInfo);
     }
 }

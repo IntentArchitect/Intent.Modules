@@ -71,7 +71,7 @@ namespace Intent.Modules.Common.TypeResolution
         public virtual IResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
         {
             var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
-                ? CollectionFormatter.GetOrCreate(collectionFormat)
+                ? CollectionFormatter.Create(collectionFormat)
                 : null;
 
             return Get(typeInfo, collectionFormatter);

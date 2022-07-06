@@ -38,15 +38,17 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     }
 
     /// <summary>
-    /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
+    /// Creates an instance of <see cref="ResolvedTypeInfo"/>. Automatically applies
+    /// <see cref="IsCollection"/> and <see cref="IsNullable"/> from the provided
+    /// <paramref name="typeReference"/>.
     /// </summary>
     public static ResolvedTypeInfo Create(
         string name,
         bool isPrimitive,
         ITypeReference typeReference,
-        ITemplate template,
-        INullableFormatter nullableFormatter,
-        ICollectionFormatter collectionFormatter,
+        ITemplate template = null,
+        INullableFormatter nullableFormatter = null,
+        ICollectionFormatter collectionFormatter = null,
         IReadOnlyList<IResolvedTypeInfo> genericTypeParameters = null)
     {
         return new ResolvedTypeInfo(
@@ -69,10 +71,10 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
         bool isPrimitive,
         bool isNullable,
         bool isCollection,
-        ITypeReference typeReference,
-        ITemplate template,
-        INullableFormatter nullableFormatter,
-        ICollectionFormatter collectionFormatter,
+        ITypeReference typeReference = null,
+        ITemplate template = null,
+        INullableFormatter nullableFormatter = null,
+        ICollectionFormatter collectionFormatter = null,
         IReadOnlyList<IResolvedTypeInfo> genericTypeParameters = null)
     {
         return new ResolvedTypeInfo(
@@ -93,8 +95,8 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     public static ResolvedTypeInfo CreateForCollection(
         IResolvedTypeInfo forResolvedType,
         bool isNullable,
-        INullableFormatter nullableFormatter,
-        ICollectionFormatter collectionFormatter)
+        INullableFormatter nullableFormatter = null,
+        ICollectionFormatter collectionFormatter = null)
     {
         return new ResolvedTypeInfo(
             name: string.Empty,

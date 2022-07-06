@@ -84,7 +84,7 @@ namespace Intent.Modules.Common.CSharp.Templates
         {
             Types = new CSharpTypeResolver(
                 defaultCollectionFormatter: CSharpCollectionFormatter.Create("System.Collections.Generic.IEnumerable<{0}>"),
-                defaultNullableFormatter: CSharpNullableFormatter.GetOrCreate(OutputTarget.GetProject()));
+                defaultNullableFormatter: CSharpNullableFormatter.Create(OutputTarget.GetProject()));
         }
 
         /// <inheritdoc cref="IntentTemplateBase.GetTypeInfo(IClassProvider)"/>

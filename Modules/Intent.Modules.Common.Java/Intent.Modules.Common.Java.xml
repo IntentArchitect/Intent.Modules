@@ -157,19 +157,14 @@
             as well as the <c>[]</c> syntax.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.GetOrCreate(System.String)">
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.ApplyTo(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
             <summary>
-            Returns an instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> based on the provided
-            <paramref name="collectionFormat"/>.
+            Returns a <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> which is the type of collection for this
+            instance of the <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> of the provided
+            <paramref name="typeInfo"/>.
             </summary>
-            <remarks>
-            A cache of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> instances is first checked for an
-            already existing instance, if an instance is found then that is returned, otherwise a new
-            instance is created, placed in the cache and returned.
-            </remarks>
-            <param name="collectionFormat">The collection type</param>
         </member>
-        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.GetOrCreate(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.Create(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> constructed with the
             specified parameters.
@@ -186,15 +181,20 @@
             </remarks>
             <param name="typeInfo">The collection type</param>
         </member>
+        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.Create(System.String)">
+            <summary>
+            Returns an instance of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> based on the provided
+            <paramref name="collectionFormat"/>.
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+            <param name="collectionFormat">The collection type</param>
+        </member>
         <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.Format(System.String)">
             <inheritdoc />
-        </member>
-        <member name="M:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter.ApplyTo(Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo)">
-            <summary>
-            Returns a <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo"/> which is the type of collection for this
-            instance of the <see cref="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter"/> of the provided
-            <paramref name="typeInfo"/>.
-            </summary>
         </member>
         <member name="T:Intent.Modules.Common.Java.TypeResolvers.JavaResolvedTypeInfo">
             <summary>

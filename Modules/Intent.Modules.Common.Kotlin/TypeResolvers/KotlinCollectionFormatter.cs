@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Linq;
 using Intent.Modules.Common.TypeResolution;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.Kotlin.TypeResolvers;
 
@@ -95,54 +96,6 @@ public class KotlinCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="KotlinCollectionFormatter"/> based on the provided
-    /// <paramref name="collectionFormat"/>.
-    /// </summary>
-    /// <remarks>
-    /// A cache of <see cref="KotlinCollectionFormatter"/> instances is first checked for an
-    /// already existing instance, if an instance is found then that is returned, otherwise a new
-    /// instance is created, placed in the cache and returned.
-    /// </remarks>
-    /// <param name="collectionFormat">The collection type</param>
-    public static KotlinCollectionFormatter GetOrCreate(string collectionFormat)
-    {
-        return Cache.GetOrAdd(
-            collectionFormat,
-            _ => new KotlinCollectionFormatter(collectionFormat));
-    }
-
-    /// <summary>
-    /// Returns an instance of <see cref="KotlinCollectionFormatter"/> constructed with the
-    /// specified parameters.
-    /// </summary>
-    /// <remarks>
-    /// A cache of <see cref="KotlinCollectionFormatter"/> instances is first checked for an
-    /// already existing instance, if an instance is found then that is returned, otherwise a new
-    /// instance is created, placed in the cache and returned.
-    /// <para>
-    /// If any of the values of <see cref="KotlinResolvedTypeInfo.GenericTypeParameters"/> is null,
-    /// they will be substituted by the provided <see cref="KotlinResolvedTypeInfo"/> in the
-    /// <see cref="ApplyTo"/> method.
-    /// </para>
-    /// </remarks>
-    /// <param name="typeInfo">The collection type</param>
-    public static KotlinCollectionFormatter GetOrCreate(KotlinResolvedTypeInfo typeInfo)
-    {
-        return Cache.GetOrAdd(typeInfo.ToString(), _ => new KotlinCollectionFormatter(typeInfo));
-    }
-
-    /// <inheritdoc />
-    public string Format(string type)
-    {
-        return type;
-    }
-
-    IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
-    {
-        return ApplyTo((KotlinResolvedTypeInfo)typeInfo);
-    }
-
-    /// <summary>
     /// Returns a <see cref="KotlinResolvedTypeInfo"/> which is the type of collection for this
     /// instance of the <see cref="KotlinCollectionFormatter"/> of the provided
     /// <paramref name="typeInfo"/>.
@@ -170,5 +123,53 @@ public class KotlinCollectionFormatter : ICollectionFormatter
                 : _typeInfo.GenericTypeParameters
                     .Select(genericTypeParameter => genericTypeParameter ?? typeInfo)
                     .ToArray());
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="KotlinCollectionFormatter"/> constructed with the
+    /// specified parameters.
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="KotlinCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// <para>
+    /// If any of the values of <see cref="KotlinResolvedTypeInfo.GenericTypeParameters"/> is null,
+    /// they will be substituted by the provided <see cref="KotlinResolvedTypeInfo"/> in the
+    /// <see cref="ApplyTo"/> method.
+    /// </para>
+    /// </remarks>
+    /// <param name="typeInfo">The collection type</param>
+    public static KotlinCollectionFormatter Create(KotlinResolvedTypeInfo typeInfo)
+    {
+        return Cache.GetOrAdd(typeInfo.ToString(), _ => new KotlinCollectionFormatter(typeInfo));
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="KotlinCollectionFormatter"/> based on the provided
+    /// <paramref name="collectionFormat"/>.
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="KotlinCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// </remarks>
+    /// <param name="collectionFormat">The collection type</param>
+    public static KotlinCollectionFormatter Create(string collectionFormat)
+    {
+        return Cache.GetOrAdd(
+            collectionFormat,
+            _ => new KotlinCollectionFormatter(collectionFormat));
+    }
+
+    /// <inheritdoc />
+    public string Format(string type)
+    {
+        return type;
+    }
+
+    IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
+    {
+        return ApplyTo((KotlinResolvedTypeInfo)typeInfo);
     }
 }

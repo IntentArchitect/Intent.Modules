@@ -159,7 +159,7 @@ namespace Intent.Modules.Common.Kotlin.Templates
         /// <inheritdoc />
         protected override ICollectionFormatter CreateCollectionFormatter(string collectionFormat)
         {
-            return KotlinCollectionFormatter.GetOrCreate(collectionFormat);
+            return KotlinCollectionFormatter.Create(collectionFormat);
         }
 
         /// <summary>

@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using System.Linq;
 using Intent.Modules.Common.TypeResolution;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.Java.TypeResolvers;
 
@@ -112,54 +113,6 @@ public class JavaCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
-    /// Returns an instance of <see cref="JavaCollectionFormatter"/> based on the provided
-    /// <paramref name="collectionFormat"/>.
-    /// </summary>
-    /// <remarks>
-    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
-    /// already existing instance, if an instance is found then that is returned, otherwise a new
-    /// instance is created, placed in the cache and returned.
-    /// </remarks>
-    /// <param name="collectionFormat">The collection type</param>
-    public static JavaCollectionFormatter GetOrCreate(string collectionFormat)
-    {
-        return Cache.GetOrAdd(
-            collectionFormat,
-            _ => new JavaCollectionFormatter(collectionFormat));
-    }
-
-    /// <summary>
-    /// Returns an instance of <see cref="JavaCollectionFormatter"/> constructed with the
-    /// specified parameters.
-    /// </summary>
-    /// <remarks>
-    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
-    /// already existing instance, if an instance is found then that is returned, otherwise a new
-    /// instance is created, placed in the cache and returned.
-    /// <para>
-    /// If any of the values of <see cref="JavaResolvedTypeInfo.GenericTypeParameters"/> is null,
-    /// they will be substituted by the provided <see cref="JavaResolvedTypeInfo"/> in the
-    /// <see cref="ApplyTo"/> method.
-    /// </para>
-    /// </remarks>
-    /// <param name="typeInfo">The collection type</param>
-    public static JavaCollectionFormatter GetOrCreate(JavaResolvedTypeInfo typeInfo)
-    {
-        return Cache.GetOrAdd(typeInfo.ToString(), _ => new JavaCollectionFormatter(typeInfo));
-    }
-
-    /// <inheritdoc />
-    public string Format(string type)
-    {
-        return type;
-    }
-
-    IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
-    {
-        return ApplyTo((JavaResolvedTypeInfo)typeInfo);
-    }
-
-    /// <summary>
     /// Returns a <see cref="JavaResolvedTypeInfo"/> which is the type of collection for this
     /// instance of the <see cref="JavaCollectionFormatter"/> of the provided
     /// <paramref name="typeInfo"/>.
@@ -199,5 +152,53 @@ public class JavaCollectionFormatter : ICollectionFormatter
                             ? JavaTypeResolver.ToNonPrimitive(typeInfo)
                             : typeInfo))
                     .ToArray());
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="JavaCollectionFormatter"/> constructed with the
+    /// specified parameters.
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// <para>
+    /// If any of the values of <see cref="JavaResolvedTypeInfo.GenericTypeParameters"/> is null,
+    /// they will be substituted by the provided <see cref="JavaResolvedTypeInfo"/> in the
+    /// <see cref="ApplyTo"/> method.
+    /// </para>
+    /// </remarks>
+    /// <param name="typeInfo">The collection type</param>
+    public static JavaCollectionFormatter Create(JavaResolvedTypeInfo typeInfo)
+    {
+        return Cache.GetOrAdd(typeInfo.ToString(), _ => new JavaCollectionFormatter(typeInfo));
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="JavaCollectionFormatter"/> based on the provided
+    /// <paramref name="collectionFormat"/>.
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="JavaCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// </remarks>
+    /// <param name="collectionFormat">The collection type</param>
+    public static JavaCollectionFormatter Create(string collectionFormat)
+    {
+        return Cache.GetOrAdd(
+            collectionFormat,
+            _ => new JavaCollectionFormatter(collectionFormat));
+    }
+
+    /// <inheritdoc />
+    public string Format(string type)
+    {
+        return type;
+    }
+
+    IResolvedTypeInfo ICollectionFormatter.ApplyTo(IResolvedTypeInfo typeInfo)
+    {
+        return ApplyTo((JavaResolvedTypeInfo)typeInfo);
     }
 }

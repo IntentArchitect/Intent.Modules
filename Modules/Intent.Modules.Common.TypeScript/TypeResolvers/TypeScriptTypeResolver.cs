@@ -12,14 +12,14 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
         /// <summary>
         /// Creates a new instance of <see cref="TypeScriptTypeResolver"/>.
         /// </summary>
-        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(CollectionFormatter.GetOrCreate("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance))
+        public TypeScriptTypeResolver() : base(new TypeScriptTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance))
         {
         }
 
         /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
-            return new TypeScriptTypeResolverContext(CollectionFormatter.GetOrCreate("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);
+            return new TypeScriptTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);
         }
 
         private class TypeScriptTypeResolverContext : TypeResolverContextBase

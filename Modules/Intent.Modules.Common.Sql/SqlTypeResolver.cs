@@ -17,7 +17,7 @@ namespace Intent.Modules.Common.Sql
 
         public class SqlTypeResolverContext : TypeResolverContextBase
         {
-            public SqlTypeResolverContext() : base(CollectionFormatter.GetOrCreate("{0}"), TypeResolution.DefaultNullableFormatter.Instance)
+            public SqlTypeResolverContext() : base(CollectionFormatter.Create("{0}"), TypeResolution.DefaultNullableFormatter.Instance)
             {
             }
 

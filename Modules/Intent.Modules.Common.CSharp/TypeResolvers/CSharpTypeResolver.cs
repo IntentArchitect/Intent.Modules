@@ -159,11 +159,11 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
                                 nullableFormatter: nullableFormatter,
                                 typeReference: typeReference),
                             isNullable: typeReference.IsNullable,
-                            nullableFormatter: nullableFormatter,
                             jaggedArrays: new[]
                             {
                                 new CSharpJaggedArray()
-                            });
+                            },
+                            nullableFormatter);
                     case "object":
                     case "string":
                         return CSharpResolvedTypeInfo.Create(

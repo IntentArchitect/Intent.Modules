@@ -50,7 +50,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
             };
 
             public KotlinTypeResolverContext()
-                : base(KotlinCollectionFormatter.GetOrCreate("List<{0}>"), TypeResolution.DefaultNullableFormatter.Instance)
+                : base(KotlinCollectionFormatter.Create("List<{0}>"), TypeResolution.DefaultNullableFormatter.Instance)
             {
             }
 
@@ -82,7 +82,7 @@ namespace Intent.Modules.Common.Kotlin.TypeResolvers
             protected override KotlinResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
                 var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
-                    ? KotlinCollectionFormatter.GetOrCreate(collectionFormat)
+                    ? KotlinCollectionFormatter.Create(collectionFormat)
                     : null;
 
                 return Get(typeInfo, collectionFormatter);

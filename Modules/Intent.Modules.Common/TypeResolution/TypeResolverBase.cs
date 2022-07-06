@@ -24,7 +24,7 @@ namespace Intent.Modules.Common.TypeResolution
 
         public virtual string DefaultCollectionFormat
         {
-            set => SetDefaultCollectionFormatter(CollectionFormatter.GetOrCreate(value));
+            set => SetDefaultCollectionFormatter(CollectionFormatter.Create(value));
         }
 
         /// <inheritdoc />

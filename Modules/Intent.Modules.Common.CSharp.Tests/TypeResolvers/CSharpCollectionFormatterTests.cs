@@ -14,8 +14,8 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
             // Arrange
             var project = Substitute.For<ICSharpProject>();
             project.IsNullableAwareContext().Returns(true);
-            var nullableFormatter = CSharpNullableFormatter.GetOrCreate(project);
-            var formatter = CSharpCollectionFormatter.GetOrCreate("{0}");
+            var nullableFormatter = CSharpNullableFormatter.Create(project);
+            var formatter = CSharpCollectionFormatter.Create("{0}");
 
             var typeInfo = CSharpResolvedTypeInfo.Create(
                 name: "TypeName",

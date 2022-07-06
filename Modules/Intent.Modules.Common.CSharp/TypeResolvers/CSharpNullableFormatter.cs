@@ -2,6 +2,7 @@
 using System.Collections.Concurrent;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.TypeResolution;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.CSharp.TypeResolvers
 {
@@ -27,6 +28,17 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         /// already existing instance, if an instance is found then that is returned, otherwise a new
         /// instance is created, placed in the cache and returned.
         /// </remarks>
+        public static INullableFormatter Create(ICSharpProject project)
+        {
+            return Cache.GetOrAdd(
+                project,
+                _ => new CSharpNullableFormatter(project));
+        }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="Create"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static INullableFormatter GetOrCreate(ICSharpProject project)
         {
             return Cache.GetOrAdd(

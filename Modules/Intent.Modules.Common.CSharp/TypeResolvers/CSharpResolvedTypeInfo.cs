@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.TypeResolvers
@@ -40,33 +41,6 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="CSharpResolvedTypeInfo"/> for a non-array resolved type.
-        /// </summary>
-        public static CSharpResolvedTypeInfo Create(
-            string name,
-            string @namespace,
-            bool isPrimitive,
-            bool isNullable,
-            bool isCollection,
-            ITypeReference typeReference,
-            INullableFormatter nullableFormatter,
-            ITemplate template = null,
-            IReadOnlyList<CSharpResolvedTypeInfo> genericTypeParameters = null)
-        {
-            return new CSharpResolvedTypeInfo(
-                name: name,
-                @namespace: @namespace,
-                isPrimitive: isPrimitive,
-                isNullable: isNullable,
-                isCollection: isCollection,
-                typeReference: typeReference,
-                template: template,
-                nullableFormatter: nullableFormatter,
-                genericTypeParameters: genericTypeParameters ?? Array.Empty<CSharpResolvedTypeInfo>(),
-                jaggedArrays: null);
-        }
-
-        /// <summary>
         /// Creates a new instance of <see cref="CSharpResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
         /// </summary>
         public static CSharpResolvedTypeInfo Create(
@@ -91,13 +65,69 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         }
 
         /// <summary>
-        /// Creates a new instance of <see cref="CSharpResolvedTypeInfo"/> for an array resolved type.
+        /// Creates a new instance of <see cref="CSharpResolvedTypeInfo"/> for a non-array resolved type.
         /// </summary>
+        public static CSharpResolvedTypeInfo Create(
+            string name,
+            string @namespace,
+            bool isPrimitive,
+            bool isNullable,
+            bool isCollection,
+            ITypeReference typeReference = null,
+            INullableFormatter nullableFormatter = null,
+            ITemplate template = null,
+            IReadOnlyList<CSharpResolvedTypeInfo> genericTypeParameters = null)
+        {
+            return new CSharpResolvedTypeInfo(
+                name: name,
+                @namespace: @namespace,
+                isPrimitive: isPrimitive,
+                isNullable: isNullable,
+                isCollection: isCollection,
+                typeReference: typeReference,
+                template: template,
+                nullableFormatter: nullableFormatter,
+                genericTypeParameters: genericTypeParameters ?? Array.Empty<CSharpResolvedTypeInfo>(),
+                jaggedArrays: null);
+        }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="CreateForArray(CSharpResolvedTypeInfo,bool,IReadOnlyList{CSharpJaggedArray},INullableFormatter)"/>
+        /// instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static CSharpResolvedTypeInfo CreateForArray(
             CSharpResolvedTypeInfo forResolvedType,
             bool isNullable,
             INullableFormatter nullableFormatter,
             IReadOnlyList<CSharpJaggedArray> jaggedArrays)
+        {
+            if ((jaggedArrays?.Count ?? 0) == 0)
+            {
+                throw new ArgumentException("Must be non-null and have at least one item", nameof(jaggedArrays));
+            }
+
+            return new CSharpResolvedTypeInfo(
+                name: string.Empty,
+                @namespace: string.Empty,
+                isPrimitive: false,
+                isNullable: isNullable,
+                isCollection: true,
+                typeReference: null,
+                template: null,
+                nullableFormatter: nullableFormatter,
+                genericTypeParameters: new[] { forResolvedType },
+                jaggedArrays: jaggedArrays);
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="CSharpResolvedTypeInfo"/> for an array resolved type.
+        /// </summary>
+        public static CSharpResolvedTypeInfo CreateForArray(
+            CSharpResolvedTypeInfo forResolvedType,
+            bool isNullable,
+            IReadOnlyList<CSharpJaggedArray> jaggedArrays,
+            INullableFormatter nullableFormatter = null)
         {
             if ((jaggedArrays?.Count ?? 0) == 0)
             {

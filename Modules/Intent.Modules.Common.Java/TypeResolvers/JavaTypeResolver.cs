@@ -96,7 +96,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             };
 
             public JavaTypeResolverContext()
-                : base(JavaCollectionFormatter.GetOrCreate("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance)
+                : base(JavaCollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance)
             {
             }
 
@@ -128,7 +128,7 @@ namespace Intent.Modules.Common.Java.TypeResolvers
             protected override JavaResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
             {
                 var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
-                    ? JavaCollectionFormatter.GetOrCreate(collectionFormat)
+                    ? JavaCollectionFormatter.Create(collectionFormat)
                     : null;
 
                 return Get(typeInfo, collectionFormatter);

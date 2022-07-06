@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, string collectionFormat)
         {
-            return Create(context, templateId, CollectionFormatter.GetOrCreate(collectionFormat));
+            return Create(context, templateId, CollectionFormatter.Create(collectionFormat));
         }
 
         public static ITypeSource Create(ISoftwareFactoryExecutionContext context, string templateId, ICollectionFormatter collectionFormatter)

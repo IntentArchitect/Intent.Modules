@@ -624,19 +624,19 @@
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String)">
             <summary>
             Adds a Template source that will be searched when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/>
-            types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>. If
-            found, the Template will be added as a dependency. Set the desired
-            <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> for when the type is resolved from this type-source
-            by calling .WithCollectionFormatter(...).
+            types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>. If found, the Template will
+            be added as a dependency. Set the desired <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> for when the
+            type is resolved from this type-source by calling <see cref="M:Intent.Modules.Common.TypeResolution.ClassTypeSource.WithCollectionFormatter(Intent.Modules.Common.TypeResolution.ICollectionFormatter)"/>.
             </summary>
             <param name="templateId">The identifier of the template instances to be searched when calling <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.</param>
             <returns>Returns the <see cref="T:Intent.Modules.Common.TypeResolution.ClassTypeSource"/> for use as a fluent api.</returns>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)">
             <summary>
-            Adds a Template source (template instances) that will be search when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/> types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>.
-            If found, the Template will be added as a dependency.
-            Set the desired <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> for when the type is resolved from this type-source by calling .WithCollectionFormatter(...).
+            Adds a Template source that will be searched when resolving <see cref="T:Intent.Metadata.Models.ITypeReference"/>
+            types through the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/>. If found, the Template will
+            be added as a dependency. Set the desired <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> for when the
+            type is resolved from this type-source by calling <see cref="M:Intent.Modules.Common.TypeResolution.ClassTypeSource.WithCollectionFormatter(Intent.Modules.Common.TypeResolution.ICollectionFormatter)"/>.
             </summary>
             <param name="templateId">The identifier of the template instances to be searched when calling <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)"/></param>
             <param name="collectionFormat">Sets the collection format to be applied if a type is found.</param>
@@ -659,35 +659,31 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Modules.Common.Templates.IClassProvider)">
             <summary>
-            Resolves the fully qualified type name for the <paramref name="classProvider"/> parameter.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="classProvider"/>
+            parameter.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
-            </para>
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.ITypeReference)">
-            <summary>
-            Resolves the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="typeReference"/>.
-            <para>
-            See the
-            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IElement)">
             <summary>
-            Resolves the fully qualified type name for the provided <paramref name="element"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="element"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
-            <param name="element">The <see cref="T:Intent.Metadata.Models.IElement"/> for which to get the type name.</param>
+            <param name="element">The <see cref="T:Intent.Metadata.Models.IElement"/> for which to get the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IElement,System.String)">
             <summary>
@@ -700,61 +696,101 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.IHasTypeReference,System.String)">
             <summary>
-            Resolves the fully qualified type name for the <paramref name="hasTypeReference"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
-            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="hasTypeReference"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.
+            
+            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/>
+            is true.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
-            <param name="hasTypeReference">The <see cref="T:Intent.Metadata.Models.IHasTypeReference"/> for which to get the type name.</param>
-            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+            <param name="hasTypeReference">The <see cref="T:Intent.Metadata.Models.IHasTypeReference"/> for which to get the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.</param>
+            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Templates.ITemplate,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves the fully qualified type name for the <paramref name="template"/> parameter.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="template"/>
+            parameter.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
+            <param name="template">The <see cref="T:Intent.Templates.ITemplate"/> for which to get the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.</param>
+            <param name="options">Optional <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to apply.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves the fully qualified type name for the <paramref name="templateDependency"/> parameter.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="templateDependency"/>
+            parameter.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
+            <param name="templateDependency">The <see cref="T:Intent.Modules.Common.ITemplateDependency"/> for which to get the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.</param>
+            <param name="options">Optional <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to apply.</param>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.ITypeReference)">
+            <summary>
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="typeReference"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.
+            
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            Resolving type names</seealso> article for more information.
+            </para>
+            </summary>
+            <param name="typeReference">The <see cref="T:Intent.Metadata.Models.ITypeReference"/> for which to get the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(Intent.Metadata.Models.ITypeReference,System.String)">
             <summary>
-            Resolves the fully qualified type name for the <paramref name="typeReference"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be searched to resolve the type name.
-            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="typeReference"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.
+            
+            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/>
+            is true.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
-            <param name="typeReference">The <see cref="T:Intent.Metadata.Models.ITypeReference"/> for which to get the type name.</param>
-            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+            <param name="typeReference">The <see cref="T:Intent.Metadata.Models.ITypeReference"/> for which to get the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.</param>
+             TODO JL: Fix below, and similar usages
+            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="templateId"/>
+            and <paramref name="model"/> parameters.
+            
             This overload assumes that the Template can have many instances and identifies the target instance
-            based on which has the <paramref name="model"/>.
+            based on which has the provided <paramref name="model"/>.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="templateId">The unique Template identifier.</param>
@@ -763,13 +799,16 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(System.String,System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="templateId"/>
+            and <paramref name="modelId"/> parameters.
+            
             This overload assumes that the Template can have many instances and identifies the target instance
             based on which has the provided <paramref name="modelId"/>.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="templateId">The unique Template identifier.</param>
@@ -778,30 +817,45 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="templateId"/>
+            parameter.
+            
+            This overload assumes that the Template only has a single instance and will throw an
+            exception if more than one is found.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
-            Will throw an exception if more than one template instance exists.
             </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="options">Optional <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to apply.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Modules.Common.Templates.IClassProvider)">
             <summary>
-            Resolves the type name for the provided <paramref name="classProvider"/>.
+            Resolves the type name for the provided <paramref name="classProvider"/>
+            parameter.
+            
+            <para>
+            See the
+            <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+            Resolving type names</seealso> article for more information.
+            </para>
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IElement)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="element"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be
-            searched to resolve the type name.
+            Resolves the type name for the provided <paramref name="element"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the type name.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="element">The <see cref="T:Intent.Metadata.Models.IElement"/> for which to get the type name.</param>
@@ -817,67 +871,80 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IHasTypeReference)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="hasTypeReference"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be
-            searched to resolve the type name.
+            Resolves the type name for the provided <paramref name="hasTypeReference"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the type name.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="hasTypeReference">The <see cref="T:Intent.Metadata.Models.IHasTypeReference"/> for which to get the type name.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.IHasTypeReference,System.String)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="hasTypeReference"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be
-            searched to resolve the type name.
-            Applies the <paramref name="collectionFormat"/> if the resolved type's
-            <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
+            Resolves the type name for the provided <paramref name="hasTypeReference"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the type name.
+            
+            Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/>
+            is true.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="hasTypeReference">The <see cref="T:Intent.Metadata.Models.IHasTypeReference"/> for which to get the type name.</param>
-            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true</param>
+            <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Templates.ITemplate,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="template"/> parameter.
+            Resolves the type name for the provided <paramref name="template"/>
+            parameter.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
+            <param name="template">The <see cref="T:Intent.Templates.ITemplate"/> for which to get the type name.</param>
+            <param name="options"><see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to use.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Modules.Common.ITemplateDependency,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="templateDependency"/> parameter.
+            Resolves the type name for the provided <paramref name="templateDependency"/>
+            parameter.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
+            <param name="templateDependency">The <see cref="T:Intent.Modules.Common.ITemplateDependency"/> for which to get the type name.</param>
+            <param name="options"><see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to use.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="typeReference"/> parameter.
-            Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be
-            searched to resolve the type name.
+            Resolves the type name for the provided <paramref name="typeReference"/>
+            parameter.
+            
+            Any source added by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> or <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(System.String,System.String)"/>
+            will be searched to resolve the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="typeReference">The <see cref="T:Intent.Metadata.Models.ITypeReference"/> for which to get the type name.</param>
@@ -892,7 +959,7 @@
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="typeReference">The <see cref="T:Intent.Metadata.Models.ITypeReference"/> for which to get the type name.</param>
@@ -900,14 +967,16 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="templateId"/> parameter.
+            Resolves the type name for the provided <paramref name="templateId"/>
+            and <paramref name="model"/> parameters.
+            
             This overload assumes that the Template can have many instances and identifies the target instance
-            based on which has the <paramref name="model"/>.
+            based on which has the provided <paramref name="model"/>.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="templateId">The unique Template identifier.</param>
@@ -916,14 +985,16 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="templateId"/> parameter.
+            Resolves the type name for the provided <paramref name="templateId"/>
+            and <paramref name="modelId"/> parameters.
+            
             This overload assumes that the Template can have many instances and identifies the target instance
-            based on which has the <paramref name="modelId"/>.
+            based on which has the provided <paramref name="modelId"/>.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="templateId">The unique Template identifier.</param>
@@ -932,15 +1003,20 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="templateId"/> parameter.
-            Will throw an exception if more than one template instance exists.
+            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="templateId"/>
+            parameter.
+            
+            This overload assumes that the Template only has a single instance and will throw an
+            exception if more than one is found.
+            
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
+            <param name="templateId">The unique Template identifier.</param>
+            <param name="options">Optional <see cref="T:Intent.Modules.Common.Templates.TemplateDiscoveryOptions"/> to apply.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetExistingFileContent(System.String@)">
             <summary>
@@ -966,7 +1042,7 @@
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <returns><see langword="true"/> if the type name could be resolved.</returns>
@@ -985,7 +1061,7 @@
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="templateId">The unique Template identifier.</param>
@@ -1007,7 +1083,7 @@
             <para>
             See the
             <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-            GetTypeName article</seealso> for more information.
+            Resolving type names</seealso> article for more information.
             </para>
             </summary>
             <param name="templateId">The unique Template identifier.</param>
@@ -1357,7 +1433,10 @@
             Creates a new instance of <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/>.
             </summary>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.GetOrCreate(System.String)">
+        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.ApplyTo(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.Create(System.String)">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.TypeResolution.CollectionFormatter"/> with the specified
             <paramref name="collectionFormat"/>.
@@ -1368,10 +1447,12 @@
             instance is created, placed in the cache and returned.
             </remarks>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.Format(System.String)">
-            <inheritdoc />
+        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.GetOrCreate(System.String)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.Create(System.String)"/> instead.
+            </summary>
         </member>
-        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.ApplyTo(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)">
+        <member name="M:Intent.Modules.Common.TypeResolution.CollectionFormatter.Format(System.String)">
             <inheritdoc />
         </member>
         <member name="T:Intent.Modules.Common.TypeResolution.DefaultNullableFormatter">
@@ -1668,7 +1749,9 @@
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.Create(System.String,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.TypeResolution.ICollectionFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.TypeResolution.IResolvedTypeInfo})">
             <summary>
-            Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>.
+            Creates an instance of <see cref="T:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo"/>. Automatically applies
+            <see cref="P:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.IsCollection"/> and <see cref="P:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.IsNullable"/> from the provided
+            <paramref name="typeReference"/>.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.TypeResolution.ResolvedTypeInfo.Create(System.String,System.Boolean,System.Boolean,System.Boolean,Intent.Metadata.Models.ITypeReference,Intent.Templates.ITemplate,Intent.Modules.Common.TypeResolution.INullableFormatter,Intent.Modules.Common.TypeResolution.ICollectionFormatter,System.Collections.Generic.IReadOnlyList{Intent.Modules.Common.TypeResolution.IResolvedTypeInfo})">

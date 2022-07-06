@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Concurrent;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -24,6 +25,16 @@ namespace Intent.Modules.Common.TypeResolution
             _formatter = formatCollection;
         }
 
+        /// <inheritdoc />
+        public virtual IResolvedTypeInfo ApplyTo(IResolvedTypeInfo typeInfo)
+        {
+            return ResolvedTypeInfo.CreateForCollection(
+                forResolvedType: typeInfo.WithIsNullable(false),
+                isNullable: typeInfo.IsNullable,
+                nullableFormatter: typeInfo.NullableFormatter,
+                collectionFormatter: this);
+        }
+
         /// <summary>
         /// Returns an instance of <see cref="CollectionFormatter"/> with the specified
         /// <paramref name="collectionFormat"/>.
@@ -33,6 +44,15 @@ namespace Intent.Modules.Common.TypeResolution
         /// existing instance, if an instance is found then that is returned, otherwise a new
         /// instance is created, placed in the cache and returned.
         /// </remarks>
+        public static CollectionFormatter Create(string collectionFormat)
+        {
+            return Cache.GetOrAdd(collectionFormat, _ => new CollectionFormatter(collectionFormat));
+        }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="Create"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static CollectionFormatter GetOrCreate(string collectionFormat)
         {
             return Cache.GetOrAdd(collectionFormat, _ => new CollectionFormatter(collectionFormat));
@@ -42,16 +62,6 @@ namespace Intent.Modules.Common.TypeResolution
         public virtual string Format(string typeName)
         {
             return _formatter(typeName);
-        }
-
-        /// <inheritdoc />
-        public virtual IResolvedTypeInfo ApplyTo(IResolvedTypeInfo typeInfo)
-        {
-            return ResolvedTypeInfo.CreateForCollection(
-                forResolvedType: typeInfo.WithIsNullable(false),
-                isNullable: typeInfo.IsNullable,
-                nullableFormatter: typeInfo.NullableFormatter,
-                collectionFormatter: this);
         }
     }
 }
