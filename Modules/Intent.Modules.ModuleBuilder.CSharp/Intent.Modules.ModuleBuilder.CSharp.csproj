@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -8,19 +8,23 @@
     <Compile Remove="Roslyn\**" />
     <EmbeddedResource Remove="Roslyn\**" />
     <None Remove="Roslyn\**" />
+    <None Update="Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CSharpStringInterpolationTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.1" />
-    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.2" />
-    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.5" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.6" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.1" />
     <PackageReference Include="Intent.Modules.ModuleBuilder" Version="3.3.0" />
     <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.2" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.0" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.3" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -52,6 +56,11 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>CSharpTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharpStringInterpolation\CSharpStringInterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CSharpStringInterpolationTemplate.tt</DependentUpon>
     </Compile>
     <Compile Update="Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>

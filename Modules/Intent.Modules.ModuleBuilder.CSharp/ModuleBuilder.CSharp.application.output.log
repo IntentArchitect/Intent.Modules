@@ -72,16 +72,44 @@
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpStringInterpolation/CSharpStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/CSharpStringInterpolationTemplate/CSharpStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpStringInterpolationTemplate/CSharpStringInterpolationTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#d0cde3bb-8cb8-42dd-9a8b-0659825f33ce</CorrelationId>
+      <ApplicationRelativeFilePath>Templates/CSharpStringInterpolationTemplate/CSharpStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpStringInterpolationTemplate/CSharpStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#f82844d8-1693-45b4-ba36-e1fb512b42e1</CorrelationId>
-      <ApplicationRelativeFilePath>Templates/CSharpTemplate/CSharpTemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplate/CSharpTemplatePartial.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/CSharpT4/CSharpT4TemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpT4/CSharpT4TemplatePartial.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>823b06dd-dc3f-47f4-9e85-81da6304659c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f82844d8-1693-45b4-ba36-e1fb512b42e1</CorrelationId>
-      <ApplicationRelativeFilePath>Templates/CSharpTemplate/CSharpTemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/CSharpTemplate/CSharpTemplateRegistration.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/CSharpT4/CSharpT4TemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/CSharpT4/CSharpT4TemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
