@@ -103,15 +103,15 @@
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="If and how the designer should create and manage the PKs and FKs" isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="manual" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="explicit" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
       <childElements>
         <childElement id="80f5cb0d-327d-4767-a066-089ce2534974" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Manual</name>
-          <display>Manual = manual</display>
+          <name>Manually add PKs and FKs</name>
+          <display>Manually add PKs and FKs = manual</display>
           <isAbstract>false</isAbstract>
           <value>manual</value>
           <order>0</order>
@@ -124,11 +124,11 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="8ecefc89-95dd-4dc8-9ad4-1e6ab1b1aa53" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Implicit</name>
-          <display>Implicit = implicit</display>
+        <childElement id="b0baec9c-8f61-4f81-ab93-68e30c7c767c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Explicitly add PKs and FKs automaitcally</name>
+          <display>Explicitly add PKs and FKs automaitcally = explicit</display>
           <isAbstract>false</isAbstract>
-          <value>implicit</value>
+          <value>explicit</value>
           <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
@@ -139,11 +139,11 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="b0baec9c-8f61-4f81-ab93-68e30c7c767c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Explicit</name>
-          <display>Explicit = explicit</display>
+        <childElement id="8ecefc89-95dd-4dc8-9ad4-1e6ab1b1aa53" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Remove all managed PKs and FKs</name>
+          <display>Remove all managed PKs and FKs = implicit</display>
           <isAbstract>false</isAbstract>
-          <value>explicit</value>
+          <value>implicit</value>
           <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>

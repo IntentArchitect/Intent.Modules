@@ -84,16 +84,18 @@ if (element.getChildren("Attribute").some(x =&gt; x.hasStereotype(primaryKeySter
     return;
 }
 
-// If this class inherits from another, don't create PK:
-if (element.getAssociations("Generalization Target End").some(x =&gt; x.getOtherEnd().typeReference.typeId == element.id)) {
-    return;
-}
+return; // disable auto-add on load.
 
-let pk = createElement("Attribute", namingConvetion == "pascal-case" ? "Id" : "id", element.id);
-pk.setMetadata("is-managed-key", "true");
-pk.setOrder(0);
-pk.typeReference.setType(getSurrogateKeyType());
-pk.addStereotype(primaryKeyStereotypeId);</script>
+// If this class inherits from another, don't create PK:
+// if (element.getAssociations("Generalization Target End").some(x =&gt; x.getOtherEnd().typeReference.typeId == element.id)) {
+//     return;
+// }
+
+// let pk = createElement("Attribute", namingConvetion == "pascal-case" ? "Id" : "id", element.id);
+// pk.setMetadata("is-managed-key", "true");
+// pk.setOrder(0);
+// pk.typeReference.setType(getSurrogateKeyType());
+// pk.addStereotype(primaryKeyStereotypeId);</script>
         </macro>
       </macros>
     </elementExtension>

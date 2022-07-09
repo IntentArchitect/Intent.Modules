@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.3.4</version>
+  <version>3.3.5-pre.0</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Metadata for specifying RDBMS related concepts in the domain.</summary>
   <description>Metadata for specifying RDBMS related concepts in the domain.</description>
@@ -12,8 +12,8 @@
   <templates></templates>
   <decorators />
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.1" />
-    <dependency id="Intent.Common.Types" version="3.3.0" />
+    <dependency id="Intent.Common" version="3.3.5" />
+    <dependency id="Intent.Common.Types" version="3.3.1" />
     <dependency id="Intent.Modelers.Domain" version="3.3.0" />
   </dependencies>
   <files></files>
@@ -38,11 +38,11 @@
         <setting id="5aca6e0c-1b64-425b-9046-f0bc81c44311" title="Key Creation Mode" type="select">
           <isRequired>false</isRequired>
           <hint>If and how the designer should create and manage the PKs and FKs</hint>
-          <defaultValue>manual</defaultValue>
+          <defaultValue>explicit</defaultValue>
           <options>
-            <option value="manual" description="Manual" />
-            <option value="implicit" description="Implicit" />
-            <option value="explicit" description="Explicit" />
+            <option value="manual" description="Manually add PKs and FKs" />
+            <option value="explicit" description="Explicitly add PKs and FKs automaitcally" />
+            <option value="implicit" description="Remove all managed PKs and FKs" />
           </options>
         </setting>
         <setting id="cf991e8c-de2c-4b60-a4a4-baa4770e0ac9" title="Key Naming Convention" type="select">
