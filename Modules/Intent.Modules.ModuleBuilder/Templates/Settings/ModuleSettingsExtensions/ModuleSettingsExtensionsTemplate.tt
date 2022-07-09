@@ -98,7 +98,7 @@ namespace <#= Namespace #>
                     foreach (var option in settingsField.Options)
                     {
 #>
-                    "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>" => <#= optionsEnumName #>.<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>,
+                    "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>" => <#= optionsEnumName #>.<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase() #>,
 <#
                     }
 #>
@@ -110,7 +110,7 @@ namespace <#= Namespace #>
                     {
 #>
 
-            public bool Is<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>()
+            public bool Is<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase() #>()
             {
                 return Value == "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>";
             }
@@ -125,7 +125,7 @@ namespace <#= Namespace #>
                     foreach (var option in settingsField.Options)
                     {
 #>
-            <#= option.Name.ToCSharpIdentifier().ToPascalCase() #>,
+            <#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase() #>,
 <#
                     }
 #>
@@ -187,7 +187,7 @@ namespace <#= Namespace #>
                     foreach (var option in settingsField.Options)
                     {
 #>
-                    "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>" => <#= optionsEnumName #>.<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>,
+                    "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>" => <#= optionsEnumName #>.<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase() #>,
 <#
                     }
 #>
@@ -199,7 +199,7 @@ namespace <#= Namespace #>
                     {
 #>
 
-            public bool Is<#= option.Name.ToCSharpIdentifier().ToPascalCase() #>()
+            public bool Is<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase() #>()
             {
                 return Value == "<#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value : option.Name #>";
             }
@@ -214,7 +214,7 @@ namespace <#= Namespace #>
                     foreach (var option in settingsField.Options)
                     {
 #>
-            <#= option.Name.ToCSharpIdentifier().ToPascalCase() #>,
+            <#= !string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase() #>,
 <#
                     }
 #>

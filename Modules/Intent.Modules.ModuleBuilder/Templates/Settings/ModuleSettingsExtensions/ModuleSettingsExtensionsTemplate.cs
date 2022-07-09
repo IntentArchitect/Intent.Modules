@@ -335,7 +335,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write(".");
             
             #line 101 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(option.Name.ToCSharpIdentifier().ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
@@ -362,7 +362,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("\r\n            public bool Is");
             
             #line 113 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(option.Name.ToCSharpIdentifier().ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
@@ -402,7 +402,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("            ");
             
             #line 128 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(option.Name.ToCSharpIdentifier().ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
@@ -671,7 +671,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write(".");
             
             #line 190 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(option.Name.ToCSharpIdentifier().ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
@@ -698,7 +698,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("\r\n            public bool Is");
             
             #line 202 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(option.Name.ToCSharpIdentifier().ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
@@ -738,7 +738,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             this.Write("            ");
             
             #line 217 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Settings\ModuleSettingsExtensions\ModuleSettingsExtensionsTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(option.Name.ToCSharpIdentifier().ToPascalCase()));
+            this.Write(this.ToStringHelper.ToStringWithCulture(!string.IsNullOrWhiteSpace(option.Value) ? option.Value.ToCSharpIdentifier().ToPascalCase() : option.Name.ToCSharpIdentifier().ToPascalCase()));
             
             #line default
             #line hidden
