@@ -10,7 +10,7 @@ namespace Intent.Modules.Common.Templates
 {
     public abstract class T4TemplateBase : IRequireTypeResolver
     {
-        private static readonly Regex NewlinePattern = new Regex(@"\r\n|\r|\n", RegexOptions.Compiled);
+        protected static readonly Regex NewlinePattern = new Regex(@"\r\n|\r|\n", RegexOptions.Compiled);
 
         #region Fields
         private StringBuilder generationEnvironmentField;

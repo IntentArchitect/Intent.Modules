@@ -11,9 +11,9 @@ namespace Intent.Modules.Common.TypeResolution
         /// <summary>
         /// Returns a <see cref="IResolvedTypeInfo"/> type if this type source resolves a type. If not, this method should return null.
         /// </summary>
-        /// <param name="typeInfo"></param>
+        /// <param name="typeReferencearam>
         /// <returns></returns>
-        IResolvedTypeInfo GetType(ITypeReference typeInfo);
+        IResolvedTypeInfo GetType(ITypeReference typeReference);
 
         /// <summary>
         /// Returns any template dependencies that were found when the <see cref="GetType"/> method was called.

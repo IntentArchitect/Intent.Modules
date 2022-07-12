@@ -70,9 +70,9 @@ namespace Intent.Modules.Common.TypeResolution
             return this;
         }
 
-        public IResolvedTypeInfo GetType(ITypeReference typeInfo)
+        public IResolvedTypeInfo GetType(ITypeReference typeReference)
         {
-            return TryGetType(typeInfo);
+            return TryGetType(typeReference);
         }
 
         public IEnumerable<ITemplateDependency> GetTemplateDependencies()

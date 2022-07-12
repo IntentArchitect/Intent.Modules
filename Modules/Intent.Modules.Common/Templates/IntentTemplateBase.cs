@@ -185,8 +185,11 @@ namespace Intent.Modules.Common.Templates
         /// <inheritdoc />
         public virtual string RunTemplate()
         {
-            // NOTE: If this method is run multiple times for a template instance, the output is duplicated. Perhaps put in a check here?
-            return TransformText();
+            // NOTE: If this method is run multiple times for a template instance, the output is duplicated (StringBuilder under the hood). Perhaps put in a check here?
+            var text = TransformText();
+            // Normalize line endings to that of the current platform
+            text = NewlinePattern.Replace(text, Environment.NewLine);
+            return text;
         }
 
         /// <summary>
