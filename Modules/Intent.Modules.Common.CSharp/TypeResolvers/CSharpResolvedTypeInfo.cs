@@ -47,9 +47,10 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
             IResolvedTypeInfo resolvedTypeInfo,
             IReadOnlyList<CSharpResolvedTypeInfo> genericTypeParameters)
         {
+            // GCB - something doesn't feel right here, JL
             var (name, @namespace) = resolvedTypeInfo.Template is IClassProvider classProvider
                 ? (classProvider.ClassName, classProvider.Namespace)
-                : (resolvedTypeInfo.Name, string.Empty);
+                : (resolvedTypeInfo.Name, (resolvedTypeInfo as CSharpResolvedTypeInfo)?.Namespace ?? string.Empty);
 
             return new CSharpResolvedTypeInfo(
                 name: name,
@@ -70,9 +71,9 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         public static CSharpResolvedTypeInfo Create(
             string name,
             string @namespace,
-            bool isPrimitive,
-            bool isNullable,
-            bool isCollection,
+            bool isPrimitive = false,
+            bool isNullable = false,
+            bool isCollection = false,
             ITypeReference typeReference = null,
             INullableFormatter nullableFormatter = null,
             ITemplate template = null,
