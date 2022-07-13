@@ -1,30 +1,38 @@
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using Intent.Modules.Common.Templates;
+
 namespace Intent.Modules.Common.CSharp.DependencyInjection;
 
 public class ServiceConfigurationRequest
-{ 
+{
     private ServiceConfigurationRequest(
+        IntentTemplateBase sourceConfigurationTemplate,
         string extensionMethodName,
-        string @namespace,
-        bool supplyConfiguration)
+        IEnumerable<string> extensionMethodParameterList)
     {
+        SourceConfigurationTemplate = sourceConfigurationTemplate;
         ExtensionMethodName = extensionMethodName;
-        Namespace = @namespace;
-        SupplyConfiguration = supplyConfiguration;
+        ExtensionMethodParameterList = extensionMethodParameterList ?? Enumerable.Empty<string>();
     }
 
+    public IntentTemplateBase SourceConfigurationTemplate { get; }
     public string ExtensionMethodName { get; }
-    public string Namespace { get; }
-    public bool SupplyConfiguration { get; }
-    
+    public IEnumerable<string> ExtensionMethodParameterList { get; }
+
     public int Priority { get; private set; }
     public bool IsHandled { get; private set; }
-    
+
     public static ServiceConfigurationRequest ForExtensionMethod(
+        IntentTemplateBase sourceConfigurationTemplate,
         string extensionMethodName,
-        string @namespace,
-        bool supplyConfiguration = false)
+        params string[] extensionMethodParameterList)
     {
-        return new ServiceConfigurationRequest(extensionMethodName, @namespace, supplyConfiguration);
+        return new ServiceConfigurationRequest(
+            sourceConfigurationTemplate: sourceConfigurationTemplate, 
+            extensionMethodName: extensionMethodName,
+            extensionMethodParameterList: extensionMethodParameterList);
     }
 
     public ServiceConfigurationRequest WithPriority(int priority)
@@ -32,9 +40,14 @@ public class ServiceConfigurationRequest
         Priority = priority;
         return this;
     }
-    
+
     public void MarkAsHandled()
     {
         IsHandled = true;
     }
+}
+
+public static class ServiceConfigurationParameterType
+{
+    public const string Configuration = "Microsoft.Extensions.Configuration.IConfiguration";
 }

@@ -205,7 +205,7 @@
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Key">
             <summary>
-            The key within the JSON file under which the the <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Value"/> will be applied.
+            The key within the JSON file under which the <see cref="P:Intent.Modules.Common.CSharp.Configuration.HostSettingRegistrationRequest.Value"/> will be applied.
             May be separated with a colon (:) to target nested objects.
             </summary>
         </member>

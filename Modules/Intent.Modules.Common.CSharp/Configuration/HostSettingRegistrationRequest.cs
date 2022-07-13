@@ -24,7 +24,7 @@
         }
 
         /// <summary>
-        /// The key within the JSON file under which the the <see cref="Value"/> will be applied.
+        /// The key within the JSON file under which the <see cref="Value"/> will be applied.
         /// May be separated with a colon (:) to target nested objects.
         /// </summary>
         public string Key { get; }
