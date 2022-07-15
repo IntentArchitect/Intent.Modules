@@ -48,8 +48,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 
         public override string TransformText()
         {
-            var content = GetExistingTemplateContent();
-            if (content != null)
+            if (TryGetExistingFileContent(out var content))
             {
                 return ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
@@ -83,18 +82,6 @@ export class <#= ClassName #>
                 return $"TypeScriptTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
             }
             return $"TypeScriptTemplateBase<{Model.GetModelName()}>";
-        }
-
-        private string GetExistingTemplateContent()
-        {
-            var fileLocation = FileMetadata.GetFullLocationPathWithFileName();
-
-            if (File.Exists(fileLocation))
-            {
-                return File.ReadAllText(fileLocation);
-            }
-
-            return null;
         }
 
         private static readonly Regex _templateInheritsTagRegex = new Regex(
