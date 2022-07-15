@@ -128,13 +128,12 @@ namespace Intent.Modules.Common.TypeScript.Templates
         }
 
         /// <summary>
-        /// Obsolete. Use <see cref="AddImport"/> instead.
+        /// Adds an import with the specified information to this template and returns the
+        /// <paramref name="type"/>.
         /// </summary>
-        [Obsolete(WillBeRemovedIn.Version4)]
         public string ImportType(string type, string location)
         {
-            _imports.Add(new TypeScriptImport(type, location));
-
+            AddImport(type, location);
             return type;
         }
 
