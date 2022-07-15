@@ -25,7 +25,7 @@ namespace <#= Namespace #>
         public static <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> Get<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model)
         {
             var stereotype = model.GetStereotype("<#= stereotypeDefinition.Name #>");
-            return stereotype != null ? new <#= stereotypeDefinition.Name.  ToCSharpIdentifier() #>(stereotype) : null;
+            return stereotype != null ? new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(stereotype) : null;
         }
 <#      if (stereotypeDefinition.AllowMultipleApplies) { #>
 
@@ -45,7 +45,19 @@ namespace <#= Namespace #>
             return model.HasStereotype("<#= stereotypeDefinition.Name #>");
         }
 
-<#  } #> 
+        public static bool TryGet<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(this <#= ModelClassName #> model, out <#= stereotypeDefinition.Name.ToCSharpIdentifier() #> stereotype)
+        {
+            if (!Has<#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>(model.GetStereotype("<#= stereotypeDefinition.Name #>"));
+            return true;
+        }
+
+<#  } #>
 <#  foreach(var stereotypeDefinition in Model.StereotypeDefinitions) { #>
         public class <#= stereotypeDefinition.Name.ToCSharpIdentifier() #>
         {
