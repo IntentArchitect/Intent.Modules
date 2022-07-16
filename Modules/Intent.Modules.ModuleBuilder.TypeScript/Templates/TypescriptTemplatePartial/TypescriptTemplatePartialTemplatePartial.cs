@@ -8,6 +8,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
+using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
@@ -17,7 +18,7 @@ using Intent.Templates;
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypescriptTemplatePartialTemplate : CSharpTemplateBase<TypescriptFileTemplateModel>
+    partial class TypescriptTemplatePartialTemplate : CSharpTemplateBase<TypescriptFileTemplateModel>, IModuleBuilderTemplate
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial";
@@ -46,12 +47,8 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
         public override void BeforeTemplateExecution()
         {
-            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(
-                modelId: Model.Id,
-                templateId: GetTemplateId(),
-                templateType: "Typescript Template",
-                role: GetRole(),
-                location: Model.GetLocation()));
+            ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
+
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.TypeScript",
                 moduleVersion: "3.3.2"));
@@ -72,19 +69,14 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             return $"TypeScriptTemplateBase<{GetModelType()}>";
         }
 
-        private string GetRole()
-        {
-            return Model.GetRole();
-        }
+        public string GetRole() => Model.GetRole();
 
-        public string GetTemplateId()
-        {
-            return $"{Model.GetModule().Name}.{FolderNamespace}";
-        }
+        public string TemplateType() => "Typescript Template";
 
-        private string GetModelType()
-        {
-            return Model.GetModelName();
-        }
+        public string GetTemplateId() => $"{Model.GetModule().Name}.{FolderNamespace}";
+
+        public string GetDefaultLocation() => Model.GetLocation();
+
+        public string GetModelType() => Model.GetModelName();
     }
 }
