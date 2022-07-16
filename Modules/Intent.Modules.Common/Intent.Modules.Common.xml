@@ -1199,10 +1199,11 @@
             is "SolutionItems". "ContentSubFolder" should then just be "SolutionItems".
             </example>
         </member>
-        <member name="P:Intent.Modules.Common.Templates.StaticContent.StaticContentTemplateRegistration.Replacements">
+        <member name="M:Intent.Modules.Common.Templates.StaticContent.StaticContentTemplateRegistration.Replacements(Intent.Engine.IOutputTarget)">
             <summary>
-            Will look for entries strings with <code>&lt;#= {element.Key} #&gt;</code> and replace them with <code>{element.Value}</code>.
+            Will look for keys in this format <code>&lt;#= {element.Key} #&gt;</code> and substitute them with <code>{element.Value}</code>.
             </summary>
+            <param name="outputTarget">Leverage the output target context to know where the static content gets written to as part of the keyword substitution process</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.StaticContent.StaticContentTemplateRegistration.Register(Intent.Registrations.ITemplateInstanceRegistry,Intent.Engine.IApplication)">
             <inheritdoc />

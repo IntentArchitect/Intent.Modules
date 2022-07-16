@@ -47,9 +47,10 @@ namespace Intent.Modules.Common.Templates.StaticContent
         public virtual string ContentSubFolder => "/";
 
         /// <summary>
-        /// Will look for entries strings with <code>&lt;#= {element.Key} #&gt;</code> and replace them with <code>{element.Value}</code>.
+        /// Will look for keys in this format <code>&lt;#= {element.Key} #&gt;</code> and substitute them with <code>{element.Value}</code>.
         /// </summary>
-        public virtual IReadOnlyDictionary<string, string> Replacements => null;
+        /// <param name="outputTarget">Leverage the output target context to know where the static content gets written to as part of the keyword substitution process</param>
+        public virtual IReadOnlyDictionary<string, string> Replacements(IOutputTarget outputTarget) => null;
 
         /// <inheritdoc />
         protected override void Register(ITemplateInstanceRegistry registry, IApplication application)
@@ -83,7 +84,7 @@ namespace Intent.Modules.Common.Templates.StaticContent
                 relativeOutputPath: fileRelativePath,
                 templateId: TemplateId,
                 outputTarget: outputTarget,
-                replacements: Replacements);
+                replacements: Replacements(outputTarget));
         }
     }
 }

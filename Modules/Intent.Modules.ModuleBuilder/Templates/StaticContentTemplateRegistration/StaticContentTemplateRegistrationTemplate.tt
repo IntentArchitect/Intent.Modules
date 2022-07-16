@@ -9,6 +9,7 @@
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.ModuleBuilder.Api" #>
 using System.Collections.Generic;
+using Intent.Engine;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -32,8 +33,8 @@ namespace <#= Namespace #>
 	}
 #>
 
-        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.Ignore)]
-        public override IReadOnlyDictionary<string, string> Replacements => new Dictionary<string, string>
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override IReadOnlyDictionary<string, string> Replacements(IOutputTarget outputTarget) => new Dictionary<string, string>
         {
         };
     }

@@ -214,7 +214,7 @@
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.5" />
+    <dependency id="Intent.Common" version="3.3.8" />
     <dependency id="Intent.Common.CSharp" version="3.3.6" />
     <dependency id="Intent.Common.Types" version="3.3.1" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.1" />

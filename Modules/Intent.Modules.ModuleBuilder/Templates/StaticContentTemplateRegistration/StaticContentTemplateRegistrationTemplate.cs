@@ -33,44 +33,44 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistrati
         /// </summary>
         public override string TransformText()
         {
-            this.Write("using System.Collections.Generic;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            this.Write("using System.Collections.Generic;\r\nusing Intent.Engine;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    public class ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(UseType("Intent.Modules.Common.Templates.StaticContent.StaticContentTemplateRegistration")));
             
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        public new const string TemplateId = \"");
             
-            #line 19 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
             #line hidden
             this.Write("\";\r\n\r\n        public ");
             
-            #line 21 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("() : base(TemplateId)\r\n        {\r\n        }\r\n");
             
-            #line 24 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
 
 	var contentSubfolder = Model.GetTemplateSettings().ContentSubfolder();
 	if (!string.IsNullOrWhiteSpace(contentSubfolder))
@@ -81,21 +81,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistrati
             #line hidden
             this.Write("\r\n        public override string ContentSubFolder => \"");
             
-            #line 30 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(contentSubfolder));
             
             #line default
             #line hidden
             this.Write("\";\r\n");
             
-            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
+            #line 32 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\StaticContentTemplateRegistration\StaticContentTemplateRegistrationTemplate.tt"
 
 	}
 
             
             #line default
             #line hidden
-            this.Write("\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully, Body = Mode.Ignore)]\r\n        public override IReadOnlyDictionary<string, string> Replacements => new Dictionary<string, string>\r\n        {\r\n        };\r\n    }\r\n}");
+            this.Write("\r\n        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public override IReadOnlyDictionary<string, string> Replacements(IOutputTarget outputTarget) => new Dictionary<string, string>\r\n        {\r\n        }; \r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
