@@ -50,6 +50,7 @@ namespace Intent.ModuleBuilder.Api
             return new DiagramSettings()
             {
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
+                ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 AddNewElementsTo = DiagramAddNewElementsTo.Package,
             };
         }
