@@ -1,4 +1,3 @@
-using System.IO;
 using System.Linq;
 using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Modules.Common.Templates;
@@ -13,19 +12,19 @@ namespace Intent.Modules.Common.TypeScript.Templates
             var dependencies = template.GetTemplateDependencies().Select(template.ExecutionContext.FindTemplateInstance<ITemplate>).Distinct();
             foreach (var dependency in dependencies)
             {
-                if (!(dependency is IClassProvider))
+                if (dependency is not IClassProvider classProvider)
                 {
                     continue;
                 }
 
-                if (string.IsNullOrWhiteSpace(((IClassProvider) dependency).ClassName))
+                if (string.IsNullOrWhiteSpace(classProvider.ClassName))
                 {
                     continue;
                 }
 
                 file.AddImportIfNotExists(
-                    className: ((IClassProvider)dependency).ClassName,
-                    location: GetRelativePath(template, dependency));
+                    className: classProvider.ClassName,
+                    location: GetRelativePath(template, classProvider));
             }
 
             foreach (var import in template.Imports)

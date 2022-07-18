@@ -5,7 +5,6 @@ using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.TypeResolvers;
-using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 using Intent.Utils;
 

@@ -87,9 +87,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
         public override string TransformText()
         {
-            var location = GetExistingFilePath();
+            var content = TryGetExistingFileContent(out var existingContent)
+                ? existingContent
+                : CreateImodSpecFile();
 
-            var doc = LoadOrCreateImodSpecFile(location);
+            var doc = XDocument.Parse(content);
 
             doc.Element("package").SetElementValue("id", ModuleModel.Name);
 
@@ -485,11 +487,9 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 new XAttribute("version", intentModule.Version));
         }
 
-        private XDocument LoadOrCreateImodSpecFile(string filePath)
+        private string CreateImodSpecFile()
         {
-            var doc = filePath != null
-                ? XDocument.Load(filePath)
-                : XDocument.Parse($@"<?xml version=""1.0"" encoding=""utf-8"" ?>
+            return $@"<?xml version=""1.0"" encoding=""utf-8"" ?>
 <package>
   <id>{ModuleModel.Name}</id>
   <version>{ModuleModel.GetModuleSettings().Version()}</version>
@@ -507,9 +507,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
     <file src=""$outDir$/$id$.dll"" />
     <file src=""$outDir$/$id$.pdb"" />
   </files>
-</package>");
-
-            return doc;
+</package>";
         }
 
         public IEnumerable<INugetPackageInfo> GetNugetDependencies()
