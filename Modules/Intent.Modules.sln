@@ -80,6 +80,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.ModuleBuilde
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Tests", "Intent.Modules.Common.Tests\Intent.Modules.Common.Tests.csproj", "{C551F279-7F20-43EF-9EC9-190C25A912E7}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Services.CRUD.ServiceDispatch", "Intent.Modules.Modelers.Services.CRUD.ServiceDispatch\Intent.Modules.Modelers.Services.CRUD.ServiceDispatch.csproj", "{F2666E58-CA59-49E9-A25E-7AD352BB9632}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -214,6 +216,10 @@ Global
 		{C551F279-7F20-43EF-9EC9-190C25A912E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C551F279-7F20-43EF-9EC9-190C25A912E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C551F279-7F20-43EF-9EC9-190C25A912E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2666E58-CA59-49E9-A25E-7AD352BB9632}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2666E58-CA59-49E9-A25E-7AD352BB9632}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2666E58-CA59-49E9-A25E-7AD352BB9632}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2666E58-CA59-49E9-A25E-7AD352BB9632}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -256,6 +262,7 @@ Global
 		{4E438778-934D-4851-BD5A-D1A222C73C28} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{430DA63E-E53B-4257-9EA7-B62823D045EF} = {4EF0E910-DD23-4813-8959-9D10F1E4E788}
 		{C551F279-7F20-43EF-9EC9-190C25A912E7} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
+		{F2666E58-CA59-49E9-A25E-7AD352BB9632} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

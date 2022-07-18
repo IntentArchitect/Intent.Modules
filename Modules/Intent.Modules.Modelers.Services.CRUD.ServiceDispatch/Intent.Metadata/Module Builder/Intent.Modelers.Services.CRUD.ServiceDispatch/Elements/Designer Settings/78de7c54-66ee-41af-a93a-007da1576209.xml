@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="78de7c54-66ee-41af-a93a-007da1576209" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+  <name>CRUD Enhancements</name>
+  <display>CRUD Enhancements</display>
+  <isAbstract>false</isAbstract>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>43a66fc8-a873-4175-9e66-6e7ebbdbc9c0</parentFolderId>
+  <packageId>61f7cdaa-2c36-4f72-adfa-565c84889a48</packageId>
+  <packageName>Intent.Modelers.Services.CRUD.ServiceDispatch</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="9566aa04-ab84-4fbc-b039-6e676159ed82" display="Is Reference" value="false" isActive="true" />
+        <property name="fdbbd211-a162-4f29-bcdb-1250309d8aef" display="Extend Designers" value="[&quot;81104ae6-2bc5-4bae-b05a-f987b0372d81&quot;]" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>
