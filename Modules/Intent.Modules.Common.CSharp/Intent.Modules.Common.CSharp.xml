@@ -135,6 +135,68 @@
         <member name="M:Intent.Modules.Common.CSharp.Configuration.ConnectionStringRegistrationRequest.MarkHandled">
             <inheritdoc />
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest">
+            <summary>
+            Sets the default launch url path in the <c>launchsettings.json</c> file to the provided
+            <see cref="P:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest.UrlPath"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest.#ctor(System.String,System.String)">
+            <summary>
+            Creates a new instance of <see cref="T:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest"/>.
+            </summary>
+            <remarks>
+            Use <see cref="!:DefaultLaunchUrlPathRequestExtensions.PublishDefaultLaunchUrlRequest"/>
+            to perform publishing of this event.
+            </remarks>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest.UrlPath">
+            <summary>
+            The Path component to be applied to the <c>launchUrl</c> for the default profiles.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest.ForProjectWithRole">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest.WasHandled">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest.MarkHandled">
+            <inheritdoc />
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequestExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequest"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Configuration.DefaultLaunchUrlPathRequestExtensions.PublishDefaultLaunchUrlPathRequest(Intent.Modules.Common.Templates.IntentTemplateBase,System.String,System.String)">
+            <summary>
+            Sets the default launch url path in the <c>launchsettings.json</c> file to the provided
+            <paramref name="urlPath"/>.
+            </summary>
+            <remarks>
+            This needs to be called within the <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution"/> method.
+            This event can only be published once, publishing it a second time will raise an exception.
+            If the <c>launchsettings.json</c> file already exists, it will not be updated.
+            </remarks>
+            <param name="template">
+            An instance of a type derived from <see cref="T:Intent.Modules.Common.Templates.IntentTemplateBase"/> with an accessible
+            instance of <see cref="T:Intent.Eventing.IApplicationEventDispatcher"/> which is used to make the request.
+            </param>
+            <param name="urlPath">
+            The Path component to be applied to the <c>launchUrl</c> for the default profiles.
+            <example>/swagger/index.html</example>
+            </param>
+            <param name="forProjectWithRole">
+            Optional. Name of the output target 'Role' which must be present in the project within
+            the Intent Architect Visual Studio designer.
+            <remarks>
+            Used for disambiguating which <c>launchsettings.json</c>
+            file to apply to when a solution has multiple projects each with their own
+            <c>launchsettings.json</c> file.
+            </remarks>
+            </param>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.Configuration.EnvironmentVariableRegistrationRequest">
             <summary>
             A request for the key/value pair to be added to the environment variables of the application's launchSettings.json file.
