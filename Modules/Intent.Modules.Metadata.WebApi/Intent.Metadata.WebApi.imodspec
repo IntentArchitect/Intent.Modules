@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.WebApi</id>
-  <version>3.3.1</version>
+  <version>3.3.2</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -24,4 +24,5 @@
     <install target="Services" src="modelers/WebApi Extension.designer.settings" externalReference="6bd5bdad-d8af-4a4c-97bc-6b5436bd7eb4" />
   </metadata>
   <moduleSettings />
+  <moduleSettingsExtensions />
 </package>

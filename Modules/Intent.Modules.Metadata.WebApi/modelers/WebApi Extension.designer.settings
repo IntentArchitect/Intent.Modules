@@ -8,6 +8,9 @@
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
+      <validateFunctionOverride>return (typeReference.typeId == null &amp;&amp; getStereotype("Http Settings")?.getProperty("Verb").value === "GET") 
+    ? "Return Type required for HTTP GET Verb" 
+    : "";</validateFunctionOverride>
       <mappingSettings />
       <macros>
         <macro trigger="on-name-changed">
