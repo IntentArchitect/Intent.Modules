@@ -34,6 +34,7 @@
         <option>Text Area</option>
         <option>Select</option>
         <option>Multi-Select</option>
+        <option>Hidden</option>
       </valueOptions>
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>

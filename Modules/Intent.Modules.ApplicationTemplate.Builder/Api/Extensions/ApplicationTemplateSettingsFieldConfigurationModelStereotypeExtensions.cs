@@ -83,6 +83,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                             return ControlTypeOptionsEnum.Select;
                         case "Multi-Select":
                             return ControlTypeOptionsEnum.MultiSelect;
+                        case "Hidden":
+                            return ControlTypeOptionsEnum.Hidden;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -116,6 +118,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 {
                     return Value == "Multi-Select";
                 }
+                public bool IsHidden()
+                {
+                    return Value == "Hidden";
+                }
             }
 
             public enum ControlTypeOptionsEnum
@@ -126,7 +132,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 Switch,
                 TextArea,
                 Select,
-                MultiSelect
+                MultiSelect,
+                Hidden
             }
         }
 

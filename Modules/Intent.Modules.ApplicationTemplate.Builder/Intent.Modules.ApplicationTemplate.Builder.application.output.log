@@ -4,12 +4,14 @@
   <FileLogs>
     <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#f917caa4-f97b-43a2-9853-5c5dfa533768</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#cf385bd9-e92f-453d-a3e1-00b9922b57b3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ApplicationTemplateModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -17,6 +19,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#69000b7e-8bc8-49d0-80f5-eb65a6f7653a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ApplicationTemplateSettingsConfigurationModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateSettingsConfigurationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -24,6 +27,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#053d28c8-18c9-45b9-b3cb-184ec4b19679</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ApplicationTemplateSettingsFieldConfigurationModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateSettingsFieldConfigurationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -31,6 +35,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7194651e-45da-4a0c-b1ab-0351a5c08fc8</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ApplicationTemplateSettingsFieldOptionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateSettingsFieldOptionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -38,6 +43,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#027f8bb9-9b28-4c1d-a516-8c3daa70e46d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ComponentGroupModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ComponentGroupModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -45,6 +51,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#47064ef1-2295-4287-8301-c446910a1b1e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ComponentModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ComponentModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -52,6 +59,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#08725da5-d0cf-4ec8-ad65-a58d9927d32f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ContentFolderModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ContentFolderModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -59,6 +67,7 @@
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#cf385bd9-e92f-453d-a3e1-00b9922b57b3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ApplicationTemplateModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -66,6 +75,7 @@
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#053d28c8-18c9-45b9-b3cb-184ec4b19679</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -73,6 +83,7 @@
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#027f8bb9-9b28-4c1d-a516-8c3daa70e46d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ComponentGroupModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ComponentGroupModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -80,6 +91,7 @@
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#47064ef1-2295-4287-8301-c446910a1b1e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ComponentModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ComponentModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -87,6 +99,7 @@
     <FileLog>
       <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#ef75f8f0-520c-4ab8-814f-5e75f4877dd7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ModuleModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ModuleModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -94,6 +107,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#76db4fe8-5c95-4240-8f25-48b8079fa4ae</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/InstallationSettingsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>InstallationSettingsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -101,6 +115,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ef75f8f0-520c-4ab8-814f-5e75f4877dd7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ModuleModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ModuleModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -108,6 +123,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -115,6 +131,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -122,6 +139,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -129,6 +147,7 @@
     <FileLog>
       <ProjectId>e8fd8ba8-2ad8-4262-aedb-be0d806778f4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#9fe606d5-0e61-4c7d-b849-cf0d7a9e17ae</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>FactoryExtensions/AutoBuild.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AutoBuild.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -136,6 +155,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ApplicationTemplate.Builder.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ApplicationTemplate.Builder.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -143,6 +163,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#653969db-6597-4b32-a1f6-029c69da6903</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.ApplicationTemplate.Builder.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ApplicationTemplate.Builder.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -150,6 +171,7 @@
     <FileLog>
       <ProjectId>32572de3-c0a7-4680-8ad3-8cbd5033b2b5</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerConfig#22091d1e-a855-41af-ba7f-3f0b033c0fc3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/App Templates.designer.config</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>App Templates.designer.config</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -157,6 +179,7 @@
     <FileLog>
       <ProjectId>32572de3-c0a7-4680-8ad3-8cbd5033b2b5</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#c75eea8b-43c3-477d-9bbf-83ada9809113</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Application Template Builder.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Application Template Builder.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -164,6 +187,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -171,6 +195,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#a706c8ba-fe99-4eaf-9734-fc3fd07e901e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplatePartial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplatePartial.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -178,6 +203,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#a706c8ba-fe99-4eaf-9734-fc3fd07e901e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/IatSpecFile/IatSpecFileTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -185,6 +211,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -192,6 +219,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.T4Template#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplate.tt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -199,6 +227,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplatePartial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplatePartial.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -206,6 +235,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#7e47a281-6adb-41e2-b399-4e9835ecc4f7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/InstallationSettingsFile/InstallationSettingsFileTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

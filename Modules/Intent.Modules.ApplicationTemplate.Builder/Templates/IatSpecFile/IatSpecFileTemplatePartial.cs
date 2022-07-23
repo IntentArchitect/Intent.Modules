@@ -180,6 +180,8 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
         {
             switch (settingsField)
             {
+                case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Hidden:
+                    return ModuleSettingControlType.Hidden;
                 case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.TextBox:
                     return ModuleSettingControlType.TextBox;
                 case ApplicationTemplateSettingsFieldConfigurationModelStereotypeExtensions.SettingsFieldConfiguration.ControlTypeOptionsEnum.Number:
