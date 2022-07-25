@@ -107,7 +107,7 @@ if (options.length == 0) {
         if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
             // let idField = createElement("DTO-Field", "Id", updateDTO.id);
             // idField.typeReference.setType(getSurrogateKeyType())
-                        
+
             let idParam = createElement("Parameter", "id", updateOperation.id);
             idParam.typeReference.setType(getSurrogateKeyType());
         } else {
@@ -116,7 +116,7 @@ if (options.length == 0) {
                 field.typeReference.setType(attribute.typeReference.typeId)
 
                 let param = createElement("Parameter", toCamelCase(field.getName()), updateOperation.id);
-                param.typeReference.setType(field.typeReference.typeId);
+                param.typeReference.setType(attribute.typeReference.typeId);
             }
         }
 
@@ -260,7 +260,7 @@ if (options.length == 0) {
         if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
             // let idField = createElement("DTO-Field", "Id", updateDTO.id);
             // idField.typeReference.setType(getSurrogateKeyType())
-                        
+
             let idParam = createElement("Parameter", "id", updateOperation.id);
             idParam.typeReference.setType(getSurrogateKeyType());
         } else {
@@ -269,7 +269,7 @@ if (options.length == 0) {
                 field.typeReference.setType(attribute.typeReference.typeId)
 
                 let param = createElement("Parameter", toCamelCase(field.getName()), updateOperation.id);
-                param.typeReference.setType(field.typeReference.typeId);
+                param.typeReference.setType(attribute.typeReference.typeId);
             }
         }
 
