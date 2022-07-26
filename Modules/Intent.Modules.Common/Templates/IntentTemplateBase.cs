@@ -14,7 +14,8 @@ namespace Intent.Modules.Common.Templates
     /// <summary>
     /// A base class for templates which use both models and decorators.
     /// </summary>
-    public abstract class IntentTemplateBase<TModel, TDecorator> : IntentTemplateBase<TModel>, IHasDecorators<TDecorator>
+    public abstract class IntentTemplateBase<TModel, TDecorator> : IntentTemplateBase<TModel>,
+        IHasDecorators<TDecorator>
         where TDecorator : ITemplateDecorator
     {
         private readonly ICollection<TDecorator> _decorators = new List<TDecorator>();
@@ -22,7 +23,8 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Constructor for <see cref="IntentTemplateBase{TModel,TDecorator}"/>.
         /// </summary>
-        protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget, model)
+        protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId,
+            outputTarget, model)
         {
         }
 
@@ -59,7 +61,8 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Constructor for <see cref="IntentTemplateBase{TModel}"/>.
         /// </summary>
-        protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId, outputTarget)
+        protected IntentTemplateBase(string templateId, IOutputTarget outputTarget, TModel model) : base(templateId,
+            outputTarget)
         {
             Model = model;
         }
@@ -97,7 +100,9 @@ namespace Intent.Modules.Common.Templates
     /// <summary>
     /// Base class for templates.
     /// </summary>
-    public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate, IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, ITemplateBeforeExecutionHook
+    public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate,
+        IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
+        ITemplateBeforeExecutionHook
     {
         private readonly Lazy<string> _getExistingFilePathCache;
         private readonly Lazy<(bool result, string content)> _tryGetExistingFileContentCache;
@@ -118,7 +123,8 @@ namespace Intent.Modules.Common.Templates
             Id = templateId;
             BindingContext = new TemplateBindingContext(this);
             _getExistingFilePathCache = new Lazy<string>(GetExistingFilePathInternal);
-            _tryGetExistingFileContentCache = new Lazy<(bool result, string content)>(TryGetExistingFileContentInternal);
+            _tryGetExistingFileContentCache =
+                new Lazy<(bool result, string content)>(TryGetExistingFileContentInternal);
         }
 
         /// <summary>
@@ -170,7 +176,8 @@ namespace Intent.Modules.Common.Templates
 
         private string GetExistingFilePathInternal()
         {
-            var filePath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath ?? FileMetadata.GetFilePath();
+            var filePath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath ??
+                           FileMetadata.GetFilePath();
             return File.Exists(filePath) ? filePath : null;
         }
 
@@ -292,8 +299,10 @@ namespace Intent.Modules.Common.Templates
         {
             if (!HasTypeResolver())
             {
-                throw new Exception($"A {nameof(ITypeResolver)} has not been set for this Template at this time. Set {nameof(Types)} before calling this operation.");
+                throw new Exception(
+                    $"A {nameof(ITypeResolver)} has not been set for this Template at this time. Set {nameof(Types)} before calling this operation.");
             }
+
             Types.SetDefaultCollectionFormatter(CreateCollectionFormatter(collectionFormat));
         }
 
@@ -304,8 +313,10 @@ namespace Intent.Modules.Common.Templates
         {
             if (!HasTypeResolver())
             {
-                throw new Exception($"A {nameof(ITypeResolver)} has not been set for this Template at this time. Set {nameof(Types)} before calling this operation.");
+                throw new Exception(
+                    $"A {nameof(ITypeResolver)} has not been set for this Template at this time. Set {nameof(Types)} before calling this operation.");
             }
+
             Types.SetDefaultCollectionFormatter(collectionFormatter);
         }
 
@@ -462,7 +473,8 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(IHasTypeReference hasTypeReference, string collectionFormat = null)
+        protected virtual IResolvedTypeInfo GetTypeInfo(IHasTypeReference hasTypeReference,
+            string collectionFormat = null)
         {
             return GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
         }
@@ -481,7 +493,13 @@ namespace Intent.Modules.Common.Templates
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         protected virtual IResolvedTypeInfo GetTypeInfo(ITemplate template, TemplateDiscoveryOptions options = null)
         {
-            return GetTypeInfo(GetTemplate<IClassProvider>(template, options));
+            var classProvider = GetTemplate<IClassProvider>(template, options);
+            if (classProvider == null)
+            {
+                return null;
+            }
+
+            return GetTypeInfo(classProvider);
         }
 
         /// <summary>
@@ -496,9 +514,16 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateDependency">The <see cref="ITemplateDependency"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo GetTypeInfo(ITemplateDependency templateDependency,
+            TemplateDiscoveryOptions options = null)
         {
-            return GetTypeInfo(GetTemplate<IClassProvider>(templateDependency, options));
+            var classProvider = GetTemplate<IClassProvider>(templateDependency, options);
+            if (classProvider == null)
+            {
+                return null;
+            }
+
+            return GetTypeInfo(classProvider);
         }
 
         /// <summary>
@@ -562,9 +587,14 @@ namespace Intent.Modules.Common.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="model">The model instance that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, IMetadataModel model,
+            TemplateDiscoveryOptions options = null)
         {
             var classProvider = GetTemplate<IClassProvider>(templateId, model, options);
+            if (classProvider == null)
+            {
+                return null;
+            }
 
             return GetTypeInfo(classProvider);
         }
@@ -585,10 +615,15 @@ namespace Intent.Modules.Common.Templates
         /// <param name="templateId">The unique Template identifier.</param>
         /// <param name="modelId">The identifier of the model that the Template must be bound to.</param>
         /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+        protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, string modelId,
+            TemplateDiscoveryOptions options = null)
         {
             var classProvider = GetTemplate<IClassProvider>(templateId, modelId, options);
-
+            if (classProvider == null)
+            {
+                return null;
+            }
+            
             return GetTypeInfo(classProvider);
         }
 
@@ -610,7 +645,11 @@ namespace Intent.Modules.Common.Templates
         protected virtual IResolvedTypeInfo GetTypeInfo(string templateId, TemplateDiscoveryOptions options = null)
         {
             var classProvider = GetTemplate<IClassProvider>(templateId, options);
-
+            if (classProvider == null)
+            {
+                return null;
+            }
+            
             return GetTypeInfo(classProvider);
         }
 
@@ -730,7 +769,11 @@ namespace Intent.Modules.Common.Templates
         public string GetTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(template, options);
-
+            if (resolvedTypeInfo == null)
+            {
+                return null;
+            }
+            
             return UseType(resolvedTypeInfo);
         }
 
@@ -746,10 +789,15 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="templateDependency">The <see cref="ITemplateDependency"/> for which to get the type name.</param>
         /// <param name="options"><see cref="TemplateDiscoveryOptions"/> to use.</param>
-        public virtual string GetTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
+        public virtual string GetTypeName(ITemplateDependency templateDependency,
+            TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateDependency, options);
-
+            if (resolvedTypeInfo == null)
+            {
+                return null;
+            }
+            
             return UseType(resolvedTypeInfo);
         }
 
@@ -814,7 +862,11 @@ namespace Intent.Modules.Common.Templates
         public string GetTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, model, options);
-
+            if (resolvedTypeInfo == null)
+            {
+                return null;
+            }
+            
             return UseType(resolvedTypeInfo);
         }
 
@@ -837,7 +889,11 @@ namespace Intent.Modules.Common.Templates
         public string GetTypeName(string templateId, string modelId, TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, modelId, options);
-
+            if (resolvedTypeInfo == null)
+            {
+                return null;
+            }
+            
             return UseType(resolvedTypeInfo);
         }
 
@@ -859,7 +915,11 @@ namespace Intent.Modules.Common.Templates
         public string GetTypeName(string templateId, TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, options);
-
+            if (resolvedTypeInfo == null)
+            {
+                return null;
+            }
+            
             return UseType(resolvedTypeInfo);
         }
 
@@ -1043,7 +1103,8 @@ namespace Intent.Modules.Common.Templates
             var template = getTemplate();
             if (template == null && options.ThrowIfNotFound)
             {
-                throw new Exception($"Could not find template from dependency: {getDependencyDescriptionForException()}");
+                throw new Exception(
+                    $"Could not find template from dependency: {getDependencyDescriptionForException()}");
             }
 
             if (options.TrackDependency && template != null)
@@ -1074,24 +1135,29 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null)
+        public TTemplate GetTemplate<TTemplate>(string templateId, IMetadataModel model,
+            TemplateDiscoveryOptions options = null)
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, model) as TTemplate,
+                getTemplate: () =>
+                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id) ??
+                    TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, model) as TTemplate,
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, model.Id = {model.Id}",
                 options: options);
         }
 
         /// <inheritdoc cref="GetTemplate{TTemplate}(string,TemplateDiscoveryOptions)"/>
-        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId, TemplateDiscoveryOptions options = null)
+        public TTemplate GetTemplate<TTemplate>(string templateId, string modelId,
+            TemplateDiscoveryOptions options = null)
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, modelId) as TTemplate,
+                getTemplate: () =>
+                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId) ??
+                    TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, modelId) as TTemplate,
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, ModelId = {modelId}",
                 options: options);
-
         }
 
         /// <summary>
@@ -1102,7 +1168,9 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId) ?? TemplateRoleRegistry.FindTemplateInstanceForRole(templateId) as TTemplate,
+                getTemplate: () =>
+                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId) ??
+                    TemplateRoleRegistry.FindTemplateInstanceForRole(templateId) as TTemplate,
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}",
                 options: options);
         }
@@ -1118,11 +1186,11 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <inheritdoc cref="TryGetTemplate{TTemplate}(string, out TTemplate)"/>
-
         public bool TryGetTemplate<TTemplate>(string templateId, IMetadataModel model, out TTemplate template)
             where TTemplate : class
         {
-            template = GetTemplate<TTemplate>(templateId: templateId, model: model, options: TemplateDiscoveryOptions.DoNotThrow);
+            template = GetTemplate<TTemplate>(templateId: templateId, model: model,
+                options: TemplateDiscoveryOptions.DoNotThrow);
             return template != null;
         }
 
@@ -1130,7 +1198,8 @@ namespace Intent.Modules.Common.Templates
         public bool TryGetTemplate<TTemplate>(string templateId, string modelId, out TTemplate template)
             where TTemplate : class
         {
-            template = GetTemplate<TTemplate>(templateId: templateId, modelId: modelId, options: TemplateDiscoveryOptions.DoNotThrow);
+            template = GetTemplate<TTemplate>(templateId: templateId, modelId: modelId,
+                options: TemplateDiscoveryOptions.DoNotThrow);
             return template != null;
         }
 
