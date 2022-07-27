@@ -56,14 +56,16 @@ namespace Intent.Metadata.WebApi.Api
                     {
                         case "Default":
                             return SourceOptionsEnum.Default;
-                        case "From Query":
-                            return SourceOptionsEnum.FromQuery;
                         case "From Body":
                             return SourceOptionsEnum.FromBody;
-                        case "From Route":
-                            return SourceOptionsEnum.FromRoute;
+                        case "From Form":
+                            return SourceOptionsEnum.FromForm;
                         case "From Header":
                             return SourceOptionsEnum.FromHeader;
+                        case "From Query":
+                            return SourceOptionsEnum.FromQuery;
+                        case "From Route":
+                            return SourceOptionsEnum.FromRoute;
                         default:
                             throw new ArgumentOutOfRangeException();
                     }
@@ -81,6 +83,10 @@ namespace Intent.Metadata.WebApi.Api
                 {
                     return Value == "From Body";
                 }
+                public bool IsFromForm()
+                {
+                    return Value == "From Form";
+                }
                 public bool IsFromRoute()
                 {
                     return Value == "From Route";
@@ -96,6 +102,7 @@ namespace Intent.Metadata.WebApi.Api
                 Default,
                 FromQuery,
                 FromBody,
+                FromForm,
                 FromRoute,
                 FromHeader
             }

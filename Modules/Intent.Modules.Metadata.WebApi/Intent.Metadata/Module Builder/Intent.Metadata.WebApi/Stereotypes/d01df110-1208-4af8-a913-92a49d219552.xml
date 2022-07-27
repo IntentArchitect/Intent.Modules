@@ -28,10 +28,11 @@
       <defaultValue>Default</defaultValue>
       <valueOptions>
         <option>Default</option>
-        <option>From Query</option>
         <option>From Body</option>
-        <option>From Route</option>
+        <option>From Form</option>
         <option>From Header</option>
+        <option>From Query</option>
+        <option>From Route</option>
       </valueOptions>
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
