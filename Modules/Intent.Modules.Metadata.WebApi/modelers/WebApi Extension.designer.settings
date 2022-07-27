@@ -21,6 +21,8 @@ if (!httpVerb) {
         element.name.toLowerCase().startsWith("lookup") ||
         element.name.toLowerCase().startsWith("search")) {
         element.getStereotype("Http Settings").getProperty("Verb").setValue("GET");
+    } else if (element.name.toLowerCase().startsWith("patch")) {
+        element.getStereotype("Http Settings").getProperty("Verb").setValue("PATCH");
     } else {
         element.getStereotype("Http Settings").getProperty("Verb").setValue("POST");
     }
