@@ -3,7 +3,7 @@
   <name>Class Key Extension</name>
   <display>Class Key Extension: Class</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="6adce1ea-b656-4262-baa9-0e34f1b393ba">
     <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
@@ -51,7 +51,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e7d6ec8a-49a1-40b2-9075-8c91a2b298bb</parentFolderId>
@@ -64,7 +64,6 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="17373298-76da-4234-94b8-a1d8a6909079">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -98,7 +97,6 @@
           <name>On Loaded</name>
           <display>On Loaded: Script</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="26c9b912-adfd-4c67-a125-9bdf020f27f3">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

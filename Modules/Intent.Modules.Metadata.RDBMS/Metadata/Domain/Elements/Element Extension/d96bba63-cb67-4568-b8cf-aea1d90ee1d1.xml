@@ -3,7 +3,7 @@
   <name>Attribute Extension</name>
   <display>Attribute Extension: Attribute</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="7856aabb-0b51-41c4-bd10-3ecf472b7b16">
     <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
@@ -51,7 +51,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>d96bba63-cb67-4568-b8cf-aea1d90ee1d1</parentFolderId>
@@ -64,7 +64,6 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="4ad543d1-2441-4b95-8980-a8d53b48d618">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -98,7 +97,6 @@
           <name>On Type Changed</name>
           <display>On Type Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="6029a3cd-9346-41c0-9fc1-0c0945971dc6">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

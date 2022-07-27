@@ -3,7 +3,7 @@
   <name>Generalization Key Extension</name>
   <display>Generalization Key Extension: Generalization</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="52b38207-5618-4ea5-91e1-f6d50c6c4bcb">
     <typeId>5de35973-3ac7-4e65-b48c-385605aec561</typeId>
@@ -27,7 +27,6 @@
       <name>[source]</name>
       <display>[source end extension]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>79fa2793-ab52-4f45-a9e9-c15877ee1730</parentFolderId>
@@ -56,7 +55,6 @@
       <name>[destination]</name>
       <display>[target end extension]</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>79fa2793-ab52-4f45-a9e9-c15877ee1730</parentFolderId>
@@ -85,7 +83,7 @@
       <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>79fa2793-ab52-4f45-a9e9-c15877ee1730</parentFolderId>
@@ -98,7 +96,6 @@
           <name>On Changed</name>
           <display>On Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="33b14f6a-d734-42de-bba4-9896b6f53c9a">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -132,7 +129,6 @@
           <name>On Deleted</name>
           <display>On Deleted: Script</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="a4c6697c-6cbb-444b-b180-de0a88a3eec9">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

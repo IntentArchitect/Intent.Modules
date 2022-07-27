@@ -3,7 +3,7 @@
   <name>Class Extension</name>
   <display>Class Extension: Class</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="ea9ff749-80f0-4192-9437-508ee7365b29">
     <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>d69223e1-2c8c-4cce-af02-cc90cfb0ecf0</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Index</name>
           <display>Add Index: Index</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="f6a456e0-d38c-46c1-b492-bcd62fdc0dd4">
             <typeId>436e3afe-b4ef-481c-b803-0d1e7d263561</typeId>

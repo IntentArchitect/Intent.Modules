@@ -3,7 +3,7 @@
   <name>Attribute Key Extension</name>
   <display>Attribute Key Extension: Attribute</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="17e67977-793c-438a-a365-3b9823020a05">
     <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
@@ -51,7 +51,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1da42774-fe46-4bde-b372-75d70e5bce45</parentFolderId>
@@ -64,7 +64,6 @@
           <name>On Changed</name>
           <display>On Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="ff613fec-1c4e-4935-8fdb-2f9adc53dd54">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

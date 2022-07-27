@@ -204,10 +204,10 @@ if (sourceType &amp;&amp; targetType) {
         <macro trigger="on-deleted">
           <script>let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
-if (targetType?.getMetadata("auto-manage-keys") != "false") {
+if (targetType &amp;&amp; targetType.getMetadata("auto-manage-keys") != "false") {
     targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
 }
-if (sourceType?.getMetadata("auto-manage-keys") != "false") {
+if (sourceType &amp;&amp; sourceType.getMetadata("auto-manage-keys") != "false") {
     sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
 }
 </script>

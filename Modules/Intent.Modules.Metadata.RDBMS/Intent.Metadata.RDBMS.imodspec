@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
   <version>3.3.5</version>
@@ -38,7 +38,7 @@
         <setting id="5aca6e0c-1b64-425b-9046-f0bc81c44311" title="Key Creation Mode" type="select">
           <isRequired>false</isRequired>
           <hint>If and how the designer should create and manage the PKs and FKs</hint>
-          <defaultValue>explicit</defaultValue>
+          <defaultValue>manual</defaultValue>
           <options>
             <option value="manual" description="Manually add PKs and FKs" />
             <option value="explicit" description="Explicitly add PKs and FKs automaitcally" />

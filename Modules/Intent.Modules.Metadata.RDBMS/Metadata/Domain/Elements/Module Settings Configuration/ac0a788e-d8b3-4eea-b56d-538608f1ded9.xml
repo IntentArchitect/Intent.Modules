@@ -3,7 +3,7 @@
   <name>Database Settings</name>
   <display>Database Settings</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>AF8F3810-745C-42A2-93C8-798860DC45B1</parentFolderId>
@@ -16,7 +16,7 @@
       <name>Key Type</name>
       <display>Key Type</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ac0a788e-d8b3-4eea-b56d-538608f1ded9</parentFolderId>
@@ -42,7 +42,6 @@
           <display>guid = guid</display>
           <isAbstract>false</isAbstract>
           <value>guid</value>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>ef83f85d-bb8d-4b10-8842-9f35f9f54165</parentFolderId>
@@ -57,7 +56,6 @@
           <display>long = long</display>
           <isAbstract>false</isAbstract>
           <value>long</value>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>ef83f85d-bb8d-4b10-8842-9f35f9f54165</parentFolderId>
@@ -72,7 +70,6 @@
           <display>int = int</display>
           <isAbstract>false</isAbstract>
           <value>int</value>
-          <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>ef83f85d-bb8d-4b10-8842-9f35f9f54165</parentFolderId>
@@ -88,7 +85,7 @@
       <name>Key Creation Mode</name>
       <display>Key Creation Mode</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ac0a788e-d8b3-4eea-b56d-538608f1ded9</parentFolderId>
@@ -103,7 +100,7 @@
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
             <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="If and how the designer should create and manage the PKs and FKs" isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="explicit" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="manual" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -114,7 +111,6 @@
           <display>Manually add PKs and FKs = manual</display>
           <isAbstract>false</isAbstract>
           <value>manual</value>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>5aca6e0c-1b64-425b-9046-f0bc81c44311</parentFolderId>
@@ -129,7 +125,6 @@
           <display>Explicitly add PKs and FKs automaitcally = explicit</display>
           <isAbstract>false</isAbstract>
           <value>explicit</value>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>5aca6e0c-1b64-425b-9046-f0bc81c44311</parentFolderId>
@@ -144,7 +139,6 @@
           <display>Remove all managed PKs and FKs = implicit</display>
           <isAbstract>false</isAbstract>
           <value>implicit</value>
-          <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>5aca6e0c-1b64-425b-9046-f0bc81c44311</parentFolderId>
@@ -160,7 +154,7 @@
       <name>Key Naming Convention</name>
       <display>Key Naming Convention</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ac0a788e-d8b3-4eea-b56d-538608f1ded9</parentFolderId>
@@ -186,7 +180,6 @@
           <display>Pascal Case = pascal-case</display>
           <isAbstract>false</isAbstract>
           <value>pascal-case</value>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>cf991e8c-de2c-4b60-a4a4-baa4770e0ac9</parentFolderId>
@@ -201,7 +194,6 @@
           <display>Camel Case = camel-case</display>
           <isAbstract>false</isAbstract>
           <value>camel-case</value>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>cf991e8c-de2c-4b60-a4a4-baa4770e0ac9</parentFolderId>

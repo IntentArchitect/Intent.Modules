@@ -3,7 +3,7 @@
   <name>Association Key Extension</name>
   <display>Association Key Extension: Association</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="e2f30809-c62b-4634-989e-e87a991ea61b">
     <typeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</typeId>
@@ -27,7 +27,6 @@
       <name>[source]</name>
       <display>[source end extension]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>783c1402-6c4e-4a01-979c-f128dded8162</parentFolderId>
@@ -56,7 +55,6 @@
       <name>[destination]</name>
       <display>[target end extension]</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>783c1402-6c4e-4a01-979c-f128dded8162</parentFolderId>
@@ -85,7 +83,7 @@
       <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>783c1402-6c4e-4a01-979c-f128dded8162</parentFolderId>
@@ -98,7 +96,6 @@
           <name>On Changed</name>
           <display>On Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="4ab359f1-d083-457d-8b5e-c8d5b0bbc3ca">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -132,7 +129,6 @@
           <name>On Deleted</name>
           <display>On Deleted: Script</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="f186fb76-5d1f-40d2-a35b-3cfa92b27661">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -155,7 +151,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="let sourceType = lookup(association.getOtherEnd().typeReference.typeId);&#xD;&#xA;let targetType = lookup(association.typeReference.typeId);&#xD;&#xA;if (targetType?.getMetadata(&quot;auto-manage-keys&quot;) != &quot;false&quot;) {&#xD;&#xA;    targetType.getChildren().filter(x =&gt; x.getMetadata(&quot;association&quot;) == association.id).forEach(x =&gt; x.delete());&#xD;&#xA;}&#xD;&#xA;if (sourceType?.getMetadata(&quot;auto-manage-keys&quot;) != &quot;false&quot;) {&#xD;&#xA;    sourceType.getChildren().filter(x =&gt; x.getMetadata(&quot;association&quot;) == association.id).forEach(x =&gt; x.delete());&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="let sourceType = lookup(association.getOtherEnd().typeReference.typeId);&#xD;&#xA;let targetType = lookup(association.typeReference.typeId);&#xD;&#xA;if (targetType &amp;&amp; targetType.getMetadata(&quot;auto-manage-keys&quot;) != &quot;false&quot;) {&#xD;&#xA;    targetType.getChildren().filter(x =&gt; x.getMetadata(&quot;association&quot;) == association.id).forEach(x =&gt; x.delete());&#xD;&#xA;}&#xD;&#xA;if (sourceType &amp;&amp; sourceType.getMetadata(&quot;auto-manage-keys&quot;) != &quot;false&quot;) {&#xD;&#xA;    sourceType.getChildren().filter(x =&gt; x.getMetadata(&quot;association&quot;) == association.id).forEach(x =&gt; x.delete());&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -166,7 +162,6 @@
           <name>On Loaded</name>
           <display>On Loaded: Script</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="e6e013ac-b26c-4337-8a87-a867ebae54df">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

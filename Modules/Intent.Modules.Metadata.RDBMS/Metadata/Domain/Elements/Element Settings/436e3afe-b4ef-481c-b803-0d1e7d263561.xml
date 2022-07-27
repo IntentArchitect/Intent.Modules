@@ -3,7 +3,7 @@
   <name>Index</name>
   <display>Index</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>436e3afe-b4ef-481c-b803-0d1e7d263561</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Column</name>
           <display>Add Column: Index Column</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="3e1a2bb3-764f-4fe2-9e24-34ac62c696d3">
             <typeId>c5ba925d-5c08-4809-a848-585a0cd4ddd3</typeId>
@@ -106,7 +105,7 @@
       <name>Select Columns</name>
       <display>[mappings]: Select Columns</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>436e3afe-b4ef-481c-b803-0d1e7d263561</parentFolderId>
@@ -136,7 +135,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: Class -&gt; Index Column (Map to Type)</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>30f4278f-1d74-4e7e-bfdb-39c8e120f24c</parentFolderId>
@@ -179,7 +178,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Attribute -&gt; Index Column (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>0</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>0f543188-543a-4a5b-9cfc-361ec6c4756e</parentFolderId>
@@ -223,7 +221,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Association Target End -&gt; Index Column (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>1</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>0f543188-543a-4a5b-9cfc-361ec6c4756e</parentFolderId>
@@ -267,7 +264,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Association Source End -&gt; Index Column (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>2</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>0f543188-543a-4a5b-9cfc-361ec6c4756e</parentFolderId>
@@ -311,7 +307,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Generalization Target End -&gt; [None] (Traverse)</display>
               <isAbstract>false</isAbstract>
-              <order>3</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>0f543188-543a-4a5b-9cfc-361ec6c4756e</parentFolderId>
@@ -359,7 +354,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>436e3afe-b4ef-481c-b803-0d1e7d263561</parentFolderId>
@@ -372,7 +367,6 @@
           <name>On Changed</name>
           <display>On Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="5bfa9562-8dcb-4e32-8af4-47fe3429a8b5">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -406,7 +400,6 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="f0e18593-2ec1-4c77-b377-1dbd607010fb">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -440,7 +433,6 @@
           <name>On Name Changed</name>
           <display>On Name Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="d47849f4-4ad5-40ef-9e73-4e2cdd4bf265">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

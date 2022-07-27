@@ -3,7 +3,7 @@
   <name>RDBMS Key Automation Extensions</name>
   <display>RDBMS Key Automation Extensions</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>6bb04f32-27ca-495a-8d0d-c4c57c252567</parentFolderId>
