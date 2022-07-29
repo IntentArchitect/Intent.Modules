@@ -4,12 +4,14 @@
   <FileLogs>
     <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#d7572075-96b5-4374-89fc-f4c831ee3147</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -17,6 +19,7 @@
     <FileLog>
       <ProjectId>dbe0fab1-2720-40f2-9f2c-76719e833d59</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Common.CSharp.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.CSharp.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -24,6 +27,7 @@
     <FileLog>
       <ProjectId>dbe0fab1-2720-40f2-9f2c-76719e833d59</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#dbe0fab1-2720-40f2-9f2c-76719e833d59</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.CSharp.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

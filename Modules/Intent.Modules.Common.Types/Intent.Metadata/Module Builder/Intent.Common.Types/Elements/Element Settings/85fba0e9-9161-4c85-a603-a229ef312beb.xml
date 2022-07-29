@@ -3,7 +3,7 @@
   <name>Enum</name>
   <display>Enum</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55d06096-83fe-4acf-86ef-586d254e5170</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>85fba0e9-9161-4c85-a603-a229ef312beb</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Literal</name>
           <display>Add Literal: Enum-Literal</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="4f488f61-4152-4115-aabb-43c689cbe817">
             <typeId>4215f417-25d2-4509-9309-5076a1452eaa</typeId>
@@ -106,7 +105,7 @@
       <name>[visual]</name>
       <display>[visual]: Enum</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <typeReference id="47b4ac03-6176-4b2d-86fa-317b60251cd5">
         <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
@@ -142,7 +141,6 @@
           <name>Rectangle</name>
           <display>[draw path]: Rectangle</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>6d305220-4a49-41ab-9997-098d18d4fe5a</parentFolderId>
@@ -170,7 +168,6 @@
           <name>Display Text</name>
           <display>[draw text]: Display Text</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>6d305220-4a49-41ab-9997-098d18d4fe5a</parentFolderId>
@@ -206,7 +203,6 @@
           <name>Stereotype Icons</name>
           <display>[stereotypes]: Stereotype Icons</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>6d305220-4a49-41ab-9997-098d18d4fe5a</parentFolderId>
@@ -232,7 +228,7 @@
           <name>NewElementVisualSettings</name>
           <display>[visual]: Enum-Literal</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
+          <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
           <typeReference id="9e8e399c-248b-442c-a400-c2535dfe87f1">
             <typeId>4215f417-25d2-4509-9309-5076a1452eaa</typeId>
@@ -268,7 +264,6 @@
               <name>Separator</name>
               <display>[draw path]: Separator</display>
               <isAbstract>false</isAbstract>
-              <order>1</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>2a80d0c8-e121-42b9-b55c-3b5ec8294b09</parentFolderId>
@@ -296,7 +291,6 @@
               <name>Display Text</name>
               <display>[draw text]: Display Text</display>
               <isAbstract>false</isAbstract>
-              <order>2</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>2a80d0c8-e121-42b9-b55c-3b5ec8294b09</parentFolderId>
@@ -332,7 +326,6 @@
               <name>Stereotype Icons</name>
               <display>[stereotypes]: Stereotype Icons</display>
               <isAbstract>false</isAbstract>
-              <order>3</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>2a80d0c8-e121-42b9-b55c-3b5ec8294b09</parentFolderId>

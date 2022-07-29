@@ -3,7 +3,7 @@
   <name>Folder</name>
   <display>Folder</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55d06096-83fe-4acf-86ef-586d254e5170</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>4d95d53a-8855-4f35-aa82-e312643f5c5f</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="f4b30cb5-3555-423c-bf72-866476469dfd">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
