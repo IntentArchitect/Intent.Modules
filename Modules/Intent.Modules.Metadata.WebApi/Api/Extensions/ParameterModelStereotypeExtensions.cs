@@ -24,6 +24,18 @@ namespace Intent.Metadata.WebApi.Api
             return model.HasStereotype("Parameter Settings");
         }
 
+        public static bool TryGetParameterSettings(this ParameterModel model, out ParameterSettings stereotype)
+        {
+            if (!HasParameterSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ParameterSettings(model.GetStereotype("Parameter Settings"));
+            return true;
+        }
+
 
         public class ParameterSettings
         {

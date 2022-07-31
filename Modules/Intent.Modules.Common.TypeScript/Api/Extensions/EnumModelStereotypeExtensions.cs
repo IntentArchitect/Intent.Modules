@@ -19,19 +19,21 @@ namespace Intent.Modules.Common.TypeScript.Api
             return stereotype != null ? new TypeScript(stereotype) : null;
         }
 
-        public static IReadOnlyCollection<TypeScript> GetTypeScripts(this EnumModel model)
-        {
-            var stereotypes = model
-                .GetStereotypes("TypeScript")
-                .Select(stereotype => new TypeScript(stereotype))
-                .ToArray();
-
-            return stereotypes;
-        }
-
         public static bool HasTypeScript(this EnumModel model)
         {
             return model.HasStereotype("TypeScript");
+        }
+
+        public static bool TryGetTypeScript(this EnumModel model, out TypeScript stereotype)
+        {
+            if (!HasTypeScript(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new TypeScript(model.GetStereotype("TypeScript"));
+            return true;
         }
 
 

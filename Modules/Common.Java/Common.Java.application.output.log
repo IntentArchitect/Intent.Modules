@@ -5,6 +5,7 @@
     <FileLog>
       <ProjectId>7cce6257-3f0d-4071-8828-282df7db3500</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Java/Intent.Common.Java.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Java.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -12,6 +13,7 @@
     <FileLog>
       <ProjectId>7cce6257-3f0d-4071-8828-282df7db3500</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#7cce6257-3f0d-4071-8828-282df7db3500</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Java/Intent.Modules.Common.Java.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Java.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -19,12 +21,14 @@
     <FileLog>
       <ProjectId>7cce6257-3f0d-4071-8828-282df7db3500</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Java/README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#a582132f-d52c-4495-9063-43179063d374</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>

@@ -1,8 +1,8 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.3.0</Version>
+    <Version>3.3.1</Version>
     <Authors>Intent Architect</Authors>
     <Description>Intent Architect TypeScript decorators for instructing the code management systems</Description>
     <Copyright>Copyright 2021</Copyright>
@@ -35,14 +35,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.1" />
-    <PackageReference Include="Intent.Modules.Common.TypeScript" Version="3.3.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.9" />
+    <PackageReference Include="Intent.Modules.Common.TypeScript" Version="3.3.2" />
     <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.2" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.0" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.3" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.1" />
   </ItemGroup>
 
   <ItemGroup>

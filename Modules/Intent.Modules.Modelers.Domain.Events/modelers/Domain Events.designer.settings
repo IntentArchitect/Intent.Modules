@@ -164,6 +164,7 @@ white-space: inherit;`</style>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
+        <scriptOptions />
       </diagramSettings>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">

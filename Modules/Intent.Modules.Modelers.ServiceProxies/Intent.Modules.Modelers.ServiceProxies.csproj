@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>3.3.1</Version>
+    <Version>3.3.2</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Service Proxy Types</Product>
@@ -15,15 +15,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.1" />
-    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.0" />
-    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.3.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.9" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.4" />
+    <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.3.3" />
     <PackageReference Include="Intent.Packager" Version="3.3.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.2" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.0" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.3" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.1" />
   </ItemGroup>
 
   <ItemGroup>

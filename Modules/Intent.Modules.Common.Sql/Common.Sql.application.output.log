@@ -5,6 +5,7 @@
     <FileLog>
       <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Common.Sql.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Sql.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -12,6 +13,7 @@
     <FileLog>
       <ProjectId>43a7c52b-f246-4b39-a873-1bb154a2d59d</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#43a7c52b-f246-4b39-a873-1bb154a2d59d</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Common.Sql.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Sql.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

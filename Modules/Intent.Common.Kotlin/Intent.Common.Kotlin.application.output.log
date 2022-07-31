@@ -5,6 +5,7 @@
     <FileLog>
       <ProjectId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/Intent.Common.Kotlin.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Kotlin.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -12,6 +13,7 @@
     <FileLog>
       <ProjectId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9d30551d-7f63-4c5b-b11b-43c3d536ed19</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/Intent.Modules.Common.Kotlin.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Common.Kotlin.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -19,12 +21,14 @@
     <FileLog>
       <ProjectId>9d30551d-7f63-4c5b-b11b-43c3d536ed19</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Kotlin/README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#c19ef5a0-9b32-4d31-b01d-305e44e87020</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>

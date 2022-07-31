@@ -24,25 +24,39 @@ namespace Intent.Metadata.WebApi.Api
             return model.HasStereotype("Http Service Settings");
         }
 
+        public static bool TryGetHttpServiceSettings(this ServiceModel model, out HttpServiceSettings stereotype)
+        {
+            if (!HasHttpServiceSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new HttpServiceSettings(model.GetStereotype("Http Service Settings"));
+            return true;
+        }
+
         public static Secured GetSecured(this ServiceModel model)
         {
             var stereotype = model.GetStereotype("Secured");
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
-        public static IReadOnlyCollection<Secured> GetSecureds(this ServiceModel model)
-        {
-            var stereotypes = model
-                .GetStereotypes("Secured")
-                .Select(stereotype => new Secured(stereotype))
-                .ToArray();
-
-            return stereotypes;
-        }
-
         public static bool HasSecured(this ServiceModel model)
         {
             return model.HasStereotype("Secured");
+        }
+
+        public static bool TryGetSecured(this ServiceModel model, out Secured stereotype)
+        {
+            if (!HasSecured(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Secured(model.GetStereotype("Secured"));
+            return true;
         }
 
         public static Unsecured GetUnsecured(this ServiceModel model)
@@ -51,19 +65,21 @@ namespace Intent.Metadata.WebApi.Api
             return stereotype != null ? new Unsecured(stereotype) : null;
         }
 
-        public static IReadOnlyCollection<Unsecured> GetUnsecureds(this ServiceModel model)
-        {
-            var stereotypes = model
-                .GetStereotypes("Unsecured")
-                .Select(stereotype => new Unsecured(stereotype))
-                .ToArray();
-
-            return stereotypes;
-        }
-
         public static bool HasUnsecured(this ServiceModel model)
         {
             return model.HasStereotype("Unsecured");
+        }
+
+        public static bool TryGetUnsecured(this ServiceModel model, out Unsecured stereotype)
+        {
+            if (!HasUnsecured(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Unsecured(model.GetStereotype("Unsecured"));
+            return true;
         }
 
 

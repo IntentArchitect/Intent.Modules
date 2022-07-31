@@ -534,6 +534,7 @@ white-space: inherit;`</style>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
+        <scriptOptions />
       </diagramSettings>
       <childElementSettings />
     </elementSetting>

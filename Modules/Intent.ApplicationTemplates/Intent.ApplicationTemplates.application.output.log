@@ -4,12 +4,14 @@
   <FileLogs>
     <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#ac9d8b42-6810-4a6e-b243-2f7e1853ed80</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
       <CorrelationId>Intent.ApplicationTemplate.Builder.Templates.IatSpecFile#1edb3b6a-4388-43e1-aebd-f51dc1039e69</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ApplicationTemplate.ModuleBuilder/metadata.iatspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ApplicationTemplate.ModuleBuilder/metadata.iatspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -17,6 +19,7 @@
     <FileLog>
       <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
       <CorrelationId>Intent.ApplicationTemplate.Builder.Templates.IatSpecFile#e9bf7bb9-ca0d-46bc-9472-73da043995bd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ApplicationTemplateBuilder/metadata.iatspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ApplicationTemplateBuilder/metadata.iatspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -24,6 +27,7 @@
     <FileLog>
       <ProjectId>27198197-90cd-4d82-aabf-ca88ea70cbeb</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#27198197-90cd-4d82-aabf-ca88ea70cbeb</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ApplicationTemplates.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ApplicationTemplates.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

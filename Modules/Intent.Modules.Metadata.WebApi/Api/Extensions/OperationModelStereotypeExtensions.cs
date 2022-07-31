@@ -24,25 +24,39 @@ namespace Intent.Metadata.WebApi.Api
             return model.HasStereotype("Http Settings");
         }
 
+        public static bool TryGetHttpSettings(this OperationModel model, out HttpSettings stereotype)
+        {
+            if (!HasHttpSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new HttpSettings(model.GetStereotype("Http Settings"));
+            return true;
+        }
+
         public static Secured GetSecured(this OperationModel model)
         {
             var stereotype = model.GetStereotype("Secured");
             return stereotype != null ? new Secured(stereotype) : null;
         }
 
-        public static IReadOnlyCollection<Secured> GetSecureds(this OperationModel model)
-        {
-            var stereotypes = model
-                .GetStereotypes("Secured")
-                .Select(stereotype => new Secured(stereotype))
-                .ToArray();
-
-            return stereotypes;
-        }
-
         public static bool HasSecured(this OperationModel model)
         {
             return model.HasStereotype("Secured");
+        }
+
+        public static bool TryGetSecured(this OperationModel model, out Secured stereotype)
+        {
+            if (!HasSecured(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Secured(model.GetStereotype("Secured"));
+            return true;
         }
 
         public static Unsecured GetUnsecured(this OperationModel model)
@@ -51,19 +65,21 @@ namespace Intent.Metadata.WebApi.Api
             return stereotype != null ? new Unsecured(stereotype) : null;
         }
 
-        public static IReadOnlyCollection<Unsecured> GetUnsecureds(this OperationModel model)
-        {
-            var stereotypes = model
-                .GetStereotypes("Unsecured")
-                .Select(stereotype => new Unsecured(stereotype))
-                .ToArray();
-
-            return stereotypes;
-        }
-
         public static bool HasUnsecured(this OperationModel model)
         {
             return model.HasStereotype("Unsecured");
+        }
+
+        public static bool TryGetUnsecured(this OperationModel model, out Unsecured stereotype)
+        {
+            if (!HasUnsecured(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Unsecured(model.GetStereotype("Unsecured"));
+            return true;
         }
 
 

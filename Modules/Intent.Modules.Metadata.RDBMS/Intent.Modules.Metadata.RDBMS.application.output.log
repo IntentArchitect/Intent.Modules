@@ -4,12 +4,14 @@
   <FileLogs>
     <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#435e4d4a-0648-46fb-b0aa-719ad439a343</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d96bba63-cb67-4568-b8cf-aea1d90ee1d1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AttributeExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AttributeExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -17,6 +19,7 @@
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#1da42774-fe46-4bde-b372-75d70e5bce45</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AttributeKeyExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AttributeKeyExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -24,6 +27,7 @@
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d69223e1-2c8c-4cce-af02-cc90cfb0ecf0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ClassExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ClassExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -31,6 +35,7 @@
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e7d6ec8a-49a1-40b2-9075-8c91a2b298bb</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ClassKeyExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ClassKeyExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -38,6 +43,7 @@
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/AssociationSourceEndModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AssociationSourceEndModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
@@ -45,6 +51,7 @@
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#0a66489f-30aa-417b-a75d-b945863366fd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/AssociationTargetEndModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AssociationTargetEndModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
@@ -52,6 +59,7 @@
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#0090fb93-483e-41af-a11d-5ad2dc796adf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/AttributeModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AttributeModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
@@ -59,6 +67,7 @@
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#04e12b51-ed12-42a3-9667-a6aa81bb6d10</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ClassModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ClassModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
@@ -66,6 +75,7 @@
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#c5ba925d-5c08-4809-a848-585a0cd4ddd3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/IndexColumnModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IndexColumnModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -73,6 +83,7 @@
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#436e3afe-b4ef-481c-b803-0d1e7d263561</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/IndexModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IndexModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -80,6 +91,7 @@
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c5ba925d-5c08-4809-a848-585a0cd4ddd3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/IndexColumnModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IndexColumnModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -87,6 +99,7 @@
     <FileLog>
       <ProjectId>fa1bde05-72e8-44d5-a4a6-c012a90669e8</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#436e3afe-b4ef-481c-b803-0d1e7d263561</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/IndexModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>IndexModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -94,6 +107,7 @@
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Metadata.RDBMS.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Metadata.RDBMS.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -101,6 +115,7 @@
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#c84fa137-4d52-451f-aba4-8ec00d1525f6</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
@@ -108,6 +123,7 @@
     <FileLog>
       <ProjectId>cb5bb8ab-1a66-4abe-945c-a843e36cb839</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/RDBMS Key Automation Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>RDBMS Key Automation Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -115,6 +131,7 @@
     <FileLog>
       <ProjectId>cb5bb8ab-1a66-4abe-945c-a843e36cb839</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/RDBMS Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>RDBMS Types.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -122,6 +139,7 @@
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -129,6 +147,7 @@
     <FileLog>
       <ProjectId>6e0e34ce-04c0-492e-bddd-57f65b34b6ed</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions#AF8F3810-745C-42A2-93C8-798860DC45B1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Settings/ModuleSettingsExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ModuleSettingsExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>true</IsIgnored>
