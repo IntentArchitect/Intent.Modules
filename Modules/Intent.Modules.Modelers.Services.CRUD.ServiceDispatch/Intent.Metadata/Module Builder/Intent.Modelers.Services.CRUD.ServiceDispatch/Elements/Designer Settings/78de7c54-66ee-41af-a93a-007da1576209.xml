@@ -3,7 +3,7 @@
   <name>CRUD Enhancements</name>
   <display>CRUD Enhancements</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>43a66fc8-a873-4175-9e66-6e7ebbdbc9c0</parentFolderId>
