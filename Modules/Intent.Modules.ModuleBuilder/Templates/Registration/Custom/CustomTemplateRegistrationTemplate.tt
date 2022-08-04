@@ -33,6 +33,7 @@ namespace <#= Namespace #>
 
         public string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)
         {
             registry.RegisterTemplate(TemplateId, project => new <#= GetTemplateNameForTemplateId() #>(project, null));

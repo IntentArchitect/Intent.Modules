@@ -24,8 +24,17 @@ namespace <#= Namespace #>
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId);
         }
 
-<#      } #>
-<#      else { #>
+<#      } 
+        else if (templateModel.IsCustomTemplateRegistration() && templateModel.GetModelType() == null) {
+#>
+        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IntentTemplateBase<T> template)
+        {
+            return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId);
+        }
+
+<#
+        }
+        else { #>
         public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IntentTemplateBase<T> template) where T: <#= template.GetModelType() #>
         {
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId, template.Model);

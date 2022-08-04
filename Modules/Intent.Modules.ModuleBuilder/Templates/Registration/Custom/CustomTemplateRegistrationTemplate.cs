@@ -30,56 +30,37 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.Custom
         /// </summary>
         public override string TransformText()
         {
-            this.Write(@"
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Intent.Metadata.Models;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Registrations;
-using Intent.RoslynWeaver.Attributes;
-using Intent.Engine;
-using Intent.Registrations;
-using Intent.Templates;
-
-[assembly: DefaultIntentManaged(Mode.Fully)]
-
-namespace ");
+            this.Write("\r\nusing System;\r\nusing System.Collections.Generic;\r\nusing System.Linq;\r\nusing Intent.Metadata.Models;\r\nusing Intent.Modules.Common;\r\nusing Intent.Modules.Common.Registrations;\r\nusing Intent.RoslynWeaver.Attributes;\r\nusing Intent.Engine;\r\nusing Intent.Registrations;\r\nusing Intent.Templates;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
             
             #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n" +
-                    "    public class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]\r\n    public class ");
             
             #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write(" : ITemplateRegistration\r\n    {\r\n        private readonly IMetadataManager _metad" +
-                    "ataManager;\r\n\r\n        public ");
+            this.Write(" : ITemplateRegistration\r\n    {\r\n        private readonly IMetadataManager _metadataManager;\r\n\r\n        public ");
             
             #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
-            this.Write("(IMetadataManager metadataManager)\r\n        {\r\n            _metadataManager = met" +
-                    "adataManager;\r\n        }\r\n\r\n        public string TemplateId =>  ");
+            this.Write("(IMetadataManager metadataManager)\r\n        {\r\n            _metadataManager = metadataManager;\r\n        }\r\n\r\n        public string TemplateId =>  ");
             
             #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
             #line hidden
-            this.Write(".TemplateId;\r\n\r\n        public void DoRegistration(ITemplateInstanceRegistry regi" +
-                    "stry, IApplication applicationManager)\r\n        {\r\n            registry.Register" +
-                    "Template(TemplateId, project => new ");
+            this.Write(".TemplateId;\r\n\r\n        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public void DoRegistration(ITemplateInstanceRegistry registry, IApplication applicationManager)\r\n        {\r\n            registry.RegisterTemplate(TemplateId, project => new ");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateNameForTemplateId()));
             
             #line default
@@ -89,6 +70,4 @@ namespace ");
         }
     }
     
-    #line default
-    #line hidden
 }
