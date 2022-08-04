@@ -392,6 +392,347 @@
         <member name="M:Intent.Modules.Common.CSharp.Configuration.LaunchProfileRegistrationRequest.MarkHandled">
             <inheritdoc />
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest">
+            <summary>
+            Request that the Hosting application's application builder
+            register a given extension method call that will delegate
+            certain pipeline setup responsibility to that method. 
+            </summary>
+            <example>
+            This will produce the equivalent of:
+            app.UseHttpsRedirection();
+            </example>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ExtensionMethodName">
+            <summary>
+            Given extension method name.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ExtensionMethodParameterList">
+            <summary>
+            Given list of types used to supply to the extension method as input parameters.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.Priority">
+            <summary>
+            Given priority that will determine the order in which this request
+            will be registered in.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.TemplateDependencies">
+            <summary>
+            Given additional dependencies.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.RequiredNamespaces">
+            <summary>
+            Given namespaces to be included in using directives.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ToRegister(System.String,System.String[])">
+            <summary>
+            Register a given extension method that will configure the application pipeline
+            for a given aspect.
+            </summary>
+            <param name="extensionMethodName">
+            The extension method name only.
+            <example>UseHttpsRedirection</example>
+            </param>
+            <param name="extensionMethodParameterList">
+            If required, supply a list of expected types that your extension method will require
+            as input parameters. See (<see cref="T:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ParameterType"/>) to know what is available.
+            <example>
+            [ "<see cref="F:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ParameterType.Configuration"/>" ] for inserting the "configuration" variable
+            as the first and only parameter for the extension method.
+            </example>
+            </param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.WithPriority(System.Int32)">
+            <summary>
+            Supply a priority that will determine the order in which this gets registered.  
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.HasDependency(Intent.Templates.ITemplate)">
+            <summary>
+            Extension methods may require the template instance that represents the class
+            that holds the extension method in order to properly import it in the file
+            where the application builder is being used. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.RequiresUsingNamespaces(System.String[])">
+            <summary>
+            Supply namespaces that will be used for including using directives. 
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ParameterType">
+            <summary>
+            Available parameter types to be used for supplying what input your extension method will require.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ParameterType.Configuration">
+            <summary>
+            Access the .NET Configuration service.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ParameterType.WebHostEnvironment">
+            <summary>
+            Access the AspNet Core's Web Host Environment variables service.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ParameterType.HostEnvironment">
+            <summary>
+            Access the Generic Host's Environment variables service.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest">
+            <summary>
+            Request that the Dependency Injection Container register a given type
+            (optionally with a contract or interface) to be resolved at runtime.
+            </summary>
+            <example>
+            This should produce the equivalent of:
+            services.AddTransient&lt;IItemRepository, ItemRepository&gt;();
+            </example>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.ToRegister(Intent.Modules.Common.Templates.IClassProvider)">
+            <summary>
+            Register a given type using the Template that represents that type. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.ToRegister(System.String)">
+            <summary>
+            Register a given concrete type using its fully qualified name. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.ForInterface(Intent.Modules.Common.Templates.IClassProvider)">
+            <summary>
+            Associate an interface for the concrete type using the template instance for the interface.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.ForInterface(System.String)">
+            <summary>
+            Associate an interface for the concrete type using its fully qualified name.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.ForConcern(System.String)">
+            <summary>
+            Declare optionally a container configuration destination. 
+            </summary>
+            <example>Application or Infrastructure</example>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.WithLifeTime(System.String)">
+            <summary>
+            Set the resolved instance lifetime using the options provided in
+            <see cref="T:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.LifeTime"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.WithPerServiceCallLifeTime">
+            <summary>
+            Set the resolved type instance's lifetime to last the duration of a service call. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.WithSingletonLifeTime">
+            <summary>
+            Set the resolved type instance's lifetime to last the duration of the host application.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.WithResolveFromContainer">
+            <summary>
+            Upon resolving the interface type, use the service provider 
+            to resolve the concrete type as the resolution type. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.RequiresUsingNamespaces(System.String[])">
+            <summary>
+            Supply namespaces that will be used for including using directives. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.HasDependency(Intent.Templates.ITemplate)">
+            <summary>
+            Some resolution type configurations may require additional language types
+            which can be supplied by making use of the actual template instance that
+            represents them. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.WithPriority(System.Int32)">
+            <summary>
+            Supply a priority that will determine the order in which this gets registered.  
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.MarkAsHandled">
+            <summary>
+            In the event that another Container registration location has handled
+            this request, it needs to mark it as handled.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.RequiredNamespaces">
+            <summary>
+            Given namespaces to be included in using directives.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.Concern">
+            <summary>
+            Given container configuration destination.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.InterfaceType">
+            <summary>
+            Given interface type used for resolving a concrete type.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.ConcreteType">
+            <summary>
+            Given concrete type used for type resolution.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.Lifetime">
+            <summary>
+            Given resolution object's lifetime configuration.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.Priority">
+            <summary>
+            Given priority that will determine the order in which this request
+            will be registered in.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.ResolveFromContainer">
+            <summary>
+            Given setting where upon resolving the interface type, that the service provider will be used 
+            to resolve the concrete type as the resolution type. 
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.TemplateDependencies">
+            <summary>
+            Given additional dependencies.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.IsHandled">
+            <summary>
+            Has a Container handler already handled this registration?
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.LifeTime">
+            <summary>
+            Available lifetime options when a type is resolved.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.LifeTime.Transient">
+            <summary>
+            Created on each type resolution.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.LifeTime.Singleton">
+            <summary>
+            Created once for the duration of the application host.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest.LifeTime.PerServiceCall">
+            <summary>
+            Created once per duration of a service call.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest">
+            <summary>
+            Request that the Dependency Injection Container be used to configure
+            more advanced use cases other than the type resolution done by
+            <see cref="T:Intent.Modules.Common.CSharp.DependencyInjection.ContainerRegistrationRequest"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.ExtensionMethodName">
+            <summary>
+            Given extension method name.
+            </summary>
+            
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.ExtensionMethodParameterList">
+            <summary>
+            Given list of types used to supply to the extension method as input parameters.
+            </summary>
+            
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.Priority">
+            <summary>
+            Given priority that will determine the order in which this request
+            will be registered in.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.IsHandled">
+            <summary>
+            Has a Container handler already handled this registration?
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.Concern">
+            <summary>
+            Given container configuration destination.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.TemplateDependencies">
+            <summary>
+            Given additional dependencies.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.RequiredNamespaces">
+            <summary>
+            Given namespaces to be included in using directives.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.ToRegister(System.String,System.String[])">
+            <summary>
+            Register a given extension method that will configure a given aspect.
+            </summary>
+            <param name="extensionMethodName">
+            The extension method name only.
+            <example>AddInfrastructure</example>
+            </param>
+            <param name="extensionMethodParameterList">
+            If required, supply a list of expected types that your extension method will require
+            as input parameters. See (<see cref="T:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.ParameterType"/>) to know what is available.
+            <example>
+            [ "<see cref="F:Intent.Modules.Common.CSharp.DependencyInjection.ApplicationBuilderRegistrationRequest.ParameterType.Configuration"/>" ] for inserting the "configuration" variable
+            as the first and only parameter for the extension method.
+            </example>
+            </param>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.WithPriority(System.Int32)">
+            <summary>
+            Supply a priority that will determine the order in which this gets registered.  
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.HasDependency(Intent.Templates.ITemplate)">
+            <summary>
+            Some resolution type configurations may require additional language types
+            which can be supplied by making use of the actual template instance that
+            represents them. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.RequiresUsingNamespaces(System.String[])">
+            <summary>
+            Supply namespaces that will be used for including using directives. 
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.ForConcern(System.String)">
+            <summary>
+            Declare optionally a container configuration destination. 
+            </summary>
+            <example>Application or Infrastructure</example>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.MarkAsHandled">
+            <summary>
+            In the event that another Container registration location has handled
+            this request, it needs to mark it as handled.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.ParameterType">
+            <summary>
+            Available parameter types to be used for supplying what input your extension method will require.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.DependencyInjection.ServiceConfigurationRequest.ParameterType.Configuration">
+            <summary>
+            Access the .NET Configuration service.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour">
             <summary>
             Controls casing behaviour of <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/>
