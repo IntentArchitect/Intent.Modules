@@ -29,6 +29,16 @@ public class ServiceConfigurationRequest
     /// </summary>
     /// 
     public string ExtensionMethodName { get; }
+    
+    // NOTE FOR FUTURE: In the event that we need to include more complex parameters
+    // such as lambda expressions, we could always change the type from string to a
+    // more complex type and make use of string implicit operators to make it backward
+    // compatible.
+    // DESIGN NOTE: I would advise we try not to go that route if possible since the
+    // extension methods being generated are supposed to do the more complex configuration
+    // leaving these extension methods very simple as they are right now.
+    // REFERENCE NOTE: This class is very similar to ApplicationBuilderRegistrationRequest;
+    // whatever change you make here, see if it is possible to make it there as well.
     /// <summary>
     /// Given list of types used to supply to the extension method as input parameters.
     /// </summary>
