@@ -27,7 +27,7 @@ public class ApplicationBuilderRegistrationRequest
     }
     
     /// <summary>
-    /// Given extension method name.
+    /// Get extension method name.
     /// </summary>
     public string ExtensionMethodName { get; }
     
@@ -40,24 +40,25 @@ public class ApplicationBuilderRegistrationRequest
     // leaving these extension methods very simple as they are right now.
     // REFERENCE NOTE: This class is very similar to ServiceConfigurationRequest; whatever
     // change you make here, see if it is possible to make it there as well.
+    
     /// <summary>
-    /// Given list of types used to supply to the extension method as input parameters.
+    /// Get list of types used to supply to the extension method as input parameters.
     /// </summary>
     public IEnumerable<string> ExtensionMethodParameterList { get; }
     
     /// <summary>
-    /// Given priority that will determine the order in which this request
+    /// Get priority that will determine the order in which this request
     /// will be registered in.
     /// </summary>
     public int Priority { get; private set; }
     
     /// <summary>
-    /// Given additional dependencies.
+    /// Get additional dependencies.
     /// </summary>
     public IEnumerable<ITemplateDependency> TemplateDependencies => _templateDependencies;
     
     /// <summary>
-    /// Given namespaces to be included in using directives.
+    /// Get namespaces to be included in using directives.
     /// </summary>
     public IEnumerable<string> RequiredNamespaces => _requiredNamespaces;
     
@@ -95,7 +96,7 @@ public class ApplicationBuilderRegistrationRequest
     
     /// <summary>
     /// Extension methods may require the template instance that represents the class
-    /// that holds the extension method in order to properly import it in the file
+    /// that holds the extension method in question in order to properly import it in the file
     /// where the application builder is being used. 
     /// </summary>
     public ApplicationBuilderRegistrationRequest HasDependency(ITemplate template)

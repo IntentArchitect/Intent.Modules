@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
         }
 
         /// <summary>
-        /// Register a given type using the Template that represents that type. 
+        /// Register a given concrete type using the Template that represents that type. 
         /// </summary>
         public static ContainerRegistrationRequest ToRegister(IClassProvider concreteType)
         {
@@ -68,7 +68,7 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
         /// <summary>
         /// Declare optionally a container configuration destination. 
         /// </summary>
-        /// <example>Application or Infrastructure</example>
+        /// <example>Application <i>or</i> Infrastructure</example>
         public ContainerRegistrationRequest ForConcern(string concern)
         {
             Concern = concern;
@@ -104,8 +104,8 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
         }
 
         /// <summary>
-        /// Upon resolving the interface type, use the service provider 
-        /// to resolve the concrete type as the resolution type. 
+        /// Specify whether the concrete type will be instantiated by invoking
+        /// a service provider or not.
         /// </summary>
         public ContainerRegistrationRequest WithResolveFromContainer()
         {
@@ -123,7 +123,7 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
         }
 
         /// <summary>
-        /// Some resolution type configurations may require additional language types
+        /// Some resolution type configurations may require additional types
         /// which can be supplied by making use of the actual template instance that
         /// represents them. 
         /// </summary>
@@ -194,7 +194,7 @@ namespace Intent.Modules.Common.CSharp.DependencyInjection
         public IEnumerable<ITemplateDependency> TemplateDependencies => _templateDependencies;
 
         /// <summary>
-        /// Has a Container handler already handled this registration?
+        /// Has a Container handler already handled this registration? If so, ignore it.
         /// </summary>
         public bool IsHandled { get; private set; }
 

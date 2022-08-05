@@ -25,9 +25,8 @@ public class ServiceConfigurationRequest
     }
 
     /// <summary>
-    /// Given extension method name.
+    /// Get extension method name.
     /// </summary>
-    /// 
     public string ExtensionMethodName { get; }
     
     // NOTE FOR FUTURE: In the event that we need to include more complex parameters
@@ -39,34 +38,35 @@ public class ServiceConfigurationRequest
     // leaving these extension methods very simple as they are right now.
     // REFERENCE NOTE: This class is very similar to ApplicationBuilderRegistrationRequest;
     // whatever change you make here, see if it is possible to make it there as well.
+    
     /// <summary>
-    /// Given list of types used to supply to the extension method as input parameters.
+    /// Get list of types used to supply to the extension method as input parameters.
     /// </summary>
-    /// 
     public IEnumerable<string> ExtensionMethodParameterList { get; }
+    
     /// <summary>
-    /// Given priority that will determine the order in which this request
+    /// Get priority that will determine the order in which this request
     /// will be registered in.
     /// </summary>
     public int Priority { get; private set; }
     
     /// <summary>
-    /// Has a Container handler already handled this registration?
+    /// Has a Container handler already handled this registration? If so, ignore it.
     /// </summary>
     public bool IsHandled { get; private set; }
     
     /// <summary>
-    /// Given container configuration destination.
+    /// Get container configuration destination.
     /// </summary>
     public string Concern { get; private set; }
     
     /// <summary>
-    /// Given additional dependencies.
+    /// Get additional dependencies.
     /// </summary>
     public IEnumerable<ITemplateDependency> TemplateDependencies => _templateDependencies;
     
     /// <summary>
-    /// Given namespaces to be included in using directives.
+    /// Get namespaces to be included in using directives.
     /// </summary>
     public IEnumerable<string> RequiredNamespaces => _requiredNamespaces;
 
@@ -102,7 +102,7 @@ public class ServiceConfigurationRequest
     }
     
     /// <summary>
-    /// Some resolution type configurations may require additional language types
+    /// Some resolution type configurations may require additional types
     /// which can be supplied by making use of the actual template instance that
     /// represents them. 
     /// </summary>
@@ -124,7 +124,7 @@ public class ServiceConfigurationRequest
     /// <summary>
     /// Declare optionally a container configuration destination. 
     /// </summary>
-    /// <example>Application or Infrastructure</example>
+    /// <example>Application <i>or</i> Infrastructure</example>
     public ServiceConfigurationRequest ForConcern(string concern)
     {
         Concern = concern;
