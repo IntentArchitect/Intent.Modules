@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="efb24a0c-a04e-44b1-8abc-77fd220a6ce6">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>efbd1131-2db2-4eb7-8ef6-3b5a32f5267d</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Command</name>
           <display>New Command: Command</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="b0a5b1cc-56c5-473a-b01e-a2042c3c6274">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
@@ -104,7 +103,6 @@
           <name>New Query</name>
           <display>New Query: Query</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="e8032086-eef3-48b9-9531-0a1a5d196dff">
             <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>

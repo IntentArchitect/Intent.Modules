@@ -3,7 +3,7 @@
   <name>Operation Extension</name>
   <display>Operation Extension: Operation</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="922a2560-24ec-4df3-82d3-871922d35a40">
     <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
@@ -51,7 +51,7 @@
       <name>Map to Command</name>
       <display>[mappings]: Map to Command</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9f9f5163-1953-45c9-9bba-d54387ffb552</parentFolderId>
@@ -81,7 +81,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: Command -&gt; Operation (Map to Type)</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>e4e36072-a2ce-42d3-93c5-0b496d79ef43</parentFolderId>
@@ -124,7 +124,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: DTO-Field -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>0</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>073b842f-4b1e-461f-b92d-435994383518</parentFolderId>
@@ -172,7 +171,7 @@
       <name>Map to Query</name>
       <display>[mappings]: Map to Query</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9f9f5163-1953-45c9-9bba-d54387ffb552</parentFolderId>
@@ -202,7 +201,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: Query -&gt; Operation (Map to Type)</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>f15fa935-434e-4983-b283-25cde2cb440e</parentFolderId>
@@ -245,7 +244,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: DTO-Field -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>0</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>d9c56b34-ec0d-47f0-b8a3-fe6efd176b9f</parentFolderId>
@@ -293,7 +291,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9f9f5163-1953-45c9-9bba-d54387ffb552</parentFolderId>
@@ -306,7 +304,6 @@
           <name>On Mapped</name>
           <display>On Mapped: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="5130ceca-ba2f-4df4-8f8c-406351e3b4ef">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

@@ -3,7 +3,7 @@
   <name>Service Extension</name>
   <display>Service Extension: Service</display>
   <isAbstract>false</isAbstract>
-  <order>5</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="b4220bcf-e0f9-43d7-83a8-7f072a8855f3">
     <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>b18f069e-0a19-4f1d-8be3-693239d2438b</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Command Operation</name>
           <display>Add Command Operation: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c88cab35-b11f-4da3-9ffc-520ac638b3cf">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
@@ -110,7 +109,6 @@
           <name>Add Query Operation</name>
           <display>Add Query Operation: Script</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="fe6feb9b-944e-466c-a2ad-b119830ec27f">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

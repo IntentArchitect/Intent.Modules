@@ -3,7 +3,7 @@
   <name>Command</name>
   <display>Command</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>6ac83417-e6d5-4699-b88c-aa1d7f894326</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Property</name>
           <display>Add Property: DTO-Field</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="beb1f4f8-c2ea-4964-99f9-89c072a01b7b">
             <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
@@ -106,7 +105,7 @@
       <name>Map to Domain</name>
       <display>[mappings]: Map to Domain</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</parentFolderId>
@@ -136,7 +135,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: Class -&gt; Command (Map to Type)</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>735c87d0-06fc-4491-8b5f-5adc6f953c54</parentFolderId>
@@ -179,7 +178,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>0</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>d16444c3-ab59-4830-8e0e-f6025685e673</parentFolderId>
@@ -223,7 +221,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Association Target End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>1</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>d16444c3-ab59-4830-8e0e-f6025685e673</parentFolderId>
@@ -267,7 +264,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Association Source End -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>2</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>d16444c3-ab59-4830-8e0e-f6025685e673</parentFolderId>
@@ -311,7 +307,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Generalization Target End -&gt; [None] (Traverse)</display>
               <isAbstract>false</isAbstract>
-              <order>3</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>d16444c3-ab59-4830-8e0e-f6025685e673</parentFolderId>

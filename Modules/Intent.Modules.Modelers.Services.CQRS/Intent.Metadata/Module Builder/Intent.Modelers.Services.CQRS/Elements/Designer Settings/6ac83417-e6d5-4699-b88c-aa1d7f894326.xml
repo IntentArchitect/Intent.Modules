@@ -3,7 +3,7 @@
   <name>Services CQRS Extension</name>
   <display>Services CQRS Extension</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c68aae67-d505-4ed8-a291-829de418bc18</parentFolderId>

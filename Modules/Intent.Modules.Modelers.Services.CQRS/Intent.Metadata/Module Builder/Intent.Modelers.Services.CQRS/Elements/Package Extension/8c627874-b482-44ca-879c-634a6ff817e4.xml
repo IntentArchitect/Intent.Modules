@@ -3,7 +3,7 @@
   <name>Services Package Extension</name>
   <display>Services Package Extension: Services Package</display>
   <isAbstract>false</isAbstract>
-  <order>6</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <typeReference id="9a2d32cb-7c5a-42a1-a2d7-4c5986b30600">
     <typeId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</typeId>
@@ -27,7 +27,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8c627874-b482-44ca-879c-634a6ff817e4</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New Command</name>
           <display>New Command: Command</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="09f535cb-6e63-4024-9043-f4e7e3488f3c">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
@@ -80,7 +79,6 @@
           <name>New Query</name>
           <display>New Query: Query</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="b428fcb8-f969-471e-9d93-b9470a2d61c4">
             <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>

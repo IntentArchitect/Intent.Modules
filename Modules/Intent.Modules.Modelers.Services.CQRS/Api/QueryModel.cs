@@ -39,6 +39,10 @@ namespace Intent.Modelers.Services.CQRS.Api
 
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public bool IsMapped => _element.IsMapped;
+
+        public IElementMapping Mapping => _element.MappedElement;
+
         public IElement InternalElement => _element;
 
         [IntentManaged(Mode.Ignore)]
@@ -92,6 +96,16 @@ namespace Intent.Modelers.Services.CQRS.Api
         public static QueryModel AsQueryModel(this ICanBeReferencedType type)
         {
             return type.IsQueryModel() ? new QueryModel((IElement)type) : null;
+        }
+
+        public static bool HasProjectFromDomainMapping(this QueryModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "50c4872d-f029-48ec-a818-58b426e8166a";
+        }
+
+        public static IElementMapping GetProjectFromDomainMapping(this QueryModel type)
+        {
+            return type.HasProjectFromDomainMapping() ? type.Mapping : null;
         }
     }
 }
