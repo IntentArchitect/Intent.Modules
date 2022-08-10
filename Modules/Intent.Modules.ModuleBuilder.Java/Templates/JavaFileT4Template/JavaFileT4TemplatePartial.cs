@@ -18,16 +18,16 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplate
+namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileT4Template
 {
     [IntentManaged(Mode.Merge)]
-    partial class JavaFileTemplate : IntentFileTemplateBase<JavaFileTemplateModel>
+    partial class JavaFileT4Template : IntentFileTemplateBase<JavaFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Intent.ModuleBuilder.Java.Templates.JavaFileTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.Java.Templates.JavaFileT4Template";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public JavaFileTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
+        public JavaFileT4Template(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 

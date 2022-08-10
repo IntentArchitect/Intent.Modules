@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d9a52e8e-dfa4-4604-9c04-8e023f2f7418" version="3.1.0">
+  <name>Java Template Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a">Java File Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="file" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>b6978589-6e21-40a6-88b3-0854c11f4388</parentFolderId>
+  <order>0</order>
+  <packageId>b6978589-6e21-40a6-88b3-0854c11f4388</packageId>
+  <packageName>Intent.ModuleBuilder.Java</packageName>
+  <properties>
+    <property id="aa8ff690-2b59-4466-b522-31d6c74d081c">
+      <name>Templating Method</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>T4 Template</defaultValue>
+      <valueOptions>
+        <option>T4 Template</option>
+        <option>String Interpolation</option>
+        <option>Custom</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

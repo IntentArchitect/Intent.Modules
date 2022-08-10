@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Registrations;
 using Intent.ModuleBuilder.Api;
@@ -26,13 +27,15 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaTemplatePreProcessedFi
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: JavaFileTemplate.JavaFileTemplate.TemplateId,
+                t4TemplateId: JavaFileT4Template.JavaFileT4Template.TemplateId,
                 partialTemplateId: JavaFileTemplatePartial.JavaFileTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<JavaFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetJavaFileTemplateModels();
+            return _metadataManager.ModuleBuilder(application).GetJavaFileTemplateModels()
+                .Where(x => !x.HasJavaTemplateSettings() || x.GetJavaTemplateSettings().TemplatingMethod().IsT4Template())
+                .ToList();
         }
     }
 }

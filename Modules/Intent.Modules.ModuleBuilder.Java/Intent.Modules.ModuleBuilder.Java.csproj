@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -22,6 +22,11 @@
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>JavaFileTemplatePartialTemplate.cs</LastGenOutput>
     </None>
+  
+    <None Update="Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaFileStringInterpolationTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>
@@ -29,6 +34,12 @@
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>JavaFileTemplatePartialTemplate.tt</DependentUpon>
+    </Compile>
+  
+    <Compile Update="Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>JavaFileStringInterpolationTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 

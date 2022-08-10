@@ -3,7 +3,7 @@
   <name>Java File Template</name>
   <display>Java File Template</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f00bf9aa-2c87-45a2-932d-4b587198a092</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Decorator Contract</name>
           <display>Add Decorator Contract: Template Decorator Contract</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c6d0ceef-e52b-4a0b-a7eb-ea4460cc68d2">
             <typeId>ac1da322-377e-45cf-a2d9-d147a4d91457</typeId>
