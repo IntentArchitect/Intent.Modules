@@ -3,7 +3,7 @@
   <name>Operation Extension</name>
   <display>Operation Extension: Operation</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="7d844191-5673-47ef-b9d2-d301f338d4e3">
     <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
@@ -51,7 +51,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>448fb601-3afc-4514-b70f-195d037b69de</parentFolderId>
@@ -64,7 +64,6 @@
           <name>On Name Changed</name>
           <display>On Name Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="ef6be22a-728f-4c26-bb3e-ea63f4ba6ab9">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

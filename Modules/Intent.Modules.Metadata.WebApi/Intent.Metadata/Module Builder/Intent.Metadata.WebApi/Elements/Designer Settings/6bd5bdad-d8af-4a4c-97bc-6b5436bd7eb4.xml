@@ -3,7 +3,7 @@
   <name>WebApi Extension</name>
   <display>WebApi Extension</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>26f0d9a8-35f9-41e9-a2fe-a30bbb592357</parentFolderId>

@@ -37,5 +37,15 @@
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="7a331e9b-f13c-4b33-9013-bd59b4a4999c">
+      <name>Header Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return properties["Source"].value === "From Header";</isActiveFunction>
+    </property>
   </properties>
 </stereotypeDefinition>
