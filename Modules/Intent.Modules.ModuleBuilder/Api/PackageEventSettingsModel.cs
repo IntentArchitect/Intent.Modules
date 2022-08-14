@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -49,6 +50,17 @@ namespace Intent.ModuleBuilder.Api
             .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
             .Select(x => new ElementEventHandlerModel(x))
             .ToList();
+
+        public IList<ElementEventHandlerModel> OnChangedEvents => _element.ChildElements
+            .GetElementsOfType(ElementEventHandlerModel.SpecializationTypeId)
+            .Select(x => new ElementEventHandlerModel(x))
+            .ToList();
+
+        public List<ElementMacroPersistable> ToPersistable()
+        {
+            // TODO: The OnCreatedEvents & OnLoadedEvents returns all ElementMacroModels. Need solution
+            return OnCreatedEvents.Select(x => x.ToPersistable()).ToList();
+        }
 
         [IntentManaged(Mode.Fully)]
         public override string ToString()

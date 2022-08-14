@@ -3,7 +3,7 @@
   <name>Element Extension</name>
   <display>Element Extension</display>
   <isAbstract>false</isAbstract>
-  <order>7</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -51,7 +51,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="257c6509-fae2-4204-aec4-8472c2d38fa9">
             <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
@@ -104,7 +103,6 @@
           <name>Add Diagram Settings</name>
           <display>Add Diagram Settings: Diagram Settings</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="7d37e0f7-bb66-4877-a652-6e7b044798e3">
             <typeId>67d711dd-3918-4b28-b2a0-4d845884e17a</typeId>
@@ -144,7 +142,6 @@
           <name>Add Mapping Settings</name>
           <display>Add Mapping Settings: Mapping Settings</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="4b5532e4-45b6-4bbb-ad09-c8546702cbad">
             <typeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</typeId>
@@ -184,7 +181,6 @@
           <name>Add Event Settings</name>
           <display>Add Event Settings: Element Event Settings</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="106228d1-5f26-4c64-ac71-95c244e89523">
             <typeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</typeId>

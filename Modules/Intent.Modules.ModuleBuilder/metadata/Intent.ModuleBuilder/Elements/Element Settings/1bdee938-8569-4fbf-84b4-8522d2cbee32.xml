@@ -3,6 +3,7 @@
   <name>Association Event Settings</name>
   <display>Association Event Settings</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1bdee938-8569-4fbf-84b4-8522d2cbee32</parentFolderId>
@@ -64,7 +65,6 @@
           <name>On Loaded Event</name>
           <display>On Loaded Event: Association Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="0592074d-8727-49b9-aff4-5961aa885009">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
@@ -104,7 +104,6 @@
           <name>On Created Event</name>
           <display>On Created Event: Association Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="5e8a2280-ba69-4066-b29f-1c8c3eeffbf8">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
@@ -144,7 +143,6 @@
           <name>On Changed Event</name>
           <display>On Changed Event: Association Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="018c8d0b-f489-4e23-8504-6cae76ec2e63">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
@@ -184,7 +182,6 @@
           <name>On Name Changed Event</name>
           <display>On Name Changed Event: Association Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="42c96ecd-c774-4b9e-8732-3a9923327034">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
@@ -224,7 +221,6 @@
           <name>On Type Changed Event</name>
           <display>On Type Changed Event: Association Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
           <genericTypes />
           <typeReference id="c1cae991-608a-4fcc-9e5e-1bb580f17812">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>
@@ -264,7 +260,6 @@
           <name>On Deleted</name>
           <display>On Deleted: Association Event Handler</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
           <genericTypes />
           <typeReference id="9dafad5e-8a34-44c8-aa2f-d0385ce7f49c">
             <typeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</typeId>

@@ -3,7 +3,7 @@
   <name>Module Settings Extension</name>
   <display>Module Settings Extension</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>72044cdf-1f96-4ad2-86be-8d5468725e67</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Field</name>
           <display>Add Field: Module Settings Field Configuration</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="638deed7-8626-483e-89f7-9f944dc21aba">
             <typeId>88e29cab-1342-40c7-b052-5fcd68ffafec</typeId>

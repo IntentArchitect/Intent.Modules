@@ -3,7 +3,7 @@
   <name>Association Extension</name>
   <display>Association Extension</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -51,7 +51,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>41cb9c1a-063e-4ff4-889a-7501235351eb</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Source End</name>
           <display>Add Source End: Association Source End Extension</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="3a1cdf38-2620-4548-85a9-4ba96b3c2bb1">
             <typeId>66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</typeId>
@@ -104,7 +103,6 @@
           <name>Add Target End</name>
           <display>Add Target End: Association Target End Extension</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="02699e82-d1a6-488d-9104-993f899ff026">
             <typeId>1cc6c731-af5f-41a0-9e82-44486f45b903</typeId>
@@ -144,7 +142,6 @@
           <name>Add Event Settings</name>
           <display>Add Event Settings: Association Event Settings</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="45e83449-0f04-425d-b73f-ada0b589931b">
             <typeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</typeId>
@@ -186,7 +183,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>41cb9c1a-063e-4ff4-889a-7501235351eb</parentFolderId>
@@ -199,7 +196,6 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="e73b087e-9525-4a66-b021-36deedfa3a80">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

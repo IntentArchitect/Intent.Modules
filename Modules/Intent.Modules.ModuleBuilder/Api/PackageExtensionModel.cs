@@ -102,9 +102,9 @@ namespace Intent.ModuleBuilder.Api
 
         public string Comment => _element.Comment;
 
-        public ElementEventSettingsModel EventSettings => _element.ChildElements
-            .GetElementsOfType(ElementEventSettingsModel.SpecializationTypeId)
-            .Select(x => new ElementEventSettingsModel(x))
+        public PackageEventSettingsModel EventSettings => _element.ChildElements
+            .GetElementsOfType(PackageEventSettingsModel.SpecializationTypeId)
+            .Select(x => new PackageEventSettingsModel(x))
             .SingleOrDefault();
     }
 

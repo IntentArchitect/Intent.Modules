@@ -3,6 +3,7 @@
   <name>Diagram Settings</name>
   <display>Diagram Settings</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>67d711dd-3918-4b28-b2a0-4d845884e17a</parentFolderId>
@@ -64,7 +65,6 @@
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="4a0c55c1-8d88-4591-b4e5-84c14318ef12">
             <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>

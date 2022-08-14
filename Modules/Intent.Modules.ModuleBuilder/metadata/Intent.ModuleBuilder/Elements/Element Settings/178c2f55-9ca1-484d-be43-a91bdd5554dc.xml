@@ -3,6 +3,7 @@
   <name>Mapping Settings</name>
   <display>Mapping Settings</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>178c2f55-9ca1-484d-be43-a91bdd5554dc</parentFolderId>
@@ -64,7 +65,6 @@
           <name>Add Mapping</name>
           <display>Add Mapping: Element Mapping</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="8dbfeeb9-46ea-44f5-9163-c7d02b2b0f95">
             <typeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</typeId>

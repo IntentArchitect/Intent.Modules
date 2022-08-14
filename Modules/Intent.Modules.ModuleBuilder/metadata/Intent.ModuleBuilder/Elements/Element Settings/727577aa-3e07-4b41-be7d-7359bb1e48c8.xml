@@ -3,7 +3,7 @@
   <name>Element Settings</name>
   <display>Element Settings</display>
   <isAbstract>false</isAbstract>
-  <order>8</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -51,7 +51,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>727577aa-3e07-4b41-be7d-7359bb1e48c8</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Menu Options</name>
           <display>Add Menu Options: Context Menu</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="f852285f-fe07-4310-b942-f05f27d05b75">
             <typeId>d45e383d-90ba-4b64-aca7-34ca100cea21</typeId>
@@ -104,7 +103,6 @@
           <name>Add Element Settings</name>
           <display>Add Element Settings: Element Settings</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="175cba34-20a1-430a-8fe8-539b45827cd8">
             <typeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</typeId>
@@ -144,7 +142,6 @@
           <name>Add Mapping Settings</name>
           <display>Add Mapping Settings: Mapping Settings</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="cd26f705-7d46-443e-8647-23d0b75474f8">
             <typeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</typeId>
@@ -184,7 +181,6 @@
           <name>Add Diagram Settings</name>
           <display>Add Diagram Settings: Diagram Settings</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="1c55c907-a1d5-4076-af84-631a8e77ff6b">
             <typeId>67d711dd-3918-4b28-b2a0-4d845884e17a</typeId>
@@ -224,7 +220,6 @@
           <name>Add Visual Settings</name>
           <display>Add Visual Settings: Element Visual Settings</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
           <genericTypes />
           <typeReference id="e5f10ca8-e955-466c-bdef-2b540f43c06e">
             <typeId>5eea5fba-15df-4971-8541-6f19bad4297d</typeId>
@@ -264,7 +259,6 @@
           <name>Add Event Settings</name>
           <display>Add Event Settings: Element Event Settings</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
           <genericTypes />
           <typeReference id="8c41b821-1d82-4eb7-9956-a7d8e3a9c8e2">
             <typeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</typeId>
@@ -306,7 +300,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>5</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>727577aa-3e07-4b41-be7d-7359bb1e48c8</parentFolderId>
@@ -319,7 +313,6 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c91fc4ae-01c2-4faa-be1a-fd67420501a1">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

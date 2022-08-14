@@ -3,7 +3,7 @@
   <name>Intent Module</name>
   <display>Intent Module</display>
   <isAbstract>false</isAbstract>
-  <order>9</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>
@@ -27,7 +27,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>d2e543c7-174a-45b4-aebe-a13f9ee90214</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New Settings Group</name>
           <display>New Settings Group: Module Settings Configuration</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="004e0ef0-77fa-46ee-be83-f7435766d42e">
             <typeId>37e678f8-370a-4b05-ae44-69bb3d2b39b6</typeId>
@@ -80,7 +79,6 @@
           <name>New Settings Extension</name>
           <display>New Settings Extension: Module Settings Extension</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="04275d59-89b0-4dd0-8023-7e5e03a8f799">
             <typeId>72044cdf-1f96-4ad2-86be-8d5468725e67</typeId>
@@ -120,7 +118,6 @@
           <name>New File Template</name>
           <display>New File Template: File Template</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="41c508b6-9333-45c5-8eb8-91b2f53cd9c7">
             <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
@@ -160,7 +157,6 @@
           <name>New Static Content Template</name>
           <display>New Static Content Template: Static Content Template</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="f33fb1bf-e39a-4941-b0a0-42536ef5f49c">
             <typeId>b795a763-296d-476f-ab0a-1a52710444db</typeId>
@@ -200,7 +196,6 @@
           <name>New Template Decorator</name>
           <display>New Template Decorator: Template Decorator</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
           <genericTypes />
           <typeReference id="15053c01-ef14-4809-843f-0564bdc2e4ad">
             <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
@@ -240,7 +235,6 @@
           <name>New Template Registration</name>
           <display>New Template Registration: Template Registration</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
           <genericTypes />
           <typeReference id="6a2dca5e-655c-427a-8115-08684f095d77">
             <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
@@ -280,7 +274,6 @@
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
-          <order>6</order>
           <genericTypes />
           <typeReference id="d8cc4a9e-d21c-47cb-9ade-6b36a847f040">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -320,7 +313,6 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>7</order>
           <genericTypes />
           <typeReference id="939b8a0a-e130-4806-bf4e-0b3ab6f20812">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -360,7 +352,6 @@
           <name>New Factory Extension</name>
           <display>New Factory Extension: Factory Extension</display>
           <isAbstract>false</isAbstract>
-          <order>8</order>
           <genericTypes />
           <typeReference id="f9139368-4b5b-42a0-8691-f5ed4522f9c8">
             <typeId>7d008e84-bb28-4b10-ba28-7439202fca76</typeId>
@@ -400,7 +391,6 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>9</order>
           <genericTypes />
           <typeReference id="d4e4e7c8-8c55-4d4b-875a-c4ec1c664dbb">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

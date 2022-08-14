@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>8</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="cd943cfc-d65f-4d00-9b14-34dfe469cf9a">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>a70631bb-3c32-46e6-bc18-621c5cf527c0</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New File Template</name>
           <display>New File Template: File Template</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="975a9ee9-c5e7-4430-82ea-5ca2281457a8">
             <typeId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</typeId>
@@ -104,7 +103,6 @@
           <name>New Static Content Template</name>
           <display>New Static Content Template: Static Content Template</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="1b184f13-02a1-462b-a480-5698272b0aca">
             <typeId>b795a763-296d-476f-ab0a-1a52710444db</typeId>
@@ -144,7 +142,6 @@
           <name>New Template Decorator</name>
           <display>New Template Decorator: Template Decorator</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="02364e82-d9d7-44a7-8404-37f46b3ffa5a">
             <typeId>f0f46278-29ea-42bd-9206-0e7034f623bc</typeId>
@@ -184,7 +181,6 @@
           <name>New Template Registration</name>
           <display>New Template Registration: Template Registration</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="ab24fbf7-69a3-4fc4-95d4-611211526901">
             <typeId>502551f7-c2d7-4d65-ad9f-13bd1e9e96d5</typeId>
@@ -224,7 +220,6 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
           <genericTypes />
           <typeReference id="3f6e52e1-17bf-496f-bd04-dd00ae7d817f">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -264,7 +259,6 @@
           <name>New Factory Extension</name>
           <display>New Factory Extension: Factory Extension</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
           <genericTypes />
           <typeReference id="881e0a60-3bc1-4b91-ab97-a9ecdaacce56">
             <typeId>7d008e84-bb28-4b10-ba28-7439202fca76</typeId>
@@ -304,7 +298,6 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>6</order>
           <genericTypes />
           <typeReference id="c20d2250-5954-4fa0-8210-5a2fa6602e49">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

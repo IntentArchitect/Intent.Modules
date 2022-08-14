@@ -3,7 +3,7 @@
   <name>File Template</name>
   <display>File Template</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>e4c0d250-d82d-47b1-9f5b-20f1403fb81e</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>43eae4bd-4613-4d15-88ac-52b7e743b7b2</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Decorator Contract</name>
           <display>Add Decorator Contract: Template Decorator Contract</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="94575591-ab71-43fe-9331-8c36ce470136">
             <typeId>ac1da322-377e-45cf-a2d9-d147a4d91457</typeId>

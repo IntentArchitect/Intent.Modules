@@ -3,7 +3,7 @@
   <name>Designers Folder</name>
   <display>Designers Folder</display>
   <isAbstract>false</isAbstract>
-  <order>6</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>3f6d8b33-3985-4e5e-94a4-ed41a1d19e0b</parentFolderId>
@@ -51,7 +51,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Designer</name>
           <display>New Designer: Designer</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="7a6b8bff-1090-4c1e-a34f-1192be9829aa">
             <typeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</typeId>
@@ -104,7 +103,6 @@
           <name>New Designer Settings</name>
           <display>New Designer Settings: Designer Settings</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="31274192-00ab-4c20-82a4-0f5ba82a1dc5">
             <typeId>7a6411a8-ffef-4209-91c6-8d12755a806a</typeId>

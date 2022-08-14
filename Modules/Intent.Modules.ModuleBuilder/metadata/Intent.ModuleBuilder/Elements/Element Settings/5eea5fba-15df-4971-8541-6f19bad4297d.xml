@@ -3,6 +3,7 @@
   <name>Element Visual Settings</name>
   <display>Element Visual Settings</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5eea5fba-15df-4971-8541-6f19bad4297d</parentFolderId>
@@ -64,7 +65,6 @@
           <name>Add Path</name>
           <display>Add Path: Path Draw Settings</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="1deb8825-4f1f-4950-abfe-ad70ae1d46c1">
             <typeId>ac56c1f1-b259-4de8-acc9-ce0030ad4f99</typeId>
@@ -104,7 +104,6 @@
           <name>Add Text</name>
           <display>Add Text: Text Draw Settings</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="82cd60a8-99ae-4cdb-a159-fbde031f7d80">
             <typeId>0250c934-455b-4bb6-b5d9-077c6e1ce72c</typeId>
@@ -144,7 +143,6 @@
           <name>Add Stereotypes Visual</name>
           <display>Add Stereotypes Visual: Stereotypes Visual Settings</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="173068a3-13fc-4b27-98ea-c1c4fc5e63b1">
             <typeId>08620c8b-f6d3-472e-86b6-926fe110d526</typeId>
@@ -184,7 +182,6 @@
           <name>Add Child Visual</name>
           <display>Add Child Visual: Element Visual Settings</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="76523755-c3bc-4109-8686-9e078a02c7c2">
             <typeId>5eea5fba-15df-4971-8541-6f19bad4297d</typeId>
