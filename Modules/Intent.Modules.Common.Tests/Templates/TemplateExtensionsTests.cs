@@ -7,6 +7,20 @@ namespace Intent.Modules.Common.Tests.Templates
 {
     public class TemplateExtensionsTests
     {
+        public class DescribeToSnakeCase
+        {
+            [Theory]
+            [InlineData("new_app_1", "new_app_1")]
+            public void ItShouldWork(string input, string expected)
+            {
+                // Act
+                var result = TemplateExtensions.ToSnakeCase(input);
+
+                // Assert
+                result.ShouldBe(expected);
+            }
+        }
+
         public class DescribePluralize
         {
             [Theory]

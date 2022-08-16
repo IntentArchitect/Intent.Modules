@@ -120,7 +120,14 @@ namespace Intent.Modules.Common.Templates
                 }
             }
 
-            return sb.ToString();
+            // TODO: This probably isn't ideal from a performance perspective, we should fix the above logic so this isn't needed, there is test covering this (testing with "new_app_1" and "_")
+            var result = sb.ToString();
+            while (result.Contains($"{separator}{separator}"))
+            {
+                result = result.Replace($"{separator}{separator}", separator);
+            }
+
+            return result;
         }
 
         public static string ToPluralName(this string s)
