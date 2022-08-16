@@ -22,7 +22,7 @@ using Intent.Templates;
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class <#= ClassName #> : <#= GetBaseType() #>
     {
         [IntentManaged(Mode.Fully)]
@@ -38,8 +38,8 @@ namespace <#= Namespace #>
         {
             return new JavaFileConfig(
                 className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                package: $"{OutputTarget.GetPackage()}",
-                relativeLocation: this.GetFolderPath()
+                package: <#= Model.IsFilePerModelTemplateRegistration() ? "this" : "OutputTarget" #>.GetPackage(),
+                relativeLocation: <#= Model.IsFilePerModelTemplateRegistration() ? "this" : "OutputTarget" #>.GetPackageFolderPath()
             );
         }
 
