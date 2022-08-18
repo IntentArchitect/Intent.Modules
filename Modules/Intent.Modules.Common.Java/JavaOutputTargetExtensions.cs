@@ -1,71 +1,55 @@
 ﻿using System;
-using System.Linq;
 using Intent.Engine;
-using Intent.Metadata.Models;
+using Intent.Modules.Common.Java.Templates;
 using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.Java;
 
 /// <summary>
-/// Extension methods for <see cref="IOutputTarget"/>.
+/// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods"/> instead.
 /// </summary>
 [Obsolete(WillBeRemovedIn.Version4)]
 public static class JavaOutputTargetExtensions
 {
     /// <summary>
-    /// Creates a fully qualified package structure based on the provided <paramref name="target"/>.
+    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackage"/> instead.
     /// </summary>
-    [FixFor_Version4("Remove this method and make the overload use the params keyword for the last parameter.")]
+    [Obsolete(WillBeRemovedIn.Version4)]
     public static string GetPackage(this IOutputTarget target)
     {
-        return target.GetPackage(Array.Empty<string>());
+        var result = JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(
+            outputTarget: target,
+            hasFolder: null,
+            additionalFolders: null);
+
+        return result.PackageStructure;
     }
 
     /// <summary>
-    /// Creates a fully qualified package structure based on the provided <paramref name="outputTarget"/>.
+    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackage"/> instead.
     /// </summary>
+    [Obsolete(WillBeRemovedIn.Version4)]
     public static string GetPackage(this IOutputTarget outputTarget, string[] additionalFolders)
     {
-        var packages = outputTarget.GetTargetPath()
-            .Select(x => x.Name)
-            .Concat(additionalFolders)
-            .ToArray();
+        var result = JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(
+            outputTarget: outputTarget,
+            hasFolder: null,
+            additionalFolders: additionalFolders);
 
-        var foundSourceRoot = false;
-        for (var index = packages.Length - 1; index >= 0; index--)
-        {
-            if (packages[index] == "java")
-            {
-                foundSourceRoot = true;
-            }
-
-            packages[index] = foundSourceRoot
-                ? null
-                : packages[index].ToJavaPackage();
-        }
-
-        return string.Join(".", packages.Where(package => !string.IsNullOrWhiteSpace(package)));
+        return result.PackageStructure;
     }
 
     /// <summary>
-    /// Creates a folder path for the provided <paramref name="outputTarget"/> and also applies
-    /// Java package identifier conventions as appropriate.
+    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackageFolderPath"/> instead.
     /// </summary>
+    [Obsolete(WillBeRemovedIn.Version4)]
     public static string GetPackageFolderPath(this IOutputTarget outputTarget, params string[] additionalFolders)
     {
-        var path = additionalFolders
-            .ToArray();
+        var result = JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(
+            outputTarget: outputTarget,
+            hasFolder: null,
+            additionalFolders: additionalFolders);
 
-        for (var index = path.Length - 1; index >= 0; index--)
-        {
-            if (path[index] == "java")
-            {
-                break;
-            }
-
-            path[index] = path[index].ToJavaPackage();
-        }
-
-        return string.Join('/', path);
+        return result.RelativeFolder;
     }
 }

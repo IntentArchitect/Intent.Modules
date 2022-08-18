@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Java</id>
-  <version>3.3.8</version>
+  <version>3.3.9</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -22,7 +22,7 @@
     <file src="$outDir$/Intent.Code.Weaving.Java.dll" inspect="false" />
   </files>
   <metadata>
-    <install src="../Common.Java/Intent.Metadata/Module Builder/Intent.Common.Java/Intent.Common.Java.pkg.config" externalReference="1b8f2b45-99c0-42dc-b28e-bcd4621c3e71" />
+    <install target="*" src="../Common.Java/Intent.Metadata/Module Builder/Intent.Common.Java/Intent.Common.Java.pkg.config" externalReference="1b8f2b45-99c0-42dc-b28e-bcd4621c3e71" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />

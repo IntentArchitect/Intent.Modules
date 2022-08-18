@@ -6,23 +6,22 @@
     <members>
         <member name="T:Intent.Modules.Common.Java.JavaOutputTargetExtensions">
             <summary>
-            Extension methods for <see cref="T:Intent.Engine.IOutputTarget"/>.
+            Obsolete. Use <see cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods"/> instead.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.JavaOutputTargetExtensions.GetPackage(Intent.Engine.IOutputTarget)">
             <summary>
-            Creates a fully qualified package structure based on the provided <paramref name="target"/>.
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackage(Intent.Modules.Common.Java.Templates.JavaTemplateBase{System.Object},System.String[])"/> instead.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.JavaOutputTargetExtensions.GetPackage(Intent.Engine.IOutputTarget,System.String[])">
             <summary>
-            Creates a fully qualified package structure based on the provided <paramref name="outputTarget"/>.
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackage(Intent.Modules.Common.Java.Templates.JavaTemplateBase{System.Object},System.String[])"/> instead.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.JavaOutputTargetExtensions.GetPackageFolderPath(Intent.Engine.IOutputTarget,System.String[])">
             <summary>
-            Creates a folder path for the provided <paramref name="outputTarget"/> and also applies
-            Java package identifier conventions as appropriate.
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackageFolderPath(Intent.Modules.Common.Java.Templates.JavaTemplateBase{System.Object},System.String[])"/> instead.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Java.Templates.IDeclareImports">
@@ -156,27 +155,74 @@
             Extension methods for <see cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBase`1"/>.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackage(Intent.Modules.Common.Java.Templates.JavaTemplateBase{System.Object},System.String[])">
+            <summary>
+            Creates a fully qualified package structure based on the provided <paramref name="template"/>'s
+            <see cref="P:Intent.Modules.Common.Templates.IntentTemplateBase.OutputTarget">OutputTarget</see>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackage``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},System.String[])">
+            <summary>
+            Creates a fully qualified package structure based on the <see cref="T:Intent.Engine.IOutputTarget"/>
+            location and the parent folders of the <paramref name="template"/>'s model as described
+            in the designer.
+            </summary>
+            <remarks>
+            Both the folder path of the provided <typeparamref name="TModel"/>'s location within
+            its designer and <paramref name="additionalFolders"/> have package naming conventions
+            applied to them.
+            <para>
+            The package names dictated by a template's <see cref="T:Intent.Engine.IOutputTarget"/> do not have package
+            naming conventions applied to them because templates cannot control this part of the
+            output path. These package names can be changed by updating folder names in the
+            <c>Folder Structure</c> designer.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackageFolderPath(Intent.Modules.Common.Java.Templates.JavaTemplateBase{System.Object},System.String[])">
+            <summary>
+            Creates a folder path for the provided <paramref name="additionalFolders"/> and applies
+            Java package naming conventions as appropriate.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackageFolderPath``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},System.String[])">
+            <summary>
+            Creates a folder path for the template based on its <typeparamref name="TModel"/> as
+            described in the designer and also applies Java package identifier conventions.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.ResolveAndAddImports``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},Intent.Code.Weaving.Java.Editor.JavaFile)">
             <summary>
             Determines all imports for the provided <paramref name="template"/> and adds them to
             the provided <paramref name="file"/>.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(Intent.Engine.IOutputTarget,Intent.Modules.Common.Types.Api.IHasFolder,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Function for use by all others which addresses all known concerns and is also covered
+            by unit tests.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.PackagePart.IsOutputTargetPart">
+            <remarks>
+            Templates don't control the folder names of output target parts of the path, so
+            to avoid a misalignment of the package name and folder path, we leave them as
+            is. Users can fix folder names as desired in the `Folder Structure` designer.
+            </remarks>
+        </member>
         <member name="T:Intent.Modules.Common.Java.Templates.ModelHasFolderTemplateExtensions">
             <summary>
-            Java extension methods.
+            Use <see cref="T:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods"/> instead.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.ModelHasFolderTemplateExtensions.GetPackage``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},System.String[])">
             <summary>
-            Creates a fully qualified package structure based on the OutputTarget location and the
-            parent folders of the <paramref name="template"/>'s model as described in the designer.
+            Use <see cref="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackage``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},System.String[])"/> instead.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.Java.Templates.ModelHasFolderTemplateExtensions.GetPackageFolderPath``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},System.String[])">
             <summary>
-            Creates a folder path for the template based on its model as described in the designer and
-            also applies Java package identifier conventions.
+            Use <see cref="M:Intent.Modules.Common.Java.Templates.JavaTemplateBaseExtensionMethods.GetPackageFolderPath``1(Intent.Modules.Common.Java.Templates.JavaTemplateBase{``0},System.String[])"/> instead.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Java.TypeResolvers.JavaCollectionFormatter">

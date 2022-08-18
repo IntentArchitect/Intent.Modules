@@ -3,20 +3,12 @@
   <ApplicationId>e52a0850-142f-406c-aa52-8c8bc5b261ed</ApplicationId>
   <FileLogs>
     <FileLog>
-      <ProjectId>eaea4797-ad98-405b-8880-7baca66a36a6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>../Intent.Modules.Common.Java/Api/FolderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>FolderModelStereotypeExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>7cce6257-3f0d-4071-8828-282df7db3500</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.Common.Java/Intent.Common.Java.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Common.Java.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>7cce6257-3f0d-4071-8828-282df7db3500</ProjectId>
