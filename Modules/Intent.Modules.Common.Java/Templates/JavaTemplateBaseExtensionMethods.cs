@@ -9,28 +9,16 @@ using Intent.Modules.Common.Types.Api;
 namespace Intent.Modules.Common.Java.Templates
 {
     /// <summary>
-    /// Extension methods for <see cref="JavaTemplateBase{TModel}"/>.
+    /// Extension methods for <see cref="JavaTemplateBase"/> and
+    /// <see cref="JavaTemplateBase{TModel}"/>.
     /// </summary>
     public static class JavaTemplateBaseExtensionMethods
     {
         /// <summary>
-        /// Creates a fully qualified package structure based on the provided <paramref name="template"/>'s
-        /// <see cref="IntentTemplateBase.OutputTarget">OutputTarget</see>.
-        /// </summary>
-        public static string GetPackage(this JavaTemplateBase<object> template, string[] additionalFolders)
-        {
-            var result = GetRelativeFolderAndPackageStructure(
-                outputTarget: template.OutputTarget,
-                hasFolder: null,
-                additionalFolders: additionalFolders);
-
-            return result.PackageStructure;
-        }
-
-        /// <summary>
         /// Creates a fully qualified package structure based on the <see cref="IOutputTarget"/>
-        /// location and the parent folders of the <paramref name="template"/>'s model as described
-        /// in the designer.
+        /// location and if <typeparamref name="TModel"/> is a <see cref="IHasFolder"/> then the
+        /// parent folders of the <paramref name="template"/>'s model as described in the designer
+        /// will be used as well.
         /// </summary>
         /// <remarks>
         /// Both the folder path of the provided <typeparamref name="TModel"/>'s location within
@@ -44,11 +32,10 @@ namespace Intent.Modules.Common.Java.Templates
         /// </para>
         /// </remarks>
         public static string GetPackage<TModel>(this JavaTemplateBase<TModel> template, params string[] additionalFolders)
-            where TModel : IHasFolder
         {
             var result = GetRelativeFolderAndPackageStructure(
                 outputTarget: template.OutputTarget,
-                hasFolder: template.Model,
+                hasFolder: template.Model as IHasFolder,
                 additionalFolders: additionalFolders);
 
             return result.PackageStructure;
@@ -56,28 +43,15 @@ namespace Intent.Modules.Common.Java.Templates
 
         /// <summary>
         /// Creates a folder path for the provided <paramref name="additionalFolders"/> and applies
-        /// Java package naming conventions as appropriate.
-        /// </summary>
-        public static string GetPackageFolderPath(this JavaTemplateBase<object> _, params string[] additionalFolders)
-        {
-            var result = GetRelativeFolderAndPackageStructure(
-                outputTarget: null,
-                hasFolder: null,
-                additionalFolders: additionalFolders);
-
-            return result.RelativeFolder;
-        }
-
-        /// <summary>
-        /// Creates a folder path for the template based on its <typeparamref name="TModel"/> as
-        /// described in the designer and also applies Java package identifier conventions.
+        /// Java package naming conventions as appropriate with Java package naming conventions
+        /// applied. If <typeparamref name="TModel"/> is a <see cref="IHasFolder"/> then its path
+        /// will also be included as described in the designer.
         /// </summary>
         public static string GetPackageFolderPath<TModel>(this JavaTemplateBase<TModel> template, params string[] additionalFolders)
-            where TModel : IHasFolder
         {
             var result = GetRelativeFolderAndPackageStructure(
                 outputTarget: null,
-                hasFolder: template.Model,
+                hasFolder: template.Model as IHasFolder, 
                 additionalFolders: additionalFolders);
 
             return result.RelativeFolder;
