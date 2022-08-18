@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolationTemplate
+namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolation
 {
     using System.Collections.Generic;
     using System.Linq;
@@ -22,7 +22,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolatio
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolation\JavaFileStringInterpolationTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
     public partial class JavaFileStringInterpolationTemplate : CSharpTemplateBase<Intent.ModuleBuilder.Java.Api.JavaFileTemplateModel>
     {
@@ -35,7 +35,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolatio
             this.Write("using System;\r\nusing System.Collections.Generic;\r\n\r\n[assembly: DefaultIntentManag" +
                     "ed(Mode.Fully)]\r\n\r\nnamespace ");
             
-            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.tt"
+            #line 15 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolation\JavaFileStringInterpolationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
@@ -43,7 +43,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolatio
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Fully, Body = Mode.Merge)]\r\n    public partial class" +
                     " ");
             
-            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.tt"
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolation\JavaFileStringInterpolationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
@@ -52,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolatio
                     "override string TransformText()\r\n        {\r\n            return $@\"\r\npackage {Pac" +
                     "kage};\r\n\r\npublic ");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.tt"
+            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolation\JavaFileStringInterpolationTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(IsForInterface() ? "interface" : "class"));
             
             #line default
@@ -61,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolatio
                     "}\r\n\r\n        [IntentInitialGen] private IEnumerable<string> GetMembers()\r\n      " +
                     "  {\r\n            var members = new List<string>();\r\n");
             
-            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.tt"
+            #line 34 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolation\JavaFileStringInterpolationTemplate.tt"
   if (!IsForInterface()) { 
             
             #line default
@@ -69,7 +69,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolatio
             this.Write("\r\n            // example: adding a constructor\r\n            members.Add($@\"\r\n    " +
                     "public {ClassName}() {{\r\n    }}\");\r\n");
             
-            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolationTemplate\JavaFileStringInterpolationTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileStringInterpolation\JavaFileStringInterpolationTemplate.tt"
   }
             
             #line default

@@ -13,7 +13,7 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolationTemplate
+namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolation
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class JavaFileStringInterpolationTemplateRegistration : FilePerModelTemplateRegistration<JavaFileTemplateModel>

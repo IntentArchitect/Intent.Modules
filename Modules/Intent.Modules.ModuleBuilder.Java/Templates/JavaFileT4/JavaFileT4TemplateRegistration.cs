@@ -13,7 +13,7 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileT4Template
+namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileT4
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class JavaFileT4TemplateRegistration : FilePerModelTemplateRegistration<JavaFileTemplateModel>

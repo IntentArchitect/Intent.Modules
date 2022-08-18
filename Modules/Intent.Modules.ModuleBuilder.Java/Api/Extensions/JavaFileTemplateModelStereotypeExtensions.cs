@@ -24,6 +24,18 @@ namespace Intent.ModuleBuilder.Java.Api
             return model.HasStereotype("Java Template Settings");
         }
 
+        public static bool TryGetJavaTemplateSettings(this JavaFileTemplateModel model, out JavaTemplateSettings stereotype)
+        {
+            if (!HasJavaTemplateSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new JavaTemplateSettings(model.GetStereotype("Java Template Settings"));
+            return true;
+        }
+
 
         public class JavaTemplateSettings
         {

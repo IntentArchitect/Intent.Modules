@@ -5,6 +5,7 @@ using Intent.Modules.Common.Registrations;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.ModuleBuilder.Java.Api;
+using Intent.Modules.ModuleBuilder.Java.Templates.JavaFileT4;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 
@@ -27,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaTemplatePreProcessedFi
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: JavaFileT4Template.JavaFileT4Template.TemplateId,
+                t4TemplateId: JavaFileT4Template.TemplateId,
                 partialTemplateId: JavaFileTemplatePartial.JavaFileTemplatePartialTemplate.TemplateId);
         }
 

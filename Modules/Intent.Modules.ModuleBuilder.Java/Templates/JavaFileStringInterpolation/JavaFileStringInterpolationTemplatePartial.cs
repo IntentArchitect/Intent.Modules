@@ -10,7 +10,7 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolationTemplate
+namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolation
 {
     [IntentManaged(Mode.Fully, Body = Mode.Merge)]
     partial class JavaFileStringInterpolationTemplate : CSharpTemplateBase<JavaFileTemplateModel>

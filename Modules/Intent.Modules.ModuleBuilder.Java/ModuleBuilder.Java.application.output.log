@@ -84,48 +84,48 @@
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#219cf1bf-d9d3-4d51-9e18-1c51b9e128d6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#219cf1bf-d9d3-4d51-9e18-1c51b9e128d6</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#219cf1bf-d9d3-4d51-9e18-1c51b9e128d6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplate.tt</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplate.tt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#219cf1bf-d9d3-4d51-9e18-1c51b9e128d6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#219cf1bf-d9d3-4d51-9e18-1c51b9e128d6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolationTemplate/JavaFileStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileStringInterpolation/JavaFileStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#cdbb1d18-782b-4d46-9b3a-42c6114187ec</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/JavaFileT4Template/JavaFileT4TemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileT4Template/JavaFileT4TemplatePartial.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/JavaFileT4/JavaFileT4TemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileT4/JavaFileT4TemplatePartial.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#cdbb1d18-782b-4d46-9b3a-42c6114187ec</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/JavaFileT4Template/JavaFileT4TemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/JavaFileT4Template/JavaFileT4TemplateRegistration.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Templates/JavaFileT4/JavaFileT4TemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/JavaFileT4/JavaFileT4TemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -138,7 +138,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>9f8ea6a6-1bd6-4d87-aed3-913f7d651de6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#70e44e1f-2fd8-4c61-a7aa-d622a7c08eac</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#70e44e1f-2fd8-4c61-a7aa-d622a7c08eac</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplate.tt</ProjectRelativeFilePath>
