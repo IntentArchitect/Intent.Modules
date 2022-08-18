@@ -16,7 +16,6 @@ using Intent.Modules.Common.Java;
 using Intent.Modules.Common.Java.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#= Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : "" #>
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 
@@ -38,8 +37,8 @@ namespace <#= Namespace #>
         {
             return new JavaFileConfig(
                 className: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "") #>",
-                package: <#= Model.IsFilePerModelTemplateRegistration() ? "this" : "OutputTarget" #>.GetPackage(),
-                relativeLocation: <#= Model.IsFilePerModelTemplateRegistration() ? "this" : "OutputTarget" #>.GetPackageFolderPath()
+                package: this.GetPackage(),
+                relativeLocation: this.GetPackageFolderPath()
             );
         }
 
