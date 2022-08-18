@@ -36,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileStringInterpolatio
         public override IEnumerable<JavaFileTemplateModel> GetModels(IApplication application)
         {
             return _metadataManager.ModuleBuilder(application).GetJavaFileTemplateModels()
-                .Where(x => !x.HasJavaTemplateSettings() || x.GetJavaTemplateSettings().TemplatingMethod().IsStringInterpolation())
+                .Where(x => x.GetJavaTemplateSettings()?.TemplatingMethod()?.IsStringInterpolation() == true)
                 .ToList();
         }
     }
