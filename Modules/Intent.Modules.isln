@@ -38,5 +38,6 @@
     <application id="e52a0850-142f-406c-aa52-8c8bc5b261ed" name="Common.Java" relativePath="Common.Java/Common.Java.application.config" />
     <application id="ac4c4f4d-6091-4b04-9201-07a98b58f3ff" name="Intent.ApplicationTemplates.Metadata.ModuleBuilder" relativePath="Intent.ApplicationTemplates.Metadata.ModuleBuilder/Intent.ApplicationTemplates.Metadata.ModuleBuilder.application.config" />
     <application id="ada97aea-2d45-46ab-844d-6dc369d484bb" name="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch" relativePath="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch/Intent.Modules.Modelers.Services.CRUD.ServiceDispatch.application.config" />
+    <application id="0dd467e5-63fe-41f9-8a0a-f4454ff6cca9" name="Intent.Modules.Modelers.Domain.ValueObjects" relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Intent.Modules.Modelers.Domain.ValueObjects.application.config" />
   </applications>
 </solution>
