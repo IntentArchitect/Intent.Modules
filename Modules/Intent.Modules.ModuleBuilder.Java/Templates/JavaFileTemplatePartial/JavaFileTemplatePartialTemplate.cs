@@ -111,7 +111,7 @@ namespace ");
             #line default
             #line hidden
             this.Write("\",\r\n                package: this.GetPackage(),\r\n                relativeLocation" +
-                    ": this.GetPackageFolderPath()\r\n            );\r\n        }\r\n\r\n    }\r\n}");
+                    ": this.GetFolderPath()\r\n            );\r\n        }\r\n\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
