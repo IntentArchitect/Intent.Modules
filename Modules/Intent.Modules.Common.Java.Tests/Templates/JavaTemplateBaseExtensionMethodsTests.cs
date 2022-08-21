@@ -16,8 +16,7 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                 string[]? OutputTarget,
                 string[]? HasFolder,
                 string[]? AdditionalFolders,
-                string ExpectedRelativeFolder,
-                string ExpectedPackage)
+                string Expected)
             {
                 public object[] ToObject() => new object[] { this };
                 public override string ToString() => Name;
@@ -37,10 +36,8 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                         "AdditionalFolder1.AdditionalFolder2",
                         "AdditionalFolder3"
                     },
-                    ExpectedRelativeFolder:
-                    "additional_folder_1.additional_folder_2/additional_folder_3",
-                    ExpectedPackage:
-                    "additional_folder_1.additional_folder_2.additional_folder_3").ToObject(),
+                    Expected:
+                    "AdditionalFolder1.AdditionalFolder2.AdditionalFolder3").ToObject(),
 
                 new Scenario(
                     Name: "java in HasFolder",
@@ -60,10 +57,8 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                         "AdditionalFolder1.AdditionalFolder2",
                         "AdditionalFolder3"
                     },
-                    ExpectedRelativeFolder:
-                    "HasFolder1.HasFolder2/java/has_folder_3/additional_folder_1.additional_folder_2/additional_folder_3",
-                    ExpectedPackage:
-                    "has_folder_3.additional_folder_1.additional_folder_2.additional_folder_3").ToObject(),
+                    Expected:
+                    "HasFolder3.AdditionalFolder1.AdditionalFolder2.AdditionalFolder3").ToObject(),
 
                 new Scenario(
                     Name: "java in OutputTarget",
@@ -83,10 +78,8 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                         "AdditionalFolder1.AdditionalFolder2",
                         "AdditionalFolder3"
                     },
-                    ExpectedRelativeFolder:
-                    "has_folder_1.has_folder_2/has_folder_3/additional_folder_1.additional_folder_2/additional_folder_3",
-                    ExpectedPackage:
-                    "OutputTarget3.has_folder_1.has_folder_2.has_folder_3.additional_folder_1.additional_folder_2.additional_folder_3").ToObject(),
+                    Expected:
+                    "OutputTarget3.HasFolder1.HasFolder2.HasFolder3.AdditionalFolder1.AdditionalFolder2.AdditionalFolder3").ToObject(),
             };
 
             [Theory]
@@ -99,11 +92,10 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                 var additionalFolders = scenario.AdditionalFolders;
 
                 // Act
-                var result = JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(outputTarget, hasFolder, additionalFolders);
+                var result = JavaTemplateBaseExtensionMethods.GetPackageStructure(outputTarget, hasFolder, additionalFolders);
 
                 // Assert
-                result.RelativeFolder.ShouldBe(scenario.ExpectedRelativeFolder);
-                result.PackageStructure.ShouldBe(scenario.ExpectedPackage);
+                result.ShouldBe(scenario.Expected);
             }
         }
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using Intent.Engine;
 using Intent.Modules.Common.Java.Templates;
+using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.Java;
@@ -12,44 +13,32 @@ namespace Intent.Modules.Common.Java;
 public static class JavaOutputTargetExtensions
 {
     /// <summary>
-    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackage"/> instead.
+    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackage{TModel}"/> instead.
     /// </summary>
     [Obsolete(WillBeRemovedIn.Version4)]
     public static string GetPackage(this IOutputTarget target)
     {
-        var result = JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(
-            outputTarget: target,
-            hasFolder: null,
-            additionalFolders: null);
-
-        return result.PackageStructure;
+        return GetPackage(target, null);
     }
 
     /// <summary>
-    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackage"/> instead.
+    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackage{TModel}"/> instead.
     /// </summary>
     [Obsolete(WillBeRemovedIn.Version4)]
     public static string GetPackage(this IOutputTarget outputTarget, string[] additionalFolders)
     {
-        var result = JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(
+        return JavaTemplateBaseExtensionMethods.GetPackageStructure(
             outputTarget: outputTarget,
             hasFolder: null,
             additionalFolders: additionalFolders);
-
-        return result.PackageStructure;
     }
 
     /// <summary>
-    /// Obsolete. Use <see cref="JavaTemplateBaseExtensionMethods.GetPackageFolderPath"/> instead.
+    /// Obsolete. Use <see cref="ModelHasFolderTemplateExtensions.GetFolderPath(IntentTemplateBase,string[])"/> instead.
     /// </summary>
     [Obsolete(WillBeRemovedIn.Version4)]
-    public static string GetPackageFolderPath(this IOutputTarget outputTarget, params string[] additionalFolders)
+    public static string GetPackageFolderPath(this IOutputTarget _, params string[] additionalFolders)
     {
-        var result = JavaTemplateBaseExtensionMethods.GetRelativeFolderAndPackageStructure(
-            outputTarget: outputTarget,
-            hasFolder: null,
-            additionalFolders: additionalFolders);
-
-        return result.RelativeFolder;
+        return string.Join('/', additionalFolders);
     }
 }
