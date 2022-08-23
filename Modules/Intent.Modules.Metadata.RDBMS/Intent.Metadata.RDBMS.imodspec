@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.3.6</version>
+  <version>3.3.7</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Metadata for specifying RDBMS related concepts in the domain.</summary>
   <description>Metadata for specifying RDBMS related concepts in the domain.</description>
@@ -15,7 +15,7 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.3.9" />
     <dependency id="Intent.Common.Types" version="3.3.4" />
-    <dependency id="Intent.Modelers.Domain" version="3.3.5" />
+    <dependency id="Intent.Modelers.Domain" version="3.3.6" />
   </dependencies>
   <files></files>
   <metadata>
@@ -28,7 +28,7 @@
       <settings>
         <setting id="ef83f85d-bb8d-4b10-8842-9f35f9f54165" title="Key Type" type="select">
           <isRequired>false</isRequired>
-          <hint>Select the data type to be used for all surrogate and foreign keys.</hint>
+          <hint>Select the default data type to be used for all surrogate and foreign keys.</hint>
           <defaultValue>guid</defaultValue>
           <options>
             <option value="guid" description="guid" />
@@ -42,17 +42,8 @@
           <defaultValue>manual</defaultValue>
           <options>
             <option value="manual" description="Manually add PKs and FKs" />
-            <option value="explicit" description="Explicitly add PKs and FKs automaitcally" />
+            <option value="explicit" description="Explicitly add PKs and FKs automatically" />
             <option value="implicit" description="Remove all managed PKs and FKs" />
-          </options>
-        </setting>
-        <setting id="cf991e8c-de2c-4b60-a4a4-baa4770e0ac9" title="Key Naming Convention" type="select">
-          <isRequired>false</isRequired>
-          <hint>Naming convention options for created PKs and FKs.</hint>
-          <defaultValue>pascal-case</defaultValue>
-          <options>
-            <option value="pascal-case" description="Pascal Case" />
-            <option value="camel-case" description="Camel Case" />
           </options>
         </setting>
       </settings>

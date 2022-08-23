@@ -86,40 +86,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot; || element.getMetadata(&quot;auto-manage-keys&quot;) == &quot;false&quot;){&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function getSurrogateKeyType() {&#xD;&#xA;    let keyType = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;).getField(&quot;Key Type&quot;).value;&#xD;&#xA;    if (keyType == &quot;guid&quot;)&#xD;&#xA;        return &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;; // guid id&#xD;&#xA;    if (keyType == &quot;int&quot;)&#xD;&#xA;        return &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;; // int id&#xD;&#xA;    if (keyType == &quot;long&quot;)&#xD;&#xA;        return &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;; // long id&#xD;&#xA;    return &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;; // guid id&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;var namingConvetion = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;).getField(&quot;Key Naming Convention&quot;)?.value ?? &quot;pascal-case&quot;;&#xD;&#xA;&#xD;&#xA;let pk = createElement(&quot;Attribute&quot;, namingConvetion == &quot;pascal-case&quot; ? &quot;Id&quot; : &quot;id&quot;, element.id);&#xD;&#xA;pk.typeReference.setType(getSurrogateKeyType()); &#xD;&#xA;pk.addStereotype(&quot;b99aac21-9ca4-467f-a3a6-046255a9eed6&quot;);&#xD;&#xA;pk.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="94f5375c-643f-44ab-8495-b02cff8dfa4f" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Loaded</name>
-          <display>On Loaded: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="26c9b912-adfd-4c67-a125-9bdf020f27f3">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>dbb6a7ae-bc27-48ab-8e09-a67e76837e17</parentFolderId>
-          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
-          <packageName>Intent.Metadata.RDBMS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let primaryKeyStereotypeId = &quot;b99aac21-9ca4-467f-a3a6-046255a9eed6&quot;;&#xD;&#xA;if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot; || element.getMetadata(&quot;auto-manage-keys&quot;) == &quot;false&quot;){&#xD;&#xA;    if (application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value == &quot;implicit&quot;) {&#xD;&#xA;        let pks = element.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.getMetadata(&quot;is-managed-key&quot;) == &quot;true&quot;)&#xD;&#xA;        pks.forEach(pk =&gt; pk.delete())&#xD;&#xA;    }&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function getSurrogateKeyType() {&#xD;&#xA;    let keyType = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;).getField(&quot;Key Type&quot;).value;&#xD;&#xA;    if (keyType == &quot;guid&quot;)&#xD;&#xA;        return &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;; // guid id&#xD;&#xA;    if (keyType == &quot;int&quot;)&#xD;&#xA;        return &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;; // int id&#xD;&#xA;    if (keyType == &quot;long&quot;)&#xD;&#xA;        return &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;; // guid id&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;var namingConvetion = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;).getField(&quot;Key Naming Convention&quot;)?.value ?? &quot;pascal-case&quot;;&#xD;&#xA;&#xD;&#xA;if (element.getChildren(&quot;Attribute&quot;).some(x =&gt; x.hasStereotype(primaryKeyStereotypeId))) {&#xD;&#xA;    let pk = element.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) &amp;&amp; x.getMetadata(&quot;is-managed-key&quot;) == &quot;true&quot;)[0]&#xD;&#xA;    if (pk) {&#xD;&#xA;        pk.typeReference.setType(getSurrogateKeyType());&#xD;&#xA;    }&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return; // disable auto-add on load.&#xD;&#xA;&#xD;&#xA;// If this class inherits from another, don't create PK:&#xD;&#xA;// if (element.getAssociations(&quot;Generalization Target End&quot;).some(x =&gt; x.getOtherEnd().typeReference.typeId == element.id)) {&#xD;&#xA;//     return;&#xD;&#xA;// }&#xD;&#xA;&#xD;&#xA;// let pk = createElement(&quot;Attribute&quot;, namingConvetion == &quot;pascal-case&quot; ? &quot;Id&quot; : &quot;id&quot;, element.id);&#xD;&#xA;// pk.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;// pk.setOrder(0);&#xD;&#xA;// pk.typeReference.setType(getSurrogateKeyType());&#xD;&#xA;// pk.addStereotype(primaryKeyStereotypeId);" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot; || element.getMetadata(&quot;auto-manage-keys&quot;) == &quot;false&quot;){&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function getSurrogateKeyType() {&#xD;&#xA;    let keyType = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;).getField(&quot;Key Type&quot;).value;&#xD;&#xA;    if (keyType == &quot;guid&quot;)&#xD;&#xA;        return &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;; // guid id&#xD;&#xA;    if (keyType == &quot;int&quot;)&#xD;&#xA;        return &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;; // int id&#xD;&#xA;    if (keyType == &quot;long&quot;)&#xD;&#xA;        return &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;; // long id&#xD;&#xA;    return &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;; // guid id&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let pk = createElement(&quot;Attribute&quot;, &quot;id&quot;, element.id);&#xD;&#xA;pk.typeReference.setType(getSurrogateKeyType()); &#xD;&#xA;pk.addStereotype(&quot;b99aac21-9ca4-467f-a3a6-046255a9eed6&quot;);&#xD;&#xA;pk.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

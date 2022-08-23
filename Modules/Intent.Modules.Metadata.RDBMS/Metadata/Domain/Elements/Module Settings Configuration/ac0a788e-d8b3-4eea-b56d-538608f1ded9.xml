@@ -30,7 +30,7 @@
           <properties>
             <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
             <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Select the data type to be used for all surrogate and foreign keys." isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Select the default data type to be used for all surrogate and foreign keys." isActive="true" />
             <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="guid" isActive="true" />
           </properties>
         </stereotype>
@@ -121,8 +121,8 @@
           <childElements />
         </childElement>
         <childElement id="b0baec9c-8f61-4f81-ab93-68e30c7c767c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Explicitly add PKs and FKs automaitcally</name>
-          <display>Explicitly add PKs and FKs automaitcally = explicit</display>
+          <name>Explicitly add PKs and FKs automatically</name>
+          <display>Explicitly add PKs and FKs automatically = explicit</display>
           <isAbstract>false</isAbstract>
           <value>explicit</value>
           <genericTypes />
@@ -142,61 +142,6 @@
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>5aca6e0c-1b64-425b-9046-f0bc81c44311</parentFolderId>
-          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
-          <packageName>Intent.Metadata.RDBMS</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
-    <childElement id="cf991e8c-de2c-4b60-a4a4-baa4770e0ac9" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
-      <name>Key Naming Convention</name>
-      <display>Key Naming Convention</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>manually</sort-children>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>ac0a788e-d8b3-4eea-b56d-538608f1ded9</parentFolderId>
-      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
-      <packageName>Intent.Metadata.RDBMS</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-          <properties>
-            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
-            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="false" isActive="true" />
-            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="Naming convention options for created PKs and FKs." isActive="true" />
-            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="pascal-case" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements>
-        <childElement id="c6bca269-c334-4f1e-a5f3-7e0d8acdaf4c" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Pascal Case</name>
-          <display>Pascal Case = pascal-case</display>
-          <isAbstract>false</isAbstract>
-          <value>pascal-case</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>cf991e8c-de2c-4b60-a4a4-baa4770e0ac9</parentFolderId>
-          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
-          <packageName>Intent.Metadata.RDBMS</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="6b32dd51-4789-4135-92a2-c38b329ffc24" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Camel Case</name>
-          <display>Camel Case = camel-case</display>
-          <isAbstract>false</isAbstract>
-          <value>camel-case</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>cf991e8c-de2c-4b60-a4a4-baa4770e0ac9</parentFolderId>
           <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
           <packageName>Intent.Metadata.RDBMS</packageName>
           <stereotypes />

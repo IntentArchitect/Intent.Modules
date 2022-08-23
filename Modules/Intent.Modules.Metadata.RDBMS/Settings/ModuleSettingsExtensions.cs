@@ -100,8 +100,8 @@ namespace Intent.Modules.Metadata.RDBMS.Settings
                 return Value switch
                 {
                     "manual" => KeyCreationModeOptionsEnum.Manual,
-                    "implicit" => KeyCreationModeOptionsEnum.Implicit,
                     "explicit" => KeyCreationModeOptionsEnum.Explicit,
+                    "implicit" => KeyCreationModeOptionsEnum.Implicit,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -127,44 +127,6 @@ namespace Intent.Modules.Metadata.RDBMS.Settings
             Manual,
             Implicit,
             Explicit,
-        }
-
-        public KeyNamingConventionOptions KeyNamingConvention() => new KeyNamingConventionOptions(_groupSettings.GetSetting("cf991e8c-de2c-4b60-a4a4-baa4770e0ac9")?.Value);
-
-        public class KeyNamingConventionOptions
-        {
-            public readonly string Value;
-
-            public KeyNamingConventionOptions(string value)
-            {
-                Value = value;
-            }
-
-            public KeyNamingConventionOptionsEnum AsEnum()
-            {
-                return Value switch
-                {
-                    "pascal-case" => KeyNamingConventionOptionsEnum.PascalCase,
-                    "camel-case" => KeyNamingConventionOptionsEnum.CamelCase,
-                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
-                };
-            }
-
-            public bool IsPascalCase()
-            {
-                return Value == "pascal-case";
-            }
-
-            public bool IsCamelCase()
-            {
-                return Value == "camel-case";
-            }
-        }
-
-        public enum KeyNamingConventionOptionsEnum
-        {
-            PascalCase,
-            CamelCase,
         }
     }
 }
