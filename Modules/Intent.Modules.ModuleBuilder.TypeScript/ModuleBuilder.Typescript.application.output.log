@@ -9,6 +9,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e6e41d88-2829-41b6-a791-065d2bb44eb3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/TypescriptFileTemplateModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TypescriptFileTemplateModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#ba880228-ad4a-4f38-a1a4-0d3fb87e4d89</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -110,6 +118,38 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

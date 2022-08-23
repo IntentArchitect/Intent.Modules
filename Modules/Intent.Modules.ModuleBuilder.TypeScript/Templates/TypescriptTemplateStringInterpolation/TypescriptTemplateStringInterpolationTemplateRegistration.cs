@@ -10,33 +10,33 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4
+namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class TypescriptTemplateT4TemplateRegistration : FilePerModelTemplateRegistration<TypescriptFileTemplateModel>
+    public class TypescriptTemplateStringInterpolationTemplateRegistration : FilePerModelTemplateRegistration<TypescriptFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public TypescriptTemplateT4TemplateRegistration(IMetadataManager metadataManager)
+        public TypescriptTemplateStringInterpolationTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => TypescriptTemplateT4Template.TemplateId;
+        public override string TemplateId => TypescriptTemplateStringInterpolationTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, TypescriptFileTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, TypescriptFileTemplateModel model)
         {
-            return new TypescriptTemplateT4Template(project, model);
+            return new TypescriptTemplateStringInterpolationTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<TypescriptFileTemplateModel> GetModels(IApplication application)
         {
             return _metadataManager.ModuleBuilder(application).GetTypescriptFileTemplateModels()
-                .Where(x => !x.TryGetTypeScriptTemplateSettings(out var templateSettings) || templateSettings.TemplatingMethod().IsT4Template())
+                .Where(x => x.GetTypeScriptTemplateSettings()?.TemplatingMethod().IsStringInterpolation() == true)
                 .ToList();
         }
     }

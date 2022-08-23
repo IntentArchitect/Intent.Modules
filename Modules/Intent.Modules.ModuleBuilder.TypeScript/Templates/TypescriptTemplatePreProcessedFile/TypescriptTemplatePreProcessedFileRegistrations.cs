@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.TypeScript.Api;
@@ -33,7 +34,9 @@ namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePr
 
         public override IEnumerable<TypescriptFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetTypescriptFileTemplateModels();
+            return _metadataManager.ModuleBuilder(application).GetTypescriptFileTemplateModels()
+                .Where(x => !x.TryGetTypeScriptTemplateSettings(out var templateSettings) || templateSettings.TemplatingMethod().IsT4Template())
+                .ToList();
         }
     }
 }

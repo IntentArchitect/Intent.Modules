@@ -36,7 +36,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileT4
         public override IEnumerable<JavaFileTemplateModel> GetModels(IApplication application)
         {
             return _metadataManager.ModuleBuilder(application).GetJavaFileTemplateModels()
-                .Where(x => !x.HasJavaTemplateSettings() || x.GetJavaTemplateSettings().TemplatingMethod().IsT4Template())
+                .Where(x => !x.TryGetJavaTemplateSettings(out var templateSettings) || templateSettings.TemplatingMethod().IsT4Template())
                 .ToList();
         }
     }

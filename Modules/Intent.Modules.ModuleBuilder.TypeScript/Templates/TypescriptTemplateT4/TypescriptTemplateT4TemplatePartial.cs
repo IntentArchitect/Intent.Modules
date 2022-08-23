@@ -59,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
-<#@ import namespace=""Intent.Modules.Common.Typescript.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common.TypeScript.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 {(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.Namespace}"" #>" : "")}
@@ -68,12 +68,13 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4
 
         private string TemplateBody()
         {
-            return @"
-export class <#= ClassName #>
-{
+            return @$"
+export {(IsForInterface() ? "interface" : "class")} <#= ClassName #> {{
 
-}";
+}}";
         }
+
+        private bool IsForInterface() => Model.Name.RemoveSuffix("Template").EndsWith("Interface");
 
         private string GetBaseType()
         {

@@ -33,10 +33,20 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>TypescriptPartialTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\TypescriptTemplateInterpolation\TypescriptTemplateInterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypescriptTemplateInterpolationTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>TypescriptTemplatePartialTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TypescriptTemplateStringInterpolation\TypescriptTemplateStringInterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypescriptTemplateStringInterpolationTemplate.tt</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -48,6 +58,14 @@
     <None Update="Templates\TypescriptTemplatePartial\TypescriptTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>TypescriptTemplatePartialTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypescriptTemplateInterpolation\TypescriptTemplateInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypescriptTemplateInterpolationTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypescriptTemplateStringInterpolation\TypescriptTemplateStringInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypescriptTemplateStringInterpolationTemplate.cs</LastGenOutput>
     </None>
   </ItemGroup>
 

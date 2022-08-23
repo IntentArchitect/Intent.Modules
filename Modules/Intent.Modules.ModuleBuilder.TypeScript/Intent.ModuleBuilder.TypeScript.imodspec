@@ -7,8 +7,17 @@
   <summary></summary>
   <description></description>
   <authors>Intent.Modules</authors>
+  <releaseNotes>release-notes.md</releaseNotes>
   <templates>
     <template id="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial" externalReference="f3b2cfd1-4214-4dd0-bec6-71cb2f47318c">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
+    <template id="Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation" externalReference="8f29246d-415f-4f8f-8026-5bb177caa609">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
         <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
@@ -34,6 +43,7 @@
   </dependencies>
   <metadata>
     <install src="modelers/Typescript.designer.settings" externalReference="ac7fa580-f66f-4257-a160-0bb82b56f4f9" target="Module Builder" />
+    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.ModuleBuilder.TypeScript/Intent.ModuleBuilder.TypeScript.pkg.config" externalReference="4d484b1d-09d8-49e6-8e65-6811e4d28af9" />
   </metadata>
   <files>
     <file src="$outDir$/$id$.dll" />
