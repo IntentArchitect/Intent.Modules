@@ -3,6 +3,7 @@
   <name>Class Constructor</name>
   <display>Class Constructor</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</parentFolderId>
@@ -64,7 +65,6 @@
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="93f9d9fb-69ed-4097-89e9-9349c08f4323">
             <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
@@ -106,7 +106,7 @@
       <name>Map Constructor</name>
       <display>[mappings]: Map Constructor</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</parentFolderId>
@@ -136,7 +136,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: Class -&gt; Class Constructor (Map to Type)</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
+          <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>d6d0abfd-893c-4bec-92cb-419934ba5ba8</parentFolderId>
@@ -179,7 +179,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Attribute -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>0</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a</parentFolderId>
@@ -223,7 +222,6 @@
               <name>NewElementMapping</name>
               <display>[mapping]: Association Target End -&gt; Parameter (Map to Type)</display>
               <isAbstract>false</isAbstract>
-              <order>1</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a</parentFolderId>

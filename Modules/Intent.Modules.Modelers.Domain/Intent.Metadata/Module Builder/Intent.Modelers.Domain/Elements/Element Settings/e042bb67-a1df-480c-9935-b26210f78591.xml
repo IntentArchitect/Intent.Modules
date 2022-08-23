@@ -3,6 +3,7 @@
   <name>Operation</name>
   <display>Operation</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e042bb67-a1df-480c-9935-b26210f78591</parentFolderId>
@@ -64,7 +65,6 @@
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="24362209-b86f-4ac3-b199-03f30ba38420">
             <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>

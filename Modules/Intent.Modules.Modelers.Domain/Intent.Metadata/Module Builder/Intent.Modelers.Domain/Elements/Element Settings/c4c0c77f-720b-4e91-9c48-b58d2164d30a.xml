@@ -3,7 +3,7 @@
   <name>Comment</name>
   <display>Comment</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Association</name>
           <display>New Association: Comment Association</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="bc8defc2-2ffb-42b2-a04d-2bfee374b6a6">
             <typeId>5264c135-e856-468d-8bd7-154b75842256</typeId>
@@ -105,7 +104,7 @@
       <name>[visual]</name>
       <display>[visual]: Comment</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <typeReference id="9474870f-44e4-48a5-8645-e39fcf72df93">
         <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
@@ -141,7 +140,6 @@
           <name>Rectangle</name>
           <display>[draw path]: Rectangle</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>c70584cf-c40f-45e5-84c4-c65691336c4b</parentFolderId>
@@ -169,7 +167,6 @@
           <name>[draw text]</name>
           <display>[draw text]: [draw text]</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>c70584cf-c40f-45e5-84c4-c65691336c4b</parentFolderId>
@@ -205,7 +202,6 @@
           <name>[draw text]</name>
           <display>[draw text]: [draw text]</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>c70584cf-c40f-45e5-84c4-c65691336c4b</parentFolderId>
@@ -241,7 +237,6 @@
           <name>Stereotype Icons</name>
           <display>[stereotypes]: Stereotype Icons</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>c70584cf-c40f-45e5-84c4-c65691336c4b</parentFolderId>

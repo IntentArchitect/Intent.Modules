@@ -3,7 +3,7 @@
   <name>Generalization</name>
   <display>Generalization</display>
   <isAbstract>false</isAbstract>
-  <order>6</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
@@ -16,7 +16,6 @@
       <name>Generalization Source End</name>
       <display>Generalization Source End</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
@@ -49,7 +48,6 @@
       <name>Generalization Target End</name>
       <display>Generalization Target End</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
@@ -82,7 +80,7 @@
       <name>[visual]</name>
       <display>[visual]</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5de35973-3ac7-4e65-b48c-385605aec561</parentFolderId>
@@ -106,7 +104,6 @@
           <name>[source]</name>
           <display>[source]</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>4f08a3b7-adcb-4e3d-9b27-8306925a7e9f</parentFolderId>
@@ -154,7 +151,6 @@
           <name>[desintation]</name>
           <display>[destination]</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>4f08a3b7-adcb-4e3d-9b27-8306925a7e9f</parentFolderId>

@@ -3,7 +3,7 @@
   <name>Comment Association</name>
   <display>Comment Association</display>
   <isAbstract>false</isAbstract>
-  <order>5</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>db2f5755-5256-46d1-bb45-72bf2c7cde42</parentFolderId>
@@ -16,7 +16,6 @@
       <name>Comment Source End</name>
       <display>Comment Source End</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5264c135-e856-468d-8bd7-154b75842256</parentFolderId>
@@ -49,7 +48,6 @@
       <name>Comment Target End</name>
       <display>Comment Target End</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5264c135-e856-468d-8bd7-154b75842256</parentFolderId>
@@ -82,7 +80,7 @@
       <name>[visual]</name>
       <display>[visual]</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>5264c135-e856-468d-8bd7-154b75842256</parentFolderId>
@@ -106,7 +104,6 @@
           <name>[source]</name>
           <display>[source]</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>e547823f-3269-46fb-8c41-745420ef50c0</parentFolderId>
@@ -154,7 +151,6 @@
           <name>[desintation]</name>
           <display>[destination]</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>e547823f-3269-46fb-8c41-745420ef50c0</parentFolderId>

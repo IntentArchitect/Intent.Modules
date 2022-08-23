@@ -97,6 +97,10 @@ diagram.loadDiagram();
     <elementSetting type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
       <icon type="UrlImagePath" source="./img/icons/uml/Class_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
+      <validateFunction>let otherClasses = getParent().getChildren("Class").filter(x =&gt; x.id != id);
+if (otherClasses.some(x =&gt; x.getName() == getName())) {
+    return "Please ensure class names are unique in this location."
+}</validateFunction>
       <allowRename>true</allowRename>
       <allowAbstract>true</allowAbstract>
       <allowGenericTypes>true</allowGenericTypes>
@@ -255,6 +259,10 @@ white-space: inherit;`</style>
         <childElementSetting type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
           <icon type="UrlImagePath" source="./img/icons/uml/Attribute_256x.png" />
           <saveAsOwnFile>false</saveAsOwnFile>
+          <validateFunction>let otherAttributes = getParent().getChildren("Attribute").filter(x =&gt; x.id != id);
+if (otherAttributes.some(x =&gt; x.getName() == getName())) {
+    return "Please ensure all attribute names are unique."
+}</validateFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
           <allowGenericTypes>false</allowGenericTypes>
@@ -280,6 +288,26 @@ white-space: inherit;`</style>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <mappingSettings />
+          <macros>
+            <macro trigger="on-created">
+              <script>var namingConvention = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("c3789138-6649-47e4-901b-5f6469583cb7")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+            </macro>
+            <macro trigger="on-name-changed">
+              <script>var namingConvention = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("c3789138-6649-47e4-901b-5f6469583cb7")?.value;
+
+if (namingConvention == "pascal-case") {
+    element.setName(toPascalCase(element.getName()))
+} else if (namingConvention == "camel-case") {
+    element.setName(toCamelCase(element.getName()))
+}</script>
+            </macro>
+          </macros>
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
