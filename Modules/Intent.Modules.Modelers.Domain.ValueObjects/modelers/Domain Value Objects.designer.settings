@@ -181,7 +181,16 @@ white-space: inherit;`</style>
           <allowIsCollection>inherit</allowIsCollection>
         </typeReferenceExtension>
       </targetEndExtension>
-      <macros />
+      <macros>
+        <macro trigger="on-changed">
+          <script>let targetEnd = association.isTargetEnd() ? association : association.getOtherEnd();
+if (targetEnd.typeReference.getType()?.specialization == "Value Object") {
+    let sourceEnd = targetEnd.getOtherEnd();
+    sourceEnd.typeReference.setIsCollection(false);
+    sourceEnd.typeReference.setIsNullable(false);
+}</script>
+        </macro>
+      </macros>
     </associationExtension>
   </associationExtensions>
 </settings>

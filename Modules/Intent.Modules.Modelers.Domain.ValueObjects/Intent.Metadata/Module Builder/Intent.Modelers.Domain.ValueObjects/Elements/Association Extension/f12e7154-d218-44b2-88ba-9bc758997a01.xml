@@ -83,6 +83,7 @@
       <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>f12e7154-d218-44b2-88ba-9bc758997a01</parentFolderId>
@@ -90,7 +91,41 @@
       <packageName>Intent.Modelers.Domain.ValueObjects</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="acf70dea-81e7-4da9-af4d-60b473b7957c" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="82f1add2-925f-49b0-b098-b58cde467d83">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>25512d89-99b6-4b78-abac-11c006615eb2</parentFolderId>
+          <packageId>94454582-ba60-4ab4-ae61-6f53b914b76d</packageId>
+          <packageName>Intent.Modelers.Domain.ValueObjects</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="let targetEnd = association.isTargetEnd() ? association : association.getOtherEnd();&#xD;&#xA;if (targetEnd.typeReference.getType()?.specialization == &quot;Value Object&quot;) {&#xD;&#xA;    let sourceEnd = targetEnd.getOtherEnd();&#xD;&#xA;    sourceEnd.typeReference.setIsCollection(false);&#xD;&#xA;    sourceEnd.typeReference.setIsNullable(false);&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>
