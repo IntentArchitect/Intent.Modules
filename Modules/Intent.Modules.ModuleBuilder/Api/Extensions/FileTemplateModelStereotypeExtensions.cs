@@ -60,6 +60,8 @@ namespace Intent.ModuleBuilder.Api
                     {
                         case "T4 Template":
                             return TemplatingMethodOptionsEnum.T4Template;
+                        case "String Interpolation":
+                            return TemplatingMethodOptionsEnum.StringInterpolation;
                         case "Custom":
                             return TemplatingMethodOptionsEnum.Custom;
                         default:
@@ -71,6 +73,10 @@ namespace Intent.ModuleBuilder.Api
                 {
                     return Value == "T4 Template";
                 }
+                public bool IsStringInterpolation()
+                {
+                    return Value == "String Interpolation";
+                }
                 public bool IsCustom()
                 {
                     return Value == "Custom";
@@ -80,6 +86,7 @@ namespace Intent.ModuleBuilder.Api
             public enum TemplatingMethodOptionsEnum
             {
                 T4Template,
+                StringInterpolation,
                 Custom
             }
         }

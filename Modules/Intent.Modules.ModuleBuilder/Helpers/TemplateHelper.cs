@@ -1,11 +1,17 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text.RegularExpressions;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.ModuleBuilder.Helpers
 {
     public static class TemplateHelper
     {
+        /// <summary>
+        /// Use <see cref="IntentTemplateBase.TryGetExistingFileContent"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static string GetExistingTemplateContent<T>(IntentFileTemplateBase<T> template)
         {
             var fileLocation = template.GetExistingFilePath();

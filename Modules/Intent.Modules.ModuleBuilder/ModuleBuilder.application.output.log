@@ -1098,6 +1098,54 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b33044cb-5352-40c7-97a8-a1109b7dfd59</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#b33044cb-5352-40c7-97a8-a1109b7dfd59</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#af184995-dba3-463f-8b63-7c38190595f0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplate.cs</ApplicationRelativeFilePath>
