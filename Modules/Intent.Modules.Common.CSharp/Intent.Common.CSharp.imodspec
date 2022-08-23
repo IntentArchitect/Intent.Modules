@@ -7,6 +7,7 @@
   <summary>Base classes and support for using the Roslyn code-generation control capabilities.</summary>
   <description>Base classes and support for using the Roslyn code-generation control capabilities.</description>
   <authors>Intent.Modules</authors>
+  <releaseNotes>release-notes.md</releaseNotes>
   <templates></templates>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.9" />
