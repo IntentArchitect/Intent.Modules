@@ -3,7 +3,7 @@
   <name>Eventing Package</name>
   <display>Eventing Package</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</parentFolderId>
@@ -27,7 +27,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>df96d537-7bb5-4c49-811f-973fa6e95beb</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New Producer</name>
           <display>New Producer: Producer</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="743cbdc8-1992-4c94-a64b-9b3a759bcbb8">
             <typeId>90c0e85e-54cf-4d6b-b69f-0440e4ace079</typeId>
@@ -80,7 +79,6 @@
           <name>New Consumer</name>
           <display>New Consumer: Consumer</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="ae50c90e-177f-4613-8d1d-7179b3a0a61f">
             <typeId>f40a4942-5d2d-4174-8ec1-af66cbd464db</typeId>
@@ -120,7 +118,6 @@
           <name>New Message</name>
           <display>New Message: Message</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="20e8d124-c6bd-463c-9567-4f61da81b765">
             <typeId>cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</typeId>
@@ -160,7 +157,6 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="6204aca4-5e78-437e-8eca-311d4910bb2e">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -200,7 +196,6 @@
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
           <genericTypes />
           <typeReference id="c13b2fa8-b7eb-489d-a8a5-03b715076046">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
@@ -240,7 +235,6 @@
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
           <genericTypes />
           <typeReference id="d541522f-3112-424a-90e3-62d6af457973">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -280,7 +274,6 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>6</order>
           <genericTypes />
           <typeReference id="cca40946-4f78-4f9f-aa5d-efa2c77e2a80">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>
@@ -322,7 +315,7 @@
       <name>NewPackageEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>df96d537-7bb5-4c49-811f-973fa6e95beb</parentFolderId>
@@ -335,7 +328,6 @@
           <name>On Created</name>
           <display>On Created: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="50ff61db-ec80-41c6-b24e-510a14ee8f33">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

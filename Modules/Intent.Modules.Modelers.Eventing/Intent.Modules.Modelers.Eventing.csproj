@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <Version>3.3.2-pre.0</Version>
+    <Authors>Intent Architect</Authors>
+    <Company>Intent Architect</Company>
+    <Product>Intent - Modules Eventing Modeller</Product>
+    <Copyright>Copyright 2022</Copyright>
+    <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -13,6 +22,13 @@
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.0.1" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>

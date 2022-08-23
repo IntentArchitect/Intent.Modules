@@ -3,6 +3,7 @@
   <name>Send Message</name>
   <display>Send Message</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,6 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>0ffa7fa8-61d5-4c8d-8301-12bf4de7ba04</parentFolderId>

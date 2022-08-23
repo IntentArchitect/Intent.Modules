@@ -3,7 +3,7 @@
   <name>Producer</name>
   <display>Producer</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>90c0e85e-54cf-4d6b-b69f-0440e4ace079</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Publish Message</name>
           <display>Add Publish Message: Publish Message</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="f2602e59-89e6-4b58-a0ef-185807dd3d2b">
             <typeId>7b59cb3e-527e-414d-a784-88d67b0d1e20</typeId>
@@ -104,7 +103,6 @@
           <name>Add Send Message</name>
           <display>Add Send Message: Send Message</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="417abdb8-1877-4c10-aff3-47b774ff4be0">
             <typeId>0ffa7fa8-61d5-4c8d-8301-12bf4de7ba04</typeId>
