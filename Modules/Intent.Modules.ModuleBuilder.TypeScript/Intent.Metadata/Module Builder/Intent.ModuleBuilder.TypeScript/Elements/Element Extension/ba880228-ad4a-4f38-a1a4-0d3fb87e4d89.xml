@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="8ad805fd-8e49-477b-b3d6-3b5c0ecd8dac">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ba880228-ad4a-4f38-a1a4-0d3fb87e4d89</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Typescript Template</name>
           <display>New Typescript Template: Typescript File Template</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="dee1aa28-4607-41e0-ba28-f28a2a771fa9">
             <typeId>e6e41d88-2829-41b6-a791-065d2bb44eb3</typeId>

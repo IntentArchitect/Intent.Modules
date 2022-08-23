@@ -18,16 +18,16 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
+namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypescriptTemplate : IntentTemplateBase<TypescriptFileTemplateModel>
+    partial class TypescriptTemplateT4Template : IntentTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypescriptTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
+        public TypescriptTemplateT4Template(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -59,7 +59,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
 <#@ import namespace=""Intent.Modules.Common.Templates"" #>
-<#@ import namespace=""Intent.Modules.Common.TypeScript.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common.Typescript.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 {(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.Namespace}"" #>" : "")}

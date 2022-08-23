@@ -11,10 +11,10 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.ModuleBuilder.TypeScript.Api
 {
-    [IntentManaged(Mode.Merge)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class FolderExtensionModel : FolderModel
     {
-        [IntentManaged(Mode.Ignore)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public FolderExtensionModel(IElement element) : base(element)
         {
         }

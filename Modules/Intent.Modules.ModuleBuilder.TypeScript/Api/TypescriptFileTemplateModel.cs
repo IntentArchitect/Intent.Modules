@@ -7,33 +7,36 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.ModuleBuilder.TypeScript.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class TypescriptFileTemplateModel : TemplateRegistrationModel, IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public new const string SpecializationType = "Typescript File Template";
+        public new const string SpecializationTypeId = "e6e41d88-2829-41b6-a791-065d2bb44eb3";
 
         public TypescriptFileTemplateModel(IElement element) : base(element, SpecializationType)
         {
         }
 
-        [IntentManaged(Mode.Fully)]
+        public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
+            .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
+            .Select(x => new TemplateDecoratorContractModel(x))
+            .SingleOrDefault();
+
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        [IntentManaged(Mode.Fully)]
         public bool Equals(TypescriptFileTemplateModel other)
         {
             return Equals(_element, other?._element);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -42,17 +45,10 @@ namespace Intent.ModuleBuilder.TypeScript.Api
             return Equals((TypescriptFileTemplateModel)obj);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-        public new const string SpecializationTypeId = "e6e41d88-2829-41b6-a791-065d2bb44eb3";
-
-        public TemplateDecoratorContractModel DecoratorContract => _element.ChildElements
-            .GetElementsOfType(TemplateDecoratorContractModel.SpecializationTypeId)
-            .Select(x => new TemplateDecoratorContractModel(x))
-            .SingleOrDefault();
     }
 
     [IntentManaged(Mode.Fully)]

@@ -4,6 +4,7 @@ using Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartia
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.TemplateExtensions", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates

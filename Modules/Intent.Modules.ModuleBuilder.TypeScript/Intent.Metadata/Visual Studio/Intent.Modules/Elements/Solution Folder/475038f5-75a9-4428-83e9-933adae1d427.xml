@@ -3,7 +3,7 @@
   <name>Modules</name>
   <display>Modules</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f917caa4-f97b-43a2-9853-5c5dfa533768</parentFolderId>

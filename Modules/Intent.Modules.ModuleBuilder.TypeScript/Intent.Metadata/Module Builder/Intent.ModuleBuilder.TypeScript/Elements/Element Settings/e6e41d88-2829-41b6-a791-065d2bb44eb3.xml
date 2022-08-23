@@ -3,7 +3,7 @@
   <name>Typescript File Template</name>
   <display>Typescript File Template</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>ac7fa580-f66f-4257-a160-0bb82b56f4f9</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e6e41d88-2829-41b6-a791-065d2bb44eb3</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Decorator Contract</name>
           <display>Add Decorator Contract: Template Decorator Contract</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="e97c69ed-4ebb-4718-a7b2-fa3a36932213">
             <typeId>ac1da322-377e-45cf-a2d9-d147a4d91457</typeId>
