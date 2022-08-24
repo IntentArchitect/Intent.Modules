@@ -42,11 +42,6 @@ namespace Intent.Modelers.Eventing.Api
             .Select(x => new PublishMessageModel(x))
             .ToList();
 
-        public IList<SendMessageModel> SendMessages => _element.ChildElements
-            .GetElementsOfType(SendMessageModel.SpecializationTypeId)
-            .Select(x => new SendMessageModel(x))
-            .ToList();
-
         public override string ToString()
         {
             return _element.ToString();
