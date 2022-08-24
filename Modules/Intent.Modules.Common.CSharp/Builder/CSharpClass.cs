@@ -12,8 +12,9 @@ public class CSharpClass
         Name = name.ToCSharpIdentifier();
     }
     public string Name { get; private set; }
-    public string AccessModifier { get; private set; } = "public";
+    public string AccessModifier { get; private set; } = "public ";
     public string BaseType { get; set; }
+    public IList<string> Interfaces { get; set; } = new List<string>();
     public IList<CSharpField> Fields { get; set; } = new List<CSharpField>();
     public IList<CSharpConstructor> Constructors { get; set; } = new List<CSharpConstructor>();
     public IList<CSharpProperty> Properties { get; set; } = new List<CSharpProperty>();
@@ -21,7 +22,18 @@ public class CSharpClass
 
     public CSharpClass WithBaseType(string type)
     {
+        return ExtendsClass(type);
+    }
+
+    public CSharpClass ExtendsClass(string type)
+    {
         BaseType = type;
+        return this;
+    }
+
+    public CSharpClass ImplementsInterface(string type)
+    {
+        Interfaces.Add(type);
         return this;
     }
 
@@ -34,8 +46,15 @@ public class CSharpClass
 
     public CSharpProperty AddProperty(string type, string name)
     {
-        var property = new CSharpProperty(type, name);
+        var property = new CSharpProperty(type, name, this);
         Properties.Add(property);
+        return property;
+    }
+
+    public CSharpProperty InsertProperty(int index, string type, string name)
+    {
+        var property = new CSharpProperty(type, name, this);
+        Properties.Insert(index, property);
         return property;
     }
 
@@ -53,6 +72,35 @@ public class CSharpClass
         return method;
     }
 
+    public CSharpClass Internal()
+    {
+        AccessModifier = "internal ";
+        return this;
+    }
+    public CSharpClass InternalProtected()
+    {
+        AccessModifier = "internal protected ";
+        return this;
+    }
+
+    public CSharpClass Protected()
+    {
+        AccessModifier = "protected ";
+        return this;
+    }
+    public CSharpClass Private()
+    {
+        AccessModifier = "private ";
+        return this;
+    }
+    public CSharpClass Partial()
+    {
+        IsPartial = true;
+        return this;
+    }
+
+    public bool IsPartial { get; set; }
+
     public override string ToString()
     {
         return ToString("");
@@ -60,7 +108,7 @@ public class CSharpClass
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{AccessModifier} class {Name}{GetBaseTypes()}
+        return $@"{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}class {Name}{GetBaseTypes()}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
@@ -71,6 +119,11 @@ public class CSharpClass
         if (BaseType != null)
         {
             types.Add(BaseType);
+        }
+
+        foreach (var @interface in Interfaces)
+        {
+            types.Add(@interface);
         }
 
         return types.Any() ? $" : {string.Join(", ", types)}" : "";

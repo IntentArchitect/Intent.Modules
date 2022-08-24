@@ -2,8 +2,9 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpField
 {
-    public string Type { get; }
-    public string Name { get; }
+    private bool _canBeNull = false;
+    public string Type { get; private set; }
+    public string Name { get; private set; }
     public string AccessModifier { get; private set; }
 
     public CSharpField(string type, string name)
@@ -12,19 +13,27 @@ public class CSharpField
         Type = type;
         Name = name;
     }
-    public string ToString(string indentation)
-    {
-        return $@"{indentation}{AccessModifier}{Type} {Name};";
-    }
 
     public CSharpField PrivateReadOnly()
     {
         AccessModifier = "private readonly ";
         return this;
     }
+
     public CSharpField Private()
     {
         AccessModifier = "private ";
         return this;
+    }
+
+    public CSharpField CanBeNull()
+    {
+        _canBeNull = true;
+        return this;
+    }
+
+    public string ToString(string indentation)
+    {
+        return $@"{indentation}{AccessModifier}{Type}{(_canBeNull ? "?" : "")} {Name};";
     }
 }

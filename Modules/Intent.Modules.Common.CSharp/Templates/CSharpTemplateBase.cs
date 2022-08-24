@@ -69,7 +69,7 @@ namespace Intent.Modules.Common.CSharp.Templates
     /// this article</seealso>.
     /// </para>
     /// </summary>
-    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings, IHasFrameworkDependencies
+    public abstract class CSharpTemplateBase<TModel> : IntentTemplateBase<TModel>, ICSharpTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IRoslynMerge, IDeclareUsings, IHasFrameworkDependencies
     {
         private readonly ICollection<IAssemblyReference> _assemblyDependencies = new List<IAssemblyReference>();
         private readonly HashSet<string> _additionalUsingNamespaces = new();

@@ -52,6 +52,20 @@ namespace Intent.Modules.Common.CSharp.Templates
             set => CustomMetadata[nameof(AutoFormat)] = value.ToString();
         }
 
+        /// <inheritdoc />
+        public override string FileName
+        {
+            get => CustomMetadata["ClassName"];
+            set => CustomMetadata["ClassName"] = value;
+        }
+
+        /// <inheritdoc />
+        public string Namespace
+        {
+            get => CustomMetadata["Namespace"];
+            set => CustomMetadata["Namespace"] = value;
+        }
+
         /// <summary>
         /// Whether or not to apply formatting (such as PascalCasing) to namespaces. 
         /// </summary>

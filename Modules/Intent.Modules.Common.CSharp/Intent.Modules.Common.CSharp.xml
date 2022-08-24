@@ -789,6 +789,12 @@
             Whether or not to automatically apply formatting to C# files.
             </summary>
         </member>
+        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.FileName">
+            <inheritdoc />
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.Namespace">
+            <inheritdoc />
+        </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.ApplyNamespaceFormatting">
             <summary>
             Whether or not to apply formatting (such as PascalCasing) to namespaces. 
