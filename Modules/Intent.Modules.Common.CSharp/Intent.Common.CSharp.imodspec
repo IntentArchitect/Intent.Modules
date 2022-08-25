@@ -10,7 +10,7 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <templates></templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.9" />
+    <dependency id="Intent.Common" version="3.3.11-pre.0" />
     <dependency id="Intent.Common.Types" version="3.3.4" />
   </dependencies>
   <files>

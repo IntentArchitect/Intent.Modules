@@ -1,3 +1,4 @@
+using System;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 
@@ -16,23 +17,33 @@ public class CSharpConstructorParameter
         Name = name;
     }
 
-    public CSharpField IntroduceField()
+    public CSharpConstructorParameter IntroduceField(Action<CSharpField> configure = null)
     {
-        var field = _constructor.Class.AddField(Type, Name.ToPrivateMemberName());
-        _constructor.AddStatement($"{(field.Name == Name ? "this." : "")}{field.Name} = {Name};");
-        return field;
+        _constructor.Class.AddField(Type, Name.ToPrivateMemberName(), field =>
+        {
+            _constructor.AddStatement($"{(field.Name == Name ? "this." : "")}{field.Name} = {Name};");
+            configure?.Invoke(field);
+        });
+        return this;
     }
 
-    public CSharpField IntroduceReadonlyField()
+    public CSharpConstructorParameter IntroduceReadonlyField(Action<CSharpField> configure = null)
     {
-        return IntroduceField().PrivateReadOnly();
+        return IntroduceField(field =>
+        {
+            field.PrivateReadOnly();
+            configure?.Invoke(field);
+        });
     }
 
-    public CSharpProperty IntroduceProperty()
+    public CSharpConstructorParameter IntroduceProperty(Action<CSharpProperty> configure = null)
     {
-        var property = _constructor.Class.AddProperty(Type, Name.ToPascalCase());
-        _constructor.AddStatement($"{(property.Name == Name ? "this." : "")}{property.Name} = {Name};");
-        return property;
+        _constructor.Class.AddProperty(Type, Name.ToPascalCase(), property =>
+        {
+            _constructor.AddStatement($"{(property.Name == Name ? "this." : "")}{property.Name} = {Name};");
+            configure?.Invoke(property);
+        });
+        return this;
     }
 
     public override string ToString()

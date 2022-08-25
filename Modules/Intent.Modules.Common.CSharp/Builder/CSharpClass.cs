@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Templates;
@@ -37,39 +38,57 @@ public class CSharpClass
         return this;
     }
 
-    public CSharpField AddField(string type, string name)
+    public CSharpClass ImplementsInterfaces(IEnumerable<string> types)
+    {
+        foreach (var type in types) 
+            Interfaces.Add(type);
+
+        return this;
+    }
+
+    public CSharpClass AddField(string type, string name, Action<CSharpField> configure = null)
     {
         var field = new CSharpField(type, name);
         Fields.Add(field);
-        return field;
+        configure?.Invoke(field);
+        return this;
     }
 
-    public CSharpProperty AddProperty(string type, string name)
+    public CSharpClass AddProperty(string type, string name, Action<CSharpProperty> configure = null)
     {
         var property = new CSharpProperty(type, name, this);
         Properties.Add(property);
-        return property;
+        configure?.Invoke(property);
+        return this;
     }
 
-    public CSharpProperty InsertProperty(int index, string type, string name)
+    public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null)
     {
         var property = new CSharpProperty(type, name, this);
         Properties.Insert(index, property);
-        return property;
+        configure?.Invoke(property);
+        return this;
     }
 
-    public CSharpConstructor AddConstructor()
+    public CSharpClass AddConstructor(Action<CSharpConstructor> configure = null)
     {
         var ctor = new CSharpConstructor(this);
         Constructors.Add(ctor);
-        return ctor;
+        configure?.Invoke(ctor);
+        return this;
     }
 
-    public CSharpMethod AddMethod(string returnType, string name)
+    public CSharpClass AddMethod(string returnType, string name, Action<CSharpMethod> configure, params string[] statements)
+    {
+        return InsertMethod(0, returnType, name, configure, statements);
+    }
+
+    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpMethod> configure, params string[] statements)
     {
         var method = new CSharpMethod(returnType, name);
-        Methods.Add(method);
-        return method;
+        Methods.Insert(index, method);
+        configure?.Invoke(method);
+        return this;
     }
 
     public CSharpClass Internal()

@@ -14,10 +14,12 @@ public class CSharpProperty
     public string Type { get; }
     public string Name { get; }
     public bool IsReadOnly { get; private set; } = false;
-    public CSharpStatements XmlComments { get; private set; } = new CSharpStatements();
+    public string InitialValue { get; private set; }
+    public CSharpStatements XmlComments { get; } = new CSharpStatements();
     public CSharpClass Class { get; }
-    public CSharpPropertyAccessor Getter { get; private set; } = CSharpPropertyAccessor.Getter();
-    public CSharpPropertyAccessor Setter { get; private set; } = CSharpPropertyAccessor.Setter();
+    public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
+    public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
+    public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
 
     public CSharpProperty(string type, string name, CSharpClass @class)
     {
@@ -61,6 +63,18 @@ public class CSharpProperty
         return this;
     }
 
+    public CSharpProperty ReadOnly()
+    {
+        IsReadOnly = true;
+        return this;
+    }
+
+    public CSharpProperty WithInitialValue(string initialValue)
+    {
+        InitialValue = initialValue;
+        return this;
+    }
+
     public CSharpProperty WithComments(string xmlComments)
     {
         XmlComments.AddStatements(xmlComments.Split('\n', '\r', StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray());
@@ -73,12 +87,44 @@ public class CSharpProperty
         return this;
     }
 
+    public CSharpProperty AddMetadata<T>(string key, T value)
+    {
+        Metadata.Add(key, value);
+        return this;
+    }
+
+    public bool TryGetMetadata<T>(string key, out T value)
+    {
+        if (Metadata.TryGetValue(key, out var valueFound) && valueFound is T castValue)
+        {
+            value = castValue;
+            return true;
+        }
+
+        value = default(T);
+        return false;
+    }
+
+    public bool TryGetMetadata(string key, out object value)
+    {
+        if (Metadata.TryGetValue(key, out var valueFound))
+        {
+            value = valueFound;
+            return true;
+        }
+
+        value = null;
+        return false;
+    }
+
     public CSharpProperty WithBackingField(Action<CSharpField> configure = null)
     {
         Getter.WithExpressionImplementation(Name.ToPrivateMemberName());
         Setter.WithExpressionImplementation($"{Name.ToPrivateMemberName()} = value");
-        var field = Class.AddField(Type, Name.ToPrivateMemberName()).Private();
-        configure?.Invoke(field);
+        Class.AddField(Type, Name.ToPrivateMemberName(), field =>
+        {
+            configure?.Invoke(field);
+        });
         return this;
     }
 
@@ -96,10 +142,10 @@ public class CSharpProperty
 {indentation}{{ 
 {Getter.ToString(indentation + "    ")}{(!IsReadOnly ? $@"
 {indentation}{Setter.ToString(indentation + "    ")}" : string.Empty)}
-{indentation}}}";
+{indentation}}}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
         }
         return $@"{indentation}{(!XmlComments.IsEmpty() ? XmlComments.ToString(indentation) + $@"
-{indentation}" : string.Empty)}{AccessModifier}{OverrideModifier}{Type} {Name} {{ {Getter}{(!IsReadOnly ? Setter : string.Empty)} }}";
+{indentation}" : string.Empty)}{AccessModifier}{OverrideModifier}{Type} {Name} {{ {Getter}{(!IsReadOnly ? Setter : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
     }
 }
 
@@ -202,7 +248,7 @@ public class CSharpStatements
         ((List<string>)Statements).AddRange(statements);
     }
 
-    public CSharpStatements AddStatements(params string[] statements)
+    public CSharpStatements AddStatements(IEnumerable<string> statements)
     {
         ((List<string>)Statements).AddRange(statements);
         return this;

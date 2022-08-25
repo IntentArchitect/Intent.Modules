@@ -52,8 +52,10 @@ namespace Intent.Modules.Common.CSharp.Templates
             set => CustomMetadata[nameof(AutoFormat)] = value.ToString();
         }
 
-        /// <inheritdoc />
-        public override string FileName
+        /// <summary>
+        /// The primary class name of this file.
+        /// </summary>
+        public string ClassName
         {
             get => CustomMetadata["ClassName"];
             set => CustomMetadata["ClassName"] = value;

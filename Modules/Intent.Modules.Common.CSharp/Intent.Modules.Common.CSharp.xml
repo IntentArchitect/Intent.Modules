@@ -789,8 +789,10 @@
             Whether or not to automatically apply formatting to C# files.
             </summary>
         </member>
-        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.FileName">
-            <inheritdoc />
+        <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.ClassName">
+            <summary>
+            The primary class name of this file.
+            </summary>
         </member>
         <member name="P:Intent.Modules.Common.CSharp.Templates.CSharpFileConfig.Namespace">
             <inheritdoc />

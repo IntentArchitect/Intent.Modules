@@ -100,7 +100,7 @@ namespace Intent.Modules.Common.Templates
     /// <summary>
     /// Base class for templates.
     /// </summary>
-    public abstract class IntentTemplateBase : T4TemplateBase, ITemplate, IConfigurableTemplate,
+    public abstract class IntentTemplateBase : T4TemplateBase, IIntentTemplate, ITemplate, IConfigurableTemplate,
         IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
         ITemplateBeforeExecutionHook
     {

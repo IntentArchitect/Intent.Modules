@@ -42,11 +42,29 @@ public class CSharpFile
             relativeLocation: RelativeLocation);
     }
 
-    public override string ToString()
+    public CSharpFile OnBuild(Action<CSharpFile> configure)
+    {
+        _configurations.Add(() => configure(this));
+        return this;
+    }
+
+    private bool _isBuilt = false;
+    public CSharpFile Build()
     {
         foreach (var configuration in _configurations)
         {
             configuration.Invoke();
+        }
+
+        _isBuilt = true;
+        return this;
+    }
+
+    public override string ToString()
+    {
+        if (!_isBuilt)
+        {
+            Build();
         }
 
         return $@"{string.Join(@"
