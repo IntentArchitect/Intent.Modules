@@ -104,8 +104,8 @@ namespace Intent.Modules.Common.Templates
         IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
         ITemplateBeforeExecutionHook
     {
-        private readonly Lazy<string> _getExistingFilePathCache;
-        private readonly Lazy<(bool result, string content)> _tryGetExistingFileContentCache;
+        private readonly Lazy<(bool Result, string Path)> _tryGetExistingFilePathCache;
+        private readonly Lazy<(bool Result, string Content)> _tryGetExistingFileContentCache;
 
         /// <summary>
         /// Returns the known template dependencies added for this template.
@@ -122,9 +122,8 @@ namespace Intent.Modules.Common.Templates
             OutputTarget = outputTarget;
             Id = templateId;
             BindingContext = new TemplateBindingContext(this);
-            _getExistingFilePathCache = new Lazy<string>(GetExistingFilePathInternal);
-            _tryGetExistingFileContentCache =
-                new Lazy<(bool result, string content)>(TryGetExistingFileContentInternal);
+            _tryGetExistingFilePathCache = new Lazy<(bool, string)>(TryGetExistingFilePathInternal);
+            _tryGetExistingFileContentCache = new Lazy<(bool, string)>(TryGetExistingFileContentInternal);
         }
 
         /// <summary>
@@ -172,14 +171,7 @@ namespace Intent.Modules.Common.Templates
         /// <summary>
         /// Returns the file path of the existing file for this template, if it exists. If it doesn't exist, or can't be found, will return null.
         /// </summary>
-        public virtual string GetExistingFilePath() => _getExistingFilePathCache.Value;
-
-        private string GetExistingFilePathInternal()
-        {
-            var filePath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath ??
-                           FileMetadata.GetFilePath();
-            return File.Exists(filePath) ? filePath : null;
-        }
+        public virtual string GetExistingFilePath() => _tryGetExistingFilePathCache.Value.Path;
 
         /// <summary>
         /// Override this method to control whether the template runs and the creates the output file.
@@ -941,19 +933,77 @@ namespace Intent.Modules.Common.Templates
             return result;
         }
 
+        /// <summary>
+        /// Not to be called directly, this is a delegate for the <see cref="Lazy{T}"/> instance
+        /// for <see cref="_tryGetExistingFileContentCache"/>.
+        /// </summary>
         private (bool result, string content) TryGetExistingFileContentInternal()
         {
-            if (File.Exists(FileMetadata.GetFullLocationPath()))
+            return TryGetExistingFilePath(out var path)
+                ? (true, File.ReadAllText(path))
+                : (false, default);
+        }
+
+        /// <summary>
+        /// Not to be called directly, this is a delegate for the <see cref="Lazy{T}"/> instance
+        /// for <see cref="_tryGetExistingFilePathCache"/>.
+        /// </summary>
+        /// <remarks>
+        /// There is a significant performance impact even for <see cref="File.Exists"/> and
+        /// caching them has been shown to make a highly significant improvement in software
+        /// factory execution time.
+        /// <para>
+        /// It is intentional that if a file exists at the current output path then the file at the
+        /// current output path is considered the "existing" file, regardless of whether or not the
+        /// output path is different compared to the previous software execution.
+        /// </para>
+        /// <para>
+        /// This is so that the following scenario works as expected:
+        /// - Rename the file preemptively on the file system in your IDE.
+        /// - Rename the element in Intent Architect.
+        /// - Run the software factory.
+        /// </para>
+        /// </remarks>
+        private (bool Result, string Path) TryGetExistingFilePathInternal()
+        {
+            var outputPath = FileMetadata.GetFilePath();
+            if (File.Exists(outputPath))
             {
-                return (true, File.ReadAllText(FileMetadata.GetFullLocationPath()));
+                return (true, outputPath);
             }
 
-            if (File.Exists(GetExistingFilePath()))
+            var previousOutputPath = ExecutionContext.GetPreviousExecutionLog()?.TryGetFileLog(this)?.FilePath;
+            if (previousOutputPath != null &&
+                File.Exists(previousOutputPath))
             {
-                return (true, File.ReadAllText(GetExistingFilePath()));
+                return (true, previousOutputPath);
             }
 
             return (false, default);
+        }
+
+        /// <summary>
+        /// If an existing file exists, returns <see langword="true"/> and populates the
+        /// <paramref name="path"/> with the existing files path.
+        /// </summary>
+        /// <remarks>
+        /// At the end of a software factory execution a template's output path is recorded in a
+        /// log and this method reads the log to determine what the previous output path was.
+        /// <para>
+        /// Regardless of whether or not the current output path is different compared to the
+        /// previous software factory execution, if a file exists at the current output path, then
+        /// the current output path is populated into the <paramref name="path"/> parameter.
+        /// </para>
+        /// <para>
+        /// If no file exists at the current output path, then the previous output path is checked
+        /// to see if it exists.
+        /// </para>
+        /// </remarks>
+        public bool TryGetExistingFilePath(out string path)
+        {
+            (var result, path) = _tryGetExistingFilePathCache.Value;
+
+            return result;
         }
 
         #region TryGetTypeName

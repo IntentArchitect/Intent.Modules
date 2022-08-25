@@ -58,18 +58,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.Common
             var templateGenerator = new TemplateGenerator();
 
             var generatedT4Content = t4TemplateInstance.RunTemplate();
-            var existingT4Content = File.Exists(t4TemplateInstance.GetExistingFilePath())
-                ? File.ReadAllText(t4TemplateInstance.GetExistingFilePath())
-                : null;
-            var t4TemplateIsDifferent = generatedT4Content.Trim() != existingT4Content?.Trim();
+            var t4TemplateIsDifferent = !t4TemplateInstance.TryGetExistingFileContent(out var existingT4Content) ||
+                                        generatedT4Content.Trim() != existingT4Content.Trim();
 
             // The output of pre-processing below is slightly different to how it happens when done in VS itself, so we don't
             // want to re-run the pre-processing unless something is different.
-            if (File.Exists(GetExistingFilePath()) &&
+            if (TryGetExistingFileContent(out var existingFileContent) &&
                 !t4TemplateIsDifferent &&
                 !PathHasChanged())
             {
-                return File.ReadAllText(GetExistingFilePath());
+                return existingFileContent;
             }
 
             var hasErrors = !templateGenerator.PreprocessTemplate(

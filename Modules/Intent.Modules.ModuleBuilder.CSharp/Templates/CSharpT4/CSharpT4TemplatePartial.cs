@@ -46,8 +46,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpT4
 
         public override string TransformText()
         {
-            var content = GetExistingTemplateContent();
-            if (content != null)
+            if (TryGetExistingFileContent(out var content))
             {
                 return ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
@@ -90,18 +89,6 @@ namespace <#= Namespace #>
                 return $"CSharpTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
             }
             return $"CSharpTemplateBase<{Model.GetModelName()}>";
-        }
-
-        private string GetExistingTemplateContent()
-        {
-            var existingFile = GetExistingFilePath();
-
-            if (existingFile != null)
-            {
-                return File.ReadAllText(existingFile);
-            }
-
-            return null;
         }
 
         private static readonly Regex _templateInheritsTagRegex = new Regex(
