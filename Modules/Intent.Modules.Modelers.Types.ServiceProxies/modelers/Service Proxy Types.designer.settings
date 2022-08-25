@@ -35,10 +35,11 @@
       <scriptOptions />
       <mappingSettings>
         <mappingSetting id="df491bea-8a85-4bc9-a93d-41b7abb80ffb">
-          <name>NewMappingSettings</name>
+          <name>Service Reference</name>
           <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-right</symbol>
           <targetTypeOptions>
             <option specializationType="b16578a5-27b1-4047-a8df-f0b783d706bd" displayText="Service" />
           </targetTypeOptions>
@@ -52,18 +53,7 @@
               </criteria>
               <mapTo specializationType="Service Proxy" childMappingMode="map-to-child" />
               <behaviour autoSelectChildren="true" />
-              <childMappings>
-                <mapping id="ff7f2a97-e7e4-48e3-960d-521171d1a77b">
-                  <criteria specializationType="Operation">
-                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="Operation" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="true" />
-                  <childMappings />
-                </mapping>
-              </childMappings>
+              <childMappings />
             </mapping>
           </mappings>
         </mappingSetting>

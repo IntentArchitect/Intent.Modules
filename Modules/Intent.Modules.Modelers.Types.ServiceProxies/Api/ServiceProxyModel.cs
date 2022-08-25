@@ -88,14 +88,14 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
             return type.IsServiceProxyModel() ? new ServiceProxyModel((IElement)type) : null;
         }
 
-        public static bool HasNewMappingSettingsMapping(this ServiceProxyModel type)
+        public static bool HasServiceReferenceMapping(this ServiceProxyModel type)
         {
             return type.Mapping?.MappingSettingsId == "df491bea-8a85-4bc9-a93d-41b7abb80ffb";
         }
 
-        public static IElementMapping GetNewMappingSettingsMapping(this ServiceProxyModel type)
+        public static IElementMapping GetServiceReferenceMapping(this ServiceProxyModel type)
         {
-            return type.HasNewMappingSettingsMapping() ? type.Mapping : null;
+            return type.HasServiceReferenceMapping() ? type.Mapping : null;
         }
     }
 }
