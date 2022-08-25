@@ -61,18 +61,7 @@
                   </criteria>
                   <mapTo specializationType="Operation" childMappingMode="map-to-child" />
                   <behaviour autoSelectChildren="true" />
-                  <childMappings>
-                    <mapping id="7d8db837-a62c-41b2-b9e5-f81b9f61469a">
-                      <criteria specializationType="Parameter">
-                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                      </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                  </childMappings>
+                  <childMappings />
                 </mapping>
               </childMappings>
             </mapping>

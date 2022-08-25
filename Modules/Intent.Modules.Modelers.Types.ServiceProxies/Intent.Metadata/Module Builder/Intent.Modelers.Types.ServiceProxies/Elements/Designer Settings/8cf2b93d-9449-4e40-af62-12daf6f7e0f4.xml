@@ -3,7 +3,7 @@
   <name>Service Proxy Types</name>
   <display>Service Proxy Types</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>ce2f16aa-baca-49d1-bc4b-16c9ae113b47</parentFolderId>
