@@ -36,10 +36,10 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         [IntentManaged(Mode.Ignore)]
         public static IEnumerable<ServiceProxyDTOModel> GetDTOModels(this ServiceProxyModel proxy)
         {
-            var dtos = proxy.Operations
+            var dtos = proxy.MappedService.Operations//.Operations
                 .SelectMany(x => x.Parameters)
                 .SelectMany(x => GetTypeModels(x.TypeReference))
-                .Concat(proxy.Operations.Where(x => x.TypeReference.Element != null).SelectMany(x => GetTypeModels(x.TypeReference)))
+                .Concat(proxy.MappedService.Operations/*.Operations*/.Where(x => x.TypeReference.Element != null).SelectMany(x => GetTypeModels(x.TypeReference)))
                 .ToList();
 
             foreach (var dto in dtos.ToList())

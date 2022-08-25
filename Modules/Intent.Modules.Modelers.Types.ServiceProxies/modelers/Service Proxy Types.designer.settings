@@ -19,19 +19,8 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
-      <typeOrder>
-        <type order="0">Operation</type>
-      </typeOrder>
-      <creationOptions>
-        <option type="element">
-          <specializationType>Operation</specializationType>
-          <specializationTypeId>aee6811e-b2f6-4562-a8eb-502029f63bc8</specializationTypeId>
-          <text>Add Operation</text>
-          <defaultName>NewOperation</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
+      <typeOrder />
+      <creationOptions />
       <scriptOptions />
       <mappingSettings>
         <mappingSetting id="df491bea-8a85-4bc9-a93d-41b7abb80ffb">
@@ -87,19 +76,8 @@
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
-          <typeOrder>
-            <type order="0">Parameter</type>
-          </typeOrder>
-          <creationOptions>
-            <option type="element">
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>f11273c1-217f-4f42-b690-3d8b488f95a8</specializationTypeId>
-              <text>Add Parameter</text>
-              <defaultName>NewParameter</defaultName>
-              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
+          <typeOrder />
+          <creationOptions />
           <scriptOptions />
           <mappingSettings />
           <childElementSettings>
