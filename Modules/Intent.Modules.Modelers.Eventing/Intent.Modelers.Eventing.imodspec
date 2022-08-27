@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Eventing</id>
-  <version>3.3.1</version>
+  <version>3.3.2</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -11,8 +11,8 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.9" />
-    <dependency id="Intent.Common.Types" version="3.3.4" />
+    <dependency id="Intent.Common" version="3.3.11" />
+    <dependency id="Intent.Common.Types" version="3.3.5" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

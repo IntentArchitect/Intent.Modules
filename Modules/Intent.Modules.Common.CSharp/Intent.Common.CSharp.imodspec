@@ -10,8 +10,8 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <templates></templates>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.9" />
-    <dependency id="Intent.Common.Types" version="3.3.4" />
+    <dependency id="Intent.Common" version="3.3.11" />
+    <dependency id="Intent.Common.Types" version="3.3.5" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
