@@ -4,4 +4,9 @@
     {
         void BeforeTemplateExecution();
     }
+
+    public interface IAfterTemplateRegistrationExecutionHook
+    {
+        void AfterTemplateRegistration();
+    }
 }

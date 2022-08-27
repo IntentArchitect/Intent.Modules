@@ -11,14 +11,15 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpMethod
 {
-    private readonly IList<CSharpParameter> _parameters = new List<CSharpParameter>();
-    private readonly IList<string> _statements = new List<string>();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public string ReturnType { get; private set; }
     public string Name { get; private set; }
-
     public string AccessModifier { get; private set; } = "public ";
     public string OverrideModifier { get; private set; } = "";
     public string AsyncMode { get; private set; } = "";
+    public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
+    public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
+    public CSharpXmlComments XmlComments { get; } = new CSharpXmlComments();
     public IDictionary<string, string> Metadata { get; } = new Dictionary<string, string>();
     public CSharpMethod(string returnType, string name)
     {
@@ -29,34 +30,55 @@ public class CSharpMethod
     public CSharpMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
     {
         var param = new CSharpParameter(type, name);
-        _parameters.Add(param);
+        Parameters.Add(param);
         configure?.Invoke(param);
         return this;
     }
 
-    public CSharpMethod AddStatement(string statement)
+    public CSharpMethod AddStatement(string statement, Action<CSharpStatement> configure = null)
     {
-        _statements.Add(statement);
+        var s = new CSharpStatement(statement);
+        Statements.Add(s);
+        configure?.Invoke(s);
         return this;
     }
 
-    public CSharpMethod InsertStatement(int index, string statement)
+    public CSharpMethod InsertStatement(int index, string statement, Action<CSharpStatement> configure = null)
     {
-        _statements.Insert(index, statement);
+        var s = new CSharpStatement(statement);
+        Statements.Insert(index, s);
+        configure?.Invoke(s);
         return this;
     }
 
-    public CSharpMethod AddStatements(IEnumerable<string> statements)
+    public CSharpMethod AddStatements(string statements, Action<IEnumerable<CSharpStatement>> configure = null)
     {
-        foreach (var statement in statements) 
-            _statements.Add(statement);
+        return AddStatements(statements.ConvertToStatements(), configure);
+    }
+
+    public CSharpMethod AddStatements(IEnumerable<string> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    {
+        return AddStatements(statements.Select(x => new CSharpStatement(x)), configure);
+    }
+
+    public CSharpMethod AddStatements(IEnumerable<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    {
+        var arrayed = statements.ToArray();
+        foreach (var statement in arrayed)
+        {
+            Statements.Add(statement);
+        }
+        configure?.Invoke(arrayed);
 
         return this;
     }
 
-    public CSharpAttribute AddAttribute(string name)
+    public CSharpMethod AddAttribute(string name, Action<CSharpAttribute> configure = null)
     {
-
+        var param = new CSharpAttribute(name);
+        Attributes.Add(param);
+        configure?.Invoke(param);
+        return this;
     }
 
     public CSharpMethod Protected()
@@ -94,6 +116,18 @@ public class CSharpMethod
         return this;
     }
 
+    public CSharpMethod WithComments(string xmlComments)
+    {
+        XmlComments.AddStatements(xmlComments);
+        return this;
+    }
+
+    public CSharpMethod WithComments(IEnumerable<string> xmlComments)
+    {
+        XmlComments.AddStatements(xmlComments);
+        return this;
+    }
+
     public CSharpMethod AddMetadata(string key, string value)
     {
         Metadata.Add(key, value);
@@ -106,10 +140,14 @@ public class CSharpMethod
     }
     public string ToString(string indentation)
     {
-        return $@"{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", _parameters.Select(x => x.ToString()))})
-{indentation}{{{(_statements.Any() ? $@"
+        return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
+" : string.Empty)}{(Attributes.Any() ? $@"{indentation}{string.Join($@"
+{indentation}", Attributes)}
+" : string.Empty)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))})
+{indentation}{{{(Statements.Any() ? $@"
 {string.Join($@"
-", _statements.Select(x => $"{indentation}    {x}".TrimEnd()))}" : string.Empty)}
+", Statements.Select((s, index) => s.MustSeparateFromPrevious && index != 0 ? $@"
+{indentation}    {s}".TrimEnd() : $"{indentation}    {s}".TrimEnd()))}" : string.Empty)}
 {indentation}}}";
     }
 }

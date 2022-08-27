@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Common;
-using System.Linq;
 using System.Xml;
 using Intent.Modules.Common.CSharp.Templates;
 
@@ -9,14 +8,14 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpProperty
 {
+    private readonly CSharpClass _class;
     public string AccessModifier { get; private set; } = "public ";
     public string OverrideModifier { get; private set; } = "";
     public string Type { get; }
     public string Name { get; }
     public bool IsReadOnly { get; private set; } = false;
     public string InitialValue { get; private set; }
-    public CSharpStatements XmlComments { get; } = new CSharpStatements();
-    public CSharpClass Class { get; }
+    public CSharpXmlComments XmlComments { get; } = new CSharpXmlComments();
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
     public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
@@ -25,7 +24,7 @@ public class CSharpProperty
     {
         Type = type;
         Name = name;
-        Class = @class;
+        _class = @class;
     }
 
     public CSharpProperty Protected()
@@ -77,11 +76,11 @@ public class CSharpProperty
 
     public CSharpProperty WithComments(string xmlComments)
     {
-        XmlComments.AddStatements(xmlComments.Split('\n', '\r', StringSplitOptions.RemoveEmptyEntries).Select(x => x.Trim()).ToArray());
+        XmlComments.AddStatements(xmlComments);
         return this;
     }
 
-    public CSharpProperty WithComments(params string[] xmlComments)
+    public CSharpProperty WithComments(IEnumerable<string> xmlComments)
     {
         XmlComments.AddStatements(xmlComments);
         return this;
@@ -121,7 +120,7 @@ public class CSharpProperty
     {
         Getter.WithExpressionImplementation(Name.ToPrivateMemberName());
         Setter.WithExpressionImplementation($"{Name.ToPrivateMemberName()} = value");
-        Class.AddField(Type, Name.ToPrivateMemberName(), field =>
+        _class.AddField(Type, Name.ToPrivateMemberName(), field =>
         {
             configure?.Invoke(field);
         });
@@ -137,133 +136,14 @@ public class CSharpProperty
 
         if (!Getter.Implementation.IsEmpty() || !Setter.Implementation.IsEmpty())
         {
-            return $@"{indentation}{(!XmlComments.IsEmpty() ? XmlComments.ToString(indentation) + $@"
-{indentation}" : string.Empty)}{AccessModifier}{OverrideModifier}{Type} {Name} 
-{indentation}{{ 
+            return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
+" : string.Empty)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name}
+{indentation}{{
 {Getter.ToString(indentation + "    ")}{(!IsReadOnly ? $@"
 {indentation}{Setter.ToString(indentation + "    ")}" : string.Empty)}
 {indentation}}}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
         }
-        return $@"{indentation}{(!XmlComments.IsEmpty() ? XmlComments.ToString(indentation) + $@"
-{indentation}" : string.Empty)}{AccessModifier}{OverrideModifier}{Type} {Name} {{ {Getter}{(!IsReadOnly ? Setter : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
-    }
-}
-
-public class CSharpPropertyAccessor
-{
-    public string Accessor { get; }
-    public string AccessModifier { get; private set; } = "";
-    public bool IsExpression { get; private set; } = false;
-
-    public CSharpStatements Implementation { get; private set; } = new CSharpStatements();
-
-    private CSharpPropertyAccessor(string accessor)
-    {
-        Accessor = accessor;
-    }
-
-    public static CSharpPropertyAccessor Getter()
-    {
-        return new CSharpPropertyAccessor("get");
-    }
-
-    public static CSharpPropertyAccessor Setter()
-    {
-        return new CSharpPropertyAccessor("set");
-    }
-
-    public CSharpPropertyAccessor Public()
-    {
-        AccessModifier = "public ";
-        return this;
-    }
-    public CSharpPropertyAccessor Protected()
-    {
-        AccessModifier = "protected ";
-        return this;
-    }
-    public CSharpPropertyAccessor Private()
-    {
-        AccessModifier = "private ";
-        return this;
-    }
-
-    public CSharpPropertyAccessor WithImplementation(params string[] statements)
-    {
-        Implementation = new CSharpStatements(statements);
-        IsExpression = statements.Length == 1 && !statements[0].Contains("return");
-        return this;
-    }
-
-    public CSharpPropertyAccessor WithBodyImplementation(params string[] statements)
-    {
-        Implementation = new CSharpStatements(statements);
-        IsExpression = false;
-        return this;
-    }
-
-    public CSharpPropertyAccessor WithExpressionImplementation(string implementation)
-    {
-        Implementation = new CSharpStatements(new[] { implementation });
-        IsExpression = true;
-        return this;
-    }
-
-    public override string ToString()
-    {
-        return ToString(string.Empty);
-    }
-
-    public string ToString(string indentation)
-    {
-        if (Implementation.IsEmpty())
-        {
-            return $@"{AccessModifier}{Accessor};";
-        }
-
-        if (IsExpression)
-        {
-            return $"{indentation}{Accessor} => {Implementation};";
-        }
-        else if (Implementation.Statements.Count == 1)
-        {
-            return $"{indentation}{Accessor} {{ {Implementation} }}";
-        }
-        else
-        {
-            return @$"{indentation}{Accessor}
-{indentation}{{ 
-{Implementation.ToString($"{indentation}    ")} 
-{indentation}}}";
-        }
-    }
-}
-
-public class CSharpStatements
-{
-    public readonly IList<string> Statements = new List<string>();
-
-    public CSharpStatements(params string[] statements)
-    {
-        ((List<string>)Statements).AddRange(statements);
-    }
-
-    public CSharpStatements AddStatements(IEnumerable<string> statements)
-    {
-        ((List<string>)Statements).AddRange(statements);
-        return this;
-    }
-
-    public bool IsEmpty() => !Statements.Any();
-
-    public override string ToString()
-    {
-        return ToString(string.Empty);
-    }
-
-    public string ToString(string indentation)
-    {
-        return $@"{(Statements.Any() ? $@"{indentation}{string.Join($@"
-{indentation}", Statements)}" : string.Empty)}";
+        return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
+" : string.Empty)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name} {{ {Getter}{(!IsReadOnly ? $" {Setter}" : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
     }
 }

@@ -101,7 +101,8 @@ namespace Intent.Modules.Common.Templates
     /// Base class for templates.
     /// </summary>
     public abstract class IntentTemplateBase : T4TemplateBase, IIntentTemplate, ITemplate, IConfigurableTemplate,
-        IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook,
+        IHasTemplateDependencies, ITemplatePostConfigurationHook, ITemplatePostCreationHook, 
+        IAfterTemplateRegistrationExecutionHook,
         ITemplateBeforeExecutionHook
     {
         private readonly Lazy<string> _getExistingFilePathCache;
@@ -282,6 +283,13 @@ namespace Intent.Modules.Common.Templates
         /// Called after all templates have been created.
         /// </summary>
         public virtual void OnCreated()
+        {
+        }
+
+        /// <summary>
+        /// Executed after all Templates have been registered.
+        /// </summary>
+        public virtual void AfterTemplateRegistration()
         {
         }
 

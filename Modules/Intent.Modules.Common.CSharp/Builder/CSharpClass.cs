@@ -80,7 +80,7 @@ public class CSharpClass
 
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpMethod> configure, params string[] statements)
     {
-        return InsertMethod(0, returnType, name, configure, statements);
+        return InsertMethod(Methods.Count, returnType, name, configure, statements);
     }
 
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpMethod> configure, params string[] statements)
@@ -158,8 +158,8 @@ public class CSharpClass
         members.AddRange(Methods.Select(x => x.ToString(indentation)));
 
         return !members.Any() ? "" : $@"
-{indentation}{string.Join($@"
+{string.Join($@"
 
-{indentation}", members)}";
+", members)}";
     }
 }

@@ -13,17 +13,22 @@ namespace Intent.Modules.Common.Plugins
 
         public override int Order => -1;
 
-        public void OnStep(IApplication application, string step)
+        protected override void OnAfterTemplateRegistrations(IApplication application)
         {
-            // TODO: Run for decorators too. Probably as separate FactoryExtension
-            if (step == ExecutionLifeCycleSteps.BeforeTemplateExecution)
-            {
-                var templates = application.Projects.SelectMany(x => x.TemplateInstances)
-                    .OfType<ITemplateBeforeExecutionHook>()
-                    .ToList();
+            var templates = application.Projects.SelectMany(x => x.TemplateInstances)
+                .OfType<IAfterTemplateRegistrationExecutionHook>()
+                .ToList();
 
-                templates.ForEach(x => x.BeforeTemplateExecution());
-            }
+            templates.ForEach(x => x.AfterTemplateRegistration());
+        }
+
+        protected override void OnBeforeTemplateExecution(IApplication application)
+        {
+            var templates = application.Projects.SelectMany(x => x.TemplateInstances)
+                .OfType<ITemplateBeforeExecutionHook>()
+                .ToList();
+
+            templates.ForEach(x => x.BeforeTemplateExecution());
         }
 
         public void PostConfiguration(ITemplate template)

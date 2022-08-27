@@ -599,6 +599,11 @@
             Called after all templates have been created.
             </summary>
         </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.AfterTemplateRegistration">
+            <summary>
+            Executed after all Templates have been registered.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.BeforeTemplateExecution">
             <summary>
             Executed before the Template's <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.RunTemplate"/> runs.

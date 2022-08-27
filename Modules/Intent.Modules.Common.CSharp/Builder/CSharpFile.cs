@@ -8,10 +8,11 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpFile
 {
-    private readonly IList<Action> _configurations = new List<Action>();
+    private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
     public string RelativeLocation { get; }
+    public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> Classes { get; } = new List<CSharpClass>();
 
     public CSharpFile(string @namespace, string relativeLocation)
@@ -30,7 +31,15 @@ public class CSharpFile
     {
         var @class = new CSharpClass(name);
         Classes.Add(@class);
-        _configurations.Add(() => configure(@class));
+        _configurations.Add((() => configure(@class), 0));
+        return this;
+    }
+
+    public CSharpFile AddInterface(string name, Action<CSharpInterface> configure)
+    {
+        var @interface = new CSharpInterface(name);
+        Interfaces.Add(@interface);
+        _configurations.Add((() => configure(@interface), 0));
         return this;
     }
 
@@ -42,19 +51,43 @@ public class CSharpFile
             relativeLocation: RelativeLocation);
     }
 
-    public CSharpFile OnBuild(Action<CSharpFile> configure)
+    private bool _isBuilt = false;
+
+    public CSharpFile OnBuild(Action<CSharpFile> configure, int order = 0)
     {
-        _configurations.Add(() => configure(this));
+        _configurations.Add((() => configure(this), order));
         return this;
     }
 
-    private bool _isBuilt = false;
-    public CSharpFile Build()
+    //public CSharpFile Configure()
+    //{
+    //    foreach (var configuration in _configurations)
+    //    {
+    //        configuration.Invoke();
+    //    }
+    //    _configurations.Clear();
+
+    //    return this;
+    //}
+
+    public CSharpFile StartBuild()
     {
-        foreach (var configuration in _configurations)
+        foreach (var configuration in _configurations.OrderBy(x => x.Order))
         {
-            configuration.Invoke();
+            configuration.Action.Invoke();
         }
+        _configurations.Clear();
+
+        return this;
+    }
+
+    public CSharpFile FinalizeBuild()
+    {
+        foreach (var configuration in _configurations.OrderBy(x => x.Order))
+        {
+            configuration.Action.Invoke();
+        }
+        _configurations.Clear();
 
         _isBuilt = true;
         return this;
@@ -64,7 +97,7 @@ public class CSharpFile
     {
         if (!_isBuilt)
         {
-            Build();
+            throw new Exception("Build() needs to be called before ToString(). Check that your template implements ICSharpFileBuilderTemplate, or ensure that Build() is called manually.");
         }
 
         return $@"{string.Join(@"
@@ -75,7 +108,7 @@ namespace {Namespace}
 {{
 {string.Join(@"
 
-", Classes.Select(x => x.ToString("    ")))}
+", Interfaces.Select(x => x.ToString("    ")).Concat(Classes.Select(x => x.ToString("    "))))}
 }}";
     }
 }

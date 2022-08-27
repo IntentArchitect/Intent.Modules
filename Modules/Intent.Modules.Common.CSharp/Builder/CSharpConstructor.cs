@@ -7,11 +7,11 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpConstructor
 {
-    private readonly IList<CSharpConstructorParameter> _parameters = new List<CSharpConstructorParameter>();
-    private readonly IList<string> _statements = new List<string>();
     public CSharpClass Class { get; }
     public string AccessModifier { get; private set; } = "public ";
     public CSharpConstructorCall ConstructorCall { get; private set; }
+    private IList<CSharpConstructorParameter> Parameters { get; } = new List<CSharpConstructorParameter>();
+    private IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public CSharpConstructor(CSharpClass @class)
     {
         Class = @class;
@@ -20,14 +20,46 @@ public class CSharpConstructor
     public CSharpConstructor AddParameter(string type, string name, Action<CSharpConstructorParameter> configure = null)
     {
         var param = new CSharpConstructorParameter(type, name, this);
-        _parameters.Add(param);
+        Parameters.Add(param);
         configure?.Invoke(param);
         return this;
     }
 
-    public CSharpConstructor AddStatement(string statement)
+    public CSharpConstructor AddStatement(string statement, Action<CSharpStatement> configure = null)
     {
-        _statements.Add(statement);
+        var s = new CSharpStatement(statement);
+        Statements.Add(s);
+        configure?.Invoke(s);
+        return this;
+    }
+
+    public CSharpConstructor InsertStatement(int index, string statement, Action<CSharpStatement> configure = null)
+    {
+        var s = new CSharpStatement(statement);
+        Statements.Insert(index, s);
+        configure?.Invoke(s);
+        return this;
+    }
+
+    public CSharpConstructor AddStatements(string statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    {
+        return AddStatements(statements.ConvertToStatements(), configure);
+    }
+
+    public CSharpConstructor AddStatements(IEnumerable<string> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    {
+        return AddStatements(statements.Select(x => new CSharpStatement(x)), configure);
+    }
+
+    public CSharpConstructor AddStatements(IEnumerable<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    {
+        var arrayed = statements.ToArray();
+        foreach (var statement in arrayed)
+        {
+            Statements.Add(statement);
+        }
+        configure?.Invoke(arrayed);
+
         return this;
     }
 
@@ -58,11 +90,25 @@ public class CSharpConstructor
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{AccessModifier}{Class.Name}({string.Join(", ", _parameters.Select(x => x.ToString()))}){ConstructorCall?.ToString() ?? string.Empty}
-{indentation}{{{(_statements.Any() ? $@"
+        return $@"{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}){ConstructorCall?.ToString() ?? string.Empty}
+{indentation}{{{(Statements.Any() ? $@"
 {indentation}    {string.Join($@"
-{indentation}    ", _statements)}" : string.Empty)}
+", Statements.Select((s, index) => s.MustSeparateFromPrevious && index != 0 ? $@"
+{indentation}   {s}" : $"{indentation}   {s}"))}" : string.Empty)}
 {indentation}}}";
+    }
+
+    private string ToStringParameters(string indentation)
+    {
+        if (Parameters.Sum(x => x.ToString().Length) > 120)
+        {
+            return string.Join($@",
+{indentation}    ", Parameters.Select(x => x.ToString()));
+        }
+        else
+        {
+            return string.Join(", ", Parameters.Select(x => x.ToString()));
+        }
     }
 }
 

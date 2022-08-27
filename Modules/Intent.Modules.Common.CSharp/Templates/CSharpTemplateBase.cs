@@ -169,6 +169,18 @@ namespace Intent.Modules.Common.CSharp.Templates
             return NormalizeNamespace(fullName);
         }
 
+        public override void AfterTemplateRegistration()
+        {
+            base.AfterTemplateRegistration();
+            (this as ICSharpFileBuilderTemplate)?.CSharpFile.StartBuild();
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            base.BeforeTemplateExecution();
+            (this as ICSharpFileBuilderTemplate)?.CSharpFile.FinalizeBuild();
+        }
+
         /// <inheritdoc />
         public override string RunTemplate()
         {
