@@ -55,6 +55,7 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
 
                     var fileMetadata = Substitute.For<IFileMetadata>();
                     fileMetadata.CustomMetadata.Returns(customMetadata);
+                    fileMetadata.GetFullLocationPath().Returns($"{Guid.NewGuid()}");
                     ConfigureFileMetadata(fileMetadata);
                 }
 
@@ -115,10 +116,11 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
             {
                 public TestableCSharpTemplateBase() : base(string.Empty, Substitute.For<IOutputTarget>())
                 {
-                    var fm = Substitute.For<IFileMetadata>();
-                    fm.CustomMetadata.Returns(new Dictionary<string, string>());
+                    var fileMetadata = Substitute.For<IFileMetadata>();
+                    fileMetadata.CustomMetadata.Returns(new Dictionary<string, string>());
+                    fileMetadata.GetFullLocationPath().Returns($"{Guid.NewGuid()}");
 
-                    ConfigureFileMetadata(fm);
+                    ConfigureFileMetadata(fileMetadata);
                 }
 
                 public override string TransformText()
