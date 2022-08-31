@@ -112,6 +112,22 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 result.ShouldBe(foreignType);
             }
 
+            [Fact]
+            public void ItShouldHandleUntrimmedGenericTypeParameter()
+            {
+                // Arrange
+                var foreignType = "System.Collection.Generics.Dictionary<System.String, System.String>";
+                var csharpTemplateBase = new TestableCSharpTemplateBase();
+                csharpTemplateBase.AddUsing("System");
+                csharpTemplateBase.AddUsing("System.Collection.Generics");
+
+                // Act
+                var result = csharpTemplateBase.NormalizeNamespace(foreignType);
+
+                // Assert
+                result.ShouldBe("Dictionary<String, String>");
+            }
+
             private class TestableCSharpTemplateBase : CSharpTemplateBase
             {
                 public TestableCSharpTemplateBase() : base(string.Empty, Substitute.For<IOutputTarget>())

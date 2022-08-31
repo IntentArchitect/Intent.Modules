@@ -229,7 +229,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
                 normalizedGenericTypes = genericTypes
                     .Split(',')
-                    .Select(NormalizeNamespace)
+                    .Select(s => NormalizeNamespace(s.Trim()))
                     .Aggregate((x, y) => x + ", " + y);
                 foreignType = $"{foreignType[..foreignType.IndexOf("<", StringComparison.Ordinal)]}";
             }
