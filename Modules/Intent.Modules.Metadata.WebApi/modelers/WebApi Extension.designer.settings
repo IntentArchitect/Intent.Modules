@@ -8,9 +8,11 @@
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-      <validateFunctionOverride>return (typeReference.typeId == null &amp;&amp; getStereotype("Http Settings")?.getProperty("Verb").value === "GET") 
-    ? "Return Type required for HTTP GET Verb" 
-    : "";</validateFunctionOverride>
+      <validateFunctionOverride>if (typeReference.typeId == null &amp;&amp; getStereotype("Http Settings")?.getProperty("Verb").value === "GET") {
+    return "Return Type required for HTTP GET Verb";
+}
+
+return "";</validateFunctionOverride>
       <mappingSettings />
       <macros>
         <macro trigger="on-name-changed">
@@ -29,6 +31,13 @@ if (!httpVerb) {
 }</script>
         </macro>
       </macros>
+    </elementExtension>
+    <elementExtension type="Parameter" typeId="00208d20-469d-41cb-8501-768fd5eb796b">
+      <validateFunctionOverride>if (getStereotype("Parameter Settings")?.getProperty("Header Name")?.value?.indexOf(" ") &gt; -1) {
+    return "Header Name is invalid with spaces";
+}
+return "";</validateFunctionOverride>
+      <mappingSettings />
     </elementExtension>
   </elementExtensions>
   <associationSettings />
