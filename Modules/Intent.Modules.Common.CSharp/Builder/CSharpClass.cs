@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClass
+public class CSharpClass : CSharpDeclaration<CSharpClass>
 {
     public CSharpClass(string name)
     {
@@ -14,7 +14,7 @@ public class CSharpClass
     }
     public string Name { get; private set; }
     public string AccessModifier { get; private set; } = "public ";
-    public string BaseType { get; set; }
+    public CSharpClass BaseType { get; set; }
     public IList<string> Interfaces { get; set; } = new List<string>();
     public IList<CSharpField> Fields { get; set; } = new List<CSharpField>();
     public IList<CSharpConstructor> Constructors { get; set; } = new List<CSharpConstructor>();
@@ -26,9 +26,20 @@ public class CSharpClass
         return ExtendsClass(type);
     }
 
+    public CSharpClass WithBaseType(CSharpClass type)
+    {
+        return ExtendsClass(type);
+    }
+
     public CSharpClass ExtendsClass(string type)
     {
-        BaseType = type;
+        BaseType = new CSharpClass(type);
+        return this;
+    }
+
+    public CSharpClass ExtendsClass(CSharpClass @class)
+    {
+        BaseType = @class;
         return this;
     }
 
@@ -118,7 +129,29 @@ public class CSharpClass
         return this;
     }
 
+    public CSharpClass Abstract()
+    {
+        IsAbstract = true;
+        return this;
+    }
+
+    public IEnumerable<CSharpClass> GetParentPath()
+    {
+        if (BaseType == null)
+        {
+            return Array.Empty<CSharpClass>();
+        }
+
+        return BaseType.GetParentPath().Concat(new[] { BaseType });
+    }
+
+    public IEnumerable<CSharpProperty> GetAllProperties()
+    {
+        return (BaseType?.GetAllProperties() ?? new List<CSharpProperty>()).Concat(Properties).ToList();
+    }
+
     public bool IsPartial { get; set; }
+    public bool IsAbstract { get; set; }
 
     public override string ToString()
     {
@@ -127,7 +160,7 @@ public class CSharpClass
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}class {Name}{GetBaseTypes()}
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetBaseTypes()}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
@@ -137,7 +170,7 @@ public class CSharpClass
         var types = new List<string>();
         if (BaseType != null)
         {
-            types.Add(BaseType);
+            types.Add(BaseType.Name);
         }
 
         foreach (var @interface in Interfaces)

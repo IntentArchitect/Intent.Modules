@@ -1,6 +1,6 @@
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpField
+public class CSharpField : CSharpDeclaration<CSharpField>
 {
     private bool _canBeNull = false;
     public string Type { get; private set; }
@@ -34,6 +34,6 @@ public class CSharpField
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{AccessModifier}{Type}{(_canBeNull ? "?" : "")} {Name};";
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Type}{(_canBeNull ? "?" : "")} {Name};";
     }
 }

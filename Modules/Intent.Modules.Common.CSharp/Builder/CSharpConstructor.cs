@@ -5,13 +5,13 @@ using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructor
+public class CSharpConstructor : CSharpDeclaration<CSharpConstructor>
 {
     public CSharpClass Class { get; }
     public string AccessModifier { get; private set; } = "public ";
     public CSharpConstructorCall ConstructorCall { get; private set; }
-    private IList<CSharpConstructorParameter> Parameters { get; } = new List<CSharpConstructorParameter>();
-    private IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public IList<CSharpConstructorParameter> Parameters { get; } = new List<CSharpConstructorParameter>();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public CSharpConstructor(CSharpClass @class)
     {
         Class = @class;
@@ -90,7 +90,7 @@ public class CSharpConstructor
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}){ConstructorCall?.ToString() ?? string.Empty}
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}){ConstructorCall?.ToString() ?? string.Empty}
 {indentation}{{{(Statements.Any() ? $@"
 {indentation}    {string.Join($@"
 ", Statements.Select((s, index) => s.MustSeparateFromPrevious && index != 0 ? $@"

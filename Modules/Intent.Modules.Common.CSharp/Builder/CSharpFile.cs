@@ -12,6 +12,7 @@ public class CSharpFile
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
     public string RelativeLocation { get; }
+    public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> Classes { get; } = new List<CSharpClass>();
 
@@ -40,6 +41,24 @@ public class CSharpFile
         var @interface = new CSharpInterface(name);
         Interfaces.Add(@interface);
         _configurations.Add((() => configure(@interface), 0));
+        return this;
+    }
+
+    public CSharpFile IntentManagedFully()
+    {
+        DefaultIntentManaged = "Mode.Fully";
+        return this;
+    }
+
+    public CSharpFile IntentManagedMerge()
+    {
+        DefaultIntentManaged = "Mode.Merge";
+        return this;
+    }
+
+    public CSharpFile IntentManagedIgnore()
+    {
+        DefaultIntentManaged = "Mode.Ignore";
         return this;
     }
 
@@ -102,7 +121,7 @@ public class CSharpFile
 
         return $@"{string.Join(@"
 ", Usings)}
-[assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged({DefaultIntentManaged})]
 
 namespace {Namespace}
 {{

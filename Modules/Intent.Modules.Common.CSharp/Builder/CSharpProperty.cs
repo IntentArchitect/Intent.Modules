@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpProperty
+public class CSharpProperty : CSharpDeclaration<CSharpProperty>
 {
     private readonly CSharpClass _class;
     public string AccessModifier { get; private set; } = "public ";
@@ -15,10 +15,8 @@ public class CSharpProperty
     public string Name { get; }
     public bool IsReadOnly { get; private set; } = false;
     public string InitialValue { get; private set; }
-    public CSharpXmlComments XmlComments { get; } = new CSharpXmlComments();
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
-    public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
 
     public CSharpProperty(string type, string name, CSharpClass @class)
     {
@@ -74,48 +72,6 @@ public class CSharpProperty
         return this;
     }
 
-    public CSharpProperty WithComments(string xmlComments)
-    {
-        XmlComments.AddStatements(xmlComments);
-        return this;
-    }
-
-    public CSharpProperty WithComments(IEnumerable<string> xmlComments)
-    {
-        XmlComments.AddStatements(xmlComments);
-        return this;
-    }
-
-    public CSharpProperty AddMetadata<T>(string key, T value)
-    {
-        Metadata.Add(key, value);
-        return this;
-    }
-
-    public bool TryGetMetadata<T>(string key, out T value)
-    {
-        if (Metadata.TryGetValue(key, out var valueFound) && valueFound is T castValue)
-        {
-            value = castValue;
-            return true;
-        }
-
-        value = default(T);
-        return false;
-    }
-
-    public bool TryGetMetadata(string key, out object value)
-    {
-        if (Metadata.TryGetValue(key, out var valueFound))
-        {
-            value = valueFound;
-            return true;
-        }
-
-        value = null;
-        return false;
-    }
-
     public CSharpProperty WithBackingField(Action<CSharpField> configure = null)
     {
         Getter.WithExpressionImplementation(Name.ToPrivateMemberName());
@@ -136,8 +92,7 @@ public class CSharpProperty
 
         if (!Getter.Implementation.IsEmpty() || !Setter.Implementation.IsEmpty())
         {
-            return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
-" : string.Empty)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name}
+            return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name}
 {indentation}{{
 {Getter.ToString(indentation + "    ")}{(!IsReadOnly ? $@"
 {indentation}{Setter.ToString(indentation + "    ")}" : string.Empty)}
