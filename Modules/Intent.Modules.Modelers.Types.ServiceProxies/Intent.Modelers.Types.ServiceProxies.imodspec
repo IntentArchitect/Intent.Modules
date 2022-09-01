@@ -13,8 +13,8 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.3.10" />
     <dependency id="Intent.Common.Types" version="3.3.4" />
-    <dependency id="Intent.Modelers.Services" version="3.3.3" />
-    <dependency id="Intent.Modelers.Services.CQRS" version="3.3.2" />
+    <dependency id="Intent.Modelers.Services" version="3.3.4" />
+    <dependency id="Intent.Modelers.Services.CQRS" version="3.3.3" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
