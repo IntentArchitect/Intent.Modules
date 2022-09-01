@@ -214,6 +214,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
         public virtual string NormalizeNamespace(string foreignType)
         {
+            foreignType = foreignType.Trim();
+
             var isNullable = false;
             if (foreignType.EndsWith("?", StringComparison.OrdinalIgnoreCase))
             {
@@ -229,7 +231,7 @@ namespace Intent.Modules.Common.CSharp.Templates
 
                 normalizedGenericTypes = genericTypes
                     .Split(',')
-                    .Select(s => NormalizeNamespace(s.Trim()))
+                    .Select(NormalizeNamespace)
                     .Aggregate((x, y) => x + ", " + y);
                 foreignType = $"{foreignType[..foreignType.IndexOf("<", StringComparison.Ordinal)]}";
             }
