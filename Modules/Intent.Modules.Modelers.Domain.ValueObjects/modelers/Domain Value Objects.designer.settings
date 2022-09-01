@@ -153,6 +153,18 @@ white-space: inherit;`</style>
       </typeOrder>
       <mappingSettings />
     </elementExtension>
+    <elementExtension type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+      <mappingSettings />
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Value Object</type>
+        </targetTypes>
+        <allowIsNavigable>inherit</allowIsNavigable>
+        <allowIsNullable>inherit</allowIsNullable>
+        <allowIsCollection>inherit</allowIsCollection>
+      </typeReferenceSetting>
+    </elementExtension>
   </elementExtensions>
   <associationSettings />
   <associationExtensions>
