@@ -465,8 +465,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
-        protected virtual IResolvedTypeInfo GetTypeInfo(IHasTypeReference hasTypeReference,
-            string collectionFormat = null)
+        protected virtual IResolvedTypeInfo GetTypeInfo(IHasTypeReference hasTypeReference, string collectionFormat = null)
         {
             return GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
         }
@@ -532,6 +531,7 @@ namespace Intent.Modules.Common.Templates
         /// </para>
         /// </summary>
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
+        [FixFor_Version4("Remove this method as it is hiding the GetTypeInfo(ITypeReference typeReference, string collectionFormat = null) overload.")]
         public virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference)
         {
             return GetTypeInfo(typeReference, null);
@@ -554,9 +554,8 @@ namespace Intent.Modules.Common.Templates
         /// </para>
         /// </summary>
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the <see cref="IResolvedTypeInfo"/>.</param>
-        ///  TODO JL: Fix below, and similar usages
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
-        [FixFor_Version4("Remove the overload that is hiding this method with the default parameter value.")]
+        [FixFor_Version4("Remove the GetTypeInfo(ITypeReference typeReference) overload and then remove the ReSharper disable once MethodOverloadWithOptionalParameter below.")]
         // ReSharper disable once MethodOverloadWithOptionalParameter
         protected virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string collectionFormat = null)
         {
@@ -714,6 +713,7 @@ namespace Intent.Modules.Common.Templates
         /// </para>
         /// </summary>
         /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
+        [FixFor_Version4("Remove this method as it is hiding the GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat = null) overload.")]
         public virtual string GetTypeName(IHasTypeReference hasTypeReference)
         {
             var resolvedTypeInfo = GetTypeInfo(hasTypeReference.TypeReference);
@@ -739,7 +739,9 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
-        public virtual string GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat)
+        [FixFor_Version4("Remove the GetTypeName(IHasTypeReference hasTypeReference) overload and then remove the ReSharper disable once MethodOverloadWithOptionalParameter below.")]
+        // ReSharper disable once MethodOverloadWithOptionalParameter
+        public virtual string GetTypeName(IHasTypeReference hasTypeReference, string collectionFormat = null)
         {
             var resolvedTypeInfo = GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
 
@@ -807,6 +809,7 @@ namespace Intent.Modules.Common.Templates
         /// </para>
         /// </summary>
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
+        [FixFor_Version4("Remove this method as it is hiding the GetTypeName(ITypeReference typeReference, string collectionFormat = null) overload.")]
         public virtual string GetTypeName(ITypeReference typeReference)
         {
             var resolvedTypeInfo = GetTypeInfo(typeReference);
@@ -815,8 +818,8 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves and applies <see cref="UseType"/> to the type name for the provided
-        /// <paramref name="typeReference"/> parameter.
+        /// Resolves the type name for the provided <paramref name="typeReference"/>
+        /// parameter.
         /// Any added <see cref="ITypeSource"/> by <see cref="AddTypeSource(ITypeSource)"/> will be
         /// searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
@@ -828,7 +831,9 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
-        public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat)
+        [FixFor_Version4("Remove the GetTypeName(ITypeReference typeReference) overload and then remove the ReSharper disable once MethodOverloadWithOptionalParameter below.")]
+        // ReSharper disable once MethodOverloadWithOptionalParameter
+        public virtual string GetTypeName(ITypeReference typeReference, string collectionFormat = null)
         {
             var resolvedTypeInfo = GetTypeInfo(typeReference, collectionFormat);
 
@@ -890,7 +895,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Resolves an <see cref="IResolvedTypeInfo"/> for the provided <paramref name="templateId"/>
+        /// Resolves the type name for the provided <paramref name="templateId"/>
         /// parameter.
         /// 
         /// This overload assumes that the Template only has a single instance and will throw an
