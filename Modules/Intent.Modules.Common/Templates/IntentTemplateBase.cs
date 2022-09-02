@@ -398,7 +398,7 @@ namespace Intent.Modules.Common.Templates
         /// </summary>
         public void FulfillsRole(string role)
         {
-            TemplateRoleRegistry.Register(role, this);
+            ExecutionContext.RegisterTemplateInRole(role, this);
         }
 
         #region GetTypeInfo
@@ -1149,8 +1149,7 @@ namespace Intent.Modules.Common.Templates
         {
             return GetTemplate(
                 getTemplate: () =>
-                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id) ??
-                    TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, model) as TTemplate,
+                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId, model.Id),
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, model.Id = {model.Id}",
                 options: options);
         }
@@ -1162,8 +1161,7 @@ namespace Intent.Modules.Common.Templates
         {
             return GetTemplate(
                 getTemplate: () =>
-                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId) ??
-                    TemplateRoleRegistry.FindTemplateInstanceForRole(templateId, modelId) as TTemplate,
+                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId, modelId),
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}, ModelId = {modelId}",
                 options: options);
         }
@@ -1176,9 +1174,7 @@ namespace Intent.Modules.Common.Templates
             where TTemplate : class
         {
             return GetTemplate(
-                getTemplate: () =>
-                    ExecutionContext.FindTemplateInstance<TTemplate>(templateId) ??
-                    TemplateRoleRegistry.FindTemplateInstanceForRole(templateId) as TTemplate,
+                getTemplate: () => ExecutionContext.FindTemplateInstance<TTemplate>(templateId),
                 getDependencyDescriptionForException: () => $"TemplateId / Role = {templateId}",
                 options: options);
         }

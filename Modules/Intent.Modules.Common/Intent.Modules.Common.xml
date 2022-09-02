@@ -1374,55 +1374,6 @@
             <param name="s"></param>
             <returns></returns>
         </member>
-        <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstancesForRole(System.String)">
-            <summary>
-            Finds all templates with id of <paramref name="role"/>
-            </summary>
-            <param name="role"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstancesForRole(System.String,System.String)">
-            <summary>
-            Finds all templates with <see cref="P:Intent.Templates.ITemplate.Id"/> of <paramref name="role"/>
-            which is also a <see cref="T:Intent.Templates.ITemplateWithModel"/> whose
-            <see cref="P:Intent.Templates.ITemplateWithModel.Model"/> is a <see cref="T:Intent.Metadata.Models.IMetadataModel"/> whose
-            <see cref="P:Intent.Metadata.Models.IMetadataModel.Id"/> matches the provided
-            <paramref name="metadataModelId"/>.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstancesForRole(System.String,System.Object)">
-            <summary>
-            Finds all templates with <see cref="P:Intent.Templates.ITemplate.Id"/> of <paramref name="role"/>
-            which is also a <see cref="T:Intent.Templates.ITemplateWithModel"/> whose
-            <see cref="P:Intent.Templates.ITemplateWithModel.Model"/>'s reference matches that of the provided
-            <paramref name="model"/>.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstanceForRole(System.String)">
-            <summary>
-            Finds the template with id of <paramref name="role"/> and that meets the <paramref name="predicate"/> filter.
-            If more than one template is found then an exception will be thrown.
-            </summary>
-            <param name="role"></param>
-            <returns></returns>
-        </member>
-        <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstanceForRole(System.String,System.String)">
-            <summary>
-            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id"/> of <paramref name="role"/>
-            which is also a <see cref="T:Intent.Templates.ITemplateWithModel"/> whose
-            <see cref="P:Intent.Templates.ITemplateWithModel.Model"/> is a <see cref="T:Intent.Metadata.Models.IMetadataModel"/> whose
-            <see cref="P:Intent.Metadata.Models.IMetadataModel.Id"/> matches the provided
-            <paramref name="metadataModelId"/>.
-            </summary>
-        </member>
-        <member name="M:Intent.Modules.Common.Templates.TemplateRoleRegistry.FindTemplateInstanceForRole(System.String,System.Object)">
-            <summary>
-            Finds the template with <see cref="P:Intent.Templates.ITemplate.Id"/> of <paramref name="role"/>
-            which is also a <see cref="T:Intent.Templates.ITemplateWithModel"/> whose
-            <see cref="P:Intent.Templates.ITemplateWithModel.Model"/>'s reference matches that of the provided
-            <paramref name="model"/>.
-            </summary>
-        </member>
         <member name="T:Intent.Modules.Common.TypeResolution.ClassTypeSource.StringToCollectionFormatterFactory">
             <summary>
             Delegate which returns a <see cref="T:Intent.Modules.Common.TypeResolution.ICollectionFormatter"/> from the provided

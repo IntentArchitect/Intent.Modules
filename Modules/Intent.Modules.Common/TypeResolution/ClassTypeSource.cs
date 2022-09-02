@@ -100,8 +100,7 @@ namespace Intent.Modules.Common.TypeResolution
                 return null;
             }
 
-            var templateInstance = Context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(TemplateId, typeInfo.Element)) ??
-                TemplateRoleRegistry.FindTemplateInstanceForRole(TemplateId, typeInfo.Element) as IClassProvider;
+            var templateInstance = Context.FindTemplateInstance<IClassProvider>(TemplateDependency.OnModel(TemplateId, typeInfo.Element));
 
             return templateInstance;
         }
