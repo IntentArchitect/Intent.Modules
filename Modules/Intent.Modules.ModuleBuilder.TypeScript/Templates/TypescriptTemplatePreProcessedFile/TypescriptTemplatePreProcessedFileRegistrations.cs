@@ -1,13 +1,15 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
-using Intent.Modules.Common.Registrations;
 using Intent.ModuleBuilder.Api;
-using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.ModuleBuilder.TypeScript.Api;
+using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Templates.Common;
+using Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial;
+using Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4;
 using Intent.Templates;
-using IApplication = Intent.Engine.IApplication;
 
-namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePreProcessedFile
+namespace Intent.Modules.ModuleBuilder.Typescript.Templates.TypescriptTemplatePreProcessedFile
 {
     public class TypescriptTemplatePreProcessedFileRegistrations : FilePerModelTemplateRegistration<TypescriptFileTemplateModel>
     {
@@ -26,13 +28,15 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePr
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: TypescriptTemplate.TypescriptTemplate.TemplateId,
-                partialTemplateId: TypescriptTemplatePartial.TypescriptTemplatePartialTemplate.TemplateId);
+                t4TemplateId: TypescriptTemplateT4Template.TemplateId,
+                partialTemplateId: TypescriptTemplatePartialTemplate.TemplateId);
         }
 
         public override IEnumerable<TypescriptFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetTypescriptFileTemplateModels();
+            return _metadataManager.ModuleBuilder(application).GetTypescriptFileTemplateModels()
+                .Where(x => !x.TryGetTypeScriptTemplateSettings(out var templateSettings) || templateSettings.TemplatingMethod().IsT4Template())
+                .ToList();
         }
     }
 }

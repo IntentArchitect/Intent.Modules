@@ -3,7 +3,7 @@
   <name>Consumer</name>
   <display>Consumer</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>f40a4942-5d2d-4174-8ec1-af66cbd464db</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Message Consumer</name>
           <display>Add Message Consumer: Message Handler</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c0bcd735-143f-4c8b-8e3f-a2ec0a421039">
             <typeId>37969deb-2289-48bd-aa41-cf66006fbd33</typeId>

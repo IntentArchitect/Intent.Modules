@@ -3,7 +3,7 @@
   <name>Typescript</name>
   <display>Typescript</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>52e023eb-f6ec-4f46-8ad5-dd59bdfb1bab</parentFolderId>

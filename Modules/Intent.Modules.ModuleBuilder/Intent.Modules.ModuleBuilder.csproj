@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.3.9</Version>
+    <Version>3.3.10</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
@@ -17,7 +17,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="1.1.2" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.0.1" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.1" />
     <PackageReference Include="Mono.TextTemplating" Version="2.2.1" />
     <PackageReference Include="NuGet.Versioning" Version="6.1.0" />
@@ -240,6 +240,24 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StaticContentOutputReadmeTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\FileTemplateT4Interpolation\FileTemplateT4InterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FileTemplateT4InterpolationTemplate.tt</DependentUpon>
+    </Compile>
+    <None Update="Templates\FileTemplateT4Interpolation\FileTemplateT4InterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FileTemplateT4InterpolationTemplate.cs</LastGenOutput>
+    </None>
+    <Compile Update="Templates\FileTemplateStringInterpolation\FileTemplateStringInterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FileTemplateStringInterpolationTemplate.tt</DependentUpon>
+    </Compile>
+    <None Update="Templates\FileTemplateStringInterpolation\FileTemplateStringInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FileTemplateStringInterpolationTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
   <ItemGroup>

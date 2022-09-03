@@ -722,7 +722,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#1bd9fa6b-63b2-42d7-b18c-cd8a4e3109b5</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiAssociationModel/ApiAssociationModelTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiAssociationModel/ApiAssociationModelTemplate.tt</ProjectRelativeFilePath>
@@ -754,7 +754,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#d8b63ecf-82cf-466b-8b57-8a70c88c51f6</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#d8b63ecf-82cf-466b-8b57-8a70c88c51f6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiAssociationModelExtensions/ApiAssociationModelExtensionsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiAssociationModelExtensions/ApiAssociationModelExtensionsTemplate.tt</ProjectRelativeFilePath>
@@ -786,7 +786,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#e1b7ebb7-0dad-47d8-bca2-4493e53a8ee1</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiElementExtensionModel/ApiElementExtensionModelTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiElementExtensionModel/ApiElementExtensionModelTemplate.tt</ProjectRelativeFilePath>
@@ -818,7 +818,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#f9800e0d-99ea-4d27-850b-4e6d07250ede</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#f9800e0d-99ea-4d27-850b-4e6d07250ede</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiElementModel/ApiElementModelTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiElementModel/ApiElementModelTemplate.tt</ProjectRelativeFilePath>
@@ -850,7 +850,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#3877283b-1f5c-4171-a8da-55595c1905b8</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#3877283b-1f5c-4171-a8da-55595c1905b8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiElementModelExtensions/ApiElementModelExtensionsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiElementModelExtensions/ApiElementModelExtensionsTemplate.tt</ProjectRelativeFilePath>
@@ -882,7 +882,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#489694a7-ddf0-40d6-a055-4845826deabd</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#489694a7-ddf0-40d6-a055-4845826deabd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiElementModelPartial/ApiElementModelPartialTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiElementModelPartial/ApiElementModelPartialTemplate.tt</ProjectRelativeFilePath>
@@ -914,7 +914,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#11b1ac64-5537-4301-9a1e-d8de08c2786c</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#11b1ac64-5537-4301-9a1e-d8de08c2786c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiMetadataDesignerExtensions/ApiMetadataDesignerExtensionsTemplate.tt</ProjectRelativeFilePath>
@@ -946,7 +946,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#51ff3bbd-74dc-4f6c-996a-c8502814570a</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#51ff3bbd-74dc-4f6c-996a-c8502814570a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiMetadataPackageExtensions/ApiMetadataPackageExtensionsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiMetadataPackageExtensions/ApiMetadataPackageExtensionsTemplate.tt</ProjectRelativeFilePath>
@@ -978,7 +978,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#ff86b4fd-d613-4983-8066-605f97b58581</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#ff86b4fd-d613-4983-8066-605f97b58581</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiMetadataProviderExtensions/ApiMetadataProviderExtensionsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiMetadataProviderExtensions/ApiMetadataProviderExtensionsTemplate.tt</ProjectRelativeFilePath>
@@ -1010,7 +1010,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#5a307c40-0d05-4dac-a83e-6a3a553c5b9e</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#5a307c40-0d05-4dac-a83e-6a3a553c5b9e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiPackageExtensionModel/ApiPackageExtensionModelTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiPackageExtensionModel/ApiPackageExtensionModelTemplate.tt</ProjectRelativeFilePath>
@@ -1042,7 +1042,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#12d0509f-a513-4263-9c31-3786f61b44bd</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#12d0509f-a513-4263-9c31-3786f61b44bd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Api/ApiPackageModel/ApiPackageModelTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Api/ApiPackageModel/ApiPackageModelTemplate.tt</ProjectRelativeFilePath>
@@ -1074,7 +1074,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#8d856f7d-a6e8-45dd-9cba-843d984cb41a</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#8d856f7d-a6e8-45dd-9cba-843d984cb41a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/FactoryExtension/FactoryExtensionTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/FactoryExtension/FactoryExtensionTemplate.tt</ProjectRelativeFilePath>
@@ -1098,6 +1098,54 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#065a0420-545c-4356-b01b-f8590b94d261</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateStringInterpolation/FileTemplateStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#b33044cb-5352-40c7-97a8-a1109b7dfd59</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#b33044cb-5352-40c7-97a8-a1109b7dfd59</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/FileTemplateT4/FileTemplateT4TemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#af184995-dba3-463f-8b63-7c38190595f0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplate.cs</ApplicationRelativeFilePath>
@@ -1106,7 +1154,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#af184995-dba3-463f-8b63-7c38190595f0</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#af184995-dba3-463f-8b63-7c38190595f0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/Settings/ModuleSettingsExtensions/ModuleSettingsExtensionsTemplate.tt</ProjectRelativeFilePath>
@@ -1170,7 +1218,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#b8c74c43-2d73-483f-b938-f20a986f7acf</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#b8c74c43-2d73-483f-b938-f20a986f7acf</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplate.tt</ProjectRelativeFilePath>
@@ -1202,7 +1250,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#f5648642-e1bb-43fa-b522-150cc3878589</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#f5648642-e1bb-43fa-b522-150cc3878589</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TemplateDecorator/TemplateDecoratorTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TemplateDecorator/TemplateDecoratorTemplate.tt</ProjectRelativeFilePath>
@@ -1234,7 +1282,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#115b5ff3-8e0f-4712-9384-372eb7c2c168</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#115b5ff3-8e0f-4712-9384-372eb7c2c168</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TemplateDecoratorContract/TemplateDecoratorContractTemplate.tt</ProjectRelativeFilePath>
@@ -1266,7 +1314,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#a1972650-0420-42cf-9e21-54c0c653d5b4</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#a1972650-0420-42cf-9e21-54c0c653d5b4</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TemplateDecoratorRegistration/TemplateDecoratorRegistrationTemplate.tt</ProjectRelativeFilePath>
@@ -1298,7 +1346,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#05e49224-62c1-45ea-a239-e4e9bf64a00b</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#05e49224-62c1-45ea-a239-e4e9bf64a00b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TemplateExtensions/TemplateExtensionsTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TemplateExtensions/TemplateExtensionsTemplate.tt</ProjectRelativeFilePath>

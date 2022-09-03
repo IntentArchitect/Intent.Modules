@@ -13,29 +13,31 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
+namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class TypescriptTemplateRegistration : FilePerModelTemplateRegistration<TypescriptFileTemplateModel>
+    public class TypescriptTemplateT4TemplateRegistration : FilePerModelTemplateRegistration<TypescriptFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public TypescriptTemplateRegistration(IMetadataManager metadataManager)
+        public TypescriptTemplateT4TemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => TypescriptTemplate.TemplateId;
+        public override string TemplateId => TypescriptTemplateT4Template.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IOutputTarget project, TypescriptFileTemplateModel model)
         {
-            return new TypescriptTemplate(project, model);
+            return new TypescriptTemplateT4Template(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override IEnumerable<TypescriptFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetTypescriptFileTemplateModels();
+            return _metadataManager.ModuleBuilder(application).GetTypescriptFileTemplateModels()
+                .Where(x => !x.TryGetTypeScriptTemplateSettings(out var templateSettings) || templateSettings.TemplatingMethod().IsT4Template())
+                .ToList();
         }
     }
 }

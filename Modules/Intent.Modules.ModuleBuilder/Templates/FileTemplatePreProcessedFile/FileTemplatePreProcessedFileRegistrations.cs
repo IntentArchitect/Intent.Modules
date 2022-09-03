@@ -4,8 +4,8 @@ using Intent.Engine;
 using Intent.Modules.Common.Registrations;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.ModuleBuilder.Templates.Common;
-using Intent.Modules.ModuleBuilder.Templates.FileTemplate;
 using Intent.Modules.ModuleBuilder.Templates.FileTemplatePartial;
+using Intent.Modules.ModuleBuilder.Templates.FileTemplateT4;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
 
@@ -28,7 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplatePreProcessedFile
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: FileTemplateTemplate.TemplateId,
+                t4TemplateId: FileTemplateT4Template.TemplateId,
                 partialTemplateId: FileTemplatePartialTemplate.TemplateId);
         }
 

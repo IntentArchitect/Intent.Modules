@@ -18,16 +18,16 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
+namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class TypescriptTemplate : IntentTemplateBase<TypescriptFileTemplateModel>
+    partial class TypescriptTemplateT4Template : IntentTemplateBase<TypescriptFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.TypeScript.Templates.TypescriptTemplateT4";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public TypescriptTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
+        public TypescriptTemplateT4Template(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 
@@ -68,12 +68,13 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplate
 
         private string TemplateBody()
         {
-            return @"
-export class <#= ClassName #>
-{
+            return @$"
+export {(IsForInterface() ? "interface" : "class")} <#= ClassName #> {{
 
-}";
+}}";
         }
+
+        private bool IsForInterface() => Model.Name.RemoveSuffix("Template").EndsWith("Interface");
 
         private string GetBaseType()
         {

@@ -73,14 +73,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0ffa7fa8-61d5-4c8d-8301-12bf4de7ba04</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SendMessageModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SendMessageModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>556e7bcc-4e9b-45ee-8a05-6022c1084a2c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

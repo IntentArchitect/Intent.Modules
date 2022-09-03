@@ -4,12 +4,22 @@
   <FileLogs>
     <FileLog>
       <CorrelationId>Intent.VisualStudio.Projects.VisualStudio2015Solution#f917caa4-f97b-43a2-9853-5c5dfa533768</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>../Intent.Modules.sln</ApplicationRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3dd92b59-d497-48cc-9329-0e29c1bfb2e2</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e6e41d88-2829-41b6-a791-065d2bb44eb3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/TypescriptFileTemplateModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TypescriptFileTemplateModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#ba880228-ad4a-4f38-a1a4-0d3fb87e4d89</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -17,6 +27,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#5e929cc8-2e93-47e9-beb7-b84a81f08b53</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PackageExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PackageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -24,6 +35,7 @@
     <FileLog>
       <ProjectId>447ab5d3-6fc2-4598-bede-bc59e850cd34</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e6e41d88-2829-41b6-a791-065d2bb44eb3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/TypescriptFileTemplateModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TypescriptFileTemplateModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -31,6 +43,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -38,6 +51,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.ModuleBuilder.TypeScript.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.ModuleBuilder.TypeScript.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -45,6 +59,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#653969db-6597-4b32-a1f6-029c69da6903</CorrelationId>
+      <OverwriteBehaviour>once-off</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.TypeScript.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.TypeScript.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -52,6 +67,7 @@
     <FileLog>
       <ProjectId>32572de3-c0a7-4680-8ad3-8cbd5033b2b5</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#ac7fa580-f66f-4257-a160-0bb82b56f4f9</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Typescript.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Typescript.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -59,6 +75,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -66,34 +83,23 @@
     <FileLog>
       <ProjectId>4020fdfa-9a4d-47a0-a428-224fe8bcf03e</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.TemplateExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#17b9a627-3b97-4cdb-86a2-93686d20150e</CorrelationId>
-      <ApplicationRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplatePartial.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#17b9a627-3b97-4cdb-86a2-93686d20150e</CorrelationId>
-      <ApplicationRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/TypescriptTemplate/TypescriptTemplateRegistration.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplate.tt</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -101,6 +107,7 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -108,8 +115,57 @@
     <FileLog>
       <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#f3b2cfd1-4214-4dd0-bec6-71cb2f47318c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/TypescriptTemplatePartial/TypescriptTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#8f29246d-415f-4f8f-8026-5bb177caa609</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateStringInterpolation/TypescriptTemplateStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#17b9a627-3b97-4cdb-86a2-93686d20150e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>653969db-6597-4b32-a1f6-029c69da6903</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#17b9a627-3b97-4cdb-86a2-93686d20150e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/TypescriptTemplateT4/TypescriptTemplateT4TemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

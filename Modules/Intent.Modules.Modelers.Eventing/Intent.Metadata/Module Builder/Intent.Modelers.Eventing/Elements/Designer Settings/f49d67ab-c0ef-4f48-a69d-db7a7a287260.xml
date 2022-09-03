@@ -3,7 +3,7 @@
   <name>Core Eventing Types</name>
   <display>Core Eventing Types</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>da53e9dd-36d6-4d56-ab3b-c59c79887cb8</parentFolderId>

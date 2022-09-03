@@ -17,7 +17,7 @@ using Intent.Templates;
 
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge)]
     partial class TypescriptTemplatePartialTemplate : CSharpTemplateBase<TypescriptFileTemplateModel>, IModuleBuilderTemplate
     {
         [IntentManaged(Mode.Fully)]

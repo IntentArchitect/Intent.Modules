@@ -3,7 +3,7 @@
   <name>Message</name>
   <display>Message</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Property</name>
           <display>Add Property: Property</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="6c6645bf-589b-4206-8d99-211c26f50bee">
             <typeId>bde29850-5fb9-4f47-9941-b9e182fd9bdc</typeId>

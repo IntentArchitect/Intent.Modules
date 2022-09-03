@@ -1,9 +1,11 @@
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePartial;
+using Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateStringInterpolation;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.TemplateExtensions", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.TypeScript.Templates
@@ -18,6 +20,16 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates
         public static string GetTypescriptTemplatePartialName(this IntentTemplateBase template, Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel model)
         {
             return template.GetTypeName(TypescriptTemplatePartialTemplate.TemplateId, model);
+        }
+
+        public static string GetTypescriptTemplateStringInterpolationName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel
+        {
+            return template.GetTypeName(TypescriptTemplateStringInterpolationTemplate.TemplateId, template.Model);
+        }
+
+        public static string GetTypescriptTemplateStringInterpolationName(this IntentTemplateBase template, Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel model)
+        {
+            return template.GetTypeName(TypescriptTemplateStringInterpolationTemplate.TemplateId, model);
         }
 
     }

@@ -3,7 +3,7 @@
   <name>Eventing</name>
   <display>Eventing</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>da53e9dd-36d6-4d56-ab3b-c59c79887cb8</parentFolderId>
@@ -26,7 +26,6 @@
       <name>reference</name>
       <display>reference: Core Eventing Types</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="5395ed89-bb94-437e-acc4-4aa32c9e537d">
         <typeId>f49d67ab-c0ef-4f48-a69d-db7a7a287260</typeId>
@@ -51,7 +50,6 @@
       <name>reference</name>
       <display>reference: Common Types</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="1f71101e-38f3-45dd-b5f4-23b23e264af2">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>

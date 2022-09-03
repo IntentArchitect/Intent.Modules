@@ -1,29 +1,34 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Modules.Common;
-using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Types.Api;
+using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Helpers;
+using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
+using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
-{
-    public class FileTemplateTemplate : IntentFileTemplateBase<FileTemplateModel>
-    {
-        public const string TemplateId = "Intent.ModuleBuilder.ProjectItemTemplate.T4Template";
+[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
+[assembly: DefaultIntentManaged(Mode.Merge)]
 
-        public FileTemplateTemplate(string templateId, IOutputTarget project, FileTemplateModel model) : base(templateId, project, model)
+namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
+{
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class FileTemplateT4Template : IntentTemplateBase<FileTemplateModel>
+    {
+        [IntentManaged(Mode.Fully)]
+        public const string TemplateId = "Intent.ModuleBuilder.Templates.FileTemplateT4";
+
+        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        public FileTemplateT4Template(IOutputTarget outputTarget, FileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 
-
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
-        public IList<string> OutputFolders => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
-        public string FolderPath => string.Join("/", OutputFolders);
 
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
@@ -32,14 +37,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{TemplateName}",
                 fileExtension: "tt",
-                relativeLocation: $"{FolderPath}");
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name.ToCSharpIdentifier().RemoveSuffix("Template"))}");
         }
 
 
         public override string TransformText()
         {
-            var content = TemplateHelper.GetExistingTemplateContent(this);
-            if (content != null)
+            if (TryGetExistingFileContent(out var content))
             {
                 return TemplateHelper.ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
@@ -70,12 +74,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplate
         {
             return nameof(IntentTemplateBase);
         }
-
-        private string GetModelType()
-        {
-            return Model.GetModelName();
-        }
-
     }
 
 }

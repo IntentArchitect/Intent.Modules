@@ -55,6 +55,7 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
 
                     var fileMetadata = Substitute.For<IFileMetadata>();
                     fileMetadata.CustomMetadata.Returns(customMetadata);
+                    fileMetadata.GetFullLocationPath().Returns($"{Guid.NewGuid()}");
                     ConfigureFileMetadata(fileMetadata);
                 }
 
@@ -111,14 +112,31 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 result.ShouldBe(foreignType);
             }
 
+            [Fact]
+            public void ItShouldHandleUntrimmedGenericTypeParameter()
+            {
+                // Arrange
+                var foreignType = "System.Collection.Generics.Dictionary<System.String, System.String>";
+                var csharpTemplateBase = new TestableCSharpTemplateBase();
+                csharpTemplateBase.AddUsing("System");
+                csharpTemplateBase.AddUsing("System.Collection.Generics");
+
+                // Act
+                var result = csharpTemplateBase.NormalizeNamespace(foreignType);
+
+                // Assert
+                result.ShouldBe("Dictionary<String, String>");
+            }
+
             private class TestableCSharpTemplateBase : CSharpTemplateBase
             {
                 public TestableCSharpTemplateBase() : base(string.Empty, Substitute.For<IOutputTarget>())
                 {
-                    var fm = Substitute.For<IFileMetadata>();
-                    fm.CustomMetadata.Returns(new Dictionary<string, string>());
+                    var fileMetadata = Substitute.For<IFileMetadata>();
+                    fileMetadata.CustomMetadata.Returns(new Dictionary<string, string>());
+                    fileMetadata.GetFullLocationPath().Returns($"{Guid.NewGuid()}");
 
-                    ConfigureFileMetadata(fm);
+                    ConfigureFileMetadata(fileMetadata);
                 }
 
                 public override string TransformText()

@@ -226,6 +226,8 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// <param name="foreignType">The foreign type which is ideally fully qualified</param>
         public virtual string NormalizeNamespace(string foreignType)
         {
+            foreignType = foreignType.Trim();
+
             var isNullable = false;
             if (foreignType.EndsWith("?", StringComparison.OrdinalIgnoreCase))
             {
@@ -555,10 +557,15 @@ namespace Intent.Modules.Common.CSharp.Templates
         #region GetFullyQualifiedTypeName
 
         /// <summary>
+        /// Resolves the fully qualified type name for the provided <paramref name="classProvider"/>
+        /// parameter.
         /// 
+        /// <para>
+        /// See the
+        /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
+        /// Resolving type names</seealso> article for more information.
+        /// </para>
         /// </summary>
-        /// <param name="classProvider"></param>
-        /// <returns></returns>
         protected virtual string GetFullyQualifiedTypeName(IClassProvider classProvider)
         {
             var resolvedTypeInfo = GetTypeInfo(classProvider);
@@ -567,13 +574,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name for the <paramref name="element"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
-        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// Resolves the fully qualified type name for the provided <paramref name="element"/>
+        /// parameter.
+        /// 
+        /// Any source added by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> or <see cref="AddTypeSource(string,string)"/>
+        /// will be searched to resolve the type name.
+        /// 
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
         /// </summary>
         /// <param name="element">The <see cref="IElement"/> for which to get the type name.</param>
@@ -599,17 +609,23 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name for the <paramref name="hasTypeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
-        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
+        /// Resolves the fully qualified type name for the provided <paramref name="hasTypeReference"/>
+        /// parameter.
+        /// 
+        /// Any source added by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> or <see cref="AddTypeSource(string,string)"/>
+        /// will be searched to resolve the type name.
+        /// 
+        /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/>
+        /// is true.
+        /// 
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
         /// </summary>
         /// <param name="hasTypeReference">The <see cref="IHasTypeReference"/> for which to get the type name.</param>
-        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true</param>
+        /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
         public string GetFullyQualifiedTypeName(IHasTypeReference hasTypeReference, string collectionFormat = null)
         {
             var resolvedTypeInfo = GetTypeInfo(hasTypeReference.TypeReference, collectionFormat);
@@ -627,13 +643,17 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name for the <paramref name="template"/> parameter.
+        /// Resolves the fully qualified type name for the provided <paramref name="template"/>
+        /// parameter.
+        /// 
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
         /// </summary>
+        /// <param name="template">The <see cref="ITemplate"/> for which to get the type name.</param>
+        /// <param name="options"><see cref="TemplateDiscoveryOptions"/> to use.</param>
         public string GetFullyQualifiedTypeName(ITemplate template, TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(template, options);
@@ -642,13 +662,17 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name for the <paramref name="templateDependency"/> parameter.
+        /// Resolves the fully qualified type name for the provided <paramref name="templateDependency"/>
+        /// parameter.
+        /// 
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
         /// </summary>
+        /// <param name="templateDependency">The <see cref="ITemplateDependency"/> for which to get the type name.</param>
+        /// <param name="options"><see cref="TemplateDiscoveryOptions"/> to use.</param>
         public string GetFullyQualifiedTypeName(ITemplateDependency templateDependency, TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateDependency, options);
@@ -657,13 +681,14 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name for the <paramref name="typeReference"/> parameter.
-        /// Any added <see cref="ITypeSource"/> by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> will be searched to resolve the type name.
+        /// Resolves the fully qualified type name for the provided <paramref name="typeReference"/> parameter.
+        /// Any added <see cref="ITypeSource"/> by <see cref="IntentTemplateBase.AddTypeSource(ITypeSource)"/> will be
+        /// searched to resolve the type name.
         /// Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="ITypeReference.IsCollection"/> is true.
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
         /// </summary>
         /// <param name="typeReference">The <see cref="ITypeReference"/> for which to get the type name.</param>
@@ -676,13 +701,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// Resolves the fully qualified type name for the provided <paramref name="templateId"/>
+        /// and <paramref name="model"/> parameters.
+        /// 
         /// This overload assumes that the Template can have many instances and identifies the target instance
-        /// based on which has the <paramref name="model"/>.
+        /// based on which has the provided <paramref name="model"/>.
+        /// 
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
@@ -696,13 +724,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// Resolves the fully qualified type name for the provided <paramref name="templateId"/>
+        /// and <paramref name="modelId"/> parameters.
+        /// 
         /// This overload assumes that the Template can have many instances and identifies the target instance
-        /// based on which has the <paramref name="modelId"/>.
+        /// based on which has the provided <paramref name="modelId"/>.
+        /// 
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
         /// </summary>
         /// <param name="templateId">The unique Template identifier.</param>
@@ -716,14 +747,20 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
-        /// Resolves the fully qualified type name of the Template with <paramref name="templateId"/> as a string.
+        /// Resolves the fully qualified type name for the provided <paramref name="templateId"/>
+        /// parameter.
+        /// 
+        /// This overload assumes that the Template only has a single instance and will throw an
+        /// exception if more than one is found.
+        /// 
         /// <para>
         /// See the
         /// <seealso href="https://intentarchitect.com/#/redirect/?category=xmlDocComment&amp;subCategory=intent.modules.common&amp;additionalData=getTypeName">
-        /// GetTypeName article</seealso> for more information.
+        /// Resolving type names</seealso> article for more information.
         /// </para>
-        /// Will throw an exception if more than one template instance exists.
         /// </summary>
+        /// <param name="templateId">The unique Template identifier.</param>
+        /// <param name="options">Optional <see cref="TemplateDiscoveryOptions"/> to apply.</param>
         public string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null)
         {
             var resolvedTypeInfo = GetTypeInfo(templateId, options);

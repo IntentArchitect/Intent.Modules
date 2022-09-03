@@ -1,30 +1,50 @@
 ﻿using System;
 using System.IO;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
 {
+    /// <summary>
+    /// Obsolete. Use <see cref="FileMetadataExtensions"/> instead.
+    /// </summary>
+    [Obsolete(WillBeRemovedIn.Version4)]
     public static class IFileMetadataExtensions
     {
-        public static string FileNameWithExtension(this IFileMetadata fm)
+        /// <summary>
+        /// Obsolete. Use <see cref="FileMetadataExtensions.FileNameWithExtension"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public static string FileNameWithExtension(IFileMetadata fm)
         {
             return string.IsNullOrWhiteSpace(fm.FileExtension)
                 ? fm.FileName
                 : $"{fm.FileName}.{fm.FileExtension}";
         }
 
-        [Obsolete("Use GetFilePath")]
-        public static string GetFullLocationPathWithFileName(this IFileMetadata fm)
+        /// <summary>
+        /// Use <see cref="GetFilePath"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public static string GetFullLocationPathWithFileName(IFileMetadata fm)
         {
-            return Path.Combine(fm.GetFullLocationPath(), fm.FileNameWithExtension());
+            return Path.GetFullPath(Path.Combine(fm.GetFullLocationPath(), fm.FileNameWithExtension()));
         }
 
-        public static string GetFilePath(this IFileMetadata fm)
+        /// <summary>
+        /// Obsolete. Use <see cref="FileMetadataExtensions.GetFilePath"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public static string GetFilePath(IFileMetadata fm)
         {
-            return Path.Combine(fm.GetFullLocationPath(), fm.FileNameWithExtension());
+            return Path.GetFullPath(Path.Combine(fm.GetFullLocationPath(), fm.FileNameWithExtension()));
         }
 
-        public static string GetFilePathWithoutExtension(this IFileMetadata fm)
+        /// <summary>
+        /// Obsolete. Use <see cref="FileMetadataExtensions.GetFilePathWithoutExtension"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public static string GetFilePathWithoutExtension(IFileMetadata fm)
         {
             return Path.Combine(fm.GetFullLocationPath(), fm.FileName);
         }

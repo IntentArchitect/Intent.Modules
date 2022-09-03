@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="4883f728-0c2e-4ef1-ba53-d22a8e9cfa61">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1a3ec0dd-bbfc-4922-ae61-607b00610ffd</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Message</name>
           <display>New Message: Message</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c87427c5-bb5f-457c-84f4-b05b9be8bd26">
             <typeId>cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</typeId>
@@ -104,7 +103,6 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="6c1a8d45-3fb1-464e-8b10-56fe515885dc">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -144,7 +142,6 @@
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="fb9cac7d-32f7-4942-a231-e416278e249f">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
@@ -184,7 +181,6 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="add98b7a-048b-4971-9365-c2d88d5cbfa5">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

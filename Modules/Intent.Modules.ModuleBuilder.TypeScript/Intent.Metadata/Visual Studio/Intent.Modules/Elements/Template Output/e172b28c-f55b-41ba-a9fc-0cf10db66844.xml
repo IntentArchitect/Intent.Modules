@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e172b28c-f55b-41ba-a9fc-0cf10db66844" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+  <name>Intent.ModuleBuilder.Templates.FileTemplateStringInterpolation</name>
+  <display>Intent.ModuleBuilder.Templates.FileTemplateStringInterpolation</display>
+  <externalReference>Intent.ModuleBuilder</externalReference>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>f917caa4-f97b-43a2-9853-5c5dfa533768</parentFolderId>
+  <stereotypes />
+  <metadata>
+    <entry key="status" value="unassigned" />
+  </metadata>
+  <childElements />
+</class>

@@ -424,6 +424,26 @@
             </para>
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.Templates.FileMetadataExtensions">
+            <summary>
+            Extension methods for <see cref="T:Intent.Templates.IFileMetadata"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.FileMetadataExtensions.FileNameWithExtension(Intent.Templates.IFileMetadata)">
+            <summary>
+            Returns only the file name with its extension.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.FileMetadataExtensions.GetFilePath(Intent.Templates.IFileMetadata)">
+            <summary>
+            Returns the fully qualified output file path.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.FileMetadataExtensions.GetFilePathWithoutExtension(Intent.Templates.IFileMetadata)">
+            <summary>
+            Returns the fully qualified output file path without the file extension.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.Templates.IClassProvider">
             <summary>
             Template that provides a OOP class type - Class name and namespace (package).
@@ -447,6 +467,31 @@
         <member name="M:Intent.Modules.Common.Templates.IClassProviderExtensions.FullTypeName(Intent.Modules.Common.Templates.IClassProvider)">
             <summary>
             Returns the fully qualified class name.
+            </summary>
+        </member>
+        <member name="T:Intent.Modules.Common.Templates.IFileMetadataExtensions">
+            <summary>
+            Obsolete. Use <see cref="T:Intent.Modules.Common.Templates.FileMetadataExtensions"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IFileMetadataExtensions.FileNameWithExtension(Intent.Templates.IFileMetadata)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.FileMetadataExtensions.FileNameWithExtension(Intent.Templates.IFileMetadata)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IFileMetadataExtensions.GetFullLocationPathWithFileName(Intent.Templates.IFileMetadata)">
+            <summary>
+            Use <see cref="M:Intent.Modules.Common.Templates.IFileMetadataExtensions.GetFilePath(Intent.Templates.IFileMetadata)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IFileMetadataExtensions.GetFilePath(Intent.Templates.IFileMetadata)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.FileMetadataExtensions.GetFilePath(Intent.Templates.IFileMetadata)"/> instead.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IFileMetadataExtensions.GetFilePathWithoutExtension(Intent.Templates.IFileMetadata)">
+            <summary>
+            Obsolete. Use <see cref="M:Intent.Modules.Common.Templates.FileMetadataExtensions.GetFilePathWithoutExtension(Intent.Templates.IFileMetadata)"/> instead.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.Templates.IntentTemplateBase`2">
@@ -1033,6 +1078,53 @@
             </remarks>
             <param name="content">The contents of the file if it exists.</param>
             <returns>Whether or not there was an existing file for this template's output.</returns>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetExistingFileContentInternal">
+            <summary>
+            Not to be called directly, this is a delegate for the <see cref="T:System.Lazy`1"/> instance
+            for <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase._tryGetExistingFileContentCache"/>.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetExistingFilePathInternal">
+            <summary>
+            Not to be called directly, this is a delegate for the <see cref="T:System.Lazy`1"/> instance
+            for <see cref="F:Intent.Modules.Common.Templates.IntentTemplateBase._tryGetExistingFilePathCache"/>.
+            </summary>
+            <remarks>
+            There is a significant performance impact even for <see cref="M:System.IO.File.Exists(System.String)"/> and
+            caching them has been shown to make a highly significant improvement in software
+            factory execution time.
+            <para>
+            It is intentional that if a file exists at the current output path then the file at the
+            current output path is considered the "existing" file, regardless of whether or not the
+            output path is different compared to the previous software execution.
+            </para>
+            <para>
+            This is so that the following scenario works as expected:
+            - Rename the file preemptively on the file system in your IDE.
+            - Rename the element in Intent Architect.
+            - Run the software factory.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetExistingFilePath(System.String@)">
+            <summary>
+            If an existing file exists, returns <see langword="true"/> and populates the
+            <paramref name="path"/> with the existing files path.
+            </summary>
+            <remarks>
+            At the end of a software factory execution a template's output path is recorded in a
+            log and this method reads the log to determine what the previous output path was.
+            <para>
+            Regardless of whether or not the current output path is different compared to the
+            previous software factory execution, if a file exists at the current output path, then
+            the current output path is populated into the <paramref name="path"/> parameter.
+            </para>
+            <para>
+            If no file exists at the current output path, then the previous output path is checked
+            to see if it exists.
+            </para>
+            </remarks>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.TryGetTypeName(System.String)">
             <summary>
