@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="eda2822c-8383-4382-9922-de0da997f73b" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Package Extensions</name>
+  <display>Package Extensions: Domain Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="6627b65c-b5ab-43be-a3ce-0397e7094f24">
+    <typeId>1a824508-4623-45d9-accc-f572091ade5a</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>79735715-7042-41f3-bf1f-5dc9167efa2c</parentFolderId>
+  <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+  <packageName>Intent.Modelers.Domain.Repositories</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="14044643-0fa0-4ddc-ba61-e9c264d489b7" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>eda2822c-8383-4382-9922-de0da997f73b</parentFolderId>
+      <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+      <packageName>Intent.Modelers.Domain.Repositories</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="ed0971bf-b0a5-4a23-a32a-19664a931ae9" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Repository</name>
+          <display>New Repository: Repository</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d4a955f6-49ab-4922-a710-9536d31cbff7">
+            <typeId>96ffceb2-a70a-4b69-869b-0df436c470c3</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Domain.Repositories</typePackageName>
+            <typePackageId>464e0fa3-c4c0-497e-b252-a5df39f59158</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>14044643-0fa0-4ddc-ba61-e9c264d489b7</parentFolderId>
+          <packageId>464e0fa3-c4c0-497e-b252-a5df39f59158</packageId>
+          <packageName>Intent.Modelers.Domain.Repositories</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + r" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>
