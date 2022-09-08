@@ -104,6 +104,11 @@ namespace Intent.Metadata.WebApi.Api
                 return _stereotype.GetProperty<string>("Route");
             }
 
+            public ReturnTypeMediatypeOptions ReturnTypeMediatype()
+            {
+                return new ReturnTypeMediatypeOptions(_stereotype.GetProperty<string>("Return Type Mediatype"));
+            }
+
             public class VerbOptions
             {
                 public readonly string Value;
@@ -161,6 +166,43 @@ namespace Intent.Metadata.WebApi.Api
                 PUT,
                 PATCH,
                 DELETE
+            }
+            public class ReturnTypeMediatypeOptions
+            {
+                public readonly string Value;
+
+                public ReturnTypeMediatypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public ReturnTypeMediatypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Default":
+                            return ReturnTypeMediatypeOptionsEnum.Default;
+                        case "application/json":
+                            return ReturnTypeMediatypeOptionsEnum.ApplicationJson;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsDefault()
+                {
+                    return Value == "Default";
+                }
+                public bool IsApplicationJson()
+                {
+                    return Value == "application/json";
+                }
+            }
+
+            public enum ReturnTypeMediatypeOptionsEnum
+            {
+                Default,
+                ApplicationJson
             }
         }
 

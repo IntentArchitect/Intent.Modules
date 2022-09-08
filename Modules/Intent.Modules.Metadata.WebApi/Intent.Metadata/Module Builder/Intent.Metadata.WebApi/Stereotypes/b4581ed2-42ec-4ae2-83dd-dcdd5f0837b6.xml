@@ -48,5 +48,18 @@
       <lookupTypes />
       <isActiveFunction />
     </property>
+    <property id="4490e212-1e99-43ce-b3dd-048ed2a6bae8">
+      <name>Return Type Mediatype</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Default</defaultValue>
+      <valueOptions>
+        <option>Default</option>
+        <option>application/json</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

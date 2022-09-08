@@ -191,9 +191,11 @@ resultDto.setMapping(entity.id);
     switch (true) {
         case pks.length == 0:
             pkTypeId = getSurrogateKeyType();
+            operation.getStereotype("Http Settings").getProperty("Return Type Mediatype").setValue("application/json");
             break;
         case pks.length == 1:
             pkTypeId = pks[0].typeReference?.typeId ?? getSurrogateKeyType();
+            operation.getStereotype("Http Settings").getProperty("Return Type Mediatype").setValue("application/json");
             break;
         case pks.length &gt; 1:
             pkTypeId = null;
@@ -494,9 +496,11 @@ resultDto.setMapping(entity.id);
     switch (true) {
         case pks.length == 0:
             pkTypeId = getSurrogateKeyType();
+            operation.getStereotype("Http Settings").getProperty("Return Type Mediatype").setValue("application/json");
             break;
         case pks.length == 1:
             pkTypeId = pks[0].typeReference?.typeId ?? getSurrogateKeyType();
+            operation.getStereotype("Http Settings").getProperty("Return Type Mediatype").setValue("application/json");
             break;
         case pks.length &gt; 1:
             pkTypeId = null;
