@@ -19,17 +19,10 @@ public class CSharpInterfaceProperty : CSharpProperty
     {
     }
 
-    public string ToString(string indentation)
+    public override string ToString(string indentation)
     {
         return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
 " : string.Empty)}{indentation}{Type} {Name} {{ {Getter}{(!IsReadOnly ? $" {Setter}" : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
-    }
-}
-
-public class CSharpInterfaceMethod : CSharpMethod
-{
-    public CSharpInterfaceMethod(string type, string name) : base(type, name)
-    {
     }
 }
 

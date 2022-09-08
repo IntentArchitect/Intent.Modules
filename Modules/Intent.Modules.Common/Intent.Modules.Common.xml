@@ -826,7 +826,6 @@
             </para>
             </summary>
             <param name="typeReference">The <see cref="T:Intent.Metadata.Models.ITypeReference"/> for which to get the <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/>.</param>
-             TODO JL: Fix below, and similar usages
             <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.</param>
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeInfo(System.String,Intent.Metadata.Models.IMetadataModel,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
@@ -1001,8 +1000,8 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(Intent.Metadata.Models.ITypeReference,System.String)">
             <summary>
-            Resolves and applies <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.UseType(Intent.Modules.Common.TypeResolution.IResolvedTypeInfo)"/> to the type name for the provided
-            <paramref name="typeReference"/> parameter.
+            Resolves the type name for the provided <paramref name="typeReference"/>
+            parameter.
             Any added <see cref="T:Intent.Modules.Common.TypeResolution.ITypeSource"/> by <see cref="M:Intent.Modules.Common.Templates.IntentTemplateBase.AddTypeSource(Intent.Modules.Common.TypeResolution.ITypeSource)"/> will be
             searched to resolve the type name.
             Applies the <paramref name="collectionFormat"/> if the resolved type's <see cref="P:Intent.Metadata.Models.ITypeReference.IsCollection"/> is true.
@@ -1053,7 +1052,7 @@
         </member>
         <member name="M:Intent.Modules.Common.Templates.IntentTemplateBase.GetTypeName(System.String,Intent.Modules.Common.Templates.TemplateDiscoveryOptions)">
             <summary>
-            Resolves an <see cref="T:Intent.Modules.Common.TypeResolution.IResolvedTypeInfo"/> for the provided <paramref name="templateId"/>
+            Resolves the type name for the provided <paramref name="templateId"/>
             parameter.
             
             This overload assumes that the Template only has a single instance and will throw an

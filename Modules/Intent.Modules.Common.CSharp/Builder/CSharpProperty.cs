@@ -36,6 +36,12 @@ public class CSharpProperty : CSharpDeclaration<CSharpProperty>
         return this;
     }
 
+    public CSharpProperty WithoutAccessModifier()
+    {
+        AccessModifier = "";
+        return this;
+    }
+
     public CSharpProperty Override()
     {
         OverrideModifier = "override ";
@@ -66,6 +72,12 @@ public class CSharpProperty : CSharpDeclaration<CSharpProperty>
         return this;
     }
 
+    public CSharpProperty WithoutSetter()
+    {
+        IsReadOnly = true;
+        return this;
+    }
+
     public CSharpProperty WithInitialValue(string initialValue)
     {
         InitialValue = initialValue;
@@ -83,11 +95,11 @@ public class CSharpProperty : CSharpDeclaration<CSharpProperty>
         return this;
     }
 
-    public string ToString(string indentation)
+    public virtual string ToString(string indentation)
     {
         if (Getter.IsExpression && IsReadOnly)
         {
-            return $@"{indentation}{AccessModifier}{OverrideModifier}{Type} {Name} => {Getter};";
+            return $@"{indentation}{AccessModifier}{OverrideModifier}{Type} {Name} => {Getter.Implementation};";
         }
 
         if (!Getter.Implementation.IsEmpty() || !Setter.Implementation.IsEmpty())

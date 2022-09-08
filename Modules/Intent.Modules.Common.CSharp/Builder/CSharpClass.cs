@@ -19,7 +19,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public IList<CSharpField> Fields { get; set; } = new List<CSharpField>();
     public IList<CSharpConstructor> Constructors { get; set; } = new List<CSharpConstructor>();
     public IList<CSharpProperty> Properties { get; set; } = new List<CSharpProperty>();
-    public IList<CSharpMethod> Methods { get; set; } = new List<CSharpMethod>();
+    public IList<CSharpClassMethod> Methods { get; set; } = new List<CSharpClassMethod>();
 
     public CSharpClass WithBaseType(string type)
     {
@@ -89,14 +89,14 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         return this;
     }
 
-    public CSharpClass AddMethod(string returnType, string name, Action<CSharpMethod> configure, params string[] statements)
+    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure, params string[] statements)
     {
         return InsertMethod(Methods.Count, returnType, name, configure, statements);
     }
 
-    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpMethod> configure, params string[] statements)
+    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure, params string[] statements)
     {
-        var method = new CSharpMethod(returnType, name);
+        var method = new CSharpClassMethod(returnType, name);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;
