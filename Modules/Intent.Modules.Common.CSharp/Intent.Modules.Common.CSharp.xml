@@ -1309,6 +1309,16 @@
             <param name="collectionFormat">The collection type, for example:
             <c>System.Collection.Generic.List&lt;T&gt;</c>.</param>
         </member>
+        <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateIEnumerable">
+            <summary>
+            Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.IEnumerable`1"/>
+            </summary>
+            <remarks>
+            A cache of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> instances is first checked for an
+            already existing instance, if an instance is found then that is returned, otherwise a new
+            instance is created, placed in the cache and returned.
+            </remarks>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter.CreateICollection">
             <summary>
             Returns an instance of <see cref="T:Intent.Modules.Common.CSharp.TypeResolvers.CSharpCollectionFormatter"/> for <see cref="T:System.Collections.Generic.ICollection`1"/>

@@ -89,12 +89,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         return this;
     }
 
-    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure, params string[] statements)
+    public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
-        return InsertMethod(Methods.Count, returnType, name, configure, statements);
+        return InsertMethod(Methods.Count, returnType, name, configure);
     }
 
-    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure, params string[] statements)
+    public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
         var method = new CSharpClassMethod(returnType, name);
         Methods.Insert(index, method);

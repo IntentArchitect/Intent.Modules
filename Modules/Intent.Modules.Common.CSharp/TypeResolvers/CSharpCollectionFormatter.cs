@@ -202,6 +202,19 @@ public class CSharpCollectionFormatter : ICollectionFormatter
     }
 
     /// <summary>
+    /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.IEnumerable{T}"/>
+    /// </summary>
+    /// <remarks>
+    /// A cache of <see cref="CSharpCollectionFormatter"/> instances is first checked for an
+    /// already existing instance, if an instance is found then that is returned, otherwise a new
+    /// instance is created, placed in the cache and returned.
+    /// </remarks>
+    public static CSharpCollectionFormatter CreateIEnumerable()
+    {
+        return Create("System.Collections.Generic.IEnumerable<{0}>");
+    }
+
+    /// <summary>
     /// Returns an instance of <see cref="CSharpCollectionFormatter"/> for <see cref="System.Collections.Generic.ICollection{T}"/>
     /// </summary>
     /// <remarks>

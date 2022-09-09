@@ -78,12 +78,12 @@ public class CSharpInterface
         return this;
     }
 
-    public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure, params string[] statements)
+    public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
-        return InsertMethod(Methods.Count, returnType, name, configure, statements);
+        return InsertMethod(Methods.Count, returnType, name, configure);
     }
 
-    public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure, params string[] statements)
+    public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
         var method = new CSharpInterfaceMethod(returnType, name);
         Methods.Insert(index, method);

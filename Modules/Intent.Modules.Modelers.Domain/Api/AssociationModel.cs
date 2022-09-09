@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.RoslynWeaver.Attributes;
+using Intent.SdkEvolutionHelpers;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiAssociationModel", Version = "1.0")]
@@ -68,6 +69,7 @@ namespace Intent.Modelers.Domain.Api
         public const string SpecializationTypeId = "eaf9ed4e-0b61-4ac1-ba88-09f912c12087";
     }
 
+    [FixFor_Version4("Should implement IHasTypeReference and NOT ITypeReference")]
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
