@@ -24,6 +24,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Association End Extension Settings");
         }
 
+        public static bool TryGetAssociationEndExtensionSettings(this AssociationSourceEndExtensionModel model, out AssociationEndExtensionSettings stereotype)
+        {
+            if (!HasAssociationEndExtensionSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new AssociationEndExtensionSettings(model.GetStereotype("Association End Extension Settings"));
+            return true;
+        }
+
 
         public class AssociationEndExtensionSettings
         {

@@ -3,7 +3,7 @@
   <name>Sql Extension</name>
   <display>Sql Extension</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>a260cf6f-f111-403a-b38b-5491559812b5</parentFolderId>

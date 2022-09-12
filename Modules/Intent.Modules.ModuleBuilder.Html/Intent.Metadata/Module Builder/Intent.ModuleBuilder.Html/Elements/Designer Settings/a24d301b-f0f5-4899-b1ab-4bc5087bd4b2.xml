@@ -3,7 +3,7 @@
   <name>Html Types</name>
   <display>Html Types</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>82e2bcdb-9988-45d7-bec3-d5b2554ff9ad</parentFolderId>

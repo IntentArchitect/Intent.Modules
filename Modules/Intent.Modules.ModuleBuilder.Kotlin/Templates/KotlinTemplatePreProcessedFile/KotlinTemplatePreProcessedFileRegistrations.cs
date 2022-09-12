@@ -3,6 +3,7 @@ using Intent.Engine;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Kotlin.Api;
 using Intent.Modules.Common.Registrations;
+using Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFile;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
@@ -26,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinTemplate
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: KotlinFileTemplate.KotlinFileTemplate.TemplateId,
+                t4TemplateId: KotlinFileTemplate.TemplateId,
                 partialTemplateId: KotlinFileTemplatePartial.KotlinFileTemplatePartialTemplate.TemplateId);
         }
 

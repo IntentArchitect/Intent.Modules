@@ -15,7 +15,7 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemplatePartial
+namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartial
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class KotlinFileTemplatePartialTemplate : CSharpTemplateBase<KotlinFileTemplateModel>, IModuleBuilderTemplate

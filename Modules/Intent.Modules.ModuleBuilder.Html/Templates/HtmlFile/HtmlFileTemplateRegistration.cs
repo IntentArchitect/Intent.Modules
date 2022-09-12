@@ -4,7 +4,7 @@ using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
-using Intent.ModuleBuilder.Sql.Api;
+using Intent.ModuleBuilder.Html.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
@@ -13,29 +13,29 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
+namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFile
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class SqlFileTemplateRegistration : FilePerModelTemplateRegistration<SqlTemplateModel>
+    public class HtmlFileTemplateRegistration : FilePerModelTemplateRegistration<HtmlFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public SqlFileTemplateRegistration(IMetadataManager metadataManager)
+        public HtmlFileTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => SqlFileTemplate.TemplateId;
+        public override string TemplateId => HtmlFileTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, SqlTemplateModel model)
+        public override ITemplate CreateTemplateInstance(IOutputTarget project, HtmlFileTemplateModel model)
         {
-            return new SqlFileTemplate(project, model);
+            return new HtmlFileTemplate(project, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
-        public override IEnumerable<SqlTemplateModel> GetModels(IApplication application)
+        public override IEnumerable<HtmlFileTemplateModel> GetModels(IApplication application)
         {
-            return _metadataManager.ModuleBuilder(application).GetSqlTemplateModels();
+            return _metadataManager.ModuleBuilder(application).GetHtmlFileTemplateModels();
         }
     }
 }

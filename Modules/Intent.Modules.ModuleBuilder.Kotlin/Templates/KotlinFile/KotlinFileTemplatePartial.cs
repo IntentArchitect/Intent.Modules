@@ -5,30 +5,35 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.ModuleBuilder.Sql.Api;
+using Intent.ModuleBuilder.Kotlin.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
+using Intent.Modules.Common.Types.Api;
+using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
+namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFile
 {
-    [IntentManaged(Mode.Merge)]
-    partial class SqlFileTemplate : IntentTemplateBase<SqlTemplateModel>
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    partial class KotlinFileTemplate : IntentTemplateBase<KotlinFileTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Intent.ModuleBuilder.Sql.Templates.SqlFileTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.Kotlin.Templates.KotlinFileTemplate";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public SqlFileTemplate(IOutputTarget outputTarget, SqlTemplateModel model) : base(TemplateId, outputTarget, model)
+        public KotlinFileTemplate(IOutputTarget outputTarget, KotlinFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
 
-        public string TemplateName => $"{Model.Name.RemoveSuffix("Template").ToCSharpIdentifier()}Template";
+
+        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
+        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
+        public string FolderPath => string.Join("/", OutputFolder);
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig GetTemplateFileConfig()
@@ -37,8 +42,8 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
                 fileName: $"{TemplateName}",
-                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name)}",
-                fileExtension: "tt");
+                fileExtension: "tt",
+                relativeLocation: $"{FolderPath}");
         }
 
         public override string TransformText()
@@ -46,32 +51,42 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplate
             var content = GetExistingTemplateContent();
             if (content != null)
             {
-                return ReplaceTemplateInheritsTag(content, $"SqlTemplateBase<{Model.GetModelName()}>");
+                return ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""SqlTemplateBase<{Model.GetModelName()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""{GetBaseType()}"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
-<#@ import namespace=""Intent.Modules.Common.Sql.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common.Kotlin.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
-{(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}
 {TemplateBody()}";
         }
 
         private string TemplateBody()
         {
-            return @"
--- Create your SQL template here.";
+            return @"package <#= Package #>
+
+class <#= ClassName #>() {
+
+}";
         }
 
-
+        private string GetBaseType()
+        {
+            if (Model.DecoratorContract != null)
+            {
+                return $"KotlinTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+            }
+            return $"KotlinTemplateBase<{Model.GetModelName()}>";
+        }
 
         private string GetExistingTemplateContent()
         {
-            var fileLocation = FileMetadata.GetFullLocationPathWithFileName();
+            var fileLocation = FileMetadata.GetFilePath();
 
             if (File.Exists(fileLocation))
             {

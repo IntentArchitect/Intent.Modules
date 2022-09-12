@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("File Settings");
         }
 
+        public static bool TryGetFileSettings(this FileTemplateModel model, out FileSettings stereotype)
+        {
+            if (!HasFileSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new FileSettings(model.GetStereotype("File Settings"));
+            return true;
+        }
+
 
         public class FileSettings
         {

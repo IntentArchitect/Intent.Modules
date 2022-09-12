@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Package Settings");
         }
 
+        public static bool TryGetPackageSettings(this PackageSettingsModel model, out PackageSettings stereotype)
+        {
+            if (!HasPackageSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new PackageSettings(model.GetStereotype("Package Settings"));
+            return true;
+        }
+
 
         public class PackageSettings
         {

@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
         {
             return model.HasStereotype("Extension Settings");
         }
+
+        public static bool TryGetExtensionSettings(this ElementExtensionModel model, out ExtensionSettings stereotype)
+        {
+            if (!HasExtensionSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ExtensionSettings(model.GetStereotype("Extension Settings"));
+            return true;
+        }
         public static TypeReferenceExtensionSettings GetTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
             var stereotype = model.GetStereotype("Type Reference Extension Settings");
@@ -32,6 +44,18 @@ namespace Intent.ModuleBuilder.Api
         public static bool HasTypeReferenceExtensionSettings(this ElementExtensionModel model)
         {
             return model.HasStereotype("Type Reference Extension Settings");
+        }
+
+        public static bool TryGetTypeReferenceExtensionSettings(this ElementExtensionModel model, out TypeReferenceExtensionSettings stereotype)
+        {
+            if (!HasTypeReferenceExtensionSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new TypeReferenceExtensionSettings(model.GetStereotype("Type Reference Extension Settings"));
+            return true;
         }
 
 

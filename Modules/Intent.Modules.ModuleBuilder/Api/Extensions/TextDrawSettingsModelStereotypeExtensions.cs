@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Position Settings");
         }
 
+        public static bool TryGetPositionSettings(this TextDrawSettingsModel model, out PositionSettings stereotype)
+        {
+            if (!HasPositionSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new PositionSettings(model.GetStereotype("Position Settings"));
+            return true;
+        }
+
         public static TextSettings GetTextSettings(this TextDrawSettingsModel model)
         {
             var stereotype = model.GetStereotype("Text Settings");
@@ -32,6 +44,18 @@ namespace Intent.ModuleBuilder.Api
         public static bool HasTextSettings(this TextDrawSettingsModel model)
         {
             return model.HasStereotype("Text Settings");
+        }
+
+        public static bool TryGetTextSettings(this TextDrawSettingsModel model, out TextSettings stereotype)
+        {
+            if (!HasTextSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new TextSettings(model.GetStereotype("Text Settings"));
+            return true;
         }
 
 

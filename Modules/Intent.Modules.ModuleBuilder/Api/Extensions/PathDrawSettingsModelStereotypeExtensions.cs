@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Path Settings");
         }
 
+        public static bool TryGetPathSettings(this PathDrawSettingsModel model, out PathSettings stereotype)
+        {
+            if (!HasPathSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new PathSettings(model.GetStereotype("Path Settings"));
+            return true;
+        }
+
 
         public class PathSettings
         {

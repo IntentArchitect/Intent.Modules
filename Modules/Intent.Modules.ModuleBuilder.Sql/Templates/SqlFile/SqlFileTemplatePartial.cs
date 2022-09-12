@@ -5,30 +5,30 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Intent.Engine;
 using Intent.Metadata.Models;
-using Intent.ModuleBuilder.Api;
-using Intent.ModuleBuilder.Html.Api;
+using Intent.ModuleBuilder.Sql.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
+namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFile
 {
     [IntentManaged(Mode.Merge)]
-    partial class HtmlFileTemplate : IntentFileTemplateBase<HtmlFileTemplateModel>
+    partial class SqlFileTemplate : IntentTemplateBase<SqlTemplateModel>
     {
         [IntentManaged(Mode.Fully)]
-        public const string TemplateId = "Intent.ModuleBuilder.Html.Templates.HtmlFileTemplate";
+        public const string TemplateId = "Intent.ModuleBuilder.Sql.Templates.SqlFileTemplate";
 
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-        public HtmlFileTemplate(IOutputTarget outputTarget, HtmlFileTemplateModel model) : base(TemplateId, outputTarget, model)
+        public SqlFileTemplate(IOutputTarget outputTarget, SqlTemplateModel model) : base(TemplateId, outputTarget, model)
         {
         }
+
+        public string TemplateName => $"{Model.Name.RemoveSuffix("Template").ToCSharpIdentifier()}Template";
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
         public override ITemplateFileConfig GetTemplateFileConfig()
@@ -36,30 +36,24 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
             return new TemplateFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 codeGenType: CodeGenType.Basic,
-                fileName: TemplateName,
-                fileExtension: "tt",
-                relativeLocation: $"{FolderPath}");
+                fileName: $"{TemplateName}",
+                relativeLocation: $"{this.GetFolderPath(additionalFolders: Model.Name.RemoveSuffix("Template"))}",
+                fileExtension: "tt");
         }
-
-        public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
-        public IList<string> OutputFolder => Model.GetParentFolders().Select(x => x.Name).Concat(new[] { Model.Name.ToCSharpIdentifier().RemoveSuffix("Template") }).ToList();
-        public string FolderPath => string.Join("/", OutputFolder);
 
         public override string TransformText()
         {
-            var content = GetExistingTemplateContent();
-            if (content != null)
+            if (TryGetExistingFileContent(out var content))
             {
-                return ReplaceTemplateInheritsTag(content, $"HtmlTemplateBase<{Model.GetModelName()}>");
+                return ReplaceTemplateInheritsTag(content, $"SqlTemplateBase<{Model.GetModelName()}>");
             }
 
-            return $@"<#@ template language=""C#"" inherits=""HtmlTemplateBase<{Model.GetModelName()}>"" #>
+            return $@"<#@ template language=""C#"" inherits=""SqlTemplateBase<{Model.GetModelName()}>"" #>
 <#@ assembly name=""System.Core"" #>
 <#@ import namespace=""System.Collections.Generic"" #>
 <#@ import namespace=""System.Linq"" #>
 <#@ import namespace=""Intent.Modules.Common"" #>
-<#@ import namespace=""Intent.Modules.Common.Templates"" #>
-<#@ import namespace=""Intent.Modules.Common.Html.Templates"" #>
+<#@ import namespace=""Intent.Modules.Common.Sql.Templates"" #>
 <#@ import namespace=""Intent.Templates"" #>
 <#@ import namespace=""Intent.Metadata.Models"" #>
 {(Model.GetModelType() != null ? $@"<#@ import namespace=""{Model.GetModelType()?.ParentModule.ApiNamespace}"" #>" : "")}
@@ -69,19 +63,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmlFileTemplate
         private string TemplateBody()
         {
             return @"
-<!-- Replace this with your HTML template -->";
-        }
-
-        private string GetExistingTemplateContent()
-        {
-            var fileLocation = FileMetadata.GetFullLocationPathWithFileName();
-
-            if (File.Exists(fileLocation))
-            {
-                return File.ReadAllText(fileLocation);
-            }
-
-            return null;
+-- Create your SQL template here.";
         }
 
         private static readonly Regex _templateInheritsTagRegex = new Regex(

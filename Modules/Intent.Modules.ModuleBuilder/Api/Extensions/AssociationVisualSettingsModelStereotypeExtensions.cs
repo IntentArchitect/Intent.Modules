@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Setting");
         }
 
+        public static bool TryGetSetting(this AssociationVisualSettingsModel model, out Setting stereotype)
+        {
+            if (!HasSetting(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Setting(model.GetStereotype("Setting"));
+            return true;
+        }
+
 
         public class Setting
         {

@@ -3,7 +3,7 @@
   <name>Folder Extensions</name>
   <display>Folder Extensions: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="12b054c7-80b5-4d4d-abd0-f72d587cd238">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>75de55cf-e031-4035-aae3-ef6f2627426e</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Html File</name>
           <display>New Html File: Html File Template</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="81ac01de-6749-4cbc-9eb4-94c975d4b7e7">
             <typeId>af3fe721-86c5-41e3-9daf-1e79209ed345</typeId>

@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Designer Config");
         }
 
+        public static bool TryGetDesignerConfig(this DesignerModel model, out DesignerConfig stereotype)
+        {
+            if (!HasDesignerConfig(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new DesignerConfig(model.GetStereotype("Designer Config"));
+            return true;
+        }
+
         public static OutputConfiguration GetOutputConfiguration(this DesignerModel model)
         {
             var stereotype = model.GetStereotype("Output Configuration");
@@ -32,6 +44,18 @@ namespace Intent.ModuleBuilder.Api
         public static bool HasOutputConfiguration(this DesignerModel model)
         {
             return model.HasStereotype("Output Configuration");
+        }
+
+        public static bool TryGetOutputConfiguration(this DesignerModel model, out OutputConfiguration stereotype)
+        {
+            if (!HasOutputConfiguration(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new OutputConfiguration(model.GetStereotype("Output Configuration"));
+            return true;
         }
 
 

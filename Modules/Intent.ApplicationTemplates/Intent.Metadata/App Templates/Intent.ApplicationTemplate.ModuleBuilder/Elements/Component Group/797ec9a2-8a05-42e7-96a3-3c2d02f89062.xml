@@ -3,6 +3,7 @@
   <name>Tooling</name>
   <display>Tooling</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -25,7 +26,7 @@
       <name>Visual Studio Integration</name>
       <display>Visual Studio Integration</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>797ec9a2-8a05-42e7-96a3-3c2d02f89062</parentFolderId>
@@ -51,7 +52,6 @@
           <name>Intent.VisualStudio.Projects</name>
           <display>Intent.VisualStudio.Projects</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>466a8715-8175-4b39-b912-cee9bfd3504a</parentFolderId>
@@ -63,7 +63,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.12" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.13" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -76,7 +76,7 @@
       <name>Auto-Build Module</name>
       <display>Auto-Build Module</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>797ec9a2-8a05-42e7-96a3-3c2d02f89062</parentFolderId>
@@ -102,7 +102,6 @@
           <name>Intent.ModuleBuilder.AutoCompile</name>
           <display>Intent.ModuleBuilder.AutoCompile</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>a8137c53-3ebf-443a-8c86-ab2d5f3d3f64</parentFolderId>
@@ -114,7 +113,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.0" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.1" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

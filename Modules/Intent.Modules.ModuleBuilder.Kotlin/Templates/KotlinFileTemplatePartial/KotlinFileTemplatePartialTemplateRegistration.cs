@@ -13,23 +13,23 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemplate
+namespace Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartial
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
-    public class KotlinFileTemplateRegistration : FilePerModelTemplateRegistration<KotlinFileTemplateModel>
+    public class KotlinFileTemplatePartialTemplateRegistration : FilePerModelTemplateRegistration<KotlinFileTemplateModel>
     {
         private readonly IMetadataManager _metadataManager;
 
-        public KotlinFileTemplateRegistration(IMetadataManager metadataManager)
+        public KotlinFileTemplatePartialTemplateRegistration(IMetadataManager metadataManager)
         {
             _metadataManager = metadataManager;
         }
 
-        public override string TemplateId => KotlinFileTemplate.TemplateId;
+        public override string TemplateId => KotlinFileTemplatePartialTemplate.TemplateId;
 
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, KotlinFileTemplateModel model)
         {
-            return new KotlinFileTemplate(outputTarget, model);
+            return new KotlinFileTemplatePartialTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

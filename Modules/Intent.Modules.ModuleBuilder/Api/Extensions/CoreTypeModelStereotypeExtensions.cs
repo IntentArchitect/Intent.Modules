@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Settings");
         }
 
+        public static bool TryGetSettings(this CoreTypeModel model, out Settings stereotype)
+        {
+            if (!HasSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Settings(model.GetStereotype("Settings"));
+            return true;
+        }
+
 
         public class Settings
         {

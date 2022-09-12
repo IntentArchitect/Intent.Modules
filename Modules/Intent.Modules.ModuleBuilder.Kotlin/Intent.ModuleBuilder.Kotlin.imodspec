@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Kotlin</id>
-  <version>3.3.0</version>
+  <version>3.3.1</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>For the creation of Kotlin Templates in the Intent Module Builder</summary>
   <description>For the creation of Kotlin Templates in the Intent Module Builder</description>
@@ -28,11 +28,11 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.1" />
-    <dependency id="Intent.Common.CSharp" version="3.3.2" />
-    <dependency id="Intent.Common.Types" version="3.3.0" />
-    <dependency id="Intent.ModuleBuilder" version="3.3.0" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.0" />
+    <dependency id="Intent.Common" version="3.3.11" />
+    <dependency id="Intent.Common.CSharp" version="3.3.18" />
+    <dependency id="Intent.Common.Types" version="3.3.6" />
+    <dependency id="Intent.ModuleBuilder" version="3.3.11" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.7" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -42,4 +42,5 @@
     <install target="Module Builder" src="modelers/Kotlin Types.designer.settings" externalReference="05b4920c-1004-4605-a38d-eb82f562bc8e" />
   </metadata>
   <moduleSettings />
+  <moduleSettingsExtensions />
 </package>

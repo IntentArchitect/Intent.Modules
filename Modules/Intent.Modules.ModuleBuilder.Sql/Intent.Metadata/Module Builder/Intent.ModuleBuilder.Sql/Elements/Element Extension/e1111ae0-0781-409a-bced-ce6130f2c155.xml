@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="8b8f1057-db7e-4990-b908-9265709673c5">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e1111ae0-0781-409a-bced-ce6130f2c155</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Sql Template</name>
           <display>New Sql Template: Sql Template</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="44ba94ab-6d34-413f-bc3d-816d546b8794">
             <typeId>f3e581f7-96eb-439f-8bc4-9103128f0bd7</typeId>

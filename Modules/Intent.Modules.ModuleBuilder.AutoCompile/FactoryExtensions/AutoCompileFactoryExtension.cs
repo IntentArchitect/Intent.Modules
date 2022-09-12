@@ -46,7 +46,7 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
             {
                 Logging.Log.Warning($"Could not build module because the path was not found: " + Path.GetFullPath(location));
             }
-            Logging.Log.Info($"Executing: \"dotnet build\" at location \"{ Path.GetFullPath(location) }\"");
+            Logging.Log.Info($"Executing: \"dotnet build\" at location \"{Path.GetFullPath(location)}\"");
             try
             {
                 var cmd = Process.Start(new ProcessStartInfo()

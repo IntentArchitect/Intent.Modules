@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Mapping Settings");
         }
 
+        public static bool TryGetMappingSettings(this MappingSettingsModel model, out MappingSettings stereotype)
+        {
+            if (!HasMappingSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new MappingSettings(model.GetStereotype("Mapping Settings"));
+            return true;
+        }
+
 
         public class MappingSettings
         {
