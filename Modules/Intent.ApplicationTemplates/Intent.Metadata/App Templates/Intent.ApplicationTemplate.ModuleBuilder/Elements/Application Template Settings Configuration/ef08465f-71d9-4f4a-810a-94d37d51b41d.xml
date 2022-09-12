@@ -3,6 +3,7 @@
   <name>Basic Settings</name>
   <display>Basic Settings</display>
   <isAbstract>false</isAbstract>
+  <sort-children>manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -17,7 +18,7 @@
       <display>Target Framework = target-framework</display>
       <isAbstract>false</isAbstract>
       <value>target-framework</value>
-      <order>0</order>
+      <sort-children>manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ef08465f-71d9-4f4a-810a-94d37d51b41d</parentFolderId>
@@ -43,7 +44,6 @@
           <display>.NET 6.0 = 16d99e3e-7b91-42f8-ae3b-2686edde94b7</display>
           <isAbstract>false</isAbstract>
           <value>16d99e3e-7b91-42f8-ae3b-2686edde94b7</value>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>98a19e0c-acea-4c80-bad8-dfa03bb93fa5</parentFolderId>
@@ -58,7 +58,6 @@
           <display>.NET 5.0 = 9880b776-9b13-4ff6-87b3-2219cfa66652</display>
           <isAbstract>false</isAbstract>
           <value>9880b776-9b13-4ff6-87b3-2219cfa66652</value>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>98a19e0c-acea-4c80-bad8-dfa03bb93fa5</parentFolderId>
@@ -73,7 +72,6 @@
           <display>.NET Core 3.1 = d603dbfd-3361-4406-b5c0-efc2ac6f33fc</display>
           <isAbstract>false</isAbstract>
           <value>d603dbfd-3361-4406-b5c0-efc2ac6f33fc</value>
-          <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>98a19e0c-acea-4c80-bad8-dfa03bb93fa5</parentFolderId>

@@ -675,7 +675,7 @@
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#3ddeeeb6-7c66-4593-a646-73501400102b</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -1186,7 +1186,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.T4Template#ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.FileTemplateT4#ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplate.tt</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplate.tt</ProjectRelativeFilePath>

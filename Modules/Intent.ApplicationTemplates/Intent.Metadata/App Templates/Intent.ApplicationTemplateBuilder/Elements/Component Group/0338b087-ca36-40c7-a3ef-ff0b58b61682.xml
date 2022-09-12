@@ -3,6 +3,7 @@
   <name>Core</name>
   <display>Core</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -25,7 +26,7 @@
       <name>Application Template Builder</name>
       <display>Application Template Builder</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>0338b087-ca36-40c7-a3ef-ff0b58b61682</parentFolderId>
@@ -51,7 +52,6 @@
           <name>Intent.ApplicationTemplate.Builder</name>
           <display>Intent.ApplicationTemplate.Builder</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>79c61c6c-8bcb-41e7-920b-36db2dfa90c5</parentFolderId>
@@ -63,7 +63,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.1" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.2" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

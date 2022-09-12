@@ -3,7 +3,6 @@
   <name>Sql Template</name>
   <display>Sql Template</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>10e0a595-2d6e-421d-bb12-673557b45313</parentFolderId>

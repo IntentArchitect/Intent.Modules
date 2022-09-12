@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.1" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.2" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
@@ -39,5 +39,6 @@
     <application id="ac4c4f4d-6091-4b04-9201-07a98b58f3ff" name="Intent.ApplicationTemplates.Metadata.ModuleBuilder" relativePath="Intent.ApplicationTemplates.Metadata.ModuleBuilder/Intent.ApplicationTemplates.Metadata.ModuleBuilder.application.config" />
     <application id="ada97aea-2d45-46ab-844d-6dc369d484bb" name="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch" relativePath="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch/Intent.Modules.Modelers.Services.CRUD.ServiceDispatch.application.config" />
     <application id="0dd467e5-63fe-41f9-8a0a-f4454ff6cca9" name="Intent.Modules.Modelers.Domain.ValueObjects" relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Intent.Modules.Modelers.Domain.ValueObjects.application.config" />
+    <application id="15f6f6c5-bac3-414f-8dd2-f1474dbf94e2" name="Intent.Modules.Modelers.Domain.Repositories" relativePath="Intent.Modules.Modelers.Domain.Repositories/Intent.Modules.Modelers.Domain.Repositories.application.config" />
   </applications>
 </solution>

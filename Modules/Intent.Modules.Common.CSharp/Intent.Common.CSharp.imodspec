@@ -11,7 +11,7 @@
   <templates></templates>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.12-pre.0" />
-    <dependency id="Intent.Common.Types" version="3.3.5" />
+    <dependency id="Intent.Common.Types" version="3.3.6" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

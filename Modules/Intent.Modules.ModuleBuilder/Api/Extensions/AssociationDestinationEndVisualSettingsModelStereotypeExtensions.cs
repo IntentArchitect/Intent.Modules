@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Label Settings");
         }
 
+        public static bool TryGetLabelSettings(this AssociationDestinationEndVisualSettingsModel model, out LabelSettings stereotype)
+        {
+            if (!HasLabelSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new LabelSettings(model.GetStereotype("Label Settings"));
+            return true;
+        }
+
         public static NavigableIndicatorSettings GetNavigableIndicatorSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Navigable Indicator Settings");
@@ -34,6 +46,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Navigable Indicator Settings");
         }
 
+        public static bool TryGetNavigableIndicatorSettings(this AssociationDestinationEndVisualSettingsModel model, out NavigableIndicatorSettings stereotype)
+        {
+            if (!HasNavigableIndicatorSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new NavigableIndicatorSettings(model.GetStereotype("Navigable Indicator Settings"));
+            return true;
+        }
+
         public static PointSettings GetPointSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             var stereotype = model.GetStereotype("Point Settings");
@@ -43,6 +67,18 @@ namespace Intent.ModuleBuilder.Api
         public static bool HasPointSettings(this AssociationDestinationEndVisualSettingsModel model)
         {
             return model.HasStereotype("Point Settings");
+        }
+
+        public static bool TryGetPointSettings(this AssociationDestinationEndVisualSettingsModel model, out PointSettings stereotype)
+        {
+            if (!HasPointSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new PointSettings(model.GetStereotype("Point Settings"));
+            return true;
         }
 
 

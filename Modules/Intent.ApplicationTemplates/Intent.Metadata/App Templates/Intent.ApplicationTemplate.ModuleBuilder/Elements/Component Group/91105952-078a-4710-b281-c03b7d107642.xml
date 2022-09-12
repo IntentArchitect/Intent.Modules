@@ -3,6 +3,7 @@
   <name>Additional Language Support</name>
   <display>Additional Language Support</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -25,7 +26,7 @@
       <name>Module Builder - C#</name>
       <display>Module Builder - C#</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
@@ -51,7 +52,6 @@
           <name>Intent.ModuleBuilder.CSharp</name>
           <display>Intent.ModuleBuilder.CSharp</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>0544ce11-fd3d-4411-af63-06bf253f9957</parentFolderId>
@@ -63,7 +63,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.2" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.3" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -76,7 +76,7 @@
       <name>Module Builder - Java</name>
       <display>Module Builder - Java</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
@@ -102,7 +102,6 @@
           <name>Intent.ModuleBuilder.Java</name>
           <display>Intent.ModuleBuilder.Java</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>9f0b5f90-5cd7-4c44-a2ca-ca04d890a5f8</parentFolderId>
@@ -114,7 +113,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.5" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.6" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -127,7 +126,7 @@
       <name>Module Builder - Kotlin</name>
       <display>Module Builder - Kotlin</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
@@ -153,7 +152,6 @@
           <name>Intent.ModuleBuilder.Kotlin</name>
           <display>Intent.ModuleBuilder.Kotlin</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>5aaa3860-3519-472c-bc1e-bc5fa2fa47bc</parentFolderId>
@@ -165,7 +163,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.0" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.1" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -178,7 +176,7 @@
       <name>Module Builder - JavaScript / TypeScript</name>
       <display>Module Builder - JavaScript / TypeScript</display>
       <isAbstract>false</isAbstract>
-      <order>3</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
@@ -204,7 +202,6 @@
           <name>Intent.ModuleBuilder.TypeScript</name>
           <display>Intent.ModuleBuilder.TypeScript</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>49a7c771-1d2d-4e07-a5d7-a2204a2cab4d</parentFolderId>
@@ -216,7 +213,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.3" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.5" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -229,7 +226,7 @@
       <name>Module Builder - Html</name>
       <display>Module Builder - Html</display>
       <isAbstract>false</isAbstract>
-      <order>4</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
@@ -255,7 +252,6 @@
           <name>Intent.ModuleBuilder.Html</name>
           <display>Intent.ModuleBuilder.Html</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>474ea0c8-4199-44ab-b7f3-3320b5a14b96</parentFolderId>
@@ -267,7 +263,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.1" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.2" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -280,7 +276,7 @@
       <name>Module Builder - SQL</name>
       <display>Module Builder - SQL</display>
       <isAbstract>false</isAbstract>
-      <order>5</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
@@ -306,7 +302,6 @@
           <name>Intent.ModuleBuilder.Sql</name>
           <display>Intent.ModuleBuilder.Sql</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>6823fb6a-7d61-42ea-8ad3-f70e76c8688b</parentFolderId>
@@ -318,7 +313,7 @@
               <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.0" isActive="true" />
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.1" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

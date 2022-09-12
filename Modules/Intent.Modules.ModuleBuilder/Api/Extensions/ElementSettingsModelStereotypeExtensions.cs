@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Settings");
         }
 
+        public static bool TryGetSettings(this ElementSettingsModel model, out Settings stereotype)
+        {
+            if (!HasSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Settings(model.GetStereotype("Settings"));
+            return true;
+        }
+
         public static TypeReferenceSettings GetTypeReferenceSettings(this ElementSettingsModel model)
         {
             var stereotype = model.GetStereotype("Type Reference Settings");
@@ -32,6 +44,18 @@ namespace Intent.ModuleBuilder.Api
         public static bool HasTypeReferenceSettings(this ElementSettingsModel model)
         {
             return model.HasStereotype("Type Reference Settings");
+        }
+
+        public static bool TryGetTypeReferenceSettings(this ElementSettingsModel model, out TypeReferenceSettings stereotype)
+        {
+            if (!HasTypeReferenceSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new TypeReferenceSettings(model.GetStereotype("Type Reference Settings"));
+            return true;
         }
 
 

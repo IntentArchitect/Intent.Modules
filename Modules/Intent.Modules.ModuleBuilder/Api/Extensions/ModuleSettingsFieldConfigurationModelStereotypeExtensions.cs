@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Field Configuration");
         }
 
+        public static bool TryGetFieldConfiguration(this ModuleSettingsFieldConfigurationModel model, out FieldConfiguration stereotype)
+        {
+            if (!HasFieldConfiguration(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new FieldConfiguration(model.GetStereotype("Field Configuration"));
+            return true;
+        }
+
 
         public class FieldConfiguration
         {

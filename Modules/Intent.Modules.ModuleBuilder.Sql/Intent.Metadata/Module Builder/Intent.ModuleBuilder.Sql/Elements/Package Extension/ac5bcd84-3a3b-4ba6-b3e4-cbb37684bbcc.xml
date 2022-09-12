@@ -3,7 +3,7 @@
   <name>Intent Module Extension</name>
   <display>Intent Module Extension: Intent Module</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <typeReference id="bec03448-8d52-43da-857b-d1b710af6379">
     <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
@@ -27,7 +27,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>ac5bcd84-3a3b-4ba6-b3e4-cbb37684bbcc</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New Sql Template</name>
           <display>New Sql Template: Sql Template</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="dc96ac6a-9289-4208-9c6b-3722130d151f">
             <typeId>f3e581f7-96eb-439f-8bc4-9103128f0bd7</typeId>

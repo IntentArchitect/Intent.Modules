@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="1c494347-072c-4353-acb7-cf67def55db4">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>049091c3-753f-474c-b3d1-861ef6a57e51</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Service Proxy</name>
           <display>New Service Proxy: Service Proxy</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="77bf2139-098d-408c-b80a-4edbcf7e214d">
             <typeId>07d8d1a9-6b9f-4676-b7d3-8db06299e35c</typeId>
@@ -104,7 +103,6 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="8ebf8f33-6105-41f6-9696-9e7599009eda">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>

@@ -3,6 +3,7 @@ using Intent.Engine;
 using Intent.Modules.Common.Registrations;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Sql.Api;
+using Intent.Modules.ModuleBuilder.Sql.Templates.SqlFile;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
@@ -26,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Sql.Templates.SqlFileTemplatePreProcessed
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: SqlFileTemplate.SqlFileTemplate.TemplateId,
+                t4TemplateId: SqlFileTemplate.TemplateId,
                 partialTemplateId: SqlFileTemplatePartial.SqlFileTemplatePartialTemplate.TemplateId);
         }
 

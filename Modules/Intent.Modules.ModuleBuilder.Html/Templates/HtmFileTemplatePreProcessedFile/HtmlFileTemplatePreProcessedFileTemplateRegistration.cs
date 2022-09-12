@@ -3,6 +3,7 @@ using Intent.Engine;
 using Intent.Modules.Common.Registrations;
 using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.Html.Api;
+using Intent.Modules.ModuleBuilder.Html.Templates.HtmlFile;
 using Intent.Modules.ModuleBuilder.Templates.Common;
 using Intent.Templates;
 using IApplication = Intent.Engine.IApplication;
@@ -26,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Html.Templates.HtmFileTemplatePreProcesse
                 templateId: TemplateId,
                 project: project,
                 model: model,
-                t4TemplateId: HtmlFileTemplate.HtmlFileTemplate.TemplateId,
+                t4TemplateId: HtmlFileTemplate.TemplateId,
                 partialTemplateId: HtmlFileTemplatePartial.HtmlFileTemplatePartialTemplate.TemplateId);
         }
 

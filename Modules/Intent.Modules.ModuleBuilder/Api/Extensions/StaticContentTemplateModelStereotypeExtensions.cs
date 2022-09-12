@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Template Settings");
         }
 
+        public static bool TryGetTemplateSettings(this StaticContentTemplateModel model, out TemplateSettings stereotype)
+        {
+            if (!HasTemplateSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new TemplateSettings(model.GetStereotype("Template Settings"));
+            return true;
+        }
+
 
         public class TemplateSettings
         {

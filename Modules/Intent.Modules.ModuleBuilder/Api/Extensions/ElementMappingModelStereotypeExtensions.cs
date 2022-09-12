@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Behaviour Settings");
         }
 
+        public static bool TryGetBehaviourSettings(this ElementMappingModel model, out BehaviourSettings stereotype)
+        {
+            if (!HasBehaviourSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new BehaviourSettings(model.GetStereotype("Behaviour Settings"));
+            return true;
+        }
+
         public static CriteriaSettings GetCriteriaSettings(this ElementMappingModel model)
         {
             var stereotype = model.GetStereotype("Criteria Settings");
@@ -34,6 +46,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Criteria Settings");
         }
 
+        public static bool TryGetCriteriaSettings(this ElementMappingModel model, out CriteriaSettings stereotype)
+        {
+            if (!HasCriteriaSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new CriteriaSettings(model.GetStereotype("Criteria Settings"));
+            return true;
+        }
+
         public static OutputSettings GetOutputSettings(this ElementMappingModel model)
         {
             var stereotype = model.GetStereotype("Output Settings");
@@ -43,6 +67,18 @@ namespace Intent.ModuleBuilder.Api
         public static bool HasOutputSettings(this ElementMappingModel model)
         {
             return model.HasStereotype("Output Settings");
+        }
+
+        public static bool TryGetOutputSettings(this ElementMappingModel model, out OutputSettings stereotype)
+        {
+            if (!HasOutputSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new OutputSettings(model.GetStereotype("Output Settings"));
+            return true;
         }
 
 

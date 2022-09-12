@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.CSharp.Api
             return model.HasStereotype("C# Template Settings");
         }
 
+        public static bool TryGetCSharpTemplateSettings(this CSharpTemplateModel model, out CSharpTemplateSettings stereotype)
+        {
+            if (!HasCSharpTemplateSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new CSharpTemplateSettings(model.GetStereotype("C# Template Settings"));
+            return true;
+        }
+
 
         public class CSharpTemplateSettings
         {

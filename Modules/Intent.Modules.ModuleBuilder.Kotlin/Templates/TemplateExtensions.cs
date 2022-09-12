@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Kotlin.Templates.Templates.KotlinFileTemplatePartial;
+using Intent.Modules.ModuleBuilder.Kotlin.Templates.KotlinFileTemplatePartial;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]

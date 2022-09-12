@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.AutoCompile</id>
-  <version>3.3.0</version>
+  <version>3.3.1</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Auto-compiles modules with each run of the software factory execution.</summary>
   <description>Auto-compiles modules with each run of the software factory execution.</description>
@@ -13,9 +13,9 @@
     <factoryExtension id="Intent.ModuleBuilder.AutoCompile.AutoCompileFactoryExtension" externalReference="e2167dd4-7302-418d-be65-bec84384cf3e" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.1" />
-    <dependency id="Intent.Common.Types" version="3.3.0" />
-    <dependency id="Intent.ModuleBuilder" version="3.3.0" />
+    <dependency id="Intent.Common" version="3.3.11" />
+    <dependency id="Intent.Common.Types" version="3.3.6" />
+    <dependency id="Intent.ModuleBuilder" version="3.3.11" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -23,4 +23,5 @@
   </files>
   <metadata />
   <moduleSettings />
+  <moduleSettingsExtensions />
 </package>

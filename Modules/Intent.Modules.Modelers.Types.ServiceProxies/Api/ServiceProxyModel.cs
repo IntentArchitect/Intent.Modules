@@ -43,10 +43,12 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         [IntentManaged(Mode.Ignore)]
         public ServiceModel MappedService => Mapping != null ? new ServiceModel((IElement)Mapping.Element) : null;
 
-        public IList<OperationModel> Operations => _element.ChildElements
+        [IntentManaged(Mode.Ignore)]
+        [Obsolete("Until Proxy Operations are well established, rather use the Mapped Service's Operations for the time being")]
+        public IList<OperationModel> Operations => throw new NotSupportedException(); /*_element.ChildElements
             .GetElementsOfType(OperationModel.SpecializationTypeId)
             .Select(x => new OperationModel(x))
-            .ToList();
+            .ToList();*/
 
         public override string ToString()
         {
@@ -88,14 +90,14 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
             return type.IsServiceProxyModel() ? new ServiceProxyModel((IElement)type) : null;
         }
 
-        public static bool HasNewMappingSettingsMapping(this ServiceProxyModel type)
+        public static bool HasServiceReferenceMapping(this ServiceProxyModel type)
         {
             return type.Mapping?.MappingSettingsId == "df491bea-8a85-4bc9-a93d-41b7abb80ffb";
         }
 
-        public static IElementMapping GetNewMappingSettingsMapping(this ServiceProxyModel type)
+        public static IElementMapping GetServiceReferenceMapping(this ServiceProxyModel type)
         {
-            return type.HasNewMappingSettingsMapping() ? type.Mapping : null;
+            return type.HasServiceReferenceMapping() ? type.Mapping : null;
         }
     }
 }

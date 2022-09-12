@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Option Settings");
         }
 
+        public static bool TryGetOptionSettings(this ElementCreationOptionModel model, out OptionSettings stereotype)
+        {
+            if (!HasOptionSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new OptionSettings(model.GetStereotype("Option Settings"));
+            return true;
+        }
+
 
         public class OptionSettings
         {

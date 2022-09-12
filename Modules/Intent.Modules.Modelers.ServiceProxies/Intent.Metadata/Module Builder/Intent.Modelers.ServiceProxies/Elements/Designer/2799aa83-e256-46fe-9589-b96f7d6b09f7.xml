@@ -3,7 +3,7 @@
   <name>Service Proxies</name>
   <display>Service Proxies</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>47b15d5e-c9ef-44a1-80c7-19d5435c94a1</parentFolderId>
@@ -26,7 +26,6 @@
       <name>reference</name>
       <display>reference: Common Types</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="43fac0e2-1a5b-4f58-8e13-374a3b4c5c01">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
@@ -51,7 +50,6 @@
       <name>reference</name>
       <display>reference: Service Proxy Types</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="dee1d1a5-6795-4dc5-a850-58798a7ca834">
         <typeId>8cf2b93d-9449-4e40-af62-12daf6f7e0f4</typeId>
@@ -76,7 +74,6 @@
       <name>reference</name>
       <display>reference: Service Proxies Core Types</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
       <genericTypes />
       <typeReference id="fd3603c2-27d8-4ef4-a225-7a9b9ab60d7f">
         <typeId>acd93869-aa05-4bca-879d-a3efe397e534</typeId>

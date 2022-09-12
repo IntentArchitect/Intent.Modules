@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Script Settings");
         }
 
+        public static bool TryGetScriptSettings(this ElementEventHandlerModel model, out ScriptSettings stereotype)
+        {
+            if (!HasScriptSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ScriptSettings(model.GetStereotype("Script Settings"));
+            return true;
+        }
+
 
         public class ScriptSettings
         {

@@ -23,6 +23,18 @@ namespace Intent.ModuleBuilder.Api
             return model.HasStereotype("Position Settings");
         }
 
+        public static bool TryGetPositionSettings(this ElementVisualSettingsModel model, out PositionSettings stereotype)
+        {
+            if (!HasPositionSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new PositionSettings(model.GetStereotype("Position Settings"));
+            return true;
+        }
+
 
         public class PositionSettings
         {
