@@ -23,5 +23,6 @@
   <moduleSettingsExtensions />
   <metadata>
     <install src="modelers/Domain Extensions.designer.settings" externalReference="79735715-7042-41f3-bf1f-5dc9167efa2c" target="Domain" />
+    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain.Repositories/Intent.Modelers.Domain.Repositories.pkg.config" externalReference="464e0fa3-c4c0-497e-b252-a5df39f59158" />
   </metadata>
 </package>
