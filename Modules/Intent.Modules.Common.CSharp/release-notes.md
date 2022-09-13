@@ -1,4 +1,8 @@
-﻿### Version 3.3.18
+﻿### Version 3.3.19
+
+- Improved the logic of the `CSharpResolvedTypeInfo.Create` method.
+
+### Version 3.3.18
 
 - Fixed: Non-first generic type parameters were not being normalized. For example `Dictionary<System.String, System.String>` should have been normalized to `Dictionary<String, String>` but was incorrectly normalized to `Dictionary<String, System.String>`.
 

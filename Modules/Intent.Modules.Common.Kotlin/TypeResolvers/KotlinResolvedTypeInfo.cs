@@ -67,6 +67,11 @@ public class KotlinResolvedTypeInfo : ResolvedTypeInfo
         IResolvedTypeInfo resolvedTypeInfo,
         IReadOnlyList<KotlinResolvedTypeInfo> genericTypeParameters)
     {
+        if (resolvedTypeInfo is KotlinResolvedTypeInfo kotlinResolvedTypeInfo)
+        {
+            return kotlinResolvedTypeInfo;
+        }
+
         var (name, package) = resolvedTypeInfo.Template is IClassProvider classProvider
             ? (classProvider.ClassName, classProvider.Namespace)
             : (resolvedTypeInfo.Name, string.Empty);

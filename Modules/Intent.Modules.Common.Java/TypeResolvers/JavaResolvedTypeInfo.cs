@@ -75,6 +75,11 @@ public class JavaResolvedTypeInfo : ResolvedTypeInfo
         IResolvedTypeInfo resolvedTypeInfo,
         IReadOnlyList<IResolvedTypeInfo> genericTypeParameters)
     {
+        if (resolvedTypeInfo is JavaResolvedTypeInfo javaResolvedTypeInfo)
+        {
+            return javaResolvedTypeInfo;
+        }
+
         var (name, package) = resolvedTypeInfo.Template is IClassProvider classProvider
             ? (classProvider.ClassName, classProvider.Namespace)
             : (resolvedTypeInfo.Name, string.Empty);
