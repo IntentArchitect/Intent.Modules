@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e9e575eb-f8de-4ce4-9838-2d09665a752d" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
+  <name>Long</name>
+  <display>Long</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1a6b23ae-b28a-487f-959d-0a247da03c55</parentFolderId>
+  <packageId>1b8f2b45-99c0-42dc-b28e-bcd4621c3e71</packageId>
+  <packageName>Intent.Common.Java</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

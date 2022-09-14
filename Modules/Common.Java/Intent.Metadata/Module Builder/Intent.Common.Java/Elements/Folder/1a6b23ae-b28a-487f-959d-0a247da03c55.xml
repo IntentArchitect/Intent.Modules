@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1a6b23ae-b28a-487f-959d-0a247da03c55" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Types</name>
+  <display>Types</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1b8f2b45-99c0-42dc-b28e-bcd4621c3e71</parentFolderId>
+  <packageId>1b8f2b45-99c0-42dc-b28e-bcd4621c3e71</packageId>
+  <packageName>Intent.Common.Java</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
