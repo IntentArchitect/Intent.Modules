@@ -1549,9 +1549,14 @@
         </member>
         <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.AlwaysGenerateProjectItem">
             <summary>
-            Key value for <see cref="P:Intent.Templates.ITemplateFileConfig.CustomMetadata"/> to indicate that an
-            entry should always be created in the MSBuild file regardless of whether or not it was
-            implicitly included (for example in an SDK style project).
+            Obsolete. Use <see cref="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.MsBuildFileItemGenerationBehaviour"/> instead.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.MsBuildFileItemGenerationBehaviour">
+            <summary>
+            Key value for <see cref="P:Intent.Templates.ITemplateFileConfig.CustomMetadata"/> to indicate the
+            generation behaviour of its entry in the MSBuild file. Accepts <see langword="string"/>
+            representations of <see cref="T:Intent.Modules.Common.CSharp.VisualStudio.MsBuildFileItemGenerationBehaviour"/>.
             </summary>
         </member>
         <member name="T:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion">
@@ -1635,6 +1640,21 @@
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.MajorMinorVersion.ToString">
             <inheritdoc />
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.VisualStudio.MsBuildFileItemGenerationBehaviour">
+            <summary>
+            Possible values for <see cref="F:Intent.Modules.Common.CSharp.VisualStudio.CustomMetadataKeys.MsBuildFileItemGenerationBehaviour"/>.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.MsBuildFileItemGenerationBehaviour.Always">
+            <summary>
+            An entry for the file should always be generated in the MSBuild file.
+            </summary>
+        </member>
+        <member name="F:Intent.Modules.Common.CSharp.VisualStudio.MsBuildFileItemGenerationBehaviour.Never">
+            <summary>
+            An entry for the file should never be generated in the MSBuild file.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.OutputTargetExtensions.AddNugetPackages(Intent.Modules.Common.CSharp.VisualStudio.ICSharpProject,System.Collections.Generic.IEnumerable{Intent.Modules.Common.VisualStudio.INugetPackageInfo})">
             <summary>
             Adds a NuGet package dependency to a project.
@@ -1663,8 +1683,7 @@
         </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithAlwaysGenerateProjectItem``1(``0)">
             <summary>
-            Indicate that an entry should always be created in the MSBuild file regardless of
-            whether or not it was implicitly included (for example in an SDK style project).
+            Obsolete. Use <see cref="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithFileItemGenerationBehaviour``1(``0,Intent.Modules.Common.CSharp.VisualStudio.MsBuildFileItemGenerationBehaviour)"/> instead.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithAttribute``1(``0,System.String,System.String)">
@@ -1700,6 +1719,11 @@
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithDesignTime``1(``0)">
             <summary>
             Adds a <c>&lt;DesignTime&gt;True&lt;/DesignTime&gt;</c> element to the file item in the MSBuild file.
+            </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithFileItemGenerationBehaviour``1(``0,Intent.Modules.Common.CSharp.VisualStudio.MsBuildFileItemGenerationBehaviour)">
+            <summary>
+            Controls the behaviour of generation of a template's file item entry in its MSBuild file.
             </summary>
         </member>
         <member name="M:Intent.Modules.Common.CSharp.VisualStudio.TemplateFileConfigExtensions.WithItemType``1(``0,System.String)">

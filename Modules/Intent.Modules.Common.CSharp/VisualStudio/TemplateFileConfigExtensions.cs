@@ -1,4 +1,5 @@
 ﻿using System;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
@@ -26,13 +27,12 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         }
 
         /// <summary>
-        /// Indicate that an entry should always be created in the MSBuild file regardless of
-        /// whether or not it was implicitly included (for example in an SDK style project).
+        /// Obsolete. Use <see cref="WithFileItemGenerationBehaviour"/> instead.
         /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static T WithAlwaysGenerateProjectItem<T>(this T templateFileConfig) where T : ITemplateFileConfig
         {
-            templateFileConfig.CustomMetadata[CustomMetadataKeys.AlwaysGenerateProjectItem] = true.ToString();
-            return templateFileConfig;
+            return templateFileConfig.WithFileItemGenerationBehaviour(MsBuildFileItemGenerationBehaviour.Always);
         }
 
         /// <summary>
@@ -99,6 +99,15 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public static T WithDesignTime<T>(this T templateFileConfig) where T : ITemplateFileConfig
         {
             return templateFileConfig.WithNestedProjectElement("DesignTime", true.ToString());
+        }
+
+        /// <summary>
+        /// Controls the behaviour of generation of a template's file item entry in its MSBuild file.
+        /// </summary>
+        public static T WithFileItemGenerationBehaviour<T>(this T templateFileConfig, MsBuildFileItemGenerationBehaviour behaviour) where T : ITemplateFileConfig
+        {
+            templateFileConfig.CustomMetadata[CustomMetadataKeys.MsBuildFileItemGenerationBehaviour] = behaviour.ToString();
+            return templateFileConfig;
         }
 
         /// <summary>

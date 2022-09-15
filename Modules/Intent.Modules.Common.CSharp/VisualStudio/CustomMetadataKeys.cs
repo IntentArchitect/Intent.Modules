@@ -1,4 +1,6 @@
-﻿using Intent.Templates;
+﻿using System;
+using Intent.SdkEvolutionHelpers;
+using Intent.Templates;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
@@ -31,10 +33,16 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public static readonly string ItemType = "VisualStudio.MsBuildFileItem.ItemType";
 
         /// <summary>
-        /// Key value for <see cref="ITemplateFileConfig.CustomMetadata"/> to indicate that an
-        /// entry should always be created in the MSBuild file regardless of whether or not it was
-        /// implicitly included (for example in an SDK style project).
+        /// Obsolete. Use <see cref="MsBuildFileItemGenerationBehaviour"/> instead.
         /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static readonly string AlwaysGenerateProjectItem = "VisualStudio.MsBuildFileItem.IsNeverImplicitlyInSdkStyleProjects";
+
+        /// <summary>
+        /// Key value for <see cref="ITemplateFileConfig.CustomMetadata"/> to indicate the
+        /// generation behaviour of its entry in the MSBuild file. Accepts <see langword="string"/>
+        /// representations of <see cref="VisualStudio.MsBuildFileItemGenerationBehaviour"/>.
+        /// </summary>
+        public static readonly string MsBuildFileItemGenerationBehaviour = "VisualStudio.MsBuildFileItem.GenerationBehaviour";
     }
 }
