@@ -40,15 +40,12 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 
         public IElement InternalElement => _element;
 
-        [IntentManaged(Mode.Ignore)]
         public ServiceModel MappedService => Mapping != null ? new ServiceModel((IElement)Mapping.Element) : null;
 
-        [IntentManaged(Mode.Ignore)]
-        [Obsolete("Until Proxy Operations are well established, rather use the Mapped Service's Operations for the time being")]
-        public IList<OperationModel> Operations => throw new NotSupportedException(); /*_element.ChildElements
+        public IList<OperationModel> Operations => _element.ChildElements
             .GetElementsOfType(OperationModel.SpecializationTypeId)
             .Select(x => new OperationModel(x))
-            .ToList();*/
+            .ToList();
 
         public override string ToString()
         {

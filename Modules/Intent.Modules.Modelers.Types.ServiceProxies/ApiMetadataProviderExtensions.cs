@@ -24,58 +24,94 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         [IntentManaged(Mode.Ignore)]
         public static IList<ServiceProxyDTOModel> GetServiceProxyDTOModels(this IDesigner designer)
         {
-            var dtoModels = new List<ServiceProxyDTOModel>();
-            foreach (var moduleModel in designer.GetServiceProxyModels())
-            {
-                dtoModels.AddRange(moduleModel.GetDTOModels());
-            }
-
-            return dtoModels.Distinct().ToList();
-        }
-
-        [IntentManaged(Mode.Ignore)]
-        public static IEnumerable<ServiceProxyDTOModel> GetDTOModels(this ServiceProxyModel proxy)
-        {
-            var dtos = proxy.MappedService.Operations//.Operations
-                .SelectMany(x => x.Parameters)
-                .SelectMany(x => GetTypeModels(x.TypeReference))
-                .Concat(proxy.MappedService.Operations/*.Operations*/.Where(x => x.TypeReference.Element != null).SelectMany(x => GetTypeModels(x.TypeReference)))
-                .ToList();
-
-            foreach (var dto in dtos.ToList())
-            {
-                dtos.AddRange(((IElement)dto).GetChildDTOs());
-            }
-
-            return dtos
-                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId &&
-                            x.SpecializationTypeId != EnumModel.SpecializationTypeId)
-                .Select(x => new ServiceProxyDTOModel((IElement)x, proxy)).ToList()
+            return designer.GetServiceProxyModels()
+                .SelectMany(s => s.GetDTOModels())
                 .Distinct()
                 .ToList();
         }
 
         [IntentManaged(Mode.Ignore)]
-        private static IEnumerable<ICanBeReferencedType> GetTypeModels(ITypeReference typeReference)
+        public static IList<ServiceProxyDTOModel> GetProxyMappedServiceDTOModels(this IDesigner designer)
+        {
+            return designer.GetServiceProxyModels()
+                .SelectMany(s => s.GetMappedServiceDTOModels())
+                .Distinct()
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        public static IEnumerable<ServiceProxyDTOModel> GetDTOModels(this ServiceProxyModel proxy)
+        {
+            var operationLevelDtos = proxy.Operations
+                .SelectMany(x => x.Parameters)
+                .SelectMany(x => GetTypesFromTypeReference(x.TypeReference))
+                .Concat(proxy.Operations
+                    .Where(x => x.TypeReference?.Element != null)
+                    .SelectMany(x => GetTypesFromTypeReference(x.TypeReference)));
+
+            var detectedDtos = GetDistinctAndNestedDtos(operationLevelDtos);
+
+            return detectedDtos
+                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId
+                            && x.SpecializationTypeId != EnumModel.SpecializationTypeId)
+                .Select(x => new ServiceProxyDTOModel((IElement)x, proxy))
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        public static IEnumerable<ServiceProxyDTOModel> GetMappedServiceDTOModels(this ServiceProxyModel proxy)
+        {
+            var operationLevelDtos = proxy.MappedService.Operations
+                .SelectMany(x => x.Parameters)
+                .SelectMany(x => GetTypesFromTypeReference(x.TypeReference))
+                .Concat(proxy.MappedService.Operations
+                    .Where(x => x.TypeReference?.Element != null)
+                    .SelectMany(x => GetTypesFromTypeReference(x.TypeReference)));
+
+            var detectedDtos = GetDistinctAndNestedDtos(operationLevelDtos);
+
+            return detectedDtos
+                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId
+                            && x.SpecializationTypeId != EnumModel.SpecializationTypeId)
+                .Select(x => new ServiceProxyDTOModel((IElement)x, proxy))
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        private static IEnumerable<ICanBeReferencedType> GetTypesFromTypeReference(ITypeReference typeReference)
         {
             var models = new List<ICanBeReferencedType>() { typeReference.Element };
-            models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypeModels));
+            models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypesFromTypeReference));
             return models;
         }
 
         [IntentManaged(Mode.Ignore)]
-        private static IEnumerable<IElement> GetChildDTOs(this IElement dto)
+        private static IEnumerable<ICanBeReferencedType> GetDistinctAndNestedDtos(
+            IEnumerable<ICanBeReferencedType> operationLevelDtos)
         {
-            var childDTOs = dto.ChildElements
-                .Where(x => x.TypeReference?.Element is IElement)
-                .Select(x => (IElement)x.TypeReference.Element).ToList();
-            foreach (var childDtO in childDTOs.ToList())
+            var detectedDtos = new HashSet<ICanBeReferencedType>(operationLevelDtos);
+            var navigationStack = new Stack<ICanBeReferencedType>(detectedDtos);
+
+            while (navigationStack.Any())
             {
-                childDTOs.AddRange(GetChildDTOs(childDtO));
+                var curDto = navigationStack.Pop();
+                var elements = ((IElement)curDto).ChildElements
+                    .Where(x => x.TypeReference?.Element is IElement)
+                    .Select(x => (IElement)x.TypeReference.Element);
+                foreach (var element in elements)
+                {
+                    // Also helps not to get stuck in circular references
+                    if (detectedDtos.Contains(element))
+                    {
+                        continue;
+                    }
+
+                    detectedDtos.Add(element);
+                    navigationStack.Push(element);
+                }
             }
 
-            return childDTOs;
+            return detectedDtos;
         }
-
     }
 }
