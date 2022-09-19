@@ -22,7 +22,7 @@
   <metadata>
     <install src="modelers/Service Proxies Core Types.designer.settings" externalReference="acd93869-aa05-4bca-879d-a3efe397e534" />
     <install src="modelers/Service Proxies.designer.config" externalReference="2799aa83-e256-46fe-9589-b96f7d6b09f7" />
-    <install src="Intent.Metadata/Module Builder/Intent.Modelers.ServiceProxies/Intent.Modelers.ServiceProxies.pkg.config" externalReference="f4710958-060a-42e9-a987-48af8f90324a" />
+    <install src="Intent.Metadata/Module Builder/Intent.Modelers.ServiceProxies/Intent.Modelers.ServiceProxies.pkg.config" externalReference="f4710958-060a-42e9-a987-48af8f90324a" target="Module Builder" />
   </metadata>
   <factoryExtensions />
   <moduleSettings />
