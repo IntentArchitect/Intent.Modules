@@ -1401,6 +1401,12 @@
         <member name="M:Intent.Modules.Common.Templates.TemplateDependency.ToString">
             <inheritdoc />
         </member>
+        <member name="M:Intent.Modules.Common.Templates.TemplateDependency.OfType``1">
+            <summary>
+            Returns a <see cref="T:Intent.Modules.Common.ITemplateDependency"/> which finds templates which are of the
+            provided <typeparamref name="TTemplate"/> type.
+            </summary>
+        </member>
         <member name="M:Intent.Modules.Common.Templates.TemplateDependency.OnTemplate(System.String)">
             <summary>
             Returns a <see cref="T:Intent.Modules.Common.ITemplateDependency"/> which finds templates which have the

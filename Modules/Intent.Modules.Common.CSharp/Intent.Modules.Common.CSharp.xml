@@ -731,6 +731,23 @@
             Access the .NET Configuration service.
             </summary>
         </member>
+        <member name="T:Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache">
+            <summary>
+            Cache of known C# types as determined by all templates which are
+            <see cref="T:Intent.Modules.Common.Templates.IClassProvider"/>.
+            </summary>
+        </member>
+        <member name="P:Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache.Id">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache.OnAfterTemplateRegistrations(Intent.Engine.IApplication)">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache.GetKnownTypesByNamespace">
+            <summary>
+            Returns known types by namespace.
+            </summary>
+        </member>
         <member name="T:Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour">
             <summary>
             Controls casing behaviour of <see cref="M:Intent.Modules.Common.CSharp.Templates.TemplateExtensions.ToCSharpIdentifier(System.String,Intent.Modules.Common.CSharp.Templates.CapitalizationBehaviour)"/>
@@ -891,6 +908,12 @@
             <summary>
             Adds the namespace of the <paramref name="fullName"/> as a dependent namespace and returns the normalized name.
             </summary>
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.AfterTemplateRegistration">
+            <inheritdoc />
+        </member>
+        <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.BeforeTemplateExecution">
+            <inheritdoc />
         </member>
         <member name="M:Intent.Modules.Common.CSharp.Templates.CSharpTemplateBase`1.RunTemplate">
             <inheritdoc />

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.CSharp.FactoryExtensions;
 using Intent.Modules.Common.CSharp.TypeResolvers;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
@@ -169,12 +170,14 @@ namespace Intent.Modules.Common.CSharp.Templates
             return NormalizeNamespace(fullName);
         }
 
+        /// <inheritdoc />
         public override void AfterTemplateRegistration()
         {
             base.AfterTemplateRegistration();
             (this as ICSharpFileBuilderTemplate)?.CSharpFile.StartBuild();
         }
 
+        /// <inheritdoc />
         public override void BeforeTemplateExecution()
         {
             base.BeforeTemplateExecution();
@@ -265,48 +268,35 @@ namespace Intent.Modules.Common.CSharp.Templates
 
             var nullable = isNullable ? "?" : string.Empty;
 
-            return NormalizeNamespace(localNamespace, foreignType, knownOtherPaths, usingPaths) +
+            return NormalizeNamespace(
+                       localNamespace: localNamespace,
+                       fullyQualifiedType: foreignType,
+                       knownOtherPaths: knownOtherPaths,
+                       usingPaths: usingPaths,
+                       knownTypesByNamespace: KnownCSharpTypesCache.GetKnownTypesByNamespace()) +
                    (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>{nullable}" : nullable);
         }
 
         internal static string NormalizeNamespace(
             string localNamespace,
-            string foreignType,
+            string fullyQualifiedType,
             string[] knownOtherPaths,
-            string[] usingPaths)
+            string[] usingPaths,
+            IReadOnlyDictionary<string, ISet<string>> knownTypesByNamespace)
         {
             // NB: If changing this method, please run the unit tests against it
 
             var localNamespaceParts = localNamespace.Split('.').ToArray();
 
-            var foreignTypeParts = foreignType.Split('.').ToArray();
-            if (foreignTypeParts.Length == 1)
+            var typeParts = fullyQualifiedType.Split('.').ToArray();
+            if (typeParts.Length == 1)
             {
-                return foreignType;
+                return fullyQualifiedType;
             }
 
-            if (localNamespaceParts.SequenceEqual(foreignTypeParts.Take(foreignTypeParts.Length - 1)))
+            if (localNamespaceParts.SequenceEqual(typeParts.Take(typeParts.Length - 1)))
             {
-                return foreignTypeParts.Last();
-            }
-
-            // Is there already a using which matches qualifier:
-            {
-                var foreignTypeQualifier = string.Join('.', foreignTypeParts.Take(foreignTypeParts.Length - 1));
-
-                // It's not immediately clear what scenario this covers, if you know/find out, please
-                // document by adding unit test to cover scenario.
-                bool AllUsingPathsAreNotForeignType() => usingPaths.All(x => x != foreignType);
-
-                // If name exists in local namespace, can't use name as is.
-                bool LocalNamespacePartsDoNotContainType() => !localNamespaceParts.Contains(foreignTypeParts.Last());
-
-                if (usingPaths.Contains(foreignTypeQualifier) &&
-                    AllUsingPathsAreNotForeignType() &&
-                    LocalNamespacePartsDoNotContainType())
-                {
-                    return foreignTypeParts.Last();
-                }
+                return typeParts.Last();
             }
 
             var otherPathsToCheck = knownOtherPaths
@@ -315,8 +305,35 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .Distinct()
                 .ToArray();
 
+            // Is there already a using which matches qualifier:
+            {
+                var typeQualifier = string.Join('.', typeParts.Take(typeParts.Length - 1));
+                var typeName = typeParts.Last();
+
+                // It's not immediately clear what scenario this covers, if you know/find out, please
+                // document by adding unit test to cover scenario.
+                bool AllUsingPathsAreNotForeignType() => usingPaths.All(x => x != fullyQualifiedType);
+
+                // If name exists in local namespace, can't use name as is.
+                bool LocalNamespacePartsDoNotContainType() => !localNamespaceParts.Contains(typeName);
+
+                // Ensure there are no other known types in usings with the same name:
+                bool ConflictingTypeExists() => usingPaths
+                    .Any(usingPath => usingPath != typeQualifier &&
+                                      knownTypesByNamespace.TryGetValue(usingPath, out var types) &&
+                                      types.Contains(typeName));
+
+                if (usingPaths.Contains(typeQualifier) &&
+                    AllUsingPathsAreNotForeignType() &&
+                    LocalNamespacePartsDoNotContainType() &&
+                    !ConflictingTypeExists())
+                {
+                    return typeName;
+                }
+            }
+
             // To minimize the chance that simplifying the path of the foreign type causes a compile time error due to a
-            // conflicting path, we pre-compute known sub paths for each part of the namespace.To try summarize the logic,
+            // conflicting path, we pre-compute known sub paths for each part of the namespace. To try summarize the logic,
             // for each part of the local namespace, find all their respective immediate sub path parts and select with
             // some other data for easier debugging.
             var namespacePartsSubPaths = localNamespaceParts
@@ -343,12 +360,12 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .ToArray();
 
             var commonPartsCount = 0;
-            for (var i = 0; i < localNamespaceParts.Length && i < foreignTypeParts.Length; i++)
+            for (var i = 0; i < localNamespaceParts.Length && i < typeParts.Length; i++)
             {
                 var localPart = localNamespaceParts[i];
-                var foreignPart = foreignTypeParts[i];
-                var proposedFirstForeignPart = foreignTypeParts.Skip(i + 1).FirstOrDefault();
-                var proposedPathToOmit = string.Join('.', foreignTypeParts.Take(i + 1));
+                var foreignPart = typeParts[i];
+                var proposedFirstForeignPart = typeParts.Skip(i + 1).FirstOrDefault();
+                var proposedPathToOmit = string.Join('.', typeParts.Take(i + 1));
 
                 // Simple check first:
                 if (localPart != foreignPart)
@@ -390,7 +407,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 commonPartsCount++;
             }
 
-            return string.Join('.', foreignTypeParts.Skip(commonPartsCount));
+            return string.Join('.', typeParts.Skip(commonPartsCount));
         }
 
         private static IEnumerable<string> GetUsingsFromContent(string existingContent)

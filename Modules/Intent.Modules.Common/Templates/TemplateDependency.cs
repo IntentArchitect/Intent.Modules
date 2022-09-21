@@ -37,6 +37,15 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
+        /// Returns a <see cref="ITemplateDependency"/> which finds templates which are of the
+        /// provided <typeparamref name="TTemplate"/> type.
+        /// </summary>
+        public static ITemplateDependency OfType<TTemplate>()
+        {
+            return OfTypeTemplateDependency<TTemplate>.Create();
+        }
+
+        /// <summary>
         /// Returns a <see cref="ITemplateDependency"/> which finds templates which have the
         /// provided <paramref name="templateIdOrName"/>.
         /// </summary>
@@ -87,8 +96,7 @@ namespace Intent.Modules.Common.Templates
             return new TemplateDependency(
                 templateId: templateIdOrName,
                 isMatch: template =>
-                    template is ITemplateWithModel templateWithModel &&
-                    templateWithModel.Model is TModel tModel &&
+                    template is ITemplateWithModel { Model: TModel tModel } &&
                     isMatch(tModel),
                 context: context);
         }
@@ -256,9 +264,52 @@ namespace Intent.Modules.Common.Templates
 
             public override bool IsMatch(ITemplate template)
             {
-                return template is ITemplateWithModel templateWithModel &&
-                       templateWithModel.Model is IMetadataModel metadataModel &&
+                return template is ITemplateWithModel { Model: IMetadataModel metadataModel } &&
                        metadataModel.Id == _modelId;
+            }
+        }
+
+        private class OfTypeTemplateDependency<TTemplate> : FastLookupTemplateDependency<Type, OfTypeTemplateDependency<TTemplate>>
+        {
+            private readonly TemplateDependency _templateDependency = new();
+
+            private OfTypeTemplateDependency() { }
+
+            public static OfTypeTemplateDependency<TTemplate> Create()
+            {
+                return InstanceCache.GetOrAdd(typeof(TTemplate), _ => new OfTypeTemplateDependency<TTemplate>());
+            }
+
+            protected override ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
+            {
+                return context.FindTemplateInstance(_templateDependency);
+            }
+
+            protected override IEnumerable<ITemplate> LookupTemplateInstances(ISoftwareFactoryExecutionContext context)
+            {
+                return context.FindTemplateInstances<ITemplate>(_templateDependency);
+            }
+
+            protected override IOutputTarget LookupOutputTarget(ISoftwareFactoryExecutionContext context)
+            {
+                return context.FindOutputTargetWithTemplate(_templateDependency);
+            }
+
+            public override string TemplateId => null;
+
+            public override bool IsMatch(ITemplate template)
+            {
+                throw new InvalidOperationException();
+            }
+
+            private class TemplateDependency : ITemplateDependency
+            {
+                public string TemplateId => null;
+
+                public bool IsMatch(ITemplate template)
+                {
+                    return template is TTemplate;
+                }
             }
         }
 
@@ -268,7 +319,7 @@ namespace Intent.Modules.Common.Templates
             /// <summary>
             /// Avoids additional memory allocations and also improves effectiveness of <see cref="_cachedLookupTemplateInstance"/>.
             /// </summary>
-            protected static readonly ConcurrentDictionary<TInstanceCacheKey, TTemplateDependency> InstanceCache = new ConcurrentDictionary<TInstanceCacheKey, TTemplateDependency>();
+            protected static readonly ConcurrentDictionary<TInstanceCacheKey, TTemplateDependency> InstanceCache = new();
 
             private ITemplate _cachedLookupTemplateInstance;
             private IEnumerable<ITemplate> _cachedLookupTemplateInstances;
@@ -276,17 +327,17 @@ namespace Intent.Modules.Common.Templates
 
             ITemplate IFastLookupTemplateDependency.LookupTemplateInstance(ISoftwareFactoryExecutionContext context)
             {
-                return _cachedLookupTemplateInstance ?? (_cachedLookupTemplateInstance = LookupTemplateInstance(context));
+                return _cachedLookupTemplateInstance ??= LookupTemplateInstance(context);
             }
 
             IEnumerable<ITemplate> IFastLookupTemplateDependency.LookupTemplateInstances(ISoftwareFactoryExecutionContext context)
             {
-                return _cachedLookupTemplateInstances ?? (_cachedLookupTemplateInstances = LookupTemplateInstances(context));
+                return _cachedLookupTemplateInstances ??= LookupTemplateInstances(context);
             }
 
             IOutputTarget IFastLookupTemplateDependency.LookupOutputTarget(ISoftwareFactoryExecutionContext context)
             {
-                return _cachedLookupOutputTarget ?? (_cachedLookupOutputTarget = LookupOutputTarget(context));
+                return _cachedLookupOutputTarget ??= LookupOutputTarget(context);
             }
 
             protected abstract ITemplate LookupTemplateInstance(ISoftwareFactoryExecutionContext context);
