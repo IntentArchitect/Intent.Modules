@@ -10,7 +10,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 {
     public CSharpClass(string name)
     {
-        Name = name.ToCSharpIdentifier();
+        Name = name;
     }
     public string Name { get; private set; }
     public string AccessModifier { get; private set; } = "public ";

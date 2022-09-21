@@ -565,7 +565,7 @@ namespace Intent.Modules.Common.Templates
         /// <param name="collectionFormat">The collection format to be applied if the resolved type <see cref="ITypeReference.IsCollection"/> is true.</param>
         [FixFor_Version4("Remove the GetTypeInfo(ITypeReference typeReference) overload and then remove the ReSharper disable once MethodOverloadWithOptionalParameter below.")]
         // ReSharper disable once MethodOverloadWithOptionalParameter
-        protected virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string collectionFormat = null)
+        public virtual IResolvedTypeInfo GetTypeInfo(ITypeReference typeReference, string collectionFormat = null)
         {
             return Types.Get(typeReference, collectionFormat);
         }

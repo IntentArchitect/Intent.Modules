@@ -70,7 +70,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [FixFor_Version4("Should implement IHasTypeReference and NOT ITypeReference")]
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
