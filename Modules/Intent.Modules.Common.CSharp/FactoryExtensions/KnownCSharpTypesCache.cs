@@ -21,6 +21,9 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         private static readonly IReadOnlyDictionary<string, ISet<string>> Empty = new Dictionary<string, ISet<string>>();
 
         /// <inheritdoc />
+        public override int Order { get; set; } = int.MinValue;
+
+        /// <inheritdoc />
         protected override void OnAfterTemplateRegistrations(IApplication application)
         {
             _knownTypesByNamespace = application

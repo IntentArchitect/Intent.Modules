@@ -740,6 +740,9 @@
         <member name="P:Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache.Id">
             <inheritdoc />
         </member>
+        <member name="P:Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache.Order">
+            <inheritdoc />
+        </member>
         <member name="M:Intent.Modules.Common.CSharp.FactoryExtensions.KnownCSharpTypesCache.OnAfterTemplateRegistrations(Intent.Engine.IApplication)">
             <inheritdoc />
         </member>
