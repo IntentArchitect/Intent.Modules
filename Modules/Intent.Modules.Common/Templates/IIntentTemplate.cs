@@ -10,6 +10,7 @@ public interface IIntentTemplate : ITemplate
     ISoftwareFactoryExecutionContext ExecutionContext { get; }
     IOutputTarget OutputTarget { get; }
     IFileMetadata FileMetadata { get; }
+    void FulfillsRole(string role);
     string GetTypeName(ITypeReference typeReference, string collectionFormat = null);
     string GetTypeName(string templateIdOrRole, TemplateDiscoveryOptions options = null);
     string GetTypeName(string templateIdOrRole, string modelId, TemplateDiscoveryOptions options = null);

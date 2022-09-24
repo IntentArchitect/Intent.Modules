@@ -9,7 +9,9 @@ namespace Intent.Modules.Common.CSharp.Templates;
 
 public interface ICSharpTemplate : IIntentTemplate, IHasNugetDependencies, IHasAssemblyDependencies, IClassProvider, IHasFrameworkDependencies
 {
+    void AddUsing(string @namespace);
     string UseType(string fullName);
+    void AddNugetDependency(INugetPackageInfo nugetPackageInfo);
     string GetFullyQualifiedTypeName(ITypeReference typeReference, string collectionFormat = null);
     string GetFullyQualifiedTypeName(string templateId, TemplateDiscoveryOptions options = null);
     string GetFullyQualifiedTypeName(string templateId, IMetadataModel model, TemplateDiscoveryOptions options = null);
