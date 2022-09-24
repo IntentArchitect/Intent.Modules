@@ -5,6 +5,7 @@ using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Templates;
+using Intent.Utils;
 using NSubstitute;
 using Shouldly;
 using Xunit;
@@ -26,6 +27,8 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 var typeReference = Substitute.For<ITypeReference>();
                 typeReference.Element.Returns(Substitute.For<IElement>());
                 typeReference.IsCollection.Returns(true);
+
+                Logging.SetTracing(Substitute.For<ITracing>());
 
                 // Act
                 var typeName = template.GetTypeName(typeReference);
@@ -90,6 +93,7 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 // Arrange
                 var foreignType = "List<LeadStatusReasonLink>?";
                 var csharpTemplateBase = new TestableCSharpTemplateBase();
+                Logging.SetTracing(Substitute.For<ITracing>());
 
                 // Act
                 var result = csharpTemplateBase.NormalizeNamespace(foreignType);
@@ -104,6 +108,7 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 // Arrange
                 var foreignType = "bool?";
                 var csharpTemplateBase = new TestableCSharpTemplateBase();
+                Logging.SetTracing(Substitute.For<ITracing>());
 
                 // Act
                 var result = csharpTemplateBase.NormalizeNamespace(foreignType);
@@ -120,6 +125,7 @@ namespace Intent.Modules.Common.CSharp.Tests.Templates
                 var csharpTemplateBase = new TestableCSharpTemplateBase();
                 csharpTemplateBase.AddUsing("System");
                 csharpTemplateBase.AddUsing("System.Collection.Generics");
+                Logging.SetTracing(Substitute.For<ITracing>());
 
                 // Act
                 var result = csharpTemplateBase.NormalizeNamespace(foreignType);
