@@ -363,36 +363,54 @@
       </mappingSettings>
       <macros>
         <macro trigger="on-mapped">
-          <script>if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == "e4e36072-a2ce-42d3-93c5-0b496d79ef43") {
-    let command = element.getMapping().getElement();
-    if (command.getChildren().length !== element.getChildren().length) { // then command param is required to ensure all data is received.
-        let param = createElement("Parameter", "command", element.id);
-        param.typeReference.setType(command.id);
-    }
+          <script>const commandMappingSettingId = "e4e36072-a2ce-42d3-93c5-0b496d79ef43";
+if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == commandMappingSettingId) {
+    handleCommandQueryStandaloneType("command");
 
     let stereotype = element.getStereotype("Http Settings");
     if (stereotype) {
-        stereotype.getProperty("Verb").setValue("POST");
-        stereotype.getProperty("Route").setValue("[action]");
+        setIfEmpty(stereotype, "Verb", "POST");
+        setIfEmpty(stereotype, "Route", "[action]");
     }
 }
-if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == "f15fa935-434e-4983-b283-25cde2cb440e") {
-    let query = element.getMapping().getElement();
-    if (query.getChildren().length !== element.getChildren().length) { // then query param is required to ensure all data is received.
-        let param = createElement("Parameter", "query", element.id);
-        param.typeReference.setType(query.id);
-    }
+
+const queryMappingSettingId = "f15fa935-434e-4983-b283-25cde2cb440e";
+if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == queryMappingSettingId) {
+    handleCommandQueryStandaloneType("query");
 
     let stereotype = element.getStereotype("Http Settings");
     if (stereotype) {
-        stereotype.getProperty("Verb").setValue("GET");
-        stereotype.getProperty("Route").setValue("[action]");
+        setIfEmpty(stereotype, "Verb", "GET");
+        setIfEmpty(stereotype, "Route", "[action]");
     }
 }
 
 // Camelcases all parameters
 for(var param of element.getChildren("Parameter")) {
     param.setName(param.name[0].toLowerCase() + param.name.substring(1));
+}
+
+function handleCommandQueryStandaloneType(parameterName) {
+    let commandQuery = element.getMapping().getElement();
+    let mappedFields = element.getChildren("Parameter").filter(x =&gt; x.isMapped);
+    let hasCommandQueryParam = element.getChildren("Parameter").some(x =&gt; x.typeReference.getTypeId() == commandQuery.id);
+
+    if (mappedFields.length == 0 &amp;&amp; !hasCommandQueryParam) {
+        let param = createElement("Parameter", parameterName, element.id);
+        param.typeReference.setType(commandQuery.id);
+    }
+
+    if (mappedFields.length &gt; 0 &amp;&amp; hasCommandQueryParam) {
+        let foundElements = element.getChildren("Parameter").filter(x =&gt; x.typeReference.getTypeId() == commandQuery.id)
+        foundElements.forEach(x =&gt; { x.delete(); });
+    }
+}
+
+function setIfEmpty(stereotype, propertyName, defaultValue) {
+    let prop = stereotype?.getProperty(propertyName);
+    if (prop &amp;&amp; !prop.getValue() &amp;&amp; prop.getValue() != "") {
+        prop.setValue(defaultValue);
+    }
 }</script>
         </macro>
       </macros>

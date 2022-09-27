@@ -1,3 +1,8 @@
+### Version 3.3.5
+
+* Fixed: No more HTTP Route overwriting when mapping to a Query / Command from an Operation.
+* Fixed: Command / Query mapping from an Operation will only introduce the Command / Query DTO to the list of parameters if there are no Command / Query fields mapped. If any fields are mapped, it will remove the Command / Query from the Operation parameter list.
+
 ### Version 3.3.2
 
 * New: Query elements' fields can now project off of a target element's fields and their types will be kept up to date with latest changes.
