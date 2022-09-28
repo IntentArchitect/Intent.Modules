@@ -16,17 +16,17 @@ return "";</validateFunctionOverride>
       <mappingSettings />
       <macros>
         <macro trigger="on-name-changed">
-          <script>var httpVerb = element.getStereotype("Http Settings").getProperty("Verb").value;
+          <script>var httpVerb = element.getStereotype("Http Settings")?.getProperty("Verb").value;
 if (!httpVerb) {
     if (element.name.toLowerCase().startsWith("get") ||
         element.name.toLowerCase().startsWith("find") ||
         element.name.toLowerCase().startsWith("lookup") ||
         element.name.toLowerCase().startsWith("search")) {
-        element.getStereotype("Http Settings").getProperty("Verb").setValue("GET");
+        element.getStereotype("Http Settings")?.getProperty("Verb").setValue("GET");
     } else if (element.name.toLowerCase().startsWith("patch")) {
-        element.getStereotype("Http Settings").getProperty("Verb").setValue("PATCH");
+        element.getStereotype("Http Settings")?.getProperty("Verb").setValue("PATCH");
     } else {
-        element.getStereotype("Http Settings").getProperty("Verb").setValue("POST");
+        element.getStereotype("Http Settings")?.getProperty("Verb").setValue("POST");
     }
 }</script>
         </macro>
