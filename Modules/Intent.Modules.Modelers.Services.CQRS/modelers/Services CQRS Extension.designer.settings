@@ -392,15 +392,16 @@ for(var param of element.getChildren("Parameter")) {
 
 function handleCommandQueryStandaloneType(parameterName) {
     let commandQuery = element.getMapping().getElement();
-    let mappedFields = element.getChildren("Parameter").filter(x =&gt; x.isMapped);
+    let mappedFields = element.getChildren("Parameter").filter(x =&gt; x.isMapped &amp;&amp; x.typeReference.getTypeId() != commandQuery.id);
     let hasCommandQueryParam = element.getChildren("Parameter").some(x =&gt; x.typeReference.getTypeId() == commandQuery.id);
 
-    if (mappedFields.length == 0 &amp;&amp; !hasCommandQueryParam) {
+    if (mappedFields.length &lt; commandQuery.getChildren().length &amp;&amp; !hasCommandQueryParam) {
         let param = createElement("Parameter", parameterName, element.id);
         param.typeReference.setType(commandQuery.id);
+        return;
     }
 
-    if (mappedFields.length &gt; 0 &amp;&amp; hasCommandQueryParam) {
+    if (mappedFields.length == commandQuery.getChildren().length &amp;&amp; hasCommandQueryParam) {
         let foundElements = element.getChildren("Parameter").filter(x =&gt; x.typeReference.getTypeId() == commandQuery.id)
         foundElements.forEach(x =&gt; { x.delete(); });
     }
