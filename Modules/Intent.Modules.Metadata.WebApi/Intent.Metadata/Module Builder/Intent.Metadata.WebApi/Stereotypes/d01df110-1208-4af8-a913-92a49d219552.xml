@@ -6,7 +6,7 @@
     <type id="00208d20-469d-41cb-8501-768fd5eb796b">Parameter</type>
   </targetTypes>
   <targetReferenceTypes />
-  <applyMode>always</applyMode>
+  <applyMode>manually</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayFunction>return (properties["Source"].value == "Default") ? "" : `[${properties["Source"].value}]`;</displayFunction>
