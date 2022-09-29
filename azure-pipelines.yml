@@ -1,13 +1,17 @@
 trigger:
-  batch: true
+  batch: 'true'
   branches:
     include:
     - '*'
 
 variables:
-  vstsFeed: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
-  vstsFeedUrl: https://pkgs.dev.azure.com/intentarchitect/4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/_packaging/intentarchitect-feed/nuget/v3/index.json
-  targetsToBuild: '**/*.sln'
+- name: 'vstsFeed'
+  value: '4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/intentarchitect-feed'
+- name: 'vstsFeedUrl'
+  value: https://pkgs.dev.azure.com/intentarchitect/4bb4c1b9-5b56-4972-8bac-0ad3fa64204e/_packaging/intentarchitect-feed/nuget/v3/index.json
+- name: 'targetsToBuild'
+  value: '**/*.sln'
+- group: 'Intent Architect Credentials'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -15,12 +19,12 @@ pool:
 steps:
 
 - checkout: 'self'
-  persistCredentials: true
-  fetchDepth: 1
+  persistCredentials: 'true'
+  fetchDepth: '1'
   submodules: 'recursive'
 
 # Required for entry in NuGet.Config that is generated as part of 'dotnet pack'.
-- task: NuGetAuthenticate@0
+- task: NuGetAuthenticate@1
 
 # We pack upfront as some projects rely on NuGet packages from this same solution.
 - task: PowerShell@2
@@ -73,3 +77,33 @@ steps:
     command: 'test'
     projects: $(targetsToBuild)
     arguments: '--no-build'
+
+- task: PowerShell@2
+  displayName: 'Install Intent.IArchitect.Packager.CommandLine'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      dotnet tool install Intent.IArchitect.Packager.CommandLine --global --add-source '$(vstsFeedUrl)'
+
+- task: PowerShell@2
+  displayName: 'Remove pre-release modules'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      $regex = '(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
+      Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { $_.Name -Match $regex } | Remove-Item
+
+- task: PowerShell@2
+  displayName: 'Publish to official repository'
+  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  env:
+    DOTNET_NOLOGO: '1'
+  inputs:
+    targetType: inline
+    pwsh: true
+    script: |
+      intent-package-management BulkUploadModules -directory "./Modules/Intent.Modules" -address "https://intentarchitect.com/" -username "$(intent-architect-user)" -password "$(intent-architect-password)"
