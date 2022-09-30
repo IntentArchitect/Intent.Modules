@@ -39,10 +39,11 @@ namespace Intent.Modules.Common.CSharp.FactoryExtensions
         {
             if (_knownTypesByNamespace == null)
             {
-                Logging.Log.Warning($"{nameof(GetKnownTypesByNamespace)} is being called before " +
-                                    "Template Registration has been completed. Ensure that methods " +
-                                    "like GetTypeName and UseType are not being used in template " +
-                                    $"constructors.{Environment.NewLine}{Environment.StackTrace}");
+                // TODO: Re-add this warning once we've resolved the issue of some decorators calling this during their construction: https://dev.azure.com/intentarchitect/Intent%20Architect/_workitems/edit/1282
+                //Logging.Log.Warning($"{nameof(GetKnownTypesByNamespace)} is being called before " +
+                //                    "Template Registration has been completed. Ensure that methods " +
+                //                    "like GetTypeName and UseType are not being used in template " +
+                //                    $"constructors.{Environment.NewLine}{Environment.StackTrace}");
 
                 return Empty;
             }
