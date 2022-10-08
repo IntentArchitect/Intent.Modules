@@ -96,6 +96,7 @@ steps:
     script: |
       $regex = '(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
       Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { $_.Name -Match $regex } | Remove-Item
+      Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { $_.Name -Match $regex } | Remove-Item
 
 - task: PowerShell@2
   displayName: 'Publish to official repository'
@@ -107,3 +108,4 @@ steps:
     pwsh: true
     script: |
       intent-package-management BulkUploadModules -directory "./Modules/Intent.Modules" -address "https://intentarchitect.com/" -username "$(intent-architect-user)" -password "$(intent-architect-password)"
+      intent-package-management BulkUploadApplicationTemplates -directory "./Modules/Intent.Modules" -address "https://intentarchitect.com/" -username "$(intent-architect-user)" -password "$(intent-architect-password)"
