@@ -154,11 +154,7 @@ if (useDefaultName &amp;&amp; element.getMapping() != null) {
 }</script>
         </macro>
         <macro trigger="on-type-changed">
-          <script>let element = lookup("75ebb201-a014-4704-8a02-f2776cb06ba0")
-console.log(element.typeReference.typeId)
-console.log(element.hasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"))
-
-if (element.getParent().specialization == "Class" &amp;&amp; 
+          <script>if (element.getParent().specialization == "Class" &amp;&amp; 
     element.typeReference.typeId == "d384db9c-a279-45e1-801e-e4e8099625f2" /* string */) {
     if (!element.hasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")) {
         element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Primary key
