@@ -68,6 +68,9 @@
     <elementSetting type="Template Output" typeId="09de2192-2507-41a2-8044-286c7ecadec2">
       <icon type="FontAwesome" source="file-code-o" />
       <saveAsOwnFile>false</saveAsOwnFile>
+      <validateFunction>if (getMetadata("status") == "unassigned") {
+    return "This Template Output is unassigned. Please drag it into the project or folder in which it should be outputted."
+}</validateFunction>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowGenericTypes>false</allowGenericTypes>
@@ -82,6 +85,13 @@
       <creationOptions />
       <scriptOptions />
       <mappingSettings />
+      <macros>
+        <macro trigger="on-changed">
+          <script>if (element.getParent().specialization == "Folder") {
+    element.setMetadata("status", "assigned");
+}</script>
+        </macro>
+      </macros>
       <childElementSettings />
     </elementSetting>
   </elementSettings>
