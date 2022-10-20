@@ -97,6 +97,7 @@
       <defaultValue>Default</defaultValue>
       <valueOptions />
       <lookupTypes />
+      <isRequiredFunction>return element.typeReference.typeId != "d2931361-7cf0-4c79-9847-621c60886ef9";</isRequiredFunction>
     </property>
     <property id="1ac0fa39-ecea-48f8-92e4-41616a639586">
       <name>Default Location</name>
