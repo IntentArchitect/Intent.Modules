@@ -7,45 +7,58 @@
 <#@ import namespace="Intent.Modules.Common.TypeScript.Templates" #>
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
-
+/* eslint-disable */
+/**
+ * Instructs Intent Architect to ignore this member (i.e. do not update or remove it)
+ * @param {string} identifier Override for the identifier for this element.
+ * Use this if you want Intent Architect to match this element to an output element, irrespective of its name or signature.
+ *
+ * @see [TypeScript Code-Management](https://docs.intentarchitect.com/articles/application-development/code-management/code-management-typescript/code-management-typescript.html)
+ */
 export const <#= IntentIgnore #> = (identifier?: string) => {
-  return (target: any, propertyKey?: string, descriptor?: any) => {
-  }
-}
+  return (target: any, propertyKey?: string, descriptor?: any) => {};
+};
 
-export interface <#= IntentIgnore #> {
-
-}
-
+/**
+ * Instructs Intent Architect to ignore the body of the member, but allows it to manage the signature.
+ * @param {string} identifier Override for the identifier for this element.
+ * Use this if you want Intent Architect to match this element to an output element, irrespective of its name or signature.
+ *
+ * @see [TypeScript Code-Management](https://docs.intentarchitect.com/articles/application-development/code-management/code-management-typescript/code-management-typescript.html)
+ */
 export const <#= IntentIgnoreBody #> = (identifier?: string) => {
-  return (target: any, propertyKey?: string, descriptor?: any) => {
-  }
-}
+  return (target: any, propertyKey?: string, descriptor?: any) => {};
+};
 
-export interface <#= IntentIgnoreBody #> {
-
-}
-
+/**
+ * Instructs Intent Architect to manage this element, allowing adding, updating, but not removing, of its child members.
+ * @param {string} identifier Override for the identifier for this element.
+ * Use this if you want Intent Architect to match this element to an output element, irrespective of its name or signature.
+ *
+ * @see [TypeScript Code-Management](https://docs.intentarchitect.com/articles/application-development/code-management/code-management-typescript/code-management-typescript.html)
+ */
 export const <#= IntentMerge #> = (identifier?: string) => {
-  return (target: any, propertyKey?: string, descriptor?: any) => {
-  }
-}
-export interface <#= IntentMerge #> {
+  return (target: any, propertyKey?: string, descriptor?: any) => {};
+};
 
-}
-
+/**
+ * Instructs Intent Architect to manage this element, allowing adding, updating and removing of its child members.
+ * @param {string} identifier Override for the identifier for this element.
+ * Use this if you want Intent Architect to match this element to an output element, irrespective of its name or signature.
+ *
+ * @see [TypeScript Code-Management](https://docs.intentarchitect.com/articles/application-development/code-management/code-management-typescript/code-management-typescript.html)
+ */
 export const <#= IntentManage #> = (identifier?: string) => {
-  return (target: any, propertyKey?: string, descriptor?: any) => {
-  }
-}
-export interface <#= IntentManage #> {
+  return (target: any, propertyKey?: string, descriptor?: any) => {};
+};
 
-}
-
+/**
+ * Instructs Intent Architect to manage this class, allowing adding, updating and removing of its child members.
+ * @param {object} options Controls how Intent Architect should treat methods, properties and constructors.
+ * Note that these options are still in beta and likely to be changed and extended in the future.
+ *
+ * @see [TypeScript Code-Management](https://docs.intentarchitect.com/articles/application-development/code-management/code-management-typescript/code-management-typescript.html)
+ */
 export const <#= IntentManageClass #> = (identifier?: string) => {
-  return (target: any, propertyKey?: string, descriptor?: any) => {
-  }
-}
-export interface <#= IntentManageClass #> {
-
-}
+  return (target: any, propertyKey?: string, descriptor?: any) => {};
+};

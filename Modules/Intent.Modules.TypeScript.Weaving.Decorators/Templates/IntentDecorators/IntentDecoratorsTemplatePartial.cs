@@ -33,6 +33,7 @@ namespace Intent.Modules.TypeScript.Weaving.Decorators.Templates.IntentDecorator
             return new TypeScriptFileConfig(
                 overwriteBehaviour: OverwriteBehaviour.Always,
                 fileName: "intent.decorators",
+                fileExtension: "ts",
                 relativeLocation: "",
                 className: IntentIgnore
             );
