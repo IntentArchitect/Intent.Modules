@@ -29,15 +29,14 @@ namespace Intent.Modules.Common.TypeScript.Weaving
 
             try
             {
-                var existingFile = output.TargetFileExists()
-                    ? new TypeScriptFileEditor(output.GetExistingFileContent()).File
+                var existingFile = output.PreviousFilePathExists()
+                    ? new TypeScriptFileEditor(output.GetPreviousFilePathContent()).File
                     : null;
 
                 if (existingFile == null)
                 {
                     return;
                 }
-
 
                 var merger = new TypeScriptWeavingMerger();
 
