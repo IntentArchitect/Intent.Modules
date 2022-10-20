@@ -3,7 +3,7 @@
   <name>Domain Events</name>
   <display>Domain Events</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>19d172fe-ae4f-4402-bf24-0da4f92c059b</parentFolderId>

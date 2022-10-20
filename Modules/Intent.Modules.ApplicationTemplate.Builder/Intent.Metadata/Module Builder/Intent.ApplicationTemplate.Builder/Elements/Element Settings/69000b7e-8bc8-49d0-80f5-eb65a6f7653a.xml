@@ -3,7 +3,7 @@
   <name>Application Template Settings Configuration</name>
   <display>Application Template Settings Configuration</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c75eea8b-43c3-477d-9bbf-83ada9809113</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>69000b7e-8bc8-49d0-80f5-eb65a6f7653a</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Field</name>
           <display>Add Field: Application Template Settings Field Configuration</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="f41a0d08-bd20-42de-99c7-e59c25d9380b">
             <typeId>053d28c8-18c9-45b9-b3cb-184ec4b19679</typeId>

@@ -3,7 +3,7 @@
   <name>Domain Event</name>
   <display>Domain Event</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>79480502-761f-4883-a4f3-3b03654db367</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>0814e459-fb9b-47db-b7eb-32ce30397e8a</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Property</name>
           <display>Add Property: Property</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c0481a9a-7d46-4a93-8754-53e9bf00409e">
             <typeId>b4d69073-5abb-4968-b41b-545b2f7408ed</typeId>
@@ -104,7 +103,6 @@
           <name>Add Consumer</name>
           <display>Add Consumer: Domain Event Association</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="46c40316-41f1-4816-86af-860213f8ac08">
             <typeId>8014b71d-627b-4349-b6d7-5011dfa1bb09</typeId>
@@ -145,7 +143,7 @@
       <name>[visual]</name>
       <display>[visual]: Domain Event</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <typeReference id="f4df5b5f-452e-47c4-8861-f666587e8800">
         <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
@@ -182,7 +180,6 @@
           <name>Rectangle</name>
           <display>[draw path]: Rectangle</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>047d2c97-4681-4a19-8a08-36a7fa2b4294</parentFolderId>
@@ -210,7 +207,6 @@
           <name>Display Text</name>
           <display>[draw text]: Display Text</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>047d2c97-4681-4a19-8a08-36a7fa2b4294</parentFolderId>
@@ -246,7 +242,6 @@
           <name>Stereotype Icons</name>
           <display>[stereotypes]: Stereotype Icons</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>047d2c97-4681-4a19-8a08-36a7fa2b4294</parentFolderId>
@@ -272,7 +267,7 @@
           <name>NewElementVisualSettings</name>
           <display>[visual]: Property</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
+          <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
           <typeReference id="88e585dc-7f38-40a8-8d04-ee737f797cc1">
             <typeId>b4d69073-5abb-4968-b41b-545b2f7408ed</typeId>
@@ -308,7 +303,6 @@
               <name>Separator</name>
               <display>[draw path]: Separator</display>
               <isAbstract>false</isAbstract>
-              <order>1</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>b3c50c83-5249-49f0-8b25-5d319eeab529</parentFolderId>
@@ -336,7 +330,6 @@
               <name>Display Text</name>
               <display>[draw text]: Display Text</display>
               <isAbstract>false</isAbstract>
-              <order>2</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>b3c50c83-5249-49f0-8b25-5d319eeab529</parentFolderId>
@@ -372,7 +365,6 @@
               <name>Stereotype Icons</name>
               <display>[stereotypes]: Stereotype Icons</display>
               <isAbstract>false</isAbstract>
-              <order>3</order>
               <genericTypes />
               <isMapped>false</isMapped>
               <parentFolderId>b3c50c83-5249-49f0-8b25-5d319eeab529</parentFolderId>

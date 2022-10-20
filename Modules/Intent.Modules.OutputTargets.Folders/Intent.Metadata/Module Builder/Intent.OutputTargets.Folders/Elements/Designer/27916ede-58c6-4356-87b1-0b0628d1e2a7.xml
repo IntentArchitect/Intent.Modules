@@ -3,7 +3,7 @@
   <name>Folder Structure</name>
   <display>Folder Structure</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>9d4b93f4-6ecb-457e-8ef7-f1f715b5ddcb</parentFolderId>
@@ -37,7 +37,6 @@
       <name>reference</name>
       <display>reference: Common Types</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="f62ace1e-8a82-4e75-acd4-ba09093554f4">
         <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
@@ -62,7 +61,6 @@
       <name>reference</name>
       <display>reference: Output Folder Types</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <typeReference id="e4f84c8e-443b-4e5b-b6dc-5246ee042b39">
         <typeId>055be48d-e085-4a52-b6bf-80dd34e9abf4</typeId>

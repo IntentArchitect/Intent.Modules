@@ -3,7 +3,7 @@
   <name>designers</name>
   <display>designers</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>31710880-215c-4fed-9c79-a129a4b9cdb1</parentFolderId>

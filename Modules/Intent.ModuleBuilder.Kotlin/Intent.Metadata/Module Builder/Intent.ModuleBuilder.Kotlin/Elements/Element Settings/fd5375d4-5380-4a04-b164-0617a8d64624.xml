@@ -3,7 +3,7 @@
   <name>Kotlin File Template</name>
   <display>Kotlin File Template</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>05b4920c-1004-4605-a38d-eb82f562bc8e</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fd5375d4-5380-4a04-b164-0617a8d64624</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Decorator Contract</name>
           <display>Add Decorator Contract: Template Decorator Contract</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="330a3d31-c62a-404c-9dc7-8b396617eed5">
             <typeId>ac1da322-377e-45cf-a2d9-d147a4d91457</typeId>

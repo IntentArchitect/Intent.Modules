@@ -3,7 +3,7 @@
   <name>Templates</name>
   <display>Templates</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>aab55a63-0390-4bad-8c8d-59ddad648524</parentFolderId>

@@ -3,7 +3,7 @@
   <name>Diagram Extension</name>
   <display>Diagram Extension: Diagram</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="2603adac-6902-4815-9b0b-67d5e1605ad5">
     <typeId>4d66fecd-e9b8-436f-aa50-c59040ad0879</typeId>

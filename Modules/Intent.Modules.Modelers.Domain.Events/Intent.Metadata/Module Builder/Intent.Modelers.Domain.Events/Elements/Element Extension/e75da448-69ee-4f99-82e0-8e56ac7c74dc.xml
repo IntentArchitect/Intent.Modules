@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="a21a1b23-d76c-454e-9370-610db74ee542">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e75da448-69ee-4f99-82e0-8e56ac7c74dc</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Domain Event</name>
           <display>New Domain Event: Domain Event</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="cc2680ba-9e9c-42c9-840e-2021ab8c466d">
             <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>

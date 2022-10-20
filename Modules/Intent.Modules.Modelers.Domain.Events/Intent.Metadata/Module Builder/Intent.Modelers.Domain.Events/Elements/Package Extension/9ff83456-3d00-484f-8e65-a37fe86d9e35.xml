@@ -3,7 +3,7 @@
   <name>Domain Package Extension</name>
   <display>Domain Package Extension: Domain Package</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <typeReference id="6d7e48b5-95f7-438f-80f6-6f4f3fbf5bcb">
     <typeId>1a824508-4623-45d9-accc-f572091ade5a</typeId>
@@ -27,7 +27,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>9ff83456-3d00-484f-8e65-a37fe86d9e35</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New Domain Event</name>
           <display>New Domain Event: Domain Event</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="5d91590b-2d46-476b-9f12-9f85068eb828">
             <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>

@@ -3,6 +3,7 @@
   <name>Property</name>
   <display>Property</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,6 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>b4d69073-5abb-4968-b41b-545b2f7408ed</parentFolderId>

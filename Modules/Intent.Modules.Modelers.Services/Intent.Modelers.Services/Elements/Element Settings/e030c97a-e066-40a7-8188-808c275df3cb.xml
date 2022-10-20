@@ -3,6 +3,7 @@
   <name>Operation</name>
   <display>Operation</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e030c97a-e066-40a7-8188-808c275df3cb</parentFolderId>
@@ -64,7 +65,6 @@
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="939f0104-dd25-4fc2-a761-b9c3f1ff8edd">
             <typeId>00208d20-469d-41cb-8501-768fd5eb796b</typeId>
@@ -106,7 +106,7 @@
       <name>NewElementEventSettings</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>e030c97a-e066-40a7-8188-808c275df3cb</parentFolderId>
@@ -119,7 +119,6 @@
           <name>On Changed</name>
           <display>On Changed: Script</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="758dfb3a-647c-44c8-8d95-dd8b8452d684">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>

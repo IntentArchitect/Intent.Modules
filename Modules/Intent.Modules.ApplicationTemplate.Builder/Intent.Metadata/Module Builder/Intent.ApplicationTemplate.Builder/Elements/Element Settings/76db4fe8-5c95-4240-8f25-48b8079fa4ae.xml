@@ -3,6 +3,7 @@
   <name>Installation Settings</name>
   <display>Installation Settings</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,6 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>76db4fe8-5c95-4240-8f25-48b8079fa4ae</parentFolderId>

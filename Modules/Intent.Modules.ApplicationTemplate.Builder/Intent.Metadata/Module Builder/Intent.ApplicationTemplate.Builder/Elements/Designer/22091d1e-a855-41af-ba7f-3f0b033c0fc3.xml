@@ -3,7 +3,7 @@
   <name>App Templates</name>
   <display>App Templates</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>29aaf411-512f-4c24-8df2-92cc90061928</parentFolderId>
@@ -26,7 +26,6 @@
       <name>reference</name>
       <display>reference: Application Template Builder</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <typeReference id="1586ea47-fedf-4259-a933-6ff123a3801d">
         <typeId>c75eea8b-43c3-477d-9bbf-83ada9809113</typeId>

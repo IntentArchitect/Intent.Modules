@@ -3,6 +3,7 @@
   <name>NewDiagramSettings</name>
   <display>[diagram]</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -16,7 +17,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>05397c8e-6b4a-4ecc-9feb-53b66448600d</parentFolderId>
@@ -29,7 +30,6 @@
           <name>New Domain Event</name>
           <display>New Domain Event: Domain Event</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="33f6cc03-3818-4384-9d9c-bb9321301eec">
             <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>

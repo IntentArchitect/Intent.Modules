@@ -3,7 +3,7 @@
   <name>Component Group</name>
   <display>Component Group</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c75eea8b-43c3-477d-9bbf-83ada9809113</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>027f8bb9-9b28-4c1d-a516-8c3daa70e46d</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Component</name>
           <display>Add Component: Component</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="72a0e01d-e9d7-4225-9682-62fd16866d49">
             <typeId>47064ef1-2295-4287-8301-c446910a1b1e</typeId>

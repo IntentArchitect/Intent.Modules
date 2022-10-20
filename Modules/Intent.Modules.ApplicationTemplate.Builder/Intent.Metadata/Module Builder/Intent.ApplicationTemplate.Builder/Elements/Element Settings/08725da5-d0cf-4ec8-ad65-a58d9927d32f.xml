@@ -3,7 +3,7 @@
   <name>Content Folder</name>
   <display>Content Folder</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>c75eea8b-43c3-477d-9bbf-83ada9809113</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>08725da5-d0cf-4ec8-ad65-a58d9927d32f</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Installation Settings</name>
           <display>Add Installation Settings: Installation Settings</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="9e7430ce-dd05-4dd9-93ec-8002e0b421cb">
             <typeId>76db4fe8-5c95-4240-8f25-48b8079fa4ae</typeId>

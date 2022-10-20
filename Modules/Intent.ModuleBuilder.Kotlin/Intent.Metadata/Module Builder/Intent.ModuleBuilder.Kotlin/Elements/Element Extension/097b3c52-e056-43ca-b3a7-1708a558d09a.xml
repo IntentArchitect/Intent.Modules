@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="2c667c67-0d56-4c0c-ad83-5f571cd2aeef">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>097b3c52-e056-43ca-b3a7-1708a558d09a</parentFolderId>
@@ -64,7 +64,6 @@
           <name>New Kotlin File</name>
           <display>New Kotlin File: Kotlin File Template</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c30da843-f36b-4b61-9389-415956ffb329">
             <typeId>fd5375d4-5380-4a04-b164-0617a8d64624</typeId>

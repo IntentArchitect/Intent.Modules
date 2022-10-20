@@ -3,7 +3,7 @@
   <name>Services Package</name>
   <display>Services Package</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>55e213e3-1e43-4bb5-abe6-6ff77af23f39</parentFolderId>
@@ -27,7 +27,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>df45eaf6-9202-4c25-8dd5-677e9ba1e906</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New Service</name>
           <display>New Service: Service</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="ad5e8a48-7f34-4e96-a2de-d2fce4c3b881">
             <typeId>b16578a5-27b1-4047-a8df-f0b783d706bd</typeId>
@@ -80,7 +79,6 @@
           <name>New DTO</name>
           <display>New DTO: DTO</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="514d21f0-be41-4b12-b2c0-b90a1012b048">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
@@ -120,7 +118,6 @@
           <name>New Type</name>
           <display>New Type: Type-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="c9000d10-b6d7-4f21-bcbc-651c641ed18d">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
@@ -160,7 +157,6 @@
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
-          <order>3</order>
           <genericTypes />
           <typeReference id="11b0b3a3-7abc-4ad1-a184-cd5d3208c11c">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -200,7 +196,6 @@
           <name>New Enum</name>
           <display>New Enum: Enum</display>
           <isAbstract>false</isAbstract>
-          <order>4</order>
           <genericTypes />
           <typeReference id="13aa1a36-09f6-4772-9732-144bd7f1615a">
             <typeId>85fba0e9-9161-4c85-a603-a229ef312beb</typeId>
@@ -240,7 +235,6 @@
           <name>New Stereotype-Definition</name>
           <display>New Stereotype-Definition: Stereotype-Definition</display>
           <isAbstract>false</isAbstract>
-          <order>5</order>
           <genericTypes />
           <typeReference id="f9d9459c-7b94-4515-87b3-ba64e8862f2d">
             <typeId>54eff27b-2dfc-4853-8498-1a2c4700e385</typeId>

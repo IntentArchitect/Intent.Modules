@@ -3,7 +3,7 @@
   <name>Folder Extension</name>
   <display>Folder Extension: Folder</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <typeReference id="f288c656-6244-4feb-b146-c4132f0aa0aa">
     <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>728ec7bd-3292-413f-bdac-2ebf40e6f47b</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Template Output</name>
           <display>Add Template Output: Template Output</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="78e93b7e-3ad1-4fde-989d-ae7614ea5328">
             <typeId>09de2192-2507-41a2-8044-286c7ecadec2</typeId>
@@ -104,7 +103,6 @@
           <name>Add Role</name>
           <display>Add Role: Role</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="d98e3ee5-8f63-4e2b-8abd-409673733503">
             <typeId>8663c9f9-2852-45e7-aaa1-0883a2e6f1da</typeId>

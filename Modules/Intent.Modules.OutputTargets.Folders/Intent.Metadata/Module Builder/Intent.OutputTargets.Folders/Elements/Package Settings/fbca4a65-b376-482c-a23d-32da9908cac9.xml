@@ -3,7 +3,7 @@
   <name>Root Location Package</name>
   <display>Root Location Package</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>055be48d-e085-4a52-b6bf-80dd34e9abf4</parentFolderId>
@@ -27,7 +27,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>fbca4a65-b376-482c-a23d-32da9908cac9</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New Folder</name>
           <display>New Folder: Folder</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="5fcc4cdb-4af2-4199-ade0-453db200dbba">
             <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
@@ -80,7 +79,6 @@
           <name>Add Template Output</name>
           <display>Add Template Output: Template Output</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <typeReference id="2d529744-b18b-41bf-9abf-379bc094eae7">
             <typeId>09de2192-2507-41a2-8044-286c7ecadec2</typeId>
@@ -120,7 +118,6 @@
           <name>Add Role</name>
           <display>Add Role: Role</display>
           <isAbstract>false</isAbstract>
-          <order>2</order>
           <genericTypes />
           <typeReference id="e9009f97-8bbd-47c2-9c71-844151b9e746">
             <typeId>8663c9f9-2852-45e7-aaa1-0883a2e6f1da</typeId>

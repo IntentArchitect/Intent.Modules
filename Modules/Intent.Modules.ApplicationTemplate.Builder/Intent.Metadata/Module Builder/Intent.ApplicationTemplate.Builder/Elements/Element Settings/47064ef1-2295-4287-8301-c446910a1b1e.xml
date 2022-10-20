@@ -3,6 +3,7 @@
   <name>Component</name>
   <display>Component</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>47064ef1-2295-4287-8301-c446910a1b1e</parentFolderId>
@@ -64,7 +65,6 @@
           <name>Add Module</name>
           <display>Add Module: Module</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="c14ee35e-7232-4394-832e-97e92bed74ae">
             <typeId>ef75f8f0-520c-4ab8-814f-5e75f4877dd7</typeId>

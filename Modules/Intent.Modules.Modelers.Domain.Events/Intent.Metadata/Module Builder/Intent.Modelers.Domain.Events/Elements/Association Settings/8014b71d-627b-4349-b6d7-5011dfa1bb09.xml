@@ -3,7 +3,7 @@
   <name>Domain Event Association</name>
   <display>Domain Event Association</display>
   <isAbstract>false</isAbstract>
-  <order>3</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>79480502-761f-4883-a4f3-3b03654db367</parentFolderId>
@@ -16,7 +16,6 @@
       <name>Domain Event Association Source End</name>
       <display>Domain Event Association Source End</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8014b71d-627b-4349-b6d7-5011dfa1bb09</parentFolderId>
@@ -49,7 +48,6 @@
       <name>Domain Event Association Target End</name>
       <display>Domain Event Association Target End</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8014b71d-627b-4349-b6d7-5011dfa1bb09</parentFolderId>
@@ -82,7 +80,7 @@
       <name>[visual]</name>
       <display>[visual]</display>
       <isAbstract>false</isAbstract>
-      <order>2</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>8014b71d-627b-4349-b6d7-5011dfa1bb09</parentFolderId>
@@ -106,7 +104,6 @@
           <name>[source]</name>
           <display>[source]</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>b3505e6c-d16c-4464-a896-ebd53d8551e8</parentFolderId>
@@ -154,7 +151,6 @@
           <name>[desintation]</name>
           <display>[destination]</display>
           <isAbstract>false</isAbstract>
-          <order>1</order>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>b3505e6c-d16c-4464-a896-ebd53d8551e8</parentFolderId>

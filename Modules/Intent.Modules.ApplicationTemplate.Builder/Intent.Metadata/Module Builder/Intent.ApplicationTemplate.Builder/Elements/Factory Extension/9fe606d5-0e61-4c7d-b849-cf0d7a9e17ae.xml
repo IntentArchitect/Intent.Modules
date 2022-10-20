@@ -3,7 +3,6 @@
   <name>AutoBuild</name>
   <display>AutoBuild</display>
   <isAbstract>false</isAbstract>
-  <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</parentFolderId>

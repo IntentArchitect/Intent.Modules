@@ -3,7 +3,7 @@
   <name>Kotlin Types</name>
   <display>Kotlin Types</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>417cf746-d0c1-4368-b96f-c036dca94a2d</parentFolderId>

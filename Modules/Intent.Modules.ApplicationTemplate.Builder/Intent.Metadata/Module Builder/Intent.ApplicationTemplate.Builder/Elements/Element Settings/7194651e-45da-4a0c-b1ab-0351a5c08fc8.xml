@@ -3,6 +3,7 @@
   <name>Application Template Settings Field Option</name>
   <display>Application Template Settings Field Option</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -51,7 +52,6 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>7194651e-45da-4a0c-b1ab-0351a5c08fc8</parentFolderId>
