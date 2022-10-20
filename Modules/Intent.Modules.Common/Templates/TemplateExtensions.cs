@@ -74,22 +74,23 @@ namespace Intent.Modules.Common.Templates
 
         public static string ToSnakeCase(this string name)
         {
-            return name.ToSpecialCase("_");
+            return name.ToSpecialCase('_');
         }
 
         public static string ToKebabCase(this string name)
         {
-            return name.ToSpecialCase("-");
+            return name.ToSpecialCase('-');
         }
 
         public static string ToDotCase(this string name)
         {
-            return name.ToSpecialCase(".");
+            return name.ToSpecialCase('.');
         }
 
 
-        private static string ToSpecialCase(this string name, string separator)
+        private static string ToSpecialCase(this string name, char separator)
         {
+            var specialCharacters = new[] { '_', '.', '-', separator };
             var sb = new StringBuilder(name);
             for (int i = 0; i < sb.Length; i++)
             {
@@ -98,7 +99,7 @@ namespace Intent.Modules.Common.Templates
                 {
                     sb.Remove(i, 1);
                     sb.Insert(i, char.ToLower(c));
-                    if (i != 0 && i < sb.Length - 1)
+                    if (i != 0 && i < sb.Length - 1 && !specialCharacters.Contains(sb[i - 1])) // special characters, including separator
                     {
                         sb.Insert(i, separator);
                         i++;
@@ -124,7 +125,7 @@ namespace Intent.Modules.Common.Templates
             var result = sb.ToString();
             while (result.Contains($"{separator}{separator}"))
             {
-                result = result.Replace($"{separator}{separator}", separator);
+                result = result.Replace($"{separator}{separator}", separator.ToString());
             }
 
             return result;
