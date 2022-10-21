@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Sql</id>
-  <version>3.3.7-pre.0</version>
+  <version>3.3.7</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Common library support in order to help generate code for the SQL scripting language.</summary>
   <description>Common library support in order to help generate code for the SQL scripting language.</description>
