@@ -13,6 +13,6 @@ public static class ClassModelAssociationExtensions
         var owningAssociations = classModel.AssociationEnds()
             .Where(x => x.IsSourceEnd() && !x.IsCollection && !x.IsNullable)
             .ToArray();
-        return !owningAssociations.Any() && !classModel.IsAbstract;
+        return !owningAssociations.Any();
     }
 }

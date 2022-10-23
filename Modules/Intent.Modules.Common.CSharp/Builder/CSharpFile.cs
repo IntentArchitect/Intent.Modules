@@ -9,6 +9,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public class CSharpFile
 {
     private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
+    private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
     public IList<CSharpUsing> Usings { get; } = new List<CSharpUsing>();
     public string Namespace { get; }
     public string RelativeLocation { get; }
@@ -72,9 +73,17 @@ public class CSharpFile
 
     private bool _isBuilt = false;
 
+    // TODO: GCB - consider splitting out the OnBuild method to align with the different phases of build
     public CSharpFile OnBuild(Action<CSharpFile> configure, int order = 0)
     {
-        _configurations.Add((() => configure(this), order));
+        if (order <= 0)
+        {
+            _configurations.Add((() => configure(this), order));
+        }
+        else
+        {
+            _configurationsAfter.Add((() => configure(this), order));
+        }
         return this;
     }
 
@@ -91,22 +100,24 @@ public class CSharpFile
 
     public CSharpFile StartBuild()
     {
-        foreach (var configuration in _configurations.OrderBy(x => x.Order))
+        while (_configurations.Count > 0)
         {
-            configuration.Action.Invoke();
+            var toExecute = _configurations.OrderBy(x => x.Order).First();
+            toExecute.Action.Invoke();
+            _configurations.Remove(toExecute);
         }
-        _configurations.Clear();
 
         return this;
     }
 
     public CSharpFile FinalizeBuild()
     {
-        foreach (var configuration in _configurations.OrderBy(x => x.Order))
+        while (_configurationsAfter.Count > 0)
         {
-            configuration.Action.Invoke();
+            var toExecute = _configurationsAfter.OrderBy(x => x.Order).First();
+            toExecute.Action.Invoke();
+            _configurationsAfter.Remove(toExecute);
         }
-        _configurations.Clear();
 
         _isBuilt = true;
         return this;

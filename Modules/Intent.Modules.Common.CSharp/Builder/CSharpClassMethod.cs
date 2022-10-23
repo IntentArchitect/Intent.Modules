@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>
+public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>, IHasCSharpStatements
 {
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public string AsyncMode { get; private set; } = "";
@@ -34,17 +34,33 @@ public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>
 
     public CSharpClassMethod AddStatement(string statement, Action<CSharpStatement> configure = null)
     {
-        var s = new CSharpStatement(statement);
-        Statements.Add(s);
-        configure?.Invoke(s);
+        return AddStatement(new CSharpStatement(statement), configure);
+    }
+
+    public CSharpClassMethod AddStatement(CSharpStatement statement, Action<CSharpStatement> configure = null)
+    {
+        Statements.Add(statement);
+        statement.Parent = this;
+        configure?.Invoke(statement);
         return this;
     }
 
-    public CSharpClassMethod InsertStatement(int index, string statement, Action<CSharpStatement> configure = null)
+    public CSharpClassMethod InsertStatement(int index, CSharpStatement statement, Action<CSharpStatement> configure = null)
     {
-        var s = new CSharpStatement(statement);
-        Statements.Insert(index, s);
-        configure?.Invoke(s);
+        Statements.Insert(index, statement);
+        statement.Parent = this;
+        configure?.Invoke(statement);
+        return this;
+    }
+
+    public CSharpClassMethod InsertStatements(int index, IEnumerable<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    {
+        foreach (var s in statements.Reverse())
+        {
+            Statements.Insert(index, s);
+            s.Parent = this;
+        }
+        configure?.Invoke(statements);
         return this;
     }
 
@@ -64,6 +80,7 @@ public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>
         foreach (var statement in arrayed)
         {
             Statements.Add(statement);
+            statement.Parent = this;
         }
         configure?.Invoke(arrayed);
 
@@ -112,13 +129,18 @@ public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>
         return this;
     }
 
+    public void RemoveStatement(CSharpStatement statement)
+    {
+        Statements.Remove(statement);
+    }
+
     public string ToString(string indentation)
     {
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))})
 {indentation}{{{(Statements.Any() ? $@"
 {string.Join($@"
 ", Statements.Select((s, index) => s.MustSeparateFromPrevious && index != 0 ? $@"
-{indentation}    {s}".TrimEnd() : $"{indentation}    {s}".TrimEnd()))}" : string.Empty)}
+{s.GetText($"    {indentation}")}".TrimEnd() : s.GetText($"    {indentation}").TrimEnd()))}" : string.Empty)}
 {indentation}}}";
     }
 }

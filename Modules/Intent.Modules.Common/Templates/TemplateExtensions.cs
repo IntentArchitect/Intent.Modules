@@ -131,6 +131,7 @@ namespace Intent.Modules.Common.Templates
             return result;
         }
 
+        [Obsolete("Use Pluralize() extension method")]
         public static string ToPluralName(this string s)
         {
             return s.EndsWith("y") && !s.EndsWith("ay") && !s.EndsWith("ey") && !s.EndsWith("iy") && !s.EndsWith("oy") && !s.EndsWith("uy")

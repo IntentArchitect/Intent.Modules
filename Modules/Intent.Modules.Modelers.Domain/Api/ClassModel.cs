@@ -79,6 +79,26 @@ namespace Intent.Modelers.Domain.Api
             .Select(x => new OperationModel(x))
             .ToList();
 
+        public bool IsSubclassOf(ClassModel @class)
+        {
+            return GetTypesInHierarchy().Any(x => x.Equals(@class));
+        }
+
+        public bool IsSuperclassOf(ClassModel @class)
+        {
+            return @class.GetTypesInHierarchy().Any(x => x.Equals(this));
+        }
+
+        public IEnumerable<ClassModel> GetTypesInHierarchy()
+        {
+            yield return this;
+            var parent = ParentClass;
+            while (parent != null)
+            {
+                yield return parent;
+                parent = parent.ParentClass;
+            }
+        }
 
         public IEnumerable<AssociationEndModel> AssociatedClasses
         {
