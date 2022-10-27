@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Java</id>
-  <version>3.3.15</version>
+  <version>3.3.16-pre.0</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Common library support in order to help generate code for the Java language.</summary>
   <description>Common library support in order to help generate code for the Java language.</description>

@@ -9,9 +9,9 @@ namespace Intent.Modules.Common.Java.Tests.Templates
 {
     public class JavaTemplateBaseExtensionMethodsTests
     {
-        public class GetPackagePartsByFolderTests
+        public class DescribeGetPackageStructure
         {
-            public record Scenario( 
+            public record Scenario(
                 string Name,
                 string[]? OutputTarget,
                 string[]? HasFolder,
@@ -80,6 +80,27 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                     },
                     Expected:
                     "OutputTarget3.HasFolder1.HasFolder2.HasFolder3.AdditionalFolder1.AdditionalFolder2.AdditionalFolder3").ToObject(),
+
+                new Scenario(
+                    Name: "hyphen in path",
+                    OutputTarget: new []
+                    {
+                        "OutputTarget1.OutputTarget2",
+                        "java",
+                        "OutputTarget3"
+                    },
+                    HasFolder: new []
+                    {
+                        "HasFolder1.HasFolder2",
+                        "HasFolder3"
+                    },
+                    AdditionalFolders: new []
+                    {
+                        "AdditionalFolder1.AdditionalFolder2",
+                        "Additional-Folder3"
+                    },
+                    Expected:
+                    "OutputTarget3.HasFolder1.HasFolder2.HasFolder3.AdditionalFolder1.AdditionalFolder2.Additional_Folder3").ToObject(),
             };
 
             [Theory]

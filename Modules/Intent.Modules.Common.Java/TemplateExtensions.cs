@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Intent.Modules.Common.Java.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.SdkEvolutionHelpers;
 
@@ -16,27 +17,13 @@ namespace Intent.Modules.Common.Java
         [Obsolete(WillBeRemovedIn.Version4)]
         public static string ToJavaPackage(this string s) => s;
 
+        /// <summary>
+        /// Obsolete. Use <see cref="JavaIdentifierExtensionMethods.IsJavaIdentifierPart"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static string ToJavaIdentifier(this string s)
         {
-            return string.Concat(s.Split(' ').SelectMany(x => x.Split('-')).Select(x => x.ToPascalCase()))
-                .Replace("#", "Sharp")
-                .Replace("&", "And")
-                .Replace("-", "")
-                .Replace("(", "")
-                .Replace(")", "")
-                .Replace(",", "")
-                .Replace("[", "")
-                .Replace("]", "")
-                .Replace("{", "")
-                .Replace("}", "")
-                .Replace(".", "")
-                .Replace("/", "")
-                .Replace("\\", "")
-                .Replace("?", "")
-                .Replace("@", "")
-                ;
+            return s.ToJavaIdentifier(CapitalizationBehaviour.AsIs);
         }
-
     }
-
 }

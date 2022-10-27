@@ -66,14 +66,17 @@ namespace Intent.Modules.Common.Java.Templates
             IEnumerable<string> additionalFolders)
         {
             var outputTargetParts = outputTarget?.GetTargetPath()
-                .Select(x => x.Name);
+                .SelectMany(x => x.Name.Split('.'));
             var hasFolderParts = hasFolder?.GetParentFolders()
-                .Select(x => x.Name);
+                .SelectMany(x => x.Name.Split('.'));
+            additionalFolders = additionalFolders?
+                .SelectMany(x => x.Split('.'));
 
             var packageStructure = string.Join('.', Enumerable.Empty<string>()
                 .Concat(outputTargetParts ?? Enumerable.Empty<string>())
                 .Concat(hasFolderParts ?? Enumerable.Empty<string>())
-                .Concat(additionalFolders ?? Enumerable.Empty<string>()));
+                .Concat(additionalFolders ?? Enumerable.Empty<string>())
+                .Select(x => x.ToJavaIdentifier(CapitalizationBehaviour.AsIs)));
             
             var lastIndexOf = packageStructure.LastIndexOf("java.", StringComparison.Ordinal);
             return lastIndexOf >= 0

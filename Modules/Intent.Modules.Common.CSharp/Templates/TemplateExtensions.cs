@@ -58,13 +58,13 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Changes the type name from being for an interface to instead be for a class.
         /// </summary>
         /// <remarks>
-        /// A leading 'I' is removed so long as the 2nd character is also uppercase.
+        /// Any leading 'I' is removed so long as the 2nd character is also uppercase.
         /// </remarks>
         public static string AsClassName(this string s)
         {
             if (s.StartsWith("I") && s.Length >= 2 && char.IsUpper(s[1]))
             {
-                s = s.Substring(1);
+                s = s[1..];
             }
             return s.Replace(".", "");
         }
@@ -258,8 +258,8 @@ namespace Intent.Modules.Common.CSharp.Templates
                     continue;
                 }
 
-                leadingUnderscores = identifier.Substring(0, i);
-                identifier = identifier.Substring(i);
+                leadingUnderscores = identifier[..i];
+                identifier = identifier[i..];
                 break;
             }
 
@@ -270,13 +270,13 @@ namespace Intent.Modules.Common.CSharp.Templates
                 case CapitalizationBehaviour.MakeFirstLetterUpper:
                     if (!char.IsUpper(identifier[0]))
                     {
-                        identifier = $"{char.ToUpperInvariant(identifier[0])}{identifier.Substring(1)}";
+                        identifier = $"{char.ToUpperInvariant(identifier[0])}{identifier[1..]}";
                     }
                     break;
                 case CapitalizationBehaviour.MakeFirstLetterLower:
                     if (!char.IsLower(identifier[0]))
                     {
-                        identifier = $"{char.ToLowerInvariant(identifier[0])}{identifier.Substring(1)}";
+                        identifier = $"{char.ToLowerInvariant(identifier[0])}{identifier[1..]}";
                     }
                     break;
                 default:
