@@ -5,22 +5,22 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpXmlComments : CSharpMetadataBase<CSharpXmlComments>
 {
-    public readonly IList<string> Statements = new List<string>();
+    public readonly List<string> Statements = new List<string>();
 
     public CSharpXmlComments(params string[] statements)
     {
-        ((List<string>)Statements).AddRange(statements);
+        Statements.AddRange(statements);
     }
 
     public CSharpXmlComments AddStatements(string statements)
     {
-        ((List<string>)Statements).AddRange(statements.Trim().Replace("\r\n", "\n").Split("\n"));
+        Statements.AddRange(statements.Trim().Replace("\r\n", "\n").Split("\n"));
         return this;
     }
 
     public CSharpXmlComments AddStatements(IEnumerable<string> statements)
     {
-        ((List<string>)Statements).AddRange(statements);
+        Statements.AddRange(statements);
         return this;
     }
 
@@ -33,7 +33,7 @@ public class CSharpXmlComments : CSharpMetadataBase<CSharpXmlComments>
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{(Statements.Any() ? $@"{indentation}{string.Join($@"
+        return $@"{(Statements.Any() ? $@"{indentation}{string.Join($@"
 {indentation}", Statements)}" : string.Empty)}";
     }
 }

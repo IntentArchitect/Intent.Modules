@@ -123,6 +123,18 @@ public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>, IHasCShar
         return this;
     }
 
+    public CSharpClassMethod Abstract()
+    {
+        OverrideModifier = "abstract ";
+        return this;
+    }
+
+    public CSharpClassMethod Static()
+    {
+        OverrideModifier = "static ";
+        return this;
+    }
+
     public CSharpClassMethod Async()
     {
         AsyncMode = "async ";

@@ -171,20 +171,6 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <inheritdoc />
-        public override void AfterTemplateRegistration()
-        {
-            base.AfterTemplateRegistration();
-            (this as ICSharpFileBuilderTemplate)?.CSharpFile.StartBuild();
-        }
-
-        /// <inheritdoc />
-        public override void BeforeTemplateExecution()
-        {
-            base.BeforeTemplateExecution();
-            (this as ICSharpFileBuilderTemplate)?.CSharpFile.FinalizeBuild();
-        }
-
-        /// <inheritdoc />
         public override string RunTemplate()
         {
             var templateOutput = base.RunTemplate().TrimStart();

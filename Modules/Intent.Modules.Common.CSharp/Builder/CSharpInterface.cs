@@ -19,14 +19,14 @@ public class CSharpInterfaceProperty : CSharpProperty
     {
     }
 
-    public override string ToString(string indentation)
+    public override string GetText(string indentation)
     {
         return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
 " : string.Empty)}{indentation}{Type} {Name} {{ {Getter}{(!IsReadOnly ? $" {Setter}" : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
     }
 }
 
-public class CSharpInterface
+public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 {
     public CSharpInterface(string name)
     {
@@ -127,7 +127,7 @@ public class CSharpInterface
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetBaseTypes()}
+        return $@"{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetBaseTypes()}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
@@ -148,7 +148,7 @@ public class CSharpInterface
         var members = new List<string>();
 
         members.AddRange(Fields.Select(x => x.ToString(indentation)));
-        members.AddRange(Properties.Select(x => x.ToString(indentation)));
+        members.AddRange(Properties.Select(x => x.GetText(indentation)));
         members.AddRange(Methods.Select(x => x.ToString(indentation)));
 
         return !members.Any() ? "" : $@"

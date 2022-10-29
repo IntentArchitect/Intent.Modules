@@ -29,19 +29,33 @@ public class CSharpFile
         return this;
     }
 
-    public CSharpFile AddClass(string name, Action<CSharpClass> configure)
+    public CSharpFile AddClass(string name, Action<CSharpClass> configure = null)
     {
         var @class = new CSharpClass(name);
         Classes.Add(@class);
-        _configurations.Add((() => configure(@class), 0));
+        if (_isBuilt)
+        {
+            configure?.Invoke(@class);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(@class), 0));
+        }
         return this;
     }
 
-    public CSharpFile AddInterface(string name, Action<CSharpInterface> configure)
+    public CSharpFile AddInterface(string name, Action<CSharpInterface> configure = null)
     {
         var @interface = new CSharpInterface(name);
         Interfaces.Add(@interface);
-        _configurations.Add((() => configure(@interface), 0));
+        if (_isBuilt)
+        {
+            configure?.Invoke(@interface);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(@interface), 0));
+        }
         return this;
     }
 
@@ -72,18 +86,26 @@ public class CSharpFile
     }
 
     private bool _isBuilt = false;
+    private bool _afterBuildRun = false;
 
-    // TODO: GCB - consider splitting out the OnBuild method to align with the different phases of build
     public CSharpFile OnBuild(Action<CSharpFile> configure, int order = 0)
     {
-        if (order <= 0)
+        if (_isBuilt)
         {
-            _configurations.Add((() => configure(this), order));
+            throw new Exception($"This file has already been built. " +
+                                "Consider registering your configuration in the AfterBuild(...) method.");
         }
-        else
+        _configurations.Add((() => configure(this), order));
+        return this;
+    }
+
+    public CSharpFile AfterBuild(Action<CSharpFile> configure, int order = 0)
+    {
+        if (_afterBuildRun)
         {
-            _configurationsAfter.Add((() => configure(this), order));
+            throw new Exception("The AfterBuild step has already been run for this file.");
         }
+        _configurationsAfter.Add((() => configure(this), order));
         return this;
     }
 
@@ -98,7 +120,7 @@ public class CSharpFile
     //    return this;
     //}
 
-    public CSharpFile StartBuild()
+    public CSharpFile Build()
     {
         while (_configurations.Count > 0)
         {
@@ -106,11 +128,12 @@ public class CSharpFile
             toExecute.Action.Invoke();
             _configurations.Remove(toExecute);
         }
+        _isBuilt = true;
 
         return this;
     }
 
-    public CSharpFile FinalizeBuild()
+    public CSharpFile AfterBuild()
     {
         while (_configurationsAfter.Count > 0)
         {
@@ -119,7 +142,13 @@ public class CSharpFile
             _configurationsAfter.Remove(toExecute);
         }
 
-        _isBuilt = true;
+        if (_configurations.Any())
+        {
+            throw new Exception("Pending configurations have not been executed. Please contact support@intentarchitect.com for assistance.");
+        }
+
+        _afterBuildRun = true;
+
         return this;
     }
 

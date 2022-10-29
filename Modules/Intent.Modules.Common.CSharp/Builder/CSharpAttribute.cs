@@ -9,7 +9,14 @@ public class CSharpAttribute
     public IList<string> Arguments { get; set; } = new List<string>();
     public CSharpAttribute(string name)
     {
-        Name = name;
+        if (name.StartsWith("[") && name.EndsWith("]"))
+        {
+            Name = name.Substring(1, name.Length - 2);
+        }
+        else
+        {
+            Name = name;
+        }
     }
 
     public CSharpAttribute AddArgument(string name)

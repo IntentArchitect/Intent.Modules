@@ -25,11 +25,10 @@ public class CSharpConstructor : CSharpDeclaration<CSharpConstructor>
         return this;
     }
 
-    public CSharpConstructor AddStatement(string statement, Action<CSharpStatement> configure = null)
+    public CSharpConstructor AddStatement(CSharpStatement statement, Action<CSharpStatement> configure = null)
     {
-        var s = new CSharpStatement(statement);
-        Statements.Add(s);
-        configure?.Invoke(s);
+        Statements.Add(statement);
+        configure?.Invoke(statement);
         return this;
     }
 
@@ -92,9 +91,9 @@ public class CSharpConstructor : CSharpDeclaration<CSharpConstructor>
     {
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}){ConstructorCall?.ToString() ?? string.Empty}
 {indentation}{{{(Statements.Any() ? $@"
-{indentation}    {string.Join($@"
+{string.Join($@"
 ", Statements.Select((s, index) => s.MustSeparateFromPrevious && index != 0 ? $@"
-{indentation}   {s}" : $"{indentation}   {s}"))}" : string.Empty)}
+{indentation}    {s}" : $"{indentation}    {s}"))}" : string.Empty)}
 {indentation}}}";
     }
 

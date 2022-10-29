@@ -95,22 +95,39 @@ public class CSharpProperty : CSharpDeclaration<CSharpProperty>
         return this;
     }
 
-    public virtual string ToString(string indentation)
+    public CSharpProperty MoveTo(int propertyIndex)
     {
+        _class.Properties.Remove(this);
+        _class.Properties.Insert(propertyIndex, this);
+        return this;
+    }
+
+    public CSharpProperty MoveToFirst()
+    {
+        return MoveTo(0);
+    }
+
+    public CSharpProperty MoveToLast()
+    {
+        return MoveTo(_class.Properties.Count - 1);
+    }
+
+    public virtual string GetText(string indentation)
+    {
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name}";
         if (Getter.IsExpression && IsReadOnly)
         {
-            return $@"{indentation}{AccessModifier}{OverrideModifier}{Type} {Name} => {Getter.Implementation};";
+            return $@"{declaration} => {Getter.Implementation};";
         }
 
         if (!Getter.Implementation.IsEmpty() || !Setter.Implementation.IsEmpty())
         {
-            return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name}
+            return $@"{declaration}
 {indentation}{{
 {Getter.ToString(indentation + "    ")}{(!IsReadOnly ? $@"
 {indentation}{Setter.ToString(indentation + "    ")}" : string.Empty)}
 {indentation}}}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
         }
-        return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
-" : string.Empty)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name} {{ {Getter}{(!IsReadOnly ? $" {Setter}" : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
+        return $@"{declaration} {{ {Getter}{(!IsReadOnly ? $" {Setter}" : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
     }
 }

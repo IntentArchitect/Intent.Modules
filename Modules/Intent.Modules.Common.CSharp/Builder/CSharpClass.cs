@@ -102,6 +102,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         return this;
     }
 
+    public CSharpClassMethod FindMethod(string name)
+    {
+        return Methods.FirstOrDefault(x => x.Name == name);
+    }
+
     public CSharpClass Internal()
     {
         AccessModifier = "internal ";
@@ -131,7 +136,21 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public CSharpClass Abstract()
     {
+        if (IsStatic)
+        {
+            throw new InvalidOperationException("Cannot make class abstract if it has already been declared as static");
+        }
         IsAbstract = true;
+        return this;
+    }
+
+    public CSharpClass Static()
+    {
+        if (IsAbstract)
+        {
+            throw new InvalidOperationException("Cannot make class static if it has already been declared as abstract");
+        }
+        IsStatic = true;
         return this;
     }
 
@@ -152,6 +171,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public bool IsPartial { get; set; }
     public bool IsAbstract { get; set; }
+    public bool IsStatic { get; set; }
 
     public override string ToString()
     {
@@ -160,7 +180,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetBaseTypes()}
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetBaseTypes()}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
@@ -186,7 +206,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         var members = new List<string>();
 
         members.AddRange(Fields.Select(x => x.ToString(indentation)));
-        members.AddRange(Properties.Select(x => x.ToString(indentation)));
+        members.AddRange(Properties.Select(x => x.GetText(indentation)));
         members.AddRange(Constructors.Select(x => x.ToString(indentation)));
         members.AddRange(Methods.Select(x => x.ToString(indentation)));
 

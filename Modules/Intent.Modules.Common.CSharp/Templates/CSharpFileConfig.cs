@@ -53,6 +53,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         /// <summary>
+        /// Disables the automatic formatting of this C# by the Roslyn Weaving system.
+        /// </summary>
+        /// <returns></returns>
+        public CSharpFileConfig DisableAutoFormat()
+        {
+            AutoFormat = false;
+            return this;
+        }
+
+        /// <summary>
         /// The primary class name of this file.
         /// </summary>
         public string ClassName
