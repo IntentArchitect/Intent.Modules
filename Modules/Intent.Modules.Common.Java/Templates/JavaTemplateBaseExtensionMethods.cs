@@ -31,6 +31,7 @@ namespace Intent.Modules.Common.Java.Templates
         /// <summary>
         /// Obsolete. Use <see cref="Common.ModelHasFolderTemplateExtensions.GetFolderPath{TModel}(IntentTemplateBase{TModel},string[])"/> instead.
         /// </summary>
+        [Obsolete("See comments")]
         public static string GetPackageFolderPath<TModel>(this JavaTemplateBase<TModel> template, params string[] additionalFolders)
         {
             return template.GetFolderPath(additionalFolders);
