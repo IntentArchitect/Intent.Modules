@@ -79,9 +79,9 @@ namespace Intent.Modules.Common.Java.Templates
                 .Concat(additionalFolders ?? Enumerable.Empty<string>())
                 .Select(x => x.ToJavaIdentifier(CapitalizationBehaviour.AsIs)));
             
-            var lastIndexOf = packageStructure.LastIndexOf("java.", StringComparison.Ordinal);
-            return lastIndexOf >= 0
-                ? packageStructure[(lastIndexOf + "java.".Length)..]
+            var indexOf = packageStructure.IndexOf("java.", StringComparison.Ordinal);
+            return indexOf >= 0
+                ? packageStructure[(indexOf + "java.".Length)..]
                 : packageStructure;
         }
     }
