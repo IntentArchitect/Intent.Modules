@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Humanizer;
 using Humanizer.Inflections;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates
@@ -131,13 +132,13 @@ namespace Intent.Modules.Common.Templates
             return result;
         }
 
-        [Obsolete("Use Pluralize() extension method")]
+        /// <summary>
+        /// Obsolete. Use <see cref="Pluralize"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static string ToPluralName(this string s)
         {
-            return s.EndsWith("y") && !s.EndsWith("ay") && !s.EndsWith("ey") && !s.EndsWith("iy") && !s.EndsWith("oy") && !s.EndsWith("uy")
-                ? (s.Substring(0, s.Length - 1) + "ies")
-                : s.EndsWith("ings") ? s
-                : (s.EndsWith("s") || s.EndsWith("x") || s.EndsWith("z") || s.EndsWith("ch") || s.EndsWith("sh")) ? $"{s}es" : $"{s}s";
+            return Pluralize(s);
         }
 
         public static string ToCamelCase(this string s)
@@ -198,11 +199,21 @@ namespace Intent.Modules.Common.Templates
                 : $"{@string}{suffix}";
         }
 
+        /// <summary>
+        /// Pluralizes the provided input considering irregular words
+        /// </summary>
+        /// <param name="word">Word to be pluralized</param>
+        /// <param name="inputIsKnownToBeSingular">Normally you call Pluralize on singular words; but if you're unsure call it with false</param>
         public static string Pluralize(this string word, bool inputIsKnownToBeSingular = true)
         {
             return InflectorExtensions.Pluralize(word, inputIsKnownToBeSingular);
         }
 
+        /// <summary>
+        /// Singularizes the provided input considering irregular words
+        /// </summary>
+        /// <param name="word">Word to be singularized</param>
+        /// <param name="inputIsKnownToBePlural">Normally you call Singularize on plural words; but if you're unsure call it with false</param>
         public static string Singularize(this string word, bool inputIsKnownToBePlural = true)
         {
             return InflectorExtensions.Singularize(word, inputIsKnownToBePlural);

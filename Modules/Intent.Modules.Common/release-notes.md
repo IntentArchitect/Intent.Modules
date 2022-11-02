@@ -1,6 +1,10 @@
-﻿### Version 3.3.13
+﻿### Version 3.3.14
 
-- Fixed: ToSnakeCase(), ToKebabCase(), and ToDotCase() extensions not respecting special characters.
+- The `ToPluralName()` extension method's implementation now simply calls the `Pluralize(...)` method which has more robust logic and `ToPluralName()` has been marked as obsolete.
+
+### Version 3.3.13
+
+- Fixed: `ToSnakeCase()`, `ToKebabCase()`, and `ToDotCase()` extension methods did not respect special characters.
 
 ### Version 3.3.12
 
