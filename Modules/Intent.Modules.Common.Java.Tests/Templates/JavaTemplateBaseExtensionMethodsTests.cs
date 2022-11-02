@@ -101,6 +101,46 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                     },
                     Expected:
                     "OutputTarget3.HasFolder1.HasFolder2.HasFolder3.AdditionalFolder1.AdditionalFolder2.Additional_Folder3").ToObject(),
+
+                new Scenario(
+                    Name: "Pre part suffixed with \"java\"",
+                    OutputTarget: new []
+                    {
+                        "testingjava",
+                        "java",
+                        "folder"
+                    },
+                    HasFolder: Array.Empty<string>(),
+                    AdditionalFolders: Array.Empty<string>(),
+                    Expected:
+                    "folder").ToObject(),
+
+                new Scenario(
+                    Name: "Post part suffixed with \"java\"",
+                    OutputTarget: new []
+                    {
+                        "java",
+                        "folder",
+                        "testingjava"
+                    },
+                    HasFolder: Array.Empty<string>(),
+                    AdditionalFolders: Array.Empty<string>(),
+                    Expected:
+                    "folder.testingjava").ToObject(),
+
+                new Scenario(
+                    Name: "Pre and post part suffixed with \"java\"",
+                    OutputTarget: new []
+                    {
+                        "testingjava",
+                        "java",
+                        "folder",
+                        "testingjava"
+                    },
+                    HasFolder: Array.Empty<string>(),
+                    AdditionalFolders: Array.Empty<string>(),
+                    Expected:
+                    "folder.testingjava").ToObject(),
             };
 
             [Theory]

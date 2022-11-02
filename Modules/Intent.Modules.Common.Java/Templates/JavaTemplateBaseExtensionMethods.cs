@@ -74,16 +74,25 @@ namespace Intent.Modules.Common.Java.Templates
             additionalFolders = additionalFolders?
                 .SelectMany(x => x.Split('.'));
 
+            var indexOfJavaPart = -1;
             var packageStructure = string.Join('.', Enumerable.Empty<string>()
                 .Concat(outputTargetParts ?? Enumerable.Empty<string>())
                 .Concat(hasFolderParts ?? Enumerable.Empty<string>())
                 .Concat(additionalFolders ?? Enumerable.Empty<string>())
-                .Select(x => x.ToJavaIdentifier(CapitalizationBehaviour.AsIs)));
-            
-            var indexOf = packageStructure.IndexOf("java.", StringComparison.Ordinal);
-            return indexOf >= 0
-                ? packageStructure[(indexOf + "java.".Length)..]
-                : packageStructure;
+                .Select((part, index) =>
+                {
+                    if (indexOfJavaPart == -1 &&
+                        part == "java")
+                    {
+                        indexOfJavaPart = index;
+                    }
+
+                    return part.ToJavaIdentifier(CapitalizationBehaviour.AsIs);
+                })
+                .ToArray() // Unless materialized here, .SkipWhile is called before .Select
+                .SkipWhile((_, index) => index <= indexOfJavaPart));
+
+            return packageStructure;
         }
     }
 }
