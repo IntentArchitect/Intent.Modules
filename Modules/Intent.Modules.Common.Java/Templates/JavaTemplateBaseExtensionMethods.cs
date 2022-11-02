@@ -5,6 +5,7 @@ using Intent.Code.Weaving.Java.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.Java.Templates
 {
@@ -31,7 +32,7 @@ namespace Intent.Modules.Common.Java.Templates
         /// <summary>
         /// Obsolete. Use <see cref="Common.ModelHasFolderTemplateExtensions.GetFolderPath{TModel}(IntentTemplateBase{TModel},string[])"/> instead.
         /// </summary>
-        [Obsolete("See comments")]
+        [Obsolete(WillBeRemovedIn.Version4)]
         public static string GetPackageFolderPath<TModel>(this JavaTemplateBase<TModel> template, params string[] additionalFolders)
         {
             return template.GetFolderPath(additionalFolders);
