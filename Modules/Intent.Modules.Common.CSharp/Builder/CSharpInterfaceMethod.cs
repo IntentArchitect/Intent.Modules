@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterfaceMethod : CSharpDeclaration<CSharpInterfaceMethod>
+public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
 {
     public string ReturnType { get; private set; }
     public string Name { get; private set; }
@@ -13,6 +13,7 @@ public class CSharpInterfaceMethod : CSharpDeclaration<CSharpInterfaceMethod>
     {
         ReturnType = returnType;
         Name = name;
+        Separator = CSharpCodeSeparatorType.None;
     }
 
     public CSharpInterfaceMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
@@ -23,7 +24,7 @@ public class CSharpInterfaceMethod : CSharpDeclaration<CSharpInterfaceMethod>
         return this;
     }
 
-    public string ToString(string indentation)
+    public override string GetText(string indentation)
     {
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))});";
     }

@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpProperty : CSharpDeclaration<CSharpProperty>
+public class CSharpProperty : CSharpMember<CSharpProperty>
 {
     private readonly CSharpClass _class;
     public string AccessModifier { get; private set; } = "public ";
@@ -22,6 +22,7 @@ public class CSharpProperty : CSharpDeclaration<CSharpProperty>
     {
         Type = type;
         Name = name;
+        Separator = CSharpCodeSeparatorType.None;
         _class = @class;
     }
 
@@ -112,7 +113,7 @@ public class CSharpProperty : CSharpDeclaration<CSharpProperty>
         return MoveTo(_class.Properties.Count - 1);
     }
 
-    public virtual string GetText(string indentation)
+    public override string GetText(string indentation)
     {
         var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name}";
         if (Getter.IsExpression && IsReadOnly)

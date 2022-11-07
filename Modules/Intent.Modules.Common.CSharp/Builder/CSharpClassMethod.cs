@@ -9,12 +9,12 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>, IHasCSharpStatements
+public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements
 {
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
-    public string AsyncMode { get; private set; } = "";
-    public string AccessModifier { get; private set; } = "public ";
-    public string OverrideModifier { get; private set; } = "";
+    protected string AsyncMode { get; private set; } = "";
+    protected string AccessModifier { get; private set; } = "public ";
+    protected string OverrideModifier { get; private set; } = "";
     public string ReturnType { get; private set; }
     public string Name { get; private set; }
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
@@ -22,6 +22,7 @@ public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>, IHasCShar
     {
         ReturnType = returnType;
         Name = name;
+        Separator = CSharpCodeSeparatorType.EmptyLines;
     }
 
     public CSharpClassMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
@@ -146,13 +147,11 @@ public class CSharpClassMethod : CSharpDeclaration<CSharpClassMethod>, IHasCShar
         Statements.Remove(statement);
     }
 
-    public string ToString(string indentation)
+    public override string GetText(string indentation)
     {
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))})
 {indentation}{{{(Statements.Any() ? $@"
-{string.Join($@"
-", Statements.Select((s, index) => s.MustSeparateFromPrevious && index != 0 ? $@"
-{s.GetText($"    {indentation}")}".TrimEnd() : s.GetText($"    {indentation}").TrimEnd()))}" : string.Empty)}
+{Statements.ConcatCode($"{indentation}    ")}" : string.Empty)}
 {indentation}}}";
     }
 }

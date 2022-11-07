@@ -28,17 +28,21 @@ public class CSharpInterfaceProperty : CSharpProperty
 
 public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 {
+    private CSharpCodeSeparatorType _fieldsSeparator;
+    private CSharpCodeSeparatorType _propertiesSeparator;
+    private CSharpCodeSeparatorType _methodsSeparator;
+
     public CSharpInterface(string name)
     {
         Name = name.ToCSharpIdentifier();
     }
-    public string Name { get; private set; }
-    public string AccessModifier { get; private set; } = "public ";
-    public IList<string> Interfaces { get; set; } = new List<string>();
-    public IList<CSharpInterfaceField> Fields { get; set; } = new List<CSharpInterfaceField>();
-    public IList<CSharpInterfaceProperty> Properties { get; set; } = new List<CSharpInterfaceProperty>();
-    public IList<CSharpInterfaceMethod> Methods { get; set; } = new List<CSharpInterfaceMethod>();
 
+    public string Name { get; private set; }
+    protected string AccessModifier { get; private set; } = "public ";
+    public IList<string> Interfaces { get; set; } = new List<string>();
+    public IList<CSharpInterfaceField> Fields { get; } = new List<CSharpInterfaceField>();
+    public IList<CSharpInterfaceProperty> Properties { get; } = new List<CSharpInterfaceProperty>();
+    public IList<CSharpInterfaceMethod> Methods { get; } = new List<CSharpInterfaceMethod>();
 
     public CSharpInterface ExtendsInterface(string type)
     {
@@ -56,7 +60,10 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface AddField(string type, string name, Action<CSharpInterfaceField> configure = null)
     {
-        var field = new CSharpInterfaceField(type, name);
+        var field = new CSharpInterfaceField(type, name)
+        {
+            Separator = _fieldsSeparator
+        };
         Fields.Add(field);
         configure?.Invoke(field);
         return this;
@@ -64,7 +71,10 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface AddProperty(string type, string name, Action<CSharpInterfaceProperty> configure = null)
     {
-        var property = new CSharpInterfaceProperty(type, name);
+        var property = new CSharpInterfaceProperty(type, name)
+        {
+            Separator = _propertiesSeparator
+        };
         Properties.Add(property);
         configure?.Invoke(property);
         return this;
@@ -72,7 +82,10 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface InsertProperty(int index, string type, string name, Action<CSharpInterfaceProperty> configure = null)
     {
-        var property = new CSharpInterfaceProperty(type, name);
+        var property = new CSharpInterfaceProperty(type, name)
+        {
+            Separator = _propertiesSeparator
+        };
         Properties.Insert(index, property);
         configure?.Invoke(property);
         return this;
@@ -86,8 +99,34 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
         var method = new CSharpInterfaceMethod(returnType, name);
+        method.Separator = _methodsSeparator;
         Methods.Insert(index, method);
         configure?.Invoke(method);
+        return this;
+    }
+
+    public CSharpInterface WithFieldsSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
+    {
+        _fieldsSeparator = separator;
+        return this;
+    }
+
+    public CSharpInterface WithPropertiesSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
+    {
+        _propertiesSeparator = separator;
+        return this;
+    }
+
+    public CSharpInterface WithMethodsSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
+    {
+        _methodsSeparator = separator;
+        return this;
+    }
+
+    public CSharpInterface WithMembersSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
+    {
+        _propertiesSeparator = separator;
+        _methodsSeparator = separator;
         return this;
     }
 
@@ -145,15 +184,13 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     private string GetMembers(string indentation)
     {
-        var members = new List<string>();
+        var codeBlocks = new List<ICodeBlock>();
+        codeBlocks.AddRange(Fields);
+        codeBlocks.AddRange(Properties);
+        codeBlocks.AddRange(Methods);
 
-        members.AddRange(Fields.Select(x => x.ToString(indentation)));
-        members.AddRange(Properties.Select(x => x.GetText(indentation)));
-        members.AddRange(Methods.Select(x => x.ToString(indentation)));
-
-        return !members.Any() ? "" : $@"
+        return !codeBlocks.Any() ? "" : $@"
 {string.Join($@"
-
-", members)}";
+", codeBlocks.ConcatCode(indentation))}";
     }
 }

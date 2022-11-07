@@ -5,7 +5,7 @@ using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructor : CSharpDeclaration<CSharpConstructor>
+public class CSharpConstructor : CSharpMember<CSharpConstructor>
 {
     public CSharpClass Class { get; }
     public string AccessModifier { get; private set; } = "public ";
@@ -14,6 +14,7 @@ public class CSharpConstructor : CSharpDeclaration<CSharpConstructor>
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public CSharpConstructor(CSharpClass @class)
     {
+        Separator = CSharpCodeSeparatorType.EmptyLines;
         Class = @class;
     }
 
@@ -87,13 +88,11 @@ public class CSharpConstructor : CSharpDeclaration<CSharpConstructor>
         return this;
     }
 
-    public string ToString(string indentation)
+    public override string GetText(string indentation)
     {
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}){ConstructorCall?.ToString() ?? string.Empty}
 {indentation}{{{(Statements.Any() ? $@"
-{string.Join($@"
-", Statements.Select((s, index) => s.MustSeparateFromPrevious && index != 0 ? $@"
-{indentation}    {s}" : $"{indentation}    {s}"))}" : string.Empty)}
+{Statements.ConcatCode($"{indentation}    ")}" : string.Empty)}
 {indentation}}}";
     }
 

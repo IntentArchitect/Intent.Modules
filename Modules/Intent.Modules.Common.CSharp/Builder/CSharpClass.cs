@@ -8,18 +8,21 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClass : CSharpDeclaration<CSharpClass>
 {
+    private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.None;
+    private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.None;
+
     public CSharpClass(string name)
     {
         Name = name;
     }
     public string Name { get; private set; }
-    public string AccessModifier { get; private set; } = "public ";
+    protected string AccessModifier { get; private set; } = "public ";
     public CSharpClass BaseType { get; set; }
-    public IList<string> Interfaces { get; set; } = new List<string>();
-    public IList<CSharpField> Fields { get; set; } = new List<CSharpField>();
-    public IList<CSharpConstructor> Constructors { get; set; } = new List<CSharpConstructor>();
-    public IList<CSharpProperty> Properties { get; set; } = new List<CSharpProperty>();
-    public IList<CSharpClassMethod> Methods { get; set; } = new List<CSharpClassMethod>();
+    public IList<string> Interfaces { get; } = new List<string>();
+    public IList<CSharpField> Fields { get; } = new List<CSharpField>();
+    public IList<CSharpConstructor> Constructors { get; } = new List<CSharpConstructor>();
+    public IList<CSharpProperty> Properties { get; } = new List<CSharpProperty>();
+    public IList<CSharpClassMethod> Methods { get; } = new List<CSharpClassMethod>();
 
     public CSharpClass WithBaseType(string type)
     {
@@ -60,6 +63,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public CSharpClass AddField(string type, string name, Action<CSharpField> configure = null)
     {
         var field = new CSharpField(type, name);
+        field.Separator = _fieldsSeparator;
         Fields.Add(field);
         configure?.Invoke(field);
         return this;
@@ -68,6 +72,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public CSharpClass AddProperty(string type, string name, Action<CSharpProperty> configure = null)
     {
         var property = new CSharpProperty(type, name, this);
+        property.Separator = _propertiesSeparator;
         Properties.Add(property);
         configure?.Invoke(property);
         return this;
@@ -76,10 +81,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null)
     {
         var property = new CSharpProperty(type, name, this);
+        property.Separator = _propertiesSeparator;
         Properties.Insert(index, property);
         configure?.Invoke(property);
         return this;
     }
+
 
     public CSharpClass AddConstructor(Action<CSharpConstructor> configure = null)
     {
@@ -99,6 +106,18 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         var method = new CSharpClassMethod(returnType, name);
         Methods.Insert(index, method);
         configure?.Invoke(method);
+        return this;
+    }
+
+    public CSharpClass WithFieldsSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
+    {
+        _fieldsSeparator = separator;
+        return this;
+    }
+
+    public CSharpClass WithPropertiesSeparated(CSharpCodeSeparatorType separator = CSharpCodeSeparatorType.EmptyLines)
+    {
+        _propertiesSeparator = separator;
         return this;
     }
 
@@ -203,16 +222,32 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     private string GetMembers(string indentation)
     {
-        var members = new List<string>();
+        var codeBlocks = new List<ICodeBlock>();
+        codeBlocks.AddRange(Fields);
+        codeBlocks.AddRange(Constructors);
+        codeBlocks.AddRange(Properties);
+        codeBlocks.AddRange(Methods);
 
-        members.AddRange(Fields.Select(x => x.ToString(indentation)));
-        members.AddRange(Properties.Select(x => x.GetText(indentation)));
-        members.AddRange(Constructors.Select(x => x.ToString(indentation)));
-        members.AddRange(Methods.Select(x => x.ToString(indentation)));
-
-        return !members.Any() ? "" : $@"
+        return !codeBlocks.Any() ? "" : $@"
 {string.Join($@"
-
-", members)}";
+", codeBlocks.ConcatCode(indentation))}";
     }
+
+//    private string GetMembers(string indentation)
+//    {
+//        var codeBlocks = new List<string>();
+
+//        if (Fields.Any())
+//            codeBlocks.Add(Fields.ConcatCode(indentation));
+//        if (Constructors.Any())
+//            codeBlocks.Add(Constructors.ConcatCode(indentation));
+//        if (Properties.Any())
+//            codeBlocks.Add(Properties.ConcatCode(indentation));
+//        if (Methods.Any())
+//            codeBlocks.Add(Methods.ConcatCode(indentation));
+
+//        return !codeBlocks.Any() ? "" : $@"
+//{string.Join($@"
+//", codeBlocks)}";
+//    }
 }

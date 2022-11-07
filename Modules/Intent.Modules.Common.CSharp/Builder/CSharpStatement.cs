@@ -5,8 +5,9 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpStatement : CSharpMetadataBase<CSharpStatement>
+public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 {
+
     public CSharpStatement(string text)
     {
         Text = text?.Trim();
@@ -14,13 +15,13 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>
 
     internal IHasCSharpStatements Parent { get; set; }
 
-    internal bool MustSeparateFromPrevious { get; private set; } = false;
+    public CSharpCodeSeparatorType Separator { get; set; } = CSharpCodeSeparatorType.None;
 
-    public string Text { get; set; }
-    public string RelativeIndentation { get; private set; } = "";
+    protected string Text { get; set; }
+    protected string RelativeIndentation { get; private set; } = "";
     public CSharpStatement SeparatedFromPrevious()
     {
-        MustSeparateFromPrevious = true;
+        Separator = CSharpCodeSeparatorType.EmtpyLineAboveOnly;
         return this;
     }
 
@@ -113,11 +114,25 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>
     }
 }
 
-public interface IHasCSharpStatements
+public interface ICodeBlock
 {
-    IList<CSharpStatement> Statements { get; }
-
-//int GetStatementIndex(CSharpStatement statement);
-    //void InsertStatement(int index, CSharpStatement statement, Action<CSharpStatement> configure = null);
-    //void RemoveStatement(CSharpStatement statement);
+    CSharpCodeSeparatorType Separator { get; set; }
+    string GetText(string indentation);
 }
+
+public enum CSharpCodeSeparatorType
+    {
+        None = 0,
+        EmtpyLineAboveOnly = 1,
+        EmtpyLineBelowOnly = 2,
+        EmptyLines = 3
+    }
+
+    public interface IHasCSharpStatements
+    {
+        IList<CSharpStatement> Statements { get; }
+
+        //int GetStatementIndex(CSharpStatement statement);
+        //void InsertStatement(int index, CSharpStatement statement, Action<CSharpStatement> configure = null);
+        //void RemoveStatement(CSharpStatement statement);
+    }
