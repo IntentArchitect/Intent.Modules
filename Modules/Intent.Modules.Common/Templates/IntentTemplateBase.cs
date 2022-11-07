@@ -56,7 +56,7 @@ namespace Intent.Modules.Common.Templates
     /// <summary>
     /// A base class for templates which use models.
     /// </summary>
-    public abstract class IntentTemplateBase<TModel> : IntentTemplateBase, ITemplateWithModel
+    public abstract class IntentTemplateBase<TModel> : IntentTemplateBase, IIntentTemplate<TModel>, ITemplateWithModel
     {
         /// <summary>
         /// Constructor for <see cref="IntentTemplateBase{TModel}"/>.

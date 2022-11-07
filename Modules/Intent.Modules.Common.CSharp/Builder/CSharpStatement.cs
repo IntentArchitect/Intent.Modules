@@ -30,6 +30,18 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>
         return this;
     }
 
+    public CSharpStatement Outdent()
+    {
+        RelativeIndentation = RelativeIndentation.Substring("    ".Length);
+        return this;
+    }
+
+    public CSharpStatement SetIntent(string relativeIndentation)
+    {
+        RelativeIndentation = relativeIndentation;
+        return this;
+    }
+
     public CSharpStatement InsertAbove(CSharpStatement statement, Action<CSharpStatement> configure = null)
     {
         if (Parent == null)
@@ -37,6 +49,8 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>
             throw new InvalidOperationException("Cannot insert statement for unknown parent");
         }
         Parent.Statements.Insert(Parent.Statements.IndexOf(this), statement);
+        statement.SetIntent(RelativeIndentation);
+        statement.Parent = Parent;
         configure?.Invoke(statement);
         return this;
     }
@@ -58,6 +72,8 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>
             throw new InvalidOperationException("Cannot insert statement for unknown parent");
         }
         Parent.Statements.Insert(Parent.Statements.IndexOf(this) + 1, statement);
+        statement.SetIntent(RelativeIndentation);
+        statement.Parent = Parent;
         configure?.Invoke(statement);
         return this;
     }

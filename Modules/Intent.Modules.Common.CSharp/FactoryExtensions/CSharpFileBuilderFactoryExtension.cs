@@ -20,7 +20,8 @@ namespace Intent.Modules.Common.Plugins
                 .OfType<ICSharpFileBuilderTemplate>()
                 .ToList();
 
-            templates.ForEach(x => x.CSharpFile.Build());
+            templates.ForEach(x => x.CSharpFile.StartBuild());
+            templates.ForEach(x => x.CSharpFile.CompleteBuild());
         }
 
         protected override void OnBeforeTemplateExecution(IApplication application)
@@ -29,6 +30,7 @@ namespace Intent.Modules.Common.Plugins
                 .OfType<ICSharpFileBuilderTemplate>()
                 .ToList();
 
+            templates.ForEach(x => x.CSharpFile.AfterBuild());
             templates.ForEach(x => x.CSharpFile.AfterBuild());
         }
     }

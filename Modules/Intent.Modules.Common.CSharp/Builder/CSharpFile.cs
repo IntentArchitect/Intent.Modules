@@ -120,7 +120,19 @@ public class CSharpFile
     //    return this;
     //}
 
-    public CSharpFile Build()
+    public CSharpFile StartBuild()
+    {
+        while (_configurations.Count > 0)
+        {
+            var toExecute = _configurations.OrderBy(x => x.Order).First();
+            toExecute.Action.Invoke();
+            _configurations.Remove(toExecute);
+        }
+
+        return this;
+    }
+
+    public CSharpFile CompleteBuild()
     {
         while (_configurations.Count > 0)
         {

@@ -48,6 +48,21 @@ public class CSharpMetadataBase<TCSharp>
         return (TCSharp)this;
     }
 
+    public bool HasMetadata(string key)
+    {
+        return Metadata.ContainsKey(key);
+    }
+
+    public T GetMetadata<T>(string key) where T : class
+    {
+        return Metadata[key] as T;
+    }
+
+    public object GetMetadata(string key)
+    {
+        return Metadata[key];
+    }
+
     public bool TryGetMetadata<T>(string key, out T value)
     {
         if (Metadata.TryGetValue(key, out var valueFound) && valueFound is T castValue)

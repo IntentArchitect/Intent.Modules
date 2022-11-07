@@ -5,6 +5,11 @@ using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates;
 
+public interface IIntentTemplate<out T> : IIntentTemplate
+{
+    T Model { get; }
+}
+
 public interface IIntentTemplate : ITemplate
 {
     ISoftwareFactoryExecutionContext ExecutionContext { get; }
