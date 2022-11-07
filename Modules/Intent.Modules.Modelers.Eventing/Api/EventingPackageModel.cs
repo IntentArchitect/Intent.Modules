@@ -34,6 +34,11 @@ namespace Intent.Modelers.Eventing.Api
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
 
+        public ApplicationModel Application => UnderlyingPackage.ChildElements
+            .GetElementsOfType(ApplicationModel.SpecializationTypeId)
+            .Select(x => new ApplicationModel(x))
+            .SingleOrDefault();
+
         public IList<MessageModel> Messages => UnderlyingPackage.ChildElements
             .GetElementsOfType(MessageModel.SpecializationTypeId)
             .Select(x => new MessageModel(x))
@@ -52,16 +57,6 @@ namespace Intent.Modelers.Eventing.Api
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
             .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
-            .ToList();
-
-        public IList<ConsumerModel> Consumers => UnderlyingPackage.ChildElements
-            .GetElementsOfType(ConsumerModel.SpecializationTypeId)
-            .Select(x => new ConsumerModel(x))
-            .ToList();
-
-        public IList<ProducerModel> Producers => UnderlyingPackage.ChildElements
-            .GetElementsOfType(ProducerModel.SpecializationTypeId)
-            .Select(x => new ProducerModel(x))
             .ToList();
 
     }

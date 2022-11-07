@@ -11,10 +11,10 @@ namespace Intent.Modelers.Eventing.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<ConsumerModel> GetConsumerModels(this IDesigner designer)
+        public static IList<ApplicationModel> GetApplicationModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(ConsumerModel.SpecializationTypeId)
-                .Select(x => new ConsumerModel(x))
+            return designer.GetElementsOfType(ApplicationModel.SpecializationTypeId)
+                .Select(x => new ApplicationModel(x))
                 .ToList();
         }
 
@@ -22,13 +22,6 @@ namespace Intent.Modelers.Eventing.Api
         {
             return designer.GetElementsOfType(MessageModel.SpecializationTypeId)
                 .Select(x => new MessageModel(x))
-                .ToList();
-        }
-
-        public static IList<ProducerModel> GetProducerModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(ProducerModel.SpecializationTypeId)
-                .Select(x => new ProducerModel(x))
                 .ToList();
         }
 

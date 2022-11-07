@@ -12,8 +12,8 @@
       <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f40a4942-5d2d-4174-8ec1-af66cbd464db</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ConsumerModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ConsumerModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/ApplicationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApplicationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -34,14 +34,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#37969deb-2289-48bd-aa41-cf66006fbd33</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/MessageHandlerModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>MessageHandlerModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#cbe970af-5bad-4d92-a3ed-a24b9fdaa23e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/MessageModel.cs</ApplicationRelativeFilePath>
@@ -50,10 +42,34 @@
     </FileLog>
     <FileLog>
       <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#90c0e85e-54cf-4d6b-b69f-0440e4ace079</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#022d4c90-e1b6-4747-a15f-640c19503a8f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ProducerModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ProducerModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/MessagePublishAssocationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MessagePublishAssocationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#022d4c90-e1b6-4747-a15f-640c19503a8f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MessagePublishAssocationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MessagePublishAssocationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#50e0bed1-1387-4d67-8f66-1194763296b1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MessageSubscribeAssocationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MessageSubscribeAssocationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#50e0bed1-1387-4d67-8f66-1194763296b1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MessageSubscribeAssocationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MessageSubscribeAssocationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -62,14 +78,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PropertyModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PropertyModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>49382137-ba32-4334-b006-6895f555b7a0</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#7b59cb3e-527e-414d-a784-88d67b0d1e20</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/PublishMessageModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>PublishMessageModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

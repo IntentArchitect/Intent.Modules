@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Eventing</id>
-  <version>3.3.4</version>
+  <version>4.0.0-pre.0</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Eventing modeller for describing event messages and defining publishers and subscribers.</summary>
   <description>Eventing modeller for describing event messages and defining publishers and subscribers.</description>
