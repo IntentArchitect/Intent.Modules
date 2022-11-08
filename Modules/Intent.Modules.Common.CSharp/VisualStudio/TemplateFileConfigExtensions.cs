@@ -27,7 +27,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         }
 
         /// <summary>
-        /// Obsolete. Use <see cref="WithFileItemGenerationBehaviour"/> instead.
+        /// Obsolete. Use <see cref="WithFileItemGenerationBehaviour{T}"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
         public static T WithAlwaysGenerateProjectItem<T>(this T templateFileConfig) where T : ITemplateFileConfig
