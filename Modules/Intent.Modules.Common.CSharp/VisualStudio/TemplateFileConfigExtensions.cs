@@ -27,6 +27,28 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         }
 
         /// <summary>
+        /// Indicate that the file entry in the MSBuild file should be an <c>EmbeddedResource</c>.
+        /// </summary>
+        /// <remarks>
+        /// This is a convenience method which calls <see cref="WithFileItemGenerationBehaviour{T}"/>,
+        /// <see cref="WithItemType{T}"/> with a parameter value of <c>EmbeddedResource</c> as well
+        /// as <see cref="WithRemoveItemType{T}"/> with a parameter value of <c>Compile</c> for
+        /// <c>.cs</c> and <c>None</c> for all other file types, the <paramref name="removeItemType"/>
+        /// parameter can be used to override this.
+        /// </remarks>
+        public static T AsEmbeddedResource<T>(this T templateFileConfig, string removeItemType = null) where T : ITemplateFileConfig
+        {
+            removeItemType ??= templateFileConfig.FileExtension == "cs"
+                ? "Compile"
+                : "None";
+
+            return templateFileConfig
+                .WithFileItemGenerationBehaviour(MsBuildFileItemGenerationBehaviour.Always)
+                .WithItemType("EmbeddedResource")
+                .WithRemoveItemType(removeItemType);
+        }
+
+        /// <summary>
         /// Obsolete. Use <see cref="WithFileItemGenerationBehaviour{T}"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
@@ -45,7 +67,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         }
 
         /// <summary>
-        /// Disables auto formatting of the file after code merging.
+        /// Controls whether or not auto formatting of the file is applied after code merging.
         /// </summary>
         public static T WithAutoFormatting<T>(this T templateFileConfig, bool enabled) where T : ITemplateFileConfig
         {
@@ -111,8 +133,10 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         }
 
         /// <summary>
-        /// Indicate that the file in the MSBuild file is never implicitly present in SDK style
-        /// projects.
+        /// Indicate that the file entry in the MSBuild file should have the provided <paramref name="itemType"/>, ie,
+        /// <c>&lt;&lt;itemType&gt; Update="&lt;fileName&gt;"/&gt;</c> should be added to the .csproj file. If
+        /// <see cref="WithRemoveItemType{T}"/> has been used, then <c>&lt;&lt;itemType&gt; Include="&lt;fileName&gt;"/&gt;</c>
+        /// will be generated instead.
         /// </summary>
         public static T WithItemType<T>(this T templateFileConfig, string itemType) where T : ITemplateFileConfig
         {
@@ -151,8 +175,18 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         }
 
         /// <summary>
+        /// Indicate that the file entry in the MSBuild file should have a "Remove" entry added for it, ie,
+        /// that <c>&lt;&lt;itemType&gt; Remove="&lt;filename&gt;" /&gt;</c> should be added to the .csproj file.
+        /// </summary>
+        public static T WithRemoveItemType<T>(this T templateFileConfig, string itemType) where T : ITemplateFileConfig
+        {
+            templateFileConfig.CustomMetadata[CustomMetadataKeys.RemoveItemType] = itemType;
+            return templateFileConfig;
+        }
+
+        /// <summary>
         /// Adds the necessary elements to the file item in the MSBuild file for a pre-processed
-        /// <c>.tt</c>
+        /// <c>.tt</c> file.
         /// </summary>
         public static T WithTextTemplatingFilePreprocessor<T>(this T templateFileConfig) where T : ITemplateFileConfig
         {

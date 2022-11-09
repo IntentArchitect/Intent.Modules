@@ -33,6 +33,12 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public static readonly string ItemType = "VisualStudio.MsBuildFileItem.ItemType";
 
         /// <summary>
+        /// Key value for <see cref="ITemplateFileConfig.CustomMetadata"/> to indicate the element
+        /// type to be removed for the file in the MSBuild file.
+        /// </summary>
+        public static readonly string RemoveItemType = "VisualStudio.MsBuildFileItem.RemovedItemType";
+
+        /// <summary>
         /// Obsolete. Use <see cref="MsBuildFileItemGenerationBehaviour"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
