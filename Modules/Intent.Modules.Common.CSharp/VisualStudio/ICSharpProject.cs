@@ -1,5 +1,6 @@
 ﻿using System;
 using Intent.Engine;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.CSharp.VisualStudio
 {
@@ -9,9 +10,22 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         bool NullableEnabled { get; }
         bool IsNetCore2App { get; }
         bool IsNetCore3App { get; }
+        /// <summary>
+        /// Obsolete. Use <see cref="IsNetApp"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         bool IsNet4App { get; }
+        /// <summary>
+        /// Obsolete. Use <see cref="IsNetApp"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         bool IsNet5App { get; }
+        /// <summary>
+        /// Obsolete. Use <see cref="IsNetApp"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
         bool IsNet6App { get; }
+        bool IsNetApp(byte version);
 
         Version[] TargetDotNetFrameworks { get; }
         bool IsNullableAwareContext();

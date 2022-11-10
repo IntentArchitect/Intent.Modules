@@ -4,6 +4,7 @@ using System.Globalization;
 using System.Linq;
 using Intent.Engine;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 using Intent.Utils;
 
@@ -11,7 +12,7 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
 {
     internal class CSharpProject : ICSharpProject
     {
-        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(10, 0);
+        private static readonly MajorMinorVersion LatestLanguageVersion = MajorMinorVersion.Create(11, 0);
         private static readonly MajorMinorVersion PreviewLanguageVersion = MajorMinorVersion.Create(11, 0);
         private readonly Lazy<bool> _isNullableAwareContext;
         private readonly IOutputTarget _outputTarget;
@@ -51,9 +52,21 @@ namespace Intent.Modules.Common.CSharp.VisualStudio
         public bool IsNullableAwareContext() => _isNullableAwareContext.Value;
         public bool IsNetCore2App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp2"));
         public bool IsNetCore3App => GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
-        public bool IsNet4App => GetSupportedFrameworks().Any(x => x.StartsWith("net4"));
-        public bool IsNet5App => GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
-        public bool IsNet6App => GetSupportedFrameworks().Any(x => x.StartsWith("net6"));
+        /// <inheritdoc />
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public bool IsNet4App => IsNetApp(4);
+        /// <inheritdoc />
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public bool IsNet5App => IsNetApp(5);
+        /// <inheritdoc />
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public bool IsNet6App => IsNetApp(6);
+
+        public bool IsNetApp(byte version)
+        {
+            var startsWith = $"net{version:D}";
+            return GetSupportedFrameworks().Any(x => x.StartsWith(startsWith));
+        }
 
         public Version[] TargetDotNetFrameworks => GetSupportedFrameworks()
             .Select(x => Version.TryParse($"{x.RemovePrefix("netcoreapp", "net")}.0", out var ver)

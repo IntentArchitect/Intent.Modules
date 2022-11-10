@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
-using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Constants;
 using Intent.SdkEvolutionHelpers;
@@ -53,7 +52,7 @@ namespace Intent.Modules.Common.VisualStudio
         }
 
         /// <summary>
-        /// Obsolete. Use <see cref="AddNugetPackages(ICSharpProject,IEnumerable{INugetPackageInfo})"/> instead.
+        /// Obsolete. Use <see cref="OutputTargetExtensions.AddNugetPackages(ICSharpProject,IEnumerable{INugetPackageInfo})"/> instead.
         /// </summary>
         [Obsolete(WillBeRemovedIn.Version4)]
         public static void AddNugetPackages(this IOutputTarget outputTarget, IEnumerable<INugetPackageInfo> packages)
@@ -96,30 +95,10 @@ namespace Intent.Modules.Common.VisualStudio
             return new List<INugetPackageInfo>();
         }
 
-        /*
-        public static IList<IBowerPackageInfo> BowerPackages(this IProject outputTarget)
-        {
-            return outputTarget.TemplateInstances
-                    .SelectMany(ti => ti.GetAllBowerDependencies())
-                    .Distinct()
-                    .ToList();
-        }*/
-
         public static IList<IAssemblyReference> References(this IOutputTarget outputTarget)
         {
             return outputTarget.Metadata[REFERENCES] as IList<IAssemblyReference>;
         }
-
-        //public static string SolutionFolder(this IProject outputTarget)
-        //{
-        //    return outputTarget.Folder.Name;
-        //}
-
-        //public static string TargetFrameworkVersion(this IProject outputTarget)
-        //{
-        //    var targetFramework = outputTarget.ProjectType.Properties.FirstOrDefault(x => x.Name == "TargetFramework");
-        //    return outputTarget.GetStereotypeProperty("C# .NET", "FrameworkVersion", targetFramework != null ? $"v{targetFramework.Value}" : "v4.5.2");
-        //}
 
         public static string TargetFramework(this IOutputTarget outputTarget)
         {
@@ -137,14 +116,22 @@ namespace Intent.Modules.Common.VisualStudio
             return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith("netcoreapp3"));
         }
 
-        public static bool IsNet5App(this IOutputTarget outputTarget)
-        {
-            return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith("net5"));
-        }
+        /// <summary>
+        /// Obsolete. Use <see cref="IsNetApp"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public static bool IsNet5App(this IOutputTarget outputTarget) => outputTarget.IsNetApp(5);
 
-        public static bool IsNet6App(this IOutputTarget outputTarget)
+        /// <summary>
+        /// Obsolete. Use <see cref="IsNetApp"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public static bool IsNet6App(this IOutputTarget outputTarget) => outputTarget.IsNetApp(6);
+
+        public static bool IsNetApp(this IOutputTarget outputTarget, byte version)
         {
-            return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith("net6"));
+            var startsWith = $"net{version:D}";
+            return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith(startsWith));
         }
     }
 }
