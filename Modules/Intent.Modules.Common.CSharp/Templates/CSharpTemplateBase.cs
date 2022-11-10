@@ -112,7 +112,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                     @namespace = OutputTarget.Name;
                 }
 
-                // Deliberately assume formatting wanted if not specified
+                // For backwards compatibility formatting is opt-out
                 if (!FileMetadata.CustomMetadata.TryGetValue(
                         key: nameof(CSharpFileConfig.ApplyNamespaceFormatting),
                         value: out var value) ||

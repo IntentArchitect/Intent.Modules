@@ -1,5 +1,5 @@
-﻿using Intent.Engine;
-using System.Linq;
+﻿using System.Linq;
+using Intent.Engine;
 
 namespace Intent.Modules.Common.CSharp.Templates
 {
@@ -16,7 +16,11 @@ namespace Intent.Modules.Common.CSharp.Templates
             return string.Join(".", target.GetTargetPath()
                 .Where(x => !x.Metadata.ContainsKey("Namespace Provider") ||
                             x.Metadata["Namespace Provider"] as bool? == true)
-                .Select(x => x.Name.ToCSharpNamespace()));
+                .Select(x => x.Metadata.TryGetValue("Root Namespace", out var value) &&
+                             value is string rootNamespace &&
+                             !string.IsNullOrWhiteSpace(rootNamespace)
+                    ? rootNamespace
+                    : x.Name.ToCSharpNamespace()));
         }
     }
 }
