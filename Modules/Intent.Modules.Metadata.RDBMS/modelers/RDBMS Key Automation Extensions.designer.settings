@@ -229,9 +229,6 @@ if (sourceType &amp;&amp; targetType) {
     if (pks.length == 0) {
         let keyType = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9").getField("Key Type").value;
 
-try {
-        console.log(sourceType);
-        console.log(sourceType.id);
         let pk = createElement("Attribute", "id", sourceType.id.toString());
         if (keyType == "guid")
             pk.typeReference.setType("6b649125-18ea-48fd-a6ba-0bfff0d8f488"); // guid id
@@ -242,12 +239,6 @@ try {
         pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
         pk.setMetadata("is-managed-key", "true");
         pk.setOrder(0);
-        console.log("success...");
-} catch (e) {
-    console.error(e);
-    console.log(sourceType);
-    console.log(sourceType.id);
-}
     }
 }</script>
         </macro>
