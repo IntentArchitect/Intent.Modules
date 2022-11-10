@@ -29,6 +29,7 @@ namespace Intent.ModuleBuilder.Api
             }
             _element = element;
             Type = new AssociationSettingsModel((IElement)TypeReference.Element);
+            Icon = element.TypeReference.Element.AsAssociationSettingsModel()?.TargetEnd.GetStereotypeProperty<IIconModel>("Settings", "Icon");
         }
 
         [IntentManaged(Mode.Fully)]
