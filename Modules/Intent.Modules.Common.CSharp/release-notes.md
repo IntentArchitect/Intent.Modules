@@ -1,4 +1,8 @@
-﻿### Version 3.3.20
+﻿### Version 3.3.23
+
+- Added `.AsEmbeddedResource(...) extension method which will make the file item in the .csproj an Embedded Resource. See https://docs.intentarchitect.com/articles/module-building/templates/how-to-control-file-properties-in-cs-projects/how-to-control-file-properties-in-cs-projects.html for further information.
+
+### Version 3.3.20
 
 - Removed `GetKnownTypesByNamespace is being called before Template Registration has been completed. Ensure that methods like GetTypeName and UseType are not being used in template constructors.` warning.
 
