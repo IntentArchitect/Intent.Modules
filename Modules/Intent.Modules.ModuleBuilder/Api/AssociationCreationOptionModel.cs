@@ -28,8 +28,24 @@ namespace Intent.ModuleBuilder.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Type = new AssociationSettingsModel((IElement)TypeReference.Element);
-            Icon = element.TypeReference.Element.AsAssociationSettingsModel()?.TargetEnd.GetStereotypeProperty<IIconModel>("Settings", "Icon");
+
+            switch (element.TypeReference.Element.SpecializationTypeId)
+            {
+                case AssociationSettingsModel.SpecializationTypeId:
+                    Type = (IElement)TypeReference.Element;
+                    Icon = element.TypeReference.Element.AsAssociationSettingsModel().TargetEnd.GetSettings().Icon();
+                    break;
+                case AssociationSourceEndSettingsModel.SpecializationTypeId:
+                    Type = (IElement)TypeReference.Element;
+                    Icon = element.TypeReference.Element.AsAssociationSourceEndSettingsModel().GetSettings().Icon();
+                    break;
+                case AssociationDestinationEndSettingsModel.SpecializationTypeId:
+                    Type = (IElement)TypeReference.Element;
+                    Icon = element.TypeReference.Element.AsAssociationDestinationEndSettingsModel().GetSettings().Icon();
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(element.TypeReference.Element.SpecializationTypeId), $"AssociationCreationOptionModel requires that the type reference be pointing to a supported SpecializationTypeId. {element.TypeReference.Element.SpecializationType} is not supported.");
+            }
         }
 
         [IntentManaged(Mode.Fully)]
@@ -43,7 +59,7 @@ namespace Intent.ModuleBuilder.Api
 
         public IIconModel Icon { get; }
 
-        public AssociationSettingsModel Type { get; }
+        public IElement Type { get; }
 
         public bool AllowMultiple()
         {

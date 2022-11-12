@@ -515,6 +515,8 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isRequired>true</isRequired>
             <targetTypes>
               <type>Association Settings</type>
+              <type>Association Source End Settings</type>
+              <type>Association Destination End Settings</type>
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>false</allowIsNullable>
