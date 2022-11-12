@@ -5,23 +5,67 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
+public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
+{
+    private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
+
+    public CSharpInvocationStatement(string invocation) : base(invocation)
+    {
+    }
+
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+
+    public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)
+    {
+        argument.Parent = this;
+        Statements.Add(argument);
+        argument.BeforeSeparator = _defaultArgumentSeparator;
+        argument.AfterSeparator = CSharpCodeSeparatorType.None;
+        configure?.Invoke(argument);
+        return this;
+    }
+
+    public CSharpInvocationStatement WithArgumentsOnNewLines()
+    {
+        foreach (var argument in Statements)
+        {
+            argument.BeforeSeparator = CSharpCodeSeparatorType.NewLine;
+        }
+
+        _defaultArgumentSeparator = CSharpCodeSeparatorType.NewLine;
+        return this;
+    }
+
+    public override string GetText(string indentation)
+    {
+        return $"{indentation}{RelativeIndentation}{Text}({GetArgumentsText(indentation)});";
+    }
+
+    private string GetArgumentsText(string indentation)
+    {
+        return Statements.JoinCode(",", $"{indentation}    ");
+    }
+}
+
+
 public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 {
 
-    public CSharpStatement(string text)
+    public CSharpStatement(string invocation)
     {
-        Text = text?.Trim();
+        Text = invocation?.Trim();
     }
 
-    internal IHasCSharpStatements Parent { get; set; }
+    public IHasCSharpStatements Parent { get; set; }
 
-    public CSharpCodeSeparatorType Separator { get; set; } = CSharpCodeSeparatorType.None;
+    public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
+    public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
 
     protected string Text { get; set; }
     protected string RelativeIndentation { get; private set; } = "";
     public CSharpStatement SeparatedFromPrevious()
     {
-        Separator = CSharpCodeSeparatorType.EmtpyLineAboveOnly;
+        BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         return this;
     }
 
@@ -37,7 +81,7 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
         return this;
     }
 
-    public CSharpStatement SetIntent(string relativeIndentation)
+    public CSharpStatement SetIndent(string relativeIndentation)
     {
         RelativeIndentation = relativeIndentation;
         return this;
@@ -50,7 +94,7 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
             throw new InvalidOperationException("Cannot insert statement for unknown parent");
         }
         Parent.Statements.Insert(Parent.Statements.IndexOf(this), statement);
-        statement.SetIntent(RelativeIndentation);
+        statement.SetIndent(RelativeIndentation);
         statement.Parent = Parent;
         configure?.Invoke(statement);
         return this;
@@ -73,7 +117,7 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
             throw new InvalidOperationException("Cannot insert statement for unknown parent");
         }
         Parent.Statements.Insert(Parent.Statements.IndexOf(this) + 1, statement);
-        statement.SetIntent(RelativeIndentation);
+        statement.SetIndent(RelativeIndentation);
         statement.Parent = Parent;
         configure?.Invoke(statement);
         return this;
@@ -87,6 +131,20 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
         }
         InsertBelow(statements[0], s => s.InsertBelow(statements.Skip(1).ToArray()));
         return this;
+    }
+
+    public virtual CSharpStatement FindAndReplace(string find, string replaceWith)
+    {
+        Text = Text.Replace(find, replaceWith);
+        return this;
+    }
+
+    public virtual void Replace(CSharpStatement replaceWith)
+    {
+        replaceWith.BeforeSeparator = BeforeSeparator;
+        replaceWith.AfterSeparator = BeforeSeparator;
+        InsertAbove(replaceWith);
+        Remove();
     }
 
     public void Remove()
@@ -116,23 +174,14 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 
 public interface ICodeBlock
 {
-    CSharpCodeSeparatorType Separator { get; set; }
+    CSharpCodeSeparatorType BeforeSeparator { get; set; }
+    CSharpCodeSeparatorType AfterSeparator { get; set; }
     string GetText(string indentation);
 }
 
 public enum CSharpCodeSeparatorType
-    {
-        None = 0,
-        EmtpyLineAboveOnly = 1,
-        EmtpyLineBelowOnly = 2,
-        EmptyLines = 3
-    }
-
-    public interface IHasCSharpStatements
-    {
-        IList<CSharpStatement> Statements { get; }
-
-        //int GetStatementIndex(CSharpStatement statement);
-        //void InsertStatement(int index, CSharpStatement statement, Action<CSharpStatement> configure = null);
-        //void RemoveStatement(CSharpStatement statement);
-    }
+{
+    None = 0,
+    NewLine = 1,
+    EmptyLines = 2
+}

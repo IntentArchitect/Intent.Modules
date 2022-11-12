@@ -14,7 +14,8 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public CSharpConstructor(CSharpClass @class)
     {
-        Separator = CSharpCodeSeparatorType.EmptyLines;
+        BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
+        AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
         Class = @class;
     }
 
@@ -91,8 +92,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>
     public override string GetText(string indentation)
     {
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}){ConstructorCall?.ToString() ?? string.Empty}
-{indentation}{{{(Statements.Any() ? $@"
-{Statements.ConcatCode($"{indentation}    ")}" : string.Empty)}
+{indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 

@@ -8,8 +8,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClass : CSharpDeclaration<CSharpClass>
 {
-    private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.None;
-    private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.None;
+    private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
+    private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
 
     public CSharpClass(string name)
     {
@@ -62,8 +62,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public CSharpClass AddField(string type, string name, Action<CSharpField> configure = null)
     {
-        var field = new CSharpField(type, name);
-        field.Separator = _fieldsSeparator;
+        var field = new CSharpField(type, name)
+        {
+            BeforeSeparator = _fieldsSeparator,
+            AfterSeparator = _fieldsSeparator
+        };
         Fields.Add(field);
         configure?.Invoke(field);
         return this;
@@ -71,8 +74,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public CSharpClass AddProperty(string type, string name, Action<CSharpProperty> configure = null)
     {
-        var property = new CSharpProperty(type, name, this);
-        property.Separator = _propertiesSeparator;
+        var property = new CSharpProperty(type, name, this)
+        {
+            BeforeSeparator = _propertiesSeparator,
+            AfterSeparator = _propertiesSeparator
+        };
         Properties.Add(property);
         configure?.Invoke(property);
         return this;
@@ -80,8 +86,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public CSharpClass InsertProperty(int index, string type, string name, Action<CSharpProperty> configure = null)
     {
-        var property = new CSharpProperty(type, name, this);
-        property.Separator = _propertiesSeparator;
+        var property = new CSharpProperty(type, name, this)
+        {
+            BeforeSeparator = _propertiesSeparator,
+            AfterSeparator = _propertiesSeparator
+        };
         Properties.Insert(index, property);
         configure?.Invoke(property);
         return this;
@@ -228,8 +237,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         codeBlocks.AddRange(Properties);
         codeBlocks.AddRange(Methods);
 
-        return !codeBlocks.Any() ? "" : $@"
-{string.Join($@"
+        return $@"{string.Join($@"
 ", codeBlocks.ConcatCode(indentation))}";
     }
 

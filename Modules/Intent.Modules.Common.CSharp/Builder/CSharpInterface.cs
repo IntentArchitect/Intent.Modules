@@ -28,9 +28,9 @@ public class CSharpInterfaceProperty : CSharpProperty
 
 public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 {
-    private CSharpCodeSeparatorType _fieldsSeparator;
-    private CSharpCodeSeparatorType _propertiesSeparator;
-    private CSharpCodeSeparatorType _methodsSeparator;
+    private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
+    private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
+    private CSharpCodeSeparatorType _methodsSeparator = CSharpCodeSeparatorType.NewLine;
 
     public CSharpInterface(string name)
     {
@@ -62,7 +62,8 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     {
         var field = new CSharpInterfaceField(type, name)
         {
-            Separator = _fieldsSeparator
+            BeforeSeparator = _fieldsSeparator,
+            AfterSeparator = _fieldsSeparator
         };
         Fields.Add(field);
         configure?.Invoke(field);
@@ -73,7 +74,8 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     {
         var property = new CSharpInterfaceProperty(type, name)
         {
-            Separator = _propertiesSeparator
+            BeforeSeparator = _propertiesSeparator,
+            AfterSeparator = _propertiesSeparator
         };
         Properties.Add(property);
         configure?.Invoke(property);
@@ -84,7 +86,8 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     {
         var property = new CSharpInterfaceProperty(type, name)
         {
-            Separator = _propertiesSeparator
+            BeforeSeparator = _propertiesSeparator,
+            AfterSeparator = _propertiesSeparator
         };
         Properties.Insert(index, property);
         configure?.Invoke(property);
@@ -98,8 +101,11 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
-        var method = new CSharpInterfaceMethod(returnType, name);
-        method.Separator = _methodsSeparator;
+        var method = new CSharpInterfaceMethod(returnType, name)
+        {
+            BeforeSeparator = _methodsSeparator,
+            AfterSeparator = _methodsSeparator
+        };
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;

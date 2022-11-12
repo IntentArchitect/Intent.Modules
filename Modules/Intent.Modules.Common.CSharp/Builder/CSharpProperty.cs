@@ -22,7 +22,8 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
     {
         Type = type;
         Name = name;
-        Separator = CSharpCodeSeparatorType.None;
+        BeforeSeparator = CSharpCodeSeparatorType.NewLine;
+        AfterSeparator = CSharpCodeSeparatorType.NewLine;
         _class = @class;
     }
 

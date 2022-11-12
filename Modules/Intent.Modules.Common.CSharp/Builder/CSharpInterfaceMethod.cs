@@ -13,7 +13,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
     {
         ReturnType = returnType;
         Name = name;
-        Separator = CSharpCodeSeparatorType.None;
+        BeforeSeparator = CSharpCodeSeparatorType.NewLine;
+        AfterSeparator = CSharpCodeSeparatorType.NewLine;
     }
 
     public CSharpInterfaceMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)

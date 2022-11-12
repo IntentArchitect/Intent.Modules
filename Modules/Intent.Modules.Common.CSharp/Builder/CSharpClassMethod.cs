@@ -22,7 +22,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     {
         ReturnType = returnType;
         Name = name;
-        Separator = CSharpCodeSeparatorType.EmptyLines;
+        BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
+        AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 
     public CSharpClassMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
@@ -88,6 +89,11 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         return this;
     }
 
+    public CSharpClassMethod FindAndReplaceStatement(Func<CSharpStatement, bool> matchFunc, CSharpStatement replaceWith)
+    {
+        this.FindStatement(matchFunc)?.Replace(replaceWith);
+        return this;
+    }
 
     public CSharpClassMethod Protected()
     {
@@ -150,8 +156,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public override string GetText(string indentation)
     {
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))})
-{indentation}{{{(Statements.Any() ? $@"
-{Statements.ConcatCode($"{indentation}    ")}" : string.Empty)}
+{indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 }
