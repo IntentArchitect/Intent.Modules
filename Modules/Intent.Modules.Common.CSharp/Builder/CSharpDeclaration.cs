@@ -12,9 +12,13 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
 
     public TImpl AddAttribute(string name, Action<CSharpAttribute> configure = null)
     {
-        var param = new CSharpAttribute(name);
-        Attributes.Add(param);
-        configure?.Invoke(param);
+        return AddAttribute(new CSharpAttribute(name), configure);
+    }
+
+    public TImpl AddAttribute(CSharpAttribute attribute, Action<CSharpAttribute> configure = null)
+    {
+        Attributes.Add(attribute);
+        configure?.Invoke(attribute);
         return (TImpl)this;
     }
 
@@ -32,8 +36,8 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
 
     protected string GetAttributes(string indentation)
     {
-        return $@"{(Attributes.Any() ? $@"{indentation}{string.Join($@"
-{indentation}", Attributes)}
+        return $@"{(Attributes.Any() ? $@"{string.Join($@"
+", Attributes.Select(x => x.GetText(indentation)))}
 " : string.Empty)}";
     }
 

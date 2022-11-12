@@ -3,10 +3,10 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpAttribute
+public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, IHasCSharpStatements
 {
     public string Name { get; set; }
-    public IList<string> Arguments { get; set; } = new List<string>();
+    public IList<CSharpStatement> Statements { get; set; } = new List<CSharpStatement>();
     public CSharpAttribute(string name)
     {
         if (name.StartsWith("[") && name.EndsWith("]"))
@@ -21,12 +21,29 @@ public class CSharpAttribute
 
     public CSharpAttribute AddArgument(string name)
     {
-        Arguments.Add(name);
+        var statement = new CSharpStatement(name);
+        statement.Parent = this;
+        Statements.Add(statement);
         return this;
+    }
+
+    public virtual CSharpAttribute FindAndReplace(string find, string replaceWith)
+    {
+        Name = Name.Replace(find, replaceWith);
+        foreach (var argument in Statements)
+        {
+            argument.FindAndReplace(find, replaceWith);
+        }
+        return this;
+    }
+
+    public virtual string GetText(string indentation)
+    {
+        return $"{indentation}[{Name}{(Statements.Any() ? $"({string.Join(", ", Statements.Select(x => x.ToString()))})" : string.Empty)}]";
     }
 
     public override string ToString()
     {
-        return $"[{Name}{(Arguments.Any() ? $"({string.Join(", ", Arguments)})" : string.Empty)}]";
+        return GetText(string.Empty);
     }
 }
