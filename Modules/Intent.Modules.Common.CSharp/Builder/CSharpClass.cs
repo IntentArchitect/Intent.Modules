@@ -135,6 +135,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         return Methods.FirstOrDefault(x => x.Name == name);
     }
 
+    public CSharpClassMethod FindMethod(Func<CSharpClassMethod, bool> matchFunc)
+    {
+        return Methods.FirstOrDefault(matchFunc);
+    }
+
     public CSharpClass Internal()
     {
         AccessModifier = "internal ";
