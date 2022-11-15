@@ -13,7 +13,7 @@
           <specializationTypeId>f0e1fb65-8724-42e6-ad88-149650277251</specializationTypeId>
           <text>Add Payload</text>
           <defaultName>NewPayload</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -26,7 +26,7 @@
   <packageExtensions />
   <elementSettings>
     <elementSetting type="Payload" typeId="f0e1fb65-8724-42e6-ad88-149650277251">
-      <icon type="FontAwesome" source="file-o" />
+      <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
@@ -97,7 +97,7 @@
           <specializationTypeId>f0e1fb65-8724-42e6-ad88-149650277251</specializationTypeId>
           <text>Add Payload</text>
           <defaultName>NewPayload</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>

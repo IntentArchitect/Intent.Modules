@@ -45,6 +45,11 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
 
         public IElement InternalElement => _element;
 
+        public RequestBodyModel RequestBody => _element.ChildElements
+            .GetElementsOfType(RequestBodyModel.SpecializationTypeId)
+            .Select(x => new RequestBodyModel(x))
+            .SingleOrDefault();
+
         public override string ToString()
         {
             return _element.ToString();
