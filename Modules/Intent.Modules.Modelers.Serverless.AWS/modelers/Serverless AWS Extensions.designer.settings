@@ -180,7 +180,7 @@
   </elementExtensions>
   <associationSettings>
     <associationSetting type="AWS API Gateway Route Integration" typeId="59dc49b0-52e6-4066-a2d8-6678b9adee11">
-      <sourceEnd type="AWS API Gateway Route Integration Source End" typeId="6c91b79e-8a09-4bf5-a479-fb13717f756c">
+      <sourceEnd type="Trigger" typeId="6c91b79e-8a09-4bf5-a479-fb13717f756c">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
@@ -194,7 +194,7 @@
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </sourceEnd>
-      <targetEnd type="AWS API Gateway Route Integration Target End" typeId="c9fe4ac2-2b12-4118-93ea-9c3c175d4368">
+      <targetEnd type="Integration Target" typeId="c9fe4ac2-2b12-4118-93ea-9c3c175d4368">
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>

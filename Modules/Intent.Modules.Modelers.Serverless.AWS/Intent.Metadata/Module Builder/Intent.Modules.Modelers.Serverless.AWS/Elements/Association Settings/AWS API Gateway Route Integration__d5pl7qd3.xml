@@ -13,8 +13,8 @@
   <metadata />
   <childElements>
     <childElement id="6c91b79e-8a09-4bf5-a479-fb13717f756c" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
-      <name>AWS API Gateway Route Integration Source End</name>
-      <display>AWS API Gateway Route Integration Source End</display>
+      <name>Trigger</name>
+      <display>Trigger</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -45,8 +45,8 @@
       <childElements />
     </childElement>
     <childElement id="c9fe4ac2-2b12-4118-93ea-9c3c175d4368" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
-      <name>AWS API Gateway Route Integration Target End</name>
-      <display>AWS API Gateway Route Integration Target End</display>
+      <name>Integration Target</name>
+      <display>Integration Target</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

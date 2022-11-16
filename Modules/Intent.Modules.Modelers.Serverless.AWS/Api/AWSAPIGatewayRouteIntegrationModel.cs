@@ -15,8 +15,8 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
         public const string SpecializationType = "AWS API Gateway Route Integration";
         public const string SpecializationTypeId = "59dc49b0-52e6-4066-a2d8-6678b9adee11";
         protected readonly IAssociation _association;
-        protected AWSAPIGatewayRouteIntegrationSourceEndModel _sourceEnd;
-        protected AWSAPIGatewayRouteIntegrationTargetEndModel _targetEnd;
+        protected TriggerModel _sourceEnd;
+        protected IntegrationTargetModel _targetEnd;
 
         public AWSAPIGatewayRouteIntegrationModel(IAssociation association, string requiredType = SpecializationType)
         {
@@ -35,9 +35,9 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
 
         public string Id => _association.Id;
 
-        public AWSAPIGatewayRouteIntegrationSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new AWSAPIGatewayRouteIntegrationSourceEndModel(_association.SourceEnd, this));
+        public TriggerModel SourceEnd => _sourceEnd ?? (_sourceEnd = new TriggerModel(_association.SourceEnd, this));
 
-        public AWSAPIGatewayRouteIntegrationTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new AWSAPIGatewayRouteIntegrationTargetEndModel(_association.TargetEnd, this));
+        public IntegrationTargetModel TargetEnd => _targetEnd ?? (_targetEnd = new IntegrationTargetModel(_association.TargetEnd, this));
 
         public IAssociation InternalAssociation => _association;
 
@@ -66,21 +66,21 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class AWSAPIGatewayRouteIntegrationSourceEndModel : AWSAPIGatewayRouteIntegrationEndModel
+    public class IntegrationTargetModel : AWSAPIGatewayRouteIntegrationEndModel
     {
-        public const string SpecializationTypeId = "6c91b79e-8a09-4bf5-a479-fb13717f756c";
+        public const string SpecializationTypeId = "c9fe4ac2-2b12-4118-93ea-9c3c175d4368";
 
-        public AWSAPIGatewayRouteIntegrationSourceEndModel(IAssociationEnd associationEnd, AWSAPIGatewayRouteIntegrationModel association) : base(associationEnd, association)
+        public IntegrationTargetModel(IAssociationEnd associationEnd, AWSAPIGatewayRouteIntegrationModel association) : base(associationEnd, association)
         {
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public class AWSAPIGatewayRouteIntegrationTargetEndModel : AWSAPIGatewayRouteIntegrationEndModel
+    public class TriggerModel : AWSAPIGatewayRouteIntegrationEndModel
     {
-        public const string SpecializationTypeId = "c9fe4ac2-2b12-4118-93ea-9c3c175d4368";
+        public const string SpecializationTypeId = "6c91b79e-8a09-4bf5-a479-fb13717f756c";
 
-        public AWSAPIGatewayRouteIntegrationTargetEndModel(IAssociationEnd associationEnd, AWSAPIGatewayRouteIntegrationModel association) : base(associationEnd, association)
+        public TriggerModel(IAssociationEnd associationEnd, AWSAPIGatewayRouteIntegrationModel association) : base(associationEnd, association)
         {
         }
     }
@@ -164,32 +164,32 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
     {
         public static bool IsAWSAPIGatewayRouteIntegrationEndModel(this ICanBeReferencedType type)
         {
-            return IsAWSAPIGatewayRouteIntegrationTargetEndModel(type) || IsAWSAPIGatewayRouteIntegrationSourceEndModel(type);
+            return IsIntegrationTargetModel(type) || IsTriggerModel(type);
         }
 
         public static AWSAPIGatewayRouteIntegrationEndModel AsAWSAPIGatewayRouteIntegrationEndModel(this ICanBeReferencedType type)
         {
-            return (AWSAPIGatewayRouteIntegrationEndModel)type.AsAWSAPIGatewayRouteIntegrationTargetEndModel() ?? (AWSAPIGatewayRouteIntegrationEndModel)type.AsAWSAPIGatewayRouteIntegrationSourceEndModel();
+            return (AWSAPIGatewayRouteIntegrationEndModel)type.AsIntegrationTargetModel() ?? (AWSAPIGatewayRouteIntegrationEndModel)type.AsTriggerModel();
         }
 
-        public static bool IsAWSAPIGatewayRouteIntegrationTargetEndModel(this ICanBeReferencedType type)
+        public static bool IsTriggerModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == AWSAPIGatewayRouteIntegrationTargetEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == TriggerModel.SpecializationTypeId;
         }
 
-        public static AWSAPIGatewayRouteIntegrationTargetEndModel AsAWSAPIGatewayRouteIntegrationTargetEndModel(this ICanBeReferencedType type)
+        public static TriggerModel AsTriggerModel(this ICanBeReferencedType type)
         {
-            return type.IsAWSAPIGatewayRouteIntegrationTargetEndModel() ? new AWSAPIGatewayRouteIntegrationModel(((IAssociationEnd)type).Association).TargetEnd : null;
+            return type.IsTriggerModel() ? new AWSAPIGatewayRouteIntegrationModel(((IAssociationEnd)type).Association).SourceEnd : null;
         }
 
-        public static bool IsAWSAPIGatewayRouteIntegrationSourceEndModel(this ICanBeReferencedType type)
+        public static bool IsIntegrationTargetModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == AWSAPIGatewayRouteIntegrationSourceEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == IntegrationTargetModel.SpecializationTypeId;
         }
 
-        public static AWSAPIGatewayRouteIntegrationSourceEndModel AsAWSAPIGatewayRouteIntegrationSourceEndModel(this ICanBeReferencedType type)
+        public static IntegrationTargetModel AsIntegrationTargetModel(this ICanBeReferencedType type)
         {
-            return type.IsAWSAPIGatewayRouteIntegrationSourceEndModel() ? new AWSAPIGatewayRouteIntegrationModel(((IAssociationEnd)type).Association).SourceEnd : null;
+            return type.IsIntegrationTargetModel() ? new AWSAPIGatewayRouteIntegrationModel(((IAssociationEnd)type).Association).TargetEnd : null;
         }
     }
 }
