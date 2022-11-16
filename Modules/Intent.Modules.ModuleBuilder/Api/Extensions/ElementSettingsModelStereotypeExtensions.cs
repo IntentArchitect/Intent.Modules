@@ -85,6 +85,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IIconModel>("Expanded Icon");
             }
 
+            public string IconFunction()
+            {
+                return _stereotype.GetProperty<string>("Icon Function");
+            }
+
             public string DisplayTextFunction()
             {
                 return _stereotype.GetProperty<string>("Display Text Function");

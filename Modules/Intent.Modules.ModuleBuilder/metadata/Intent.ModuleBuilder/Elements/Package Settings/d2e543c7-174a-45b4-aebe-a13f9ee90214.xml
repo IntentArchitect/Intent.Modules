@@ -428,5 +428,18 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="0e2a1cae-65fe-4473-8271-a85c98373b50" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
+      <name>NewPackageEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d2e543c7-174a-45b4-aebe-a13f9ee90214</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
   </childElements>
 </class>

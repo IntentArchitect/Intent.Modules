@@ -63,6 +63,7 @@ namespace Intent.ModuleBuilder.Api
                 ValidateFunction = this.GetSettings().ValidateFunction(),
                 Icon = GetIcon(this.GetSettings().Icon()) ?? new IconModelPersistable { Type = IconType.FontAwesome, Source = "file-o" },
                 ExpandedIcon = GetIcon(this.GetSettings().ExpandedIcon()),
+                IconFunction = this.GetSettings().IconFunction(),
                 AllowRename = this.GetSettings().AllowRename(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
                 AllowSetValue = this.GetSettings().AllowSetValue(),

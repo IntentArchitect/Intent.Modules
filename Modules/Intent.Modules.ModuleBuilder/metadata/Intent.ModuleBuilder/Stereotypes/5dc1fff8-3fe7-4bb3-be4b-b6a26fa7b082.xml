@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" version="3.1.0">
-  <name>Text Settings</name>
+<stereotypeDefinition id="5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082" version="3.1.0">
+  <name>SVG Resource Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="0250c934-455b-4bb6-b5d9-077c6e1ce72c">Text Draw Settings</type>
+    <type id="b5566ace-3353-4009-9370-475b561451a0">Symbol Draw Settings</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
-  <displayFunction />
+  <displayFunction>return `(${getProperty("Resource Path").value})`;</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
-  <displayAsText>false</displayAsText>
+  <displayAsText>true</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
@@ -19,19 +19,20 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
-    <property id="30a84702-a35a-415d-bd8f-66a20d4c858b">
-      <name>Text</name>
+    <property id="8b60333a-8d5a-4ada-a498-2662a43d1c03">
+      <hint>The filename of the SVG resource in the resources folder.</hint>
+      <name>Resource Path</name>
       <type>string</type>
-      <controlType>function</controlType>
+      <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder>(default)</placeholder>
       <defaultValue />
       <valueOptions />
       <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
-      <isRequiredFunction />
+      <isRequiredFunction>return true</isRequiredFunction>
     </property>
-    <property id="3b7f711f-8a28-42c0-903d-c683a2eea56e">
+    <property id="6addd9b9-6f48-4054-b74c-f670e3b5f847">
       <name>Condition</name>
       <type>string</type>
       <controlType>function</controlType>
@@ -41,16 +42,6 @@
       <lookupTypes />
       <apiTypeDefinition>element-visual-api</apiTypeDefinition>
       <isRequiredFunction />
-    </property>
-    <property id="9d47b9f2-f715-4762-b276-1dc702dad067">
-      <name>Style</name>
-      <type>string</type>
-      <controlType>function</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder>(default)</placeholder>
-      <valueOptions />
-      <lookupTypes />
-      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
     </property>
   </properties>
 </stereotypeDefinition>

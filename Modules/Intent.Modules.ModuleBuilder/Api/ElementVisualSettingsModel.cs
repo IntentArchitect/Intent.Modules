@@ -79,6 +79,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new TextDrawSettingsModel(x))
             .ToList();
 
+        public IList<SVGResourceDrawSettingsModel> SVGVisuals => _element.ChildElements
+            .GetElementsOfType(SVGResourceDrawSettingsModel.SpecializationTypeId)
+            .Select(x => new SVGResourceDrawSettingsModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public StereotypesVisualSettingsModel StereotypesVisual => _element.ChildElements
             .GetElementsOfType(StereotypesVisualSettingsModel.SpecializationTypeId)
@@ -106,7 +111,8 @@ namespace Intent.ModuleBuilder.Api
                     Height = this.GetPositionSettings().Height() ?? "${y}"
                 },
                 DisplayElements = Paths.Select(x => x.ToPersistable()).Cast<object>()
-                    .Concat(Texts.Select(x => x.ToPersistable())).ToList(),
+                    .Concat(Texts.Select(x => x.ToPersistable()))
+                    .Concat(SVGVisuals.Select(x => x.ToPersistable())).ToList(),
                 StereotypesVisualSettings = StereotypesVisual?.ToPersistable(),
                 ChildElementVisualSettings = ChildVisuals.Select(x => x.ToPersistable()).ToList()
             };
