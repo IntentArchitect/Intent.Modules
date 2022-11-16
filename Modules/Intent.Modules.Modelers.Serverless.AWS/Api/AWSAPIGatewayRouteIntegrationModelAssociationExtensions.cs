@@ -10,7 +10,7 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
     public static class AWSAPIGatewayRouteIntegrationModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<AWSAPIGatewayRouteIntegrationTargetEndModel> IntegrationTarget(this AWSAPIGatewayEndpointModel model)
+        public static IList<IntegrationTargetModel> IntegrationTarget(this AWSAPIGatewayEndpointModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == AWSAPIGatewayRouteIntegrationModel.SpecializationType && x.IsTargetEnd())
@@ -19,7 +19,7 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<AWSAPIGatewayRouteIntegrationSourceEndModel> Trigger(this AWSLambdaFunctionModel model)
+        public static IList<TriggerModel> Trigger(this AWSLambdaFunctionModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == AWSAPIGatewayRouteIntegrationModel.SpecializationType && x.IsSourceEnd())
