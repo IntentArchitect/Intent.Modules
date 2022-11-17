@@ -58,6 +58,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f0e1fb65-8724-42e6-ad88-149650277251</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DTOModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DTOModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#853c436b-3be8-419d-8a49-2962e117dd95</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/PayloadFieldModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PayloadFieldModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#49294a7f-9300-4feb-99f3-22076efea411</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/RequestBodyModel.cs</ApplicationRelativeFilePath>

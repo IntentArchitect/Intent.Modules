@@ -33,10 +33,5 @@ namespace Intent.Modules.Modelers.Serverless.Api
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
 
-        public IList<PayloadModel> Payloads => UnderlyingPackage.ChildElements
-            .GetElementsOfType(PayloadModel.SpecializationTypeId)
-            .Select(x => new PayloadModel(x))
-            .ToList();
-
     }
 }

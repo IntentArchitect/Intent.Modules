@@ -7,8 +7,8 @@
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>f0e1fb65-8724-42e6-ad88-149650277251</parentFolderId>
-  <packageId>45beec69-b53a-4627-bec9-0cb28c9414d2</packageId>
-  <packageName>Intent.Modules.Modelers.Serverless</packageName>
+  <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+  <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>

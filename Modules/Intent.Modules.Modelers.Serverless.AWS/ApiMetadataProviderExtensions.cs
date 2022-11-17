@@ -25,5 +25,12 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
                 .ToList();
         }
 
+        public static IList<DTOModel> GetDTOModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(DTOModel.SpecializationTypeId)
+                .Select(x => new DTOModel(x))
+                .ToList();
+        }
+
     }
 }

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="f0e1fb65-8724-42e6-ad88-149650277251" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Payload</name>
-  <display>Payload</display>
+  <name>DTO</name>
+  <display>DTO</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>92b6d5d7-0d8b-4997-876d-7cc1dcb06ade</parentFolderId>
-  <packageId>45beec69-b53a-4627-bec9-0cb28c9414d2</packageId>
-  <packageName>Intent.Modules.Modelers.Serverless</packageName>
+  <parentFolderId>561d0013-3b1a-404c-ba80-80d99690c746</parentFolderId>
+  <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+  <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -55,8 +55,8 @@
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>f0e1fb65-8724-42e6-ad88-149650277251</parentFolderId>
-      <packageId>45beec69-b53a-4627-bec9-0cb28c9414d2</packageId>
-      <packageName>Intent.Modules.Modelers.Serverless</packageName>
+      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+      <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
       <stereotypes />
       <metadata />
       <childElements>
@@ -71,15 +71,15 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modules.Modelers.Serverless</typePackageName>
-            <typePackageId>45beec69-b53a-4627-bec9-0cb28c9414d2</typePackageId>
+            <typePackageName>Intent.Modules.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
           <parentFolderId>6efa53e4-ba14-490a-9d37-13da8007f9be</parentFolderId>
-          <packageId>45beec69-b53a-4627-bec9-0cb28c9414d2</packageId>
-          <packageName>Intent.Modules.Modelers.Serverless</packageName>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />

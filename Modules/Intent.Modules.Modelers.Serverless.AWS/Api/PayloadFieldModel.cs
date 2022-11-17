@@ -3,30 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
-using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Serverless.Api
+namespace Intent.Modules.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class PayloadModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class PayloadFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "Payload";
-        public const string SpecializationTypeId = "f0e1fb65-8724-42e6-ad88-149650277251";
+        public const string SpecializationType = "Payload Field";
+        public const string SpecializationTypeId = "853c436b-3be8-419d-8a49-2962e117dd95";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public PayloadModel(IElement element, string requiredType = SpecializationType)
+        public PayloadFieldModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -37,23 +35,16 @@ namespace Intent.Modules.Modelers.Serverless.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public FolderModel Folder { get; }
-
-        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+        public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
-
-        public IList<PayloadFieldModel> Fields => _element.ChildElements
-            .GetElementsOfType(PayloadFieldModel.SpecializationTypeId)
-            .Select(x => new PayloadFieldModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(PayloadModel other)
+        public bool Equals(PayloadFieldModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -63,7 +54,7 @@ namespace Intent.Modules.Modelers.Serverless.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((PayloadModel)obj);
+            return Equals((PayloadFieldModel)obj);
         }
 
         public override int GetHashCode()
@@ -73,17 +64,17 @@ namespace Intent.Modules.Modelers.Serverless.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class PayloadModelExtensions
+    public static class PayloadFieldModelExtensions
     {
 
-        public static bool IsPayloadModel(this ICanBeReferencedType type)
+        public static bool IsPayloadFieldModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == PayloadModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == PayloadFieldModel.SpecializationTypeId;
         }
 
-        public static PayloadModel AsPayloadModel(this ICanBeReferencedType type)
+        public static PayloadFieldModel AsPayloadFieldModel(this ICanBeReferencedType type)
         {
-            return type.IsPayloadModel() ? new PayloadModel((IElement)type) : null;
+            return type.IsPayloadFieldModel() ? new PayloadFieldModel((IElement)type) : null;
         }
     }
 }

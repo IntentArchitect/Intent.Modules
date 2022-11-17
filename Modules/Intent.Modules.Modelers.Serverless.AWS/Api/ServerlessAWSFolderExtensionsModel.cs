@@ -29,5 +29,10 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
             .Select(x => new AWSLambdaFunctionModel(x))
             .ToList();
 
+        public IList<DTOModel> DTOs => _element.ChildElements
+            .GetElementsOfType(DTOModel.SpecializationTypeId)
+            .Select(x => new DTOModel(x))
+            .ToList();
+
     }
 }
