@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -9,6 +10,11 @@ public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, IHasCSharpSt
     public IList<CSharpStatement> Statements { get; set; } = new List<CSharpStatement>();
     public CSharpAttribute(string name)
     {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
         if (name.StartsWith("[") && name.EndsWith("]"))
         {
             Name = name.Substring(1, name.Length - 2);

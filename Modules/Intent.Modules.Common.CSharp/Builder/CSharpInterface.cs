@@ -17,6 +17,15 @@ public class CSharpInterfaceProperty : CSharpProperty
 {
     public CSharpInterfaceProperty(string type, string name) : base(type, name, null)
     {
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(type));
+        }
+        
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
     }
 
     public override string GetText(string indentation)
@@ -34,6 +43,11 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface(string name)
     {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
         Name = name.ToCSharpIdentifier();
     }
 
@@ -46,6 +60,11 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public CSharpInterface ExtendsInterface(string type)
     {
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(type));
+        }
+        
         Interfaces.Add(type);
         return this;
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Xml;
 using Intent.Modules.Common.CSharp.Templates;
+using JetBrains.Annotations;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -20,6 +21,16 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
 
     public CSharpProperty(string type, string name, CSharpClass @class)
     {
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(type));
+        }
+        
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
         Type = type;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
