@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.2" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.5" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />

@@ -20,7 +20,8 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
-            return $"// Place your file template logic here";
+            return @$"// Place your file template logic here
+";
         }
     }
 }

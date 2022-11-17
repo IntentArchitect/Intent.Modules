@@ -36,7 +36,7 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder>(required)</placeholder>
-      <defaultValue>T4 Template</defaultValue>
+      <defaultValue>String Interpolation</defaultValue>
       <valueOptions>
         <option>T4 Template</option>
         <option>String Interpolation</option>

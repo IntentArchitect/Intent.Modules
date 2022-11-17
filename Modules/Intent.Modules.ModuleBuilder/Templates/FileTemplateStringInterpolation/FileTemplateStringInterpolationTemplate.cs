@@ -49,8 +49,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateStringInterpolation
             #line default
             #line hidden
             this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]\r\n        public " +
-                    "override string TransformText()\r\n        {\r\n            return $\"// Place your f" +
-                    "ile template logic here\";\r\n        }\r\n    }\r\n}");
+                    "override string TransformText()\r\n        {\r\n            return @$\"// Place your " +
+                    "file template logic here\r\n\";\r\n        }\r\n    }\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
