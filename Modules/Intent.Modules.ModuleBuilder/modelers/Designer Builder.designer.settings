@@ -201,7 +201,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       <childElementSettings>
         <childElementSetting type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
           <icon type="CharacterBox" source="V|#AB47BC" />
-          <saveAsOwnFile>false</saveAsOwnFile>
+          <saveAsOwnFile>true</saveAsOwnFile>
           <displayFunction>[visual]</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
@@ -1149,7 +1149,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         </childElementSetting>
         <childElementSetting type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
           <icon type="CharacterBox" source="V|#FFEE58" />
-          <saveAsOwnFile>false</saveAsOwnFile>
+          <saveAsOwnFile>true</saveAsOwnFile>
           <displayFunction>return `[visual]: ${typeReference.display}`</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>

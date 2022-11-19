@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public DesignersFolderModel DesignersFolder => UnderlyingPackage.ChildElements
             .GetElementsOfType(DesignersFolderModel.SpecializationTypeId)
             .Select(x => new DesignersFolderModel(x))

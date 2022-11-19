@@ -3,7 +3,7 @@
   <name>SVG Resource Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="b5566ace-3353-4009-9370-475b561451a0">Symbol Draw Settings</type>
+    <type id="b5566ace-3353-4009-9370-475b561451a0">SVG Resource Draw Settings</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>

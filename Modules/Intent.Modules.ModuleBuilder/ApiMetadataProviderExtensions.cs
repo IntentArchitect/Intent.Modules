@@ -25,6 +25,13 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static IList<AssociationVisualSettingsModel> GetAssociationVisualSettingsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(AssociationVisualSettingsModel.SpecializationTypeId)
+                .Select(x => new AssociationVisualSettingsModel(x))
+                .ToList();
+        }
+
         public static IList<CoreTypeModel> GetCoreTypeModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(CoreTypeModel.SpecializationTypeId)
@@ -71,6 +78,13 @@ namespace Intent.ModuleBuilder.Api
         {
             return designer.GetElementsOfType(ElementSettingsModel.SpecializationTypeId)
                 .Select(x => new ElementSettingsModel(x))
+                .ToList();
+        }
+
+        public static IList<ElementVisualSettingsModel> GetElementVisualSettingsModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ElementVisualSettingsModel.SpecializationTypeId)
+                .Select(x => new ElementVisualSettingsModel(x))
                 .ToList();
         }
 
