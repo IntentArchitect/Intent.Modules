@@ -33,6 +33,7 @@
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
@@ -92,6 +93,139 @@
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="a52fe34f-abf2-4ce5-b69e-e8549d7cba84" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+      <name>[visual]</name>
+      <display>[visual]: AWS API Gateway Endpoint</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="35ae8030-7893-4717-b2ee-52976b473d78">
+        <typeId>c0028dcd-38fd-42e4-b7d5-1c639d8899bd</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <comment />
+        <typePackageName>Intent.Modules.Modelers.Serverless.AWS</typePackageName>
+        <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>c0028dcd-38fd-42e4-b7d5-1c639d8899bd</parentFolderId>
+      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+      <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="60" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="e090db0c-9c6e-48ac-a444-65726a80516c" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+          <name>Display Text</name>
+          <display>[draw text]: Display Text</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>a52fe34f-abf2-4ce5-b69e-e8549d7cba84</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
+                <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
+                <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + h - 18}" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="2e3eafe7-5be3-4fee-9000-e71e305ce911" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+          <name>API Gateway</name>
+          <display>[draw svg]: API Gateway</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>a52fe34f-abf2-4ce5-b69e-e8549d7cba84</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082" name="SVG Resource Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="api-gateway.svg" isActive="true" />
+                <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 4}" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="${h-24}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="095cc7c7-24ad-43b3-9124-12fc93af4d0d" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
+          <name>Stereotype Icons</name>
+          <display>[stereotypes]: Stereotype Icons</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>a52fe34f-abf2-4ce5-b69e-e8549d7cba84</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
