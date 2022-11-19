@@ -6,6 +6,7 @@
   <packageSettings>
     <packageSetting type="Serverless Package" typeId="317ea0aa-0713-4bc0-bbd1-f2980b75f6a0">
       <sortChildren>by-type-then-by-name</sortChildren>
+      <defaultName>Serverless</defaultName>
       <requiredPackages />
     </packageSetting>
   </packageSettings>

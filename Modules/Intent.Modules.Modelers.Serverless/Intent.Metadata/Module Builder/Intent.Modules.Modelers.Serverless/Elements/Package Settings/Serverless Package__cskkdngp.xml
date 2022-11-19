@@ -14,7 +14,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="fc8c4bc7-d83c-40e7-a85f-35886682d910" display="Default Name" isActive="true" />
+        <property name="fc8c4bc7-d83c-40e7-a85f-35886682d910" display="Default Name" value="Serverless" isActive="true" />
         <property name="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563" display="Icon" isActive="true" />
         <property name="c15cbaf3-f83d-4e3f-b489-7bf88a5143c4" display="Sorting" value="By type, then by name" isActive="true" />
       </properties>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="90f0d89d-563d-4084-8bf6-0631c96f6243" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Serverless AWS DynamoDB Package Extensions</name>
+  <display>Serverless AWS DynamoDB Package Extensions: Serverless Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="6878c0a9-f877-413b-be66-9d29df52780b">
+    <typeId>317ea0aa-0713-4bc0-bbd1-f2980b75f6a0</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modules.Modelers.Serverless</typePackageName>
+    <typePackageId>45beec69-b53a-4627-bec9-0cb28c9414d2</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>f997dbf2-68b1-426f-9721-5c914a54fd34</parentFolderId>
+  <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+  <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="6be07f38-834f-4e56-9746-b341037cd526" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>90f0d89d-563d-4084-8bf6-0631c96f6243</parentFolderId>
+      <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+      <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="68dc92df-cf81-481f-8c4c-637b112b4abc" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add DynamoDB</name>
+          <display>Add DynamoDB: DynamoDB</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="45210754-e2f9-4157-ba5a-7f07eae1b21c">
+            <typeId>a7dae3ec-2063-434b-be58-3f86434f2340</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</typePackageName>
+            <typePackageId>d9fe1c50-86de-4561-a511-d718b507b6aa</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>6be07f38-834f-4e56-9746-b341037cd526</parentFolderId>
+          <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

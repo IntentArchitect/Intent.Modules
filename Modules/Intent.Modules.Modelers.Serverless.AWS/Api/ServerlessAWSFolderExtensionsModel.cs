@@ -19,19 +19,24 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
         {
         }
 
-        public IList<AWSAPIGatewayEndpointModel> AWSAPIGatewayEndpoints => _element.ChildElements
+        public IList<AWSAPIGatewayEndpointModel> APIGatewayEndpoints => _element.ChildElements
             .GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
             .Select(x => new AWSAPIGatewayEndpointModel(x))
-            .ToList();
-
-        public IList<AWSLambdaFunctionModel> AWSLambdaFunctions => _element.ChildElements
-            .GetElementsOfType(AWSLambdaFunctionModel.SpecializationTypeId)
-            .Select(x => new AWSLambdaFunctionModel(x))
             .ToList();
 
         public IList<DTOModel> DTOs => _element.ChildElements
             .GetElementsOfType(DTOModel.SpecializationTypeId)
             .Select(x => new DTOModel(x))
+            .ToList();
+
+        public IList<AWSLambdaFunctionModel> LambdaFunctions => _element.ChildElements
+            .GetElementsOfType(AWSLambdaFunctionModel.SpecializationTypeId)
+            .Select(x => new AWSLambdaFunctionModel(x))
+            .ToList();
+
+        public IList<AWSSimpleQueueServiceModel> SimpleQueueServices => _element.ChildElements
+            .GetElementsOfType(AWSSimpleQueueServiceModel.SpecializationTypeId)
+            .Select(x => new AWSSimpleQueueServiceModel(x))
             .ToList();
 
     }

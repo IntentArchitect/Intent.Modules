@@ -23,6 +23,6 @@
   <metadata>
     <install src="modelers/Serverless Types.designer.settings" externalReference="92b6d5d7-0d8b-4997-876d-7cc1dcb06ade" />
     <install src="modelers/Serverless.designer.config" externalReference="c0f08698-9c2d-4a38-9db5-660795733374" />
-    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Modules.Modelers.Serverless/Intent.Modules.Modelers.Serverless.pkg.config" externalReference="45beec69-b53a-4627-bec9-0cb28c9414d2" />
+    <install target="Module Builder;Serverless" src="Intent.Metadata/Module Builder/Intent.Modules.Modelers.Serverless/Intent.Modules.Modelers.Serverless.pkg.config" externalReference="45beec69-b53a-4627-bec9-0cb28c9414d2" />
   </metadata>
 </package>
