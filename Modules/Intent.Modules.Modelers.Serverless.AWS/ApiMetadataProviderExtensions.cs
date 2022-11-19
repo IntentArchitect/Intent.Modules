@@ -25,5 +25,12 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
                 .ToList();
         }
 
+        public static IList<DiagramModel> GetDiagramModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(DiagramModel.SpecializationTypeId)
+                .Select(x => new DiagramModel(x))
+                .ToList();
+        }
+
     }
 }

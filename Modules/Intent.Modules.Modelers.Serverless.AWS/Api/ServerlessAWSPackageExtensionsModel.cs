@@ -19,14 +19,22 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<AWSAPIGatewayEndpointModel> AWSAPIGatewayEndpoints => UnderlyingPackage.ChildElements
             .GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
             .Select(x => new AWSAPIGatewayEndpointModel(x))
             .ToList();
 
+        [IntentManaged(Mode.Fully)]
         public IList<AWSLambdaFunctionModel> AWSLambdaFunctions => UnderlyingPackage.ChildElements
             .GetElementsOfType(AWSLambdaFunctionModel.SpecializationTypeId)
             .Select(x => new AWSLambdaFunctionModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements
+            .GetElementsOfType(DiagramModel.SpecializationTypeId)
+            .Select(x => new DiagramModel(x))
             .ToList();
 
     }

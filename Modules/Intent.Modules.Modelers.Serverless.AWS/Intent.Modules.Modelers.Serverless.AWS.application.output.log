@@ -58,6 +58,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DiagramModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#49294a7f-9300-4feb-99f3-22076efea411</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/RequestBodyModel.cs</ApplicationRelativeFilePath>

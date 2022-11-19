@@ -170,16 +170,16 @@
           <properties>
             <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
             <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
-            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="100" isActive="true" />
             <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="60" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="d1406cef-90a4-4ba9-bcca-c08f138cbb61" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-          <name>Display Text</name>
-          <display>[draw text]: Display Text</display>
+        <childElement id="58156ebc-dff6-4996-b512-d9899c720885" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+          <name>Display Name</name>
+          <display>[draw text]: Display Name</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <isMapped>false</isMapped>
@@ -192,7 +192,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
+                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return getName();" isActive="true" />
                 <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
                 <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
               </properties>
@@ -204,6 +204,41 @@
               <properties>
                 <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
                 <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + h - 18}" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="f523b79f-2dae-4835-af5d-3aa89634fc53" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+          <name>Display 'function'</name>
+          <display>[draw text]: Display 'function'</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>ffc1c45f-63fa-4242-98b0-6c64168f5622</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'function';" isActive="true" />
+                <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
+                <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: normal; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + h}" isActive="true" />
                 <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
                 <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
               </properties>

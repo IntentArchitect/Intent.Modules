@@ -29,5 +29,10 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
             .Select(x => new AWSLambdaFunctionModel(x))
             .ToList();
 
+        public IList<DiagramModel> Diagrams => _element.ChildElements
+            .GetElementsOfType(DiagramModel.SpecializationTypeId)
+            .Select(x => new DiagramModel(x))
+            .ToList();
+
     }
 }

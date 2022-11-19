@@ -37,8 +37,8 @@
       <metadata />
       <childElements>
         <childElement id="1aa4d88a-edab-4d58-8bec-0a7b22f9b550" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add API Gateway Endpoint</name>
-          <display>Add API Gateway Endpoint: AWS API Gateway Endpoint</display>
+          <name>Add AWS API Gateway Endpoint</name>
+          <display>Add AWS API Gateway Endpoint: AWS API Gateway Endpoint</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="a6b3687d-9f3e-468f-a52d-c9939aee0de4">
@@ -76,8 +76,8 @@
           <childElements />
         </childElement>
         <childElement id="357a4094-f1d9-4b4d-a2c8-3908e1b7fa94" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Lambda Function</name>
-          <display>Add Lambda Function: AWS Lambda Function</display>
+          <name>Add AWS Lambda Function</name>
+          <display>Add AWS Lambda Function: AWS Lambda Function</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="05998225-ddd1-4798-8a8b-d025c9d5ce0a">
