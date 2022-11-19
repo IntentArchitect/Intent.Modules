@@ -84,7 +84,7 @@ namespace Intent.ModuleBuilder.Api
                     Hint = this.GetTypeReferenceSettings().Hint()
                 } : null,
                 DiagramSettings = DiagramSettings?.ToPersistable(),
-                ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToArray(),
+                ChildElementSettings = this.ElementSettings.Select(x => x.ToPersistable()).ToList(),
                 MappingSettings = this.MappingSettings.Select(x => x.ToPersistable()).ToList(),
                 CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
                     .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
