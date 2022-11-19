@@ -20,21 +20,27 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<AWSAPIGatewayEndpointModel> AWSAPIGatewayEndpoints => UnderlyingPackage.ChildElements
+        public IList<AWSAPIGatewayEndpointModel> APIGatewayEndpoints => UnderlyingPackage.ChildElements
             .GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
             .Select(x => new AWSAPIGatewayEndpointModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
-        public IList<AWSLambdaFunctionModel> AWSLambdaFunctions => UnderlyingPackage.ChildElements
+        public IList<DTOModel> DTOs => UnderlyingPackage.ChildElements
+            .GetElementsOfType(DTOModel.SpecializationTypeId)
+            .Select(x => new DTOModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Fully)]
+        public IList<AWSLambdaFunctionModel> LambdaFunctions => UnderlyingPackage.ChildElements
             .GetElementsOfType(AWSLambdaFunctionModel.SpecializationTypeId)
             .Select(x => new AWSLambdaFunctionModel(x))
             .ToList();
 
         [IntentManaged(Mode.Fully)]
-        public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements
-            .GetElementsOfType(DiagramModel.SpecializationTypeId)
-            .Select(x => new DiagramModel(x))
+        public IList<AWSSimpleQueueServiceModel> SimpleQueueServices => UnderlyingPackage.ChildElements
+            .GetElementsOfType(AWSSimpleQueueServiceModel.SpecializationTypeId)
+            .Select(x => new AWSSimpleQueueServiceModel(x))
             .ToList();
 
     }

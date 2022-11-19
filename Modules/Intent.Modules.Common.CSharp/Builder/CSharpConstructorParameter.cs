@@ -1,6 +1,7 @@
 using System;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
+using JetBrains.Annotations;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -12,6 +13,16 @@ public class CSharpConstructorParameter
 
     public CSharpConstructorParameter(string type, string name, CSharpConstructor constructor)
     {
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(type));
+        }
+        
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
         _constructor = constructor;
         Type = type;
         Name = name;

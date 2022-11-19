@@ -25,10 +25,24 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
                 .ToList();
         }
 
+        public static IList<AWSSimpleQueueServiceModel> GetAWSSimpleQueueServiceModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(AWSSimpleQueueServiceModel.SpecializationTypeId)
+                .Select(x => new AWSSimpleQueueServiceModel(x))
+                .ToList();
+        }
+
         public static IList<DiagramModel> GetDiagramModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(DiagramModel.SpecializationTypeId)
                 .Select(x => new DiagramModel(x))
+                .ToList();
+        }
+
+        public static IList<DTOModel> GetDTOModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(DTOModel.SpecializationTypeId)
+                .Select(x => new DTOModel(x))
                 .ToList();
         }
 

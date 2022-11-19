@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.CSharp.Builder;
+using JetBrains.Annotations;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -13,6 +14,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public CSharpClass(string name)
     {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+
         Name = name;
     }
     public string Name { get; private set; }

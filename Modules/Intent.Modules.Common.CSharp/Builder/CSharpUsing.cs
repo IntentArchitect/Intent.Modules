@@ -1,3 +1,5 @@
+using System;
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpUsing
@@ -6,6 +8,11 @@ public class CSharpUsing
 
     public CSharpUsing(string @namespace)
     {
+        if (string.IsNullOrWhiteSpace(@namespace))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(@namespace));
+        }
+
         Namespace = @namespace;
     }
 

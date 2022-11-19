@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="567df38e-e0ac-4b25-b8d6-7512328e0b9c" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d9fe1c50-86de-4561-a511-d718b507b6aa</parentFolderId>
+  <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+  <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

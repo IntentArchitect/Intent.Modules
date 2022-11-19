@@ -12,14 +12,24 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements
 {
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
-    protected string AsyncMode { get; private set; } = "";
+    protected string AsyncMode { get; private set; } = string.Empty;
     protected string AccessModifier { get; private set; } = "public ";
-    protected string OverrideModifier { get; private set; } = "";
+    protected string OverrideModifier { get; private set; } = string.Empty;
     public string ReturnType { get; private set; }
     public string Name { get; private set; }
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
     public CSharpClassMethod(string returnType, string name)
     {
+        if (string.IsNullOrWhiteSpace(returnType))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(returnType));
+        }
+        
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
         ReturnType = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;

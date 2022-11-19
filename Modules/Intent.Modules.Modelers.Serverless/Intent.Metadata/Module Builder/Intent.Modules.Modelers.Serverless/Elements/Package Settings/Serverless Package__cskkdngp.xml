@@ -3,7 +3,6 @@
   <name>Serverless Package</name>
   <display>Serverless Package</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>92b6d5d7-0d8b-4997-876d-7cc1dcb06ade</parentFolderId>
@@ -15,67 +14,12 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
-        <property name="fc8c4bc7-d83c-40e7-a85f-35886682d910" display="Default Name" isActive="true" />
+        <property name="fc8c4bc7-d83c-40e7-a85f-35886682d910" display="Default Name" value="Serverless" isActive="true" />
         <property name="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563" display="Icon" isActive="true" />
         <property name="c15cbaf3-f83d-4e3f-b489-7bf88a5143c4" display="Sorting" value="By type, then by name" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements>
-    <childElement id="0e0d2980-fcdf-477b-bdd3-ce67fb922452" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
-      <name>[context menu]</name>
-      <display>[context menu]</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>317ea0aa-0713-4bc0-bbd1-f2980b75f6a0</parentFolderId>
-      <packageId>45beec69-b53a-4627-bec9-0cb28c9414d2</packageId>
-      <packageName>Intent.Modules.Modelers.Serverless</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements>
-        <childElement id="52f0a523-fe25-4b61-97d0-3353d776a71b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Payload</name>
-          <display>Add Payload: Payload</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="fde40408-92dc-4728-af5d-b05afac7268c">
-            <typeId>f0e1fb65-8724-42e6-ad88-149650277251</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modules.Modelers.Serverless</typePackageName>
-            <typePackageId>45beec69-b53a-4627-bec9-0cb28c9414d2</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>0e0d2980-fcdf-477b-bdd3-ce67fb922452</parentFolderId>
-          <packageId>45beec69-b53a-4627-bec9-0cb28c9414d2</packageId>
-          <packageName>Intent.Modules.Modelers.Serverless</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

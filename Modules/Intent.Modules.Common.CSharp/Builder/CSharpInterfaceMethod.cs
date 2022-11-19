@@ -11,6 +11,16 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
     public CSharpInterfaceMethod(string returnType, string name)
     {
+        if (string.IsNullOrWhiteSpace(returnType))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(returnType));
+        }
+        
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
         ReturnType = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;

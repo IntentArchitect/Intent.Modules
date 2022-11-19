@@ -37,8 +37,8 @@
       <metadata />
       <childElements>
         <childElement id="1aa4d88a-edab-4d58-8bec-0a7b22f9b550" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add AWS API Gateway Endpoint</name>
-          <display>Add AWS API Gateway Endpoint: AWS API Gateway Endpoint</display>
+          <name>Add API Gateway Endpoint</name>
+          <display>Add API Gateway Endpoint: AWS API Gateway Endpoint</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="a6b3687d-9f3e-468f-a52d-c9939aee0de4">
@@ -75,9 +75,48 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="52f0a523-fe25-4b61-97d0-3353d776a71b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add DTO</name>
+          <display>Add DTO: DTO</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="fde40408-92dc-4728-af5d-b05afac7268c">
+            <typeId>f0e1fb65-8724-42e6-ad88-149650277251</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2a35e810-f7b3-4d95-8456-2ac447718422</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="357a4094-f1d9-4b4d-a2c8-3908e1b7fa94" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add AWS Lambda Function</name>
-          <display>Add AWS Lambda Function: AWS Lambda Function</display>
+          <name>Add Lambda Function</name>
+          <display>Add Lambda Function: AWS Lambda Function</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="05998225-ddd1-4798-8a8b-d025c9d5ce0a">
@@ -114,13 +153,13 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="f91fc5cb-2226-4b32-8860-6554ca89a1c1" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Diagram</name>
-          <display>Add Diagram: Diagram</display>
+        <childElement id="3ad15eb6-78fd-4c69-ab3c-9689c712eb27" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Simple Queue Service</name>
+          <display>Add Simple Queue Service: AWS Simple Queue Service</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="6bdef5b8-a4a1-414f-bb57-ab2457be7e87">
-            <typeId>de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</typeId>
+          <typeReference id="27ba4ec9-7458-4e03-8cf3-959bfabf9eb4">
+            <typeId>f0627dc5-3d62-4504-a031-90a0a13dfa9d</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

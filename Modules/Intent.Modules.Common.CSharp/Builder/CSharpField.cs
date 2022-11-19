@@ -1,3 +1,5 @@
+using System;
+
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpField : CSharpMember<CSharpField>
@@ -9,6 +11,16 @@ public class CSharpField : CSharpMember<CSharpField>
 
     public CSharpField(string type, string name)
     {
+        if (string.IsNullOrWhiteSpace(type))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(type));
+        }
+        
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentException("Cannot be null or empty", nameof(name));
+        }
+        
         AccessModifier = "private ";
         Type = type;
         Name = name;

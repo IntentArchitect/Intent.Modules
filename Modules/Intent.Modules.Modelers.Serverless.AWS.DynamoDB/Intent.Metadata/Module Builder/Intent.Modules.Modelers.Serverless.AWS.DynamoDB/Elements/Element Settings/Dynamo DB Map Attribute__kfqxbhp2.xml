@@ -1,0 +1,394 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4b5f63fc-2019-4ec0-8f1a-4f47f397a60c" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Dynamo DB Map Attribute</name>
+  <display>Dynamo DB Map Attribute</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>83f50394-05f3-422d-b33f-ad2b4a2a4008</parentFolderId>
+  <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+  <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA0tJREFUaEPtmk1oXFUUx3//W0OSIhQsFoLtohFRCt20YF3Y4kpKN5XJRIWKgqKWigtBhdCP3JeImxahC4UWqiC2LjIzWhdWuhIEP4JxoRZaiqsqLSikgpBAMveUO8xIMu0k0TfkvYb3tvfdc8/vnHPPvee8J+7yR3e5/vwLUBo16zZMj9hZF1tC4POuyha/17y2RJlrD6CWKHVYlbxNYexY6AGJ81Wvp9J44oC3zTPGNZbyQCeA4XF7OAT2AJtkTJtjqnKUSUm3hV6uAJ7xtmMOTmI83m49iasO3pzw+mLhWG4Ahr2V6/AJRi/ipuA74BLGVsRjZjzQUNzha6NKWhC5AGha/tum8mf7enn93IimW0q+csp6/rrOUWAE4x4nXqh4fRzHcwFQ8vZNDBuJc1WvA50231Bib1jgPYk/HQxOeP2TOUDcsPV5Lsew6etlcKHl20G8N/czTGLsdI7nKqM6mznAUGIvW+C0xIWq177lUl/Z23gwjiBO1bwO5gHgsAXekThR9XprBQDPBuNTxGc1r1LmAGVvh4LxvqBaTVReDqCU2AiBdxEf1bxezBxgaMx2WZ3vJf7YOMDW069qbimIkrcLGHudeK3i9UHmAGamcsIVMx5CjNe8jnUCKCe2P17WBDNOjSx0I3OAqGxLMcS8xNvbjZPeKywEie+Y8aEZ90mMVb1Gc3MONCC8+WA0lJL4UfBVEL8Cgxh7Ytg0x867bQxNPK16rgCaEM8bnDDj/tvuQjCDOO62MdZSPncAUaFhb/ea2B+M3fE2CtyUmHJGNcZ8O1gu9sByqXOZrJRdPYD4KY3yzbmPYKxfVNDA3yZ+SyNb0GPG9iULmjQLtM9d1Zo4Xp+7qXyUtQEuT/fR42Z5sJuyg2Nu4ph+aWTAluCY07u5SEN4L18zS7+JXV2VHZipJLq4CGDNtFVi9yC1tYwnDDa0dSViuv0hpex+M578X12J/7JwcQ50sFaqvlDhgaw7c4UHCg9AsYlXug+Kc6A4B1YaKx3eK0KoCKEihDL8StkvGh+Q0zyz8GXsHrQVNBf74KU0cucdA3N1JtdmV6Lk7Voa69xp7jrHPqszEMSZrso2rtcSPbqoqO/qAqsoLPVvBauo6x2XugVF+fteXhfiywAAAABJRU5ErkJggg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="53c3c82d-9fed-4a2a-9652-b90f2c31ea76" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</parentFolderId>
+      <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+      <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="f514b376-2cf2-4d81-a12c-b8727145c37e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Value Attribute</name>
+          <display>Add Value Attribute: Dynamo DB Scalar Value Attribute</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8483ea27-f2fd-4e6f-a4f2-6561dce77eb7">
+            <typeId>a39e6629-9daf-418b-a5ec-25f05d26753e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</typePackageName>
+            <typePackageId>d9fe1c50-86de-4561-a511-d718b507b6aa</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>53c3c82d-9fed-4a2a-9652-b90f2c31ea76</parentFolderId>
+          <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="12e2b994-dcaf-4b6a-8691-936d7805e48b" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Association</name>
+          <display>Add Association: DynamoDB Item Association</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8e1e5701-22c1-4f65-8a94-1358f8dc28dc">
+            <typeId>605bfe10-c345-4493-a2aa-f0605e45d2ed</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</typePackageName>
+            <typePackageId>d9fe1c50-86de-4561-a511-d718b507b6aa</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>53c3c82d-9fed-4a2a-9652-b90f2c31ea76</parentFolderId>
+          <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="685f713e-1666-44c0-8f17-fdddea0a0cc7" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+      <name>[visual]</name>
+      <display>[visual]: Dynamo DB Map Attribute</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <typeReference id="09532451-a437-42f1-9b0a-de9343bc57ca">
+        <typeId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</typePackageName>
+        <typePackageId>d9fe1c50-86de-4561-a511-d718b507b6aa</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</parentFolderId>
+      <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+      <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="382f0ccb-7872-4839-8344-4f66ea7fdbe3" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+          <name>Rectangle</name>
+          <display>[draw path]: Rectangle</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>685f713e-1666-44c0-8f17-fdddea0a0cc7</parentFolderId>
+          <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="a82e406f-efc6-4d9c-86ea-6c28d9509da4" name="Path Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`" isActive="true" />
+                <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" isActive="true" />
+                <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
+                <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" value="" isActive="true" />
+                <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
+                <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" value="" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="487e35fc-1e6f-42bc-985b-f2eecdf01dfc" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+          <name>Display Text</name>
+          <display>[draw text]: Display Text</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>685f713e-1666-44c0-8f17-fdddea0a0cc7</parentFolderId>
+          <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
+                <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
+                <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;`" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 8}" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="5d03a3cd-efbc-4288-8986-272ef70c198c" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
+          <name>Stereotype Icons</name>
+          <display>[stereotypes]: Stereotype Icons</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>685f713e-1666-44c0-8f17-fdddea0a0cc7</parentFolderId>
+          <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="31d83292-a56e-4141-ad94-e45329acae73" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+          <name>NewElementVisualSettings</name>
+          <display>[visual]: Dynamo DB Scalar Value Attribute</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-manually</sort-children>
+          <genericTypes />
+          <typeReference id="be025e7a-7081-443c-b90b-d9393a8f8d7a">
+            <typeId>a39e6629-9daf-418b-a5ec-25f05d26753e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</typePackageName>
+            <typePackageId>d9fe1c50-86de-4561-a511-d718b507b6aa</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>685f713e-1666-44c0-8f17-fdddea0a0cc7</parentFolderId>
+          <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+          <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="`${parent.x}`" isActive="true" />
+                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="`${parent.y + ($index * 18) + 36}`" isActive="true" />
+                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="`${parent.w}`" isActive="true" />
+                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements>
+            <childElement id="1103c6db-07e5-403c-a038-84a8b11b50db" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+              <name>Separator</name>
+              <display>[draw path]: Separator</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>31d83292-a56e-4141-ad94-e45329acae73</parentFolderId>
+              <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+              <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="a82e406f-efc6-4d9c-86ea-6c28d9509da4" name="Path Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x},${y - 6} h${w}`" isActive="true" />
+                    <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" value="return $firstOfType;" isActive="true" />
+                    <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
+                    <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" isActive="true" />
+                    <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
+                    <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="e514ad15-e40b-466a-b1fc-7eab24fd9be6" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+              <name>Display Text</name>
+              <display>[draw text]: Display Text</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>31d83292-a56e-4141-ad94-e45329acae73</parentFolderId>
+              <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+              <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
+                    <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
+                    <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                    <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+                    <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                    <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="${h}" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="9092eda3-923d-4194-8ded-4c96b5c3c68e" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
+              <name>Stereotype Icons</name>
+              <display>[stereotypes]: Stereotype Icons</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>31d83292-a56e-4141-ad94-e45329acae73</parentFolderId>
+              <packageId>d9fe1c50-86de-4561-a511-d718b507b6aa</packageId>
+              <packageName>Intent.Modules.Modelers.Serverless.AWS.DynamoDB</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+                    <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
+                    <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+                    <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>
