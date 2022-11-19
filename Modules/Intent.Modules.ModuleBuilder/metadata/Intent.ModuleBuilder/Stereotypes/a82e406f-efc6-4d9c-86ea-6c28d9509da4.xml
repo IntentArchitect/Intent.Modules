@@ -11,7 +11,7 @@
   <displayIcon>false</displayIcon>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
-  <displayAsText>true</displayAsText>
+  <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>

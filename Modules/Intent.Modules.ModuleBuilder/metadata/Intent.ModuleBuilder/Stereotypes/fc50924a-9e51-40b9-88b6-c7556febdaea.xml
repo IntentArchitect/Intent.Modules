@@ -6,6 +6,7 @@
     <type id="0250c934-455b-4bb6-b5d9-077c6e1ce72c">Text Draw Settings</type>
     <type id="08620c8b-f6d3-472e-86b6-926fe110d526">Stereotypes Visual Settings</type>
     <type id="5eea5fba-15df-4971-8541-6f19bad4297d">Element Visual Settings</type>
+    <type id="b5566ace-3353-4009-9370-475b561451a0">Symbol Draw Settings</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>
@@ -13,7 +14,7 @@
   <displayIcon>false</displayIcon>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
-  <displayAsText>true</displayAsText>
+  <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
   <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>

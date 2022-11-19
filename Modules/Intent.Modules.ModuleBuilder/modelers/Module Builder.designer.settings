@@ -113,6 +113,7 @@
         <type order="8">Factory Extension</type>
         <type order="9">Stereotype-Definition</type>
       </typeOrder>
+      <macros />
     </packageSetting>
   </packageSettings>
   <packageExtensions />

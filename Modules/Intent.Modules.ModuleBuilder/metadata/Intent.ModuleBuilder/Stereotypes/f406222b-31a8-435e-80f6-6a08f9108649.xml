@@ -36,6 +36,7 @@
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
     <property id="736b1337-6f35-4e38-85a8-69ff5d69fb7d">
+      <hint />
       <name>Icon</name>
       <type>string</type>
       <controlType>icon</controlType>
@@ -53,6 +54,17 @@
       <placeholder>(default)</placeholder>
       <valueOptions />
       <lookupTypes />
+    </property>
+    <property id="b966a8e9-f298-4741-8397-fe49f29c248b">
+      <hint>Uses default icons if this function returns null.</hint>
+      <name>Icon Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
     </property>
     <property id="0632053a-6b40-47a0-857f-6840e322344c">
       <name>Display Text Function</name>
