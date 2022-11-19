@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Serverless.AWS.Api
+namespace Intent.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class ServerlessAWSFolderExtensionsModel : FolderModel
@@ -34,14 +34,14 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
             .Select(x => new AWSLambdaFunctionModel(x))
             .ToList();
 
-        public IList<AWSSimpleQueueServiceModel> SimpleQueueServices => _element.ChildElements
-            .GetElementsOfType(AWSSimpleQueueServiceModel.SpecializationTypeId)
-            .Select(x => new AWSSimpleQueueServiceModel(x))
-            .ToList();
-
         public IList<DiagramModel> Diagrams => _element.ChildElements
             .GetElementsOfType(DiagramModel.SpecializationTypeId)
             .Select(x => new DiagramModel(x))
+            .ToList();
+
+        public IList<AWSSimpleQueueServiceQueueModel> SimpleQueueServiceQueues => _element.ChildElements
+            .GetElementsOfType(AWSSimpleQueueServiceQueueModel.SpecializationTypeId)
+            .Select(x => new AWSSimpleQueueServiceQueueModel(x))
             .ToList();
 
     }

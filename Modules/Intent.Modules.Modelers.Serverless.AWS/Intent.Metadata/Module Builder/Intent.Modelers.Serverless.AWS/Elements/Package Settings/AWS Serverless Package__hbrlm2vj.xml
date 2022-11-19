@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="a95a0fde-f67b-4e4a-b9a8-745021efbdb6" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+  <name>AWS Serverless Package</name>
+  <display>AWS Serverless Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>561d0013-3b1a-404c-ba80-80d99690c746</parentFolderId>
+  <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+  <packageName>Intent.Modelers.Serverless.AWS</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="0cda9040-7af2-4bb5-8f9d-919455abc878" name="Package Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="fc8c4bc7-d83c-40e7-a85f-35886682d910" display="Default Name" value="AWS Serverless" isActive="true" />
+        <property name="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563" display="Icon" isActive="true" />
+        <property name="c15cbaf3-f83d-4e3f-b489-7bf88a5143c4" display="Sorting" value="By type, then by name" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="4ef44819-e562-4add-9970-76d7799734ed" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>a95a0fde-f67b-4e4a-b9a8-745021efbdb6</parentFolderId>
+      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+      <packageName>Intent.Modelers.Serverless.AWS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="e7628a4c-ec72-4cd7-9c36-2dbaccfdf0cf" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New API Gateway Endpoint</name>
+          <display>New API Gateway Endpoint: AWS API Gateway Endpoint</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="a4dabc2e-c2c5-4c17-a8d2-069affac76fa">
+            <typeId>c0028dcd-38fd-42e4-b7d5-1c639d8899bd</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4ef44819-e562-4add-9970-76d7799734ed</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="3baaddb8-85ee-4355-93d3-f3240039dd38" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New DTO</name>
+          <display>New DTO: DTO</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="20e1ceb8-b48f-40d4-ae01-a087234ed1fe">
+            <typeId>648405f0-9f21-4349-b112-542bf1d5ede4</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4ef44819-e562-4add-9970-76d7799734ed</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="b8ff95dc-f9ae-42c3-9047-443d17e81a4e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Lambda Function</name>
+          <display>New Lambda Function: AWS Lambda Function</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="1bd095e3-dc78-4be4-a85c-3b54b7b6ff9d">
+            <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4ef44819-e562-4add-9970-76d7799734ed</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="4debb8dd-2e6f-45b7-870e-3c14873b87e5" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Diagram</name>
+          <display>New Diagram: Diagram</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="ebd2b30b-8399-429d-ad39-da2c818c009d">
+            <typeId>de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4ef44819-e562-4add-9970-76d7799734ed</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="fe75b311-841d-4841-9c18-b02d9b507132" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Simple Queue Service Queue</name>
+          <display>New Simple Queue Service Queue: AWS Simple Queue Service Queue</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="3ef787e3-312a-4d22-bf55-25a45cdfa920">
+            <typeId>ed9035bc-31b0-4591-aac6-9a950099cbd5</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4ef44819-e562-4add-9970-76d7799734ed</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.Serverless.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

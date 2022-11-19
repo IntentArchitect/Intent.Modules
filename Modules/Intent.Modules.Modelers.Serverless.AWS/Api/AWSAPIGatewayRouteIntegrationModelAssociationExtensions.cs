@@ -5,7 +5,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Serverless.AWS.Api
+namespace Intent.Modelers.Serverless.AWS.Api
 {
     public static class AWSAPIGatewayRouteIntegrationModelAssociationExtensions
     {

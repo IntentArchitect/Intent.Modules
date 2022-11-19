@@ -58,10 +58,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f0627dc5-3d62-4504-a031-90a0a13dfa9d</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#a95a0fde-f67b-4e4a-b9a8-745021efbdb6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSSimpleQueueServiceModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSSimpleQueueServiceModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AWSServerlessPackageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSServerlessPackageModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -82,18 +82,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#f0e1fb65-8724-42e6-ad88-149650277251</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#9e1a18f3-c6b1-495e-81be-cea88f37706f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DTOModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DTOModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/DTOFieldModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DTOFieldModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#853c436b-3be8-419d-8a49-2962e117dd95</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#648405f0-9f21-4349-b112-542bf1d5ede4</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/PayloadFieldModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>PayloadFieldModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/DTOModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DTOModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -129,11 +129,11 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#368a9e2a-d24d-4798-b24c-0e9694567d9f</CorrelationId>
+      <ProjectId>5fb83c5e-d7b9-4052-ba7e-f46a2a67a271</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServerlessAWSPackageExtensionsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServerlessAWSPackageExtensionsModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -146,18 +146,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>5fb83c5e-d7b9-4052-ba7e-f46a2a67a271</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#5fb83c5e-d7b9-4052-ba7e-f46a2a67a271</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Serverless.AWS.csproj</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.Serverless.AWS.csproj</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modelers.Serverless.AWS.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modelers.Serverless.AWS.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>5fb83c5e-d7b9-4052-ba7e-f46a2a67a271</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#5fb83c5e-d7b9-4052-ba7e-f46a2a67a271</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Serverless.AWS.imodspec</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.Serverless.AWS.imodspec</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Serverless.AWS.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.Serverless.AWS.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

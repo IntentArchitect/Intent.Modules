@@ -9,13 +9,13 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Serverless.AWS.Api
+namespace Intent.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class DTOModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public const string SpecializationType = "DTO";
-        public const string SpecializationTypeId = "f0e1fb65-8724-42e6-ad88-149650277251";
+        public const string SpecializationTypeId = "648405f0-9f21-4349-b112-542bf1d5ede4";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
@@ -43,9 +43,9 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
 
         public IElement InternalElement => _element;
 
-        public IList<PayloadFieldModel> Fields => _element.ChildElements
-            .GetElementsOfType(PayloadFieldModel.SpecializationTypeId)
-            .Select(x => new PayloadFieldModel(x))
+        public IList<DTOFieldModel> Fields => _element.ChildElements
+            .GetElementsOfType(DTOFieldModel.SpecializationTypeId)
+            .Select(x => new DTOFieldModel(x))
             .ToList();
 
         public override string ToString()

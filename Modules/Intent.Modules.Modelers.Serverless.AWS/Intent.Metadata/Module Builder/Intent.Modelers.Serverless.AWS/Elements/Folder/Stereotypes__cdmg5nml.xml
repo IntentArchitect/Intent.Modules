@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="83f40da5-eb9e-4856-b59c-541600198099" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Stereotypes</name>
+  <display>Stereotypes</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</parentFolderId>
+  <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+  <packageName>Intent.Modelers.Serverless.AWS</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

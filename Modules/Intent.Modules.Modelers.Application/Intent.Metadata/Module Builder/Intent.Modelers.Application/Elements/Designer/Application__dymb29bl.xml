@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="9ed374bb-a19c-46b4-ac58-e8adcbd11063" type="Designer" typeId="7f5fcc9f-c721-4a31-bfe2-7909f4289420">
+  <name>Application</name>
+  <display>Application</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>72e31e0b-02f9-4b64-8d49-ba0366ac041b</parentFolderId>
+  <packageId>76211ef7-f36d-48d8-bdb7-c04b735310f9</packageId>
+  <packageName>Intent.Modelers.Application</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="6761be76-7c09-4ad4-8a65-82c6d17992db" name="Designer Config">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="84ac204b-f187-45b7-b3c3-efb26db2d9d8" display="Icon" value="{&quot;source&quot;:&quot;question-circle&quot;,&quot;type&quot;:2,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="179da558-7e6e-43b0-ab61-5d76a2b879d0" display="Display Order" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="4370da25-0cfb-4368-b4c4-4a0b08ebb319" type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
+      <name>reference</name>
+      <display>reference: Common Types</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <typeReference id="0fd8e820-6b76-488e-952d-f496be1f16d7">
+        <typeId>55d06096-83fe-4acf-86ef-586d254e5170</typeId>
+        <isNavigable>true</isNavigable>
+        <isNullable>false</isNullable>
+        <isCollection>false</isCollection>
+        <isRequired>true</isRequired>
+        <typePackageName>Intent.Common.Types</typePackageName>
+        <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+        <stereotypes />
+        <genericTypeParameters />
+      </typeReference>
+      <isMapped>false</isMapped>
+      <parentFolderId>9ed374bb-a19c-46b4-ac58-e8adcbd11063</parentFolderId>
+      <packageId>76211ef7-f36d-48d8-bdb7-c04b735310f9</packageId>
+      <packageName>Intent.Modelers.Application</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="72e31e0b-02f9-4b64-8d49-ba0366ac041b" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>76211ef7-f36d-48d8-bdb7-c04b735310f9</parentFolderId>
+  <packageId>76211ef7-f36d-48d8-bdb7-c04b735310f9</packageId>
+  <packageName>Intent.Modelers.Application</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

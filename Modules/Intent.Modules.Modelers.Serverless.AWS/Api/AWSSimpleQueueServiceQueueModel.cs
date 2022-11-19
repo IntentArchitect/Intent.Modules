@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Serverless.AWS.Api
+namespace Intent.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class AWSSimpleQueueServiceQueueModel : IMetadataModel, IHasStereotypes, IHasName
+    public class AWSSimpleQueueServiceQueueModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public const string SpecializationType = "AWS Simple Queue Service Queue";
         public const string SpecializationTypeId = "ed9035bc-31b0-4591-aac6-9a950099cbd5";
@@ -25,6 +26,7 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -34,6 +36,8 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 

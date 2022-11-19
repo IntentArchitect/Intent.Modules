@@ -7,7 +7,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Serverless.AWS.Api
+namespace Intent.Modelers.Serverless.AWS.Api
 {
     public static class ApiMetadataProviderExtensions
     {
@@ -25,10 +25,10 @@ namespace Intent.Modules.Modelers.Serverless.AWS.Api
                 .ToList();
         }
 
-        public static IList<AWSSimpleQueueServiceModel> GetAWSSimpleQueueServiceModels(this IDesigner designer)
+        public static IList<AWSSimpleQueueServiceQueueModel> GetAWSSimpleQueueServiceQueueModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(AWSSimpleQueueServiceModel.SpecializationTypeId)
-                .Select(x => new AWSSimpleQueueServiceModel(x))
+            return designer.GetElementsOfType(AWSSimpleQueueServiceQueueModel.SpecializationTypeId)
+                .Select(x => new AWSSimpleQueueServiceQueueModel(x))
                 .ToList();
         }
 
