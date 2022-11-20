@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.DynamoDB.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DynamoDBTableModel : IMetadataModel, IHasStereotypes, IHasName
+    public class DynamoDBTableSortKeyModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "DynamoDB Table";
-        public const string SpecializationTypeId = "b45fcd71-d5a3-48c7-9dd5-e6a138080bcf";
+        public const string SpecializationType = "Dynamo DB Table Sort Key";
+        public const string SpecializationTypeId = "c36c6e5a-0945-41a5-a619-59714e4738c5";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public DynamoDBTableModel(IElement element, string requiredType = SpecializationType)
+        public DynamoDBTableSortKeyModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,29 +35,16 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public ITypeReference TypeReference => _element.TypeReference;
+
         public IElement InternalElement => _element;
-
-        public DynamoDBTableHashKeyModel HashKey => _element.ChildElements
-            .GetElementsOfType(DynamoDBTableHashKeyModel.SpecializationTypeId)
-            .Select(x => new DynamoDBTableHashKeyModel(x))
-            .SingleOrDefault();
-
-        public DynamoDBTableSortKeyModel SortKey => _element.ChildElements
-            .GetElementsOfType(DynamoDBTableSortKeyModel.SpecializationTypeId)
-            .Select(x => new DynamoDBTableSortKeyModel(x))
-            .SingleOrDefault();
-
-        public IList<DynamoDBItemModel> Items => _element.ChildElements
-            .GetElementsOfType(DynamoDBItemModel.SpecializationTypeId)
-            .Select(x => new DynamoDBItemModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(DynamoDBTableModel other)
+        public bool Equals(DynamoDBTableSortKeyModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -67,7 +54,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DynamoDBTableModel)obj);
+            return Equals((DynamoDBTableSortKeyModel)obj);
         }
 
         public override int GetHashCode()
@@ -77,17 +64,17 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class DynamoDBTableModelExtensions
+    public static class DynamoDBTableSortKeyModelExtensions
     {
 
-        public static bool IsDynamoDBTableModel(this ICanBeReferencedType type)
+        public static bool IsDynamoDBTableSortKeyModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DynamoDBTableModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == DynamoDBTableSortKeyModel.SpecializationTypeId;
         }
 
-        public static DynamoDBTableModel AsDynamoDBTableModel(this ICanBeReferencedType type)
+        public static DynamoDBTableSortKeyModel AsDynamoDBTableSortKeyModel(this ICanBeReferencedType type)
         {
-            return type.IsDynamoDBTableModel() ? new DynamoDBTableModel((IElement)type) : null;
+            return type.IsDynamoDBTableSortKeyModel() ? new DynamoDBTableSortKeyModel((IElement)type) : null;
         }
     }
 }

@@ -66,10 +66,42 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#a39e6629-9daf-418b-a5ec-25f05d26753e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DynamoDBScalarValueAttributeModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DynamoDBScalarValueAttributeModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#03fe7ef6-a0a2-4834-bd9b-0500a77c2471</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DynamoDBTableHashKeyModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DynamoDBTableHashKeyModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBTableModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DynamoDBTableModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DynamoDBTableModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DynamoDBTableModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c36c6e5a-0945-41a5-a619-59714e4738c5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DynamoDBTableSortKeyModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DynamoDBTableSortKeyModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

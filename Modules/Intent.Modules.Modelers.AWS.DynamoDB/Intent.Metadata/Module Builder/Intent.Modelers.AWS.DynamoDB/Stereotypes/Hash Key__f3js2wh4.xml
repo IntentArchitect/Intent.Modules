@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="2c71c0bd-696e-4f34-be14-13d5368feec3" version="3.1.0">
+  <name>Hash Key</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="a39e6629-9daf-418b-a5ec-25f05d26753e">Dynamo DB Scalar Value Attribute</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="hashtag" />
+  <displayIcon>true</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>789221a4-bae5-48bc-880d-2fd6b8395f4b</parentFolderId>
+  <order>0</order>
+  <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+  <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+  <properties />
+</stereotypeDefinition>

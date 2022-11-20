@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="5fe5524f-978b-4a2a-bb5c-48146de6a9f1" version="3.1.0">
+  <name>DynamoDB Table Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="b45fcd71-d5a3-48c7-9dd5-e6a138080bcf">DynamoDB Table</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>789221a4-bae5-48bc-880d-2fd6b8395f4b</parentFolderId>
+  <order>0</order>
+  <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+  <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+  <properties>
+    <property id="706f4278-47f8-48e6-924b-acb89784a711">
+      <name>ProvisionedThroughput - ReadCapacityUnits</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>1</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="de9f8c31-47f5-45d4-838c-b77161e49ae9">
+      <name>ProvisionedThroughput - WriteCapacityUnits</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>1</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>
