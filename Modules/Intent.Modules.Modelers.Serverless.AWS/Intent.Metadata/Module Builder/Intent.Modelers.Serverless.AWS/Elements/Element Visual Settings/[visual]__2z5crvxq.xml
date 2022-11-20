@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="ffc1c45f-63fa-4242-98b0-6c64168f5622" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+<class id="3c8d052b-21ce-4e80-93c9-8982158e3644" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: AWS Lambda Function</display>
+  <display>[visual]: AWS Simple Queue Service Queue</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
-  <typeReference id="9bff99c4-c966-4af8-b847-ec17061217bf">
-    <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
+  <typeReference id="e2ec2631-41a5-4097-8a0a-f148cba244ed">
+    <typeId>ed9035bc-31b0-4591-aac6-9a950099cbd5</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -19,7 +19,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>de02db8b-e18f-423c-b4da-5f717a04075e</parentFolderId>
+  <parentFolderId>ed9035bc-31b0-4591-aac6-9a950099cbd5</parentFolderId>
   <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
   <packageName>Intent.Modelers.Serverless.AWS</packageName>
   <stereotypes>
@@ -37,13 +37,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="58156ebc-dff6-4996-b512-d9899c720885" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+    <childElement id="e13852f4-f955-431c-b96c-aec6d5dbb547" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Display Name</name>
       <display>[draw text]: Display Name</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ffc1c45f-63fa-4242-98b0-6c64168f5622</parentFolderId>
+      <parentFolderId>3c8d052b-21ce-4e80-93c9-8982158e3644</parentFolderId>
       <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
       <packageName>Intent.Modelers.Serverless.AWS</packageName>
       <stereotypes>
@@ -72,13 +72,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="f523b79f-2dae-4835-af5d-3aa89634fc53" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-      <name>Display 'function'</name>
-      <display>[draw text]: Display 'function'</display>
+    <childElement id="d94715e9-a2cb-46db-8d10-9dfe2db9b39f" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Display 'queue'</name>
+      <display>[draw text]: Display 'queue'</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ffc1c45f-63fa-4242-98b0-6c64168f5622</parentFolderId>
+      <parentFolderId>3c8d052b-21ce-4e80-93c9-8982158e3644</parentFolderId>
       <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
       <packageName>Intent.Modelers.Serverless.AWS</packageName>
       <stereotypes>
@@ -87,7 +87,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'function';" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'queue';" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: normal; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
           </properties>
@@ -107,13 +107,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="4e0c3a46-d5bd-406e-ae9b-bf3fa1c91586" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+    <childElement id="fff62a0c-0026-4f78-9d11-5a3598db1d73" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
       <name>Lambda</name>
       <display>[draw svg]: Lambda</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ffc1c45f-63fa-4242-98b0-6c64168f5622</parentFolderId>
+      <parentFolderId>3c8d052b-21ce-4e80-93c9-8982158e3644</parentFolderId>
       <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
       <packageName>Intent.Modelers.Serverless.AWS</packageName>
       <stereotypes>
@@ -122,7 +122,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="aws-lambda.svg" isActive="true" />
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="amazon-sqs.svg" isActive="true" />
             <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" isActive="true" />
           </properties>
         </stereotype>
@@ -141,13 +141,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="d742ef20-cfd3-4563-a922-49f0e520c3ac" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
+    <childElement id="752d6676-e24a-42ef-adf4-90b1a89e1112" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
       <name>Stereotype Icons</name>
       <display>[stereotypes]: Stereotype Icons</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>ffc1c45f-63fa-4242-98b0-6c64168f5622</parentFolderId>
+      <parentFolderId>3c8d052b-21ce-4e80-93c9-8982158e3644</parentFolderId>
       <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
       <packageName>Intent.Modelers.Serverless.AWS</packageName>
       <stereotypes>

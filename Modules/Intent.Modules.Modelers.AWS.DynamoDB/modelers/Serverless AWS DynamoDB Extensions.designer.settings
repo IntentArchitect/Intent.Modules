@@ -332,6 +332,45 @@ white-space: inherit;`</style>
         </creationOptions>
         <scriptOptions />
       </diagramSettings>
+      <visualSettings type="DynamoDB Table">
+        <size width="100" height="80" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawText>
+            <text>return getName();</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + h - 36}" />
+          </drawText>
+          <drawText>
+            <text>return 'table';</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: normal; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + h - 18}" />
+          </drawText>
+          <drawSvgResource>
+            <path>dynamodb-table.svg</path>
+            <size width="${w}" height="${h-44}" />
+            <position x="${x}" y="${y + 6}" />
+          </drawSvgResource>
+        </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
+        <defaultSize width="100" height="80" />
+        <childElementVisualSettings />
+      </visualSettings>
       <childElementSettings>
         <childElementSetting type="Dynamo DB Table Hash Key" typeId="03fe7ef6-a0a2-4834-bd9b-0500a77c2471">
           <icon type="FontAwesome" source="hashtag" />

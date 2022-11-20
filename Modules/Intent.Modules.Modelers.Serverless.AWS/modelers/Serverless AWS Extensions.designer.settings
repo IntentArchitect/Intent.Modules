@@ -18,14 +18,6 @@
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Diagram</specializationType>
-          <specializationTypeId>de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</specializationTypeId>
-          <text>New Diagram</text>
-          <defaultName>NewDiagram</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
           <specializationType>DTO</specializationType>
           <specializationTypeId>648405f0-9f21-4349-b112-542bf1d5ede4</specializationTypeId>
           <text>New DTO</text>
@@ -57,15 +49,23 @@
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC" />
           <allowMultiple>true</allowMultiple>
         </option>
+        <option type="element">
+          <specializationType>Diagram</specializationType>
+          <specializationTypeId>de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</specializationTypeId>
+          <text>New Diagram</text>
+          <defaultName>NewDiagram</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <typeOrder>
         <type order="0">AWS API Gateway Endpoint</type>
-        <type order="1">Diagram</type>
-        <type order="2">DTO</type>
-        <type order="3">Folder</type>
-        <type order="4">AWS Lambda Function</type>
-        <type order="5">AWS Simple Queue Service Queue</type>
+        <type order="1">DTO</type>
+        <type order="2">Folder</type>
+        <type order="3">AWS Lambda Function</type>
+        <type order="4">AWS Simple Queue Service Queue</type>
+        <type order="5">Diagram</type>
       </typeOrder>
     </packageSetting>
   </packageSettings>
@@ -110,7 +110,7 @@ return path?.trim().length &gt; 0
       <scriptOptions />
       <mappingSettings />
       <visualSettings type="AWS API Gateway Endpoint">
-        <size width="100" height="60" />
+        <size width="100" height="80" />
         <position x="${x}" y="${y}" />
         <display>
           <drawText>
@@ -122,7 +122,7 @@ text-align: center;
 white-space: inherit;
 vertical-align: center`</style>
             <size width="${w}" height="18" />
-            <position x="${x}" y="${y + h - 18}" />
+            <position x="${x}" y="${y + h - 36}" />
           </drawText>
           <drawText>
             <text>return 'endpoint';</text>
@@ -133,19 +133,19 @@ text-align: center;
 white-space: inherit;
 vertical-align: center`</style>
             <size width="${w}" height="18" />
-            <position x="${x}" y="${y + h}" />
+            <position x="${x}" y="${y + h - 18}" />
           </drawText>
           <drawSvgResource>
             <path>api-gateway.svg</path>
-            <size width="${w}" height="${h-24}" />
-            <position x="${x}" y="${y + 4}" />
+            <size width="${w}" height="${h-44}" />
+            <position x="${x}" y="${y + 6}" />
           </drawSvgResource>
         </display>
         <stereotypesVisualSettings>
           <size width="${w}" height="18" />
           <position x="${x}" y="${y}" />
         </stereotypesVisualSettings>
-        <defaultSize width="100" height="60" />
+        <defaultSize width="100" height="80" />
         <childElementVisualSettings />
       </visualSettings>
       <childElementSettings />
@@ -212,7 +212,7 @@ vertical-align: center`</style>
       <scriptOptions />
       <mappingSettings />
       <visualSettings type="AWS Lambda Function">
-        <size width="100" height="60" />
+        <size width="100" height="80" />
         <position x="${x}" y="${y}" />
         <display>
           <drawText>
@@ -224,7 +224,7 @@ text-align: center;
 white-space: inherit;
 vertical-align: center`</style>
             <size width="${w}" height="18" />
-            <position x="${x}" y="${y + h - 18}" />
+            <position x="${x}" y="${y + h - 36}" />
           </drawText>
           <drawText>
             <text>return 'function';</text>
@@ -235,19 +235,19 @@ text-align: center;
 white-space: inherit;
 vertical-align: center`</style>
             <size width="${w}" height="18" />
-            <position x="${x}" y="${y + h}" />
+            <position x="${x}" y="${y + h - 18}" />
           </drawText>
           <drawSvgResource>
             <path>aws-lambda.svg</path>
-            <size width="${w}" height="${h-24}" />
-            <position x="${x}" y="${y + 4}" />
+            <size width="${w}" height="${h-44}" />
+            <position x="${x}" y="${y + 6}" />
           </drawSvgResource>
         </display>
         <stereotypesVisualSettings>
           <size width="${w}" height="18" />
           <position x="${x}" y="${y}" />
         </stereotypesVisualSettings>
-        <defaultSize width="100" height="60" />
+        <defaultSize width="100" height="80" />
         <childElementVisualSettings />
       </visualSettings>
       <childElementSettings>
@@ -314,6 +314,45 @@ vertical-align: center`</style>
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
+      <visualSettings type="AWS Simple Queue Service Queue">
+        <size width="100" height="80" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawText>
+            <text>return getName();</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + h - 36}" />
+          </drawText>
+          <drawText>
+            <text>return 'queue';</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: normal; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + h - 18}" />
+          </drawText>
+          <drawSvgResource>
+            <path>amazon-sqs.svg</path>
+            <size width="${w}" height="${h-44}" />
+            <position x="${x}" y="${y + 6}" />
+          </drawSvgResource>
+        </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
+        <defaultSize width="100" height="80" />
+        <childElementVisualSettings />
+      </visualSettings>
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Diagram" typeId="de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5">
@@ -429,14 +468,6 @@ vertical-align: center`</style>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Diagram</specializationType>
-          <specializationTypeId>de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</specializationTypeId>
-          <text>New Diagram</text>
-          <defaultName>NewDiagram</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
           <specializationType>DTO</specializationType>
           <specializationTypeId>648405f0-9f21-4349-b112-542bf1d5ede4</specializationTypeId>
           <text>New DTO</text>
@@ -460,14 +491,22 @@ vertical-align: center`</style>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC" />
           <allowMultiple>true</allowMultiple>
         </option>
+        <option type="element">
+          <specializationType>Diagram</specializationType>
+          <specializationTypeId>de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</specializationTypeId>
+          <text>New Diagram</text>
+          <defaultName>NewDiagram</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
       </creationOptions>
       <scriptOptions />
       <typeOrder>
         <type>AWS API Gateway Endpoint</type>
-        <type>Diagram</type>
         <type>DTO</type>
         <type>AWS Lambda Function</type>
         <type>AWS Simple Queue Service Queue</type>
+        <type>Diagram</type>
       </typeOrder>
       <mappingSettings />
     </elementExtension>
@@ -543,6 +582,14 @@ vertical-align: center`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </targetEnd>
+      <visualSettings>
+        <sourceEnd />
+        <targetEnd>
+          <pointIndicator>
+            <path>return `l 4.5 7.5 l -9 0 l 4.5 -7.5 Z`</path>
+          </pointIndicator>
+        </targetEnd>
+      </visualSettings>
       <macros />
     </associationSetting>
   </associationSettings>
