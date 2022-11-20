@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -34,13 +35,18 @@ namespace Intent.Modelers.Serverless.AWS.Api
         public string FileLocation => UnderlyingPackage.FileLocation;
 
         public IList<AWSAPIGatewayEndpointModel> APIGatewayEndpoints => UnderlyingPackage.ChildElements
-    .GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
-    .Select(x => new AWSAPIGatewayEndpointModel(x))
-    .ToList();
+            .GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
+            .Select(x => new AWSAPIGatewayEndpointModel(x))
+            .ToList();
 
         public IList<DTOModel> DTOs => UnderlyingPackage.ChildElements
             .GetElementsOfType(DTOModel.SpecializationTypeId)
             .Select(x => new DTOModel(x))
+            .ToList();
+
+        public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
+            .GetElementsOfType(FolderModel.SpecializationTypeId)
+            .Select(x => new FolderModel(x))
             .ToList();
 
         public IList<AWSLambdaFunctionModel> LambdaFunctions => UnderlyingPackage.ChildElements

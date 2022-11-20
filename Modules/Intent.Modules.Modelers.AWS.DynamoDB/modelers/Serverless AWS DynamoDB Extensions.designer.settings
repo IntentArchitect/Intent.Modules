@@ -270,7 +270,7 @@ white-space: inherit;`</style>
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">Dynamo DB Table Hash Key</type>
-        <type order="1">Dynamo DB Table Sort Key</type>
+        <type order="1">Dynamo DB Table Range Key</type>
         <type order="2">DynamoDB Item</type>
         <type order="3">Resource Association</type>
       </typeOrder>
@@ -284,10 +284,10 @@ white-space: inherit;`</style>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Dynamo DB Table Sort Key</specializationType>
+          <specializationType>Dynamo DB Table Range Key</specializationType>
           <specializationTypeId>c36c6e5a-0945-41a5-a619-59714e4738c5</specializationTypeId>
-          <text>Add Sort Key</text>
-          <defaultName>NewDynamoDBTableSortKey</defaultName>
+          <text>Add Range Key</text>
+          <defaultName>NewDynamoDBTableRangeKey</defaultName>
           <icon type="FontAwesome" source="sort" />
           <allowMultiple>false</allowMultiple>
         </option>
@@ -362,7 +362,7 @@ white-space: inherit;`</style>
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
-        <childElementSetting type="Dynamo DB Table Sort Key" typeId="c36c6e5a-0945-41a5-a619-59714e4738c5">
+        <childElementSetting type="Dynamo DB Table Range Key" typeId="c36c6e5a-0945-41a5-a619-59714e4738c5">
           <icon type="FontAwesome" source="sort" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
@@ -395,6 +395,147 @@ white-space: inherit;`</style>
     </elementSetting>
   </elementSettings>
   <elementExtensions>
+    <elementExtension type="DTO" typeId="648405f0-9f21-4349-b112-542bf1d5ede4">
+      <mappingSettings>
+        <mappingSetting id="55ed7b49-b077-405f-a8e2-9ad79953d35e">
+          <name>Map from DynamoDB Table Item</name>
+          <shortcut>ctrl + shift + m</shortcut>
+          <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-left</symbol>
+          <targetTypeOptions>
+            <option specializationType="83f50394-05f3-422d-b33f-ad2b4a2a4008" displayText="DynamoDB Item" />
+            <option specializationType="4b5f63fc-2019-4ec0-8f1a-4f47f397a60c" displayText="Dynamo DB Map Attribute" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="e902cdc0-6203-4356-b30c-bab2d4b6787f">
+              <criteria specializationType="DynamoDB Item">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="adf73dcb-7eaf-47af-a682-0842e783b0c5">
+                  <criteria specializationType="Dynamo DB Scalar Value Attribute">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren>false</hasChildren>
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="1220dbd1-1d6b-4683-bfb1-ed6ebfe4c981">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="0412f0d9-2072-4870-bd4d-f24541784bd5">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="e902cdc0-6203-4356-b30c-bab2d4b6787f" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="a52d12e9-7f23-45ae-8da4-5e145474477d">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="0ceddb8c-cb6e-4a38-92a7-d9ad0b775946">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="e902cdc0-6203-4356-b30c-bab2d4b6787f" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+              </childMappings>
+            </mapping>
+            <mapping id="2633fdd3-da86-4c9f-a180-49d492279b8b">
+              <criteria specializationType="Dynamo DB Map Attribute">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="c15f1b45-4323-4c84-a7e9-b454ae5982dc">
+                  <criteria specializationType="Dynamo DB Scalar Value Attribute">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren>false</hasChildren>
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="278d9a5a-54bc-435a-9a44-27aae4aae6fd">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="8e6ddd8f-44e2-49ac-a4d2-8f9d61d19c37">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="2633fdd3-da86-4c9f-a180-49d492279b8b" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="5973a45a-f32e-45eb-b0c5-88ab43cf0a34">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="4dd9e097-5f50-45b8-a096-ec057e50cd2b">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="2633fdd3-da86-4c9f-a180-49d492279b8b" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
+      </mappingSettings>
+    </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
       <creationOptions>
         <option type="element">

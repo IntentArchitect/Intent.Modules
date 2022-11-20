@@ -101,8 +101,8 @@
           <childElements />
         </childElement>
         <childElement id="95dc8d72-618f-413e-8a68-a684993b54cd" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Sort Key</name>
-          <display>Add Sort Key: Dynamo DB Table Sort Key</display>
+          <name>Add Range Key</name>
+          <display>Add Range Key: Dynamo DB Table Range Key</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="83adbf47-b605-4b08-bdf2-17fad4ce2f9d">

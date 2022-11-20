@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="c36c6e5a-0945-41a5-a619-59714e4738c5" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Dynamo DB Table Sort Key</name>
-  <display>Dynamo DB Table Sort Key</display>
+  <name>Dynamo DB Table Range Key</name>
+  <display>Dynamo DB Table Range Key</display>
   <isAbstract>false</isAbstract>
   <order>2</order>
   <genericTypes />

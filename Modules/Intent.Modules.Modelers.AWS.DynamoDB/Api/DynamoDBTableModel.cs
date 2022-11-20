@@ -42,9 +42,9 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
             .Select(x => new DynamoDBTableHashKeyModel(x))
             .SingleOrDefault();
 
-        public DynamoDBTableSortKeyModel SortKey => _element.ChildElements
-            .GetElementsOfType(DynamoDBTableSortKeyModel.SpecializationTypeId)
-            .Select(x => new DynamoDBTableSortKeyModel(x))
+        public DynamoDBTableRangeKeyModel RangeKey => _element.ChildElements
+            .GetElementsOfType(DynamoDBTableRangeKeyModel.SpecializationTypeId)
+            .Select(x => new DynamoDBTableRangeKeyModel(x))
             .SingleOrDefault();
 
         public IList<DynamoDBItemModel> Items => _element.ChildElements
