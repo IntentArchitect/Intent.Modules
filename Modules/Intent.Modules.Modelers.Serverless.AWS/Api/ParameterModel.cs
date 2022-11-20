@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
-using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -12,21 +11,20 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class AWSLambdaFunctionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
+    public class ParameterModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "AWS Lambda Function";
-        public const string SpecializationTypeId = "de02db8b-e18f-423c-b4da-5f717a04075e";
+        public const string SpecializationType = "Parameter";
+        public const string SpecializationTypeId = "2a1b4261-de0a-4dd2-ba19-bfe61dd17597";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public AWSLambdaFunctionModel(IElement element, string requiredType = SpecializationType)
+        public ParameterModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -37,30 +35,16 @@ namespace Intent.Modelers.Serverless.AWS.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public FolderModel Folder { get; }
-
-        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
-
         public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
-
-        public RequestBodyModel RequestBody => _element.ChildElements
-            .GetElementsOfType(RequestBodyModel.SpecializationTypeId)
-            .Select(x => new RequestBodyModel(x))
-            .SingleOrDefault();
-
-        public IList<ParameterModel> Parameters => _element.ChildElements
-            .GetElementsOfType(ParameterModel.SpecializationTypeId)
-            .Select(x => new ParameterModel(x))
-            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(AWSLambdaFunctionModel other)
+        public bool Equals(ParameterModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -70,7 +54,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AWSLambdaFunctionModel)obj);
+            return Equals((ParameterModel)obj);
         }
 
         public override int GetHashCode()
@@ -80,17 +64,17 @@ namespace Intent.Modelers.Serverless.AWS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class AWSLambdaFunctionModelExtensions
+    public static class ParameterModelExtensions
     {
 
-        public static bool IsAWSLambdaFunctionModel(this ICanBeReferencedType type)
+        public static bool IsParameterModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AWSLambdaFunctionModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ParameterModel.SpecializationTypeId;
         }
 
-        public static AWSLambdaFunctionModel AsAWSLambdaFunctionModel(this ICanBeReferencedType type)
+        public static ParameterModel AsParameterModel(this ICanBeReferencedType type)
         {
-            return type.IsAWSLambdaFunctionModel() ? new AWSLambdaFunctionModel((IElement)type) : null;
+            return type.IsParameterModel() ? new ParameterModel((IElement)type) : null;
         }
     }
 }

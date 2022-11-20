@@ -50,14 +50,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#de02db8b-e18f-423c-b4da-5f717a04075e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSLambdaFunctionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSLambdaFunctionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#a95a0fde-f67b-4e4a-b9a8-745021efbdb6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSServerlessPackageModel.cs</ApplicationRelativeFilePath>
@@ -94,6 +86,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DTOModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DTOModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#2a1b4261-de0a-4dd2-ba19-bfe61dd17597</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ParameterModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ParameterModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
