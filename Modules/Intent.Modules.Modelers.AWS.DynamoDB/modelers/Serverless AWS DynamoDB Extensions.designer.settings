@@ -27,7 +27,7 @@
 
 const types = {
     endpoint: "AWS API Gateway Endpoint",
-    endpointTarget: "AWS API Gateway Route Integration",
+    endpointTargetAssociation: "AWS API Gateway Route Integration",
     lambda: "AWS Lambda Function",
     dto: "DTO",
     dtoField: "DTO-Field",
@@ -36,6 +36,7 @@ const types = {
     parameter: "Parameter",
     guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
     requestBody: "Request Body",
+    resourceAssociation: "Resource Association"
 };
 
 let defaultName = null;
@@ -147,9 +148,14 @@ if (updateDto == null) {
         lambda.typeReference.setIsCollection(true);
     }
 
-    let association = endpoint.getAssociations()[0];
+    let association = endpoint.getAssociations(types.endpointTargetAssociation)[0];
     if (association == null) {
-        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+        createAssociation(types.endpointTargetAssociation, endpoint.id, lambda.id);
+    }
+
+    let resourceAssociation = endpoint.getAssociations(types.resourceAssociation)[0];
+    if (resourceAssociation == null) {
+        createAssociation(types.resourceAssociation, lambda.id, tableItem.getParent().id);
     }
 
     lambda.collapse();
@@ -178,7 +184,12 @@ if (updateDto == null) {
 
     let association = endpoint.getAssociations()[0];
     if (association == null) {
-        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+        createAssociation(types.endpointTargetAssociation, endpoint.id, lambda.id);
+    }
+
+    let resourceAssociation = endpoint.getAssociations(types.resourceAssociation)[0];
+    if (resourceAssociation == null) {
+        createAssociation(types.resourceAssociation, lambda.id, tableItem.getParent().id);
     }
 
     lambda.collapse();
@@ -207,7 +218,12 @@ if (updateDto == null) {
 
     let association = endpoint.getAssociations()[0];
     if (association == null) {
-        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+        createAssociation(types.endpointTargetAssociation, endpoint.id, lambda.id);
+    }
+
+    let resourceAssociation = endpoint.getAssociations(types.resourceAssociation)[0];
+    if (resourceAssociation == null) {
+        createAssociation(types.resourceAssociation, lambda.id, tableItem.getParent().id);
     }
 
     lambda.collapse();
@@ -238,7 +254,12 @@ if (updateDto == null) {
 
     let association = endpoint.getAssociations()[0];
     if (association == null) {
-        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+        createAssociation(types.endpointTargetAssociation, endpoint.id, lambda.id);
+    }
+
+    let resourceAssociation = endpoint.getAssociations(types.resourceAssociation)[0];
+    if (resourceAssociation == null) {
+        createAssociation(types.resourceAssociation, lambda.id, tableItem.getParent().id);
     }
 
     lambda.collapse();
@@ -266,7 +287,12 @@ if (updateDto == null) {
 
     let association = endpoint.getAssociations()[0];
     if (association == null) {
-        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+        createAssociation(types.endpointTargetAssociation, endpoint.id, lambda.id);
+    }
+
+    let resourceAssociation = endpoint.getAssociations(types.resourceAssociation)[0];
+    if (resourceAssociation == null) {
+        createAssociation(types.resourceAssociation, lambda.id, tableItem.getParent().id);
     }
 
     lambda.collapse();
