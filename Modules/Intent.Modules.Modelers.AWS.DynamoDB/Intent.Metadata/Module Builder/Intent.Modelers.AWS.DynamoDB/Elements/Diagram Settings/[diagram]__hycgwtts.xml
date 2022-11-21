@@ -66,8 +66,8 @@
           <childElements />
         </childElement>
         <childElement id="3177e070-03ed-41cb-855e-9a2321d59862" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Item Map Value Attribute</name>
-          <display>New Item Map Value Attribute: Dynamo DB Map Attribute</display>
+          <name>New Map Value Attribute</name>
+          <display>New Map Value Attribute: Dynamo DB Map Value Attribute</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="7d72cb27-cd46-4074-a45b-54caa58771c8">

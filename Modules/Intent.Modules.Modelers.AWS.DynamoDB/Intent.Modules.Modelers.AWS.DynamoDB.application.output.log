@@ -36,8 +36,8 @@
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBMapAttributeModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBMapAttributeModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/DynamoDBMapValueAttributeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DynamoDBMapValueAttributeModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

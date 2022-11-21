@@ -19,7 +19,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<DynamoDBItemAssociationTargetEndModel> DynamoDbItemAssociationTargetEnd(this DynamoDBMapAttributeModel model)
+        public static IList<DynamoDBItemAssociationTargetEndModel> DynamoDbItemAssociationTargetEnd(this DynamoDBMapValueAttributeModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == DynamoDBItemAssociationModel.SpecializationType && x.IsTargetEnd())
@@ -28,7 +28,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<DynamoDBItemAssociationSourceEndModel> DynamoDbItemAssociationSourceEnd(this DynamoDBMapAttributeModel model)
+        public static IList<DynamoDBItemAssociationSourceEndModel> DynamoDbItemAssociationSourceEnd(this DynamoDBMapValueAttributeModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == DynamoDBItemAssociationModel.SpecializationType && x.IsSourceEnd())
@@ -37,7 +37,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<DynamoDBItemAssociationEndModel> DynamoDBItemAssociationEnds(this DynamoDBMapAttributeModel model)
+        public static IList<DynamoDBItemAssociationEndModel> DynamoDBItemAssociationEnds(this DynamoDBMapValueAttributeModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.IsDynamoDBItemAssociationEndModel())

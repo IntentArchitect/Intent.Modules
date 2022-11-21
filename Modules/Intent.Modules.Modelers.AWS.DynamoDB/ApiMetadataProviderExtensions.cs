@@ -11,10 +11,10 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<DynamoDBMapAttributeModel> GetDynamoDBMapAttributeModels(this IDesigner designer)
+        public static IList<DynamoDBMapValueAttributeModel> GetDynamoDBMapValueAttributeModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(DynamoDBMapAttributeModel.SpecializationTypeId)
-                .Select(x => new DynamoDBMapAttributeModel(x))
+            return designer.GetElementsOfType(DynamoDBMapValueAttributeModel.SpecializationTypeId)
+                .Select(x => new DynamoDBMapValueAttributeModel(x))
                 .ToList();
         }
         public static IList<DynamoDBModel> GetDynamoDBModels(this IDesigner designer)

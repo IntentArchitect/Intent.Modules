@@ -17,14 +17,301 @@
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
-      <scriptOptions />
+      <scriptOptions>
+        <option>
+          <text>Create CRUD Operations</text>
+          <icon type="FontAwesome" source="code" />
+          <script>async function dump(item) {
+    await dialogService.info(JSON.stringify(item, null, "  "));
+}
+
+const types = {
+    endpoint: "AWS API Gateway Endpoint",
+    endpointTarget: "AWS API Gateway Route Integration",
+    lambda: "AWS Lambda Function",
+    dto: "DTO",
+    dtoField: "DTO-Field",
+    scalarAttribute: "Dynamo DB Scalar Value Attribute",
+    dynamoDbItem: "DynamoDB Item",
+    parameter: "Parameter",
+    guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
+    requestBody: "Request Body",
+};
+
+let defaultName = null;
+if (element?.id == null) {
+    await dump(element);
+    // For testing right-clicking on a package, substitute with package id:
+    element = { id: "2fd9f4b9-fdb8-41c6-9f35-c3b6bdf56c33" };
+    defaultName = "Invoice";
+}
+
+let tableItem = await getTableItem(defaultName);
+if (tableItem == null) {
+    return;
+}
+
+const name = toPascalCase(tableItem.getName());
+const pluralName = pluralize(name);
+const nameCamelCased = toCamelCase(tableItem.getName());
+const pluralNameCamelCased = pluralize(nameCamelCased);
+
+const metadata = {
+    key: "CRUD Operation Type",
+    findById: `${tableItem.id}-findById`,
+    findAll: `${tableItem.id}-findAll`,
+    result: `${tableItem.id}-result`,
+    create: `${tableItem.id}-create`,
+    update: `${tableItem.id}-update`,
+    remove: `${tableItem.id}-remove`
+};
+
+const folder = getFolder(pluralize(tableItem.getName()), element.id);
+
+const tableItemFields = tableItem.getChildren(types.scalarAttribute);
+
+let resultDto = lookupTypesOf(types.dto).filter(x =&gt; hasCrudOperationType(x, metadata.result))[0];
+if (resultDto == null) {
+    resultDto = createElement(types.dto, `${tableItem.getName()}`, folder.id);
+    resultDto.setMetadata(metadata.key, metadata.result);
+    resultDto.setMapping(tableItem.id);
+
+    for (var i = 0; i &lt; tableItemFields.length; i++) {
+        const field = tableItemFields[i];
+        const dtoField = createElement(types.dtoField, field.getName(), resultDto.id);
+        dtoField.typeReference.setType(field.typeReference.typeId);
+        dtoField.typeReference.setIsNullable(field.typeReference.isNullable);
+        dtoField.typeReference.setIsCollection(field.typeReference.isCollection);
+        dtoField.setMapping(field.id);
+    }
+
+    resultDto.collapse();
+}
+
+let createDto = lookupTypesOf(types.dto).filter(x =&gt; hasCrudOperationType(x, metadata.create))[0];
+if (createDto == null) {
+    createDto = createElement(types.dto, `${tableItem.getName()}Create`, folder.id);
+    createDto.setMetadata(metadata.key, metadata.create);
+    createDto.setMapping(tableItem.id);
+
+    for (var i = 0; i &lt; tableItemFields.length; i++) {
+        const field = tableItemFields[i];
+        if (field.getName() == "id") {
+            continue;
+        }
+
+        const dtoField = createElement(types.dtoField, field.getName(), createDto.id);
+        dtoField.typeReference.setType(field.typeReference.typeId);
+        dtoField.typeReference.setIsNullable(field.typeReference.isNullable);
+        dtoField.typeReference.setIsCollection(field.typeReference.isCollection);
+        dtoField.setMapping(field.id);
+    }
+
+    createDto.collapse();
+}
+
+let updateDto = lookupTypesOf(types.dto).filter(x =&gt; hasCrudOperationType(x, metadata.update))[0];
+if (updateDto == null) {
+    updateDto = createElement(types.dto, `${tableItem.getName()}Update`, folder.id);
+    updateDto.setMetadata(metadata.key, metadata.update);
+    updateDto.setMapping(tableItem.id);
+
+    for (var i = 0; i &lt; tableItemFields.length; i++) {
+        const field = tableItemFields[i];
+        const dtoField = createElement(types.dtoField, field.getName(), updateDto.id);
+        dtoField.typeReference.setType(field.typeReference.typeId);
+        dtoField.typeReference.setIsNullable(field.typeReference.isNullable);
+        dtoField.typeReference.setIsCollection(field.typeReference.isCollection);
+        dtoField.setMapping(field.id);
+    }
+
+    updateDto.collapse();
+}
+
+// FindAll
+{
+    const metadataValue = metadata.findAll;
+    let endpoint = lookupTypesOf(types.endpoint).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (endpoint == null) {
+        endpoint = createElement(types.endpoint, `GET /${pluralNameCamelCased}`, folder.id);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Path").setValue(`/${pluralNameCamelCased}`);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Method").setValue("GET");
+    }
+
+    let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (lambda == null) {
+        lambda = createElement(types.lambda, `Get${pluralName}`, folder.id);
+        lambda.typeReference.setType(resultDto.id);
+        lambda.typeReference.setIsCollection(true);
+    }
+
+    let association = endpoint.getAssociations()[0];
+    if (association == null) {
+        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+    }
+
+    lambda.collapse();
+}
+
+// FindById
+{
+    const metadataValue = metadata.findById;
+    let endpoint = lookupTypesOf(types.endpoint).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (endpoint == null) {
+        endpoint = createElement(types.endpoint, `GET /${pluralNameCamelCased}/{id}`, folder.id);
+        endpoint.setMetadata(metadata.key, metadataValue);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Path").setValue(`/${pluralNameCamelCased}/{id}`);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Method").setValue("GET");
+    }
+
+    let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (lambda == null) {
+        lambda = createElement(types.lambda, `Get${name}`, folder.id);
+        lambda.typeReference.setType(resultDto.id);
+        lambda.setMetadata(metadata.key, metadataValue);
+        
+        const parameter = createElement(types.parameter, "id", lambda.id);
+        parameter.typeReference.setType(types.guid);
+    }
+
+    let association = endpoint.getAssociations()[0];
+    if (association == null) {
+        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+    }
+
+    lambda.collapse();
+}
+
+// Create
+{
+    const metadataValue = metadata.create;
+    let endpoint = lookupTypesOf(types.endpoint).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (endpoint == null) {
+        endpoint = createElement(types.endpoint, `POST /${pluralNameCamelCased}`, folder.id);
+        endpoint.setMetadata(metadata.key, metadataValue);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Path").setValue(`/${pluralNameCamelCased}`);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Method").setValue("POST");
+    }
+
+    let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (lambda == null) {
+        lambda = createElement(types.lambda, `Create${name}`, folder.id);
+        lambda.typeReference.setType(types.guid);
+        lambda.setMetadata(metadata.key, metadataValue);
+
+        const requestBody = createElement(types.requestBody, types.requestBody, lambda.id);
+        requestBody.typeReference.setType(createDto.id);
+    }
+
+    let association = endpoint.getAssociations()[0];
+    if (association == null) {
+        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+    }
+
+    lambda.collapse();
+}
+
+// Update
+{
+    const metadataValue = metadata.update;
+    let endpoint = lookupTypesOf(types.endpoint).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (endpoint == null) {
+        endpoint = createElement(types.endpoint, `PUT /${pluralNameCamelCased}/{id}`, folder.id);
+        endpoint.setMetadata(metadata.key, metadataValue);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Path").setValue(`/${pluralNameCamelCased}/{id}`);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Method").setValue("PUT");
+    }
+
+    let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (lambda == null) {
+        lambda = createElement(types.lambda, `Update${name}`, folder.id);
+        lambda.setMetadata(metadata.key, metadataValue);
+        
+        const parameter = createElement(types.parameter, "id", lambda.id);
+        parameter.typeReference.setType(types.guid);
+
+        const requestBody = createElement(types.requestBody, types.requestBody, lambda.id);
+        requestBody.typeReference.setType(updateDto.id);
+    }
+
+    let association = endpoint.getAssociations()[0];
+    if (association == null) {
+        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+    }
+
+    lambda.collapse();
+}
+
+// Delete
+{
+    const metadataValue = metadata.remove;
+    let endpoint = lookupTypesOf(types.endpoint).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (endpoint == null) {
+        endpoint = createElement(types.endpoint, `DELETE /${pluralNameCamelCased}/{id}`, folder.id);
+        endpoint.setMetadata(metadata.key, metadataValue);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Path").setValue(`/${pluralNameCamelCased}/{id}`);
+        endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Method").setValue("DELETE");
+    }
+
+    let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
+    if (lambda == null) {
+        lambda = createElement(types.lambda, `Delete${name}`, folder.id);
+        lambda.setMetadata(metadata.key, metadataValue);
+        
+        const parameter = createElement(types.parameter, "id", lambda.id);
+        parameter.typeReference.setType(types.guid);
+    }
+
+    let association = endpoint.getAssociations()[0];
+    if (association == null) {
+        createAssociation(types.endpointTarget, endpoint.id, lambda.id);
+    }
+
+    lambda.collapse();
+}
+
+function hasCrudOperationType(element, type) {
+    return element.getMetadata("CRUD Operation Type") === type;
+}
+
+function getFolder(name, parentId) {
+    // Get or create folder in which to place everything:
+    let folder = lookupTypesOf("Folder").filter(x =&gt; x.name == name &amp;&amp; x.getParent().id === parentId)[0];
+    if (folder == null) {
+        folder = createElement("Folder", name, parentId);
+    }
+
+    return folder;
+}
+
+async function getTableItem(defaultName) {
+    const items = lookupTypesOf(types.dynamoDbItem);
+    if (items.length === 0) {
+        await dialogService.info(`No ${typeName} elements available, create at least one and try again.`)
+        return null;
+    }
+
+    let itemId = items.filter(x =&gt; defaultName != null &amp;&amp; defaultName == x.getName())[0]?.id;
+    if (itemId == null) {
+        itemId = await dialogService.lookupFromOptions(items);
+    }
+
+    if (itemId == null) {
+        // Cancelled the dialogue?
+        return null;
+    }
+
+    return lookup(itemId);
+}</script>
+        </option>
+      </scriptOptions>
       <typeOrder>
         <type>DynamoDB</type>
       </typeOrder>
     </packageExtension>
   </packageExtensions>
   <elementSettings>
-    <elementSetting type="Dynamo DB Map Attribute" typeId="4b5f63fc-2019-4ec0-8f1a-4f47f397a60c">
+    <elementSetting type="Dynamo DB Map Value Attribute" typeId="4b5f63fc-2019-4ec0-8f1a-4f47f397a60c">
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA0tJREFUaEPtmk1oXFUUx3//W0OSIhQsFoLtohFRCt20YF3Y4kpKN5XJRIWKgqKWigtBhdCP3JeImxahC4UWqiC2LjIzWhdWuhIEP4JxoRZaiqsqLSikgpBAMveUO8xIMu0k0TfkvYb3tvfdc8/vnHPPvee8J+7yR3e5/vwLUBo16zZMj9hZF1tC4POuyha/17y2RJlrD6CWKHVYlbxNYexY6AGJ81Wvp9J44oC3zTPGNZbyQCeA4XF7OAT2AJtkTJtjqnKUSUm3hV6uAJ7xtmMOTmI83m49iasO3pzw+mLhWG4Ahr2V6/AJRi/ipuA74BLGVsRjZjzQUNzha6NKWhC5AGha/tum8mf7enn93IimW0q+csp6/rrOUWAE4x4nXqh4fRzHcwFQ8vZNDBuJc1WvA50231Bib1jgPYk/HQxOeP2TOUDcsPV5Lsew6etlcKHl20G8N/czTGLsdI7nKqM6mznAUGIvW+C0xIWq177lUl/Z23gwjiBO1bwO5gHgsAXekThR9XprBQDPBuNTxGc1r1LmAGVvh4LxvqBaTVReDqCU2AiBdxEf1bxezBxgaMx2WZ3vJf7YOMDW069qbimIkrcLGHudeK3i9UHmAGamcsIVMx5CjNe8jnUCKCe2P17WBDNOjSx0I3OAqGxLMcS8xNvbjZPeKywEie+Y8aEZ90mMVb1Gc3MONCC8+WA0lJL4UfBVEL8Cgxh7Ytg0x867bQxNPK16rgCaEM8bnDDj/tvuQjCDOO62MdZSPncAUaFhb/ea2B+M3fE2CtyUmHJGNcZ8O1gu9sByqXOZrJRdPYD4KY3yzbmPYKxfVNDA3yZ+SyNb0GPG9iULmjQLtM9d1Zo4Xp+7qXyUtQEuT/fR42Z5sJuyg2Nu4ph+aWTAluCY07u5SEN4L18zS7+JXV2VHZipJLq4CGDNtFVi9yC1tYwnDDa0dSViuv0hpex+M578X12J/7JwcQ50sFaqvlDhgaw7c4UHCg9AsYlXug+Kc6A4B1YaKx3eK0KoCKEihDL8StkvGh+Q0zyz8GXsHrQVNBf74KU0cucdA3N1JtdmV6Lk7Voa69xp7jrHPqszEMSZrso2rtcSPbqoqO/qAqsoLPVvBauo6x2XugVF+fteXhfiywAAAABJRU5ErkJggg==" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
@@ -61,7 +348,7 @@
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
-      <visualSettings type="Dynamo DB Map Attribute">
+      <visualSettings type="Dynamo DB Map Value Attribute">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
         <display>
@@ -153,10 +440,19 @@ white-space: inherit;`</style>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Dynamo DB Scalar Value Attribute</type>
-        <type order="1">DynamoDB Item Association</type>
+        <type order="0">Dynamo DB Map Value Attribute</type>
+        <type order="1">Dynamo DB Scalar Value Attribute</type>
+        <type order="2">DynamoDB Item Association</type>
       </typeOrder>
       <creationOptions>
+        <option type="element">
+          <specializationType>Dynamo DB Map Value Attribute</specializationType>
+          <specializationTypeId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</specializationTypeId>
+          <text>New Map Value Attribute</text>
+          <defaultName>NewDynamoDBMapValueAttribute</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA0tJREFUaEPtmk1oXFUUx3//W0OSIhQsFoLtohFRCt20YF3Y4kpKN5XJRIWKgqKWigtBhdCP3JeImxahC4UWqiC2LjIzWhdWuhIEP4JxoRZaiqsqLSikgpBAMveUO8xIMu0k0TfkvYb3tvfdc8/vnHPPvee8J+7yR3e5/vwLUBo16zZMj9hZF1tC4POuyha/17y2RJlrD6CWKHVYlbxNYexY6AGJ81Wvp9J44oC3zTPGNZbyQCeA4XF7OAT2AJtkTJtjqnKUSUm3hV6uAJ7xtmMOTmI83m49iasO3pzw+mLhWG4Ahr2V6/AJRi/ipuA74BLGVsRjZjzQUNzha6NKWhC5AGha/tum8mf7enn93IimW0q+csp6/rrOUWAE4x4nXqh4fRzHcwFQ8vZNDBuJc1WvA50231Bib1jgPYk/HQxOeP2TOUDcsPV5Lsew6etlcKHl20G8N/czTGLsdI7nKqM6mznAUGIvW+C0xIWq177lUl/Z23gwjiBO1bwO5gHgsAXekThR9XprBQDPBuNTxGc1r1LmAGVvh4LxvqBaTVReDqCU2AiBdxEf1bxezBxgaMx2WZ3vJf7YOMDW069qbimIkrcLGHudeK3i9UHmAGamcsIVMx5CjNe8jnUCKCe2P17WBDNOjSx0I3OAqGxLMcS8xNvbjZPeKywEie+Y8aEZ90mMVb1Gc3MONCC8+WA0lJL4UfBVEL8Cgxh7Ytg0x867bQxNPK16rgCaEM8bnDDj/tvuQjCDOO62MdZSPncAUaFhb/ea2B+M3fE2CtyUmHJGNcZ8O1gu9sByqXOZrJRdPYD4KY3yzbmPYKxfVNDA3yZ+SyNb0GPG9iULmjQLtM9d1Zo4Xp+7qXyUtQEuT/fR42Z5sJuyg2Nu4ph+aWTAluCY07u5SEN4L18zS7+JXV2VHZipJLq4CGDNtFVi9yC1tYwnDDa0dSViuv0hpex+M578X12J/7JwcQ50sFaqvlDhgaw7c4UHCg9AsYlXug+Kc6A4B1YaKx3eK0KoCKEihDL8StkvGh+Q0zyz8GXsHrQVNBf74KU0cucdA3N1JtdmV6Lk7Voa69xp7jrHPqszEMSZrso2rtcSPbqoqO/qAqsoLPVvBauo6x2XugVF+fteXhfiywAAAABJRU5ErkJggg==" />
+          <allowMultiple>true</allowMultiple>
+        </option>
         <option type="element">
           <specializationType>Dynamo DB Scalar Value Attribute</specializationType>
           <specializationTypeId>a39e6629-9daf-418b-a5ec-25f05d26753e</specializationTypeId>
@@ -304,7 +600,7 @@ white-space: inherit;`</style>
           <specializationTypeId>eb4520aa-5fe2-4f03-a502-0489d1ac4177</specializationTypeId>
           <text>Set Stream Subscriber</text>
           <defaultName>NewResourceAssociation</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -322,10 +618,10 @@ white-space: inherit;`</style>
             <allowMultiple>true</allowMultiple>
           </option>
           <option type="element">
-            <specializationType>Dynamo DB Map Attribute</specializationType>
+            <specializationType>Dynamo DB Map Value Attribute</specializationType>
             <specializationTypeId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</specializationTypeId>
-            <text>New Item Map Value Attribute</text>
-            <defaultName>NewDynamoDBMapAttribute</defaultName>
+            <text>New Map Value Attribute</text>
+            <defaultName>NewDynamoDBMapValueAttribute</defaultName>
             <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA0tJREFUaEPtmk1oXFUUx3//W0OSIhQsFoLtohFRCt20YF3Y4kpKN5XJRIWKgqKWigtBhdCP3JeImxahC4UWqiC2LjIzWhdWuhIEP4JxoRZaiqsqLSikgpBAMveUO8xIMu0k0TfkvYb3tvfdc8/vnHPPvee8J+7yR3e5/vwLUBo16zZMj9hZF1tC4POuyha/17y2RJlrD6CWKHVYlbxNYexY6AGJ81Wvp9J44oC3zTPGNZbyQCeA4XF7OAT2AJtkTJtjqnKUSUm3hV6uAJ7xtmMOTmI83m49iasO3pzw+mLhWG4Ahr2V6/AJRi/ipuA74BLGVsRjZjzQUNzha6NKWhC5AGha/tum8mf7enn93IimW0q+csp6/rrOUWAE4x4nXqh4fRzHcwFQ8vZNDBuJc1WvA50231Bib1jgPYk/HQxOeP2TOUDcsPV5Lsew6etlcKHl20G8N/czTGLsdI7nKqM6mznAUGIvW+C0xIWq177lUl/Z23gwjiBO1bwO5gHgsAXekThR9XprBQDPBuNTxGc1r1LmAGVvh4LxvqBaTVReDqCU2AiBdxEf1bxezBxgaMx2WZ3vJf7YOMDW069qbimIkrcLGHudeK3i9UHmAGamcsIVMx5CjNe8jnUCKCe2P17WBDNOjSx0I3OAqGxLMcS8xNvbjZPeKywEie+Y8aEZ90mMVb1Gc3MONCC8+WA0lJL4UfBVEL8Cgxh7Ytg0x867bQxNPK16rgCaEM8bnDDj/tvuQjCDOO62MdZSPncAUaFhb/ea2B+M3fE2CtyUmHJGNcZ8O1gu9sByqXOZrJRdPYD4KY3yzbmPYKxfVNDA3yZ+SyNb0GPG9iULmjQLtM9d1Zo4Xp+7qXyUtQEuT/fR42Z5sJuyg2Nu4ph+aWTAluCY07u5SEN4L18zS7+JXV2VHZipJLq4CGDNtFVi9yC1tYwnDDa0dSViuv0hpex+M578X12J/7JwcQ50sFaqvlDhgaw7c4UHCg9AsYlXug+Kc6A4B1YaKx3eK0KoCKEihDL8StkvGh+Q0zyz8GXsHrQVNBf74KU0cucdA3N1JtdmV6Lk7Voa69xp7jrHPqszEMSZrso2rtcSPbqoqO/qAqsoLPVvBauo6x2XugVF+fteXhfiywAAAABJRU5ErkJggg==" />
             <allowMultiple>true</allowMultiple>
           </option>
@@ -392,8 +688,8 @@ vertical-align: center`</style>
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
             <isNavigableDefault>true</isNavigableDefault>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
@@ -421,8 +717,8 @@ vertical-align: center`</style>
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
+            <allowIsNullable>false</allowIsNullable>
+            <allowIsCollection>false</allowIsCollection>
             <isNavigableDefault>true</isNavigableDefault>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
@@ -445,7 +741,7 @@ vertical-align: center`</style>
           <symbol>fa-long-arrow-left</symbol>
           <targetTypeOptions>
             <option specializationType="83f50394-05f3-422d-b33f-ad2b4a2a4008" displayText="DynamoDB Item" />
-            <option specializationType="4b5f63fc-2019-4ec0-8f1a-4f47f397a60c" displayText="Dynamo DB Map Attribute" />
+            <option specializationType="4b5f63fc-2019-4ec0-8f1a-4f47f397a60c" displayText="Dynamo DB Map Value Attribute" />
           </targetTypeOptions>
           <mapFrom>root</mapFrom>
           <mappings>
@@ -511,7 +807,7 @@ vertical-align: center`</style>
               </childMappings>
             </mapping>
             <mapping id="2633fdd3-da86-4c9f-a180-49d492279b8b">
-              <criteria specializationType="Dynamo DB Map Attribute">
+              <criteria specializationType="Dynamo DB Map Value Attribute">
                 <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
                 <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
                 <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
@@ -600,7 +896,7 @@ vertical-align: center`</style>
           <isRequired>true</isRequired>
           <targetTypes>
             <type>DynamoDB Item</type>
-            <type>Dynamo DB Map Attribute</type>
+            <type>Dynamo DB Map Value Attribute</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -614,7 +910,7 @@ vertical-align: center`</style>
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
-            <type>Dynamo DB Map Attribute</type>
+            <type>Dynamo DB Map Value Attribute</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>true</allowIsNullable>

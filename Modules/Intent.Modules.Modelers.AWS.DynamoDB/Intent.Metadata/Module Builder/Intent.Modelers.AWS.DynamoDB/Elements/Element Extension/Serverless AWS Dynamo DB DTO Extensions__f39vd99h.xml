@@ -339,7 +339,7 @@
         </childElement>
         <childElement id="2633fdd3-da86-4c9f-a180-49d492279b8b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Dynamo DB Map Attribute -&gt; DTO (Map to Type)</display>
+          <display>[mapping]: Dynamo DB Map Value Attribute -&gt; DTO (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
