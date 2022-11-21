@@ -134,6 +134,7 @@ if (updateDto == null) {
     let endpoint = lookupTypesOf(types.endpoint).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
     if (endpoint == null) {
         endpoint = createElement(types.endpoint, `GET /${pluralNameCamelCased}`, folder.id);
+        endpoint.setMetadata(metadata.key, metadataValue);
         endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Path").setValue(`/${pluralNameCamelCased}`);
         endpoint.getStereotype("API Gateway Endpoint Settings").getProperty("Method").setValue("GET");
     }
@@ -141,6 +142,7 @@ if (updateDto == null) {
     let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
     if (lambda == null) {
         lambda = createElement(types.lambda, `Get${pluralName}`, folder.id);
+        lambda.setMetadata(metadata.key, metadataValue);
         lambda.typeReference.setType(resultDto.id);
         lambda.typeReference.setIsCollection(true);
     }
@@ -167,8 +169,8 @@ if (updateDto == null) {
     let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
     if (lambda == null) {
         lambda = createElement(types.lambda, `Get${name}`, folder.id);
-        lambda.typeReference.setType(resultDto.id);
         lambda.setMetadata(metadata.key, metadataValue);
+        lambda.typeReference.setType(resultDto.id);
         
         const parameter = createElement(types.parameter, "id", lambda.id);
         parameter.typeReference.setType(types.guid);
@@ -196,8 +198,8 @@ if (updateDto == null) {
     let lambda = lookupTypesOf(types.lambda).filter(x =&gt; hasCrudOperationType(x, metadataValue))[0];
     if (lambda == null) {
         lambda = createElement(types.lambda, `Create${name}`, folder.id);
-        lambda.typeReference.setType(types.guid);
         lambda.setMetadata(metadata.key, metadataValue);
+        lambda.typeReference.setType(types.guid);
 
         const requestBody = createElement(types.requestBody, types.requestBody, lambda.id);
         requestBody.typeReference.setType(createDto.id);
