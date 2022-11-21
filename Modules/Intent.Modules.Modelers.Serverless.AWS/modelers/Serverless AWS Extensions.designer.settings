@@ -114,7 +114,6 @@ return path?.trim().length &gt; 0
         <position x="${x}" y="${y}" />
         <display>
           <drawText>
-            <text>return getName();</text>
             <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -189,7 +188,7 @@ vertical-align: center`</style>
           <specializationType>Request Body</specializationType>
           <specializationTypeId>49294a7f-9300-4feb-99f3-22076efea411</specializationTypeId>
           <text>Add Request Body</text>
-          <defaultName>NewRequestBody</defaultName>
+          <defaultName>Request Body</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
           <allowMultiple>false</allowMultiple>
         </option>

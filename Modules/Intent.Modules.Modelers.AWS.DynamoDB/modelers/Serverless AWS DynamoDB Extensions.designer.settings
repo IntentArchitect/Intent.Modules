@@ -568,7 +568,8 @@ white-space: inherit;`</style>
         <type order="0">Dynamo DB Table Hash Key</type>
         <type order="1">Dynamo DB Table Range Key</type>
         <type order="2">DynamoDB Item</type>
-        <type order="3">Resource Association</type>
+        <type order="3">Dynamo DB Map Value Attribute</type>
+        <type order="4">Resource Association</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -593,6 +594,14 @@ white-space: inherit;`</style>
           <text>New Item</text>
           <defaultName>NewDynamoDBItem</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2xJREFUaEPtmk9oXFUUh7/zXhMnai0KLqItKG4UDEpTrFSFulD8g0RmMlIphagIgYLgSiuauVMtFgQXuiq2rgSLk3moGBdBbRXE2mpBKroIorWl7a5UFxlN5v7kBVMm6Uwy5I0zL3Xe9t5z7vnuOffcew7PWOWfrXL7uQiQLUithukxBqvGBu/5sKW6jdORsw2xzssPICpa4rDKOn2P2FjrATM+Kjt7PIkntjutnxanWMoD7QbIf6BQP3EfxgCetd44wxoORS/bycWwqQPIOo0AexA3XOIZY8JCni+/YlPzY6kBkGTDRfZJPDt3EI1fgSPAWeAOxN2CqwwuBCFDpTH7Mp6XGoDhgl7ysMdgmoBd42O8ZWYXs2D+Nd1YnWU/4iEzzvfAxoPOfksFQGxEBaYkMkHAE+MFK9U72P966QuJrRgHI2dPpgJguKgXvGcvxseRs6GlslL+Vd3sq0wJdA1cPwNXdzwLZZ0+QTwaBIyOF2zfcmk163QCcXtoPNwLP3YcIOd0TGITIfdGY/Z1EwDvI7ZZwEhGfN5xgKzTJOIBM3aUnb23HEDO6YjE5tAY6oXjHQfIOb0u8SLG/sjZXBpt9OX3ap2vcC4+8H3G3Nun4wD53Rqoen4w8AFsKTk72ggg6/Qu4ikzDped3Z+KLBQbm3M6IPG0Gb8LdkTOvqqFyDv1CpwXuzBmQ7gnBk0NQP5N9fk/+ExiC4ZMRAr4xuCMiTu9eAy4zQyPMVou2DupuoljY0acMn/CG4JRxJrFYWTGycDYWSrYROreQrXGbnO66W8jZ2IAWEvsBTjUfx0Tbz9nf9XOTU0ILZc6G403BYBxfKUL1MjdirhyQUEDF2T8kkS3QY9iT12WJWV+twaT7E492Ws9P5/P0BNUuKWVun3ATGnMTszVEvOKh4ta8mW4EgPsCg5ToU/G5pXIN5TxTI8XbXIBwH/RVglDNkmsb2tbJe4eJN4tsVWwrhbAjHPAtwl190k82I6uxHeIwUUAq6qt0gWoF2pNXWQtamx1PdD1QJJ0l3XqhlA3hLoh1L2JL42B7kXW7LnoptEGO/X/CKH5Jmqz4VJvXgU+jbsHi+qByQw8k0TvbED/TJWjbetKtLekdDqVZHfqyYYBj6hKvzcOtFS3OBsV7a4FRX1LF2ijssS/FbTR1rpL/QO48wNt6LvWAgAAAABJRU5ErkJggg==" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Dynamo DB Map Value Attribute</specializationType>
+          <specializationTypeId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</specializationTypeId>
+          <text>New Item Map Value Attribute</text>
+          <defaultName>NewDynamoDBMapValueAttribute</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA0tJREFUaEPtmk1oXFUUx3//W0OSIhQsFoLtohFRCt20YF3Y4kpKN5XJRIWKgqKWigtBhdCP3JeImxahC4UWqiC2LjIzWhdWuhIEP4JxoRZaiqsqLSikgpBAMveUO8xIMu0k0TfkvYb3tvfdc8/vnHPPvee8J+7yR3e5/vwLUBo16zZMj9hZF1tC4POuyha/17y2RJlrD6CWKHVYlbxNYexY6AGJ81Wvp9J44oC3zTPGNZbyQCeA4XF7OAT2AJtkTJtjqnKUSUm3hV6uAJ7xtmMOTmI83m49iasO3pzw+mLhWG4Ahr2V6/AJRi/ipuA74BLGVsRjZjzQUNzha6NKWhC5AGha/tum8mf7enn93IimW0q+csp6/rrOUWAE4x4nXqh4fRzHcwFQ8vZNDBuJc1WvA50231Bib1jgPYk/HQxOeP2TOUDcsPV5Lsew6etlcKHl20G8N/czTGLsdI7nKqM6mznAUGIvW+C0xIWq177lUl/Z23gwjiBO1bwO5gHgsAXekThR9XprBQDPBuNTxGc1r1LmAGVvh4LxvqBaTVReDqCU2AiBdxEf1bxezBxgaMx2WZ3vJf7YOMDW069qbimIkrcLGHudeK3i9UHmAGamcsIVMx5CjNe8jnUCKCe2P17WBDNOjSx0I3OAqGxLMcS8xNvbjZPeKywEie+Y8aEZ90mMVb1Gc3MONCC8+WA0lJL4UfBVEL8Cgxh7Ytg0x867bQxNPK16rgCaEM8bnDDj/tvuQjCDOO62MdZSPncAUaFhb/ea2B+M3fE2CtyUmHJGNcZ8O1gu9sByqXOZrJRdPYD4KY3yzbmPYKxfVNDA3yZ+SyNb0GPG9iULmjQLtM9d1Zo4Xp+7qXyUtQEuT/fR42Z5sJuyg2Nu4ph+aWTAluCY07u5SEN4L18zS7+JXV2VHZipJLq4CGDNtFVi9yC1tYwnDDa0dSViuv0hpex+M578X12J/7JwcQ50sFaqvlDhgaw7c4UHCg9AsYlXug+Kc6A4B1YaKx3eK0KoCKEihDL8StkvGh+Q0zyz8GXsHrQVNBf74KU0cucdA3N1JtdmV6Lk7Voa69xp7jrHPqszEMSZrso2rtcSPbqoqO/qAqsoLPVvBauo6x2XugVF+fteXhfiywAAAABJRU5ErkJggg==" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="association">
