@@ -38,8 +38,8 @@
   <metadata />
   <childElements>
     <childElement id="e090db0c-9c6e-48ac-a444-65726a80516c" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-      <name>Display Name</name>
-      <display>[draw text]: Display Name</display>
+      <name>Display Label</name>
+      <display>[draw text]: Display Label</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>

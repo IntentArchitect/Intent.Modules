@@ -929,6 +929,28 @@ vertical-align: center`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </targetEnd>
+      <visualSettings>
+        <sourceEnd>
+          <primaryLabel>`${name &amp;&amp; typeReference.isNavigable ? name : ""}`</primaryLabel>
+          <secondaryLabel>${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}</secondaryLabel>
+          <pointIndicator>
+            <fillColor>!typeReference.isNullable &amp;&amp; !typeReference.isCollection ? '#000000' : '#ffffff'</fillColor>
+            <path>return `l 5.0 7.5 l -5.0 7.5 l -5.0 -7.5 Z`</path>
+          </pointIndicator>
+          <navigableIndicator>
+            <fillColor>return `#000000`</fillColor>
+            <path>return `m 0 15 l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+          </navigableIndicator>
+        </sourceEnd>
+        <targetEnd>
+          <primaryLabel>${name &amp;&amp; typeReference.isNavigable ? name : ""}</primaryLabel>
+          <secondaryLabel>return `${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}`</secondaryLabel>
+          <navigableIndicator>
+            <fillColor>return `#000000`</fillColor>
+            <path>return `l 5 10 l -5 -2.5 l -5 2.5 Z`</path>
+          </navigableIndicator>
+        </targetEnd>
+      </visualSettings>
       <macros />
     </associationSetting>
   </associationSettings>
