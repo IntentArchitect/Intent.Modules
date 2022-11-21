@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.DynamoDB.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DynamoDBTableModel : IMetadataModel, IHasStereotypes, IHasName
+    public class DynamoDBTableModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public const string SpecializationType = "DynamoDB Table";
         public const string SpecializationTypeId = "b45fcd71-d5a3-48c7-9dd5-e6a138080bcf";
@@ -25,6 +26,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -34,6 +36,8 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 

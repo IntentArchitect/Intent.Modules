@@ -42,14 +42,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a7dae3ec-2063-434b-be58-3f86434f2340</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#66eb9607-2f8c-4594-9cc6-71bd8f1ee869</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBPackageExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -102,6 +94,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBTableRangeKeyModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DynamoDBTableRangeKeyModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#a6c05ae7-9595-4a52-a4cc-caa63f9681b2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ServerlessAWSDynamoDBDiagramExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServerlessAWSDynamoDBDiagramExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

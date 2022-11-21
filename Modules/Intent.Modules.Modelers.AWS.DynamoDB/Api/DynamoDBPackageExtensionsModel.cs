@@ -20,9 +20,9 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public IList<DynamoDBModel> DynamoDBs => UnderlyingPackage.ChildElements
-            .GetElementsOfType(DynamoDBModel.SpecializationTypeId)
-            .Select(x => new DynamoDBModel(x))
+        public IList<DynamoDBTableModel> DynamoDBTables => UnderlyingPackage.ChildElements
+            .GetElementsOfType(DynamoDBTableModel.SpecializationTypeId)
+            .Select(x => new DynamoDBTableModel(x))
             .ToList();
 
     }

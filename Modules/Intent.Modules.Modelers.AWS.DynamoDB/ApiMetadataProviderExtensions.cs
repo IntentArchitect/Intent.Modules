@@ -17,12 +17,6 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
                 .Select(x => new DynamoDBMapValueAttributeModel(x))
                 .ToList();
         }
-        public static IList<DynamoDBModel> GetDynamoDBModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(DynamoDBModel.SpecializationTypeId)
-                .Select(x => new DynamoDBModel(x))
-                .ToList();
-        }
 
         public static IList<DynamoDBItemModel> GetDynamoDBItemModels(this IDesigner designer)
         {

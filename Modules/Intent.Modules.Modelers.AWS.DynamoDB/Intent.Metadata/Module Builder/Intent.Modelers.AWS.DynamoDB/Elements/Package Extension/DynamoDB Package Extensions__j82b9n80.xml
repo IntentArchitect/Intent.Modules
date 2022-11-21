@@ -36,13 +36,13 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="68dc92df-cf81-481f-8c4c-637b112b4abc" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New DynamoDB</name>
-          <display>New DynamoDB: DynamoDB</display>
+        <childElement id="5dbbdd8f-54ce-4010-8ee0-5bb2f6cf073a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New DynamoDB Table</name>
+          <display>New DynamoDB Table: DynamoDB Table</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="45210754-e2f9-4157-ba5a-7f07eae1b21c">
-            <typeId>a7dae3ec-2063-434b-be58-3f86434f2340</typeId>
+          <typeReference id="4c651dd9-adef-4d87-85fe-c89ee26278b1">
+            <typeId>b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
