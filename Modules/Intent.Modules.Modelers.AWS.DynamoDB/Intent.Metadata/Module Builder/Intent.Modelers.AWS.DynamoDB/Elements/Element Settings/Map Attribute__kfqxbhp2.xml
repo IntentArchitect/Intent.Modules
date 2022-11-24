@@ -4,9 +4,10 @@
   <display>Map Attribute</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
+  <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>f997dbf2-68b1-426f-9721-5c914a54fd34</parentFolderId>
+  <parentFolderId>83f50394-05f3-422d-b33f-ad2b4a2a4008</parentFolderId>
   <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
   <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
   <stereotypes>

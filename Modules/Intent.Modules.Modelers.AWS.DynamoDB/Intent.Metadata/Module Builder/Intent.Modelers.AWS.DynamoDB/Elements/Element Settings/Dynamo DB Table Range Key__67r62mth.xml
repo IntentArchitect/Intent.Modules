@@ -3,6 +3,7 @@
   <name>Dynamo DB Table Range Key</name>
   <display>Dynamo DB Table Range Key</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>2</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -47,5 +48,120 @@
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements />
+  <childElements>
+    <childElement id="bd3a3da8-f7c2-4b6c-9913-97769f027935" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c36c6e5a-0945-41a5-a619-59714e4738c5</parentFolderId>
+      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="9e28187a-4c39-42fe-9cfc-a66bddbee460" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="2dccfb66-ed67-459e-9d26-a79398e254a3">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>bd3a3da8-f7c2-4b6c-9913-97769f027935</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const elements = [].concat.apply([], element.getParent().getChildren()&#xD;&#xA;    .map(x =&gt; x.getChildren()&#xD;&#xA;        .filter(x =&gt; x.hasMetadata(&quot;dynamodb-range-key&quot;))));&#xD;&#xA;for (var i = 0; i &lt; elements.length; i ++) {&#xD;&#xA;    elements[i].setName(element.getName());&#xD;&#xA;    elements[i].typeReference.setType(element.typeReference.typeId);&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="238041e6-6a7c-4230-b60e-53d487812c10" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="61bfad27-1202-42e3-bd1d-0d602fe328f2">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>bd3a3da8-f7c2-4b6c-9913-97769f027935</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const items = element.getParent().getChildren().filter(x =&gt; x.specialization == &quot;DynamoDB Item&quot;);&#xD;&#xA;&#xD;&#xA;for (let i = 0; i &lt; items.length; i++) {&#xD;&#xA;    const keyElement = createElement(&quot;Scalar Attribute&quot;, element.getName(), items[i].id);&#xD;&#xA;    keyElement.typeReference.setType(element.typeReference.typeId);&#xD;&#xA;    keyElement.addMetadata(&quot;dynamodb-range-key&quot;, null);&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="09ff4814-d8b0-4565-a460-214d2be7f1c4" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Deleted</name>
+          <display>On Deleted: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="930b34a3-13d5-45bb-98ae-0bfbb936f2b8">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>bd3a3da8-f7c2-4b6c-9913-97769f027935</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const elements = [].concat.apply([], element.getParent().getChildren()&#xD;&#xA;    .map(x =&gt; x.getChildren().&#xD;&#xA;        filter(x =&gt; x.hasMetadata(&quot;dynamodb-range-key&quot;))));&#xD;&#xA;for (var i = 0; i &lt; elements.length; i ++) {&#xD;&#xA;    elements[i].delete();&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
 </class>

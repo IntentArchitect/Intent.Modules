@@ -4,9 +4,10 @@
   <display>DynamoDB Item</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>f997dbf2-68b1-426f-9721-5c914a54fd34</parentFolderId>
+  <parentFolderId>b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</parentFolderId>
   <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
   <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
   <stereotypes>
@@ -171,6 +172,54 @@
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="6ef096a4-74cf-4fb6-a35f-6575bd1d95a1" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>83f50394-05f3-422d-b33f-ad2b4a2a4008</parentFolderId>
+      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="b3103f0c-77c1-4e69-8888-ba5e860f4b8f" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="5f8ae57e-2ab0-42e6-8301-ac1f4988c540">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>6ef096a4-74cf-4fb6-a35f-6575bd1d95a1</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const parentChildren = element.getParent().getChildren();&#xD;&#xA;&#xD;&#xA;for (let i = 0; i &lt; parentChildren.length; i++) {&#xD;&#xA;    const child = parentChildren[i];&#xD;&#xA;    if (child.specialization === &quot;Dynamo DB Table Hash Key&quot;) {&#xD;&#xA;        const hashElement = createElement(&quot;Scalar Attribute&quot;, child.getName(), element.id);&#xD;&#xA;        hashElement.addMetadata(&quot;dynamodb-hash-key&quot;, null);&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    if (child.specialization === &quot;Dynamo DB Table Range Key&quot;) {&#xD;&#xA;        const rangeElement = createElement(&quot;Scalar Attribute&quot;, child.getName(), element.id);&#xD;&#xA;        rangeElement.addMetadata(&quot;dynamodb-range-key&quot;, null);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

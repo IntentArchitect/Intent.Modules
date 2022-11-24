@@ -4,7 +4,7 @@
   <display>[visual]: DynamoDB Item</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>2</order>
+  <order>3</order>
   <genericTypes />
   <typeReference id="8aa13c8f-36c4-49da-b9f3-bff3219201fa">
     <typeId>83f50394-05f3-422d-b33f-ad2b4a2a4008</typeId>
