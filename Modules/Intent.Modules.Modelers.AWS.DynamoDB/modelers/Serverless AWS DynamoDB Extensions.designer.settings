@@ -454,6 +454,9 @@ vertical-align: center`</style>
         <macro trigger="on-created">
           <script>createElement("Dynamo DB Table Hash Key", "id", element.id);</script>
         </macro>
+        <macro trigger="on-name-changed">
+          <script>element.setName(toPascalCase(element.getName()));</script>
+        </macro>
       </macros>
       <childElementSettings>
         <childElementSetting type="Dynamo DB Table Hash Key" typeId="03fe7ef6-a0a2-4834-bd9b-0500a77c2471">
@@ -512,6 +515,9 @@ for (var i = 0; i &lt; elements.length; i ++) {
     elements[i].delete();
 }
 </script>
+            </macro>
+            <macro trigger="on-name-changed">
+              <script>element.setName(toCamelCase(element.getName()));</script>
             </macro>
           </macros>
           <childElementSettings />
@@ -572,6 +578,9 @@ for (var i = 0; i &lt; elements.length; i ++) {
     elements[i].delete();
 }
 </script>
+            </macro>
+            <macro trigger="on-name-changed">
+              <script>element.setName(toCamelCase(element.getName()));</script>
             </macro>
           </macros>
           <childElementSettings />
@@ -689,6 +698,9 @@ for (let i = 0; i &lt; parentChildren.length; i++) {
 }
 </script>
             </macro>
+            <macro trigger="on-name-changed">
+              <script>element.setName(toPascalCase(element.getName()));</script>
+            </macro>
           </macros>
           <childElementSettings>
             <childElementSetting type="Scalar Attribute" typeId="a39e6629-9daf-418b-a5ec-25f05d26753e">
@@ -721,6 +733,9 @@ for (let i = 0; i &lt; parentChildren.length; i++) {
               <macros>
                 <macro trigger="on-deleted">
                   <script>console.log(element);</script>
+                </macro>
+                <macro trigger="on-name-changed">
+                  <script>element.setName(toCamelCase(element.getName()));</script>
                 </macro>
               </macros>
               <childElementSettings />
@@ -810,6 +825,11 @@ white-space: inherit;`</style>
                   </childElementVisualSetting>
                 </childElementVisualSettings>
               </visualSettings>
+              <macros>
+                <macro trigger="on-name-changed">
+                  <script>element.setName(toPascalCase(element.getName()));</script>
+                </macro>
+              </macros>
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>

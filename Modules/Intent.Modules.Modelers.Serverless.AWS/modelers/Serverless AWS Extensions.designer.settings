@@ -226,6 +226,11 @@ vertical-align: center`</style>
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
+      <macros>
+        <macro trigger="on-name-changed">
+          <script>element.setName(toPascalCase(element.getName()));</script>
+        </macro>
+      </macros>
       <childElementSettings>
         <childElementSetting type="DTO-Field" typeId="9e1a18f3-c6b1-495e-81be-cea88f37706f">
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
@@ -255,6 +260,11 @@ vertical-align: center`</style>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <mappingSettings />
+          <macros>
+            <macro trigger="on-name-changed">
+              <script>element.setName(toCamelCase(element.getName()));</script>
+            </macro>
+          </macros>
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -352,6 +362,11 @@ vertical-align: center`</style>
         <defaultSize width="100" height="80" />
         <childElementVisualSettings />
       </visualSettings>
+      <macros>
+        <macro trigger="on-name-changed">
+          <script>element.setName(toPascalCase(element.getName()));</script>
+        </macro>
+      </macros>
       <childElementSettings>
         <childElementSetting type="Request Body" typeId="49294a7f-9300-4feb-99f3-22076efea411">
           <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
@@ -410,6 +425,11 @@ vertical-align: center`</style>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
           <mappingSettings />
+          <macros>
+            <macro trigger="on-name-changed">
+              <script>element.setName(toCamelCase(element.getName()));</script>
+            </macro>
+          </macros>
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
@@ -483,6 +503,11 @@ vertical-align: center`</style>
         <defaultSize width="100" height="80" />
         <childElementVisualSettings />
       </visualSettings>
+      <macros>
+        <macro trigger="on-name-changed">
+          <script>element.setName(toPascalCase(element.getName()));</script>
+        </macro>
+      </macros>
       <childElementSettings />
     </elementSetting>
   </elementSettings>

@@ -303,6 +303,39 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="cab04eee-4920-4773-9da9-f13c8d25d45a" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Name Changed</name>
+          <display>On Name Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="468efda7-eec6-490a-8174-624a5f33d3b2">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>b208ae0b-4f3a-4333-abf2-dbd6fac1b342</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.setName(toPascalCase(element.getName()));" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>
