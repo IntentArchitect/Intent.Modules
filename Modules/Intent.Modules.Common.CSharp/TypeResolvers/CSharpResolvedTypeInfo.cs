@@ -185,7 +185,7 @@ namespace Intent.Modules.Common.CSharp.TypeResolvers
         public IReadOnlyList<CSharpJaggedArray> JaggedArrays { get; }
 
         /// <inheritdoc cref="IResolvedTypeInfo.GenericTypeParameters"/>
-        public new IReadOnlyList<CSharpResolvedTypeInfo> GenericTypeParameters => (IReadOnlyList<CSharpResolvedTypeInfo>)base.GenericTypeParameters;
+        public new IReadOnlyList<CSharpResolvedTypeInfo> GenericTypeParameters => base.GenericTypeParameters.Cast<CSharpResolvedTypeInfo>().ToArray();
 
         /// <summary>
         /// Returns the namespace for this this type as well as the recursively acquired namespaces
