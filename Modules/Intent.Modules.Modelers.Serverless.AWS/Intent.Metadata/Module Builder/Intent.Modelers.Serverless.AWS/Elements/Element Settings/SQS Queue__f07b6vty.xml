@@ -63,11 +63,11 @@
       <childElements>
         <childElement id="b9c75015-fa6c-46ab-a9ad-9c245c3b4be7" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
           <name>Set Subscriber</name>
-          <display>Set Subscriber: Resource Association</display>
+          <display>Set Subscriber: SQS Subscription</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="7dd01c19-5b1a-4430-8bea-ccd64564b616">
-            <typeId>eb4520aa-5fe2-4f03-a502-0489d1ac4177</typeId>
+            <typeId>23bb08e4-8783-46d5-8d3d-ef756d19b664</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

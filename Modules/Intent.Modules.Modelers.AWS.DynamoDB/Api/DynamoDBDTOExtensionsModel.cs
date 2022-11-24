@@ -12,17 +12,17 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.DynamoDB.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ServerlessAWSDynamoDBDTOExtensionsModel : DTOModel
+    public class DynamoDBDTOExtensionsModel : DTOModel
     {
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
-        public ServerlessAWSDynamoDBDTOExtensionsModel(IElement element) : base(element)
+        public DynamoDBDTOExtensionsModel(IElement element) : base(element)
         {
         }
 
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ServerlessAWSDynamoDBDTOExtensionsModelExtensions
+    public static class DynamoDBDTOExtensionsModelExtensions
     {
 
         public static bool HasMapFromDynamoDBTableItemMapping(this DTOModel type)

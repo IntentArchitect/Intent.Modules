@@ -76,18 +76,5 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="9a00e5e9-9aaf-4e61-95ed-18349398ca39" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
-      <name>[events]</name>
-      <display>[events]</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>605bfe10-c345-4493-a2aa-f0605e45d2ed</parentFolderId>
-      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
-      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
   </childElements>
 </class>

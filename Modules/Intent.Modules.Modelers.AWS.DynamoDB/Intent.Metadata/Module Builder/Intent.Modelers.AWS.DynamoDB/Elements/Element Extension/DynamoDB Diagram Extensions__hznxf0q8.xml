@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="a6c05ae7-9595-4a52-a4cc-caa63f9681b2" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Serverless AWS DynamoDB Diagram Extensions</name>
-  <display>Serverless AWS DynamoDB Diagram Extensions: Diagram</display>
+  <name>DynamoDB Diagram Extensions</name>
+  <display>DynamoDB Diagram Extensions: Diagram</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />

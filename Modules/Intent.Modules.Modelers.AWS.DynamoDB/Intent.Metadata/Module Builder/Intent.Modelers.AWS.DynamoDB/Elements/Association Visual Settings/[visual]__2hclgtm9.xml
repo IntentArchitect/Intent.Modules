@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="080e6743-a0e8-4d01-ae38-6d50cb1e6075" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+<class id="92341d24-0231-47b4-a316-8faf58b64cf8" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
   <display>[visual]</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>eb4520aa-5fe2-4f03-a502-0489d1ac4177</parentFolderId>
-  <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
-  <packageName>Intent.Modelers.Serverless.AWS</packageName>
+  <parentFolderId>e1a3b27b-6364-433e-96a8-24864841f688</parentFolderId>
+  <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+  <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="e21d9a65-36b8-4664-9c61-d70f3615023c" name="Setting">
       <addedByDefault>true</addedByDefault>
@@ -23,15 +23,15 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="d8a6cc5c-9c1f-4c1d-bee6-243e5ad09d47" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+    <childElement id="20c4cddb-d079-4ab1-a237-c6fc981cde81" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>080e6743-a0e8-4d01-ae38-6d50cb1e6075</parentFolderId>
-      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
-      <packageName>Intent.Modelers.Serverless.AWS</packageName>
+      <parentFolderId>92341d24-0231-47b4-a316-8faf58b64cf8</parentFolderId>
+      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
           <addedByDefault>true</addedByDefault>
@@ -70,15 +70,15 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="d33b5b9e-43ee-4e7d-b8ec-5bba3f9a0698" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+    <childElement id="29b1e9a9-2119-4e2d-bab1-6edec70be9fa" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
       <name>[desintation]</name>
       <display>[destination]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>080e6743-a0e8-4d01-ae38-6d50cb1e6075</parentFolderId>
-      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
-      <packageName>Intent.Modelers.Serverless.AWS</packageName>
+      <parentFolderId>92341d24-0231-47b4-a316-8faf58b64cf8</parentFolderId>
+      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="1434703f-9e9e-4321-af00-1e857a2e6b80" name="Point Settings">
           <addedByDefault>true</addedByDefault>

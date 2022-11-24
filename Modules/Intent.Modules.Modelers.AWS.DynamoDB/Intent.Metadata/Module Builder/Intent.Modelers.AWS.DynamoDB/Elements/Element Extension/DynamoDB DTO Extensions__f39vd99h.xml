@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="5fbfa5bd-6e43-4e51-adf1-f7f2b0fcbb5e" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Serverless AWS Dynamo DB DTO Extensions</name>
-  <display>Serverless AWS Dynamo DB DTO Extensions: DTO</display>
+  <name>DynamoDB DTO Extensions</name>
+  <display>DynamoDB DTO Extensions: DTO</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />

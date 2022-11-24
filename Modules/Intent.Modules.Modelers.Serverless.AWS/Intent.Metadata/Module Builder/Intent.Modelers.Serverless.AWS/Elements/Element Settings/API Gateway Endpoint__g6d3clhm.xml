@@ -63,7 +63,7 @@
       <childElements>
         <childElement id="95316ce8-f2ac-40a6-822a-15d83a1d6f73" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
           <name>Create Integration</name>
-          <display>Create Integration: API Gateway Route Integration</display>
+          <display>Create Integration: API Endpoint Integration</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="0a935f89-1413-44b5-b9e7-eaf3c632280f">

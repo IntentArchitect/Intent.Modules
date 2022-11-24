@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="6668bfcb-0022-4e23-b4cd-ffc3e98d623a" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>Serverless AWS DynamoDB Folder Extensions</name>
-  <display>Serverless AWS DynamoDB Folder Extensions: Folder</display>
+<class id="d865ca58-8ca3-441a-aeeb-d3cea33f36f8" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>DynamoDB Lambda Extension</name>
+  <display>DynamoDB Lambda Extension: Lambda Function</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="00c44a59-c43c-4c92-919a-b6951a43ccb6">
-    <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
+  <typeReference id="58e7faf3-c1f9-4bc2-8818-5c3d82fbffa6">
+    <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Common.Types</typePackageName>
-    <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+    <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+    <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -47,26 +47,26 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="1c8a66cb-9ed5-469a-b1eb-056f49e70c30" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="8e84f48f-fa19-49f5-b191-3ac7dadf41a9" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>6668bfcb-0022-4e23-b4cd-ffc3e98d623a</parentFolderId>
+      <parentFolderId>d865ca58-8ca3-441a-aeeb-d3cea33f36f8</parentFolderId>
       <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
       <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="a4922774-b0ec-4f49-9028-c64d7846b6a6" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New DynamoDB Table</name>
-          <display>New DynamoDB Table: DynamoDB Table</display>
+        <childElement id="0f9bf76b-dfd6-4959-acdb-9e93ca335c45" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Uses Table</name>
+          <display>Uses Table: Uses Table</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="9892fc3e-1d9d-4040-a6d2-8b4119c9dac2">
-            <typeId>b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</typeId>
+          <typeReference id="58af517e-2748-4767-8af7-8ac48f900fa6">
+            <typeId>e1a3b27b-6364-433e-96a8-24864841f688</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -77,22 +77,21 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>1c8a66cb-9ed5-469a-b1eb-056f49e70c30</parentFolderId>
+          <parentFolderId>8e84f48f-fa19-49f5-b191-3ac7dadf41a9</parentFolderId>
           <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
           <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + t" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Table" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

@@ -10,6 +10,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#59dc49b0-52e6-4066-a2d8-6678b9adee11</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/APIEndpointIntegrationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>APIEndpointIntegrationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#59dc49b0-52e6-4066-a2d8-6678b9adee11</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/APIEndpointIntegrationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>APIEndpointIntegrationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c0028dcd-38fd-42e4-b7d5-1c639d8899bd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/APIGatewayEndpointModel.cs</ApplicationRelativeFilePath>
@@ -22,22 +38,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/APIGatewayEndpointModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>APIGatewayEndpointModelStereotypeExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#59dc49b0-52e6-4066-a2d8-6678b9adee11</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIGatewayRouteIntegrationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIGatewayRouteIntegrationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#59dc49b0-52e6-4066-a2d8-6678b9adee11</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIGatewayRouteIntegrationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIGatewayRouteIntegrationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -98,22 +98,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#eb4520aa-5fe2-4f03-a502-0489d1ac4177</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ResourceAssociationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ResourceAssociationModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#eb4520aa-5fe2-4f03-a502-0489d1ac4177</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ResourceAssociationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ResourceAssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#3a3c1a75-c9be-4c57-8bea-0d9d259ef00c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ServerlessAWSFolderExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -126,6 +110,22 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/SQSQueueModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>SQSQueueModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#23bb08e4-8783-46d5-8d3d-ef756d19b664</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSubscriptionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSubscriptionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#23bb08e4-8783-46d5-8d3d-ef756d19b664</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSubscriptionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSubscriptionModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
