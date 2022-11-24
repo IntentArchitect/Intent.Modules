@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Serverless.AWS.Api
 {
-    public static class AWSAPIGatewayEndpointModelStereotypeExtensions
+    public static class APIGatewayEndpointModelStereotypeExtensions
     {
-        public static APIGatewayEndpointSettings GetAPIGatewayEndpointSettings(this AWSAPIGatewayEndpointModel model)
+        public static APIGatewayEndpointSettings GetAPIGatewayEndpointSettings(this APIGatewayEndpointModel model)
         {
             var stereotype = model.GetStereotype("API Gateway Endpoint Settings");
             return stereotype != null ? new APIGatewayEndpointSettings(stereotype) : null;
         }
 
 
-        public static bool HasAPIGatewayEndpointSettings(this AWSAPIGatewayEndpointModel model)
+        public static bool HasAPIGatewayEndpointSettings(this APIGatewayEndpointModel model)
         {
             return model.HasStereotype("API Gateway Endpoint Settings");
         }
 
-        public static bool TryGetAPIGatewayEndpointSettings(this AWSAPIGatewayEndpointModel model, out APIGatewayEndpointSettings stereotype)
+        public static bool TryGetAPIGatewayEndpointSettings(this APIGatewayEndpointModel model, out APIGatewayEndpointSettings stereotype)
         {
             if (!HasAPIGatewayEndpointSettings(model))
             {

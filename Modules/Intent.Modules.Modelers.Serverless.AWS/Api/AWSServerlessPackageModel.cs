@@ -34,10 +34,10 @@ namespace Intent.Modelers.Serverless.AWS.Api
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
 
-        public IList<AWSAPIGatewayEndpointModel> APIGatewayEndpoints => UnderlyingPackage.ChildElements
-            .GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
-            .Select(x => new AWSAPIGatewayEndpointModel(x))
-            .ToList();
+        public IList<APIGatewayEndpointModel> APIEndpoints => UnderlyingPackage.ChildElements
+    .GetElementsOfType(APIGatewayEndpointModel.SpecializationTypeId)
+    .Select(x => new APIGatewayEndpointModel(x))
+    .ToList();
 
         public IList<DTOModel> DTOs => UnderlyingPackage.ChildElements
             .GetElementsOfType(DTOModel.SpecializationTypeId)
@@ -49,19 +49,19 @@ namespace Intent.Modelers.Serverless.AWS.Api
             .Select(x => new FolderModel(x))
             .ToList();
 
-        public IList<AWSLambdaFunctionModel> LambdaFunctions => UnderlyingPackage.ChildElements
-            .GetElementsOfType(AWSLambdaFunctionModel.SpecializationTypeId)
-            .Select(x => new AWSLambdaFunctionModel(x))
+        public IList<LambdaFunctionModel> LambdaFunctions => UnderlyingPackage.ChildElements
+            .GetElementsOfType(LambdaFunctionModel.SpecializationTypeId)
+            .Select(x => new LambdaFunctionModel(x))
+            .ToList();
+
+        public IList<SQSQueueModel> SQSQueues => UnderlyingPackage.ChildElements
+            .GetElementsOfType(SQSQueueModel.SpecializationTypeId)
+            .Select(x => new SQSQueueModel(x))
             .ToList();
 
         public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements
             .GetElementsOfType(DiagramModel.SpecializationTypeId)
             .Select(x => new DiagramModel(x))
-            .ToList();
-
-        public IList<AWSSimpleQueueServiceQueueModel> SimpleQueueServiceQueues => UnderlyingPackage.ChildElements
-            .GetElementsOfType(AWSSimpleQueueServiceQueueModel.SpecializationTypeId)
-            .Select(x => new AWSSimpleQueueServiceQueueModel(x))
             .ToList();
 
     }

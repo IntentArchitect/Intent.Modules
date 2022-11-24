@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.AWS.DynamoDB.Api
+namespace Intent.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DynamoDBScalarValueAttributeModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class APIGatewayEndpointModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
-        public const string SpecializationType = "Dynamo DB Scalar Value Attribute";
-        public const string SpecializationTypeId = "a39e6629-9daf-418b-a5ec-25f05d26753e";
+        public const string SpecializationType = "API Gateway Endpoint";
+        public const string SpecializationTypeId = "c0028dcd-38fd-42e4-b7d5-1c639d8899bd";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public DynamoDBScalarValueAttributeModel(IElement element, string requiredType = SpecializationType)
+        public APIGatewayEndpointModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -35,7 +37,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public ITypeReference TypeReference => _element.TypeReference;
+        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 
@@ -44,7 +46,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
             return _element.ToString();
         }
 
-        public bool Equals(DynamoDBScalarValueAttributeModel other)
+        public bool Equals(APIGatewayEndpointModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -54,7 +56,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DynamoDBScalarValueAttributeModel)obj);
+            return Equals((APIGatewayEndpointModel)obj);
         }
 
         public override int GetHashCode()
@@ -64,17 +66,17 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class DynamoDBScalarValueAttributeModelExtensions
+    public static class APIGatewayEndpointModelExtensions
     {
 
-        public static bool IsDynamoDBScalarValueAttributeModel(this ICanBeReferencedType type)
+        public static bool IsAPIGatewayEndpointModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DynamoDBScalarValueAttributeModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == APIGatewayEndpointModel.SpecializationTypeId;
         }
 
-        public static DynamoDBScalarValueAttributeModel AsDynamoDBScalarValueAttributeModel(this ICanBeReferencedType type)
+        public static APIGatewayEndpointModel AsAPIGatewayEndpointModel(this ICanBeReferencedType type)
         {
-            return type.IsDynamoDBScalarValueAttributeModel() ? new DynamoDBScalarValueAttributeModel((IElement)type) : null;
+            return type.IsAPIGatewayEndpointModel() ? new APIGatewayEndpointModel((IElement)type) : null;
         }
     }
 }

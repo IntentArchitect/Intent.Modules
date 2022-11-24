@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.AWS.DynamoDB.Api
+namespace Intent.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DynamoDBMapValueAttributeModel : IMetadataModel, IHasStereotypes, IHasName
+    public class SQSQueueModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
-        public const string SpecializationType = "Dynamo DB Map Value Attribute";
-        public const string SpecializationTypeId = "4b5f63fc-2019-4ec0-8f1a-4f47f397a60c";
+        public const string SpecializationType = "SQS Queue";
+        public const string SpecializationTypeId = "ed9035bc-31b0-4591-aac6-9a950099cbd5";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public DynamoDBMapValueAttributeModel(IElement element, string requiredType = SpecializationType)
+        public SQSQueueModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -35,19 +37,16 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public IElement InternalElement => _element;
+        public FolderModel Folder { get; }
 
-        public IList<DynamoDBScalarValueAttributeModel> ValueAttributes => _element.ChildElements
-            .GetElementsOfType(DynamoDBScalarValueAttributeModel.SpecializationTypeId)
-            .Select(x => new DynamoDBScalarValueAttributeModel(x))
-            .ToList();
+        public IElement InternalElement => _element;
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(DynamoDBMapValueAttributeModel other)
+        public bool Equals(SQSQueueModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,7 +56,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DynamoDBMapValueAttributeModel)obj);
+            return Equals((SQSQueueModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,17 +66,17 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class DynamoDBMapValueAttributeModelExtensions
+    public static class SQSQueueModelExtensions
     {
 
-        public static bool IsDynamoDBMapValueAttributeModel(this ICanBeReferencedType type)
+        public static bool IsSQSQueueModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DynamoDBMapValueAttributeModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == SQSQueueModel.SpecializationTypeId;
         }
 
-        public static DynamoDBMapValueAttributeModel AsDynamoDBMapValueAttributeModel(this ICanBeReferencedType type)
+        public static SQSQueueModel AsSQSQueueModel(this ICanBeReferencedType type)
         {
-            return type.IsDynamoDBMapValueAttributeModel() ? new DynamoDBMapValueAttributeModel((IElement)type) : null;
+            return type.IsSQSQueueModel() ? new SQSQueueModel((IElement)type) : null;
         }
     }
 }

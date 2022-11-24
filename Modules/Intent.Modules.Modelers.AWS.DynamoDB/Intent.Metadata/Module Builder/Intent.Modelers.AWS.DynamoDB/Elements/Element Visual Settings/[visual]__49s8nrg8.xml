@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="685f713e-1666-44c0-8f17-fdddea0a0cc7" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: Dynamo DB Map Value Attribute</display>
+  <display>[visual]: Map Attribute</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>1</order>

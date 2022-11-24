@@ -3,30 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
-using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.Serverless.AWS.Api
+namespace Intent.Modelers.AWS.DynamoDB.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class AWSAPIGatewayEndpointModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class ScalarAttributeModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "AWS API Gateway Endpoint";
-        public const string SpecializationTypeId = "c0028dcd-38fd-42e4-b7d5-1c639d8899bd";
+        public const string SpecializationType = "Scalar Attribute";
+        public const string SpecializationTypeId = "a39e6629-9daf-418b-a5ec-25f05d26753e";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public AWSAPIGatewayEndpointModel(IElement element, string requiredType = SpecializationType)
+        public ScalarAttributeModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -37,7 +35,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public FolderModel Folder { get; }
+        public ITypeReference TypeReference => _element.TypeReference;
 
         public IElement InternalElement => _element;
 
@@ -46,7 +44,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
             return _element.ToString();
         }
 
-        public bool Equals(AWSAPIGatewayEndpointModel other)
+        public bool Equals(ScalarAttributeModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -56,7 +54,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AWSAPIGatewayEndpointModel)obj);
+            return Equals((ScalarAttributeModel)obj);
         }
 
         public override int GetHashCode()
@@ -66,17 +64,17 @@ namespace Intent.Modelers.Serverless.AWS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class AWSAPIGatewayEndpointModelExtensions
+    public static class ScalarAttributeModelExtensions
     {
 
-        public static bool IsAWSAPIGatewayEndpointModel(this ICanBeReferencedType type)
+        public static bool IsScalarAttributeModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AWSAPIGatewayEndpointModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ScalarAttributeModel.SpecializationTypeId;
         }
 
-        public static AWSAPIGatewayEndpointModel AsAWSAPIGatewayEndpointModel(this ICanBeReferencedType type)
+        public static ScalarAttributeModel AsScalarAttributeModel(this ICanBeReferencedType type)
         {
-            return type.IsAWSAPIGatewayEndpointModel() ? new AWSAPIGatewayEndpointModel((IElement)type) : null;
+            return type.IsScalarAttributeModel() ? new ScalarAttributeModel((IElement)type) : null;
         }
     }
 }

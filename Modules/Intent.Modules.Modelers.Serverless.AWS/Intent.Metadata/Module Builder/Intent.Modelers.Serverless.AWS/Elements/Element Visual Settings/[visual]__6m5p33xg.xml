@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="ffc1c45f-63fa-4242-98b0-6c64168f5622" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: AWS Lambda Function</display>
+  <display>[visual]: Lambda Function</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>3</order>

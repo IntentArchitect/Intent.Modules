@@ -11,24 +11,10 @@ namespace Intent.Modelers.Serverless.AWS.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<AWSAPIGatewayEndpointModel> GetAWSAPIGatewayEndpointModels(this IDesigner designer)
+        public static IList<APIGatewayEndpointModel> GetAPIGatewayEndpointModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
-                .Select(x => new AWSAPIGatewayEndpointModel(x))
-                .ToList();
-        }
-
-        public static IList<AWSLambdaFunctionModel> GetAWSLambdaFunctionModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(AWSLambdaFunctionModel.SpecializationTypeId)
-                .Select(x => new AWSLambdaFunctionModel(x))
-                .ToList();
-        }
-
-        public static IList<AWSSimpleQueueServiceQueueModel> GetAWSSimpleQueueServiceQueueModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(AWSSimpleQueueServiceQueueModel.SpecializationTypeId)
-                .Select(x => new AWSSimpleQueueServiceQueueModel(x))
+            return designer.GetElementsOfType(APIGatewayEndpointModel.SpecializationTypeId)
+                .Select(x => new APIGatewayEndpointModel(x))
                 .ToList();
         }
 
@@ -43,6 +29,20 @@ namespace Intent.Modelers.Serverless.AWS.Api
         {
             return designer.GetElementsOfType(DTOModel.SpecializationTypeId)
                 .Select(x => new DTOModel(x))
+                .ToList();
+        }
+
+        public static IList<LambdaFunctionModel> GetLambdaFunctionModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(LambdaFunctionModel.SpecializationTypeId)
+                .Select(x => new LambdaFunctionModel(x))
+                .ToList();
+        }
+
+        public static IList<SQSQueueModel> GetSQSQueueModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(SQSQueueModel.SpecializationTypeId)
+                .Select(x => new SQSQueueModel(x))
                 .ToList();
         }
 

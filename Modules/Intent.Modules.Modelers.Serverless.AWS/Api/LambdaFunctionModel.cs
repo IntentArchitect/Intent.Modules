@@ -12,14 +12,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Serverless.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class AWSLambdaFunctionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
+    public class LambdaFunctionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference, IHasFolder
     {
-        public const string SpecializationType = "AWS Lambda Function";
+        public const string SpecializationType = "Lambda Function";
         public const string SpecializationTypeId = "de02db8b-e18f-423c-b4da-5f717a04075e";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public AWSLambdaFunctionModel(IElement element, string requiredType = SpecializationType)
+        public LambdaFunctionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -60,7 +60,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
             return _element.ToString();
         }
 
-        public bool Equals(AWSLambdaFunctionModel other)
+        public bool Equals(LambdaFunctionModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -70,7 +70,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((AWSLambdaFunctionModel)obj);
+            return Equals((LambdaFunctionModel)obj);
         }
 
         public override int GetHashCode()
@@ -80,17 +80,17 @@ namespace Intent.Modelers.Serverless.AWS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class AWSLambdaFunctionModelExtensions
+    public static class LambdaFunctionModelExtensions
     {
 
-        public static bool IsAWSLambdaFunctionModel(this ICanBeReferencedType type)
+        public static bool IsLambdaFunctionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == AWSLambdaFunctionModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == LambdaFunctionModel.SpecializationTypeId;
         }
 
-        public static AWSLambdaFunctionModel AsAWSLambdaFunctionModel(this ICanBeReferencedType type)
+        public static LambdaFunctionModel AsLambdaFunctionModel(this ICanBeReferencedType type)
         {
-            return type.IsAWSLambdaFunctionModel() ? new AWSLambdaFunctionModel((IElement)type) : null;
+            return type.IsLambdaFunctionModel() ? new LambdaFunctionModel((IElement)type) : null;
         }
     }
 }

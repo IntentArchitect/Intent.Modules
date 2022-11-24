@@ -37,14 +37,14 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
 
         public IElement InternalElement => _element;
 
-        public IList<DynamoDBMapValueAttributeModel> MapValueAttributes => _element.ChildElements
-            .GetElementsOfType(DynamoDBMapValueAttributeModel.SpecializationTypeId)
-            .Select(x => new DynamoDBMapValueAttributeModel(x))
+        public IList<MapAttributeModel> MapAttributes => _element.ChildElements
+            .GetElementsOfType(MapAttributeModel.SpecializationTypeId)
+            .Select(x => new MapAttributeModel(x))
             .ToList();
 
-        public IList<DynamoDBScalarValueAttributeModel> ValueAttributes => _element.ChildElements
-            .GetElementsOfType(DynamoDBScalarValueAttributeModel.SpecializationTypeId)
-            .Select(x => new DynamoDBScalarValueAttributeModel(x))
+        public IList<ScalarAttributeModel> ScalarAttributes => _element.ChildElements
+            .GetElementsOfType(ScalarAttributeModel.SpecializationTypeId)
+            .Select(x => new ScalarAttributeModel(x))
             .ToList();
 
         public override string ToString()

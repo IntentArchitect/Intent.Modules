@@ -122,7 +122,7 @@
           <childElements>
             <childElement id="adf73dcb-7eaf-47af-a682-0842e783b0c5" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Dynamo DB Scalar Value Attribute -&gt; DTO-Field (Map to Type)</display>
+              <display>[mapping]: Scalar Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -339,7 +339,7 @@
         </childElement>
         <childElement id="2633fdd3-da86-4c9f-a180-49d492279b8b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Dynamo DB Map Value Attribute -&gt; DTO (Map to Type)</display>
+          <display>[mapping]: Map Attribute -&gt; DTO (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -382,7 +382,7 @@
           <childElements>
             <childElement id="c15f1b45-4323-4c84-a7e9-b454ae5982dc" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Dynamo DB Scalar Value Attribute -&gt; DTO-Field (Map to Type)</display>
+              <display>[mapping]: Scalar Attribute -&gt; DTO-Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>

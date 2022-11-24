@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="a39e6629-9daf-418b-a5ec-25f05d26753e" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Dynamo DB Scalar Value Attribute</name>
-  <display>Dynamo DB Scalar Value Attribute</display>
+  <name>Scalar Attribute</name>
+  <display>Scalar Attribute</display>
   <isAbstract>false</isAbstract>
   <order>1</order>
   <genericTypes />

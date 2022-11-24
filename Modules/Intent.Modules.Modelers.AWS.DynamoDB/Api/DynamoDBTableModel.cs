@@ -56,9 +56,9 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
             .Select(x => new DynamoDBItemModel(x))
             .ToList();
 
-        public IList<DynamoDBMapValueAttributeModel> ItemMapValueAttributes => _element.ChildElements
-            .GetElementsOfType(DynamoDBMapValueAttributeModel.SpecializationTypeId)
-            .Select(x => new DynamoDBMapValueAttributeModel(x))
+        public IList<MapAttributeModel> MapAttributes => _element.ChildElements
+            .GetElementsOfType(MapAttributeModel.SpecializationTypeId)
+            .Select(x => new MapAttributeModel(x))
             .ToList();
 
         public override string ToString()

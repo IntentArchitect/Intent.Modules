@@ -10,7 +10,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
     public static class ResourceAssociationModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<ResourceAssociationTargetEndModel> ResourceAssociationTargetEnd(this AWSLambdaFunctionModel model)
+        public static IList<ResourceAssociationTargetEndModel> ResourceAssociationTargetEnd(this LambdaFunctionModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == ResourceAssociationModel.SpecializationType && x.IsTargetEnd())
@@ -19,7 +19,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<ResourceAssociationTargetEndModel> ResourceAssociationTargetEnd(this AWSSimpleQueueServiceQueueModel model)
+        public static IList<ResourceAssociationTargetEndModel> ResourceAssociationTargetEnd(this SQSQueueModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == ResourceAssociationModel.SpecializationType && x.IsTargetEnd())
@@ -28,7 +28,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<ResourceAssociationSourceEndModel> ResourceAssociationSourceEnd(this AWSSimpleQueueServiceQueueModel model)
+        public static IList<ResourceAssociationSourceEndModel> ResourceAssociationSourceEnd(this SQSQueueModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == ResourceAssociationModel.SpecializationType && x.IsSourceEnd())
@@ -37,7 +37,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<ResourceAssociationSourceEndModel> ResourceAssociationSourceEnd(this AWSLambdaFunctionModel model)
+        public static IList<ResourceAssociationSourceEndModel> ResourceAssociationSourceEnd(this LambdaFunctionModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == ResourceAssociationModel.SpecializationType && x.IsSourceEnd())
@@ -46,7 +46,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<ResourceAssociationEndModel> ResourceAssociationEnds(this AWSSimpleQueueServiceQueueModel model)
+        public static IList<ResourceAssociationEndModel> ResourceAssociationEnds(this SQSQueueModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.IsResourceAssociationEndModel())
@@ -55,7 +55,7 @@ namespace Intent.Modelers.Serverless.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<ResourceAssociationEndModel> ResourceAssociationEnds(this AWSLambdaFunctionModel model)
+        public static IList<ResourceAssociationEndModel> ResourceAssociationEnds(this LambdaFunctionModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.IsResourceAssociationEndModel())

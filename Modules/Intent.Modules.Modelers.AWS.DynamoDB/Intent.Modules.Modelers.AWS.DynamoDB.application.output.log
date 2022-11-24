@@ -34,34 +34,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBMapValueAttributeModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBMapValueAttributeModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#66eb9607-2f8c-4594-9cc6-71bd8f1ee869</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBPackageExtensionsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DynamoDBPackageExtensionsModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a39e6629-9daf-418b-a5ec-25f05d26753e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBScalarValueAttributeModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBScalarValueAttributeModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#a39e6629-9daf-418b-a5ec-25f05d26753e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBScalarValueAttributeModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBScalarValueAttributeModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -94,6 +70,30 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBTableRangeKeyModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DynamoDBTableRangeKeyModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MapAttributeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MapAttributeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a39e6629-9daf-418b-a5ec-25f05d26753e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ScalarAttributeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ScalarAttributeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#a39e6629-9daf-418b-a5ec-25f05d26753e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ScalarAttributeModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ScalarAttributeModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

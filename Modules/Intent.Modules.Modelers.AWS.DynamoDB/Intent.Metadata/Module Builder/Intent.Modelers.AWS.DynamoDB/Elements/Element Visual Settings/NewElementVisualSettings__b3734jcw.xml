@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="31d83292-a56e-4141-ad94-e45329acae73" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>NewElementVisualSettings</name>
-  <display>[visual]: Dynamo DB Scalar Value Attribute</display>
+  <display>[visual]: Scalar Attribute</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>4</order>
+  <order>3</order>
   <genericTypes />
   <typeReference id="be025e7a-7081-443c-b90b-d9393a8f8d7a">
     <typeId>a39e6629-9daf-418b-a5ec-25f05d26753e</typeId>

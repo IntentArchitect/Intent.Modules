@@ -10,21 +10,21 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.AWS.DynamoDB.Api
 {
-    public static class DynamoDBScalarValueAttributeModelStereotypeExtensions
+    public static class ScalarAttributeModelStereotypeExtensions
     {
-        public static HashKey GetHashKey(this DynamoDBScalarValueAttributeModel model)
+        public static HashKey GetHashKey(this ScalarAttributeModel model)
         {
             var stereotype = model.GetStereotype("Hash Key");
             return stereotype != null ? new HashKey(stereotype) : null;
         }
 
 
-        public static bool HasHashKey(this DynamoDBScalarValueAttributeModel model)
+        public static bool HasHashKey(this ScalarAttributeModel model)
         {
             return model.HasStereotype("Hash Key");
         }
 
-        public static bool TryGetHashKey(this DynamoDBScalarValueAttributeModel model, out HashKey stereotype)
+        public static bool TryGetHashKey(this ScalarAttributeModel model, out HashKey stereotype)
         {
             if (!HasHashKey(model))
             {
@@ -36,19 +36,19 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
             return true;
         }
 
-        public static SortKey GetSortKey(this DynamoDBScalarValueAttributeModel model)
+        public static SortKey GetSortKey(this ScalarAttributeModel model)
         {
             var stereotype = model.GetStereotype("Sort Key");
             return stereotype != null ? new SortKey(stereotype) : null;
         }
 
 
-        public static bool HasSortKey(this DynamoDBScalarValueAttributeModel model)
+        public static bool HasSortKey(this ScalarAttributeModel model)
         {
             return model.HasStereotype("Sort Key");
         }
 
-        public static bool TryGetSortKey(this DynamoDBScalarValueAttributeModel model, out SortKey stereotype)
+        public static bool TryGetSortKey(this ScalarAttributeModel model, out SortKey stereotype)
         {
             if (!HasSortKey(model))
             {

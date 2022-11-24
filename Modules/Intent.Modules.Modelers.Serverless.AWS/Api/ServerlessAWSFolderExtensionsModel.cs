@@ -19,9 +19,9 @@ namespace Intent.Modelers.Serverless.AWS.Api
         {
         }
 
-        public IList<AWSAPIGatewayEndpointModel> APIGatewayEndpoints => _element.ChildElements
-            .GetElementsOfType(AWSAPIGatewayEndpointModel.SpecializationTypeId)
-            .Select(x => new AWSAPIGatewayEndpointModel(x))
+        public IList<APIGatewayEndpointModel> APIEndpoints => _element.ChildElements
+            .GetElementsOfType(APIGatewayEndpointModel.SpecializationTypeId)
+            .Select(x => new APIGatewayEndpointModel(x))
             .ToList();
 
         public IList<DTOModel> DTOs => _element.ChildElements
@@ -29,19 +29,19 @@ namespace Intent.Modelers.Serverless.AWS.Api
             .Select(x => new DTOModel(x))
             .ToList();
 
-        public IList<AWSLambdaFunctionModel> LambdaFunctions => _element.ChildElements
-            .GetElementsOfType(AWSLambdaFunctionModel.SpecializationTypeId)
-            .Select(x => new AWSLambdaFunctionModel(x))
+        public IList<LambdaFunctionModel> LambdaFunctions => _element.ChildElements
+            .GetElementsOfType(LambdaFunctionModel.SpecializationTypeId)
+            .Select(x => new LambdaFunctionModel(x))
+            .ToList();
+
+        public IList<SQSQueueModel> SQSQueues => _element.ChildElements
+            .GetElementsOfType(SQSQueueModel.SpecializationTypeId)
+            .Select(x => new SQSQueueModel(x))
             .ToList();
 
         public IList<DiagramModel> Diagrams => _element.ChildElements
             .GetElementsOfType(DiagramModel.SpecializationTypeId)
             .Select(x => new DiagramModel(x))
-            .ToList();
-
-        public IList<AWSSimpleQueueServiceQueueModel> SimpleQueueServiceQueues => _element.ChildElements
-            .GetElementsOfType(AWSSimpleQueueServiceQueueModel.SpecializationTypeId)
-            .Select(x => new AWSSimpleQueueServiceQueueModel(x))
             .ToList();
 
     }

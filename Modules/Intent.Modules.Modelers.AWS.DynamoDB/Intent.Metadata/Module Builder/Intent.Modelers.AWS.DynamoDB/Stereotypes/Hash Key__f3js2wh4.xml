@@ -3,7 +3,7 @@
   <name>Hash Key</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="a39e6629-9daf-418b-a5ec-25f05d26753e">Dynamo DB Scalar Value Attribute</type>
+    <type id="a39e6629-9daf-418b-a5ec-25f05d26753e">Scalar Attribute</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

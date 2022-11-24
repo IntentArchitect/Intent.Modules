@@ -3,7 +3,7 @@
   <name>API Gateway Endpoint Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="c0028dcd-38fd-42e4-b7d5-1c639d8899bd">AWS API Gateway Endpoint</type>
+    <type id="c0028dcd-38fd-42e4-b7d5-1c639d8899bd">API Gateway Endpoint</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>always</applyMode>

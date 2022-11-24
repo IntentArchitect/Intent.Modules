@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="a52fe34f-abf2-4ce5-b69e-e8549d7cba84" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: AWS API Gateway Endpoint</display>
+  <display>[visual]: API Gateway Endpoint</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
