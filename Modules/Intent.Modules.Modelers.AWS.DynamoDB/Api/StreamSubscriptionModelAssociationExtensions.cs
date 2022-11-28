@@ -11,7 +11,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
     public static class StreamSubscriptionModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<StreamSubscriptionTargetEndModel> Lambda(this DynamoDBTableModel model)
+        public static IList<StreamSubscriptionTargetEndModel> Lambda(this LambdaFunctionModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == StreamSubscriptionModel.SpecializationType && x.IsTargetEnd())
@@ -20,7 +20,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<StreamSubscriptionSourceEndModel> Table(this LambdaFunctionModel model)
+        public static IList<StreamSubscriptionSourceEndModel> Table(this DynamoDBTableModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == StreamSubscriptionModel.SpecializationType && x.IsSourceEnd())

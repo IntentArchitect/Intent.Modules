@@ -98,6 +98,44 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="61e5a704-9499-4623-9e9c-09c51fec2078" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Subscribes To</name>
+          <display>Subscribes To: Stream Subscription</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="17f3f9e5-a09c-4238-b176-ee1923c2dfe5">
+            <typeId>03b0ee2e-7696-464d-88d5-fcae17cd0c75</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS.DynamoDB</typePackageName>
+            <typePackageId>65807b2e-f468-42d5-b6fe-0f48b692052d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>8e84f48f-fa19-49f5-b191-3ac7dadf41a9</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + alt + s" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>
