@@ -600,20 +600,10 @@ for (var i = 0; i &lt; elements.length; i ++) {
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Map Attribute</type>
-            <type order="1">Scalar Attribute</type>
-            <type order="2">DynamoDB Item Association</type>
+            <type order="0">Scalar Attribute</type>
+            <type order="1">DynamoDB Item Association</type>
           </typeOrder>
           <creationOptions>
-            <option type="element">
-              <specializationType>Map Attribute</specializationType>
-              <specializationTypeId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</specializationTypeId>
-              <text>New Map Attribute</text>
-              <shortcut>ctrl + alt +m</shortcut>
-              <defaultName>mapAttribute</defaultName>
-              <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA0tJREFUaEPtmk1oXFUUx3//W0OSIhQsFoLtohFRCt20YF3Y4kpKN5XJRIWKgqKWigtBhdCP3JeImxahC4UWqiC2LjIzWhdWuhIEP4JxoRZaiqsqLSikgpBAMveUO8xIMu0k0TfkvYb3tvfdc8/vnHPPvee8J+7yR3e5/vwLUBo16zZMj9hZF1tC4POuyha/17y2RJlrD6CWKHVYlbxNYexY6AGJ81Wvp9J44oC3zTPGNZbyQCeA4XF7OAT2AJtkTJtjqnKUSUm3hV6uAJ7xtmMOTmI83m49iasO3pzw+mLhWG4Ahr2V6/AJRi/ipuA74BLGVsRjZjzQUNzha6NKWhC5AGha/tum8mf7enn93IimW0q+csp6/rrOUWAE4x4nXqh4fRzHcwFQ8vZNDBuJc1WvA50231Bib1jgPYk/HQxOeP2TOUDcsPV5Lsew6etlcKHl20G8N/czTGLsdI7nKqM6mznAUGIvW+C0xIWq177lUl/Z23gwjiBO1bwO5gHgsAXekThR9XprBQDPBuNTxGc1r1LmAGVvh4LxvqBaTVReDqCU2AiBdxEf1bxezBxgaMx2WZ3vJf7YOMDW069qbimIkrcLGHudeK3i9UHmAGamcsIVMx5CjNe8jnUCKCe2P17WBDNOjSx0I3OAqGxLMcS8xNvbjZPeKywEie+Y8aEZ90mMVb1Gc3MONCC8+WA0lJL4UfBVEL8Cgxh7Ytg0x867bQxNPK16rgCaEM8bnDDj/tvuQjCDOO62MdZSPncAUaFhb/ea2B+M3fE2CtyUmHJGNcZ8O1gu9sByqXOZrJRdPYD4KY3yzbmPYKxfVNDA3yZ+SyNb0GPG9iULmjQLtM9d1Zo4Xp+7qXyUtQEuT/fR42Z5sJuyg2Nu4ph+aWTAluCY07u5SEN4L18zS7+JXV2VHZipJLq4CGDNtFVi9yC1tYwnDDa0dSViuv0hpex+M578X12J/7JwcQ50sFaqvlDhgaw7c4UHCg9AsYlXug+Kc6A4B1YaKx3eK0KoCKEihDL8StkvGh+Q0zyz8GXsHrQVNBf74KU0cucdA3N1JtdmV6Lk7Voa69xp7jrHPqszEMSZrso2rtcSPbqoqO/qAqsoLPVvBauo6x2XugVF+fteXhfiywAAAABJRU5ErkJggg==" />
-              <allowMultiple>true</allowMultiple>
-            </option>
             <option type="element">
               <specializationType>Scalar Attribute</specializationType>
               <specializationTypeId>a39e6629-9daf-418b-a5ec-25f05d26753e</specializationTypeId>

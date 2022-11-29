@@ -37,11 +37,6 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
 
         public IElement InternalElement => _element;
 
-        public IList<MapAttributeModel> MapAttributes => _element.ChildElements
-            .GetElementsOfType(MapAttributeModel.SpecializationTypeId)
-            .Select(x => new MapAttributeModel(x))
-            .ToList();
-
         public IList<ScalarAttributeModel> ScalarAttributes => _element.ChildElements
             .GetElementsOfType(ScalarAttributeModel.SpecializationTypeId)
             .Select(x => new ScalarAttributeModel(x))
