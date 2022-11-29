@@ -1,5 +1,9 @@
 ﻿### Version 3.3.15
 
+- Fixed: `ToSnakeCase()`, `ToKebabCase()`, and `ToDotCase()` extension methods would put a separator before numeric characters.
+
+### Version 3.3.15
+
 - Extended the `IIntentTemplate` interface with `AddTypeSource`, `TryGetTypeName`, `GetTemplate` and `TryGetTemplate` methods.
 
 ### Version 3.3.14
