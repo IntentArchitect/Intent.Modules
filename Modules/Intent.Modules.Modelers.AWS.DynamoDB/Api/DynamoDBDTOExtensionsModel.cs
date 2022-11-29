@@ -34,5 +34,15 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         {
             return type.HasMapFromDynamoDBTableItemMapping() ? type.InternalElement.MappedElement : null;
         }
+
+        public static bool HasMapToDynamoDBTableItemMapping(this DTOModel type)
+        {
+            return type.InternalElement.MappedElement?.MappingSettingsId == "5735dc81-3381-4fc2-b80d-fbe6c449ee2a";
+        }
+
+        public static IElementMapping GetMapToDynamoDBTableItemMapping(this DTOModel type)
+        {
+            return type.HasMapToDynamoDBTableItemMapping() ? type.InternalElement.MappedElement : null;
+        }
     }
 }

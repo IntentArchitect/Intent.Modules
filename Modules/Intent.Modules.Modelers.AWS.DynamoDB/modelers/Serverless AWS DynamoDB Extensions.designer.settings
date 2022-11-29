@@ -50,7 +50,9 @@ const types = {
     parameter: "Parameter",
     guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
     requestBody: "Request Body",
-    usesTable: "Uses Table"
+    usesTable: "Uses Table",
+    outgoingMappingSettingId: "55ed7b49-b077-405f-a8e2-9ad79953d35e",
+    incomingMappingSettingId: "5735dc81-3381-4fc2-b80d-fbe6c449ee2a",
 };
 
 let defaultName = null;
@@ -88,7 +90,7 @@ let resultDto = lookupTypesOf(types.dto).filter(x =&gt; hasCrudOperationType(x, 
 if (resultDto == null) {
     resultDto = createElement(types.dto, `${name}`, folder.id);
     resultDto.setMetadata(metadata.key, metadata.result);
-    resultDto.setMapping(tableItem.id);
+    resultDto.setMapping(tableItem.id, types.outgoingMappingSettingId);
 
     for (var i = 0; i &lt; tableItemFields.length; i++) {
         const field = tableItemFields[i];
@@ -106,7 +108,7 @@ let createDto = lookupTypesOf(types.dto).filter(x =&gt; hasCrudOperationType(x, 
 if (createDto == null) {
     createDto = createElement(types.dto, `${name}Create`, folder.id);
     createDto.setMetadata(metadata.key, metadata.create);
-    createDto.setMapping(tableItem.id);
+    createDto.setMapping(tableItem.id, types.incomingMappingSettingId);
 
     for (var i = 0; i &lt; tableItemFields.length; i++) {
         const field = tableItemFields[i];
@@ -128,7 +130,7 @@ let updateDto = lookupTypesOf(types.dto).filter(x =&gt; hasCrudOperationType(x, 
 if (updateDto == null) {
     updateDto = createElement(types.dto, `${name}Update`, folder.id);
     updateDto.setMetadata(metadata.key, metadata.update);
-    updateDto.setMapping(tableItem.id);
+    updateDto.setMapping(tableItem.id, types.incomingMappingSettingId);
 
     for (var i = 0; i &lt; tableItemFields.length; i++) {
         const field = tableItemFields[i];
@@ -969,6 +971,143 @@ white-space: inherit;`</style>
                     <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
                   <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="2633fdd3-da86-4c9f-a180-49d492279b8b" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
+        <mappingSetting id="5735dc81-3381-4fc2-b80d-fbe6c449ee2a">
+          <name>Map to DynamoDB Table Item</name>
+          <shortcut>ctrl + shift + m</shortcut>
+          <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-right</symbol>
+          <targetTypeOptions>
+            <option specializationType="83f50394-05f3-422d-b33f-ad2b4a2a4008" displayText="DynamoDB Item" />
+            <option specializationType="4b5f63fc-2019-4ec0-8f1a-4f47f397a60c" displayText="Map Attribute" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="c5672b44-2c95-46d7-8ac3-83e68c824731">
+              <criteria specializationType="DynamoDB Item">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="954c894c-17b3-41e9-a1ed-e0234594167e">
+                  <criteria specializationType="Scalar Attribute">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren>false</hasChildren>
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="9c155286-8fd7-4456-ba2d-e472ab30eb03">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="e01204e5-7141-40a2-87c7-213b7a4099f3">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="c5672b44-2c95-46d7-8ac3-83e68c824731" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="23d4b495-d0b0-4a59-ba2a-41de3706e2a5">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="4154db32-a0e9-4713-9f00-581cbb52bb97">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="c5672b44-2c95-46d7-8ac3-83e68c824731" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+              </childMappings>
+            </mapping>
+            <mapping id="de71f94b-6520-438c-8ffe-c6252d3f5f51">
+              <criteria specializationType="Map Attribute">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="354801fb-4fd2-499e-98f9-f5414b490ae3">
+                  <criteria specializationType="Scalar Attribute">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren>false</hasChildren>
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="85cd3491-6222-4a8f-bf25-af5f9c331504">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="c12ba89c-4a51-4c57-9973-0bd6e9fbcb1a">
+                  <criteria specializationType="DynamoDB Item Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="c5672b44-2c95-46d7-8ac3-83e68c824731" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="ae6eea9d-6972-47bf-98e7-3aa6282386dd">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>true</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="811da461-e808-49e9-b1e3-0b2780d471d9">
+                  <criteria specializationType="DynamoDB Item Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="traverse" useMappingSettings="c5672b44-2c95-46d7-8ac3-83e68c824731" />
                   <behaviour autoSelectChildren="false" />
                   <childMappings />
                 </mapping>
