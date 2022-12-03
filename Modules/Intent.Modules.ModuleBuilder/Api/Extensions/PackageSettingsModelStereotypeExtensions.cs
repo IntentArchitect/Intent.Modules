@@ -47,9 +47,9 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
-            public string DefaultName()
+            public string DefaultNameFunction()
             {
-                return _stereotype.GetProperty<string>("Default Name");
+                return _stereotype.GetProperty<string>("Default Name Function");
             }
 
             public IIconModel Icon()

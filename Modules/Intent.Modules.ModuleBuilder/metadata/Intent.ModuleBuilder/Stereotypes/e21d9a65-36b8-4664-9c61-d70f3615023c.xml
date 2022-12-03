@@ -9,6 +9,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>

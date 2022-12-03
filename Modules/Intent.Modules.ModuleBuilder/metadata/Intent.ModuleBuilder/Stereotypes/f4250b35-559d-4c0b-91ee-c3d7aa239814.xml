@@ -11,6 +11,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="check-square" />
   <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
   <displayFunction>var macOsShortcut = properties["Shortcut (macOS)"].value;
 var shortcut = properties["Shortcut"].value;
 

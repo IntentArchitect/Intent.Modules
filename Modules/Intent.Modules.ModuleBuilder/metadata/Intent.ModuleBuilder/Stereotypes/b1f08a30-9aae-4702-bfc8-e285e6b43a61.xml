@@ -11,6 +11,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
   <displayFunction>return `[${properties["Source"] == "Custom Type"
     ?  properties["Model Name"].value 
     : properties["Model Type"].value 
