@@ -5,13 +5,13 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
+using Intent.SdkEvolutionHelpers;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
 
 namespace Intent.Metadata.RDBMS.Api
 {
-
     public static class AssociationTargetEndModelStereotypeExtensions
     {
         public static ForeignKey GetForeignKey(this AssociationTargetEndModel model)
@@ -20,6 +20,11 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetForeignKey"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<ForeignKey> GetForeignKeys(this AssociationTargetEndModel model)
         {
             var stereotypes = model
@@ -33,6 +38,18 @@ namespace Intent.Metadata.RDBMS.Api
         public static bool HasForeignKey(this AssociationTargetEndModel model)
         {
             return model.HasStereotype("Foreign Key");
+        }
+
+        public static bool TryGetForeignKey(this AssociationTargetEndModel model, out ForeignKey stereotype)
+        {
+            if (!HasForeignKey(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ForeignKey(model.GetStereotype("Foreign Key"));
+            return true;
         }
 
         public static Index GetIndex(this AssociationTargetEndModel model)
@@ -56,6 +73,17 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Index");
         }
 
+        public static bool TryGetIndex(this AssociationTargetEndModel model, out Index stereotype)
+        {
+            if (!HasIndex(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Index(model.GetStereotype("Index"));
+            return true;
+        }
 
         public class ForeignKey
         {

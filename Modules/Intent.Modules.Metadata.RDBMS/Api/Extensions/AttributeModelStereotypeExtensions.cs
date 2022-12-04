@@ -5,13 +5,13 @@ using Intent.Metadata.Models;
 using Intent.Modelers.Domain.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
+using Intent.SdkEvolutionHelpers;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
 
 namespace Intent.Metadata.RDBMS.Api
 {
-
     public static class AttributeModelStereotypeExtensions
     {
         public static Column GetColumn(this AttributeModel model)
@@ -20,6 +20,11 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotype != null ? new Column(stereotype) : null;
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetColumn"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<Column> GetColumns(this AttributeModel model)
         {
             var stereotypes = model
@@ -35,12 +40,29 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Column");
         }
 
+        public static bool TryGetColumn(this AttributeModel model, out Column stereotype)
+        {
+            if (!HasColumn(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Column(model.GetStereotype("Column"));
+            return true;
+        }
+
         public static ComputedValue GetComputedValue(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Computed Value");
             return stereotype != null ? new ComputedValue(stereotype) : null;
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetComputedValue"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<ComputedValue> GetComputedValues(this AttributeModel model)
         {
             var stereotypes = model
@@ -56,6 +78,18 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Computed Value");
         }
 
+        public static bool TryGetComputedValue(this AttributeModel model, out ComputedValue stereotype)
+        {
+            if (!HasComputedValue(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ComputedValue(model.GetStereotype("Computed Value"));
+            return true;
+        }
+
         public static DecimalConstraints GetDecimalConstraints(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Decimal Constraints");
@@ -67,12 +101,29 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Decimal Constraints");
         }
 
+        public static bool TryGetDecimalConstraints(this AttributeModel model, out DecimalConstraints stereotype)
+        {
+            if (!HasDecimalConstraints(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new DecimalConstraints(model.GetStereotype("Decimal Constraints"));
+            return true;
+        }
+
         public static DefaultConstraint GetDefaultConstraint(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Default Constraint");
             return stereotype != null ? new DefaultConstraint(stereotype) : null;
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetDefaultConstraint"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<DefaultConstraint> GetDefaultConstraints(this AttributeModel model)
         {
             var stereotypes = model
@@ -88,12 +139,29 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Default Constraint");
         }
 
+        public static bool TryGetDefaultConstraint(this AttributeModel model, out DefaultConstraint stereotype)
+        {
+            if (!HasDefaultConstraint(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new DefaultConstraint(model.GetStereotype("Default Constraint"));
+            return true;
+        }
+
         public static ForeignKey GetForeignKey(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Foreign Key");
             return stereotype != null ? new ForeignKey(stereotype) : null;
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetForeignKey"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<ForeignKey> GetForeignKeys(this AttributeModel model)
         {
             var stereotypes = model
@@ -104,10 +172,21 @@ namespace Intent.Metadata.RDBMS.Api
             return stereotypes;
         }
 
-
         public static bool HasForeignKey(this AttributeModel model)
         {
             return model.HasStereotype("Foreign Key");
+        }
+
+        public static bool TryGetForeignKey(this AttributeModel model, out ForeignKey stereotype)
+        {
+            if (!HasForeignKey(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ForeignKey(model.GetStereotype("Foreign Key"));
+            return true;
         }
 
         public static Index GetIndex(this AttributeModel model)
@@ -131,12 +210,29 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Index");
         }
 
+        public static bool TryGetIndex(this AttributeModel model, out Index stereotype)
+        {
+            if (!HasIndex(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Index(model.GetStereotype("Index"));
+            return true;
+        }
+
         public static PrimaryKey GetPrimaryKey(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Primary Key");
             return stereotype != null ? new PrimaryKey(stereotype) : null;
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetPrimaryKey"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<PrimaryKey> GetPrimaryKeys(this AttributeModel model)
         {
             var stereotypes = model
@@ -152,12 +248,29 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Primary Key");
         }
 
+        public static bool TryGetPrimaryKey(this AttributeModel model, out PrimaryKey stereotype)
+        {
+            if (!HasPrimaryKey(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new PrimaryKey(model.GetStereotype("Primary Key"));
+            return true;
+        }
+
         public static TextConstraints GetTextConstraints(this AttributeModel model)
         {
             var stereotype = model.GetStereotype("Text Constraints");
             return stereotype != null ? new TextConstraints(stereotype) : null;
         }
 
+        /// <summary>
+        /// Obsolete. Use <see cref="GetTextConstraints"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<TextConstraints> GetTextConstraintss(this AttributeModel model)
         {
             var stereotypes = model
@@ -173,6 +286,17 @@ namespace Intent.Metadata.RDBMS.Api
             return model.HasStereotype("Text Constraints");
         }
 
+        public static bool TryGetTextConstraints(this AttributeModel model, out TextConstraints stereotype)
+        {
+            if (!HasTextConstraints(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new TextConstraints(model.GetStereotype("Text Constraints"));
+            return true;
+        }
 
         public class Column
         {
