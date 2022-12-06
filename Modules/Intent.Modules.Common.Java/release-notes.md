@@ -1,4 +1,8 @@
-﻿### Version 3.3.17
+﻿### Version 3.3.18
+
+- Fixed: Code management would not apply changes to to generic type parameters when merging.
+
+### Version 3.3.17
 
 - Added `ApplicationPropertyRequiredEvent` and convenience `.ApplyApplicationProperty(...)` extension method for setting default application properties.
 
