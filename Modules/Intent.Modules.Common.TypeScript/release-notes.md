@@ -1,4 +1,8 @@
-﻿### Version 3.3.8
+﻿### Version 3.3.9
+
+- Added basic support for named imports.
+
+### Version 3.3.8
 
 - TypeScript weaving better supports class base types when in `IntentMerge()` mode.
 - TypeScript weaving will change the location on imports which have a single type imported, that is the same in the existing file.
