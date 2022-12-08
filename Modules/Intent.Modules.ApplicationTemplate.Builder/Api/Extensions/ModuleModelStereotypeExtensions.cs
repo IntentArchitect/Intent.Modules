@@ -40,6 +40,21 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<string>("Version");
             }
 
+            public bool IncludeByDefault()
+            {
+                return _stereotype.GetProperty<bool>("Include By Default");
+            }
+
+            public bool IsRequired()
+            {
+                return _stereotype.GetProperty<bool>("Is Required");
+            }
+
+            public bool InstallMetadataOnly()
+            {
+                return _stereotype.GetProperty<bool>("Install Metadata Only");
+            }
+
         }
 
     }

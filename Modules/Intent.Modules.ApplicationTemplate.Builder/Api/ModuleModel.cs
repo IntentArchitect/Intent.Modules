@@ -38,6 +38,15 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         [IntentManaged(Mode.Ignore)]
         public string Version => this.GetModuleSettings().Version();
 
+        [IntentManaged(Mode.Ignore)]
+        public bool IsIncludedByDefault => this.GetModuleSettings().IncludeByDefault();
+
+        [IntentManaged(Mode.Ignore)]
+        public bool IsRequired => this.GetModuleSettings().IsRequired();
+
+        [IntentManaged(Mode.Ignore)]
+        public bool InstallMetadataOnly => this.GetModuleSettings().InstallMetadataOnly();
+
         public override string ToString()
         {
             return _element.ToString();

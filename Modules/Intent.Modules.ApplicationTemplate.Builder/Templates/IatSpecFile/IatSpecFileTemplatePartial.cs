@@ -84,7 +84,10 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
                         Modules = c.Modules.Select(m => new ApplicationTemplate_ComponentModule()
                         {
                             Id = m.Name,
-                            Version = m.Version
+                            Version = m.Version,
+                            IsIncludedByDefault = m.IsIncludedByDefault,
+                            IsRequired = m.IsRequired,
+                            MetadataOnly = m.InstallMetadataOnly
                         }).ToList(),
                         Dependencies = c.GetComponentSettings().Dependencies().Select(d => new ApplicationTemplate_ComponentDependency()
                         {

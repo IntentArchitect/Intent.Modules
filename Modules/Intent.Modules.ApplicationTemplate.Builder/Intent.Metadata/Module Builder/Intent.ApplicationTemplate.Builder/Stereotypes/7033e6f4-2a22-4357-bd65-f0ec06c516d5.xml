@@ -9,6 +9,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
   <displayFunction>return properties["Version"].value</displayFunction>
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
@@ -28,6 +29,36 @@
       <valueOptions />
       <lookupTypes />
       <isRequiredFunction>return true</isRequiredFunction>
+    </property>
+    <property id="860a2a3a-9812-4fff-acc6-b342ddb23f96">
+      <name>Include By Default</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="42e43cfe-4073-4f7f-8a7e-ef79c150c8c7">
+      <name>Is Required</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="3f426089-6e92-49cf-a938-bda52e02b949">
+      <name>Install Metadata Only</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
     </property>
   </properties>
 </stereotypeDefinition>
