@@ -3,7 +3,7 @@
   <name>C# Template</name>
   <display>C# Template</display>
   <isAbstract>false</isAbstract>
-  <order>0</order>
+  <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>1e3cc0d3-8901-498a-960b-4a51f915b92b</parentFolderId>
@@ -51,7 +51,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>0</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>f6456232-0f1b-4235-b5f8-b4cce548ca59</parentFolderId>
@@ -64,7 +64,6 @@
           <name>Add Decorator Contract</name>
           <display>Add Decorator Contract: Template Decorator Contract</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="d0a92bbe-091a-45c3-9470-f71a18e0cdca">
             <typeId>ac1da322-377e-45cf-a2d9-d147a4d91457</typeId>

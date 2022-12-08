@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.CSharp",
-                moduleVersion: "3.3.6"));
+                moduleVersion: "3.3.24"));
             if (Model.GetDesigner() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
@@ -96,13 +96,21 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             return $"{Model.GetModule().Name}.{string.Join(".", Model.GetParentFolderNames().Concat(new[] { Model.Name }))}";
         }
 
-        private string GetBaseType()
+        private IEnumerable<string> GetBaseTypes()
         {
             if (Model.DecoratorContract != null)
             {
-                return $"CSharpTemplateBase<{GetModelType()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+                yield return $"CSharpTemplateBase<{GetModelType()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
             }
-            return $"CSharpTemplateBase<{GetModelType()}>";
+            else
+            {
+                yield return $"CSharpTemplateBase<{GetModelType()}>";
+            }
+
+            if (Model.GetCSharpTemplateSettings().TemplatingMethod().IsCSharpFileBuilder())
+            {
+                yield return nameof(ICSharpFileBuilderTemplate);
+            }
         }
 
         private string GetModelType()

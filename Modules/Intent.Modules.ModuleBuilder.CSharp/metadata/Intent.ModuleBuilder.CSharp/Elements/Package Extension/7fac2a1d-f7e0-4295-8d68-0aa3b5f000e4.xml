@@ -3,7 +3,7 @@
   <name>Package Settings</name>
   <display>Package Settings: Intent Module</display>
   <isAbstract>false</isAbstract>
-  <order>2</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <typeReference id="f40018dc-af29-4693-9d81-f4d1770a966d">
     <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
@@ -27,7 +27,7 @@
       <name>Creation Options</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <order>1</order>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>7fac2a1d-f7e0-4295-8d68-0aa3b5f000e4</parentFolderId>
@@ -40,7 +40,6 @@
           <name>New C# Template</name>
           <display>New C# Template: C# Template</display>
           <isAbstract>false</isAbstract>
-          <order>0</order>
           <genericTypes />
           <typeReference id="d5b9dce9-0b82-4c24-9168-acb2e637d10f">
             <typeId>f6456232-0f1b-4235-b5f8-b4cce548ca59</typeId>

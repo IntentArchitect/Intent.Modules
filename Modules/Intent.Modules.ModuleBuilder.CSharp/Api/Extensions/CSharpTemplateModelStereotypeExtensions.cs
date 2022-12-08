@@ -69,6 +69,8 @@ namespace Intent.ModuleBuilder.CSharp.Api
                             return TemplatingMethodOptionsEnum.T4Template;
                         case "String Interpolation":
                             return TemplatingMethodOptionsEnum.StringInterpolation;
+                        case "C# File Builder":
+                            return TemplatingMethodOptionsEnum.CSharpFileBuilder;
                         case "Custom":
                             return TemplatingMethodOptionsEnum.Custom;
                         default:
@@ -84,6 +86,10 @@ namespace Intent.ModuleBuilder.CSharp.Api
                 {
                     return Value == "String Interpolation";
                 }
+                public bool IsCSharpFileBuilder()
+                {
+                    return Value == "C# File Builder";
+                }
                 public bool IsCustom()
                 {
                     return Value == "Custom";
@@ -94,6 +100,7 @@ namespace Intent.ModuleBuilder.CSharp.Api
             {
                 T4Template,
                 StringInterpolation,
+                CSharpFileBuilder,
                 Custom
             }
         }

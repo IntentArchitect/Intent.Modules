@@ -25,14 +25,44 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Fully, Body = Mode.Merge)]
-    partial class <#= ClassName #> : <#= GetBaseType() #>
+    partial class <#= ClassName #> : <#= string.Join(", ", GetBaseTypes()) #>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
+<#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCSharpFileBuilder() == true) { #>
+            CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
+                .AddClass($"<#= GetClassName() #>", @class =>
+                {
+                    @class.AddConstructor(ctor =>
+                    {
+                        ctor.AddParameter("string", "exampleParam", param =>
+                        {
+                            param.IntroduceReadonlyField();
+                        });
+                    });
+                });
+<#  } #>
         }
+<#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCSharpFileBuilder() == true) { #>
+
+        [IntentManaged(Mode.Fully)]
+        public <#= UseType("Intent.Modules.Common.CSharp.Builder.CSharpFile") #> CSharpFile { get; }
+
+        [IntentManaged(Mode.Fully)]
+        protected override CSharpFileConfig DefineFileConfig()
+        {
+            return CSharpFile.GetConfig();
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override string TransformText()
+        {
+            return CSharpFile.ToString();
+        }
+<#  } else { #>
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
@@ -42,6 +72,7 @@ namespace <#= Namespace #>
                 @namespace: $"{this.GetNamespace()}",
                 relativeLocation: $"{this.GetFolderPath()}");
         }
+<#  } #>
 <#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCustom() == true) { #>
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
