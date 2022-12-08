@@ -55,6 +55,8 @@ namespace Intent.Modelers.Domain.Api
 
         public ClassModel ParentClass => this.Generalizations().Select(x => new ClassModel((IElement)x.Element)).SingleOrDefault();
 
+        public ITypeReference ParentClassTypeReference => this.Generalizations().SingleOrDefault()?.TypeReference;
+      
         public IEnumerable<ClassModel> ChildClasses => this.Specializations().Select(x => new ClassModel((IElement)x.Element)).ToList();
 
         public string Comment => _element.Comment;

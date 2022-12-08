@@ -1,4 +1,8 @@
-﻿### Version 3.3.8
+﻿### Version 3.3.10
+
+- Updated display text of classes to show base class if inheriting.
+
+### Version 3.3.8
 
 - Update: `IsAggregateRoot()` will no longer consider `IsAbstract` models as Aggregate Roots. 
 

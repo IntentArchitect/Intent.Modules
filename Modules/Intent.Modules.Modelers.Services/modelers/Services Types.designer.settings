@@ -80,9 +80,14 @@
     <elementSetting type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
       <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <displayFunction>return `${name}${genericTypes}${(typeReference.typeId ? " : " + typeReference.display : "")}`;</displayFunction>
+      <displayFunction>const association = getAssociations("Generalization").filter(x =&gt; x.specialization === "Generalization Target End")[0];
+const derivedFrom = association != null
+    ? ` : ${association.typeReference.display}`
+    : "";
+
+return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       <allowRename>true</allowRename>
-      <allowAbstract>false</allowAbstract>
+      <allowAbstract>true</allowAbstract>
       <allowGenericTypes>true</allowGenericTypes>
       <allowMapping>true</allowMapping>
       <allowSorting>true</allowSorting>
@@ -93,6 +98,7 @@
       <allowSetValue>false</allowSetValue>
       <typeOrder>
         <type order="0">DTO-Field</type>
+        <type order="1">Generalization</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
@@ -102,6 +108,15 @@
           <shortcut>ctrl + shift + f</shortcut>
           <defaultName>field</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="association">
+          <specializationType>Generalization</specializationType>
+          <specializationTypeId>5ba12bbf-122f-4c3e-af3c-4a88dc554597</specializationTypeId>
+          <text>New Inheritance</text>
+          <shortcut>ctrl + shift + i</shortcut>
+          <defaultName>NewGeneralization</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -416,6 +431,37 @@
       <mappingSettings />
     </elementExtension>
   </elementExtensions>
-  <associationSettings />
+  <associationSettings>
+    <associationSetting type="Generalization" typeId="5ba12bbf-122f-4c3e-af3c-4a88dc554597">
+      <sourceEnd type="Generalization Source End" typeId="5ce8666c-89d2-4c9c-b30c-6e5fe42e1766">
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>DTO</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>true</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Generalization Target End" typeId="e1b3d4e4-0ad0-4aec-97fb-780ab9e476db">
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>DTO</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>true</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+    </associationSetting>
+  </associationSettings>
   <associationExtensions />
 </settings>

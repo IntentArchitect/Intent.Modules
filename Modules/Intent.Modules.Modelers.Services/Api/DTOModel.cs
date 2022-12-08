@@ -40,7 +40,13 @@ To fix this, open and re-save your Services designer. If this warning persists t
 
         public string Name => _element.Name;
 
+        public bool IsAbstract => _element.IsAbstract;
+
         public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
+
+        public DTOModel ParentDto => this.Generalizations().Select(x => new DTOModel((IElement)x.Element)).SingleOrDefault();
+
+        public ITypeReference ParentDtoTypeReference => this.Generalizations().SingleOrDefault()?.TypeReference;
 
         public bool IsMapped => _element.IsMapped;
 

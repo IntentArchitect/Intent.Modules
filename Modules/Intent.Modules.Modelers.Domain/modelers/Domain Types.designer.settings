@@ -97,6 +97,12 @@ diagram.loadDiagram();
     <elementSetting type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
       <icon type="UrlImagePath" source="./img/icons/uml/Class_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>const association = getAssociations("Generalization").filter(x =&gt; x.specialization === "Generalization Target End")[0];
+const derivedFrom = association != null
+    ? ` : ${association.typeReference.display}`
+    : "";
+
+return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
       <validateFunction>let otherClasses = getParent().getChildren("Class").filter(x =&gt; x.id != id);
 if (otherClasses.some(x =&gt; x.getName() == getName())) {
     return "Please ensure class names are unique in this location."
@@ -310,82 +316,6 @@ if (namingConvention == "pascal-case") {
           </macros>
           <childElementSettings />
         </childElementSetting>
-        <childElementSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
-          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>return `${getParent().name}${genericTypes}(${children("Parameter").map(x =&gt; x.name + ": " + x.typeReference.display).join(", ")})`;</displayFunction>
-          <allowRename>false</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>true</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeOrder>
-            <type order="0">Parameter</type>
-          </typeOrder>
-          <creationOptions>
-            <option type="element">
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
-              <text>Add Parameter</text>
-              <shortcut>ctrl + shift + p</shortcut>
-              <defaultName>param</defaultName>
-              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
-          <scriptOptions />
-          <mappingSettings>
-            <mappingSetting id="d6d0abfd-893c-4bec-92cb-419934ba5ba8">
-              <name>Map Constructor</name>
-              <shortcut>ctrl + shift + m</shortcut>
-              <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
-              <optionsSource>lookup-element</optionsSource>
-              <lookupElementFunction>return getParent().id</lookupElementFunction>
-              <autoSyncTypeReferences>true</autoSyncTypeReferences>
-              <symbol>fa-long-arrow-right</symbol>
-              <mapFrom>root</mapFrom>
-              <mappings>
-                <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
-                  <criteria specializationType="Class">
-                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="Class Constructor" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="true" />
-                  <childMappings>
-                    <mapping id="5601382d-8b87-465f-bc8c-d41fcc28185d">
-                      <criteria specializationType="Attribute">
-                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                      </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                    <mapping id="6a1129e9-e2a3-4df5-9678-98bc9d839836">
-                      <criteria specializationType="Association Target End">
-                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
-                      </criteria>
-                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="false" />
-                      <childMappings />
-                    </mapping>
-                  </childMappings>
-                </mapping>
-              </mappings>
-            </mappingSetting>
-          </mappingSettings>
-          <childElementSettings />
-        </childElementSetting>
         <childElementSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
           <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
           <saveAsOwnFile>false</saveAsOwnFile>
@@ -465,6 +395,82 @@ if (namingConvention == "pascal-case") {
               <childElementSettings />
             </childElementSetting>
           </childElementSettings>
+        </childElementSetting>
+        <childElementSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>return `${getParent().name}${genericTypes}(${children("Parameter").map(x =&gt; x.name + ": " + x.typeReference.display).join(", ")})`;</displayFunction>
+          <allowRename>false</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>true</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Parameter</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>Parameter</specializationType>
+              <specializationTypeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</specializationTypeId>
+              <text>Add Parameter</text>
+              <shortcut>ctrl + shift + p</shortcut>
+              <defaultName>param</defaultName>
+              <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingSettings>
+            <mappingSetting id="d6d0abfd-893c-4bec-92cb-419934ba5ba8">
+              <name>Map Constructor</name>
+              <shortcut>ctrl + shift + m</shortcut>
+              <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+              <optionsSource>lookup-element</optionsSource>
+              <lookupElementFunction>return getParent().id</lookupElementFunction>
+              <autoSyncTypeReferences>true</autoSyncTypeReferences>
+              <symbol>fa-long-arrow-right</symbol>
+              <mapFrom>root</mapFrom>
+              <mappings>
+                <mapping id="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a">
+                  <criteria specializationType="Class">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Class Constructor" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="5601382d-8b87-465f-bc8c-d41fcc28185d">
+                      <criteria specializationType="Attribute">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="6a1129e9-e2a3-4df5-9678-98bc9d839836">
+                      <criteria specializationType="Association Target End">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </mappings>
+            </mappingSetting>
+          </mappingSettings>
+          <childElementSettings />
         </childElementSetting>
       </childElementSettings>
     </elementSetting>
