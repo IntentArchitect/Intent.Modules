@@ -10,6 +10,7 @@ public class CSharpParameter
     public string Name { get; }
     public string DefaultValue { get; private set; }
     public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
+    public bool HasThisModifier { get; private set; }
 
     public CSharpParameter(string type, string name)
     {
@@ -41,9 +42,15 @@ public class CSharpParameter
         return this;
     }
 
+    public CSharpParameter WithThisModifier()
+    {
+        HasThisModifier = true;
+        return this;
+    }
+
     public override string ToString()
     {
-        return $@"{GetAttributes()}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
+        return $@"{(HasThisModifier ? "this " : string.Empty)}{GetAttributes()}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
     }
 
     protected string GetAttributes()
