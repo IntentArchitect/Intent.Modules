@@ -1,6 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.TypeResolution
 {
@@ -95,7 +98,7 @@ namespace Intent.Modules.Common.TypeResolution
                 }
 
                 collectionFormatter ??= classLookup.CollectionFormatter;
-                resolvedTypeInfo = Get(foundClass);
+                resolvedTypeInfo = Get(foundClass, Get(typeReference.GenericTypeParameters, collectionFormatter));
                 break;
             }
 
@@ -127,7 +130,7 @@ namespace Intent.Modules.Common.TypeResolution
             if (foundClass != null)
             {
                 collectionFormatter = typeSource.CollectionFormatter;
-                resolvedTypeInfo = Get(foundClass);
+                resolvedTypeInfo = Get(foundClass, Get(typeReference.GenericTypeParameters, collectionFormatter));
             }
             else
             {
@@ -140,7 +143,7 @@ namespace Intent.Modules.Common.TypeResolution
                     }
 
                     collectionFormatter = classLookup.CollectionFormatter;
-                    resolvedTypeInfo = Get(foundClass);
+                    resolvedTypeInfo = Get(foundClass, Get(typeReference.GenericTypeParameters, collectionFormatter));
                     break;
                 }
             }
@@ -160,14 +163,25 @@ namespace Intent.Modules.Common.TypeResolution
         }
 
         /// <summary>
+        /// Obsolete. Use <see cref="Get(IResolvedTypeInfo,IReadOnlyList{IResolvedTypeInfo})"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        protected virtual IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+        {
+            return Get(resolvedTypeInfo, Array.Empty<IResolvedTypeInfo>());
+        }
+
+        /// <summary>
         /// Resolve a <see cref="IResolvedTypeInfo"/> from the provided <paramref name="resolvedTypeInfo"/>.
         /// </summary>
         /// <remarks>
         /// Override this method to return a different specialized implementation of <see cref="IResolvedTypeInfo"/>.
         /// </remarks>
-        protected virtual IResolvedTypeInfo Get(IResolvedTypeInfo resolvedTypeInfo)
+        protected virtual IResolvedTypeInfo Get(
+            IResolvedTypeInfo resolvedTypeInfo,
+            IReadOnlyList<IResolvedTypeInfo> genericTypeParameters)
         {
-            return new ResolvedTypeInfo(resolvedTypeInfo);
+            return new ResolvedTypeInfo(resolvedTypeInfo, genericTypeParameters);
         }
 
         /// <summary>
@@ -176,5 +190,12 @@ namespace Intent.Modules.Common.TypeResolution
         protected abstract IResolvedTypeInfo ResolveType(
             ITypeReference typeReference,
             INullableFormatter nullableFormatter);
+
+        private IReadOnlyList<IResolvedTypeInfo> Get(IEnumerable<ITypeReference> typeReferences, ICollectionFormatter collectionFormatter)
+        {
+            return typeReferences
+                .Select(typeReference => Get(typeReference, collectionFormatter))
+                .ToArray();
+        }
     }
 }

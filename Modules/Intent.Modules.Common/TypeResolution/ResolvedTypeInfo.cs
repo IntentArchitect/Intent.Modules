@@ -38,6 +38,46 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     }
 
     /// <summary>
+    /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
+    /// </summary>
+    public ResolvedTypeInfo(IResolvedTypeInfo typeInfo)
+        : this(
+            name: typeInfo.Template is IClassProvider classProvider
+                ? classProvider.FullTypeName()
+                : typeInfo.Name,
+            isPrimitive: typeInfo.IsPrimitive,
+            isNullable: typeInfo.IsNullable,
+            isCollection: typeInfo.IsCollection,
+            typeReference: typeInfo.TypeReference,
+            template: typeInfo.Template,
+            nullableFormatter: typeInfo.NullableFormatter,
+            collectionFormatter: typeInfo.CollectionFormatter,
+            genericTypeParameters: typeInfo.GenericTypeParameters)
+    {
+    }
+
+    /// <summary>
+    /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
+    /// </summary>
+    public ResolvedTypeInfo(
+        IResolvedTypeInfo typeInfo,
+        IReadOnlyList<IResolvedTypeInfo> genericTypeParameters)
+        : this(
+            name: typeInfo.Template is IClassProvider classProvider
+                ? classProvider.FullTypeName()
+                : typeInfo.Name,
+            isPrimitive: typeInfo.IsPrimitive,
+            isNullable: typeInfo.IsNullable,
+            isCollection: typeInfo.IsCollection,
+            typeReference: typeInfo.TypeReference,
+            template: typeInfo.Template,
+            nullableFormatter: typeInfo.NullableFormatter,
+            collectionFormatter: typeInfo.CollectionFormatter,
+            genericTypeParameters: genericTypeParameters)
+    {
+    }
+
+    /// <summary>
     /// Creates an instance of <see cref="ResolvedTypeInfo"/>. Automatically applies
     /// <see cref="IsCollection"/> and <see cref="IsNullable"/> from the provided
     /// <paramref name="typeReference"/>.
@@ -111,25 +151,6 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
             {
                 forResolvedType
             });
-    }
-
-    /// <summary>
-    /// Creates an instance of <see cref="ResolvedTypeInfo"/>.
-    /// </summary>
-    public ResolvedTypeInfo(IResolvedTypeInfo typeInfo)
-        : this(
-            name: typeInfo.Template is IClassProvider classProvider
-                ? classProvider.FullTypeName()
-                : typeInfo.Name,
-            isPrimitive: typeInfo.IsPrimitive,
-            isNullable: typeInfo.IsNullable,
-            isCollection: typeInfo.IsCollection,
-            typeReference: typeInfo.TypeReference,
-            template: typeInfo.Template,
-            nullableFormatter: typeInfo.NullableFormatter,
-            collectionFormatter: typeInfo.CollectionFormatter,
-            genericTypeParameters: typeInfo.GenericTypeParameters)
-    {
     }
 
     IResolvedTypeInfo IResolvedTypeInfo.WithIsNullable(bool isNullable)

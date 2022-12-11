@@ -1,4 +1,8 @@
-﻿### Version 3.3.15
+﻿### Version 3.3.17
+
+- Fixed: The GetTypeName system would discused generic type arguments for some languages.
+
+### Version 3.3.16
 
 - Fixed: `ToSnakeCase()`, `ToKebabCase()`, and `ToDotCase()` extension methods would put a separator before numeric characters.
 
