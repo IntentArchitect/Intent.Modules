@@ -86,7 +86,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Common.Java.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.ValueObjects", "Intent.Modules.Modelers.Domain.ValueObjects\Intent.Modules.Modelers.Domain.ValueObjects.csproj", "{BB85B1B9-7097-4DF3-94C7-771EEC17712A}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Domain.Repositories", "Intent.Modules.Modelers.Domain.Repositories\Intent.Modules.Modelers.Domain.Repositories.csproj", "{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Modelers.Domain.Repositories", "Intent.Modules.Modelers.Domain.Repositories\Intent.Modules.Modelers.Domain.Repositories.csproj", "{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Intent.Modules.Common.Dart", "Intent.Modules.Common.Dart\Intent.Modules.Common.Dart.csproj", "{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -238,6 +240,10 @@ Global
 		{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -284,6 +290,7 @@ Global
 		{3D45037D-C252-4E03-80FD-D84FDC8338D3} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 		{BB85B1B9-7097-4DF3-94C7-771EEC17712A} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
+		{C5D19ADB-2268-4C81-BFC1-D4D2D92147BE} = {B78BC13A-910C-4D34-B966-EC3B815D83B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
