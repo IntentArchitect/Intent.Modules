@@ -11,6 +11,16 @@
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.0.1" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.3.1" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.11" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="TypeResolvers\" />
+    <None Remove="Intent.Modules.Common" />
+    <None Remove="Intent.Modules.Common.Types" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TypeResolvers\" />
+  </ItemGroup>
 </Project>
