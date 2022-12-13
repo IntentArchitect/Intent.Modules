@@ -149,15 +149,20 @@ if (useDefaultName &amp;&amp; element.getMapping() != null) {
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
-          <script>if (element.getParent().specialization == "Class") {
-    element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Primary Key
+          <script>if (element.getParent().specialization == "Class" &amp;&amp; 
+    element.typeReference.typeId == "d384db9c-a279-45e1-801e-e4e8099625f2" /* string */) {
+    if (!element.hasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")) {
+        element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Text Contraint
+    }
+} else {
+    element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
 }</script>
         </macro>
         <macro trigger="on-type-changed">
           <script>if (element.getParent().specialization == "Class" &amp;&amp; 
     element.typeReference.typeId == "d384db9c-a279-45e1-801e-e4e8099625f2" /* string */) {
     if (!element.hasStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")) {
-        element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Primary key
+        element.addStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A"); // Text Contraint
     }
 } else {
     element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
