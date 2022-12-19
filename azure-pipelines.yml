@@ -85,7 +85,7 @@ steps:
     targetType: 'inline'
     pwsh: true
     script: |
-      dotnet tool install Intent.IArchitect.Packager.CommandLine --global --add-source '$(vstsFeedUrl)'
+      dotnet tool install Intent.IArchitect.Packager.CommandLine --global --prerelease --add-source '$(vstsFeedUrl)'
 
 - task: PowerShell@2
   displayName: 'Remove pre-release modules'
