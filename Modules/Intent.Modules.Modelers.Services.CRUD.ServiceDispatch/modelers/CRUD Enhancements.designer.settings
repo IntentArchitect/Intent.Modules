@@ -142,7 +142,13 @@ function getPrimaryKeyTypeId(entity) {
 }
 
 function getReturnTypeMediatypeProperty(element) {
-    return element.getStereotype("Azure Function").getProperty("Return Type Mediatype");
+    if (currentCrudModule === CrudModuleStandard) {
+        return element.getStereotype("Http Settings").getProperty("Return Type Mediatype");
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        return element.getStereotype("Azure Function").getProperty("Return Type Mediatype");
+    }
+
+    throw new Error("Unknown type.");
 }
 
 function createStandardResultTypeDTO(entity, dtoFolder) {
@@ -152,7 +158,7 @@ function createStandardResultTypeDTO(entity, dtoFolder) {
     return resultDto;
 }
 
-async function createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule) {
+function createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule) {
     const dto = createElement("DTO", `${entity.name}CreateDTO`, dtoFolder.id);
     for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
         let field = createElement("DTO-Field", attribute.name, dto.id);
@@ -432,7 +438,13 @@ function getPrimaryKeyTypeId(entity) {
 }
 
 function getReturnTypeMediatypeProperty(element) {
-    return element.getStereotype("Azure Function").getProperty("Return Type Mediatype");
+    if (currentCrudModule === CrudModuleStandard) {
+        return element.getStereotype("Http Settings").getProperty("Return Type Mediatype");
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        return element.getStereotype("Azure Function").getProperty("Return Type Mediatype");
+    }
+
+    throw new Error("Unknown type.");
 }
 
 function createStandardResultTypeDTO(entity, dtoFolder) {
@@ -442,7 +454,7 @@ function createStandardResultTypeDTO(entity, dtoFolder) {
     return resultDto;
 }
 
-async function createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule) {
+function createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule) {
     const dto = createElement("DTO", `${entity.name}CreateDTO`, dtoFolder.id);
     for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
         let field = createElement("DTO-Field", attribute.name, dto.id);
