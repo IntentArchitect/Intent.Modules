@@ -9,6 +9,7 @@
   <applyMode>manually</applyMode>
   <icon type="FontAwesome" source="hashtag" />
   <displayIcon>true</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>

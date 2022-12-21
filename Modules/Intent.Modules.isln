@@ -40,7 +40,7 @@
     <application id="ada97aea-2d45-46ab-844d-6dc369d484bb" name="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch" relativePath="Intent.Modules.Modelers.Services.CRUD.ServiceDispatch/Intent.Modules.Modelers.Services.CRUD.ServiceDispatch.application.config" />
     <application id="0dd467e5-63fe-41f9-8a0a-f4454ff6cca9" name="Intent.Modules.Modelers.Domain.ValueObjects" relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Intent.Modules.Modelers.Domain.ValueObjects.application.config" />
     <application id="15f6f6c5-bac3-414f-8dd2-f1474dbf94e2" name="Intent.Modules.Modelers.Domain.Repositories" relativePath="Intent.Modules.Modelers.Domain.Repositories/Intent.Modules.Modelers.Domain.Repositories.application.config" />
-    <application id="33d8ae8a-b8df-47c3-8c54-bf86b4221af7" name="Modelers.Serverless.AWS" relativePath="Intent.Modules.Modelers.Serverless.AWS/Intent.Modules.Modelers.Serverless.AWS.application.config" />
+    <application id="33d8ae8a-b8df-47c3-8c54-bf86b4221af7" name="Intent.Modules.Modelers.AWS" relativePath="Intent.Modules.Modelers.AWS/Intent.Modules.Modelers.AWS.application.config" />
     <application id="9fcb0bf5-3ecd-4325-b78c-7fe19c1a275e" name="Intent.Modules.Modelers.Application" relativePath="Intent.Modules.Modelers.Application/Intent.Modules.Modelers.Application.application.config" />
     <application id="7b78286c-163e-4e75-a2fd-14d027cb9df5" name="Intent.Modules.Modelers.AWS.DynamoDB" relativePath="Intent.Modules.Modelers.AWS.DynamoDB/Intent.Modules.Modelers.AWS.DynamoDB.application.config" />
   </applications>

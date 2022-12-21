@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="ed9035bc-31b0-4591-aac6-9a950099cbd5" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>SQS Queue</name>
+  <display>SQS Queue</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>561d0013-3b1a-404c-ba80-80d99690c746</parentFolderId>
+  <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+  <packageName>Intent.Modelers.AWS</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="return `${getName()} queue`;" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="55db9ebc-cc8f-4578-bc0d-fb8d0cb9b530" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ed9035bc-31b0-4591-aac6-9a950099cbd5</parentFolderId>
+      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+      <packageName>Intent.Modelers.AWS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="b9c75015-fa6c-46ab-a9ad-9c245c3b4be7" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Set Subscriber</name>
+          <display>Set Subscriber: SQS Subscription</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="7dd01c19-5b1a-4430-8bea-ccd64564b616">
+            <typeId>23bb08e4-8783-46d5-8d3d-ef756d19b664</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>55db9ebc-cc8f-4578-bc0d-fb8d0cb9b530</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + alt + r" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="d0f06533-a6fa-48a3-a2da-2bb9cd785945" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>ed9035bc-31b0-4591-aac6-9a950099cbd5</parentFolderId>
+      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+      <packageName>Intent.Modelers.AWS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="8955cc52-cbcc-4e92-ac9f-a1d264c4eaa1" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Name Changed</name>
+          <display>On Name Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="efa5a57a-5d41-439f-b8eb-96659b5b692c">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>d0f06533-a6fa-48a3-a2da-2bb9cd785945</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.AWS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.setName(toPascalCase(element.getName()));" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

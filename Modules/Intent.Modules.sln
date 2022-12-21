@@ -88,7 +88,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Dom
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Domain.Repositories", "Intent.Modules.Modelers.Domain.Repositories\Intent.Modules.Modelers.Domain.Repositories.csproj", "{4608B4E9-66A1-47CE-BEEA-2C155B3E43CC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Serverless.AWS", "Intent.Modules.Modelers.Serverless.AWS\Intent.Modules.Modelers.Serverless.AWS.csproj", "{5FB83C5E-D7B9-4052-BA7E-F46A2A67A271}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS", "Intent.Modules.Modelers.AWS\Intent.Modules.Modelers.AWS.csproj", "{5FB83C5E-D7B9-4052-BA7E-F46A2A67A271}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.Application", "Intent.Modules.Modelers.Application\Intent.Modules.Modelers.Application.csproj", "{DB238FEF-399C-46D2-AD40-4402F3A4FA1D}"
 EndProject
