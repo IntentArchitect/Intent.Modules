@@ -10,10 +10,10 @@ namespace Intent.Modelers.AWS.Api
 {
     public static class ApiMetadataPackageExtensions
     {
-        public static IList<AWSServerlessPackageModel> GetAWSServerlessPackageModels(this IDesigner designer)
+        public static IList<AWSPackageModel> GetAWSPackageModels(this IDesigner designer)
         {
-            return designer.GetPackagesOfType(AWSServerlessPackageModel.SpecializationTypeId)
-                .Select(x => new AWSServerlessPackageModel(x))
+            return designer.GetPackagesOfType(AWSPackageModel.SpecializationTypeId)
+                .Select(x => new AWSPackageModel(x))
                 .ToList();
         }
 

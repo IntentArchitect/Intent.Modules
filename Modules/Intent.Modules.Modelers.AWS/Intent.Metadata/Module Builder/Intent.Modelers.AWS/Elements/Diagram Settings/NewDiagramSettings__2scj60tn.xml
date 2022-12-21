@@ -17,7 +17,6 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>3a4e5028-b65b-4fc2-aaf4-645a207c5c9c</parentFolderId>
@@ -25,86 +24,7 @@
       <packageName>Intent.Modelers.AWS</packageName>
       <stereotypes />
       <metadata />
-      <childElements>
-        <childElement id="e2aa88ab-fb10-4997-82db-96a38b9165b6" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New API Endpoint</name>
-          <display>New API Endpoint: API Gateway Endpoint</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="94232b50-d0e9-482c-b210-24f47f99ca94">
-            <typeId>c0028dcd-38fd-42e4-b7d5-1c639d8899bd</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
-            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>2a86eb6b-4107-4404-8dbd-0d3ace7c1703</parentFolderId>
-          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
-          <packageName>Intent.Modelers.AWS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + e" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Endpoint" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="6bfaeb7c-9c2f-40e6-a75f-d39839b6f511" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add AWS Lambda Function</name>
-          <display>Add AWS Lambda Function: Lambda Function</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="30cb2292-5ecd-4a87-9aaa-0ed0056a5758">
-            <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
-            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>2a86eb6b-4107-4404-8dbd-0d3ace7c1703</parentFolderId>
-          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
-          <packageName>Intent.Modelers.AWS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + r" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewLambda" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
+      <childElements />
     </childElement>
   </childElements>
 </class>

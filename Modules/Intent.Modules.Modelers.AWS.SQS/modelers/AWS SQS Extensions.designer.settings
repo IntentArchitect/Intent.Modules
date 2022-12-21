@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>4ea92208-18f3-4921-8cd7-2212f338b2ed</id>
+  <name>AWS SQS Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="AWS Package" typeId="a95a0fde-f67b-4e4a-b9a8-745021efbdb6">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <specializationType>SQS Queue</specializationType>
+          <specializationTypeId>ed9035bc-31b0-4591-aac6-9a950099cbd5</specializationTypeId>
+          <text>New SQS Queue</text>
+          <shortcut>ctrl + alt + s</shortcut>
+          <defaultName>Queue</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>SQS Queue</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="SQS Queue" typeId="ed9035bc-31b0-4591-aac6-9a950099cbd5">
+      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>return `${getName()} queue`;</displayFunction>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Association</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="association">
+          <specializationType>Association</specializationType>
+          <specializationTypeId>055db259-36fc-495f-935c-89c847c34c32</specializationTypeId>
+          <text>Add Association</text>
+          <shortcut>ctrl + alt + r</shortcut>
+          <defaultName>NewAssociation</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingSettings />
+      <visualSettings type="SQS Queue">
+        <size width="100" height="80" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawText>
+            <text>return getName();</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + h - 36}" />
+          </drawText>
+          <drawText>
+            <text>return 'queue';</text>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: normal; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + h - 18}" />
+          </drawText>
+          <drawSvgResource>
+            <path>amazon-sqs.svg</path>
+            <size width="${w}" height="${h-44}" />
+            <position x="${x}" y="${y + 6}" />
+          </drawSvgResource>
+        </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
+        <defaultSize width="100" height="80" />
+        <childElementVisualSettings />
+      </visualSettings>
+      <macros>
+        <macro trigger="on-name-changed">
+          <script>element.setName(toPascalCase(element.getName()));</script>
+        </macro>
+      </macros>
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Diagram" typeId="de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5">
+      <creationOptions>
+        <option type="element">
+          <specializationType>SQS Queue</specializationType>
+          <specializationTypeId>ed9035bc-31b0-4591-aac6-9a950099cbd5</specializationTypeId>
+          <text>New SQS Queue</text>
+          <shortcut>ctrl + alt + s</shortcut>
+          <defaultName>Queue</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>SQS Queue</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>SQS Queue</specializationType>
+          <specializationTypeId>ed9035bc-31b0-4591-aac6-9a950099cbd5</specializationTypeId>
+          <text>New SQS Queue</text>
+          <shortcut>ctrl + alt + s</shortcut>
+          <defaultName>Queue</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>SQS Queue</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions>
+    <associationExtension type="Association" typeId="055db259-36fc-495f-935c-89c847c34c32">
+      <sourceEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>SQS Queue</type>
+          </targetTypes>
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>SQS Queue</type>
+          </targetTypes>
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </targetEndExtension>
+      <macros />
+    </associationExtension>
+  </associationExtensions>
+</settings>

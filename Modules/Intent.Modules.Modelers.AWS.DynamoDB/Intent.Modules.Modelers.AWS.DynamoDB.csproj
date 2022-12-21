@@ -15,7 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Modules.Common" Version="3.3.14" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.3.17" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.6" />
     <PackageReference Include="Intent.Packager" Version="3.4.0-pre.3">
       <PrivateAssets>all</PrivateAssets>
@@ -26,7 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Modelers.Serverless.AWS\Intent.Modules.Modelers.Serverless.AWS.csproj" />
+    <ProjectReference Include="..\Intent.Modules.Modelers.AWS\Intent.Modules.Modelers.AWS.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -13,7 +13,7 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
     [IntentManaged(Mode.Fully)]
     public class DynamoDBModel : IHasStereotypes, IMetadataModel
     {
-        public const string SpecializationType = "Dynamo DB";
+        public const string SpecializationType = "DynamoDB";
         public const string SpecializationTypeId = "8b6ad332-78da-4e2b-9a94-a9dc44a32f65";
 
         [IntentManaged(Mode.Ignore)]

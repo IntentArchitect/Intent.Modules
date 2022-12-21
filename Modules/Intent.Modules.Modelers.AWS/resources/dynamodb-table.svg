@@ -1,7 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 85 85" fill="#fff" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round">
-	<use xlink:href="#{BE538939-1015-4BE0-8AAA-576DEF9F6385}" x="2.5" y="2.5"/>
-	<symbol id="{BE538939-1015-4BE0-8AAA-576DEF9F6385}" overflow="visible">
-		<path d="M12.667 16.389H0v-3.393l6.333-9.603 6.333 9.603v3.393zm67.333 0H18v-3.393l31-9.603 31 9.603v3.393zM12.667 37.592H0v-3.393l6.333-9.603 6.333 9.603v3.393zm67.333 0H18v-3.393l31-9.603 31 9.603v3.393zM12.667 58.796H0v-3.393L6.333 45.8l6.333 9.603v3.393zm67.333 0H18v-3.393L49 45.8l31 9.603v3.393zM12.667 80H0v-3.393l6.333-9.603 6.333 9.603V80zM80 80H18v-3.393l31-9.603 31 9.603V80z" fill="#19486f" stroke="none"/>
-		<path d="M18 0h62v12.996H18zm0 21.204h62V34.2H18zm0 21.204h62v12.996H18zm0 21.204h62v12.996H18zM0 0h12.667v12.996H0zm0 21.204h12.667V34.2H0zm0 21.204h12.667v12.996H0zm0 21.204h12.667v12.996H0z" stroke="none" fill="#2e73b8"/>
-	</symbol>
-</svg>

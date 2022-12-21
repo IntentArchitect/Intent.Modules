@@ -72,7 +72,7 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Serverless.AWS</typePackageName>
+            <typePackageName>Intent.Modelers.AWS</typePackageName>
             <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
             <stereotypes />
             <genericTypeParameters />

@@ -11,12 +11,6 @@ namespace Intent.Modelers.AWS.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<APIGatewayEndpointModel> GetAPIGatewayEndpointModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(APIGatewayEndpointModel.SpecializationTypeId)
-                .Select(x => new APIGatewayEndpointModel(x))
-                .ToList();
-        }
 
         public static IList<DiagramModel> GetDiagramModels(this IDesigner designer)
         {
@@ -29,20 +23,6 @@ namespace Intent.Modelers.AWS.Api
         {
             return designer.GetElementsOfType(DTOModel.SpecializationTypeId)
                 .Select(x => new DTOModel(x))
-                .ToList();
-        }
-
-        public static IList<LambdaFunctionModel> GetLambdaFunctionModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(LambdaFunctionModel.SpecializationTypeId)
-                .Select(x => new LambdaFunctionModel(x))
-                .ToList();
-        }
-
-        public static IList<SQSQueueModel> GetSQSQueueModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(SQSQueueModel.SpecializationTypeId)
-                .Select(x => new SQSQueueModel(x))
                 .ToList();
         }
 

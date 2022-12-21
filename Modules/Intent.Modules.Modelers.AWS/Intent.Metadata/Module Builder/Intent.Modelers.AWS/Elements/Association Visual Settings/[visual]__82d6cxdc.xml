@@ -6,7 +6,7 @@
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>59dc49b0-52e6-4066-a2d8-6678b9adee11</parentFolderId>
+  <parentFolderId>055db259-36fc-495f-935c-89c847c34c32</parentFolderId>
   <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
   <packageName>Intent.Modelers.AWS</packageName>
   <stereotypes>

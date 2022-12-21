@@ -12,16 +12,24 @@
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#5fbfa5bd-6e43-4e51-adf1-f7f2b0fcbb5e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBDTOExtensionsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBDTOExtensionsModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AWSDynamoDBDTOExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSDynamoDBDTOExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#6668bfcb-0022-4e23-b4cd-ffc3e98d623a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBFolderExtensionsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBFolderExtensionsModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AWSDynamoDBFolderExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSDynamoDBFolderExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#66eb9607-2f8c-4594-9cc6-71bd8f1ee869</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSDynamoDBPackageExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSDynamoDBPackageExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -50,26 +58,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d865ca58-8ca3-441a-aeeb-d3cea33f36f8</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBLambdaExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBLambdaExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#8b6ad332-78da-4e2b-9a94-a9dc44a32f65</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DynamoDBModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#66eb9607-2f8c-4594-9cc6-71bd8f1ee869</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBPackageExtensionsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBPackageExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -129,38 +121,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#03b0ee2e-7696-464d-88d5-fcae17cd0c75</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/StreamSubscriptionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>StreamSubscriptionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#03b0ee2e-7696-464d-88d5-fcae17cd0c75</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/StreamSubscriptionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>StreamSubscriptionModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#e1a3b27b-6364-433e-96a8-24864841f688</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/UsesTableModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>UsesTableModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#e1a3b27b-6364-433e-96a8-24864841f688</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/UsesTableModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>UsesTableModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>64114b95-846e-4f79-b865-b0e9dd07a2b6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -196,8 +156,8 @@
       <ProjectId>3b64f7ee-5b2c-4740-af57-a4c37e21e55f</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#f997dbf2-68b1-426f-9721-5c914a54fd34</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Serverless AWS DynamoDB Extensions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Serverless AWS DynamoDB Extensions.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/AWS DynamoDB Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWS DynamoDB Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

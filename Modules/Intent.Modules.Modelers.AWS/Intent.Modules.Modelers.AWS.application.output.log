@@ -10,42 +10,34 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#59dc49b0-52e6-4066-a2d8-6678b9adee11</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#055db259-36fc-495f-935c-89c847c34c32</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIEndpointIntegrationModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIEndpointIntegrationModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AssociationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#59dc49b0-52e6-4066-a2d8-6678b9adee11</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#055db259-36fc-495f-935c-89c847c34c32</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIEndpointIntegrationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIEndpointIntegrationModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AssociationModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AssociationModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c0028dcd-38fd-42e4-b7d5-1c639d8899bd</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#3a3c1a75-c9be-4c57-8bea-0d9d259ef00c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIGatewayEndpointModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIGatewayEndpointModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#c0028dcd-38fd-42e4-b7d5-1c639d8899bd</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIGatewayEndpointModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIGatewayEndpointModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AWSFolderExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSFolderExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#a95a0fde-f67b-4e4a-b9a8-745021efbdb6</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSServerlessPackageModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSServerlessPackageModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/AWSPackageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSPackageModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -70,62 +62,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DTOModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DTOModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#de02db8b-e18f-423c-b4da-5f717a04075e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/LambdaFunctionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>LambdaFunctionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#2a1b4261-de0a-4dd2-ba19-bfe61dd17597</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ParameterModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ParameterModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#49294a7f-9300-4feb-99f3-22076efea411</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/RequestBodyModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>RequestBodyModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#3a3c1a75-c9be-4c57-8bea-0d9d259ef00c</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServerlessAWSFolderExtensionsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServerlessAWSFolderExtensionsModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ed9035bc-31b0-4591-aac6-9a950099cbd5</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SQSQueueModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SQSQueueModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#23bb08e4-8783-46d5-8d3d-ef756d19b664</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SQSSubscriptionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SQSSubscriptionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#23bb08e4-8783-46d5-8d3d-ef756d19b664</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SQSSubscriptionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SQSSubscriptionModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -164,8 +100,8 @@
       <ProjectId>21f1007f-0109-4484-9660-4bc8a533f505</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#561d0013-3b1a-404c-ba80-80d99690c746</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Serverless AWS Extensions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Serverless AWS Extensions.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/AWS Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWS Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
