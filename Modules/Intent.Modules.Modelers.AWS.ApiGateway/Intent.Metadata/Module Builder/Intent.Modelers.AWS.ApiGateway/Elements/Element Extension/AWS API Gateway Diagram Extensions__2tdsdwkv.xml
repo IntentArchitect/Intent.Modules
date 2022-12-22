@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="2b478b3a-2bde-4c7c-bf93-29a12d2dcf51" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
-  <name>AWS SQS Diagram Extensions</name>
-  <display>AWS SQS Diagram Extensions: Diagram</display>
+<class id="5aabcc28-e47c-44da-b08e-147343fc55d2" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>AWS API Gateway Diagram Extensions</name>
+  <display>AWS API Gateway Diagram Extensions: Diagram</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="f727c066-2b55-45d6-be71-7b1a005320f5">
+  <typeReference id="d9897303-61c4-441c-ac79-14b0ec82ee60">
     <typeId>de1b0aac-1dcf-41e4-9d11-4bbf9a8cacc5</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
@@ -17,9 +17,9 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>4ea92208-18f3-4921-8cd7-2212f338b2ed</parentFolderId>
-  <packageId>a0a993a9-d353-4adb-ae2d-78c8acca735c</packageId>
-  <packageName>Intent.Modelers.AWS.SQS</packageName>
+  <parentFolderId>077e87f4-cecf-4804-922d-172a1ef894f1</parentFolderId>
+  <packageId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</packageId>
+  <packageName>Intent.Modelers.AWS.ApiGateway</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
       <addedByDefault>true</addedByDefault>

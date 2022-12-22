@@ -3,7 +3,6 @@
   <name>NewDiagramSettings</name>
   <display>[diagram]</display>
   <isAbstract>false</isAbstract>
-  <sort-children>by-type-then-by-name</sort-children>
   <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -12,19 +11,5 @@
   <packageName>Intent.Modelers.AWS</packageName>
   <stereotypes />
   <metadata />
-  <childElements>
-    <childElement id="2a86eb6b-4107-4404-8dbd-0d3ace7c1703" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
-      <name>[context menu]</name>
-      <display>[context menu]</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>3a4e5028-b65b-4fc2-aaf4-645a207c5c9c</parentFolderId>
-      <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
-      <packageName>Intent.Modelers.AWS</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

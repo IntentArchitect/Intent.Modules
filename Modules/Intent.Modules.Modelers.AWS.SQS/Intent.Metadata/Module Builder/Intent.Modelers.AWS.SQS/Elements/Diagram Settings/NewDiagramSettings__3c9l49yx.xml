@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="609baf30-e096-4a77-b2a4-efce2bf98530" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
+  <name>NewDiagramSettings</name>
+  <display>[diagram]</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <order>0</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>2b478b3a-2bde-4c7c-bf93-29a12d2dcf51</parentFolderId>
+  <packageId>a0a993a9-d353-4adb-ae2d-78c8acca735c</packageId>
+  <packageName>Intent.Modelers.AWS.SQS</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="4c90fec0-0235-472d-a5a7-bb064bdc461d" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>609baf30-e096-4a77-b2a4-efce2bf98530</parentFolderId>
+      <packageId>a0a993a9-d353-4adb-ae2d-78c8acca735c</packageId>
+      <packageName>Intent.Modelers.AWS.SQS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="914faa9e-2f8b-4b35-8cfa-8fc91d3e5d60" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New SQS Queue</name>
+          <display>New SQS Queue: SQS Queue</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="51ba5e4e-a458-4110-9efc-64a1820e5577">
+            <typeId>ed9035bc-31b0-4591-aac6-9a950099cbd5</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS.SQS</typePackageName>
+            <typePackageId>a0a993a9-d353-4adb-ae2d-78c8acca735c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>4c90fec0-0235-472d-a5a7-bb064bdc461d</parentFolderId>
+          <packageId>a0a993a9-d353-4adb-ae2d-78c8acca735c</packageId>
+          <packageName>Intent.Modelers.AWS.SQS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + s" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Queue" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

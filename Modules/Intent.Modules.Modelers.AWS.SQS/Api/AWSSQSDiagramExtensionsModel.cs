@@ -19,10 +19,5 @@ namespace Intent.Modelers.AWS.SQS.Api
         {
         }
 
-        public IList<SQSQueueModel> SQSQueues => _element.ChildElements
-            .GetElementsOfType(SQSQueueModel.SpecializationTypeId)
-            .Select(x => new SQSQueueModel(x))
-            .ToList();
-
     }
 }

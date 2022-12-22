@@ -1,47 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="c3d0fbf3-c2fc-4f29-978d-334ae0f80372" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
-  <name>AWS Lambda Package Extensions</name>
-  <display>AWS Lambda Package Extensions: AWS Package</display>
+<class id="a3312421-0876-4933-98d2-eba2c46768d6" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
+  <name>NewDiagramSettings</name>
+  <display>[diagram]</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
+  <order>0</order>
   <genericTypes />
-  <typeReference id="058885c4-c3ea-4c0c-be76-da59a4d71e5f">
-    <typeId>a95a0fde-f67b-4e4a-b9a8-745021efbdb6</typeId>
-    <isNavigable>true</isNavigable>
-    <isNullable>false</isNullable>
-    <isCollection>false</isCollection>
-    <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.AWS</typePackageName>
-    <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
-    <stereotypes />
-    <genericTypeParameters />
-  </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>42a1a259-57f8-4363-bdd2-9ed8daa72d1a</parentFolderId>
+  <parentFolderId>245b872f-c67a-4640-916e-2345e21f3d39</parentFolderId>
   <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
   <packageName>Intent.Modelers.AWS.Lambda</packageName>
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="334d2b4a-20eb-4bf2-8452-78cd95134d44" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="8488e9e6-6d7b-4778-954e-6213110e2991" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>c3d0fbf3-c2fc-4f29-978d-334ae0f80372</parentFolderId>
+      <parentFolderId>a3312421-0876-4933-98d2-eba2c46768d6</parentFolderId>
       <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
       <packageName>Intent.Modelers.AWS.Lambda</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="2358788e-85a1-421e-8ee9-7bfe831812df" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Lambda Function</name>
-          <display>New Lambda Function: Lambda Function</display>
+        <childElement id="6bfaeb7c-9c2f-40e6-a75f-d39839b6f511" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add AWS Lambda Function</name>
+          <display>Add AWS Lambda Function: Lambda Function</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="00944f34-951e-4d5f-a085-23364aedc022">
+          <typeReference id="30cb2292-5ecd-4a87-9aaa-0ed0056a5758">
             <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -53,7 +43,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>334d2b4a-20eb-4bf2-8452-78cd95134d44</parentFolderId>
+          <parentFolderId>8488e9e6-6d7b-4778-954e-6213110e2991</parentFolderId>
           <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
           <packageName>Intent.Modelers.AWS.Lambda</packageName>
           <stereotypes>

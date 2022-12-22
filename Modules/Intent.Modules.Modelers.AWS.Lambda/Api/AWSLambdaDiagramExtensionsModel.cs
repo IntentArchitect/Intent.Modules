@@ -19,10 +19,5 @@ namespace Intent.Modelers.AWS.Lambda.Api
         {
         }
 
-        public IList<LambdaFunctionModel> AWSLambdaFunctions => _element.ChildElements
-            .GetElementsOfType(LambdaFunctionModel.SpecializationTypeId)
-            .Select(x => new LambdaFunctionModel(x))
-            .ToList();
-
     }
 }

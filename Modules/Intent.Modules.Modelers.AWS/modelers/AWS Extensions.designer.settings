@@ -63,8 +63,6 @@
       <mappingSettings />
       <diagramSettings>
         <addNewElementsTo>Package</addNewElementsTo>
-        <creationOptions />
-        <scriptOptions />
       </diagramSettings>
       <childElementSettings />
     </elementSetting>

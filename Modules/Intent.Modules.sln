@@ -96,7 +96,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.Lambda", "Intent.Modules.Modelers.AWS.Lambda\Intent.Modules.Modelers.AWS.Lambda.csproj", "{07700AE5-978B-477F-BE3B-6C33E6367F59}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.Gateway", "Intent.Modules.Modelers.AWS.Gateway\Intent.Modules.Modelers.AWS.Gateway.csproj", "{EADB5DA2-B19F-4250-B897-66CDB03C7D43}"
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.ApiGateway", "Intent.Modules.Modelers.AWS.ApiGateway\Intent.Modules.Modelers.AWS.ApiGateway.csproj", "{EADB5DA2-B19F-4250-B897-66CDB03C7D43}"
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.SQS", "Intent.Modules.Modelers.AWS.SQS\Intent.Modules.Modelers.AWS.SQS.csproj", "{FD9C1E88-94CF-47C4-9B6C-259F8F3CA771}"
 EndProject
