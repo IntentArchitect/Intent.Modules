@@ -46,5 +46,6 @@
     <application id="898f4a2c-0f24-413b-bb8d-27240afe2ab5" name="Intent.Modules.Modelers.AWS.Lambda" relativePath="Intent.Modules.Modelers.AWS.Lambda/Intent.Modules.Modelers.AWS.Lambda.application.config" />
     <application id="7434cb26-b5cd-4500-a6af-416ddebbdb3b" name="Intent.Modules.Modelers.AWS.Gateway" relativePath="Intent.Modules.Modelers.AWS.Gateway/Intent.Modules.Modelers.AWS.Gateway.application.config" />
     <application id="bdfd1bcb-c6d8-4e57-8797-909f72bc44db" name="Intent.Modules.Modelers.AWS.SQS" relativePath="Intent.Modules.Modelers.AWS.SQS/Intent.Modules.Modelers.AWS.SQS.application.config" />
+    <application id="1978d2c0-d825-4045-9df7-e453eae64401" name="Intent.Modules.Modelers.AWS.StepFunctions" relativePath="Intent.Modules.Modelers.AWS.StepFunctions/Intent.Modules.Modelers.AWS.StepFunctions.application.config" />
   </applications>
 </solution>
