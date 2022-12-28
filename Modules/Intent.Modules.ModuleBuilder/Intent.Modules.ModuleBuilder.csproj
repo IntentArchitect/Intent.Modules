@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.4.0</Version>
+    <Version>3.4.1-pre.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Architect.Persistence" Version="3.4.0-pre.2" />
+    <PackageReference Include="Intent.Architect.Persistence" Version="3.4.0-pre.4" />
     <PackageReference Include="Intent.Modules.Common" Version="3.3.17" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.25" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.6" />

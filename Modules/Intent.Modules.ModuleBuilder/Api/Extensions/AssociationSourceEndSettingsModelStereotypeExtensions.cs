@@ -102,6 +102,68 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Multiple");
             }
 
+            public bool AllowSorting()
+            {
+                return _stereotype.GetProperty<bool>("Allow Sorting");
+            }
+
+            public SortChildrenOptions SortChildren()
+            {
+                return new SortChildrenOptions(_stereotype.GetProperty<string>("Sort Children"));
+            }
+
+            public class SortChildrenOptions
+            {
+                public readonly string Value;
+
+                public SortChildrenOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public SortChildrenOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Manually":
+                            return SortChildrenOptionsEnum.Manually;
+                        case "By type then manually":
+                            return SortChildrenOptionsEnum.ByTypeThenManually;
+                        case "By type then name":
+                            return SortChildrenOptionsEnum.ByTypeThenName;
+                        case "By name":
+                            return SortChildrenOptionsEnum.ByName;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsManually()
+                {
+                    return Value == "Manually";
+                }
+                public bool IsByTypeThenManually()
+                {
+                    return Value == "By type then manually";
+                }
+                public bool IsByTypeThenName()
+                {
+                    return Value == "By type then name";
+                }
+                public bool IsByName()
+                {
+                    return Value == "By name";
+                }
+            }
+
+            public enum SortChildrenOptionsEnum
+            {
+                Manually,
+                ByTypeThenManually,
+                ByTypeThenName,
+                ByName
+            }
+
         }
 
     }

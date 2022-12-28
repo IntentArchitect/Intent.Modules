@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
@@ -51,6 +52,34 @@ namespace Intent.ModuleBuilder.Api
 
         public string ApiPropertyName => this.GetSettings().ApiPropertyName();
 
+        public AssociationEndSettingsPersistable ToPersistable()
+        {
+            return new AssociationEndSettingsPersistable
+            {
+                SpecializationTypeId = this.Id,
+                SpecializationType = this.Name,
+                DisplayFunction = this.GetSettings().DisplayTextFunction(),
+                Icon = this.GetSettings().Icon().ToPersistable(),
+                TypeReferenceSetting = new TypeReferenceSettingPersistable()
+                {
+                    TargetTypes = this.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
+                    IsCollectionDefault = this.GetSettings().IsCollectionDefault(),
+                    AllowIsCollection = this.GetSettings().IsCollectionEnabled(),
+                    IsNavigableDefault = this.GetSettings().IsNavigableDefault(),
+                    AllowIsNavigable = this.GetSettings().IsNavigableEnabled(),
+                    IsNullableDefault = this.GetSettings().IsNullableDefault(),
+                    AllowIsNullable = this.GetSettings().IsNullableEnabled()
+                },
+                AllowSorting = this.GetSettings().AllowSorting(),
+                SortChildren = ToSortChildrenOptions(this.GetSettings().SortChildren()),
+                TypeOrder = this.MenuOptions?.TypeOrder.Select((t, index) => new TypeOrderPersistable { Type = t.Type, Order = t.Order?.ToString() }).ToList(),
+                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
+                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
+                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
+                    .ToList(),
+            };
+        }
+
         [IntentManaged(Mode.Fully)]
         public bool Equals(AssociationDestinationEndSettingsModel other)
         {
@@ -80,9 +109,42 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
+
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
         public const string SpecializationTypeId = "c4c61fdc-464d-41d2-8e0e-5a734d588302";
 
         public string Comment => _element.Comment;
+
+        private static SortChildrenOptions? ToSortChildrenOptions(AssociationDestinationEndSettingsModelStereotypeExtensions.Settings.SortChildrenOptions options)
+        {
+            if (options == null)
+            {
+                return null;
+            }
+
+            if (options.IsManually())
+            {
+                return SortChildrenOptions.Manually;
+            }
+            if (options.IsByTypeThenManually())
+            {
+                return SortChildrenOptions.SortByTypeThenManually;
+            }
+            if (options.IsByTypeThenName())
+            {
+                return SortChildrenOptions.SortByTypeAndName;
+            }
+            if (options.IsByName())
+            {
+                return SortChildrenOptions.SortByName;
+            }
+
+            return null;
+        }
     }
 
     [IntentManaged(Mode.Fully)]

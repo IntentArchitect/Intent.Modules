@@ -134,5 +134,31 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a">
+      <name>Allow Sorting</name>
+      <type>boolean</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="9ae87826-7f34-4cab-b371-5cd2da9331dd">
+      <name>Sort Children</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions>
+        <option>Manually</option>
+        <option>By type then manually</option>
+        <option>By type then name</option>
+        <option>By name</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction />
+      <isRequiredFunction />
+    </property>
   </properties>
 </stereotypeDefinition>

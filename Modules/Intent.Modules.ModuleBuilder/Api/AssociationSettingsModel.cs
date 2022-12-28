@@ -67,40 +67,8 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
-                SourceEnd = new AssociationEndSettingsPersistable
-                {
-                    SpecializationTypeId = this.SourceEnd.Id,
-                    SpecializationType = this.SourceEnd.Name,
-                    DisplayFunction = this.SourceEnd.GetSettings().DisplayTextFunction(),
-                    Icon = this.SourceEnd.GetSettings().Icon().ToPersistable(),
-                    TypeReferenceSetting = new TypeReferenceSettingPersistable()
-                    {
-                        TargetTypes = this.SourceEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
-                        IsCollectionDefault = this.SourceEnd.GetSettings().IsCollectionDefault(),
-                        AllowIsCollection = this.SourceEnd.GetSettings().IsCollectionEnabled(),
-                        IsNavigableDefault = this.SourceEnd.GetSettings().IsNavigableDefault(),
-                        AllowIsNavigable = this.SourceEnd.GetSettings().IsNavigableEnabled(),
-                        IsNullableDefault = this.SourceEnd.GetSettings().IsNullableDefault(),
-                        AllowIsNullable = this.SourceEnd.GetSettings().IsNullableEnabled()
-                    }
-                },
-                TargetEnd = new AssociationEndSettingsPersistable
-                {
-                    SpecializationTypeId = this.TargetEnd.Id,
-                    SpecializationType = this.TargetEnd.Name,
-                    DisplayFunction = this.TargetEnd.GetSettings().DisplayTextFunction(),
-                    Icon = this.TargetEnd.GetSettings().Icon().ToPersistable(),
-                    TypeReferenceSetting = new TypeReferenceSettingPersistable()
-                    {
-                        TargetTypes = this.TargetEnd.GetSettings().TargetTypes().Select(t => t.Name).ToArray(),
-                        IsCollectionDefault = this.TargetEnd.GetSettings().IsCollectionDefault(),
-                        AllowIsCollection = this.TargetEnd.GetSettings().IsCollectionEnabled(),
-                        IsNavigableDefault = this.TargetEnd.GetSettings().IsNavigableDefault(),
-                        AllowIsNavigable = this.TargetEnd.GetSettings().IsNavigableEnabled(),
-                        IsNullableDefault = this.TargetEnd.GetSettings().IsNullableDefault(),
-                        AllowIsNullable = this.TargetEnd.GetSettings().IsNullableEnabled()
-                    }
-                },
+                SourceEnd = this.SourceEnd.ToPersistable(),
+                TargetEnd = this.TargetEnd.ToPersistable(),
                 VisualSettings = VisualSettings?.ToPersistable(),
                 Macros = this.EventSettings?.ToPersistable()
             };
