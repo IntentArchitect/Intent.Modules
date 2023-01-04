@@ -4,7 +4,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder
 {
     public static class IntentNugetPackages
     {
-        public static NugetPackageInfo IntentPackager = new NugetPackageInfo("Intent.Packager", "3.3.0")
+        public static NugetPackageInfo IntentPackager = new NugetPackageInfo("Intent.Packager", "3.4.0-pre.3")
             .SpecifyAssetsBehaviour(new[] { "all" }, new[] { "runtime", "build", "native", "contentfiles", "analyzers", "buildtransitive" });
     }
 }

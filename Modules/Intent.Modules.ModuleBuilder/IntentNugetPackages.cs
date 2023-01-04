@@ -6,7 +6,7 @@ namespace Intent.Modules.ModuleBuilder
     {
         public static NugetPackageInfo IntentSdk = new("Intent.SoftwareFactory.SDK", "3.4.0-pre.0");
 
-        public static NugetPackageInfo IntentPackager = new NugetPackageInfo("Intent.Packager", "3.4.0-pre.0")
+        public static NugetPackageInfo IntentPackager = new NugetPackageInfo("Intent.Packager", "3.4.0-pre.3")
             .SpecifyAssetsBehaviour(new[] { "all" }, new[] { "runtime", "build", "native", "contentfiles", "analyzers", "buildtransitive" });
 
         public static NugetPackageInfo IntentModulesCommon = new("Intent.Modules.Common", "3.3.17");
