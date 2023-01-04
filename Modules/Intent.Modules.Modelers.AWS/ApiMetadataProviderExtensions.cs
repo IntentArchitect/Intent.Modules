@@ -26,5 +26,12 @@ namespace Intent.Modelers.AWS.Api
                 .ToList();
         }
 
+        public static IList<IAMPolicyStatementModel> GetIAMPolicyStatementModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(IAMPolicyStatementModel.SpecializationTypeId)
+                .Select(x => new IAMPolicyStatementModel(x))
+                .ToList();
+        }
+
     }
 }

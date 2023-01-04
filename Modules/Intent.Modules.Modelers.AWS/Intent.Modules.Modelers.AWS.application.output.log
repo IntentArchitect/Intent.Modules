@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#120e59b2-b044-4262-88f6-6244e12e0679</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ActionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ActionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#055db259-36fc-495f-935c-89c847c34c32</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AssociationModel.cs</ApplicationRelativeFilePath>
@@ -62,6 +70,22 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DTOModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DTOModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b38ebd65-3594-40d9-a688-314cd791ecdf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IAMPolicyStatementModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IAMPolicyStatementModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>e9ae8815-393e-46e5-a534-8e1800c3f43d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dca1ab24-80eb-42d2-9c8b-67803ba85ca2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ResourceModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ResourceModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

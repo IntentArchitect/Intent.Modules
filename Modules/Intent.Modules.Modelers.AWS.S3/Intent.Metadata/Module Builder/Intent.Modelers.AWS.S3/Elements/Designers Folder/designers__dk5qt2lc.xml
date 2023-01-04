@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3f9aa6b5-65a2-41a2-9a0e-7c614f730815" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b2eaf24f-b467-44db-9721-31dfade1d16b</parentFolderId>
+  <packageId>b2eaf24f-b467-44db-9721-31dfade1d16b</packageId>
+  <packageName>Intent.Modelers.AWS.S3</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
