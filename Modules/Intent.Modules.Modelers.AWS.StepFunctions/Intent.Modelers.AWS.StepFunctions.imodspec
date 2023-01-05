@@ -15,6 +15,7 @@
     <dependency id="Intent.Common" version="3.3.17" />
     <dependency id="Intent.Common.Types" version="3.3.6" />
     <dependency id="Intent.Modelers.Application" version="1.0.0-pre.0" />
+    <dependency id="Intent.Modelers.AWS" version="1.0.0-pre.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -23,5 +24,6 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="Application" src="modelers/AWS Step Functions Extensions.designer.settings" externalReference="aa9832d1-2bdb-4422-b688-fa9cf33fbc44" />
+    <install target="Module Builder;Application" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.StepFunctions/Intent.Modelers.AWS.StepFunctions.pkg.config" externalReference="24de5392-9c9b-43e6-9050-313b575bb6fe" />
   </metadata>
 </package>

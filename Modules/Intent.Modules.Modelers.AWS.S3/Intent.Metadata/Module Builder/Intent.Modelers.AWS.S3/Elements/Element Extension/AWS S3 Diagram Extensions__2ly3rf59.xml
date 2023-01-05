@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="4037c725-ce00-4df5-aebf-32f53077e37d" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
   <name>AWS S3 Diagram Extensions</name>
-  <display>AWS S3 Diagram Extensions: &lt;type not found&gt;</display>
+  <display>AWS S3 Diagram Extensions: Diagram</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -11,6 +11,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.AWS</typePackageName>
+    <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

@@ -94,13 +94,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.App
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS.DynamoDB", "Intent.Modules.Modelers.AWS.DynamoDB\Intent.Modules.Modelers.AWS.DynamoDB.csproj", "{64114B95-846E-4F79-B865-B0E9DD07A2B6}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.Lambda", "Intent.Modules.Modelers.AWS.Lambda\Intent.Modules.Modelers.AWS.Lambda.csproj", "{07700AE5-978B-477F-BE3B-6C33E6367F59}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS.Lambda", "Intent.Modules.Modelers.AWS.Lambda\Intent.Modules.Modelers.AWS.Lambda.csproj", "{07700AE5-978B-477F-BE3B-6C33E6367F59}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.ApiGateway", "Intent.Modules.Modelers.AWS.ApiGateway\Intent.Modules.Modelers.AWS.ApiGateway.csproj", "{EADB5DA2-B19F-4250-B897-66CDB03C7D43}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS.ApiGateway", "Intent.Modules.Modelers.AWS.ApiGateway\Intent.Modules.Modelers.AWS.ApiGateway.csproj", "{EADB5DA2-B19F-4250-B897-66CDB03C7D43}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.SQS", "Intent.Modules.Modelers.AWS.SQS\Intent.Modules.Modelers.AWS.SQS.csproj", "{FD9C1E88-94CF-47C4-9B6C-259F8F3CA771}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS.SQS", "Intent.Modules.Modelers.AWS.SQS\Intent.Modules.Modelers.AWS.SQS.csproj", "{FD9C1E88-94CF-47C4-9B6C-259F8F3CA771}"
 EndProject
-Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.AWS.StepFunctions", "Intent.Modules.Modelers.AWS.StepFunctions\Intent.Modules.Modelers.AWS.StepFunctions.csproj", "{521C24CB-6873-444D-A4FD-D585A196E547}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS.StepFunctions", "Intent.Modules.Modelers.AWS.StepFunctions\Intent.Modules.Modelers.AWS.StepFunctions.csproj", "{521C24CB-6873-444D-A4FD-D585A196E547}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Intent.Modules.Modelers.AWS.S3", "Intent.Modules.Modelers.AWS.S3\Intent.Modules.Modelers.AWS.S3.csproj", "{26C183D7-7AAF-40D0-8B8C-EED59F66E4C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -280,6 +282,10 @@ Global
 		{521C24CB-6873-444D-A4FD-D585A196E547}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{521C24CB-6873-444D-A4FD-D585A196E547}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{521C24CB-6873-444D-A4FD-D585A196E547}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26C183D7-7AAF-40D0-8B8C-EED59F66E4C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26C183D7-7AAF-40D0-8B8C-EED59F66E4C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26C183D7-7AAF-40D0-8B8C-EED59F66E4C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26C183D7-7AAF-40D0-8B8C-EED59F66E4C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -333,6 +339,7 @@ Global
 		{EADB5DA2-B19F-4250-B897-66CDB03C7D43} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{FD9C1E88-94CF-47C4-9B6C-259F8F3CA771} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{521C24CB-6873-444D-A4FD-D585A196E547} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
+		{26C183D7-7AAF-40D0-8B8C-EED59F66E4C4} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}

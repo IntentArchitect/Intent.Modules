@@ -1151,6 +1151,8 @@ white-space: inherit;`</style>
   <associationSettings>
     <associationSetting type="DynamoDB Item Association" typeId="605bfe10-c345-4493-a2aa-f0605e45d2ed">
       <sourceEnd type="DynamoDB Item Association Source End" typeId="d275271d-33c5-4e47-bf9c-ac495869d292">
+        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>
@@ -1166,6 +1168,8 @@ white-space: inherit;`</style>
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="DynamoDB Item Association Target End" typeId="ad655f31-0176-4d45-84cd-1acde6aa7325">
+        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
           <targetTypes>

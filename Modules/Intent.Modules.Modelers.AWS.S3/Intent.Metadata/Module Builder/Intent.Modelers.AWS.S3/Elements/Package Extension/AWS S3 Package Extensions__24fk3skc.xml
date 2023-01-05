@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1c63021f-6dab-4c5b-9fc5-0bf42a2f6fd0" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
   <name>AWS S3 Package Extensions</name>
-  <display>AWS S3 Package Extensions: &lt;type not found&gt;</display>
+  <display>AWS S3 Package Extensions: AWS Package</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -11,6 +11,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.AWS</typePackageName>
+    <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>

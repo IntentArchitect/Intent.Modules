@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="1cc5c1c3-8557-4a0d-8a25-ae93d67f9f3c" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
   <name>AWS S3 Association Extension</name>
-  <display>AWS S3 Association Extension: &lt;type not found&gt;</display>
+  <display>AWS S3 Association Extension: Association</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -11,6 +11,8 @@
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.AWS</typePackageName>
+    <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
