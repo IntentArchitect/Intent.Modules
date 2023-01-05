@@ -45,11 +45,6 @@ namespace Intent.Modelers.AWS.Lambda.Api
 
         public IElement InternalElement => _element;
 
-        public RequestBodyModel RequestBody => _element.ChildElements
-            .GetElementsOfType(RequestBodyModel.SpecializationTypeId)
-            .Select(x => new RequestBodyModel(x))
-            .SingleOrDefault();
-
         public IList<ParameterModel> Parameters => _element.ChildElements
             .GetElementsOfType(ParameterModel.SpecializationTypeId)
             .Select(x => new ParameterModel(x))

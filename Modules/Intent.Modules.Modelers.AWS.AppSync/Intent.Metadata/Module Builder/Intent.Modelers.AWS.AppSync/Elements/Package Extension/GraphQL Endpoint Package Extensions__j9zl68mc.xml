@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="cee52aec-24a3-4ce7-886f-a521aaaee195" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>GraphQL Endpoint Package Extensions</name>
+  <display>GraphQL Endpoint Package Extensions: AWS Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="e8f7c9a8-1fc0-46c7-acf2-f2a4890e55a8">
+    <typeId>a95a0fde-f67b-4e4a-b9a8-745021efbdb6</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.AWS</typePackageName>
+    <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>8287ec8b-13e3-4e54-8ad9-d823e9779e87</parentFolderId>
+  <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+  <packageName>Intent.Modelers.AWS.AppSync</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="3fd97e4f-69e7-4d32-ba66-a640fdea8046" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>cee52aec-24a3-4ce7-886f-a521aaaee195</parentFolderId>
+      <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+      <packageName>Intent.Modelers.AWS.AppSync</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="ef9a3dd7-533e-4212-b73a-33a6e56592e2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New GraphQL Endpoint</name>
+          <display>New GraphQL Endpoint: GraphQL Endpoint</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="38efbc6a-9b5a-48ca-baf3-52280fba7d6d">
+            <typeId>fe7c2882-9fc6-4a35-bde4-26195d7900eb</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS.AppSync</typePackageName>
+            <typePackageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3fd97e4f-69e7-4d32-ba66-a640fdea8046</parentFolderId>
+          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+          <packageName>Intent.Modelers.AWS.AppSync</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + g" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Endpoint" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

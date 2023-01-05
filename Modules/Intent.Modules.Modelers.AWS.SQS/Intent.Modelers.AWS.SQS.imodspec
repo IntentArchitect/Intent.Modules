@@ -24,6 +24,6 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="Application" src="modelers/AWS SQS Extensions.designer.settings" externalReference="4ea92208-18f3-4921-8cd7-2212f338b2ed" />
-    <install target="Module Builder;Application" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.SQS/Intent.Modelers.AWS.SQS.pkg.config" externalReference="a0a993a9-d353-4adb-ae2d-78c8acca735c" />
+    <install target="Application;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.SQS/Intent.Modelers.AWS.SQS.pkg.config" externalReference="a0a993a9-d353-4adb-ae2d-78c8acca735c" />
   </metadata>
 </package>

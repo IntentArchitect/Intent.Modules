@@ -24,6 +24,6 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="Application" src="modelers/AWS Step Functions Extensions.designer.settings" externalReference="aa9832d1-2bdb-4422-b688-fa9cf33fbc44" />
-    <install target="Module Builder;Application" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.StepFunctions/Intent.Modelers.AWS.StepFunctions.pkg.config" externalReference="24de5392-9c9b-43e6-9050-313b575bb6fe" />
+    <install target="Application;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.StepFunctions/Intent.Modelers.AWS.StepFunctions.pkg.config" externalReference="24de5392-9c9b-43e6-9050-313b575bb6fe" />
   </metadata>
 </package>

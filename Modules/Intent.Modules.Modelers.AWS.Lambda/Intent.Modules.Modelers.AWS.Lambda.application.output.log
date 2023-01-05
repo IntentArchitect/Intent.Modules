@@ -49,14 +49,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#49294a7f-9300-4feb-99f3-22076efea411</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/RequestBodyModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>RequestBodyModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>07700ae5-978b-477f-be3b-6c33e6367f59</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

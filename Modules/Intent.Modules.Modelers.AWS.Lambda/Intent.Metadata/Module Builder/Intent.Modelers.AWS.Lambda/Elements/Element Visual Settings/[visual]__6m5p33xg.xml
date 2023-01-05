@@ -4,7 +4,7 @@
   <display>[visual]: Lambda Function</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>3</order>
+  <order>2</order>
   <genericTypes />
   <typeReference id="9bff99c4-c966-4af8-b847-ec17061217bf">
     <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>

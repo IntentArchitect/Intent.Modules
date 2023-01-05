@@ -54,20 +54,10 @@
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
       <typeOrder>
-        <type order="0">Request Body</type>
-        <type order="1">Parameter</type>
-        <type order="2">Association</type>
+        <type order="0">Parameter</type>
+        <type order="1">Association</type>
       </typeOrder>
       <creationOptions>
-        <option type="element">
-          <specializationType>Request Body</specializationType>
-          <specializationTypeId>49294a7f-9300-4feb-99f3-22076efea411</specializationTypeId>
-          <text>Add Request Body</text>
-          <shortcut>ctrl + shift + r</shortcut>
-          <defaultName>Request Body</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
-          <allowMultiple>false</allowMultiple>
-        </option>
         <option type="element">
           <specializationType>Parameter</specializationType>
           <specializationTypeId>2a1b4261-de0a-4dd2-ba19-bfe61dd17597</specializationTypeId>
@@ -134,35 +124,6 @@ vertical-align: center`</style>
         </macro>
       </macros>
       <childElementSettings>
-        <childElementSetting type="Request Body" typeId="49294a7f-9300-4feb-99f3-22076efea411">
-          <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <allowRename>false</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>true</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>false</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeReferenceSetting>
-            <isRequired>true</isRequired>
-            <targetTypes>
-              <type>Type-Definition</type>
-              <type>DTO</type>
-            </targetTypes>
-            <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
-            <isNavigableDefault>true</isNavigableDefault>
-            <isNullableDefault>false</isNullableDefault>
-            <isCollectionDefault>false</isCollectionDefault>
-          </typeReferenceSetting>
-          <mappingSettings />
-          <childElementSettings />
-        </childElementSetting>
         <childElementSetting type="Parameter" typeId="2a1b4261-de0a-4dd2-ba19-bfe61dd17597">
           <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
           <saveAsOwnFile>false</saveAsOwnFile>
@@ -181,6 +142,8 @@ vertical-align: center`</style>
             <isRequired>true</isRequired>
             <targetTypes>
               <type>Type-Definition</type>
+              <type>Enum</type>
+              <type>DTO</type>
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>

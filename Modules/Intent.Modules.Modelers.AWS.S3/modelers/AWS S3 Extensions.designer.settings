@@ -69,7 +69,7 @@ vertical-align: center`</style>
             <position x="${x}" y="${y + h - 18}" />
           </drawText>
           <drawSvgResource>
-            <path>aws-s3.svg</path>
+            <path>s3.svg</path>
             <size width="${w}" height="${h-44}" />
             <position x="${x}" y="${y + 6}" />
           </drawSvgResource>

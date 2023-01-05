@@ -24,6 +24,6 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="Application" src="modelers/AWS Lambda Extensions.designer.settings" externalReference="42a1a259-57f8-4363-bdd2-9ed8daa72d1a" />
-    <install target="Module Builder;Application" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.Lambda/Intent.Modelers.AWS.Lambda.pkg.config" externalReference="384bb5ef-0985-493d-81ce-1fdd0f4d4c7c" />
+    <install target="Application;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.Lambda/Intent.Modelers.AWS.Lambda.pkg.config" externalReference="384bb5ef-0985-493d-81ce-1fdd0f4d4c7c" />
   </metadata>
 </package>

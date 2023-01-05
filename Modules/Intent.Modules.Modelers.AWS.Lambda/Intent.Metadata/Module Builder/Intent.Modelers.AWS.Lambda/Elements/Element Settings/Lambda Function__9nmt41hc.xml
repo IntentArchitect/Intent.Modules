@@ -61,45 +61,6 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="e0e8709c-8a9b-4ddd-9e30-d1f9ba99105b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Request Body</name>
-          <display>Add Request Body: Request Body</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="de89a7ac-0a07-4d3c-a61d-5a923bac45c2">
-            <typeId>49294a7f-9300-4feb-99f3-22076efea411</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS.Lambda</typePackageName>
-            <typePackageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>3daec9a0-0916-4b80-9f4d-10ac3cb74df7</parentFolderId>
-          <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
-          <packageName>Intent.Modelers.AWS.Lambda</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + r" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Request Body" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
         <childElement id="2d6151ae-46d2-4538-920c-cfc789c9e7d8" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Parameter</name>
           <display>Add Parameter: Parameter</display>

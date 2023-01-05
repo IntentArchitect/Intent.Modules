@@ -3,28 +3,30 @@ using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
-namespace Intent.Modelers.AWS.Lambda.Api
+namespace Intent.Modelers.AWS.AppSync.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class RequestBodyModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class GraphQLEndpointModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
-        public const string SpecializationType = "Request Body";
-        public const string SpecializationTypeId = "49294a7f-9300-4feb-99f3-22076efea411";
+        public const string SpecializationType = "GraphQL Endpoint";
+        public const string SpecializationTypeId = "fe7c2882-9fc6-4a35-bde4-26195d7900eb";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public RequestBodyModel(IElement element, string requiredType = SpecializationType)
+        public GraphQLEndpointModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -35,9 +37,7 @@ namespace Intent.Modelers.AWS.Lambda.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public IEnumerable<string> GenericTypes => _element.GenericTypes.Select(x => x.Name);
-
-        public ITypeReference TypeReference => _element.TypeReference;
+        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 
@@ -46,7 +46,7 @@ namespace Intent.Modelers.AWS.Lambda.Api
             return _element.ToString();
         }
 
-        public bool Equals(RequestBodyModel other)
+        public bool Equals(GraphQLEndpointModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -56,7 +56,7 @@ namespace Intent.Modelers.AWS.Lambda.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((RequestBodyModel)obj);
+            return Equals((GraphQLEndpointModel)obj);
         }
 
         public override int GetHashCode()
@@ -66,17 +66,17 @@ namespace Intent.Modelers.AWS.Lambda.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class RequestBodyModelExtensions
+    public static class GraphQLEndpointModelExtensions
     {
 
-        public static bool IsRequestBodyModel(this ICanBeReferencedType type)
+        public static bool IsGraphQLEndpointModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == RequestBodyModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == GraphQLEndpointModel.SpecializationTypeId;
         }
 
-        public static RequestBodyModel AsRequestBodyModel(this ICanBeReferencedType type)
+        public static GraphQLEndpointModel AsGraphQLEndpointModel(this ICanBeReferencedType type)
         {
-            return type.IsRequestBodyModel() ? new RequestBodyModel((IElement)type) : null;
+            return type.IsGraphQLEndpointModel() ? new GraphQLEndpointModel((IElement)type) : null;
         }
     }
 }
