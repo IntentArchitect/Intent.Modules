@@ -1,9 +1,5 @@
 using System;
-using System.Collections.Generic;
-using System.Data.Common;
-using System.Xml;
 using Intent.Modules.Common.CSharp.Templates;
-using JetBrains.Annotations;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -14,7 +10,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
     public string OverrideModifier { get; private set; } = "";
     public string Type { get; }
     public string Name { get; }
-    public bool IsReadOnly { get; private set; } = false;
+    public bool IsReadOnly { get; private set; }
     public string InitialValue { get; private set; }
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
@@ -25,12 +21,12 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
         {
             throw new ArgumentException("Cannot be null or empty", nameof(type));
         }
-        
+
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
-        
+
         Type = type;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;

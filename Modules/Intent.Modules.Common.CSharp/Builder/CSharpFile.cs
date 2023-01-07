@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -85,14 +84,14 @@ public class CSharpFile
             relativeLocation: RelativeLocation);
     }
 
-    private bool _isBuilt = false;
-    private bool _afterBuildRun = false;
+    private bool _isBuilt;
+    private bool _afterBuildRun;
 
     public CSharpFile OnBuild(Action<CSharpFile> configure, int order = 0)
     {
         if (_isBuilt)
         {
-            throw new Exception($"This file has already been built. " +
+            throw new Exception("This file has already been built. " +
                                 "Consider registering your configuration in the AfterBuild(...) method.");
         }
         _configurations.Add((() => configure(this), order));

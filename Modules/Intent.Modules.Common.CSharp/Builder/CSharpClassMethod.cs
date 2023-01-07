@@ -1,35 +1,30 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.RoslynWeaver.Attributes;
-
-[assembly: DefaultIntentManaged(Mode.Fully)]
-[assembly: DefaultIntentManaged(Mode.Fully, Targets = Targets.Usings)]
-[assembly: IntentTemplate("Intent.ModuleBuilder.Templates.TemplateExtensions", Version = "1.0")]
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements
 {
-    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public List<CSharpStatement> Statements { get; } = new();
     protected string AsyncMode { get; private set; } = string.Empty;
     protected string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
-    public string ReturnType { get; private set; }
-    public string Name { get; private set; }
-    public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
+    public string ReturnType { get; }
+    public string Name { get; }
+    public List<CSharpParameter> Parameters { get; } = new();
     public CSharpClassMethod(string returnType, string name)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(returnType));
         }
-        
+
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
-        
+
         ReturnType = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
@@ -65,7 +60,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         return this;
     }
 
-    public CSharpClassMethod InsertStatements(int index, IEnumerable<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    public CSharpClassMethod InsertStatements(int index, IReadOnlyCollection<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
     {
         foreach (var s in statements.Reverse())
         {

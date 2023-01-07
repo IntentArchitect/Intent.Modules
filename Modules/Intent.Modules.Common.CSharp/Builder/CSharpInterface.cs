@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -21,7 +20,7 @@ public class CSharpInterfaceProperty : CSharpProperty
         {
             throw new ArgumentException("Cannot be null or empty", nameof(type));
         }
-        
+
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
@@ -47,11 +46,11 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
-        
+
         Name = name.ToCSharpIdentifier();
     }
 
-    public string Name { get; private set; }
+    public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
     public IList<string> Interfaces { get; set; } = new List<string>();
     public IList<CSharpInterfaceField> Fields { get; } = new List<CSharpInterfaceField>();
@@ -64,14 +63,14 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         {
             throw new ArgumentException("Cannot be null or empty", nameof(type));
         }
-        
+
         Interfaces.Add(type);
         return this;
     }
 
     public CSharpInterface ImplementsInterfaces(IEnumerable<string> types)
     {
-        foreach (var type in types) 
+        foreach (var type in types)
             Interfaces.Add(type);
 
         return this;
@@ -215,7 +214,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         codeBlocks.AddRange(Methods);
 
         return !codeBlocks.Any() ? "" : $@"
-{string.Join($@"
+{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
     }
 }

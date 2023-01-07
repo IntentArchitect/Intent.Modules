@@ -1,12 +1,10 @@
 using System;
-using System.Collections;
 using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 {
-
     public CSharpStatement(string invocation)
     {
         Text = invocation?.Trim();
@@ -33,7 +31,7 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
 
     public CSharpStatement Outdent()
     {
-        RelativeIndentation = RelativeIndentation.Substring("    ".Length);
+        RelativeIndentation = RelativeIndentation["    ".Length..];
         return this;
     }
 

@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public interface IHasCSharpStatements
 {
-    IList<CSharpStatement> Statements { get; }
+    List<CSharpStatement> Statements { get; }
 }
 
 public static class HasCSharpStatementsExtensions
@@ -24,14 +24,14 @@ public static class HasCSharpStatementsExtensions
     public static T FindStatement<T>(this IHasCSharpStatements parent, Func<T, bool> matchFunc)
     {
         return parent.Statements.OfType<T>().Where(matchFunc)
-            .Concat(parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements<T>(matchFunc)))
+            .Concat(parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements(matchFunc)))
             .FirstOrDefault();
     }
 
     public static IEnumerable<T> FindStatements<T>(this IHasCSharpStatements parent, Func<T, bool> matchFunc)
     {
         return parent.Statements.OfType<T>().Where(matchFunc)
-            .Concat(parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements<T>(matchFunc))).ToList();
+            .Concat(parent.Statements.OfType<IHasCSharpStatements>().SelectMany(x => x.FindStatements(matchFunc))).ToList();
     }
 
     public static TParent AddStatement<TParent>(this TParent parent, string statement, Action<CSharpStatement> configure = null)
@@ -58,7 +58,7 @@ public static class HasCSharpStatementsExtensions
         return parent;
     }
 
-    public static TParent InsertStatements<TParent>(this TParent parent, int index, IEnumerable<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
+    public static TParent InsertStatements<TParent>(this TParent parent, int index, IReadOnlyCollection<CSharpStatement> statements, Action<IEnumerable<CSharpStatement>> configure = null)
         where TParent : IHasCSharpStatements
     {
         foreach (var s in statements.Reverse())

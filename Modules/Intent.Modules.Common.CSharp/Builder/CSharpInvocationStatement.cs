@@ -1,18 +1,17 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 {
-    private bool _withSemicolon = false;
+    private bool _withSemicolon;
 
     public CSharpStatementBlock() : base(null)
     {
     }
 
-    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public List<CSharpStatement> Statements { get; } = new();
 
     public CSharpStatementBlock WithSemicolon()
     {
@@ -35,7 +34,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     {
     }
 
-    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public List<CSharpStatement> Statements { get; } = new();
 
     public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)
     {

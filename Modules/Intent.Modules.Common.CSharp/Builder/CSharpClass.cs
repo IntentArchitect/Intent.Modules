@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Modules.Common.CSharp.Templates;
-using Intent.Modules.Common.CSharp.Builder;
-using JetBrains.Annotations;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -21,7 +18,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
         Name = name;
     }
-    public string Name { get; private set; }
+    public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
     public CSharpClass BaseType { get; set; }
     public IList<string> Interfaces { get; } = new List<string>();
@@ -60,7 +57,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public CSharpClass ImplementsInterfaces(IEnumerable<string> types)
     {
-        foreach (var type in types) 
+        foreach (var type in types)
             Interfaces.Add(type);
 
         return this;
@@ -248,25 +245,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         codeBlocks.AddRange(Properties);
         codeBlocks.AddRange(Methods);
 
-        return $@"{string.Join($@"
+        return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
     }
-
-//    private string GetMembers(string indentation)
-//    {
-//        var codeBlocks = new List<string>();
-
-//        if (Fields.Any())
-//            codeBlocks.Add(Fields.ConcatCode(indentation));
-//        if (Constructors.Any())
-//            codeBlocks.Add(Constructors.ConcatCode(indentation));
-//        if (Properties.Any())
-//            codeBlocks.Add(Properties.ConcatCode(indentation));
-//        if (Methods.Any())
-//            codeBlocks.Add(Methods.ConcatCode(indentation));
-
-//        return !codeBlocks.Any() ? "" : $@"
-//{string.Join($@"
-//", codeBlocks)}";
-//    }
 }

@@ -8,7 +8,7 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
     where TImpl : CSharpDeclaration<TImpl>
 {
     public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
-    public CSharpXmlComments XmlComments { get; } = new CSharpXmlComments();
+    public CSharpXmlComments XmlComments { get; } = new();
 
     public TImpl AddAttribute(string name, Action<CSharpAttribute> configure = null)
     {
@@ -36,7 +36,7 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
 
     protected string GetAttributes(string indentation)
     {
-        return $@"{(Attributes.Any() ? $@"{string.Join($@"
+        return $@"{(Attributes.Any() ? $@"{string.Join(@"
 ", Attributes.Select(x => x.GetText(indentation)))}
 " : string.Empty)}";
     }

@@ -5,7 +5,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpXmlComments : CSharpMetadataBase<CSharpXmlComments>
 {
-    public readonly List<string> Statements = new List<string>();
+    public readonly List<string> Statements = new();
 
     public CSharpXmlComments(params string[] statements)
     {
@@ -38,7 +38,7 @@ public class CSharpXmlComments : CSharpMetadataBase<CSharpXmlComments>
     }
 }
 
-public class CSharpMetadataBase<TCSharp>
+public abstract class CSharpMetadataBase<TCSharp>
     where TCSharp : CSharpMetadataBase<TCSharp>
 {
     public IDictionary<string, object> Metadata { get; } = new Dictionary<string, object>();
@@ -71,7 +71,7 @@ public class CSharpMetadataBase<TCSharp>
             return true;
         }
 
-        value = default(T);
+        value = default;
         return false;
     }
 

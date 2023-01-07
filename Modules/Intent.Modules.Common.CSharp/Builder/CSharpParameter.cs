@@ -18,12 +18,12 @@ public class CSharpParameter
         {
             throw new ArgumentException("Cannot be null or empty", nameof(type));
         }
-        
+
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
-        
+
         Type = type;
         Name = name;
     }
@@ -55,6 +55,6 @@ public class CSharpParameter
 
     protected string GetAttributes()
     {
-        return $@"{(Attributes.Any() ? $@"{string.Join($@" ", Attributes)} " : string.Empty)}";
+        return $@"{(Attributes.Any() ? $@"{string.Join(@" ", Attributes)} " : string.Empty)}";
     }
 }

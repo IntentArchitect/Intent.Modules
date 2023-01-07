@@ -6,8 +6,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
 {
-    public string ReturnType { get; private set; }
-    public string Name { get; private set; }
+    public string ReturnType { get; }
+    public string Name { get; }
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
     public CSharpInterfaceMethod(string returnType, string name)
     {
@@ -15,12 +15,12 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
         {
             throw new ArgumentException("Cannot be null or empty", nameof(returnType));
         }
-        
+
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
-        
+
         ReturnType = returnType;
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;

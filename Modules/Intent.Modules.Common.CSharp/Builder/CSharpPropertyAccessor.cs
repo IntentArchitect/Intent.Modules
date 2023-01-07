@@ -4,9 +4,9 @@ public class CSharpPropertyAccessor
 {
     public string Accessor { get; }
     public string AccessModifier { get; private set; } = "";
-    public bool IsExpression { get; private set; } = false;
+    public bool IsExpression { get; private set; }
 
-    public CSharpXmlComments Implementation { get; private set; } = new CSharpXmlComments();
+    public CSharpXmlComments Implementation { get; private set; } = new();
 
     private CSharpPropertyAccessor(string accessor)
     {
@@ -55,7 +55,7 @@ public class CSharpPropertyAccessor
 
     public CSharpPropertyAccessor WithExpressionImplementation(string implementation)
     {
-        Implementation = new CSharpXmlComments(new[] { implementation });
+        Implementation = new CSharpXmlComments(implementation);
         IsExpression = true;
         return this;
     }

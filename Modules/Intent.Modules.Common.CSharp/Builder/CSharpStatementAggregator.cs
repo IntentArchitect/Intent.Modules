@@ -5,7 +5,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpStatementAggregator
 {
-    private List<CSharpStatement> _statements = new List<CSharpStatement>();
+    private readonly List<CSharpStatement> _statements = new();
 
     public CSharpStatementAggregator Add(CSharpStatement statement, Action<CSharpStatement> configure = null)
     {

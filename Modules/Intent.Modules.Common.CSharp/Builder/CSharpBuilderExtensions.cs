@@ -20,14 +20,14 @@ public static class CSharpBuilderExtensions
         }
     }
 
-    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation)
+    internal static string ConcatCode(this IReadOnlyCollection<ICodeBlock> codeBlocks, string indentation)
     {
-        return string.Concat(codeBlocks.Select((s) => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty)}"));
+        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty)}"));
     }
 
-    internal static string JoinCode(this IEnumerable<ICodeBlock> codeBlocks, string separator, string indentation)
+    internal static string JoinCode(this IReadOnlyCollection<ICodeBlock> codeBlocks, string separator, string indentation)
     {
-        return string.Concat(codeBlocks.Select((s) => $"{codeBlocks.DetermineSeparator(s, indentation, separator)}"));
+        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, separator)}"));
     }
 
     private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, ICodeBlock s1, string indentation, string separator = "")
@@ -60,17 +60,4 @@ public static class CSharpBuilderExtensions
 
         return $"{s1.GetText(string.Empty)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
     }
-    //private static string DetermineAfterSeparator(ICodeBlock s1, ICodeBlock s2)
-    //{
-    //    if (s1 == null || s2 == null)
-    //    {
-    //        return string.Empty;
-    //    }
-    //    if (s1.Separator is CSharpCodeSeparatorType.EmtpyLineBelowOnly or CSharpCodeSeparatorType.EmptyLines ||
-    //        s2.Separator is CSharpCodeSeparatorType.EmtpyLineAboveOnly or CSharpCodeSeparatorType.EmptyLines)
-    //    {
-    //        return Environment.NewLine;
-    //    }
-    //    return string.Empty;
-    //}
 }

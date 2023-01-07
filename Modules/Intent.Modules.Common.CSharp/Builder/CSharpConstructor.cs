@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Modules.Common.CSharp.Builder;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -11,7 +10,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>
     public string AccessModifier { get; private set; } = "public ";
     public CSharpConstructorCall ConstructorCall { get; private set; }
     public IList<CSharpConstructorParameter> Parameters { get; } = new List<CSharpConstructorParameter>();
-    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public List<CSharpStatement> Statements { get; } = new();
     public CSharpConstructor(CSharpClass @class)
     {
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
