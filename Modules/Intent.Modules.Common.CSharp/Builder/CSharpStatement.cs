@@ -125,17 +125,3 @@ public class CSharpStatement : CSharpMetadataBase<CSharpStatement>, ICodeBlock
         return new CSharpStatement(input);
     }
 }
-
-public interface ICodeBlock
-{
-    CSharpCodeSeparatorType BeforeSeparator { get; set; }
-    CSharpCodeSeparatorType AfterSeparator { get; set; }
-    string GetText(string indentation);
-}
-
-public enum CSharpCodeSeparatorType
-{
-    None = 0,
-    NewLine = 1,
-    EmptyLines = 2
-}
