@@ -6,7 +6,7 @@ public class CSharpPropertyAccessor
     public string AccessModifier { get; private set; } = "";
     public bool IsExpression { get; private set; }
 
-    public CSharpXmlComments Implementation { get; private set; } = new();
+    public CSharpXmlComments Implementation { get; private set; } = new(); // TODO JL: This doesn't look correct
 
     private CSharpPropertyAccessor(string accessor)
     {

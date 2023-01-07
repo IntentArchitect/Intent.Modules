@@ -18,6 +18,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
         Name = name;
     }
+
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
     public CSharpClass BaseType { get; set; }
@@ -99,7 +100,6 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         return this;
     }
 
-
     public CSharpClass AddConstructor(Action<CSharpConstructor> configure = null)
     {
         var ctor = new CSharpConstructor(this);
@@ -148,6 +148,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         AccessModifier = "internal ";
         return this;
     }
+
     public CSharpClass InternalProtected()
     {
         AccessModifier = "internal protected ";
@@ -159,11 +160,13 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         AccessModifier = "protected ";
         return this;
     }
+
     public CSharpClass Private()
     {
         AccessModifier = "private ";
         return this;
     }
+
     public CSharpClass Partial()
     {
         IsPartial = true;
@@ -176,7 +179,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         {
             throw new InvalidOperationException("Cannot make class abstract if it has already been declared as static");
         }
+
         IsAbstract = true;
+
         return this;
     }
 
@@ -186,7 +191,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         {
             throw new InvalidOperationException("Cannot make class static if it has already been declared as abstract");
         }
+
         IsStatic = true;
+
         return this;
     }
 
@@ -229,10 +236,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
             types.Add(BaseType.Name);
         }
 
-        foreach (var @interface in Interfaces)
-        {
-            types.Add(@interface);
-        }
+        types.AddRange(Interfaces);
 
         return types.Any() ? $" : {string.Join(", ", types)}" : "";
     }
