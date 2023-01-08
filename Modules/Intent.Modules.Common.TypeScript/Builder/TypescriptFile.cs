@@ -1,30 +1,68 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Intent.Modules.Common.Typescript.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
 public class TypescriptFile
 {
-    private readonly IList<(Action Action, int Order)> _configurations = new List<(Action Action, int Order)>();
-    private readonly IList<(Action Action, int Order)> _configurationsAfter = new List<(Action Action, int Order)>();
-    public IList<TypescriptUsing> Usings { get; } = new List<TypescriptUsing>();
-    public string Namespace { get; }
+    private readonly List<(Action Action, int Order)> _configurations = new();
+    private readonly List<(Action Action, int Order)> _configurationsAfter = new();
+    public Dictionary<string, TypescriptImport> ImportsBySource { get; } = new();
     public string RelativeLocation { get; }
-    public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
-    public IList<TypescriptInterface> Interfaces { get; } = new List<TypescriptInterface>();
-    public IList<TypescriptClass> Classes { get; } = new List<TypescriptClass>();
+    public List<TypescriptInterface> Interfaces { get; } = new();
+    public List<TypescriptClass> Classes { get; } = new();
+    public List<TypescriptStatement> Statements { get; } = new();
 
-    public TypescriptFile(string @namespace, string relativeLocation)
+    public TypescriptFile(string relativeLocation)
     {
-        Namespace = @namespace;
         RelativeLocation = relativeLocation;
     }
 
-    public TypescriptFile AddUsing(string @namespace)
+    public TypescriptFile AddImport(string name, string source, string alias = null)
     {
-        Usings.Add(new TypescriptUsing(@namespace));
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
+        if (string.IsNullOrWhiteSpace(source))
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
+        if (!ImportsBySource.TryGetValue(source, out var import))
+        {
+            import = new TypescriptImport(source);
+            ImportsBySource.Add(source, import);
+        }
+
+        import.HasExport(name, alias);
+
+        return this;
+    }
+
+    public TypescriptFile AddDefaultImport(string name, string source)
+    {
+        if (string.IsNullOrWhiteSpace(name))
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
+        if (string.IsNullOrWhiteSpace(source))
+        {
+            throw new ArgumentNullException(nameof(name));
+        }
+
+        if (!ImportsBySource.TryGetValue(source, out var import))
+        {
+            import = new TypescriptImport(source);
+            ImportsBySource.Add(source, import);
+        }
+
+        import.HasDefaultExport(name);
+
         return this;
     }
 
@@ -58,29 +96,11 @@ public class TypescriptFile
         return this;
     }
 
-    public TypescriptFile IntentManagedFully()
+    public TypeScriptFileConfig GetConfig(string typeName)
     {
-        DefaultIntentManaged = "Mode.Fully";
-        return this;
-    }
-
-    public TypescriptFile IntentManagedMerge()
-    {
-        DefaultIntentManaged = "Mode.Merge";
-        return this;
-    }
-
-    public TypescriptFile IntentManagedIgnore()
-    {
-        DefaultIntentManaged = "Mode.Ignore";
-        return this;
-    }
-
-    public TypescriptFileConfig GetConfig()
-    {
-        return new TypescriptFileConfig(
-            className: Classes.FirstOrDefault()?.Name ?? throw new Exception("At least one type must be specified for C# file"),
-            @namespace: Namespace,
+        return new TypeScriptFileConfig(
+            className: typeName,
+            @namespace: null,
             relativeLocation: RelativeLocation);
     }
 
@@ -107,17 +127,6 @@ public class TypescriptFile
         _configurationsAfter.Add((() => configure(this), order));
         return this;
     }
-
-    //public TypescriptFile Configure()
-    //{
-    //    foreach (var configuration in _configurations)
-    //    {
-    //        configuration.Invoke();
-    //    }
-    //    _configurations.Clear();
-
-    //    return this;
-    //}
 
     public TypescriptFile StartBuild()
     {
@@ -171,14 +180,10 @@ public class TypescriptFile
         }
 
         return $@"{string.Join(@"
-", Usings)}
-[assembly: DefaultIntentManaged({DefaultIntentManaged})]
+", ImportsBySource)}
 
-namespace {Namespace}
-{{
 {string.Join(@"
 
-", Interfaces.Select(x => x.ToString("    ")).Concat(Classes.Select(x => x.ToString("    "))))}
-}}";
+", Interfaces.Select(x => x.ToString("    ")).Concat(Classes.Select(x => x.ToString("    "))))}";
     }
 }

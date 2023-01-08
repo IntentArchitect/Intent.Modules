@@ -108,17 +108,6 @@ public class CSharpFile
         return this;
     }
 
-    //public CSharpFile Configure()
-    //{
-    //    foreach (var configuration in _configurations)
-    //    {
-    //        configuration.Invoke();
-    //    }
-    //    _configurations.Clear();
-
-    //    return this;
-    //}
-
     public CSharpFile StartBuild()
     {
         while (_configurations.Count > 0)

@@ -4,10 +4,9 @@ namespace Intent.Modules.Common.TypeScript.Builder;
 
 public class TypescriptField : TypescriptMember<TypescriptField>
 {
-    private bool _canBeNull;
     public string Type { get; }
     public string Name { get; }
-    public string AccessModifier { get; private set; }
+    public string AccessModifier { get; private set; } = string.Empty;
 
     public TypescriptField(string type, string name)
     {
@@ -21,7 +20,6 @@ public class TypescriptField : TypescriptMember<TypescriptField>
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
-        AccessModifier = "private ";
         Type = type;
         Name = name;
     }
@@ -38,14 +36,8 @@ public class TypescriptField : TypescriptMember<TypescriptField>
         return this;
     }
 
-    public TypescriptField CanBeNull()
-    {
-        _canBeNull = true;
-        return this;
-    }
-
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{Type}{(_canBeNull ? "?" : "")} {Name};";
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier} {Name}: {Type};";
     }
 }

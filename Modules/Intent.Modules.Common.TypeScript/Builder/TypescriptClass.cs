@@ -21,6 +21,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
     }
 
     public string Name { get; }
+    public bool IsExported { get; private set; }
     public TypescriptClass BaseType { get; set; }
     public List<string> Interfaces { get; } = new();
     public List<TypescriptField> Fields { get; } = new();
@@ -28,6 +29,12 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
     public List<TypescriptAccessor> Getters { get; } = new();
     public List<TypescriptAccessor> Setters { get; } = new();
     public List<TypescriptMethod> Methods { get; } = new();
+
+    public TypescriptClass Export()
+    {
+        IsExported = true;
+        return this;
+    }
 
     public TypescriptClass WithBaseType(string type)
     {
@@ -218,7 +225,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class{Name}{GetBaseTypes()} {{
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class{Name}{GetBaseTypes()} {{
 {indentation}{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }

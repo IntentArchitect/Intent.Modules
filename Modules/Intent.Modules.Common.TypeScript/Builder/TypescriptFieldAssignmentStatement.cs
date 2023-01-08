@@ -9,21 +9,12 @@ public class TypescriptFieldAssignmentStatement : TypescriptStatement
 
     public TypescriptFieldAssignmentStatement(string lhs, string rhs) : base(null)
     {
-        _lhs = lhs.RemovePrefix("this.");
+        _lhs = lhs;
         _rhs = rhs;
     }
 
-    public TypescriptFieldAssignmentStatement ThrowArgumentNullException()
-    {
-        AfterAssignment = $" ?? throw new ArgumentNullException(nameof({_rhs}))";
-        return this;
-    }
-
     public override string GetText(string indentation)
-
     {
-        return $"{indentation}{(_lhs == _rhs ? "this." : "")}{_lhs} = {_rhs}{AfterAssignment};";
+        return $"{indentation}{(_lhs == _rhs ? "this." : "")}{_lhs} = {_rhs};";
     }
-
-    public string AfterAssignment { get; set; }
 }

@@ -148,8 +148,8 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))})
-{indentation}{{{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}): {ReturnType} {{
+{indentation}{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 }

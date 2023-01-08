@@ -9,6 +9,7 @@ public class TypescriptInterfaceMethod : TypescriptMember<TypescriptInterfaceMet
     public string ReturnType { get; }
     public string Name { get; }
     public IList<TypescriptParameter> Parameters { get; } = new List<TypescriptParameter>();
+
     public TypescriptInterfaceMethod(string returnType, string name)
     {
         if (string.IsNullOrWhiteSpace(returnType))
@@ -37,6 +38,6 @@ public class TypescriptInterfaceMethod : TypescriptMember<TypescriptInterfaceMet
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))});";
+        return $@"{GetComments(indentation)}{indentation} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}): {ReturnType};";
     }
 }

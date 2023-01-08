@@ -20,7 +20,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
 
     public TypescriptConstructor AddParameter(string type, string name, Action<TypescriptConstructorParameter> configure = null)
     {
-        var param = new TypescriptConstructorParameter(type, name, this);
+        var param = new TypescriptConstructorParameter(type, name);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;
@@ -83,21 +83,26 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}){SuperConstructorCall?.ToString() ?? string.Empty} {{
-{indentation}{Statements.ConcatCode($"{indentation}    ")}
+        var statements = Statements as IReadOnlyCollection<ICodeBlock>;
+        if (SuperConstructorCall != null)
+        {
+            statements = Enumerable.Empty<ICodeBlock>()
+                .Append(SuperConstructorCall)
+                .Concat(statements)
+                .ToArray();
+        }
+
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}) {{
+{indentation}{statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 
     private string ToStringParameters(string indentation)
     {
-        if (Parameters.Sum(x => x.ToString().Length) > 120)
-        {
-            return string.Join($@",
-{indentation}    ", Parameters.Select(x => x.ToString()));
-        }
-        else
-        {
-            return string.Join(", ", Parameters.Select(x => x.ToString()));
-        }
+        var separator = Parameters.Sum(x => x.ToString().Length) > 120
+            ? $",{Environment.NewLine}{indentation}    "
+            : ", ";
+
+        return string.Join(separator, Parameters.Select(x => x.ToString()));
     }
 }

@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
-public class TypescriptSuperConstructorCall
+public class TypescriptSuperConstructorCall : ICodeBlock
 {
     public List<string> Arguments { get; } = new();
 
@@ -12,9 +13,12 @@ public class TypescriptSuperConstructorCall
         return this;
     }
 
+    public TypescriptCodeSeparatorType BeforeSeparator { get; set; }
+    public TypescriptCodeSeparatorType AfterSeparator { get; set; }
+
     public virtual string GetText(string indentation)
     {
-        return $"{indentation}    super({string.Join(", ", Arguments)});";
+        return $"{Environment.NewLine}{indentation}    super({string.Join(", ", Arguments)});";
     }
 
     public override string ToString()

@@ -9,8 +9,7 @@ public class TypescriptParameter
     public string Type { get; }
     public string Name { get; }
     public string DefaultValue { get; private set; }
-    public IList<TypescriptAttribute> Attributes { get; } = new List<TypescriptAttribute>();
-    public bool HasThisModifier { get; private set; }
+    public IList<TypescriptDecorator> Decorators { get; } = new List<TypescriptDecorator>();
 
     public TypescriptParameter(string type, string name)
     {
@@ -28,10 +27,10 @@ public class TypescriptParameter
         Name = name;
     }
 
-    public TypescriptParameter AddAttribute(string name, Action<TypescriptAttribute> configure = null)
+    public TypescriptParameter AddDecorator(string name, Action<TypescriptDecorator> configure = null)
     {
-        var param = new TypescriptAttribute(name);
-        Attributes.Add(param);
+        var param = new TypescriptDecorator(name);
+        Decorators.Add(param);
         configure?.Invoke(param);
         return this;
     }
@@ -42,19 +41,13 @@ public class TypescriptParameter
         return this;
     }
 
-    public TypescriptParameter WithThisModifier()
-    {
-        HasThisModifier = true;
-        return this;
-    }
-
     public override string ToString()
     {
-        return $@"{(HasThisModifier ? "this " : string.Empty)}{GetAttributes()}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
+        return $@"{GetDecorators()} {Name}: {Type}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
     }
 
-    protected string GetAttributes()
+    protected string GetDecorators()
     {
-        return $@"{(Attributes.Any() ? $@"{string.Join(@" ", Attributes)} " : string.Empty)}";
+        return $@"{(Decorators.Any() ? $@"{string.Join(@" ", Decorators)} " : string.Empty)}";
     }
 }
