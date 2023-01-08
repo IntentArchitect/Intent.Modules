@@ -1,6 +1,5 @@
 using System;
 using System.Text;
-using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
 
@@ -10,6 +9,7 @@ public class TypescriptConstructorParameter
     public string Name { get; }
     public bool AssignsToField { get; private set; }
     public bool IsReadonly { get; private set; }
+    public bool IsOptional { get; private set; }
     public string AccessModifier { get; private set; } = string.Empty;
 
     public TypescriptConstructorParameter(string type, string name)
@@ -26,6 +26,13 @@ public class TypescriptConstructorParameter
 
         Type = type;
         Name = name;
+    }
+
+    public TypescriptConstructorParameter Optional()
+    {
+        IsOptional = true;
+
+        return this;
     }
 
     public TypescriptConstructorParameter WithFieldAssignment(string accessModifier = "public", bool isReadonly = false)

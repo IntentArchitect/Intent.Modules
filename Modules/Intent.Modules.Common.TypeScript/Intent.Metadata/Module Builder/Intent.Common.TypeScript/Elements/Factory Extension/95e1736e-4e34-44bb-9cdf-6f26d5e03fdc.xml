@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="95e1736e-4e34-44bb-9cdf-6f26d5e03fdc" type="Factory Extension" typeId="7d008e84-bb28-4b10-ba28-7439202fca76">
+  <name>TypeScriptFileBuilderFactoryExtension</name>
+  <display>TypeScriptFileBuilderFactoryExtension</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>2debfc4c-f15d-47a6-88c1-8597b2ca8e50</parentFolderId>
+  <packageId>2debfc4c-f15d-47a6-88c1-8597b2ca8e50</packageId>
+  <packageName>Intent.Common.TypeScript</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

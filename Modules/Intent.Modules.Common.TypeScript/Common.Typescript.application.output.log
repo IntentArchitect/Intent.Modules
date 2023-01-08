@@ -25,6 +25,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>663983d2-2c51-42cf-81f1-441d1947e26e</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.FactoryExtension#95e1736e-4e34-44bb-9cdf-6f26d5e03fdc</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>FactoryExtensions/TypeScriptFileBuilderFactoryExtension.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TypeScriptFileBuilderFactoryExtension.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>601e229b-c0be-440e-8a38-4553f62d54b9</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

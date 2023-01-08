@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.Plugins
                 .ToList();
 
             templates.ForEach(x => x.CSharpFile.AfterBuild());
-            templates.ForEach(x => x.CSharpFile.AfterBuild());
+            templates.ForEach(x => x.CSharpFile.AfterBuild()); // TODO JL: Why is this being called twice?
         }
     }
 }

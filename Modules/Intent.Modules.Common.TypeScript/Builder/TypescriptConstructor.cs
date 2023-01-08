@@ -11,6 +11,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
     public TypescriptSuperConstructorCall SuperConstructorCall { get; private set; }
     public IList<TypescriptConstructorParameter> Parameters { get; } = new List<TypescriptConstructorParameter>();
     public List<TypescriptStatement> Statements { get; } = new();
+
     public TypescriptConstructor(TypescriptClass @class)
     {
         BeforeSeparator = TypescriptCodeSeparatorType.EmptyLines;
@@ -18,7 +19,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
         Class = @class;
     }
 
-    public TypescriptConstructor AddParameter(string type, string name, Action<TypescriptConstructorParameter> configure = null)
+    public TypescriptConstructor AddParameter(string name, string type, Action<TypescriptConstructorParameter> configure = null)
     {
         var param = new TypescriptConstructorParameter(type, name);
         Parameters.Add(param);
@@ -68,6 +69,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
         AccessModifier = "protected ";
         return this;
     }
+
     public TypescriptConstructor Private()
     {
         AccessModifier = "private ";

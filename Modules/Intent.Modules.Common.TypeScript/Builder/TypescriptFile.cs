@@ -20,7 +20,12 @@ public class TypescriptFile
         RelativeLocation = relativeLocation;
     }
 
-    public TypescriptFile AddImport(string name, string source, string alias = null)
+    public TypescriptFile AddImport(string name, string source)
+    {
+        return AddImport(name, null, source);
+    }
+
+    public TypescriptFile AddImport(string name, string alias, string source)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
@@ -176,14 +181,14 @@ public class TypescriptFile
     {
         if (!_isBuilt)
         {
-            throw new Exception("Build() needs to be called before ToString(). Check that your template implements ITypescriptFileBuilderTemplate, or ensure that Build() is called manually.");
+            throw new Exception($"Build() needs to be called before ToString(). Check that your template implements {nameof(ITypescriptFileBuilderTemplate)}, or ensure that Build() is called manually.");
         }
 
         return $@"{string.Join(@"
-", ImportsBySource)}
+", ImportsBySource.Values)}
 
 {string.Join(@"
 
-", Interfaces.Select(x => x.ToString("    ")).Concat(Classes.Select(x => x.ToString("    "))))}";
+", Interfaces.Select(x => x.ToString()).Concat(Classes.Select(x => x.ToString())))}";
     }
 }
