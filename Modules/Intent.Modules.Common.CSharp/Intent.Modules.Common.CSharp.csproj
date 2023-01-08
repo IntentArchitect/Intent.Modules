@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.3.25</Version>
+    <Version>3.3.26-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Description>Base classes and helpers for building modules that output C# files for Intent Architect.</Description>
     <Copyright>Copyright 2020</Copyright>
