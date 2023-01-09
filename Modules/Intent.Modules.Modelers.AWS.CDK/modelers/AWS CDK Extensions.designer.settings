@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>b451d702-275a-4133-b34a-a7aee4fc1275</id>
+  <name>AWS CDK Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="AWS Package" typeId="a95a0fde-f67b-4e4a-b9a8-745021efbdb6">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <specializationType>Stack</specializationType>
+          <specializationTypeId>487c8527-6388-4019-b365-67268beda5e3</specializationTypeId>
+          <text>New Stack</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewStack</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAlRJREFUaEPtmb1rFFEUxX93Z79wI4ImNgYsFPxCLALaipWC6KJEMFrb2EiyW/sHZBVTRLAOsQmSrCha2VukEAQNiCDYGVmiSdhkd3JlViKZsJm8YWayu/Jes8Xcc98799x597Aj9PiSHj8//wjo9XHtHTKyKNXSgHfe/4+AVMtd21Z6u9LPqv6AAAUsgQRfJKtAgsU1Sm0VMCpTgkFWgQSLa5TaSAGE50bZOhOUQ7kZOMg6c66wu7adxI9HwqbpWLzomsyNvfCbueEnJ2I/UOHAN9xFh3pmMN7cG67MjH5J3o2Kc4GUO4DLq3gJBNvphRg2Owrk8RGQFdDvkXILaZRjibtRLVbeo3p+G4HXUi1djULA6BqNw05bAjvIZBUw7V/bQraFTHtlp0rZa7R9ZYxuIUTmIwoAqqeAfb5BJiyBtPxLhJVG9dze2ek99ULFylCEyrSHHt7/iRoZGr+Px5pbpCmzYx/8bvTGo2uhN3G8dsst4dYvhcZ6gP6+N9R+DeKmzobCq6zL7OjbGOy0c4dsap71xudQB9gMzjqHaLp32WAiHD7QTstLg2RDoEdgCwGRZZR3BljvP/ErqGbYSkDkK8rHYLxmgcuR7bQWx6dRRnwEYEGq5ZMmBLRY+YnqwW0EJmSu9CAIb3SNmthpS8AqEPEDh20h20K2hbp4DuBN1N2Wah5I+weZKMLKbtDWc9W+1q9/EjeAtUC8twNaiNFOd5MXGp78W5Uw68zpOg8vutx6WggD24yVmfvLeu9ZhlozFwqfX1WZKrfU7tqv8qaEep7AH8PKA14T07DjAAAAAElFTkSuQmCC" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Stack</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Stack" typeId="487c8527-6388-4019-b365-67268beda5e3">
+      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAlRJREFUaEPtmb1rFFEUxX93Z79wI4ImNgYsFPxCLALaipWC6KJEMFrb2EiyW/sHZBVTRLAOsQmSrCha2VukEAQNiCDYGVmiSdhkd3JlViKZsJm8YWayu/Jes8Xcc98799x597Aj9PiSHj8//wjo9XHtHTKyKNXSgHfe/4+AVMtd21Z6u9LPqv6AAAUsgQRfJKtAgsU1Sm0VMCpTgkFWgQSLa5TaSAGE50bZOhOUQ7kZOMg6c66wu7adxI9HwqbpWLzomsyNvfCbueEnJ2I/UOHAN9xFh3pmMN7cG67MjH5J3o2Kc4GUO4DLq3gJBNvphRg2Owrk8RGQFdDvkXILaZRjibtRLVbeo3p+G4HXUi1djULA6BqNw05bAjvIZBUw7V/bQraFTHtlp0rZa7R9ZYxuIUTmIwoAqqeAfb5BJiyBtPxLhJVG9dze2ek99ULFylCEyrSHHt7/iRoZGr+Px5pbpCmzYx/8bvTGo2uhN3G8dsst4dYvhcZ6gP6+N9R+DeKmzobCq6zL7OjbGOy0c4dsap71xudQB9gMzjqHaLp32WAiHD7QTstLg2RDoEdgCwGRZZR3BljvP/ErqGbYSkDkK8rHYLxmgcuR7bQWx6dRRnwEYEGq5ZMmBLRY+YnqwW0EJmSu9CAIb3SNmthpS8AqEPEDh20h20K2hbp4DuBN1N2Wah5I+weZKMLKbtDWc9W+1q9/EjeAtUC8twNaiNFOd5MXGp78W5Uw68zpOg8vutx6WggD24yVmfvLeu9ZhlozFwqfX1WZKrfU7tqv8qaEep7AH8PKA14T07DjAAAAAElFTkSuQmCC" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Folder</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Folder</specializationType>
+          <specializationTypeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</specializationTypeId>
+          <text>New Folder</text>
+          <shortcut>ctrl + shift + f</shortcut>
+          <defaultName>NewFolder</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>Stack</specializationType>
+          <specializationTypeId>487c8527-6388-4019-b365-67268beda5e3</specializationTypeId>
+          <text>New Stack</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewStack</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAlRJREFUaEPtmb1rFFEUxX93Z79wI4ImNgYsFPxCLALaipWC6KJEMFrb2EiyW/sHZBVTRLAOsQmSrCha2VukEAQNiCDYGVmiSdhkd3JlViKZsJm8YWayu/Jes8Xcc98799x597Aj9PiSHj8//wjo9XHtHTKyKNXSgHfe/4+AVMtd21Z6u9LPqv6AAAUsgQRfJKtAgsU1Sm0VMCpTgkFWgQSLa5TaSAGE50bZOhOUQ7kZOMg6c66wu7adxI9HwqbpWLzomsyNvfCbueEnJ2I/UOHAN9xFh3pmMN7cG67MjH5J3o2Kc4GUO4DLq3gJBNvphRg2Owrk8RGQFdDvkXILaZRjibtRLVbeo3p+G4HXUi1djULA6BqNw05bAjvIZBUw7V/bQraFTHtlp0rZa7R9ZYxuIUTmIwoAqqeAfb5BJiyBtPxLhJVG9dze2ek99ULFylCEyrSHHt7/iRoZGr+Px5pbpCmzYx/8bvTGo2uhN3G8dsst4dYvhcZ6gP6+N9R+DeKmzobCq6zL7OjbGOy0c4dsap71xudQB9gMzjqHaLp32WAiHD7QTstLg2RDoEdgCwGRZZR3BljvP/ErqGbYSkDkK8rHYLxmgcuR7bQWx6dRRnwEYEGq5ZMmBLRY+YnqwW0EJmSu9CAIb3SNmthpS8AqEPEDh20h20K2hbp4DuBN1N2Wah5I+weZKMLKbtDWc9W+1q9/EjeAtUC8twNaiNFOd5MXGp78W5Uw68zpOg8vutx6WggD24yVmfvLeu9ZhlozFwqfX1WZKrfU7tqv8qaEep7AH8PKA14T07DjAAAAAElFTkSuQmCC" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Stack</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions />
+</settings>

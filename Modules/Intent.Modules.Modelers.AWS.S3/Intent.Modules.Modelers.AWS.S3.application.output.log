@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>488523ac-c261-4370-83ca-1f9737e8d51b</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#7c2b8b01-43d7-4466-b8b4-82c4383bf0dd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSS3ExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSS3ExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>488523ac-c261-4370-83ca-1f9737e8d51b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#77b0eab2-6b88-4a9e-a86b-1a70739f5782</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSS3FolderExtensionsModel.cs</ApplicationRelativeFilePath>

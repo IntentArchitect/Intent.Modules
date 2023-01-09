@@ -34,6 +34,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#ff9b35e2-d171-4f10-8517-b22458c30512</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSAPIGatewayExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSAPIGatewayExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#65cbc280-2833-4381-8ca2-4daaad0b94b3</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSAPIGatewayFolderExtensionsModel.cs</ApplicationRelativeFilePath>

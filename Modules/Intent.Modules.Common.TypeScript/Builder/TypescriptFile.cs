@@ -25,6 +25,16 @@ public class TypescriptFile
         return AddImport(name, null, source);
     }
 
+    public TypescriptFile AddImports(IEnumerable<string> names, string source)
+    {
+        foreach (var name in names)
+        {
+            return AddImport(name, null, source);
+        }
+
+        return this;
+    }
+
     public TypescriptFile AddImport(string name, string alias, string source)
     {
         if (string.IsNullOrWhiteSpace(name))
@@ -37,10 +47,14 @@ public class TypescriptFile
             throw new ArgumentNullException(nameof(name));
         }
 
-        if (!ImportsBySource.TryGetValue(source, out var import))
+        var key = name == "*"
+            ? $"{source}-*"
+            : source;
+
+        if (!ImportsBySource.TryGetValue(key, out var import))
         {
             import = new TypescriptImport(source);
-            ImportsBySource.Add(source, import);
+            ImportsBySource.Add(key, import);
         }
 
         import.HasExport(name, alias);
@@ -73,7 +87,7 @@ public class TypescriptFile
 
     public TypescriptFile AddClass(string name, Action<TypescriptClass> configure = null)
     {
-        var @class = new TypescriptClass(name);
+        var @class = new TypescriptClass(name, this);
         Classes.Add(@class);
         if (_isBuilt)
         {

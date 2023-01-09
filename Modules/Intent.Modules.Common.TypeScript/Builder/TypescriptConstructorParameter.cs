@@ -76,7 +76,14 @@ public class TypescriptConstructorParameter
             sb.Append("readonly ");
         }
 
-        sb.Append($"{Name}: {Type}");
+        sb.Append(Name);
+
+        if (IsOptional)
+        {
+            sb.Append("?");
+        }
+
+        sb.Append($": {Type}");
 
         return sb.ToString();
     }

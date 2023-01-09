@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#4d62543f-653b-4151-ac82-46d9f69ee7c2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/GraphQLEndpointExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLEndpointExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#b1815045-a5ee-48c1-b1da-9b7c503eb4d8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GraphQLEndpointFolderExtensionsModel.cs</ApplicationRelativeFilePath>

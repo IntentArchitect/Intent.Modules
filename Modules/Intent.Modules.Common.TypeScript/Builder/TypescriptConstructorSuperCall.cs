@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 
 namespace Intent.Modules.Common.TypeScript.Builder;
@@ -10,6 +9,16 @@ public class TypescriptConstructorSuperCall : ICodeBlock
     public TypescriptConstructorSuperCall AddArgument(string expression)
     {
         Arguments.Add(expression);
+        return this;
+    }
+
+    public TypescriptConstructorSuperCall AddArguments(params string[] expressions)
+    {
+        foreach (var expression in expressions)
+        {
+            Arguments.Add(expression);
+        }
+
         return this;
     }
 

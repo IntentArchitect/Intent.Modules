@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d3214338-0fe1-4cc3-99d5-eeba69563cb0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSDynamoDBExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSDynamoDBExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#6668bfcb-0022-4e23-b4cd-ffc3e98d623a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSDynamoDBFolderExtensionsModel.cs</ApplicationRelativeFilePath>

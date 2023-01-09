@@ -10,16 +10,18 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
     private TypescriptCodeSeparatorType _accessorsSeparator = TypescriptCodeSeparatorType.NewLine;
     private TypescriptCodeSeparatorType _fieldsSeparator = TypescriptCodeSeparatorType.NewLine;
 
-    public TypescriptClass(string name)
+    public TypescriptClass(string name, TypescriptFile file)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        File = file;
         Name = name;
     }
 
+    public TypescriptFile File { get; }
     public string Name { get; }
     public bool IsExported { get; private set; }
     public TypescriptClass BaseType { get; set; }
@@ -48,7 +50,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public TypescriptClass ExtendsClass(string type)
     {
-        BaseType = new TypescriptClass(type);
+        BaseType = new TypescriptClass(type, null);
         return this;
     }
 
@@ -225,7 +227,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class{Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
 

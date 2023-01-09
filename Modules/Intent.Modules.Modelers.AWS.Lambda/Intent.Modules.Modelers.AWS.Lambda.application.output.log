@@ -18,6 +18,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#672e0fdc-5e78-417d-9b4f-8aaf4b88e2cd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#eeaedf59-86d1-4396-a37b-554ccf8588a8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSLambdaFolderExtensionsModel.cs</ApplicationRelativeFilePath>
