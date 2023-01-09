@@ -8,7 +8,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
 {
     public TypescriptClass Class { get; }
     public string AccessModifier { get; private set; } = string.Empty;
-    public TypescriptSuperConstructorCall SuperConstructorCall { get; private set; }
+    public TypescriptConstructorSuperCall SuperCall { get; private set; }
     public IList<TypescriptConstructorParameter> Parameters { get; } = new List<TypescriptConstructorParameter>();
     public List<TypescriptStatement> Statements { get; } = new();
 
@@ -21,7 +21,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
 
     public TypescriptConstructor AddParameter(string name, string type, Action<TypescriptConstructorParameter> configure = null)
     {
-        var param = new TypescriptConstructorParameter(type, name);
+        var param = new TypescriptConstructorParameter(name, type);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;
@@ -76,26 +76,25 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
         return this;
     }
 
-    public TypescriptConstructor CallsSuper(Action<TypescriptSuperConstructorCall> configure = null)
+    public TypescriptConstructor CallsSuper(Action<TypescriptConstructorSuperCall> configure = null)
     {
-        SuperConstructorCall = new TypescriptSuperConstructorCall();
-        configure?.Invoke(SuperConstructorCall);
+        SuperCall = new TypescriptConstructorSuperCall();
+        configure?.Invoke(SuperCall);
         return this;
     }
 
     public override string GetText(string indentation)
     {
         var statements = Statements as IReadOnlyCollection<ICodeBlock>;
-        if (SuperConstructorCall != null)
+        if (SuperCall != null)
         {
             statements = Enumerable.Empty<ICodeBlock>()
-                .Append(SuperConstructorCall)
+                .Append(SuperCall)
                 .Concat(statements)
                 .ToArray();
         }
 
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}) {{
-{indentation}{statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}) {{{statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 

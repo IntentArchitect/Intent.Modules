@@ -8,7 +8,7 @@ public class TypescriptField : TypescriptMember<TypescriptField>
     public string Name { get; }
     public string AccessModifier { get; private set; } = string.Empty;
 
-    public TypescriptField(string type, string name)
+    public TypescriptField(string name, string type)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -38,6 +38,6 @@ public class TypescriptField : TypescriptMember<TypescriptField>
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier} {Name}: {Type};";
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{Name}: {Type};";
     }
 }

@@ -17,6 +17,7 @@ public class TypescriptStatement : TypescriptMetadataBase<TypescriptStatement>, 
 
     protected string Text { get; set; }
     protected string RelativeIndentation { get; private set; } = "";
+
     public TypescriptStatement SeparatedFromPrevious()
     {
         BeforeSeparator = TypescriptCodeSeparatorType.EmptyLines;

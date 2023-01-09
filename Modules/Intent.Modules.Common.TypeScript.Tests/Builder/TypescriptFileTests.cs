@@ -17,7 +17,10 @@ namespace Intent.Modules.Common.TypeScript.Tests.Builder
                     .Export()
                     .ExtendsClass("Stack")
                     .AddConstructor(con => con
-                        .AddParameter("scope", "Construct")
+                        .AddParameter("scope", "Construct", cp => cp
+                            .Optional()
+                            .WithPrivateReadonlyFieldAssignment()
+                        )
                         .AddParameter("id", "string")
                         .AddParameter("props", "StackProps", c1 => c1.Optional())
                         .CallsSuper(s => s
@@ -26,10 +29,16 @@ namespace Intent.Modules.Common.TypeScript.Tests.Builder
                             .AddArgument("props")
                         )
                         .AddStatement(@"const hello = new lambda.Function(this, 'HelloHandler', {
-      runtime: lambda.Runtime.NODEJS_14_X,
-      code: lambda.Code.fromAsset('lambda'),
-      handler: 'hello.handler'
-    });")
+              runtime: lambda.Runtime.NODEJS_14_X,
+              code: lambda.Code.fromAsset('lambda'),
+              handler: 'hello.handler'
+            });")
+                    )
+                    .AddField("name", "string", f => f
+                        .PrivateReadOnly()
+                    )
+                    .AddMethod("myMethod", "void", m => m
+                        .AddStatement("var j = '';")
                     )
                 )
                 ;

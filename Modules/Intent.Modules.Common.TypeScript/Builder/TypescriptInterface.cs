@@ -49,9 +49,9 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
         return this;
     }
 
-    public TypescriptInterface AddField(string type, string name, Action<TypescriptInterfaceField> configure = null)
+    public TypescriptInterface AddField(string name, string type, Action<TypescriptInterfaceField> configure = null)
     {
-        var field = new TypescriptInterfaceField(type, name)
+        var field = new TypescriptInterfaceField(name, type)
         {
             BeforeSeparator = _fieldsSeparator,
             AfterSeparator = _fieldsSeparator
@@ -61,14 +61,14 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
         return this;
     }
 
-    public TypescriptInterface AddMethod(string returnType, string name, Action<TypescriptInterfaceMethod> configure = null)
+    public TypescriptInterface AddMethod(string name, string returnType, Action<TypescriptInterfaceMethod> configure = null)
     {
-        return InsertMethod(Methods.Count, returnType, name, configure);
+        return InsertMethod(Methods.Count, name, returnType, configure);
     }
 
-    public TypescriptInterface InsertMethod(int index, string returnType, string name, Action<TypescriptInterfaceMethod> configure = null)
+    public TypescriptInterface InsertMethod(int index, string name, string returnType, Action<TypescriptInterfaceMethod> configure = null)
     {
-        var method = new TypescriptInterfaceMethod(returnType, name)
+        var method = new TypescriptInterfaceMethod(name, returnType)
         {
             BeforeSeparator = _methodsSeparator,
             AfterSeparator = _methodsSeparator
@@ -104,8 +104,7 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
 
     public string ToString(string indentation)
     {
-        return $@"{indentation}{(IsExported ? "export " : string.Empty)}interface {Name}{GetBaseTypes()} {{
-{indentation}{GetMembers($"{indentation}    ")}
+        return $@"{indentation}{(IsExported ? "export " : string.Empty)}interface {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
 

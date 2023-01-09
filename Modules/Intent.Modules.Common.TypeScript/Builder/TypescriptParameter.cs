@@ -11,7 +11,7 @@ public class TypescriptParameter
     public string DefaultValue { get; private set; }
     public IList<TypescriptDecorator> Decorators { get; } = new List<TypescriptDecorator>();
 
-    public TypescriptParameter(string type, string name)
+    public TypescriptParameter(string name, string type)
     {
         if (string.IsNullOrWhiteSpace(type))
         {

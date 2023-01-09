@@ -14,7 +14,7 @@ public class TypescriptAccessor : TypescriptMember<TypescriptAccessor>, IHasType
 
     public List<TypescriptStatement> Statements { get; } = new();
 
-    private TypescriptAccessor(string accessor, string type, string name)
+    private TypescriptAccessor(string accessor, string name, string type)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -33,14 +33,14 @@ public class TypescriptAccessor : TypescriptMember<TypescriptAccessor>, IHasType
         AfterSeparator = TypescriptCodeSeparatorType.NewLine;
     }
 
-    public static TypescriptAccessor Getter(string type, string name)
+    public static TypescriptAccessor Getter(string name, string type)
     {
-        return new TypescriptAccessor("get", type, name);
+        return new TypescriptAccessor("get", name, type);
     }
 
-    public static TypescriptAccessor Setter(string type, string name)
+    public static TypescriptAccessor Setter(string name, string type)
     {
-        return new TypescriptAccessor("set", type, name);
+        return new TypescriptAccessor("set", name, type);
     }
 
     public TypescriptAccessor Protected()
@@ -136,8 +136,7 @@ public class TypescriptAccessor : TypescriptMember<TypescriptAccessor>, IHasType
             _ => throw new ArgumentOutOfRangeException(nameof(Accessor), Accessor, "Out of range")
         };
 
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{Accessor} {Name}({parameter}){returnType} {{
-{indentation}{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{Accessor} {Name}({parameter}){returnType} {{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 }

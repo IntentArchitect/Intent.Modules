@@ -13,7 +13,7 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
     public string ReturnType { get; }
     public string Name { get; }
     public List<TypescriptParameter> Parameters { get; } = new();
-    public TypescriptMethod(string returnType, string name)
+    public TypescriptMethod(string name, string returnType)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
@@ -31,9 +31,9 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
         AfterSeparator = TypescriptCodeSeparatorType.EmptyLines;
     }
 
-    public TypescriptMethod AddParameter(string type, string name, Action<TypescriptParameter> configure = null)
+    public TypescriptMethod AddParameter(string name, string type, Action<TypescriptParameter> configure = null)
     {
-        var param = new TypescriptParameter(type, name);
+        var param = new TypescriptParameter(name, type);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;
@@ -148,8 +148,7 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}): {ReturnType} {{
-{indentation}{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}): {ReturnType} {{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 }

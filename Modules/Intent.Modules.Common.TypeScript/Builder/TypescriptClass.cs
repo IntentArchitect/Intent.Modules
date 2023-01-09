@@ -72,9 +72,9 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         return this;
     }
 
-    public TypescriptClass AddField(string type, string name, Action<TypescriptField> configure = null)
+    public TypescriptClass AddField(string name, string type, Action<TypescriptField> configure = null)
     {
-        var field = new TypescriptField(type, name)
+        var field = new TypescriptField(name, type)
         {
             BeforeSeparator = _fieldsSeparator,
             AfterSeparator = _fieldsSeparator
@@ -84,9 +84,9 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         return this;
     }
 
-    public TypescriptClass AddGetter(string type, string name, Action<TypescriptAccessor> configure = null)
+    public TypescriptClass AddGetter(string name, string type, Action<TypescriptAccessor> configure = null)
     {
-        var getter = TypescriptAccessor.Getter(type, name);
+        var getter = TypescriptAccessor.Getter(name, type);
         getter.BeforeSeparator = _accessorsSeparator;
         getter.AfterSeparator = _accessorsSeparator;
 
@@ -95,9 +95,9 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         return this;
     }
 
-    public TypescriptClass InsertGetter(int index, string type, string name, Action<TypescriptAccessor> configure = null)
+    public TypescriptClass InsertGetter(int index, string name, string type, Action<TypescriptAccessor> configure = null)
     {
-        var getter = TypescriptAccessor.Getter(type, name);
+        var getter = TypescriptAccessor.Getter(name, type);
         getter.BeforeSeparator = _accessorsSeparator;
         getter.AfterSeparator = _accessorsSeparator;
 
@@ -106,9 +106,9 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         return this;
     }
 
-    public TypescriptClass AddSetter(string type, string name, Action<TypescriptAccessor> configure = null)
+    public TypescriptClass AddSetter(string name, string type, Action<TypescriptAccessor> configure = null)
     {
-        var setter = TypescriptAccessor.Setter(type, name);
+        var setter = TypescriptAccessor.Setter(name, type);
         setter.BeforeSeparator = _accessorsSeparator;
         setter.AfterSeparator = _accessorsSeparator;
 
@@ -117,9 +117,9 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         return this;
     }
 
-    public TypescriptClass InsertSetter(int index, string type, string name, Action<TypescriptAccessor> configure = null)
+    public TypescriptClass InsertSetter(int index, string name, string type, Action<TypescriptAccessor> configure = null)
     {
-        var setter = TypescriptAccessor.Setter(type, name);
+        var setter = TypescriptAccessor.Setter(name, type);
         setter.BeforeSeparator = _accessorsSeparator;
         setter.AfterSeparator = _accessorsSeparator;
 
@@ -136,14 +136,14 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
         return this;
     }
 
-    public TypescriptClass AddMethod(string returnType, string name, Action<TypescriptMethod> configure = null)
+    public TypescriptClass AddMethod(string name, string returnType, Action<TypescriptMethod> configure = null)
     {
-        return InsertMethod(Methods.Count, returnType, name, configure);
+        return InsertMethod(Methods.Count, name, returnType, configure);
     }
 
-    public TypescriptClass InsertMethod(int index, string returnType, string name, Action<TypescriptMethod> configure = null)
+    public TypescriptClass InsertMethod(int index, string name, string returnType, Action<TypescriptMethod> configure = null)
     {
-        var method = new TypescriptMethod(returnType, name);
+        var method = new TypescriptMethod(name, returnType);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;
@@ -225,8 +225,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class{Name}{GetBaseTypes()} {{
-{indentation}{GetMembers($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class{Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
 

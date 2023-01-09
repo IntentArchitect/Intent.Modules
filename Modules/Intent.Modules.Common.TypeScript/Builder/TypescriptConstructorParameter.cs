@@ -12,7 +12,7 @@ public class TypescriptConstructorParameter
     public bool IsOptional { get; private set; }
     public string AccessModifier { get; private set; } = string.Empty;
 
-    public TypescriptConstructorParameter(string type, string name)
+    public TypescriptConstructorParameter(string name, string type)
     {
         if (string.IsNullOrWhiteSpace(type))
         {

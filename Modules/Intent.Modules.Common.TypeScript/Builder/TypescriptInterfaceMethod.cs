@@ -10,7 +10,7 @@ public class TypescriptInterfaceMethod : TypescriptMember<TypescriptInterfaceMet
     public string Name { get; }
     public IList<TypescriptParameter> Parameters { get; } = new List<TypescriptParameter>();
 
-    public TypescriptInterfaceMethod(string returnType, string name)
+    public TypescriptInterfaceMethod(string name, string returnType)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
@@ -28,9 +28,9 @@ public class TypescriptInterfaceMethod : TypescriptMember<TypescriptInterfaceMet
         AfterSeparator = TypescriptCodeSeparatorType.NewLine;
     }
 
-    public TypescriptInterfaceMethod AddParameter(string type, string name, Action<TypescriptParameter> configure = null)
+    public TypescriptInterfaceMethod AddParameter(string name, string type, Action<TypescriptParameter> configure = null)
     {
-        var param = new TypescriptParameter(type, name);
+        var param = new TypescriptParameter(name, type);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;
