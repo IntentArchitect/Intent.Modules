@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.Modules.Common.Dart</id>
+  <id>Intent.Common.Dart</id>
   <version>1.0.0</version>
   <supportedClientVersions>[3.2.0,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>

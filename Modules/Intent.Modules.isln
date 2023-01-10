@@ -41,5 +41,6 @@
     <application id="0dd467e5-63fe-41f9-8a0a-f4454ff6cca9" name="Intent.Modules.Modelers.Domain.ValueObjects" relativePath="Intent.Modules.Modelers.Domain.ValueObjects/Intent.Modules.Modelers.Domain.ValueObjects.application.config" />
     <application id="15f6f6c5-bac3-414f-8dd2-f1474dbf94e2" name="Intent.Modules.Modelers.Domain.Repositories" relativePath="Intent.Modules.Modelers.Domain.Repositories/Intent.Modules.Modelers.Domain.Repositories.application.config" />
     <application id="1b952c0f-d987-4027-b6e9-767e3ad01e16" name="Intent.Modules.Common.Dart" relativePath="Intent.Modules.Common.Dart/Intent.Modules.Common.Dart.application.config" />
+    <application id="9d8529f0-1571-4889-aeba-df2b4497716b" name="Intent.Modules.ModuleBuilder.Dart" relativePath="Intent.Modules.ModuleBuilder.Dart/Intent.Modules.ModuleBuilder.Dart.application.config" />
   </applications>
 </solution>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="0c734e67-bc65-4132-ab09-645a61945567" version="3.1.0">
+  <name>Dart</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">Type-Definition</type>
+    <type id="85fba0e9-9161-4c85-a603-a229ef312beb">Enum</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="https://user-images.githubusercontent.com/26507463/53453892-49908900-3a04-11e9-9dce-77ed3d694326.png" />
+  <displayIcon>false</displayIcon>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>bafb942a-20da-45b1-a9c8-b6ec25188e30</parentFolderId>
+  <order>0</order>
+  <packageId>bafb942a-20da-45b1-a9c8-b6ec25188e30</packageId>
+  <packageName>Intent.Common.Dart</packageName>
+  <properties />
+</stereotypeDefinition>

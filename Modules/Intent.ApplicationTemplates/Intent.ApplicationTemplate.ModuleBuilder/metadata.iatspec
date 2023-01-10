@@ -75,6 +75,13 @@
           </modules>
           <dependencies />
         </component>
+        <component id="7a9d1e28-8095-44da-b4d7-044105589023" name="Module Builder - Dart" included="true" required="false">
+          <icon type="UrlImagePath" source="https://www.fluttericon.com/logo_dart_192px.svg" />
+          <modules>
+            <module id="Intent.Modules.ModuleBuilder.Dart" version="1.0.0" />
+          </modules>
+          <dependencies />
+        </component>
       </components>
     </group>
     <group name="Tooling">

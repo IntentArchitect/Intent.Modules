@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="95bcd9e0-b3ed-4221-9845-bb23193bbec1" type="Designers Folder" typeId="dbb71aa5-0db2-4a2a-97a9-501950f36f99">
+  <name>designers</name>
+  <display>designers</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d</parentFolderId>
+  <packageId>1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d</packageId>
+  <packageName>Intent.Modules.ModuleBuilder.Dart</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
