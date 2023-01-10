@@ -24,7 +24,7 @@ public static class TypeCheckExtensions
     /// <summary>
     /// Checks if the <paramref name="type"/> is a Boolean. 
     /// </summary>
-    public static bool IsBooleanType(this ICanBeReferencedType type)
+    public static bool IsBoolType(this ICanBeReferencedType type)
     {
         return string.Equals(type?.Id, "e6f92b09-b2c5-4536-8270-a4d9e5bbd930", StringComparison.OrdinalIgnoreCase);
     }
@@ -32,9 +32,9 @@ public static class TypeCheckExtensions
     /// <summary>
     /// Checks if the <paramref name="typeReference"/>'s <see cref="ITypeReference.Element"/> is a Boolean. 
     /// </summary>
-    public static bool HasBooleanType(this ITypeReference typeReference)
+    public static bool HasBoolType(this ITypeReference typeReference)
     {
-        return IsBooleanType(typeReference?.Element);
+        return IsBoolType(typeReference?.Element);
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ public static class TypeCheckExtensions
     /// <summary>
     /// Checks if the <paramref name="type"/> is a Character. 
     /// </summary>
-    public static bool IsCharacterType(this ICanBeReferencedType type)
+    public static bool IsCharType(this ICanBeReferencedType type)
     {
         return string.Equals(type?.Id, "C1B3A361-B1C6-48C3-B34C-7999B3E071F0", StringComparison.OrdinalIgnoreCase);
     }
@@ -64,9 +64,9 @@ public static class TypeCheckExtensions
     /// <summary>
     /// Checks if the <paramref name="typeReference"/>'s <see cref="ITypeReference.Element"/> is a Character. 
     /// </summary>
-    public static bool HasCharacterType(this ITypeReference typeReference)
+    public static bool HasCharType(this ITypeReference typeReference)
     {
-        return IsCharacterType(typeReference?.Element);
+        return IsCharType(typeReference?.Element);
     }
 
     /// <summary>
@@ -182,19 +182,19 @@ public static class TypeCheckExtensions
     }
 
     /// <summary>
-    /// Checks if the <paramref name="type"/> is a Integer. 
+    /// Checks if the <paramref name="type"/> is an Integer. 
     /// </summary>
-    public static bool IsIntegerType(this ICanBeReferencedType type)
+    public static bool IsIntType(this ICanBeReferencedType type)
     {
         return string.Equals(type?.Id, "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74", StringComparison.OrdinalIgnoreCase);
     }
 
     /// <summary>
-    /// Checks if the <paramref name="typeReference"/>'s <see cref="ITypeReference.Element"/> is a Integer. 
+    /// Checks if the <paramref name="typeReference"/>'s <see cref="ITypeReference.Element"/> is an Integer. 
     /// </summary>
-    public static bool HasIntegerType(this ITypeReference typeReference)
+    public static bool HasIntType(this ITypeReference typeReference)
     {
-        return IsIntegerType(typeReference?.Element);
+        return IsIntType(typeReference?.Element);
     }
 
     /// <summary>
@@ -214,7 +214,7 @@ public static class TypeCheckExtensions
     }
 
     /// <summary>
-    /// Checks if the <paramref name="type"/> is a Object. 
+    /// Checks if the <paramref name="type"/> is an Object. 
     /// </summary>
     public static bool IsObjectType(this ICanBeReferencedType type)
     {
@@ -222,7 +222,7 @@ public static class TypeCheckExtensions
     }
 
     /// <summary>
-    /// Checks if the <paramref name="typeReference"/>'s <see cref="ITypeReference.Element"/> is a Object. 
+    /// Checks if the <paramref name="typeReference"/>'s <see cref="ITypeReference.Element"/> is an Object. 
     /// </summary>
     public static bool HasObjectType(this ITypeReference typeReference)
     {
