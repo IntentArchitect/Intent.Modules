@@ -49,10 +49,5 @@ namespace Intent.Modelers.AWS.Api
             .Select(x => new DiagramModel(x))
             .ToList();
 
-        public IList<IAMPolicyStatementModel> IAMPolicyStatements => UnderlyingPackage.ChildElements
-            .GetElementsOfType(IAMPolicyStatementModel.SpecializationTypeId)
-            .Select(x => new IAMPolicyStatementModel(x))
-            .ToList();
-
     }
 }

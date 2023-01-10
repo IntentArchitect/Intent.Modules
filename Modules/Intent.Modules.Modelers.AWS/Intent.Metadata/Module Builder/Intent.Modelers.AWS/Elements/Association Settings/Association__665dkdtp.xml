@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="055db259-36fc-495f-935c-89c847c34c32" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
-  <comment>TODO: Fix up so that not doesn't target DTO.</comment>
+  <comment>TODO: Fix up so that doesn't target DTO.</comment>
   <name>Association</name>
   <display>Association</display>
   <isAbstract>false</isAbstract>
@@ -17,6 +17,7 @@
       <name>Association Source End</name>
       <display>Association Source End</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>055db259-36fc-495f-935c-89c847c34c32</parentFolderId>
@@ -39,16 +40,74 @@
             <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
             <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
             <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="08de9acb-094e-47c2-a0ad-bd4c4945e114" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+          <name>[context menu]</name>
+          <display>[context menu]</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-manually</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>611be10d-2870-4c6b-b05f-e2ef5b62c03b</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.AWS</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements>
+            <childElement id="ff6e8fd0-2a5d-41b1-8513-dbace6a939bc" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+              <name>New IAM Policy Statement</name>
+              <display>New IAM Policy Statement: IAM Policy Statement</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="08021298-973e-4b97-aa35-371cd4d40d0a">
+                <typeId>b38ebd65-3594-40d9-a688-314cd791ecdf</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.AWS</typePackageName>
+                <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>08de9acb-094e-47c2-a0ad-bd4c4945e114</parentFolderId>
+              <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+              <packageName>Intent.Modelers.AWS</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+                    <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
     </childElement>
     <childElement id="c6d6f8dc-2b4c-42d5-a34c-383c0b207d0d" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
       <name>Association Target End</name>
       <display>Association Target End</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>055db259-36fc-495f-935c-89c847c34c32</parentFolderId>
@@ -71,11 +130,68 @@
             <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
             <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
             <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="0a8143b7-b321-481e-8045-990a70d03833" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+          <name>[context menu]</name>
+          <display>[context menu]</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-manually</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>c6d6f8dc-2b4c-42d5-a34c-383c0b207d0d</parentFolderId>
+          <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+          <packageName>Intent.Modelers.AWS</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements>
+            <childElement id="1deedce2-c5f9-44be-8c9d-e144c99c0c5a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+              <name>New IAM Policy Statement</name>
+              <display>New IAM Policy Statement: IAM Policy Statement</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="9a457457-08e1-49ab-8a36-855407bb1fc2">
+                <typeId>b38ebd65-3594-40d9-a688-314cd791ecdf</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.AWS</typePackageName>
+                <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>0a8143b7-b321-481e-8045-990a70d03833</parentFolderId>
+              <packageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</packageId>
+              <packageName>Intent.Modelers.AWS</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+                  <comment />
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+                    <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
     </childElement>
     <childElement id="4ab6d172-65b4-451b-b4e4-5b9015f23bf3" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
       <name>[events]</name>
