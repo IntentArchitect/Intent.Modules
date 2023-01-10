@@ -6,14 +6,14 @@ namespace Intent.Modules.Common.Dart.TypeResolvers
 {
     public class DartTypeResolver : TypeResolverBase, ITypeResolver
     {
-        public DartTypeResolver() : base(new DartTypeResolverContext(CollectionFormatter.Create("{0}[]"), Intent.Modules.Common.TypeResolution.DefaultNullableFormatter.Instance))
+        public DartTypeResolver() : base(new DartTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance))
         {
         }
 
         /// <inheritdoc />
         protected override ITypeResolverContext CreateContext()
         {
-            return new DartTypeResolverContext(CollectionFormatter.Create("{0}[]"), Intent.Modules.Common.TypeResolution.DefaultNullableFormatter.Instance);
+            return new DartTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);
         }
 
         private class DartTypeResolverContext : TypeResolverContextBase
@@ -40,25 +40,35 @@ namespace Intent.Modules.Common.Dart.TypeResolvers
                     isPrimitive = true;
                     switch (typeReference.Element.Name)
                     {
-                        case "bool":
-                            name = "boolean";
+                        case "datetimeoffset":
+                            name = "Duration";
                             break;
-                        case "DateTime":
-                            name = "Date";
-                            break;
-                        case "ByteData":
                         case "double":
-                        case "Float":
-                        case "Short":
+                        case "decimal":
+                            name = "double";
+                            break;
+                        case "bool":
+                            name = "bool";
+                            break;
+                        case "date":
+                        case "datetime":
+                            name = "DateTime";
+                            break;
+                        case "char":
+                        case "byte":
+                        case "float":
+                        case "short":
                         case "int":
-                        case "Long":
-                            name = "number";
+                        case "long":
+                            name = "int";
                             break;
-                        case "Object":
-                            name = "any";
+                        case "binary":
+                        case "object":
+                            name = "dynamic";
                             break;
-                        case "String":
-                            name = "string";
+                        case "guid":
+                        case "string":
+                            name = "String";
                             break;
                     }
 

@@ -51,5 +51,6 @@
     <application id="f7e143e9-b91c-4747-9e70-2d1e1fa5e660" name="Intent.Modules.Modelers.AWS.AppSync" relativePath="Intent.Modules.Modelers.AWS.AppSync/Intent.Modules.Modelers.AWS.AppSync.application.config" />
     <application id="5b229996-bc39-4e98-ba95-efe1df210c15" name="Intent.Modules.Modelers.AWS.CDK" relativePath="Intent.Modules.Modelers.AWS.CDK/Intent.Modules.Modelers.AWS.CDK.application.config" />
     <application id="1b952c0f-d987-4027-b6e9-767e3ad01e16" name="Intent.Modules.Common.Dart" relativePath="Intent.Modules.Common.Dart/Intent.Modules.Common.Dart.application.config" />
+    <application id="9d8529f0-1571-4889-aeba-df2b4497716b" name="Intent.Modules.ModuleBuilder.Dart" relativePath="Intent.Modules.ModuleBuilder.Dart/Intent.Modules.ModuleBuilder.Dart.application.config" />
   </applications>
 </solution>
