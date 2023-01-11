@@ -18,14 +18,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#4d62543f-653b-4151-ac82-46d9f69ee7c2</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/GraphQLEndpointExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>GraphQLEndpointExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#b1815045-a5ee-48c1-b1da-9b7c503eb4d8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GraphQLEndpointFolderExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -46,6 +38,46 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GraphQLEndpointPackageExtensionsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>GraphQLEndpointPackageExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b06229e0-f9df-4163-a026-b768a8d7ae0b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/MutationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>MutationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#da689c9a-175f-4463-b99e-a1a364020d04</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ParameterModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ParameterModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a4ef8b91-cab0-490e-98c6-f4902ee8d115</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/QueryModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>QueryModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#150aa241-479b-442e-9962-21b79de85648</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/TypeFieldModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TypeFieldModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3f2d13dd-738f-453c-8c30-50953a9b3781</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/TypeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TypeModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

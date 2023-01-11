@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="3b94ffae-41ea-4122-98fa-c2db69b0e4b1" version="3.1.0">
+  <name>Lambda Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="de02db8b-e18f-423c-b4da-5f717a04075e">Lambda Function</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>1a989211-8505-46d7-81f2-e81e260c3ff5</parentFolderId>
+  <order>0</order>
+  <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
+  <packageName>Intent.Modelers.AWS.Lambda</packageName>
+  <properties>
+    <property id="a8c41ba5-152a-44ef-8946-e195b286e98b">
+      <name>Runtime</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>a3555d86-f00e-451f-b9b6-2f0c06b2c79f</type>
+      </lookupTypes>
+    </property>
+  </properties>
+</stereotypeDefinition>

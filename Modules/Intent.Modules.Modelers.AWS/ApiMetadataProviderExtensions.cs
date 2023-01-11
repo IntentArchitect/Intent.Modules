@@ -33,5 +33,12 @@ namespace Intent.Modelers.AWS.Api
                 .ToList();
         }
 
+        public static IList<PlaceholderModel> GetPlaceholderModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(PlaceholderModel.SpecializationTypeId)
+                .Select(x => new PlaceholderModel(x))
+                .ToList();
+        }
+
     }
 }

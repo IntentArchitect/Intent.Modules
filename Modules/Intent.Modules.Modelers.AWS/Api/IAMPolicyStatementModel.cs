@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class IAMPolicyStatementModel : IMetadataModel, IHasStereotypes, IHasName
+    public class IAMPolicyStatementModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public const string SpecializationType = "IAM Policy Statement";
         public const string SpecializationTypeId = "b38ebd65-3594-40d9-a688-314cd791ecdf";
@@ -26,6 +26,7 @@ namespace Intent.Modelers.AWS.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -35,6 +36,8 @@ namespace Intent.Modelers.AWS.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 

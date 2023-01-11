@@ -18,18 +18,42 @@
     </FileLog>
     <FileLog>
       <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#672e0fdc-5e78-417d-9b4f-8aaf4b88e2cd</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSLambdaExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSLambdaExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#eeaedf59-86d1-4396-a37b-554ccf8588a8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSLambdaFolderExtensionsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWSLambdaFolderExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#39f0b1ec-7481-4b27-9bf6-ace91efd8a7e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaGraphQLExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d2129e8f-54b3-4868-94be-a084b6c4bc5e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLMutationExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaGraphQLMutationExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#bb6fa469-b9fa-4d11-af34-249fead84a0e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLQueryExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaGraphQLQueryExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#fe3895b2-f63d-40fc-bf6e-3b667f917b57</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLTypeFieldExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaGraphQLTypeFieldExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -46,6 +70,38 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/LambdaFunctionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>LambdaFunctionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#de02db8b-e18f-423c-b4da-5f717a04075e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/LambdaFunctionModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>LambdaFunctionModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#a3555d86-f00e-451f-b9b6-2f0c06b2c79f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/LambdaRuntimeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>LambdaRuntimeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#2d631bd8-0dcb-4659-b4f3-887ed0cb9dbd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ModuleBuilderAWSLambdaFolderExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ModuleBuilderAWSLambdaFolderExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#16a0ee22-f5a1-4507-8960-2bd6ddda3c4c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ModuleBuilderAWSLambdaPackageExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ModuleBuilderAWSLambdaPackageExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -86,6 +142,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/AWS Lambda Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWS Lambda Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>97e3ce23-fc7a-407c-833e-7784267ba980</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#49afdc39-c77f-4d0d-99b7-7924d6bd4f1e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Module Builder AWS Lambda Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Module Builder AWS Lambda Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

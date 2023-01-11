@@ -4,7 +4,7 @@
   <display>[visual]: GraphQL Endpoint</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>1</order>
+  <order>6</order>
   <genericTypes />
   <typeReference id="d6022068-ea77-4f4d-be63-cfd96e7f02c5">
     <typeId>fe7c2882-9fc6-4a35-bde4-26195d7900eb</typeId>

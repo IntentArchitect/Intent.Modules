@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="487c8527-6388-4019-b365-67268beda5e3" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Stack</name>
-  <display>Stack</display>
+<class id="3f2d13dd-738f-453c-8c30-50953a9b3781" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Type</name>
+  <display>Type</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
+  <order>4</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>b451d702-275a-4133-b34a-a7aee4fc1275</parentFolderId>
-  <packageId>9801527e-3ba0-4f98-af6e-eacbefafba14</packageId>
-  <packageName>Intent.Modelers.AWS.CDK</packageName>
+  <parentFolderId>fe7c2882-9fc6-4a35-bde4-26195d7900eb</parentFolderId>
+  <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+  <packageName>Intent.Modelers.AWS.AppSync</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -31,7 +32,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAlRJREFUaEPtmb1rFFEUxX93Z79wI4ImNgYsFPxCLALaipWC6KJEMFrb2EiyW/sHZBVTRLAOsQmSrCha2VukEAQNiCDYGVmiSdhkd3JlViKZsJm8YWayu/Jes8Xcc98799x597Aj9PiSHj8//wjo9XHtHTKyKNXSgHfe/4+AVMtd21Z6u9LPqv6AAAUsgQRfJKtAgsU1Sm0VMCpTgkFWgQSLa5TaSAGE50bZOhOUQ7kZOMg6c66wu7adxI9HwqbpWLzomsyNvfCbueEnJ2I/UOHAN9xFh3pmMN7cG67MjH5J3o2Kc4GUO4DLq3gJBNvphRg2Owrk8RGQFdDvkXILaZRjibtRLVbeo3p+G4HXUi1djULA6BqNw05bAjvIZBUw7V/bQraFTHtlp0rZa7R9ZYxuIUTmIwoAqqeAfb5BJiyBtPxLhJVG9dze2ek99ULFylCEyrSHHt7/iRoZGr+Px5pbpCmzYx/8bvTGo2uhN3G8dsst4dYvhcZ6gP6+N9R+DeKmzobCq6zL7OjbGOy0c4dsap71xudQB9gMzjqHaLp32WAiHD7QTstLg2RDoEdgCwGRZZR3BljvP/ErqGbYSkDkK8rHYLxmgcuR7bQWx6dRRnwEYEGq5ZMmBLRY+YnqwW0EJmSu9CAIb3SNmthpS8AqEPEDh20h20K2hbp4DuBN1N2Wah5I+weZKMLKbtDWc9W+1q9/EjeAtUC8twNaiNFOd5MXGp78W5Uw68zpOg8vutx6WggD24yVmfvLeu9ZhlozFwqfX1WZKrfU7tqv8qaEep7AH8PKA14T07DjAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
@@ -48,39 +49,39 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="1b1db3c6-f643-4fd0-b709-d9985d53d596" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="3e04dcf7-499e-486f-9dc9-05754e955cd1" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>487c8527-6388-4019-b365-67268beda5e3</parentFolderId>
-      <packageId>9801527e-3ba0-4f98-af6e-eacbefafba14</packageId>
-      <packageName>Intent.Modelers.AWS.CDK</packageName>
+      <parentFolderId>3f2d13dd-738f-453c-8c30-50953a9b3781</parentFolderId>
+      <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+      <packageName>Intent.Modelers.AWS.AppSync</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="7a7d6e7f-05e5-4993-bb6f-b37c616e5c69" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Folder</name>
-          <display>New Folder: Folder</display>
+        <childElement id="226a0d27-51b0-4919-b890-58be086f8620" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Field</name>
+          <display>Add Field: Type Field</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="69aeaec9-a399-4d90-ac62-724d1fd31fc8">
-            <typeId>4d95d53a-8855-4f35-aa82-e312643f5c5f</typeId>
+          <typeReference id="3e4ab62c-a554-4256-96e3-bb6eca76213a">
+            <typeId>150aa241-479b-442e-9962-21b79de85648</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Common.Types</typePackageName>
-            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <typePackageName>Intent.Modelers.AWS.AppSync</typePackageName>
+            <typePackageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>1b1db3c6-f643-4fd0-b709-d9985d53d596</parentFolderId>
-          <packageId>9801527e-3ba0-4f98-af6e-eacbefafba14</packageId>
-          <packageName>Intent.Modelers.AWS.CDK</packageName>
+          <parentFolderId>3e04dcf7-499e-486f-9dc9-05754e955cd1</parentFolderId>
+          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+          <packageName>Intent.Modelers.AWS.AppSync</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -88,7 +89,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + f" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />

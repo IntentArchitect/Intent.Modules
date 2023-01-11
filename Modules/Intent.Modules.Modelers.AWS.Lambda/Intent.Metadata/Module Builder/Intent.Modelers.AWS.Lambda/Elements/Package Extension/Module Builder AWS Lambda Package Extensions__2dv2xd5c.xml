@@ -1,61 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="b7574c9f-d70c-49e2-9e54-ae718f023b1b" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
-  <name>AWS CDK Stack Package Extensions</name>
-  <display>AWS CDK Stack Package Extensions: AWS Package</display>
+<class id="16a0ee22-f5a1-4507-8960-2bd6ddda3c4c" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Module Builder AWS Lambda Package Extensions</name>
+  <display>Module Builder AWS Lambda Package Extensions: Intent Module</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
-  <typeReference id="d02ec6bd-78e1-43d8-ba18-be4552a4fd4e">
-    <typeId>a95a0fde-f67b-4e4a-b9a8-745021efbdb6</typeId>
+  <typeReference id="f57a0bf7-7a32-4516-b175-ff20d245c1f3">
+    <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.AWS</typePackageName>
-    <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+    <typePackageName>Intent.ModuleBuilder</typePackageName>
+    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>b451d702-275a-4133-b34a-a7aee4fc1275</parentFolderId>
-  <packageId>9801527e-3ba0-4f98-af6e-eacbefafba14</packageId>
-  <packageName>Intent.Modelers.AWS.CDK</packageName>
+  <parentFolderId>49afdc39-c77f-4d0d-99b7-7924d6bd4f1e</parentFolderId>
+  <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
+  <packageName>Intent.Modelers.AWS.Lambda</packageName>
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="0a62e04c-620d-4335-bbbe-88b29d9dbace" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="b6869990-7df3-48bc-be4e-db5e4fde7b54" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>b7574c9f-d70c-49e2-9e54-ae718f023b1b</parentFolderId>
-      <packageId>9801527e-3ba0-4f98-af6e-eacbefafba14</packageId>
-      <packageName>Intent.Modelers.AWS.CDK</packageName>
+      <parentFolderId>16a0ee22-f5a1-4507-8960-2bd6ddda3c4c</parentFolderId>
+      <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
+      <packageName>Intent.Modelers.AWS.Lambda</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="633184b4-c3d0-4e88-8587-3305d5fccb17" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Stack</name>
-          <display>New Stack: Stack</display>
+        <childElement id="f8592f79-3453-4b4c-9db2-85926711a65f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Runtime</name>
+          <display>New Runtime: Lambda Runtime</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="7d26adb5-48c9-4eb0-9269-0ee49913e92a">
-            <typeId>487c8527-6388-4019-b365-67268beda5e3</typeId>
+          <typeReference id="dafa1978-d8ab-4726-9265-9a1c88ed16f6">
+            <typeId>a3555d86-f00e-451f-b9b6-2f0c06b2c79f</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS.CDK</typePackageName>
-            <typePackageId>9801527e-3ba0-4f98-af6e-eacbefafba14</typePackageId>
+            <typePackageName>Intent.Modelers.AWS.Lambda</typePackageName>
+            <typePackageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>0a62e04c-620d-4335-bbbe-88b29d9dbace</parentFolderId>
-          <packageId>9801527e-3ba0-4f98-af6e-eacbefafba14</packageId>
-          <packageName>Intent.Modelers.AWS.CDK</packageName>
+          <parentFolderId>b6869990-7df3-48bc-be4e-db5e4fde7b54</parentFolderId>
+          <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
+          <packageName>Intent.Modelers.AWS.Lambda</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -63,9 +63,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + r" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewStack" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewRuntime" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />

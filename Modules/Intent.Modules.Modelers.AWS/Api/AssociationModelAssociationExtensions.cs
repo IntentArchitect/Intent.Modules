@@ -10,7 +10,7 @@ namespace Intent.Modelers.AWS.Api
     public static class AssociationModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<AssociationTargetEndModel> DtoEnd(this DTOModel model)
+        public static IList<AssociationTargetEndModel> AssociationTargetEnd(this PlaceholderModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == AssociationModel.SpecializationType && x.IsTargetEnd())
@@ -19,7 +19,7 @@ namespace Intent.Modelers.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<AssociationSourceEndModel> DtoSource(this DTOModel model)
+        public static IList<AssociationSourceEndModel> AssociationSourceEnd(this PlaceholderModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == AssociationModel.SpecializationType && x.IsSourceEnd())
@@ -28,7 +28,7 @@ namespace Intent.Modelers.AWS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<AssociationEndModel> AssociationEnds(this DTOModel model)
+        public static IList<AssociationEndModel> AssociationEnds(this PlaceholderModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.IsAssociationEndModel())

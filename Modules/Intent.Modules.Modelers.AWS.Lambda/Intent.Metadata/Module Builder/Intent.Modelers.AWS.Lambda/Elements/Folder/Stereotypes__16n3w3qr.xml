@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1a989211-8505-46d7-81f2-e81e260c3ff5" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Stereotypes</name>
+  <display>Stereotypes</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</parentFolderId>
+  <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
+  <packageName>Intent.Modelers.AWS.Lambda</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

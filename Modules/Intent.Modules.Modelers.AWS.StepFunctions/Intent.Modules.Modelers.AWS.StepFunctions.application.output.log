@@ -18,14 +18,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#a78383c9-7dd3-41dd-a477-79261826974f</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSStepFunctionsExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSStepFunctionsExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#8b0fd865-7989-45c5-9869-fbceee1fc58f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSStepFunctionsFolderExtensionsModel.cs</ApplicationRelativeFilePath>

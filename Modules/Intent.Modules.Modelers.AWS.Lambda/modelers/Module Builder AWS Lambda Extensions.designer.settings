@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>49afdc39-c77f-4d0d-99b7-7924d6bd4f1e</id>
+  <name>Module Builder AWS Lambda Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <specializationType>Lambda Runtime</specializationType>
+          <specializationTypeId>a3555d86-f00e-451f-b9b6-2f0c06b2c79f</specializationTypeId>
+          <text>New Runtime</text>
+          <shortcut>ctrl + shift + r</shortcut>
+          <defaultName>NewRuntime</defaultName>
+          <icon type="FontAwesome" source="code" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Lambda Runtime</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Lambda Runtime" typeId="a3555d86-f00e-451f-b9b6-2f0c06b2c79f">
+      <icon type="FontAwesome" source="code" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>Lambda Runtime</specializationType>
+          <specializationTypeId>a3555d86-f00e-451f-b9b6-2f0c06b2c79f</specializationTypeId>
+          <text>New Runtime</text>
+          <shortcut>ctrl + shift + r</shortcut>
+          <defaultName>NewRuntime</defaultName>
+          <icon type="FontAwesome" source="code" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Lambda Runtime</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions />
+</settings>

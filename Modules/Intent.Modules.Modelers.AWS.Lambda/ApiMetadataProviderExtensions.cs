@@ -18,5 +18,12 @@ namespace Intent.Modelers.AWS.Lambda.Api
                 .ToList();
         }
 
+        public static IList<LambdaRuntimeModel> GetLambdaRuntimeModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(LambdaRuntimeModel.SpecializationTypeId)
+                .Select(x => new LambdaRuntimeModel(x))
+                .ToList();
+        }
+
     }
 }
