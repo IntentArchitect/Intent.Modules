@@ -39,18 +39,27 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">GraphQL Schema Field</type>
-        <type order="1">GraphQL Schema Type</type>
-        <type order="2">Association</type>
+        <type order="0">GraphQL Query Type</type>
+        <type order="1">GraphQL Mutation Type</type>
+        <type order="2">GraphQL Schema Type</type>
+        <type order="3">Association</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>GraphQL Schema Field</specializationType>
-          <specializationTypeId>150aa241-479b-442e-9962-21b79de85648</specializationTypeId>
-          <text>Add Field</text>
-          <defaultName>NewGraphQLSchemaField</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
-          <allowMultiple>true</allowMultiple>
+          <specializationType>GraphQL Query Type</specializationType>
+          <specializationTypeId>4504e87f-d092-46d6-bbb9-2b39c7307d41</specializationTypeId>
+          <text>Add Query Type</text>
+          <defaultName>Query</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <allowMultiple>false</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>GraphQL Mutation Type</specializationType>
+          <specializationTypeId>02864de4-afe0-42a1-a655-1eeb68c8a098</specializationTypeId>
+          <text>Add Mutation Type</text>
+          <defaultName>Mutation</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
           <specializationType>GraphQL Schema Type</specializationType>
@@ -112,17 +121,8 @@ vertical-align: center`</style>
       </visualSettings>
       <macros>
         <macro trigger="on-created">
-          <script>let queryType = createElement("GraphQL Schema Type", "Query", element.id);
-let mutationType = createElement("GraphQL Schema Type", "Mutation", element.id);
-
-let queryField = createElement("GraphQL Schema Field", "query", element.id);
-queryField.typeReference.setType(queryType.id);
-queryField.typeReference.setIsNullable(true);
-
-let mutationField = createElement("GraphQL Schema Field", "mutation", element.id);
-mutationField.typeReference.setType(mutationType.id);
-mutationField.typeReference.setIsNullable(true);
-</script>
+          <script>let queryType = createElement("GraphQL Query Type", "Query", element.id);
+let mutationType = createElement("GraphQL Mutation Type", "Mutation", element.id);</script>
         </macro>
       </macros>
       <childElementSettings>
@@ -147,7 +147,8 @@ mutationField.typeReference.setIsNullable(true);
               <specializationType>GraphQL Schema Field</specializationType>
               <specializationTypeId>150aa241-479b-442e-9962-21b79de85648</specializationTypeId>
               <text>Add Field</text>
-              <defaultName>NewGraphQLSchemaField</defaultName>
+              <shortcut>ctrl + shift +f</shortcut>
+              <defaultName>field</defaultName>
               <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
               <allowMultiple>true</allowMultiple>
             </option>
@@ -294,9 +295,183 @@ if (existingSchemaType) {
     mappedReturnType.getChildren().forEach(x =&gt; {
         let newSchemaField = createElement("GraphQL Schema Field", x.getName(), newSchemaType.id);
         newSchemaField.setMapping(x.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
-        // newSchemaField.typeReference.setType(x.typeReference.typeId);
-        // newSchemaField.typeReference.setIsCollection(x.typeReference.getIsCollection());
-        // newSchemaField.typeReference.setIsNullable(x.typeReference.getIsNullable());
+    });
+
+    element.typeReference.setType(newSchemaType.id);
+}</script>
+                </macro>
+              </macros>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
+        </childElementSetting>
+        <childElementSetting type="GraphQL Query Type" typeId="4504e87f-d092-46d6-bbb9-2b39c7307d41">
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">GraphQL Schema Field</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>GraphQL Schema Field</specializationType>
+              <specializationTypeId>150aa241-479b-442e-9962-21b79de85648</specializationTypeId>
+              <text>Add Query</text>
+              <shortcut>ctrl + shift +f</shortcut>
+              <defaultName>query</defaultName>
+              <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="GraphQL Mutation Type" typeId="02864de4-afe0-42a1-a655-1eeb68c8a098">
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">GraphQL Mutation</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <specializationType>GraphQL Mutation</specializationType>
+              <specializationTypeId>66cca984-b1dc-445c-9685-e3abb4e5795a</specializationTypeId>
+              <text>Add Mutation</text>
+              <shortcut>ctrl + shift + m</shortcut>
+              <defaultName>mutation</defaultName>
+              <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingSettings />
+          <childElementSettings>
+            <childElementSetting type="GraphQL Mutation" typeId="66cca984-b1dc-445c-9685-e3abb4e5795a">
+              <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>function displayType(typeReference) {
+    if (!typeReference.typeId) {
+        return "";
+    }
+    let result = typeReference.getType().getName();
+    if (typeReference.getIsCollection()) {
+        result = `[${result}]`;
+    }
+    if (!typeReference.isNullable) {
+        result = `${result}!`;
+    }
+    return `: ${result}`;
+}
+let params = children("Parameter").map(x =&gt; x.name + displayType(x.typeReference)).join(", ");
+return `${name}${params ? `(${params})` : ""}${displayType(typeReference)}`;</displayFunction>
+              <allowRename>true</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>true</allowMapping>
+              <allowSorting>true</allowSorting>
+              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>false</isRequired>
+                <targetTypes>
+                  <type>Type-Definition</type>
+                  <type>GraphQL Schema Type</type>
+                </targetTypes>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>true</allowIsNullable>
+                <allowIsCollection>true</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <typeOrder>
+                <type order="0">Parameter</type>
+              </typeOrder>
+              <creationOptions>
+                <option type="element">
+                  <specializationType>Parameter</specializationType>
+                  <specializationTypeId>2a1b4261-de0a-4dd2-ba19-bfe61dd17597</specializationTypeId>
+                  <text>Add Parameter</text>
+                  <defaultName>NewParameter</defaultName>
+                  <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+                  <allowMultiple>true</allowMultiple>
+                </option>
+              </creationOptions>
+              <scriptOptions />
+              <mappingSettings>
+                <mappingSetting id="803e7511-8622-4d3c-93d3-92c840014e79">
+                  <name>Map to Lambda</name>
+                  <shortcut>ctrl + shift + m</shortcut>
+                  <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+                  <optionsSource>elements-of-type</optionsSource>
+                  <autoSyncTypeReferences>true</autoSyncTypeReferences>
+                  <symbol>fa-long-arrow-right</symbol>
+                  <styleFunction>color: #e57d1c;</styleFunction>
+                  <targetTypeOptions>
+                    <option specializationType="de02db8b-e18f-423c-b4da-5f717a04075e" displayText="Lambda Function" />
+                  </targetTypeOptions>
+                  <mapFrom>root</mapFrom>
+                  <mappings>
+                    <mapping id="3d84f096-f88e-467b-b351-180e1f7d1381">
+                      <criteria specializationType="Lambda Function">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Mutation" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="true" />
+                      <childMappings>
+                        <mapping id="a9f8e2f5-6c85-45a8-8556-e1bc91a139aa">
+                          <criteria specializationType="Parameter">
+                            <hasTypeReference p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                            <isCollection p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                            <hasChildren p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                          </criteria>
+                          <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                          <behaviour autoSelectChildren="false" />
+                          <childMappings />
+                        </mapping>
+                      </childMappings>
+                    </mapping>
+                  </mappings>
+                </mappingSetting>
+              </mappingSettings>
+              <macros>
+                <macro trigger="on-mapped">
+                  <script>let mappedReturnType = element.getMapping().getElement().typeReference.getType();
+let graphQLRoot = element.getParent("GraphQL Endpoint");
+let existingSchemaType = graphQLRoot.getChildren("GraphQL Schema Type").filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedReturnType.getName().toLowerCase(), "dto"))[0];
+if (existingSchemaType) {
+    element.typeReference.setType(existingSchemaType.id);
+} else {
+    let newSchemaType = createElement("GraphQL Schema Type", removeSuffix(mappedReturnType.getName(), "dto", "DTO"), graphQLRoot.id);
+    newSchemaType.setMapping(mappedReturnType.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
+    mappedReturnType.getChildren().forEach(x =&gt; {
+        let newSchemaField = createElement("GraphQL Schema Field", x.getName(), newSchemaType.id);
+        newSchemaField.setMapping(x.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
     });
 
     element.typeReference.setType(newSchemaType.id);

@@ -42,6 +42,30 @@
     </FileLog>
     <FileLog>
       <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#66cca984-b1dc-445c-9685-e3abb4e5795a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/GraphQLMutationModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLMutationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#02864de4-afe0-42a1-a655-1eeb68c8a098</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/GraphQLMutationTypeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLMutationTypeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4504e87f-d092-46d6-bbb9-2b39c7307d41</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/GraphQLQueryTypeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLQueryTypeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#150aa241-479b-442e-9962-21b79de85648</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GraphQLSchemaFieldModel.cs</ApplicationRelativeFilePath>

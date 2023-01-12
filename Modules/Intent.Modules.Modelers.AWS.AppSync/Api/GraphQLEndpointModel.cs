@@ -41,10 +41,15 @@ namespace Intent.Modelers.AWS.AppSync.Api
 
         public IElement InternalElement => _element;
 
-        public IList<GraphQLSchemaFieldModel> Fields => _element.ChildElements
-            .GetElementsOfType(GraphQLSchemaFieldModel.SpecializationTypeId)
-            .Select(x => new GraphQLSchemaFieldModel(x))
-            .ToList();
+        public GraphQLQueryTypeModel QueryType => _element.ChildElements
+            .GetElementsOfType(GraphQLQueryTypeModel.SpecializationTypeId)
+            .Select(x => new GraphQLQueryTypeModel(x))
+            .SingleOrDefault();
+
+        public GraphQLMutationTypeModel MutationType => _element.ChildElements
+            .GetElementsOfType(GraphQLMutationTypeModel.SpecializationTypeId)
+            .Select(x => new GraphQLMutationTypeModel(x))
+            .SingleOrDefault();
 
         public IList<GraphQLSchemaTypeModel> Types => _element.ChildElements
             .GetElementsOfType(GraphQLSchemaTypeModel.SpecializationTypeId)
