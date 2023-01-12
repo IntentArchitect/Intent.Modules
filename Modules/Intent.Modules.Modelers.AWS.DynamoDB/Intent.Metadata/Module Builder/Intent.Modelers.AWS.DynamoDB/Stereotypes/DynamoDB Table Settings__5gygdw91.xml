@@ -40,5 +40,19 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="328d3bd5-8b85-431b-942e-f2254df7599e">
+      <name>Removal Policy</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(unspecified)</placeholder>
+      <defaultValue>Destroy</defaultValue>
+      <valueOptions>
+        <option>Destroy</option>
+        <option>Retain</option>
+        <option>Snapshot</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

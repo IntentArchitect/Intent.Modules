@@ -57,6 +57,56 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
                 return _stereotype.GetProperty<int?>("ProvisionedThroughput - WriteCapacityUnits");
             }
 
+            public RemovalPolicyOptions RemovalPolicy()
+            {
+                return new RemovalPolicyOptions(_stereotype.GetProperty<string>("Removal Policy"));
+            }
+
+            public class RemovalPolicyOptions
+            {
+                public readonly string Value;
+
+                public RemovalPolicyOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public RemovalPolicyOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Destroy":
+                            return RemovalPolicyOptionsEnum.Destroy;
+                        case "Retain":
+                            return RemovalPolicyOptionsEnum.Retain;
+                        case "Snapshot":
+                            return RemovalPolicyOptionsEnum.Snapshot;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsDestroy()
+                {
+                    return Value == "Destroy";
+                }
+                public bool IsRetain()
+                {
+                    return Value == "Retain";
+                }
+                public bool IsSnapshot()
+                {
+                    return Value == "Snapshot";
+                }
+            }
+
+            public enum RemovalPolicyOptionsEnum
+            {
+                Destroy,
+                Retain,
+                Snapshot
+            }
+
         }
 
     }
