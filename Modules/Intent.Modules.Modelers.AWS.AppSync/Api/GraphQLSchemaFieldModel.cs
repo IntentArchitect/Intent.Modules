@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.AWS.Lambda.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
@@ -11,14 +12,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.AppSync.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class QueryModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class GraphQLSchemaFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "Query";
-        public const string SpecializationTypeId = "a4ef8b91-cab0-490e-98c6-f4902ee8d115";
+        public const string SpecializationType = "GraphQL Schema Field";
+        public const string SpecializationTypeId = "150aa241-479b-442e-9962-21b79de85648";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public QueryModel(IElement element, string requiredType = SpecializationType)
+        public GraphQLSchemaFieldModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -37,6 +38,10 @@ namespace Intent.Modelers.AWS.AppSync.Api
 
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public bool IsMapped => _element.IsMapped;
+
+        public IElementMapping Mapping => _element.MappedElement;
+
         public IElement InternalElement => _element;
 
         public IList<ParameterModel> Parameters => _element.ChildElements
@@ -49,7 +54,7 @@ namespace Intent.Modelers.AWS.AppSync.Api
             return _element.ToString();
         }
 
-        public bool Equals(QueryModel other)
+        public bool Equals(GraphQLSchemaFieldModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -59,7 +64,7 @@ namespace Intent.Modelers.AWS.AppSync.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((QueryModel)obj);
+            return Equals((GraphQLSchemaFieldModel)obj);
         }
 
         public override int GetHashCode()
@@ -69,17 +74,27 @@ namespace Intent.Modelers.AWS.AppSync.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class QueryModelExtensions
+    public static class GraphQLSchemaFieldModelExtensions
     {
 
-        public static bool IsQueryModel(this ICanBeReferencedType type)
+        public static bool IsGraphQLSchemaFieldModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == QueryModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == GraphQLSchemaFieldModel.SpecializationTypeId;
         }
 
-        public static QueryModel AsQueryModel(this ICanBeReferencedType type)
+        public static GraphQLSchemaFieldModel AsGraphQLSchemaFieldModel(this ICanBeReferencedType type)
         {
-            return type.IsQueryModel() ? new QueryModel((IElement)type) : null;
+            return type.IsGraphQLSchemaFieldModel() ? new GraphQLSchemaFieldModel((IElement)type) : null;
+        }
+
+        public static bool HasMapToLambdaMapping(this GraphQLSchemaFieldModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "20b19dba-5b91-4c7f-b6ce-83709c043587";
+        }
+
+        public static IElementMapping GetMapToLambdaMapping(this GraphQLSchemaFieldModel type)
+        {
+            return type.HasMapToLambdaMapping() ? type.Mapping : null;
         }
     }
 }

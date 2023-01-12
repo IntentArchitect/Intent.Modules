@@ -41,19 +41,14 @@ namespace Intent.Modelers.AWS.AppSync.Api
 
         public IElement InternalElement => _element;
 
-        public IList<QueryModel> Queries => _element.ChildElements
-            .GetElementsOfType(QueryModel.SpecializationTypeId)
-            .Select(x => new QueryModel(x))
+        public IList<GraphQLSchemaFieldModel> Fields => _element.ChildElements
+            .GetElementsOfType(GraphQLSchemaFieldModel.SpecializationTypeId)
+            .Select(x => new GraphQLSchemaFieldModel(x))
             .ToList();
 
-        public IList<MutationModel> Mutations => _element.ChildElements
-            .GetElementsOfType(MutationModel.SpecializationTypeId)
-            .Select(x => new MutationModel(x))
-            .ToList();
-
-        public IList<TypeModel> Types => _element.ChildElements
-            .GetElementsOfType(TypeModel.SpecializationTypeId)
-            .Select(x => new TypeModel(x))
+        public IList<GraphQLSchemaTypeModel> Types => _element.ChildElements
+            .GetElementsOfType(GraphQLSchemaTypeModel.SpecializationTypeId)
+            .Select(x => new GraphQLSchemaTypeModel(x))
             .ToList();
 
         public override string ToString()

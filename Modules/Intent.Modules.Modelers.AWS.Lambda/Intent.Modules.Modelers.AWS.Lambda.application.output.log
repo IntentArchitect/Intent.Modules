@@ -26,38 +26,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#39f0b1ec-7481-4b27-9bf6-ace91efd8a7e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSLambdaGraphQLExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#d2129e8f-54b3-4868-94be-a084b6c4bc5e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLMutationExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSLambdaGraphQLMutationExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#bb6fa469-b9fa-4d11-af34-249fead84a0e</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLQueryExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSLambdaGraphQLQueryExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#fe3895b2-f63d-40fc-bf6e-3b667f917b57</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSLambdaGraphQLTypeFieldExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSLambdaGraphQLTypeFieldExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#c3d0fbf3-c2fc-4f29-978d-334ae0f80372</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSLambdaPackageExtensionsModel.cs</ApplicationRelativeFilePath>

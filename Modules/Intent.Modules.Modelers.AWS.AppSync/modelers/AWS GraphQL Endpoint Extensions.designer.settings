@@ -39,36 +39,25 @@
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
       <typeOrder>
-        <type order="0">Query</type>
-        <type order="1">Mutation</type>
-        <type order="2">Type</type>
-        <type order="3">Association</type>
+        <type order="0">GraphQL Schema Field</type>
+        <type order="1">GraphQL Schema Type</type>
+        <type order="2">Association</type>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Query</specializationType>
-          <specializationTypeId>a4ef8b91-cab0-490e-98c6-f4902ee8d115</specializationTypeId>
-          <text>Add Query</text>
-          <shortcut>ctrl + shift + q</shortcut>
-          <defaultName>NewQuery</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <specializationType>GraphQL Schema Field</specializationType>
+          <specializationTypeId>150aa241-479b-442e-9962-21b79de85648</specializationTypeId>
+          <text>Add Field</text>
+          <defaultName>NewGraphQLSchemaField</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Mutation</specializationType>
-          <specializationTypeId>b06229e0-f9df-4163-a026-b768a8d7ae0b</specializationTypeId>
-          <text>Add Mutation</text>
-          <shortcut>ctrl + shift + m</shortcut>
-          <defaultName>NewMutation</defaultName>
-          <icon type="FontAwesome" source="file-o" />
-          <allowMultiple>true</allowMultiple>
-        </option>
-        <option type="element">
-          <specializationType>Type</specializationType>
+          <specializationType>GraphQL Schema Type</specializationType>
           <specializationTypeId>3f2d13dd-738f-453c-8c30-50953a9b3781</specializationTypeId>
           <text>Add Type</text>
-          <defaultName>NewType</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <defaultName>NewGraphQLSchemaType</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="association">
@@ -121,158 +110,29 @@ vertical-align: center`</style>
         <defaultSize width="100" height="80" />
         <childElementVisualSettings />
       </visualSettings>
+      <macros>
+        <macro trigger="on-created">
+          <script>let queryType = createElement("GraphQL Schema Type", "Query", element.id);
+let mutationType = createElement("GraphQL Schema Type", "Mutation", element.id);
+
+let queryField = createElement("GraphQL Schema Field", "query", element.id);
+queryField.typeReference.setType(queryType.id);
+queryField.typeReference.setIsNullable(true);
+
+let mutationField = createElement("GraphQL Schema Field", "mutation", element.id);
+mutationField.typeReference.setType(mutationType.id);
+mutationField.typeReference.setIsNullable(true);
+</script>
+        </macro>
+      </macros>
       <childElementSettings>
-        <childElementSetting type="Mutation" typeId="b06229e0-f9df-4163-a026-b768a8d7ae0b">
-          <icon type="FontAwesome" source="file-o" />
+        <childElementSetting type="GraphQL Schema Type" typeId="3f2d13dd-738f-453c-8c30-50953a9b3781">
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
           <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeReferenceSetting>
-            <isRequired>false</isRequired>
-            <targetTypes>
-              <type>Type</type>
-              <type>Type-Definition</type>
-            </targetTypes>
-            <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
-            <isNavigableDefault>true</isNavigableDefault>
-            <isNullableDefault>false</isNullableDefault>
-            <isCollectionDefault>false</isCollectionDefault>
-          </typeReferenceSetting>
-          <typeOrder>
-            <type order="0">Parameter</type>
-          </typeOrder>
-          <creationOptions>
-            <option type="element">
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>da689c9a-175f-4463-b99e-a1a364020d04</specializationTypeId>
-              <text>Add Parameter</text>
-              <defaultName>NewParameter</defaultName>
-              <icon type="FontAwesome" source="file-o" />
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
-          <scriptOptions />
-          <mappingSettings />
-          <childElementSettings />
-        </childElementSetting>
-        <childElementSetting type="Parameter" typeId="da689c9a-175f-4463-b99e-a1a364020d04">
-          <icon type="FontAwesome" source="file-o" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeReferenceSetting>
-            <isRequired>true</isRequired>
-            <targetTypes>
-              <type>Type</type>
-              <type>Type-Definition</type>
-            </targetTypes>
-            <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
-            <isNavigableDefault>true</isNavigableDefault>
-            <isNullableDefault>false</isNullableDefault>
-            <isCollectionDefault>false</isCollectionDefault>
-          </typeReferenceSetting>
-          <mappingSettings />
-          <childElementSettings />
-        </childElementSetting>
-        <childElementSetting type="Query" typeId="a4ef8b91-cab0-490e-98c6-f4902ee8d115">
-          <icon type="FontAwesome" source="file-o" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeReferenceSetting>
-            <isRequired>true</isRequired>
-            <targetTypes>
-              <type>Type</type>
-              <type>Type-Definition</type>
-            </targetTypes>
-            <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
-            <isNavigableDefault>true</isNavigableDefault>
-            <isNullableDefault>false</isNullableDefault>
-            <isCollectionDefault>false</isCollectionDefault>
-          </typeReferenceSetting>
-          <typeOrder>
-            <type order="0">Parameter</type>
-          </typeOrder>
-          <creationOptions>
-            <option type="element">
-              <specializationType>Parameter</specializationType>
-              <specializationTypeId>da689c9a-175f-4463-b99e-a1a364020d04</specializationTypeId>
-              <text>Add Parameter</text>
-              <defaultName>NewParameter</defaultName>
-              <icon type="FontAwesome" source="file-o" />
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
-          <scriptOptions />
-          <mappingSettings />
-          <childElementSettings />
-        </childElementSetting>
-        <childElementSetting type="Type Field" typeId="150aa241-479b-442e-9962-21b79de85648">
-          <icon type="FontAwesome" source="file-o" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>true</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeReferenceSetting>
-            <isRequired>true</isRequired>
-            <targetTypes>
-              <type>Type-Definition</type>
-              <type>Type Field</type>
-            </targetTypes>
-            <allowIsNavigable>true</allowIsNavigable>
-            <allowIsNullable>true</allowIsNullable>
-            <allowIsCollection>true</allowIsCollection>
-            <isNavigableDefault>true</isNavigableDefault>
-            <isNullableDefault>false</isNullableDefault>
-            <isCollectionDefault>false</isCollectionDefault>
-          </typeReferenceSetting>
-          <mappingSettings />
-          <childElementSettings />
-        </childElementSetting>
-        <childElementSetting type="Type" typeId="3f2d13dd-738f-453c-8c30-50953a9b3781">
-          <icon type="FontAwesome" source="file-o" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
+          <allowMapping>true</allowMapping>
           <allowSorting>true</allowSorting>
           <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
@@ -280,21 +140,172 @@ vertical-align: center`</style>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Type Field</type>
+            <type order="0">GraphQL Schema Field</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Type Field</specializationType>
+              <specializationType>GraphQL Schema Field</specializationType>
               <specializationTypeId>150aa241-479b-442e-9962-21b79de85648</specializationTypeId>
               <text>Add Field</text>
-              <defaultName>NewTypeField</defaultName>
-              <icon type="FontAwesome" source="file-o" />
+              <defaultName>NewGraphQLSchemaField</defaultName>
+              <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
-          <mappingSettings />
-          <childElementSettings />
+          <mappingSettings>
+            <mappingSetting id="026e0fd9-8c8a-4393-9ae0-8763674a0171">
+              <name>Map from DTO</name>
+              <shortcut>ctrl + shift + m</shortcut>
+              <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+              <optionsSource>elements-of-type</optionsSource>
+              <autoSyncTypeReferences>true</autoSyncTypeReferences>
+              <symbol>fa-long-arrow-left</symbol>
+              <targetTypeOptions>
+                <option specializationType="648405f0-9f21-4349-b112-542bf1d5ede4" displayText="DTO" />
+              </targetTypeOptions>
+              <mapFrom>root</mapFrom>
+              <mappings>
+                <mapping id="8917e99c-1957-40ef-8cd9-dd6cb1d5b63c">
+                  <criteria specializationType="DTO">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="GraphQL Schema Type" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="eda7138d-4d64-45cc-813f-1351debff56e">
+                      <criteria specializationType="DTO-Field">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Schema Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </mappings>
+            </mappingSetting>
+          </mappingSettings>
+          <childElementSettings>
+            <childElementSetting type="GraphQL Schema Field" typeId="150aa241-479b-442e-9962-21b79de85648">
+              <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+              <saveAsOwnFile>false</saveAsOwnFile>
+              <displayFunction>function displayType(typeReference) {
+    let result = typeReference.getType()?.getName() || "&lt;type required&gt;";
+    if (typeReference.getIsCollection()) {
+        result = `[${result}]`;
+    }
+    if (!typeReference.isNullable) {
+        result = `${result}!`;
+    }
+    return result;
+}
+let params = children("Parameter").map(x =&gt; x.name + ": " + displayType(x.typeReference)).join(", ");
+return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</displayFunction>
+              <allowRename>true</allowRename>
+              <allowAbstract>false</allowAbstract>
+              <allowGenericTypes>false</allowGenericTypes>
+              <allowMapping>true</allowMapping>
+              <allowSorting>true</allowSorting>
+              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowFindInView>false</allowFindInView>
+              <allowTypeReference>true</allowTypeReference>
+              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type>Type-Definition</type>
+                  <type>GraphQL Schema Type</type>
+                </targetTypes>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>true</allowIsNullable>
+                <allowIsCollection>true</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
+              <typeOrder>
+                <type order="0">Parameter</type>
+              </typeOrder>
+              <creationOptions>
+                <option type="element">
+                  <specializationType>Parameter</specializationType>
+                  <specializationTypeId>2a1b4261-de0a-4dd2-ba19-bfe61dd17597</specializationTypeId>
+                  <text>Add Parameter</text>
+                  <defaultName>NewParameter</defaultName>
+                  <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
+                  <allowMultiple>true</allowMultiple>
+                </option>
+              </creationOptions>
+              <scriptOptions />
+              <mappingSettings>
+                <mappingSetting id="20b19dba-5b91-4c7f-b6ce-83709c043587">
+                  <name>Map to Lambda</name>
+                  <shortcut>ctrl + shift + m</shortcut>
+                  <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+                  <optionsSource>elements-of-type</optionsSource>
+                  <autoSyncTypeReferences>true</autoSyncTypeReferences>
+                  <symbol>fa-long-arrow-right</symbol>
+                  <styleFunction>color: #e57d1c;</styleFunction>
+                  <targetTypeOptions>
+                    <option specializationType="de02db8b-e18f-423c-b4da-5f717a04075e" displayText="Lambda Function" />
+                  </targetTypeOptions>
+                  <mapFrom>root</mapFrom>
+                  <mappings>
+                    <mapping id="b8742110-c4f0-44f9-8f54-8b99ec1b71eb">
+                      <criteria specializationType="Lambda Function">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Schema Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="true" />
+                      <childMappings>
+                        <mapping id="61b62a69-d76f-4ae0-a002-7ff2f85dea85">
+                          <criteria specializationType="Parameter">
+                            <hasTypeReference p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                            <isCollection p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                            <hasChildren p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                          </criteria>
+                          <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
+                          <behaviour autoSelectChildren="false" />
+                          <childMappings />
+                        </mapping>
+                      </childMappings>
+                    </mapping>
+                  </mappings>
+                </mappingSetting>
+              </mappingSettings>
+              <macros>
+                <macro trigger="on-mapped">
+                  <script>let mappedReturnType = element.getMapping().getElement().typeReference.getType();
+let graphQLRoot = element.getParent("GraphQL Endpoint");
+let existingSchemaType = graphQLRoot.getChildren("GraphQL Schema Type").filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedReturnType.getName().toLowerCase(), "dto"))[0];
+if (existingSchemaType) {
+    element.typeReference.setType(existingSchemaType.id);
+} else {
+    let newSchemaType = createElement("GraphQL Schema Type", removeSuffix(mappedReturnType.getName(), "dto", "DTO"), graphQLRoot.id);
+    newSchemaType.setMapping(mappedReturnType.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
+    mappedReturnType.getChildren().forEach(x =&gt; {
+        let newSchemaField = createElement("GraphQL Schema Field", x.getName(), newSchemaType.id);
+        newSchemaField.setMapping(x.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
+        // newSchemaField.typeReference.setType(x.typeReference.typeId);
+        // newSchemaField.typeReference.setIsCollection(x.typeReference.getIsCollection());
+        // newSchemaField.typeReference.setIsNullable(x.typeReference.getIsNullable());
+    });
+
+    element.typeReference.setType(newSchemaType.id);
+}</script>
+                </macro>
+              </macros>
+              <childElementSettings />
+            </childElementSetting>
+          </childElementSettings>
         </childElementSetting>
       </childElementSettings>
     </elementSetting>

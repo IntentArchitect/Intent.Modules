@@ -61,13 +61,13 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="6310aeef-7c9b-42a8-abe8-d1c2ebe1d33e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Query</name>
-          <display>Add Query: Query</display>
+        <childElement id="164dd858-e55c-4fad-9f30-54a8cb3d99da" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Field</name>
+          <display>Add Field: GraphQL Schema Field</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="7bfd978e-b6e7-45ad-9cdc-256506543a8b">
-            <typeId>a4ef8b91-cab0-490e-98c6-f4902ee8d115</typeId>
+          <typeReference id="f3439f7d-2eec-47e3-ad33-7b47e04f9155">
+            <typeId>150aa241-479b-442e-9962-21b79de85648</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -88,46 +88,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + q" isActive="true" />
-                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="872304d9-0ab3-44a2-9a1c-553e5fe3355a" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Mutation</name>
-          <display>Add Mutation: Mutation</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="5efb8578-29d5-48d4-a108-b95007708b53">
-            <typeId>b06229e0-f9df-4163-a026-b768a8d7ae0b</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS.AppSync</typePackageName>
-            <typePackageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>4ffcd697-f5e2-4acc-9bc4-f289cd463455</parentFolderId>
-          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
-          <packageName>Intent.Modelers.AWS.AppSync</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
                 <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
@@ -141,7 +102,7 @@
         </childElement>
         <childElement id="f77f6362-a653-4880-8963-4ffbf665d79b" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Type</name>
-          <display>Add Type: Type</display>
+          <display>Add Type: GraphQL Schema Type</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="1e71ac4e-3549-4efc-8c96-9b76f0ed87c6">
@@ -210,6 +171,54 @@
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="1cb7ea70-dca1-4a2c-8641-67dd54e2a41a" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>fe7c2882-9fc6-4a35-bde4-26195d7900eb</parentFolderId>
+      <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+      <packageName>Intent.Modelers.AWS.AppSync</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="420c7a00-f93e-42cc-82e7-cebf7d0ea081" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="489270bc-444e-470a-8dc3-1c3913fe44c2">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1cb7ea70-dca1-4a2c-8641-67dd54e2a41a</parentFolderId>
+          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+          <packageName>Intent.Modelers.AWS.AppSync</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let queryType = createElement(&quot;GraphQL Schema Type&quot;, &quot;Query&quot;, element.id);&#xD;&#xA;let mutationType = createElement(&quot;GraphQL Schema Type&quot;, &quot;Mutation&quot;, element.id);&#xD;&#xA;&#xD;&#xA;let queryField = createElement(&quot;GraphQL Schema Field&quot;, &quot;query&quot;, element.id);&#xD;&#xA;queryField.typeReference.setType(queryType.id);&#xD;&#xA;queryField.typeReference.setIsNullable(true);&#xD;&#xA;&#xD;&#xA;let mutationField = createElement(&quot;GraphQL Schema Field&quot;, &quot;mutation&quot;, element.id);&#xD;&#xA;mutationField.typeReference.setType(mutationType.id);&#xD;&#xA;mutationField.typeReference.setIsNullable(true);&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

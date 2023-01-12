@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="150aa241-479b-442e-9962-21b79de85648" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>GraphQL Schema Field</name>
+  <display>GraphQL Schema Field</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>3f2d13dd-738f-453c-8c30-50953a9b3781</parentFolderId>
+  <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+  <packageName>Intent.Modelers.AWS.AppSync</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Required" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="true" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;,&quot;3f2d13dd-738f-453c-8c30-50953a9b3781&quot;]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="true" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:0,&quot;source&quot;:&quot;./img/icons/dtos/Field_256x.png&quot;}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="function displayType(typeReference) {&#xD;&#xA;    let result = typeReference.getType()?.getName() || &quot;&lt;type required&gt;&quot;;&#xD;&#xA;    if (typeReference.getIsCollection()) {&#xD;&#xA;        result = `[${result}]`;&#xD;&#xA;    }&#xD;&#xA;    if (!typeReference.isNullable) {&#xD;&#xA;        result = `${result}!`;&#xD;&#xA;    }&#xD;&#xA;    return result;&#xD;&#xA;}&#xD;&#xA;let params = children(&quot;Parameter&quot;).map(x =&gt; x.name + &quot;: &quot; + displayType(x.typeReference)).join(&quot;, &quot;);&#xD;&#xA;return `${name}${params ? `(${params})`: &quot;&quot;}: ${displayType(typeReference)}`;" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="946e685d-b274-4d8e-b92b-52d57a90aa34" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>150aa241-479b-442e-9962-21b79de85648</parentFolderId>
+      <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+      <packageName>Intent.Modelers.AWS.AppSync</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="4df8f7c3-2d7e-484d-8188-2c7dbe082596" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Parameter</name>
+          <display>Add Parameter: Parameter</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f4b9f612-1a84-4449-bee3-e21d3edd6428">
+            <typeId>2a1b4261-de0a-4dd2-ba19-bfe61dd17597</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS.Lambda</typePackageName>
+            <typePackageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>946e685d-b274-4d8e-b92b-52d57a90aa34</parentFolderId>
+          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+          <packageName>Intent.Modelers.AWS.AppSync</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="20b19dba-5b91-4c7f-b6ce-83709c043587" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+      <name>Map to Lambda</name>
+      <display>[mappings]: Map to Lambda</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>150aa241-479b-442e-9962-21b79de85648</parentFolderId>
+      <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+      <packageName>Intent.Modelers.AWS.AppSync</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="b986d2ea-50ff-4314-afc0-cb14ae7aad71" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="9ed374bb-a19c-46b4-ac58-e8adcbd11063" isActive="true" />
+            <property name="39d623e0-b8c5-4d23-8d78-75a7e2fa0c9d" display="Option Source" value="Elements of Type" isActive="true" />
+            <property name="5bed7f14-ebd8-4055-be29-3a2f8407eb5d" display="Lookup Element Function" isActive="false" />
+            <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" value="[&quot;de02db8b-e18f-423c-b4da-5f717a04075e&quot;]" isActive="true" />
+            <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
+            <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
+            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
+            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" value="color: #e57d1c;" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="b8742110-c4f0-44f9-8f54-8b99ec1b71eb" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Lambda Function -&gt; GraphQL Schema Field (Map to Type)</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-by-name</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>20b19dba-5b91-4c7f-b6ce-83709c043587</parentFolderId>
+          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+          <packageName>Intent.Modelers.AWS.AppSync</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="150aa241-479b-442e-9962-21b79de85648" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="de02db8b-e18f-423c-b4da-5f717a04075e" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements>
+            <childElement id="61b62a69-d76f-4ae0-a002-7ff2f85dea85" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Parameter -&gt; Parameter (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>b8742110-c4f0-44f9-8f54-8b99ec1b71eb</parentFolderId>
+              <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+              <packageName>Intent.Modelers.AWS.AppSync</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="2a1b4261-de0a-4dd2-ba19-bfe61dd17597" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="2a1b4261-de0a-4dd2-ba19-bfe61dd17597" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="f4e9aead-8e90-4336-ae06-c8a577d2a3bd" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>150aa241-479b-442e-9962-21b79de85648</parentFolderId>
+      <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+      <packageName>Intent.Modelers.AWS.AppSync</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="956e7673-baaa-4eac-a46f-4726b4b256fa" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Mapped</name>
+          <display>On Mapped: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="901b2773-ba26-48e5-94e9-348b1b0ed2f7">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>f4e9aead-8e90-4336-ae06-c8a577d2a3bd</parentFolderId>
+          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
+          <packageName>Intent.Modelers.AWS.AppSync</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let mappedReturnType = element.getMapping().getElement().typeReference.getType();&#xD;&#xA;let graphQLRoot = element.getParent(&quot;GraphQL Endpoint&quot;);&#xD;&#xA;let existingSchemaType = graphQLRoot.getChildren(&quot;GraphQL Schema Type&quot;).filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedReturnType.getName().toLowerCase(), &quot;dto&quot;))[0];&#xD;&#xA;if (existingSchemaType) {&#xD;&#xA;    element.typeReference.setType(existingSchemaType.id);&#xD;&#xA;} else {&#xD;&#xA;    let newSchemaType = createElement(&quot;GraphQL Schema Type&quot;, removeSuffix(mappedReturnType.getName(), &quot;dto&quot;, &quot;DTO&quot;), graphQLRoot.id);&#xD;&#xA;    newSchemaType.setMapping(mappedReturnType.id, &quot;026e0fd9-8c8a-4393-9ae0-8763674a0171&quot;);&#xD;&#xA;    mappedReturnType.getChildren().forEach(x =&gt; {&#xD;&#xA;        let newSchemaField = createElement(&quot;GraphQL Schema Field&quot;, x.getName(), newSchemaType.id);&#xD;&#xA;        newSchemaField.setMapping(x.id, &quot;026e0fd9-8c8a-4393-9ae0-8763674a0171&quot;);&#xD;&#xA;        // newSchemaField.typeReference.setType(x.typeReference.typeId);&#xD;&#xA;        // newSchemaField.typeReference.setIsCollection(x.typeReference.getIsCollection());&#xD;&#xA;        // newSchemaField.typeReference.setIsNullable(x.typeReference.getIsNullable());&#xD;&#xA;    });&#xD;&#xA;&#xD;&#xA;    element.typeReference.setType(newSchemaType.id);&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>
