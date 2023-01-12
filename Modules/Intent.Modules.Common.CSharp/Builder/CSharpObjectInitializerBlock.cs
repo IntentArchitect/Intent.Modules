@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -17,9 +18,11 @@ public class CSharpObjectInitializerBlock : CSharpStatementBlock
         return this;
     }
 
-    public CSharpObjectInitializerBlock AddInitStatement(string lhs, CSharpStatement rhs)
+    public CSharpObjectInitializerBlock AddInitStatement(string lhs, CSharpStatement rhs, Action<CSharpStatement> configureRhs = null)
     {
+        rhs.Parent = this;
         Statements.Add(new CSharpObjectInitStatement(lhs, rhs));
+        configureRhs?.Invoke(rhs);
         return this;
     }
 
