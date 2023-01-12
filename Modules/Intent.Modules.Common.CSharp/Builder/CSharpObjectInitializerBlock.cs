@@ -2,24 +2,24 @@
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassInitStatementBlock : CSharpStatementBlock
+public class CSharpObjectInitializerBlock : CSharpStatementBlock
 {
-    public CSharpClassInitStatementBlock(string invocation) : base()
+    public CSharpObjectInitializerBlock(string invocation) : base()
     {
         Text = invocation;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 
-    public new CSharpClassInitStatementBlock WithSemicolon()
+    public new CSharpObjectInitializerBlock WithSemicolon()
     {
         base.WithSemicolon();
         return this;
     }
 
-    public CSharpClassInitStatementBlock AddInitAssignment(string lhs, CSharpStatement rhs)
+    public CSharpObjectInitializerBlock AddInitStatement(string lhs, CSharpStatement rhs)
     {
-        Statements.Add(new CSharpClassInitAssignment(lhs, rhs));
+        Statements.Add(new CSharpObjectInitStatement(lhs, rhs));
         return this;
     }
 
@@ -30,12 +30,12 @@ public class CSharpClassInitStatementBlock : CSharpStatementBlock
     }
 }
 
-public class CSharpClassInitAssignment : CSharpStatement, IHasCSharpStatements
+public class CSharpObjectInitStatement : CSharpStatement, IHasCSharpStatements
 {
     private readonly string _lhs;
     private readonly CSharpStatement _rhs;
 
-    public CSharpClassInitAssignment(string lhs, CSharpStatement rhs) : base(null)
+    public CSharpObjectInitStatement(string lhs, CSharpStatement rhs) : base(null)
     {
         _lhs = lhs;
         _rhs = rhs;
