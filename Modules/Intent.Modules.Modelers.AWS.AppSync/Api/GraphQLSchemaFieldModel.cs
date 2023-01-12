@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modelers.AWS.Lambda.Api;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
@@ -44,9 +43,9 @@ namespace Intent.Modelers.AWS.AppSync.Api
 
         public IElement InternalElement => _element;
 
-        public IList<ParameterModel> Parameters => _element.ChildElements
-            .GetElementsOfType(ParameterModel.SpecializationTypeId)
-            .Select(x => new ParameterModel(x))
+        public IList<GraphQLParameterModel> Parameters => _element.ChildElements
+            .GetElementsOfType(GraphQLParameterModel.SpecializationTypeId)
+            .Select(x => new GraphQLParameterModel(x))
             .ToList();
 
         public override string ToString()

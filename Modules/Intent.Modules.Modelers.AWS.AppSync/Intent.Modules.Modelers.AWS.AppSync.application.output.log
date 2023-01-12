@@ -58,6 +58,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#22565fd3-564a-4406-a502-81d2b6b0691f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/GraphQLParameterModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLParameterModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>11a5e4ed-1500-4179-a629-45e824b81308</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4504e87f-d092-46d6-bbb9-2b39c7307d41</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GraphQLQueryTypeModel.cs</ApplicationRelativeFilePath>

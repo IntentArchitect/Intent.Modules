@@ -26,7 +26,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Intent.Modules.Modelers.AWS.Lambda\Intent.Modules.Modelers.AWS.Lambda.csproj" />
     <ProjectReference Include="..\Intent.Modules.Modelers.AWS\Intent.Modules.Modelers.AWS.csproj" />
   </ItemGroup>
 
