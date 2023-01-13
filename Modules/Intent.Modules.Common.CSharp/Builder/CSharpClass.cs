@@ -123,6 +123,13 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         GenericParameters.Add(param);
         return this;
     }
+    
+    public CSharpClass AddGenericParameter(string typeName, out CSharpGenericParameter param)
+    {
+        param = new CSharpGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null)
     {

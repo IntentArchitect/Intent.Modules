@@ -80,7 +80,11 @@ public class CSharpFile
     public CSharpFileConfig GetConfig()
     {
         return new CSharpFileConfig(
-            className: Classes.FirstOrDefault()?.Name ?? throw new Exception("At least one type must be specified for C# file"),
+            className: Interfaces
+                           .Select(s => s.Name)
+                           .Concat(Classes.Select(s => s.Name))
+                           .FirstOrDefault()
+                       ?? throw new Exception("At least one type must be specified for C# file"),
             @namespace: Namespace,
             relativeLocation: RelativeLocation);
     }

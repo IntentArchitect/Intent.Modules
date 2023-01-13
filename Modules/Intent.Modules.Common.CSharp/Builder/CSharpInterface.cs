@@ -127,6 +127,14 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         GenericParameters.Add(param);
         return this;
     }
+    
+    public CSharpInterface AddGenericParameter(string typeName, out CSharpInterfaceGenericParameter param, Action<CSharpInterfaceGenericParameter> configure = null)
+    {
+        param = new CSharpInterfaceGenericParameter(typeName);
+        configure?.Invoke(param);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
@@ -213,7 +221,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
             return string.Empty;
         }
 
-        return $"<{string.Join(", ", GenericParameters)}>";
+        return $"<{string.Join(", ", GenericParameters.Select(s => s.GetText()))}>";
     }
 
     private string GetBaseTypes()

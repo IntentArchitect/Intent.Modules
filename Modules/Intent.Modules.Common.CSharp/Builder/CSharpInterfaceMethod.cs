@@ -43,6 +43,13 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
         GenericParameters.Add(param);
         return this;
     }
+    
+    public CSharpInterfaceMethod AddGenericParameter(string typeName, out CSharpGenericParameter param)
+    {
+        param = new CSharpGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public override string GetText(string indentation)
     {

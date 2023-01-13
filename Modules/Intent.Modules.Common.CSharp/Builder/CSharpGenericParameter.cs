@@ -8,4 +8,14 @@ public class CSharpGenericParameter
     }
     
     public string TypeName { get; }
+    
+    public override string ToString()
+    {
+        return TypeName;
+    }
+
+    public static implicit operator string(CSharpGenericParameter param)
+    {
+        return param.ToString();
+    }
 }

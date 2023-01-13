@@ -51,6 +51,13 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         GenericParameters.Add(param);
         return this;
     }
+    
+    public CSharpClassMethod AddGenericParameter(string typeName, out CSharpGenericParameter param)
+    {
+        param = new CSharpGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public CSharpClassMethod AddStatement(string statement, Action<CSharpStatement> configure = null)
     {

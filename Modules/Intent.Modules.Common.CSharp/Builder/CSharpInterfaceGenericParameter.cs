@@ -29,7 +29,7 @@ public class CSharpInterfaceGenericParameter : CSharpGenericParameter
         return this;
     }
     
-    public override string ToString()
+    public string GetText()
     {
         return $"{GetVariantText()}{TypeName}";
     }
