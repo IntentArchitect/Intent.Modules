@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.AWS.DynamoDB</id>
-  <version>1.0.0-pre.1</version>
+  <version>1.0.0-pre.2</version>
   <supportedClientVersions>[3.2.0,4.0.0)</supportedClientVersions>
   <summary>A designer for expressing elements of DynamoDB design on AWS.</summary>
   <description>A designer for expressing elements of DynamoDB design on AWS.</description>

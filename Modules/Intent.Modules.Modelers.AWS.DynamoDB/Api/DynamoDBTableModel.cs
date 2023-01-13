@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modelers.AWS.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -41,24 +42,24 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
 
         public IElement InternalElement => _element;
 
-        public DynamoDBTableHashKeyModel HashKey => _element.ChildElements
-            .GetElementsOfType(DynamoDBTableHashKeyModel.SpecializationTypeId)
-            .Select(x => new DynamoDBTableHashKeyModel(x))
+        public PartitionKeyModel PartitionKey => _element.ChildElements
+            .GetElementsOfType(PartitionKeyModel.SpecializationTypeId)
+            .Select(x => new PartitionKeyModel(x))
             .SingleOrDefault();
 
-        public DynamoDBTableRangeKeyModel RangeKey => _element.ChildElements
-            .GetElementsOfType(DynamoDBTableRangeKeyModel.SpecializationTypeId)
-            .Select(x => new DynamoDBTableRangeKeyModel(x))
+        public SortKeyModel SortKey => _element.ChildElements
+            .GetElementsOfType(SortKeyModel.SpecializationTypeId)
+            .Select(x => new SortKeyModel(x))
             .SingleOrDefault();
 
-        public IList<DynamoDBItemModel> Items => _element.ChildElements
-            .GetElementsOfType(DynamoDBItemModel.SpecializationTypeId)
-            .Select(x => new DynamoDBItemModel(x))
+        public IList<EntityModel> Entities => _element.ChildElements
+            .GetElementsOfType(EntityModel.SpecializationTypeId)
+            .Select(x => new EntityModel(x))
             .ToList();
 
-        public IList<MapAttributeModel> MapAttributes => _element.ChildElements
-            .GetElementsOfType(MapAttributeModel.SpecializationTypeId)
-            .Select(x => new MapAttributeModel(x))
+        public IList<CommentModel> Comments => _element.ChildElements
+            .GetElementsOfType(CommentModel.SpecializationTypeId)
+            .Select(x => new CommentModel(x))
             .ToList();
 
         public override string ToString()

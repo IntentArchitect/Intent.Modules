@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="60c57bb9-7afb-4604-8181-e48a03161ada" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
   <name>GraphQL Endpoint Association Extension</name>
-  <display>GraphQL Endpoint Association Extension: Association</display>
+  <display>GraphQL Endpoint Association Extension: Event Stream</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />

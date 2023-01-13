@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="54627bc9-b3ce-4b65-8a37-668ba55b40fb" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
   <name>AWS Step Functions Association Extension</name>
-  <display>AWS Step Functions Association Extension: Association</display>
+  <display>AWS Step Functions Association Extension: Event Stream</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />

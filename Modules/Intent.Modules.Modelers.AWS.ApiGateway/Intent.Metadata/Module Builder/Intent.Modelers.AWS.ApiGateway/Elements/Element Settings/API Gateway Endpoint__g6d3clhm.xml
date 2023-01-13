@@ -62,8 +62,8 @@
       <metadata />
       <childElements>
         <childElement id="ffb5fb20-dd0e-497b-937a-ba6fb92906f3" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Association</name>
-          <display>Add Association: Association</display>
+          <name>Add Event Destination</name>
+          <display>Add Event Destination: Event Stream</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="8b852534-2f15-4bac-9920-7f93c2950007">

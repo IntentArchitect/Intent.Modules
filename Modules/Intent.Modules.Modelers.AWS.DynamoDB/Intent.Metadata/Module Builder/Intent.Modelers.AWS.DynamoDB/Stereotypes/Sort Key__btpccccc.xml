@@ -3,7 +3,7 @@
   <name>Sort Key</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="a39e6629-9daf-418b-a5ec-25f05d26753e">Scalar Attribute</type>
+    <type id="0090fb93-483e-41af-a11d-5ad2dc796adf">Attribute</type>
   </targetTypes>
   <targetReferenceTypes />
   <applyMode>manually</applyMode>

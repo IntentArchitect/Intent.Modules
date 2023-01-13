@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="8febf60c-2087-4434-9705-9570132ff6c2" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
   <name>AWS Lambda Association Extension</name>
-  <display>AWS Lambda Association Extension: Association</display>
+  <display>AWS Lambda Association Extension: Event Stream</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -40,7 +40,7 @@
           <properties>
             <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
             <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
-            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;de02db8b-e18f-423c-b4da-5f717a04075e&quot;]" isActive="true" />
+            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[]" isActive="true" />
             <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
             <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
             <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />

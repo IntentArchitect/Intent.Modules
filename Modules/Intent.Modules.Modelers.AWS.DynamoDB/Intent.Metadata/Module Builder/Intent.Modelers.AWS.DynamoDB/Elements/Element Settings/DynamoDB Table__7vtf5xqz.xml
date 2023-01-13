@@ -62,8 +62,8 @@
       <metadata />
       <childElements>
         <childElement id="0fc00945-bf8d-4ba9-8df5-aa39591296f9" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Hash Key</name>
-          <display>Add Hash Key: Dynamo DB Table Hash Key</display>
+          <name>Add Partition Key</name>
+          <display>Add Partition Key: Partition Key</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="015954cf-535d-47f0-8a8c-524f20d29c90">
@@ -88,9 +88,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + h" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="id" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Id" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
@@ -101,8 +101,8 @@
           <childElements />
         </childElement>
         <childElement id="95dc8d72-618f-413e-8a68-a684993b54cd" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>Add Range Key</name>
-          <display>Add Range Key: Dynamo DB Table Range Key</display>
+          <name>Add Sort Key</name>
+          <display>Add Sort Key: Sort Key</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="83adbf47-b605-4b08-bdf2-17fad4ce2f9d">
@@ -127,9 +127,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + r" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="id2" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Id2" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
@@ -139,13 +139,13 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="53c1d740-b131-4ae5-9b3b-231039f6ac4e" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Item</name>
-          <display>New Item: DynamoDB Item</display>
+        <childElement id="c7158755-954a-4068-80f4-5235138d6965" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Entity</name>
+          <display>New Entity: Entity</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="88d4adb6-d78b-4a96-a9ea-1b1a7a33db29">
-            <typeId>83f50394-05f3-422d-b33f-ad2b4a2a4008</typeId>
+          <typeReference id="ef02dbc0-ecb2-48b3-ac1d-c203d42611b6">
+            <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -166,9 +166,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + i" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + e" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewItem" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
@@ -178,19 +178,19 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="50213e26-72e6-4001-b154-32020f7abca2" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New Map Attribute</name>
-          <display>New Map Attribute: Map Attribute</display>
+        <childElement id="b45d61a1-e1f5-4b02-8054-39193d0ec46c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New Comment</name>
+          <display>New Comment: Comment</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="9bba33d4-96c0-4511-9e18-69d4a785b4f4">
-            <typeId>4b5f63fc-2019-4ec0-8f1a-4f47f397a60c</typeId>
+          <typeReference id="c8f9c1ed-69d4-41d0-9a71-818988b6bc90">
+            <typeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS.DynamoDB</typePackageName>
-            <typePackageId>65807b2e-f468-42d5-b6fe-0f48b692052d</typePackageId>
+            <typePackageName>Intent.Modelers.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -205,9 +205,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt +m" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="mapAttribute" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
@@ -218,8 +218,8 @@
           <childElements />
         </childElement>
         <childElement id="e6e8e939-1ffb-435f-a36b-536fc91fba8b" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Association</name>
-          <display>Add Association: Association</display>
+          <name>Add Event Destination</name>
+          <display>Add Event Destination: Event Stream</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="54e49afc-1fe0-47c0-890e-27d6e22423f4">
@@ -296,7 +296,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;Dynamo DB Table Hash Key&quot;, &quot;id&quot;, element.id);" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;Dynamo DB Table Hash Key&quot;, &quot;Id&quot;, element.id);" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

@@ -54,5 +54,10 @@ namespace Intent.Modelers.AWS.Api
             .Select(x => new IAMPolicyStatementModel(x))
             .ToList();
 
+        public IList<CommentModel> Comments => UnderlyingPackage.ChildElements
+            .GetElementsOfType(CommentModel.SpecializationTypeId)
+            .Select(x => new CommentModel(x))
+            .ToList();
+
     }
 }

@@ -101,8 +101,8 @@
           <childElements />
         </childElement>
         <childElement id="b9c75015-fa6c-46ab-a9ad-9c245c3b4be7" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Association</name>
-          <display>Add Association: Association</display>
+          <name>Add Event Destination</name>
+          <display>Add Event Destination: Event Stream</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="7dd01c19-5b1a-4430-8bea-ccd64564b616">

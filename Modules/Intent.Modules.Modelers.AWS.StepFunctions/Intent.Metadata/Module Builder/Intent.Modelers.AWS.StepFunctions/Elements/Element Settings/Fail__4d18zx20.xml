@@ -64,7 +64,7 @@
       <childElements>
         <childElement id="586a7f09-6d4c-4347-b004-710dd605684e" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
           <name>Add Association</name>
-          <display>Add Association: Association</display>
+          <display>Add Association: Event Stream</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="a6a36542-dfb4-4b2f-b984-1973fe153e4a">

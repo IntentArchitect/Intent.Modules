@@ -100,13 +100,13 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="4bb9ba84-59e1-4efe-aac8-b1edc7270078" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Association</name>
-          <display>Add Association: Association</display>
+        <childElement id="e8f0e202-0a4e-417b-8b8f-a3736569e49e" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Resource Access</name>
+          <display>Add Resource Access: Resource Access Target End</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="b58d0a9a-5a22-4f8b-bd63-52bbeb9c6c70">
-            <typeId>055db259-36fc-495f-935c-89c847c34c32</typeId>
+          <typeReference id="41767bae-661a-4641-b6ec-4acf7cea0b36">
+            <typeId>afeea9e0-5fe1-4f7f-a302-db9b6d61ec44</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -128,6 +128,44 @@
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
                 <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + a" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="4bb9ba84-59e1-4efe-aac8-b1edc7270078" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Event Source</name>
+          <display>Add Event Source: Event Stream Source End</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="b58d0a9a-5a22-4f8b-bd63-52bbeb9c6c70">
+            <typeId>611be10d-2870-4c6b-b05f-e2ef5b62c03b</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3daec9a0-0916-4b80-9f4d-10ac3cb74df7</parentFolderId>
+          <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
+          <packageName>Intent.Modelers.AWS.Lambda</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + s" isActive="true" />
                 <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />

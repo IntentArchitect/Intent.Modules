@@ -34,9 +34,9 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
         public string FileLocation => UnderlyingPackage.FileLocation;
 
         public IList<DynamoDBTableModel> DynamoDBTables => UnderlyingPackage.ChildElements
-    .GetElementsOfType(DynamoDBTableModel.SpecializationTypeId)
-    .Select(x => new DynamoDBTableModel(x))
-    .ToList();
+            .GetElementsOfType(DynamoDBTableModel.SpecializationTypeId)
+            .Select(x => new DynamoDBTableModel(x))
+            .ToList();
 
     }
 }

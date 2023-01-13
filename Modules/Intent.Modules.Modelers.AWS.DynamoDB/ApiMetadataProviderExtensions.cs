@@ -19,5 +19,12 @@ namespace Intent.Modelers.AWS.DynamoDB.Api
                 .ToList();
         }
 
+        public static IList<EntityModel> GetEntityModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(EntityModel.SpecializationTypeId)
+                .Select(x => new EntityModel(x))
+                .ToList();
+        }
+
     }
 }
