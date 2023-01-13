@@ -18,6 +18,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public string ReturnType { get; private set; }
     public string Name { get; private set; }
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
+    public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public CSharpClassMethod(string returnType, string name)
     {
         if (string.IsNullOrWhiteSpace(returnType))
@@ -41,6 +42,13 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         var param = new CSharpParameter(type, name);
         Parameters.Add(param);
         configure?.Invoke(param);
+        return this;
+    }
+    
+    public CSharpClassMethod AddGenericParameter(string typeName)
+    {
+        var param = new CSharpGenericParameter(typeName);
+        GenericParameters.Add(param);
         return this;
     }
 
@@ -165,8 +173,18 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))})
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))})
 {indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
+    }
+    
+    private string GetGenericParameters()
+    {
+        if (!GenericParameters.Any())
+        {
+            return string.Empty;
+        }
+
+        return $"<{string.Join(", ", GenericParameters)}>";
     }
 }

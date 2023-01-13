@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.CSharp.Builder;
 
@@ -57,6 +58,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     public IList<CSharpInterfaceField> Fields { get; } = new List<CSharpInterfaceField>();
     public IList<CSharpInterfaceProperty> Properties { get; } = new List<CSharpInterfaceProperty>();
     public IList<CSharpInterfaceMethod> Methods { get; } = new List<CSharpInterfaceMethod>();
+    public IList<CSharpInterfaceGenericParameter> GenericParameters { get; } = new List<CSharpInterfaceGenericParameter>();
 
     public CSharpInterface ExtendsInterface(string type)
     {
@@ -116,6 +118,14 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+
+    public CSharpInterface AddGenericParameter(string typeName, Action<CSharpInterfaceGenericParameter> configure = null)
+    {
+        var param = new CSharpInterfaceGenericParameter(typeName);
+        configure?.Invoke(param);
+        GenericParameters.Add(param);
+        return this;
     }
 
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
@@ -186,14 +196,24 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public override string ToString()
     {
-        return ToString("");
+        return ToString(string.Empty);
     }
 
     public string ToString(string indentation)
     {
-        return $@"{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetBaseTypes()}
+        return $@"{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetGenericParameters()}{GetBaseTypes()}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
+    }
+
+    private string GetGenericParameters()
+    {
+        if (!GenericParameters.Any())
+        {
+            return string.Empty;
+        }
+
+        return $"<{string.Join(", ", GenericParameters)}>";
     }
 
     private string GetBaseTypes()

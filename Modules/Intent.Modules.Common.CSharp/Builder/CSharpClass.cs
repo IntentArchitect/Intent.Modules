@@ -29,6 +29,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public IList<CSharpConstructor> Constructors { get; } = new List<CSharpConstructor>();
     public IList<CSharpProperty> Properties { get; } = new List<CSharpProperty>();
     public IList<CSharpClassMethod> Methods { get; } = new List<CSharpClassMethod>();
+    public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
 
     public CSharpClass WithBaseType(string type)
     {
@@ -114,6 +115,13 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+    
+    public CSharpClass AddGenericParameter(string typeName)
+    {
+        var param = new CSharpGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
     }
 
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null)
@@ -219,9 +227,19 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetBaseTypes()}
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetGenericParameters()}{GetBaseTypes()}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
+    }
+    
+    private string GetGenericParameters()
+    {
+        if (!GenericParameters.Any())
+        {
+            return string.Empty;
+        }
+
+        return $"<{string.Join(", ", GenericParameters)}>";
     }
 
     private string GetBaseTypes()
