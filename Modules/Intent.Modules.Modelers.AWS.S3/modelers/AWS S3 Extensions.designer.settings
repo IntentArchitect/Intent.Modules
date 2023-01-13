@@ -124,7 +124,7 @@ vertical-align: center`</style>
   </elementExtensions>
   <associationSettings />
   <associationExtensions>
-    <associationExtension type="Association" typeId="055db259-36fc-495f-935c-89c847c34c32">
+    <associationExtension type="Event Stream" typeId="055db259-36fc-495f-935c-89c847c34c32">
       <sourceEndExtension>
         <typeReferenceExtension>
           <isRequired>true</isRequired>

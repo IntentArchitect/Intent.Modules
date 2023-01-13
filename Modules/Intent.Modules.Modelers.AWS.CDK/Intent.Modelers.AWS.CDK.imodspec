@@ -23,7 +23,6 @@
   </files>
   <moduleSettingsExtensions />
   <metadata>
-    <install target="Application" src="modelers/AWS CDK Extensions.designer.settings" externalReference="b451d702-275a-4133-b34a-a7aee4fc1275" />
     <install target="Application;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.CDK/Intent.Modelers.AWS.CDK.pkg.config" externalReference="9801527e-3ba0-4f98-af6e-eacbefafba14" />
   </metadata>
 </package>

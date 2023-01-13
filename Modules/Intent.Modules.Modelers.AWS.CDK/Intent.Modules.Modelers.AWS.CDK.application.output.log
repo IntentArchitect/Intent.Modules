@@ -9,38 +9,6 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>588abf21-99fa-4002-876e-2e6e590d9fe5</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#07467fc4-0958-443b-854f-fdd278c65d26</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSCDKStackFolderExtensionsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSCDKStackFolderExtensionsModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>588abf21-99fa-4002-876e-2e6e590d9fe5</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#b7574c9f-d70c-49e2-9e54-ae718f023b1b</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AWSCDKStackPackageExtensionsModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWSCDKStackPackageExtensionsModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>588abf21-99fa-4002-876e-2e6e590d9fe5</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#487c8527-6388-4019-b365-67268beda5e3</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/StackModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>StackModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>56ad8b9f-ef64-4046-9145-2e299a5c42cc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>56ad8b9f-ef64-4046-9145-2e299a5c42cc</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -54,14 +22,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.AWS.CDK.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.AWS.CDK.csproj</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>cf2c0239-4c77-4476-a3e1-b971e72dcdd8</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#b451d702-275a-4133-b34a-a7aee4fc1275</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/AWS CDK Extensions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AWS CDK Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
