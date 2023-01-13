@@ -1,16 +1,16 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 {
-    private bool _withSemicolon;
+    private bool _withSemicolon = false;
 
     public CSharpStatementBlock() : base(null)
     {
     }
 
-    public List<CSharpStatement> Statements { get; } = new();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpStatementBlock WithSemicolon()
     {
