@@ -367,6 +367,11 @@ async function getTableItem(defaultName) {
     <elementSetting type="DynamoDB Table" typeId="b45fcd71-d5a3-48c7-9dd5-e6a138080bcf">
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAnRJREFUaEPtmjFoFEEUhr83d4oQFRODjSCEpE8RQbARxMrCInshoGJpwMJCK5vL5CzsUliIWooR5HJbWFiJYCMIUUifUxAsBGNECYi52yd7SPT2FufudIi37rTz9s2+f97MfDtvhQFvMuDvz3YA0/OqzmCEemhlIrC6pMpZp70nAxE+1qwcjN1nL4BwQTrSava6jm81WCMxA8ZwfnleljwJ3eF2xupIU1n/7Qz0EgDCudDKgzyALhXIZyC5Bv7JFNpVZCI5o1sRR4h4mgxADFeKhkddZsAfm0XKgWaTlYxuo1bXXBKJ8ra2ICcDq4sKZ1z2Hvs/hVaOth1kHgfz6vrnSWz1vmskgfc1K1dLVi9FcNxl76tfYLNmZS6bKBHjQVI5hUMasZiyjd4ywnNfSqf43RtF3M5RYhuncxbqLflyFhoIFhLhRcoutAdlMiWAusCH3hKhf2uFIspUNlkoqOgxlzZF+PqwLKvxJ2ZDGXXZ++o30KiW5WXbSRxYPe0a0Bg2q2V5NlvRyUbEYZe9r36Fb6GVJ9lECREepyziIZQTKYt4VeCdL6VT/O5W5VSOEjlK9JlzOUoMBEoYw+WOXUgZVaWcEsA9I6z0mRE9P6YRQwo3sokS01ZvuiSJwa1mpVKyeiGC1rXGTrQfH/XX2k7inXiRvzHmr9cqG104fB1amQqs3lWY6cLei4nQqtCMZ5OF9gvDSdm+GMa0yauUy92L+5SqF5lTnH6GEZR6zkI5C/WZc/8HCxWEVgG5rRnG4spICkrMFWC5T0F7fswUGI7LvdlEicDquksShTdxZSSwegcouex99StsxL88ZAslfKnl2+93V3snXmYtMp4AAAAASUVORK5CYII=" />
       <saveAsOwnFile>true</saveAsOwnFile>
+      <validateFunction>if (getChildren("Partition Key")[0] == null) {
+    return "Mandatory 'Partition Key' is missing.";
+}
+
+return null;</validateFunction>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowGenericTypes>false</allowGenericTypes>
@@ -495,7 +500,7 @@ vertical-align: center`</style>
       </visualSettings>
       <macros>
         <macro trigger="on-created">
-          <script>createElement("Dynamo DB Table Hash Key", "Id", element.id);</script>
+          <script>createElement("Partition Key", "Id", element.id);</script>
         </macro>
         <macro trigger="on-name-changed">
           <script>element.setName(toPascalCase(element.getName()));</script>
@@ -609,20 +614,54 @@ white-space: inherit;`</style>
           </visualSettings>
           <macros>
             <macro trigger="on-created">
-              <script>const parentChildren = element.getParent().getChildren();
-
-for (let i = 0; i &lt; parentChildren.length; i++) {
-    const child = parentChildren[i];
-    if (child.specialization === "Dynamo DB Table Hash Key") {
-        const hashElement = createElement("Attribute", child.getName(), element.id);
-        hashElement.addMetadata("dynamodb-hash-key", null);
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
     }
 
-    if (child.specialization === "Dynamo DB Table Range Key") {
-        const rangeElement = createElement("Attribute", child.getName(), element.id);
-        rangeElement.addMetadata("dynamodb-range-key", null);
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
     }
 }
+
+updateKeys(element);
 </script>
             </macro>
             <macro trigger="on-name-changed">
@@ -700,36 +739,218 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <mappingSettings />
           <macros>
             <macro trigger="on-changed">
-              <script>const elements = [].concat.apply([], element.getParent().getChildren()
-    .map(x =&gt; x.getChildren()
-        .filter(x =&gt; x.hasMetadata("dynamodb-hash-key"))));
-for (var i = 0; i &lt; elements.length; i ++) {
-    elements[i].setName(element.getName());
-    elements[i].typeReference.setType(element.typeReference.typeId);
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
+
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
 }
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization === "Entity")
+    .forEach(updateKeys);
 </script>
             </macro>
             <macro trigger="on-created">
-              <script>const items = element.getParent().getChildren().filter(x =&gt; x.specialization == "DynamoDB Item");
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
 
-for (let i = 0; i &lt; items.length; i++) {
-    const keyElement = createElement("Scalar Attribute", element.getName(), items[i].id);
-    keyElement.typeReference.setType(element.typeReference.typeId);
-    keyElement.addMetadata("dynamodb-hash-key", null);
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
 }
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization == "Entity")
+    .forEach(updateKeys);
 </script>
             </macro>
             <macro trigger="on-deleted">
-              <script>const elements = [].concat.apply([], element.getParent().getChildren()
-    .map(x =&gt; x.getChildren().
-        filter(x =&gt; x.hasMetadata("dynamodb-hash-key"))));
-for (var i = 0; i &lt; elements.length; i ++) {
-    elements[i].delete();
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
+
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
 }
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization === "Entity")
+    .forEach(updateKeys);
 </script>
             </macro>
             <macro trigger="on-name-changed">
-              <script>element.setName(toCamelCase(element.getName()));</script>
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
+
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
+}
+
+element.setName(toCamelCase(element.getName()));
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization === "Entity")
+    .forEach(updateKeys);
+</script>
             </macro>
           </macros>
           <childElementSettings />
@@ -763,36 +984,218 @@ for (var i = 0; i &lt; elements.length; i ++) {
           <mappingSettings />
           <macros>
             <macro trigger="on-changed">
-              <script>const elements = [].concat.apply([], element.getParent().getChildren()
-    .map(x =&gt; x.getChildren()
-        .filter(x =&gt; x.hasMetadata("dynamodb-range-key"))));
-for (var i = 0; i &lt; elements.length; i ++) {
-    elements[i].setName(element.getName());
-    elements[i].typeReference.setType(element.typeReference.typeId);
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
+
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
 }
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization === "Entity")
+    .forEach(updateKeys);
 </script>
             </macro>
             <macro trigger="on-created">
-              <script>const items = element.getParent().getChildren().filter(x =&gt; x.specialization == "DynamoDB Item");
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
 
-for (let i = 0; i &lt; items.length; i++) {
-    const keyElement = createElement("Scalar Attribute", element.getName(), items[i].id);
-    keyElement.typeReference.setType(element.typeReference.typeId);
-    keyElement.addMetadata("dynamodb-range-key", null);
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
 }
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization == "Entity")
+    .forEach(updateKeys);
 </script>
             </macro>
             <macro trigger="on-deleted">
-              <script>const elements = [].concat.apply([], element.getParent().getChildren()
-    .map(x =&gt; x.getChildren().
-        filter(x =&gt; x.hasMetadata("dynamodb-range-key"))));
-for (var i = 0; i &lt; elements.length; i ++) {
-    elements[i].delete();
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
+
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(sortKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
 }
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization === "Entity")
+    .forEach(updateKeys);
 </script>
             </macro>
             <macro trigger="on-name-changed">
-              <script>element.setName(toCamelCase(element.getName()));</script>
+              <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
+
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
+}
+
+element.setName(toCamelCase(element.getName()));
+
+element.getParent().getChildren()
+    .filter(x =&gt; x.specialization === "Entity")
+    .forEach(updateKeys);
+</script>
             </macro>
           </macros>
           <childElementSettings />
@@ -965,6 +1368,60 @@ for (var i = 0; i &lt; elements.length; i ++) {
           </navigableIndicator>
         </targetEnd>
       </visualSettings>
+      <macros>
+        <macro trigger="on-changed">
+          <script>/**
+ * This is a common function used across all scripts which update keys, should you make any changes
+ * then be sure to update it in all scripts.
+ */
+function updateKeys(entity) {
+    if (entity == null) {
+        return;
+    }
+
+    const isAggregateRoot = !entity.getAssociations("Association")
+        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());
+    const partitionKey = entity.getParent().getChildren("Partition Key")[0];
+    const sortKey = entity.getParent().getChildren("Sort Key")[0];
+    let partitionKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-partition-key"))[0];
+    let sortKeyAttribute = entity.getChildren("Attribute").filter(a =&gt; a.hasMetadata("dynamodb-sort-key"))[0];
+
+    if (!isAggregateRoot) {
+        partitionKeyAttribute?.delete();
+        sortKeyAttribute?.delete();
+        return;
+    }
+
+    let order = 0;
+
+    if (partitionKey != null) {
+        if (partitionKeyAttribute == null) {
+            partitionKeyAttribute = createElement("Attribute", partitionKey.getName(), entity.id);
+            partitionKeyAttribute.addMetadata("dynamodb-partition-key", null);
+        }
+
+        partitionKeyAttribute.setOrder(order++);
+        partitionKeyAttribute.setName(partitionKey.getName());
+        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);
+    }
+
+    if (sortKey != null) {
+        if (sortKeyAttribute == null) {
+            sortKeyAttribute = createElement("Attribute", sortKey.getName(), entity.id);
+            sortKeyAttribute.addMetadata("dynamodb-sort-key", null);
+        }
+
+        sortKeyAttribute.setOrder(order++);
+        sortKeyAttribute.setName(sortKey.getName());
+        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);
+    }
+}
+
+updateKeys(association.typeReference.getType());
+updateKeys(association.getOtherEnd().typeReference.getType());
+</script>
+        </macro>
+      </macros>
     </associationSetting>
     <associationSetting type="Generalization" typeId="5de35973-3ac7-4e65-b48c-385605aec561">
       <sourceEnd type="Generalization Source End" typeId="8190bf43-222c-4b53-8a44-14626efe3574">

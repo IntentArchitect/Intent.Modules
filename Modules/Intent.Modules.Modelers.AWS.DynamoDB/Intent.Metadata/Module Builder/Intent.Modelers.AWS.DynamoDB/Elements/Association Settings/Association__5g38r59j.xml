@@ -80,5 +80,53 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="5271578e-5491-4b6f-ba7a-bfb207f67344" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>NewAssociationEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</parentFolderId>
+      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="32b004fb-c3e7-47ee-8552-95f5796fad64" type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="0728663a-256c-4406-8ea3-b89ad4f4c5e2">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>5271578e-5491-4b6f-ba7a-bfb207f67344</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="1f88f1ac-b96a-4ae7-9047-883c2fa3b3df" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d418d372-ae82-4852-81b1-20b78a26eb6c" display="Script" value="/**&#xD;&#xA; * This is a common function used across all scripts which update keys, should you make any changes&#xD;&#xA; * then be sure to update it in all scripts.&#xD;&#xA; */&#xD;&#xA;function updateKeys(entity) {&#xD;&#xA;    if (entity == null) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    const isAggregateRoot = !entity.getAssociations(&quot;Association&quot;)&#xD;&#xA;        .some(e =&gt; e.isSourceEnd() &amp;&amp; !e.typeReference.getIsCollection() &amp;&amp; !e.typeReference.getIsNullable());&#xD;&#xA;    const partitionKey = entity.getParent().getChildren(&quot;Partition Key&quot;)[0];&#xD;&#xA;    const sortKey = entity.getParent().getChildren(&quot;Sort Key&quot;)[0];&#xD;&#xA;    let partitionKeyAttribute = entity.getChildren(&quot;Attribute&quot;).filter(a =&gt; a.hasMetadata(&quot;dynamodb-partition-key&quot;))[0];&#xD;&#xA;    let sortKeyAttribute = entity.getChildren(&quot;Attribute&quot;).filter(a =&gt; a.hasMetadata(&quot;dynamodb-sort-key&quot;))[0];&#xD;&#xA;&#xD;&#xA;    if (!isAggregateRoot) {&#xD;&#xA;        partitionKeyAttribute?.delete();&#xD;&#xA;        sortKeyAttribute?.delete();&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    let order = 0;&#xD;&#xA;&#xD;&#xA;    if (partitionKey != null) {&#xD;&#xA;        if (partitionKeyAttribute == null) {&#xD;&#xA;            partitionKeyAttribute = createElement(&quot;Attribute&quot;, partitionKey.getName(), entity.id);&#xD;&#xA;            partitionKeyAttribute.addMetadata(&quot;dynamodb-partition-key&quot;, null);&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        partitionKeyAttribute.setOrder(order++);&#xD;&#xA;        partitionKeyAttribute.setName(partitionKey.getName());&#xD;&#xA;        partitionKeyAttribute.typeReference.setType(partitionKey.typeReference.typeId);&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    if (sortKey != null) {&#xD;&#xA;        if (sortKeyAttribute == null) {&#xD;&#xA;            sortKeyAttribute = createElement(&quot;Attribute&quot;, sortKey.getName(), entity.id);&#xD;&#xA;            sortKeyAttribute.addMetadata(&quot;dynamodb-sort-key&quot;, null);&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        sortKeyAttribute.setOrder(order++);&#xD;&#xA;        sortKeyAttribute.setName(sortKey.getName());&#xD;&#xA;        sortKeyAttribute.typeReference.setType(sortKey.typeReference.typeId);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;updateKeys(association.typeReference.getType());&#xD;&#xA;updateKeys(association.getOtherEnd().typeReference.getType());&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>
