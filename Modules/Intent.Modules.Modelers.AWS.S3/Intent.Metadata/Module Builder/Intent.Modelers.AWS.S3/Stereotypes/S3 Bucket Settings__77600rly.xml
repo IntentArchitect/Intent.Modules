@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="483fa468-d592-49e2-bd76-bd31d4a10c61" version="3.1.0">
+  <name>S3 Bucket Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="70001417-b109-4c5a-987a-0d53724a4709">S3 Bucket</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>abc33761-428c-42b2-8af6-72f38f52ba12</parentFolderId>
+  <order>0</order>
+  <packageId>b2eaf24f-b467-44db-9721-31dfade1d16b</packageId>
+  <packageName>Intent.Modelers.AWS.S3</packageName>
+  <properties>
+    <property id="0f86dea5-2a0c-43b5-a67c-564b8ca3f1e8">
+      <name>Removal Policy</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(unspecified)</placeholder>
+      <defaultValue>Destroy</defaultValue>
+      <valueOptions>
+        <option>Destroy</option>
+        <option>Retain</option>
+        <option>Snapshot</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="a2a62f20-5567-447d-8a24-8e81ad5349ed">
+      <name>Versioned</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

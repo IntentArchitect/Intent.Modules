@@ -135,7 +135,7 @@
       <childElements>
         <childElement id="8917e99c-1957-40ef-8cd9-dd6cb1d5b63c" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: DTO -&gt; GraphQL Schema Type (Map to Type)</display>
+          <display>[mapping]: Message -&gt; GraphQL Schema Type (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -178,7 +178,7 @@
           <childElements>
             <childElement id="eda7138d-4d64-45cc-813f-1351debff56e" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: DTO-Field -&gt; GraphQL Schema Field (Map to Type)</display>
+              <display>[mapping]: Message Field -&gt; GraphQL Schema Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>

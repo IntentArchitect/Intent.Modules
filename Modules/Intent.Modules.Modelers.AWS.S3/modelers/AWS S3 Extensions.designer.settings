@@ -149,5 +149,28 @@ vertical-align: center`</style>
       </targetEndExtension>
       <macros />
     </associationExtension>
+    <associationExtension type="Resource Access" typeId="d3fe616a-e00b-4553-aaa2-41b626e58faa">
+      <sourceEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>S3 Bucket</type>
+          </targetTypes>
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </targetEndExtension>
+      <macros />
+    </associationExtension>
   </associationExtensions>
 </settings>

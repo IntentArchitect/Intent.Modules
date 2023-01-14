@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="abc33761-428c-42b2-8af6-72f38f52ba12" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Stereotypes</name>
+  <display>Stereotypes</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b2eaf24f-b467-44db-9721-31dfade1d16b</parentFolderId>
+  <packageId>b2eaf24f-b467-44db-9721-31dfade1d16b</packageId>
+  <packageName>Intent.Modelers.AWS.S3</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>
