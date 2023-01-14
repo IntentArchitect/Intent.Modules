@@ -9,6 +9,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
     public string ReturnType { get; }
     public string Name { get; }
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
+    public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
+
     public CSharpInterfaceMethod(string returnType, string name)
     {
         if (string.IsNullOrWhiteSpace(returnType))
@@ -34,9 +36,33 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
         configure?.Invoke(param);
         return this;
     }
+    
+    public CSharpInterfaceMethod AddGenericParameter(string typeName)
+    {
+        var param = new CSharpGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
+    
+    public CSharpInterfaceMethod AddGenericParameter(string typeName, out CSharpGenericParameter param)
+    {
+        param = new CSharpGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))});";
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))});";
+    }
+    
+    private string GetGenericParameters()
+    {
+        if (!GenericParameters.Any())
+        {
+            return string.Empty;
+        }
+
+        return $"<{string.Join(", ", GenericParameters)}>";
     }
 }

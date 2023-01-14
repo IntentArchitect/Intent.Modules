@@ -1,4 +1,12 @@
-﻿### Version 3.3.23
+﻿### Version 3.3.26
+
+- New statement classes added:
+  - CSharpLambdaBlock
+  - CSharpObjectInitializerBlock
+  - CSharpMethodChainStatement
+- Updated Builders for Classes, Interfaces and Methods to accept Generic parameters.
+
+### Version 3.3.23
 
 - Added `.AsEmbeddedResource(...) extension method which will make the file item in the .csproj an Embedded Resource. See https://docs.intentarchitect.com/articles/module-building/templates/how-to-control-file-properties-in-cs-projects/how-to-control-file-properties-in-cs-projects.html for further information.
 - The `GetNamespace(this IOutputTarget target)` extension method is now cognisant of the `Root Namespace` value set for a project in the Visual Studio designer.
