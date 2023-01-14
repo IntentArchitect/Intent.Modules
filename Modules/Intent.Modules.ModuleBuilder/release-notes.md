@@ -1,3 +1,9 @@
+### Version 3.4.1
+
+- Fixed: Association Extensions applying source-end settings to target-end.
+
+### Version 3.4.0
+
 ### Version 3.3.14
 
 - Default `Templating Method` changed to `String Interpolation` on `File Template`s.
