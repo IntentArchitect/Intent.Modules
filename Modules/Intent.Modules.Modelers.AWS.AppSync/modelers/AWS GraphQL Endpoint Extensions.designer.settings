@@ -375,11 +375,11 @@ if (existingSchemaType) {
           <mappingSettings>
             <mappingSetting id="026e0fd9-8c8a-4393-9ae0-8763674a0171">
               <name>Map from DTO</name>
-              <shortcut>ctrl + shift + m</shortcut>
               <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
               <optionsSource>elements-of-type</optionsSource>
               <autoSyncTypeReferences>true</autoSyncTypeReferences>
               <symbol>fa-long-arrow-left</symbol>
+              <styleFunction>opacity: 0.8;</styleFunction>
               <targetTypeOptions>
                 <option specializationType="648405f0-9f21-4349-b112-542bf1d5ede4" displayText="Message" />
               </targetTypeOptions>
@@ -408,7 +408,102 @@ if (existingSchemaType) {
                 </mapping>
               </mappings>
             </mappingSetting>
+            <mappingSetting id="637e11b2-b420-415a-af5f-5a63312c1ccc">
+              <name>Map to DynamoDB Entity</name>
+              <shortcut>ctrl + shift + m</shortcut>
+              <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+              <optionsSource>elements-of-type</optionsSource>
+              <autoSyncTypeReferences>true</autoSyncTypeReferences>
+              <symbol>fa-long-arrow-right</symbol>
+              <styleFunction>color: #7782ff;</styleFunction>
+              <targetTypeOptions>
+                <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Entity" />
+              </targetTypeOptions>
+              <mapFrom>root</mapFrom>
+              <mappings>
+                <mapping id="55e12cdc-3ad3-4c0a-9133-4096455b258c">
+                  <criteria specializationType="Entity">
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="Entity" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings>
+                    <mapping id="595a6d0a-6720-455e-95b2-58581bce71ac">
+                      <criteria specializationType="Attribute">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren>false</hasChildren>
+                      </criteria>
+                      <mapTo specializationType="GraphQL Schema Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="8764dc39-46a3-4d96-a70c-40fd2e18b22a">
+                      <criteria specializationType="Association Target End">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Schema Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="fc412def-e565-46f4-88ee-8bcb584381ff">
+                      <criteria specializationType="Association Source End">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Schema Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="b5bb91f4-5706-4f6b-a2a1-f06eba6cde8b">
+                      <criteria specializationType="Generalization Target End">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection>false</isCollection>
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Schema Field" childMappingMode="traverse" useMappingSettings="55e12cdc-3ad3-4c0a-9133-4096455b258c" />
+                      <behaviour autoSelectChildren="true" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+              </mappings>
+            </mappingSetting>
           </mappingSettings>
+          <macros>
+            <macro trigger="on-mapped">
+              <script>if (element.getMapping().mappingSettingsId !== "637e11b2-b420-415a-af5f-5a63312c1ccc") {
+    return;
+}
+
+let graphQLRoot = element.getParent("GraphQL Endpoint");
+element.getChildren("GraphQL Schema Field").forEach(field =&gt; {
+    if (!field.isMapped || field.typeReference.isTypeFound()) {
+        return;
+    }
+    let mappedType = field.getMapping().getElement().typeReference.getType();
+    let existingSchemaType = graphQLRoot.getChildren("GraphQL Schema Type").filter(x =&gt; x.getName().toLowerCase() == mappedType.getName().toLowerCase())[0];
+    if (existingSchemaType) {
+        field.typeReference.setType(existingSchemaType.id);
+    } else {
+        let newSchemaType = createElement("GraphQL Schema Type", mappedType.getName(), graphQLRoot.id);
+        newSchemaType.setMapping(mappedType.id, "637e11b2-b420-415a-af5f-5a63312c1ccc");
+        mappedType.getChildren().forEach(x =&gt; {
+            let newSchemaField = createElement("GraphQL Schema Field", x.getName(), newSchemaType.id);
+            newSchemaField.setMapping(x.id, "637e11b2-b420-415a-af5f-5a63312c1ccc");
+        });
+
+        field.typeReference.setType(newSchemaType.id);
+    }
+});
+</script>
+            </macro>
+          </macros>
           <childElementSettings>
             <childElementSetting type="GraphQL Schema Field" typeId="150aa241-479b-442e-9962-21b79de85648">
               <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
