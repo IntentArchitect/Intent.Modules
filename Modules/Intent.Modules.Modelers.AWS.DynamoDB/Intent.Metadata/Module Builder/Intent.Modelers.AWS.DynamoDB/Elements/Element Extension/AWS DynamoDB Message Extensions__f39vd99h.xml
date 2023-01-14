@@ -79,7 +79,7 @@
       <childElements>
         <childElement id="e902cdc0-6203-4356-b30c-bab2d4b6787f" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
-          <display>[mapping]: Entity -&gt; DTO (Map to Type)</display>
+          <display>[mapping]: Entity -&gt; Message (Map to Type)</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
@@ -122,7 +122,7 @@
           <childElements>
             <childElement id="5886703f-8cbf-4e46-ad23-0dfd29228040" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
+              <display>[mapping]: Attribute -&gt; Message Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -165,7 +165,7 @@
             </childElement>
             <childElement id="f86994ec-3a74-43fa-829c-4adc2d79eeed" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Target End -&gt; DTO-Field (Map to Type)</display>
+              <display>[mapping]: Association Target End -&gt; Message Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -208,7 +208,7 @@
             </childElement>
             <childElement id="82d658d1-3e5f-4314-a8e6-8bb40ad69f7f" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Target End -&gt; DTO-Field (Traverse)</display>
+              <display>[mapping]: Association Target End -&gt; Message Field (Traverse)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -251,7 +251,7 @@
             </childElement>
             <childElement id="d13589a0-7c94-46b9-a31b-57aca4c92eb0" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Source End -&gt; DTO-Field (Map to Type)</display>
+              <display>[mapping]: Association Source End -&gt; Message Field (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
@@ -294,7 +294,7 @@
             </childElement>
             <childElement id="9be92ed3-80b8-40fd-9246-2053aca39f22" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
-              <display>[mapping]: Association Source End -&gt; DTO-Field (Traverse)</display>
+              <display>[mapping]: Association Source End -&gt; Message Field (Traverse)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>

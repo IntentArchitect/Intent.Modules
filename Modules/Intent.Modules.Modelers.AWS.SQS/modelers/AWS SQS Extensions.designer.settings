@@ -28,7 +28,6 @@
     <elementSetting type="SQS Queue" typeId="ed9035bc-31b0-4591-aac6-9a950099cbd5">
       <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA2hJREFUaEPtWEtoE1EUPeflU4sIflBcqKgroagLN6IIiiDSTSZK6krFItVu1DaJ+EHoRqMkqdIupLrwA1Jo0IyouCqiCIIoRUFd+gGRKroQRJs0cyVJHW0MOpmZxAozm4ThvXveueeee19C/OcP//PzwyPwrxX0FPAUcJgBr4QcJtDxdk8Bxyl0GMBUQLTkLQhaHcZrzHZSpx4LF8F+EgglpTHoLqCQeeqxYFUCvB6fsr6QyFAQuddjcJuARHpnI19YAV/gE68eePojx7IlvRqGMQ0Lmx6wf99Y8b1sTS1DQeajOfCCgwdGa9FDOgYCGP2cc59AKN0KGLdA3qYeM30koeRrAIvg42JeixW/Q0LJSwB2QKmdzEYvewRMuSdMbMcD4ilgrZBseUBCvcvBQj/AM9RjejWomhTQUpchsv1PHpBQehtodIL+Tma7XphVYqcLSTh1CIYkAAoUjzEbPV5JoiYCfzCxRIZ8yL1JABIvYSh2Mxs7bRKw04VESx6G4IR5aHIQM+e08+Kubz/947wLTbTiQQg2mVhKRZmN9rpDgLwPkZUAZoB8COXTeK3rXbk1OiNQLlNDh8hSkO8BPIfIelQSsFVCPxSgSsDHKxg3bgCyBOBbBGUdM/GXTgiIlloFwV1ApgN4BF9TGMZYFwTdvxFwVEJUCerRI6KlOiAyUJKV3EM9dq4mAhUmllBqNyDnyzWP/czG+0RLpqsScKSAUqcgkofgKCAEeAWz5uwueqEmAhUmlh5RGEmfNI0L1QeKQGS/uwqAX0oykwWQByeZy6EHSj4Kp3bCwAAgTQDHSp+umrh8d/0IqG3Uo8O/tlInClTEWQNKFiLzyiXlRhcKp/bCkLMgnwA+jXrXq3rNgZISkTOLkMvfALACCu3Mxi84G2Q9d/wYebwRQXWPme6vjiexhduoRHqbkcc6BBYMM9NWcETAyi3FrRL6G5atu9DfgroxyKxglHDszAErwT0FrGSprgoUh9GzjB8tcw32bBifZLpi98205cx3xabw7INCS2ScPTQsnr20zFIJAWptLUEbutYnfhTkbvUf9VqyAIFq6IHsg33j9XhzebZOPKKljwGy2X7MRu6Um9TjiUkEGgnvJtaU/RfOKkmPgNVM1Wudp0C9Mms1rqeA1UzVa52nQL0yazXudxjpOF7tgP0bAAAAAElFTkSuQmCC" />
       <saveAsOwnFile>true</saveAsOwnFile>
-      <displayFunction>return `${getName()} queue`;</displayFunction>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
       <allowGenericTypes>false</allowGenericTypes>
@@ -127,7 +126,7 @@ vertical-align: center`</style>
             <isRequired>true</isRequired>
             <targetTypes>
               <type>Type-Definition</type>
-              <type>DTO</type>
+              <type>Message</type>
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>false</allowIsNullable>
