@@ -394,7 +394,7 @@ return null;</validateFunction>
           <specializationType>Partition Key</specializationType>
           <specializationTypeId>03fe7ef6-a0a2-4834-bd9b-0500a77c2471</specializationTypeId>
           <text>Add Partition Key</text>
-          <defaultName>Id</defaultName>
+          <defaultName>id</defaultName>
           <icon type="FontAwesome" source="hashtag" />
           <allowMultiple>false</allowMultiple>
         </option>
@@ -402,7 +402,7 @@ return null;</validateFunction>
           <specializationType>Sort Key</specializationType>
           <specializationTypeId>c36c6e5a-0945-41a5-a619-59714e4738c5</specializationTypeId>
           <text>Add Sort Key</text>
-          <defaultName>Id2</defaultName>
+          <defaultName>id2</defaultName>
           <icon type="FontAwesome" source="sort" />
           <allowMultiple>false</allowMultiple>
         </option>
