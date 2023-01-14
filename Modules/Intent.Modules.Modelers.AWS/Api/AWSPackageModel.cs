@@ -34,14 +34,14 @@ namespace Intent.Modelers.AWS.Api
         public IEnumerable<IStereotype> Stereotypes => UnderlyingPackage.Stereotypes;
         public string FileLocation => UnderlyingPackage.FileLocation;
 
-        public IList<DTOModel> DTOs => UnderlyingPackage.ChildElements
-            .GetElementsOfType(DTOModel.SpecializationTypeId)
-            .Select(x => new DTOModel(x))
-            .ToList();
-
         public IList<FolderModel> Folders => UnderlyingPackage.ChildElements
             .GetElementsOfType(FolderModel.SpecializationTypeId)
             .Select(x => new FolderModel(x))
+            .ToList();
+
+        public IList<MessageModel> Messages => UnderlyingPackage.ChildElements
+            .GetElementsOfType(MessageModel.SpecializationTypeId)
+            .Select(x => new MessageModel(x))
             .ToList();
 
         public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements

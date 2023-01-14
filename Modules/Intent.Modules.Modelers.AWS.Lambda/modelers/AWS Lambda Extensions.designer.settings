@@ -44,7 +44,7 @@
         <isRequired>false</isRequired>
         <targetTypes>
           <type>Type-Definition</type>
-          <type>DTO</type>
+          <type>Message</type>
         </targetTypes>
         <allowIsNavigable>true</allowIsNavigable>
         <allowIsNullable>true</allowIsNullable>
@@ -153,7 +153,7 @@ vertical-align: center`</style>
             <targetTypes>
               <type>Type-Definition</type>
               <type>Enum</type>
-              <type>DTO</type>
+              <type>Message</type>
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>

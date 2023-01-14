@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="9e1a18f3-c6b1-495e-81be-cea88f37706f" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>DTO-Field</name>
-  <display>DTO-Field</display>
+  <name>Message Field</name>
+  <display>Message Field</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>1</order>

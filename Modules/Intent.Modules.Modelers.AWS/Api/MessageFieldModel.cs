@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DTOFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class MessageFieldModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "DTO-Field";
+        public const string SpecializationType = "Message Field";
         public const string SpecializationTypeId = "9e1a18f3-c6b1-495e-81be-cea88f37706f";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public DTOFieldModel(IElement element, string requiredType = SpecializationType)
+        public MessageFieldModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -46,7 +46,7 @@ namespace Intent.Modelers.AWS.Api
             return _element.ToString();
         }
 
-        public bool Equals(DTOFieldModel other)
+        public bool Equals(MessageFieldModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -56,7 +56,7 @@ namespace Intent.Modelers.AWS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DTOFieldModel)obj);
+            return Equals((MessageFieldModel)obj);
         }
 
         public override int GetHashCode()
@@ -66,17 +66,17 @@ namespace Intent.Modelers.AWS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class DTOFieldModelExtensions
+    public static class MessageFieldModelExtensions
     {
 
-        public static bool IsDTOFieldModel(this ICanBeReferencedType type)
+        public static bool IsMessageFieldModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DTOFieldModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == MessageFieldModel.SpecializationTypeId;
         }
 
-        public static DTOFieldModel AsDTOFieldModel(this ICanBeReferencedType type)
+        public static MessageFieldModel AsMessageFieldModel(this ICanBeReferencedType type)
         {
-            return type.IsDTOFieldModel() ? new DTOFieldModel((IElement)type) : null;
+            return type.IsMessageFieldModel() ? new MessageFieldModel((IElement)type) : null;
         }
     }
 }

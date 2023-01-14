@@ -25,17 +25,17 @@ namespace Intent.Modelers.AWS.Api
                 .ToList();
         }
 
-        public static IList<DTOModel> GetDTOModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(DTOModel.SpecializationTypeId)
-                .Select(x => new DTOModel(x))
-                .ToList();
-        }
-
         public static IList<IAMPolicyStatementModel> GetIAMPolicyStatementModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(IAMPolicyStatementModel.SpecializationTypeId)
                 .Select(x => new IAMPolicyStatementModel(x))
+                .ToList();
+        }
+
+        public static IList<MessageModel> GetMessageModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(MessageModel.SpecializationTypeId)
+                .Select(x => new MessageModel(x))
                 .ToList();
         }
 

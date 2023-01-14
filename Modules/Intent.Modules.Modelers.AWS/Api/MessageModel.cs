@@ -12,14 +12,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class DTOModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class MessageModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
-        public const string SpecializationType = "DTO";
+        public const string SpecializationType = "Message";
         public const string SpecializationTypeId = "648405f0-9f21-4349-b112-542bf1d5ede4";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public DTOModel(IElement element, string requiredType = SpecializationType)
+        public MessageModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -43,9 +43,9 @@ namespace Intent.Modelers.AWS.Api
 
         public IElement InternalElement => _element;
 
-        public IList<DTOFieldModel> Fields => _element.ChildElements
-            .GetElementsOfType(DTOFieldModel.SpecializationTypeId)
-            .Select(x => new DTOFieldModel(x))
+        public IList<MessageFieldModel> Fields => _element.ChildElements
+            .GetElementsOfType(MessageFieldModel.SpecializationTypeId)
+            .Select(x => new MessageFieldModel(x))
             .ToList();
 
         public override string ToString()
@@ -53,7 +53,7 @@ namespace Intent.Modelers.AWS.Api
             return _element.ToString();
         }
 
-        public bool Equals(DTOModel other)
+        public bool Equals(MessageModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -63,7 +63,7 @@ namespace Intent.Modelers.AWS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((DTOModel)obj);
+            return Equals((MessageModel)obj);
         }
 
         public override int GetHashCode()
@@ -73,17 +73,17 @@ namespace Intent.Modelers.AWS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class DTOModelExtensions
+    public static class MessageModelExtensions
     {
 
-        public static bool IsDTOModel(this ICanBeReferencedType type)
+        public static bool IsMessageModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == DTOModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == MessageModel.SpecializationTypeId;
         }
 
-        public static DTOModel AsDTOModel(this ICanBeReferencedType type)
+        public static MessageModel AsMessageModel(this ICanBeReferencedType type)
         {
-            return type.IsDTOModel() ? new DTOModel((IElement)type) : null;
+            return type.IsMessageModel() ? new MessageModel((IElement)type) : null;
         }
     }
 }

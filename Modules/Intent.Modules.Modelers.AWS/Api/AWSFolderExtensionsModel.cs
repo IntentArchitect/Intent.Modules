@@ -19,9 +19,9 @@ namespace Intent.Modelers.AWS.Api
         {
         }
 
-        public IList<DTOModel> DTOs => _element.ChildElements
-            .GetElementsOfType(DTOModel.SpecializationTypeId)
-            .Select(x => new DTOModel(x))
+        public IList<MessageModel> Messages => _element.ChildElements
+            .GetElementsOfType(MessageModel.SpecializationTypeId)
+            .Select(x => new MessageModel(x))
             .ToList();
 
         public IList<DiagramModel> Diagrams => _element.ChildElements
