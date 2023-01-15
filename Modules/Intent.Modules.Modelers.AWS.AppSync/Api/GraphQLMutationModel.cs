@@ -95,5 +95,15 @@ namespace Intent.Modelers.AWS.AppSync.Api
         {
             return type.HasMapToLambdaMapping() ? type.Mapping : null;
         }
+
+        public static bool HasMapToDynamoDBEntityMapping(this GraphQLMutationModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb";
+        }
+
+        public static IElementMapping GetMapToDynamoDBEntityMapping(this GraphQLMutationModel type)
+        {
+            return type.HasMapToDynamoDBEntityMapping() ? type.Mapping : null;
+        }
     }
 }

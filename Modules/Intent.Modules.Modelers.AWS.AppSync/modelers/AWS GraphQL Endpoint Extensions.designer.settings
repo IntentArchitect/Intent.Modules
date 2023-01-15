@@ -176,7 +176,7 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
     }
     return `: ${result}`;
 }
-let params = children("Parameter").map(x =&gt; x.name + displayType(x.typeReference)).join(", ");
+let params = children("GraphQL Parameter").map(x =&gt; x.name + displayType(x.typeReference)).join(", ");
 return `${name}${params ? `(${params})` : ""}${displayType(typeReference)}`;</displayFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
@@ -189,7 +189,7 @@ return `${name}${params ? `(${params})` : ""}${displayType(typeReference)}`;</di
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
               <typeReferenceSetting>
-                <isRequired>false</isRequired>
+                <isRequired>true</isRequired>
                 <targetTypes>
                   <type>Type-Definition</type>
                   <type>GraphQL Schema Type</type>
@@ -253,24 +253,102 @@ return `${name}${params ? `(${params})` : ""}${displayType(typeReference)}`;</di
                     </mapping>
                   </mappings>
                 </mappingSetting>
+                <mappingSetting id="91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb">
+                  <name>Map to DynamoDB Entity</name>
+                  <shortcut>ctrl + shift + d</shortcut>
+                  <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+                  <optionsSource>elements-of-type</optionsSource>
+                  <autoSyncTypeReferences>true</autoSyncTypeReferences>
+                  <symbol>fa-long-arrow-right</symbol>
+                  <styleFunction>color: #7782ff;</styleFunction>
+                  <targetTypeOptions>
+                    <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Entity" />
+                  </targetTypeOptions>
+                  <mapFrom>root</mapFrom>
+                  <mappings>
+                    <mapping id="ba28ea65-676a-49e0-8b26-e27ec938bdd0">
+                      <criteria specializationType="Entity">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Mutation" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="true" />
+                      <childMappings />
+                    </mapping>
+                  </mappings>
+                </mappingSetting>
               </mappingSettings>
               <macros>
                 <macro trigger="on-mapped">
-                  <script>const mappedReturnType = element.getMapping().getElement().typeReference.getType();
-const graphQLRoot = element.getParent("GraphQL Endpoint");
+                  <script>const graphQLRoot = element.getParent("GraphQL Endpoint");
+const toLambdaMapping = "803e7511-8622-4d3c-93d3-92c840014e79";
+const toEntityMapping = "91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb";
+const messageToTypeMapping = "026e0fd9-8c8a-4393-9ae0-8763674a0171";
+const entityToTypeMapping = "637e11b2-b420-415a-af5f-5a63312c1ccc";
+const mappedElement = element.getMapping().getElement();
 
-let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
-    .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedReturnType.getName().toLowerCase(), "dto"))[0];
-if (schemaType == null) {
-    schemaType = createElement("GraphQL Schema Type", removeSuffix(mappedReturnType.getName(), "dto", "DTO"), graphQLRoot.id);
-    schemaType.setMapping(mappedReturnType.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
-    mappedReturnType.getChildren().forEach(x =&gt; {
-        let newSchemaField = createElement("GraphQL Schema Field", x.getName(), schemaType.id);
-        newSchemaField.setMapping(x.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
-    });
+function mapTypeToEntity(mappedElement) {
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedElement.getName().toLowerCase(), "entity"))[0];
+    if (schemaType == null) {
+        schemaType = createElement("GraphQL Schema Type", removeSuffix(mappedElement.getName(), "Entity"), graphQLRoot.id);
+        schemaType.setMapping(mappedElement.id, entityToTypeMapping);
+        mappedElement.getChildren("Attribute").forEach(child =&gt; {
+            const field = createElement("GraphQL Schema Field", child.getName(), schemaType.id);
+            field.setMapping(child.id, toEntityMapping);
+        });
+        mappedElement.getAssociations("Association")
+            .filter(association =&gt; association.isTargetEnd())
+            .forEach(association =&gt; {
+                const field = createElement("GraphQL Schema Field", association.getName(), schemaType.id);
+                field.setMapping(association.id, toEntityMapping);
+                field.typeReference.setType(mapTypeToEntity(association.typeReference.getType()).id);
+            });
+    }
+
+    return schemaType;
 }
 
-element.typeReference.setType(schemaType.id);
+function mapTypeMessage(mappedElement) {
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedElement.getName().toLowerCase(), "message", "dto"))[0];
+    if (schemaType == null) {
+        schemaType = createElement("GraphQL Schema Type", removeSuffix(mappedElement.getName(), "Message", "DTO", "Dto"), graphQLRoot.id);
+        schemaType.setMapping(mappedElement.id, messageToTypeMapping);
+        mappedElement.getChildren("Message Field").forEach(child =&gt; {
+            const field = createElement("GraphQL Schema Field", child.getName(), schemaType.id);
+            field.setMapping(child.id, messageToTypeMapping);
+            if (child.typeReference.getType().specialization == "Message") {
+                field.typeReference.setType(mapTypeMessage(child.typeReference.getType()).id);
+            }
+        });
+    }
+
+    return schemaType;
+}
+
+if (element.getMapping().mappingSettingsId == toLambdaMapping) {
+    const mappedReturnType = mappedElement.typeReference.getType();
+
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedReturnType.getName().toLowerCase(), "dto"))[0];
+    if (schemaType == null) {
+        schemaType = mapTypeMessage(mappedReturnType);
+    }
+
+    element.typeReference.setType(schemaType.id);
+}
+else if (element.getMapping().mappingSettingsId == toEntityMapping) {
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedElement.getName().toLowerCase(), "entity"))[0];
+
+    if (schemaType == null) {
+        schemaType = mapTypeToEntity(mappedElement);
+    }
+
+    element.typeReference.setType(schemaType.id);
+}
 </script>
                 </macro>
               </macros>
@@ -521,7 +599,7 @@ element.getChildren("GraphQL Schema Field").forEach(field =&gt; {
     }
     return result;
 }
-let params = children("Parameter").map(x =&gt; x.name + ": " + displayType(x.typeReference)).join(", ");
+let params = children("GraphQL Parameter").map(x =&gt; x.name + ": " + displayType(x.typeReference)).join(", ");
 return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</displayFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
@@ -598,24 +676,102 @@ return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</d
                     </mapping>
                   </mappings>
                 </mappingSetting>
+                <mappingSetting id="79d0e613-7688-4b73-8f84-79eba94b8b46">
+                  <name>Map to DynamoDB Entity</name>
+                  <shortcut>ctrl + shift + d</shortcut>
+                  <defaultModeler>9ed374bb-a19c-46b4-ac58-e8adcbd11063</defaultModeler>
+                  <optionsSource>elements-of-type</optionsSource>
+                  <autoSyncTypeReferences>true</autoSyncTypeReferences>
+                  <symbol>fa-long-arrow-right</symbol>
+                  <styleFunction>color: #7782ff;</styleFunction>
+                  <targetTypeOptions>
+                    <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Entity" />
+                  </targetTypeOptions>
+                  <mapFrom>root</mapFrom>
+                  <mappings>
+                    <mapping id="ee3d200c-4374-4035-8387-0bdfba3cf083">
+                      <criteria specializationType="Entity">
+                        <hasTypeReference p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo specializationType="GraphQL Schema Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="true" />
+                      <childMappings />
+                    </mapping>
+                  </mappings>
+                </mappingSetting>
               </mappingSettings>
               <macros>
                 <macro trigger="on-mapped">
-                  <script>const mappedReturnType = element.getMapping().getElement().typeReference.getType();
-const graphQLRoot = element.getParent("GraphQL Endpoint");
+                  <script>const graphQLRoot = element.getParent("GraphQL Endpoint");
+const toLambdaMapping = "20b19dba-5b91-4c7f-b6ce-83709c043587";
+const toEntityMapping = "79d0e613-7688-4b73-8f84-79eba94b8b46";
+const messageToTypeMapping = "026e0fd9-8c8a-4393-9ae0-8763674a0171";
+const entityToTypeMapping = "637e11b2-b420-415a-af5f-5a63312c1ccc";
+const mappedElement = element.getMapping().getElement();
 
-let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
-    .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedReturnType.getName().toLowerCase(), "dto"))[0];
-if (schemaType == null) {
-    schemaType = createElement("GraphQL Schema Type", removeSuffix(mappedReturnType.getName(), "dto", "DTO"), graphQLRoot.id);
-    schemaType.setMapping(mappedReturnType.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
-    mappedReturnType.getChildren().forEach(fied =&gt; {
-        const schemaField = createElement("GraphQL Schema Field", fied.getName(), schemaType.id);
-        schemaField.setMapping(fied.id, "026e0fd9-8c8a-4393-9ae0-8763674a0171");
-    });
+function mapTypeToEntity(mappedElement) {
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedElement.getName().toLowerCase(), "entity"))[0];
+    if (schemaType == null) {
+        schemaType = createElement("GraphQL Schema Type", removeSuffix(mappedElement.getName(), "Entity"), graphQLRoot.id);
+        schemaType.setMapping(mappedElement.id, entityToTypeMapping);
+        mappedElement.getChildren("Attribute").forEach(child =&gt; {
+            const field = createElement("GraphQL Schema Field", child.getName(), schemaType.id);
+            field.setMapping(child.id, toEntityMapping);
+        });
+        mappedElement.getAssociations("Association")
+            .filter(association =&gt; association.isTargetEnd())
+            .forEach(association =&gt; {
+                const field = createElement("GraphQL Schema Field", association.getName(), schemaType.id);
+                field.setMapping(association.id, toEntityMapping);
+                field.typeReference.setType(mapTypeToEntity(association.typeReference.getType()).id);
+            });
+    }
+
+    return schemaType;
 }
 
-element.typeReference.setType(schemaType.id);
+function mapTypeMessage(mappedElement) {
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedElement.getName().toLowerCase(), "message", "dto"))[0];
+    if (schemaType == null) {
+        schemaType = createElement("GraphQL Schema Type", removeSuffix(mappedElement.getName(), "Message", "DTO", "Dto"), graphQLRoot.id);
+        schemaType.setMapping(mappedElement.id, messageToTypeMapping);
+        mappedElement.getChildren("Message Field").forEach(child =&gt; {
+            const field = createElement("GraphQL Schema Field", child.getName(), schemaType.id);
+            field.setMapping(child.id, messageToTypeMapping);
+            if (child.typeReference.getType().specialization == "Message") {
+                field.typeReference.setType(mapTypeMessage(child.typeReference.getType()).id);
+            }
+        });
+    }
+
+    return schemaType;
+}
+
+if (element.getMapping().mappingSettingsId == toLambdaMapping) {
+    const mappedReturnType = mappedElement.typeReference.getType();
+
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedReturnType.getName().toLowerCase(), "dto"))[0];
+    if (schemaType == null) {
+        schemaType = mapTypeMessage(mappedReturnType);
+    }
+
+    element.typeReference.setType(schemaType.id);
+}
+else if (element.getMapping().mappingSettingsId == toEntityMapping) {
+    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
+        .filter(x =&gt; x.getName().toLowerCase() == removeSuffix(mappedElement.getName().toLowerCase(), "entity"))[0];
+
+    if (schemaType == null) {
+        schemaType = mapTypeToEntity(mappedElement);
+    }
+
+    element.typeReference.setType(schemaType.id);
+}
 </script>
                 </macro>
               </macros>
