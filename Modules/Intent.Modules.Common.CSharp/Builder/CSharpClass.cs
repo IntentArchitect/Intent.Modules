@@ -30,6 +30,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public IList<CSharpProperty> Properties { get; } = new List<CSharpProperty>();
     public IList<CSharpClassMethod> Methods { get; } = new List<CSharpClassMethod>();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
+    public IList<CSharpClass> NestedClasses { get; } = new List<CSharpClass>();
 
     public CSharpClass WithBaseType(string type)
     {
@@ -131,6 +132,14 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         return this;
     }
 
+    public CSharpClass AddNestedClass(string name, Action<CSharpClass> configure = null)
+    {
+        var @class = new CSharpClass(name);
+        configure?.Invoke(@class);
+        NestedClasses.Add(@class);
+        return this;
+    }
+
     public CSharpClass InsertMethod(int index, string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
         var method = new CSharpClassMethod(returnType, name);
@@ -188,6 +197,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         return this;
     }
 
+    public CSharpClass Sealed()
+    {
+        IsSealed = true;
+        return this;
+    }
+
     public CSharpClass Abstract()
     {
         if (IsStatic)
@@ -226,6 +241,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
     public bool IsPartial { get; set; }
     public bool IsAbstract { get; set; }
     public bool IsStatic { get; set; }
+    public bool IsSealed { get; set; }
 
     public override string ToString()
     {
@@ -234,7 +250,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetGenericParameters()}{GetBaseTypes()}
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsSealed ? "sealed " : "")}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetGenericParameters()}{GetBaseTypes()}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
@@ -272,9 +288,29 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         codeBlocks.AddRange(Constructors);
         codeBlocks.AddRange(Properties);
         codeBlocks.AddRange(Methods);
+        codeBlocks.AddRange(NestedClasses.Select(s => new CSharpClassCodeBlock(s)));
+        
 
         return $@"{string.Join($@"
 ", codeBlocks.ConcatCode(indentation))}";
+    }
+
+    private class CSharpClassCodeBlock : ICodeBlock
+    {
+        private readonly CSharpClass _class;
+
+        public CSharpClassCodeBlock(CSharpClass @class)
+        {
+            _class = @class;
+            BeforeSeparator = CSharpCodeSeparatorType.NewLine;
+            AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
+        }
+        public CSharpCodeSeparatorType BeforeSeparator { get; set; }
+        public CSharpCodeSeparatorType AfterSeparator { get; set; }
+        public string GetText(string indentation)
+        {
+            return _class.ToString(indentation);
+        }
     }
 
 //    private string GetMembers(string indentation)
