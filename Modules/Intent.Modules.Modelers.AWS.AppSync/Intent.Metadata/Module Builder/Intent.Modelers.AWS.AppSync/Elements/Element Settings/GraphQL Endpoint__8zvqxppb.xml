@@ -178,13 +178,13 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="2b3013bc-2656-4844-b62d-38b595d8cd04" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Association</name>
-          <display>Add Association: Event Stream</display>
+        <childElement id="c10e39b7-5974-422a-8163-cfe30e3893cb" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Resource Access</name>
+          <display>Add Resource Access: Resource Access</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="37ce9a3b-3fa2-4e91-9f23-a78fe9974fd3">
-            <typeId>055db259-36fc-495f-935c-89c847c34c32</typeId>
+          <typeReference id="d6ada48d-126d-4191-b1a7-ae1f7c76d112">
+            <typeId>d3fe616a-e00b-4553-aaa2-41b626e58faa</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -257,7 +257,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let queryType = createElement(&quot;GraphQL Query Type&quot;, &quot;Query&quot;, element.id);&#xD;&#xA;let mutationType = createElement(&quot;GraphQL Mutation Type&quot;, &quot;Mutation&quot;, element.id);" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;GraphQL Query Type&quot;, &quot;Query&quot;, element.id);&#xD;&#xA;createElement(&quot;GraphQL Mutation Type&quot;, &quot;Mutation&quot;, element.id);&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

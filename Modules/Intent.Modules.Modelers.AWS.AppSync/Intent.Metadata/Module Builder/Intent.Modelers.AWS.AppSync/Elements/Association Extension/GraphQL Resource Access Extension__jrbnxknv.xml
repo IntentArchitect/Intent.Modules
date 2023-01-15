@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="60c57bb9-7afb-4604-8181-e48a03161ada" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
-  <name>GraphQL Endpoint Association Extension</name>
-  <display>GraphQL Endpoint Association Extension: Event Stream</display>
+<class id="96f766f2-c8be-48d0-853e-1c29cf11be63" type="Association Extension" typeId="41cb9c1a-063e-4ff4-889a-7501235351eb">
+  <name>GraphQL Resource Access Extension</name>
+  <display>GraphQL Resource Access Extension: Resource Access</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="22649b8f-3cb1-428d-a0c7-a28e8a66f163">
-    <typeId>055db259-36fc-495f-935c-89c847c34c32</typeId>
+  <typeReference id="4341e396-f5c2-4e49-acaa-f58047c23c0d">
+    <typeId>d3fe616a-e00b-4553-aaa2-41b626e58faa</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -23,13 +23,13 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="5a748b3d-001d-46c2-89b5-c37d21cc72cc" type="Association Source End Extension" typeId="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3">
+    <childElement id="9a9a9d5d-f40d-491d-9842-edb2ff463d79" type="Association Source End Extension" typeId="66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3">
       <name>[source]</name>
       <display>[source end extension]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>60c57bb9-7afb-4604-8181-e48a03161ada</parentFolderId>
+      <parentFolderId>96f766f2-c8be-48d0-853e-1c29cf11be63</parentFolderId>
       <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
       <packageName>Intent.Modelers.AWS.AppSync</packageName>
       <stereotypes>
@@ -40,7 +40,7 @@
           <properties>
             <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
             <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
-            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;fe7c2882-9fc6-4a35-bde4-26195d7900eb&quot;]" isActive="true" />
+            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;b45fcd71-d5a3-48c7-9dd5-e6a138080bcf&quot;]" isActive="true" />
             <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
             <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
             <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
@@ -51,13 +51,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="61ed21e5-bb33-4c4d-9514-071bd3702983" type="Association Target End Extension" typeId="1cc6c731-af5f-41a0-9e82-44486f45b903">
+    <childElement id="ad9f08f5-67d6-4370-9de5-908e0391687f" type="Association Target End Extension" typeId="1cc6c731-af5f-41a0-9e82-44486f45b903">
       <name>[destination]</name>
       <display>[target end extension]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>60c57bb9-7afb-4604-8181-e48a03161ada</parentFolderId>
+      <parentFolderId>96f766f2-c8be-48d0-853e-1c29cf11be63</parentFolderId>
       <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
       <packageName>Intent.Modelers.AWS.AppSync</packageName>
       <stereotypes>
@@ -68,7 +68,7 @@
           <properties>
             <property name="e7d1e8c5-6748-4f56-8a92-4f413b598412" display="Display Name" isActive="true" />
             <property name="f957891b-3aef-48b2-9241-71c8a45a8fbb" display="Hint" isActive="true" />
-            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[&quot;fe7c2882-9fc6-4a35-bde4-26195d7900eb&quot;]" isActive="true" />
+            <property name="05d63939-2d01-4b12-8bcf-d6751c7c32b8" display="Target Types" value="[]" isActive="true" />
             <property name="ced53770-7796-42de-850e-5cd523e368f9" display="Default Type Id" isActive="true" />
             <property name="585f6851-b6a5-4d39-9804-256cefcb10ab" display="Allow Navigable" value="Inherit" isActive="true" />
             <property name="c5da195d-90af-4d23-9a62-6aca60a9b304" display="Allow Nullable" value="Inherit" isActive="true" />
@@ -79,13 +79,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="5883647c-26be-4064-a89f-eafe759e31cc" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+    <childElement id="af7e5776-6329-4793-b6d2-7d2d9f208383" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
       <name>[events]</name>
       <display>[events]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>60c57bb9-7afb-4604-8181-e48a03161ada</parentFolderId>
+      <parentFolderId>96f766f2-c8be-48d0-853e-1c29cf11be63</parentFolderId>
       <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
       <packageName>Intent.Modelers.AWS.AppSync</packageName>
       <stereotypes />

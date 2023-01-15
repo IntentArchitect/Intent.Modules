@@ -104,8 +104,8 @@
       </childElements>
     </childElement>
     <childElement id="026e0fd9-8c8a-4393-9ae0-8763674a0171" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
-      <name>Map from DTO</name>
-      <display>[mappings]: Map from DTO</display>
+      <name>Map from Message</name>
+      <display>[mappings]: Map from Message</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
@@ -511,7 +511,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getMapping().mappingSettingsId !== &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;let graphQLRoot = element.getParent(&quot;GraphQL Endpoint&quot;);&#xD;&#xA;element.getChildren(&quot;GraphQL Schema Field&quot;).forEach(field =&gt; {&#xD;&#xA;    if (!field.isMapped || field.typeReference.isTypeFound()) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    let mappedType = field.getMapping().getElement().typeReference.getType();&#xD;&#xA;    let existingSchemaType = graphQLRoot.getChildren(&quot;GraphQL Schema Type&quot;).filter(x =&gt; x.getName().toLowerCase() == mappedType.getName().toLowerCase())[0];&#xD;&#xA;    if (existingSchemaType) {&#xD;&#xA;        field.typeReference.setType(existingSchemaType.id);&#xD;&#xA;    } else {&#xD;&#xA;        let newSchemaType = createElement(&quot;GraphQL Schema Type&quot;, mappedType.getName(), graphQLRoot.id);&#xD;&#xA;        newSchemaType.setMapping(mappedType.id, &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;);&#xD;&#xA;        mappedType.getChildren().forEach(x =&gt; {&#xD;&#xA;            let newSchemaField = createElement(&quot;GraphQL Schema Field&quot;, x.getName(), newSchemaType.id);&#xD;&#xA;            newSchemaField.setMapping(x.id, &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;);&#xD;&#xA;        });&#xD;&#xA;&#xD;&#xA;        field.typeReference.setType(newSchemaType.id);&#xD;&#xA;    }&#xD;&#xA;});&#xD;&#xA;" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getMapping().mappingSettingsId !== &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const graphQLRoot = element.getParent(&quot;GraphQL Endpoint&quot;);&#xD;&#xA;element.getChildren(&quot;GraphQL Schema Field&quot;).forEach(field =&gt; {&#xD;&#xA;    if (!field.isMapped || field.typeReference.isTypeFound()) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    const mappedType = field.getMapping().getElement().typeReference.getType();&#xD;&#xA;&#xD;&#xA;    let schemaType = graphQLRoot.getChildren(&quot;GraphQL Schema Type&quot;)&#xD;&#xA;        .filter(x =&gt; x.getName().toLowerCase() == mappedType.getName().toLowerCase())[0];&#xD;&#xA;    if (schemaType == null) {&#xD;&#xA;        schemaType = createElement(&quot;GraphQL Schema Type&quot;, mappedType.getName(), graphQLRoot.id);&#xD;&#xA;        schemaType.setMapping(mappedType.id, &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;);&#xD;&#xA;        mappedType.getChildren().forEach(x =&gt; {&#xD;&#xA;            const schemaField = createElement(&quot;GraphQL Schema Field&quot;, x.getName(), schemaType.id);&#xD;&#xA;            schemaField.setMapping(x.id, &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;);&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    field.typeReference.setType(schemaType.id);&#xD;&#xA;});&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
