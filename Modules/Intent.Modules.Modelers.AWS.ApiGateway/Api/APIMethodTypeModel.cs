@@ -12,20 +12,21 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.ApiGateway.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class APIMethodModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class APIMethodTypeModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
-        public const string SpecializationType = "API Method";
-        public const string SpecializationTypeId = "cb7ae7cf-cf9a-4950-83e4-83533d72cec0";
+        public const string SpecializationType = "API Method Type";
+        public const string SpecializationTypeId = "9068f9a7-015b-410c-9e9b-fe97a647ec8a";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public APIMethodModel(IElement element, string requiredType = SpecializationType)
+        public APIMethodTypeModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -36,7 +37,7 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        public ITypeReference TypeReference => _element.TypeReference;
+        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 
@@ -45,7 +46,7 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
             return _element.ToString();
         }
 
-        public bool Equals(APIMethodModel other)
+        public bool Equals(APIMethodTypeModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -55,7 +56,7 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((APIMethodModel)obj);
+            return Equals((APIMethodTypeModel)obj);
         }
 
         public override int GetHashCode()
@@ -65,17 +66,17 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class APIMethodModelExtensions
+    public static class APIMethodTypeModelExtensions
     {
 
-        public static bool IsAPIMethodModel(this ICanBeReferencedType type)
+        public static bool IsAPIMethodTypeModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == APIMethodModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == APIMethodTypeModel.SpecializationTypeId;
         }
 
-        public static APIMethodModel AsAPIMethodModel(this ICanBeReferencedType type)
+        public static APIMethodTypeModel AsAPIMethodTypeModel(this ICanBeReferencedType type)
         {
-            return type.IsAPIMethodModel() ? new APIMethodModel((IElement)type) : null;
+            return type.IsAPIMethodTypeModel() ? new APIMethodTypeModel((IElement)type) : null;
         }
     }
 }

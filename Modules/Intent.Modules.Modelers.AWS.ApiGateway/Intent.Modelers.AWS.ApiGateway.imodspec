@@ -25,5 +25,6 @@
   <metadata>
     <install target="Application" src="modelers/AWS API Gateway Extensions.designer.settings" externalReference="077e87f4-cecf-4804-922d-172a1ef894f1" />
     <install target="Application;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.ApiGateway/Intent.Modelers.AWS.ApiGateway.pkg.config" externalReference="208d59fd-d1c0-4c87-aaca-28bd5bf97032" />
+    <install target="Module Builder" src="modelers/Module Builder Extensions.designer.settings" externalReference="60f15d6f-2fe5-4cfb-aed3-e9484130a439" />
   </metadata>
 </package>

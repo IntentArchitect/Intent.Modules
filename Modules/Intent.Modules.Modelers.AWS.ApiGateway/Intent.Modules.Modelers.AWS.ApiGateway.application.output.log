@@ -26,6 +26,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#9068f9a7-015b-410c-9e9b-fe97a647ec8a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/APIMethodTypeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>APIMethodTypeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#9068f9a7-015b-410c-9e9b-fe97a647ec8a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/APIMethodTypeModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>APIMethodTypeModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#58fa3b8b-0ce2-40c1-9113-dcccfc8cae67</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/APIResourceModel.cs</ApplicationRelativeFilePath>
@@ -46,6 +62,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSAPIGatewayFolderExtensionsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWSAPIGatewayFolderExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#6ffe061e-6faa-4157-9ce4-ae492132d5dc</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSAPIGatewayModuleBuilderFolderExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSAPIGatewayModuleBuilderFolderExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -86,6 +110,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/AWS API Gateway Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWS API Gateway Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>637bfac2-c8a0-4ffc-af87-d1819bcb7924</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#60f15d6f-2fe5-4cfb-aed3-e9484130a439</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Module Builder Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Module Builder Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

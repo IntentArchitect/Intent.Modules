@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="e06223c9-e59d-4bef-b106-f70bcda1d701" type="API Method Type" typeId="9068f9a7-015b-410c-9e9b-fe97a647ec8a">
+  <name>OPTIONS</name>
+  <display>OPTIONS</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>48b601b0-d7d8-4420-b7af-cd8ddd432d73</parentFolderId>
+  <packageId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</packageId>
+  <packageName>Intent.Modelers.AWS.ApiGateway</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="979e54e0-1d30-4c87-96ff-42b34cba33d9" name="API Method Type Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.Modelers.AWS.ApiGateway</definitionPackageName>
+      <definitionPackageId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</definitionPackageId>
+      <properties>
+        <property name="09461b9b-aed2-4e09-b5df-c89aa149e29c" display="Icon" value="{&quot;type&quot;:3,&quot;source&quot;:&quot;O|#777575&quot;}" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

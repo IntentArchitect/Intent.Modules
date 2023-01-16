@@ -18,5 +18,12 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
                 .ToList();
         }
 
+        public static IList<APIMethodTypeModel> GetAPIMethodTypeModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(APIMethodTypeModel.SpecializationTypeId)
+                .Select(x => new APIMethodTypeModel(x))
+                .ToList();
+        }
+
     }
 }

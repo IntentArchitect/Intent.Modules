@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="a52fe34f-abf2-4ce5-b69e-e8549d7cba84" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: API Gateway</display>
+  <display>[visual]: API Method</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>3</order>
+  <order>1</order>
   <genericTypes />
   <typeReference id="35ae8030-7893-4717-b2ee-52976b473d78">
-    <typeId>c0028dcd-38fd-42e4-b7d5-1c639d8899bd</typeId>
+    <typeId>cb7ae7cf-cf9a-4950-83e4-83533d72cec0</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -19,7 +19,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>c0028dcd-38fd-42e4-b7d5-1c639d8899bd</parentFolderId>
+  <parentFolderId>cb7ae7cf-cf9a-4950-83e4-83533d72cec0</parentFolderId>
   <packageId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</packageId>
   <packageName>Intent.Modelers.AWS.ApiGateway</packageName>
   <stereotypes>
@@ -38,8 +38,8 @@
   <metadata />
   <childElements>
     <childElement id="e090db0c-9c6e-48ac-a444-65726a80516c" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-      <name>Display Label</name>
-      <display>[draw text]: Display Label</display>
+      <name>HTTP Verb</name>
+      <display>[draw text]: HTTP Verb</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -52,7 +52,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return element.typeReference.getType()?.getName() ?? &quot;UNKNOWN&quot;;" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
           </properties>
@@ -73,8 +73,8 @@
       <childElements />
     </childElement>
     <childElement id="007df01a-d876-45c0-a164-bb1538e86c97" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-      <name>Display 'function'</name>
-      <display>[draw text]: Display 'function'</display>
+      <name>Route</name>
+      <display>[draw text]: Route</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -87,7 +87,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'endpoint';" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="let route = &quot;&quot;;&#xD;&#xA;let currentElement = element.getParent();&#xD;&#xA;while (currentElement.specialization === &quot;API Resource&quot;) {&#xD;&#xA;    route = `/${currentElement.getName()}${route}`;&#xD;&#xA;    currentElement = currentElement.getParent();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return route;&#xD;&#xA;" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: normal; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
           </properties>

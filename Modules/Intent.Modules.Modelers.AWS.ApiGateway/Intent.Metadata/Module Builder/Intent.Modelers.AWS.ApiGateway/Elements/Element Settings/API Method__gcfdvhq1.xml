@@ -19,7 +19,7 @@
         <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Required" isActive="true" />
         <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="true" />
         <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
-        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;de02db8b-e18f-423c-b4da-5f717a04075e&quot;]" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;9068f9a7-015b-410c-9e9b-fe97a647ec8a&quot;]" isActive="true" />
         <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
         <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
         <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="false" isActive="true" />
@@ -34,10 +34,10 @@
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;type&quot;:3,&quot;source&quot;:&quot;P|#35824F&quot;}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
-        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" value="return {&#xD;&#xA;    'ANY': 'A|#A456BD',&#xD;&#xA;    'DELETE': 'D|#D63838',&#xD;&#xA;    'GET': 'G|#4678AA',&#xD;&#xA;    'HEAD': 'H|#16167e',&#xD;&#xA;    'OPTIONS': 'O#777575|',&#xD;&#xA;    'PATCH': 'P|#AE6229',&#xD;&#xA;    'POST': 'P|#35824F',&#xD;&#xA;    'PUT': 'P|#8d673d'&#xD;&#xA;}[getName()] ?? `?|#000000`;" isActive="true" />
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
-        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="const valid = ['ANY', 'DELETE', 'GET', 'HEAD', 'OPTIONS', 'PATCH', 'POST', 'PUT'];&#xD;&#xA;if (!valid.some(x =&gt; getName().toUpperCase() == x)) {&#xD;&#xA;    return 'Must one of the following: ANY, DELETE, GET, HEAD, OPTIONS, PATCH, POST or PUT';&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return null;" isActive="true" />
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" value="if (typeReference.getType() == null) {&#xD;&#xA;    return &quot;?|#000000&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const icon = typeReference.getType().getStereotype(&quot;API Method Type Settings&quot;).getProperty(&quot;Icon&quot;).getValue();&#xD;&#xA;&#xD;&#xA;return JSON.parse(icon).source;&#xD;&#xA;" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="const lambdaFunctionName = getAssociations()&#xD;&#xA;    .filter(x =&gt; x.typeReference.getType()?.specialization === &quot;Lambda Function&quot;)[0]?.getName() ?? &quot;UNKNOWN&quot;;&#xD;&#xA;const apiMethodType = typeReference.getType()?.getName() ?? &quot;UNKNOWN&quot;;&#xD;&#xA;&#xD;&#xA;return `${apiMethodType}: ${lambdaFunctionName}`;" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
@@ -53,6 +53,7 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>cb7ae7cf-cf9a-4950-83e4-83533d72cec0</parentFolderId>
@@ -60,7 +61,46 @@
       <packageName>Intent.Modelers.AWS.ApiGateway</packageName>
       <stereotypes />
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="ffb5fb20-dd0e-497b-937a-ba6fb92906f3" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Event Destination</name>
+          <display>Add Event Destination: Event Stream</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="8b852534-2f15-4bac-9920-7f93c2950007">
+            <typeId>055db259-36fc-495f-935c-89c847c34c32</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS</typePackageName>
+            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>94efc968-d510-48a6-86f7-ae8824955c39</parentFolderId>
+          <packageId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</packageId>
+          <packageName>Intent.Modelers.AWS.ApiGateway</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + e" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
     </childElement>
     <childElement id="0542917c-6779-4f91-97f3-9b4feb214a63" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
       <name>NewElementEventSettings</name>

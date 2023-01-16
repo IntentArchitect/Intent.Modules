@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="48b601b0-d7d8-4420-b7af-cd8ddd432d73" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>API Method Types</name>
+  <display>API Method Types</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</parentFolderId>
+  <packageId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</packageId>
+  <packageName>Intent.Modelers.AWS.ApiGateway</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

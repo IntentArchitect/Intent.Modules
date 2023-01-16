@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>60f15d6f-2fe5-4cfb-aed3-e9484130a439</id>
+  <name>Module Builder Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions />
+  <elementSettings>
+    <elementSetting type="API Method Type" typeId="9068f9a7-015b-410c-9e9b-fe97a647ec8a">
+      <icon type="CharacterBox" source="P|#35824F" />
+      <iconFunction>console.log("val", element.getStereotypes()[0].getProperty("Icon").getValue());
+console.log("source", JSON.parse(element.getStereotypes()[0].getProperty("Icon").getValue()).source);
+
+
+return JSON.parse(element.getStereotypes()[0].getProperty("Icon").getValue()).source;</iconFunction>
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>API Method Type</specializationType>
+          <specializationTypeId>9068f9a7-015b-410c-9e9b-fe97a647ec8a</specializationTypeId>
+          <text>New API Method Type</text>
+          <shortcut>ctrl + shift + m</shortcut>
+          <defaultName>ApiGateway</defaultName>
+          <icon type="CharacterBox" source="P|#35824F" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>API Method Type</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions />
+</settings>
