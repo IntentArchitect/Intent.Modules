@@ -54,7 +54,7 @@
           <specializationTypeId>aeefe262-149c-45eb-ae54-97792a0d00b4</specializationTypeId>
           <text>Add Choice</text>
           <defaultName>NewChoice</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAnNJREFUaEPtl91x00AUhc+VPYMCD7iEUAHuwMkrExGrAuwO1EGcCggVWKlACvbwijvAHQAdmAewMoN8Mysss8j631VmwqxfPLa0d+93ztnVivDEP6Sr/8C+OLOA0Q79WzcKv+mqW1VHI8DbGYGvGHzuRstV1cS6rhuAVMnANg60SpWJkIlQq+D8HWQiZCJkIqSowH8RoeC5M6YYcxAGYFpz//fU/flprUmb0jJKu1AwGA9oG4vGxwC+M8gn7DyAXhJ4dhktr7uGaA0gjs8EmgM4ZeAWds9zN+EmsMenFmKfgdFjuNEYQKhubeMrJngA/2CLJu6vRZhVOjhxPGKede1GI4B/VCfc4VlvIlQvisljuFEbIFmoOwRlqheCJG7gPRgb7sfnOhd4bYA721mxyLvdG5apXgjx4s2Q4t4XBl270ceZrsXdCEBMehktztpOHtoOG4CMesaBJnEyEcpRy0TIRKiJAnUjJM472YeVeJB18RzIm6sJ09Ea+HNE3n0G8XocLaZpsTyA0HbEaRTyfeJ3WoOJP7jRwk9rZHehormUAJIGbMcn4B0AP20uC7BvfiKO0m60mMiTJifW+3jFjNcMTFMIGUBqfijf06R5cW/hLpSFkAHKmj+8YuZApACwrZu9y0rNlwJknSDglfiPga8AcpU/eifIQBAwF7GinTUCsXLzlQAZiEN/ebEpPIVKEPI9KrGR69R6kElxEg4cZb4qt/Ka2Lt4WBdVY6uu1wJInDi5uBHf7nbpVRXNuy4gcB/7YITyztSmVmMHVCfpcnxtB7psQqW2AVBRT8dY44AOFVVqGAdU1NMx1jigQ0WVGk/egQdUHfBA+ZiB6gAAAABJRU5ErkJggg==" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
@@ -78,7 +78,7 @@
           <specializationTypeId>3b12caab-9c7b-4e23-be35-7cdf53c45e61</specializationTypeId>
           <text>Add Success</text>
           <defaultName>NewSuccess</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
@@ -168,7 +168,7 @@ vertical-align: center`</style>
       </macros>
       <childElementSettings>
         <childElementSetting type="Choice" typeId="aeefe262-149c-45eb-ae54-97792a0d00b4">
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAnNJREFUaEPtl91x00AUhc+VPYMCD7iEUAHuwMkrExGrAuwO1EGcCggVWKlACvbwijvAHQAdmAewMoN8Mysss8j631VmwqxfPLa0d+93ztnVivDEP6Sr/8C+OLOA0Q79WzcKv+mqW1VHI8DbGYGvGHzuRstV1cS6rhuAVMnANg60SpWJkIlQq+D8HWQiZCJkIqSowH8RoeC5M6YYcxAGYFpz//fU/flprUmb0jJKu1AwGA9oG4vGxwC+M8gn7DyAXhJ4dhktr7uGaA0gjs8EmgM4ZeAWds9zN+EmsMenFmKfgdFjuNEYQKhubeMrJngA/2CLJu6vRZhVOjhxPGKede1GI4B/VCfc4VlvIlQvisljuFEbIFmoOwRlqheCJG7gPRgb7sfnOhd4bYA721mxyLvdG5apXgjx4s2Q4t4XBl270ceZrsXdCEBMehktztpOHtoOG4CMesaBJnEyEcpRy0TIRKiJAnUjJM472YeVeJB18RzIm6sJ09Ea+HNE3n0G8XocLaZpsTyA0HbEaRTyfeJ3WoOJP7jRwk9rZHehormUAJIGbMcn4B0AP20uC7BvfiKO0m60mMiTJifW+3jFjNcMTFMIGUBqfijf06R5cW/hLpSFkAHKmj+8YuZApACwrZu9y0rNlwJknSDglfiPga8AcpU/eifIQBAwF7GinTUCsXLzlQAZiEN/ebEpPIVKEPI9KrGR69R6kElxEg4cZb4qt/Ka2Lt4WBdVY6uu1wJInDi5uBHf7nbpVRXNuy4gcB/7YITyztSmVmMHVCfpcnxtB7psQqW2AVBRT8dY44AOFVVqGAdU1NMx1jigQ0WVGk/egQdUHfBA+ZiB6gAAAABJRU5ErkJggg==" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <displayFunction>return `${getName()} (Choice)`;</displayFunction>
           <allowRename>true</allowRename>
@@ -198,24 +198,39 @@ vertical-align: center`</style>
           <scriptOptions />
           <mappingSettings />
           <visualSettings type="Choice">
-            <size width="${w}" height="${h}" />
+            <size width="${w}" height="40" />
             <position x="${x}" y="${y}" />
             <display>
               <drawPath>
                 <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
               </drawPath>
+              <drawPath>
+                <path>`M${x + 3},${y + 6} v${h - 12}`</path>
+              </drawPath>
+              <drawText>
+                <text>return 'Choice state';</text>
+                <style>`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`</style>
+                <size width="${w - 54}" height="14" />
+                <position x="${x + 50}" y="${y + 4}" />
+              </drawText>
               <drawText>
                 <text>return `${getName()} (Choice)`;</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
-text-align: center; 
+text-align: left; 
 white-space: inherit;`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 8}" />
+                <size width="${w - 54}" height="18" />
+                <position x="${x + 50}" y="${y + 20}" />
               </drawText>
+              <drawSvgResource>
+                <path>./choice-state-symbol.svg</path>
+                <size width="38" height="38" />
+                <position x="${x + 7}" y="${y+1}" />
+              </drawSvgResource>
             </display>
-            <defaultSize width="${x}" height="${y}" />
+            <defaultSize width="${x}" height="40" />
             <childElementVisualSettings />
           </visualSettings>
           <childElementSettings />
@@ -388,17 +403,21 @@ white-space: inherit;`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawPath>
-                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <path>`M ${x}, ${y + h/2}    a ${w/2},${h/2} 0 1,0 ${w},0    a ${w/2},${h/2} 0 1,0 -${w},0`</path>
+                <fillColor>return theme.isDark ? "#694e01" : "#fddf8b"</fillColor>
               </drawPath>
               <drawText>
-                <text>return `${getName()} (Start)`;</text>
+                <text>return 'Start';</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
-text-align: center; 
-white-space: inherit;`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 8}" />
+text-align: center;
+white-space: normal;
+display: flex;
+justify-content: center;
+align-items: center;`</style>
+                <size width="${w}" height="${h}" />
+                <position x="${x}" y="${y}" />
               </drawText>
             </display>
             <defaultSize width="${x}" height="${y}" />
@@ -441,17 +460,21 @@ white-space: inherit;`</style>
             <position x="${x}" y="${y}" />
             <display>
               <drawPath>
-                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <path>`M ${x}, ${y + h/2}    a ${w/2},${h/2} 0 1,0 ${w},0    a ${w/2},${h/2} 0 1,0 -${w},0`</path>
+                <fillColor>return theme.isDark ? "#694e01" : "#fddf8b"</fillColor>
               </drawPath>
               <drawText>
-                <text>return `${getName()} (End)`;</text>
+                <text>return 'End';</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
-text-align: center; 
-white-space: inherit;`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 8}" />
+text-align: center;
+white-space: normal;
+display: flex;
+justify-content: center;
+align-items: center;`</style>
+                <size width="${w}" height="${h}" />
+                <position x="${x}" y="${y}" />
               </drawText>
             </display>
             <defaultSize width="${x}" height="${y}" />
@@ -460,7 +483,7 @@ white-space: inherit;`</style>
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Success" typeId="3b12caab-9c7b-4e23-be35-7cdf53c45e61">
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <displayFunction>return `${getName()} (Success)`;</displayFunction>
           <allowRename>true</allowRename>
@@ -495,17 +518,32 @@ white-space: inherit;`</style>
             <display>
               <drawPath>
                 <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
+              </drawPath>
+              <drawPath>
+                <path>`M${x + 3},${y + 6} v${h - 12}`</path>
               </drawPath>
               <drawText>
-                <text>return `${getName()} (Success)`;</text>
+                <text>return 'Success state';</text>
+                <style>`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`</style>
+                <size width="${w - 54}" height="14" />
+                <position x="${x + 50}" y="${y + 4}" />
+              </drawText>
+              <drawText>
+                <text>return `${getName()} (Choice)`;</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
-text-align: center; 
+text-align: left; 
 white-space: inherit;`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 8}" />
+                <size width="${w - 54}" height="18" />
+                <position x="${x + 50}" y="${y + 20}" />
               </drawText>
+              <drawSvgResource>
+                <path>./success-state-symbol.svg</path>
+                <size width="38" height="38" />
+                <position x="${x + 7}" y="${y+1}" />
+              </drawSvgResource>
             </display>
             <defaultSize width="${x}" height="${y}" />
             <childElementVisualSettings />
