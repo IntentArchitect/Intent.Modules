@@ -11,10 +11,10 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<APIGatewayEndpointModel> GetAPIGatewayEndpointModels(this IDesigner designer)
+        public static IList<APIGatewayModel> GetAPIGatewayModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(APIGatewayEndpointModel.SpecializationTypeId)
-                .Select(x => new APIGatewayEndpointModel(x))
+            return designer.GetElementsOfType(APIGatewayModel.SpecializationTypeId)
+                .Select(x => new APIGatewayModel(x))
                 .ToList();
         }
 

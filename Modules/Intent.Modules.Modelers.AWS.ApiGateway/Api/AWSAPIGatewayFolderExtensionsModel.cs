@@ -19,9 +19,9 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
         {
         }
 
-        public IList<APIGatewayEndpointModel> APIEndpoints => _element.ChildElements
-            .GetElementsOfType(APIGatewayEndpointModel.SpecializationTypeId)
-            .Select(x => new APIGatewayEndpointModel(x))
+        public IList<APIGatewayModel> APIGateways => _element.ChildElements
+            .GetElementsOfType(APIGatewayModel.SpecializationTypeId)
+            .Select(x => new APIGatewayModel(x))
             .ToList();
 
     }

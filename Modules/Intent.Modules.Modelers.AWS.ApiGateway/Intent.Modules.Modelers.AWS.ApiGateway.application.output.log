@@ -12,16 +12,24 @@
       <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c0028dcd-38fd-42e4-b7d5-1c639d8899bd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIGatewayEndpointModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIGatewayEndpointModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/APIGatewayModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>APIGatewayModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#c0028dcd-38fd-42e4-b7d5-1c639d8899bd</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#cb7ae7cf-cf9a-4950-83e4-83533d72cec0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/APIGatewayEndpointModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>APIGatewayEndpointModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/APIMethodModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>APIMethodModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ab8fc3fd-c7ef-4382-b69e-143e69025a08</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#58fa3b8b-0ce2-40c1-9113-dcccfc8cae67</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/APIResourceModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>APIResourceModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
