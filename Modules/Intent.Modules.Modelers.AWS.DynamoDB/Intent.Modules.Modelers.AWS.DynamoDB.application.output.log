@@ -66,14 +66,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#8b6ad332-78da-4e2b-9a94-a9dc44a32f65</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DynamoDBModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DynamoDBModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBTableModel.cs</ApplicationRelativeFilePath>
@@ -126,14 +118,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/SortKeyModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>SortKeyModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>64114b95-846e-4f79-b865-b0e9dd07a2b6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
