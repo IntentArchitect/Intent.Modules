@@ -1,4 +1,8 @@
-﻿### Version 3.3.26
+﻿### Version 3.3.27
+
+- New: Added Generic Type Constraint support.
+
+### Version 3.3.26
 
 - New statement classes added:
   - CSharpLambdaBlock
