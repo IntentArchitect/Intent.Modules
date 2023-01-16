@@ -1,4 +1,14 @@
-﻿### Version 3.3.17
+﻿### Version 3.3.18
+
+The following extension methods now use the Humanizer library's implementation and will also now remove any `-` characters present:
+
+- `.ToCamelCase()`
+- `.ToDotCase()`
+- `.ToKebabCase()` (does not remove `-` characters)
+- `.ToPascalCase()`
+- `.ToSnakeCase()`
+
+### Version 3.3.17
 
 - Fixed: The GetTypeName system would discused generic type arguments for some languages.
 
