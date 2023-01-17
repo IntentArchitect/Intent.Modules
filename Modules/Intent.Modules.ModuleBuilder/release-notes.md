@@ -1,5 +1,6 @@
 ### Version 3.4.1
 
+- Feature: Support for explicit Element / Association Vision Settings for Diagrams.
 - Fixed: Association Extensions applying source-end settings to target-end.
 
 ### Version 3.4.0

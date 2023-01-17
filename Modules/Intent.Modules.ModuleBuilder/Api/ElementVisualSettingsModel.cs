@@ -95,6 +95,7 @@ namespace Intent.ModuleBuilder.Api
             return new ElementVisualSettingsPersistable()
             {
                 SpecializationType = this.TypeReference.Element.Name,
+                SpecializationTypeId = this.TypeReference.Element.Id,
                 Position = new PositionSettings()
                 {
                     X = this.GetPositionSettings().X() ?? "${x}",

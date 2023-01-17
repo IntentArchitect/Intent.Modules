@@ -6,15 +6,16 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
 
 namespace Intent.ModuleBuilder.Api
 {
-    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class DiagramSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Diagram Settings";
+        public const string SpecializationTypeId = "67d711dd-3918-4b28-b2a0-4d845884e17a";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Ignore)]
@@ -27,24 +28,32 @@ namespace Intent.ModuleBuilder.Api
             _element = element;
         }
 
-        [IntentManaged(Mode.Fully)]
         public string Id => _element.Id;
 
-        [IntentManaged(Mode.Fully)]
         public string Name => _element.Name;
 
-        [IntentManaged(Mode.Fully)]
+        public string Comment => _element.Comment;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
-        [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
 
-        [IntentManaged(Mode.Fully)]
         public ContextMenuModel MenuOptions => _element.ChildElements
             .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
+        public IList<ElementVisualSettingsModel> ElementVisualSettings => _element.ChildElements
+            .GetElementsOfType(ElementVisualSettingsModel.SpecializationTypeId)
+            .Select(x => new ElementVisualSettingsModel(x))
+            .ToList();
+
+        public IList<AssociationVisualSettingsModel> AssociationVisualSettings => _element.ChildElements
+            .GetElementsOfType(AssociationVisualSettingsModel.SpecializationTypeId)
+            .Select(x => new AssociationVisualSettingsModel(x))
+            .ToList();
+
+        [IntentManaged(Mode.Ignore)]
         public DiagramSettings ToPersistable()
         {
             return new DiagramSettings()
@@ -52,16 +61,16 @@ namespace Intent.ModuleBuilder.Api
                 CreationOptions = MenuOptions?.ElementCreations.Select(x => x.ToPersistable()).ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
                 AddNewElementsTo = DiagramAddNewElementsTo.Package,
+                ElementVisualSettings = ElementVisualSettings.Select(x => x.ToPersistable()).ToList(),
+                AssociationVisualSettings = AssociationVisualSettings.Select(x => x.ToPersistable()).ToList()
             };
         }
 
-        [IntentManaged(Mode.Fully)]
         public bool Equals(DiagramSettingsModel other)
         {
             return Equals(_element, other?._element);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override bool Equals(object obj)
         {
             if (ReferenceEquals(null, obj)) return false;
@@ -70,25 +79,15 @@ namespace Intent.ModuleBuilder.Api
             return Equals((DiagramSettingsModel)obj);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
 
-        [IntentManaged(Mode.Fully)]
         public override string ToString()
         {
             return _element.ToString();
         }
-        public const string SpecializationTypeId = "67d711dd-3918-4b28-b2a0-4d845884e17a";
-
-        public string Comment => _element.Comment;
-
-        public ElementEventSettingsModel EventSettings => _element.ChildElements
-                    .GetElementsOfType(ElementEventSettingsModel.SpecializationTypeId)
-                    .Select(x => new ElementEventSettingsModel(x))
-                    .SingleOrDefault();
     }
 
     [IntentManaged(Mode.Fully)]

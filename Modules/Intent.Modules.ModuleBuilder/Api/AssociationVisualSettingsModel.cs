@@ -82,6 +82,8 @@ namespace Intent.ModuleBuilder.Api
         {
             return new AssociationVisualSettingsPersistable()
             {
+                //SpecializationType = this.TypeReference.Element.Id, // TODO: GCB - this is already respected by IA in V3.4.1
+                //SpecializationTypeId = this.TypeReference.Element.Id, // TODO: GCB - this is already respected by IA in V3.4.1
                 LineColor = this.GetSetting().LineColor(),
                 LineWidth = this.GetSetting().LineWidth(),
                 LineDashArray = this.GetSetting().LineDashArray(),

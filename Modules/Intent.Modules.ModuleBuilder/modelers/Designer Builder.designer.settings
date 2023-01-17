@@ -1351,6 +1351,8 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <allowSetValue>false</allowSetValue>
           <typeOrder>
             <type order="0">Context Menu</type>
+            <type order="1">Element Visual Settings</type>
+            <type order="2">Association Visual Settings</type>
           </typeOrder>
           <creationOptions>
             <option type="element">
@@ -1361,6 +1363,22 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <defaultName>[context menu]</defaultName>
               <icon type="CharacterBox" source="C|#ad2121" />
               <allowMultiple>false</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Element Visual Settings</specializationType>
+              <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
+              <text>Add Element Visual Settings</text>
+              <defaultName>[element visual]</defaultName>
+              <icon type="CharacterBox" source="V|#FFEE58" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+            <option type="element">
+              <specializationType>Association Visual Settings</specializationType>
+              <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
+              <text>Add Association Visual Settings</text>
+              <defaultName>[association visual]</defaultName>
+              <icon type="CharacterBox" source="V|#AB47BC" />
+              <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
           <scriptOptions />
