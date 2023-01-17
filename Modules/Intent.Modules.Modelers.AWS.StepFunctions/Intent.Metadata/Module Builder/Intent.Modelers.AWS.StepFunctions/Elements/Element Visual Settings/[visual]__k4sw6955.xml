@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e7d2ba14-9059-4689-9cfa-a3b669f58399" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+<class id="408e37f8-5abb-40ab-a899-cf133b34dc9f" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: Success</display>
+  <display>[visual]: Lambda Function</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="55ee64b5-479d-402d-9a1c-2c856d9e1243">
-    <typeId>3b12caab-9c7b-4e23-be35-7cdf53c45e61</typeId>
+  <typeReference id="df3670ce-cc81-4eae-89b0-39f02e4d0c08">
+    <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
-    <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
+    <typePackageName>Intent.Modelers.AWS.Lambda</typePackageName>
+    <typePackageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -29,19 +29,19 @@
         <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
         <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
         <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
-        <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" isActive="true" />
+        <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="40" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="a0c0b646-8e07-4534-8377-bbc648228943" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+    <childElement id="4a13bb40-8188-4fd6-ae47-b47938e6451d" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
       <name>Rectangle</name>
       <display>[draw path]: Rectangle</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>408e37f8-5abb-40ab-a899-cf133b34dc9f</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -62,13 +62,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="bd18473c-853c-4501-bc10-368a1fc1ae5e" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+    <childElement id="2abad469-6755-49f8-a853-8e0c88ac8e3f" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
       <name>Line on the left</name>
       <display>[draw path]: Line on the left</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>408e37f8-5abb-40ab-a899-cf133b34dc9f</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -89,13 +89,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="3d6d9314-f858-4a28-89e7-1162d84fe8f2" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-      <name>Display 'Success State'</name>
-      <display>[draw text]: Display 'Success State'</display>
+    <childElement id="9ae428ea-2413-403f-93ea-1a1dbc2d799e" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Display 'Lambda: Invoke'</name>
+      <display>[draw text]: Display 'Lambda: Invoke'</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>408e37f8-5abb-40ab-a899-cf133b34dc9f</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -104,7 +104,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'Success state';" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'Lambda: Invoke';" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`" isActive="true" />
           </properties>
@@ -124,13 +124,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="4e3d4990-4e50-4744-828b-aa4f8858d813" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+    <childElement id="5beb9547-39bf-4823-98a7-295e5478d6d3" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Display Text</name>
       <display>[draw text]: Display Text</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>408e37f8-5abb-40ab-a899-cf133b34dc9f</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -139,7 +139,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return `${getName()} (Choice)`;" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return `${getName()}`;" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: left; &#xD;&#xA;white-space: inherit;`" isActive="true" />
           </properties>
@@ -159,13 +159,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="a1b45d48-a19b-4391-b6c5-740c8c4a86ac" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+    <childElement id="e784ac3c-fac5-4b9e-b93e-74bb1bf362ce" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
       <name>Symbol</name>
       <display>[draw svg]: Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>408e37f8-5abb-40ab-a899-cf133b34dc9f</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -174,7 +174,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="./success-state-symbol.svg" isActive="true" />
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="./aws-lambda-symbol.svg" isActive="true" />
             <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" isActive="true" />
           </properties>
         </stereotype>

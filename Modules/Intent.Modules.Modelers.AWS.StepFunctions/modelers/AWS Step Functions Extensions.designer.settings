@@ -121,8 +121,119 @@
         <addNewElementsTo>Package</addNewElementsTo>
         <creationOptions />
         <scriptOptions />
+        <elementVisualSettings>
+          <visualSettings type="Success" typeId="3b12caab-9c7b-4e23-be35-7cdf53c45e61">
+            <size width="${w}" height="${h}" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawPath>
+                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
+              </drawPath>
+              <drawPath>
+                <path>`M${x + 3},${y + 6} v${h - 12}`</path>
+              </drawPath>
+              <drawText>
+                <text>return 'Success state';</text>
+                <style>`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`</style>
+                <size width="${w - 54}" height="14" />
+                <position x="${x + 50}" y="${y + 4}" />
+              </drawText>
+              <drawText>
+                <text>return `${getName()} (Choice)`;</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: left; 
+white-space: inherit;`</style>
+                <size width="${w - 54}" height="18" />
+                <position x="${x + 50}" y="${y + 20}" />
+              </drawText>
+              <drawSvgResource>
+                <path>./success-state-symbol.svg</path>
+                <size width="38" height="38" />
+                <position x="${x + 7}" y="${y+1}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="${y}" />
+            <childElementVisualSettings />
+          </visualSettings>
+          <visualSettings type="Choice" typeId="aeefe262-149c-45eb-ae54-97792a0d00b4">
+            <size width="${w}" height="40" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawPath>
+                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
+              </drawPath>
+              <drawPath>
+                <path>`M${x + 3},${y + 6} v${h - 12}`</path>
+              </drawPath>
+              <drawText>
+                <text>return 'Choice state';</text>
+                <style>`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`</style>
+                <size width="${w - 54}" height="14" />
+                <position x="${x + 50}" y="${y + 4}" />
+              </drawText>
+              <drawText>
+                <text>return `${getName()} (Choice)`;</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: left; 
+white-space: inherit;`</style>
+                <size width="${w - 54}" height="18" />
+                <position x="${x + 50}" y="${y + 20}" />
+              </drawText>
+              <drawSvgResource>
+                <path>./choice-state-symbol.svg</path>
+                <size width="38" height="38" />
+                <position x="${x + 7}" y="${y+1}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="40" />
+            <childElementVisualSettings />
+          </visualSettings>
+          <visualSettings type="Lambda Function" typeId="de02db8b-e18f-423c-b4da-5f717a04075e">
+            <size width="${w}" height="40" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawPath>
+                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
+              </drawPath>
+              <drawPath>
+                <path>`M${x + 3},${y + 6} v${h - 12}`</path>
+              </drawPath>
+              <drawText>
+                <text>return 'Lambda: Invoke';</text>
+                <style>`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`</style>
+                <size width="${w - 54}" height="14" />
+                <position x="${x + 50}" y="${y + 4}" />
+              </drawText>
+              <drawText>
+                <text>return `${getName()}`;</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: left; 
+white-space: inherit;`</style>
+                <size width="${w - 54}" height="18" />
+                <position x="${x + 50}" y="${y + 20}" />
+              </drawText>
+              <drawSvgResource>
+                <path>./aws-lambda-symbol.svg</path>
+                <size width="38" height="38" />
+                <position x="${x + 7}" y="${y+1}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="40" />
+            <childElementVisualSettings />
+          </visualSettings>
+        </elementVisualSettings>
+        <associationVisualSettings />
       </diagramSettings>
-      <visualSettings type="State Machine">
+      <visualSettings type="State Machine" typeId="0fed6f31-391c-4402-a9e9-532ca4b11e23">
         <size width="100" height="80" />
         <position x="${x}" y="${y}" />
         <display>
@@ -197,42 +308,6 @@ vertical-align: center`</style>
           </creationOptions>
           <scriptOptions />
           <mappingSettings />
-          <visualSettings type="Choice">
-            <size width="${w}" height="40" />
-            <position x="${x}" y="${y}" />
-            <display>
-              <drawPath>
-                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
-                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
-              </drawPath>
-              <drawPath>
-                <path>`M${x + 3},${y + 6} v${h - 12}`</path>
-              </drawPath>
-              <drawText>
-                <text>return 'Choice state';</text>
-                <style>`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`</style>
-                <size width="${w - 54}" height="14" />
-                <position x="${x + 50}" y="${y + 4}" />
-              </drawText>
-              <drawText>
-                <text>return `${getName()} (Choice)`;</text>
-                <style>`font-size: 12px; 
-font-family: Helvetica; 
-font-weight: bold; 
-text-align: left; 
-white-space: inherit;`</style>
-                <size width="${w - 54}" height="18" />
-                <position x="${x + 50}" y="${y + 20}" />
-              </drawText>
-              <drawSvgResource>
-                <path>./choice-state-symbol.svg</path>
-                <size width="38" height="38" />
-                <position x="${x + 7}" y="${y+1}" />
-              </drawSvgResource>
-            </display>
-            <defaultSize width="${x}" height="40" />
-            <childElementVisualSettings />
-          </visualSettings>
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Parallel" typeId="320f2349-d58c-4692-9cf0-717ecb996c93">
@@ -274,7 +349,7 @@ white-space: inherit;`</style>
           </creationOptions>
           <scriptOptions />
           <mappingSettings />
-          <visualSettings type="Parallel">
+          <visualSettings type="Parallel" typeId="320f2349-d58c-4692-9cf0-717ecb996c93">
             <size width="${w}" height="${h}" />
             <position x="${x}" y="${y}" />
             <display>
@@ -294,7 +369,7 @@ white-space: inherit;`</style>
             </display>
             <defaultSize width="${x}" height="${y}" />
             <childElementVisualSettings>
-              <childElementVisualSetting type="State Machine">
+              <childElementVisualSetting type="State Machine" typeId="0fed6f31-391c-4402-a9e9-532ca4b11e23">
                 <size width="`${parent.w}`" height="18" />
                 <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
                 <display>
@@ -313,6 +388,91 @@ white-space: inherit;`</style>
               </childElementVisualSetting>
             </childElementVisualSettings>
           </visualSettings>
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Wait" typeId="5cd79db1-d94a-4110-97ac-f4af07ea2330">
+          <icon type="FontAwesome" source="file-o" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>return `${getName()} (Wait)`;</displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Event Stream</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="association">
+              <specializationType>Event Stream</specializationType>
+              <specializationTypeId>055db259-36fc-495f-935c-89c847c34c32</specializationTypeId>
+              <text>Add Association</text>
+              <shortcut>ctrl + shift + a</shortcut>
+              <defaultName>NewEventStream</defaultName>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingSettings />
+          <visualSettings type="Wait" typeId="5cd79db1-d94a-4110-97ac-f4af07ea2330">
+            <size width="${w}" height="${h}" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawPath>
+                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+              </drawPath>
+              <drawText>
+                <text>return `${getName()} (Wait)`;</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 8}" />
+              </drawText>
+            </display>
+            <defaultSize width="${x}" height="${y}" />
+            <childElementVisualSettings />
+          </visualSettings>
+          <childElementSettings />
+        </childElementSetting>
+        <childElementSetting type="Success" typeId="3b12caab-9c7b-4e23-be35-7cdf53c45e61">
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <displayFunction>return `${getName()} (Success)`;</displayFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>true</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>false</allowFindInView>
+          <allowTypeReference>false</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Event Stream</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="association">
+              <specializationType>Event Stream</specializationType>
+              <specializationTypeId>055db259-36fc-495f-935c-89c847c34c32</specializationTypeId>
+              <text>Add Association</text>
+              <shortcut>ctrl + shift + a</shortcut>
+              <defaultName>NewEventStream</defaultName>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
+              <allowMultiple>true</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
+          <mappingSettings />
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Fail" typeId="19397f3f-726d-4ed3-9a64-210350c0390c">
@@ -345,7 +505,7 @@ white-space: inherit;`</style>
           </creationOptions>
           <scriptOptions />
           <mappingSettings />
-          <visualSettings type="Fail">
+          <visualSettings type="Fail" typeId="19397f3f-726d-4ed3-9a64-210350c0390c">
             <size width="${w}" height="${h}" />
             <position x="${x}" y="${y}" />
             <display>
@@ -398,7 +558,7 @@ white-space: inherit;`</style>
           </creationOptions>
           <scriptOptions />
           <mappingSettings />
-          <visualSettings type="Start">
+          <visualSettings type="Start" typeId="30d23d82-2dbf-4a9c-9b62-8e65e8f3652c">
             <size width="${w}" height="${h}" />
             <position x="${x}" y="${y}" />
             <display>
@@ -455,7 +615,7 @@ align-items: center;`</style>
           </creationOptions>
           <scriptOptions />
           <mappingSettings />
-          <visualSettings type="End">
+          <visualSettings type="End" typeId="dd8e7718-6d79-4593-afba-c67ffd7a4dba">
             <size width="${w}" height="${h}" />
             <position x="${x}" y="${y}" />
             <display>
@@ -475,127 +635,6 @@ justify-content: center;
 align-items: center;`</style>
                 <size width="${w}" height="${h}" />
                 <position x="${x}" y="${y}" />
-              </drawText>
-            </display>
-            <defaultSize width="${x}" height="${y}" />
-            <childElementVisualSettings />
-          </visualSettings>
-          <childElementSettings />
-        </childElementSetting>
-        <childElementSetting type="Success" typeId="3b12caab-9c7b-4e23-be35-7cdf53c45e61">
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABECAYAAAAWVrIgAAAAAXNSR0IArs4c6QAAC7dJREFUeF7FXAuwVVUZ/r51eZiCmo5Kio8Sn01mhohpKTnCoCD4ut2zz+WhlYpO2liaphJqOFooaXqR0SK49+wDV1PQBCJFnHxnZlY+ejkqCppJDlEm966v2fveq+eesx9rn8dlzTDD3P39j/Wdtdf617/+tYlt3dpxPJowEsBIA7O3oJEgRkLYG8BOADaA2ABhI8kNFnYDgI3h37rxGPLYtC27wAE3vhCDMRynGJkpok4GsEuNPiwXVcAwrMRk/KdGXZnFB47AAvKGZqKgiXUgLaqj/6K41NKuxCCsRDO6M7NRhUDjCfQxg+AsAEdV4V9VIiTbbc5Or0o4o1DjCPTR3Evc8Rl9qgku6RLkMa8mJRmE60+gj8kkZ0EIXtVq21sAgn9bAHwCwJ4AhqQpk9UEtGJNGq6ez+tLYAEXkrw5g4PvA1gtqAjgpZA0LySusi3GrmjCnmjCKCMzQdAEAPuFQOE1UWNiZTM4lBVaNwJN0Vwv6TupDhDvUlxjYddgM5bh3BpWznYcBIMJyOOWVLsNAtRO4BLswEF8yGGRCFbJNttl2zADbzSoPwOutjYCiziK4pMpXm8leJuVbUMefxnwHpYbLOA0gjeAGJXki6jpyKE9zd/qCezASBq+nmSAYMHKzkMez6U5MiDPiziZ4i/SbEm6GnnMScMFz6smkD43AtgjzgjJa23OznZxYkAwRZxA8cE0WxTn27y9OA3X97wqAlnkLyGMjzMi6izk8DNXJxqO83EswV+n2SF5l83Z5jRc6fPMBJqi+aGkb8eSJ52MPFZmcaKh2A4cScOnHWw8oa2ajBn4pwP2Q0g2AguYRnJJLHlWZ6IVd2dxoKHYZTiG3XzUwcZ6GU1CC37vgO0HcSfwJxjOj/EJAJ+OMkLyBpuzl2V1oGF4H0cTfNxFv6wmoxWpi0tkv10MhJgirqJ4TbQS3mk9+3VnXY0GtuOzbKLTyi9qFnK4vVqX3EZgOw5iUzj6Pl5uiKRvczZfrQN1l+vEKHbzRQiD0nQTnGs9e2UaLum5E4GmYBaIOi9C0esapDFoRhDSbPtWxJ4Un+lNQCT6Q3CJ9eyMWp1OJ7CAcSTXRhkSdDk8XF+rE3WRX4SdOZSPADjMQd9aDdIkNOO/DtiUHyJFA32uAHBKBOwl7aAxmILNtTpRs/xCDOYwrgJxgoOuv8toIlrwZwdsKiR5BN6DXfk+1wPYrlyToAvh4cepFgYAYHzTLqjVxZSgM+Dh5y5YF0wygT6mEry3QpHwrAaHc9+AnDskdsTHpWFywKFlXjR8HAYPz1e9iBjf3CioYl8oaTbyuNbB58ZCCjiJ5AOORlbKC08B3VoB54RZ8DxurZpA+nwRwMEVry91BHL4nZsnDUItxj4cwtUQDnGwsEFG49GCPzpgg5g3TDy47I3jX+ECDiAZNdE+I09HOjnSQJApmk5JZ7qYcM3thbqK2I/iUwB2D44Y5GlEdSPQxzcIVqTKJV2BPK5zcbxhGB+zCV7top/kfJvLkJ7yw6zNsX261a0DMA1/jbMVOwJNwdwq6oKK17dLh2I6gld727SlmELL5Y7G12mzxuNcbHXBm6K5U9JXS7GCzoaHRZkJpB+uvlPLBLfI0zAXZ0JMAeeQXJiCXy6r2WjFH1L1LsT2HB4Gy6NTscB7ksYjD5dUVuDrGDJ8dfs1ivNs3l5SDYG/qXBUeEV5fcrB+RBCP9xWfd4B/07vyr4gCWuKZq6k7zrog6Dz4CHtx/tIVSf2YRdfrSAwZcsX+wrT55sRe8qn5GmsSwcCjPHNYkHOJRYUfdtkZ6MFf6uw0Y7j2cSHXWxXtc9dhO04lFFbu9XywnqeyBZN4BwYHsioIPk+eZri0ok+jPHN9wVd4SwTHJIbXYoclpXKxIVUEXrfVLeOS5r4Y8kocguE7fu/w3hWOcW+RdEEBjHW4MjhXF3ez0crwdQjwlLHRZ2DHO7oHck/EBQ7D/WTy/rqlgjTZ7Da7l9G8Hp5CmoVM4zAmGwuyetszrqPplKTPammYFu0q+toDAuFgKfJcOFwaXfLc4sNo5TR52MAvlD27AN5GpqNwE4cyi7+qVyI4i02by9y6UmsQT8k40sZdAS1MrHHpyV6Ngk6Pm3vmmSXPoMzkfJ02D/kKQiqM4zADuxIw/ciCFxm87YlQ+ejjfoMtoGH16qn7JW/GDnMr0Vn5Fk3q5kDe0KQgMAdyxxaJ0/janEylA3yd8MZVGM5h0QpNh+Qp0m1+kWfitCRuHAmhTHBxrv/CRzxonI6tFZHQ/lOfJLdfArCbjXq+5+o45BDRRCcSa+PPYiw2qJfI9hmPVuxI+sDJRG4GkBQg1faNslTrUXhH+kr4osEfwUhdpJOI0HQlfAwNw2X+tzHYUQ4B/ZraccWSXvhO8X++8JAs6Dd4OGdVIdcAQVMJ7nYFV6Ge1ievlylbH+xnpLkfrFnb3+nwUNHnI2kdNYckt+r+EVK4rO6OB7sWGISF2n6ZXUSWrEqDefyPGbvD3VrHKZhXXYCl+JI2siaksStjYuzFZgVGM4tYeXUGFd5gh3Ws9Nc8Ym4niRFUBNTfvbzrjwlxq2JZyL0+TZQOclrq/bFDLxWF+f7lDiWn/XCJWmsc6YlzVEfZxH8aTmMYrvNJ1+XSCTQFM0iSTMjJtYL4KEtza/Mz31cTjA1WUvwZuvZb2bWHyNgfFMUVBHfupzgpZ3KBZdkKuv8hFXK66R6daBUD33eB2Bygu539IHGYmZExqYahxZjLw7h81DFlbN3tVkj0pKxyQQuxf604Qa7osnodLTgnmp8TpTxcSLB2Lse9T4RNAUzV6zMMYblyZ5NPWtOLe1ggU+AiMoBrpUnl0qAzBzH5hGFlzVYR6EZFdvMzEYCgZ6DsyBjvXPFNCW1Io9Cmt5UApFQVJnptCvNk9LnRYzuPRkzpX8WVNe51/hmvqCoudQ5cZxOYLAvLvJ+CJV7TeJJ5XR0Fm5cscY3PxJUmvl5XJ6OcZVPxRVweO/oGxyxSM6EB6fg3onAvoPmyLmwUVUK7RjFpvAOShiHiWopz1KnkpQAML7pEBRV15gpYeJGYLBbKJqFkoJyh8oFBfoWPNxUS4ciZQvo2Q0JK5RX+Qlh1eZM0Vwj6aqYvnwFHjpdlTsTiKU4hDasUg2u4UetylPRgqAUrn6tE7uxi2/LagxaEZwS1t6KmEkx+pyXWKVctvDMncDA9b4REdMNUXshh+A0r36tgDmut4ZSjaYUIwk6BR7uT9VTAshGYE+iNYj9To0zImmXbf0hiEjfOnAGDe9K8Puiam59ZiYQnWhiF1+OOL360DdJo5HHb7P8ko3Epl3FreWKRnYCg5524DM04QlbbJPUjDxif/FGElaq2/jmDkFfS7DnHPNF6aiOwEBTTAKy1Iiky5CHU/Vo3QntxAjTbW6U5CX+0F0ahunhpwWqatUT6LCohB4FwTbU5nL3tqoelAutwHBswQUEzwfCj/fEvyXU2FrPUmojsOd1HksThjdpba2MbmtIAiKw3IkmdOH8XuIqqmrLnHtLVqPRiqCAvqZWO4GB+SL2psIVLv3bMEGsJa2Bwf2RRURZu1PE52AxieBUEEekihNrlAs/WFGXVh8CA1fmwJgDze2CstyZe0TQcmwHH6chyH67tSU4BE04lWQQTrnUCvbMJuQ8m4uv9XMz3h9VPwL79PYE28GXimLLIWIc3QRiI4S3KPZ8N8bg3xB2F8LSij2C/4Oh3h0ydvY5STchn/4NhIx6q7/yn2iogH2NMbNkdT6I4VmdqiP+JVELMAJtGIeuOur9UFX9R2Cplz4ONjKzRAUrYurtyTp28FVJCzAMbY2+itZYAj96rQ83NGdLmpj2uZEaSXxU0kPoRhumZ5hTazA6MAT2H5UnGpjJdSRznah70YQH0YwXauCiKtGBJ7DUzZ4QZIqBGSkq/Iplb/BbXhUWSAVfrgy+eLSe4huW9gUMxb04Pfz7NmvblsC4bndgRwzBSHRhJ2zFG3gF6zEHdpuxlGD4/1+vIoHeHAs0AAAAAElFTkSuQmCC" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>return `${getName()} (Success)`;</displayFunction>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeOrder>
-            <type order="0">Event Stream</type>
-          </typeOrder>
-          <creationOptions>
-            <option type="association">
-              <specializationType>Event Stream</specializationType>
-              <specializationTypeId>055db259-36fc-495f-935c-89c847c34c32</specializationTypeId>
-              <text>Add Association</text>
-              <shortcut>ctrl + shift + a</shortcut>
-              <defaultName>NewEventStream</defaultName>
-              <icon type="UrlImagePath" source="data:image/png;base64,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" />
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
-          <scriptOptions />
-          <mappingSettings />
-          <visualSettings type="Success">
-            <size width="${w}" height="${h}" />
-            <position x="${x}" y="${y}" />
-            <display>
-              <drawPath>
-                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
-                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
-              </drawPath>
-              <drawPath>
-                <path>`M${x + 3},${y + 6} v${h - 12}`</path>
-              </drawPath>
-              <drawText>
-                <text>return 'Success state';</text>
-                <style>`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`</style>
-                <size width="${w - 54}" height="14" />
-                <position x="${x + 50}" y="${y + 4}" />
-              </drawText>
-              <drawText>
-                <text>return `${getName()} (Choice)`;</text>
-                <style>`font-size: 12px; 
-font-family: Helvetica; 
-font-weight: bold; 
-text-align: left; 
-white-space: inherit;`</style>
-                <size width="${w - 54}" height="18" />
-                <position x="${x + 50}" y="${y + 20}" />
-              </drawText>
-              <drawSvgResource>
-                <path>./success-state-symbol.svg</path>
-                <size width="38" height="38" />
-                <position x="${x + 7}" y="${y+1}" />
-              </drawSvgResource>
-            </display>
-            <defaultSize width="${x}" height="${y}" />
-            <childElementVisualSettings />
-          </visualSettings>
-          <childElementSettings />
-        </childElementSetting>
-        <childElementSetting type="Wait" typeId="5cd79db1-d94a-4110-97ac-f4af07ea2330">
-          <icon type="FontAwesome" source="file-o" />
-          <saveAsOwnFile>false</saveAsOwnFile>
-          <displayFunction>return `${getName()} (Wait)`;</displayFunction>
-          <allowRename>true</allowRename>
-          <allowAbstract>false</allowAbstract>
-          <allowGenericTypes>false</allowGenericTypes>
-          <allowMapping>false</allowMapping>
-          <allowSorting>true</allowSorting>
-          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
-          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowSetValue>false</allowSetValue>
-          <typeOrder>
-            <type order="0">Event Stream</type>
-          </typeOrder>
-          <creationOptions>
-            <option type="association">
-              <specializationType>Event Stream</specializationType>
-              <specializationTypeId>055db259-36fc-495f-935c-89c847c34c32</specializationTypeId>
-              <text>Add Association</text>
-              <shortcut>ctrl + shift + a</shortcut>
-              <defaultName>NewEventStream</defaultName>
-              <icon type="UrlImagePath" source="data:image/png;base64,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" />
-              <allowMultiple>true</allowMultiple>
-            </option>
-          </creationOptions>
-          <scriptOptions />
-          <mappingSettings />
-          <visualSettings type="Wait">
-            <size width="${w}" height="${h}" />
-            <position x="${x}" y="${y}" />
-            <display>
-              <drawPath>
-                <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
-              </drawPath>
-              <drawText>
-                <text>return `${getName()} (Wait)`;</text>
-                <style>`font-size: 12px; 
-font-family: Helvetica; 
-font-weight: bold; 
-text-align: center; 
-white-space: inherit;`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 8}" />
               </drawText>
             </display>
             <defaultSize width="${x}" height="${y}" />
@@ -623,6 +662,8 @@ white-space: inherit;`</style>
           </option>
         </creationOptions>
         <scriptOptions />
+        <elementVisualSettings />
+        <associationVisualSettings />
       </diagramSettings>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">

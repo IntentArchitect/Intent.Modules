@@ -4,7 +4,6 @@
   <display>[visual]: Choice</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>1</order>
   <genericTypes />
   <typeReference id="43f1db89-b4fe-4f41-ade8-c4ef7706fd00">
     <typeId>aeefe262-149c-45eb-ae54-97792a0d00b4</typeId>
@@ -18,7 +17,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>aeefe262-149c-45eb-ae54-97792a0d00b4</parentFolderId>
+  <parentFolderId>7a8aef9d-e36f-4b70-93fa-bf074900785e</parentFolderId>
   <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
   <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
   <stereotypes>
