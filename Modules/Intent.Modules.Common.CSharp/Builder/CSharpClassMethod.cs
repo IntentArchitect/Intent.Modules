@@ -14,6 +14,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
+    public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
+    
     public CSharpClassMethod(string returnType, string name)
     {
         if (string.IsNullOrWhiteSpace(returnType))
@@ -51,6 +53,14 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     {
         param = new CSharpGenericParameter(typeName);
         GenericParameters.Add(param);
+        return this;
+    }
+    
+    public CSharpClassMethod AddGenericTypeConstraint(string genericParameterName, Action<CSharpGenericTypeConstraint> configure)
+    {
+        var param = new CSharpGenericTypeConstraint(genericParameterName);
+        configure(param);
+        GenericTypeConstraints.Add(param);
         return this;
     }
 
@@ -175,9 +185,21 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))})
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}
 {indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
+    }
+    
+    private string GetGenericTypeConstraints(string indentation)
+    {
+        if (!GenericTypeConstraints.Any())
+        {
+            return string.Empty;
+        }
+
+        string newLine = $@"
+{indentation}    ";
+        return newLine + string.Join(newLine, GenericTypeConstraints);
     }
     
     private string GetGenericParameters()

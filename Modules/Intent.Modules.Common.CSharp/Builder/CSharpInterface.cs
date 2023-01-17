@@ -29,6 +29,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     public IList<CSharpInterfaceProperty> Properties { get; } = new List<CSharpInterfaceProperty>();
     public IList<CSharpInterfaceMethod> Methods { get; } = new List<CSharpInterfaceMethod>();
     public IList<CSharpInterfaceGenericParameter> GenericParameters { get; } = new List<CSharpInterfaceGenericParameter>();
+    public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
 
     public CSharpInterface ExtendsInterface(string type)
     {
@@ -105,6 +106,14 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         GenericParameters.Add(param);
         return this;
     }
+    
+    public CSharpInterface AddGenericTypeConstraint(string genericParameterName, Action<CSharpGenericTypeConstraint> configure)
+    {
+        var param = new CSharpGenericTypeConstraint(genericParameterName);
+        configure(param);
+        GenericTypeConstraints.Add(param);
+        return this;
+    }
 
     public CSharpInterface InsertMethod(int index, string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
@@ -179,9 +188,21 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public string ToString(string indentation)
     {
-        return $@"{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetGenericParameters()}{GetBaseTypes()}
+        return $@"{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetGenericParameters()}{GetBaseTypes()}{GetGenericTypeConstraints(indentation)}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
+    }
+    
+    private string GetGenericTypeConstraints(string indentation)
+    {
+        if (!GenericTypeConstraints.Any())
+        {
+            return string.Empty;
+        }
+
+        string newLine = $@"
+{indentation}    ";
+        return newLine + string.Join(newLine, GenericTypeConstraints);
     }
 
     private string GetGenericParameters()

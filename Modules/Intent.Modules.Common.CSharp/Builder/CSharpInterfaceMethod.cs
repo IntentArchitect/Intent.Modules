@@ -10,6 +10,7 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
     public string Name { get; }
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
+    public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
 
     public CSharpInterfaceMethod(string returnType, string name)
     {
@@ -50,10 +51,30 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
         GenericParameters.Add(param);
         return this;
     }
+    
+    public CSharpInterfaceMethod AddGenericTypeConstraint(string genericParameterName, Action<CSharpGenericTypeConstraint> configure)
+    {
+        var param = new CSharpGenericTypeConstraint(genericParameterName);
+        configure(param);
+        GenericTypeConstraints.Add(param);
+        return this;
+    }
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))});";
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)};";
+    }
+    
+    private string GetGenericTypeConstraints(string indentation)
+    {
+        if (!GenericTypeConstraints.Any())
+        {
+            return string.Empty;
+        }
+
+        string newLine = $@"
+{indentation}    ";
+        return newLine + string.Join(newLine, GenericTypeConstraints);
     }
     
     private string GetGenericParameters()
