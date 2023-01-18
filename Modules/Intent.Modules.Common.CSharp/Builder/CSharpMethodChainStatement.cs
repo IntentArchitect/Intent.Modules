@@ -11,7 +11,7 @@ public class CSharpMethodChainStatement : CSharpStatement, IHasCSharpStatements
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
     }
     
-    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public List<CSharpStatement> Statements { get; } = new();
 
     public CSharpMethodChainStatement AddChainStatement(CSharpStatement statement, Action<CSharpStatement> configure = null)
     {

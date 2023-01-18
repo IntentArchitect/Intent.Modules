@@ -4,7 +4,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpLambdaBlock : CSharpStatement, IHasCSharpStatements
 {
-    private bool _withSemicolon = false;
+    private bool _withSemicolon;
 
     public CSharpLambdaBlock(string invocation) : base(invocation)
     {
@@ -12,7 +12,7 @@ public class CSharpLambdaBlock : CSharpStatement, IHasCSharpStatements
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 
-    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
+    public List<CSharpStatement> Statements { get; } = new();
 
     public CSharpLambdaBlock WithSemicolon()
     {

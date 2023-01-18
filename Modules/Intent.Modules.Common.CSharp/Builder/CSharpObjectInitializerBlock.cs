@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpObjectInitializerBlock : CSharpStatementBlock
 {
-    public CSharpObjectInitializerBlock(string invocation) : base()
+    public CSharpObjectInitializerBlock(string invocation)
     {
         Text = invocation;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
@@ -30,25 +29,5 @@ public class CSharpObjectInitializerBlock : CSharpStatementBlock
     {
         return $@"{indentation}{RelativeIndentation}{Text}
 {base.GetText(indentation)}";
-    }
-}
-
-public class CSharpObjectInitStatement : CSharpStatement, IHasCSharpStatements
-{
-    private readonly string _lhs;
-    private readonly CSharpStatement _rhs;
-
-    public CSharpObjectInitStatement(string lhs, CSharpStatement rhs) : base(null)
-    {
-        _lhs = lhs;
-        _rhs = rhs;
-        BeforeSeparator = CSharpCodeSeparatorType.NewLine;
-    }
-
-    public IList<CSharpStatement> Statements { get; }
-
-    public override string GetText(string indentation)
-    {
-        return $@"{indentation}{RelativeIndentation}{_lhs} = {_rhs.GetText(indentation).TrimStart()},";
     }
 }
