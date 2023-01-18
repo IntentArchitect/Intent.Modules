@@ -10,7 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.3.11" />
     <PackageReference Include="Intent.Modules.Metadata.RDBMS" Version="3.3.8" />
-    <PackageReference Include="Intent.Packager" Version="3.4.0-pre.3">
+    <PackageReference Include="Intent.Packager" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
