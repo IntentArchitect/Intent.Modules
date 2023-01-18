@@ -4,12 +4,12 @@ namespace Intent.Modules.ModuleBuilder
 {
     public static class IntentNugetPackages
     {
-        public static NugetPackageInfo IntentSdk = new("Intent.SoftwareFactory.SDK", "3.4.0-pre.0");
+        public static NugetPackageInfo IntentSdk = new("Intent.SoftwareFactory.SDK", "3.4.0");
 
-        public static NugetPackageInfo IntentPackager = new NugetPackageInfo("Intent.Packager", "3.4.0-pre.3")
+        public static NugetPackageInfo IntentPackager = new NugetPackageInfo("Intent.Packager", "3.4.0")
             .SpecifyAssetsBehaviour(new[] { "all" }, new[] { "runtime", "build", "native", "contentfiles", "analyzers", "buildtransitive" });
 
         public static NugetPackageInfo IntentModulesCommon = new("Intent.Modules.Common", "3.3.17");
-        public static NugetPackageInfo IntentModulesCommonTypes = new("Intent.Modules.Common.Types", "3.3.6");
+        public static NugetPackageInfo IntentModulesCommonTypes = new("Intent.Modules.Common.Types", "3.3.7");
     }
 }
