@@ -1,3 +1,4 @@
+using System.Collections;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Java.Templates;
@@ -22,7 +23,7 @@ namespace Intent.Modules.Common.Java.Tests.Templates
                 public override string ToString() => Name;
             };
 
-            public static readonly object[] ItShouldWorkScenarios = {
+            public static readonly IEnumerable<object[]> ItShouldWorkScenarios = new [] {
                 new Scenario(
                     Name: "HasFolder is null",
                     OutputTarget: new []
