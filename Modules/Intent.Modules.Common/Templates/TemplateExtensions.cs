@@ -53,15 +53,15 @@ namespace Intent.Modules.Common.Templates
             return name.Humanize(LetterCasing.Sentence);
         }
 
-        public static string ToCamelCase(this string name) => name.Replace('-', ' ').Camelize();
+        public static string ToCamelCase(this string name) => name?.Replace('-', ' ').Camelize();
 
-        public static string ToPascalCase(this string name) => name.Replace('-', ' ').Pascalize();
+        public static string ToPascalCase(this string name) => name?.Replace('-', ' ').Pascalize();
 
-        public static string ToDotCase(this string name) => name.Replace('-', ' ').Underscore().Replace('_', '.');
+        public static string ToDotCase(this string name) => name?.Replace('-', ' ').Underscore().Replace('_', '.');
 
-        public static string ToKebabCase(this string name) => name.Kebaberize();
+        public static string ToKebabCase(this string name) => name?.Kebaberize();
 
-        public static string ToSnakeCase(this string name) => name.Replace('-', ' ').Underscore();
+        public static string ToSnakeCase(this string name) => name?.Replace('-', ' ').Underscore();
 
         /// <summary>
         /// Obsolete. Use <see cref="Pluralize"/> instead.
