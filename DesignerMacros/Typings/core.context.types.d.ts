@@ -33,7 +33,7 @@ declare namespace MacroApi.Context {
          * Must be called with await.
          * @param options The available options of which one can be selected.
          */
-        lookupFromOptions(options: { id: string, name: string }): Promise<string>;
+        lookupFromOptions(options: { id: string, name: string }[]): Promise<string>;
     }
 
     interface IGenericTypeParameter {
