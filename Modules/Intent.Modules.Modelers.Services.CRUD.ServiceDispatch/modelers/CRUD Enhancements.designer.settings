@@ -57,7 +57,7 @@ function getParameterFormat(str) {
     return toCamelCase(str);
 }
 function getRoutingFormat(str) {
-    return str;
+    return pluralize(str);
 }
 function getFieldFormat(str) {
     return toPascalCase(str);
@@ -81,8 +81,8 @@ function getBaseNameForElement(nestedCompOwner, entity, entityIsMany) {
 }
 function getServiceName(nestedCompOwner, entity) {
     return nestedCompOwner
-        ? `${toPascalCase(nestedCompOwner.name)}Service`
-        : `${toPascalCase(entity.name)}Service`;
+        ? `${toPascalCase(pluralize(nestedCompOwner.name))}Service`
+        : `${toPascalCase(pluralize(entity.name))}Service`;
 }
 function getOperationFormat(baseName, nestedCompOwner, entity, entityIsMany = false) {
     let entityName = entityIsMany ? pluralize(entity.name) : entity.name;
@@ -1054,7 +1054,7 @@ function getParameterFormat(str) {
     return toCamelCase(str);
 }
 function getRoutingFormat(str) {
-    return str;
+    return pluralize(str);
 }
 function getFieldFormat(str) {
     return toPascalCase(str);
@@ -1078,8 +1078,8 @@ function getBaseNameForElement(nestedCompOwner, entity, entityIsMany) {
 }
 function getServiceName(nestedCompOwner, entity) {
     return nestedCompOwner
-        ? `${toPascalCase(nestedCompOwner.name)}Service`
-        : `${toPascalCase(entity.name)}Service`;
+        ? `${toPascalCase(pluralize(nestedCompOwner.name))}Service`
+        : `${toPascalCase(pluralize(entity.name))}Service`;
 }
 function getOperationFormat(baseName, nestedCompOwner, entity, entityIsMany = false) {
     let entityName = entityIsMany ? pluralize(entity.name) : entity.name;

@@ -1,14 +1,5 @@
 declare var globals;
 (async () => {
-// This script is generalized such that you only need to copy and paste its contents to the
-// following Modules' Create CRUD Operation scripts and adjust only the `currentCrudModule` variable accordingly:
-// - `Intent.AzureFunctions`
-// - `Modelers.Services.CRUD.ServiceDispatch`
-
-const CrudModuleStandard = "Standard";
-const CrudModuleAzureFunction = "Azure Function";
-
-const currentCrudModule = CrudModuleStandard;
 
 var globals = initGlobals();
 
@@ -17,9 +8,7 @@ var globals = initGlobals();
 let defaultDomainClassName = null;
 if (element?.id == null) {
     // For testing as if a package was right clicked, substitute with package id:
-    // element = { id: "7339add6-c32e-4d95-8e1b-1bbe86ca7f1c" }; // Azure
-    // element = { id: "ef5c352b-fc74-4f13-b61b-a970f8360b08" }; // NestJS
-    //element = { id: "a7ab362f-e8a8-4490-90d5-484b0371d949" };
+    //element = getPackages().filter(x => x.id == "eafc12ee-88c0-4e8e-abcf-2b989be5d656")[0];
 
     // For element, substitute with service's element id:
     // element = lookup("677c6801-e654-45c5-924e-886713db1f5e");
@@ -35,16 +24,17 @@ if (!entity) { return; }
 let service = getServiceFromCurrentContext(entity, element);
 
 let entityFolder = getEntityFolder(service, entity);
-let resultStdTypeDto = createStandardResultTypeDTO(entity, entityFolder);
-createStandardCreateOperation(service, entity, entityFolder, currentCrudModule);
-createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
-createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
-createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule);
-createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule);
+let resultCqrsTypeDto = createCqrsResultTypeDTO(entity, entityFolder);
+
+createCqrsCreateOperation(service, entityFolder, entity);
+createCqrsFindByIdOperation(service, entity, entityFolder, resultCqrsTypeDto);
+createCqrsFindAllOperation(service, entity, entityFolder, resultCqrsTypeDto);
+createCqrsUpdateOperation(service, entity, entityFolder);
+createCqrsDeleteOperation(service, entity, entityFolder);
 
 /*
 ========================
-    HOOK-IN FUNCTIONS
+   HOOK-IN FUNCTIONS
 ========================
 Easier to alter the behavior of certain key operations.
 Could make certain things configurable in the future.
@@ -95,11 +85,11 @@ function getOperationFormat(baseName, nestedCompOwner, entity, entityIsMany = fa
 
 /*
 ========================
-    CREATION FUNCTIONS
+   CREATION FUNCTIONS
 ========================
 */
 
-function createStandardResultTypeDTO(entity, entityFolder) {
+function createCqrsResultTypeDTO(entity, entityFolder) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
     let expectedDtoName = `${baseName}DTO`;
@@ -140,24 +130,24 @@ function createStandardResultTypeDTO(entity, entityFolder) {
     return dto;
 }
 
-function createStandardCreateOperation(service, entity, entityFolder, currentCrudModule) {
+function createCqrsCreateOperation(service, entityFolder, entity) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
-    let expectedCreateDtoName = `${baseName}CreateDTO`;
+    let expectedCommandName = `Create${baseName}Command`;
     
-    if (hasElementInFolder(entityFolder, expectedCreateDtoName)) {
-        let command = entityFolder.getChildren().filter(x => x.name == expectedCreateDtoName)[0];
+    if (hasElementInFolder(entityFolder, expectedCommandName)) {
+        let command = entityFolder.getChildren().filter(x => x.name == expectedCommandName)[0];
         let entityPkDescr = getPrimaryKeyDescriptor(entity);
         command.typeReference.setType(entityPkDescr.typeId);
         return;
     }
 
-    let createDto = createElement("DTO", expectedCreateDtoName, entityFolder.id);
-    createDto.setMapping(entity.id, globals.projectMappingSettingId);
-    createDto.setMetadata("baseName", baseName);
-    createDto.setMetadata("originalVerb", "Create");
+    let command = createElement("Command", expectedCommandName, entityFolder.id);
+    command.setMapping(entity.id);
+    command.setMetadata("baseName", baseName);
 
-    let operation = createElement("Operation", getOperationFormat("Create", nestedCompOwner, entity), service.id);
+    let operation = createElement("Operation", getOperationFormat("Post", nestedCompOwner, entity), service.id);
+    operation.setMapping(command.id);
 
     let entityPkDescr = getPrimaryKeyDescriptor(entity);
     let routePath = "";
@@ -165,7 +155,7 @@ function createStandardCreateOperation(service, entity, entityFolder, currentCru
     if (nestedCompOwner) {
         let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
 
-        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), createDto.id);
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), command.id);
         nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId)
         if (nestedCompOwnerFkDescr.specialization == globals.FKSpecialization.Explicit) {
             nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
@@ -173,40 +163,49 @@ function createStandardCreateOperation(service, entity, entityFolder, currentCru
 
         let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
         param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
 
         routePath = getRoutePath(nestedCompOwnerFkDescr, entity, null);
     }
 
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "POST", "Route": routePath});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "POST", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
-    }
+    setHttpStereotype(operation, "Http Settings", {"Verb": "POST", "Route": routePath});
 
-    let operationParamCreateDto = createElement("Parameter", getParameterFormat("dto"), operation.id);
-    operationParamCreateDto.typeReference.setType(createDto.id);
+    let operationParamCommand = createElement("Parameter", getParameterFormat("command"), operation.id);
+    operationParamCommand.typeReference.setType(command.id);
 
     if (entityPkDescr.typeId) {
-        operation.typeReference.setType(entityPkDescr.typeId);
+        command.typeReference.setType(entityPkDescr.typeId);
         getReturnTypeMediatypeProperty(operation).setValue("application/json");
     }
 
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        let field = createElement("DTO-Field", getFieldFormat(entry.name), createDto.id);
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), command.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
     }
 
-    createDto.collapse();
+    command.collapse();
     operation.collapse();
 }
 
-function createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
+function createCqrsFindByIdOperation(service, entity, entityFolder, resultTypeDto) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
-    let operation = createElement("Operation", getOperationFormat("FindById", nestedCompOwner, entity), service.id);
-    operation.typeReference.setType(resultTypeDto.id);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedQueryName = `Get${baseName}ByIdQuery`;
+    
+    if (hasElementInFolder(entityFolder, expectedQueryName)) {
+        return;
+    }
+
+    let query = createElement("Query", expectedQueryName, entityFolder.id);
+    query.typeReference.setType(resultTypeDto.id)
+    query.setMapping(entity.id);
+    query.setMetadata("baseName", baseName);
+
+    let operation = createElement("Operation", getOperationFormat("Get", nestedCompOwner, entity), service.id);
+    operation.setMapping(query.id);
 
     let entityPkDescr = getPrimaryKeyDescriptor(entity);
     let routePath = "";
@@ -214,66 +213,81 @@ function createStandardFindByIdOperation(service, entity, entityFolder, currentC
     if (nestedCompOwner) {
         let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
         
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), query.id);
+        nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        if (nestedCompOwnerFkDescr.specialization == globals.FKSpecialization.Explicit) {
+            nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
+        }
+
         let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
         param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
 
         routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
     } else {
         routePath = getRoutePath(null, null, entityPkDescr);
     }
 
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
-    }
+    setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
+    addPrimaryKeys(query, operation, entityPkDescr);
 
-    addPrimaryKeys(null, operation, entityPkDescr);
-
+    query.collapse();
     operation.collapse();
 }
 
-function createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
+function createCqrsFindAllOperation(service, entity, entityFolder, resultTypeDto) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
-    let operation = createElement("Operation", getOperationFormat("FindAll", nestedCompOwner, entity, true), service.id);
-    operation.typeReference.setIsCollection(true);
-    operation.typeReference.setType(resultTypeDto.id);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, true);
+    let expectedQueryName = `Get${baseName}Query`;
+    
+    if (hasElementInFolder(entityFolder, expectedQueryName)) {
+        return;
+    }
+
+    let query = createElement("Query", expectedQueryName, entityFolder.id);
+    query.typeReference.setType(resultTypeDto.id)
+    query.typeReference.setIsCollection(true);
+    query.setMetadata("baseName", baseName);
+
+    let operation = createElement("Operation", getOperationFormat("GetAll", nestedCompOwner, entity, true), service.id);
+    operation.setMapping(query.id);
 
     let routePath = "";
 
     if (nestedCompOwner) {
         let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
 
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), query.id);
+        nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+
         let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
         param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
 
         routePath = getRoutePath(nestedCompOwnerFkDescr, entity, null);
     }
 
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
-    }
+    setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
 
+    query.collapse();
     operation.collapse();
 }
 
-function createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule) {
+function createCqrsUpdateOperation(service, entity, entityFolder) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
-    let expectedUpdateDtoName = `${baseName}UpdateDTO`;
+    let expectedCommandName = `Update${baseName}Command`;
 
-    if (hasElementInFolder(entityFolder, expectedUpdateDtoName)) {
+    if (hasElementInFolder(entityFolder, expectedCommandName)) {
         return;
     }
 
-    let updateDto = createElement("DTO", expectedUpdateDtoName, entityFolder.id);
-    updateDto.setMapping(entity.id, globals.projectMappingSettingId);
-    updateDto.setMetadata("baseName", baseName);
-    updateDto.setMetadata("originalVerb", "Update");
+    let command = createElement("Command", expectedCommandName, entityFolder.id);
+    command.setMapping(entity.id);
+    command.setMetadata("baseName", baseName);
 
     let operation = createElement("Operation", getOperationFormat("Put", nestedCompOwner, entity), service.id);
+    operation.setMapping(command.id);
 
     let entityPkDescr = getPrimaryKeyDescriptor(entity);
     let routePath = "";
@@ -281,7 +295,7 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     if (nestedCompOwner) {
         let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
 
-        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), updateDto.id);
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), command.id);
         nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId)
         if (nestedCompOwnerFkDescr.specialization == globals.FKSpecialization.Explicit) {
             nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
@@ -289,32 +303,28 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
 
         let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
         param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
 
         routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
     } else {
         routePath = getRoutePath(null, null, entityPkDescr);
     }
 
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "PUT", "Route": routePath});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "PUT", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
-    }
+    setHttpStereotype(operation, "Http Settings", {"Verb": "PUT", "Route": routePath});
+    addPrimaryKeys(command, operation, entityPkDescr);
 
-    addPrimaryKeys(updateDto, operation, entityPkDescr);
-
-    let dtoParam = createElement("Parameter", getParameterFormat("dto"), operation.id);
-    dtoParam.typeReference.setType(updateDto.id);
+    let commandParam = createElement("Parameter", getParameterFormat("command"), operation.id);
+    commandParam.typeReference.setType(command.id);
 
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
-        let field = createElement("DTO-Field", getFieldFormat(entry.name), updateDto.id);
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), command.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
     }
 
-    updateDto.collapse();
+    command.collapse();
     operation.collapse();
 
     function hasAttributeInCommand(command, attribute) {
@@ -322,9 +332,21 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     }
 }
 
-function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule) {
+function createCqrsDeleteOperation(service, entity, entityFolder) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedCommandName = `Delete${baseName}Command`;
+
+    if (hasElementInFolder(entityFolder, expectedCommandName)) {
+        return;
+    }
+
+    let command = createElement("Command", expectedCommandName, entityFolder.id);
+    command.setMapping(entity.id);
+    command.setMetadata("baseName", baseName);
+
     let operation = createElement("Operation", getOperationFormat("Delete", nestedCompOwner, entity), service.id);
+    operation.setMapping(command.id);
 
     let entityPkDescr = getPrimaryKeyDescriptor(entity);
     let routePath = "";
@@ -332,27 +354,34 @@ function createStandardDeleteOperation(service, entity, entityFolder, currentCru
     if (nestedCompOwner) {
         let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
 
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), command.id);
+        nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId)
+        if (nestedCompOwnerFkDescr.specialization == globals.FKSpecialization.Explicit) {
+            nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
+        }
+
         let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
         param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
 
         routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
     } else {
         routePath = getRoutePath(null, null, entityPkDescr);
     }
 
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": routePath});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "DELETE", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
-    }
-    addPrimaryKeys(null, operation, entityPkDescr);
+    setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": routePath});
+    addPrimaryKeys(command, operation, entityPkDescr);
 
+    let commandParam = createElement("Parameter", getParameterFormat("command"), operation.id);
+    commandParam.typeReference.setType(command.id);
+
+    command.collapse();
     operation.collapse();
 }
 
 /*
 ========================
-    UTILITY FUNCTIONS
+   UTILITY FUNCTIONS
 ========================
 */
 
@@ -435,7 +464,7 @@ function isAggregateRoot(element) {
     }
     let result = !element.getAssociations("Association")
             .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable);
-    globals.aggregateRootCache[element.id] = result;
+            globals.aggregateRootCache[element.id] = result;
     return result;
 }
 
@@ -464,11 +493,8 @@ function getNestedCompositionalOwner(entity) {
 }
 
 function ownerIsAggregateRoot(entity) {
-    // Let's not introduce this yet
-    return false;
-
-    //let result = getNestedCompositionalOwner(entity);
-    //return result ? true : false;
+    let result = getNestedCompositionalOwner(entity);
+    return result ? true : false;
 }
 
 function getEntityFolder(service, entity) {
@@ -687,33 +713,31 @@ function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner
     };
 }
 
-function addPrimaryKeys(dto, operation, entityPkDescr) {
+function addPrimaryKeys(commandQuery, operation, entityPkDescr) {
     switch (entityPkDescr.specialization) {
         case globals.PKSpecialization.Implicit:
         case globals.PKSpecialization.Explicit:
             {
-                if (dto) {
-                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
-                    primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
-                    if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
-                        primaryKeyDtoField.setMapping(entityPkDescr.mapPath);
-                    }
+                let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), commandQuery.id);
+                primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
+                if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
+                    primaryKeyDtoField.setMapping(entityPkDescr.mapPath);
                 }
 
                 let operationParamId = createElement("Parameter", getParameterFormat(entityPkDescr.name), operation.id);
-                operationParamId.typeReference.setType(entityPkDescr.typeId);
+                operationParamId.typeReference.setType(primaryKeyDtoField.typeReference.typeId);
+                operationParamId.setMapping(primaryKeyDtoField.id);
             }
             break;
         case globals.PKSpecialization.ExplicitComposite:
             for (let key of entityPkDescr.compositeKeys) {
-                if (dto) {
-                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
-                    primaryKeyDtoField.typeReference.setType(key.typeId)
-                    primaryKeyDtoField.setMapping(key.id);
-                }
+                let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), commandQuery.id);
+                primaryKeyDtoField.typeReference.setType(key.typeId)
+                primaryKeyDtoField.setMapping(key.id);
 
                 let operationParamId = createElement("Parameter", getParameterFormat(key.name), operation.id);
-                operationParamId.typeReference.setType(entityPkDescr.typeId);
+                operationParamId.typeReference.setType(primaryKeyDtoField.typeReference.typeId);
+                operationParamId.setMapping(primaryKeyDtoField.id);
             }
             break;
     }
