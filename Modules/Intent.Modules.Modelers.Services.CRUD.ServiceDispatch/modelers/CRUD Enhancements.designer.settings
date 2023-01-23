@@ -39,22 +39,460 @@ if (element?.id == null) {
     defaultDomainClassName = "NewClass";
 }
 
+initConstants();
+
 let entity = await preselectOrPromptEntity(defaultDomainClassName);
 if (!entity) { return; }
 let service = getServiceFromCurrentContext(entity, element);
 
-let dtoFolder = getDtoFolder(service, entity);
-let resultStdTypeDto = createStandardResultTypeDTO(entity, dtoFolder);
-createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule);
-createStandardFindByIdOperation(entity, service, resultStdTypeDto);
-createStandardFindAllOperation(entity, service, resultStdTypeDto);
-createStandardUpdateOperation(entity, service, dtoFolder);
-createStandardDeleteOperation(entity, service);
+let entityFolder = getEntityFolder(service, entity);
+let resultStdTypeDto = createStandardResultTypeDTO(entity, entityFolder);
+createStandardCreateOperation(service, entity, entityFolder, currentCrudModule);
+createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
+createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
+createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule);
+createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule);
 
-// === FUNCTIONS ===
+/*
+========================
+   HOOK-IN FUNCTIONS
+========================
+Easier to alter the behavior of certain key operations.
+Could make certain things configurable in the future.
+*/
+
+function getParameterFormat(str) {
+    return toCamelCase(str);
+}
+
+function getRoutingFormat(str) {
+    return str;
+}
+
+function getFieldFormat(str) {
+    return toPascalCase(str);
+}
+
+function getDomainAttributeNameFormat(str) {
+    let convention = getDomainAttributeNamingConvention();
+    switch (convention) {
+        case "pascal-case":
+            return toPascalCase(str);
+        case "camel-case":
+            return toCamelCase(str);
+    }
+    return str;
+}
+
+function getFolderName(nestedCompOwner, entity) {
+    return nestedCompOwner ? pluralize(nestedCompOwner.name) : pluralize(entity.name);
+}
+
+function getBaseNameForElement(nestedCompOwner, entity, entityIsMany) {
+    let entityName = entityIsMany ? toPascalCase(pluralize(entity.name)) : toPascalCase(entity.name);
+    return nestedCompOwner ? `${toPascalCase(nestedCompOwner.name)}${entityName}` : entityName;
+}
+
+function getServiceName(nestedCompOwner, entity) {
+    return nestedCompOwner 
+        ? `${toPascalCase(nestedCompOwner.name)}Service` 
+        : `${toPascalCase(entity.name)}Service`;
+}
+
+function getOperationFormat(baseName, nestedCompOwner, entity, entityIsMany) {
+    let entityName = entityIsMany ? pluralize(entity.name) : entity.name;
+    return `${baseName}${nestedCompOwner ? entityName : ""}`;
+}
+
+/*
+========================
+   CREATION FUNCTIONS
+========================
+*/
+
+function createStandardResultTypeDTO(entity, entityFolder) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedDtoName = `${baseName}DTO`;
+
+    if (hasElementInFolder(entityFolder, expectedDtoName)) {
+        return entityFolder.getChildren().filter(x =&gt; x.name == expectedDtoName)[0];
+    }
+
+    let dto = createElement("DTO", expectedDtoName, entityFolder.id);
+    dto.setMapping(entity.id);
+    dto.setMetadata("baseName", baseName);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        if (!nestedCompOwnerFkDescr || nestedCompOwnerFkDescr.specialization == FKSpecialization.Implicit) {
+            let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), dto.id);
+            nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        }
+    }
+
+    if (entityPkDescr.specialization == PKSpecialization.Implicit) {
+        let idField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
+        idField.typeReference.setType(entityPkDescr.typeId);
+    }
+
+    for (let attribute of entity.getChildren("Attribute")
+        .filter(attr =&gt; !legacyPartitionKey(attr))) {
+            let field = createElement("DTO-Field", getFieldFormat(attribute.name), dto.id);
+            field.typeReference.setType(attribute.typeReference.typeId);
+            field.typeReference.setIsNullable(attribute.typeReference.isNullable);
+            field.typeReference.setIsCollection(attribute.typeReference.isCollection);
+            field.setMapping(attribute.id);
+    }
+
+    dto.collapse();
+    return dto;
+}
+
+function createStandardCreateOperation(service, entity, entityFolder, currentCrudModule) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedCreateDtoName = `${baseName}CreateDTO`;
+    
+    if (hasElementInFolder(entityFolder, expectedCreateDtoName)) {
+        let command = entityFolder.getChildren().filter(x =&gt; x.name == expectedCreateDtoName)[0];
+        let entityPkDescr = getPrimaryKeyDescriptor(entity);
+        command.typeReference.setType(entityPkDescr.typeId);
+        return;
+    }
+
+    let createDto = createElement("DTO", expectedCreateDtoName, entityFolder.id);
+    createDto.setMapping(entity.id, _projectMappingSettingId);
+    createDto.setMetadata("baseName", baseName);
+    createDto.setMetadata("originalVerb", "Create");
+
+    let operation = createElement("Operation", getOperationFormat("Create", nestedCompOwner, entity), service.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), createDto.id);
+        nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId)
+        if (nestedCompOwnerFkDescr.specialization == FKSpecialization.Explicit) {
+            nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
+        }
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, null);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "POST", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "POST", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    let operationParamCreateDto = createElement("Parameter", getParameterFormat("dto"), operation.id);
+    operationParamCreateDto.typeReference.setType(createDto.id);
+
+    if (entityPkDescr.typeId) {
+        operation.typeReference.setType(entityPkDescr.typeId);
+        getReturnTypeMediatypeProperty(operation).setValue("application/json");
+    }
+
+    for (let attribute of entity.getChildren("Attribute")
+        // For Create Commands, we don't want to by default have PKs and FKs
+        .filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !x.hasStereotype("Foreign Key") &amp;&amp; !legacyPartitionKey(x))) {
+            let field = createElement("DTO-Field", getFieldFormat(attribute.name), createDto.id);
+            field.typeReference.setType(attribute.typeReference.typeId)
+            field.setMapping(attribute.id);
+    }
+
+    createDto.collapse();
+    operation.collapse();
+}
+
+function createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let operation = createElement("Operation", getOperationFormat("FindById", nestedCompOwner, entity), service.id);
+    operation.typeReference.setType(resultTypeDto.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+        
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
+    } else {
+        routePath = getRoutePath(null, null, entityPkDescr);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    addPrimaryKeys(null, operation, entityPkDescr);
+
+    operation.collapse();
+}
+
+function createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let operation = createElement("Operation", getOperationFormat("FindAll", nestedCompOwner, entity, true), service.id);
+    operation.typeReference.setIsCollection(true);
+    operation.typeReference.setType(resultTypeDto.id);
+
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, null);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    operation.collapse();
+}
+
+function createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedUpdateDtoName = `${baseName}UpdateDTO`;
+
+    if (hasElementInFolder(entityFolder, expectedUpdateDtoName)) {
+        return;
+    }
+
+    let updateDto = createElement("DTO", expectedUpdateDtoName, entityFolder.id);
+    updateDto.setMapping(entity.id, _projectMappingSettingId);
+    updateDto.setMetadata("baseName", baseName);
+    updateDto.setMetadata("originalVerb", "Update");
+
+    let operation = createElement("Operation", getOperationFormat("Put", nestedCompOwner, entity), service.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), updateDto.id);
+        nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId)
+        if (nestedCompOwnerFkDescr.specialization == FKSpecialization.Explicit) {
+            nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
+        }
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
+    } else {
+        routePath = getRoutePath(null, null, entityPkDescr);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "PUT", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "PUT", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    addPrimaryKeys(updateDto, operation, entityPkDescr);
+
+    let dtoParam = createElement("Parameter", getParameterFormat("dto"), operation.id);
+    dtoParam.typeReference.setType(updateDto.id);
+
+    for (let attribute of entity.getChildren("Attribute")
+        .filter(attr =&gt; !hasAttributeInCommand(updateDto, attr) &amp;&amp; !legacyPartitionKey(attr))) {
+            let field = createElement("DTO-Field", getFieldFormat(attribute.name), updateDto.id);
+            field.typeReference.setType(attribute.typeReference.typeId)
+            field.setMapping(attribute.id);
+    }
+
+    updateDto.collapse();
+    operation.collapse();
+
+    function hasAttributeInCommand(command, attribute) {
+        return command.getChildren("DTO-Field").some(x =&gt; x.name == attribute.name);
+    }
+}
+
+function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let operation = createElement("Operation", getOperationFormat("Delete", nestedCompOwner, entity), service.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
+    } else {
+        routePath = getRoutePath(null, null, entityPkDescr);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "DELETE", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+    addPrimaryKeys(null, operation, entityPkDescr);
+
+    operation.collapse();
+}
+
+/*
+========================
+   UTILITY FUNCTIONS
+========================
+*/
+
+function initConstants() {
+    _aggregateRootCache = Object.create(null);
+    _nestedCompositionalOwnerCache = Object.create(null);
+    _projectMappingSettingId = "01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+
+    PKSpecialization = {
+        Implicit: "implicit",
+        Explicit: "explicit",
+        ExplicitComposite: "explicit_composite",
+        Unknown: "unknown"
+    };
+    FKSpecialization = {
+        Implicit: "implicit",
+        Explicit: "explicit",
+    };
+}
 
 async function showObject(object) {
     await dialogService.info(JSON.stringify(object, null, "  "));
+}
+
+async function preselectOrPromptEntity(preselectedDomainClassName) {
+    let classes = lookupTypesOf("Class").filter(x =&gt; isAggregateRoot(x) || x.hasStereotype("Repository") || ownerIsAggregateRoot(x));
+    if (classes.length == 0) {
+        await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+        return;
+    }
+
+    let classId = preselectedDomainClassName != null
+        ? classes.find(x =&gt; x.getName() === preselectedDomainClassName)?.id
+        : await dialogService.lookupFromOptions(classes.map((x)=&gt;({
+            id: x.id, 
+            name: getFriendlyDisplayNameForClassSelection(x)
+            })));
+    if (classId == null) {
+        await dialogService.error(`No class found with id "${classId}".`);
+        return null;
+    }
+
+    let foundEntity = lookup(classId);
+    return foundEntity;
+}
+
+function getFriendlyDisplayNameForClassSelection(element) {
+    let found = element.getAssociations("Association").filter(x =&gt; x.isSourceEnd() &amp;&amp; 
+            !x.typeReference.isNullable &amp;&amp; 
+            !x.typeReference.isCollection &amp;&amp; 
+            isAggregateRoot(x.typeReference.getType()))[0]?.typeReference?.getType();
+    return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
+}
+
+function getServiceFromCurrentContext(entity, packageOrServiceElement) {
+    // Auto detect if we're running in the context of a service or package.
+    if (packageOrServiceElement.specialization === "Service") {
+        return packageOrServiceElement;
+    }
+
+    // Must be a package. See if we can find an existing service with the name we expect.
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let expectedServiceName = getServiceName(nestedCompOwner, entity);
+    let services = packageOrServiceElement.getChildren("Service").filter(x =&gt; x.name === expectedServiceName);
+    if (services.length &gt; 0) {
+        return services[0];
+    }
+
+    return createElement("Service", expectedServiceName, packageOrServiceElement.id);
+}
+
+function getReturnTypeMediatypeProperty(element) {
+    return element.getStereotype("Http Settings").getProperty("Return Type Mediatype");
+}
+
+function isAggregateRoot(element) {
+    if (_aggregateRootCache[element.id]) {
+        return _aggregateRootCache[element.id];
+    }
+    let result = !element.getAssociations("Association")
+            .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+    _aggregateRootCache[element.id] = result;
+    return result;
+}
+
+function getNestedCompositionalOwner(entity) {
+    if (_nestedCompositionalOwnerCache[entity.id]) {
+        return _nestedCompositionalOwnerCache[entity.id];
+    }
+
+    let result = entity.getAssociations("Association")
+        .filter(x =&gt; isAggregateRoot(x.typeReference.getType()) &amp;&amp;
+            isOwnedBy(x) &amp;&amp;
+            // Let's only target collections for now as part of the nested compositional crud support
+            // as one-to-one relationships are more expensive to address and possibly not going to
+            // be needed.
+            x.getOtherEnd().typeReference.isCollection) [0];
+    if(result) {
+        _nestedCompositionalOwnerCache[entity.id] = result.typeReference.getType();
+    }
+    return result;
+
+    function isOwnedBy(association) {
+        return association.isSourceEnd() &amp;&amp; 
+            !association.typeReference.isNullable &amp;&amp; 
+            !association.typeReference.isCollection;
+    }
+}
+
+function ownerIsAggregateRoot(entity) {
+    // Let's not introduce this yet
+    return false;
+
+    //let result = getNestedCompositionalOwner(entity);
+    //return result ? true : false;
+}
+
+function getEntityFolder(service, entity) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let expectedFolderName = getFolderName(nestedCompOwner, entity);
+    var existing = service.getParent().getChildren().find(x =&gt; x.name == expectedFolderName);
+    var folder = existing || createElement("Folder", expectedFolderName, service.getParent().id);
+    return folder;
+}
+
+function hasElementInFolder(entityFolder, expectedElementName) {
+    return entityFolder.getChildren().some(x =&gt; x.name == expectedElementName);
 }
 
 function setHttpStereotype(element, stereotypeName, props) {
@@ -78,222 +516,182 @@ function getSurrogateKeyType() {
     return typeNameToIdMap.get("guid");
 }
 
-function isAggregateRoot(element) {
-    return !element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-}
+// Returns a dictionary instead of element to help deal with explicit vs implicit keys
+function getPrimaryKeyDescriptor(entity) {
+    if (!entity) {
+        throw new Error("entity not specified");
+    }
+    let pks = entity.getChildren("Attribute")
+        .filter(x =&gt; x.hasStereotype("Primary Key"));
 
-function isUserMutable(attributeName) {
-    const userImmutableFieldNames = new Set(["created", "createdBy", "id", "updated", "updatedBy"]);
-    return !userImmutableFieldNames.has(attributeName.toLowerCase());
-}
-
-async function preselectOrPromptEntity(preselectedDomainClassName) {
-    let classes = lookupTypesOf("Class").filter(x =&gt; isAggregateRoot(x) || x.hasStereotype("Repository"));
-    if (classes.length == 0) {
-        await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-        return;
+    let mapPaths = [];
+    if (pks.length == 1) {
+        mapPaths.push(pks[0].id);
+    } else if (pks.length == 0) {
+        let inheritResult = getInheritanceAttributes(entity);
+        if (inheritResult) {
+            pks = inheritResult.attributes.filter(x =&gt; x.hasStereotype("Primary Key"));
+            if (pks) {
+                mapPaths.push(inheritResult.association.id);
+                mapPaths.push(pks[0].id)
+            }
+        }
     }
 
-    let classId = preselectedDomainClassName != null
-        ? classes.find(x =&gt; x.getName() === preselectedDomainClassName)?.id
-        : await dialogService.lookupFromOptions(classes);
-    if (classId == null) {
-        await dialogService.error(`No class found with id "${classId}".`);
-        return null;
-    }
-
-    let foundEntity = lookup(classId);
-    return foundEntity;
-}
-
-function getServiceFromCurrentContext(entity, packageOrServiceElement) {
-    // Auto detect if we're running in the context of a service or package:
-    const service = packageOrServiceElement.specialization === "Service"
-        ? packageOrServiceElement
-        : createElement("Service", `${pluralize(toPascalCase(entity.name))}Service`, packageOrServiceElement.id);
-    return service;
-}
-
-function getDtoFolder(service, entity) {
-    // Get or create folder in which to place DTOs:
-    let folder = service.getParent().getChildren("Folder").find(x =&gt; x.name == pluralize(entity.name));
-    if (folder == null) {
-        folder = createElement("Folder", pluralize(entity.name), service.getParent().id);
-    }
-    return folder;
-}
-
-function getPrimaryKeyTypeId(entity) {
-    let pks = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-    let pkTypeId;
     switch (true) {
         case pks.length == 0:
-            pkTypeId = getSurrogateKeyType();
-            break;
+            return {
+                id: null,
+                name: getDomainAttributeNameFormat("Id"),
+                typeId: getSurrogateKeyType(),
+                specialization: PKSpecialization.Implicit,
+                compositeKeys: null,
+                mapPath: null
+            };
         case pks.length == 1:
-            pkTypeId = pks[0].typeReference?.typeId ?? getSurrogateKeyType();
-            break;
+            let pkAttr = pks[0];
+            return {
+                id: pkAttr.id,
+                name: getDomainAttributeNameFormat(pkAttr.name),
+                typeId: pkAttr.typeReference.typeId,
+                specialization: PKSpecialization.Explicit,
+                compositeKeys: null,
+                mapPath: mapPaths
+            };
         case pks.length &gt; 1:
-            pkTypeId = null;
+            return {
+                id: null,
+                name: null,
+                typeId: null,
+                specialization: PKSpecialization.ExplicitComposite,
+                compositeKeys: pks.map(x =&gt; { 
+                    return {
+                        id: x.id,
+                        name: getDomainAttributeNameFormat(x.name),
+                        typeId: x.typeReference.typeId
+                    }; 
+                }),
+                mapPath: null
+            };
+        default:
+            return {
+                id: null,
+                name: null,
+                typeId: null,
+                specialization: PKSpecialization.Unknown,
+                compositeKeys: null,
+                mapPath: null
+            };
+    }
+}
+
+function getInheritanceAttributes(entity) {
+    let association = entity.getAssociations("Generalization")[0];
+    if (association) {
+        return { 
+            association: association,
+            attributes: association.typeReference.getType().getChildren("Attribute") 
+        };
+    }
+    return null;
+}
+
+// Returns a dictionary instead of element to help deal with explicit vs implicit keys
+function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner) {
+    if (!entity) {
+        throw new Error("entity not specified");
+    }
+    if (!nestedCompOwner) {
+        throw new Error("nestedCompOwner not specified");
+    }
+
+    let explicitFkAttr = entity.getChildren("Attribute")
+        .filter(x =&gt; x.name.toLowerCase().indexOf(nestedCompOwner.name.toLowerCase()) &gt;= 0 &amp;&amp; x.hasStereotype("Foreign Key"))[0];
+    
+    if (explicitFkAttr) {
+        return {
+            name: getDomainAttributeNameFormat(explicitFkAttr.name),
+            typeId: explicitFkAttr.typeReference.typeId,
+            id: explicitFkAttr.id,
+            specialization: FKSpecialization.Explicit
+        };
+    }
+    
+    return {
+        name: getDomainAttributeNameFormat(`${nestedCompOwner.name}Id`),
+        typeId: getSurrogateKeyType(),
+        id: null,
+        specialization: FKSpecialization.Implicit
+    };
+}
+
+function addPrimaryKeys(dto, operation, entityPkDescr) {
+    switch (entityPkDescr.specialization) {
+        case PKSpecialization.Implicit:
+        case PKSpecialization.Explicit:
+            {
+                if (dto) {
+                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
+                    primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
+                    if (entityPkDescr.specialization == PKSpecialization.Explicit) {
+                        primaryKeyDtoField.setMapping(entityPkDescr.mapPath);
+                    }
+                }
+
+                let operationParamId = createElement("Parameter", getParameterFormat(entityPkDescr.name), operation.id);
+                operationParamId.typeReference.setType(entityPkDescr.typeId);
+            }
+            break;
+        case PKSpecialization.ExplicitComposite:
+            for (let key of entityPkDescr.compositeKeys) {
+                if (dto) {
+                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
+                    primaryKeyDtoField.typeReference.setType(key.typeId)
+                    primaryKeyDtoField.setMapping(key.id);
+                }
+
+                let operationParamId = createElement("Parameter", getParameterFormat(key.name), operation.id);
+                operationParamId.typeReference.setType(entityPkDescr.typeId);
+            }
             break;
     }
-    return pkTypeId;
 }
 
-function getReturnTypeMediatypeProperty(element) {
-    if (currentCrudModule === CrudModuleStandard) {
-        return element.getStereotype("Http Settings").getProperty("Return Type Mediatype");
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        return element.getStereotype("Azure Function").getProperty("Return Type Mediatype");
+function getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr) {
+    let list = []
+    if(nestedCompOwnerFkDescr) {
+        list.push(`{${getParameterFormat(nestedCompOwnerFkDescr.name)}}`);
     }
-
-    throw new Error("Unknown type.");
-}
-
-function createStandardResultTypeDTO(entity, dtoFolder) {
-    // Result DTO (used by "FindById" and "FindAll"):
-    const resultDto = createElement("DTO", `${entity.name}DTO`, dtoFolder.id);
-    resultDto.setMapping(entity.id);
-    return resultDto;
-}
-
-function createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule) {
-    const dto = createElement("DTO", `${entity.name}CreateDTO`, dtoFolder.id);
-    for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
-        let field = createElement("DTO-Field", attribute.name, dto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
+    if(entity) {
+        list.push(`${getRoutingFormat(entity.name)}`);
     }
-
-    const operation = createElement("Operation", "Create", service.id);
-    const operationParameter = createElement("Parameter", "dto", operation.id);
-    operationParameter.typeReference.setType(dto.id);
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "POST", "Route": ""});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "POST", "Route": `${entity.getName().toLowerCase()}`});
-    }
-
-    let pkTypeId = getPrimaryKeyTypeId(entity, operation, currentCrudModule);
-    if (pkTypeId) {
-        getReturnTypeMediatypeProperty(operation).setValue("application/json");
-    }
-    operation.typeReference.setType(pkTypeId);
-
-    operation.collapse();
-}
-
-function createStandardFindByIdOperation(entity, service, resultTypeDto) {
-    const operation = createElement("Operation", "FindById", service.id);
-
-    operation.typeReference.setType(resultTypeDto.id);
-    if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const idField = createElement("DTO-Field", "Id", resultTypeDto.id);
-        idField.typeReference.setType(getSurrogateKeyType())
-
-        const idParam = createElement("Parameter", "id", operation.id);
-        idParam.typeReference.setType(getSurrogateKeyType());
-    } else {
-        for (let attribute of entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"))) {
-            const field = createElement("DTO-Field", attribute.getName(), resultTypeDto.id);
-            field.typeReference.setType(attribute.typeReference.typeId)
-            field.setMapping(attribute.id);
-
-            const param = createElement("Parameter", toCamelCase(field.getName()), operation.id);
-            param.typeReference.setType(attribute.typeReference.typeId);
+    if (entityPkDescr) {
+        switch (entityPkDescr.specialization) {
+            case PKSpecialization.Implicit:
+            case PKSpecialization.Explicit:
+                list.push(`{${getParameterFormat(entityPkDescr.name)}}`);
+                break;
+            case PKSpecialization.ExplicitComposite:
+                list.push(entityPkDescr.compositeKeys.map(x =&gt; `{${getParameterFormat(x.name)}}`))
+                break;
         }
     }
-
-    for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const field = createElement("DTO-Field", attribute.getName(), resultTypeDto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-        field.setMapping(attribute.id);
+    if (list.length == 0) {
+        return "";
     }
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": "{id}"});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/{id}`});
-    }
-
-    operation.collapse();
+    return list.join("/");
 }
 
-function createStandardFindAllOperation(entity, service, resultTypeDto) {
-    const operation = createElement("Operation", "FindAll", service.id);
-    operation.typeReference.setType(resultTypeDto.id);
-    operation.typeReference.setIsCollection(true);
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": ""});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}`});
-    }
-
-    operation.collapse();
+function getDomainAttributeNamingConvention() {
+    const domainSettingsId = "c4d1e35c-7c0d-4926-afe0-18f17563ce17";
+    return application.getSettings(domainSettingsId)
+        ?.getField("Attribute Naming Convention")?.value ?? "pascal-case";
 }
 
-function createStandardUpdateOperation(entity, service, dtoFolder) {
-    const operation = createElement("Operation", "Update", service.id);
-    const updateDTO = createElement("DTO", `${entity.name}UpdateDTO`, dtoFolder.id);
-
-    if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
-        let idParam = createElement("Parameter", "id", operation.id);
-        idParam.typeReference.setType(getSurrogateKeyType());
-    } else {
-        for (let attribute of entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"))) {
-            let field = createElement("DTO-Field", attribute.getName(), updateDTO.id);
-            field.typeReference.setType(attribute.typeReference.typeId)
-
-            let param = createElement("Parameter", toCamelCase(field.getName()), operation.id);
-            param.typeReference.setType(attribute.typeReference.typeId);
-        }
-    }
-
-    const updateOperationDtoParam = createElement("Parameter", "dto", operation.id);
-    updateOperationDtoParam.typeReference.setType(updateDTO.id);
-
-    for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const field = createElement("DTO-Field", attribute.getName(), updateDTO.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-    }
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "PUT", "Route": "{id}"});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "PUT", "Route": `${entity.getName().toLowerCase()}/{id}`});
-    }
-
-    operation.collapse();
-}
-
-function createStandardDeleteOperation(entity, service) {
-    const operation = createElement("Operation", "Delete", service.id);
-
-    if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const idParam = createElement("Parameter", "id", operation.id);
-        idParam.typeReference.setType(getSurrogateKeyType());
-    } else {
-        for (let attribute of entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"))) {
-            const param = createElement("Parameter", toCamelCase(attribute.getName()), operation.id);
-            param.typeReference.setType(attribute.typeReference.typeId);
-        }
-    }
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": "{id}"});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "DELETE", "Route": `${entity.getName().toLowerCase()}/{id}`});
-    }
-
-    operation.collapse();
+// Just in case someone still uses this convention. Used to filter out those attributes when mapping
+// to domain entities that are within a Cosmos DB paradigm.
+function legacyPartitionKey(attribute) {
+    return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.name === "PartitionKey";
 }</script>
         </option>
       </scriptOptions>
@@ -302,6 +700,200 @@ function createStandardDeleteOperation(entity, service) {
   </packageExtensions>
   <elementSettings />
   <elementExtensions>
+    <elementExtension type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+      <mappingSettings>
+        <mappingSetting id="01d74d4f-e478-4fde-a2f0-9ea92255f3c5">
+          <name>Project to Domain</name>
+          <shortcut>ctrl + shift + p</shortcut>
+          <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-right</symbol>
+          <targetTypeOptions>
+            <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="91f640f0-6976-4ac0-b3f0-90cf2d9785e6">
+              <criteria specializationType="Class">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="DTO" childMappingMode="map-to-child" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="53858b49-3863-4597-85a0-6d95b3fe6a04">
+                  <criteria specializationType="Attribute">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren>false</hasChildren>
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="f9e4e028-cf9d-4dcf-8ab6-b56c5db25666">
+                  <criteria specializationType="Association Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="c2bfd200-aef9-468e-800f-56264c2c5b01">
+                  <criteria specializationType="Association Source End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+                <mapping id="00eac74a-c9eb-4cb7-94a1-905c2bde1625">
+                  <criteria specializationType="Generalization Target End">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection>false</isCollection>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo childMappingMode="traverse" useMappingSettings="91f640f0-6976-4ac0-b3f0-90cf2d9785e6" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings />
+                </mapping>
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
+      </mappingSettings>
+      <macros>
+        <macro trigger="on-mapped">
+          <script>//let element = lookup("29a81107-c71c-45b4-ba7b-982be63277a1")
+
+const projectMappingSettingId = "01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+
+let fields = element.getChildren("DTO-Field")
+    .filter(x =&gt; x.typeReference.getType() == null &amp;&amp; x.getMapping().getElement().specialization === "Association");
+
+fields.forEach(f =&gt; {
+    let mappedElement = f.getMapping().getElement();
+
+    let originalVerb = "";
+    if (element.hasMetadata("originalVerb")) {
+        originalVerb = element.getMetadata("originalVerb");
+        // In the event that the prefix is no longer the same as the
+        // originally called verb, then don't propagate this any further
+        // as end users might get confused.
+        if (element.getName().indexOf(originalVerb) &lt; 0) {
+            originalVerb = "";
+        }
+    }
+
+    let targetMappingSettingId = (!originalVerb || originalVerb === "") 
+        ? originalDtoMappingSettingId 
+        : projectMappingSettingId;
+
+    let domainName = mappedElement.typeReference.getType().getName();
+    let baseName = element.getMetadata("baseName") 
+        ? `${element.getMetadata("baseName")}${domainName}`
+        : domainName;
+    let dtoName =  `${originalVerb}${baseName}`;
+    let dto = getOrCreateDTO(dtoName, element.getParent());
+    dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
+    if (originalVerb !== "") {
+        dto.setMetadata("originalVerb", originalVerb);
+    }
+    dto.setMetadata("baseName", baseName);
+    ensureDtoFields(mappedElement, dto);
+    
+    f.typeReference.setType(dto.id);
+});
+
+function getOrCreateDTO(elementName, parentElement) {
+    let existingDto = parentElement.getChildren("DTO").filter(x =&gt; x.name === `${elementName}DTO`)[0];
+    if (existingDto) {
+        return existingDto;
+    }
+
+    let dto = createElement("DTO", `${elementName}DTO`, parentElement.id);
+    return dto;
+}
+
+function ensureDtoFields(mappedElement, dto) {
+    let dtoUpdated = false;
+    let domainElement = mappedElement
+        .typeReference
+        .getType();
+    let mappedElementAttributes = domainElement
+        .getChildren("Attribute");
+    let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
+    let dtoFields = dto.getChildren("DTO-Field");
+    for (let attribute of mappedElementAttributes.filter(x =&gt; ! dtoFields.some(y =&gt; x.name === y.name))) {
+        if (isCreateMode &amp;&amp; attribute.name?.toLowerCase() === "id") {
+            continue;
+        }
+        if (isCreateMode &amp;&amp; isOwnerForeignKey(attribute, domainElement)) {
+            continue;
+        }
+        if (legacyPartitionKey(attribute)) {
+            continue;
+        }
+        if (attribute.hasStereotype("Primary Key")) {
+            continue;
+        }
+        let field = createElement("DTO-Field", attribute.name, dto.id);
+        field.typeReference.setType(attribute.typeReference.typeId);
+        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
+        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
+        field.setMapping(attribute.id);
+        dtoUpdated = true;
+    }
+
+    let explicitPk = dto.getChildren("DTO-Field").filter(x =&gt; x.getMapping()?.getElement()?.hasStereotype("Primary Key") || x.getName().toLowerCase() === "id")[0];
+    if (!isCreateMode &amp;&amp; !explicitPk) {
+        let field = createElement("DTO-Field", "Id", dto.id);
+        field.typeReference.setType(getSurrogateKeyType());
+    }
+
+    if (dtoUpdated) {
+        dto.collapse();
+    }
+}
+
+function getSurrogateKeyType() {
+    const typeNameToIdMap = new Map();
+    typeNameToIdMap.set("guid", "6b649125-18ea-48fd-a6ba-0bfff0d8f488");
+    typeNameToIdMap.set("int", "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74");
+    typeNameToIdMap.set("long", "33013006-E404-48C2-AC46-24EF5A5774FD");
+
+    let typeName = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Type")?.value ?? "int";
+    if (typeNameToIdMap.has(typeName)) {
+        return typeNameToIdMap.get(typeName);
+    }
+
+    return typeNameToIdMap.get("guid");
+}
+
+function isOwnerForeignKey(attribute, domainElement) {
+    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
+        if (attribute.name.toLowerCase().indexOf(association.name.toLowerCase()) &gt;= 0) {
+            return true;
+        }
+    }
+    return false;
+}
+
+// Just in case someone still uses this convention. Used to filter out those attributes when mapping
+// to domain entities that are within a Cosmos DB paradigm.
+function legacyPartitionKey(attribute) {
+    return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.name === "PartitionKey";
+}</script>
+        </macro>
+      </macros>
+    </elementExtension>
     <elementExtension type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
       <creationOptions />
       <scriptOptions>
@@ -335,22 +927,460 @@ if (element?.id == null) {
     defaultDomainClassName = "NewClass";
 }
 
+initConstants();
+
 let entity = await preselectOrPromptEntity(defaultDomainClassName);
 if (!entity) { return; }
 let service = getServiceFromCurrentContext(entity, element);
 
-let dtoFolder = getDtoFolder(service, entity);
-let resultStdTypeDto = createStandardResultTypeDTO(entity, dtoFolder);
-createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule);
-createStandardFindByIdOperation(entity, service, resultStdTypeDto);
-createStandardFindAllOperation(entity, service, resultStdTypeDto);
-createStandardUpdateOperation(entity, service, dtoFolder);
-createStandardDeleteOperation(entity, service);
+let entityFolder = getEntityFolder(service, entity);
+let resultStdTypeDto = createStandardResultTypeDTO(entity, entityFolder);
+createStandardCreateOperation(service, entity, entityFolder, currentCrudModule);
+createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
+createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
+createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule);
+createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule);
 
-// === FUNCTIONS ===
+/*
+========================
+   HOOK-IN FUNCTIONS
+========================
+Easier to alter the behavior of certain key operations.
+Could make certain things configurable in the future.
+*/
+
+function getParameterFormat(str) {
+    return toCamelCase(str);
+}
+
+function getRoutingFormat(str) {
+    return str;
+}
+
+function getFieldFormat(str) {
+    return toPascalCase(str);
+}
+
+function getDomainAttributeNameFormat(str) {
+    let convention = getDomainAttributeNamingConvention();
+    switch (convention) {
+        case "pascal-case":
+            return toPascalCase(str);
+        case "camel-case":
+            return toCamelCase(str);
+    }
+    return str;
+}
+
+function getFolderName(nestedCompOwner, entity) {
+    return nestedCompOwner ? pluralize(nestedCompOwner.name) : pluralize(entity.name);
+}
+
+function getBaseNameForElement(nestedCompOwner, entity, entityIsMany) {
+    let entityName = entityIsMany ? toPascalCase(pluralize(entity.name)) : toPascalCase(entity.name);
+    return nestedCompOwner ? `${toPascalCase(nestedCompOwner.name)}${entityName}` : entityName;
+}
+
+function getServiceName(nestedCompOwner, entity) {
+    return nestedCompOwner 
+        ? `${toPascalCase(nestedCompOwner.name)}Service` 
+        : `${toPascalCase(entity.name)}Service`;
+}
+
+function getOperationFormat(baseName, nestedCompOwner, entity, entityIsMany) {
+    let entityName = entityIsMany ? pluralize(entity.name) : entity.name;
+    return `${baseName}${nestedCompOwner ? entityName : ""}`;
+}
+
+/*
+========================
+   CREATION FUNCTIONS
+========================
+*/
+
+function createStandardResultTypeDTO(entity, entityFolder) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedDtoName = `${baseName}DTO`;
+
+    if (hasElementInFolder(entityFolder, expectedDtoName)) {
+        return entityFolder.getChildren().filter(x =&gt; x.name == expectedDtoName)[0];
+    }
+
+    let dto = createElement("DTO", expectedDtoName, entityFolder.id);
+    dto.setMapping(entity.id);
+    dto.setMetadata("baseName", baseName);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        if (!nestedCompOwnerFkDescr || nestedCompOwnerFkDescr.specialization == FKSpecialization.Implicit) {
+            let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), dto.id);
+            nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        }
+    }
+
+    if (entityPkDescr.specialization == PKSpecialization.Implicit) {
+        let idField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
+        idField.typeReference.setType(entityPkDescr.typeId);
+    }
+
+    for (let attribute of entity.getChildren("Attribute")
+        .filter(attr =&gt; !legacyPartitionKey(attr))) {
+            let field = createElement("DTO-Field", getFieldFormat(attribute.name), dto.id);
+            field.typeReference.setType(attribute.typeReference.typeId);
+            field.typeReference.setIsNullable(attribute.typeReference.isNullable);
+            field.typeReference.setIsCollection(attribute.typeReference.isCollection);
+            field.setMapping(attribute.id);
+    }
+
+    dto.collapse();
+    return dto;
+}
+
+function createStandardCreateOperation(service, entity, entityFolder, currentCrudModule) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedCreateDtoName = `${baseName}CreateDTO`;
+    
+    if (hasElementInFolder(entityFolder, expectedCreateDtoName)) {
+        let command = entityFolder.getChildren().filter(x =&gt; x.name == expectedCreateDtoName)[0];
+        let entityPkDescr = getPrimaryKeyDescriptor(entity);
+        command.typeReference.setType(entityPkDescr.typeId);
+        return;
+    }
+
+    let createDto = createElement("DTO", expectedCreateDtoName, entityFolder.id);
+    createDto.setMapping(entity.id, _projectMappingSettingId);
+    createDto.setMetadata("baseName", baseName);
+    createDto.setMetadata("originalVerb", "Create");
+
+    let operation = createElement("Operation", getOperationFormat("Create", nestedCompOwner, entity), service.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), createDto.id);
+        nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId)
+        if (nestedCompOwnerFkDescr.specialization == FKSpecialization.Explicit) {
+            nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
+        }
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, null);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "POST", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "POST", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    let operationParamCreateDto = createElement("Parameter", getParameterFormat("dto"), operation.id);
+    operationParamCreateDto.typeReference.setType(createDto.id);
+
+    if (entityPkDescr.typeId) {
+        operation.typeReference.setType(entityPkDescr.typeId);
+        getReturnTypeMediatypeProperty(operation).setValue("application/json");
+    }
+
+    for (let attribute of entity.getChildren("Attribute")
+        // For Create Commands, we don't want to by default have PKs and FKs
+        .filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !x.hasStereotype("Foreign Key") &amp;&amp; !legacyPartitionKey(x))) {
+            let field = createElement("DTO-Field", getFieldFormat(attribute.name), createDto.id);
+            field.typeReference.setType(attribute.typeReference.typeId)
+            field.setMapping(attribute.id);
+    }
+
+    createDto.collapse();
+    operation.collapse();
+}
+
+function createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let operation = createElement("Operation", getOperationFormat("FindById", nestedCompOwner, entity), service.id);
+    operation.typeReference.setType(resultTypeDto.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+        
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
+    } else {
+        routePath = getRoutePath(null, null, entityPkDescr);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    addPrimaryKeys(null, operation, entityPkDescr);
+
+    operation.collapse();
+}
+
+function createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let operation = createElement("Operation", getOperationFormat("FindAll", nestedCompOwner, entity, true), service.id);
+    operation.typeReference.setIsCollection(true);
+    operation.typeReference.setType(resultTypeDto.id);
+
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+        param.setMapping(nestedCompOwnerIdDtoField.id);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, null);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    operation.collapse();
+}
+
+function createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
+    let expectedUpdateDtoName = `${baseName}UpdateDTO`;
+
+    if (hasElementInFolder(entityFolder, expectedUpdateDtoName)) {
+        return;
+    }
+
+    let updateDto = createElement("DTO", expectedUpdateDtoName, entityFolder.id);
+    updateDto.setMapping(entity.id, _projectMappingSettingId);
+    updateDto.setMetadata("baseName", baseName);
+    updateDto.setMetadata("originalVerb", "Update");
+
+    let operation = createElement("Operation", getOperationFormat("Put", nestedCompOwner, entity), service.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let nestedCompOwnerIdDtoField = createElement("DTO-Field", getFieldFormat(nestedCompOwnerFkDescr.name), updateDto.id);
+        nestedCompOwnerIdDtoField.typeReference.setType(nestedCompOwnerFkDescr.typeId)
+        if (nestedCompOwnerFkDescr.specialization == FKSpecialization.Explicit) {
+            nestedCompOwnerIdDtoField.setMapping(nestedCompOwnerFkDescr.id);
+        }
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
+    } else {
+        routePath = getRoutePath(null, null, entityPkDescr);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "PUT", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "PUT", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+
+    addPrimaryKeys(updateDto, operation, entityPkDescr);
+
+    let dtoParam = createElement("Parameter", getParameterFormat("dto"), operation.id);
+    dtoParam.typeReference.setType(updateDto.id);
+
+    for (let attribute of entity.getChildren("Attribute")
+        .filter(attr =&gt; !hasAttributeInCommand(updateDto, attr) &amp;&amp; !legacyPartitionKey(attr))) {
+            let field = createElement("DTO-Field", getFieldFormat(attribute.name), updateDto.id);
+            field.typeReference.setType(attribute.typeReference.typeId)
+            field.setMapping(attribute.id);
+    }
+
+    updateDto.collapse();
+    operation.collapse();
+
+    function hasAttributeInCommand(command, attribute) {
+        return command.getChildren("DTO-Field").some(x =&gt; x.name == attribute.name);
+    }
+}
+
+function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let operation = createElement("Operation", getOperationFormat("Delete", nestedCompOwner, entity), service.id);
+
+    let entityPkDescr = getPrimaryKeyDescriptor(entity);
+    let routePath = "";
+
+    if (nestedCompOwner) {
+        let nestedCompOwnerFkDescr = getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner);
+
+        let param = createElement("Parameter", getParameterFormat(nestedCompOwnerFkDescr.name), operation.id);
+        param.typeReference.setType(nestedCompOwnerFkDescr.typeId);
+
+        routePath = getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr);
+    } else {
+        routePath = getRoutePath(null, null, entityPkDescr);
+    }
+
+    if (currentCrudModule === CrudModuleStandard) {
+        setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": routePath});
+    } else if (currentCrudModule === CrudModuleAzureFunction) {
+        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "DELETE", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
+    }
+    addPrimaryKeys(null, operation, entityPkDescr);
+
+    operation.collapse();
+}
+
+/*
+========================
+   UTILITY FUNCTIONS
+========================
+*/
+
+function initConstants() {
+    _aggregateRootCache = Object.create(null);
+    _nestedCompositionalOwnerCache = Object.create(null);
+    _projectMappingSettingId = "01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+
+    PKSpecialization = {
+        Implicit: "implicit",
+        Explicit: "explicit",
+        ExplicitComposite: "explicit_composite",
+        Unknown: "unknown"
+    };
+    FKSpecialization = {
+        Implicit: "implicit",
+        Explicit: "explicit",
+    };
+}
 
 async function showObject(object) {
     await dialogService.info(JSON.stringify(object, null, "  "));
+}
+
+async function preselectOrPromptEntity(preselectedDomainClassName) {
+    let classes = lookupTypesOf("Class").filter(x =&gt; isAggregateRoot(x) || x.hasStereotype("Repository") || ownerIsAggregateRoot(x));
+    if (classes.length == 0) {
+        await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
+        return;
+    }
+
+    let classId = preselectedDomainClassName != null
+        ? classes.find(x =&gt; x.getName() === preselectedDomainClassName)?.id
+        : await dialogService.lookupFromOptions(classes.map((x)=&gt;({
+            id: x.id, 
+            name: getFriendlyDisplayNameForClassSelection(x)
+            })));
+    if (classId == null) {
+        await dialogService.error(`No class found with id "${classId}".`);
+        return null;
+    }
+
+    let foundEntity = lookup(classId);
+    return foundEntity;
+}
+
+function getFriendlyDisplayNameForClassSelection(element) {
+    let found = element.getAssociations("Association").filter(x =&gt; x.isSourceEnd() &amp;&amp; 
+            !x.typeReference.isNullable &amp;&amp; 
+            !x.typeReference.isCollection &amp;&amp; 
+            isAggregateRoot(x.typeReference.getType()))[0]?.typeReference?.getType();
+    return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
+}
+
+function getServiceFromCurrentContext(entity, packageOrServiceElement) {
+    // Auto detect if we're running in the context of a service or package.
+    if (packageOrServiceElement.specialization === "Service") {
+        return packageOrServiceElement;
+    }
+
+    // Must be a package. See if we can find an existing service with the name we expect.
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let expectedServiceName = getServiceName(nestedCompOwner, entity);
+    let services = packageOrServiceElement.getChildren("Service").filter(x =&gt; x.name === expectedServiceName);
+    if (services.length &gt; 0) {
+        return services[0];
+    }
+
+    return createElement("Service", expectedServiceName, packageOrServiceElement.id);
+}
+
+function getReturnTypeMediatypeProperty(element) {
+    return element.getStereotype("Http Settings").getProperty("Return Type Mediatype");
+}
+
+function isAggregateRoot(element) {
+    if (_aggregateRootCache[element.id]) {
+        return _aggregateRootCache[element.id];
+    }
+    let result = !element.getAssociations("Association")
+            .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+    _aggregateRootCache[element.id] = result;
+    return result;
+}
+
+function getNestedCompositionalOwner(entity) {
+    if (_nestedCompositionalOwnerCache[entity.id]) {
+        return _nestedCompositionalOwnerCache[entity.id];
+    }
+
+    let result = entity.getAssociations("Association")
+        .filter(x =&gt; isAggregateRoot(x.typeReference.getType()) &amp;&amp;
+            isOwnedBy(x) &amp;&amp;
+            // Let's only target collections for now as part of the nested compositional crud support
+            // as one-to-one relationships are more expensive to address and possibly not going to
+            // be needed.
+            x.getOtherEnd().typeReference.isCollection) [0];
+    if(result) {
+        _nestedCompositionalOwnerCache[entity.id] = result.typeReference.getType();
+    }
+    return result;
+
+    function isOwnedBy(association) {
+        return association.isSourceEnd() &amp;&amp; 
+            !association.typeReference.isNullable &amp;&amp; 
+            !association.typeReference.isCollection;
+    }
+}
+
+function ownerIsAggregateRoot(entity) {
+    // Let's not introduce this yet
+    return false;
+
+    //let result = getNestedCompositionalOwner(entity);
+    //return result ? true : false;
+}
+
+function getEntityFolder(service, entity) {
+    let nestedCompOwner = getNestedCompositionalOwner(entity);
+    let expectedFolderName = getFolderName(nestedCompOwner, entity);
+    var existing = service.getParent().getChildren().find(x =&gt; x.name == expectedFolderName);
+    var folder = existing || createElement("Folder", expectedFolderName, service.getParent().id);
+    return folder;
+}
+
+function hasElementInFolder(entityFolder, expectedElementName) {
+    return entityFolder.getChildren().some(x =&gt; x.name == expectedElementName);
 }
 
 function setHttpStereotype(element, stereotypeName, props) {
@@ -374,222 +1404,182 @@ function getSurrogateKeyType() {
     return typeNameToIdMap.get("guid");
 }
 
-function isAggregateRoot(element) {
-    return !element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-}
+// Returns a dictionary instead of element to help deal with explicit vs implicit keys
+function getPrimaryKeyDescriptor(entity) {
+    if (!entity) {
+        throw new Error("entity not specified");
+    }
+    let pks = entity.getChildren("Attribute")
+        .filter(x =&gt; x.hasStereotype("Primary Key"));
 
-function isUserMutable(attributeName) {
-    const userImmutableFieldNames = new Set(["created", "createdBy", "id", "updated", "updatedBy"]);
-    return !userImmutableFieldNames.has(attributeName.toLowerCase());
-}
-
-async function preselectOrPromptEntity(preselectedDomainClassName) {
-    let classes = lookupTypesOf("Class").filter(x =&gt; isAggregateRoot(x) || x.hasStereotype("Repository"));
-    if (classes.length == 0) {
-        await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-        return;
+    let mapPaths = [];
+    if (pks.length == 1) {
+        mapPaths.push(pks[0].id);
+    } else if (pks.length == 0) {
+        let inheritResult = getInheritanceAttributes(entity);
+        if (inheritResult) {
+            pks = inheritResult.attributes.filter(x =&gt; x.hasStereotype("Primary Key"));
+            if (pks) {
+                mapPaths.push(inheritResult.association.id);
+                mapPaths.push(pks[0].id)
+            }
+        }
     }
 
-    let classId = preselectedDomainClassName != null
-        ? classes.find(x =&gt; x.getName() === preselectedDomainClassName)?.id
-        : await dialogService.lookupFromOptions(classes);
-    if (classId == null) {
-        await dialogService.error(`No class found with id "${classId}".`);
-        return null;
-    }
-
-    let foundEntity = lookup(classId);
-    return foundEntity;
-}
-
-function getServiceFromCurrentContext(entity, packageOrServiceElement) {
-    // Auto detect if we're running in the context of a service or package:
-    const service = packageOrServiceElement.specialization === "Service"
-        ? packageOrServiceElement
-        : createElement("Service", `${pluralize(toPascalCase(entity.name))}Service`, packageOrServiceElement.id);
-    return service;
-}
-
-function getDtoFolder(service, entity) {
-    // Get or create folder in which to place DTOs:
-    let folder = service.getParent().getChildren("Folder").find(x =&gt; x.name == pluralize(entity.name));
-    if (folder == null) {
-        folder = createElement("Folder", pluralize(entity.name), service.getParent().id);
-    }
-    return folder;
-}
-
-function getPrimaryKeyTypeId(entity) {
-    let pks = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-    let pkTypeId;
     switch (true) {
         case pks.length == 0:
-            pkTypeId = getSurrogateKeyType();
-            break;
+            return {
+                id: null,
+                name: getDomainAttributeNameFormat("Id"),
+                typeId: getSurrogateKeyType(),
+                specialization: PKSpecialization.Implicit,
+                compositeKeys: null,
+                mapPath: null
+            };
         case pks.length == 1:
-            pkTypeId = pks[0].typeReference?.typeId ?? getSurrogateKeyType();
-            break;
+            let pkAttr = pks[0];
+            return {
+                id: pkAttr.id,
+                name: getDomainAttributeNameFormat(pkAttr.name),
+                typeId: pkAttr.typeReference.typeId,
+                specialization: PKSpecialization.Explicit,
+                compositeKeys: null,
+                mapPath: mapPaths
+            };
         case pks.length &gt; 1:
-            pkTypeId = null;
+            return {
+                id: null,
+                name: null,
+                typeId: null,
+                specialization: PKSpecialization.ExplicitComposite,
+                compositeKeys: pks.map(x =&gt; { 
+                    return {
+                        id: x.id,
+                        name: getDomainAttributeNameFormat(x.name),
+                        typeId: x.typeReference.typeId
+                    }; 
+                }),
+                mapPath: null
+            };
+        default:
+            return {
+                id: null,
+                name: null,
+                typeId: null,
+                specialization: PKSpecialization.Unknown,
+                compositeKeys: null,
+                mapPath: null
+            };
+    }
+}
+
+function getInheritanceAttributes(entity) {
+    let association = entity.getAssociations("Generalization")[0];
+    if (association) {
+        return { 
+            association: association,
+            attributes: association.typeReference.getType().getChildren("Attribute") 
+        };
+    }
+    return null;
+}
+
+// Returns a dictionary instead of element to help deal with explicit vs implicit keys
+function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner) {
+    if (!entity) {
+        throw new Error("entity not specified");
+    }
+    if (!nestedCompOwner) {
+        throw new Error("nestedCompOwner not specified");
+    }
+
+    let explicitFkAttr = entity.getChildren("Attribute")
+        .filter(x =&gt; x.name.toLowerCase().indexOf(nestedCompOwner.name.toLowerCase()) &gt;= 0 &amp;&amp; x.hasStereotype("Foreign Key"))[0];
+    
+    if (explicitFkAttr) {
+        return {
+            name: getDomainAttributeNameFormat(explicitFkAttr.name),
+            typeId: explicitFkAttr.typeReference.typeId,
+            id: explicitFkAttr.id,
+            specialization: FKSpecialization.Explicit
+        };
+    }
+    
+    return {
+        name: getDomainAttributeNameFormat(`${nestedCompOwner.name}Id`),
+        typeId: getSurrogateKeyType(),
+        id: null,
+        specialization: FKSpecialization.Implicit
+    };
+}
+
+function addPrimaryKeys(dto, operation, entityPkDescr) {
+    switch (entityPkDescr.specialization) {
+        case PKSpecialization.Implicit:
+        case PKSpecialization.Explicit:
+            {
+                if (dto) {
+                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
+                    primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
+                    if (entityPkDescr.specialization == PKSpecialization.Explicit) {
+                        primaryKeyDtoField.setMapping(entityPkDescr.mapPath);
+                    }
+                }
+
+                let operationParamId = createElement("Parameter", getParameterFormat(entityPkDescr.name), operation.id);
+                operationParamId.typeReference.setType(entityPkDescr.typeId);
+            }
+            break;
+        case PKSpecialization.ExplicitComposite:
+            for (let key of entityPkDescr.compositeKeys) {
+                if (dto) {
+                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
+                    primaryKeyDtoField.typeReference.setType(key.typeId)
+                    primaryKeyDtoField.setMapping(key.id);
+                }
+
+                let operationParamId = createElement("Parameter", getParameterFormat(key.name), operation.id);
+                operationParamId.typeReference.setType(entityPkDescr.typeId);
+            }
             break;
     }
-    return pkTypeId;
 }
 
-function getReturnTypeMediatypeProperty(element) {
-    if (currentCrudModule === CrudModuleStandard) {
-        return element.getStereotype("Http Settings").getProperty("Return Type Mediatype");
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        return element.getStereotype("Azure Function").getProperty("Return Type Mediatype");
+function getRoutePath(nestedCompOwnerFkDescr, entity, entityPkDescr) {
+    let list = []
+    if(nestedCompOwnerFkDescr) {
+        list.push(`{${getParameterFormat(nestedCompOwnerFkDescr.name)}}`);
     }
-
-    throw new Error("Unknown type.");
-}
-
-function createStandardResultTypeDTO(entity, dtoFolder) {
-    // Result DTO (used by "FindById" and "FindAll"):
-    const resultDto = createElement("DTO", `${entity.name}DTO`, dtoFolder.id);
-    resultDto.setMapping(entity.id);
-    return resultDto;
-}
-
-function createStandardCreateOperation(entity, dtoFolder, service, currentCrudModule) {
-    const dto = createElement("DTO", `${entity.name}CreateDTO`, dtoFolder.id);
-    for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
-        let field = createElement("DTO-Field", attribute.name, dto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
+    if(entity) {
+        list.push(`${getRoutingFormat(entity.name)}`);
     }
-
-    const operation = createElement("Operation", "Create", service.id);
-    const operationParameter = createElement("Parameter", "dto", operation.id);
-    operationParameter.typeReference.setType(dto.id);
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "POST", "Route": ""});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "POST", "Route": `${entity.getName().toLowerCase()}`});
-    }
-
-    let pkTypeId = getPrimaryKeyTypeId(entity, operation, currentCrudModule);
-    if (pkTypeId) {
-        getReturnTypeMediatypeProperty(operation).setValue("application/json");
-    }
-    operation.typeReference.setType(pkTypeId);
-
-    operation.collapse();
-}
-
-function createStandardFindByIdOperation(entity, service, resultTypeDto) {
-    const operation = createElement("Operation", "FindById", service.id);
-
-    operation.typeReference.setType(resultTypeDto.id);
-    if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const idField = createElement("DTO-Field", "Id", resultTypeDto.id);
-        idField.typeReference.setType(getSurrogateKeyType())
-
-        const idParam = createElement("Parameter", "id", operation.id);
-        idParam.typeReference.setType(getSurrogateKeyType());
-    } else {
-        for (let attribute of entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"))) {
-            const field = createElement("DTO-Field", attribute.getName(), resultTypeDto.id);
-            field.typeReference.setType(attribute.typeReference.typeId)
-            field.setMapping(attribute.id);
-
-            const param = createElement("Parameter", toCamelCase(field.getName()), operation.id);
-            param.typeReference.setType(attribute.typeReference.typeId);
+    if (entityPkDescr) {
+        switch (entityPkDescr.specialization) {
+            case PKSpecialization.Implicit:
+            case PKSpecialization.Explicit:
+                list.push(`{${getParameterFormat(entityPkDescr.name)}}`);
+                break;
+            case PKSpecialization.ExplicitComposite:
+                list.push(entityPkDescr.compositeKeys.map(x =&gt; `{${getParameterFormat(x.name)}}`))
+                break;
         }
     }
-
-    for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const field = createElement("DTO-Field", attribute.getName(), resultTypeDto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-        field.setMapping(attribute.id);
+    if (list.length == 0) {
+        return "";
     }
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": "{id}"});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/{id}`});
-    }
-
-    operation.collapse();
+    return list.join("/");
 }
 
-function createStandardFindAllOperation(entity, service, resultTypeDto) {
-    const operation = createElement("Operation", "FindAll", service.id);
-    operation.typeReference.setType(resultTypeDto.id);
-    operation.typeReference.setIsCollection(true);
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": ""});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}`});
-    }
-
-    operation.collapse();
+function getDomainAttributeNamingConvention() {
+    const domainSettingsId = "c4d1e35c-7c0d-4926-afe0-18f17563ce17";
+    return application.getSettings(domainSettingsId)
+        ?.getField("Attribute Naming Convention")?.value ?? "pascal-case";
 }
 
-function createStandardUpdateOperation(entity, service, dtoFolder) {
-    const operation = createElement("Operation", "Update", service.id);
-    const updateDTO = createElement("DTO", `${entity.name}UpdateDTO`, dtoFolder.id);
-
-    if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
-        let idParam = createElement("Parameter", "id", operation.id);
-        idParam.typeReference.setType(getSurrogateKeyType());
-    } else {
-        for (let attribute of entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"))) {
-            let field = createElement("DTO-Field", attribute.getName(), updateDTO.id);
-            field.typeReference.setType(attribute.typeReference.typeId)
-
-            let param = createElement("Parameter", toCamelCase(field.getName()), operation.id);
-            param.typeReference.setType(attribute.typeReference.typeId);
-        }
-    }
-
-    const updateOperationDtoParam = createElement("Parameter", "dto", operation.id);
-    updateOperationDtoParam.typeReference.setType(updateDTO.id);
-
-    for (let attribute of entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const field = createElement("DTO-Field", attribute.getName(), updateDTO.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-    }
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "PUT", "Route": "{id}"});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "PUT", "Route": `${entity.getName().toLowerCase()}/{id}`});
-    }
-
-    operation.collapse();
-}
-
-function createStandardDeleteOperation(entity, service) {
-    const operation = createElement("Operation", "Delete", service.id);
-
-    if (entity.getChildren("Attribute").every(x =&gt; !x.hasStereotype("Primary Key"))) {
-        const idParam = createElement("Parameter", "id", operation.id);
-        idParam.typeReference.setType(getSurrogateKeyType());
-    } else {
-        for (let attribute of entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"))) {
-            const param = createElement("Parameter", toCamelCase(attribute.getName()), operation.id);
-            param.typeReference.setType(attribute.typeReference.typeId);
-        }
-    }
-
-    if (currentCrudModule === CrudModuleStandard) {
-        setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": "{id}"});
-    } else if (currentCrudModule === CrudModuleAzureFunction) {
-        setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "DELETE", "Route": `${entity.getName().toLowerCase()}/{id}`});
-    }
-
-    operation.collapse();
+// Just in case someone still uses this convention. Used to filter out those attributes when mapping
+// to domain entities that are within a Cosmos DB paradigm.
+function legacyPartitionKey(attribute) {
+    return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.name === "PartitionKey";
 }</script>
         </option>
       </scriptOptions>

@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>362df7b8-875c-4d07-89f6-fd68383a5327</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#98ce27c6-3fdb-4e4e-9b73-8809ac02fe38</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DTOExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DTOExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>362df7b8-875c-4d07-89f6-fd68383a5327</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#09f89a6e-f13e-44d5-b26c-83eed3114c8d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ServiceExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -35,7 +43,7 @@
     <FileLog>
       <ProjectId>f2666e58-ca59-49e9-a25e-7ad352bb9632</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#f2666e58-ca59-49e9-a25e-7ad352bb9632</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.CRUD.ServiceDispatch.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.CRUD.ServiceDispatch.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
