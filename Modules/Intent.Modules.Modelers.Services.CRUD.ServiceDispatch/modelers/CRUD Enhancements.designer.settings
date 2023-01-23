@@ -20,7 +20,7 @@
 const CrudModuleStandard = "Standard";
 const CrudModuleAzureFunction = "Azure Function";
 const currentCrudModule = CrudModuleStandard;
-initGlobals();
+var globals = initGlobals();
 // Detect if we're running from the "Execution Script dialogue", in which case we want to manually
 // set the element to something:
 let defaultDomainClassName = null;
@@ -297,9 +297,8 @@ function createStandardDeleteOperation(service, entity, entityFolder, currentCru
     UTILITY FUNCTIONS
 ========================
 */
-var globals;
 function initGlobals() {
-    globals = {
+    return {
         aggregateRootCache: Object.create(null),
         nestedCompositionalOwnerCache: Object.create(null),
         projectMappingSettingId: "01d74d4f-e478-4fde-a2f0-9ea92255f3c5",
@@ -723,7 +722,7 @@ function legacyPartitionKey(attribute) {
           <script>//let element = lookup("29a81107-c71c-45b4-ba7b-982be63277a1")
 const projectMappingSettingId = "01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
-initGlobals();
+var globals = initGlobals();
 let fields = element.getChildren("DTO-Field")
     .filter(x =&gt; x.typeReference.getType() == null &amp;&amp; x.getMapping().getElement().specialization === "Association");
 fields.forEach(f =&gt; {
@@ -768,9 +767,8 @@ function getDomainAttributeNameFormat(str) {
     }
     return str;
 }
-var globals;
 function initGlobals() {
-    globals = {
+    return {
         PKSpecialization: {
             Implicit: "implicit",
             Explicit: "explicit",
@@ -1019,7 +1017,7 @@ function legacyPartitionKey(attribute) {
 const CrudModuleStandard = "Standard";
 const CrudModuleAzureFunction = "Azure Function";
 const currentCrudModule = CrudModuleStandard;
-initGlobals();
+var globals = initGlobals();
 // Detect if we're running from the "Execution Script dialogue", in which case we want to manually
 // set the element to something:
 let defaultDomainClassName = null;
@@ -1296,9 +1294,8 @@ function createStandardDeleteOperation(service, entity, entityFolder, currentCru
     UTILITY FUNCTIONS
 ========================
 */
-var globals;
 function initGlobals() {
-    globals = {
+    return {
         aggregateRootCache: Object.create(null),
         nestedCompositionalOwnerCache: Object.create(null),
         projectMappingSettingId: "01d74d4f-e478-4fde-a2f0-9ea92255f3c5",

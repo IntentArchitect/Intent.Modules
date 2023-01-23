@@ -5,7 +5,7 @@ declare var globals;
 const projectMappingSettingId = "01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
 const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 
-initGlobals();
+var globals = initGlobals();
 
 let fields = element.getChildren("DTO-Field")
     .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
@@ -59,10 +59,8 @@ function getDomainAttributeNameFormat(str) : string {
     return str;
 }
 
-var globals: any;
-
 function initGlobals() {
-    globals = {
+    return {
         PKSpecialization: {
             Implicit: "implicit",
             Explicit: "explicit",

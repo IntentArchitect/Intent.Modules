@@ -10,7 +10,7 @@ const CrudModuleAzureFunction = "Azure Function";
 
 const currentCrudModule = CrudModuleStandard;
 
-initGlobals();
+var globals = initGlobals();
 
 // Detect if we're running from the "Execution Script dialogue", in which case we want to manually
 // set the element to something:
@@ -356,10 +356,8 @@ function createStandardDeleteOperation(service, entity, entityFolder, currentCru
 ========================
 */
 
-var globals: any;
-
 function initGlobals() {
-    globals = {
+    return {
         aggregateRootCache: Object.create(null),
         nestedCompositionalOwnerCache: Object.create(null),
         projectMappingSettingId: "01d74d4f-e478-4fde-a2f0-9ea92255f3c5",
