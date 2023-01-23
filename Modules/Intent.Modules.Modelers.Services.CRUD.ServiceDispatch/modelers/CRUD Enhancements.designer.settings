@@ -115,13 +115,12 @@ function createStandardResultTypeDTO(entity, entityFolder) {
         let idField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
         idField.typeReference.setType(entityPkDescr.typeId);
     }
-    for (let attribute of entity.getChildren("Attribute")
-        .filter(attr =&gt; !legacyPartitionKey(attr))) {
-        let field = createElement("DTO-Field", getFieldFormat(attribute.name), dto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-        field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), dto.id);
+        field.typeReference.setType(entry.typeId);
+        field.setMapping(entry.mapPath);
     }
     dto.collapse();
     return dto;
@@ -166,12 +165,12 @@ function createStandardCreateOperation(service, entity, entityFolder, currentCru
         operation.typeReference.setType(entityPkDescr.typeId);
         getReturnTypeMediatypeProperty(operation).setValue("application/json");
     }
-    for (let attribute of entity.getChildren("Attribute")
-        // For Create Commands, we don't want to by default have PKs and FKs
-        .filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !x.hasStereotype("Foreign Key") &amp;&amp; !legacyPartitionKey(x))) {
-        let field = createElement("DTO-Field", getFieldFormat(attribute.name), createDto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), createDto.id);
+        field.typeReference.setType(entry.typeId);
+        field.setMapping(entry.mapPath);
     }
     createDto.collapse();
     operation.collapse();
@@ -257,11 +256,12 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     addPrimaryKeys(updateDto, operation, entityPkDescr);
     let dtoParam = createElement("Parameter", getParameterFormat("dto"), operation.id);
     dtoParam.typeReference.setType(updateDto.id);
-    for (let attribute of entity.getChildren("Attribute")
-        .filter(attr =&gt; !hasAttributeInCommand(updateDto, attr) &amp;&amp; !legacyPartitionKey(attr))) {
-        let field = createElement("DTO-Field", getFieldFormat(attribute.name), updateDto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), updateDto.id);
+        field.typeReference.setType(entry.typeId);
+        field.setMapping(entry.mapPath);
     }
     updateDto.collapse();
     operation.collapse();
@@ -486,11 +486,13 @@ function getPrimaryKeysWithMapPath(entity) {
         id: key.id,
         name: key.getName(),
         typeId: key.typeReference.typeId,
-        mapPath: [key.id]
+        mapPath: [key.id],
+        isNullable: false,
+        isCollection: false
     });
-    traverseInheritanceHierarchy(keydict, entity, []);
+    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
     return keydict;
-    function traverseInheritanceHierarchy(keydict, curEntity, generalizationStack) {
+    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
         if (!curEntity) {
             return;
         }
@@ -507,10 +509,50 @@ function getPrimaryKeysWithMapPath(entity) {
                 id: key.id,
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id])
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchy(keydict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+    }
+}
+function getAttributesWithMapPath(entity) {
+    let attrDict = Object.create(null);
+    let attributes = entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+    attributes.forEach(attr =&gt; attrDict[attr.id] = {
+        id: attr.id,
+        name: attr.getName(),
+        typeId: attr.typeReference.typeId,
+        mapPath: [attr.id],
+        isNullable: false,
+        isCollection: false
+    });
+    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+    return attrDict;
+    function traverseInheritanceHierarchyForAttributes(attrDict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+        baseKeys.forEach(attr =&gt; {
+            attrDict[attr.id] = {
+                id: attr.id,
+                name: attr.getName(),
+                typeId: attr.typeReference.typeId,
+                mapPath: generalizationStack.concat([attr.id]),
+                isNullable: attr.typeReference.isNullable,
+                isCollection: attr.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
     }
 }
 // Returns a dictionary instead of element to help deal with explicit vs implicit keys
@@ -754,28 +796,21 @@ function ensureDtoFields(mappedElement, dto) {
     let domainElement = mappedElement
         .typeReference
         .getType();
-    let mappedElementAttributes = domainElement
-        .getChildren("Attribute");
     let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
-    let dtoFields = dto.getChildren("DTO-Field");
-    for (let attribute of mappedElementAttributes.filter(x =&gt; !dtoFields.some(y =&gt; x.name === y.name))) {
-        if (isCreateMode &amp;&amp; attribute.name?.toLowerCase() === "id") {
+    let attributesWithMapPaths = getAttributesWithMapPath(domainElement);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        if (isCreateMode &amp;&amp; entry.name?.toLowerCase() === "id") {
             continue;
         }
-        if (isCreateMode &amp;&amp; isOwnerForeignKey(attribute, domainElement)) {
+        if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
-        if (legacyPartitionKey(attribute)) {
-            continue;
-        }
-        if (attribute.hasStereotype("Primary Key")) {
-            continue;
-        }
-        let field = createElement("DTO-Field", attribute.name, dto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-        field.setMapping(attribute.id);
+        let field = createElement("DTO-Field", entry.name, dto.id);
+        field.typeReference.setType(entry.typeId);
+        field.typeReference.setIsNullable(entry.isNullable);
+        field.typeReference.setIsCollection(entry.isCollection);
+        field.setMapping(entry.mapPath);
         dtoUpdated = true;
     }
     if (!isCreateMode) {
@@ -818,9 +853,9 @@ function getSurrogateKeyType() {
     }
     return typeNameToIdMap.get("guid");
 }
-function isOwnerForeignKey(attribute, domainElement) {
+function isOwnerForeignKey(attributeName, domainElement) {
     for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {
-        if (attribute.name.toLowerCase().indexOf(association.name.toLowerCase()) &gt;= 0) {
+        if (attributeName.toLowerCase().indexOf(association.name.toLowerCase()) &gt;= 0) {
             return true;
         }
     }
@@ -888,11 +923,13 @@ function getPrimaryKeysWithMapPath(entity) {
         id: key.id,
         name: key.getName(),
         typeId: key.typeReference.typeId,
-        mapPath: [key.id]
+        mapPath: [key.id],
+        isNullable: false,
+        isCollection: false
     });
-    traverseInheritanceHierarchy(keydict, entity, []);
+    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
     return keydict;
-    function traverseInheritanceHierarchy(keydict, curEntity, generalizationStack) {
+    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
         if (!curEntity) {
             return;
         }
@@ -909,10 +946,50 @@ function getPrimaryKeysWithMapPath(entity) {
                 id: key.id,
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id])
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchy(keydict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+    }
+}
+function getAttributesWithMapPath(entity) {
+    let attrDict = Object.create(null);
+    let attributes = entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+    attributes.forEach(attr =&gt; attrDict[attr.id] = {
+        id: attr.id,
+        name: attr.getName(),
+        typeId: attr.typeReference.typeId,
+        mapPath: [attr.id],
+        isNullable: false,
+        isCollection: false
+    });
+    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+    return attrDict;
+    function traverseInheritanceHierarchyForAttributes(attrDict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+        baseKeys.forEach(attr =&gt; {
+            attrDict[attr.id] = {
+                id: attr.id,
+                name: attr.getName(),
+                typeId: attr.typeReference.typeId,
+                mapPath: generalizationStack.concat([attr.id]),
+                isNullable: attr.typeReference.isNullable,
+                isCollection: attr.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
     }
 }
 function getDomainAttributeNamingConvention() {
@@ -1037,13 +1114,12 @@ function createStandardResultTypeDTO(entity, entityFolder) {
         let idField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
         idField.typeReference.setType(entityPkDescr.typeId);
     }
-    for (let attribute of entity.getChildren("Attribute")
-        .filter(attr =&gt; !legacyPartitionKey(attr))) {
-        let field = createElement("DTO-Field", getFieldFormat(attribute.name), dto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-        field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), dto.id);
+        field.typeReference.setType(entry.typeId);
+        field.setMapping(entry.mapPath);
     }
     dto.collapse();
     return dto;
@@ -1088,12 +1164,12 @@ function createStandardCreateOperation(service, entity, entityFolder, currentCru
         operation.typeReference.setType(entityPkDescr.typeId);
         getReturnTypeMediatypeProperty(operation).setValue("application/json");
     }
-    for (let attribute of entity.getChildren("Attribute")
-        // For Create Commands, we don't want to by default have PKs and FKs
-        .filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !x.hasStereotype("Foreign Key") &amp;&amp; !legacyPartitionKey(x))) {
-        let field = createElement("DTO-Field", getFieldFormat(attribute.name), createDto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), createDto.id);
+        field.typeReference.setType(entry.typeId);
+        field.setMapping(entry.mapPath);
     }
     createDto.collapse();
     operation.collapse();
@@ -1179,11 +1255,12 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     addPrimaryKeys(updateDto, operation, entityPkDescr);
     let dtoParam = createElement("Parameter", getParameterFormat("dto"), operation.id);
     dtoParam.typeReference.setType(updateDto.id);
-    for (let attribute of entity.getChildren("Attribute")
-        .filter(attr =&gt; !hasAttributeInCommand(updateDto, attr) &amp;&amp; !legacyPartitionKey(attr))) {
-        let field = createElement("DTO-Field", getFieldFormat(attribute.name), updateDto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), updateDto.id);
+        field.typeReference.setType(entry.typeId);
+        field.setMapping(entry.mapPath);
     }
     updateDto.collapse();
     operation.collapse();
@@ -1408,11 +1485,13 @@ function getPrimaryKeysWithMapPath(entity) {
         id: key.id,
         name: key.getName(),
         typeId: key.typeReference.typeId,
-        mapPath: [key.id]
+        mapPath: [key.id],
+        isNullable: false,
+        isCollection: false
     });
-    traverseInheritanceHierarchy(keydict, entity, []);
+    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
     return keydict;
-    function traverseInheritanceHierarchy(keydict, curEntity, generalizationStack) {
+    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
         if (!curEntity) {
             return;
         }
@@ -1429,10 +1508,50 @@ function getPrimaryKeysWithMapPath(entity) {
                 id: key.id,
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id])
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchy(keydict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+    }
+}
+function getAttributesWithMapPath(entity) {
+    let attrDict = Object.create(null);
+    let attributes = entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+    attributes.forEach(attr =&gt; attrDict[attr.id] = {
+        id: attr.id,
+        name: attr.getName(),
+        typeId: attr.typeReference.typeId,
+        mapPath: [attr.id],
+        isNullable: false,
+        isCollection: false
+    });
+    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+    return attrDict;
+    function traverseInheritanceHierarchyForAttributes(attrDict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+        baseKeys.forEach(attr =&gt; {
+            attrDict[attr.id] = {
+                id: attr.id,
+                name: attr.getName(),
+                typeId: attr.typeReference.typeId,
+                mapPath: generalizationStack.concat([attr.id]),
+                isNullable: attr.typeReference.isNullable,
+                isCollection: attr.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
     }
 }
 // Returns a dictionary instead of element to help deal with explicit vs implicit keys

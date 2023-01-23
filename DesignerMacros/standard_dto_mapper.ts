@@ -91,28 +91,21 @@ function ensureDtoFields(mappedElement, dto) {
     let domainElement = mappedElement
         .typeReference
         .getType();
-    let mappedElementAttributes = domainElement
-        .getChildren("Attribute");
     let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
-    let dtoFields = dto.getChildren("DTO-Field");
-    for (let attribute of mappedElementAttributes.filter(x => ! dtoFields.some(y => x.name === y.name))) {
-        if (isCreateMode && attribute.name?.toLowerCase() === "id") {
+    let attributesWithMapPaths = getAttributesWithMapPath(domainElement);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        if (isCreateMode && entry.name?.toLowerCase() === "id") {
             continue;
         }
-        if (isCreateMode && isOwnerForeignKey(attribute, domainElement)) {
+        if (isCreateMode && isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
-        if (legacyPartitionKey(attribute)) {
-            continue;
-        }
-        if (attribute.hasStereotype("Primary Key")) {
-            continue;
-        }
-        let field = createElement("DTO-Field", attribute.name, dto.id);
-        field.typeReference.setType(attribute.typeReference.typeId);
-        field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-        field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-        field.setMapping(attribute.id);
+        let field = createElement("DTO-Field", entry.name, dto.id);
+        field.typeReference.setType(entry.typeId);
+        field.typeReference.setIsNullable(entry.isNullable);
+        field.typeReference.setIsCollection(entry.isCollection);
+        field.setMapping(entry.mapPath);
         dtoUpdated = true;
     }
 
@@ -162,9 +155,9 @@ function getSurrogateKeyType() {
     return typeNameToIdMap.get("guid");
 }
 
-function isOwnerForeignKey(attribute, domainElement) {
+function isOwnerForeignKey(attributeName, domainElement) {
     for (let association of domainElement.getAssociations().filter(x => !x.typeReference.isCollection && !x.typeReference.isNullable)) {
-        if (attribute.name.toLowerCase().indexOf(association.name.toLowerCase()) >= 0) {
+        if (attributeName.toLowerCase().indexOf(association.name.toLowerCase()) >= 0) {
             return true;
         }
     }
@@ -172,7 +165,7 @@ function isOwnerForeignKey(attribute, domainElement) {
 }
 
 // Returns a dictionary instead of element to help deal with explicit vs implicit keys
-function getPrimaryKeyDescriptor(entity) {
+function getPrimaryKeyDescriptor(entity : MacroApi.Context.IElementApi) {
     if (!entity) {
         throw new Error("entity not specified");
     }
@@ -227,28 +220,35 @@ function getPrimaryKeyDescriptor(entity) {
     }
 }
 
-interface IPrimaryKey {
+interface IAttributeWithMapPath {
     id: string,
     name: string,
     typeId: string,
-    mapPath: string[]
+    mapPath: string[],
+    isNullable: boolean,
+    isCollection: boolean
 };
 
-function getPrimaryKeysWithMapPath(entity) {
-    let keydict : { [characterName: string]: IPrimaryKey} = Object.create(null);
+function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
+    let keydict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
     let keys = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
     keys.forEach(key => keydict[key.id] = { 
         id: key.id, 
         name: key.getName(), 
         typeId: key.typeReference.typeId,
-        mapPath: [key.id] 
+        mapPath: [key.id],
+        isNullable: false,
+        isCollection: false
     });
 
-    traverseInheritanceHierarchy(keydict, entity, []);
+    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
 
     return keydict;
 
-    function traverseInheritanceHierarchy(keydict, curEntity, generalizationStack) {
+    function traverseInheritanceHierarchyForPrimaryKeys(
+        keydict: { [characterName: string]: IAttributeWithMapPath }, 
+        curEntity: MacroApi.Context.IElementApi, 
+        generalizationStack) {
         if (!curEntity) {
             return;
         }
@@ -265,10 +265,56 @@ function getPrimaryKeysWithMapPath(entity) {
                 id: key.id, 
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id]) 
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchy(keydict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+    }
+}
+
+function getAttributesWithMapPath(entity : MacroApi.Context.IElementApi) {
+    let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+    let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !legacyPartitionKey(x));
+    attributes.forEach(attr => attrDict[attr.id] = { 
+        id: attr.id, 
+        name: attr.getName(), 
+        typeId: attr.typeReference.typeId,
+        mapPath: [attr.id],
+        isNullable: false,
+        isCollection: false
+    });
+
+    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+
+    return attrDict;
+
+    function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath }, 
+        curEntity: MacroApi.Context.IElementApi, 
+        generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !legacyPartitionKey(x));
+        baseKeys.forEach(attr => { 
+            attrDict[attr.id] = { 
+                id: attr.id, 
+                name: attr.getName(),
+                typeId: attr.typeReference.typeId,
+                mapPath: generalizationStack.concat([attr.id]),
+                isNullable: attr.typeReference.isNullable,
+                isCollection: attr.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
     }
 }
 

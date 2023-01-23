@@ -128,13 +128,12 @@ function createStandardResultTypeDTO(entity, entityFolder) {
         idField.typeReference.setType(entityPkDescr.typeId);
     }
 
-    for (let attribute of entity.getChildren("Attribute")
-        .filter(attr => !legacyPartitionKey(attr))) {
-            let field = createElement("DTO-Field", getFieldFormat(attribute.name), dto.id);
-            field.typeReference.setType(attribute.typeReference.typeId);
-            field.typeReference.setIsNullable(attribute.typeReference.isNullable);
-            field.typeReference.setIsCollection(attribute.typeReference.isCollection);
-            field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), dto.id);
+        field.typeReference.setType(entry.typeId)
+        field.setMapping(entry.mapPath);
     }
 
     dto.collapse();
@@ -192,12 +191,12 @@ function createStandardCreateOperation(service, entity, entityFolder, currentCru
         getReturnTypeMediatypeProperty(operation).setValue("application/json");
     }
 
-    for (let attribute of entity.getChildren("Attribute")
-        // For Create Commands, we don't want to by default have PKs and FKs
-        .filter(x => !x.hasStereotype("Primary Key") && !x.hasStereotype("Foreign Key") && !legacyPartitionKey(x))) {
-            let field = createElement("DTO-Field", getFieldFormat(attribute.name), createDto.id);
-            field.typeReference.setType(attribute.typeReference.typeId)
-            field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), createDto.id);
+        field.typeReference.setType(entry.typeId)
+        field.setMapping(entry.mapPath);
     }
 
     createDto.collapse();
@@ -307,11 +306,12 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     let dtoParam = createElement("Parameter", getParameterFormat("dto"), operation.id);
     dtoParam.typeReference.setType(updateDto.id);
 
-    for (let attribute of entity.getChildren("Attribute")
-        .filter(attr => !hasAttributeInCommand(updateDto, attr) && !legacyPartitionKey(attr))) {
-            let field = createElement("DTO-Field", getFieldFormat(attribute.name), updateDto.id);
-            field.typeReference.setType(attribute.typeReference.typeId)
-            field.setMapping(attribute.id);
+    let attributesWithMapPaths = getAttributesWithMapPath(entity);
+    for (var keyName of Object.keys(attributesWithMapPaths)) {
+        let entry = attributesWithMapPaths[keyName];
+        let field = createElement("DTO-Field", getFieldFormat(entry.name), updateDto.id);
+        field.typeReference.setType(entry.typeId)
+        field.setMapping(entry.mapPath);
     }
 
     updateDto.collapse();
@@ -562,28 +562,35 @@ function getPrimaryKeyDescriptor(entity) {
     }
 }
 
-interface IPrimaryKey {
+interface IAttributeWithMapPath {
     id: string,
     name: string,
     typeId: string,
-    mapPath: string[]
+    mapPath: string[],
+    isNullable: boolean,
+    isCollection: boolean
 };
 
-function getPrimaryKeysWithMapPath(entity) {
-    let keydict : { [characterName: string]: IPrimaryKey} = Object.create(null);
+function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
+    let keydict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
     let keys = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
     keys.forEach(key => keydict[key.id] = { 
         id: key.id, 
         name: key.getName(), 
         typeId: key.typeReference.typeId,
-        mapPath: [key.id] 
+        mapPath: [key.id],
+        isNullable: false,
+        isCollection: false
     });
 
-    traverseInheritanceHierarchy(keydict, entity, []);
+    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
 
     return keydict;
 
-    function traverseInheritanceHierarchy(keydict, curEntity, generalizationStack) {
+    function traverseInheritanceHierarchyForPrimaryKeys(
+        keydict: { [characterName: string]: IAttributeWithMapPath }, 
+        curEntity: MacroApi.Context.IElementApi, 
+        generalizationStack) {
         if (!curEntity) {
             return;
         }
@@ -600,10 +607,56 @@ function getPrimaryKeysWithMapPath(entity) {
                 id: key.id, 
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id]) 
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
             };
         });
-        traverseInheritanceHierarchy(keydict, nextEntity, generalizationStack);
+        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+    }
+}
+
+function getAttributesWithMapPath(entity : MacroApi.Context.IElementApi) {
+    let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+    let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !legacyPartitionKey(x));
+    attributes.forEach(attr => attrDict[attr.id] = { 
+        id: attr.id, 
+        name: attr.getName(), 
+        typeId: attr.typeReference.typeId,
+        mapPath: [attr.id],
+        isNullable: false,
+        isCollection: false
+    });
+
+    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
+
+    return attrDict;
+
+    function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath }, 
+        curEntity: MacroApi.Context.IElementApi, 
+        generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !legacyPartitionKey(x));
+        baseKeys.forEach(attr => { 
+            attrDict[attr.id] = { 
+                id: attr.id, 
+                name: attr.getName(),
+                typeId: attr.typeReference.typeId,
+                mapPath: generalizationStack.concat([attr.id]),
+                isNullable: attr.typeReference.isNullable,
+                isCollection: attr.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);
     }
 }
 
