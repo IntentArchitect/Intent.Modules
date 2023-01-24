@@ -17,7 +17,7 @@ fields.forEach(f => {
         ? `${element.getMetadata("baseName")}${domainName}`
         : `${domainName}`;
     let dtoName =  baseName;
-    let dto = getOrCreateDTO(dtoName, element.getParent());
+    let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), projectMappingSettingId);
     dto.setMetadata("baseName", baseName);
 
@@ -56,8 +56,8 @@ function initGlobals() {
     };
 }
 
-function getOrCreateDTO(elementName, parentElement) {
-    const expectedQueryName = `${elementName}DTO`;
+function getOrCreateDto(elementName, parentElement) {
+    const expectedQueryName = `${elementName}Dto`;
     let existingDto = parentElement.getChildren("DTO").filter(x => x.name === expectedQueryName)[0];
     if (existingDto) {
         return existingDto;

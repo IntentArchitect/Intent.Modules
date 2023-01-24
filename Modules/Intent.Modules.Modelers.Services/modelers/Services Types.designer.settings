@@ -24,7 +24,7 @@
           <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
           <shortcut>ctrl + shfit + d</shortcut>
-          <defaultName>NewDTO</defaultName>
+          <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
@@ -411,7 +411,7 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
           <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
           <shortcut>ctrl + shfit + d</shortcut>
-          <defaultName>NewDTO</defaultName>
+          <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>

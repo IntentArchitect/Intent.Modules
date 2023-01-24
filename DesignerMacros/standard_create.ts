@@ -35,7 +35,7 @@ if (!entity) { return; }
 let service = getServiceFromCurrentContext(entity, element);
 
 let entityFolder = getEntityFolder(service, entity);
-let resultStdTypeDto = createStandardResultTypeDTO(entity, entityFolder);
+let resultStdTypeDto = createStandardResultTypeDto(entity, entityFolder);
 createStandardCreateOperation(service, entity, entityFolder, currentCrudModule);
 createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
@@ -99,10 +99,10 @@ function getOperationFormat(baseName, nestedCompOwner, entity, entityIsMany = fa
 ========================
 */
 
-function createStandardResultTypeDTO(entity, entityFolder) {
+function createStandardResultTypeDto(entity, entityFolder) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
-    let expectedDtoName = `${baseName}DTO`;
+    let expectedDtoName = `${baseName}Dto`;
 
     if (hasElementInFolder(entityFolder, expectedDtoName)) {
         return entityFolder.getChildren().filter(x => x.name == expectedDtoName)[0];
@@ -143,7 +143,7 @@ function createStandardResultTypeDTO(entity, entityFolder) {
 function createStandardCreateOperation(service, entity, entityFolder, currentCrudModule) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
-    let expectedCreateDtoName = `${baseName}CreateDTO`;
+    let expectedCreateDtoName = `${baseName}CreateDto`;
     
     if (hasElementInFolder(entityFolder, expectedCreateDtoName)) {
         let command = entityFolder.getChildren().filter(x => x.name == expectedCreateDtoName)[0];
@@ -262,7 +262,7 @@ function createStandardFindAllOperation(service, entity, entityFolder, currentCr
 function createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
-    let expectedUpdateDtoName = `${baseName}UpdateDTO`;
+    let expectedUpdateDtoName = `${baseName}UpdateDto`;
 
     if (hasElementInFolder(entityFolder, expectedUpdateDtoName)) {
         return;

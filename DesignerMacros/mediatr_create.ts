@@ -24,7 +24,7 @@ if (!entity) { return; }
 let service = getServiceFromCurrentContext(entity, element);
 
 let entityFolder = getEntityFolder(service, entity);
-let resultCqrsTypeDto = createCqrsResultTypeDTO(entity, entityFolder);
+let resultCqrsTypeDto = createCqrsResultTypeDto(entity, entityFolder);
 
 createCqrsCreateOperation(service, entityFolder, entity);
 createCqrsFindByIdOperation(service, entity, entityFolder, resultCqrsTypeDto);
@@ -89,10 +89,10 @@ function getOperationFormat(baseName, nestedCompOwner, entity, entityIsMany = fa
 ========================
 */
 
-function createCqrsResultTypeDTO(entity, entityFolder) {
+function createCqrsResultTypeDto(entity, entityFolder) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
-    let expectedDtoName = `${baseName}DTO`;
+    let expectedDtoName = `${baseName}Dto`;
 
     if (hasElementInFolder(entityFolder, expectedDtoName)) {
         return entityFolder.getChildren().filter(x => x.name == expectedDtoName)[0];

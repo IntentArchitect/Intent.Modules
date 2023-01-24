@@ -1,6 +1,7 @@
 ﻿### Version 3.3.7
 
 - It's now possible to map DTOs from Value Objects.
+- The default name for new DTOs has changed from `NewDTO` to `NewDto`.
 
 ### Version 3.3.6
 

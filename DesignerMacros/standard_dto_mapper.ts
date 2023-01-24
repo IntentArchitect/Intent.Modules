@@ -33,7 +33,7 @@ fields.forEach(f => {
         ? `${element.getMetadata("baseName")}${domainName}`
         : domainName;
     let dtoName =  `${originalVerb}${baseName}`;
-    let dto = getOrCreateDTO(dtoName, element.getParent());
+    let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
     if (originalVerb !== "") {
         dto.setMetadata("originalVerb", originalVerb);
@@ -74,13 +74,13 @@ function initGlobals() {
     };
 }
 
-function getOrCreateDTO(elementName, parentElement) {
-    let existingDto = parentElement.getChildren("DTO").filter(x => x.name === `${elementName}DTO`)[0];
+function getOrCreateDto(elementName, parentElement) {
+    let existingDto = parentElement.getChildren("DTO").filter(x => x.name === `${elementName}Dto`)[0];
     if (existingDto) {
         return existingDto;
     }
 
-    let dto = createElement("DTO", `${elementName}DTO`, parentElement.id);
+    let dto = createElement("DTO", `${elementName}Dto`, parentElement.id);
     return dto;
 }
 
