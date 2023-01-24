@@ -1,6 +1,6 @@
 ### Version 3.4.0
 
-- New: Supports inheritance for PKs and all other Attributes.
+- New: Now DTOs will include fields of mapped Entities' inheritance hierarchies.
 - Update: Ported the logic from MediatR's CRUD script to this one to bring it up to par with mapping and new DTO creation (nested compositional CRUD support not yet).
 
 ### Version 3.3.9
