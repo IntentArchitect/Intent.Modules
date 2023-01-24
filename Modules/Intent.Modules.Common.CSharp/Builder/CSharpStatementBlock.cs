@@ -10,7 +10,7 @@ public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
     {
     }
 
-    public List<CSharpStatement> Statements { get; } = new();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpStatementBlock WithSemicolon()
     {

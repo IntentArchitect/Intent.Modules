@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public interface IHasCSharpStatements
 {
-    List<CSharpStatement> Statements { get; }
+    IList<CSharpStatement> Statements { get; }
 }
 
 public static class HasCSharpStatementsExtensions

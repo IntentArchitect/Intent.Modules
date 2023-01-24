@@ -7,7 +7,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public class CSharpAttribute : CSharpMetadataBase<CSharpAttribute>, IHasCSharpStatements
 {
     public string Name { get; set; }
-    public List<CSharpStatement> Statements { get; set; } = new();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public CSharpAttribute(string name)
     {
         if (string.IsNullOrWhiteSpace(name) || name == "[]")

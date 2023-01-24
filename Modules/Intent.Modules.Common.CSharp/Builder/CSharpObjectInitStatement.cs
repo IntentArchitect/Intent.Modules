@@ -14,7 +14,7 @@ public class CSharpObjectInitStatement : CSharpStatement, IHasCSharpStatements
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
     }
 
-    public List<CSharpStatement> Statements { get; } = new();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public override string GetText(string indentation)
     {

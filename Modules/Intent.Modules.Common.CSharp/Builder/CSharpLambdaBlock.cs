@@ -12,7 +12,7 @@ public class CSharpLambdaBlock : CSharpStatement, IHasCSharpStatements
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 
-    public List<CSharpStatement> Statements { get; } = new();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpLambdaBlock WithSemicolon()
     {

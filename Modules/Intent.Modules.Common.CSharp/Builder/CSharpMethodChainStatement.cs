@@ -10,8 +10,8 @@ public class CSharpMethodChainStatement : CSharpStatement, IHasCSharpStatements
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
     }
-    
-    public List<CSharpStatement> Statements { get; } = new();
+
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpMethodChainStatement AddChainStatement(CSharpStatement statement, Action<CSharpStatement> configure = null)
     {

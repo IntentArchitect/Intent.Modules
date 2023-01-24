@@ -20,12 +20,12 @@ public static class CSharpBuilderExtensions
         }
     }
 
-    internal static string ConcatCode(this IReadOnlyCollection<ICodeBlock> codeBlocks, string indentation)
+    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation)
     {
         return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty)}"));
     }
 
-    internal static string JoinCode(this IReadOnlyCollection<ICodeBlock> codeBlocks, string separator, string indentation)
+    internal static string JoinCode(this IEnumerable<ICodeBlock> codeBlocks, string separator, string indentation)
     {
         return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, separator)}"));
     }

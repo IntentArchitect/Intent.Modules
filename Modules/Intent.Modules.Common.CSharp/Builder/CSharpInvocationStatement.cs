@@ -11,7 +11,7 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     {
     }
 
-    public List<CSharpStatement> Statements { get; } = new();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)
     {

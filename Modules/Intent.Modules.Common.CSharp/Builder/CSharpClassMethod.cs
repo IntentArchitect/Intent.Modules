@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements
 {
-    public List<CSharpStatement> Statements { get; } = new();
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     protected string AsyncMode { get; private set; } = string.Empty;
     protected string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
