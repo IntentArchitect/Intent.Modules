@@ -128,9 +128,12 @@ function createStandardResultTypeDto(entity, entityFolder) {
         idField.typeReference.setType(entityPkDescr.typeId);
     }
 
+    addPrimaryKeysStandard(dto, null, entityPkDescr);
+
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
+        if (dto.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == keyName)) { continue; }
         let field = createElement("DTO-Field", getFieldFormat(entry.name), dto.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
@@ -194,6 +197,7 @@ function createStandardCreateOperation(service, entity, entityFolder, currentCru
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
+        if (createDto.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == keyName)) { continue; }
         let field = createElement("DTO-Field", getFieldFormat(entry.name), createDto.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
@@ -228,7 +232,7 @@ function createStandardFindByIdOperation(service, entity, entityFolder, currentC
         setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "GET", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
     }
 
-    addPrimaryKeys(null, operation, entityPkDescr);
+    addPrimaryKeysStandard(null, operation, entityPkDescr);
 
     operation.collapse();
 }
@@ -301,7 +305,7 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
         setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "PUT", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
     }
 
-    addPrimaryKeys(updateDto, operation, entityPkDescr);
+    addPrimaryKeysStandard(updateDto, operation, entityPkDescr);
 
     let dtoParam = createElement("Parameter", getParameterFormat("dto"), operation.id);
     dtoParam.typeReference.setType(updateDto.id);
@@ -309,6 +313,7 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
+        if (updateDto.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == keyName)) { continue; }
         let field = createElement("DTO-Field", getFieldFormat(entry.name), updateDto.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
@@ -316,10 +321,6 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
 
     updateDto.collapse();
     operation.collapse();
-
-    function hasAttributeInCommand(command, attribute) {
-        return command.getChildren("DTO-Field").some(x => x.name == attribute.name);
-    }
 }
 
 function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule) {
@@ -345,7 +346,7 @@ function createStandardDeleteOperation(service, entity, entityFolder, currentCru
     } else if (currentCrudModule === CrudModuleAzureFunction) {
         setHttpStereotype(operation, "Azure Function", {"Type": "Http Trigger", "Method": "DELETE", "Route": `${entity.getName().toLowerCase()}/${routePath}`});
     }
-    addPrimaryKeys(null, operation, entityPkDescr);
+    addPrimaryKeysStandard(null, operation, entityPkDescr);
 
     operation.collapse();
 }
@@ -687,7 +688,7 @@ function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner
     };
 }
 
-function addPrimaryKeys(dto, operation, entityPkDescr) {
+function addPrimaryKeysStandard(dto : MacroApi.Context.IElementApi, operation : MacroApi.Context.IElementApi, entityPkDescr) {
     switch (entityPkDescr.specialization) {
         case globals.PKSpecialization.Implicit:
         case globals.PKSpecialization.Explicit:
@@ -700,8 +701,10 @@ function addPrimaryKeys(dto, operation, entityPkDescr) {
                     }
                 }
 
-                let operationParamId = createElement("Parameter", getParameterFormat(entityPkDescr.name), operation.id);
-                operationParamId.typeReference.setType(entityPkDescr.typeId);
+                if (operation) {
+                    let operationParamId = createElement("Parameter", getParameterFormat(entityPkDescr.name), operation.id);
+                    operationParamId.typeReference.setType(entityPkDescr.typeId);
+                }
             }
             break;
         case globals.PKSpecialization.ExplicitComposite:
@@ -712,8 +715,10 @@ function addPrimaryKeys(dto, operation, entityPkDescr) {
                     primaryKeyDtoField.setMapping(key.id);
                 }
 
-                let operationParamId = createElement("Parameter", getParameterFormat(key.name), operation.id);
-                operationParamId.typeReference.setType(entityPkDescr.typeId);
+                if (operation) {
+                    let operationParamId = createElement("Parameter", getParameterFormat(key.name), operation.id);
+                    operationParamId.typeReference.setType(entityPkDescr.typeId);
+                }
             }
             break;
     }

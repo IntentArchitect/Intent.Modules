@@ -118,9 +118,12 @@ function createCqrsResultTypeDto(entity, entityFolder) {
         idField.typeReference.setType(entityPkDescr.typeId);
     }
 
+    addPrimaryKeysCqrs(dto, null, entityPkDescr);
+
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
+        if (dto.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == keyName)) { continue; }
         let field = createElement("DTO-Field", getFieldFormat(entry.name), dto.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
@@ -181,6 +184,7 @@ function createCqrsCreateOperation(service, entityFolder, entity) {
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
+        if (command.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == keyName)) { continue; }
         let field = createElement("DTO-Field", getFieldFormat(entry.name), command.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
@@ -229,7 +233,7 @@ function createCqrsFindByIdOperation(service, entity, entityFolder, resultTypeDt
     }
 
     setHttpStereotype(operation, "Http Settings", {"Verb": "GET", "Route": routePath});
-    addPrimaryKeys(query, operation, entityPkDescr);
+    addPrimaryKeysCqrs(query, operation, entityPkDescr);
 
     query.collapse();
     operation.collapse();
@@ -273,7 +277,7 @@ function createCqrsFindAllOperation(service, entity, entityFolder, resultTypeDto
     operation.collapse();
 }
 
-function createCqrsUpdateOperation(service, entity, entityFolder) {
+function createCqrsUpdateOperation(service, entity : MacroApi.Context.IElementApi, entityFolder) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let baseName = getBaseNameForElement(nestedCompOwner, entity, false);
     let expectedCommandName = `Update${baseName}Command`;
@@ -311,7 +315,7 @@ function createCqrsUpdateOperation(service, entity, entityFolder) {
     }
 
     setHttpStereotype(operation, "Http Settings", {"Verb": "PUT", "Route": routePath});
-    addPrimaryKeys(command, operation, entityPkDescr);
+    addPrimaryKeysCqrs(command, operation, entityPkDescr);
 
     let commandParam = createElement("Parameter", getParameterFormat("command"), operation.id);
     commandParam.typeReference.setType(command.id);
@@ -319,6 +323,7 @@ function createCqrsUpdateOperation(service, entity, entityFolder) {
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
+        if (command.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == keyName)) { continue; }
         let field = createElement("DTO-Field", getFieldFormat(entry.name), command.id);
         field.typeReference.setType(entry.typeId)
         field.setMapping(entry.mapPath);
@@ -326,10 +331,6 @@ function createCqrsUpdateOperation(service, entity, entityFolder) {
 
     command.collapse();
     operation.collapse();
-
-    function hasAttributeInCommand(command, attribute) {
-        return command.getChildren("DTO-Field").some(x => x.name == attribute.name);
-    }
 }
 
 function createCqrsDeleteOperation(service, entity, entityFolder) {
@@ -370,7 +371,7 @@ function createCqrsDeleteOperation(service, entity, entityFolder) {
     }
 
     setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": routePath});
-    addPrimaryKeys(command, operation, entityPkDescr);
+    addPrimaryKeysCqrs(command, operation, entityPkDescr);
 
     let commandParam = createElement("Parameter", getParameterFormat("command"), operation.id);
     commandParam.typeReference.setType(command.id);
@@ -713,31 +714,39 @@ function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner
     };
 }
 
-function addPrimaryKeys(commandQuery, operation, entityPkDescr) {
+function addPrimaryKeysCqrs(dto : MacroApi.Context.IElementApi, operation : MacroApi.Context.IElementApi, entityPkDescr) {
     switch (entityPkDescr.specialization) {
         case globals.PKSpecialization.Implicit:
         case globals.PKSpecialization.Explicit:
             {
-                let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), commandQuery.id);
-                primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
-                if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
-                    primaryKeyDtoField.setMapping(entityPkDescr.mapPath);
-                }
+                if (dto) {
+                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
+                    primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
+                    if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
+                        primaryKeyDtoField.setMapping(entityPkDescr.mapPath);
+                    }
 
-                let operationParamId = createElement("Parameter", getParameterFormat(entityPkDescr.name), operation.id);
-                operationParamId.typeReference.setType(primaryKeyDtoField.typeReference.typeId);
-                operationParamId.setMapping(primaryKeyDtoField.id);
+                    if (operation) {
+                        let operationParamId = createElement("Parameter", getParameterFormat(entityPkDescr.name), operation.id);
+                        operationParamId.typeReference.setType(entityPkDescr.typeId);
+                        operationParamId.setMapping(primaryKeyDtoField.id);
+                    }
+                }
             }
             break;
         case globals.PKSpecialization.ExplicitComposite:
             for (let key of entityPkDescr.compositeKeys) {
-                let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), commandQuery.id);
-                primaryKeyDtoField.typeReference.setType(key.typeId)
-                primaryKeyDtoField.setMapping(key.id);
+                if (dto) {
+                    let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
+                    primaryKeyDtoField.typeReference.setType(key.typeId)
+                    primaryKeyDtoField.setMapping(key.id);
 
-                let operationParamId = createElement("Parameter", getParameterFormat(key.name), operation.id);
-                operationParamId.typeReference.setType(primaryKeyDtoField.typeReference.typeId);
-                operationParamId.setMapping(primaryKeyDtoField.id);
+                    if (operation) {
+                        let operationParamId = createElement("Parameter", getParameterFormat(key.name), operation.id);
+                        operationParamId.typeReference.setType(entityPkDescr.typeId);
+                        operationParamId.setMapping(primaryKeyDtoField.id);
+                    }
+                }
             }
             break;
     }
