@@ -1,0 +1,36 @@
+﻿package com.spring_petclinic.spring_petclinic_rest.application.services.impl;
+
+import lombok.AllArgsConstructor;
+import java.util.List;
+
+@Service
+@AllArgsConstructor
+@IntentMerge
+public class OwnerRestServiceImpl implements OwnerRestService
+{
+    private OwnerRepository ownerRepository;
+    private ModelMapper mapper;
+
+    @Override
+    @Transactional(readOnly = true)
+    @IntentIgnoreBody
+    public List<OwnerDTO> getOwner()
+    {
+        var owners = ownerRepository.findAll();
+        return OwnerDTO.mapFromOwners(owners, mapper);
+    }
+
+    @Override
+    @Transactional(readOnly = false)
+    @IntentIgnoreBody
+    public void addOwner(OwnerCreateDTO dto)
+    {
+        var owner = new Owner();
+        owner.setFirstName(dto.getFirstName());
+        owner.setLastName(dto.getLastName());
+        owner.setAddress(dto.getAddress());
+        owner.setCity(dto.getCity());
+        owner.setTelephone(dto.getTelephone());
+        ownerRepository.save(owner);
+    }
+}

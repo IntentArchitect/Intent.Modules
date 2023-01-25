@@ -144,12 +144,13 @@ public class JavaFile
         }
 
         return $@"package {Package};
+
 {string.Join(@"
 ", Imports)}
 
 {string.Join(@"
 
-", Interfaces.Select(x => x.ToString("    ")).Concat(Classes.Select(x => x.ToString("    "))))}
+", Interfaces.Select(x => x.ToString("")).Concat(Classes.Select(x => x.ToString(""))))}
 ";
     }
 }
