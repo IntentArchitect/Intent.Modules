@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClass : CSharpDeclaration<CSharpClass>
+public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 {
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
@@ -18,6 +18,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 
         Name = name;
     }
+
+    public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
+    public CSharpCodeSeparatorType AfterSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
 
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
@@ -267,6 +270,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
+    
+    public string GetText(string indentation)
+    {
+        return ToString(indentation);
+    }
 
     private string GetGenericTypeConstraints(string indentation)
     {
@@ -310,27 +318,9 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>
         codeBlocks.AddRange(Constructors);
         codeBlocks.AddRange(Properties);
         codeBlocks.AddRange(Methods);
-        codeBlocks.AddRange(NestedClasses.Select(s => new CSharpClassCodeBlock(s)));
+        codeBlocks.AddRange(NestedClasses);
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
-    }
-
-    private class CSharpClassCodeBlock : ICodeBlock
-    {
-        private readonly CSharpClass _class;
-
-        public CSharpClassCodeBlock(CSharpClass @class)
-        {
-            _class = @class;
-            BeforeSeparator = CSharpCodeSeparatorType.NewLine;
-            AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
-        }
-        public CSharpCodeSeparatorType BeforeSeparator { get; set; }
-        public CSharpCodeSeparatorType AfterSeparator { get; set; }
-        public string GetText(string indentation)
-        {
-            return _class.ToString(indentation);
-        }
     }
 }
