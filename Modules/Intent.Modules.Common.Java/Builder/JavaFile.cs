@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.Java.Templates;
 
 namespace Intent.Modules.Common.Java.Builder;
 
