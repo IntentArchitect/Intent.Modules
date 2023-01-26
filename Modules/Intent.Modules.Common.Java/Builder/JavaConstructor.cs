@@ -90,8 +90,7 @@ public class JavaConstructor : JavaMember<JavaConstructor>
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)})
-{indentation}{{{ConstructorCall?.ToString() ?? string.Empty}{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{Class.Name}({ToStringParameters(indentation)}) {{{ConstructorCall?.ToString() ?? string.Empty}{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 

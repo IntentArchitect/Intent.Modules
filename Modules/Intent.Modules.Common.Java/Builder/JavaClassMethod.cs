@@ -144,19 +144,7 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
 
     public JavaClassMethod Override()
     {
-        OverrideModifier = "override ";
-        return this;
-    }
-
-    public JavaClassMethod New()
-    {
-        OverrideModifier = "new ";
-        return this;
-    }
-
-    public JavaClassMethod Virtual()
-    {
-        OverrideModifier = "virtual ";
+        Annotations.Add(new JavaAnnotation("Override"));
         return this;
     }
 
@@ -172,12 +160,6 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
         return this;
     }
 
-    public JavaClassMethod Async()
-    {
-        AsyncMode = "async ";
-        return this;
-    }
-
     public void RemoveStatement(JavaStatement statement)
     {
         Statements.Remove(statement);
@@ -185,8 +167,7 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))})
-{indentation}{{{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
     

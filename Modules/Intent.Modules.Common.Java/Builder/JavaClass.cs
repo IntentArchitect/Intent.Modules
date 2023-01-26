@@ -150,8 +150,7 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{(IsFinal ? "final " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetBaseTypes()}
-{indentation}{{{GetMembers($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{(IsFinal ? "final " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
     

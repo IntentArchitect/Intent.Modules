@@ -6,16 +6,14 @@ import java.util.List;
 @Service
 @AllArgsConstructor
 @IntentMerge
-public class OwnerRestServiceImpl implements OwnerRestService
-{
+public class OwnerRestServiceImpl implements OwnerRestService {
     private OwnerRepository ownerRepository;
     private ModelMapper mapper;
 
     @Override
     @Transactional(readOnly = true)
     @IntentIgnoreBody
-    public List<OwnerDTO> getOwner()
-    {
+    public List<OwnerDTO> getOwner() {
         var owners = ownerRepository.findAll();
         return OwnerDTO.mapFromOwners(owners, mapper);
     }
@@ -23,8 +21,7 @@ public class OwnerRestServiceImpl implements OwnerRestService
     @Override
     @Transactional(readOnly = false)
     @IntentIgnoreBody
-    public void addOwner(OwnerCreateDTO dto)
-    {
+    public void addOwner(OwnerCreateDTO dto) {
         var owner = new Owner();
         owner.setFirstName(dto.getFirstName());
         owner.setLastName(dto.getLastName());

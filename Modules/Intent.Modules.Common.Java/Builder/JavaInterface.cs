@@ -145,8 +145,7 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
 
     public string ToString(string indentation)
     {
-        return $@"{GetAnnotations(indentation)}{indentation}{AccessModifier}interface {Name}{GetBaseTypes()}
-{indentation}{{{GetMembers($"{indentation}    ")}
+        return $@"{GetAnnotations(indentation)}{indentation}{AccessModifier}interface {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
     

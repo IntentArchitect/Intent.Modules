@@ -2,9 +2,7 @@
 
 import java.util.List;
 
-public final class TestClass
-{
-    public static void main(String args[])
-    {
+public final class TestClass {
+    public static void main(String args[]) {
     }
 }
