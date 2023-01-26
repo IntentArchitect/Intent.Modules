@@ -32,7 +32,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="return `${getName()} (Parallel)`;" isActive="true" />
@@ -101,19 +101,19 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="c0b18a50-a272-41aa-a203-aedd88eb290e" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Association</name>
-          <display>Add Association: Event Stream</display>
+        <childElement id="73cee674-1c28-41b2-922b-b924f9829aeb" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Transition</name>
+          <display>Add Transition: State Transition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="535ca840-47f1-4c10-bf38-8f49d8d1df79">
-            <typeId>055db259-36fc-495f-935c-89c847c34c32</typeId>
+          <typeReference id="d954fe50-6381-4ab4-a6d2-8b467531374e">
+            <typeId>995e8812-4510-45b4-9a24-8ad57f01dea9</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS</typePackageName>
-            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
+            <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -128,7 +128,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + a" isActive="true" />
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
                 <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />

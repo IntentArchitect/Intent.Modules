@@ -29,7 +29,7 @@ public class TypescriptFile
     {
         foreach (var name in names)
         {
-            return AddImport(name, null, source);
+            AddImport(name, null, source);
         }
 
         return this;

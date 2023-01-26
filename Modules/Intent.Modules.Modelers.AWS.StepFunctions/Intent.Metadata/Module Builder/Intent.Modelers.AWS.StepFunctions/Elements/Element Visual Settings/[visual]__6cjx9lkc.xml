@@ -4,7 +4,7 @@
   <display>[visual]: State Machine</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>9</order>
+  <order>12</order>
   <genericTypes />
   <typeReference id="a68d5a1d-e68e-4dab-9dbc-2680a2fc1fdf">
     <typeId>0fed6f31-391c-4402-a9e9-532ca4b11e23</typeId>

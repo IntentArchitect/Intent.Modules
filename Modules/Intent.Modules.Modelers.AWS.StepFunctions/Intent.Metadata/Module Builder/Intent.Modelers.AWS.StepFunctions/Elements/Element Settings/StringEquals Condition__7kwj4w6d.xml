@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="30d23d82-2dbf-4a9c-9b62-8e65e8f3652c" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
-  <name>Start</name>
-  <display>Start</display>
+<class id="3b11a26d-290c-4a13-aedb-516a6d6b173f" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>StringEquals Condition</name>
+  <display>StringEquals Condition</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>6</order>
+  <order>3</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>0fed6f31-391c-4402-a9e9-532ca4b11e23</parentFolderId>
+  <parentFolderId>aeefe262-149c-45eb-ae54-97792a0d00b4</parentFolderId>
   <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
   <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
   <stereotypes>
@@ -35,7 +35,7 @@
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="return `${getName()} (Start)`;" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
@@ -49,58 +49,18 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="42cf9133-175f-4209-82fe-ef066b98fef3" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="ac64d201-97eb-443c-b1ec-e60be026e628" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>30d23d82-2dbf-4a9c-9b62-8e65e8f3652c</parentFolderId>
+      <parentFolderId>3b11a26d-290c-4a13-aedb-516a6d6b173f</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes />
       <metadata />
-      <childElements>
-        <childElement id="08f26088-9c19-4e7c-908f-ef2913ab2acc" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Transition</name>
-          <display>Add Transition: State Transition</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="189eaf3f-5450-4b6c-a3ac-06084c81a372">
-            <typeId>995e8812-4510-45b4-9a24-8ad57f01dea9</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
-            <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>42cf9133-175f-4209-82fe-ef066b98fef3</parentFolderId>
-          <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
-          <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
-                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
-                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
-                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
-                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
+      <childElements />
     </childElement>
   </childElements>
 </class>

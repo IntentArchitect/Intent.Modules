@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="995e8812-4510-45b4-9a24-8ad57f01dea9" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
+  <name>State Transition</name>
+  <display>State Transition</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>aa9832d1-2bdb-4422-b688-fa9cf33fbc44</parentFolderId>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="f636a8d9-bd1a-4689-aaf7-456d2523c2c6" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
+      <name>State Transition Source End</name>
+      <display>State Transition Source End</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>995e8812-4510-45b4-9a24-8ad57f01dea9</parentFolderId>
+      <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+      <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;5cd79db1-d94a-4110-97ac-f4af07ea2330&quot;,&quot;320f2349-d58c-4692-9cf0-717ecb996c93&quot;,&quot;30d23d82-2dbf-4a9c-9b62-8e65e8f3652c&quot;,&quot;698d3e50-7c80-4930-abcd-c65feabe5ed5&quot;,&quot;41771c97-eaaf-4ede-97fa-66f83edd49d2&quot;,&quot;c73e7930-a77c-49a3-aed6-1519a148ce3c&quot;,&quot;aeefe262-149c-45eb-ae54-97792a0d00b4&quot;]" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="StateTransitionSource" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="false" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="false" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="false" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="false" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="e25951f6-5052-408f-9fa7-a3f9024cb387" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
+      <name>State Transition Target End</name>
+      <display>State Transition Target End</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>995e8812-4510-45b4-9a24-8ad57f01dea9</parentFolderId>
+      <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+      <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5a410b57-e6a8-4567-b387-71a89290b2c9" name="Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="dc56596e-b1bd-40d1-ae5e-5aee967fed36" display="Icon" isActive="true" />
+            <property name="763a1f02-cdc2-4b43-a763-5ff38d59af60" display="Target Types" value="[&quot;aeefe262-149c-45eb-ae54-97792a0d00b4&quot;,&quot;320f2349-d58c-4692-9cf0-717ecb996c93&quot;,&quot;5cd79db1-d94a-4110-97ac-f4af07ea2330&quot;,&quot;3b12caab-9c7b-4e23-be35-7cdf53c45e61&quot;,&quot;19397f3f-726d-4ed3-9a64-210350c0390c&quot;,&quot;30d23d82-2dbf-4a9c-9b62-8e65e8f3652c&quot;,&quot;dd8e7718-6d79-4593-afba-c67ffd7a4dba&quot;,&quot;698d3e50-7c80-4930-abcd-c65feabe5ed5&quot;,&quot;41771c97-eaaf-4ede-97fa-66f83edd49d2&quot;,&quot;c73e7930-a77c-49a3-aed6-1519a148ce3c&quot;]" isActive="true" />
+            <property name="65b99db7-ec8e-408d-a0fd-a98245d1fbcc" display="Display Text Function" value="" isActive="true" />
+            <property name="b534060a-c8a3-4631-b4a9-db0baeecd1b3" display="Api Property Name" value="StateTransitionTarget" isActive="true" />
+            <property name="c81dddd3-8e13-4fe9-b923-1ad339b30746" display="Is Navigable Enabled" value="true" isActive="true" />
+            <property name="9419ab85-5421-4b54-82f2-da502a9651d6" display="Is Nullable Enabled" value="true" isActive="true" />
+            <property name="9b861271-feb0-4d57-ae86-7e053ed441ae" display="Is Collection Enabled" value="true" isActive="true" />
+            <property name="18131f3e-1c29-4c21-a32a-3946204d0d29" display="Is Navigable Default" value="true" isActive="true" />
+            <property name="b1f32c0b-f45f-4cdb-9a4e-ff989f9111e0" display="Is Nullable Default" value="false" isActive="true" />
+            <property name="bb49808b-06e1-45f1-9f6b-08dede577305" display="Is Collection Default" value="false" isActive="true" />
+            <property name="77a800bb-e76a-4b1d-bbc1-32cf7baed608" display="Allow Multiple" value="true" isActive="true" />
+            <property name="a9703eab-0aa4-4c3f-ab68-f9ccba205e5a" display="Allow Sorting" value="true" isActive="true" />
+            <property name="9ae87826-7f34-4cab-b371-5cd2da9331dd" display="Sort Children" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="51263b3e-656b-4267-9961-547d8c964ba7" type="Association Event Settings" typeId="1bdee938-8569-4fbf-84b4-8522d2cbee32">
+      <name>[events]</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>995e8812-4510-45b4-9a24-8ad57f01dea9</parentFolderId>
+      <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+      <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

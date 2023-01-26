@@ -36,7 +36,7 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="5d64f245-be41-4aa6-a1e5-b1afc79b06dc" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+    <childElement id="d1f2109b-4ac6-4589-93ad-df40b089cae5" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
       <name>Rectangle</name>
       <display>[draw path]: Rectangle</display>
       <isAbstract>false</isAbstract>
@@ -56,6 +56,33 @@
             <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
             <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" value="" isActive="true" />
             <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
+            <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" value="return theme.isDark ? &quot;#1f2126&quot; : &quot;#ffffff&quot;;" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="6c2f901a-f4c1-4f07-be7b-94690e63ebac" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+      <name>Line on the left</name>
+      <display>[draw path]: Line on the left</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>8e2cefed-8681-4c98-b219-68e936a5398e</parentFolderId>
+      <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+      <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="a82e406f-efc6-4d9c-86ea-6c28d9509da4" name="Path Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x + 3},${y + 6} v${h - 12}`" isActive="true" />
+            <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" isActive="true" />
+            <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
+            <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" value="" isActive="true" />
+            <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
             <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" value="" isActive="true" />
           </properties>
         </stereotype>
@@ -63,7 +90,42 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="08cb400d-a8a7-4728-b002-e434d4743522" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+    <childElement id="58f2ed43-e551-49e5-b5c3-1fd8a7cefff2" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Display 'Wait State'</name>
+      <display>[draw text]: Display 'Wait State'</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>8e2cefed-8681-4c98-b219-68e936a5398e</parentFolderId>
+      <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+      <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'Wait state';" isActive="true" />
+            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
+            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x + 50}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 4}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w - 54}" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="14" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="d29d458d-e4b8-475d-9f03-edc194ce6728" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Display Text</name>
       <display>[draw text]: Display Text</display>
       <isAbstract>false</isAbstract>
@@ -78,9 +140,9 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return `${getName()} (Wait)`;" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return `${getName()}`;" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
-            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;`" isActive="true" />
+            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: left; &#xD;&#xA;white-space: inherit;`" isActive="true" />
           </properties>
         </stereotype>
         <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
@@ -88,10 +150,44 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 8}" isActive="true" />
-            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x + 50}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 20}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w - 54}" isActive="true" />
             <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="bc715f21-bda4-4a6a-abf7-f709c73df27c" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+      <name>Symbol</name>
+      <display>[draw svg]: Symbol</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>8e2cefed-8681-4c98-b219-68e936a5398e</parentFolderId>
+      <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+      <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082" name="SVG Resource Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="./wait-state-symbol.svg" isActive="true" />
+            <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x + 7}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y+1}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="38" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="38" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

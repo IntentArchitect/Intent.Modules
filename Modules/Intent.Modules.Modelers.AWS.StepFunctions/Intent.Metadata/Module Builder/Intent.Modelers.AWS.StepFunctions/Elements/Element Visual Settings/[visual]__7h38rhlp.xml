@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="e7d2ba14-9059-4689-9cfa-a3b669f58399" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+<class id="b9aa556c-8e5b-4485-857a-5e27e30bee27" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: Success</display>
+  <display>[visual]: Pass</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
-  <typeReference id="55ee64b5-479d-402d-9a1c-2c856d9e1243">
-    <typeId>3b12caab-9c7b-4e23-be35-7cdf53c45e61</typeId>
+  <typeReference id="b22ffbce-aebe-4c1d-a94b-b6e1742a5f34">
+    <typeId>698d3e50-7c80-4930-abcd-c65feabe5ed5</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -18,7 +18,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>3b12caab-9c7b-4e23-be35-7cdf53c45e61</parentFolderId>
+  <parentFolderId>698d3e50-7c80-4930-abcd-c65feabe5ed5</parentFolderId>
   <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
   <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
   <stereotypes>
@@ -36,13 +36,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="a0c0b646-8e07-4534-8377-bbc648228943" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+    <childElement id="522e7266-475b-46d8-a502-e9b46b68dbe4" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
       <name>Rectangle</name>
       <display>[draw path]: Rectangle</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>b9aa556c-8e5b-4485-857a-5e27e30bee27</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -63,13 +63,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="bd18473c-853c-4501-bc10-368a1fc1ae5e" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
+    <childElement id="a7c51827-acfd-404d-91b5-5ef25b8ab13e" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
       <name>Line on the left</name>
       <display>[draw path]: Line on the left</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>b9aa556c-8e5b-4485-857a-5e27e30bee27</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -90,13 +90,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="3d6d9314-f858-4a28-89e7-1162d84fe8f2" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-      <name>Display 'Success State'</name>
-      <display>[draw text]: Display 'Success State'</display>
+    <childElement id="855477e6-0271-469b-b1b9-f784b57c2c1f" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Display 'Pass State'</name>
+      <display>[draw text]: Display 'Pass State'</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>b9aa556c-8e5b-4485-857a-5e27e30bee27</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -105,7 +105,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'Success state';" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return 'Pass state';" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 10px; font-family: Helvetica; font-weight: bold; text-align: left; white-space: inherit;`" isActive="true" />
           </properties>
@@ -125,13 +125,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="4e3d4990-4e50-4744-828b-aa4f8858d813" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+    <childElement id="837e4381-843c-40d6-99f4-4a8b6b425f8c" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Display Text</name>
       <display>[draw text]: Display Text</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>b9aa556c-8e5b-4485-857a-5e27e30bee27</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -160,13 +160,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="a1b45d48-a19b-4391-b6c5-740c8c4a86ac" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+    <childElement id="8d31048c-7c24-44f9-8010-76b2953866ed" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
       <name>Symbol</name>
       <display>[draw svg]: Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>e7d2ba14-9059-4689-9cfa-a3b669f58399</parentFolderId>
+      <parentFolderId>b9aa556c-8e5b-4485-857a-5e27e30bee27</parentFolderId>
       <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
       <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
       <stereotypes>
@@ -175,7 +175,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="./success-state-symbol.svg" isActive="true" />
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="./pass-state-symbol.svg" isActive="true" />
             <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" isActive="true" />
           </properties>
         </stereotype>

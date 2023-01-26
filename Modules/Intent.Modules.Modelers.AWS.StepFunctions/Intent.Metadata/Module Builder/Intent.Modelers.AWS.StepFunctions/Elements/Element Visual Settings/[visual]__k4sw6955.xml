@@ -1,23 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="408e37f8-5abb-40ab-a899-cf133b34dc9f" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[visual]</name>
-  <display>[visual]: Lambda Function</display>
+  <display>[visual]: Lambda Invoke</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
+  <order>1</order>
   <genericTypes />
   <typeReference id="df3670ce-cc81-4eae-89b0-39f02e4d0c08">
-    <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
+    <typeId>41771c97-eaaf-4ede-97fa-66f83edd49d2</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.AWS.Lambda</typePackageName>
-    <typePackageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</typePackageId>
+    <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
+    <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>7a8aef9d-e36f-4b70-93fa-bf074900785e</parentFolderId>
+  <parentFolderId>41771c97-eaaf-4ede-97fa-66f83edd49d2</parentFolderId>
   <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
   <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
   <stereotypes>

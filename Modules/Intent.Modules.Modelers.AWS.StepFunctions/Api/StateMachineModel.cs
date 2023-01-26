@@ -56,6 +56,11 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             .Select(x => new WaitModel(x))
             .ToList();
 
+        public IList<PassModel> Passes => _element.ChildElements
+            .GetElementsOfType(PassModel.SpecializationTypeId)
+            .Select(x => new PassModel(x))
+            .ToList();
+
         public IList<SuccessModel> Successes => _element.ChildElements
             .GetElementsOfType(SuccessModel.SpecializationTypeId)
             .Select(x => new SuccessModel(x))
@@ -75,6 +80,16 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             .GetElementsOfType(EndModel.SpecializationTypeId)
             .Select(x => new EndModel(x))
             .SingleOrDefault();
+
+        public IList<LambdaInvokeModel> LambdaInvokes => _element.ChildElements
+            .GetElementsOfType(LambdaInvokeModel.SpecializationTypeId)
+            .Select(x => new LambdaInvokeModel(x))
+            .ToList();
+
+        public IList<SQSSendMessageModel> SQSSendMessages => _element.ChildElements
+            .GetElementsOfType(SQSSendMessageModel.SpecializationTypeId)
+            .Select(x => new SQSSendMessageModel(x))
+            .ToList();
 
         public override string ToString()
         {

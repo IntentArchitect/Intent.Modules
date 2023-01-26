@@ -32,7 +32,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAnNJREFUaEPtl91x00AUhc+VPYMCD7iEUAHuwMkrExGrAuwO1EGcCggVWKlACvbwijvAHQAdmAewMoN8Mysss8j631VmwqxfPLa0d+93ztnVivDEP6Sr/8C+OLOA0Q79WzcKv+mqW1VHI8DbGYGvGHzuRstV1cS6rhuAVMnANg60SpWJkIlQq+D8HWQiZCJkIqSowH8RoeC5M6YYcxAGYFpz//fU/flprUmb0jJKu1AwGA9oG4vGxwC+M8gn7DyAXhJ4dhktr7uGaA0gjs8EmgM4ZeAWds9zN+EmsMenFmKfgdFjuNEYQKhubeMrJngA/2CLJu6vRZhVOjhxPGKede1GI4B/VCfc4VlvIlQvisljuFEbIFmoOwRlqheCJG7gPRgb7sfnOhd4bYA721mxyLvdG5apXgjx4s2Q4t4XBl270ceZrsXdCEBMehktztpOHtoOG4CMesaBJnEyEcpRy0TIRKiJAnUjJM472YeVeJB18RzIm6sJ09Ea+HNE3n0G8XocLaZpsTyA0HbEaRTyfeJ3WoOJP7jRwk9rZHehormUAJIGbMcn4B0AP20uC7BvfiKO0m60mMiTJifW+3jFjNcMTFMIGUBqfijf06R5cW/hLpSFkAHKmj+8YuZApACwrZu9y0rNlwJknSDglfiPga8AcpU/eifIQBAwF7GinTUCsXLzlQAZiEN/ebEpPIVKEPI9KrGR69R6kElxEg4cZb4qt/Ka2Lt4WBdVY6uu1wJInDi5uBHf7nbpVRXNuy4gcB/7YITyztSmVmMHVCfpcnxtB7psQqW2AVBRT8dY44AOFVVqGAdU1NMx1jigQ0WVGk/egQdUHfBA+ZiB6gAAAABJRU5ErkJggg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE0AAABQCAYAAABcQfj1AAAAAXNSR0IArs4c6QAACMNJREFUeF7dnH2IHGcdgJ/f7BlzpKH5oFBovaJEkUirVakaCxrv9u5Co1BLa9KKEgzYNlW7t1cvav9oQYvhbm+DtlA1Ym3V0tSgoubj9pKrWGyJrbQKUSEiXhoVi5dA01xNbueVd/b2bmd3ZnY+3tkdMv/u+/nsM795v2aELF237s/Rt24bSj2EUMVWd1IenMpSE3VbJDMNqgEbA3U/0LvYrjmw7qHU/2Rm2pkZaBrYW9bsRKTcAKzOaQ4ln2Vy4FdZAdd907wNa+aTKeO6C83fsDmQXlD121RDzIxx3YPmb1gNDlyFUG4Bl4EY1x1oQYbZfIFy/ic4adbvRtTXsmZc56G1M6wx4Dvg1u3MmnGdhRbGsOZHQAaN6xy0KIZ5gsuOcZ2BFsewDBuXPrQkhmXUuHShmTAsg8alB82kYRkzLh1oaRiWIePMQ0vTsIwYZxZaJwzLgHHmoHXSsC4bZwZaNwzronHJoXXTsC4ZlwxaFgzrgnHxoZk2rPC7XqzzQ8CNiLoWxYoaD3kVxW9Q8nPK/adDLXmnvDoSD5pJw0anr3N2nYRPAesCoMyjeITchRLjN/27LbwUV0eiQzNt2GjlWRQfbgthOcEzWD3bGd8cEpz51ZFo0EwaVodQnHoJ5N0RoIFSe5gc3B0qTwrGhYdm2rAk0OAcdvUaysNz4cGZMy4ctDQMW4JW+QPIWlB/A6YR+zgicyzIRnJ8EcUHPMFYso3xgadCQdOJDBrXHlpahtV7W5geQF08yZrX/skDt11wQfjKwSu48KZZYGULHKV2MDn4WGhoS+CSGxcMLU3Dwva2WPkr8I7W5OozlAafCFvMUjoDxvlDS9uwML0tHN6AlfsLkGtJLrKJiYHnwhTTkibhOM4bWhYM2zW9npXqh8BNrbcmf2YyvzEWsHqmBMa1QsuEYZVrsfgOcEOrZTKPqO1M5H+RCFqCGNcKrTh9B6jvNZ3emaO+8524pX4FKKF4rA9VvQuRXcBlHimrwPexV91LedO8kaYEGYf9aUpDh5rraYU2WvkPiisaEnbm4MmXn11N9Y0DoPLeMGQe1Bj2qn3GgLluVY+nqjDLRP6a9tCKlbPA5R2HpissVmaAjzY1cgE4gSVjjA8cNmKXVyEj01sRJ4Y2zn/nKOXXt4c2WtmBkke6clpnpHIIYdjVSOEFqtWh0KP/OFSLR7eD/bAbmMyj1J1M5h9vDy3BUyVOe115itN7QX2pqZxnKOU3Jy7brwBPwzQw+Qan/vtNnr5Nx9Gm/9GrsITjmNgdvG/qI1TlencL7VcoDf00dplBGX0No8CpuX1ewHRxwYPbbp0P03/a1VevMB7wGwHGMKyePcQ0KvlcLbQlevVWXt+FOAPaXpA/YS/soTx8MnQZYRLGNCwcNJ2qUzHOGXLM/wj4hKvfilnEHqI0pKdTya+RI5uQnB7aXLlcWHAMCxfTmlN1IsaNTPUjchDqewOuRjxKKX9XYmKFwzcguacR+tzAgmNYPGidMG6kcm/tmKjXpV6mNPieRNAKU+9H5EArMP+npF997dfTGnOmadzo1OdR8qg3M55nMv+h2NAMGRY+pnneqimcui4eeR/kZkCtbqqy6kyfSoOlWNAMGhYf2tKtavip+sD+Fby2ZjfIgy44wkEWeu5g72Y9vYt2GTYsGbQ0Y1xxeiOibq9tFtvHYw9sUzAsObS0jIvmknfqlAwzAy1N4+LCS9Ewc9CyZFzKhpmFlgXjOmCYeWjdNK5DhqUDrRvGddCw9KDVwfWtvRucaVHjnqXZN4Q7bFi60AqH12H1HAKlt+CaLzMbNZ6GOVXpZeoCp876LiLGfTCnB80BltMbFFsDGpfMOE/DXLXNg3yd2bk9fquvScBFm7C3q0kDE+thRLY3JNVr7CdANjRt1pwDVWD27A8idcwvhqH0PmjjTlJqxpmD5m/YDGJvw87d7PGGcDQjgmIYnPbYgotWfjspFn83A83bMAW8jG1tdQ4Y+68AhzNi9MhbUZZepHznct+aVlwLldux+HbaxiWH5m/YS4j9SSaG/r7USf/1uGAjCkevwrJ/CeiFyMU2a2AeK67em77ziPUgE/17QsoUmCwZtLtnLmPlxe82xTC3Yc3VRzWuZtgBoGFrr82avrdxZp7aiT6bUzv3/y1QO5u4tBrmCc5zPc5tXBTDmuvwO2Zg4Lse8UxzgJ27H2SsYfAabFhU45R9FCu3P5JhzXXUjNNHthpPICU2TtCLfvrTW/oS+SqlgROBN7QGljtfRjmGNY722xsWyTheATa0jWHtglTx6E5Q+o5wf4InrHH3/fpK7Dfrmc3lSHWCiaFjwsjUc4h8cLHuGUr5j/m2w9sw0HuTqtofa1PXP8Y1NCPavqSr/Un3bYuVSaCwWOZp7FVvF4oVfZSpbkyVUr7HE5qfYQ4wdQvlwRfa/em+v/s/VbVo3k/JKJUl2UUbqbyI8N6l6myu09B0LFq+SvnWOBds2K2Uh49H6YNnWk8jEhgWPoYGx7jmN2osdX17aLUzuA+BKrpimAnDvDrWt34H2DqGVBEK/OPM45GmWUH/XhzjIkPzO+Vdi2FmDPPqpDZbX6bO1TbWETXGRYLmd8o7DcMS39sRC4hiXGhoge8RVLcYiWER+2k8uZ9xwqtU5RbKA7916gwFbfZMj8dXQHX2xINC4x1PWqCfcY3hJxQ0fTi39SugHXiPICmBmPn9jKuHIYt9rvdRPZ+eerl4+Tuzl6Zhnk9tjz0NDc6i1/VehQ+0xiIvXcOawTlj0df3Ap/zfIGtnr4NtEsvhrW7g/0G8Y35AqHpzzqI+llgPYo3yHGM8fxJEPfMol0Du/G7XmqSi/2Itda/ev19Xe5xPhnrdYW4PUN0TV6kuvBx9g7/K0Ti7iXRC6a91f2gtiRqxCK0//kcDg5b9hwim5kY+GPYDF1JN1bpYwH97tXbktUv7xKKU4+B8wXjeJfieeyeLbFOKsarMV4u5x2F8z9G1M3xCnBy/Z7VZ278PxNPD0FMeg9PAAAAAElFTkSuQmCC&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="return `${getName()} (Choice)`;" isActive="true" />
@@ -62,19 +62,19 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="0286ea29-541a-4d8c-994f-2fd517d6aaa7" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Association</name>
-          <display>Add Association: Event Stream</display>
+        <childElement id="1b8769b1-c248-4f8c-b6a9-27eedf6507c0" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Choice Transition</name>
+          <display>Add Choice Transition: Choice Transition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="081b05e7-2248-4b10-93a2-47429ece33e5">
-            <typeId>055db259-36fc-495f-935c-89c847c34c32</typeId>
+          <typeReference id="40af81cd-e481-4fac-a174-15fa5f5e9661">
+            <typeId>40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS</typePackageName>
-            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
+            <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -89,7 +89,45 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + a" isActive="true" />
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
+                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
+                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
+                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
+                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="997c30b5-dc06-47f8-ba06-9b714146b058" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Otherwise Transition</name>
+          <display>Add Otherwise Transition: State Transition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e3fa02d4-17e8-4186-89cf-18bbbce4b9c7">
+            <typeId>995e8812-4510-45b4-9a24-8ad57f01dea9</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
+            <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>003c4e39-95b8-4ee0-bc90-fe72275c251b</parentFolderId>
+          <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+          <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" isActive="true" />
                 <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
                 <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />

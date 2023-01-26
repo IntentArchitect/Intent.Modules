@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0b11ac7c-b3d2-4651-9983-417423cda4fd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AndConditionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AndConditionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#00d98ed0-8ce1-4505-9859-f53cf2458837</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSStepFunctionsDiagramExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -42,6 +50,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ChoiceTransitionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ChoiceTransitionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ChoiceTransitionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ChoiceTransitionModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#dd8e7718-6d79-4593-afba-c67ffd7a4dba</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/EndModel.cs</ApplicationRelativeFilePath>
@@ -58,10 +82,50 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#35f8005e-f858-407f-a9c5-cf0f6ca57f49</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IsNotPresentConditionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IsNotPresentConditionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0a3668ff-c732-4682-a1f9-39aba8c7acb0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/IsPresentConditionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>IsPresentConditionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#41771c97-eaaf-4ede-97fa-66f83edd49d2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/LambdaInvokeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>LambdaInvokeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#320f2349-d58c-4692-9cf0-717ecb996c93</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ParallelModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ParallelModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#698d3e50-7c80-4930-abcd-c65feabe5ed5</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/PassModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PassModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c73e7930-a77c-49a3-aed6-1519a148ce3c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSendMessageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSendMessageModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -78,6 +142,30 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/StateMachineModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>StateMachineModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#995e8812-4510-45b4-9a24-8ad57f01dea9</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/StateTransitionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StateTransitionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#995e8812-4510-45b4-9a24-8ad57f01dea9</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/StateTransitionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StateTransitionModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3b11a26d-290c-4a13-aedb-516a6d6b173f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/StringEqualsConditionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>StringEqualsConditionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
