@@ -1,4 +1,8 @@
-﻿### Version 3.3.18
+﻿### Version 3.4.0
+
+- New: Introducing the Java File Builder Pattern.
+
+### Version 3.3.18
 
 - Fixed: Code management would not apply changes to to generic type parameters when merging.
 

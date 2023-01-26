@@ -75,7 +75,7 @@ namespace Intent.Modules.Common.Java.Templates
     /// <summary>
     /// Template base for Java files, which invokes code-management to make updates to existing files.
     /// </summary>
-    public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged, IClassProvider, IDeclareImports
+    public abstract class JavaTemplateBase<TModel> : IntentTemplateBase<TModel>, IJavaMerged, IJavaTemplate
     {
         private readonly SortedSet<string> _imports = new();
 
