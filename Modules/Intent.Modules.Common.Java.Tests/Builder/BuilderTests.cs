@@ -1,9 +1,9 @@
 ﻿using Intent.Modules.Common.Java.Builder;
 
 namespace Intent.Modules.Common.Java.Tests.Builder;
+
 using Xunit;
 using VerifyXunit;
-
 
 [UsesVerify]
 public class BuilderTests
@@ -56,6 +56,25 @@ public class BuilderTests
                 c.AddMethod("void", "main", method => method
                     .Static()
                     .AddParameter("String", "args[]"));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task StatementBlocks()
+    {
+        var fileBuilder = new JavaFile("com.test", "")
+            .AddClass("TestClass", c =>
+            {
+                c.Final();
+                c.AddMethod("void", "TestStatements", method => method
+                    .Static()
+                    .AddParameter("String", "testParam")
+                    .AddStatement(new JavaStatementBlock()
+                        .AddStatement("// Simple block"))
+                    .AddStatement(new JavaStatementBlock(@"if (testParam == """")")
+                        .AddStatement("throw new IllegalArgumentException();")));
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
