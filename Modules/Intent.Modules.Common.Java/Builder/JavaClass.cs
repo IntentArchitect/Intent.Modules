@@ -102,6 +102,22 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
         return this;
     }
     
+    public JavaClass WithFieldsSeparated(JavaCodeSeparatorType separator = JavaCodeSeparatorType.EmptyLines)
+    {
+        _fieldsSeparator = separator;
+        return this;
+    }
+    
+    public JavaClassMethod FindMethod(string name)
+    {
+        return Methods.FirstOrDefault(x => x.Name == name);
+    }
+
+    public JavaClassMethod FindMethod(Func<JavaClassMethod, bool> matchFunc)
+    {
+        return Methods.FirstOrDefault(matchFunc);
+    }
+    
     public JavaClass Protected()
     {
         AccessModifier = "protected ";
@@ -126,12 +142,27 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
         return this;
     }
     
+    public IEnumerable<JavaClass> GetParentPath()
+    {
+        if (BaseType == null)
+        {
+            return Array.Empty<JavaClass>();
+        }
+
+        return BaseType.GetParentPath().Concat(new[] { BaseType });
+    }
+
+    public IEnumerable<JavaClassMethod> GetAllMethods()
+    {
+        return (BaseType?.GetAllMethods() ?? new List<JavaClassMethod>()).Concat(Methods).ToList();
+    }
+
     private string GetBaseTypes()
     {
 
         return $"{(BaseType != null ? $" extends {BaseType.Name}" : "")}{(Interfaces.Any() ? $" implements {string.Join(", ", Interfaces)}" : "")}";
     }
-    
+
     private string GetMembers(string indentation)
     {
         var codeBlocks = new List<ICodeBlock>();
