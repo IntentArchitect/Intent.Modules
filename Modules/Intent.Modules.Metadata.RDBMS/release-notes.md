@@ -1,3 +1,15 @@
+### Version 3.3.13
+
+- Update: Compute stereotype icon visible on diagram.
+
+### Version 3.3.12
+
+- Fixed: Issues around adding Text Constraints automatically via script.
+
+### Version 3.3.11
+
+- Fixed: Script would break when assigning associations to Entities.
+
 ### Version 3.3.10
 
 - Fixed: Changing an Attribute on a Class would have toggled the Text Constraint Stereotype wrongfully.
