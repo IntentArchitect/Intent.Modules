@@ -1,6 +1,7 @@
 ### Version 3.3.13
 
 - Update: Compute stereotype icon visible on diagram.
+- Udpate: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checbox. 
 
 ### Version 3.3.12
 

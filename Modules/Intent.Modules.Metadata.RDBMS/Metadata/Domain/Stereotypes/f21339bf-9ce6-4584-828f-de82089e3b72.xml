@@ -30,6 +30,7 @@
       <lookupTypes />
     </property>
     <property id="c213fe57-1d8c-4e3b-9714-21237e526e24">
+      <hint>Check this to insert a value without wrapping in quotes.</hint>
       <name>Treat as SQL Expression</name>
       <type>string</type>
       <controlType>checkbox</controlType>
