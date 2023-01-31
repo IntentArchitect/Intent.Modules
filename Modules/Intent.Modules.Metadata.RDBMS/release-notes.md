@@ -1,7 +1,8 @@
 ### Version 3.3.13
 
 - Update: Compute stereotype icon visible on diagram.
-- Udpate: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checbox. 
+- Update: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checbox. 
+- Update: Fill Factor property on Indexes in order for some database providers to configure it accordingly.
 
 ### Version 3.3.12
 

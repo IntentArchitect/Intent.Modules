@@ -67,6 +67,11 @@ namespace Intent.Metadata.RDBMS.Api
                 return _stereotype.GetProperty<string>("Filter Custom Value");
             }
 
+            public int? FillFactor()
+            {
+                return _stereotype.GetProperty<int?>("Fill Factor");
+            }
+
             public class FilterOptions
             {
                 public readonly string Value;

@@ -68,5 +68,15 @@
       <isActiveFunction>return properties["Filter"].value === "Custom";</isActiveFunction>
       <isRequiredFunction>return properties["Filter"].value === "Custom";</isRequiredFunction>
     </property>
+    <property id="4e876d68-8bde-4b31-bd25-81e2bd935e76">
+      <hint>Index "Fill Factor" as a percentage value. Only applicable to certain database providers.</hint>
+      <name>Fill Factor</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

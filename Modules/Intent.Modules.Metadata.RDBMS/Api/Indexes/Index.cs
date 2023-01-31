@@ -1,4 +1,6 @@
-﻿namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
+﻿using System.Collections.Generic;
+
+namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
 {
     /// <summary>
     /// Details of an index.
@@ -49,11 +51,29 @@
         /// non-key columns, as the table itself doesn't need to be accessed.
         /// </summary>
         public IndexColumn[] IncludedColumns { get; set; }
+        
+        /// <summary>
+        /// Some relational databases allow you to configure the "Fill Factor" for indexes as a percentage value.
+        /// </summary>
+        public int? FillFactor { get; set; }
 
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"{nameof(Name)} = '{Name}', {nameof(FilterOption)} = '{FilterOption}', {nameof(Filter)} = '{Filter}', {nameof(UseDefaultName)} = '{UseDefaultName}'";
+            var propertyList = new List<string>
+            {
+                $"{nameof(Name)} = '{Name}'",
+                $"{nameof(FilterOption)} = '{FilterOption}'",
+                $"{nameof(Filter)} = '{Filter}'",
+                $"{nameof(UseDefaultName)} = '{UseDefaultName}'"
+            };
+
+            if (FillFactor.HasValue)
+            {
+                propertyList.Add($"{nameof(FillFactor)} = '{FillFactor}'");
+            }
+            
+            return string.Join(", ", propertyList);
         }
     }
 }

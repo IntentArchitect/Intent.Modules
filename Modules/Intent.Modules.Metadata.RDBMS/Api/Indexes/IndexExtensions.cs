@@ -36,7 +36,8 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
                     IncludedColumns = indexModel.Columns
                         .Where(x => x.GetSettings().Type().AsEnum() == IndexColumnModelStereotypeExtensions.Settings.TypeOptionsEnum.Included)
                         .Select(GetIndexColumn)
-                        .ToArray()
+                        .ToArray(),
+                    FillFactor = indexModel.GetSettings().FillFactor()
                 }));
 
             results.AddRange(model.Attributes
