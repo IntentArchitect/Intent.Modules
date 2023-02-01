@@ -37,27 +37,41 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial
                     "Weaver.Attributes;\r\nusing Intent.Templates;\r\n");
             
             #line 16 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : ""));
+ if (Model.GetModelType() != null) { 
             
             #line default
             #line hidden
-            this.Write("\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            this.Write("using ");
             
-            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType().ParentModule.ApiNamespace));
+            
+            #line default
+            #line hidden
+            this.Write(";\r\n");
+            
+            #line 18 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace ");
+            
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
-            this.Write("\r\n{\r\n\t[IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
+            this.Write("\r\n{\r\n    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n    partial class ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : ");
             
-            #line 23 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 25 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetBaseType()));
             
             #line default
@@ -65,7 +79,7 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial
             this.Write("\r\n    {\r\n        [IntentManaged(Mode.Fully)]\r\n        public const string Templat" +
                     "eId = \"");
             
-            #line 26 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 28 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetTemplateId()));
             
             #line default
@@ -73,21 +87,21 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial
             this.Write("\";\r\n\r\n        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]\r\n        public" +
                     " ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write("(IOutputTarget outputTarget, ");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetModelType()));
             
             #line default
             #line hidden
             this.Write(" model");
             
-            #line 29 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 31 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.GetModelType() == null ? " = null" : ""));
             
             #line default
@@ -102,14 +116,14 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial
             return new DartFileConfig(
                 className: $""");
             
-            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name}" : Model.Name.Replace("Template", "")));
             
             #line default
             #line hidden
             this.Write("\",\r\n                fileName: $\"");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
+            #line 40 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Dart\Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Model.IsFilePerModelTemplateRegistration() ? "{Model.Name.ToKebabCase()}" : Model.Name.Replace("Template", "").ToKebabCase()));
             
             #line default

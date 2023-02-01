@@ -1,95 +1,165 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 
-namespace Intent.Modules.Common.Dart.TypeResolvers
+namespace Intent.Modules.Common.Dart.TypeResolvers;
+
+/// <summary>
+/// Dart specialization of <see cref="TypeResolverBase"/>.
+/// </summary>
+public class DartTypeResolver : TypeResolverBase
 {
-    public class DartTypeResolver : TypeResolverBase, ITypeResolver
+    /// <summary>
+    /// Creates a new instance of <see cref="DartTypeResolver"/>.
+    /// </summary>
+    public DartTypeResolver() : base(defaultContext: new DartTypeResolverContext())
     {
-        public DartTypeResolver() : base(new DartTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance))
+    }
+
+    /// <inheritdoc />
+    protected override ITypeResolverContext CreateContext()
+    {
+        return new DartTypeResolverContext();
+    }
+
+    private class DartTypeResolverContext : TypeResolverContextBase<DartCollectionFormatter, DartResolvedTypeInfo>
+    {
+        private static readonly Dictionary<string, string> TypeMap = new()
+        {
+            ["bool"] = "bool",
+            ["byte"] = "int",
+            ["char"] = "int",
+            ["date"] = "DateTime",
+            ["datetime"] = "DateTime",
+            ["decimal"] = "double",
+            ["double"] = "double",
+            ["float"] = "double",
+            ["guid"] = "String",
+            ["int"] = "int",
+            ["long"] = "int",
+            ["object"] = "Object",
+            ["short"] = "int",
+            ["string"] = "String"
+        };
+
+        public DartTypeResolverContext()
+            : base(DartCollectionFormatter.Create("List<{0}>"), DartNullableFormatter.Instance)
         {
         }
 
-        /// <inheritdoc />
-        protected override ITypeResolverContext CreateContext()
+        protected override DartResolvedTypeInfo Get(IClassProvider classProvider)
         {
-            return new DartTypeResolverContext(CollectionFormatter.Create("{0}[]"), TypeResolution.DefaultNullableFormatter.Instance);
+            return DartResolvedTypeInfo.Create(
+                name: classProvider.ClassName,
+                importSource: null,
+                isPrimitive: false,
+                isNullable: false,
+                isCollection: false,
+                typeReference: null,
+                template: classProvider,
+                genericTypeParameters: null);
         }
 
-        private class DartTypeResolverContext : TypeResolverContextBase
+        protected override DartResolvedTypeInfo Get(
+            IResolvedTypeInfo resolvedTypeInfo,
+            IEnumerable<ITypeReference> genericTypeParameters,
+            DartCollectionFormatter collectionFormatter)
         {
-            public DartTypeResolverContext(
-                ICollectionFormatter defaultCollectionFormatter,
-                INullableFormatter defaultNullableFormatter)
-                : base(
-                    defaultCollectionFormatter,
-                    defaultNullableFormatter)
+            return DartResolvedTypeInfo.Create(
+                resolvedTypeInfo: resolvedTypeInfo,
+                genericTypeParameters: genericTypeParameters
+                    .Select(type => Get(type, collectionFormatter))
+                    .ToArray());
+        }
+
+        protected override DartResolvedTypeInfo Get(ITypeReference typeInfo, string collectionFormat)
+        {
+            var collectionFormatter = !string.IsNullOrWhiteSpace(collectionFormat)
+                ? DartCollectionFormatter.Create(collectionFormat)
+                : null;
+
+            return Get(typeInfo, collectionFormatter);
+        }
+
+        protected override DartResolvedTypeInfo ResolveType(
+            ITypeReference typeReference,
+            INullableFormatter nullableFormatter,
+            DartCollectionFormatter collectionFormatter)
+        {
+            IReadOnlyList<DartResolvedTypeInfo> ResolveGenericTypeParameters(IEnumerable<ITypeReference> genericTypeParameters)
             {
+                return genericTypeParameters
+                    .Select(type => Get(type, collectionFormatter))
+                    .ToArray();
             }
 
-            protected override IResolvedTypeInfo ResolveType(ITypeReference typeReference, INullableFormatter nullableFormatter)
+            if (typeReference.Element == null)
             {
-                string name = null;
-                bool isPrimitive = false;
-                if (typeReference.Element.HasStereotype("Dart"))
-                {
-                    name = typeReference.Element.GetStereotypeProperty<string>("Dart", "Type");
-                }
-                else
-                {
-                    isPrimitive = true;
-                    switch (typeReference.Element.Name)
-                    {
-                        case "datetimeoffset":
-                            name = "Duration";
-                            break;
-                        case "double":
-                        case "decimal":
-                            name = "double";
-                            break;
-                        case "bool":
-                            name = "bool";
-                            break;
-                        case "date":
-                        case "datetime":
-                            name = "DateTime";
-                            break;
-                        case "char":
-                        case "byte":
-                        case "float":
-                        case "short":
-                        case "int":
-                        case "long":
-                            name = "int";
-                            break;
-                        case "binary":
-                        case "object":
-                            name = "dynamic";
-                            break;
-                        case "guid":
-                        case "string":
-                            name = "String";
-                            break;
-                    }
-
-                    name = !string.IsNullOrWhiteSpace(name)
-                        ? name
-                        : typeReference.Element.Name;
-                }
-
-                return ResolvedTypeInfo.Create(
-                    name: name,
-                    isPrimitive: isPrimitive,
+                return DartResolvedTypeInfo.Create(
+                    name: "void",
+                    importSource: null,
+                    isPrimitive: true,
+                    isNullable: false,
+                    isCollection: false,
                     typeReference: typeReference,
-                    template: null,
                     nullableFormatter: nullableFormatter,
-                    collectionFormatter: null,
-                    genericTypeParameters: (typeReference.GenericTypeParameters ?? Enumerable.Empty<ITypeReference>())
-                        .Select(Get)
-                        .ToArray()
-                    );
+                    template: null);
             }
+
+            if (typeReference.Element.HasStereotype("Dart"))
+            {
+                var name = typeReference.Element.GetStereotypeProperty<string>("Dart", "Name");
+                var importSource = typeReference.Element.GetStereotypeProperty<string>("Dart", "Import Source");
+
+                return DartResolvedTypeInfo.Create(
+                    name: !string.IsNullOrWhiteSpace(name) ? name : typeReference.Element.Name,
+                    importSource: !string.IsNullOrWhiteSpace(importSource) ? importSource : null,
+                    isPrimitive: typeReference.Element.GetStereotypeProperty("Dart", "Is Primitive", false),
+                    isNullable: typeReference.IsNullable,
+                    isCollection: typeReference.IsCollection,
+                    typeReference: typeReference,
+                    nullableFormatter: nullableFormatter,
+                    genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
+            }
+
+            if (TypeMap.TryGetValue(typeReference.Element.Name, out var typeName))
+            {
+                return DartResolvedTypeInfo.Create(
+                    name: typeName,
+                    importSource: null,
+                    isPrimitive: !typeReference.IsNullable,
+                    isNullable: typeReference.IsNullable,
+                    isCollection: false,
+                    typeReference: typeReference,
+                    nullableFormatter: nullableFormatter);
+            }
+
+            if (typeReference.Element.Name == "binary")
+            {
+                DartResolvedTypeInfo.CreateForCollection(
+                    forResolvedType: DartResolvedTypeInfo.Create(
+                        name: "int",
+                        importSource: null,
+                        isPrimitive: true,
+                        isNullable: false,
+                        isCollection: false,
+                        typeReference: typeReference,
+                        nullableFormatter: nullableFormatter),
+                    isNullable: typeReference.IsNullable,
+                    nullableFormatter: nullableFormatter);
+            }
+
+            return DartResolvedTypeInfo.Create(
+                name: typeReference.Element.Name,
+                importSource: null,
+                isPrimitive: false,
+                isNullable: typeReference.IsNullable,
+                isCollection: false,
+                typeReference: typeReference,
+                nullableFormatter: nullableFormatter,
+                genericTypeParameters: ResolveGenericTypeParameters(typeReference.GenericTypeParameters));
         }
     }
 }
-

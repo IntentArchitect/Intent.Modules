@@ -65,7 +65,7 @@ class {ClassName} {{{string.Join(Environment.NewLine, GetMembers())}
 
             // example: adding a constructor
             members.Add($@""
-    public {ClassName}() {{
+    {ClassName}() {{
     }}"");
 
             return members;

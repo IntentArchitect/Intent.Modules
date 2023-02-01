@@ -20,5 +20,24 @@
   <order>0</order>
   <packageId>bafb942a-20da-45b1-a9c8-b6ec25188e30</packageId>
   <packageName>Intent.Common.Dart</packageName>
-  <properties />
+  <properties>
+    <property id="a4edc092-985e-4502-a2cb-e8fe394df0ff">
+      <name>Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="fdc62d4c-073a-4835-948a-32e98686aadc">
+      <name>Import Source</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
 </stereotypeDefinition>

@@ -13,13 +13,15 @@ using Intent.Modules.Common.Dart.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-<#= Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : "" #>
+<# if (Model.GetModelType() != null) { #>
+using <#= Model.GetModelType().ParentModule.ApiNamespace #>;
+<# } #>
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
-	[IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+    [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
     partial class <#= ClassName #> : <#= GetBaseType() #>
     {
         [IntentManaged(Mode.Fully)]

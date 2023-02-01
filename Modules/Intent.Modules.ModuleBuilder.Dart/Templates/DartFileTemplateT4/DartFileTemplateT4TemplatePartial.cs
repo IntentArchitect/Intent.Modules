@@ -51,7 +51,7 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplateT4
             }
 
             var modelTypeImport = Model.GetModelType() != null
-                ? $"{Environment.NewLine}<#@ import namespace=\"{Model.GetModelType()?.Namespace}\" #>"
+                ? $"{Environment.NewLine}<#@ import namespace=\"{Model.GetModelType().Namespace}\" #>"
                 : string.Empty;
 
             return $@"<#@ template language=""C#"" inherits=""{GetBaseType()}"" #>
