@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="eddfc545-a20f-4181-8a3c-3187fddbf8cf" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Conditional Statement Types</name>
+  <display>Conditional Statement Types</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>24de5392-9c9b-43e6-9050-313b575bb6fe</parentFolderId>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

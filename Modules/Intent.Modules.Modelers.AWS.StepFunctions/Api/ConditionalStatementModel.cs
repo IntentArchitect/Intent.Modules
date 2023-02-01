@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.StepFunctions.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class IsNotPresentConditionModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ConditionalStatementModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "IsNotPresent Condition";
-        public const string SpecializationTypeId = "35f8005e-f858-407f-a9c5-cf0f6ca57f49";
+        public const string SpecializationType = "Conditional Statement";
+        public const string SpecializationTypeId = "0b11ac7c-b3d2-4651-9983-417423cda4fd";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public IsNotPresentConditionModel(IElement element, string requiredType = SpecializationType)
+        public ConditionalStatementModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,14 +35,21 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public ITypeReference TypeReference => _element.TypeReference;
+
         public IElement InternalElement => _element;
+
+        public IList<ConditionalStatementModel> ConditionalStatements => _element.ChildElements
+            .GetElementsOfType(ConditionalStatementModel.SpecializationTypeId)
+            .Select(x => new ConditionalStatementModel(x))
+            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(IsNotPresentConditionModel other)
+        public bool Equals(ConditionalStatementModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +59,7 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((IsNotPresentConditionModel)obj);
+            return Equals((ConditionalStatementModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +69,17 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class IsNotPresentConditionModelExtensions
+    public static class ConditionalStatementModelExtensions
     {
 
-        public static bool IsIsNotPresentConditionModel(this ICanBeReferencedType type)
+        public static bool IsConditionalStatementModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == IsNotPresentConditionModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == ConditionalStatementModel.SpecializationTypeId;
         }
 
-        public static IsNotPresentConditionModel AsIsNotPresentConditionModel(this ICanBeReferencedType type)
+        public static ConditionalStatementModel AsConditionalStatementModel(this ICanBeReferencedType type)
         {
-            return type.IsIsNotPresentConditionModel() ? new IsNotPresentConditionModel((IElement)type) : null;
+            return type.IsConditionalStatementModel() ? new ConditionalStatementModel((IElement)type) : null;
         }
     }
 }

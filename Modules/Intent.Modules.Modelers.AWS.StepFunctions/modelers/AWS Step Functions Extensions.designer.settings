@@ -292,22 +292,22 @@ vertical-align: center`</style>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
           <typeOrder>
-            <type order="0">Choice Transition</type>
+            <type order="0">Rule Transition</type>
             <type order="1">State Transition</type>
           </typeOrder>
           <creationOptions>
             <option type="association">
-              <specializationType>Choice Transition</specializationType>
+              <specializationType>Rule Transition</specializationType>
               <specializationTypeId>40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</specializationTypeId>
-              <text>Add Choice Transition</text>
-              <defaultName>NewChoiceTransition</defaultName>
+              <text>Add Rule</text>
+              <defaultName>NewRuleTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Otherwise Transition</text>
+              <text>Add Default Rule</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -352,116 +352,73 @@ white-space: inherit;`</style>
             <childElementVisualSettings />
           </visualSettings>
           <childElementSettings>
-            <childElementSetting type="And Condition" typeId="0b11ac7c-b3d2-4651-9983-417423cda4fd">
+            <childElementSetting type="Conditional Statement" typeId="0b11ac7c-b3d2-4651-9983-417423cda4fd">
               <icon type="FontAwesome" source="file-o" />
               <saveAsOwnFile>false</saveAsOwnFile>
-              <allowRename>true</allowRename>
+              <displayFunction>function getDisplay(element) {
+    if (element.typeReference.getType().getName() !== "Simple") {
+        var childDisplays = element.getChildren(element.specialization)
+            .map(e =&gt; getDisplay(e))
+            .join(", ");
+
+        return `${element.typeReference.getType().getName()} (${childDisplays})`;
+    }
+
+    const stereotype = element.getStereotype("Conditional Statement Settings");
+
+    const not = stereotype.getProperty("NOT").value ? "NOT " : "";
+    const variable = stereotype.getProperty("Variable").value;
+    const operator  = stereotype.getProperty("Operator").value;
+    const type = operator === "is of type" ? stereotype.getProperty("Type").value + " " : "";
+    const valueType = operator !== "is of type" ? stereotype.getProperty("Value Type").value + " " : "";
+    const value = !valueType.startsWith("Boolean") ? stereotype.getProperty("Value").value + " " : "";
+    const booleanValue = valueType.startsWith("Boolean") ? stereotype.getProperty("Boolean Value").value + " " : "";
+
+    return `${not}${variable} ${operator} ${type}${valueType}${value}${booleanValue}`;
+}
+
+const element = {
+    typeReference,
+    getChildren,
+    getStereotype
+};
+
+return getDisplay(element);</displayFunction>
+              <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>
               <allowSorting>true</allowSorting>
-              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <sortChildren>manually</sortChildren>
               <allowFindInView>false</allowFindInView>
-              <allowTypeReference>false</allowTypeReference>
+              <allowTypeReference>true</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <typeReferenceSetting>
+                <isRequired>true</isRequired>
+                <targetTypes>
+                  <type>Conditional Statement Type</type>
+                </targetTypes>
+                <allowIsNavigable>true</allowIsNavigable>
+                <allowIsNullable>true</allowIsNullable>
+                <allowIsCollection>true</allowIsCollection>
+                <isNavigableDefault>true</isNavigableDefault>
+                <isNullableDefault>false</isNullableDefault>
+                <isCollectionDefault>false</isCollectionDefault>
+              </typeReferenceSetting>
               <typeOrder>
-                <type order="0">And Condition</type>
-                <type order="1">IsPresent Condition</type>
-                <type order="2">StringEquals Condition</type>
-                <type order="3">IsNotPresent Condition</type>
+                <type order="0">Conditional Statement</type>
               </typeOrder>
               <creationOptions>
                 <option type="element">
-                  <specializationType>And Condition</specializationType>
+                  <specializationType>Conditional Statement</specializationType>
                   <specializationTypeId>0b11ac7c-b3d2-4651-9983-417423cda4fd</specializationTypeId>
-                  <text>And Condition</text>
-                  <defaultName>NewAndCondition</defaultName>
-                  <icon type="FontAwesome" source="file-o" />
-                  <allowMultiple>true</allowMultiple>
-                </option>
-                <option type="element">
-                  <specializationType>IsPresent Condition</specializationType>
-                  <specializationTypeId>0a3668ff-c732-4682-a1f9-39aba8c7acb0</specializationTypeId>
-                  <text>IsPresent Condition</text>
-                  <defaultName>NewIsPresentCondition</defaultName>
-                  <icon type="FontAwesome" source="file-o" />
-                  <allowMultiple>true</allowMultiple>
-                </option>
-                <option type="element">
-                  <specializationType>StringEquals Condition</specializationType>
-                  <specializationTypeId>3b11a26d-290c-4a13-aedb-516a6d6b173f</specializationTypeId>
-                  <text>StringEquals Condition</text>
-                  <defaultName>NewStringEqualsCondition</defaultName>
-                  <icon type="FontAwesome" source="file-o" />
-                  <allowMultiple>true</allowMultiple>
-                </option>
-                <option type="element">
-                  <specializationType>IsNotPresent Condition</specializationType>
-                  <specializationTypeId>35f8005e-f858-407f-a9c5-cf0f6ca57f49</specializationTypeId>
-                  <text>IsNotPresent Condition</text>
-                  <defaultName>NewIsNotPresentCondition</defaultName>
+                  <text>Add Conditional Statement</text>
+                  <defaultName>Conditional Statement</defaultName>
                   <icon type="FontAwesome" source="file-o" />
                   <allowMultiple>true</allowMultiple>
                 </option>
               </creationOptions>
-              <scriptOptions />
-              <mappingSettings />
-              <childElementSettings />
-            </childElementSetting>
-            <childElementSetting type="IsPresent Condition" typeId="0a3668ff-c732-4682-a1f9-39aba8c7acb0">
-              <icon type="FontAwesome" source="file-o" />
-              <saveAsOwnFile>false</saveAsOwnFile>
-              <allowRename>true</allowRename>
-              <allowAbstract>false</allowAbstract>
-              <allowGenericTypes>false</allowGenericTypes>
-              <allowMapping>false</allowMapping>
-              <allowSorting>true</allowSorting>
-              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowFindInView>false</allowFindInView>
-              <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowSetValue>false</allowSetValue>
-              <typeOrder />
-              <creationOptions />
-              <scriptOptions />
-              <mappingSettings />
-              <childElementSettings />
-            </childElementSetting>
-            <childElementSetting type="StringEquals Condition" typeId="3b11a26d-290c-4a13-aedb-516a6d6b173f">
-              <icon type="FontAwesome" source="file-o" />
-              <saveAsOwnFile>false</saveAsOwnFile>
-              <allowRename>true</allowRename>
-              <allowAbstract>false</allowAbstract>
-              <allowGenericTypes>false</allowGenericTypes>
-              <allowMapping>false</allowMapping>
-              <allowSorting>true</allowSorting>
-              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowFindInView>false</allowFindInView>
-              <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowSetValue>false</allowSetValue>
-              <typeOrder />
-              <creationOptions />
-              <scriptOptions />
-              <mappingSettings />
-              <childElementSettings />
-            </childElementSetting>
-            <childElementSetting type="IsNotPresent Condition" typeId="35f8005e-f858-407f-a9c5-cf0f6ca57f49">
-              <icon type="FontAwesome" source="file-o" />
-              <saveAsOwnFile>false</saveAsOwnFile>
-              <allowRename>true</allowRename>
-              <allowAbstract>false</allowAbstract>
-              <allowGenericTypes>false</allowGenericTypes>
-              <allowMapping>false</allowMapping>
-              <allowSorting>true</allowSorting>
-              <sortChildren p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowFindInView>false</allowFindInView>
-              <allowTypeReference>false</allowTypeReference>
-              <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowSetValue>false</allowSetValue>
-              <typeOrder />
-              <creationOptions />
               <scriptOptions />
               <mappingSettings />
               <childElementSettings />
@@ -498,7 +455,7 @@ white-space: inherit;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -568,7 +525,7 @@ white-space: inherit;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -635,7 +592,7 @@ white-space: inherit;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -661,7 +618,7 @@ white-space: inherit;`</style>
                 <position x="${x + 50}" y="${y + 4}" />
               </drawText>
               <drawText>
-                <text>return `${getName()} (Choice)`;</text>
+                <text>return `${getName()}`;</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
@@ -702,7 +659,7 @@ white-space: inherit;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -716,6 +673,7 @@ white-space: inherit;`</style>
             <display>
               <drawPath>
                 <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+                <fillColor>return theme.isDark ? "#1f2126" : "#ffffff";</fillColor>
               </drawPath>
               <drawPath>
                 <path>`M${x + 3},${y + 6} v${h - 12}`</path>
@@ -727,14 +685,14 @@ white-space: inherit;`</style>
                 <position x="${x + 50}" y="${y + 4}" />
               </drawText>
               <drawText>
-                <text>return `${getName()} (Fail)`;</text>
+                <text>return `${getName()}`;</text>
                 <style>`font-size: 12px; 
 font-family: Helvetica; 
 font-weight: bold; 
-text-align: center; 
+text-align: left; 
 white-space: inherit;`</style>
-                <size width="${w}" height="18" />
-                <position x="${x}" y="${y + 8}" />
+                <size width="${w - 54}" height="18" />
+                <position x="${x + 50}" y="${y + 20}" />
               </drawText>
               <drawSvgResource>
                 <path>./fail-state-symbol.svg</path>
@@ -768,7 +726,7 @@ white-space: inherit;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -880,7 +838,7 @@ align-items: center;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -958,7 +916,7 @@ white-space: inherit;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -1036,7 +994,7 @@ white-space: inherit;`</style>
             <option type="association">
               <specializationType>State Transition</specializationType>
               <specializationTypeId>995e8812-4510-45b4-9a24-8ad57f01dea9</specializationTypeId>
-              <text>Add Transition</text>
+              <text>Add Next State</text>
               <defaultName>NewStateTransition</defaultName>
               <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
               <allowMultiple>true</allowMultiple>
@@ -1126,8 +1084,8 @@ white-space: inherit;`</style>
     </elementExtension>
   </elementExtensions>
   <associationSettings>
-    <associationSetting type="Choice Transition" typeId="40ba8d81-0ea4-4934-a36e-fbb2daab8e2e">
-      <sourceEnd type="Choice Transition Source End" typeId="04abdefd-f368-4587-a008-371d725edfcc">
+    <associationSetting type="Rule Transition" typeId="40ba8d81-0ea4-4934-a36e-fbb2daab8e2e">
+      <sourceEnd type="Rule Transition Source End" typeId="04abdefd-f368-4587-a008-371d725edfcc">
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -1143,7 +1101,7 @@ white-space: inherit;`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
       </sourceEnd>
-      <targetEnd type="Choice Transition Target End" typeId="c0ca5899-7d7a-4399-a4ca-e1e2e48b04a6">
+      <targetEnd type="Rule Transition Target End" typeId="c0ca5899-7d7a-4399-a4ca-e1e2e48b04a6">
         <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
@@ -1168,43 +1126,16 @@ white-space: inherit;`</style>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
         <typeOrder>
-          <type order="0">And Condition</type>
-          <type order="1">IsPresent Condition</type>
-          <type order="2">StringEquals Condition</type>
-          <type order="3">IsNotPresent Condition</type>
+          <type order="0">Conditional Statement</type>
         </typeOrder>
         <creationOptions>
           <option type="element">
-            <specializationType>And Condition</specializationType>
+            <specializationType>Conditional Statement</specializationType>
             <specializationTypeId>0b11ac7c-b3d2-4651-9983-417423cda4fd</specializationTypeId>
-            <text>And Condition</text>
-            <defaultName>NewAndCondition</defaultName>
+            <text>Add Conditional Statement</text>
+            <defaultName>Conditional Statement</defaultName>
             <icon type="FontAwesome" source="file-o" />
-            <allowMultiple>true</allowMultiple>
-          </option>
-          <option type="element">
-            <specializationType>IsPresent Condition</specializationType>
-            <specializationTypeId>0a3668ff-c732-4682-a1f9-39aba8c7acb0</specializationTypeId>
-            <text>IsPresent Condition</text>
-            <defaultName>NewIsPresentCondition</defaultName>
-            <icon type="FontAwesome" source="file-o" />
-            <allowMultiple>true</allowMultiple>
-          </option>
-          <option type="element">
-            <specializationType>StringEquals Condition</specializationType>
-            <specializationTypeId>3b11a26d-290c-4a13-aedb-516a6d6b173f</specializationTypeId>
-            <text>StringEquals Condition</text>
-            <defaultName>NewStringEqualsCondition</defaultName>
-            <icon type="FontAwesome" source="file-o" />
-            <allowMultiple>true</allowMultiple>
-          </option>
-          <option type="element">
-            <specializationType>IsNotPresent Condition</specializationType>
-            <specializationTypeId>35f8005e-f858-407f-a9c5-cf0f6ca57f49</specializationTypeId>
-            <text>IsNotPresent Condition</text>
-            <defaultName>NewIsNotPresentCondition</defaultName>
-            <icon type="FontAwesome" source="file-o" />
-            <allowMultiple>true</allowMultiple>
+            <allowMultiple>false</allowMultiple>
           </option>
         </creationOptions>
       </targetEnd>

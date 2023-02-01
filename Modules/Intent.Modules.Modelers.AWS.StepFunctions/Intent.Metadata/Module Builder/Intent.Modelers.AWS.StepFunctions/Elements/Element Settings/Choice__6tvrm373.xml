@@ -63,8 +63,8 @@
       <metadata />
       <childElements>
         <childElement id="1b8769b1-c248-4f8c-b6a9-27eedf6507c0" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Choice Transition</name>
-          <display>Add Choice Transition: Choice Transition</display>
+          <name>Add Rule</name>
+          <display>Add Rule: Rule Transition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="40af81cd-e481-4fac-a174-15fa5f5e9661">
@@ -101,8 +101,8 @@
           <childElements />
         </childElement>
         <childElement id="997c30b5-dc06-47f8-ba06-9b714146b058" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Otherwise Transition</name>
-          <display>Add Otherwise Transition: State Transition</display>
+          <name>Add Default Rule</name>
+          <display>Add Default Rule: State Transition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="e3fa02d4-17e8-4186-89cf-18bbbce4b9c7">

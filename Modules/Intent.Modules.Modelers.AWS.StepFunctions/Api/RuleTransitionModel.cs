@@ -10,15 +10,15 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.StepFunctions.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ChoiceTransitionModel : IMetadataModel
+    public class RuleTransitionModel : IMetadataModel
     {
-        public const string SpecializationType = "Choice Transition";
+        public const string SpecializationType = "Rule Transition";
         public const string SpecializationTypeId = "40ba8d81-0ea4-4934-a36e-fbb2daab8e2e";
         protected readonly IAssociation _association;
-        protected ChoiceTransitionSourceEndModel _sourceEnd;
-        protected ChoiceTransitionTargetEndModel _targetEnd;
+        protected RuleTransitionSourceEndModel _sourceEnd;
+        protected RuleTransitionTargetEndModel _targetEnd;
 
-        public ChoiceTransitionModel(IAssociation association, string requiredType = SpecializationType)
+        public RuleTransitionModel(IAssociation association, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(association.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -27,17 +27,17 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             _association = association;
         }
 
-        public static ChoiceTransitionModel CreateFromEnd(IAssociationEnd associationEnd)
+        public static RuleTransitionModel CreateFromEnd(IAssociationEnd associationEnd)
         {
-            var association = new ChoiceTransitionModel(associationEnd.Association);
+            var association = new RuleTransitionModel(associationEnd.Association);
             return association;
         }
 
         public string Id => _association.Id;
 
-        public ChoiceTransitionSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new ChoiceTransitionSourceEndModel(_association.SourceEnd, this));
+        public RuleTransitionSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new RuleTransitionSourceEndModel(_association.SourceEnd, this));
 
-        public ChoiceTransitionTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new ChoiceTransitionTargetEndModel(_association.TargetEnd, this));
+        public RuleTransitionTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new RuleTransitionTargetEndModel(_association.TargetEnd, this));
 
         public IAssociation InternalAssociation => _association;
 
@@ -46,7 +46,7 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             return _association.ToString();
         }
 
-        public bool Equals(ChoiceTransitionModel other)
+        public bool Equals(RuleTransitionModel other)
         {
             return Equals(_association, other?._association);
         }
@@ -56,7 +56,7 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ChoiceTransitionModel)obj);
+            return Equals((RuleTransitionModel)obj);
         }
 
         public override int GetHashCode()
@@ -66,48 +66,48 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ChoiceTransitionSourceEndModel : ChoiceTransitionEndModel
+    public class RuleTransitionSourceEndModel : RuleTransitionEndModel
     {
         public const string SpecializationTypeId = "04abdefd-f368-4587-a008-371d725edfcc";
 
-        public ChoiceTransitionSourceEndModel(IAssociationEnd associationEnd, ChoiceTransitionModel association) : base(associationEnd, association)
+        public RuleTransitionSourceEndModel(IAssociationEnd associationEnd, RuleTransitionModel association) : base(associationEnd, association)
         {
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ChoiceTransitionTargetEndModel : ChoiceTransitionEndModel
+    public class RuleTransitionTargetEndModel : RuleTransitionEndModel
     {
         public const string SpecializationTypeId = "c0ca5899-7d7a-4399-a4ca-e1e2e48b04a6";
 
-        public ChoiceTransitionTargetEndModel(IAssociationEnd associationEnd, ChoiceTransitionModel association) : base(associationEnd, association)
+        public RuleTransitionTargetEndModel(IAssociationEnd associationEnd, RuleTransitionModel association) : base(associationEnd, association)
         {
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public class ChoiceTransitionEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class RuleTransitionEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
-        private readonly ChoiceTransitionModel _association;
+        private readonly RuleTransitionModel _association;
 
-        public ChoiceTransitionEndModel(IAssociationEnd associationEnd, ChoiceTransitionModel association)
+        public RuleTransitionEndModel(IAssociationEnd associationEnd, RuleTransitionModel association)
         {
             _associationEnd = associationEnd;
             _association = association;
         }
 
-        public static ChoiceTransitionEndModel Create(IAssociationEnd associationEnd)
+        public static RuleTransitionEndModel Create(IAssociationEnd associationEnd)
         {
-            var association = new ChoiceTransitionModel(associationEnd.Association);
-            return association.TargetEnd.Id == associationEnd.Id ? (ChoiceTransitionEndModel)association.TargetEnd : association.SourceEnd;
+            var association = new RuleTransitionModel(associationEnd.Association);
+            return association.TargetEnd.Id == associationEnd.Id ? (RuleTransitionEndModel)association.TargetEnd : association.SourceEnd;
         }
 
         public string Id => _associationEnd.Id;
         public string SpecializationType => _associationEnd.SpecializationType;
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
-        public ChoiceTransitionModel Association => _association;
+        public RuleTransitionModel Association => _association;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
@@ -120,9 +120,9 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        public ChoiceTransitionEndModel OtherEnd()
+        public RuleTransitionEndModel OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? (ChoiceTransitionEndModel)_association.TargetEnd : (ChoiceTransitionEndModel)_association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (RuleTransitionEndModel)_association.TargetEnd : (RuleTransitionEndModel)_association.SourceEnd;
         }
 
         public bool IsTargetEnd()
@@ -140,7 +140,7 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             return _associationEnd.ToString();
         }
 
-        public bool Equals(ChoiceTransitionEndModel other)
+        public bool Equals(RuleTransitionEndModel other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
@@ -150,7 +150,7 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ChoiceTransitionEndModel)obj);
+            return Equals((RuleTransitionEndModel)obj);
         }
 
         public override int GetHashCode()
@@ -160,36 +160,36 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ChoiceTransitionEndModelExtensions
+    public static class RuleTransitionEndModelExtensions
     {
-        public static bool IsChoiceTransitionEndModel(this ICanBeReferencedType type)
+        public static bool IsRuleTransitionEndModel(this ICanBeReferencedType type)
         {
-            return IsChoiceTransitionTargetEndModel(type) || IsChoiceTransitionSourceEndModel(type);
+            return IsRuleTransitionTargetEndModel(type) || IsRuleTransitionSourceEndModel(type);
         }
 
-        public static ChoiceTransitionEndModel AsChoiceTransitionEndModel(this ICanBeReferencedType type)
+        public static RuleTransitionEndModel AsRuleTransitionEndModel(this ICanBeReferencedType type)
         {
-            return (ChoiceTransitionEndModel)type.AsChoiceTransitionTargetEndModel() ?? (ChoiceTransitionEndModel)type.AsChoiceTransitionSourceEndModel();
+            return (RuleTransitionEndModel)type.AsRuleTransitionTargetEndModel() ?? (RuleTransitionEndModel)type.AsRuleTransitionSourceEndModel();
         }
 
-        public static bool IsChoiceTransitionTargetEndModel(this ICanBeReferencedType type)
+        public static bool IsRuleTransitionTargetEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == ChoiceTransitionTargetEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == RuleTransitionTargetEndModel.SpecializationTypeId;
         }
 
-        public static ChoiceTransitionTargetEndModel AsChoiceTransitionTargetEndModel(this ICanBeReferencedType type)
+        public static RuleTransitionTargetEndModel AsRuleTransitionTargetEndModel(this ICanBeReferencedType type)
         {
-            return type.IsChoiceTransitionTargetEndModel() ? new ChoiceTransitionModel(((IAssociationEnd)type).Association).TargetEnd : null;
+            return type.IsRuleTransitionTargetEndModel() ? new RuleTransitionModel(((IAssociationEnd)type).Association).TargetEnd : null;
         }
 
-        public static bool IsChoiceTransitionSourceEndModel(this ICanBeReferencedType type)
+        public static bool IsRuleTransitionSourceEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == ChoiceTransitionSourceEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == RuleTransitionSourceEndModel.SpecializationTypeId;
         }
 
-        public static ChoiceTransitionSourceEndModel AsChoiceTransitionSourceEndModel(this ICanBeReferencedType type)
+        public static RuleTransitionSourceEndModel AsRuleTransitionSourceEndModel(this ICanBeReferencedType type)
         {
-            return type.IsChoiceTransitionSourceEndModel() ? new ChoiceTransitionModel(((IAssociationEnd)type).Association).SourceEnd : null;
+            return type.IsRuleTransitionSourceEndModel() ? new RuleTransitionModel(((IAssociationEnd)type).Association).SourceEnd : null;
         }
     }
 }

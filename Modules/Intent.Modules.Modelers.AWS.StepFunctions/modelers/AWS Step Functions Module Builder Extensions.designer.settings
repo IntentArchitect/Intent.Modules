@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>3331bc54-65a3-4442-957a-50094281d9cf</id>
+  <name>AWS Step Functions Module Builder Extensions</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <specializationType>Conditional Statement Type</specializationType>
+          <specializationTypeId>0d46d02a-2a1b-454f-a992-df121c5173f8</specializationTypeId>
+          <text>Add Conditional Statement Type</text>
+          <defaultName>NewConditionalStatementType</defaultName>
+          <icon type="FontAwesome" source="file-o" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Conditional Statement Type</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Conditional Statement Type" typeId="0d46d02a-2a1b-454f-a992-df121c5173f8">
+      <icon type="FontAwesome" source="file-o" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>Conditional Statement Type</specializationType>
+          <specializationTypeId>0d46d02a-2a1b-454f-a992-df121c5173f8</specializationTypeId>
+          <text>Add Conditional Statement Type</text>
+          <defaultName>NewConditionalStatementType</defaultName>
+          <icon type="FontAwesome" source="file-o" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Conditional Statement Type</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions />
+</settings>

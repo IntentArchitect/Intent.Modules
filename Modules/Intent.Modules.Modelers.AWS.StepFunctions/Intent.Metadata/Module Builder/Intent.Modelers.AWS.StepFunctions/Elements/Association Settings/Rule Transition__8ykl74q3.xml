@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="40ba8d81-0ea4-4934-a36e-fbb2daab8e2e" type="Association Settings" typeId="16d21684-d5ea-4fde-b648-f88d292fa272">
-  <name>Choice Transition</name>
-  <display>Choice Transition</display>
+  <name>Rule Transition</name>
+  <display>Rule Transition</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
@@ -13,8 +13,8 @@
   <metadata />
   <childElements>
     <childElement id="04abdefd-f368-4587-a008-371d725edfcc" type="Association Source End Settings" typeId="32aac8b7-3eac-4a15-87cb-7fb98fdfdf37">
-      <name>Choice Transition Source End</name>
-      <display>Choice Transition Source End</display>
+      <name>Rule Transition Source End</name>
+      <display>Rule Transition Source End</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
@@ -47,8 +47,8 @@
       <childElements />
     </childElement>
     <childElement id="c0ca5899-7d7a-4399-a4ca-e1e2e48b04a6" type="Association Destination End Settings" typeId="c4c61fdc-464d-41d2-8e0e-5a734d588302">
-      <name>Choice Transition Target End</name>
-      <display>Choice Transition Target End</display>
+      <name>Rule Transition Target End</name>
+      <display>Rule Transition Target End</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
@@ -93,12 +93,12 @@
           <stereotypes />
           <metadata />
           <childElements>
-            <childElement id="dfbabc1d-ffa7-4836-9fa5-930d57441dc0" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-              <name>And Condition</name>
-              <display>And Condition: And Condition</display>
+            <childElement id="9d520204-8f49-408d-8ecb-fcd67ebe6c13" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+              <name>Add Conditional Statement</name>
+              <display>Add Conditional Statement: Conditional Statement</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="89b907ca-b707-44f1-86a0-a92dbe5e9873">
+              <typeReference id="11f82d10-8794-4887-8082-8a6b558ecc60">
                 <typeId>0b11ac7c-b3d2-4651-9983-417423cda4fd</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -122,126 +122,9 @@
                   <properties>
                     <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
                     <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Conditional Statement" isActive="true" />
                     <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="0382fc65-1535-4074-b176-4968d4d8f38c" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-              <name>IsPresent Condition</name>
-              <display>IsPresent Condition: IsPresent Condition</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="47a46df3-6c03-4ae0-9171-467ae20f27c3">
-                <typeId>0a3668ff-c732-4682-a1f9-39aba8c7acb0</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
-                <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>12e199b2-32ed-4166-8bea-b6fbbc7d2ec2</parentFolderId>
-              <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
-              <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-                  <comment />
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                    <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="b0f56e22-4385-4982-96fd-fdc8a91e8d6f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-              <name>StringEquals Condition</name>
-              <display>StringEquals Condition: StringEquals Condition</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="a19fc37b-d3b5-4532-a11f-3c28f3729c50">
-                <typeId>3b11a26d-290c-4a13-aedb-516a6d6b173f</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
-                <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>12e199b2-32ed-4166-8bea-b6fbbc7d2ec2</parentFolderId>
-              <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
-              <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-                  <comment />
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                    <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
-                    <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
-                  </properties>
-                </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="69094c53-9f7c-4e52-8557-4adf27f9f4b7" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-              <name>IsNotPresent Condition</name>
-              <display>IsNotPresent Condition: IsNotPresent Condition</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <typeReference id="81feed06-99ab-422d-a681-157da0ebf97f">
-                <typeId>35f8005e-f858-407f-a9c5-cf0f6ca57f49</typeId>
-                <isNavigable>true</isNavigable>
-                <isNullable>false</isNullable>
-                <isCollection>false</isCollection>
-                <isRequired>true</isRequired>
-                <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
-                <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
-                <stereotypes />
-                <genericTypeParameters />
-              </typeReference>
-              <isMapped>false</isMapped>
-              <parentFolderId>12e199b2-32ed-4166-8bea-b6fbbc7d2ec2</parentFolderId>
-              <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
-              <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
-                  <comment />
-                  <addedByDefault>true</addedByDefault>
-                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-                  <properties>
-                    <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" isActive="true" />
-                    <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                    <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
-                    <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
-                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                    <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
                     <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
                   </properties>
                 </stereotype>

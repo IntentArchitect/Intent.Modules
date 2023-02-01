@@ -4,7 +4,7 @@
   <display>[visual]: Choice</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>5</order>
+  <order>2</order>
   <genericTypes />
   <typeReference id="43f1db89-b4fe-4f41-ade8-c4ef7706fd00">
     <typeId>aeefe262-149c-45eb-ae54-97792a0d00b4</typeId>

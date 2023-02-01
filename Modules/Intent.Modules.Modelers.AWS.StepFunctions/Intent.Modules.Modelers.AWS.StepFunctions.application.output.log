@@ -10,14 +10,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0b11ac7c-b3d2-4651-9983-417423cda4fd</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/AndConditionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>AndConditionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#00d98ed0-8ce1-4505-9859-f53cf2458837</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSStepFunctionsDiagramExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -31,6 +23,22 @@
       <ApplicationRelativeFilePath>Api/AWSStepFunctionsFolderExtensionsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWSStepFunctionsFolderExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#f14228c7-e95b-4523-992d-a97f6d238217</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSStepFunctionsModuleBuilderFolderExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSStepFunctionsModuleBuilderFolderExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#995e3ca5-a5a5-4f8e-a947-b9400f6bf7d3</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSStepFunctionsModuleBuilderPackageExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSStepFunctionsModuleBuilderPackageExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
@@ -50,18 +58,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0b11ac7c-b3d2-4651-9983-417423cda4fd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ChoiceTransitionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ChoiceTransitionModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/ConditionalStatementModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ConditionalStatementModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0d46d02a-2a1b-454f-a992-df121c5173f8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ChoiceTransitionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ChoiceTransitionModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/ConditionalStatementTypeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ConditionalStatementTypeModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -78,22 +86,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FailModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>FailModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#35f8005e-f858-407f-a9c5-cf0f6ca57f49</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/IsNotPresentConditionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>IsNotPresentConditionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0a3668ff-c732-4682-a1f9-39aba8c7acb0</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/IsPresentConditionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>IsPresentConditionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -118,6 +110,22 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/PassModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>PassModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/RuleTransitionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RuleTransitionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#40ba8d81-0ea4-4934-a36e-fbb2daab8e2e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/RuleTransitionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>RuleTransitionModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -158,14 +166,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/StateTransitionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>StateTransitionModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3b11a26d-290c-4a13-aedb-516a6d6b173f</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/StringEqualsConditionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>StringEqualsConditionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -214,6 +214,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/AWS Step Functions Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWS Step Functions Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>aa78e179-f088-4a3c-afc7-170779238106</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#3331bc54-65a3-4442-957a-50094281d9cf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/AWS Step Functions Module Builder Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWS Step Functions Module Builder Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

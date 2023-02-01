@@ -63,8 +63,8 @@
       <metadata />
       <childElements>
         <childElement id="08f26088-9c19-4e7c-908f-ef2913ab2acc" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Transition</name>
-          <display>Add Transition: State Transition</display>
+          <name>Add Next State</name>
+          <display>Add Next State: State Transition</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="189eaf3f-5450-4b6c-a3ac-06084c81a372">

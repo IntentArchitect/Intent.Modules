@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="4a2db008-c411-4492-8f56-d20839920a41" version="3.1.0">
+  <name>Conditional Statement Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="0b11ac7c-b3d2-4651-9983-417423cda4fd">Conditional Statement</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>821c0eb9-45b9-4d15-8c24-efe3502eb695</parentFolderId>
+  <order>0</order>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <properties>
+    <property id="58facf83-e61a-4309-bba0-11076dee16b3">
+      <name>NOT</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple";</isActiveFunction>
+    </property>
+    <property id="3eabcf0d-249f-451a-a969-3f29f57106c4">
+      <name>Variable</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple";</isActiveFunction>
+      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple";</isRequiredFunction>
+    </property>
+    <property id="d66e050b-239e-4e1f-a631-a1b5945f464e">
+      <name>Operator</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <valueOptions>
+        <option>is present</option>
+        <option>is of type</option>
+        <option>is equal to</option>
+        <option>is greater than</option>
+        <option>is greater than or equal to</option>
+        <option>is less than or equal to</option>
+        <option>matches string</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple";</isActiveFunction>
+      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple";</isRequiredFunction>
+    </property>
+    <property id="3833a8c6-29a5-4dad-a552-1e6181e86d46">
+      <name>Type</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value === "is of type";</isActiveFunction>
+      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value === "is of type";</isRequiredFunction>
+    </property>
+    <property id="60af5bea-c832-423e-b03d-37be1bf62a5b">
+      <name>Value Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <valueOptions>
+        <option>Number</option>
+        <option>Timestamp</option>
+        <option>Boolean</option>
+        <option>String</option>
+        <option>Null</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value != "is of type";</isActiveFunction>
+      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value != "is of type";</isRequiredFunction>
+    </property>
+    <property id="c4c7a45c-7a82-40a6-bdb4-7f80786ef8aa">
+      <name>Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value != "is of type" &amp;&amp;
+    !properties["Value Type"].value.startsWith("Boolean");</isActiveFunction>
+      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value != "is of type" &amp;&amp;
+    !properties["Value Type"].value.startsWith("Boolean");</isRequiredFunction>
+    </property>
+    <property id="fb6023a3-fc94-45f4-85db-ff606439f3e3">
+      <name>Boolean Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value != "is of type" &amp;&amp;
+    properties["Value Type"].value.startsWith("Boolean");</isActiveFunction>
+      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    properties["Operator"].value != "is of type" &amp;&amp;
+    properties["Value Type"].value.startsWith("Boolean");</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

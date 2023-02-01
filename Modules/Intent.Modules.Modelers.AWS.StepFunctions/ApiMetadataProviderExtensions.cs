@@ -11,6 +11,12 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
 {
     public static class ApiMetadataProviderExtensions
     {
+        public static IList<ConditionalStatementTypeModel> GetConditionalStatementTypeModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(ConditionalStatementTypeModel.SpecializationTypeId)
+                .Select(x => new ConditionalStatementTypeModel(x))
+                .ToList();
+        }
         public static IList<StateMachineModel> GetStateMachineModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(StateMachineModel.SpecializationTypeId)
