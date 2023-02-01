@@ -72,6 +72,56 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="7a9d1e28-8095-44da-b4d7-044105589023" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
+      <name>Module Builder - Dart</name>
+      <display>Module Builder - Dart</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
+      <packageId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</packageId>
+      <packageName>Intent.ApplicationTemplate.ModuleBuilder</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="78da9b5b-428f-4b1e-a5e5-120c7b3d87d3" name="Component Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+          <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+          <properties>
+            <property name="004dc68b-f2c0-4859-9f03-fb2e29505437" display="Icon" value="{&quot;source&quot;:&quot;data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIxOTJweCIgaGVpZ2h0PSIxOTJweCIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE5MiAxOTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxyZWN0IHg9IjAiIGZpbGw9Im5vbmUiIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIi8+Cgk8cGF0aCBmaWxsPSIjMDE1NzlCIiBkPSJNNTEsMTQxbC0yNi0yNmMtMy4wOC0zLjE3LTUtNy42My01LTEyYzAtMi4wMiwxLjE0LTUuMTgsMi03bDI0LTUwTDUxLDE0MXoiLz4KCTxwYXRoIGZpbGw9IiM0MEM0RkYiIGQ9Ik0xNDAsNTFsLTI2LTI2Yy0yLjI3LTIuMjgtNy01LTExLTVjLTMuNDQsMC02LjgxLDAuNjktOSwyTDQ2LDQ2TDE0MCw1MXoiLz4KCTxwb2x5Z29uIGZpbGw9IiM0MEM0RkYiIHBvaW50cz0iODIsMTcyIDE0NSwxNzIgMTQ1LDE0NSA5OCwxMzAgNTUsMTQ1IAkiLz4KCTxwYXRoIGZpbGw9IiMyOUI2RjYiIGQ9Ik00NiwxMjdjMCw4LjAyLDEuMDEsOS45OSw1LDE0bDQsNGg5MGwtNDQtNTBMNDYsNDZWMTI3eiIvPgoJPHBhdGggZmlsbD0iIzAxNTc5QiIgZD0iTTEyNiw0Nkg0Nmw5OSw5OWgyN1Y4M2wtMzItMzJDMTM1LjUxLDQ2LjQ5LDEzMS41MSw0NiwxMjYsNDZ6Ii8+Cgk8cGF0aCBvcGFjaXR5PSIwLjIiIGZpbGw9IiNGRkZGRkYiIGQ9Ik01MiwxNDJjLTQtNC4wMi01LTcuOTctNS0xNVY0N2wtMS0xdjgxQzQ2LDEzNC4wMyw0NiwxMzUuOTgsNTIsMTQybDMsM2wwLDBMNTIsMTQyeiIvPgoJPHBvbHlnb24gb3BhY2l0eT0iMC4yIiBmaWxsPSIjMjYzMjM4IiBwb2ludHM9IjE3MSw4MiAxNzEsMTQ0IDE0NCwxNDQgMTQ1LDE0NSAxNzIsMTQ1IDE3Miw4MyAJIi8+Cgk8cGF0aCBvcGFjaXR5PSIwLjIiIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDAsNTFjLTQuOTYtNC45Ni05LjAyLTUtMTUtNUg0NmwxLDFoNzhDMTI3Ljk5LDQ3LDEzNS41Miw0Ni41LDE0MCw1MUwxNDAsNTF6Ii8+Cgk8cmFkaWFsR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBjeD0iOTYiIGN5PSI5NiIgcj0iNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZGRkZGO3N0b3Atb3BhY2l0eTowLjEiLz4KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZGRkZGO3N0b3Atb3BhY2l0eTowIi8+Cgk8L3JhZGlhbEdyYWRpZW50PgoJPHBhdGggb3BhY2l0eT0iMC4yIiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTE3MSw4MmwtMzEtMzFsLTI2LTI2Yy0yLjI3LTIuMjgtNy01LTExLTVjLTMuNDQsMC02LjgxLDAuNjktOSwyTDQ2LDQ2TDIyLDk2CgkJYy0wLjg2LDEuODItMiw0Ljk4LTIsN2MwLDQuMzcsMS45Miw4LjgzLDUsMTJsMjMuOTYsMjMuNzljMC41NywwLjcsMS4yNSwxLjQyLDIuMDQsMi4yMWwxLDFsMywzbDI2LDI2bDEsMWg2Mmgxdi0yN2gyN3YtMC4wN1Y4MwoJCUwxNzEsODJ6Ii8+CjwvZz4KPC9zdmc+Cg==&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+            <property name="476744d2-a4bc-4750-a9db-7022edf576c5" display="Description" value="Support generation of Dart files." isActive="true" />
+            <property name="b928f640-5dfd-4676-b8c9-4aadac826d18" display="Include by Default" value="false" isActive="true" />
+            <property name="07af017d-20a4-4e73-978f-ca4a59351f70" display="Is Required" value="false" isActive="true" />
+            <property name="ed4d09bb-52e7-43dc-91db-6244d5390e53" display="Dependencies" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="8568ca74-3f43-4af0-8886-57b1da1e7d47" type="Module" typeId="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">
+          <name>Intent.Modules.ModuleBuilder.Dart</name>
+          <display>Intent.Modules.ModuleBuilder.Dart</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>7a9d1e28-8095-44da-b4d7-044105589023</parentFolderId>
+          <packageId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</packageId>
+          <packageName>Intent.ApplicationTemplate.ModuleBuilder</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="7033e6f4-2a22-4357-bd65-f0ec06c516d5" name="Module Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
+              <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
+              <properties>
+                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="1.0.0-pre.0" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
     <childElement id="9f0b5f90-5cd7-4c44-a2ca-ca04d890a5f8" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
       <name>Module Builder - Java</name>
       <display>Module Builder - Java</display>
@@ -314,56 +364,6 @@
               <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
               <properties>
                 <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="3.3.1" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
-    </childElement>
-    <childElement id="7a9d1e28-8095-44da-b4d7-044105589023" type="Component" typeId="47064ef1-2295-4287-8301-c446910a1b1e">
-      <name>Module Builder - Dart</name>
-      <display>Module Builder - Dart</display>
-      <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>91105952-078a-4710-b281-c03b7d107642</parentFolderId>
-      <packageId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</packageId>
-      <packageName>Intent.ApplicationTemplate.ModuleBuilder</packageName>
-      <stereotypes>
-        <stereotype stereotypeDefinitionId="78da9b5b-428f-4b1e-a5e5-120c7b3d87d3" name="Component Settings">
-          <addedByDefault>true</addedByDefault>
-          <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
-          <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
-          <properties>
-            <property name="004dc68b-f2c0-4859-9f03-fb2e29505437" display="Icon" value="{&quot;source&quot;:&quot;https://www.fluttericon.com/logo_dart_192px.svg&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
-            <property name="476744d2-a4bc-4750-a9db-7022edf576c5" display="Description" isActive="true" />
-            <property name="b928f640-5dfd-4676-b8c9-4aadac826d18" display="Include by Default" value="true" isActive="true" />
-            <property name="07af017d-20a4-4e73-978f-ca4a59351f70" display="Is Required" value="false" isActive="true" />
-            <property name="ed4d09bb-52e7-43dc-91db-6244d5390e53" display="Dependencies" isActive="true" />
-          </properties>
-        </stereotype>
-      </stereotypes>
-      <metadata />
-      <childElements>
-        <childElement id="8568ca74-3f43-4af0-8886-57b1da1e7d47" type="Module" typeId="ef75f8f0-520c-4ab8-814f-5e75f4877dd7">
-          <name>Intent.Modules.ModuleBuilder.Dart</name>
-          <display>Intent.Modules.ModuleBuilder.Dart</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>7a9d1e28-8095-44da-b4d7-044105589023</parentFolderId>
-          <packageId>1edb3b6a-4388-43e1-aebd-f51dc1039e69</packageId>
-          <packageName>Intent.ApplicationTemplate.ModuleBuilder</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="7033e6f4-2a22-4357-bd65-f0ec06c516d5" name="Module Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ApplicationTemplate.Builder</definitionPackageName>
-              <definitionPackageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</definitionPackageId>
-              <properties>
-                <property name="8235e942-6dec-4576-be44-3543b35ca44c" display="Version" value="1.0.0" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

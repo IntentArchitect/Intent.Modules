@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="dfbad96a-1728-47d7-a280-4e5c2dd0ba7f" type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+  <name>Templates</name>
+  <display>Templates</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d</parentFolderId>
+  <packageId>1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d</packageId>
+  <packageName>Intent.ModuleBuilder.Dart</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

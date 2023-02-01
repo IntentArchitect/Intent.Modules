@@ -1,19 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
-  <id>Intent.Common.Dart</id>
+  <id>Intent.ModuleBuilder.Dart</id>
   <version>1.0.0-pre.0</version>
   <supportedClientVersions>[3.2.0,4.0.0)</supportedClientVersions>
-  <summary>Common library support in order to help generate code for the Dart language.</summary>
-  <description>Common library support in order to help generate code for the Dart language.</description>
+  <summary>For the creation of Dart Templates in the Intent Module Builder</summary>
+  <description>For the creation of Dart Templates in the Intent Module Builder</description>
   <authors>Intent.Modules</authors>
   <iconUrl>data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDIyLjAuMSwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSIxOTJweCIgaGVpZ2h0PSIxOTJweCIgdmlld0JveD0iMCAwIDE5MiAxOTIiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDE5MiAxOTIiIHhtbDpzcGFjZT0icHJlc2VydmUiPgo8Zz4KCTxyZWN0IHg9IjAiIGZpbGw9Im5vbmUiIHdpZHRoPSIxOTIiIGhlaWdodD0iMTkyIi8+Cgk8cGF0aCBmaWxsPSIjMDE1NzlCIiBkPSJNNTEsMTQxbC0yNi0yNmMtMy4wOC0zLjE3LTUtNy42My01LTEyYzAtMi4wMiwxLjE0LTUuMTgsMi03bDI0LTUwTDUxLDE0MXoiLz4KCTxwYXRoIGZpbGw9IiM0MEM0RkYiIGQ9Ik0xNDAsNTFsLTI2LTI2Yy0yLjI3LTIuMjgtNy01LTExLTVjLTMuNDQsMC02LjgxLDAuNjktOSwyTDQ2LDQ2TDE0MCw1MXoiLz4KCTxwb2x5Z29uIGZpbGw9IiM0MEM0RkYiIHBvaW50cz0iODIsMTcyIDE0NSwxNzIgMTQ1LDE0NSA5OCwxMzAgNTUsMTQ1IAkiLz4KCTxwYXRoIGZpbGw9IiMyOUI2RjYiIGQ9Ik00NiwxMjdjMCw4LjAyLDEuMDEsOS45OSw1LDE0bDQsNGg5MGwtNDQtNTBMNDYsNDZWMTI3eiIvPgoJPHBhdGggZmlsbD0iIzAxNTc5QiIgZD0iTTEyNiw0Nkg0Nmw5OSw5OWgyN1Y4M2wtMzItMzJDMTM1LjUxLDQ2LjQ5LDEzMS41MSw0NiwxMjYsNDZ6Ii8+Cgk8cGF0aCBvcGFjaXR5PSIwLjIiIGZpbGw9IiNGRkZGRkYiIGQ9Ik01MiwxNDJjLTQtNC4wMi01LTcuOTctNS0xNVY0N2wtMS0xdjgxQzQ2LDEzNC4wMyw0NiwxMzUuOTgsNTIsMTQybDMsM2wwLDBMNTIsMTQyeiIvPgoJPHBvbHlnb24gb3BhY2l0eT0iMC4yIiBmaWxsPSIjMjYzMjM4IiBwb2ludHM9IjE3MSw4MiAxNzEsMTQ0IDE0NCwxNDQgMTQ1LDE0NSAxNzIsMTQ1IDE3Miw4MyAJIi8+Cgk8cGF0aCBvcGFjaXR5PSIwLjIiIGZpbGw9IiNGRkZGRkYiIGQ9Ik0xNDAsNTFjLTQuOTYtNC45Ni05LjAyLTUtMTUtNUg0NmwxLDFoNzhDMTI3Ljk5LDQ3LDEzNS41Miw0Ni41LDE0MCw1MUwxNDAsNTF6Ii8+Cgk8cmFkaWFsR3JhZGllbnQgaWQ9IlNWR0lEXzFfIiBjeD0iOTYiIGN5PSI5NiIgcj0iNzYiIGdyYWRpZW50VW5pdHM9InVzZXJTcGFjZU9uVXNlIj4KCQk8c3RvcCAgb2Zmc2V0PSIwIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZGRkZGO3N0b3Atb3BhY2l0eTowLjEiLz4KCQk8c3RvcCAgb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojRkZGRkZGO3N0b3Atb3BhY2l0eTowIi8+Cgk8L3JhZGlhbEdyYWRpZW50PgoJPHBhdGggb3BhY2l0eT0iMC4yIiBmaWxsPSJ1cmwoI1NWR0lEXzFfKSIgZD0iTTE3MSw4MmwtMzEtMzFsLTI2LTI2Yy0yLjI3LTIuMjgtNy01LTExLTVjLTMuNDQsMC02LjgxLDAuNjktOSwyTDQ2LDQ2TDIyLDk2CgkJYy0wLjg2LDEuODItMiw0Ljk4LTIsN2MwLDQuMzcsMS45Miw4LjgzLDUsMTJsMjMuOTYsMjMuNzljMC41NywwLjcsMS4yNSwxLjQyLDIuMDQsMi4yMWwxLDFsMywzbDI2LDI2bDEsMWg2Mmgxdi0yN2gyN3YtMC4wN1Y4MwoJCUwxNzEsODJ6Ii8+CjwvZz4KPC9zdmc+Cg==</iconUrl>
-  <templates></templates>
+  <templates>
+    <template id="Intent.ModuleBuilder.Dart.Templates.DartFileStringInterpolationTemplate" externalReference="986cae62-d948-4843-b1b2-ff0b2179d107">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Dart.Templates.DartFileTemplatePartial" externalReference="60d2ff39-e280-40ff-8ea3-92ec525d2786">
+      <config>
+        <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
+        <add key="Namespace" description="Class namespace formula override (e.g. '${Project.Name}'" />
+      </config>
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Dart.Templates.DartFileTemplateT4" externalReference="7e2ccb52-9065-40d5-9984-baa774e308f4">
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Dart.Templates.DartTemplate.PreProcessT4">
+      <role>Templates</role>
+      <location>Templates</location>
+    </template>
+  </templates>
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.10" />
+    <dependency id="Intent.Common.CSharp" version="3.3.6" />
     <dependency id="Intent.Common.Types" version="3.3.1" />
+    <dependency id="Intent.ModuleBuilder" version="3.3.14" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -21,6 +49,7 @@
   </files>
   <moduleSettingsExtensions />
   <metadata>
-    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Common.Dart/Intent.Common.Dart.pkg.config" externalReference="bafb942a-20da-45b1-a9c8-b6ec25188e30" />
+    <install src="modelers/Dart.designer.settings" externalReference="6edc08b9-02d6-4798-8e65-0cc50625240a" target="Module Builder" />
+    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.ModuleBuilder.Dart/Intent.ModuleBuilder.Dart.pkg.config" externalReference="1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d" />
   </metadata>
 </package>

@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Dart.Api
+namespace Intent.ModuleBuilder.Dart.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
     public class FolderExtensionModel : FolderModel
