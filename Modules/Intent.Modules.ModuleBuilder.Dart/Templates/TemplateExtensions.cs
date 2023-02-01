@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.ModuleBuilder.Dart.Templates.Templates.DartTemplatePartial;
+using Intent.Modules.ModuleBuilder.Dart.Templates.DartFileStringInterpolation;
+using Intent.Modules.ModuleBuilder.Dart.Templates.DartFileTemplatePartial;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,14 +12,24 @@ namespace Intent.Modules.ModuleBuilder.Dart.Templates
 {
     public static class TemplateExtensions
     {
-        public static string GetDartTemplatePartialName<T>(this IntentTemplateBase<T> template) where T : Intent.Modules.ModuleBuilder.Dart.Api.DartFileTemplateModel
+        public static string GetDartFileStringInterpolationTemplateName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.Dart.Api.DartFileTemplateModel
         {
-            return template.GetTypeName(DartTemplatePartialTemplate.TemplateId, template.Model);
+            return template.GetTypeName(DartFileStringInterpolationTemplate.TemplateId, template.Model);
         }
 
-        public static string GetDartTemplatePartialName(this IntentTemplateBase template, Intent.Modules.ModuleBuilder.Dart.Api.DartFileTemplateModel model)
+        public static string GetDartFileStringInterpolationTemplateName(this IntentTemplateBase template, Intent.ModuleBuilder.Dart.Api.DartFileTemplateModel model)
         {
-            return template.GetTypeName(DartTemplatePartialTemplate.TemplateId, model);
+            return template.GetTypeName(DartFileStringInterpolationTemplate.TemplateId, model);
+        }
+
+        public static string GetDartFileTemplatePartialName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.Dart.Api.DartFileTemplateModel
+        {
+            return template.GetTypeName(DartFileTemplatePartialTemplate.TemplateId, template.Model);
+        }
+
+        public static string GetDartFileTemplatePartialName(this IntentTemplateBase template, Intent.ModuleBuilder.Dart.Api.DartFileTemplateModel model)
+        {
+            return template.GetTypeName(DartFileTemplatePartialTemplate.TemplateId, model);
         }
 
     }

@@ -2,6 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
+    <Version>1.0.0-pre.0</Version>
+    <Authors>Intent Architect</Authors>
+    <Description>Base classes and helpers for building modules that output Dart files for Intent Architect.</Description>
+    <Copyright>Copyright 2023</Copyright>
+    <PackageProjectUrl>https://intentarchitect.com</PackageProjectUrl>
+    <PackageIconUrl></PackageIconUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageIcon>logo.png</PackageIcon>
+    <GenerateDocumentationFile>True</GenerateDocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
@@ -16,20 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="TypeResolvers\" />
-    <None Remove="Intent.Modules.Common" />
-    <None Remove="Intent.Modules.Common.Types" />
-    <None Remove="Templates\" />
-    <None Remove="Api\Extensions\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="TypeResolvers\" />
-    <Folder Include="Templates\" />
-    <Folder Include="Api\Extensions\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Remove="Api\Extensions\EnumModelStereotypeExtensions.cs" />
+    <None Include="..\..\logo.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions", Version = "1.0")]
 
-namespace Intent.Modules.ModuleBuilder.Dart.Api
+namespace Intent.ModuleBuilder.Dart.Api
 {
     public static class DartFileTemplateModelStereotypeExtensions
     {

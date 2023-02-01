@@ -3,7 +3,7 @@
 namespace Intent.Modules.Common.Dart.Templates
 {
     /// <summary>
-    /// Defines an import for a TypeScript file.
+    /// Defines an import for a Dart file.
     /// </summary>
     public class DartImport : IEquatable<DartImport>
     {

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c38634e8-d893-435b-9d19-9aec9a2812cd" version="3.1.0">
+  <name>Dart Template Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="755fcfd3-6232-4ed8-9bfc-2d09af503697">Dart File Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="file" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d</parentFolderId>
+  <order>0</order>
+  <packageId>1dd2296a-81c6-4e5a-aa3f-9f7a4abae39d</packageId>
+  <packageName>Intent.ModuleBuilder.Dart</packageName>
+  <properties>
+    <property id="81e2ec4a-0cf3-413a-9cac-796bb6b3f746">
+      <name>Templating Method</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>String Interpolation</defaultValue>
+      <valueOptions>
+        <option>T4 Template</option>
+        <option>String Interpolation</option>
+        <option>Custom</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -18,27 +18,49 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="Intent.Modules.ModuleBuilder" />
-    <None Remove="Api\Extensions\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Api\Extensions\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Templates\Templates\DartTemplatePartial\DartTemplatePartialTemplate.cs">
+    <Compile Update="Templates\DartStringInterpolation\DartStringInterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DartStringInterpolationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\DartTemplatePartial\DartTemplatePartialTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>DartTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
+    <Compile Update="Templates\DartFileStringInterpolation\DartFileStringInterpolationTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DartFileStringInterpolationTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>DartFileTemplatePartialTemplate.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\Templates\DartTemplatePartial\DartTemplatePartialTemplate.tt">
+    <None Update="Templates\DartStringInterpolation\DartStringInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DartStringInterpolationTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\DartTemplatePartial\DartTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>DartTemplatePartialTemplate.cs</LastGenOutput>
     </None>
+    <None Update="Templates\DartFileStringInterpolation\DartFileStringInterpolationTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DartFileStringInterpolationTemplate.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\DartFileTemplatePartial\DartFileTemplatePartialTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>DartFileTemplatePartialTemplate.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
   </ItemGroup>
 
 </Project>

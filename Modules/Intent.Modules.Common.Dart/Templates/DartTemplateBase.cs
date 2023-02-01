@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-//using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
 using Intent.Modules.Common.Dart.TypeResolvers;
 using Intent.Modules.Common.Templates;
-using Intent.Modules.Common.Dart.Templates;
+using Intent.Modules.Common.TypeResolution;
 using Intent.Templates;
-using Intent.Utils;
 
 namespace Intent.Modules.Common.Dart.Templates
 {
@@ -60,9 +58,9 @@ namespace Intent.Modules.Common.Dart.Templates
     }
 
     /// <summary>
-    /// Template base for TypeScript files, which invokes code-management to make updates to existing files.
+    /// Template base for Dart files.
     /// </summary>
-    public abstract class DartTemplateBase<TModel> : IntentDartProjectItemTemplateBase<TModel>, IDartMerged
+    public abstract class DartTemplateBase<TModel> : IntentTemplateBase<TModel>, IClassProvider, IDartMerged
     {
         private readonly HashSet<DartImport> _imports = new();
 
@@ -74,20 +72,39 @@ namespace Intent.Modules.Common.Dart.Templates
             Types = new DartTypeResolver();
         }
 
-        /// <summary>
-        /// (Type/Java)Script Imports for the generated file.
-        /// </summary>
-        public ICollection<DartImport> Imports => _imports;
+        /// <inheritdoc />
+        public string Namespace => string.Empty;
+
+        /// <inheritdoc />
+        public string ClassName
+        {
+            get
+            {
+                if (FileMetadata.CustomMetadata.ContainsKey("ClassName"))
+                {
+                    return FileMetadata.CustomMetadata["ClassName"];
+                }
+                return FileMetadata.FileName;
+            }
+        }
+
+        /// <inheritdoc />
+        public override string UseType(IResolvedTypeInfo resolvedTypeInfo)
+        {
+            var normalizedTypeName = NormalizeTypeName(resolvedTypeInfo.ToString());
+
+            return normalizedTypeName;
+        }
 
         /// <summary>
-        /// NPM package dependencies for this template.
+        /// Package dependencies for this template.
         /// </summary>
-        public ICollection<NpmPackageDependency> Dependencies { get; } = new List<NpmPackageDependency>();
+        public ICollection<DartPackageDependency> Dependencies { get; } = new List<DartPackageDependency>();
 
         /// <summary>
-        /// Adds the <see cref="NpmPackageDependency"/> which can be use by Intent.Npm to import dependencies.
-        ///// </summary>
-        public void AddDependency(NpmPackageDependency dependency)
+        /// Adds an instance of <see cref="DartPackageDependency"/> to <see cref="Dependencies"/>.
+        /// </summary>
+        public void AddDependency(DartPackageDependency dependency)
         {
             Dependencies.Add(dependency);
         }
@@ -104,28 +121,12 @@ namespace Intent.Modules.Common.Dart.Templates
         public override void BeforeTemplateExecution()
         {
             base.BeforeTemplateExecution();
+
             foreach (var dependency in Dependencies)
             {
                 ExecutionContext.EventDispatcher.Publish(dependency);
             }
         }
-
-        ///// <summary>
-        ///// Gets the <see cref="TypeScriptFile"/> of the template output.
-        ///// </summary>
-        //public DartFile GetTemplateFile()
-        //{
-        //    try
-        //    {
-        //        return new TypeScriptFileEditor(base.RunTemplate()).File;
-        //    }
-        //    catch
-        //    {
-        //        Logging.Log.Failure($@"Failed to parse TypesScript output file:
-        //{base.RunTemplate()}");
-        //        throw;
-        //    }
-        //}
 
         /// <summary>
         /// Adds an import with the specified information to this template and returns the
@@ -144,20 +145,22 @@ namespace Intent.Modules.Common.Dart.Templates
             {
                 return fullyQualifiedType;
             }
+
             string normalizedGenericTypes = null;
-            if (fullyQualifiedType.Contains("<") && fullyQualifiedType.Contains(">"))
+            if (fullyQualifiedType.Contains('<') && fullyQualifiedType.Contains('>'))
             {
-                var genericTypes = fullyQualifiedType.Substring(fullyQualifiedType.IndexOf("<", StringComparison.Ordinal) + 1, fullyQualifiedType.Length - fullyQualifiedType.IndexOf("<", StringComparison.Ordinal) - 2);
+                var genericTypes = fullyQualifiedType.Substring(fullyQualifiedType.IndexOf('<', StringComparison.Ordinal) + 1, fullyQualifiedType.Length - fullyQualifiedType.IndexOf('<', StringComparison.Ordinal) - 2);
 
                 normalizedGenericTypes = genericTypes
                     .Split(',')
                     .Select(NormalizeTypeName)
                     .Aggregate((x, y) => x + ", " + y);
-                fullyQualifiedType = $"{fullyQualifiedType.Substring(0, fullyQualifiedType.IndexOf("<", StringComparison.Ordinal))}";
+                fullyQualifiedType = $"{fullyQualifiedType[..fullyQualifiedType.IndexOf('<', StringComparison.Ordinal)]}";
             }
 
             var typeParts = fullyQualifiedType.Split('.').ToList();
             var localNamespaceParts = Namespace.Split('.').ToList();
+
             foreach (var part in localNamespaceParts)
             {
                 if (part.Equals(typeParts[0]))
@@ -169,18 +172,9 @@ namespace Intent.Modules.Common.Dart.Templates
                     break;
                 }
             }
-            return string.Join(".", typeParts) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : "");
+
+            return string.Join('.', typeParts) + (normalizedGenericTypes != null ? $"<{normalizedGenericTypes}>" : string.Empty);
         }
-
-        /// <inheritdoc />
-        //public override string RunTemplate()
-        //{
-        //    var file = GetTemplateFile();
-
-        //    file.AddDependencyImports(this);
-
-        //    return file.GetSource();
-        //}
     }
 }
 

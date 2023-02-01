@@ -50,18 +50,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#3606077e-c2cc-4c5d-8b55-9b57a36987aa</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.Dart.csproj</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Dart.csproj</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.ModuleBuilder.Dart.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.ModuleBuilder.Dart.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#3606077e-c2cc-4c5d-8b55-9b57a36987aa</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.Dart.imodspec</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Dart.imodspec</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modules.ModuleBuilder.Dart.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.ModuleBuilder.Dart.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -81,59 +81,91 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#986cae62-d948-4843-b1b2-ff0b2179d107</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#986cae62-d948-4843-b1b2-ff0b2179d107</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#986cae62-d948-4843-b1b2-ff0b2179d107</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#986cae62-d948-4843-b1b2-ff0b2179d107</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileStringInterpolation/DartFileStringInterpolationTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplate.tt</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileTemplatePartial/DartFileTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#7e2ccb52-9065-40d5-9984-baa774e308f4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileTemplateT4/DartFileTemplateT4TemplatePartial.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileTemplateT4/DartFileTemplateT4TemplatePartial.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3606077e-c2cc-4c5d-8b55-9b57a36987aa</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#7e2ccb52-9065-40d5-9984-baa774e308f4</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Templates/DartFileTemplateT4/DartFileTemplateT4TemplateRegistration.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Templates/DartFileTemplateT4/DartFileTemplateT4TemplateRegistration.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>46a3cb57-dfc7-4ada-b38f-61f71feb10cc</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.TemplateExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/TemplateExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>TemplateExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>46a3cb57-dfc7-4ada-b38f-61f71feb10cc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/DartTemplatePartial/DartTemplatePartialTemplate.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/DartTemplatePartial/DartTemplatePartialTemplate.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>46a3cb57-dfc7-4ada-b38f-61f71feb10cc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpT4Template#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/DartTemplatePartial/DartTemplatePartialTemplate.tt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/DartTemplatePartial/DartTemplatePartialTemplate.tt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>46a3cb57-dfc7-4ada-b38f-61f71feb10cc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/DartTemplatePartial/DartTemplatePartialTemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/DartTemplatePartial/DartTemplatePartialTemplatePartial.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>46a3cb57-dfc7-4ada-b38f-61f71feb10cc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#60d2ff39-e280-40ff-8ea3-92ec525d2786</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/DartTemplatePartial/DartTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/DartTemplatePartial/DartTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>46a3cb57-dfc7-4ada-b38f-61f71feb10cc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#7e2ccb52-9065-40d5-9984-baa774e308f4</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/DartTemplateT4/DartTemplateT4TemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/DartTemplateT4/DartTemplateT4TemplatePartial.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>46a3cb57-dfc7-4ada-b38f-61f71feb10cc</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#7e2ccb52-9065-40d5-9984-baa774e308f4</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/Templates/DartTemplateT4/DartTemplateT4TemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/DartTemplateT4/DartTemplateT4TemplateRegistration.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

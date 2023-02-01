@@ -12,6 +12,7 @@
           <specializationType>Dart File Template</specializationType>
           <specializationTypeId>755fcfd3-6232-4ed8-9bfc-2d09af503697</specializationTypeId>
           <text>New Dart Template</text>
+          <shortcut>ctrl + shift + d</shortcut>
           <defaultName>NewDartTemplate</defaultName>
           <icon type="UrlImagePath" source="https://user-images.githubusercontent.com/26507463/53453892-49908900-3a04-11e9-9dce-77ed3d694326.png" />
           <allowMultiple>true</allowMultiple>
@@ -74,6 +75,7 @@
           <specializationType>Dart File Template</specializationType>
           <specializationTypeId>755fcfd3-6232-4ed8-9bfc-2d09af503697</specializationTypeId>
           <text>New Dart Template</text>
+          <shortcut>ctrl + shift + d</shortcut>
           <defaultName>NewDartFileTemplate</defaultName>
           <icon type="UrlImagePath" source="https://user-images.githubusercontent.com/26507463/53453892-49908900-3a04-11e9-9dce-77ed3d694326.png" />
           <allowMultiple>true</allowMultiple>

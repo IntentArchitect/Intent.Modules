@@ -1,8 +1,8 @@
-﻿using System;
-namespace Intent.Modules.Common.Dart.Templates
-{
-    public interface IDartMerged
-    {
-    }
-}
+﻿namespace Intent.Modules.Common.Dart.Templates;
 
+/// <summary>
+/// Indicates that the type is mergeable Dart file.
+/// </summary>
+public interface IDartMerged
+{
+}
