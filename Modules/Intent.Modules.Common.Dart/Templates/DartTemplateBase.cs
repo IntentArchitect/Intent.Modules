@@ -60,7 +60,7 @@ namespace Intent.Modules.Common.Dart.Templates
     /// <summary>
     /// Template base for Dart files.
     /// </summary>
-    public abstract class DartTemplateBase<TModel> : IntentTemplateBase<TModel>, IClassProvider
+    public abstract class DartTemplateBase<TModel> : IntentTemplateBase<TModel>, IClassProvider, IDartMerged
     {
         private readonly HashSet<DartImport> _imports = new();
 
