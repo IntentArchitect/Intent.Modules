@@ -401,6 +401,11 @@ namespace Intent.Metadata.RDBMS.Api
 
             public string Name => _stereotype.Name;
 
+            public IElement AssociationTarget()
+            {
+                return _stereotype.GetProperty<IElement>("Association Target");
+            }
+
         }
 
         public class Index

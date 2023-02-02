@@ -1,3 +1,7 @@
+### Version 3.4.0
+
+- New: Foreign Keys now have an explicit link with an Association Target End so that Attributes that act as Foreign Keys can be renamed independently from the Association.
+
 ### Version 3.3.13
 
 - Update: Compute stereotype icon visible on diagram.
