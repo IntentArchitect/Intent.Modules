@@ -62,6 +62,84 @@
       <stereotypes />
       <metadata />
       <childElements>
+        <childElement id="b38145dd-2ad0-4bf8-90c2-7876c24c2f03" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Retry</name>
+          <display>Add Retry: SQS Send Message Retry</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="73c3c37c-48a0-43a3-bd65-f5f75dea027f">
+            <typeId>2ec695a5-cabb-4ed4-896e-0381af3b188e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
+            <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>09b1a5e8-49df-4dc8-8297-654fd8b38f29</parentFolderId>
+          <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+          <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + r" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Retry" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="9044383f-274f-4be7-87ed-223034811bc6" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Catch</name>
+          <display>Add Catch: SQS Send Message Catch</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="4d8b40f8-ac48-4511-a880-8824f486b196">
+            <typeId>e0406c6f-c84c-49d0-b44b-732de3f24ff0</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.AWS.StepFunctions</typePackageName>
+            <typePackageId>24de5392-9c9b-43e6-9050-313b575bb6fe</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>09b1a5e8-49df-4dc8-8297-654fd8b38f29</parentFolderId>
+          <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+          <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + c" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Catch" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="82337fd8-4e73-4ec5-8fce-9e0c325d6113" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
           <name>Add Next State</name>
           <display>Add Next State: State Transition</display>

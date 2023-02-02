@@ -66,6 +66,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#0b11ac7c-b3d2-4651-9983-417423cda4fd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ConditionalStatementModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ConditionalStatementModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0d46d02a-2a1b-454f-a992-df121c5173f8</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ConditionalStatementTypeModel.cs</ApplicationRelativeFilePath>
@@ -94,6 +102,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/LambdaInvokeModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>LambdaInvokeModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#41771c97-eaaf-4ede-97fa-66f83edd49d2</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/LambdaInvokeModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>LambdaInvokeModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -130,10 +146,50 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e0406c6f-c84c-49d0-b44b-732de3f24ff0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSendMessageCatchModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSendMessageCatchModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e0406c6f-c84c-49d0-b44b-732de3f24ff0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSendMessageCatchModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSendMessageCatchModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ca2b3004-2b57-4ef6-a1ee-934eddb696aa</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSendMessageErrorModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSendMessageErrorModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c73e7930-a77c-49a3-aed6-1519a148ce3c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/SQSSendMessageModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>SQSSendMessageModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#2ec695a5-cabb-4ed4-896e-0381af3b188e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSendMessageRetryModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSendMessageRetryModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#2ec695a5-cabb-4ed4-896e-0381af3b188e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSendMessageRetryModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSendMessageRetryModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -182,6 +238,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/WaitModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>WaitModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#5cd79db1-d94a-4110-97ac-f4af07ea2330</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/WaitModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>WaitModelStereotypeExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

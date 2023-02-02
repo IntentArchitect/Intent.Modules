@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.AWS.StepFunctions.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class SQSSendMessageModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
+    public class SQSSendMessageCatchModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "SQS Send Message";
-        public const string SpecializationTypeId = "c73e7930-a77c-49a3-aed6-1519a148ce3c";
+        public const string SpecializationType = "SQS Send Message Catch";
+        public const string SpecializationTypeId = "e0406c6f-c84c-49d0-b44b-732de3f24ff0";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public SQSSendMessageModel(IElement element, string requiredType = SpecializationType)
+        public SQSSendMessageCatchModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -39,22 +39,17 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
 
         public IElement InternalElement => _element;
 
-        public SQSSendMessageRetryModel Retry => _element.ChildElements
-            .GetElementsOfType(SQSSendMessageRetryModel.SpecializationTypeId)
-            .Select(x => new SQSSendMessageRetryModel(x))
-            .SingleOrDefault();
-
-        public SQSSendMessageCatchModel Catch => _element.ChildElements
-            .GetElementsOfType(SQSSendMessageCatchModel.SpecializationTypeId)
-            .Select(x => new SQSSendMessageCatchModel(x))
-            .SingleOrDefault();
+        public IList<SQSSendMessageErrorModel> Errors => _element.ChildElements
+            .GetElementsOfType(SQSSendMessageErrorModel.SpecializationTypeId)
+            .Select(x => new SQSSendMessageErrorModel(x))
+            .ToList();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(SQSSendMessageModel other)
+        public bool Equals(SQSSendMessageCatchModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -64,7 +59,7 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((SQSSendMessageModel)obj);
+            return Equals((SQSSendMessageCatchModel)obj);
         }
 
         public override int GetHashCode()
@@ -74,17 +69,17 @@ namespace Intent.Modelers.AWS.StepFunctions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class SQSSendMessageModelExtensions
+    public static class SQSSendMessageCatchModelExtensions
     {
 
-        public static bool IsSQSSendMessageModel(this ICanBeReferencedType type)
+        public static bool IsSQSSendMessageCatchModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == SQSSendMessageModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == SQSSendMessageCatchModel.SpecializationTypeId;
         }
 
-        public static SQSSendMessageModel AsSQSSendMessageModel(this ICanBeReferencedType type)
+        public static SQSSendMessageCatchModel AsSQSSendMessageCatchModel(this ICanBeReferencedType type)
         {
-            return type.IsSQSSendMessageModel() ? new SQSSendMessageModel((IElement)type) : null;
+            return type.IsSQSSendMessageCatchModel() ? new SQSSendMessageCatchModel((IElement)type) : null;
         }
     }
 }

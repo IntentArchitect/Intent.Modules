@@ -31,17 +31,6 @@
       <lookupTypes />
       <isActiveFunction>return element.typeReference.getType().getName() == "Simple";</isActiveFunction>
     </property>
-    <property id="3eabcf0d-249f-451a-a969-3f29f57106c4">
-      <name>Variable</name>
-      <type>string</type>
-      <controlType>text</controlType>
-      <optionsSource>n/a</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes />
-      <isActiveFunction>return element.typeReference.getType().getName() == "Simple";</isActiveFunction>
-      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple";</isRequiredFunction>
-    </property>
     <property id="d66e050b-239e-4e1f-a631-a1b5945f464e">
       <name>Operator</name>
       <type>string</type>
@@ -61,21 +50,19 @@
       <isActiveFunction>return element.typeReference.getType().getName() == "Simple";</isActiveFunction>
       <isRequiredFunction>return element.typeReference.getType().getName() == "Simple";</isRequiredFunction>
     </property>
-    <property id="3833a8c6-29a5-4dad-a552-1e6181e86d46">
-      <name>Type</name>
+    <property id="3eabcf0d-249f-451a-a969-3f29f57106c4">
+      <name>Variable</name>
       <type>string</type>
       <controlType>text</controlType>
       <optionsSource>n/a</optionsSource>
       <placeholder />
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value === "is of type";</isActiveFunction>
-      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value === "is of type";</isRequiredFunction>
+      <isActiveFunction>return element.typeReference.getType().getName() == "Simple";</isActiveFunction>
+      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple";</isRequiredFunction>
     </property>
-    <property id="60af5bea-c832-423e-b03d-37be1bf62a5b">
-      <name>Value Type</name>
+    <property id="3833a8c6-29a5-4dad-a552-1e6181e86d46">
+      <name>Type</name>
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
@@ -89,9 +76,47 @@
       </valueOptions>
       <lookupTypes />
       <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value != "is of type";</isActiveFunction>
+    properties["Operator"].value === "is of type";</isActiveFunction>
       <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value != "is of type";</isRequiredFunction>
+    properties["Operator"].value === "is of type";</isRequiredFunction>
+    </property>
+    <property id="60af5bea-c832-423e-b03d-37be1bf62a5b">
+      <name>Value Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <valueOptions>
+        <option>Number constant</option>
+        <option>Number variable</option>
+        <option>String constant</option>
+        <option>String variable</option>
+        <option>Timestamp constant</option>
+        <option>Timestamp variable</option>
+        <option>Boolean constant</option>
+        <option>Boolean variable</option>
+      </valueOptions>
+      <lookupTypes />
+      <isActiveFunction>const validOperators = [
+    "is equal to",
+    "is less than",
+    "is greater than",
+    "is greater than or equal to",
+    "is less than or equal to",
+];
+
+return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    validOperators.some(x =&gt; x === properties["Operator"].value);</isActiveFunction>
+      <isRequiredFunction>const validOperators = [
+    "is equal to",
+    "is less than",
+    "is greater than",
+    "is greater than or equal to",
+    "is less than or equal to",
+];
+
+return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    validOperators.some(x =&gt; x === properties["Operator"].value);</isRequiredFunction>
     </property>
     <property id="c4c7a45c-7a82-40a6-bdb4-7f80786ef8aa">
       <name>Value</name>
@@ -101,11 +126,35 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value != "is of type" &amp;&amp;
+      <isActiveFunction>if (properties["Operator"].value === "matches string") {
+    return true;
+}
+
+const validOperators = [
+    "is equal to",
+    "is less than",
+    "is greater than",
+    "is greater than or equal to",
+    "is less than or equal to",
+];
+
+return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    validOperators.some(x =&gt; x === properties["Operator"].value) &amp;&amp;
     !properties["Value Type"].value.startsWith("Boolean");</isActiveFunction>
-      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value != "is of type" &amp;&amp;
+      <isRequiredFunction>if (properties["Operator"].value === "matches string") {
+    return true;
+}
+
+const validOperators = [
+    "is equal to",
+    "is less than",
+    "is greater than",
+    "is greater than or equal to",
+    "is less than or equal to",
+];
+
+return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    validOperators.some(x =&gt; x === properties["Operator"].value) &amp;&amp;
     !properties["Value Type"].value.startsWith("Boolean");</isRequiredFunction>
     </property>
     <property id="fb6023a3-fc94-45f4-85db-ff606439f3e3">
@@ -116,11 +165,27 @@
       <placeholder />
       <valueOptions />
       <lookupTypes />
-      <isActiveFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value != "is of type" &amp;&amp;
+      <isActiveFunction>const validOperators = [
+    "is equal to",
+    "is less than",
+    "is greater than",
+    "is greater than or equal to",
+    "is less than or equal to",
+];
+
+return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    validOperators.some(x =&gt; x === properties["Operator"].value) &amp;&amp;
     properties["Value Type"].value.startsWith("Boolean");</isActiveFunction>
-      <isRequiredFunction>return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
-    properties["Operator"].value != "is of type" &amp;&amp;
+      <isRequiredFunction>const validOperators = [
+    "is equal to",
+    "is less than",
+    "is greater than",
+    "is greater than or equal to",
+    "is less than or equal to",
+];
+
+return element.typeReference.getType().getName() == "Simple" &amp;&amp; 
+    validOperators.some(x =&gt; x === properties["Operator"].value) &amp;&amp;
     properties["Value Type"].value.startsWith("Boolean");</isRequiredFunction>
     </property>
   </properties>

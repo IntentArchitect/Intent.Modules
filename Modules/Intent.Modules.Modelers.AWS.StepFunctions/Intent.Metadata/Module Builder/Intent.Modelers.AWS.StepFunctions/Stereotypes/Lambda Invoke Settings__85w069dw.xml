@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d3567e76-a412-4b3f-b18b-738466e8a855" version="3.1.0">
+  <name>Lambda Invoke Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="41771c97-eaaf-4ede-97fa-66f83edd49d2">Lambda Invoke</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>821c0eb9-45b9-4d15-8c24-efe3502eb695</parentFolderId>
+  <order>0</order>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <properties>
+    <property id="d1a0fe51-4fd4-4308-a2f8-554a57d2bdbd">
+      <name>Output Path</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

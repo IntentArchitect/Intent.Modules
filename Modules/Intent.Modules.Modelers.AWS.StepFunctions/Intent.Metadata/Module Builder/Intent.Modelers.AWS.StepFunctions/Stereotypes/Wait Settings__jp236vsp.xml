@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="ebf456f1-e15d-4b58-b80d-baa9fd6d68ff" version="3.1.0">
+  <name>Wait Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="5cd79db1-d94a-4110-97ac-f4af07ea2330">Wait</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>821c0eb9-45b9-4d15-8c24-efe3502eb695</parentFolderId>
+  <order>0</order>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <properties>
+    <property id="fb71e51c-d67f-467e-93c0-bb5970a9b8d1">
+      <name>Duration Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>seconds</defaultValue>
+      <valueOptions>
+        <option>millis</option>
+        <option>seconds</option>
+        <option>minutes</option>
+        <option>hours</option>
+        <option>days</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="f55b2a54-f227-48b7-bb68-ad88ddfec71c">
+      <name>Duration Amount</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

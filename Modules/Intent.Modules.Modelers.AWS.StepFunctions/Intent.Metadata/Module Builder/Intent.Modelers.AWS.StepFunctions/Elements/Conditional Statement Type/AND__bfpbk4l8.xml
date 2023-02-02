@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="46991497-f10e-4251-8cad-8f3477463027" type="Conditional Statement Type" typeId="0d46d02a-2a1b-454f-a992-df121c5173f8">
+  <name>AND</name>
+  <display>AND</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>eddfc545-a20f-4181-8a3c-3187fddbf8cf</parentFolderId>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

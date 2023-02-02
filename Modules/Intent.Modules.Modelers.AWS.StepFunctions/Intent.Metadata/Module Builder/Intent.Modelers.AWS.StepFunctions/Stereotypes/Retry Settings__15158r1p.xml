@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="450cd210-4e4a-45e6-b055-4dd7b3b7c607" version="3.1.0">
+  <name>Retry Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="41771c97-eaaf-4ede-97fa-66f83edd49d2">Lambda Invoke</type>
+    <type id="2ec695a5-cabb-4ed4-896e-0381af3b188e">SQS Send Message Retry</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>821c0eb9-45b9-4d15-8c24-efe3502eb695</parentFolderId>
+  <order>0</order>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <properties>
+    <property id="cafa4f27-e7ad-405a-8ff0-f3f926ddf83f">
+      <name>Max Attempts</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="e2015159-6318-48e5-aea2-d5e9bbb6476a">
+      <name>Backoff Rate</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="1066e993-6dd8-48c6-9ddc-75897fa88edc">
+      <name>Interval Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>seconds</defaultValue>
+      <valueOptions>
+        <option>millis</option>
+        <option>seconds</option>
+        <option>minutes</option>
+        <option>hours</option>
+        <option>days</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+    <property id="ca09dadd-1940-416b-8579-babd1291cb00">
+      <name>Interval Amount</name>
+      <type>string</type>
+      <controlType>number</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -4,7 +4,7 @@
   <display>[visual]: Lambda Invoke</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>1</order>
+  <order>4</order>
   <genericTypes />
   <typeReference id="451b71d8-0763-4f15-bb5c-ec1cd2fd8453">
     <typeId>41771c97-eaaf-4ede-97fa-66f83edd49d2</typeId>

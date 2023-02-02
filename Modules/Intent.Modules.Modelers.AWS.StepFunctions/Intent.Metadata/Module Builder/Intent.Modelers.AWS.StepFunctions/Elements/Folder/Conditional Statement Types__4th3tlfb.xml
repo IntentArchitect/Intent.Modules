@@ -3,6 +3,7 @@
   <name>Conditional Statement Types</name>
   <display>Conditional Statement Types</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>24de5392-9c9b-43e6-9050-313b575bb6fe</parentFolderId>
