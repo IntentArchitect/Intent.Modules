@@ -5,6 +5,8 @@
  */
 declare let element: MacroApi.Context.IElementApi;
 
+declare let association: MacroApi.Context.IAssociationApi;
+
 /**
  * Returns information about the application and it's settings.
  */

@@ -123,7 +123,7 @@ declare namespace MacroApi.Context {
         getGenericTypesDisplay(): string;
         hasType: boolean;
         typeReference?: ITypeReference;
-        getChildren(type: string): IElementApi[];
+        getChildren(type?: string): IElementApi[];
         loadDiagram(): void;
         getParent(type?: string): IElementApi;
         setParent(parentId: string);
