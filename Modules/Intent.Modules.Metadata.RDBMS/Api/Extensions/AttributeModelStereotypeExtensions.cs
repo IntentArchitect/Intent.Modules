@@ -401,9 +401,9 @@ namespace Intent.Metadata.RDBMS.Api
 
             public string Name => _stereotype.Name;
 
-            public IElement AssociationTarget()
+            public IElement Association()
             {
-                return _stereotype.GetProperty<IElement>("Association Target");
+                return _stereotype.GetProperty<IElement>("Association");
             }
 
         }

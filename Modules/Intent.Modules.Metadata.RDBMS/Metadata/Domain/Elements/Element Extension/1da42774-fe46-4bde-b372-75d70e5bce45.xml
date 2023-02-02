@@ -86,7 +86,40 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot; || element.getParent().getMetadata(&quot;auto-manage-keys&quot;) == &quot;false&quot;){&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (element.getName().toLocaleLowerCase() == &quot;id&quot; &amp;&amp; &#xD;&#xA;    element.hasStereotype(&quot;Primary Key&quot;) &amp;&amp; &#xD;&#xA;    element.typeReference.getType()) {&#xD;&#xA;&#xD;&#xA;    if (element.typeReference.getType()?.getName() != application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Type&quot;)?.value) {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;false&quot;);&#xD;&#xA;    } else {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Creation Mode&quot;)?.value != &quot;explicit&quot; || element.getParent().getMetadata(&quot;auto-manage-keys&quot;) == &quot;false&quot;) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;if (element.getName().toLocaleLowerCase() == &quot;id&quot; &amp;&amp;&#xD;&#xA;    element.hasStereotype(&quot;Primary Key&quot;) &amp;&amp;&#xD;&#xA;    element.typeReference.getType()) {&#xD;&#xA;    if (element.typeReference.getType()?.getName() != application?.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)?.getField(&quot;Key Type&quot;)?.value) {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;false&quot;);&#xD;&#xA;    }&#xD;&#xA;    else {&#xD;&#xA;        element.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;const foreignKeyStereotypeId = &quot;793a5128-57a1-440b-a206-af5722b752a6&quot;;&#xD;&#xA;let associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty(&quot;Association&quot;)?.getValue();&#xD;&#xA;if (associationTarget &amp;&amp; element.getMetadata(&quot;association&quot;) != associationTarget.id) {&#xD;&#xA;    element.setMetadata(&quot;association&quot;, associationTarget.id);&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="04920764-3513-43fe-aed8-ffc4a1271f56" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Loaded</name>
+          <display>On Loaded: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="aab57f1f-03de-4b2f-aa84-c54f62367199">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>73a27efb-3700-4bbb-a0b6-9e77da44c472</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const foreignKeyStereotypeId = &quot;793a5128-57a1-440b-a206-af5722b752a6&quot;;&#xD;&#xA;let associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty(&quot;Association Target&quot;)?.getValue();&#xD;&#xA;let existingAssociation = element.getMetadata(&quot;association&quot;);&#xD;&#xA;if (!associationTarget &amp;&amp; existingAssociation) {&#xD;&#xA;    if (!element.hasStereotype(foreignKeyStereotypeId)) {&#xD;&#xA;        element.addStereotype(foreignKeyStereotypeId);&#xD;&#xA;    }&#xD;&#xA;    let stereotype = element.getStereotype(foreignKeyStereotypeId);&#xD;&#xA;    stereotype.getProperty(&quot;Association&quot;).setValue(existingAssociation);&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

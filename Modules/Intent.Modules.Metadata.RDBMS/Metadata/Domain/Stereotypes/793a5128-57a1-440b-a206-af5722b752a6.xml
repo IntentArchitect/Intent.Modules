@@ -21,16 +21,17 @@
   <packageName>Intent.Metadata.RDBMS</packageName>
   <properties>
     <property id="42e4f9b5-f834-4e5f-86aa-d3a35c505076">
-      <name>Association Target</name>
+      <name>Association</name>
       <type>string</type>
       <controlType>select</controlType>
-      <optionsSource>lookup-children</optionsSource>
+      <optionsSource>lookup-element</optionsSource>
       <placeholder />
       <valueOptions />
       <lookupTypes>
+        <type>8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58</type>
         <type>0a66489f-30aa-417b-a75d-b945863366fd</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>return element.getParent("Class").id</lookupInternalTargetPropertyId>
+      <lookupInternalTargetPropertyId>return element.getParent("Class").id;</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

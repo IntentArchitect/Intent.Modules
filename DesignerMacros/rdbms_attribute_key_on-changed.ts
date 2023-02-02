@@ -15,4 +15,11 @@ if (element.getName().toLocaleLowerCase() == "id" &&
     }
 }
 
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+let associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty("Association")?.getValue() as MacroApi.Context.IElementApi;
+
+if (associationTarget && element.getMetadata("association") != associationTarget.id) {
+    element.setMetadata("association", associationTarget.id);
+}
+
 })();

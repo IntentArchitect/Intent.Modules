@@ -1,5 +1,7 @@
 (async () => {
 
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+
 if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
     return;
 }
@@ -36,8 +38,14 @@ if (sourceType && targetType) {
             }
             fk.setMetadata("association", association.id);
             fk.setMetadata("is-managed-key", "true");
-            if (!fk.hasStereotype("793a5128-57a1-440b-a206-af5722b752a6"))
-                fk.addStereotype("793a5128-57a1-440b-a206-af5722b752a6");
+            
+            let fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+            if (!fkStereotype) {
+                fk.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+            }
+            fkStereotype.getProperty("Association").setValue(association.id);
+
             fk.typeReference.setType(pk.typeReference.typeId);
             fk.typeReference.setIsNullable(association.typeReference.isNullable);
         });
@@ -60,8 +68,14 @@ if (sourceType && targetType) {
             }
             fk.setMetadata("association", association.id);
             fk.setMetadata("is-managed-key", "true");
-            if (!fk.hasStereotype("793a5128-57a1-440b-a206-af5722b752a6"))
-                fk.addStereotype("793a5128-57a1-440b-a206-af5722b752a6");
+            
+            let fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+            if (!fkStereotype) {
+                fk.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+            }
+            fkStereotype.getProperty("Association").setValue(association.id);
+
             fk.typeReference.setType(pk.typeReference.typeId);
             fk.typeReference.setIsNullable(association.getOtherEnd().typeReference.isNullable);
         });
