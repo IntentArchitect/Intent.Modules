@@ -3,7 +3,6 @@
   <name>AutoCompileFactoryExtension</name>
   <display>AutoCompileFactoryExtension</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>9e228022-3b45-4e3d-80e7-354bc916f35f</parentFolderId>

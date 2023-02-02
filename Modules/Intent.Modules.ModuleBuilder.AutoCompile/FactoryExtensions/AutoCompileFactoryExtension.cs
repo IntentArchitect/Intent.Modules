@@ -23,16 +23,7 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
         public override string Id => "Intent.ModuleBuilder.AutoCompile.AutoCompileFactoryExtension";
         public override int Order => 100;
 
-        [IntentManaged(Mode.Ignore)]
-        public void OnStep(IApplication application, string step)
-        {
-            if (step == ExecutionLifeCycleSteps.AfterCommitChanges)
-            {
-                RunDotNetBuild(application);
-            }
-        }
-
-        public void RunDotNetBuild(IApplication application)
+        protected override void OnAfterCommitChanges(IApplication application)
         {
             var location = GetRootExecutionLocation(application);
             if (location == null)
@@ -41,11 +32,11 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
                 return;
             }
 
-
             if (!Directory.Exists(Path.GetFullPath(location)))
             {
                 Logging.Log.Warning($"Could not build module because the path was not found: " + Path.GetFullPath(location));
             }
+
             Logging.Log.Info($"Executing: \"dotnet build\" at location \"{Path.GetFullPath(location)}\"");
             try
             {
@@ -60,8 +51,7 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
                     WorkingDirectory = location
                 });
 
-                var output = cmd.StandardOutput.ReadToEnd();
-                //cmd.StandardInput.Flush();
+                var output = cmd!.StandardOutput.ReadToEnd();
                 if (cmd.ExitCode == 0)
                 {
                     Logging.Log.Info(output);
