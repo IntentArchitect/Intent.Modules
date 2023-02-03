@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="d27f2e3a-ac9c-482c-b892-6ae07ecdb473" version="3.1.0">
+  <name>SQS Send Message Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="c73e7930-a77c-49a3-aed6-1519a148ce3c">SQS Send Message</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>821c0eb9-45b9-4d15-8c24-efe3502eb695</parentFolderId>
+  <order>0</order>
+  <packageId>24de5392-9c9b-43e6-9050-313b575bb6fe</packageId>
+  <packageName>Intent.Modelers.AWS.StepFunctions</packageName>
+  <properties>
+    <property id="b6810824-46c0-4d43-9b3c-24f85cccfdc4">
+      <name>Message</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Use state input as message</defaultValue>
+      <valueOptions>
+        <option>Use state input as message</option>
+        <option>Enter message</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="0d510040-dc53-43c9-9537-9c666a2528e8">
+      <hint>Enter a JSON object to use as the message. You can use Amazon States Language syntax to get values from the state input at runtime.</hint>
+      <name>Message Content</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return properties["Message"].value === "Enter message";</isActiveFunction>
+      <isRequiredFunction>return properties["Message"].value === "Enter message";</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

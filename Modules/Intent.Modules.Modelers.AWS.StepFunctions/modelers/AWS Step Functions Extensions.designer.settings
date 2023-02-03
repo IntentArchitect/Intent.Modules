@@ -1102,7 +1102,7 @@ white-space: inherit;`</style>
             <childElementSetting type="SQS Send Message Catch" typeId="e0406c6f-c84c-49d0-b44b-732de3f24ff0">
               <icon type="FontAwesome" source="file-o" />
               <saveAsOwnFile>false</saveAsOwnFile>
-              <allowRename>true</allowRename>
+              <allowRename>false</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
               <allowMapping>false</allowMapping>

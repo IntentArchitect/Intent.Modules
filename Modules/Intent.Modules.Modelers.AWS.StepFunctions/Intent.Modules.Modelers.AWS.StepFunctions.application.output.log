@@ -178,6 +178,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#c73e7930-a77c-49a3-aed6-1519a148ce3c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/SQSSendMessageModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>SQSSendMessageModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>2c987401-40a9-449d-bcdb-7e66c2f86398</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#2ec695a5-cabb-4ed4-896e-0381af3b188e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/SQSSendMessageRetryModel.cs</ApplicationRelativeFilePath>
