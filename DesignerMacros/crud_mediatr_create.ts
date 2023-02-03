@@ -696,7 +696,7 @@ function getAttributesWithMapPath(entity : MacroApi.Context.IElementApi) {
 }
 
 // Returns a dictionary instead of element to help deal with explicit vs implicit keys
-function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner) {
+function getNestedCompositionalOwnerForeignKeyDescriptor(entity : MacroApi.Context.IElementApi, nestedCompOwner : MacroApi.Context.IElementApi) {
     if (!entity) {
         throw new Error("entity not specified");
     }
@@ -704,12 +704,25 @@ function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner
         throw new Error("nestedCompOwner not specified");
     }
 
-    let explicitFkAttr = entity.getChildren("Attribute")
-        .filter(x => x.name.toLowerCase().indexOf(nestedCompOwner.name.toLowerCase()) >= 0 && x.hasStereotype("Foreign Key"))[0];
+    // Use the new Associated property on the FK stereotype method for FK Attribute lookup
+    let explicitFkAttr : MacroApi.Context.IElementApi;
+    for (let attr of entity.getChildren("Attribute").filter(x => x.hasStereotype("Foreign Key"))) {
+        let associationId = attr.getStereotype("Foreign Key").getProperty("Association")?.getValue() as string;
+        let foundAssociations = nestedCompOwner.getAssociations("Association").filter(x => x.id == associationId);
+        if (foundAssociations.length > 0) {
+            explicitFkAttr = attr;
+        }
+    }
+
+    // Backward compatible lookup method
+    if (!explicitFkAttr) {
+        explicitFkAttr = entity.getChildren("Attribute")
+            .filter(x => x.getName().toLowerCase().indexOf(nestedCompOwner.getName().toLowerCase()) >= 0 && x.hasStereotype("Foreign Key"))[0];
+    }
     
     if (explicitFkAttr) {
         return {
-            name: getDomainAttributeNameFormat(explicitFkAttr.name),
+            name: getDomainAttributeNameFormat(explicitFkAttr.getName()),
             typeId: explicitFkAttr.typeReference.typeId,
             id: explicitFkAttr.id,
             specialization: globals.FKSpecialization.Explicit
@@ -717,7 +730,7 @@ function getNestedCompositionalOwnerForeignKeyDescriptor(entity, nestedCompOwner
     }
     
     return {
-        name: getDomainAttributeNameFormat(`${nestedCompOwner.name}Id`),
+        name: getDomainAttributeNameFormat(`${nestedCompOwner.getName()}Id`),
         typeId: getSurrogateKeyType(),
         id: null,
         specialization: globals.FKSpecialization.Implicit
