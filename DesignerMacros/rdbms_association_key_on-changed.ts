@@ -34,7 +34,10 @@ if (sourceType && targetType) {
                  createElement("Attribute", "", sourceType.id);
             // This check to avoid a loop where the Domain script is updating the convensions and this keeps renaming it back.
             if (fk.getName().toLocaleLowerCase() !== `${ toCamelCase(association.getName())}${toPascalCase(pk.getName())}`.toLocaleLowerCase()) {
-                fk.setName(`${ toCamelCase(association.getName())}${toPascalCase(pk.getName())}`);
+                if (!fk.hasMetadata("fk-original-name")) {
+                    fk.setName(`${ toCamelCase(association.getName())}${toPascalCase(pk.getName())}`);
+                    fk.setMetadata("fk-original-name", fk.getName());
+                }
             }
             fk.setMetadata("association", association.id);
             fk.setMetadata("is-managed-key", "true");
@@ -64,7 +67,10 @@ if (sourceType && targetType) {
                  createElement("Attribute", "", targetType.id);
             // This check to avoid a loop where the Domain script is updating the convensions and this keeps renaming it back.
             if (fk.getName().toLocaleLowerCase() !== `${ toCamelCase(association.getOtherEnd().getName()) }${toPascalCase(pk.getName())}`.toLocaleLowerCase()) {
-                fk.setName(`${ toCamelCase(association.getOtherEnd().getName()) }${toPascalCase(pk.getName())}`);
+                if (!fk.hasMetadata("fk-original-name")) {
+                    fk.setName(`${ toCamelCase(association.getOtherEnd().getName()) }${toPascalCase(pk.getName())}`);
+                    fk.setMetadata("fk-original-name", fk.getName());
+                }
             }
             fk.setMetadata("association", association.id);
             fk.setMetadata("is-managed-key", "true");

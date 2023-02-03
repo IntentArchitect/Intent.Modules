@@ -11,5 +11,9 @@ if (!associationTarget && existingAssociation) {
     let stereotype = element.getStereotype(foreignKeyStereotypeId);
     stereotype.getProperty("Association").setValue(existingAssociation);
 }
+
+if (existingAssociation && !element.getMetadata("fk-original-name")) {
+    element.setMetadata("fk-original-name", element.getName());
+}
     
 })();
