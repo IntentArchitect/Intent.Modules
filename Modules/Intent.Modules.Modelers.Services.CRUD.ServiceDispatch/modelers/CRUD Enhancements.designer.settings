@@ -45,7 +45,7 @@ createStandardCreateOperation(service, entity, entityFolder, currentCrudModule);
 createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule);
-createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule);
+createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 /*
 ========================
     HOOK-IN FUNCTIONS
@@ -276,9 +276,10 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     updateDto.collapse();
     operation.collapse();
 }
-function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule) {
+function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let operation = createElement("Operation", getOperationFormat("Delete", nestedCompOwner, entity), service.id);
+    operation.typeReference.setType(resultTypeDto.id);
     let entityPkDescr = getPrimaryKeyDescriptor(entity);
     let routePath = "";
     if (nestedCompOwner) {
@@ -661,8 +662,7 @@ function getDomainAttributeNamingConvention() {
 // to domain entities that are within a Cosmos DB paradigm.
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.name === "PartitionKey";
-}
-</script>
+}</script>
         </option>
       </scriptOptions>
       <typeOrder />
@@ -1073,7 +1073,7 @@ createStandardCreateOperation(service, entity, entityFolder, currentCrudModule);
 createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule);
-createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule);
+createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 /*
 ========================
     HOOK-IN FUNCTIONS
@@ -1304,9 +1304,10 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     updateDto.collapse();
     operation.collapse();
 }
-function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule) {
+function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let operation = createElement("Operation", getOperationFormat("Delete", nestedCompOwner, entity), service.id);
+    operation.typeReference.setType(resultTypeDto.id);
     let entityPkDescr = getPrimaryKeyDescriptor(entity);
     let routePath = "";
     if (nestedCompOwner) {
@@ -1689,8 +1690,7 @@ function getDomainAttributeNamingConvention() {
 // to domain entities that are within a Cosmos DB paradigm.
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.name === "PartitionKey";
-}
-</script>
+}</script>
         </option>
       </scriptOptions>
       <typeOrder />

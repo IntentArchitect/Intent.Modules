@@ -40,7 +40,7 @@ createStandardCreateOperation(service, entity, entityFolder, currentCrudModule);
 createStandardFindByIdOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 createStandardFindAllOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 createStandardUpdateOperation(service, entity, entityFolder, currentCrudModule);
-createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule);
+createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule, resultStdTypeDto);
 
 /*
 ========================
@@ -323,9 +323,10 @@ function createStandardUpdateOperation(service, entity, entityFolder, currentCru
     operation.collapse();
 }
 
-function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule) {
+function createStandardDeleteOperation(service, entity, entityFolder, currentCrudModule, resultTypeDto) {
     let nestedCompOwner = getNestedCompositionalOwner(entity);
     let operation = createElement("Operation", getOperationFormat("Delete", nestedCompOwner, entity), service.id);
+    operation.typeReference.setType(resultTypeDto.id);
 
     let entityPkDescr = getPrimaryKeyDescriptor(entity);
     let routePath = "";
