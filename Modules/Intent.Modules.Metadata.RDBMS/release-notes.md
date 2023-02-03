@@ -1,11 +1,8 @@
 ### Version 3.4.0
 
 - New: Foreign Keys now have an explicit link with an Association Target End so that Attributes that act as Foreign Keys can be renamed independently from the Association.
-
-### Version 3.3.13
-
 - Update: Compute stereotype icon visible on diagram.
-- Update: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checbox. 
+- Update: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checbox.
 - Update: Fill Factor property on Indexes in order for some database providers to configure it accordingly.
 
 ### Version 3.3.12
