@@ -53,9 +53,39 @@ namespace Intent.Modules.Common.Templates
             return name.Humanize(LetterCasing.Sentence);
         }
 
-        public static string ToCamelCase(this string name) => name?.Replace('-', ' ').Camelize();
+        //public static string ToCamelCase(this string name) => name?.Replace('-', ' ').Camelize();
+        [FixFor_Version4("Use above commented out implementation instead which uses Humanizer's .Camelize()")]
+        public static string ToCamelCase(this string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return name;
+            }
 
-        public static string ToPascalCase(this string name) => name?.Replace('-', ' ').Pascalize();
+            if (char.IsLower(name[0]))
+            {
+                return name;
+            }
+
+            return char.ToLower(name[0]) + name[1..];
+        }
+
+        //public static string ToPascalCase(this string name) => name?.Replace('-', ' ').Pascalize();
+        [FixFor_Version4("Use above commented out implementation instead which uses Humanizer's .Pascalize()")]
+        public static string ToPascalCase(this string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                return name;
+            }
+
+            if (char.IsUpper(name[0]))
+            {
+                return name;
+            }
+
+            return char.ToUpper(name[0]) + name[1..];
+        }
 
         public static string ToDotCase(this string name) => name?.Replace('-', ' ').Underscore().Replace('_', '.');
 

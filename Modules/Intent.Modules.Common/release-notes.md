@@ -2,10 +2,8 @@
 
 The following extension methods now use the Humanizer library's implementation and will also now remove any `-` characters present:
 
-- `.ToCamelCase()`
 - `.ToDotCase()`
 - `.ToKebabCase()` (does not remove `-` characters)
-- `.ToPascalCase()`
 - `.ToSnakeCase()`
 
 ### Version 3.3.17
