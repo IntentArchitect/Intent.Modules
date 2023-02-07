@@ -11,7 +11,18 @@ if (sourceType.getMetadata("auto-manage-keys") == "false") {
     return;
 }
 
-function getSurrogateKeyType() {
+if (sourceType && targetType) {
+    var pks = sourceType.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
+    if (pks.length == 0) {
+        let pk = createElement("Attribute", "id", sourceType.id.toString());
+        pk.typeReference.setType(getSurrogateKeyType());
+        pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
+        pk.setMetadata("is-managed-key", "true");
+        pk.setOrder(0);
+    }
+}
+
+function getSurrogateKeyType() : string {
     const commonTypes = {
         guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
         long: "33013006-E404-48C2-AC46-24EF5A5774FD",
@@ -34,17 +45,4 @@ function getSurrogateKeyType() {
     
     return typeNameToIdMap.get("guid");
 }
-
-
-if (sourceType && targetType) {
-    var pks = sourceType.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
-    if (pks.length == 0) {
-        let pk = createElement("Attribute", "id", sourceType.id.toString());
-        pk.typeReference.setType(getSurrogateKeyType());
-        pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
-        pk.setMetadata("is-managed-key", "true");
-        pk.setOrder(0);
-    }
-}
-
 })();
