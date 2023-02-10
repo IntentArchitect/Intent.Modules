@@ -56,9 +56,9 @@ function initGlobals() {
     };
 }
 
-function getOrCreateDto(elementName, parentElement) {
+function getOrCreateDto(elementName : string, parentElement : MacroApi.Context.IElementApi) : MacroApi.Context.IElementApi {
     const expectedQueryName = `${elementName}Dto`;
-    let existingDto = parentElement.getChildren("DTO").filter(x => x.name === expectedQueryName)[0];
+    let existingDto = parentElement.getChildren("DTO").filter(x => x.getName() === expectedQueryName)[0];
     if (existingDto) {
         return existingDto;
     }
@@ -67,15 +67,18 @@ function getOrCreateDto(elementName, parentElement) {
     return dto;
 }
 
-function ensureDtoFields(mappedElement, dto) {
+function ensureDtoFields(mappedElement : MacroApi.Context.IElementApi, dto : MacroApi.Context.IElementApi) {
     let dtoUpdated = false;
     let mappedElementAttributes = mappedElement
         .typeReference
         .getType()
         .getChildren("Attribute");
     let dtoFields = dto.getChildren("DTO-Field");
-    for (let attribute of mappedElementAttributes.filter(x => ! dtoFields.some(y => x.name === y.name))) {
-        let field = createElement("DTO-Field", attribute.name, dto.id);
+    for (let attribute of mappedElementAttributes.filter(x => ! dtoFields.some(y => x.getName() === y.getName()))) {
+        if (dto.getChildren("DTO-Field").some(x => x.getName() == attribute.getName())) {
+            continue;
+        }
+        let field = createElement("DTO-Field", attribute.getName(), dto.id);
         field.typeReference.setType(attribute.typeReference.typeId);
         field.typeReference.setIsNullable(attribute.typeReference.isNullable);
         field.typeReference.setIsCollection(attribute.typeReference.isCollection);

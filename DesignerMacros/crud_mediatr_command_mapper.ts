@@ -59,9 +59,9 @@ function initGlobals() {
     };
 }
 
-function getOrCreateDto(elementName, parentElement) {
+function getOrCreateDto(elementName : string, parentElement : MacroApi.Context.IElementApi)  : MacroApi.Context.IElementApi {
     const expectedDtoName = `${elementName}Dto`;
-    let existingDto = parentElement.getChildren("DTO").filter(x => x.name === expectedDtoName)[0];
+    let existingDto = parentElement.getChildren("DTO").filter(x => x.getName() === expectedDtoName)[0];
     if (existingDto) {
         return existingDto;
     }
@@ -70,7 +70,7 @@ function getOrCreateDto(elementName, parentElement) {
     return dto;
 }
 
-function ensureDtoFields(mappedElement, dto) {
+function ensureDtoFields(mappedElement : MacroApi.Context.IElementApi, dto : MacroApi.Context.IElementApi) {
     let dtoUpdated = false;
     let domainElement = mappedElement
         .typeReference
@@ -83,6 +83,9 @@ function ensureDtoFields(mappedElement, dto) {
             continue;
         }
         if (isCreateMode && isOwnerForeignKey(entry.name, domainElement)) {
+            continue;
+        }
+        if (dto.getChildren("DTO-Field").some(x => x.getName() == entry.name)) {
             continue;
         }
         let field = createElement("DTO-Field", entry.name, dto.id);
@@ -103,11 +106,12 @@ function ensureDtoFields(mappedElement, dto) {
     }
 }
 
-function addPrimaryKeys(dto, entityPkDescr) {
+function addPrimaryKeys(dto : MacroApi.Context.IElementApi, entityPkDescr) {
     switch (entityPkDescr.specialization) {
         case globals.PKSpecialization.Implicit:
         case globals.PKSpecialization.Explicit:
             {
+                if (dto.getChildren("DTO-Field").some(x => x.getName() == getFieldFormat(entityPkDescr.name))) { return; }
                 let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
                 primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
                 if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
@@ -117,6 +121,7 @@ function addPrimaryKeys(dto, entityPkDescr) {
             break;
         case globals.PKSpecialization.ExplicitComposite:
             for (let key of entityPkDescr.compositeKeys) {
+                if (dto.getChildren("DTO-Field").some(x => x.getName() == getFieldFormat(key.name))) { continue; }
                 let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
                 primaryKeyDtoField.typeReference.setType(key.typeId)
                 primaryKeyDtoField.setMapping(key.id);

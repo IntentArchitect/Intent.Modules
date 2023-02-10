@@ -113,11 +113,6 @@ function createCqrsResultTypeDto(entity, entityFolder) {
         }
     }
 
-    if (entityPkDescr.specialization == globals.PKSpecialization.Implicit) {
-        let idField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
-        idField.typeReference.setType(entityPkDescr.typeId);
-    }
-
     addPrimaryKeysCqrs(dto, null, entityPkDescr);
 
     let attributesWithMapPaths = getAttributesWithMapPath(entity);
@@ -742,7 +737,7 @@ function addPrimaryKeysCqrs(dto : MacroApi.Context.IElementApi, operation : Macr
         case globals.PKSpecialization.Implicit:
         case globals.PKSpecialization.Explicit:
             {
-                if (dto) {
+                if (dto && !dto.getChildren("DTO-Field").some(x => x.getName() == getFieldFormat(entityPkDescr.name))) {
                     let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
                     primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
                     if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
@@ -759,7 +754,7 @@ function addPrimaryKeysCqrs(dto : MacroApi.Context.IElementApi, operation : Macr
             break;
         case globals.PKSpecialization.ExplicitComposite:
             for (let key of entityPkDescr.compositeKeys) {
-                if (dto) {
+                if (dto && !dto.getChildren("DTO-Field").some(x => x.getName() == getFieldFormat(key.name))) {
                     let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
                     primaryKeyDtoField.typeReference.setType(key.typeId)
                     primaryKeyDtoField.setMapping(key.id);
