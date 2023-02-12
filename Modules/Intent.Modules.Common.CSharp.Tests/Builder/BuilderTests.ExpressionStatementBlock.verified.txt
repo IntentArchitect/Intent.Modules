@@ -1,0 +1,19 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void TestMethod(int value)
+        {
+            if (value == 0)
+            {
+                throw new InvalidArgumentException();
+            }
+            // New Scope
+            {
+            }
+        }
+    }
+}

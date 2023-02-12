@@ -78,4 +78,23 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task ExpressionStatementBlock()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", c =>
+            {
+                c.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddParameter("int", "value");
+                    method.AddStatement(new CSharpStatementBlock("if (value == 0)")
+                        .AddStatement("throw new InvalidArgumentException();"));
+                    method.AddStatement("// New Scope")
+                        .AddStatement(new CSharpStatementBlock());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

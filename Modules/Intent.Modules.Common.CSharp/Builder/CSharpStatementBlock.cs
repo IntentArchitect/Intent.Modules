@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -6,7 +7,7 @@ public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon;
 
-    public CSharpStatementBlock() : base(null)
+    public CSharpStatementBlock(string expression = null) : base(expression ?? string.Empty)
     {
     }
 
@@ -20,7 +21,7 @@ public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return @$"{indentation}{RelativeIndentation}{{{Statements.ConcatCode($"{indentation}{RelativeIndentation}    ")}
+        return @$"{(Text.Length > 0 ? base.GetText(indentation) + Environment.NewLine : "")}{indentation}{RelativeIndentation}{{{Statements.ConcatCode($"{indentation}{RelativeIndentation}    ")}
 {indentation}{RelativeIndentation}}}{(_withSemicolon ? ";" : "")}";
     }
 }
