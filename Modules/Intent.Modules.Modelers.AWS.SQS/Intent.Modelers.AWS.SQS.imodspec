@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.AWS.SQS</id>
-  <version>1.0.0-pre.0</version>
+  <version>1.0.0-pre.1</version>
   <supportedClientVersions>[3.2.0,4.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -13,7 +13,7 @@
   <moduleSettings></moduleSettings>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.17" />
-    <dependency id="Intent.Common.Types" version="3.3.6" />
+    <dependency id="Intent.Common.Types" version="3.3.7" />
     <dependency id="Intent.Modelers.Application" version="1.0.0-pre.0" />
     <dependency id="Intent.Modelers.AWS" version="1.0.0-pre.1" />
   </dependencies>
@@ -25,5 +25,6 @@
   <metadata>
     <install target="Application" src="modelers/AWS SQS Extensions.designer.settings" externalReference="4ea92208-18f3-4921-8cd7-2212f338b2ed" />
     <install target="Application;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.SQS/Intent.Modelers.AWS.SQS.pkg.config" externalReference="a0a993a9-d353-4adb-ae2d-78c8acca735c" />
+    <install target="Application" src="modelers/AWS SQS Interoperability Extensions.designer.settings" externalReference="9d1ae4d1-ea24-49d0-b882-16ce799b62bc" />
   </metadata>
 </package>

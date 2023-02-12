@@ -66,6 +66,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#2b9c51fa-ed26-42b5-8ee2-94ffdb06d07a</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaDiagramExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaDiagramExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#afb3a910-c91d-4fab-8c97-feb8bea5ddad</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaFunctionExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaFunctionExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>ffe2c691-e260-457e-8796-d2f432527b61</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DynamoDBTableModel.cs</ApplicationRelativeFilePath>
@@ -150,6 +166,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/AWS DynamoDB Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWS DynamoDB Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3b64f7ee-5b2c-4740-af57-a4c37e21e55f</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#85e6ff92-051f-4ec3-839a-624792739eb8</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/AWS DynamoDB Interoperability Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWS DynamoDB Interoperability Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

@@ -90,7 +90,7 @@
               <properties>
                 <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="parameter" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="message" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
@@ -138,19 +138,19 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="4bb9ba84-59e1-4efe-aac8-b1edc7270078" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Event Source</name>
-          <display>Add Event Source: Event Stream Source End</display>
+        <childElement id="cd670868-eabd-4501-81ba-b0bc22ed9a7f" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Add Message Parameter</name>
+          <display>Add Message Parameter: Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="b58d0a9a-5a22-4f8b-bd63-52bbeb9c6c70">
-            <typeId>611be10d-2870-4c6b-b05f-e2ef5b62c03b</typeId>
+          <typeReference id="12d05f1c-f064-4d7b-85aa-d5fe84ab236e">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS</typePackageName>
-            <typePackageId>d3eb98f4-3110-4a25-aef5-0b342f053b9d</typePackageId>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
@@ -159,17 +159,69 @@
           <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
           <packageName>Intent.Modelers.AWS.Lambda</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="9682fe8b-bf51-4c87-b198-5fcfe8983852" name="Option Settings">
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let parameter = createElement(&quot;Parameter&quot;, &quot;message&quot;, element.id);&#xD;&#xA;let message = createElement(&quot;Message&quot;, `${element.getName()}Message`, element.getParent().id);&#xD;&#xA;&#xD;&#xA;parameter.typeReference.setType(message.id);&#xD;&#xA;message.enableEditing();" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
               <comment />
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="46678a0e-dbb3-479a-a434-092390ec23ec" display="Shortcut" value="ctrl + shift + s" isActive="true" />
-                <property name="78e777be-eeac-4959-8196-8377fe677cc2" display="Shortcut (macOS)" isActive="true" />
-                <property name="10f05e81-2da2-403f-9c7d-b712c7d202ba" display="Default Name" isActive="true" />
-                <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
-                <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="d958fbdc-534e-48b8-8a8a-a6d38e553dcc" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Add Response Message</name>
+          <display>Add Response Message: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="29b7d44c-c71e-459e-886f-ca3e474e822d">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>3daec9a0-0916-4b80-9f4d-10ac3cb74df7</parentFolderId>
+          <packageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</packageId>
+          <packageName>Intent.Modelers.AWS.Lambda</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let message = createElement(&quot;Message&quot;, `${element.getName()}ResponseMessage`, element.getParent().id);&#xD;&#xA;&#xD;&#xA;element.typeReference.setType(message.id);&#xD;&#xA;message.enableEditing();" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + r" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

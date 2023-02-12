@@ -41,11 +41,6 @@ namespace Intent.Modelers.AWS.ApiGateway.Api
 
         public IElement InternalElement => _element;
 
-        public IList<APIMethodModel> Methods => _element.ChildElements
-            .GetElementsOfType(APIMethodModel.SpecializationTypeId)
-            .Select(x => new APIMethodModel(x))
-            .ToList();
-
         public IList<APIResourceModel> Resources => _element.ChildElements
             .GetElementsOfType(APIResourceModel.SpecializationTypeId)
             .Select(x => new APIResourceModel(x))

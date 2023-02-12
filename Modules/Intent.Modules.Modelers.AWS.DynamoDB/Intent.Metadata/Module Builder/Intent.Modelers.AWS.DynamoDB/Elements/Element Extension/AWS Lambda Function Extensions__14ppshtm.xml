@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="afb3a910-c91d-4fab-8c97-feb8bea5ddad" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>AWS Lambda Function Extensions</name>
+  <display>AWS Lambda Function Extensions: Lambda Function</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="db76d8e4-fc92-4ea0-ade5-5dfd3310a0fa">
+    <typeId>de02db8b-e18f-423c-b4da-5f717a04075e</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.AWS.Lambda</typePackageName>
+    <typePackageId>384bb5ef-0985-493d-81ce-1fdd0f4d4c7c</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>85e6ff92-051f-4ec3-839a-624792739eb8</parentFolderId>
+  <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+  <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="563858b3-5640-4bf4-9705-373ec292a0a5" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>afb3a910-c91d-4fab-8c97-feb8bea5ddad</parentFolderId>
+      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="001ecc8c-9f13-41c0-8747-a210c8e7a22f" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Add DynamoDB Table</name>
+          <display>Add DynamoDB Table: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="29987d30-4002-4755-a9d9-4a57eae3e211">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>563858b3-5640-4bf4-9705-373ec292a0a5</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAnRJREFUaEPtmjFoFEEUhr83d4oQFRODjSCEpE8RQbARxMrCInshoGJpwMJCK5vL5CzsUliIWooR5HJbWFiJYCMIUUifUxAsBGNECYi52yd7SPT2FufudIi37rTz9s2+f97MfDtvhQFvMuDvz3YA0/OqzmCEemhlIrC6pMpZp70nAxE+1qwcjN1nL4BwQTrSava6jm81WCMxA8ZwfnleljwJ3eF2xupIU1n/7Qz0EgDCudDKgzyALhXIZyC5Bv7JFNpVZCI5o1sRR4h4mgxADFeKhkddZsAfm0XKgWaTlYxuo1bXXBKJ8ra2ICcDq4sKZ1z2Hvs/hVaOth1kHgfz6vrnSWz1vmskgfc1K1dLVi9FcNxl76tfYLNmZS6bKBHjQVI5hUMasZiyjd4ywnNfSqf43RtF3M5RYhuncxbqLflyFhoIFhLhRcoutAdlMiWAusCH3hKhf2uFIspUNlkoqOgxlzZF+PqwLKvxJ2ZDGXXZ++o30KiW5WXbSRxYPe0a0Bg2q2V5NlvRyUbEYZe9r36Fb6GVJ9lECREepyziIZQTKYt4VeCdL6VT/O5W5VSOEjlK9JlzOUoMBEoYw+WOXUgZVaWcEsA9I6z0mRE9P6YRQwo3sokS01ZvuiSJwa1mpVKyeiGC1rXGTrQfH/XX2k7inXiRvzHmr9cqG104fB1amQqs3lWY6cLei4nQqtCMZ5OF9gvDSdm+GMa0yauUy92L+5SqF5lTnH6GEZR6zkI5C/WZc/8HCxWEVgG5rRnG4spICkrMFWC5T0F7fswUGI7LvdlEicDquksShTdxZSSwegcouex99StsxL88ZAslfKnl2+93V3snXmYtMp4AAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + t" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let queue = createElement(&quot;DynamoDB Table&quot;, `NewTable`, element.getPackage().id);&#xD;&#xA;let resourceAccess = createAssociation(&quot;Resource Access&quot;, element.id, queue.id);&#xD;&#xA;if (currentDiagram?.isVisual(element)) {&#xD;&#xA;    let position = currentDiagram.getVisual(element).getPosition();&#xD;&#xA;    currentDiagram.addElement(queue, { x: position.x + 200, y: position.y});&#xD;&#xA;    currentDiagram.addAssociation(resourceAccess);&#xD;&#xA;}&#xD;&#xA;selectElement(queue);&#xD;&#xA;queue.enableEditing();" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

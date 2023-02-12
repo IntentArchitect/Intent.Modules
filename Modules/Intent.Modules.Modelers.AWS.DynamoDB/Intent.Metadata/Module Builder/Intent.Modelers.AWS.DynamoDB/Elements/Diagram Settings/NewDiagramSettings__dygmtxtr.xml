@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="31d75ad4-e26f-4338-a457-b39e688e932c" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
+<class id="b0c462bb-417f-40d2-abd2-956a9f184df2" type="Diagram Settings" typeId="67d711dd-3918-4b28-b2a0-4d845884e17a">
   <name>NewDiagramSettings</name>
   <display>[diagram]</display>
   <isAbstract>false</isAbstract>
@@ -7,45 +7,45 @@
   <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>87b55580-b8a7-463b-a59f-ed370680015e</parentFolderId>
-  <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
-  <packageName>Intent.Modelers.AWS.AppSync</packageName>
+  <parentFolderId>2b9c51fa-ed26-42b5-8ee2-94ffdb06d07a</parentFolderId>
+  <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+  <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="65e2eea6-8d3e-4efc-9ece-92892719fa82" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+    <childElement id="2dd02fd9-b0c2-4181-b293-035c8ddc4775" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>31d75ad4-e26f-4338-a457-b39e688e932c</parentFolderId>
-      <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
-      <packageName>Intent.Modelers.AWS.AppSync</packageName>
+      <parentFolderId>b0c462bb-417f-40d2-abd2-956a9f184df2</parentFolderId>
+      <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+      <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="89e94a8f-d86c-4507-9ac6-affb1e7ed320" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
-          <name>New GraphQL Endpoint</name>
-          <display>New GraphQL Endpoint: GraphQL Endpoint</display>
+        <childElement id="26c66bf1-e681-47c5-b6a1-07758b8c291d" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>New DynamoDB Table</name>
+          <display>New DynamoDB Table: DynamoDB Table</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="b5ee7137-de1f-4f75-9b59-c9229b78c678">
-            <typeId>fe7c2882-9fc6-4a35-bde4-26195d7900eb</typeId>
+          <typeReference id="634d81d2-e44b-4a82-bf07-114f66e71a28">
+            <typeId>b45fcd71-d5a3-48c7-9dd5-e6a138080bcf</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.AWS.AppSync</typePackageName>
-            <typePackageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</typePackageId>
+            <typePackageName>Intent.Modelers.AWS.DynamoDB</typePackageName>
+            <typePackageId>65807b2e-f468-42d5-b6fe-0f48b692052d</typePackageId>
             <stereotypes />
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>65e2eea6-8d3e-4efc-9ece-92892719fa82</parentFolderId>
-          <packageId>dd8c3729-21cb-4019-87a7-09e7cc4d3a61</packageId>
-          <packageName>Intent.Modelers.AWS.AppSync</packageName>
+          <parentFolderId>2dd02fd9-b0c2-4181-b293-035c8ddc4775</parentFolderId>
+          <packageId>65807b2e-f468-42d5-b6fe-0f48b692052d</packageId>
+          <packageName>Intent.Modelers.AWS.DynamoDB</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -53,9 +53,9 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + g" isActive="true" />
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + alt + t" isActive="true" />
                 <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
-                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Endpoint" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="NewTable" isActive="true" />
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />

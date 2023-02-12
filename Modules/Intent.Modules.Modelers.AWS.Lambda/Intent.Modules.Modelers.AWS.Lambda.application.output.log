@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#ef6e3cc3-768e-4db8-8060-42f24cfa340d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSAPIGatewayMethodExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSAPIGatewayMethodExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#245b872f-c67a-4640-916e-2345e21f3d39</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSLambdaDiagramExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -31,6 +39,14 @@
       <ApplicationRelativeFilePath>Api/AWSLambdaPackageExtensionsModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWSLambdaPackageExtensionsModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#f354e2bf-4210-41d5-b869-00fd8a497151</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSSQSQueueExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSSQSQueueExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>93a8b549-e15e-404d-a9d1-cc22c8bf7229</ProjectId>
@@ -110,6 +126,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/AWS Lambda Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWS Lambda Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>97e3ce23-fc7a-407c-833e-7784267ba980</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#ca4e61fe-78a2-440e-9577-30e240ba9f44</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/AWS Lambda Interoperability Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWS Lambda Interoperability Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

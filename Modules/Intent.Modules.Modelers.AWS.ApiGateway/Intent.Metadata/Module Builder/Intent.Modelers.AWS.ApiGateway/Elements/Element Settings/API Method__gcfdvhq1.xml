@@ -37,7 +37,7 @@
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" value="if (typeReference.getType() == null) {&#xD;&#xA;    return &quot;?|#000000&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const icon = typeReference.getType().getStereotype(&quot;API Method Type Settings&quot;).getProperty(&quot;Icon&quot;).getValue();&#xD;&#xA;&#xD;&#xA;return JSON.parse(icon).source;&#xD;&#xA;" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="const lambdaFunctionName = getAssociations()&#xD;&#xA;    .filter(x =&gt; x.typeReference.getType()?.specialization === &quot;Lambda Function&quot;)[0]?.getName() ?? &quot;UNKNOWN&quot;;&#xD;&#xA;const apiMethodType = typeReference.getType()?.getName() ?? &quot;UNKNOWN&quot;;&#xD;&#xA;&#xD;&#xA;return `${apiMethodType}: ${lambdaFunctionName}`;" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
-        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="false" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
@@ -115,6 +115,39 @@
       <stereotypes />
       <metadata />
       <childElements>
+        <childElement id="d6650556-5de1-4ffd-8f27-c54a34ff83b3" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="b31dbf4e-ce00-4d77-be24-6c402d436497">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0542917c-6779-4f91-97f3-9b4feb214a63</parentFolderId>
+          <packageId>208d59fd-d1c0-4c87-aaca-28bd5bf97032</packageId>
+          <packageName>Intent.Modelers.AWS.ApiGateway</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="function getRoute(e) {&#xD;&#xA;    let parent = e.getParent(&quot;API Resource&quot;);&#xD;&#xA;    return parent != null ? `${getRoute(parent)}/${parent.getName()}` : &quot;&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;element.setName(getRoute(element));" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="6e90c3d2-4d91-41f2-a021-e3c01cd3caf4" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
           <name>On Name Changed</name>
           <display>On Name Changed: Script</display>
@@ -141,7 +174,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let name = element.getName().toUpperCase();&#xD;&#xA;&#xD;&#xA;if (name.startsWith(&quot;A&quot;)) {&#xD;&#xA;    element.setName(&quot;ANY&quot;);&#xD;&#xA;} else if (name.startsWith(&quot;D&quot;)) {&#xD;&#xA;    element.setName(&quot;DELETE&quot;);&#xD;&#xA;} else if (name.startsWith(&quot;G&quot;)) {&#xD;&#xA;    element.setName(&quot;GET&quot;);&#xD;&#xA;} else if (name.startsWith(&quot;H&quot;)) {&#xD;&#xA;    element.setName(&quot;HEAD&quot;);&#xD;&#xA;} else if (name.startsWith(&quot;O&quot;)) {&#xD;&#xA;    element.setName(&quot;OPTIONS&quot;);&#xD;&#xA;} else if (name.startsWith(&quot;PA&quot;)) {&#xD;&#xA;    element.setName(&quot;PATCH&quot;);&#xD;&#xA;} else if (name.startsWith(&quot;PO&quot;)) {&#xD;&#xA;    element.setName(&quot;POST&quot;);&#xD;&#xA;} else if (name.startsWith(&quot;PU&quot;)) {&#xD;&#xA;    element.setName(&quot;PUT&quot;);&#xD;&#xA;} else {&#xD;&#xA;    element.setName(name);&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let root = element.getParent(&quot;API Gateway&quot;);&#xD;&#xA;let current = root;&#xD;&#xA;&#xD;&#xA;let routes = element.getName().split('/');&#xD;&#xA;&#xD;&#xA;if (routes.filter(x =&gt; x !== &quot;&quot;).length == 0) {&#xD;&#xA;    let existing = current.getChildren().filter(x =&gt; x.getName() == &quot;&quot;)[0];&#xD;&#xA;    if (!existing) {&#xD;&#xA;        existing = createElement(&quot;API Resource&quot;, &quot;&quot;, root.id)&#xD;&#xA;    }&#xD;&#xA;    current = existing;&#xD;&#xA;} else {&#xD;&#xA;    routes.filter(x =&gt; x !== &quot;&quot;).forEach(route =&gt; {&#xD;&#xA;        let existing = current.getChildren().filter(x =&gt; x.getName() == route)[0];&#xD;&#xA;        if (!existing) {&#xD;&#xA;            existing = createElement(&quot;API Resource&quot;, route, current.id);&#xD;&#xA;        }&#xD;&#xA;        current = existing;&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (element.getParent().id !== current.id) {&#xD;&#xA;    element.setParent(current.id);&#xD;&#xA;    current.expand();&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

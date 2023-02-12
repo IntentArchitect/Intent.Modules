@@ -13,7 +13,7 @@
   <moduleSettings></moduleSettings>
   <dependencies>
     <dependency id="Intent.Common" version="3.3.17" />
-    <dependency id="Intent.Common.Types" version="3.3.6" />
+    <dependency id="Intent.Common.Types" version="3.3.7" />
     <dependency id="Intent.Modelers.Application" version="1.0.0-pre.0" />
     <dependency id="Intent.Modelers.AWS" version="1.0.0-pre.1" />
   </dependencies>
@@ -26,5 +26,6 @@
     <install target="Application" src="modelers/AWS Lambda Extensions.designer.settings" externalReference="42a1a259-57f8-4363-bdd2-9ed8daa72d1a" />
     <install target="Application;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.AWS.Lambda/Intent.Modelers.AWS.Lambda.pkg.config" externalReference="384bb5ef-0985-493d-81ce-1fdd0f4d4c7c" />
     <install target="Module Builder" src="modelers/Module Builder AWS Lambda Extensions.designer.settings" externalReference="49afdc39-c77f-4d0d-99b7-7924d6bd4f1e" />
+    <install target="Application" src="modelers/AWS Lambda Interoperability Extensions.designer.settings" externalReference="ca4e61fe-78a2-440e-9577-30e240ba9f44" />
   </metadata>
 </package>

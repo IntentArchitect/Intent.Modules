@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>d461e52d-733b-4900-9171-aa89d5a8f7c3</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#de5928a5-c268-4770-9482-870cbb925163</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/AWSLambdaFunctionExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWSLambdaFunctionExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>d461e52d-733b-4900-9171-aa89d5a8f7c3</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#2b478b3a-2bde-4c7c-bf93-29a12d2dcf51</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/AWSSQSDiagramExtensionsModel.cs</ApplicationRelativeFilePath>
@@ -78,6 +86,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/AWS SQS Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>AWS SQS Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>74a149ef-8305-4699-affb-622ac4d8cbe1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#9d1ae4d1-ea24-49d0-b882-16ce799b62bc</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/AWS SQS Interoperability Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>AWS SQS Interoperability Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
