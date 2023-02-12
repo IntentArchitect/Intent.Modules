@@ -4,7 +4,7 @@
   <display>[visual]: SQS Queue</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
-  <order>2</order>
+  <order>1</order>
   <genericTypes />
   <typeReference id="e2ec2631-41a5-4097-8a0a-f148cba244ed">
     <typeId>ed9035bc-31b0-4591-aac6-9a950099cbd5</typeId>

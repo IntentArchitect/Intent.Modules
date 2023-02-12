@@ -41,11 +41,6 @@ namespace Intent.Modelers.AWS.SQS.Api
 
         public IElement InternalElement => _element;
 
-        public IList<SQSMessageModel> ProcessesMessages => _element.ChildElements
-            .GetElementsOfType(SQSMessageModel.SpecializationTypeId)
-            .Select(x => new SQSMessageModel(x))
-            .ToList();
-
         public override string ToString()
         {
             return _element.ToString();

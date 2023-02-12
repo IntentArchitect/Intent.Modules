@@ -42,14 +42,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>d461e52d-733b-4900-9171-aa89d5a8f7c3</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d59077e9-0ae3-4ea6-93fb-302b1782ce3a</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/SQSMessageModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>SQSMessageModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>d461e52d-733b-4900-9171-aa89d5a8f7c3</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#ed9035bc-31b0-4591-aac6-9a950099cbd5</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/SQSQueueModel.cs</ApplicationRelativeFilePath>
