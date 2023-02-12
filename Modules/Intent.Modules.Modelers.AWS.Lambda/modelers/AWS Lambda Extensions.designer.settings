@@ -37,7 +37,7 @@ return `${name}${genericTypes}(${parameters}): ${(typeReference.typeId ? typeRef
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
       <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowFindInView>false</allowFindInView>
+      <allowFindInView>true</allowFindInView>
       <allowTypeReference>true</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>

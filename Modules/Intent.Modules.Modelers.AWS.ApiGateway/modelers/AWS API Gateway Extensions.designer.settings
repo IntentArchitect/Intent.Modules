@@ -91,7 +91,7 @@ return `${apiMethodType}: ${lambdaFunctionName}`;</displayFunction>
           <allowMapping>false</allowMapping>
           <allowSorting>true</allowSorting>
           <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
-          <allowFindInView>false</allowFindInView>
+          <allowFindInView>true</allowFindInView>
           <allowTypeReference>true</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>

@@ -34,7 +34,7 @@
       <allowMapping>false</allowMapping>
       <allowSorting>true</allowSorting>
       <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
-      <allowFindInView>false</allowFindInView>
+      <allowFindInView>true</allowFindInView>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
@@ -42,7 +42,7 @@
       <creationOptions />
       <scriptOptions />
       <mappingSettings />
-      <visualSettings type="S3 Bucket">
+      <visualSettings type="S3 Bucket" typeId="70001417-b109-4c5a-987a-0d53724a4709">
         <size width="100" height="80" />
         <position x="${x}" y="${y}" />
         <display>
@@ -101,6 +101,8 @@ vertical-align: center`</style>
           </option>
         </creationOptions>
         <scriptOptions />
+        <elementVisualSettings />
+        <associationVisualSettings />
       </diagramSettings>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
