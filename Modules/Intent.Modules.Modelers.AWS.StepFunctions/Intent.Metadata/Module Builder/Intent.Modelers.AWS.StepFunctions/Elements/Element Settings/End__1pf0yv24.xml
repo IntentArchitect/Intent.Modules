@@ -32,10 +32,10 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
-        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA45JREFUaEPtl2lIFGEch5+xTOzQqIj8IBJFEEFKFHToBpVdWGl3FIhUdihEtGFYkRaUmvWlAzrIosQPUVZqpBbVamUXdHjkh9SKCiMVrLRI2xjethHcc2b2EHa+7DI7887zvL///313JPr4IfVxfvwC3k7Qn0CfTsBsIAMz+zRJSGRLJnapHUN1CekCb6HWIKFKQFd4jRIuC7gFXoOESwJuhVcp4bSAR+BVSDgl4FF4FyUcCngF3gUJuwJehXdSwqaAT8A7IWFbIAaz2t3RHfdJFdb/OfsF3DHb1sbUloAkwZqdsGQzDA+Dhmo4aYRXFXCv27aD4V/A8Vtg1Q4YFQGfGuDiQbh1Qdx3tAwmx4rvZjN8boSbeZCfBd1d/8fWJpCwFbafgOb3UFsFMQnw+xesGw+pR8VDxkZC+DhoqoXGGnFu30qYnwjp56G9FaofQqQBBoXAnmVguqoIvH4Abc0QNRNChsPpdLh0SCeBrCKYHgdpcfCoBHadg4VJkLMRis+Kh6TkilnOy4S8DCWVcy+EXGoMvKqEGYvg0A2RXqpBEUiPh8rrQvDYffj4FtaM1Ulg52lYtBHuXobcTfCtrXfZWBMICICyH+LaOcHiMygYyjugvQXiRvQWkEu08BN0fod5Q3QSCBstZmVkuHjwleNQkAM/OxQRawIhw6C4BVqbIX6Ucu2dXxA4AGYNgJwS0QMnjPDSBHPXwvJtIi05tX+Hth6QBwkdAauNsDQFggdD3RNIiYau37ZLSK7l4q9WBH5CYBDMDoLsYqWJLbTyJBkXwJunOgmMmwTySlT/XKxCubdgzETYnQAV12wL9OsvSuhPN8QOFNfJ4Lc7oaMdFgxVSqj0IjTVQPMHeFIqku5xaEtArkkZfEWEWIksPXE4GYrO2G/iC9UwegJsmQY1VTBlLhwphdrHsHmqItBzMnp3GNoE1u+HxL3wvh7qn4lltH8gJEXCuzr7AouTwXhKLKPyUhklL6OhcGAdlOd7SCCgH6xNg7gNIglZ5HwmmArtN7Hl16WpYhWT94kvH6DgsJKcZSNzawJWIvX0KW0l5Gla3XugTwpEk4ZElg+wg5kMqZJMayz2Xyl9QcIOvCzk+KXemxIO4J0SkC8ye0PCCXinBTwu4SS8SwIek3AB3mUBt0u4CK9KwG0SKuBVC+guoRJek4BuEhrgNQv4wi7tcCPzBUh7DH4BbyfkT8DbCfwFH2uOQH8jpDQAAAAASUVORK5CYII=&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
         <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
-        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="return `${getName()} (End)`;" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
         <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
@@ -43,7 +43,7 @@
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
         <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
-        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="true" isActive="true" />
       </properties>
     </stereotype>
   </stereotypes>
