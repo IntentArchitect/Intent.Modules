@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Humanizer;
 using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
@@ -79,12 +80,27 @@ namespace Intent.Modules.Common.Templates
                 return name;
             }
 
-            if (char.IsUpper(name[0]))
+            var result = new StringBuilder(name.Length);
+
+            for (var i = 0; i < name.Length; i++)
             {
-                return name;
+                var @char = name[i];
+
+                if (@char is '-' or ' ')
+                {
+                    continue;
+                }
+
+                if (result.Length == 0 || name[i - 1] is '-' or ' ')
+                {
+                    result.Append(char.ToUpperInvariant(@char));
+                    continue;
+                }
+
+                result.Append(@char);
             }
 
-            return char.ToUpper(name[0]) + name[1..];
+            return result.ToString();
         }
 
         public static string ToDotCase(this string name) => name?.Replace('-', ' ').Underscore().Replace('_', '.');

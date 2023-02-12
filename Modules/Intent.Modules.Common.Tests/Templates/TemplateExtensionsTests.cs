@@ -7,12 +7,31 @@ namespace Intent.Modules.Common.Tests.Templates
 {
     public class TemplateExtensionsTests
     {
+        public class DescribeToPascalCase
+        {
+            [Theory]
+            [InlineData("app1", "App1")]
+            [InlineData("new-app-1", "NewApp1")]
+            [InlineData("FK_Something", "FK_Something")]
+            // This case below is legacy behaviour, we can re-assess for v4 if expected should rather be "Some_App1_Something"
+            [InlineData("some_app1_something", "Some_app1_something")]
+            public void ItShouldWork(string input, string expected)
+            {
+                // Act
+                var result = TemplateExtensions.ToPascalCase(input);
+
+                // Assert
+                result.ShouldBe(expected);
+            }
+        }
+
         public class DescribeToSnakeCase
         {
             [Theory]
             [InlineData("app1", "app1")]
             [InlineData("SomeApp1Something", "some_app1_something")]
             [InlineData("new_app_1", "new_app_1")]
+            [InlineData("new-app-1", "new-app-1")]
             public void ItShouldWork(string input, string expected)
             {
                 // Act
