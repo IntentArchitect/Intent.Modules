@@ -31,7 +31,7 @@ namespace Intent.Modules.Common.Tests.Templates
             [InlineData("app1", "app1")]
             [InlineData("SomeApp1Something", "some_app1_something")]
             [InlineData("new_app_1", "new_app_1")]
-            [InlineData("new-app-1", "new-app-1")]
+            [InlineData("new-app-1", "new_app_1")]
             public void ItShouldWork(string input, string expected)
             {
                 // Act
