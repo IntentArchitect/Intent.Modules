@@ -80,7 +80,7 @@ public class BuilderTests
     }
 
     [Fact]
-    public async Task ExpressionStatementBlock()
+    public async Task StatementBlocks()
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
             .AddClass("TestClass", c =>
@@ -88,10 +88,16 @@ public class BuilderTests
                 c.AddMethod("void", "TestMethod", method =>
                 {
                     method.AddParameter("int", "value");
-                    method.AddStatement(new CSharpStatementBlock("if (value == 0)")
+                    method.AddStatement("// If with scope")
+                        .AddStatement(new CSharpStatementBlock("if (value == 0)")
                         .AddStatement("throw new InvalidArgumentException();"));
                     method.AddStatement("// New Scope")
                         .AddStatement(new CSharpStatementBlock());
+                    method.AddStatement("// Object Init")
+                        .AddStatement(new CSharpObjectInitializerBlock("var obj = new SomeObject")
+                            .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
+                                .AddStatement("return x + 1;"))
+                            .AddInitStatement("StringProp", "\"My string\""));
                 });
             })
             .CompleteBuild();

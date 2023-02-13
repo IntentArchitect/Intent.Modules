@@ -7,12 +7,23 @@ namespace Testing.Namespace
     {
         public void TestMethod(int value)
         {
+            // If with scope
             if (value == 0)
             {
                 throw new InvalidArgumentException();
             }
             // New Scope
             {
+            }
+            // Object Init
+
+            var obj = new SomeObject
+            {
+                LambdaProp = x =>
+                {
+                    return x + 1;
+                },
+                StringProp = "My string",
             }
         }
     }

@@ -4,9 +4,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpObjectInitializerBlock : CSharpStatementBlock
 {
-    public CSharpObjectInitializerBlock(string invocation)
+    public CSharpObjectInitializerBlock(string invocation) : base(invocation)
     {
-        Text = invocation;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
@@ -27,7 +26,6 @@ public class CSharpObjectInitializerBlock : CSharpStatementBlock
 
     public override string GetText(string indentation)
     {
-        return $@"{indentation}{RelativeIndentation}{Text}
-{base.GetText(indentation)}";
+        return $@"{base.GetText(indentation)}";
     }
 }

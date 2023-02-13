@@ -7,7 +7,11 @@ public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon;
 
-    public CSharpStatementBlock(string expression = null) : base(expression ?? string.Empty)
+    public CSharpStatementBlock() : base(string.Empty)
+    {
+    }
+    
+    public CSharpStatementBlock(string expression) : base(expression ?? string.Empty)
     {
     }
 

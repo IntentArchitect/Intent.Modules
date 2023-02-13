@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.4.1-pre.3</Version>
+    <Version>3.4.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
