@@ -11,6 +11,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
     public string Type { get; }
     public string Name { get; }
     public bool IsReadOnly { get; private set; }
+    public bool IsStatic { get; private set; }
     public string InitialValue { get; private set; }
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
@@ -39,6 +40,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
         AccessModifier = "protected ";
         return this;
     }
+    
     public CSharpProperty Private()
     {
         AccessModifier = "private ";
@@ -66,6 +68,12 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
     public CSharpProperty Virtual()
     {
         OverrideModifier = "virtual ";
+        return this;
+    }
+    
+    public CSharpProperty Static()
+    {
+        IsStatic = true;
         return this;
     }
 
@@ -123,7 +131,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
 
     public override string GetText(string indentation)
     {
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{Type} {Name}";
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{(IsStatic ? "static " : "")}{Type} {Name}";
         if (Getter.IsExpression && IsReadOnly)
         {
             return $@"{declaration} => {Getter.Implementation};";

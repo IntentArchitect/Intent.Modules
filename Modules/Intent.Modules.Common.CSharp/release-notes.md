@@ -1,4 +1,9 @@
-﻿### Version 3.3.27
+﻿### Version 3.3.28
+
+- Update: Class Constructor can be static.
+- Update: Class Properties can be static.
+
+### Version 3.3.27
 
 - New: Added Generic Type Constraint support.
 

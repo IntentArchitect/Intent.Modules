@@ -103,4 +103,19 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task StaticVariants()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("StaticClass", c =>
+            {
+                c.Static();
+                c.AddConstructor(ctor => ctor.Static());
+                c.AddMethod("void", "StaticMethod", method => method.Static());
+                c.AddProperty("int", "StaticProperty", prop => prop.Static());
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

@@ -68,9 +68,16 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>
         AccessModifier = "protected ";
         return this;
     }
+    
     public CSharpConstructor Private()
     {
         AccessModifier = "private ";
+        return this;
+    }
+
+    public CSharpConstructor Static()
+    {
+        AccessModifier = "static ";
         return this;
     }
 
