@@ -2,6 +2,7 @@
 
 - Update: Class Constructor can be static.
 - Update: Class Properties can be static.
+- Update: Constructor parameter can have default value.
 
 ### Version 3.3.27
 

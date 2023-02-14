@@ -19,7 +19,7 @@ public class BuilderTests
                 c.AddConstructor(ctor => ctor
                         .AddParameter("string", "make")
                         .AddParameter("string", "model")
-                        .AddParameter("int", "year")
+                        .AddParameter("int", "year", param => param.WithDefaultValue("2023"))
                         .AddStatement("Make = make;")
                         .AddStatement("Model = model;")
                         .AddStatement("Year = year;"))

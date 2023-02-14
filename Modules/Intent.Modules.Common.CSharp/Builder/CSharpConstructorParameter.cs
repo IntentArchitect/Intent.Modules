@@ -9,6 +9,7 @@ public class CSharpConstructorParameter
     private readonly CSharpConstructor _constructor;
     public string Type { get; }
     public string Name { get; }
+    public string DefaultValue { get; private set; }
 
     public CSharpConstructorParameter(string type, string name, CSharpConstructor constructor)
     {
@@ -71,9 +72,15 @@ public class CSharpConstructorParameter
         });
         return this;
     }
+    
+    public CSharpConstructorParameter WithDefaultValue(string defaultValue)
+    {
+        DefaultValue = defaultValue;
+        return this;
+    }
 
     public override string ToString()
     {
-        return $@"{Type} {Name}";
+        return $@"{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
     }
 }

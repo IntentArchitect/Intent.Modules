@@ -6,7 +6,7 @@ namespace Testing.Namespace
 {
     public class Vehicle
     {
-        public Vehicle(string make, string model, int year)
+        public Vehicle(string make, string model, int year = 2023)
         {
             Make = make;
             Model = model;
