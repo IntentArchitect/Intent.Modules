@@ -10,6 +10,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     protected string AsyncMode { get; private set; } = string.Empty;
     protected string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
+    public bool IsAbstract { get; private set; }
     public string ReturnType { get; }
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
@@ -163,6 +164,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public CSharpClassMethod Abstract()
     {
         OverrideModifier = "abstract ";
+        IsAbstract = true;
         return this;
     }
 
@@ -185,7 +187,13 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
+        if (IsAbstract && Statements.Count == 0)
+        {
+            return $@"{declaration};";
+        }
+
+        return $@"{declaration}
 {indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }

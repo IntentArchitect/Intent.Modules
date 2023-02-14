@@ -118,4 +118,25 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task Inheritance()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddUsing("System")
+            .AddClass("BaseClass", c =>
+            {
+                c.Abstract();
+                c.AddMethod("void", "ImAbstractOverrideMe", method => method.Abstract());
+                c.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Virtual().AddStatement("throw new NotImplementedException();"));
+            })
+            .AddClass("ConcreteClass", c =>
+            {
+                c.WithBaseType("BaseClass");
+                c.AddMethod("void", "ImAbstractOverrideMe", method => method.Override().AddStatement("// Stuff"));
+                c.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Override().AddStatement("// More Stuff"));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }
