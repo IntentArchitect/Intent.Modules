@@ -26,6 +26,11 @@ namespace <#= Namespace #>
                 .ToList();
         }
 
+        public static bool Is<#= GetClassName(packageSettings) #>(this IPackage package)
+        {
+            return package?.SpecializationTypeId == <#= GetClassName(packageSettings) #>.SpecializationTypeId;
+        }
+
 <#  } #>
 
     }

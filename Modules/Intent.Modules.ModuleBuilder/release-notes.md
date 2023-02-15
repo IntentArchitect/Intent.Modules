@@ -1,3 +1,7 @@
+### Version 3.5.0
+
+- New: Added Extension method for checking if a `IPackage` is a certain Model type.
+
 ### Version 3.4.1
 
 - Feature: Support for explicit Element / Association Vision Settings for Diagrams.
