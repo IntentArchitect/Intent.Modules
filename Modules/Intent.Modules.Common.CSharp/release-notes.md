@@ -3,6 +3,7 @@
 - Update: Class Constructor can be static.
 - Update: Class Properties can be static.
 - Update: Constructor parameter can have default value.
+- Update: Method chain statement builder can now omit semi-colons.
 - Fixed: Methods with abstract keyword and without statements will not output method body.
 
 ### Version 3.3.27

@@ -5,6 +5,8 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpMethodChainStatement : CSharpStatement, IHasCSharpStatements
 {
+    private bool _withSemicolon = true;
+    
     public CSharpMethodChainStatement(string initialInvocation) : base(initialInvocation)
     {
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
@@ -22,9 +24,15 @@ public class CSharpMethodChainStatement : CSharpStatement, IHasCSharpStatements
         configure?.Invoke(statement);
         return this;
     }
+
+    public CSharpMethodChainStatement WithoutSemicolon()
+    {
+        _withSemicolon = false;
+        return this;
+    }
     
     public override string GetText(string indentation)
     {
-        return @$"{indentation}{RelativeIndentation}{Text}{Statements.ConcatCode($"{indentation}{RelativeIndentation}    .")};";
+        return @$"{indentation}{RelativeIndentation}{Text}{Statements.ConcatCode($"{indentation}{RelativeIndentation}    .")}{(_withSemicolon ? ";" : "")}";
     }
 }
