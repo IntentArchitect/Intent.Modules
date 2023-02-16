@@ -33,7 +33,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public IList<CSharpClass> NestedClasses { get; } = new List<CSharpClass>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
-
+    public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
+    
     public CSharpClass WithBaseType(string type)
     {
         return ExtendsClass(type);
@@ -117,6 +118,12 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     public CSharpClass AddMethod(string returnType, string name, Action<CSharpClassMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+    
+    public CSharpClass AddCodeBlock(string codeLine)
+    {
+        CodeBlocks.Add(new CSharpCodeBlock(codeLine));
+        return this;
     }
     
     public CSharpClass AddGenericParameter(string typeName)
@@ -319,6 +326,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
         codeBlocks.AddRange(Properties);
         codeBlocks.AddRange(Methods);
         codeBlocks.AddRange(NestedClasses);
+        codeBlocks.AddRange(CodeBlocks);
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";

@@ -33,7 +33,14 @@ public class JavadocComments : JavaMetadataBase<JavadocComments>
 
     public string ToString(string indentation)
     {
-        return $@"{(Statements.Any() ? $@"{indentation}{string.Join($@"
-{indentation}", Statements)}" : string.Empty)}";
+        if (!Statements.Any())
+        {
+            return string.Empty;
+        }
+
+        return @$"{indentation}/**
+{indentation} * {string.Join($@"
+{indentation} * ", Statements)}
+{indentation} */";
     }
 }

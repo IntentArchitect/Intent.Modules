@@ -1,4 +1,10 @@
-﻿### Version 3.4.0
+﻿### Version 3.4.1
+
+- Update: JavaComments now properly supports the /* */ format.
+- Update: Free Code Blocks now supported on Interfaces and Classes for cases where only freetext needs to be added a Class / Interface.
+- Fixed: Interface generated wrong code for extending other interfaces.
+
+### Version 3.4.0
 
 - New: Introducing the Java File Builder Pattern.
 

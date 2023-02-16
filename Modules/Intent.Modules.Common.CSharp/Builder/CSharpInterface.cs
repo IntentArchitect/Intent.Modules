@@ -30,7 +30,8 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     public IList<CSharpInterfaceMethod> Methods { get; } = new List<CSharpInterfaceMethod>();
     public IList<CSharpInterfaceGenericParameter> GenericParameters { get; } = new List<CSharpInterfaceGenericParameter>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
-
+    public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
+    
     public CSharpInterface ExtendsInterface(string type)
     {
         if (string.IsNullOrWhiteSpace(type))
@@ -89,6 +90,12 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
     public CSharpInterface AddMethod(string returnType, string name, Action<CSharpInterfaceMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+    
+    public CSharpInterface AddCodeBlock(string codeLine)
+    {
+        CodeBlocks.Add(new CSharpCodeBlock(codeLine));
+        return this;
     }
 
     public CSharpInterface AddGenericParameter(string typeName, Action<CSharpInterfaceGenericParameter> configure = null)
@@ -232,6 +239,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         codeBlocks.AddRange(Fields);
         codeBlocks.AddRange(Properties);
         codeBlocks.AddRange(Methods);
+        codeBlocks.AddRange(CodeBlocks);
 
         return !codeBlocks.Any() ? "" : $@"
 {string.Join(@"

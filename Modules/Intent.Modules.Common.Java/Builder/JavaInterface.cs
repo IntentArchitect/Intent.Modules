@@ -26,6 +26,8 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
     public IList<string> Interfaces { get; set; } = new List<string>();
     public IList<JavaInterfaceField> Fields { get; } = new List<JavaInterfaceField>();
     public IList<JavaInterfaceMethod> Methods { get; } = new List<JavaInterfaceMethod>();
+
+    public IList<JavaCodeBlock> CodeBlocks { get; } = new List<JavaCodeBlock>();
     // public IList<JavaInterfaceGenericParameter> GenericParameters { get; } = new List<JavaInterfaceGenericParameter>();
     // public IList<JavaGenericTypeConstraint> GenericTypeConstraints { get; } = new List<JavaGenericTypeConstraint>();
 
@@ -63,6 +65,12 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
     public JavaInterface AddMethod(string returnType, string name, Action<JavaInterfaceMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+
+    public JavaInterface AddCodeBlock(string codeLine)
+    {
+        CodeBlocks.Add(new JavaCodeBlock(codeLine));
+        return this;
     }
 
     // public JavaInterface AddGenericParameter(string typeName, Action<JavaInterfaceGenericParameter> configure = null)
@@ -179,7 +187,7 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
             types.Add(@interface);
         }
 
-        return types.Any() ? $" : {string.Join(", ", types)}" : "";
+        return types.Any() ? $" extends {string.Join(", ", types)}" : "";
     }
 
     private string GetMembers(string indentation)
@@ -187,8 +195,9 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
         var codeBlocks = new List<ICodeBlock>();
         codeBlocks.AddRange(Fields);
         codeBlocks.AddRange(Methods);
+        codeBlocks.AddRange(CodeBlocks);
 
-        return !codeBlocks.Any() ? "" : $@"
+        return !codeBlocks.Any() ? string.Empty : $@"
 {string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
     }

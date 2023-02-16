@@ -79,4 +79,58 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task JavadocComments()
+    {
+        var fileBuilder = new JavaFile("com.test", "")
+            .AddClass("TestClass", c =>
+            {
+                c.AddMethod("Image", "getImage", method =>
+                {
+                    method.WithComments(@"
+Returns an Image object that can then be painted on the screen. 
+The url argument must specify an absolute <a href=""#{@link}"">{@link URL}</a>. The name
+argument is a specifier that is relative to the url argument. 
+<p>
+This method always returns immediately, whether or not the 
+image exists. When this applet attempts to draw the image on
+the screen, the data will be loaded. The graphics primitives 
+that draw the image will incrementally paint on the screen. 
+
+@param  url  an absolute URL giving the base location of the image
+@param  name the location of the image, relative to the url argument
+@return      the image at the specified URL
+@see         Image");
+                    method.AddParameter("URL", "url");
+                    method.AddParameter("String", "name");
+                    method.AddStatement(new JavaStatementBlock("try")
+                            .AddStatement("return getImage(new URL(url, name));"))
+                        .AddStatement(new JavaStatementBlock("catch (MalformedURLException e)")
+                            .AddStatement("return null;"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task CodeBlocks()
+    {
+        var fileBuilder = new JavaFile("com.test", "")
+            .AddClass("TestClass", c =>
+            {
+                c.AddCodeBlock($@"// This is a free flow code block
+public void TestMethod()
+{{
+}}");
+            })
+            .AddInterface("TestInterface", i =>
+            {
+                i.AddCodeBlock($@"// This is a free flow code block
+void TestMethod();");
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

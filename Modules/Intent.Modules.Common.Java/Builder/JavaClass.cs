@@ -29,6 +29,7 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     public IList<JavaField> Fields { get; } = new List<JavaField>();
     public IList<JavaConstructor> Constructors { get; } = new List<JavaConstructor>();
     public IList<JavaClassMethod> Methods { get; } = new List<JavaClassMethod>();
+    public IList<JavaCodeBlock> CodeBlocks { get; } = new List<JavaCodeBlock>();
     
     public bool IsFinal { get; set; }
     public bool IsAbstract { get; set; }
@@ -92,6 +93,12 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     public JavaClass AddMethod(string returnType, string name, Action<JavaClassMethod> configure = null)
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
+    }
+    
+    public JavaClass AddCodeBlock(string codeLine)
+    {
+        CodeBlocks.Add(new JavaCodeBlock(codeLine));
+        return this;
     }
     
     public JavaClass InsertMethod(int index, string returnType, string name, Action<JavaClassMethod> configure = null)
@@ -169,6 +176,7 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
         codeBlocks.AddRange(Fields);
         codeBlocks.AddRange(Constructors);
         codeBlocks.AddRange(Methods);
+        codeBlocks.AddRange(CodeBlocks);
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";

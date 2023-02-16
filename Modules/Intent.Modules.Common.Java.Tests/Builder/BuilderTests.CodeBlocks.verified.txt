@@ -1,0 +1,16 @@
+﻿package com.test;
+
+
+
+public interface TestInterface {
+
+    // This is a free flow code block
+    void TestMethod();
+}
+
+public class TestClass {
+    // This is a free flow code block
+    public void TestMethod()
+    {
+    }
+}

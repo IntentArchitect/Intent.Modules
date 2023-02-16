@@ -4,6 +4,7 @@
 - Update: Class Properties can be static.
 - Update: Constructor parameter can have default value.
 - Update: Method chain statement builder can now omit semi-colons.
+- Update: Free Code Blocks now supported on Interfaces and Classes for cases where only freetext needs to be added a Class / Interface.
 - Fixed: Methods with abstract keyword and without statements will not output method body.
 
 ### Version 3.3.27
