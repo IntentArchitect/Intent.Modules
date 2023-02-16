@@ -25,7 +25,7 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Fully, Body = Mode.Merge)]
-    partial class <#= ClassName #> : <#= string.Join(", ", GetBaseTypes()) #>
+    <#= GetAccessModifier() #>class <#= ClassName #> : <#= string.Join(", ", GetBaseTypes()) #>
     {
         public const string TemplateId = "<#= GetTemplateId() #>";
 

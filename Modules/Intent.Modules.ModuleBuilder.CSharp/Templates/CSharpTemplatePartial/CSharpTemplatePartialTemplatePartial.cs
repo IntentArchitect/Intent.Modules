@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
+using Intent.ModuleBuilder.Api;
 using Intent.ModuleBuilder.CSharp.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
@@ -64,6 +65,16 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                     moduleId: Model.GetModelType().ParentModule.Name,
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }
+        }
+
+        private string GetAccessModifier()
+        {
+            if (Model.GetCSharpTemplateSettings()?.TemplatingMethod()?.IsCSharpFileBuilder() == true
+                || Model.GetCSharpTemplateSettings()?.TemplatingMethod()?.IsCustom() == true)
+            {
+                return "public partial ";
+            }
+            return "partial ";
         }
 
         string IModuleBuilderTemplate.GetModelType()
