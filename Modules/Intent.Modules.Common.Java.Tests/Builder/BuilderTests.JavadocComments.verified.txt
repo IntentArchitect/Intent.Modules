@@ -26,4 +26,10 @@ public class TestClass {
             return null;
         }
     }
+
+    /**
+    * This is a test
+    */
+    public void Basic() {
+    }
 }

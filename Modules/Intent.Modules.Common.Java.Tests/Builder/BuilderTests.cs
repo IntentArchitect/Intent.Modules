@@ -109,6 +109,13 @@ that draw the image will incrementally paint on the screen.
                         .AddStatement(new JavaStatementBlock("catch (MalformedURLException e)")
                             .AddStatement("return null;"));
                 });
+                c.AddMethod("void", "Basic", method =>
+                {
+                    method.WithComments(@"/**
+* This is a test
+*/")
+                        .CommentWithoutDelimiters();
+                });
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());

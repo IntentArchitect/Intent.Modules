@@ -34,6 +34,12 @@ public abstract class JavaDeclaration<TImpl> : JavaMetadataBase<TImpl>
         return (TImpl)this;
     }
 
+    public TImpl CommentWithoutDelimiters()
+    {
+        JavadocComments.WithoutCommentDelimiters();
+        return (TImpl)this;
+    }
+
     protected string GetAnnotations(string indentation)
     {
         return $@"{(Annotations.Any() ? $@"{string.Join(@"

@@ -6,6 +6,7 @@ namespace Intent.Modules.Common.Java.Builder;
 public class JavadocComments : JavaMetadataBase<JavadocComments>
 {
     public readonly List<string> Statements = new();
+    public bool HasCommentDelimiters { get; private set; } = true;
 
     public JavadocComments(params string[] statements)
     {
@@ -24,6 +25,12 @@ public class JavadocComments : JavaMetadataBase<JavadocComments>
         return this;
     }
 
+    public JavadocComments WithoutCommentDelimiters()
+    {
+        HasCommentDelimiters = false;
+        return this;
+    }
+
     public bool IsEmpty() => !Statements.Any();
 
     public override string ToString()
@@ -36,6 +43,12 @@ public class JavadocComments : JavaMetadataBase<JavadocComments>
         if (!Statements.Any())
         {
             return string.Empty;
+        }
+
+        if (!HasCommentDelimiters)
+        {
+            return @$"{indentation}{string.Join($@"
+{indentation}", Statements)}";
         }
 
         return @$"{indentation}/**
