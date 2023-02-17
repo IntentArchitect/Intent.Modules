@@ -36,6 +36,11 @@ public class CSharpConstructorCall
             return $" : {_type}({string.Join(", ", Arguments)})";
         }
 
+        if (_type == "this")
+        {
+            return " : this()";
+        }
+
         return string.Empty;
     }
 }

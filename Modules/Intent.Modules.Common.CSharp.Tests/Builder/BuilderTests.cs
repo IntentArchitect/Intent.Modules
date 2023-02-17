@@ -139,4 +139,29 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task ConstructorCalls()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddUsing("System")
+            .AddClass("ConcreteClass", c =>
+            {
+                c.WithBaseType("MyBaseClass");
+                c.AddConstructor(ctor => ctor
+                    .CallsBase());
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("bool", "enabled")
+                    .CallsThis());
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "value")
+                    .CallsThis(t => t.AddArgument("value").AddArgument("1")));
+                c.AddConstructor(ctor => ctor
+                    .AddParameter("string", "value")
+                    .AddParameter("int", "otherValue")
+                    .CallsBase(b => b.AddArgument("value").AddArgument("otherValue")));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

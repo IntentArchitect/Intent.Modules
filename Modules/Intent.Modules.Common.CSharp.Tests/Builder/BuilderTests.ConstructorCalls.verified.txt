@@ -1,0 +1,24 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class ConcreteClass : MyBaseClass
+    {
+        public ConcreteClass()
+        {
+        }
+
+        public ConcreteClass(bool enabled) : this()
+        {
+        }
+
+        public ConcreteClass(string value) : this(value, 1)
+        {
+        }
+
+        public ConcreteClass(string value, int otherValue) : base(value, otherValue)
+        {
+        }
+    }
+}
