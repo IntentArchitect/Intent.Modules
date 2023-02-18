@@ -1,3 +1,11 @@
+### Version 4.0.1
+
+- Fixed: Creating a new package will no longer create a new Application element. Only the first package will have an Application element.
+
+### Version 4.0.0
+
+- New: Designer rebuilt so that it now works off of a Diagram. Application is also now part of diagram and publish/subscribe metaphors are now associations.
+
 ### Version 3.3.3
 
 - Eventing designer supports Messages, Publishers and Subscribers with this release.
