@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.CSharp.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<CSharpTemplateModel> CSharpTemplates => UnderlyingPackage.ChildElements
             .GetElementsOfType(CSharpTemplateModel.SpecializationTypeId)
             .Select(x => new CSharpTemplateModel(x))
