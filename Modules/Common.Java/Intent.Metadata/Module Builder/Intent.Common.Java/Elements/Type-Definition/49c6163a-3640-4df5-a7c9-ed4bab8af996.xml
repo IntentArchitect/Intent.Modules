@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="49c6163a-3640-4df5-a7c9-ed4bab8af996" type="Type-Definition" typeId="d4e577cd-ad05-4180-9a2e-fff4ddea0e1e">
+  <name>Map</name>
+  <display>Map&lt;K, V&gt;</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes>
+    <genericType id="cd19b6e0-4c19-4457-a1b2-1258e11f1de6">
+      <name>K</name>
+    </genericType>
+    <genericType id="9fda189e-6c08-434f-8a96-61bf45e43c1f">
+      <name>V</name>
+    </genericType>
+  </genericTypes>
+  <isMapped>false</isMapped>
+  <parentFolderId>1a6b23ae-b28a-487f-959d-0a247da03c55</parentFolderId>
+  <packageId>1b8f2b45-99c0-42dc-b28e-bcd4621c3e71</packageId>
+  <packageName>Intent.Common.Java</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="7c40ee54-3dd5-4bdd-b6d3-2d65be7c928e" name="Java">
+      <addedByDefault>false</addedByDefault>
+      <definitionPackageName>Intent.Common.Java</definitionPackageName>
+      <definitionPackageId>1b8f2b45-99c0-42dc-b28e-bcd4621c3e71</definitionPackageId>
+      <properties>
+        <property name="3a9b6439-bed1-4d6c-b7a7-88bcfb989560" display="Type" value="Map" isActive="true" />
+        <property name="f18998f9-4a4b-4b2a-9323-d01f3edd6a00" display="Package" value="java.util" isActive="true" />
+        <property name="f7e7c272-2b24-476b-aaf2-985b4982ec02" display="Is Primitive" value="false" isActive="true" />
+        <property name="9da76c15-d7f0-44c1-8c0a-9ff665d32d4d" display="Is Collection" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>
