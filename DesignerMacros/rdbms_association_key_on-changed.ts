@@ -6,6 +6,11 @@ if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("
     return;
 }
 
+let sourceEnd = association.getOtherEnd().typeReference;
+if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+    return;
+}
+
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
 

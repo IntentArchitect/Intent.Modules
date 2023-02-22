@@ -4,6 +4,10 @@ if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("
     return;
 }
 
+if (element.getPackage().specialization !== "Domain Package") {
+    return;
+}
+
 let pk = createElement("Attribute", "id", element.id);
 pk.setOrder(0);
 pk.typeReference.setType(getSurrogateKeyType()); 

@@ -1,5 +1,10 @@
 (async () => {
 
+let sourceEnd = association.getOtherEnd().typeReference;
+if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+    return;
+}
+
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
 if (targetType && targetType.getMetadata("auto-manage-keys") != "false") {

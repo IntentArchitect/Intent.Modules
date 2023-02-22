@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.4.0</version>
+  <version>3.4.1-pre.1</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Support for describing Entities in Relational DB terms.</summary>
   <description>Support for describing Entities in Relational DB terms.</description>
@@ -20,7 +20,6 @@
   <files></files>
   <metadata>
     <install target="Domain;Module Builder" src="Metadata/Domain/Intent.Metadata.RDBMS.pkg.config" externalReference="AF8F3810-745C-42A2-93C8-798860DC45B1" />
-    <install src="modelers/RDBMS Types.designer.settings" externalReference="1f1dbe49-766a-44f8-bf58-6c9fd5e4e9c5" target="Domain" />
     <install target="Domain" src="modelers/RDBMS Key Automation Extensions.designer.settings" externalReference="ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3" />
   </metadata>
   <moduleSettings>

@@ -14,6 +14,9 @@
           <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getParent().getMetadata("auto-manage-keys") == "false") {
     return;
 }
+if (element.getPackage().specialization !== "Domain Package") {
+    return;
+}
 if (element.getName().toLocaleLowerCase() == "id" &amp;&amp;
     element.hasStereotype("Primary Key") &amp;&amp;
     element.typeReference.getType()) {
@@ -31,7 +34,10 @@ if (associationTarget &amp;&amp; element.getMetadata("association") != associati
 }</script>
         </macro>
         <macro trigger="on-loaded">
-          <script>const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+          <script>if (element.getPackage().specialization !== "Domain Package") {
+    return;
+}
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 let associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty("Association Target")?.getValue();
 let existingAssociation = element.getMetadata("association");
 if (!associationTarget &amp;&amp; existingAssociation) {
@@ -51,10 +57,17 @@ if (existingAssociation &amp;&amp; !element.getMetadata("fk-original-name")) {
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
-          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getMetadata("auto-manage-keys") == "false"){
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getMetadata("auto-manage-keys") == "false") {
     return;
 }
-
+if (element.getPackage().specialization !== "Domain Package") {
+    return;
+}
+let pk = createElement("Attribute", "id", element.id);
+pk.setOrder(0);
+pk.typeReference.setType(getSurrogateKeyType());
+pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
+pk.setMetadata("is-managed-key", "true");
 function getSurrogateKeyType() {
     const commonTypes = {
         guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
@@ -65,25 +78,16 @@ function getSurrogateKeyType() {
         long: "e9e575eb-f8de-4ce4-9838-2d09665a752d",
         int: "b3e5cb3b-8a26-4346-810b-9789afa25a82"
     };
-
     const typeNameToIdMap = new Map();
     typeNameToIdMap.set("guid", commonTypes.guid);
     typeNameToIdMap.set("int", lookup(javaTypes.int) != null ? javaTypes.int : commonTypes.int);
     typeNameToIdMap.set("long", lookup(javaTypes.long) != null ? javaTypes.long : commonTypes.long);
-
     let typeName = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Type")?.value ?? "int";
     if (typeNameToIdMap.has(typeName)) {
         return typeNameToIdMap.get(typeName);
     }
-    
     return typeNameToIdMap.get("guid");
-}
-
-let pk = createElement("Attribute", "id", element.id);
-pk.setOrder(0);
-pk.typeReference.setType(getSurrogateKeyType()); 
-pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
-pk.setMetadata("is-managed-key", "true");</script>
+}</script>
         </macro>
       </macros>
     </elementExtension>
@@ -113,6 +117,10 @@ pk.setMetadata("is-managed-key", "true");</script>
         <macro trigger="on-changed">
           <script>const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit") {
+    return;
+}
+let sourceEnd = association.getOtherEnd().typeReference;
+if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
     return;
 }
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
@@ -250,15 +258,18 @@ function getPrimaryKeysWithMapPath(entity) {
 }</script>
         </macro>
         <macro trigger="on-deleted">
-          <script>let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
+          <script>let sourceEnd = association.getOtherEnd().typeReference;
+if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+    return;
+}
+let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
 if (targetType &amp;&amp; targetType.getMetadata("auto-manage-keys") != "false") {
     targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
 }
 if (sourceType &amp;&amp; sourceType.getMetadata("auto-manage-keys") != "false") {
     sourceType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
-}
-</script>
+}</script>
         </macro>
       </macros>
     </associationExtension>
@@ -283,34 +294,46 @@ if (sourceType &amp;&amp; sourceType.getMetadata("auto-manage-keys") != "false")
       </targetEndExtension>
       <macros>
         <macro trigger="on-changed">
-          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit") {
     return;
 }
-
+let sourceEnd = association.getOtherEnd().typeReference;
+if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+    return;
+}
 let sourceType = association.getOtherEnd().typeReference.getType();
 let targetType = association.typeReference.getType();
-
 if (sourceType.getMetadata("auto-manage-keys") == "false") {
     return;
 }
-
 if (sourceType &amp;&amp; targetType) {
     var pks = sourceType.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key") &amp;&amp; x.getMetadata("is-managed-key") == "true");
     pks.forEach(x =&gt; x.delete());
 }</script>
         </macro>
         <macro trigger="on-deleted">
-          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
+          <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit") {
     return;
 }
-
+let sourceEnd = association.getOtherEnd().typeReference;
+if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+    return;
+}
 let sourceType = association.getOtherEnd().typeReference.getType();
 let targetType = association.typeReference.getType();
-
 if (sourceType.getMetadata("auto-manage-keys") == "false") {
     return;
 }
-
+if (sourceType &amp;&amp; targetType) {
+    var pks = sourceType.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+    if (pks.length == 0) {
+        let pk = createElement("Attribute", "id", sourceType.id.toString());
+        pk.typeReference.setType(getSurrogateKeyType());
+        pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
+        pk.setMetadata("is-managed-key", "true");
+        pk.setOrder(0);
+    }
+}
 function getSurrogateKeyType() {
     const commonTypes = {
         guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
@@ -321,30 +344,15 @@ function getSurrogateKeyType() {
         long: "e9e575eb-f8de-4ce4-9838-2d09665a752d",
         int: "b3e5cb3b-8a26-4346-810b-9789afa25a82"
     };
-
     const typeNameToIdMap = new Map();
     typeNameToIdMap.set("guid", commonTypes.guid);
     typeNameToIdMap.set("int", lookup(javaTypes.int) != null ? javaTypes.int : commonTypes.int);
     typeNameToIdMap.set("long", lookup(javaTypes.long) != null ? javaTypes.long : commonTypes.long);
-
     let typeName = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Type")?.value ?? "int";
     if (typeNameToIdMap.has(typeName)) {
         return typeNameToIdMap.get(typeName);
     }
-    
     return typeNameToIdMap.get("guid");
-}
-
-
-if (sourceType &amp;&amp; targetType) {
-    var pks = sourceType.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-    if (pks.length == 0) {
-        let pk = createElement("Attribute", "id", sourceType.id.toString());
-        pk.typeReference.setType(getSurrogateKeyType());
-        pk.addStereotype("b99aac21-9ca4-467f-a3a6-046255a9eed6");
-        pk.setMetadata("is-managed-key", "true");
-        pk.setOrder(0);
-    }
 }</script>
         </macro>
       </macros>
