@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -40,6 +41,7 @@ public static class HasCSharpStatementsExtensions
         return parent.AddStatement(new CSharpStatement(statement), configure);
     }
 
+    [FixFor_Version4("Remove this overload as 'public static TParent AddStatement<TParent, TStatement>(this TParent parent, TStatement statement, Action<TStatement> configure = null)' can be used instead")]
     public static TParent AddStatement<TParent>(this TParent parent, CSharpStatement statement, Action<CSharpStatement> configure = null)
         where TParent : IHasCSharpStatements
     {
@@ -47,6 +49,64 @@ public static class HasCSharpStatementsExtensions
         statement.Parent = parent;
         configure?.Invoke(statement);
         return parent;
+    }
+
+    public static TParent AddStatement<TParent, TStatement>(this TParent parent, TStatement statement, Action<TStatement> configure = null)
+        where TParent : IHasCSharpStatements
+        where TStatement : CSharpStatement
+    {
+        parent.Statements.Add(statement);
+        statement.Parent = parent;
+        configure?.Invoke(statement);
+        return parent;
+    }
+
+    public static TParent AddFieldAssignmentStatement<TParent>(this TParent parent, string lhs, string rhs, Action<CSharpFieldAssignmentStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(lhs, rhs), configure);
+    }
+
+    public static TParent AddInvocationStatement<TParent>(this TParent parent, string invocation, Action<CSharpInvocationStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(invocation), configure);
+    }
+
+    public static TParent AddLambdaBlock<TParent>(this TParent parent, string invocation, Action<CSharpLambdaBlock> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(invocation), configure);
+    }
+
+    public static TParent AddMethodChainStatement<TParent>(this TParent parent, string initialInvocation, Action<CSharpMethodChainStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(initialInvocation), configure);
+    }
+
+    public static TParent AddObjectInitializerBlock<TParent>(this TParent parent, string invocation, Action<CSharpObjectInitializerBlock> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(invocation), configure);
+    }
+
+    public static TParent AddObjectInitStatement<TParent>(this TParent parent, string lhs, CSharpStatement rhs, Action<CSharpObjectInitStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(lhs, rhs), configure);
+    }
+
+    public static TParent AddStatementBlock<TParent>(this TParent parent, Action<CSharpStatementBlock> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(), configure);
+    }
+
+    public static TParent AddStatementBlock<TParent>(this TParent parent, string expression, Action<CSharpStatementBlock> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(expression), configure);
     }
 
     public static TParent InsertStatement<TParent>(this TParent parent, int index, CSharpStatement statement, Action<CSharpStatement> configure = null)
