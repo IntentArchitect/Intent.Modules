@@ -27,9 +27,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.DesignerConfig
         {
         }
 
-        public override void OnCreated()
+        public override void BeforeTemplateExecution()
         {
-            base.OnCreated();
             Project.Application.EventDispatcher.Publish(new MetadataRegistrationRequiredEvent(
                 id: Model.Id,
                 targets: new List<(string Id, string Name)>(),

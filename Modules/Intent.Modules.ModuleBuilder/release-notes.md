@@ -1,3 +1,7 @@
+### Version 3.5.1
+
+- Fixed: Removed possible legacy hook-in point for something more appropriate.
+
 ### Version 3.5.0
 
 - New: Added Extension method for checking if a `IPackage` is a certain Model type.
