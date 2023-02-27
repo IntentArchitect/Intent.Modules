@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -15,6 +16,7 @@ public class CSharpFile
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> Classes { get; } = new List<CSharpClass>();
+    public IList<CSharpAssemblyAttribute> AssemblyAttributes { get; } = new List<CSharpAssemblyAttribute>();
 
     public CSharpFile(string @namespace, string relativeLocation)
     {
@@ -91,6 +93,18 @@ public class CSharpFile
     private bool _isBuilt;
     private bool _afterBuildRun;
 
+    public CSharpFile AddAssemblyAttribute(string name, Action<CSharpAssemblyAttribute> configure = null)
+    {
+        return AddAssemblyAttribute(new CSharpAssemblyAttribute(name), configure);
+    }
+
+    public CSharpFile AddAssemblyAttribute(CSharpAssemblyAttribute attribute, Action<CSharpAssemblyAttribute> configure = null)
+    {
+        AssemblyAttributes.Add(attribute);
+        configure?.Invoke(attribute);
+        return this;
+    }
+
     public CSharpFile OnBuild(Action<CSharpFile> configure, int order = 0)
     {
         if (_isBuilt)
@@ -165,7 +179,7 @@ public class CSharpFile
 
         return $@"{string.Join(@"
 ", Usings)}
-[assembly: DefaultIntentManaged({DefaultIntentManaged})]
+[assembly: DefaultIntentManaged({DefaultIntentManaged})]{string.Concat(AssemblyAttributes.Select(x => $"{Environment.NewLine}{x}"))}
 
 namespace {Namespace}
 {{
