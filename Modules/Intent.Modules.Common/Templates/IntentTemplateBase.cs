@@ -272,7 +272,7 @@ namespace Intent.Modules.Common.Templates
         }
 
         /// <summary>
-        /// Called after all templates have been created.
+        /// Called after the current Template has been created and registered.
         /// </summary>
         public virtual void OnCreated()
         {
