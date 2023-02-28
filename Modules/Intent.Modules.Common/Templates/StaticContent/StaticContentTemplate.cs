@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using Intent.Engine;
+using Intent.SdkEvolutionHelpers;
 using Intent.Templates;
 
 namespace Intent.Modules.Common.Templates.StaticContent
@@ -12,8 +14,29 @@ namespace Intent.Modules.Common.Templates.StaticContent
     public class StaticContentTemplate : IntentTemplateBase
     {
         private readonly string _sourcePath;
+        private readonly OverwriteBehaviour _overwriteBehaviour;
         private readonly IReadOnlyDictionary<string, string> _replacements;
         private readonly string _relativeOutputPath;
+
+        /// <summary>
+        /// Obsolete. Use <see cref="StaticContentTemplate(string,string,string,IOutputTarget,IReadOnlyDictionary{string,string},OverwriteBehaviour"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public StaticContentTemplate(
+            string sourcePath,
+            string relativeOutputPath,
+            string templateId,
+            IOutputTarget outputTarget,
+            IReadOnlyDictionary<string, string> replacements)
+            : this(
+                sourcePath,
+                relativeOutputPath,
+                templateId,
+                outputTarget,
+                replacements,
+                OverwriteBehaviour.OverwriteDisabled)
+        {
+        }
 
         /// <summary>
         /// Creates a new instance of <see cref="StaticContentTemplate"/>.
@@ -23,9 +46,11 @@ namespace Intent.Modules.Common.Templates.StaticContent
             string relativeOutputPath,
             string templateId,
             IOutputTarget outputTarget,
-            IReadOnlyDictionary<string, string> replacements) : base(templateId, outputTarget)
+            IReadOnlyDictionary<string, string> replacements,
+            OverwriteBehaviour overwriteBehaviour) : base(templateId, outputTarget)
         {
             _sourcePath = sourcePath;
+            _overwriteBehaviour = overwriteBehaviour;
             _replacements = replacements ?? new Dictionary<string, string>
             {
                 ["ApplicationName"] = outputTarget.ApplicationName(),
@@ -53,7 +78,8 @@ namespace Intent.Modules.Common.Templates.StaticContent
             return new TemplateFileConfig(
                 fileName: Path.GetFileNameWithoutExtension(_relativeOutputPath),
                 fileExtension: Path.GetExtension(_relativeOutputPath)?.TrimStart('.') ?? string.Empty,
-                relativeLocation: Path.GetDirectoryName(_relativeOutputPath));
+                relativeLocation: Path.GetDirectoryName(_relativeOutputPath),
+                overwriteBehaviour: _overwriteBehaviour);
         }
 
         /// <inheritdoc />

@@ -1,4 +1,8 @@
-﻿### Version 3.3.18
+﻿### Version 3.3.19
+
+- It is now possible to control OverwriteBehaviour for Static Content Template Files.
+
+### Version 3.3.18
 
 The following extension methods now use the Humanizer library's implementation and will also now remove any `-` characters present:
 
