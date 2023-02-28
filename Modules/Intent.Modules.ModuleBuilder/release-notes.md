@@ -1,9 +1,7 @@
-### Version 3.5.1
-
-- Fixed: Removed possible legacy hook-in point for something more appropriate.
-
 ### Version 3.5.0
 
+- Fixed: Fixed: Static content template `readme.txt` files would be deleted on subsequent software factory runs.
+- Fixed: Removed possible legacy hook-in point for something more appropriate.
 - New: Added Extension method for checking if a `IPackage` is a certain Model type.
 
 ### Version 3.4.1

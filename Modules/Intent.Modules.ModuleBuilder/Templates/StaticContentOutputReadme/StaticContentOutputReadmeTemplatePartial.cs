@@ -30,7 +30,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentOutputReadme
             return new TemplateFileConfig(
                 fileName: "readme",
                 fileExtension: "txt",
-                relativeLocation: GetContentFolderLocation(Model)
+                relativeLocation: GetContentFolderLocation(Model),
+                overwriteBehaviour: OverwriteBehaviour.OnceOff
             );
         }
 
