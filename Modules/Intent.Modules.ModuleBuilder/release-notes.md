@@ -3,6 +3,8 @@
 - Fixed: Fixed: Static content template `readme.txt` files would be deleted on subsequent software factory runs.
 - Fixed: Removed possible legacy hook-in point for something more appropriate.
 - New: Added Extension method for checking if a `IPackage` is a certain Model type.
+- `ApiPackageExtensionModelTemplate` will not run unless it has at least one method to generate.
+- `ApiPackageExtensionModelTemplate` will add NuGet dependencies of extended packages if available.
 
 ### Version 3.4.1
 

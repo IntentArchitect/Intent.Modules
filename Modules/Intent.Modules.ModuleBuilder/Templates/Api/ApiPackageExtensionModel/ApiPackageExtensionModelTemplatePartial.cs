@@ -1,10 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.CSharp.VisualStudio;
 using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
@@ -32,6 +34,28 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageExtensionModel
             return new CSharpFileConfig(
                 className: $"{Model.ApiModelName}",
                 @namespace: Model.ParentModule.ApiNamespace);
+        }
+
+        public override void BeforeTemplateExecution()
+        {
+            base.BeforeTemplateExecution();
+
+            var module = new IntentModuleModel(GetBasePackageModel().InternalElement.Package);
+            if (!CanRunTemplate() ||
+                string.IsNullOrWhiteSpace(module.NuGetPackageId) ||
+                string.IsNullOrWhiteSpace(module.NuGetPackageVersion) ||
+                OutputTarget.GetProject().Name == module.NuGetPackageId)
+            {
+                return;
+            }
+
+            AddNugetDependency(module.NuGetPackageId, module.NuGetPackageVersion);
+        }
+
+        public override bool CanRunTemplate()
+        {
+            return base.CanRunTemplate() &&
+                   Model.MenuOptions?.ElementCreations.Any() == true;
         }
 
         private PackageSettingsModel GetBasePackageModel()
