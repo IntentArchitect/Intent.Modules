@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -433,7 +434,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 .ToList();
             foreach (var package in packagesToInclude)
             {
-                if (!package.GetModuleSettings().ReferenceInDesigner()?.Any() ?? true)
+                if (package.GetModuleSettings().ReferenceIn()?.IsAllDesigners() != true &&
+                    package.GetModuleSettings().ReferenceInDesigner()?.Any() != true)
                 {
                     Logging.Log.Warning($"Intent Module [{package.Name}] package is included but not set to be automatically referenced in a designer. Check your Module Settings in the Module Builder designer.");
                 }
@@ -446,10 +448,15 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     metadataRegistrations.Add(existing);
                 }
 
-                var targets = package.GetModuleSettings().ReferenceInDesigner() ?? new IElement[0];
-                existing.SetAttributeValue("target", targets.Any()
-                    ? string.Join(";", targets.Select(x => x.Name))
-                    : null);
+                var referenceInDesigners = package.GetModuleSettings().ReferenceInDesigner();
+                var referenceIn = package.GetModuleSettings().ReferenceIn();
+                var target = referenceIn switch
+                {
+                    _ when referenceIn.IsAllDesigners() => "*",
+                    _ when referenceInDesigners != null => string.Join(";", referenceInDesigners.Select(x => x.Name)),
+                    _ => null
+                };
+                existing.SetAttributeValue("target", target);
 
                 existing.SetAttributeValue("src", path);
                 existing.SetAttributeValue("externalReference", package.Id);

@@ -85,6 +85,19 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="959b2f6f-bc0f-42d3-8cae-7b3686037b2f">
+      <name>Reference in</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>[]</defaultValue>
+      <valueOptions>
+        <option>All Designers</option>
+        <option>Selected Designers</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
     <property id="27d378b6-9011-4ced-86b7-b976d690ceb7">
       <name>Reference in Designer</name>
       <type>string</type>
@@ -95,6 +108,7 @@
       <lookupTypes>
         <type>7f5fcc9f-c721-4a31-bfe2-7909f4289420</type>
       </lookupTypes>
+      <isActiveFunction>return properties["Reference in"].value === "Selected Designers";</isActiveFunction>
     </property>
   </properties>
 </stereotypeDefinition>

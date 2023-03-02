@@ -77,9 +77,52 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Include in Module");
             }
 
+            public ReferenceInOptions ReferenceIn()
+            {
+                return new ReferenceInOptions(_stereotype.GetProperty<string>("Reference in"));
+            }
+
             public IElement[] ReferenceInDesigner()
             {
                 return _stereotype.GetProperty<IElement[]>("Reference in Designer") ?? new IElement[0];
+            }
+
+            public class ReferenceInOptions
+            {
+                public readonly string Value;
+
+                public ReferenceInOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public ReferenceInOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "All Designers":
+                            return ReferenceInOptionsEnum.AllDesigners;
+                        case "Selected Designers":
+                            return ReferenceInOptionsEnum.SelectedDesigners;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsAllDesigners()
+                {
+                    return Value == "All Designers";
+                }
+                public bool IsSelectedDesigners()
+                {
+                    return Value == "Selected Designers";
+                }
+            }
+
+            public enum ReferenceInOptionsEnum
+            {
+                AllDesigners,
+                SelectedDesigners
             }
 
         }
