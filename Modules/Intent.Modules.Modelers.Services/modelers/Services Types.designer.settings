@@ -244,6 +244,10 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
         <childElementSetting type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
           <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
           <saveAsOwnFile>false</saveAsOwnFile>
+          <validateFunction>let otherAttributes = getParent().getChildren("DTO-Field").filter(x =&gt; x.id != id);
+if (otherAttributes.some(x =&gt; x.getName() == getName())) {
+    return "Please ensure all field names are unique."
+}</validateFunction>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
           <allowGenericTypes>false</allowGenericTypes>
