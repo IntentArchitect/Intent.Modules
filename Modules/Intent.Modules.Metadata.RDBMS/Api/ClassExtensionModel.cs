@@ -19,6 +19,11 @@ namespace Intent.Metadata.RDBMS.Api
         {
         }
 
+        public IList<IndexModel> Indices => _element.ChildElements
+            .GetElementsOfType(IndexModel.SpecializationTypeId)
+            .Select(x => new IndexModel(x))
+            .ToList();
+
         public IList<IndexModel> Indexes => _element.ChildElements
             .GetElementsOfType(IndexModel.SpecializationTypeId)
             .Select(x => new IndexModel(x))
