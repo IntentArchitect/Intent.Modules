@@ -1,3 +1,7 @@
+### Version 3.4.1
+
+- Fixed: DTO fields will no longer be PascalCased.
+
 ### Version 3.4.0
 
 - New: Now DTOs will include fields of mapped Entities' inheritance hierarchies.

@@ -45,7 +45,7 @@ fields.forEach(f => {
 });
 
 function getFieldFormat(str) : string {
-    return toPascalCase(str);
+    return str;
 }
 
 function getDomainAttributeNameFormat(str) : string {

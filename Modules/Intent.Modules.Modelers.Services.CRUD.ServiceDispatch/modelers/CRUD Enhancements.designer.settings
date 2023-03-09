@@ -60,7 +60,7 @@ function getRoutingFormat(str) {
     return pluralize(str);
 }
 function getFieldFormat(str) {
-    return toPascalCase(str);
+    return str;
 }
 function getDomainAttributeNameFormat(str) {
     let convention = getDomainAttributeNamingConvention();
@@ -776,7 +776,7 @@ fields.forEach(f =&gt; {
     f.typeReference.setType(dto.id);
 });
 function getFieldFormat(str) {
-    return toPascalCase(str);
+    return str;
 }
 function getDomainAttributeNameFormat(str) {
     let convention = getDomainAttributeNamingConvention();
@@ -1029,8 +1029,7 @@ function getDomainAttributeNamingConvention() {
 // to domain entities that are within a Cosmos DB paradigm.
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") &amp;&amp; attribute.name === "PartitionKey";
-}
-</script>
+}</script>
         </macro>
       </macros>
     </elementExtension>
@@ -1088,7 +1087,7 @@ function getRoutingFormat(str) {
     return pluralize(str);
 }
 function getFieldFormat(str) {
-    return toPascalCase(str);
+    return str;
 }
 function getDomainAttributeNameFormat(str) {
     let convention = getDomainAttributeNamingConvention();
