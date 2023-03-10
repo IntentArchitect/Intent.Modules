@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Xml.Linq;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -20,7 +19,7 @@ public class CSharpFile
 
     public CSharpFile(string @namespace, string relativeLocation)
     {
-        Namespace = @namespace;
+        Namespace = @namespace.ToCSharpNamespace();
         RelativeLocation = relativeLocation;
     }
 
