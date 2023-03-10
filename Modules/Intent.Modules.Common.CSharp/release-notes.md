@@ -5,7 +5,7 @@
 - Update: Constructor parameter can have default value.
 - Update: Method chain statement builder can now omit semi-colons.
 - Update: Free Code Blocks now supported on Interfaces and Classes for cases where only freetext needs to be added a Class / Interface.
-- Update: Added `TimeSpan` type and made the `Intent.Common.CSharp` package be automatically referenced in all designers.
+- Update: Added `TimeSpan` and `Dictionary<TKey, TValue>` types and made the `Intent.Common.CSharp` package be automatically referenced in all designers.
 - Fixed: Methods with abstract keyword and without statements will not output method body.
 - Fixed: ` : this()` constructor call didn't show when telling the Constructor to `CallsThis()` without arguments.
 
