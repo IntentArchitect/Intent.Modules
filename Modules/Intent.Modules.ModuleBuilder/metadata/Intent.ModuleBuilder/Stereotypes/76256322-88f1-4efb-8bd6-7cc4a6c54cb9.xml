@@ -91,7 +91,7 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder />
-      <defaultValue>[]</defaultValue>
+      <defaultValue>Selected Designers</defaultValue>
       <valueOptions>
         <option>All Designers</option>
         <option>Selected Designers</option>
