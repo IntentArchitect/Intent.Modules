@@ -1,4 +1,8 @@
-﻿### Version 3.3.28
+﻿### Version 3.3.29
+
+- Update: Now possible to construct `record`s with the `CSharpFileBuilder`. 
+
+### Version 3.3.28
 
 - Update: Class Constructor can be static.
 - Update: Class Properties can be static.

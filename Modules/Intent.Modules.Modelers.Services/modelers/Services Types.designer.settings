@@ -23,7 +23,7 @@
           <specializationType>DTO</specializationType>
           <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
-          <shortcut>ctrl + shfit + d</shortcut>
+          <shortcut>ctrl + shift + d</shortcut>
           <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -32,7 +32,7 @@
           <specializationType>Type-Definition</specializationType>
           <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
-          <shortcut>ctrl + shfit + t</shortcut>
+          <shortcut>ctrl + shift + t</shortcut>
           <defaultName>NewType</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -414,7 +414,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <specializationType>DTO</specializationType>
           <specializationTypeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</specializationTypeId>
           <text>New DTO</text>
-          <shortcut>ctrl + shfit + d</shortcut>
+          <shortcut>ctrl + shift + d</shortcut>
           <defaultName>NewDto</defaultName>
           <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
           <allowMultiple>true</allowMultiple>
@@ -423,7 +423,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <specializationType>Type-Definition</specializationType>
           <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
-          <shortcut>ctrl + shfit + t</shortcut>
+          <shortcut>ctrl + shift + t</shortcut>
           <defaultName>NewType</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/DataType_256x.png" />
           <allowMultiple>true</allowMultiple>

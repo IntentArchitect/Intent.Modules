@@ -18,6 +18,13 @@ namespace Intent.Modelers.Eventing.Api
                 .ToList();
         }
 
+        public static IList<EventingDTOModel> GetEventingDTOModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(EventingDTOModel.SpecializationTypeId)
+                .Select(x => new EventingDTOModel(x))
+                .ToList();
+        }
+
         public static IList<MessageModel> GetMessageModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(MessageModel.SpecializationTypeId)

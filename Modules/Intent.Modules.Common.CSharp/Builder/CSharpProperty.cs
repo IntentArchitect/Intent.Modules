@@ -13,6 +13,7 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
     public bool IsReadOnly { get; private set; }
     public bool IsStatic { get; private set; }
     public string InitialValue { get; private set; }
+    public string ExplicitlyImplementing { get; private set; }
     public CSharpPropertyAccessor Getter { get; } = CSharpPropertyAccessor.Getter();
     public CSharpPropertyAccessor Setter { get; } = CSharpPropertyAccessor.Setter();
 
@@ -83,6 +84,12 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
         return this;
     }
 
+    public CSharpProperty Init()
+    {
+        Setter.Init();
+        return this;
+    }
+
     public CSharpProperty ReadOnly()
     {
         IsReadOnly = true;
@@ -98,6 +105,12 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
     public CSharpProperty WithInitialValue(string initialValue)
     {
         InitialValue = initialValue;
+        return this;
+    }
+
+    public CSharpProperty ExplicitlyImplements(string @interface)
+    {
+        ExplicitlyImplementing = @interface;
         return this;
     }
 
@@ -131,7 +144,15 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
 
     public override string GetText(string indentation)
     {
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{(IsStatic ? "static " : "")}{Type} {Name}";
+        var modifiers = !string.IsNullOrWhiteSpace(ExplicitlyImplementing)
+            ? string.Empty
+            : $"{AccessModifier}{OverrideModifier}";
+
+        var explicitlyImplementing = !string.IsNullOrWhiteSpace(ExplicitlyImplementing)
+            ? $"{ExplicitlyImplementing}."
+            : string.Empty;
+
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{modifiers}{(IsStatic ? "static " : "")}{Type} {explicitlyImplementing}{Name}";
         if (Getter.IsExpression && IsReadOnly)
         {
             return $@"{declaration} => {Getter.Implementation};";

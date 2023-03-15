@@ -44,6 +44,11 @@ namespace Intent.Modelers.Eventing.Api
             .Select(x => new MessageModel(x))
             .ToList();
 
+        public IList<EventingDTOModel> DTOs => UnderlyingPackage.ChildElements
+            .GetElementsOfType(EventingDTOModel.SpecializationTypeId)
+            .Select(x => new EventingDTOModel(x))
+            .ToList();
+
         public IList<TypeDefinitionModel> Types => UnderlyingPackage.ChildElements
             .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
             .Select(x => new TypeDefinitionModel(x))

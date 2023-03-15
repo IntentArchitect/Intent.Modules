@@ -28,6 +28,15 @@
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <specializationType>Eventing DTO</specializationType>
+          <specializationTypeId>544f1d57-27ce-4985-a4ec-cc01568d72b0</specializationTypeId>
+          <text>New DTO</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <defaultName>NewDto</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
           <specializationType>Type-Definition</specializationType>
           <specializationTypeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</specializationTypeId>
           <text>New Type</text>
@@ -68,9 +77,10 @@
         <type order="0">Folder</type>
         <type order="1">Application</type>
         <type order="2">Message</type>
-        <type order="3">Type-Definition</type>
-        <type order="4">Enum</type>
-        <type order="5">Stereotype-Definition</type>
+        <type order="3">Eventing DTO</type>
+        <type order="4">Type-Definition</type>
+        <type order="5">Enum</type>
+        <type order="6">Stereotype-Definition</type>
       </typeOrder>
       <macros>
         <macro trigger="on-created">
@@ -169,6 +179,89 @@ vertical-align: center`</style>
         <childElementVisualSettings />
       </visualSettings>
       <childElementSettings />
+    </elementSetting>
+    <elementSetting type="Eventing DTO" typeId="544f1d57-27ce-4985-a4ec-cc01568d72b0">
+      <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>const association = getAssociations("Generalization").filter(x =&gt; x.specialization === "Generalization Target End")[0];
+const derivedFrom = association != null
+    ? ` : ${association.typeReference.display}`
+    : "";
+
+return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
+      <allowRename>true</allowRename>
+      <allowAbstract>true</allowAbstract>
+      <allowGenericTypes>true</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>true</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Eventing DTO-Field</type>
+        <type order="1">Generalization</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Eventing DTO-Field</specializationType>
+          <specializationTypeId>93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7</specializationTypeId>
+          <text>Add Field</text>
+          <shortcut>ctrl + shift + f</shortcut>
+          <defaultName>field</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="association">
+          <specializationType>Generalization</specializationType>
+          <specializationTypeId>ccf59371-009d-44dd-9417-a907b463b223</specializationTypeId>
+          <text>New Inheritance</text>
+          <shortcut>ctrl + shift + i</shortcut>
+          <defaultName>NewGeneralization</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Association_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingSettings />
+      <childElementSettings>
+        <childElementSetting type="Eventing DTO-Field" typeId="93eea5d7-a6a6-4fb8-9c87-d2e4c913fbe7">
+          <icon type="UrlImagePath" source="./img/icons/dtos/Field_256x.png" />
+          <saveAsOwnFile>false</saveAsOwnFile>
+          <validateFunction>let otherAttributes = getParent().getChildren("DTO-Field").filter(x =&gt; x.id != id);
+if (otherAttributes.some(x =&gt; x.getName() == getName())) {
+    return "Please ensure all field names are unique."
+}</validateFunction>
+          <allowRename>true</allowRename>
+          <allowAbstract>false</allowAbstract>
+          <allowGenericTypes>false</allowGenericTypes>
+          <allowMapping>false</allowMapping>
+          <allowSorting>false</allowSorting>
+          <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowFindInView>true</allowFindInView>
+          <allowTypeReference>true</allowTypeReference>
+          <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <allowSetValue>true</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>true</isRequired>
+            <targetTypes>
+              <type>Eventing DTO</type>
+              <type>Type-Definition</type>
+              <type>Enum</type>
+            </targetTypes>
+            <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>true</allowIsNullable>
+            <allowIsCollection>true</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
+          <mappingSettings />
+          <childElementSettings />
+        </childElementSetting>
+      </childElementSettings>
     </elementSetting>
     <elementSetting type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
       <icon type="UrlImagePath" source="data:image/png;base64,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" />
@@ -286,6 +379,7 @@ white-space: inherit;`</style>
               <type>Type-Definition</type>
               <type>Enum</type>
               <type>Message</type>
+              <type>Eventing DTO</type>
             </targetTypes>
             <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
             <allowIsNavigable>true</allowIsNavigable>
@@ -311,6 +405,15 @@ white-space: inherit;`</style>
           <shortcut>ctrl + shift + m</shortcut>
           <defaultName>NewMessage</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option type="element">
+          <specializationType>Eventing DTO</specializationType>
+          <specializationTypeId>544f1d57-27ce-4985-a4ec-cc01568d72b0</specializationTypeId>
+          <text>New DTO</text>
+          <shortcut>ctrl + shift + d</shortcut>
+          <defaultName>NewDto</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/dtos/DTO_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
@@ -343,6 +446,7 @@ white-space: inherit;`</style>
       <scriptOptions />
       <typeOrder>
         <type>Message</type>
+        <type>Eventing DTO</type>
         <type>Type-Definition</type>
         <type>Enum</type>
         <type>Stereotype-Definition</type>
@@ -351,6 +455,40 @@ white-space: inherit;`</style>
     </elementExtension>
   </elementExtensions>
   <associationSettings>
+    <associationSetting type="Generalization" typeId="ccf59371-009d-44dd-9417-a907b463b223">
+      <sourceEnd type="Generalization Source End" typeId="62984ee8-c933-4ad3-861f-51663756b44b">
+        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Eventing DTO</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>true</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>false</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </sourceEnd>
+      <targetEnd type="Generalization Target End" typeId="71b21217-2424-496d-be62-a147c8c3c1e7">
+        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <typeReferenceSetting>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Eventing DTO</type>
+          </targetTypes>
+          <allowIsNavigable>false</allowIsNavigable>
+          <allowIsNullable>true</allowIsNullable>
+          <allowIsCollection>true</allowIsCollection>
+          <isNavigableDefault>true</isNavigableDefault>
+          <isNullableDefault>false</isNullableDefault>
+          <isCollectionDefault>false</isCollectionDefault>
+        </typeReferenceSetting>
+      </targetEnd>
+    </associationSetting>
     <associationSetting type="Message Publish Assocation" typeId="022d4c90-e1b6-4747-a15f-640c19503a8f">
       <sourceEnd type="Message Publish Assocation Source End" typeId="282eea12-2b98-4f0f-a28c-50c05b953c8e">
         <displayFunction>return `publisher: ${typeReference.display}`;</displayFunction>

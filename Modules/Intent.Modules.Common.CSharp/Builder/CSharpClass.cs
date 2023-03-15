@@ -6,17 +6,23 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 {
+    private readonly Type _type;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
 
-    public CSharpClass(string name)
+    protected internal CSharpClass(string name, Type type)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        _type = type;
         Name = name;
+    }
+
+    public CSharpClass(string name) : this(name, Type.Class)
+    {
     }
 
     public CSharpCodeSeparatorType BeforeSeparator { get; set; } = CSharpCodeSeparatorType.NewLine;
@@ -34,7 +40,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     public IList<CSharpClass> NestedClasses { get; } = new List<CSharpClass>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public IList<CSharpCodeBlock> CodeBlocks { get; } = new List<CSharpCodeBlock>();
-    
+
     public CSharpClass WithBaseType(string type)
     {
         return ExtendsClass(type);
@@ -119,27 +125,27 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     {
         return InsertMethod(Methods.Count, returnType, name, configure);
     }
-    
+
     public CSharpClass AddCodeBlock(string codeLine)
     {
         CodeBlocks.Add(new CSharpCodeBlock(codeLine));
         return this;
     }
-    
+
     public CSharpClass AddGenericParameter(string typeName)
     {
         var param = new CSharpGenericParameter(typeName);
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpClass AddGenericParameter(string typeName, out CSharpGenericParameter param)
     {
         param = new CSharpGenericParameter(typeName);
         GenericParameters.Add(param);
         return this;
     }
-    
+
     public CSharpClass AddGenericTypeConstraint(string genericParameterName, Action<CSharpGenericTypeConstraint> configure)
     {
         var param = new CSharpGenericTypeConstraint(genericParameterName);
@@ -273,11 +279,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsSealed ? "sealed " : "")}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}class {Name}{GetGenericParameters()}{GetBaseTypes()}{GetGenericTypeConstraints(indentation)}
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsSealed ? "sealed " : "")}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}{_type.ToString().ToLowerInvariant()} {Name}{GetGenericParameters()}{GetBaseTypes()}{GetGenericTypeConstraints(indentation)}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
-    
+
     public string GetText(string indentation)
     {
         return ToString(indentation);
@@ -330,5 +336,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 
         return $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
+    }
+
+    protected internal enum Type
+    {
+        Class,
+        Record
     }
 }

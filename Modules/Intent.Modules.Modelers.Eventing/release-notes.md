@@ -1,3 +1,8 @@
+### Version 4.0.2
+
+- It is now possible to define and use DTOs.
+- Utility methods for module authors to retrieve all used `EnumModel`s, `DTO`s or `Message`s.
+
 ### Version 4.0.1
 
 - Fixed: Creating a new package will no longer create a new Application element. Only the first package will have an Application element.

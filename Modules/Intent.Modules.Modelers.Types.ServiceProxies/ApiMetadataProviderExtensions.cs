@@ -40,6 +40,18 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         }
 
         [IntentManaged(Mode.Ignore)]
+        public static IReadOnlyCollection<EnumModel> GetProxyMappedEnumModels(this IDesigner designer)
+        {
+            return designer.GetServiceProxyModels()
+                .SelectMany(x => x.GetMappedServiceDTOModels())
+                .SelectMany(x => x.Fields)
+                .Where(x => x.TypeReference.Element?.IsEnumModel() == true)
+                .Select(x => x.TypeReference.Element.AsEnumModel())
+                .Distinct()
+                .ToArray();
+        }
+
+        [IntentManaged(Mode.Ignore)]
         public static IEnumerable<ServiceProxyDTOModel> GetDTOModels(this ServiceProxyModel proxy)
         {
             var operationLevelDtos = proxy.Operations

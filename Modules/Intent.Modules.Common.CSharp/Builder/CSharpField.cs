@@ -8,6 +8,7 @@ public class CSharpField : CSharpMember<CSharpField>
     public string Type { get; }
     public string Name { get; }
     public string AccessModifier { get; private set; }
+    public string Assignment { get; private set; }
 
     public CSharpField(string type, string name)
     {
@@ -38,6 +39,20 @@ public class CSharpField : CSharpMember<CSharpField>
         return this;
     }
 
+    public CSharpField Constant(string value)
+    {
+        AccessModifier = "public const ";
+        Assignment = value;
+        return this;
+    }
+
+    public CSharpField PrivateConstant(string value)
+    {
+        AccessModifier = "public const ";
+        Assignment = value;
+        return this;
+    }
+
     public CSharpField CanBeNull()
     {
         _canBeNull = true;
@@ -46,6 +61,10 @@ public class CSharpField : CSharpMember<CSharpField>
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Type}{(_canBeNull ? "?" : "")} {Name};";
+        var assignment = !string.IsNullOrWhiteSpace(Assignment)
+            ? $" = {Assignment}"
+            : string.Empty;
+
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
     }
 }

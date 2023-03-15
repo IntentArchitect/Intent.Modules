@@ -15,6 +15,7 @@ public class CSharpFile
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> Classes { get; } = new List<CSharpClass>();
+    public IList<CSharpRecord> Records { get; } = new List<CSharpRecord>();
     public IList<CSharpAssemblyAttribute> AssemblyAttributes { get; } = new List<CSharpAssemblyAttribute>();
 
     public CSharpFile(string @namespace, string relativeLocation)
@@ -41,6 +42,22 @@ public class CSharpFile
         {
             _configurations.Add((() => configure(@class), 0));
         }
+        return this;
+    }
+
+    public CSharpFile AddRecord(string name, Action<CSharpRecord> configure = null)
+    {
+        var record = new CSharpRecord(name);
+        Records.Add(record);
+        if (_isBuilt)
+        {
+            configure?.Invoke(record);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(record), 0));
+        }
+
         return this;
     }
 
@@ -83,6 +100,7 @@ public class CSharpFile
             className: Interfaces
                            .Select(s => s.Name)
                            .Concat(Classes.Select(s => s.Name))
+                           .Concat(Records.Select(s => s.Name))
                            .FirstOrDefault()
                        ?? throw new Exception("At least one type must be specified for C# file"),
             @namespace: Namespace,
@@ -184,7 +202,10 @@ namespace {Namespace}
 {{
 {string.Join(@"
 
-", Interfaces.Select(x => x.ToString("    ")).Concat(Classes.Select(x => x.ToString("    "))))}
+", Interfaces
+    .Select(x => x.ToString("    "))
+    .Concat(Classes.Select(x => x.ToString("    ")))
+    .Concat(Records.Select(x => x.ToString("    "))))}
 }}";
     }
 }

@@ -28,14 +28,22 @@ public class CSharpPropertyAccessor
         AccessModifier = "public ";
         return this;
     }
+
     public CSharpPropertyAccessor Protected()
     {
         AccessModifier = "protected ";
         return this;
     }
+
     public CSharpPropertyAccessor Private()
     {
         AccessModifier = "private ";
+        return this;
+    }
+
+    public CSharpPropertyAccessor Init()
+    {
+        AccessModifier = "init";
         return this;
     }
 
@@ -67,6 +75,11 @@ public class CSharpPropertyAccessor
 
     public string ToString(string indentation)
     {
+        if (AccessModifier == "init")
+        {
+            return "init;";
+        }
+
         if (Implementation.IsEmpty())
         {
             return $@"{AccessModifier}{Accessor};";
