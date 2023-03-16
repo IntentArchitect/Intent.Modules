@@ -90,6 +90,30 @@ namespace Intent.Metadata.RDBMS.Api
             return true;
         }
 
+        public static View GetView(this ClassModel model)
+        {
+            var stereotype = model.GetStereotype("View");
+            return stereotype != null ? new View(stereotype) : null;
+        }
+
+
+        public static bool HasView(this ClassModel model)
+        {
+            return model.HasStereotype("View");
+        }
+
+        public static bool TryGetView(this ClassModel model, out View stereotype)
+        {
+            if (!HasView(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new View(model.GetStereotype("View"));
+            return true;
+        }
+
         public class CheckConstraint
         {
             private IStereotype _stereotype;
@@ -119,6 +143,29 @@ namespace Intent.Metadata.RDBMS.Api
             private IStereotype _stereotype;
 
             public Table(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
+            }
+
+            public string Schema()
+            {
+                return _stereotype.GetProperty<string>("Schema");
+            }
+
+        }
+
+        public class View
+        {
+            private IStereotype _stereotype;
+
+            public View(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

@@ -1,3 +1,7 @@
+### Version 3.4.2
+
+- New: Support for modelling Sql Views throught the `View` stereotype which can be applied to `Class`s.
+
 ### Version 3.4.1
 
 - Fixed: When properties were unset for `Column` and `Table` stereotypes, the annotation display would show blank or `null` values.
