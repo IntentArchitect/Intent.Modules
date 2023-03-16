@@ -164,4 +164,37 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task MethodChainingTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddUsing("System")
+            .AddClass("TestClass", c =>
+            {
+                c.AddMethod("void", "MethodChainTest", method =>
+                {
+                    method.AddMethodChainStatement("services.AddOpenTelemetry()", main => main
+                        .AddChainStatement(new CSharpInvocationStatement("ConfigureResource")
+                            .AddArgument(new CSharpLambdaBlock("res")
+                                .AddMethodChainStatement("res", res => res
+                                    .WithoutSemicolon()
+                                    .AddChainStatement($@"AddService(""TestService"")")
+                                    .AddChainStatement("AddTelemetrySdk()")
+                                    .AddChainStatement("AddEnvironmentVariableDetector()")))
+                            .WithArgumentsOnNewLines()
+                            .WithoutSemicolon())
+                        .AddChainStatement(new CSharpInvocationStatement("WithTracing")
+                            .AddArgument(new CSharpLambdaBlock("trace")
+                                .AddMethodChainStatement("trace", trace => trace
+                                    .WithoutSemicolon()
+                                    .AddChainStatement("AddAspNetCoreInstrumentation()")))
+                            .WithArgumentsOnNewLines()
+                            .WithoutSemicolon())
+                        .AddMetadata("telemetry-config", true));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

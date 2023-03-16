@@ -5,6 +5,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 {
+    private bool _withSemicolon = true;
     private CSharpCodeSeparatorType _defaultArgumentSeparator = CSharpCodeSeparatorType.None;
 
     public CSharpInvocationStatement(string invocation) : base(invocation)
@@ -33,10 +34,16 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
         _defaultArgumentSeparator = CSharpCodeSeparatorType.NewLine;
         return this;
     }
+    
+    public CSharpInvocationStatement WithoutSemicolon()
+    {
+        _withSemicolon = false;
+        return this;
+    }
 
     public override string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}{Text}({GetArgumentsText(indentation)});";
+        return $"{indentation}{RelativeIndentation}{Text}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : "")}";
     }
 
     private string GetArgumentsText(string indentation)

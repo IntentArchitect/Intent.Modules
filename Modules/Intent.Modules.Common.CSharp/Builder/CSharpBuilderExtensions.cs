@@ -20,6 +20,11 @@ public static class CSharpBuilderExtensions
         }
     }
 
+    internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation, Func<string, string> codeTextTransformer)
+    {
+        return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty, codeTextTransformer)}"));
+    }
+    
     internal static string ConcatCode(this IEnumerable<ICodeBlock> codeBlocks, string indentation)
     {
         return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, string.Empty)}"));
@@ -30,7 +35,7 @@ public static class CSharpBuilderExtensions
         return string.Concat(codeBlocks.Select(s => $"{codeBlocks.DetermineSeparator(s, indentation, separator)}"));
     }
 
-    private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, ICodeBlock s1, string indentation, string separator = "")
+    private static string DetermineSeparator(this IEnumerable<ICodeBlock> codeBlocks, ICodeBlock s1, string indentation, string separator = "", Func<string, string> codeTextTransformer = null)
     {
         var codeBlocksList = codeBlocks.ToList();
         var index = codeBlocksList.IndexOf(s1);
@@ -38,26 +43,33 @@ public static class CSharpBuilderExtensions
 
         if (s0 == null && s1.BeforeSeparator is CSharpCodeSeparatorType.None)
         {
-            return $"{s1.GetText(string.Empty)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+            return $"{GetCodeText(s1, string.Empty, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
         }
 
         if (s0 == null)
         {
-            return $"{Environment.NewLine}{s1.GetText(indentation)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{GetCodeText(s1, indentation, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
         if (s0.AfterSeparator is CSharpCodeSeparatorType.EmptyLines ||
             s1.BeforeSeparator is CSharpCodeSeparatorType.EmptyLines)
         {
-            return $"{Environment.NewLine}{Environment.NewLine}{s1.GetText(indentation)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{Environment.NewLine}{GetCodeText(s1, indentation, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
         if (s0.AfterSeparator is CSharpCodeSeparatorType.NewLine ||
             s1.BeforeSeparator is CSharpCodeSeparatorType.NewLine)
         {
-            return $"{Environment.NewLine}{s1.GetText(indentation)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
+            return $"{Environment.NewLine}{GetCodeText(s1, indentation, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
-        return $"{s1.GetText(string.Empty)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+        return $"{GetCodeText(s1, string.Empty, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+    }
+
+    private static string GetCodeText(ICodeBlock codeBlock, string indentation, Func<string, string> codeTextTransformer)
+    {
+        return codeTextTransformer == null
+            ? codeBlock.GetText(indentation)
+            : indentation + codeTextTransformer(codeBlock.GetText(indentation).TrimStart());
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -33,6 +34,6 @@ public class CSharpMethodChainStatement : CSharpStatement, IHasCSharpStatements
     
     public override string GetText(string indentation)
     {
-        return @$"{indentation}{RelativeIndentation}{Text}{Statements.ConcatCode($"{indentation}{RelativeIndentation}    .")}{(_withSemicolon ? ";" : "")}";
+        return @$"{indentation}{RelativeIndentation}{Text}{Statements.ConcatCode($"{indentation}{RelativeIndentation}    ", s => $".{s}")}{(_withSemicolon ? ";" : "")}";
     }
 }
