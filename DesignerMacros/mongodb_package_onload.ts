@@ -1,21 +1,29 @@
 (async () => {
 
-if (element.getParent().getPackage().specialization !== "Mongo Domain Package") {
+if (element.specialization !== "Mongo Domain Package") {
     return;
 }
 
-if (!element.hasMetadata("id")) {
-    return;
+let classes = lookupTypesOf("Class").filter(x => x.getPackage().id === element.id);
+for (let classElement of classes) {
+    const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+    let pk = classElement.getChildren("Attribute").filter(x => x.hasMetadata("id"))[0];
+    if (pk && pk.hasStereotype(PrimaryKeyStereotypeId)) {
+        return;
+    }
+
+    const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
+    let idAttr = pk || createElement("Attribute", "Id", classElement.id);
+
+    idAttr.setOrder(0);
+    idAttr.typeReference.setType(isAggregateRoot(classElement) ? getDefaultIdType() : GuidTypeId);
+    if (!idAttr.hasMetadata("id")) {
+        idAttr.addMetadata("id", "true");
+    }
+    if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {
+        idAttr.addStereotype(PrimaryKeyStereotypeId);
+    }
 }
-
-const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
-const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
-
-let idAttr = createElement("Attribute", "Id", element.getParent().id);
-idAttr.typeReference.setType(isAggregateRoot(element.getParent()) ? getDefaultIdType() : GuidTypeId);
-idAttr.setOrder(0);
-idAttr.addMetadata("id", "true");
-idAttr.addStereotype(PrimaryKeyStereotypeId);
 
 function isAggregateRoot(element) {
     return !element.getAssociations("Association")
@@ -40,5 +48,5 @@ function getDefaultIdType() : string  {
             return LongTypeId;
     }
 }
-    
+
 })();
