@@ -17,7 +17,7 @@ return schema != null    ? `${schema}.${name}`    : name;</displayFunction>
   <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
-  <parentFolderId>AF8F3810-745C-42A2-93C8-798860DC45B1</parentFolderId>
+  <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
   <order>0</order>
   <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
   <packageName>Intent.Metadata.RDBMS</packageName>
