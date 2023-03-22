@@ -726,7 +726,7 @@ function getNestedCompositionalOwnerForeignKeyDescriptor(entity : MacroApi.Conte
     
     return {
         name: getDomainAttributeNameFormat(`${nestedCompOwner.getName()}Id`),
-        typeId: getSurrogateKeyType(),
+        typeId: Object.values(getPrimaryKeysWithMapPath(nestedCompOwner))[0].typeId,
         id: null,
         specialization: globals.FKSpecialization.Implicit
     };
