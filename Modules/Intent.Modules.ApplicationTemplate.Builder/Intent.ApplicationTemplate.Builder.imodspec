@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ApplicationTemplate.Builder</id>
-  <version>3.4.1</version>
-  <supportedClientVersions>[3.4.0-pre.0, 4.0.0)</supportedClientVersions>
+  <version>3.4.2-pre.0</version>
+  <supportedClientVersions>[3.4.3-pre.1, 4.0.0)</supportedClientVersions>
   <summary>For the creation of Application Templates used to create new Applications in Intent Architect.</summary>
   <description>For the creation of Application Templates used to create new Applications in Intent Architect.</description>
   <authors>Intent.Modules.Net</authors>

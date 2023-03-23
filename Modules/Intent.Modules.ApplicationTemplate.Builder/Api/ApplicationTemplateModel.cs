@@ -25,6 +25,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             }
 
             UnderlyingPackage = package;
+            Defaults = new ApplicationTemplateDefaultsModel(this);
         }
 
         public IPackage UnderlyingPackage { get; }
@@ -65,9 +66,25 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public IIconModel Icon => this.GetApplicationTemplateSettings().Icon();
 
         [IntentManaged(Mode.Ignore)]
-        public string DefaultName => this.GetApplicationTemplateSettings().DefaultName() ?? "NewApplication";
+        public ApplicationTemplateDefaultsModel Defaults { get; }
 
         [IntentManaged(Mode.Ignore)]
-        public string DefaultOutputLocation => this.GetApplicationTemplateSettings().DefaultOutputLocation() ?? "";
+        public class ApplicationTemplateDefaultsModel
+        {
+            private readonly ApplicationTemplateModel _model;
+
+            public ApplicationTemplateDefaultsModel(ApplicationTemplateModel model)
+            {
+                _model = model;
+            }
+
+            public string Name => _model.GetApplicationTemplateDefaults().Name() ?? "NewApplication";
+
+            public string RelativeOutputLocation => _model.GetApplicationTemplateDefaults().RelativeOutputLocation() ?? "";
+
+            public bool PlaceSolutionAndApplicationInTheSameDirectory => _model.GetApplicationTemplateDefaults().PlaceSolutionAndApplicationInTheSameDirectory();
+
+            public bool StoreIntentArchitectFilesSeparateToCodebase => _model.GetApplicationTemplateDefaults().StoreIntentArchitectFilesSeparateToCodebase();
+        }
     }
 }

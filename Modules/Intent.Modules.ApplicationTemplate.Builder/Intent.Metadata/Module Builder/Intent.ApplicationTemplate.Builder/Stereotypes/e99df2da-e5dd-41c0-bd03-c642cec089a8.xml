@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="e99df2da-e5dd-41c0-bd03-c642cec089a8" version="3.1.0">
+  <name>Application Template Defaults</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="cf385bd9-e92f-453d-a3e1-00b9922b57b3">Application Template</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="plus-circle" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>62ad437e-2b3e-4db1-9a0a-c2da4fc211b7</parentFolderId>
+  <order>1</order>
+  <packageId>002e9a7f-e5b7-4392-a60f-b60ae4e86262</packageId>
+  <packageName>Intent.ApplicationTemplate.Builder</packageName>
+  <properties>
+    <property id="9c2430bc-5afa-414a-b862-2432fd1e4e5a">
+      <name>Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>NewApplication</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="61743c96-5b08-4925-8902-28db41244bf3">
+      <hint>Relative to the root location of the solution. Substitutes `${application.name}` and `${solution.name}` with entered values.</hint>
+      <name>Relative Output Location</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <defaultValue>${application.name}</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="48469188-f2bb-43e6-a83c-349d90fb7433">
+      <name>Place solution and application in the same directory</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="54abe4ba-f663-4f73-8072-5c2da7ebbcd7">
+      <name>Store Intent Architect files separate to codebase</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

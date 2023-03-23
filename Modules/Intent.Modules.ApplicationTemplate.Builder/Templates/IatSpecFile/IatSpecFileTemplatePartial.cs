@@ -63,8 +63,13 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
                     Type = (IconType)Icon.Type,
                     Source = Icon.Source
                 },
-                DefaultName = Model.DefaultName,
-                RelativeOutputLocation = Model.DefaultOutputLocation,
+                Defaults = new ApplicationTemplate_Defaults
+                {
+                    Name = Model.Defaults.Name,
+                    RelativeOutputLocation = Model.Defaults.RelativeOutputLocation,
+                    PlaceInSameDirectory = Model.Defaults.PlaceSolutionAndApplicationInTheSameDirectory,
+                    SeparateIntentFiles = Model.Defaults.StoreIntentArchitectFilesSeparateToCodebase,
+                },
                 ComponentGroups = Model.Groups.Select(g => new ApplicationTemplate_ComponentGroup
                 {
                     Name = g.Name,
