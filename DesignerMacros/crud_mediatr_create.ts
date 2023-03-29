@@ -368,9 +368,6 @@ function createCqrsDeleteOperation(service, entity, entityFolder) {
     setHttpStereotype(operation, "Http Settings", {"Verb": "DELETE", "Route": routePath});
     addPrimaryKeysCqrs(command, operation, entityPkDescr);
 
-    let commandParam = createElement("Parameter", getParameterFormat("command"), operation.id);
-    commandParam.typeReference.setType(command.id);
-
     command.collapse();
     operation.collapse();
 }
