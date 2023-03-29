@@ -18,7 +18,7 @@ public class TypeCheckExtensionTests
     static TypeCheckExtensionTests()
     {
         var location = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),
-            "../../../..", "Intent.Modules.Common.Types", "Metadata", "Intent.Common.Types", "Classes");
+            "../../../..", "Intent.Modules.Common.Types", "Intent.Metadata", "Module Builder", "Intent.Common.Types", "Elements", "Type-Definition");
         var commonTypeElements = ElementPersistable.LoadFromDirectory(location, "*.xml");
 
         _canBeReferencedTypes = commonTypeElements.ToDictionary(k => k.Name.ToPascalCase(), v => (ICanBeReferencedType)new CanBeReferenceType(v.Id));

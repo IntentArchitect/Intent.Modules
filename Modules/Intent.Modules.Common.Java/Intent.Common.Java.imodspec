@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Java</id>
-  <version>3.4.1</version>
+  <version>3.4.2-pre.0</version>
   <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
   <summary>Common library support in order to help generate code for the Java language.</summary>
   <description>Common library support in order to help generate code for the Java language.</description>
@@ -13,8 +13,8 @@
     <factoryExtension id="Intent.Common.Java.OutputWeaver" />
   </factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.11" />
-    <dependency id="Intent.Common.Types" version="3.3.6" />
+    <dependency id="Intent.Common" version="3.3.18" />
+    <dependency id="Intent.Common.Types" version="3.3.7" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -23,7 +23,7 @@
     <file src="$outDir$/Intent.Code.Weaving.Java.dll" inspect="false" />
   </files>
   <metadata>
-    <install target="*" src="../Common.Java/Intent.Metadata/Module Builder/Intent.Common.Java/Intent.Common.Java.pkg.config" externalReference="1b8f2b45-99c0-42dc-b28e-bcd4621c3e71" />
+    <install target="*" src="Intent.Metadata/Module Builder/Intent.Common.Java/Intent.Common.Java.pkg.config" externalReference="1b8f2b45-99c0-42dc-b28e-bcd4621c3e71" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />

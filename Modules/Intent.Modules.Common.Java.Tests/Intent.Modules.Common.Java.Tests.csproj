@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Intent.Architect.Persistence" Version="3.4.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.4.1" />
     <PackageReference Include="NSubstitute" Version="4.4.0" />
     <PackageReference Include="Shouldly" Version="4.1.0" />
