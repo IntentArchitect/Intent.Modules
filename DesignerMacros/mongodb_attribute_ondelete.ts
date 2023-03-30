@@ -4,17 +4,16 @@ if (element.getParent().getPackage().specialization !== "Mongo Domain Package") 
     return;
 }
 
-if (!element.hasMetadata("id")) {
+if (!element.hasMetadata("id-managed") || !isAggregateRoot(element.getParent())) {
     return;
 }
 
-const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
 const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 
 let idAttr = createElement("Attribute", "Id", element.getParent().id);
-idAttr.typeReference.setType(isAggregateRoot(element.getParent()) ? getDefaultIdType() : GuidTypeId);
+idAttr.typeReference.setType(getDefaultIdType());
 idAttr.setOrder(0);
-idAttr.addMetadata("id", "true");
+idAttr.addMetadata("id-managed", "true");
 idAttr.addStereotype(PrimaryKeyStereotypeId);
 
 function isAggregateRoot(element) {

@@ -2,9 +2,19 @@
 
 let targetClass = association.typeReference.getType();
 
-if (isAggregateRoot(targetClass)) {
-    targetClass.getChildren("Attribute").filter(x => x.hasMetadata("id")).forEach(x => x.typeReference.setType(getDefaultIdType()));
+let existingIds = targetClass.getChildren("Attribute").filter(p => p.hasMetadata("id-managed"));
+if (isAggregateRoot(targetClass) && existingIds.length === 0) {
+    const PrimaryKeyStereotypeId : string = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+    let idAttr = createElement("Attribute", "Id", targetClass.id);
+    idAttr.typeReference.setType(getDefaultIdType());
+    idAttr.addMetadata("id-managed", "true");
+    idAttr.addStereotype(PrimaryKeyStereotypeId);
+    idAttr.setOrder(0);
+
+    return;
 }
+
+existingIds.forEach(x => x.delete());
 
 function isAggregateRoot(element : MacroApi.Context.IElementApi) : boolean {
     return ! element.getAssociations("Association")
