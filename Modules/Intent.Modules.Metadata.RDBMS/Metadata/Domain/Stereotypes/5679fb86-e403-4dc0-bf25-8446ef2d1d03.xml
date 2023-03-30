@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="5679fb86-e403-4dc0-bf25-8446ef2d1d03" version="3.1.0">
+  <hint>Override specifications for any existing Join Tables</hint>
+  <name>Join Table</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="0a66489f-30aa-417b-a75d-b945863366fd">Association Target End</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZCAMAAAGEMEXHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAADYUExURQAAAP+AQNtJJNVVFcZVDrxRB79RBrtOCrlQCrlPCcJSCbtRCb1QCLtRCL9RCr5SB75RB79QB75SCLxSCL5SCL1SCL1SCL1RCb1RCb1QCb5RCb5RCb5SCb5SCL5RCb1RB79SB79RCL9RCL9QCL5RCL9RCL1RCL5QCL9RCL5RCL5QCL5SCL5RCb1QB79RCL5RCL5SCL5RCMJTCL1RCL5RCL9RCMBSCMFSCMJTCMNTCMRUCMVTCMVUCMZUCMZVCMdUCMdVCMhVCMlVCMlWCMpVCMtWCc1YCc9YCZouWWgAAAAzdFJOUwAEBwwSJiwxMzc7PF1eaGpub3l6fYCDh4uMjpGWmaSrrra3uLm6wcXGx8jI0NLT3OHn+hd6f9EAAAAJcEhZcwAAC4gAAAuIAeWOKUkAAAExSURBVChTnZFnc8IwDIZFMdOMMsIKewXMxmRBUmJW/v8/qhLMFa7XfuDR2a9l6V75zhAifF/ctyrn1fudRAgBuztgK18YNgjwMYTskGWZQLFcKpWLMnlwRhtxhvH5hzG4CZq6JmnymqIJF7wIid4+yMctSiJeaO7LJcDQ2NTSmGZNmWbA6akWnJ/wpDniPZ4dAh1KsxVKK1lKO6ACxDMAmTjgsUVIOkdILk1IC2aK0uwqSrepKLPXtpdkw9hixdhqwdjmn7atEO5eiL0rxBZi+cLnbwr5GBi6fOUrugE70w04cDtUmx9CNXcgcBAS93EYkvFxIKLiP/5Z4fblhBy5E+jF4ccgvdj8LTdz3RuNRoOJteyj9pfWZIDaW5tvuenzmqqqjbYzrKPWh067gVqb69+bOUVi00YNywAAAABJRU5ErkJggg==" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
+  <order>0</order>
+  <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+  <packageName>Intent.Metadata.RDBMS</packageName>
+  <properties>
+    <property id="9221d9ba-36a8-496e-8aea-7c2d782cc66b">
+      <name>Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

@@ -85,6 +85,30 @@ namespace Intent.Metadata.RDBMS.Api
             return true;
         }
 
+        public static JoinTable GetJoinTable(this AssociationTargetEndModel model)
+        {
+            var stereotype = model.GetStereotype("Join Table");
+            return stereotype != null ? new JoinTable(stereotype) : null;
+        }
+
+
+        public static bool HasJoinTable(this AssociationTargetEndModel model)
+        {
+            return model.HasStereotype("Join Table");
+        }
+
+        public static bool TryGetJoinTable(this AssociationTargetEndModel model, out JoinTable stereotype)
+        {
+            if (!HasJoinTable(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new JoinTable(model.GetStereotype("Join Table"));
+            return true;
+        }
+
         public class ForeignKey
         {
             private IStereotype _stereotype;
@@ -127,6 +151,24 @@ namespace Intent.Metadata.RDBMS.Api
             public bool IsUnique()
             {
                 return _stereotype.GetProperty<bool>("IsUnique");
+            }
+
+        }
+
+        public class JoinTable
+        {
+            private IStereotype _stereotype;
+
+            public JoinTable(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
             }
 
         }
