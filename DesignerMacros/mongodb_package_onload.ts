@@ -1,38 +1,43 @@
 (async () => {
-// This script was made using a Typescript source. Don't edit this script directly.
-if (element.specialization !== "Mongo Domain Package") {
-    return;
+{
+    // This script was made using a Typescript source. Don't edit this script directly.
+    if (element.specialization !== "Mongo Domain Package") {
+        return;
+    }
+
+    let classes = lookupTypesOf("Class").filter(x => x.getPackage().id === element.id);
+    for (let classElement of classes) {
+        updatePrimaryKey(classElement);
+        updateForeignKeys(classElement);
+    }
 }
 
-let classes = lookupTypesOf("Class").filter(x => x.getPackage().id === element.id);
-for (let classElement of classes) {
+function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
     const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
-    let pk = classElement.getChildren("Attribute").filter(x => x.hasMetadata("id-managed"))[0];
+    let pk = element.getChildren("Attribute").filter(x => x.hasMetadata("is-managed-key") && !x.hasMetadata("association"))[0];
 
-    if (pk && !isAggregateRoot(classElement)) {
+    if (pk && !isAggregateRoot(element)) {
         pk.delete();
-        continue;
+        return;
     }
 
     if (pk && pk.hasStereotype(PrimaryKeyStereotypeId)) {
-        continue;
+        return;
     }
 
-    let idAttr = pk || createElement("Attribute", "Id", classElement.id);
+    let idAttr = pk || createElement("Attribute", "Id", element.id);
     idAttr.setOrder(0);
     idAttr.typeReference.setType(getDefaultIdType());
-    if (!idAttr.hasMetadata("id-managed")) {
-        idAttr.addMetadata("id-managed", "true");
+    if (!idAttr.hasMetadata("is-managed-key")) {
+        idAttr.addMetadata("is-managed-key", "true");
     }
     if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {
         idAttr.addStereotype(PrimaryKeyStereotypeId);
     }
 }
 
-const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
-
-for (let classElement of classes) {
-    for (let association of classElement.getAssociations()) {
+function updateForeignKeys(element : MacroApi.Context.IElementApi) {
+    for (let association of element.getAssociations()) {
         if (!association.isTargetEnd()) {
             continue;
         }
@@ -43,16 +48,17 @@ for (let classElement of classes) {
             continue;
         }
         
-        if (requiresForeignKey(association) && sourceType.getMetadata("auto-manage-keys") != "false") {
+        if (requiresForeignKey(association)) {
             updateForeignKeyAttribute(sourceType, targetType, association, association.id);
         }
-        if (requiresForeignKey(association.getOtherEnd()) && targetType.getMetadata("auto-manage-keys") != "false") {
+        if (requiresForeignKey(association.getOtherEnd())) {
             updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
         }
     }
 }
 
 function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementApi, destinationEndType : MacroApi.Context.IElementApi, associationEnd : MacroApi.Context.IAssociationApi, associationId: string) {
+    const ForeignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
     let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
@@ -73,10 +79,10 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
         fk.setMetadata("association", associationId);
         fk.setMetadata("is-managed-key", "true");
         
-        let fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+        let fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
         if (!fkStereotype) {
-            fk.addStereotype(foreignKeyStereotypeId);
-            fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+            fk.addStereotype(ForeignKeyStereotypeId);
+            fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
         }
         fkStereotype.getProperty("Association").setValue(associationId);
 
@@ -89,10 +95,6 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
             attr.delete();
         }
     });
-}
-
-function isManyToMany(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
-    return associationEnd.typeReference.isCollection && associationEnd.getOtherEnd().typeReference.isCollection;
 }
 
 function requiresForeignKey(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
@@ -108,7 +110,7 @@ function isAggregateRelationship(associationEnd : MacroApi.Context.IAssociationA
     return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
 }
 
-function isAggregateRoot(element) {
+function isAggregateRoot(element : MacroApi.Context.IElementApi) {
     return !element.getAssociations("Association")
         .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable);
 }

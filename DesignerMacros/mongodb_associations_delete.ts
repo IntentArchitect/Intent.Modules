@@ -1,23 +1,54 @@
 (async () => {
+// This script was made using a Typescript source. Don't edit this script directly.
+{
+    let targetClass = association.typeReference.getType();
 
-let targetClass = association.typeReference.getType();
+    if (targetClass.getPackage().specialization !== "Mongo Domain Package") {
+        return;
+    }
 
-let existingIds = targetClass.getChildren("Attribute").filter(p => p.hasMetadata("id-managed"));
-if (isAggregateRoot(targetClass) && existingIds.length === 0) {
-    const PrimaryKeyStereotypeId : string = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
-    let idAttr = createElement("Attribute", "Id", targetClass.id);
-    idAttr.typeReference.setType(getDefaultIdType());
-    idAttr.addMetadata("id-managed", "true");
-    idAttr.addStereotype(PrimaryKeyStereotypeId);
-    idAttr.setOrder(0);
-
-    return;
+    updatePrimaryKey(targetClass);
+    removeAssociatedForeignKeys(association);
 }
 
-existingIds.forEach(x => x.delete());
+function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
+    const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+    let pk = element.getChildren("Attribute").filter(x => x.hasMetadata("is-managed-key") && !x.hasMetadata("association"))[0];
 
-function isAggregateRoot(element : MacroApi.Context.IElementApi) : boolean {
-    return ! element.getAssociations("Association")
+    if (pk && !isAggregateRoot(element)) {
+        pk.delete();
+        return;
+    }
+
+    if (pk && pk.hasStereotype(PrimaryKeyStereotypeId)) {
+        return;
+    }
+
+    let idAttr = pk || createElement("Attribute", "Id", element.id);
+    idAttr.setOrder(0);
+    idAttr.typeReference.setType(getDefaultIdType());
+    if (!idAttr.hasMetadata("is-managed-key")) {
+        idAttr.addMetadata("is-managed-key", "true");
+    }
+    if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {
+        idAttr.addStereotype(PrimaryKeyStereotypeId);
+    }
+}
+
+function removeAssociatedForeignKeys(associationEnd : MacroApi.Context.IAssociationApi) {
+    const ForeignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+    let targetClass = associationEnd.typeReference.getType();
+    let sourceClass = associationEnd.getOtherEnd().typeReference.getType();
+    targetClass.getChildren()
+        .filter(x => x.getMetadata("association") == associationEnd.id)
+        .forEach(x => x.delete());
+    sourceClass.getChildren()
+        .filter(x => x.getMetadata("association") == associationEnd.id)
+        .forEach(x => x.delete());
+}
+
+function isAggregateRoot(element : MacroApi.Context.IElementApi) {
+    return !element.getAssociations("Association")
         .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable);
 }
 

@@ -1,5 +1,5 @@
 (async () => {
-
+// This script was made using a Typescript source. Don't edit this script directly.
 if (element.getPackage().specialization !== "Mongo Domain Package") {
     return;
 }
@@ -8,7 +8,7 @@ const PrimaryKeyStereotypeId : string = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 
 let idAttr = createElement("Attribute", "Id", element.id);
 idAttr.typeReference.setType(getDefaultIdType());
-idAttr.addMetadata("id-managed", "true");
+idAttr.addMetadata("is-managed-key", "true");
 idAttr.addStereotype(PrimaryKeyStereotypeId);
 
 function getDefaultIdType() : string  {

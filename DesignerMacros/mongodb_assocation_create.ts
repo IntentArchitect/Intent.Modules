@@ -1,4 +1,5 @@
 (async () => {
+// This script was made using a Typescript source. Don't edit this script directly.
 if (!association) { return; }
 
 let sourceEnd = association.getOtherEnd().typeReference;
