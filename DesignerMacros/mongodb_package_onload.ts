@@ -44,97 +44,68 @@ for (let classElement of classes) {
         }
         
         if (requiresForeignKey(association) && sourceType.getMetadata("auto-manage-keys") != "false") {
-            let primaryKeyDict = getPrimaryKeysWithMapPath(targetType);
-            let primaryKeysLen = Object.values(primaryKeyDict).length;
-            Object.values(primaryKeyDict).forEach((pk, index) => {
-                let fk = sourceType.getChildren().filter(x => x.getMetadata("association") == association.id)[index] ||
-                     createElement("Attribute", "", sourceType.id);
-                // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-                if (fk.getName().toLocaleLowerCase() !== `${ toCamelCase(association.getName())}${toPascalCase(pk.name)}`.toLocaleLowerCase()) {
-                    if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
-                        fk.setName(`${ toCamelCase(association.getName())}${toPascalCase(pk.name)}`);
-                        fk.setMetadata("fk-original-name", fk.getName());
-                    }
-                }
-                fk.setMetadata("association", association.id);
-                fk.setMetadata("is-managed-key", "true");
-                
-                let fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
-                if (!fkStereotype) {
-                    fk.addStereotype(foreignKeyStereotypeId);
-                    fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
-                }
-                fkStereotype.getProperty("Association").setValue(association.id);
-    
-                fk.typeReference.setType(pk.typeId);
-                fk.typeReference.setIsNullable(association.typeReference.isNullable);
-            });
-            sourceType.getChildren().filter(x => x.getMetadata("association") == association.id).forEach((attr, index) => {
-                if (index >= primaryKeysLen) {
-                    attr.delete();
-                }
-            });
-            if (targetType.id !== sourceType.id && targetType.getMetadata("auto-manage-keys") != "false") {
-                targetType.getChildren().filter(x => x.getMetadata("association") == association.id).forEach(x => x.delete());
-            }
+            updateForeignKeyAttribute(sourceType, targetType, association, association.id);
         }
-        else if (requiresForeignKey(association.getOtherEnd()) && targetType.getMetadata("auto-manage-keys") != "false") {
-            let primaryKeyDict = getPrimaryKeysWithMapPath(sourceType);
-            let primaryKeysLen = Object.values(primaryKeyDict).length;
-            Object.values(primaryKeyDict).forEach((pk, index) => {
-                let fk = targetType.getChildren().filter(x => x.getMetadata("association") == association.id)[index] ||
-                     createElement("Attribute", "", targetType.id);
-                // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-                if (fk.getName().toLocaleLowerCase() !== `${ toCamelCase(association.getOtherEnd().getName()) }${toPascalCase(pk.name)}`.toLocaleLowerCase()) {
-                    if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
-                        fk.setName(`${ toCamelCase(association.getOtherEnd().getName()) }${toPascalCase(pk.name)}`);
-                        fk.setMetadata("fk-original-name", fk.getName());
-                    }
-                }
-                fk.setMetadata("association", association.id);
-                fk.setMetadata("is-managed-key", "true");
-                
-                let fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
-                if (!fkStereotype) {
-                    fk.addStereotype(foreignKeyStereotypeId);
-                    fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
-                }
-                fkStereotype.getProperty("Association").setValue(association.id);
-    
-                fk.typeReference.setType(pk.typeId);
-                fk.typeReference.setIsNullable(association.getOtherEnd().typeReference.isNullable);
-            });
-            targetType.getChildren().filter(x => x.getMetadata("association") == association.id).forEach((attr, index) => {
-                if (index >= primaryKeysLen) {
-                    attr.delete();
-                }
-            });
-            if (sourceType.id !== targetType.id && sourceType.getMetadata("auto-manage-keys") != "false") {
-                sourceType.getChildren().filter(x => x.getMetadata("association") == association.id).forEach(x => x.delete());
-            }
-        }
-        else { // many-to-many
-            if (targetType.getMetadata("auto-manage-keys") != "false") {
-                targetType.getChildren().filter(x => x.getMetadata("association") == association.id).forEach(x => x.delete());
-            }
-            if (sourceType.getMetadata("auto-manage-keys") != "false") {
-                sourceType.getChildren().filter(x => x.getMetadata("association") == association.id).forEach(x => x.delete());
-            }
+        if (requiresForeignKey(association.getOtherEnd()) && targetType.getMetadata("auto-manage-keys") != "false") {
+            updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
         }
     }
 }
 
+function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementApi, destinationEndType : MacroApi.Context.IElementApi, associationEnd : MacroApi.Context.IAssociationApi, associationId: string) {
+    let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
+    let primaryKeyObjects = Object.values(primaryKeyDict);
+    let primaryKeysLen = primaryKeyObjects.length;
+    primaryKeyObjects.forEach((pk, index) => {
+        let fk = startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId)[index] ||
+                createElement("Attribute", "", startingEndType.id);
+        // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
+        let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
+        if (associationEnd.typeReference.isCollection) {
+            fkNameToUse = pluralize(fkNameToUse);
+        }
+        if (fk.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+            if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
+                fk.setName(fkNameToUse);
+                fk.setMetadata("fk-original-name", fk.getName());
+            }
+        }
+        fk.setMetadata("association", associationId);
+        fk.setMetadata("is-managed-key", "true");
+        
+        let fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+        if (!fkStereotype) {
+            fk.addStereotype(foreignKeyStereotypeId);
+            fkStereotype = fk.getStereotype(foreignKeyStereotypeId);
+        }
+        fkStereotype.getProperty("Association").setValue(associationId);
+
+        fk.typeReference.setType(pk.typeId);
+        fk.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
+        fk.typeReference.setIsCollection(associationEnd.typeReference.isCollection);
+    });
+    startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId).forEach((attr, index) => {
+        if (index >= primaryKeysLen) {
+            attr.delete();
+        }
+    });
+}
+
+function isManyToMany(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
+    return associationEnd.typeReference.isCollection && associationEnd.getOtherEnd().typeReference.isCollection;
+}
+
 function requiresForeignKey(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
-    return isManyToVariantsOfOne(associationEnd) || isSelfReferencingZeroToOne(associationEnd);
+    return associationEnd.typeReference.isNavigable && 
+        isAggregateRelationship(associationEnd);
 }
 
-function isManyToVariantsOfOne(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
-    return !associationEnd.typeReference.isCollection && associationEnd.getOtherEnd().typeReference.isCollection;
-}
-
-function isSelfReferencingZeroToOne(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
-    return !associationEnd.typeReference.isCollection && associationEnd.typeReference.isNullable && 
-            associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+function isAggregateRelationship(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
+    let sourceAssociationEnd = associationEnd;
+    if (associationEnd.isTargetEnd()) {
+        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();
+    }
+    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
 }
 
 function isAggregateRoot(element) {
