@@ -40,9 +40,10 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
         let fk = startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId)[index] ||
                 createElement("Attribute", "", startingEndType.id);
         // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-        if (fk.getName().toLocaleLowerCase() !== `${ toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`.toLocaleLowerCase()) {
+        let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
+        if (fk.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
             if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
-                fk.setName(`${ toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`);
+                fk.setName(fkNameToUse);
                 fk.setMetadata("fk-original-name", fk.getName());
             }
         }
