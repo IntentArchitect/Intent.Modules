@@ -10,7 +10,30 @@
   <icon type="FontAwesome" source="cogs" />
   <displayIcon>false</displayIcon>
   <displayIconFunction>return false;</displayIconFunction>
-  <displayFunction>return (properties["Source"].value == "Default") ? "" : `[${properties["Source"].value}]`;</displayFunction>
+  <displayFunction>if (properties["Source"].value == "Default") {
+    let httpSettings = element.getParent().getStereotype("Http Settings");
+    if (httpSettings == null) {
+        return null;
+    }
+
+    let verb = httpSettings.getProperty("Verb").getValue()?.toString()
+    let route = httpSettings.getProperty("Route").getValue()?.toString();
+    if (route.indexOf(`{${element.getName()}}`) !== -1) {
+        return "[From Route]";
+    }
+    if ((verb == "POST" || verb == "PUT") &amp;&amp; 
+        element.typeReference.getType().specialization !== "Type-Definition") {
+        return "[From Body]";
+    }
+
+    if ((verb == "GET" || verb == "DELETE") &amp;&amp;
+        element.typeReference.getType().specialization == "Type-Definition") {
+        return "[From Query]";
+    }
+    
+    return "[From Query]";
+}
+return `[${properties["Source"].value}]`;</displayFunction>
   <displayAsAnnotation>true</displayAsAnnotation>
   <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
