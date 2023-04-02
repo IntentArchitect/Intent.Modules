@@ -3,24 +3,6 @@ using System.Collections.Generic;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpTryBlock : CSharpStatementBlock
-{
-    public CSharpTryBlock() : base("try")
-    {
-    }
-}
-
-public class CSharpCatchBlock : CSharpStatementBlock
-{
-    public CSharpCatchBlock() : base($"catch")
-    {
-    }
-
-    public CSharpCatchBlock(string exceptionType, string parameterName) : base($"catch ({exceptionType} {parameterName})")
-    {
-    }
-}
-
 public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 {
     private bool _withSemicolon;

@@ -20,29 +20,4 @@ namespace Intent.Modelers.Services.CQRS.Api
         }
 
     }
-
-    [IntentManaged(Mode.Fully)]
-    public static class OperationExtensionModelExtensions
-    {
-
-        public static bool HasMapToCommandMapping(this OperationModel type)
-        {
-            return type.InternalElement.MappedElement?.MappingSettingsId == "e4e36072-a2ce-42d3-93c5-0b496d79ef43";
-        }
-
-        public static IElementMapping GetMapToCommandMapping(this OperationModel type)
-        {
-            return type.HasMapToCommandMapping() ? type.InternalElement.MappedElement : null;
-        }
-
-        public static bool HasMapToQueryMapping(this OperationModel type)
-        {
-            return type.InternalElement.MappedElement?.MappingSettingsId == "f15fa935-434e-4983-b283-25cde2cb440e";
-        }
-
-        public static IElementMapping GetMapToQueryMapping(this OperationModel type)
-        {
-            return type.HasMapToQueryMapping() ? type.InternalElement.MappedElement : null;
-        }
-    }
 }

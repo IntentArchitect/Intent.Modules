@@ -1,7 +1,10 @@
+interface IISelectEntityDialogOptions {
+    includeOwnedRelationships: boolean;
+}
 class DomainHelper {
 
-    static async openSelectEntityDialog() {
-        let classes = lookupTypesOf("Class").filter(x => DomainHelper.isAggregateRoot(x) || DomainHelper.ownerIsAggregateRoot(x) || x.hasStereotype("Repository"));
+    static async openSelectEntityDialog(options?: IISelectEntityDialogOptions) {
+        let classes = lookupTypesOf("Class").filter(x => DomainHelper.isAggregateRoot(x) || (options?.includeOwnedRelationships != false && DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
             return;
@@ -152,8 +155,8 @@ class DomainHelper {
                 typeId: x.typeReference.typeId,
                 id: x.id,
                 mapPath: [x.id],
-                isCollection: x.typeReference.getIsCollection(),
-                isNullable: x.typeReference.getIsNullable()
+                isCollection: x.typeReference.isCollection,
+                isNullable: x.typeReference.isNullable
             }));
         }
         
@@ -168,7 +171,7 @@ class DomainHelper {
         }];
     }
 
-    static getAttributesWithMapPath(entity : MacroApi.Context.IElementApi) {
+    static getAttributesWithMapPath(entity : MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
         let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !this.legacyPartitionKey(x));
         attributes.forEach(attr => attrDict[attr.id] = { 
@@ -182,7 +185,7 @@ class DomainHelper {
     
         traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
     
-        return attrDict;
+        return Object.values(attrDict);
     
         function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath }, 
             curEntity: MacroApi.Context.IElementApi, 

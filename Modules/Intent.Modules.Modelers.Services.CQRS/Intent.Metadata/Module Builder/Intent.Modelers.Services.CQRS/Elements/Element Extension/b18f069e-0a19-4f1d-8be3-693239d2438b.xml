@@ -51,7 +51,6 @@
       <name>[context menu]</name>
       <display>[context menu]</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>b18f069e-0a19-4f1d-8be3-693239d2438b</parentFolderId>
@@ -59,98 +58,7 @@
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
       <metadata />
-      <childElements>
-        <childElement id="cc5d4ec2-edf3-4c90-a1ca-a8490859eafd" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Add Command Operation</name>
-          <display>Add Command Operation: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="c88cab35-b11f-4da3-9ffc-520ac638b3cf">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>aa2e3f09-8346-41c5-b0bb-3b4a1147bdc8</parentFolderId>
-          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
-          <packageName>Intent.Modelers.Services.CQRS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let operation = createElement(&quot;Operation&quot;, &quot;Post&quot;, element.id);&#xD;&#xA;try {&#xD;&#xA;    await operation.launchMappingDialog(&quot;e4e36072-a2ce-42d3-93c5-0b496d79ef43&quot;);&#xD;&#xA;} catch (e) {&#xD;&#xA;    operation.delete();&#xD;&#xA;}&#xD;&#xA;if (operation.isMapped()) {&#xD;&#xA;    let command = operation.getMapping().getElement();&#xD;&#xA;    operation.setName(removeSuffix(command.name, &quot;Command&quot;));&#xD;&#xA;&#xD;&#xA;    let stereotype = operation.getStereotype(&quot;Http Settings&quot;);&#xD;&#xA;    if (stereotype) {&#xD;&#xA;        stereotype.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;        stereotype.getProperty(&quot;Route&quot;).setValue(&quot;[action]&quot;);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
-              </properties>
-            </stereotype>
-            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
-                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + c" isActive="true" />
-                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
-                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="126c7c10-721f-4c77-9a13-1c9ebab40d7c" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
-          <name>Add Query Operation</name>
-          <display>Add Query Operation: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="fe6feb9b-944e-466c-a2ad-b119830ec27f">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>aa2e3f09-8346-41c5-b0bb-3b4a1147bdc8</parentFolderId>
-          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
-          <packageName>Intent.Modelers.Services.CQRS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let operation = createElement(&quot;Operation&quot;, &quot;Get&quot;, element.id);&#xD;&#xA;try {&#xD;&#xA;    await operation.launchMappingDialog(&quot;f15fa935-434e-4983-b283-25cde2cb440e&quot;);&#xD;&#xA;} catch (e) {&#xD;&#xA;    operation.delete();&#xD;&#xA;}&#xD;&#xA;if (operation.isMapped()) {&#xD;&#xA;    let query = operation.getMapping().getElement();&#xD;&#xA;    operation.setName(removeSuffix(query.name, &quot;Query&quot;));&#xD;&#xA;    let stereotype = operation.getStereotype(&quot;Http Settings&quot;);&#xD;&#xA;    if (stereotype) {&#xD;&#xA;        stereotype.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;        stereotype.getProperty(&quot;Route&quot;).setValue(&quot;[action]&quot;);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
-              </properties>
-            </stereotype>
-            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
-              <comment />
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" isActive="true" />
-                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + q" isActive="true" />
-                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
-                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-      </childElements>
+      <childElements />
     </childElement>
   </childElements>
 </class>

@@ -331,81 +331,12 @@
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-      <mappingSettings>
-        <mappingSetting id="e4e36072-a2ce-42d3-93c5-0b496d79ef43">
-          <name>Map to Command</name>
-          <shortcut>ctrl + shift + c</shortcut>
-          <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
-          <optionsSource>elements-of-type</optionsSource>
-          <autoSyncTypeReferences>true</autoSyncTypeReferences>
-          <symbol>fa-long-arrow-right</symbol>
-          <targetTypeOptions>
-            <option specializationType="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" displayText="Command" />
-          </targetTypeOptions>
-          <mapFrom>root</mapFrom>
-          <mappings>
-            <mapping id="073b842f-4b1e-461f-b92d-435994383518">
-              <criteria specializationType="Command">
-                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-              </criteria>
-              <mapTo specializationType="Operation" childMappingMode="map-to-child" />
-              <behaviour autoSelectChildren="false" />
-              <childMappings>
-                <mapping id="75979ba9-f342-4b35-981d-3a0d3cbb1b0d">
-                  <criteria specializationType="DTO-Field">
-                    <hasTypeReference>true</hasTypeReference>
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="false" />
-                  <childMappings />
-                </mapping>
-              </childMappings>
-            </mapping>
-          </mappings>
-        </mappingSetting>
-        <mappingSetting id="f15fa935-434e-4983-b283-25cde2cb440e">
-          <name>Map to Query</name>
-          <shortcut>ctrl + shift + q</shortcut>
-          <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
-          <optionsSource>elements-of-type</optionsSource>
-          <autoSyncTypeReferences>true</autoSyncTypeReferences>
-          <symbol>fa-long-arrow-right</symbol>
-          <targetTypeOptions>
-            <option specializationType="e71b0662-e29d-4db2-868b-8a12464b25d0" displayText="Query" />
-          </targetTypeOptions>
-          <mapFrom>root</mapFrom>
-          <mappings>
-            <mapping id="d9c56b34-ec0d-47f0-b8a3-fe6efd176b9f">
-              <criteria specializationType="Query">
-                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
-              </criteria>
-              <mapTo specializationType="Operation" childMappingMode="map-to-child" />
-              <behaviour autoSelectChildren="true" />
-              <childMappings>
-                <mapping id="f52b112e-d0f1-4120-9c59-ee50f1ad4eb8">
-                  <criteria specializationType="DTO-Field">
-                    <hasTypeReference>true</hasTypeReference>
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="false" />
-                  <childMappings />
-                </mapping>
-              </childMappings>
-            </mapping>
-          </mappings>
-        </mappingSetting>
-      </mappingSettings>
+      <mappingSettings />
       <macros>
         <macro trigger="on-mapped">
-          <script>const commandMappingSettingId = "e4e36072-a2ce-42d3-93c5-0b496d79ef43";
+          <script>return; // disabled but left here as a reference. This logic must be moved to the approriate place
+
+const commandMappingSettingId = "e4e36072-a2ce-42d3-93c5-0b496d79ef43";
 if (element.getMapping() &amp;&amp; element.getMapping().mappingSettingsId == commandMappingSettingId) {
     handleCommandQueryStandaloneType("command");
 
@@ -476,49 +407,7 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
     </elementExtension>
     <elementExtension type="Service" typeId="b16578a5-27b1-4047-a8df-f0b783d706bd">
       <creationOptions />
-      <scriptOptions>
-        <option>
-          <text>Add Command Operation</text>
-          <shortcut>ctrl + shift + c</shortcut>
-          <icon type="FontAwesome" source="code" />
-          <script>let operation = createElement("Operation", "Post", element.id);
-try {
-    await operation.launchMappingDialog("e4e36072-a2ce-42d3-93c5-0b496d79ef43");
-} catch (e) {
-    operation.delete();
-}
-if (operation.isMapped()) {
-    let command = operation.getMapping().getElement();
-    operation.setName(removeSuffix(command.name, "Command"));
-
-    let stereotype = operation.getStereotype("Http Settings");
-    if (stereotype) {
-        stereotype.getProperty("Verb").setValue("POST");
-        stereotype.getProperty("Route").setValue("[action]");
-    }
-}</script>
-        </option>
-        <option>
-          <text>Add Query Operation</text>
-          <shortcut>ctrl + shift + q</shortcut>
-          <icon type="FontAwesome" source="code" />
-          <script>let operation = createElement("Operation", "Get", element.id);
-try {
-    await operation.launchMappingDialog("f15fa935-434e-4983-b283-25cde2cb440e");
-} catch (e) {
-    operation.delete();
-}
-if (operation.isMapped()) {
-    let query = operation.getMapping().getElement();
-    operation.setName(removeSuffix(query.name, "Query"));
-    let stereotype = operation.getStereotype("Http Settings");
-    if (stereotype) {
-        stereotype.getProperty("Verb").setValue("GET");
-        stereotype.getProperty("Route").setValue("[action]");
-    }
-}</script>
-        </option>
-      </scriptOptions>
+      <scriptOptions />
       <typeOrder />
       <mappingSettings />
     </elementExtension>
