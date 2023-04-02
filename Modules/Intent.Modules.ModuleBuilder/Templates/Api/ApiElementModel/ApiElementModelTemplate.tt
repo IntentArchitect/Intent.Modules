@@ -66,6 +66,8 @@ namespace <#= Namespace #>
 <#      if (!Model.GetTypeReferenceSettings().Mode().IsDisabled()) { #>
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public ITypeReference <#= Model.GetTypeReferenceSettings().DisplayName().ToCSharpIdentifier() #> => TypeReference?.Element != null ? TypeReference : null;
+
 <#      } #>
 <#      if (Model.MappingSettings.Any()) { #>
         public bool IsMapped => _element.IsMapped;

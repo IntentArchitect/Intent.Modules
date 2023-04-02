@@ -18,7 +18,6 @@ if (element?.id == null) {
 }
 
 
-
 let entity = await preselectOrPromptEntity(defaultDomainClassName);
 if (!entity) { return; }
 let service = getServiceFromCurrentContext(entity, element);

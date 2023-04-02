@@ -1,0 +1,25 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "ES2017",
+    "removeComments": false,
+    "outFile": "./dist/dist.js",
+    "sourceMap": false,
+    "types": []
+  },
+  "include": [
+    "**/*",
+    "../common/domainHelper.ts",
+    "../../typings/**/*"
+  ],
+  "exclude": [
+    "../node_modules",
+    "App/Api/TypeDefinitions/*.api.d.ts",
+    "App/Api/TypeDefinitions/lib.*.d.ts",
+    "css",
+    "img",
+    "lib",
+    "lib.unmanaged",
+    "resources"
+  ]
+}

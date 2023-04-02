@@ -1,0 +1,16 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "ES2017",
+    "removeComments": false,
+    "outFile": "./dist/common.js",
+    "sourceMap": false,
+    "types": []
+  },
+  "include": [
+    "./common/**/*",
+    "../typings/**/*"
+  ],
+  "exclude": [
+  ]
+}

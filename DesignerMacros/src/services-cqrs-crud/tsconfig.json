@@ -1,0 +1,18 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "ES2017",
+    "removeComments": false,
+    "outFile": "./dist/dist.js",
+    "sourceMap": false,
+    "types": []
+  },
+  "include": [
+    "**/*",
+    "../common/domainHelper.ts",
+    "../common/servicesHelper.ts",
+    "../../typings/**/*"
+  ],
+  "exclude": [
+  ]
+}
