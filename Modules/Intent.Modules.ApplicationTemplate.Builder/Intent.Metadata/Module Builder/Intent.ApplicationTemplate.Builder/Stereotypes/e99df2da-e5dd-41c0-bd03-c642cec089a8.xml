@@ -62,5 +62,15 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="1c02193b-a3b6-4411-88d0-802335e160cb">
+      <name>Set .gitignore entries</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

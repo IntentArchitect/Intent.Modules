@@ -66,6 +66,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 return _stereotype.GetProperty<bool>("Store Intent Architect files separate to codebase");
             }
 
+            public bool SetGitignoreEntries()
+            {
+                return _stereotype.GetProperty<bool>("Set .gitignore entries");
+            }
+
         }
 
 

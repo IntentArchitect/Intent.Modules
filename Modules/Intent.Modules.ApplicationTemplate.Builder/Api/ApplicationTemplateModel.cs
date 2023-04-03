@@ -78,13 +78,15 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 _model = model;
             }
 
-            public string Name => _model.GetApplicationTemplateDefaults().Name() ?? "NewApplication";
+            public string Name => _model.GetApplicationTemplateDefaults()?.Name() ?? "NewApplication";
 
-            public string RelativeOutputLocation => _model.GetApplicationTemplateDefaults().RelativeOutputLocation() ?? "";
+            public string RelativeOutputLocation => _model.GetApplicationTemplateDefaults()?.RelativeOutputLocation() ?? string.Empty;
 
-            public bool PlaceSolutionAndApplicationInTheSameDirectory => _model.GetApplicationTemplateDefaults().PlaceSolutionAndApplicationInTheSameDirectory();
+            public bool PlaceSolutionAndApplicationInTheSameDirectory => _model.GetApplicationTemplateDefaults()?.PlaceSolutionAndApplicationInTheSameDirectory() ?? false;
 
-            public bool StoreIntentArchitectFilesSeparateToCodebase => _model.GetApplicationTemplateDefaults().StoreIntentArchitectFilesSeparateToCodebase();
+            public bool StoreIntentArchitectFilesSeparateToCodebase => _model.GetApplicationTemplateDefaults()?.StoreIntentArchitectFilesSeparateToCodebase() ?? true;
+
+            public bool SetGitIgnoreEntries => _model.GetApplicationTemplateDefaults()?.SetGitignoreEntries() ?? true;
         }
     }
 }

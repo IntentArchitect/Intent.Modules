@@ -13,6 +13,7 @@
     <relativeOutputLocation />
     <placeInSameDirectory>false</placeInSameDirectory>
     <separateIntentFiles>true</separateIntentFiles>
+    <setGitIgnoreEntries>true</setGitIgnoreEntries>
   </defaults>
   <componentGroups>
     <group name="Core">

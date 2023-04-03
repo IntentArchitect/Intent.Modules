@@ -69,6 +69,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
                     RelativeOutputLocation = Model.Defaults.RelativeOutputLocation,
                     PlaceInSameDirectory = Model.Defaults.PlaceSolutionAndApplicationInTheSameDirectory,
                     SeparateIntentFiles = Model.Defaults.StoreIntentArchitectFilesSeparateToCodebase,
+                    SetGitIgnoreEntries = Model.Defaults.SetGitIgnoreEntries
                 },
                 ComponentGroups = Model.Groups.Select(g => new ApplicationTemplate_ComponentGroup
                 {
