@@ -4,14 +4,14 @@ if (element.getParent().getPackage().specialization !== "Mongo Domain Package") 
     return;
 }
 
-if (!element.hasMetadata("is-managed-key") || !isAggregateRoot(element.getParent())) {
+if (element.getMetadata("is-managed-key") != "true" || !isAggregateRoot(element.getParent())) {
     return;
 }
 
 if (!element.hasMetadata("association")) {
     const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
     let idAttr = createElement("Attribute", "Id", element.getParent().id);
-    idAttr.typeReference.setType(getDefaultIdType());
+    idAttr.typeReference.setType(element.typeReference.getType().id);
     idAttr.setOrder(0);
     idAttr.addMetadata("is-managed-key", "true");
     idAttr.addStereotype(PrimaryKeyStereotypeId);

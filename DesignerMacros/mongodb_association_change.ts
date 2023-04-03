@@ -13,20 +13,21 @@
 
 function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
     const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
-    let pk = element.getChildren("Attribute").filter(x => x.hasMetadata("is-managed-key") && !x.hasMetadata("association"))[0];
-
-    if (pk && !isAggregateRoot(element)) {
-        pk.delete();
+    let pk = element.getChildren("Attribute")
+        .filter(x => (x.getMetadata("is-managed-key") == "true" && !x.hasMetadata("association")) ||
+        (x.hasStereotype(PrimaryKeyStereotypeId) && x.getMetadata("is-managed-key") != "true"))[0];
+    if (!isAggregateRoot(element)) {
+        if (pk) {
+            pk.delete();
+        }
         return;
     }
-
-    if (pk && pk.hasStereotype(PrimaryKeyStereotypeId)) {
-        return;
-    }
-
+    
     let idAttr = pk || createElement("Attribute", "Id", element.id);
     idAttr.setOrder(0);
-    idAttr.typeReference.setType(getDefaultIdType());
+    if (!pk) {
+        idAttr.typeReference.setType(getDefaultIdType());
+    }
     if (!idAttr.hasMetadata("is-managed-key")) {
         idAttr.addMetadata("is-managed-key", "true");
     }

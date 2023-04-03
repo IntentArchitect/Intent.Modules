@@ -14,20 +14,21 @@
 
 function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
     const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
-    let pk = element.getChildren("Attribute").filter(x => x.hasMetadata("is-managed-key") && !x.hasMetadata("association"))[0];
-
-    if (pk && !isAggregateRoot(element)) {
-        pk.delete();
+    let pk = element.getChildren("Attribute")
+        .filter(x => (x.getMetadata("is-managed-key") == "true" && !x.hasMetadata("association")) ||
+        (x.hasStereotype(PrimaryKeyStereotypeId) && x.getMetadata("is-managed-key") != "true"))[0];
+    if (!isAggregateRoot(element)) {
+        if (pk) {
+            pk.delete();
+        }
         return;
     }
-
-    if (pk && pk.hasStereotype(PrimaryKeyStereotypeId)) {
-        return;
-    }
-
+    
     let idAttr = pk || createElement("Attribute", "Id", element.id);
     idAttr.setOrder(0);
-    idAttr.typeReference.setType(getDefaultIdType());
+    if (!pk) {
+        idAttr.typeReference.setType(getDefaultIdType());
+    }
     if (!idAttr.hasMetadata("is-managed-key")) {
         idAttr.addMetadata("is-managed-key", "true");
     }
@@ -63,7 +64,8 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
     primaryKeyObjects.forEach((pk, index) => {
-        let fk = startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId)[index] ||
+        let fk = startingEndType.getChildren()
+            .filter(x => (x.getMetadata("association") == associationId) || (x.hasStereotype(ForeignKeyStereotypeId) && !x.hasMetadata("association")))[index] || 
                 createElement("Attribute", "", startingEndType.id);
         // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
         let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
