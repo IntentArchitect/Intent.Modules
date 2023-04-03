@@ -47,7 +47,8 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
     primaryKeyObjects.forEach((pk, index) => {
-        let fk = startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId)[index] ||
+        let fk = startingEndType.getChildren()
+            .filter(x => (x.getMetadata("association") == associationId) || (x.hasStereotype(ForeignKeyStereotypeId) && !x.hasMetadata("association")))[index] || 
                 createElement("Attribute", "", startingEndType.id);
         // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
         let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
@@ -56,7 +57,9 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
         }
         if (fk.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
             if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
-                fk.setName(fkNameToUse);
+                if (fkNameToUse != fk.getName()) {
+                    fk.setName(fkNameToUse);
+                }
                 fk.setMetadata("fk-original-name", fk.getName());
             }
         }
@@ -68,11 +71,19 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
             fk.addStereotype(ForeignKeyStereotypeId);
             fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
         }
-        fkStereotype.getProperty("Association").setValue(associationId);
+        if (fkStereotype.getProperty("Association").getValue() != associationId) {
+            fkStereotype.getProperty("Association").setValue(associationId);
+        }
 
-        fk.typeReference.setType(pk.typeId);
-        fk.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
-        fk.typeReference.setIsCollection(associationEnd.typeReference.isCollection);
+        if (fk.typeReference.typeId != pk.typeId) {
+            fk.typeReference.setType(pk.typeId);
+        }
+        if (fk.typeReference.isNullable != associationEnd.typeReference.isNullable) {
+            fk.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
+        }
+        if (fk.typeReference.isCollection != associationEnd.typeReference.isCollection) {
+            fk.typeReference.setIsCollection(associationEnd.typeReference.isCollection);
+        }
     });
     startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId).forEach((attr, index) => {
         if (index >= primaryKeysLen) {
