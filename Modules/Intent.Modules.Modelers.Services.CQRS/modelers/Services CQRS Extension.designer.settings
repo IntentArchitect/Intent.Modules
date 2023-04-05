@@ -139,6 +139,48 @@
                   <behaviour autoSelectChildren="false" />
                   <childMappings />
                 </mapping>
+                <mapping id="5e8708f6-806b-4e79-81ad-143b86799afe">
+                  <criteria specializationType="Operation">
+                    <hasTypeReference>false</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren>true</hasChildren>
+                  </criteria>
+                  <mapTo childMappingMode="traverse" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings>
+                    <mapping id="814368d6-3593-4438-aebb-3a29daeea3db">
+                      <criteria specializationType="Parameter">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren>false</hasChildren>
+                      </criteria>
+                      <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
+                <mapping id="9fdaee4a-86b7-4429-8353-637567e53617">
+                  <criteria specializationType="Class Constructor">
+                    <hasTypeReference>false</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren>true</hasChildren>
+                  </criteria>
+                  <mapTo childMappingMode="traverse" />
+                  <behaviour autoSelectChildren="false" />
+                  <childMappings>
+                    <mapping id="0cd0dcae-72a3-4bcb-997f-82f8f7dfdb7a">
+                      <criteria specializationType="Parameter">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                        <hasChildren>false</hasChildren>
+                      </criteria>
+                      <mapTo specializationType="DTO-Field" childMappingMode="map-to-child" />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                  </childMappings>
+                </mapping>
               </childMappings>
             </mapping>
           </mappings>
