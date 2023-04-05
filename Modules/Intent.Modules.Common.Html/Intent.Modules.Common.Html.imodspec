@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Common.Html</id>
   <version>3.3.3</version>
-  <supportedClientVersions>[3.3.0-pre.0, 4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.3.0-pre.0, 5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
   <authors>Intent.Modules</authors>

@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Common</id>
   <version>3.3.19</version>
-  <supportedClientVersions>[3.3.14-pre.1, 4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.3.14-pre.1, 5.0.0)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>
   <authors>Intent Architect</authors>

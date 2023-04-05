@@ -197,8 +197,7 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
         codeBlocks.AddRange(Methods);
         codeBlocks.AddRange(CodeBlocks);
 
-        return !codeBlocks.Any() ? string.Empty : $@"
-{string.Join(@"
+        return !codeBlocks.Any() ? string.Empty : $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
     }
 }

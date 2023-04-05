@@ -2,7 +2,7 @@
 <package>
   <id>Intent.ApplicationTemplate.Builder</id>
   <version>3.4.3-pre.0</version>
-  <supportedClientVersions>[3.4.3-pre.2, 4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.4.3-pre.2, 5.0.0)</supportedClientVersions>
   <summary>For the creation of Application Templates used to create new Applications in Intent Architect.</summary>
   <description>For the creation of Application Templates used to create new Applications in Intent Architect.</description>
   <authors>Intent.Modules.Net</authors>
