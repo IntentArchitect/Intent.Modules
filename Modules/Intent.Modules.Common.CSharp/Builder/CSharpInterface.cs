@@ -241,8 +241,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         codeBlocks.AddRange(Methods);
         codeBlocks.AddRange(CodeBlocks);
 
-        return !codeBlocks.Any() ? "" : $@"
-{string.Join(@"
+        return !codeBlocks.Any() ? "" : $@"{string.Join(@"
 ", codeBlocks.ConcatCode(indentation))}";
     }
 }
