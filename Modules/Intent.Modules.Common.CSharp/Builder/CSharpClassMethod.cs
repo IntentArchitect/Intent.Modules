@@ -187,7 +187,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public override string GetText(string indentation)
     {
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({GetParameters(indentation)}){GetGenericTypeConstraints(indentation)}";
         if (IsAbstract && Statements.Count == 0)
         {
             return $@"{declaration};";
@@ -197,7 +197,21 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 {indentation}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
-    
+
+    private string GetParameters(string indentation)
+    {
+        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}(".Length + Parameters.Sum(x => x.ToString().Length) > 120)
+        {
+            return $@"
+{indentation}    {string.Join($@",
+{indentation}    ", Parameters.Select(x => x.ToString()))}";
+        }
+        else
+        {
+            return string.Join(", ", Parameters.Select(x => x.ToString()));
+        }
+    }
+
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())

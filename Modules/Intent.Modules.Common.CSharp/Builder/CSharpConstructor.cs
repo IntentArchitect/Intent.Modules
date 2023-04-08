@@ -104,7 +104,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>
 
     private string ToStringParameters(string indentation)
     {
-        if (Parameters.Sum(x => x.ToString().Length) > 120)
+        if (Parameters.Count > 1 && $"{indentation}{AccessModifier}{Class.Name}(".Length + Parameters.Sum(x => x.ToString().Length) > 120)
         {
             return string.Join($@",
 {indentation}    ", Parameters.Select(x => x.ToString()));
