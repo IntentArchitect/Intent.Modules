@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.Templates;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.TypeResolution
 {
-    public class ClassTypeSource : ITypeSource
+    public class ClassTypeSource : ITypeSource, ICanUseDefaultFormatters
     {
         /// <summary>
         /// Delegate which returns a <see cref="ICollectionFormatter"/> from the provided
@@ -14,13 +15,13 @@ namespace Intent.Modules.Common.TypeResolution
         /// </summary>
         public delegate ICollectionFormatter StringToCollectionFormatterFactory(string collectionFormat);
 
+        private readonly StringToCollectionFormatterFactory _stringToCollectionFormatterFactory;
         protected readonly ISoftwareFactoryExecutionContext Context;
         protected readonly string TemplateId;
-        private readonly StringToCollectionFormatterFactory _stringToCollectionFormatterFactory;
         protected readonly ClassTypeSourceOptions Options;
-        protected readonly List<ITemplateDependency> TemplateDependencies = new List<ITemplateDependency>();
-        public ICollectionFormatter CollectionFormatter => Options.CollectionFormatter;
-        public INullableFormatter NullableFormatter => Options.NullableFormatter;
+        protected readonly List<ITemplateDependency> TemplateDependencies = new();
+        private bool _hasCollectionFormatterSet;
+        private bool _hasNullableFormatterSet;
 
         protected ClassTypeSource(
             ISoftwareFactoryExecutionContext context,
@@ -34,6 +35,10 @@ namespace Intent.Modules.Common.TypeResolution
                                                   TypeResolution.CollectionFormatter.Create;
             Options = options ?? new ClassTypeSourceOptions();
         }
+
+        public ICollectionFormatter CollectionFormatter => Options.CollectionFormatter;
+
+        public INullableFormatter NullableFormatter => Options.NullableFormatter;
 
         public static ClassTypeSource Create(
             ISoftwareFactoryExecutionContext context,
@@ -55,23 +60,42 @@ namespace Intent.Modules.Common.TypeResolution
         public ClassTypeSource WithCollectionFormat(string format)
         {
             Options.CollectionFormatter = _stringToCollectionFormatterFactory(format);
+            _hasCollectionFormatterSet = true;
             return this;
         }
 
         public ClassTypeSource WithCollectionFormatter(ICollectionFormatter formatter)
         {
             Options.CollectionFormatter = formatter;
+            _hasCollectionFormatterSet = true;
             return this;
         }
 
-        public ClassTypeSource WithNullFormatter(INullableFormatter formatter)
+        public ClassTypeSource WithNullableFormatter(INullableFormatter formatter)
         {
             Options.NullableFormatter = formatter;
+            _hasNullableFormatterSet = true;
             return this;
         }
+
+        /// <summary>
+        /// Obsolete. Use <see cref="WithNullableFormatter"/> instead.
+        /// </summary>
+        [Obsolete(WillBeRemovedIn.Version4)]
+        public ClassTypeSource WithNullFormatter(INullableFormatter formatter) => WithNullableFormatter(formatter);
 
         public IResolvedTypeInfo GetType(ITypeReference typeReference)
         {
+            if (!_hasCollectionFormatterSet)
+            {
+                throw new Exception("CollectionFormatter has not been set.");
+            }
+
+            if (!_hasNullableFormatterSet)
+            {
+                throw new Exception("NullableFormatter has not been set.");
+            }
+
             return TryGetType(typeReference);
         }
 
@@ -126,6 +150,12 @@ namespace Intent.Modules.Common.TypeResolution
 
             return CreateResolvedTypeInfo(typeReference, templateInstance);
         }
+
+        void ICanUseDefaultFormatters.SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter)
+            => WithCollectionFormatter(collectionFormatter);
+
+        void ICanUseDefaultFormatters.SetDefaultNullableFormatter(INullableFormatter nullableFormatter)
+            => WithNullableFormatter(nullableFormatter);
     }
 
     public class ClassTypeSourceOptions

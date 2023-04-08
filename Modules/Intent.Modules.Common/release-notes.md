@@ -1,5 +1,9 @@
 ﻿### Version 3.3.19
 
+- Fixed: When `ClassTypeSource.Create()` was used without `WithNullableFormatter()` and/or `WithCollectionFormatter()` also being called, no default implementations would be applied.
+
+### Version 3.3.19
+
 - It is now possible to control OverwriteBehaviour for Static Content Template Files.
 
 ### Version 3.3.18
