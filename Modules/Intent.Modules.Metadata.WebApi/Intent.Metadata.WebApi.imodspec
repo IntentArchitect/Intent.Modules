@@ -22,6 +22,7 @@
   </files>
   <metadata>
     <install target="Services" src="Intent.Metadata/Module Builder/Intent.Metadata.WebApi/Intent.Metadata.WebApi.pkg.config" externalReference="0011387a-b122-45d7-9cdb-8e21b315ab9f" />
+    <install target="Services" src="modelers/WebApi Extension.designer.settings" externalReference="6bd5bdad-d8af-4a4c-97bc-6b5436bd7eb4" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
