@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>d2344dc2-0d3d-4fc2-88c5-1c999845711b</id>
+  <name>Domain Service Types</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Domain Package" typeId="1a824508-4623-45d9-accc-f572091ade5a">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <specializationType>Domain Service</specializationType>
+          <specializationTypeId>07f936ea-3756-48c8-babd-24ac7271daac</specializationTypeId>
+          <text>New Domain Service</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewDomainService</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABXtJREFUeF7tWW2IVFUYfp47VrtCYhkUZEUpam2iWBG6O3fcyqi1sgjWuWMRRGAUQVaIBon2TVgYWBkkBrkzsyOlZdIPXdaZOy4UyGYfaFJhhfRLiUJll73njTuys3dnZ+beM2pMM/fA/th7nvc973nej/OeM0STDzb5/hESEEZAkzMQpkCTB0BYBMMUCFOgyRkIU6DJAyA8BcIUCFOg3hlYLwZm5RcZUPcIDROQ6QCuBCAAjgP4k4KsorEb8faDIN3vgUf9poC78Tn5hymyAcCNwXbEI0K8gSMd27GeKohMfRKQPjCD4qQA3BZkE2Uw3wic5bA6j/nJ1x8BPdkukmkQl/oZ7zN/QkRZSCzeWw1XXwQk9y8hjS8AtJQYPUTBTkXZBRqDGD59HC0XEyOYDhoLCD4IwP27qFROoJbAWmxXIqF+CEjbsygyCGByibE7BM5q33DO9M+kE9kIYFmJ/EkhFyIePVqOBH8CtmfnGhFjpUAWQ3AtiEsg+JkG+pTCR0iY351jqAKZTITOVa6XFnp0OSJ4AQlzk5b+dHYNha8BMMbkaEu8I1buhKhMQGag1XBG3hbgSaBix6hI2aKmnHoOXV1DWoZ6wSn7cUK2ej8J5VnEY+/WpDOZW0vi9XH6hAkkom5hHTfKE5AZaOWIsweUzkAGCPtl6j/31kSCCJm2vwfQNroWgV5lmfFAa5cDuTp7c59DeL9n+rBY5k2BCDDS9hYRWaljACnvq3jsaR2ZAjaZi5HY75EbEhWZjRXtv2nr8gpk8rPpqB8ATBr9LJAFsGJunSmOiRGwPTuXER6qEvaV7HKEznzEO91FAw8jmdsgxLqi9wU9KmE+ElhBFSBT2c8APjSmm2+qRHRtVQKMdPY9ET5ViwEkNqm4uUpHlqncPgB3Fr1EdiMe3aGjoyI2mX2M5Mdj8/KVWLGuqgQwmTsCYvZ5MaAGJaI4Ayuiv9YgOlEkmW8jC2kwOn4Ry5xZnYBU7lSZs/i82BNEiUQmTUb3ojNBsL6YHvsyGnLSgzsjljmuz5hQA9hIBGQGLqczcsJDwAmxzCt8IsA+DMgcX3YvEOACp8AxsczrqxfBlL1ZIPrHmXts1FIEk7m9IO76b4og+sQyi2u5a048BtP9N1Mi7jHoaSUDudsRMeYh0fFjIPQoKJV7icDLo/8STCorukJLRwUw07mdkMIlqTAEWAfLfKVqBLiTtRyFBDYry3xG2/DeXDsV8h65IYEzx/fy47dQ+UaoHVZswJcAbOtvYUvkS+/5XHU9wT6ZNG0putuG/eyaMH+2FXa7s3meKMgoK7pcW1fR1QWduwEs9egYFMtcUKqz8mVoW3+L0Rp5SwRuPaiUDg6BD1Rk2vM1bb6YBtkEwR6vcSJYpX0THEurFwm4N8LiEMJC3EwHJ2AUmcy3GYZaKcJOQK4u9AjEUQJ9Cs5W3da3rFfPXoezANo9846QqxGPvhM4EkSIlL2GxKslTsvKT9E7yr0T+r8HBF79HIE9B65jxPkWgqnjNBGfisPVvt2h+6ACtbHkBuiW+b/E4Dx0R38vZ2H9EOBal87eTeHOMp3oMMFdSrALGBnEyPAfhScxZVwDMW4lZRkED5R5Ejsl7guRZfZVck99EeBa2Zs1qegWsCnnGFN/i3ApElHvCTNBZf0R4JrYY99AyofeBkmPDNpCPFHpHdD/GNRb7cKg3YLWm3+UUKsgnB9wkUEhN2F5xydBfyGqzwgo3W3Kvt0A7hOoWwC6/ULrWYicBnmIgoMK3AMr+nVAooqw/wcBurvSwIcEaJDVkNAwAhrSrRqbCiNAg6yGhIYR0JBu1dhUGAEaZDUkNIyAhnSrxqbCCNAgqyGhYQQ0pFs1NhVGgAZZDQlt+gj4F2IV1VBPvOS9AAAAAElFTkSuQmCC" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Domain Service</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Domain Service" typeId="07f936ea-3756-48c8-babd-24ac7271daac">
+      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABXtJREFUeF7tWW2IVFUYfp47VrtCYhkUZEUpam2iWBG6O3fcyqi1sgjWuWMRRGAUQVaIBon2TVgYWBkkBrkzsyOlZdIPXdaZOy4UyGYfaFJhhfRLiUJll73njTuys3dnZ+beM2pMM/fA/th7nvc973nej/OeM0STDzb5/hESEEZAkzMQpkCTB0BYBMMUCFOgyRkIU6DJAyA8BcIUCFOg3hlYLwZm5RcZUPcIDROQ6QCuBCAAjgP4k4KsorEb8faDIN3vgUf9poC78Tn5hymyAcCNwXbEI0K8gSMd27GeKohMfRKQPjCD4qQA3BZkE2Uw3wic5bA6j/nJ1x8BPdkukmkQl/oZ7zN/QkRZSCzeWw1XXwQk9y8hjS8AtJQYPUTBTkXZBRqDGD59HC0XEyOYDhoLCD4IwP27qFROoJbAWmxXIqF+CEjbsygyCGByibE7BM5q33DO9M+kE9kIYFmJ/EkhFyIePVqOBH8CtmfnGhFjpUAWQ3AtiEsg+JkG+pTCR0iY351jqAKZTITOVa6XFnp0OSJ4AQlzk5b+dHYNha8BMMbkaEu8I1buhKhMQGag1XBG3hbgSaBix6hI2aKmnHoOXV1DWoZ6wSn7cUK2ej8J5VnEY+/WpDOZW0vi9XH6hAkkom5hHTfKE5AZaOWIsweUzkAGCPtl6j/31kSCCJm2vwfQNroWgV5lmfFAa5cDuTp7c59DeL9n+rBY5k2BCDDS9hYRWaljACnvq3jsaR2ZAjaZi5HY75EbEhWZjRXtv2nr8gpk8rPpqB8ATBr9LJAFsGJunSmOiRGwPTuXER6qEvaV7HKEznzEO91FAw8jmdsgxLqi9wU9KmE+ElhBFSBT2c8APjSmm2+qRHRtVQKMdPY9ET5ViwEkNqm4uUpHlqncPgB3Fr1EdiMe3aGjoyI2mX2M5Mdj8/KVWLGuqgQwmTsCYvZ5MaAGJaI4Ayuiv9YgOlEkmW8jC2kwOn4Ry5xZnYBU7lSZs/i82BNEiUQmTUb3ojNBsL6YHvsyGnLSgzsjljmuz5hQA9hIBGQGLqczcsJDwAmxzCt8IsA+DMgcX3YvEOACp8AxsczrqxfBlL1ZIPrHmXts1FIEk7m9IO76b4og+sQyi2u5a048BtP9N1Mi7jHoaSUDudsRMeYh0fFjIPQoKJV7icDLo/8STCorukJLRwUw07mdkMIlqTAEWAfLfKVqBLiTtRyFBDYry3xG2/DeXDsV8h65IYEzx/fy47dQ+UaoHVZswJcAbOtvYUvkS+/5XHU9wT6ZNG0putuG/eyaMH+2FXa7s3meKMgoK7pcW1fR1QWduwEs9egYFMtcUKqz8mVoW3+L0Rp5SwRuPaiUDg6BD1Rk2vM1bb6YBtkEwR6vcSJYpX0THEurFwm4N8LiEMJC3EwHJ2AUmcy3GYZaKcJOQK4u9AjEUQJ9Cs5W3da3rFfPXoezANo9846QqxGPvhM4EkSIlL2GxKslTsvKT9E7yr0T+r8HBF79HIE9B65jxPkWgqnjNBGfisPVvt2h+6ACtbHkBuiW+b/E4Dx0R38vZ2H9EOBal87eTeHOMp3oMMFdSrALGBnEyPAfhScxZVwDMW4lZRkED5R5Ejsl7guRZfZVck99EeBa2Zs1qegWsCnnGFN/i3ApElHvCTNBZf0R4JrYY99AyofeBkmPDNpCPFHpHdD/GNRb7cKg3YLWm3+UUKsgnB9wkUEhN2F5xydBfyGqzwgo3W3Kvt0A7hOoWwC6/ULrWYicBnmIgoMK3AMr+nVAooqw/wcBurvSwIcEaJDVkNAwAhrSrRqbCiNAg6yGhIYR0JBu1dhUGAEaZDUkNIyAhnSrxqbCCNAgqyGhYQQ0pFs1NhVGgAZZDQlt+gj4F2IV1VBPvOS9AAAAAElFTkSuQmCC" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder>
+        <type order="0">Operation</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Operation</specializationType>
+          <specializationTypeId>e042bb67-a1df-480c-9935-b26210f78591</specializationTypeId>
+          <text>Add Operation</text>
+          <shortcut>ctrl + shift + o</shortcut>
+          <defaultName>Operation</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingSettings />
+      <visualSettings type="Domain Service" typeId="07f936ea-3756-48c8-babd-24ac7271daac">
+        <size width="${w}" height="120" />
+        <position x="${x}" y="${y}" />
+        <display>
+          <drawPath>
+            <path>`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`</path>
+            <fillColor>return theme.isDark ? "#24434a" : "#c2dee5"</fillColor>
+          </drawPath>
+          <drawText>
+            <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;`</style>
+            <size width="${w}" height="18" />
+            <position x="${x}" y="${y + 8}" />
+          </drawText>
+        </display>
+        <stereotypesVisualSettings>
+          <size width="${w}" height="18" />
+          <position x="${x}" y="${y}" />
+        </stereotypesVisualSettings>
+        <defaultSize width="${x}" height="120" />
+        <childElementVisualSettings>
+          <childElementVisualSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
+            <size width="`${parent.w}`" height="18" />
+            <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
+            <display>
+              <drawPath>
+                <condition>return $firstOfType;</condition>
+                <path>`M${x},${y - 6} h${w}`</path>
+              </drawPath>
+              <drawText>
+                <style>`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`</style>
+                <size width="${w}" height="${h}" />
+                <position x="${x}" y="${y}" />
+              </drawText>
+            </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
+            <defaultSize width="`${parent.w}`" height="18" />
+            <childElementVisualSettings />
+          </childElementVisualSetting>
+        </childElementVisualSettings>
+      </visualSettings>
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
+      <mappingSettings />
+      <diagramSettings>
+        <addNewElementsTo>Package</addNewElementsTo>
+        <creationOptions>
+          <option type="element">
+            <specializationType>Domain Service</specializationType>
+            <specializationTypeId>07f936ea-3756-48c8-babd-24ac7271daac</specializationTypeId>
+            <text>New Domain Service</text>
+            <shortcut>ctrl + shift + s</shortcut>
+            <defaultName>NewDomainService</defaultName>
+            <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABXtJREFUeF7tWW2IVFUYfp47VrtCYhkUZEUpam2iWBG6O3fcyqi1sgjWuWMRRGAUQVaIBon2TVgYWBkkBrkzsyOlZdIPXdaZOy4UyGYfaFJhhfRLiUJll73njTuys3dnZ+beM2pMM/fA/th7nvc973nej/OeM0STDzb5/hESEEZAkzMQpkCTB0BYBMMUCFOgyRkIU6DJAyA8BcIUCFOg3hlYLwZm5RcZUPcIDROQ6QCuBCAAjgP4k4KsorEb8faDIN3vgUf9poC78Tn5hymyAcCNwXbEI0K8gSMd27GeKohMfRKQPjCD4qQA3BZkE2Uw3wic5bA6j/nJ1x8BPdkukmkQl/oZ7zN/QkRZSCzeWw1XXwQk9y8hjS8AtJQYPUTBTkXZBRqDGD59HC0XEyOYDhoLCD4IwP27qFROoJbAWmxXIqF+CEjbsygyCGByibE7BM5q33DO9M+kE9kIYFmJ/EkhFyIePVqOBH8CtmfnGhFjpUAWQ3AtiEsg+JkG+pTCR0iY351jqAKZTITOVa6XFnp0OSJ4AQlzk5b+dHYNha8BMMbkaEu8I1buhKhMQGag1XBG3hbgSaBix6hI2aKmnHoOXV1DWoZ6wSn7cUK2ej8J5VnEY+/WpDOZW0vi9XH6hAkkom5hHTfKE5AZaOWIsweUzkAGCPtl6j/31kSCCJm2vwfQNroWgV5lmfFAa5cDuTp7c59DeL9n+rBY5k2BCDDS9hYRWaljACnvq3jsaR2ZAjaZi5HY75EbEhWZjRXtv2nr8gpk8rPpqB8ATBr9LJAFsGJunSmOiRGwPTuXER6qEvaV7HKEznzEO91FAw8jmdsgxLqi9wU9KmE+ElhBFSBT2c8APjSmm2+qRHRtVQKMdPY9ET5ViwEkNqm4uUpHlqncPgB3Fr1EdiMe3aGjoyI2mX2M5Mdj8/KVWLGuqgQwmTsCYvZ5MaAGJaI4Ayuiv9YgOlEkmW8jC2kwOn4Ry5xZnYBU7lSZs/i82BNEiUQmTUb3ojNBsL6YHvsyGnLSgzsjljmuz5hQA9hIBGQGLqczcsJDwAmxzCt8IsA+DMgcX3YvEOACp8AxsczrqxfBlL1ZIPrHmXts1FIEk7m9IO76b4og+sQyi2u5a048BtP9N1Mi7jHoaSUDudsRMeYh0fFjIPQoKJV7icDLo/8STCorukJLRwUw07mdkMIlqTAEWAfLfKVqBLiTtRyFBDYry3xG2/DeXDsV8h65IYEzx/fy47dQ+UaoHVZswJcAbOtvYUvkS+/5XHU9wT6ZNG0putuG/eyaMH+2FXa7s3meKMgoK7pcW1fR1QWduwEs9egYFMtcUKqz8mVoW3+L0Rp5SwRuPaiUDg6BD1Rk2vM1bb6YBtkEwR6vcSJYpX0THEurFwm4N8LiEMJC3EwHJ2AUmcy3GYZaKcJOQK4u9AjEUQJ9Cs5W3da3rFfPXoezANo9846QqxGPvhM4EkSIlL2GxKslTsvKT9E7yr0T+r8HBF79HIE9B65jxPkWgqnjNBGfisPVvt2h+6ACtbHkBuiW+b/E4Dx0R38vZ2H9EOBal87eTeHOMp3oMMFdSrALGBnEyPAfhScxZVwDMW4lZRkED5R5Ejsl7guRZfZVck99EeBa2Zs1qegWsCnnGFN/i3ApElHvCTNBZf0R4JrYY99AyofeBkmPDNpCPFHpHdD/GNRb7cKg3YLWm3+UUKsgnB9wkUEhN2F5xydBfyGqzwgo3W3Kvt0A7hOoWwC6/ULrWYicBnmIgoMK3AMr+nVAooqw/wcBurvSwIcEaJDVkNAwAhrSrRqbCiNAg6yGhIYR0JBu1dhUGAEaZDUkNIyAhnSrxqbCCNAgqyGhYQQ0pFs1NhVGgAZZDQlt+gj4F2IV1VBPvOS9AAAAAElFTkSuQmCC" />
+            <allowMultiple>true</allowMultiple>
+          </option>
+        </creationOptions>
+        <scriptOptions />
+        <elementVisualSettings />
+        <associationVisualSettings />
+      </diagramSettings>
+    </elementExtension>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>Domain Service</specializationType>
+          <specializationTypeId>07f936ea-3756-48c8-babd-24ac7271daac</specializationTypeId>
+          <text>New Domain Service</text>
+          <shortcut>ctrl + shift + s</shortcut>
+          <defaultName>NewDomainService</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABXtJREFUeF7tWW2IVFUYfp47VrtCYhkUZEUpam2iWBG6O3fcyqi1sgjWuWMRRGAUQVaIBon2TVgYWBkkBrkzsyOlZdIPXdaZOy4UyGYfaFJhhfRLiUJll73njTuys3dnZ+beM2pMM/fA/th7nvc973nej/OeM0STDzb5/hESEEZAkzMQpkCTB0BYBMMUCFOgyRkIU6DJAyA8BcIUCFOg3hlYLwZm5RcZUPcIDROQ6QCuBCAAjgP4k4KsorEb8faDIN3vgUf9poC78Tn5hymyAcCNwXbEI0K8gSMd27GeKohMfRKQPjCD4qQA3BZkE2Uw3wic5bA6j/nJ1x8BPdkukmkQl/oZ7zN/QkRZSCzeWw1XXwQk9y8hjS8AtJQYPUTBTkXZBRqDGD59HC0XEyOYDhoLCD4IwP27qFROoJbAWmxXIqF+CEjbsygyCGByibE7BM5q33DO9M+kE9kIYFmJ/EkhFyIePVqOBH8CtmfnGhFjpUAWQ3AtiEsg+JkG+pTCR0iY351jqAKZTITOVa6XFnp0OSJ4AQlzk5b+dHYNha8BMMbkaEu8I1buhKhMQGag1XBG3hbgSaBix6hI2aKmnHoOXV1DWoZ6wSn7cUK2ej8J5VnEY+/WpDOZW0vi9XH6hAkkom5hHTfKE5AZaOWIsweUzkAGCPtl6j/31kSCCJm2vwfQNroWgV5lmfFAa5cDuTp7c59DeL9n+rBY5k2BCDDS9hYRWaljACnvq3jsaR2ZAjaZi5HY75EbEhWZjRXtv2nr8gpk8rPpqB8ATBr9LJAFsGJunSmOiRGwPTuXER6qEvaV7HKEznzEO91FAw8jmdsgxLqi9wU9KmE+ElhBFSBT2c8APjSmm2+qRHRtVQKMdPY9ET5ViwEkNqm4uUpHlqncPgB3Fr1EdiMe3aGjoyI2mX2M5Mdj8/KVWLGuqgQwmTsCYvZ5MaAGJaI4Ayuiv9YgOlEkmW8jC2kwOn4Ry5xZnYBU7lSZs/i82BNEiUQmTUb3ojNBsL6YHvsyGnLSgzsjljmuz5hQA9hIBGQGLqczcsJDwAmxzCt8IsA+DMgcX3YvEOACp8AxsczrqxfBlL1ZIPrHmXts1FIEk7m9IO76b4og+sQyi2u5a048BtP9N1Mi7jHoaSUDudsRMeYh0fFjIPQoKJV7icDLo/8STCorukJLRwUw07mdkMIlqTAEWAfLfKVqBLiTtRyFBDYry3xG2/DeXDsV8h65IYEzx/fy47dQ+UaoHVZswJcAbOtvYUvkS+/5XHU9wT6ZNG0putuG/eyaMH+2FXa7s3meKMgoK7pcW1fR1QWduwEs9egYFMtcUKqz8mVoW3+L0Rp5SwRuPaiUDg6BD1Rk2vM1bb6YBtkEwR6vcSJYpX0THEurFwm4N8LiEMJC3EwHJ2AUmcy3GYZaKcJOQK4u9AjEUQJ9Cs5W3da3rFfPXoezANo9846QqxGPvhM4EkSIlL2GxKslTsvKT9E7yr0T+r8HBF79HIE9B65jxPkWgqnjNBGfisPVvt2h+6ACtbHkBuiW+b/E4Dx0R38vZ2H9EOBal87eTeHOMp3oMMFdSrALGBnEyPAfhScxZVwDMW4lZRkED5R5Ejsl7guRZfZVck99EeBa2Zs1qegWsCnnGFN/i3ApElHvCTNBZf0R4JrYY99AyofeBkmPDNpCPFHpHdD/GNRb7cKg3YLWm3+UUKsgnB9wkUEhN2F5xydBfyGqzwgo3W3Kvt0A7hOoWwC6/ULrWYicBnmIgoMK3AMr+nVAooqw/wcBurvSwIcEaJDVkNAwAhrSrRqbCiNAg6yGhIYR0JBu1dhUGAEaZDUkNIyAhnSrxqbCCNAgqyGhYQQ0pFs1NhVGgAZZDQlt+gj4F2IV1VBPvOS9AAAAAElFTkSuQmCC" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Domain Service</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions>
+    <associationExtension type="Domain Event Association" typeId="8014b71d-627b-4349-b6d7-5011dfa1bb09">
+      <sourceEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes />
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </sourceEndExtension>
+      <targetEndExtension>
+        <typeReferenceExtension>
+          <isRequired>true</isRequired>
+          <targetTypes>
+            <type>Domain Service</type>
+          </targetTypes>
+          <allowIsNavigable>inherit</allowIsNavigable>
+          <allowIsNullable>inherit</allowIsNullable>
+          <allowIsCollection>inherit</allowIsCollection>
+        </typeReferenceExtension>
+      </targetEndExtension>
+      <macros />
+    </associationExtension>
+  </associationExtensions>
+</settings>
