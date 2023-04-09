@@ -100,8 +100,8 @@
           <childElements />
         </childElement>
         <childElement id="672a163b-7008-4f9e-b94a-2a4e7d683bc5" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Consumer</name>
-          <display>Add Consumer: Domain Event Association</display>
+          <name>Add Handler</name>
+          <display>Add Handler: Domain Event Association</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="46c40316-41f1-4816-86af-860213f8ac08">
