@@ -19,7 +19,7 @@ namespace <#= Namespace #>
     {
         var templateModel = ((TemplateRegistrationModel) template.Model); #>
 <#      if (templateModel.IsSingleFileTemplateRegistration()) { #>
-        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IntentTemplateBase<T> template)
+        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name(this IIntentTemplate template)
         {
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId);
         }
@@ -27,7 +27,7 @@ namespace <#= Namespace #>
 <#      } 
         else if (templateModel.IsCustomTemplateRegistration() && templateModel.GetModelType() == null) {
 #>
-        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IntentTemplateBase<T> template)
+        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name(this IIntentTemplate template)
         {
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId);
         }
@@ -35,12 +35,12 @@ namespace <#= Namespace #>
 <#
         }
         else { #>
-        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IntentTemplateBase<T> template) where T: <#= template.GetModelType() #>
+        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name<T>(this IIntentTemplate<T> template) where T: <#= template.GetModelType() #>
         {
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId, template.Model);
         }
 
-        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name(this IntentTemplateBase template, <#= template.GetModelType() #> model)
+        public static string Get<#= templateModel.Name.ToCSharpIdentifier() #>Name(this IIntentTemplate template, <#= template.GetModelType() #> model)
         {
             return template.GetTypeName(<#= GetTypeName(template.Id, templateModel) #>.TemplateId, model);
         }
