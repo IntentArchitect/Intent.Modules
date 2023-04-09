@@ -3,6 +3,7 @@
   <name>Parameter</name>
   <display>Parameter</display>
   <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
   <order>1</order>
   <genericTypes />
   <isMapped>false</isMapped>
@@ -46,5 +47,54 @@
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements />
+  <childElements>
+    <childElement id="e795f81c-54e9-42da-88c4-383fb38a78df" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</parentFolderId>
+      <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+      <packageName>Intent.Modelers.Domain</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="09c398c8-8c62-41f4-b019-5807ec782e26" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="66ccb2ab-a5ea-405c-b154-8175073bad2a">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>e795f81c-54e9-42da-88c4-383fb38a78df</parentFolderId>
+          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+          <packageName>Intent.Modelers.Domain</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="element.setName(toCamelCase(element.getName()));" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
 </class>

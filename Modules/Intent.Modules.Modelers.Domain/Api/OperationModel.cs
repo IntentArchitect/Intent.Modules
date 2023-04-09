@@ -38,6 +38,10 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Fully)]
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public bool IsMapped => _element.IsMapped;
+
+        public IElementMapping Mapping => _element.MappedElement;
+
         public ITypeReference ReturnType => TypeReference?.Element != null ? TypeReference : null;
 
         public bool IsAbstract => _element.IsAbstract;
@@ -97,6 +101,16 @@ namespace Intent.Modelers.Domain.Api
         public static OperationModel AsOperationModel(this ICanBeReferencedType type)
         {
             return type.IsOperationModel() ? new OperationModel((IElement)type) : null;
+        }
+
+        public static bool HasMapOperationMapping(this OperationModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "7590bd83-04bc-40fe-8b5c-118277c049d4";
+        }
+
+        public static IElementMapping GetMapOperationMapping(this OperationModel type)
+        {
+            return type.HasMapOperationMapping() ? type.Mapping : null;
         }
     }
 }
