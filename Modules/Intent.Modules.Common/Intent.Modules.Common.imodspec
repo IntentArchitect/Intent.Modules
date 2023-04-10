@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common</id>
-  <version>3.3.19</version>
+  <version>3.3.20-pre.0</version>
   <supportedClientVersions>[3.3.14-pre.1, 5.0.0)</supportedClientVersions>
   <summary>Base Implementation and Helper classes for modules.</summary>
   <description>Base Implementation and Helper classes for modules.</description>

@@ -56,13 +56,19 @@ namespace Intent.Modules.Common.TypeResolution
 
         public void AddTypeSource(ITypeSource typeSource, string contextName)
         {
-            if (contextName == null)
-                contextName = DEFAULT_CONTEXT;
+            contextName ??= DEFAULT_CONTEXT;
 
             if (!_contexts.ContainsKey(contextName))
             {
                 _contexts.Add(contextName, CreateContext());
             }
+
+            if (typeSource is ICanUseDefaultFormatters canUseDefaultFormatters)
+            {
+                canUseDefaultFormatters.SetDefaultCollectionFormatter(DefaultCollectionFormatter);
+                canUseDefaultFormatters.SetDefaultNullableFormatter(DefaultNullableFormatter);
+            }
+
             _contexts[contextName].AddTypeSource(typeSource);
         }
 
