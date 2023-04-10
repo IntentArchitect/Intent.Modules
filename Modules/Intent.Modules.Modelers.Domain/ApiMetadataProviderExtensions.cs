@@ -26,6 +26,13 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
+        public static IList<DataContractModel> GetDataContractModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(DataContractModel.SpecializationTypeId)
+                .Select(x => new DataContractModel(x))
+                .ToList();
+        }
+
         public static IList<DiagramModel> GetDiagramModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(DiagramModel.SpecializationTypeId)

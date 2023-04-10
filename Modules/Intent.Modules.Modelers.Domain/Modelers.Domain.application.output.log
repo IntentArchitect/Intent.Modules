@@ -38,7 +38,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ClassModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ClassModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
@@ -54,6 +54,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/CommentModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>CommentModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9a4ff5a0-d327-42a7-accb-f1d119f1fa4a</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#4464fabe-c59e-4d90-81fc-c9245bdd1afd</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DataContractModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DataContractModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -150,7 +158,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
+      <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9767fed7-a950-4ba5-81f4-98098705c830</ProjectId>

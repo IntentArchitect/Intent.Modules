@@ -41,7 +41,7 @@
           <specializationType>Comment</specializationType>
           <specializationTypeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</specializationTypeId>
           <text>New Comment</text>
-          <shortcut>ctrl + shift + o</shortcut>
+          <shortcut>ctrl + shift + n</shortcut>
           <defaultName>NewComment</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAMAAADWZboaAAABSlBMVEUAAAD//wD/gAD/mTP/zAD/gCv/qivmsxr/gDPmvxr/gDPnthj/hjHpvBb/iTHtthL/iS7quBX/hyvquhX/gzDrvBTuuRf6iCvquhX6hTDtuxfquBX7hi7quRXruRf8hi7suxf8hC38hC3suxbruhb9hi/9hi3suhX9hS3quxfruRbruhb7hC3quhf7hS/ruhb7hi3ruRXsuhf8hS/ruhb8hS38hC7quRb4lyT8hC7suhb3mCf2mST0nSTquRb8hS76iivruhf9hS7ruhbruxb7hS77hS77hi7ruhb8hS/ruhbusBr8hS78hS7ruhb8hS7ruhbruhbtsxn8hC77hS3ruhb8hS7ruhb8hS7tthjruhfruhb8hS7ruhbruhb8hS7ruhb8hS7ruhb8hS7ruhbwy1Dx0GDx0GHz1nP346L8hS7++/D++/H///+gFZfLAAAAZHRSTlMAAQIFBQYGCgoUFBUVFxocHCQkJSUmLC8wMDg9PT5NTk9PW15nZ3Z3d3uAgYGIiI2Nj5GUl5igoba3uL/AwcbGyczMztjY2dnb297f4eLj4+Tl5+fo6err6+zu9fn7/Pz9/f7+TQPISAAAAAFiS0dEbbsGAK0AAAFSSURBVEjH5ddHU8JQFIbhDxR7771ih4i9i72LvRdQgiXq/9+6IIHkEGbOPeMiM75LJs+Cb5F7A3iiQG9Iow3TBjr8ubJ132C1UUdlza3B7KSC0BmDXYTQCz49IjTJp3FCDYX+GfV3Boes5s2WaUtrj7m0cVNndbhLaeWZzuzuktBJnd0KoTE+PSc0wacJQnWFPEXfP+29qdDvH3tfKjT1YS/l/Zn+bGH3uR3yJc/C7nM76HGehd3ndtAp8X+9rpLSnWZIqKaFugOAZGHr9SlYmFLOwnF3yqkvKaYYdFCF19ozELHTUz49AHyzNjrNp+MAChaytPqGK2PlAFASzZ6OLXs8uV6bfr5sO3umFvWMhdNlHrsyfwiPWqdnsD1zP2twu+RZ8r5J+X5oyoc2COlTF4T0tR9SOgIpnYCUzvmkdLFQeHnXV4ul9/6tUvEnQz283y9zvWoo9YIzZQAAAABJRU5ErkJggg==" />
           <allowMultiple>true</allowMultiple>
@@ -63,6 +63,15 @@
           <icon type="UrlImagePath" source="./img/icons/uml/Folder_02_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
+        <option order="2" type="element">
+          <specializationType>Data Contract</specializationType>
+          <specializationTypeId>4464fabe-c59e-4d90-81fc-c9245bdd1afd</specializationTypeId>
+          <text>New Domain Object</text>
+          <shortcut>ctrl + shift + o</shortcut>
+          <defaultName>NewDataContract</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <allowMultiple>true</allowMultiple>
+        </option>
         <option type="stereotype-definition">
           <specializationType>Stereotype-Definition</specializationType>
           <specializationTypeId>Stereotype-Definition</specializationTypeId>
@@ -77,11 +86,12 @@
       <typeOrder>
         <type order="0">Folder</type>
         <type order="1">Class</type>
-        <type order="2">Type-Definition</type>
-        <type order="3">Enum</type>
-        <type order="4">Comment</type>
-        <type order="5">Diagram</type>
-        <type order="6">Stereotype-Definition</type>
+        <type order="2">Data Contract</type>
+        <type order="3">Type-Definition</type>
+        <type order="4">Enum</type>
+        <type order="5">Comment</type>
+        <type order="6">Diagram</type>
+        <type order="7">Stereotype-Definition</type>
       </typeOrder>
       <macros>
         <macro trigger="on-created">
@@ -337,6 +347,7 @@ if (namingConvention == "pascal-case") {
               <type>Enum</type>
               <type>Class</type>
               <type>Type-Definition</type>
+              <type>Data Contract</type>
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
@@ -426,6 +437,7 @@ if (namingConvention == "pascal-case") {
                   <type>Enum</type>
                   <type>Class</type>
                   <type>Type-Definition</type>
+                  <type>Data Contract</type>
                 </targetTypes>
                 <defaultTypeId>d384db9c-a279-45e1-801e-e4e8099625f2</defaultTypeId>
                 <allowIsNavigable>true</allowIsNavigable>
@@ -581,6 +593,51 @@ if (namingConvention == "pascal-case") {
       </visualSettings>
       <childElementSettings />
     </elementSetting>
+    <elementSetting type="Data Contract" typeId="4464fabe-c59e-4d90-81fc-c9245bdd1afd">
+      <icon type="UrlImagePath" source="data:image/png;base64,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" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <displayFunction>return `${getName()}${(typeReference.getType() != null ? ` : ${typeReference.display}` : "")}`;</displayFunction>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>true</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>true</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeReferenceSetting>
+        <displayName>Base Type</displayName>
+        <isRequired>false</isRequired>
+        <targetTypes>
+          <type>Data Contract</type>
+        </targetTypes>
+        <allowIsNavigable>true</allowIsNavigable>
+        <allowIsNullable>false</allowIsNullable>
+        <allowIsCollection>false</allowIsCollection>
+        <isNavigableDefault>true</isNavigableDefault>
+        <isNullableDefault>false</isNullableDefault>
+        <isCollectionDefault>false</isCollectionDefault>
+      </typeReferenceSetting>
+      <typeOrder>
+        <type order="0">Attribute</type>
+      </typeOrder>
+      <creationOptions>
+        <option type="element">
+          <specializationType>Attribute</specializationType>
+          <specializationTypeId>0090fb93-483e-41af-a11d-5ad2dc796adf</specializationTypeId>
+          <text>Add Attribute</text>
+          <shortcut>ctrl + shift + a</shortcut>
+          <defaultName>attribute</defaultName>
+          <icon type="UrlImagePath" source="./img/icons/uml/Attribute_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
     <elementSetting type="Diagram" typeId="4d66fecd-e9b8-436f-aa50-c59040ad0879">
       <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
       <saveAsOwnFile>true</saveAsOwnFile>
@@ -658,7 +715,7 @@ if (namingConvention == "pascal-case") {
           <specializationType>Comment</specializationType>
           <specializationTypeId>c4c0c77f-720b-4e91-9c48-b58d2164d30a</specializationTypeId>
           <text>New Comment</text>
-          <shortcut>ctrl + shift + o</shortcut>
+          <shortcut>ctrl + shift + n</shortcut>
           <defaultName>Comment</defaultName>
           <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADoAAAA6CAMAAADWZboaAAABSlBMVEUAAAD//wD/gAD/mTP/zAD/gCv/qivmsxr/gDPmvxr/gDPnthj/hjHpvBb/iTHtthL/iS7quBX/hyvquhX/gzDrvBTuuRf6iCvquhX6hTDtuxfquBX7hi7quRXruRf8hi7suxf8hC38hC3suxbruhb9hi/9hi3suhX9hS3quxfruRbruhb7hC3quhf7hS/ruhb7hi3ruRXsuhf8hS/ruhb8hS38hC7quRb4lyT8hC7suhb3mCf2mST0nSTquRb8hS76iivruhf9hS7ruhbruxb7hS77hS77hi7ruhb8hS/ruhbusBr8hS78hS7ruhb8hS7ruhbruhbtsxn8hC77hS3ruhb8hS7ruhb8hS7tthjruhfruhb8hS7ruhbruhb8hS7ruhb8hS7ruhb8hS7ruhbwy1Dx0GDx0GHz1nP346L8hS7++/D++/H///+gFZfLAAAAZHRSTlMAAQIFBQYGCgoUFBUVFxocHCQkJSUmLC8wMDg9PT5NTk9PW15nZ3Z3d3uAgYGIiI2Nj5GUl5igoba3uL/AwcbGyczMztjY2dnb297f4eLj4+Tl5+fo6err6+zu9fn7/Pz9/f7+TQPISAAAAAFiS0dEbbsGAK0AAAFSSURBVEjH5ddHU8JQFIbhDxR7771ih4i9i72LvRdQgiXq/9+6IIHkEGbOPeMiM75LJs+Cb5F7A3iiQG9Iow3TBjr8ubJ132C1UUdlza3B7KSC0BmDXYTQCz49IjTJp3FCDYX+GfV3Boes5s2WaUtrj7m0cVNndbhLaeWZzuzuktBJnd0KoTE+PSc0wacJQnWFPEXfP+29qdDvH3tfKjT1YS/l/Zn+bGH3uR3yJc/C7nM76HGehd3ndtAp8X+9rpLSnWZIqKaFugOAZGHr9SlYmFLOwnF3yqkvKaYYdFCF19ozELHTUz49AHyzNjrNp+MAChaytPqGK2PlAFASzZ6OLXs8uV6bfr5sO3umFvWMhdNlHrsyfwiPWqdnsD1zP2twu+RZ8r5J+X5oyoc2COlTF4T0tR9SOgIpnYCUzvmkdLFQeHnXV4ul9/6tUvEnQz283y9zvWoo9YIzZQAAAABJRU5ErkJggg==" />
           <allowMultiple>true</allowMultiple>
@@ -670,6 +727,15 @@ if (namingConvention == "pascal-case") {
           <shortcut>ctrl + shift + v</shortcut>
           <defaultName>NewDiagram</defaultName>
           <icon type="UrlImagePath" source="./img/icons/uml/View_256x.png" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+        <option order="2" type="element">
+          <specializationType>Data Contract</specializationType>
+          <specializationTypeId>4464fabe-c59e-4d90-81fc-c9245bdd1afd</specializationTypeId>
+          <text>New Domain Object</text>
+          <shortcut>ctrl + shift + o</shortcut>
+          <defaultName>NewDataContract</defaultName>
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="stereotype-definition">
@@ -689,6 +755,7 @@ if (namingConvention == "pascal-case") {
         <type>Enum</type>
         <type order="5">Comment</type>
         <type>Diagram</type>
+        <type order="2">Data Contract</type>
         <type>Stereotype-Definition</type>
       </typeOrder>
       <mappingSettings />
