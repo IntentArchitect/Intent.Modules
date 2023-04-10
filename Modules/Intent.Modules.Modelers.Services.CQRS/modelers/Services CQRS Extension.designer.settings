@@ -79,7 +79,7 @@
       <scriptOptions />
       <mappingSettings>
         <mappingSetting id="735c87d0-06fc-4491-8b5f-5adc6f953c54">
-          <name>Map to Domain</name>
+          <name>Map to Domain Data</name>
           <shortcut>ctrl + shift + m</shortcut>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
@@ -139,16 +139,41 @@
                   <behaviour autoSelectChildren="false" />
                   <childMappings />
                 </mapping>
-                <mapping id="5e8708f6-806b-4e79-81ad-143b86799afe">
+              </childMappings>
+            </mapping>
+          </mappings>
+        </mappingSetting>
+        <mappingSetting id="7c31c459-6229-4f10-bf13-507348cd8828">
+          <name>Map to Domain Operation</name>
+          <shortcut>ctrl + shift + o</shortcut>
+          <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
+          <optionsSource>elements-of-type</optionsSource>
+          <autoSyncTypeReferences>true</autoSyncTypeReferences>
+          <symbol>fa-long-arrow-right</symbol>
+          <targetTypeOptions>
+            <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
+          </targetTypeOptions>
+          <mapFrom>root</mapFrom>
+          <mappings>
+            <mapping id="6cbcfb52-7a46-4e0e-b492-20f1ec655cea">
+              <criteria specializationType="Class">
+                <hasTypeReference p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <isCollection p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+                <hasChildren p9:nil="true" xmlns:p9="http://www.w3.org/2001/XMLSchema-instance" />
+              </criteria>
+              <mapTo specializationType="Command" childMappingMode="traverse" />
+              <behaviour autoSelectChildren="true" />
+              <childMappings>
+                <mapping id="d5b23362-f9d1-420c-900c-36ea33029d55">
                   <criteria specializationType="Operation">
-                    <hasTypeReference>false</hasTypeReference>
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren>true</hasChildren>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
-                  <mapTo childMappingMode="traverse" />
-                  <behaviour autoSelectChildren="false" />
+                  <mapTo specializationType="Command" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
                   <childMappings>
-                    <mapping id="814368d6-3593-4438-aebb-3a29daeea3db">
+                    <mapping id="f4aaf718-74c6-451a-acf8-c1aa3e0e292c">
                       <criteria specializationType="Parameter">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
@@ -160,16 +185,16 @@
                     </mapping>
                   </childMappings>
                 </mapping>
-                <mapping id="9fdaee4a-86b7-4429-8353-637567e53617">
+                <mapping id="e998e1b1-a645-4365-8738-248512198012">
                   <criteria specializationType="Class Constructor">
-                    <hasTypeReference>false</hasTypeReference>
+                    <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                     <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren>true</hasChildren>
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
                   </criteria>
-                  <mapTo childMappingMode="traverse" />
-                  <behaviour autoSelectChildren="false" />
+                  <mapTo specializationType="Command" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
                   <childMappings>
-                    <mapping id="0cd0dcae-72a3-4bcb-997f-82f8f7dfdb7a">
+                    <mapping id="1f89d9f4-f36d-4781-8874-4057565c558f">
                       <criteria specializationType="Parameter">
                         <hasTypeReference>true</hasTypeReference>
                         <isCollection p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
@@ -234,7 +259,7 @@
       <mappingSettings>
         <mappingSetting id="50c4872d-f029-48ec-a818-58b426e8166a">
           <name>Project from Domain</name>
-          <shortcut>ctrl + shift + d</shortcut>
+          <shortcut>ctrl + shift + m</shortcut>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
           <optionsSource>elements-of-type</optionsSource>
           <autoSyncTypeReferences>true</autoSyncTypeReferences>
