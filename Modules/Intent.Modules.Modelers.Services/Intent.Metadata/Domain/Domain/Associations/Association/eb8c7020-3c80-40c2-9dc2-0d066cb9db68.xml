@@ -17,6 +17,7 @@
     </typeReference>
     <stereotypes />
     <metadata />
+    <childElements />
   </sourceEnd>
   <targetEnd id="eb8c7020-3c80-40c2-9dc2-0d066cb9db68" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
     <name>Characters</name>
@@ -35,6 +36,7 @@
     </typeReference>
     <stereotypes />
     <metadata />
+    <childElements />
   </targetEnd>
   <associationType>Association</associationType>
   <associationTypeId>eaf9ed4e-0b61-4ac1-ba88-09f912c12087</associationTypeId>
