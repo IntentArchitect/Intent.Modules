@@ -41,6 +41,14 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>45f9a5d2-1995-4fec-85a2-f06275e9a7e9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#fc31afb0-35d4-4f44-b878-b1075a2fb8c0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ParameterExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ParameterExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>a58bd37e-966f-49a4-a4a2-4a2245a9607a</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>

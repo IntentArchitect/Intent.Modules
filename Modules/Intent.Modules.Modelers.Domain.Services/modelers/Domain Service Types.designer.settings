@@ -143,31 +143,19 @@ white-space: inherit;`</style>
       </typeOrder>
       <mappingSettings />
     </elementExtension>
+    <elementExtension type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+      <mappingSettings />
+      <typeReferenceSetting>
+        <isRequired>true</isRequired>
+        <targetTypes>
+          <type>Domain Service</type>
+        </targetTypes>
+        <allowIsNavigable>inherit</allowIsNavigable>
+        <allowIsNullable>inherit</allowIsNullable>
+        <allowIsCollection>inherit</allowIsCollection>
+      </typeReferenceSetting>
+    </elementExtension>
   </elementExtensions>
   <associationSettings />
-  <associationExtensions>
-    <associationExtension type="Domain Event Association" typeId="8014b71d-627b-4349-b6d7-5011dfa1bb09">
-      <sourceEndExtension>
-        <typeReferenceExtension>
-          <isRequired>true</isRequired>
-          <targetTypes />
-          <allowIsNavigable>inherit</allowIsNavigable>
-          <allowIsNullable>inherit</allowIsNullable>
-          <allowIsCollection>inherit</allowIsCollection>
-        </typeReferenceExtension>
-      </sourceEndExtension>
-      <targetEndExtension>
-        <typeReferenceExtension>
-          <isRequired>true</isRequired>
-          <targetTypes>
-            <type>Domain Service</type>
-          </targetTypes>
-          <allowIsNavigable>inherit</allowIsNavigable>
-          <allowIsNullable>inherit</allowIsNullable>
-          <allowIsCollection>inherit</allowIsCollection>
-        </typeReferenceExtension>
-      </targetEndExtension>
-      <macros />
-    </associationExtension>
-  </associationExtensions>
+  <associationExtensions />
 </settings>
