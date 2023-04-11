@@ -117,5 +117,19 @@ namespace Intent.Modelers.Services.CQRS.Api
         {
             return type.HasMapToDomainOperationMapping() ? type.Mapping : null;
         }
+
+        [Obsolete("Use HasMapToDomainDataMapping")]
+        [IntentManaged(Mode.Ignore)] // For backward compatibility
+        public static bool HasMapToDomainMapping(this CommandModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "735c87d0-06fc-4491-8b5f-5adc6f953c54";
+        }
+
+        [Obsolete("Use GetMapToDomainDataMapping")]
+        [IntentManaged(Mode.Ignore)] // For backward compatibility
+        public static IElementMapping GetMapToDomainMapping(this CommandModel type)
+        {
+            return type.HasMapToDomainMapping() ? type.Mapping : null;
+        }
     }
 }
