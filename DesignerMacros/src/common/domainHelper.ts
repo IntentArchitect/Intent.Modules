@@ -171,6 +171,20 @@ class DomainHelper {
         }];
     }
 
+    static getChildrenOfType(entity : MacroApi.Context.IElementApi, type: string): IAttributeWithMapPath[] {
+        let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+        let attributes = entity.getChildren(type)
+        attributes.forEach(attr => attrDict[attr.id] = { 
+            id: attr.id, 
+            name: attr.getName(), 
+            typeId: attr.typeReference.typeId,
+            mapPath: [attr.id],
+            isNullable: false,
+            isCollection: false
+        });
+        return Object.values(attrDict);
+    }
+
     static getAttributesWithMapPath(entity : MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
         let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !this.legacyPartitionKey(x));

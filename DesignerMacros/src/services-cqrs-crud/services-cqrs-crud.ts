@@ -11,7 +11,15 @@ async function execute() {
     createCqrsCreateCommand(entity, folder);
     createCqrsFindByIdQuery(entity, folder, dto);
     createCqrsFindAllQuery(entity, folder, dto);
-    createCqrsUpdateCommand(entity, folder);
+    const privateSetters = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value == "true";
+    if (privateSetters) {
+        let operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
+        operations.forEach(operation => {
+            createCqrsCallOperationCommand(entity, operation, folder);
+        })
+    } else{
+        createCqrsUpdateCommand(entity, folder);
+    }
     createCqrsDeleteCommand(entity, folder);
 };
 
@@ -28,33 +36,31 @@ function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: M
         return;
     }
 
-    let command = createElement("Command", expectedCommandName, folder.id);
-    command.setMapping(entity.id);
-    command.setMetadata("baseName", baseName);
+    let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        childSpecialization: "DTO-Field"
+    });
+
+    let entityCtor: MacroApi.Context.IElementApi = entity.getChildren("Class Constructor").find(x => x.getChildren("Parameter").length > 0);
+    if (entityCtor) {
+        command.mapToElement(entityCtor, "7c31c459-6229-4f10-bf13-507348cd8828"); // Map to Domain Operation
+        command.getElement().setMapping([entity.id, entityCtor.id], "7c31c459-6229-4f10-bf13-507348cd8828") // Map to Domain Operation
+    } else {
+        command.mapToElement(entity);
+    }
+    command.getElement().setMetadata("baseName", baseName);
 
     if (owningAggregate) {
-        let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
-        foreignKeys.forEach(fk => {
-            let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(fk.name), command.id);
-            field.typeReference.setType(fk.typeId)
-            if (fk.mapPath) {
-                field.setMapping(fk.mapPath);
-            }
-        })
+        command.addChildrenFrom(DomainHelper.getForeignKeys(entity, owningAggregate));
     }
 
     if (primaryKeys[0].typeId) {
-        command.typeReference.setType(primaryKeys[0].typeId);
+        command.setReturnType(primaryKeys[0].typeId);
     }
 
-    let attributesWithMapPaths = DomainHelper.getBusinessAttributes(entity);
-    for (var attr of attributesWithMapPaths) {
-        if (command.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == attr.id)) { 
-            continue;
-        }
-        let field = createElement("DTO-Field", attr.name, command.id);
-        field.typeReference.setType(attr.typeId)
-        field.setMapping(attr.mapPath);
+    if (entityCtor) {
+        command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
+    } else {
+        command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
     }
 
     command.collapse();
@@ -130,31 +136,52 @@ function createCqrsUpdateCommand(entity : MacroApi.Context.IElementApi, folder: 
         return;
     }
 
-    let command = createElement("Command", expectedCommandName, folder.id);
-    command.setMapping(entity.id);
-    command.setMetadata("baseName", baseName);
+    let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        childSpecialization: "DTO-Field"
+    });
+    command.mapToElement(entity);
+    command.getElement().setMetadata("baseName", baseName);
 
     if (owningAggregate) {
-        let foreignKeys = DomainHelper.getForeignKeys(entity, owningAggregate);
-        foreignKeys.forEach(fk => {
-            let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(fk.name), command.id);
-            field.typeReference.setType(fk.typeId)
-            if (fk.mapPath) {
-                field.setMapping(fk.mapPath);
-            }
-        })
+        command.addChildrenFrom(DomainHelper.getForeignKeys(entity, owningAggregate));
     }
 
-    let primaryKeys = DomainHelper.getPrimaryKeys(entity);
-    ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
+    command.addChildrenFrom(DomainHelper.getPrimaryKeys(entity));
 
-    let attributesWithMapPaths = DomainHelper.getBusinessAttributes(entity);
-    for (var attr of attributesWithMapPaths) {
-        if (command.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == attr.id)) { continue; }
-        let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(attr.name), command.id);
-        field.typeReference.setType(attr.typeId)
-        field.setMapping(attr.mapPath);
+    command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+
+    command.collapse();
+}
+
+function createCqrsCallOperationCommand(entity : MacroApi.Context.IElementApi, operation : MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+    let owningAggregate = DomainHelper.getOwningAggregate(entity);
+    let baseName = owningAggregate ? owningAggregate.getName() : "";
+    let expectedCommandName = `${toPascalCase(operation.getName())}${baseName}Command`;
+
+    if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
+        return;
     }
+
+    let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+        childSpecialization: "DTO-Field"
+    });
+    command.mapToElement(operation);
+    command.getElement().setMapping([entity.id, operation.id], "7c31c459-6229-4f10-bf13-507348cd8828") // Map to Domain Operation
+    command.getElement().setMetadata("baseName", baseName);
+
+    if (owningAggregate) {
+        command.addChildrenFrom(DomainHelper.getForeignKeys(entity, owningAggregate).map(x => {
+            x.mapPath = null;
+            return x;
+        }));
+    }
+
+    command.addChildrenFrom(DomainHelper.getPrimaryKeys(entity).map(x => {
+        x.mapPath = null;
+        return x;
+    }));
+
+    command.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter"));
 
     command.collapse();
 }
@@ -220,7 +247,7 @@ function createCqrsResultTypeDto(entity, folder: MacroApi.Context.IElementApi) {
 
     ServicesHelper.addDtoFieldsFromDomain(dto, primaryKeys);
 
-    let attributesWithMapPaths = DomainHelper.getBusinessAttributes(entity);
+    let attributesWithMapPaths = DomainHelper.getAttributesWithMapPath(entity);
     for (var attr of attributesWithMapPaths) {
         if (dto.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == attr.id)) { continue; }
         let field = createElement("DTO-Field", attr.name, dto.id);
