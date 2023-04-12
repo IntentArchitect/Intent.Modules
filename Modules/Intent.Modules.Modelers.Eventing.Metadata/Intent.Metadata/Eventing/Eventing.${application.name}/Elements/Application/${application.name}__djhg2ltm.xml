@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="259354b5-82fe-4c0a-bb30-1fda60b4d935" type="Application" typeId="f40a4942-5d2d-4174-8ec1-af66cbd464db">
+  <name>${application.name}</name>
+  <display>${application.name}</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>bec7b93f-df73-4b64-a2df-76d057608582</parentFolderId>
+  <packageId>bec7b93f-df73-4b64-a2df-76d057608582</packageId>
+  <packageName>Eventing.${application.name}</packageName>
+  <diagram>
+    <targetPackageId>7cfffe8e-be9a-411e-bb66-853b2b96b908</targetPackageId>
+  </diagram>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

@@ -324,12 +324,12 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="327a409c-0178-48aa-b505-b9fa3b4401a9" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Created</name>
-          <display>On Created: Script</display>
+        <childElement id="994fdf2f-7345-4975-b64d-0f4e5ce69a8f" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Loaded</name>
+          <display>On Loaded: Script</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="50ff61db-ec80-41c6-b24e-510a14ee8f33">
+          <typeReference id="d34f56f2-4bd0-429b-9196-c23b0d35b4d7">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -350,7 +350,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (getPackages().length &gt; 1) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;createElement(&quot;Application&quot;, application.name, context.id);&#xD;&#xA;" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/**&#xD;&#xA; * Used by:&#xD;&#xA; * Intent.Modules\Modules\Modelers.Eventing by the &quot;On Loaded&quot; event for Packages.&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/eventing-designer-on-load/eventing-designer-on-load.ts&#xD;&#xA; */&#xD;&#xA;(function () {&#xD;&#xA;    const eventingApplicationElementType = &quot;Application&quot;;&#xD;&#xA;    const metadataKeyName = &quot;modelers-eventing-initialization-version&quot;;&#xD;&#xA;    const currentVersion = 1;&#xD;&#xA;    for (const package of getPackages()) {&#xD;&#xA;        if (package.hasMetadata(metadataKeyName) &amp;&amp;&#xD;&#xA;            Number(package.getMetadata(metadataKeyName)) == currentVersion) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        var appElement = lookupTypesOf(eventingApplicationElementType)&#xD;&#xA;            .filter(x =&gt; x.getPackage().id === package.id)[0];&#xD;&#xA;        if (appElement == null) {&#xD;&#xA;            element.setMetadata(metadataKeyName, currentVersion.toString());&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        appElement.loadDiagram();&#xD;&#xA;        if (currentDiagram.getVisual(appElement.id) != null) {&#xD;&#xA;            element.setMetadata(metadataKeyName, currentVersion.toString());&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        currentDiagram.addElement(appElement.id, { x: 400, y: 320 }, { width: 200, height: 60 });&#xD;&#xA;        element.setMetadata(metadataKeyName, currentVersion.toString());&#xD;&#xA;    }&#xD;&#xA;})();&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

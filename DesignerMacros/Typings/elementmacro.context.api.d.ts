@@ -5,12 +5,15 @@
  */
 declare let element: MacroApi.Context.IElementApi;
 
-declare let association: MacroApi.Context.IAssociationApi;
-
 /**
  * Returns information about the application and it's settings.
  */
 declare const application: MacroApi.Context.IApplication;
+
+/**
+ * Returns the currently opened and displayed diagram.
+ */
+declare const currentDiagram: MacroApi.Context.IDiagramApi;
 
 /**
  * Creates an element of specialization type with the specified name, as a child of the specified parent.
