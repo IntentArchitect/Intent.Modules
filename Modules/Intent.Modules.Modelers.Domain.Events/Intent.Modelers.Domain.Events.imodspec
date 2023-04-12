@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain.Events</id>
-  <version>3.4.0-pre.0</version>
+  <version>3.4.0</version>
   <supportedClientVersions>[3.3.0-pre.0, 5.0.0)</supportedClientVersions>
   <summary>Introduces Domain Event elements to the Domain designer.</summary>
   <description>Introduces Domain Event elements to the Domain designer.</description>

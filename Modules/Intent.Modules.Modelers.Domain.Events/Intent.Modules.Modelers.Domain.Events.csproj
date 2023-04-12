@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.3.5</Version>
+    <Version>3.4.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Description>Domain Event types for the Intent Architect Domain designer.</Description>
