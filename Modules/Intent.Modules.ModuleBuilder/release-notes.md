@@ -1,3 +1,8 @@
+### Version 3.6.0
+
+- TemplateExtensions now use `IIntentTemplate` as extension base instead of `IntentTemplateBase`.
+- Support for association ends to have Script Options in their context menus.
+
 ### Version 3.5.0
 
 - Fixed: Fixed: Static content template `readme.txt` files would be deleted on subsequent software factory runs.
