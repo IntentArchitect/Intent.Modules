@@ -35,6 +35,8 @@ namespace Intent.Modelers.Domain.Api
 
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)] public ClassModel ParentClass => new ClassModel(InternalElement.ParentElement);
+
         public IList<ParameterModel> Parameters => _element.ChildElements
             .GetElementsOfType(ParameterModel.SpecializationTypeId)
             .Select(x => new ParameterModel(x))

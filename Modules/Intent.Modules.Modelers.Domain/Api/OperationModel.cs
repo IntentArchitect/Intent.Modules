@@ -46,6 +46,8 @@ namespace Intent.Modelers.Domain.Api
 
         public bool IsAbstract => _element.IsAbstract;
 
+        [IntentManaged(Mode.Ignore)] public ClassModel ParentClass => new ClassModel(InternalElement.ParentElement);
+
         [IntentManaged(Mode.Fully)]
         public IList<ParameterModel> Parameters => _element.ChildElements
             .GetElementsOfType(ParameterModel.SpecializationTypeId)
