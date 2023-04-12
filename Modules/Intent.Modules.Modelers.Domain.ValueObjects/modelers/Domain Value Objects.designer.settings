@@ -133,6 +133,8 @@ white-space: inherit;`</style>
           </option>
         </creationOptions>
         <scriptOptions />
+        <elementVisualSettings />
+        <associationVisualSettings />
       </diagramSettings>
     </elementExtension>
     <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
