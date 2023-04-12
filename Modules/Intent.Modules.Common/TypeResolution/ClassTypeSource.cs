@@ -152,10 +152,24 @@ namespace Intent.Modules.Common.TypeResolution
         }
 
         void ICanUseDefaultFormatters.SetDefaultCollectionFormatter(ICollectionFormatter collectionFormatter)
-            => WithCollectionFormatter(collectionFormatter);
+        {
+            if (_hasCollectionFormatterSet)
+            {
+                return;
+            }
+
+            WithCollectionFormatter(collectionFormatter);
+        }
 
         void ICanUseDefaultFormatters.SetDefaultNullableFormatter(INullableFormatter nullableFormatter)
-            => WithNullableFormatter(nullableFormatter);
+        {
+            if (_hasNullableFormatterSet)
+            {
+                return;
+            }
+
+            WithNullableFormatter(nullableFormatter);
+        }
     }
 
     public class ClassTypeSourceOptions
