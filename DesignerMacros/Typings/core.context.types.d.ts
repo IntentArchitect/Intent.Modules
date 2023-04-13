@@ -63,6 +63,14 @@ declare namespace MacroApi.Context {
         applicationId: string;
         metadataId: string;
         mappingSettingsId: string;
+        getPath(): IElementMappingPathApi[]
+        getElement(): IElementApi;
+    }
+
+    interface IElementMappingPathApi {
+        id: string;
+        name: string;
+        specialization: string;
         getElement(): IElementApi;
     }
 
@@ -100,6 +108,14 @@ declare namespace MacroApi.Context {
         setMetadata(key: string, value: string);
         removeMetadata(key: string);
         getPackage(): IPackageApi;
+        /**
+         * Expands this package in the designer model.
+         */
+        expand(): void;
+        /**
+         * Collapses this package in the designer model.
+         */
+        collapse(): void;
     }
 
     interface IDiagramApi {
@@ -254,6 +270,10 @@ declare namespace MacroApi.Context {
          * Returns true if this element is mapped.
          */
         isMapped(): boolean;
+        /**
+         * Clears the mapping model of this element.
+         */
+        clearMapping(): void;
         /**
          * Returns the mapping model for this element.
          */

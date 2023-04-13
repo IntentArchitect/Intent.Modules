@@ -3,7 +3,7 @@
  * Intent.Modules\Modules\Modelers.Eventing by the "On Loaded" event for Packages.
  *
  * Source code here:
- * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/eventing-designer-on-load/eventing-designer-on-load.ts
+ * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/src/eventing-designer-on-load/eventing-designer-on-load.ts
  */
 const eventingApplicationElementType = "Application";
 const metadataKeyName = "initialized-version";
@@ -16,19 +16,25 @@ for (const package of getPackages()) {
         continue;
     }
 
-    var appElement = lookupTypesOf(eventingApplicationElementType)
+    package.removeMetadata(metadataKeyName);
+
+    const appElement = lookupTypesOf(eventingApplicationElementType)
         .filter(x => x.getPackage().id === package.id)[0];
     if (appElement == null) {
-        package.setMetadata(metadataKeyName, currentVersion.toString());
+        package.addMetadata(metadataKeyName, currentVersion.toString());
+        package.expand();
         continue;
     }
 
     appElement.loadDiagram();
-    if (currentDiagram.getVisual(appElement.id) != null) {
-        package.setMetadata(metadataKeyName, currentVersion.toString());
+    const diagram = getCurrentDiagram();
+    if (diagram.getVisual(appElement.id) != null) {
+        package.addMetadata(metadataKeyName, currentVersion.toString());
+        package.expand();
         continue;
     }
 
-    currentDiagram.addElement(appElement.id, { x: 400, y: 320 }, { width: 200, height: 60 });
-    package.setMetadata(metadataKeyName, currentVersion.toString());
+    diagram.addElement(appElement.id, { x: 400, y: 320 }, { width: 200, height: 60 });
+    package.addMetadata(metadataKeyName, currentVersion.toString());
+    package.expand();
 }

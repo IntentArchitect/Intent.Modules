@@ -11,9 +11,14 @@ declare let element: MacroApi.Context.IElementApi;
 declare const application: MacroApi.Context.IApplication;
 
 /**
- * Returns the currently opened and displayed diagram.
+ * Obsolete. Use {@link getCurrentDiagram} instead. This would only return the diagram which was open at the time the script execution began.
  */
 declare const currentDiagram: MacroApi.Context.IDiagramApi;
+
+/**
+ * Returns the currently opened and displayed diagram.
+ */
+declare const getCurrentDiagram: () => MacroApi.Context.IDiagramApi;
 
 /**
  * Creates an element of specialization type with the specified name, as a child of the specified parent.
