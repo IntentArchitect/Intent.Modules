@@ -1,4 +1,8 @@
-﻿### Version 3.3.29
+﻿### Version 3.3.31
+
+- Changed: on `LaunchProfileRegistrationRequest` class, changed `UseSsl` to default to `true`, inline with `launchSettings.json` defaults.
+
+### Version 3.3.29
 
 - Update: Now possible to construct `record`s with the `CSharpFileBuilder`. 
 

@@ -44,7 +44,7 @@ namespace Intent.Modules.Common.CSharp.Configuration
         /// <summary>
         /// The value to populate in the <c>useSSL</c> field.
         /// </summary>
-        public bool UseSsl { get; set; }
+        public bool UseSsl { get; set; } = true;
 
         /// <summary>
         /// Key/value pairs of environment variables to be added to profile.
