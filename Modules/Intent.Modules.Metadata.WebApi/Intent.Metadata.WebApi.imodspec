@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.WebApi</id>
-  <version>3.4.0</version>
-  <supportedClientVersions>[3.3.0-pre.0, 5.0.0)</supportedClientVersions>
+  <version>4.0.0-pre.0</version>
+  <supportedClientVersions>[4.0.0-beta.0, 5.0.0)</supportedClientVersions>
   <summary>Support for describing Services in HTTP Web API terms.</summary>
   <description>Support for describing Services in HTTP Web API terms.</description>
   <authors>Intent.Modules</authors>
@@ -12,9 +12,9 @@
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.11" />
-    <dependency id="Intent.Common.Types" version="3.3.6" />
-    <dependency id="Intent.Modelers.Services" version="3.3.5" />
+    <dependency id="Intent.Common" version="3.3.18" />
+    <dependency id="Intent.Common.Types" version="3.3.7" />
+    <dependency id="Intent.Modelers.Services" version="3.4.0" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -22,7 +22,8 @@
   </files>
   <metadata>
     <install target="Services" src="Intent.Metadata/Module Builder/Intent.Metadata.WebApi/Intent.Metadata.WebApi.pkg.config" externalReference="0011387a-b122-45d7-9cdb-8e21b315ab9f" />
-    <install target="Services" src="modelers/WebApi Extension.designer.settings" externalReference="6bd5bdad-d8af-4a4c-97bc-6b5436bd7eb4" />
+    <install target="Services" src="modelers/WebApi CQRS Extensions.designer.settings" externalReference="03bfccb7-d845-411f-ba08-4fddb01bbbda" />
+    <install target="Services" src="modelers/WebApi Services Extensions.designer.settings" externalReference="35553b8d-e014-46ef-88d4-429dbeba18ed" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />

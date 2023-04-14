@@ -1,3 +1,7 @@
+### Version 4.0.0
+
+- CRUD scripts no longer automatically add the Http Settings to Services and Operations. This dependency has been moved to the Intent.Metadata.WebApi module which adds a context menu to "Expose as Http Endpoint".
+
 ### Version 3.4.1
 
 - Fixed: DTO fields will no longer be PascalCased.

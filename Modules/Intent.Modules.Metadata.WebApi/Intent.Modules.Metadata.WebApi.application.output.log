@@ -9,6 +9,22 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#4dcf107e-b8a9-4cb2-b36f-d4c787bc447b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/CommandExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CommandExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/CommandModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CommandModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#7baed1fd-469b-4980-8fd9-4cefb8331eb2</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -42,6 +58,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#e71b0662-e29d-4db2-868b-8a12464b25d0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/QueryModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>QueryModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>5fef08fe-d35e-4360-a7b1-942720f55bd4</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#b16578a5-27b1-4047-a8df-f0b783d706bd</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/ServiceModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
@@ -50,11 +74,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#448fb601-3afc-4514-b70f-195d037b69de</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#77253e5b-e752-424c-b2c7-1707996f810f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/OperationExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>OperationExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
@@ -62,7 +86,23 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ParameterExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ParameterExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e90622ee-f43a-4039-82b5-043e6d6f95d0</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/QueryExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>QueryExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#e2d8e8c4-f5f9-4b32-89a2-8cfaa2325271</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ServiceExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServiceExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
@@ -75,17 +115,25 @@
     <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#9b26c297-0062-4303-b90a-752da4b75de6</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.WebApi.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>fbbe3c09-70f6-47d7-af27-c18d9712d6a7</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#6bd5bdad-d8af-4a4c-97bc-6b5436bd7eb4</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#03bfccb7-d845-411f-ba08-4fddb01bbbda</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/WebApi Extension.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>WebApi Extension.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/WebApi CQRS Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>WebApi CQRS Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbbe3c09-70f6-47d7-af27-c18d9712d6a7</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#35553b8d-e014-46ef-88d4-429dbeba18ed</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/WebApi Services Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>WebApi Services Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

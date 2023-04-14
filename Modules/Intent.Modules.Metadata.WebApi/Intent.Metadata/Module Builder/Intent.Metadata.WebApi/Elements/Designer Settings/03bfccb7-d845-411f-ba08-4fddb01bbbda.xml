@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="6bd5bdad-d8af-4a4c-97bc-6b5436bd7eb4" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
-  <name>WebApi Extension</name>
-  <display>WebApi Extension</display>
+<class id="03bfccb7-d845-411f-ba08-4fddb01bbbda" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
+  <name>WebApi CQRS Extensions</name>
+  <display>WebApi CQRS Extensions</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />

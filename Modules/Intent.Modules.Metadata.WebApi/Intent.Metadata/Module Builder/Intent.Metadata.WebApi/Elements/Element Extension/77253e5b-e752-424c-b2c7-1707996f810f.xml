@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="77253e5b-e752-424c-b2c7-1707996f810f" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Operation Extension</name>
+  <display>Operation Extension: Operation</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="740b99e9-9681-43de-a512-9e8a083f74f8">
+    <typeId>e030c97a-e066-40a7-8188-808c275df3cb</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Services</typePackageName>
+    <typePackageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>35553b8d-e014-46ef-88d4-429dbeba18ed</parentFolderId>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="if (typeReference.typeId == null &amp;&amp; getStereotype(&quot;Http Settings&quot;)?.getProperty(&quot;Verb&quot;).value === &quot;GET&quot;) {&#xD;&#xA;    return &quot;Return Type required for HTTP GET Verb&quot;;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;return &quot;&quot;;" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="2dc0cf1e-a1ae-4351-84b5-ca22bd4b9161" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>77253e5b-e752-424c-b2c7-1707996f810f</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="2c4a09cb-3c84-41f5-b160-404ec1a88245" type="Run Script Option" typeId="345d46fb-c500-409a-88c7-26720572c9af">
+          <name>Expose as Http Endpoint</name>
+          <display>Expose as Http Endpoint: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="3d4ca423-450a-425a-9f79-2a36fc634cdd">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2dc0cf1e-a1ae-4351-84b5-ca22bd4b9161</parentFolderId>
+          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+          <packageName>Intent.Metadata.WebApi</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="cbe77364-d1d0-400b-a8c4-646a4c869612" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="b2c3a117-23d3-47e5-8b83-5b902c55a226" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+                <property name="0abff08a-3986-40b1-a28f-4cc03c4fc1ec" display="Shortcut" value="ctrl + shift + e" isActive="true" />
+                <property name="79f6973f-5e3a-4618-9d4c-d7cc604bffe0" display="Shortcut (macOS)" isActive="true" />
+                <property name="e034a0ca-0101-4594-8384-43048b714578" display="Type Order" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let httpServiceSettingsId = &quot;c29224ec-d473-4b95-ad4a-ec55c676c4fd&quot;; // from WebApi module&#xD;&#xA;let httpSettingsId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;; // from WebApi module&#xD;&#xA;let parameterSettingsId = &quot;d01df110-1208-4af8-a913-92a49d219552&quot;; // from WebApi module&#xD;&#xA;&#xD;&#xA;if (!element.getParent().hasStereotype(httpServiceSettingsId)) {&#xD;&#xA;    element.getParent().addStereotype(httpServiceSettingsId);&#xD;&#xA;&#xD;&#xA;    let serviceBaseName = removeSuffix(element.getParent().getName(), &quot;Service&quot;);&#xD;&#xA;    element.getParent().getStereotype(httpServiceSettingsId).getProperty(&quot;Route&quot;).setValue(`api/${toKebabCase(serviceBaseName)}`)&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;applyHttpSettingsToOperations(element);&#xD;&#xA;&#xD;&#xA;function applyHttpSettingsToOperations(operation) {&#xD;&#xA;    if (!operation.hasStereotype(httpSettingsId)) {&#xD;&#xA;        operation.addStereotype(httpSettingsId);&#xD;&#xA;    }&#xD;&#xA;    let httpSettings = operation.getStereotype(httpSettingsId);&#xD;&#xA;    if (operation.getName().startsWith(&quot;Create&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(``)&#xD;&#xA;    } else if (operation.getName().startsWith(&quot;Update&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;PUT&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`)&#xD;&#xA;    } else if (operation.getName().startsWith(&quot;Delete&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;DELETE&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`)&#xD;&#xA;    } else if (operation.getName().startsWith(&quot;Get&quot;) || operation.getName().startsWith(&quot;Find&quot;) || operation.getName().startsWith(&quot;Lookup&quot;)) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `{id}` : &quot;&quot;)}`)&#xD;&#xA;    } else if (operation.typeReference.getType() != null) {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${toKebabCase(operation.getName())}${(operation.getChildren().some(x =&gt; x.getName().toLowerCase() == &quot;id&quot;) ? `/{id}` : &quot;&quot;)}`)&#xD;&#xA;    } else {&#xD;&#xA;        httpSettings.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;        httpSettings.getProperty(&quot;Route&quot;).setValue(`${toKebabCase(operation.getName())}`)&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    operation.getChildren(&quot;Parameter&quot;).forEach(parameter =&gt; {&#xD;&#xA;        if (!parameter.hasStereotype(parameterSettingsId)) {&#xD;&#xA;            parameter.addStereotype(parameterSettingsId);&#xD;&#xA;        }&#xD;&#xA;    });&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="c4451f43-f06b-4eb1-88b8-3a4a4c374303" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>77253e5b-e752-424c-b2c7-1707996f810f</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="d1a9d51d-c249-4c76-896e-2f20721159ad" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Name Changed</name>
+          <display>On Name Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="ef6be22a-728f-4c26-bb3e-ea63f4ba6ab9">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c4451f43-f06b-4eb1-88b8-3a4a4c374303</parentFolderId>
+          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+          <packageName>Intent.Metadata.WebApi</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var httpVerb = element.getStereotype(&quot;Http Settings&quot;)?.getProperty(&quot;Verb&quot;).value;&#xD;&#xA;if (!httpVerb) {&#xD;&#xA;    if (element.name.toLowerCase().startsWith(&quot;get&quot;) ||&#xD;&#xA;        element.name.toLowerCase().startsWith(&quot;find&quot;) ||&#xD;&#xA;        element.name.toLowerCase().startsWith(&quot;lookup&quot;) ||&#xD;&#xA;        element.name.toLowerCase().startsWith(&quot;search&quot;)) {&#xD;&#xA;        element.getStereotype(&quot;Http Settings&quot;)?.getProperty(&quot;Verb&quot;).setValue(&quot;GET&quot;);&#xD;&#xA;    } else if (element.name.toLowerCase().startsWith(&quot;patch&quot;)) {&#xD;&#xA;        element.getStereotype(&quot;Http Settings&quot;)?.getProperty(&quot;Verb&quot;).setValue(&quot;PATCH&quot;);&#xD;&#xA;    } else {&#xD;&#xA;        element.getStereotype(&quot;Http Settings&quot;)?.getProperty(&quot;Verb&quot;).setValue(&quot;POST&quot;);&#xD;&#xA;    }&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

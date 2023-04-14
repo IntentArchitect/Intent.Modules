@@ -5,6 +5,7 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: DefaultIntentManaged(Mode.Ignore, Targets = Targets.Namespaces)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions", Version = "1.0")]
 
 namespace Intent.Modules.Modelers.Domain.Settings

@@ -58,8 +58,8 @@ function createStandardCreateOperation(service, entity, folder) {
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let dtoName = `${baseName}CreateDto`;
     
-    if (folder.getChildren().some(x => x.getName() == dtoName)) {
-        let operation = service.getChildren().filter(x => x.name == dtoName)[0];
+    if (service.getChildren().some(x => x.getName() == `Create${entity.getName()}`)) {
+        let operation = service.getChildren().filter(x => x.name == `Create${entity.getName()}`)[0];
         let pks = DomainHelper.getPrimaryKeys(entity);
         operation.typeReference.setType(pks[0].typeId);
         return;
@@ -143,8 +143,8 @@ function createStandardUpdateOperation(service, entity, folder) {
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let dtoName = `${baseName}UpdateDto`;
     
-    if (folder.getChildren().some(x => x.getName() == dtoName)) {
-        let operation = service.getChildren().filter(x => x.name == dtoName)[0];
+    if (service.getChildren().some(x => x.getName() == `Update${entity.getName()}`)) {
+        let operation = service.getChildren().filter(x => x.name == `Update${entity.getName()}`)[0];
         let pks = DomainHelper.getPrimaryKeys(entity);
         operation.typeReference.setType(pks[0].typeId);
         return;

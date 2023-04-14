@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<stereotypeDefinition id="b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6" version="3.1.0">
+<stereotypeDefinition id="389e3ad2-6063-4777-aa47-5ec9421faf3d" version="3.1.0">
   <name>Http Settings</name>
   <targetMode>of-type</targetMode>
   <targetTypes>
-    <type id="e030c97a-e066-40a7-8188-808c275df3cb">Operation</type>
     <type id="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">Command</type>
     <type id="e71b0662-e29d-4db2-868b-8a12464b25d0">Query</type>
   </targetTypes>
@@ -18,12 +17,12 @@
   <displayAsText>false</displayAsText>
   <autoAdd>false</autoAdd>
   <allowMultipleApplies>false</allowMultipleApplies>
-  <parentFolderId>0011387a-b122-45d7-9cdb-8e21b315ab9f</parentFolderId>
+  <parentFolderId>e0746121-7fc2-4d7a-8ce2-cd10692cf899</parentFolderId>
   <order>0</order>
   <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
   <packageName>Intent.Metadata.WebApi</packageName>
   <properties>
-    <property id="801c3e61-4431-4d81-93fa-7e57d33cb3fa">
+    <property id="3c8a760e-8340-4749-adce-98a19d422068">
       <name>Verb</name>
       <type>string</type>
       <controlType>select</controlType>
@@ -40,7 +39,7 @@
       <isActiveFunction />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
-    <property id="5dd3e07d-76eb-45d4-9956-4325fb068acc">
+    <property id="b8e71dbb-eb96-4e36-94c2-cdf87a546862">
       <name>Route</name>
       <type>string</type>
       <controlType>text</controlType>
@@ -51,7 +50,7 @@
       <lookupTypes />
       <isActiveFunction />
     </property>
-    <property id="4490e212-1e99-43ce-b3dd-048ed2a6bae8">
+    <property id="cd4e8d51-d9e4-4f1f-b3e7-6b6a41b6843e">
       <name>Return Type Mediatype</name>
       <type>string</type>
       <controlType>select</controlType>

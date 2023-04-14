@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Common.Dart</id>
   <version>1.0.0</version>
-  <supportedClientVersions>[3.2.0,4.0.0)</supportedClientVersions>
+  <supportedClientVersions>[3.2.0,5.0.0)</supportedClientVersions>
   <summary>Common library support in order to help generate code for the Dart language.</summary>
   <description>Common library support in order to help generate code for the Dart language.</description>
   <authors>Intent.Modules</authors>

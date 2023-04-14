@@ -62,8 +62,8 @@ function createStandardCreateOperation(service, entity, folder) {
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let dtoName = `${baseName}CreateDto`;
-    if (folder.getChildren().some(x =&gt; x.getName() == dtoName)) {
-        let operation = service.getChildren().filter(x =&gt; x.name == dtoName)[0];
+    if (service.getChildren().some(x =&gt; x.getName() == `Create${entity.getName()}`)) {
+        let operation = service.getChildren().filter(x =&gt; x.name == `Create${entity.getName()}`)[0];
         let pks = DomainHelper.getPrimaryKeys(entity);
         operation.typeReference.setType(pks[0].typeId);
         return;
@@ -126,8 +126,8 @@ function createStandardUpdateOperation(service, entity, folder) {
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let dtoName = `${baseName}UpdateDto`;
-    if (folder.getChildren().some(x =&gt; x.getName() == dtoName)) {
-        let operation = service.getChildren().filter(x =&gt; x.name == dtoName)[0];
+    if (service.getChildren().some(x =&gt; x.getName() == `Update${entity.getName()}`)) {
+        let operation = service.getChildren().filter(x =&gt; x.name == `Update${entity.getName()}`)[0];
         let pks = DomainHelper.getPrimaryKeys(entity);
         operation.typeReference.setType(pks[0].typeId);
         return;
@@ -319,6 +319,19 @@ class DomainHelper {
                 isCollection: false,
                 isNullable: false
             }];
+    }
+    static getChildrenOfType(entity, type) {
+        let attrDict = Object.create(null);
+        let attributes = entity.getChildren(type);
+        attributes.forEach(attr =&gt; attrDict[attr.id] = {
+            id: attr.id,
+            name: attr.getName(),
+            typeId: attr.typeReference.typeId,
+            mapPath: [attr.id],
+            isNullable: false,
+            isCollection: false
+        });
+        return Object.values(attrDict);
     }
     static getAttributesWithMapPath(entity) {
         let attrDict = Object.create(null);
@@ -910,8 +923,8 @@ function createStandardCreateOperation(service, entity, folder) {
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let dtoName = `${baseName}CreateDto`;
-    if (folder.getChildren().some(x =&gt; x.getName() == dtoName)) {
-        let operation = service.getChildren().filter(x =&gt; x.name == dtoName)[0];
+    if (service.getChildren().some(x =&gt; x.getName() == `Create${entity.getName()}`)) {
+        let operation = service.getChildren().filter(x =&gt; x.name == `Create${entity.getName()}`)[0];
         let pks = DomainHelper.getPrimaryKeys(entity);
         operation.typeReference.setType(pks[0].typeId);
         return;
@@ -974,8 +987,8 @@ function createStandardUpdateOperation(service, entity, folder) {
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let dtoName = `${baseName}UpdateDto`;
-    if (folder.getChildren().some(x =&gt; x.getName() == dtoName)) {
-        let operation = service.getChildren().filter(x =&gt; x.name == dtoName)[0];
+    if (service.getChildren().some(x =&gt; x.getName() == `Update${entity.getName()}`)) {
+        let operation = service.getChildren().filter(x =&gt; x.name == `Update${entity.getName()}`)[0];
         let pks = DomainHelper.getPrimaryKeys(entity);
         operation.typeReference.setType(pks[0].typeId);
         return;
@@ -1167,6 +1180,19 @@ class DomainHelper {
                 isCollection: false,
                 isNullable: false
             }];
+    }
+    static getChildrenOfType(entity, type) {
+        let attrDict = Object.create(null);
+        let attributes = entity.getChildren(type);
+        attributes.forEach(attr =&gt; attrDict[attr.id] = {
+            id: attr.id,
+            name: attr.getName(),
+            typeId: attr.typeReference.typeId,
+            mapPath: [attr.id],
+            isNullable: false,
+            isCollection: false
+        });
+        return Object.values(attrDict);
     }
     static getAttributesWithMapPath(entity) {
         let attrDict = Object.create(null);

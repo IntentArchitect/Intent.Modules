@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6da057a9-d398-4b57-a6de-cc5558fd2677" version="3.1.0">
+  <name>Parameter Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="7baed1fd-469b-4980-8fd9-4cefb8331eb2">DTO-Field</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>if (properties["Source"].value == "Default") {
+    let funcSettings = element.getParent().getStereotype("Http Settings");
+    if (funcSettings == null) {
+        return null;
+    }
+
+    let verb = funcSettings.getProperty("Verb").getValue()?.toString()
+    let route = funcSettings.getProperty("Route").getValue()?.toString();
+    if (route.toLowerCase().indexOf(`{${element.getName().toLowerCase()}}`) !== -1) {
+        return "[From Route]";
+    }
+    if ((verb == "POST" || verb == "PUT") &amp;&amp; 
+        element.typeReference.getType().specialization !== "Type-Definition") {
+        return "[From Body]";
+    }
+
+    if ((verb == "GET" || verb == "DELETE") &amp;&amp;
+        element.typeReference.getType().specialization == "Type-Definition") {
+        return "[From Query]";
+    }
+    
+    return "[From Query]";
+}
+return `[${properties["Source"].value}]`;</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>e0746121-7fc2-4d7a-8ce2-cd10692cf899</parentFolderId>
+  <order>0</order>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <properties>
+    <property id="8b6a550b-9a0c-48ec-8ba0-45009974c850">
+      <name>Source</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder>(required)</placeholder>
+      <defaultValue>Default</defaultValue>
+      <valueOptions>
+        <option>Default</option>
+        <option>From Body</option>
+        <option>From Form</option>
+        <option>From Header</option>
+        <option>From Query</option>
+        <option>From Route</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="d59e0b3d-43ed-49bd-b6f7-9ae5ce945fec">
+      <name>Header Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isActiveFunction>return properties["Source"].value === "From Header";</isActiveFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>
