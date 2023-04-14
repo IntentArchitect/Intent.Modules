@@ -36,7 +36,54 @@ namespace Intent.Metadata.WebApi.Api
             stereotype = new HttpSettings(model.GetStereotype("Http Settings"));
             return true;
         }
-        
+
+        public static Secured GetSecured(this QueryModel model)
+        {
+            var stereotype = model.GetStereotype("Secured");
+            return stereotype != null ? new Secured(stereotype) : null;
+        }
+
+        public static bool HasSecured(this QueryModel model)
+        {
+            return model.HasStereotype("Secured");
+        }
+
+        public static bool TryGetSecured(this QueryModel model, out Secured stereotype)
+        {
+            if (!HasSecured(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Secured(model.GetStereotype("Secured"));
+            return true;
+        }
+
+        public static Unsecured GetUnsecured(this QueryModel model)
+        {
+            var stereotype = model.GetStereotype("Unsecured");
+            return stereotype != null ? new Unsecured(stereotype) : null;
+        }
+
+
+        public static bool HasUnsecured(this QueryModel model)
+        {
+            return model.HasStereotype("Unsecured");
+        }
+
+        public static bool TryGetUnsecured(this QueryModel model, out Unsecured stereotype)
+        {
+            if (!HasUnsecured(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Unsecured(model.GetStereotype("Unsecured"));
+            return true;
+        }
+
         public class HttpSettings
         {
             private IStereotype _stereotype;
@@ -158,6 +205,38 @@ namespace Intent.Metadata.WebApi.Api
                 Default,
                 ApplicationJson
             }
+        }
+
+
+        public class Secured
+        {
+            private IStereotype _stereotype;
+
+            public Secured(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string Roles()
+            {
+                return _stereotype.GetProperty<string>("Roles");
+            }
+
+        }
+
+        public class Unsecured
+        {
+            private IStereotype _stereotype;
+
+            public Unsecured(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
         }
 
     }
