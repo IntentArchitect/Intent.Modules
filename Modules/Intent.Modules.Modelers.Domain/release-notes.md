@@ -1,4 +1,8 @@
-﻿### Version 3.3.10
+﻿### Version 3.4.0
+
+- Added concept of Data Contract: a generic contract type that has attributes. This type is particularly useful in DDD environments where we want to pass data into constructors and operations.
+
+### Version 3.3.10
 
 - Updated display text of classes to show base class if inheriting.
 
