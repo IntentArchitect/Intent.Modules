@@ -33,4 +33,8 @@
     </None>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Intent.Modules.Modelers.Services\Intent.Modules.Modelers.Services.csproj" />
+  </ItemGroup>
+
 </Project>

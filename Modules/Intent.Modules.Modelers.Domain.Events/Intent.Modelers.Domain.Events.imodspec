@@ -21,8 +21,9 @@
     <file src="$outDir$/$id$.pdb" />
   </files>
   <metadata>
-    <install src="modelers/Domain Events.designer.settings" externalReference="79480502-761f-4883-a4f3-3b03654db367" target="Domain" />
+    <install src="modelers/Domain Event Types.designer.settings" externalReference="79480502-761f-4883-a4f3-3b03654db367" target="Domain" />
     <install target="Module Builder;Domain" src="Intent.Metadata/Module Builder/Intent.Modelers.Domain.Events/Intent.Modelers.Domain.Events.pkg.config" externalReference="31710880-215c-4fed-9c79-a129a4b9cdb1" />
+    <install target="Services" src="modelers/Domain Events Services Extension.designer.settings" externalReference="68643ac1-c91e-44e3-ab19-9c5c5ed6ef76" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
