@@ -4,59 +4,7 @@
   <name>WebApi CQRS Extensions</name>
   <designerReferences />
   <packageSettings />
-  <packageExtensions>
-    <packageExtension type="Services Package" typeId="df45eaf6-9202-4c25-8dd5-677e9ba1e906">
-      <requiredPackages />
-      <creationOptions />
-      <scriptOptions />
-      <typeOrder />
-      <macros>
-        <macro trigger="on-loaded">
-          <script>let services = lookupTypesOf("Service").filter(x =&gt; x.hasStereotype("Http Service Settings"));
-if (services.length == 0 || services.filter(x =&gt; x.getChildren("Operation")
-    .some(x =&gt; x.isMapped &amp;&amp; (x.getMapping()?.getElement()?.specialization == "Command" || x.getMapping()?.getElement()?.specialization == "Query")))
-    .length == 0) {
-    return;
-}
-
-await dialogService.info(`The Intent.Modules.AspNetCore.Dispatch.MediatR major release (5.0.0) requires that a migration be run against this metadata.
-
-This migration will remove all Services that have been mapped to Commands and Queries and apply the equivalent Http Settings directly onto the Commands and Queries.
-
-This new approach simplifies the metadata and conforms better to the application oriented design paradigm than with the Services. It also allows Services to take the role of application services instead of assuming that they are AspNetCore controllers.
-
-Note that the software factory will make changes to all controllers (e.g. renaming methods). However, there should be no changes in the HTTP Web API itself and therefore should require no changes on any consuming clients. 
-
-If you run into any issues, please revert your changes and contact our support team via support@intentarchitect.com or your preferred channel`);
-
-let httpSettingsId = "389e3ad2-6063-4777-aa47-5ec9421faf3d";
-services.forEach(service =&gt; {
-    let serviceRoute = service.getStereotype("Http Service Settings").getProperty("Route").getValue();
-    if (serviceRoute == null || serviceRoute == "") {
-        serviceRoute = `api/${toKebabCase(removeSuffix(service.getName(), "Service", "Controller"))}`;
-    }
-
-    let operations = service.getChildren("Operation").filter(x =&gt; x.hasStereotype("Http Settings") &amp;&amp; x.isMapped)
-
-    operations.forEach(o =&gt; {
-        let request = o.getMapping().getElement();
-        request.addStereotype(httpSettingsId);
-        let httpSettings = request.getStereotype(httpSettingsId);
-        let operationRoute = o.getStereotype("Http Settings").getProperty("Route").getValue();
-
-        httpSettings.getProperty("Verb").setValue(o.getStereotype("Http Settings").getProperty("Verb").getValue());
-        httpSettings.getProperty("Route").setValue(`${serviceRoute}${(operationRoute == null || operationRoute == "" ? "" : `/${operationRoute}`)}`);
-        httpSettings.getProperty("Return Type Mediatype").setValue(o.getStereotype("Http Settings").getProperty("Return Type Mediatype").getValue());
-    });
-
-    if (operations.length &gt; 0) {
-        service.delete();
-    }
-})</script>
-        </macro>
-      </macros>
-    </packageExtension>
-  </packageExtensions>
+  <packageExtensions />
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
