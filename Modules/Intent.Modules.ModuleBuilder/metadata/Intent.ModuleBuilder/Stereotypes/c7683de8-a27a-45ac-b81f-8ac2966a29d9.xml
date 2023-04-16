@@ -76,6 +76,7 @@
       <valueOptions />
       <lookupTypes>
         <type>727577aa-3e07-4b41-be7d-7359bb1e48c8</type>
+        <type>89333f72-3960-4159-bf61-9c40d4b65088</type>
       </lookupTypes>
       <isActiveFunction>return properties["Option Source"].value == "Elements of Type";</isActiveFunction>
       <isRequiredFunction>return true</isRequiredFunction>
