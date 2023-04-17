@@ -1,3 +1,7 @@
+### Version 4.0.1
+
+- Fixed: CRUD script errors when the DTO already exists for an operation.
+
 ### Version 4.0.0
 
 - CRUD scripts no longer automatically add the Http Settings to Services and Operations. This dependency has been moved to the Intent.Metadata.WebApi module which adds a context menu to "Expose as Http Endpoint".
