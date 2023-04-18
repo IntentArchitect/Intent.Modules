@@ -1,3 +1,6 @@
+### Version 3.6.1
+- Nuget Version bumps to align with `Domain Designer`
+
 ### Version 3.6.0
 
 - TemplateExtensions now use `IIntentTemplate` as extension base instead of `IntentTemplateBase`.
