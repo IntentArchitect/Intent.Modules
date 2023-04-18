@@ -396,6 +396,39 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="35428800-ca35-448b-830a-610cbf3b7ac5" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Loaded</name>
+          <display>On Loaded: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="18325c4a-0aa1-47f1-a539-5ea57cc46aef">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>433832bf-a1a5-4005-b62f-7cfcdb4c2e4e</parentFolderId>
+          <packageId>6572b98d-5e13-4d4b-9ffc-820057da974e</packageId>
+          <packageName>Intent.Modelers.Domain</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/**&#xD;&#xA; * Used by:&#xD;&#xA; * Intent.Modules\Modules\Modelers.Domain by the &quot;On Loaded&quot; event for Packages.&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/src/domain-designer-on-load/domain-designer-on-load.ts&#xD;&#xA; */&#xD;&#xA;const metadataKeyName = &quot;initialized&quot;;&#xD;&#xA;const diagramElementType = &quot;Diagram&quot;;&#xD;&#xA;(function () {&#xD;&#xA;    if (getPackages().some(x =&gt; x.hasMetadata(metadataKeyName))) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    const diagram = lookupTypesOf(diagramElementType)[0];&#xD;&#xA;    if (diagram != null) {&#xD;&#xA;        diagram.loadDiagram();&#xD;&#xA;    }&#xD;&#xA;    for (const package of getPackages()) {&#xD;&#xA;        package.expand();&#xD;&#xA;        package.setMetadata(metadataKeyName, String(true));&#xD;&#xA;    }&#xD;&#xA;})();&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
       </childElements>
     </childElement>
   </childElements>

@@ -73,6 +73,28 @@
         <type order="4">Enum</type>
         <type order="5">Stereotype-Definition</type>
       </typeOrder>
+      <macros>
+        <macro trigger="on-loaded">
+          <script>/**
+ * Used by:
+ * Intent.Modules\Modules\Modelers.Services by the "On Loaded" event for Packages.
+ *
+ * Source code here:
+ * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/src/services-designer-on-load/services-designer-on-load.ts
+ */
+const metadataKeyName = "initialized";
+(function () {
+    if (getPackages().some(x =&gt; x.hasMetadata(metadataKeyName))) {
+        return;
+    }
+    for (const package of getPackages()) {
+        package.expand();
+        package.setMetadata(metadataKeyName, String(true));
+    }
+})();
+</script>
+        </macro>
+      </macros>
     </packageSetting>
   </packageSettings>
   <packageExtensions />
