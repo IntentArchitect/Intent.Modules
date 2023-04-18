@@ -1,4 +1,8 @@
-﻿### Version 3.3.19
+﻿### Version 3.3.21
+
+- Fixed: An exception would occur when a TypeScript template would try resolve a collection type.
+
+### Version 3.3.20
 
 - Fixed: When `ClassTypeSource.Create()` was used without `WithNullableFormatter()` and/or `WithCollectionFormatter()` also being called, no default implementations would be applied.
 

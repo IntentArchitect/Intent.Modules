@@ -232,7 +232,7 @@ public class ResolvedTypeInfo : IResolvedTypeInfo
     {
         var typeName = Name;
 
-        if (IsCollection && CollectionFormatter != null)
+        if (GenericTypeParameters.Count == 1 && IsCollection && CollectionFormatter != null)
         {
             typeName = CollectionFormatter.Format(GenericTypeParameters.Single().ToString());
         }
