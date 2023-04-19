@@ -1,18 +1,24 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Net.Mime;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpObjectInitializerBlock : CSharpStatementBlock
+public class CSharpObjectInitializerBlock : CSharpStatement, IHasCSharpStatements
 {
+    private bool _withSemicolon;
+    
     public CSharpObjectInitializerBlock(string invocation) : base(invocation)
     {
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
+    
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public new CSharpObjectInitializerBlock WithSemicolon()
     {
-        base.WithSemicolon();
+        _withSemicolon = true;
         return this;
     }
 
@@ -24,8 +30,15 @@ public class CSharpObjectInitializerBlock : CSharpStatementBlock
         return this;
     }
 
+    public CSharpObjectInitializerBlock AddKeyAndValue(CSharpStatement key, CSharpStatement value)
+    {
+        Statements.Add(new CSharpObjectInitKeyValueStatement(key, value));
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $@"{base.GetText(indentation)}";
+        return @$"{(Text.Length > 0 ? base.GetText(indentation) + Environment.NewLine : "")}{indentation}{RelativeIndentation}{{{Statements.JoinCode(",", $"{indentation}{RelativeIndentation}    ")}
+{indentation}{RelativeIndentation}}}{(_withSemicolon ? ";" : "")}";
     }
 }

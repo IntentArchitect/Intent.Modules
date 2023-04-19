@@ -90,14 +90,20 @@ public class BuilderTests
                     method.AddParameter("int", "value");
                     method.AddStatement("// If with scope")
                         .AddStatement(new CSharpStatementBlock("if (value == 0)")
-                        .AddStatement("throw new InvalidArgumentException();"));
+                            .AddStatement("throw new InvalidArgumentException();"));
                     method.AddStatement("// New Scope")
                         .AddStatement(new CSharpStatementBlock());
                     method.AddStatement("// Object Init")
                         .AddStatement(new CSharpObjectInitializerBlock("var obj = new SomeObject")
                             .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
                                 .AddStatement("return x + 1;"))
-                            .AddInitStatement("StringProp", "\"My string\""));
+                            .AddInitStatement("StringProp", "\"My string\"")
+                            .WithSemicolon());
+                    method.AddStatement(new CSharpObjectInitializerBlock("new Dictionary<string, string>")
+                        .AddKeyAndValue(@"""key1""", @"""value 1""")
+                        .AddKeyAndValue(@"""key2""", @"""value 2""")
+                        .WithSemicolon()
+                    );
                 });
             })
             .CompleteBuild();

@@ -23,8 +23,14 @@ namespace Testing.Namespace
                 {
                     return x + 1;
                 },
-                StringProp = "My string",
-            }
+                StringProp = "My string"
+            };
+
+            new Dictionary<string, string>
+            {
+                { "key1", "value 1" },
+                { "key2", "value 2" }
+            };
         }
     }
 }
