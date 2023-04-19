@@ -12,3 +12,7 @@ visual modeling, code-management and pattern-reuse to help software development 
 ## What are modules?
 
 A module is a packaged collection patterns, software factory extensions, modelers and metadata which can be used in one or more Intent Architect projects and/or solutions.
+
+## Where can I get support?
+
+Please visit this [Github Repository](https://github.com/IntentSoftware/Support/issues) to ask questions, log bugs or request new features.
