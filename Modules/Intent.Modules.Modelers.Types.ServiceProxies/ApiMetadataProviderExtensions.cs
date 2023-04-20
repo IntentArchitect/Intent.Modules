@@ -42,88 +42,79 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         [IntentManaged(Mode.Ignore)]
         public static IReadOnlyCollection<EnumModel> GetProxyMappedEnumModels(this IDesigner designer)
         {
-            return designer.GetServiceProxyModels()
-                .SelectMany(x => x.GetMappedServiceDTOModels())
-                .SelectMany(x => x.Fields)
-                .Where(x => x.TypeReference.Element?.IsEnumModel() == true)
-                .Select(x => x.TypeReference.Element.AsEnumModel())
-                .Distinct()
-                .ToArray();
+            var mappedEndpoints = designer.GetServiceProxyModels()
+                .SelectMany(GetMappedEndpoints);
+
+            return DeepGetDistinctReferencedElements(mappedEndpoints)
+                .Where(x => x.IsEnumModel())
+                .Select(x => x.AsEnumModel())
+                .ToList();
         }
 
         [IntentManaged(Mode.Ignore)]
         public static IEnumerable<ServiceProxyDTOModel> GetDTOModels(this ServiceProxyModel proxy)
         {
-            var operationLevelDtos = proxy.Operations
-                .SelectMany(x => x.Parameters)
-                .SelectMany(x => GetTypesFromTypeReference(x.TypeReference))
-                .Concat(proxy.Operations
-                    .Where(x => x.TypeReference?.Element != null)
-                    .SelectMany(x => GetTypesFromTypeReference(x.TypeReference)));
-
-            var detectedDtos = GetDistinctAndNestedDtos(operationLevelDtos);
-
-            return detectedDtos
-                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId
-                            && x.SpecializationTypeId != EnumModel.SpecializationTypeId)
-                .Select(x => new ServiceProxyDTOModel((IElement)x, proxy))
+            return DeepGetDistinctReferencedElements(proxy.Operations.Select(x => x.InternalElement))
+                .Where(x => x.SpecializationTypeId is not (TypeDefinitionModel.SpecializationTypeId or EnumModel.SpecializationTypeId))
+                .Select(x => new ServiceProxyDTOModel(x, proxy))
                 .ToList();
         }
 
         [IntentManaged(Mode.Ignore)]
         public static IEnumerable<ServiceProxyDTOModel> GetMappedServiceDTOModels(this ServiceProxyModel proxy)
         {
-            var operationLevelDtos = proxy.MappedService.Operations
-                .SelectMany(x => x.Parameters)
-                .SelectMany(x => GetTypesFromTypeReference(x.TypeReference))
-                .Concat(proxy.MappedService.Operations
-                    .Where(x => x.TypeReference?.Element != null)
-                    .SelectMany(x => GetTypesFromTypeReference(x.TypeReference)));
-
-            var detectedDtos = GetDistinctAndNestedDtos(operationLevelDtos);
-
-            return detectedDtos
-                .Where(x => x.SpecializationTypeId != TypeDefinitionModel.SpecializationTypeId
-                            && x.SpecializationTypeId != EnumModel.SpecializationTypeId)
-                .Select(x => new ServiceProxyDTOModel((IElement)x, proxy))
+            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy))
+                .Where(x => x.SpecializationTypeId is not (TypeDefinitionModel.SpecializationTypeId or EnumModel.SpecializationTypeId))
+                .Select(x => new ServiceProxyDTOModel(x, proxy))
                 .ToList();
         }
 
         [IntentManaged(Mode.Ignore)]
-        private static IEnumerable<ICanBeReferencedType> GetTypesFromTypeReference(ITypeReference typeReference)
+        private static ISet<IElement> DeepGetDistinctReferencedElements(IEnumerable<IElement> elements)
         {
-            var models = new List<ICanBeReferencedType>() { typeReference.Element };
-            models.AddRange(typeReference.GenericTypeParameters.SelectMany(GetTypesFromTypeReference));
-            return models;
-        }
+            var referencedElements = new HashSet<IElement>();
+            var workingStack = new Stack<IElement>(elements);
 
-        [IntentManaged(Mode.Ignore)]
-        private static IEnumerable<ICanBeReferencedType> GetDistinctAndNestedDtos(
-            IEnumerable<ICanBeReferencedType> operationLevelDtos)
-        {
-            var detectedDtos = new HashSet<ICanBeReferencedType>(operationLevelDtos);
-            var navigationStack = new Stack<ICanBeReferencedType>(detectedDtos);
-
-            while (navigationStack.Any())
+            while (workingStack.Any())
             {
-                var curDto = navigationStack.Pop();
-                var elements = ((IElement)curDto).ChildElements
-                    .Where(x => x.TypeReference?.Element is IElement)
-                    .Select(x => (IElement)x.TypeReference.Element);
-                foreach (var element in elements)
+                var currentElement = workingStack.Pop();
+                if (currentElement.TypeReference?.Element is IElement referencedElement)
                 {
-                    // Also helps not to get stuck in circular references
-                    if (detectedDtos.Contains(element))
+                    if (!referencedElements.Add(referencedElement))
                     {
+                        // Avoid infinite loops due to cyclic references
                         continue;
                     }
 
-                    detectedDtos.Add(element);
-                    navigationStack.Push(element);
+                    foreach (var childElement in referencedElement.ChildElements)
+                    {
+                        workingStack.Push(childElement);
+                    }
+                }
+
+                foreach (var childElement in currentElement.ChildElements)
+                {
+                    workingStack.Push(childElement);
                 }
             }
 
-            return detectedDtos;
+            return referencedElements;
+        }
+
+        [IntentManaged(Mode.Ignore)]
+        private static IEnumerable<IElement> GetMappedEndpoints(ServiceProxyModel model)
+        {
+            if (model.MappedService != null)
+            {
+                return model.MappedService.Operations
+                    .Select(x => x.InternalElement)
+                    .Where(x => x.Stereotypes.Any(s => s.Name == "Http Settings"));
+            }
+
+            return model.Operations
+                .Select(x => x.Mapping?.Element)
+                .Cast<IElement>()
+                .Where(x => x.Stereotypes.Any(s => s.Name == "Http Settings"));
         }
     }
 }
