@@ -1,24 +1,45 @@
 (async () => {
-// This script was made using a Typescript source. Don't edit this script directly.
-if (element.getParent().getPackage().specialization !== "Mongo Domain Package") {
-    return;
+{
+    // This script was made using a Typescript source. Don't edit this script directly.
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    if (!element.getPackage().hasStereotype(documentStoreId)) {
+        return;
+    }
+
+    let classes = lookupTypesOf("Class").filter(x => x.getPackage().id === element.id);
+    for (let classElement of classes) {
+        updatePrimaryKey(classElement);
+        updateForeignKeys(classElement);
+    }
 }
 
-if (element.getMetadata("is-managed-key") != "true" || !isAggregateRoot(element.getParent())) {
-    return;
+function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
+    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    let pk = element.getChildren("Attribute")
+        .filter(x => x.hasStereotype(PrimaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") && !x.hasMetadata("association")))[0];
+    
+    let isAggregate = isAggregateRoot(element);
+    if (pk && (pk.hasStereotype(PrimaryKeyStereotypeId) && !isAggregate)) {
+        pk.removeStereotype(PrimaryKeyStereotypeId);
+        pk.setMetadata("is-managed-key", "false");
+        return;
+    }
+    if (!isAggregate) {
+        return;
+    }
+    
+    let idAttr = pk || createElement("Attribute", "Id", element.id);
+    if (!pk) {
+        idAttr.setOrder(0);
+        idAttr.typeReference.setType(getDefaultIdType());
+    }
+    if (idAttr.getMetadata("is-managed-key") != "true") {
+        idAttr.setMetadata("is-managed-key", "true");
+    }
+    if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {
+        idAttr.addStereotype(PrimaryKeyStereotypeId);
+    }
 }
-
-if (!element.hasMetadata("association")) {
-    const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
-    let idAttr = createElement("Attribute", "Id", element.getParent().id);
-    idAttr.typeReference.setType(element.typeReference.getType().id);
-    idAttr.setOrder(0);
-    idAttr.addMetadata("is-managed-key", "true");
-    idAttr.addStereotype(PrimaryKeyStereotypeId);
-    return;
-}
-
-updateForeignKeys(element.getParent());
 
 function updateForeignKeys(element : MacroApi.Context.IElementApi) {
     for (let association of element.getAssociations()) {
@@ -42,7 +63,7 @@ function updateForeignKeys(element : MacroApi.Context.IElementApi) {
 }
 
 function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementApi, destinationEndType : MacroApi.Context.IElementApi, associationEnd : MacroApi.Context.IAssociationApi, associationId: string) {
-    const ForeignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
@@ -189,5 +210,5 @@ function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
         traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
     }
 }
-    
+
 })();

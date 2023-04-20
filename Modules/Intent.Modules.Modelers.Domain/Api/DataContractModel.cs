@@ -43,6 +43,8 @@ namespace Intent.Modelers.Domain.Api
 
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public ITypeReference BaseType => TypeReference?.Element != null ? TypeReference : null;
+
         public IElement InternalElement => _element;
 
         public IList<AttributeModel> Attributes => _element.ChildElements

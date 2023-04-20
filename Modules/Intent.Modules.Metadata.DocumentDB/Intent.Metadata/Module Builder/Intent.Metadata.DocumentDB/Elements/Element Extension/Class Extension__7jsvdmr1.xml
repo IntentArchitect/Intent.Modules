@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="984a206d-ce63-419b-ac66-356136d65c0f" type="Element Extension" typeId="e3c7b1ca-f080-45c1-b56f-8d44226c8e20">
+  <name>Class Extension</name>
+  <display>Class Extension: Class</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="242e1a44-3a03-4c24-8e41-ef60cb64cfe2">
+    <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>4652d8dc-eea5-49cb-8c08-93ac1972962c</parentFolderId>
+  <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+  <packageName>Intent.Metadata.DocumentDB</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="35226a83-3965-4224-8aef-20c68a0c5180" display="Mode" value="Inherit" isActive="true" />
+        <property name="7d3859d4-084d-4ff0-8b31-850b4a8f8cd0" display="Display Name" isActive="false" />
+        <property name="17223dbd-8df0-4700-8b81-02274ca3ed7f" display="Hint" isActive="false" />
+        <property name="b2cef034-5706-45d2-8554-f4dc582a18ff" display="Target Types" isActive="false" />
+        <property name="93e4efa9-186d-4e88-ae0a-491bcd6e6f5e" display="Default Type Id" isActive="false" />
+        <property name="7a0c4185-1c08-4d3e-9185-14683d7a3bd0" display="Allow Collection" value="Inherit" isActive="false" />
+        <property name="e3dc90ec-4f5f-4f20-b271-e28a5094dc91" display="Allow Nullable" value="Inherit" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="312eab00-f6db-492e-bbb4-e41383c8d3d8" name="Extension Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8c964307-9d03-4a14-9fd3-40ea2607955a" display="Display Text Function" value="" isActive="true" />
+        <property name="996ed45f-2318-4587-9618-73db3d7cfed0" display="Validate Function" value="" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="dc673e32-dd4a-4957-a472-c8a5fec4895f" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>984a206d-ce63-419b-ac66-356136d65c0f</parentFolderId>
+      <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+      <packageName>Intent.Metadata.DocumentDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="b57955f8-aa49-435b-b062-41ce40b626c2" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="445a2336-6f53-4fb0-886c-fd6a57c092d4">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>dc673e32-dd4a-4957-a472-c8a5fec4895f</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="    // This script was made using a Typescript source. Don't edit this script directly.&#xD;&#xA;    const documentStoreId = &quot;8b68020c-6652-484b-85e8-6c33e1d8031f&quot;;&#xD;&#xA;    if (!element.getPackage().hasStereotype(documentStoreId)) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    const PrimaryKeyStereotypeId = &quot;64f6a994-4909-4a9d-a0a9-afc5adf2ef74&quot;;&#xD;&#xA;    let idAttr = createElement(&quot;Attribute&quot;, &quot;Id&quot;, element.id);&#xD;&#xA;    idAttr.typeReference.setType(getDefaultIdType());&#xD;&#xA;    idAttr.addMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;    idAttr.addStereotype(PrimaryKeyStereotypeId);&#xD;&#xA;    function getDefaultIdType() {&#xD;&#xA;        const StringTypeId = &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;;&#xD;&#xA;        const GuidTypeId = &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;;&#xD;&#xA;        const IntTypeId = &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;;&#xD;&#xA;        const LongTypeId = &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;;&#xD;&#xA;        const MongoSettingId = &quot;d5581fe8-7385-4bb6-88dc-8940e20ec1d4&quot;;&#xD;&#xA;        switch (application.getSettings(MongoSettingId)?.getField(&quot;Id Type&quot;)?.value) {&#xD;&#xA;            default:&#xD;&#xA;                return StringTypeId;&#xD;&#xA;            case &quot;guid&quot;:&#xD;&#xA;                return GuidTypeId;&#xD;&#xA;            case &quot;int&quot;:&#xD;&#xA;                return IntTypeId;&#xD;&#xA;            case &quot;long&quot;:&#xD;&#xA;                return LongTypeId;&#xD;&#xA;        }&#xD;&#xA;    }" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

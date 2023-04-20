@@ -38,25 +38,25 @@ namespace Intent.Modules.Common
         /// <summary>
         /// Lookup only one stereotype with a given name. If more than one is found with the same name an exception is thrown.
         /// </summary>
-        public static IStereotype GetStereotype(this IHasStereotypes model, string stereotypeName)
+        public static IStereotype GetStereotype(this IHasStereotypes model, string stereotypeNameOrId)
         {
-            var stereotypes = model.Stereotypes.Where(x => x.Name == stereotypeName).ToArray();
+            var stereotypes = model.Stereotypes.Where(x => x.Name == stereotypeNameOrId || x.DefinitionId == stereotypeNameOrId).ToArray();
             if (stereotypes.Length > 1)
             {
                 throw new Exception(model is IMetadataModel metadataModel
-                    ? $"More than one stereotype found with the name '{stereotypeName}' on element with ID {metadataModel.Id}"
-                    : $"More than one stereotype found with the name '{stereotypeName}'");
+                    ? $"More than one stereotype found with the name '{stereotypeNameOrId}' on element with ID {metadataModel.Id}"
+                    : $"More than one stereotype found with the name '{stereotypeNameOrId}'");
             }
 
             return stereotypes.SingleOrDefault();
         }
 
         /// <summary>
-        /// Look up multiple stereotypes by the same name.
+        /// Look up multiple stereotypes by the same name or definitionId.
         /// </summary>
-        public static IReadOnlyCollection<IStereotype> GetStereotypes(this IHasStereotypes model, string stereotypeName)
+        public static IReadOnlyCollection<IStereotype> GetStereotypes(this IHasStereotypes model, string stereotypeNameOrId)
         {
-            return model.Stereotypes.Where(p => p.Name == stereotypeName).ToArray();
+            return model.Stereotypes.Where(p => p.Name == stereotypeNameOrId || p.DefinitionId == stereotypeNameOrId).ToArray();
         }
 
         /// <summary>
@@ -88,11 +88,11 @@ namespace Intent.Modules.Common
         }
 
         /// <summary>
-        /// Used to query whether or not a stereotype with a particular name is present.
+        /// Used to query whether or not a stereotype with a particular name or definition Id is present.
         /// </summary>
-        public static bool HasStereotype(this IHasStereotypes model, string stereotypeName)
+        public static bool HasStereotype(this IHasStereotypes model, string stereotypeNameOrId)
         {
-            return model.Stereotypes.Any(x => x.Name == stereotypeName);
+            return model.Stereotypes.Any(x => x.Name == stereotypeNameOrId || x.DefinitionId == stereotypeNameOrId);
         }
     }
 }

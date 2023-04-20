@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="d5581fe8-7385-4bb6-88dc-8940e20ec1d4" type="Module Settings Configuration" typeId="37e678f8-370a-4b05-ae44-69bb3d2b39b6">
+  <name>Document Database</name>
+  <display>Document Database</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>manually</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</parentFolderId>
+  <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+  <packageName>Intent.Metadata.DocumentDB</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="8bcf2b5c-cd35-47d6-8705-7e8e83494083" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <name>Id Type</name>
+      <display>Id Type</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>d5581fe8-7385-4bb6-88dc-8940e20ec1d4</parentFolderId>
+      <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+      <packageName>Intent.Metadata.DocumentDB</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="true" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="The default ID type to apply to newly created classes." isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="object-id" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="e83dbe2f-9d73-48d7-8a3e-47e995adf6db" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Object ID</name>
+          <display>Object ID = object-id</display>
+          <isAbstract>false</isAbstract>
+          <value>object-id</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>8bcf2b5c-cd35-47d6-8705-7e8e83494083</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="85102d2a-039b-4c41-944a-97cfde7f332f" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>GUID</name>
+          <display>GUID = guid</display>
+          <isAbstract>false</isAbstract>
+          <value>guid</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>8bcf2b5c-cd35-47d6-8705-7e8e83494083</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="08bdc291-d0b5-424f-80d3-f058b5d1ac77" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Integer</name>
+          <display>Integer = int</display>
+          <isAbstract>false</isAbstract>
+          <value>int</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>8bcf2b5c-cd35-47d6-8705-7e8e83494083</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="b0d065f1-9435-45e2-a4da-4017762dddd4" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Long</name>
+          <display>Long = long</display>
+          <isAbstract>false</isAbstract>
+          <value>long</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>8bcf2b5c-cd35-47d6-8705-7e8e83494083</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

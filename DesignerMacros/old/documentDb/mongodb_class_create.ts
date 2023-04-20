@@ -1,10 +1,11 @@
 (async () => {
 // This script was made using a Typescript source. Don't edit this script directly.
-if (element.getPackage().specialization !== "Mongo Domain Package") {
+const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+if (!element.getPackage().hasStereotype(documentStoreId)) {
     return;
 }
 
-const PrimaryKeyStereotypeId : string = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+const PrimaryKeyStereotypeId : string = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
 
 let idAttr = createElement("Attribute", "Id", element.id);
 idAttr.typeReference.setType(getDefaultIdType());

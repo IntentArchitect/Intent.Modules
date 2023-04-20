@@ -1,4 +1,8 @@
-﻿### Version 3.3.21
+﻿### Version 3.4.0
+
+- Supports searching for Stereotypes by Definition Id
+
+### Version 3.3.21
 
 - Fixed: An exception would occur when a TypeScript template would try resolve a collection type.
 

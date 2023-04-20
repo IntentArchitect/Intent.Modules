@@ -17,6 +17,7 @@
     </typeReference>
     <stereotypes />
     <metadata />
+    <childElements />
   </sourceEnd>
   <targetEnd id="c6020e92-b13e-4cf6-8529-0256d338569a" type="Comment Target End" typeId="b7edce45-ccf0-47ed-b79f-86d5145c9f62">
     <name>NewComment</name>
@@ -35,6 +36,7 @@
     </typeReference>
     <stereotypes />
     <metadata />
+    <childElements />
   </targetEnd>
   <associationType>Comment Association</associationType>
   <associationTypeId>5264c135-e856-468d-8bd7-154b75842256</associationTypeId>

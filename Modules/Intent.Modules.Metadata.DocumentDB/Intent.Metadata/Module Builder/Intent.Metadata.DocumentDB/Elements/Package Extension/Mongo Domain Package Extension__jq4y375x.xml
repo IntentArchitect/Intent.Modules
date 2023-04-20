@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f15ed9f1-9344-4ffe-add2-44f83d0ed3aa" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Mongo Domain Package Extension</name>
+  <display>Mongo Domain Package Extension: Domain Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="0dd4c0f1-22f4-4854-8ea2-df3e8abfbf92">
+    <typeId>1a824508-4623-45d9-accc-f572091ade5a</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>4652d8dc-eea5-49cb-8c08-93ac1972962c</parentFolderId>
+  <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+  <packageName>Intent.Metadata.DocumentDB</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="af01a698-713c-459e-acfb-b7ada8915cd1" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>f15ed9f1-9344-4ffe-add2-44f83d0ed3aa</parentFolderId>
+      <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+      <packageName>Intent.Metadata.DocumentDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="8c870c16-b9a3-402b-83b5-bafc6b8be9ca" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
+      <name>NewPackageEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>f15ed9f1-9344-4ffe-add2-44f83d0ed3aa</parentFolderId>
+      <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+      <packageName>Intent.Metadata.DocumentDB</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="cd455f21-42cc-468d-bf86-9d3d0ead0b0d" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Loaded</name>
+          <display>On Loaded: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="e3ac8d9d-00f6-4138-aa73-9db3d6876525">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>8c870c16-b9a3-402b-83b5-bafc6b8be9ca</parentFolderId>
+          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+          <packageName>Intent.Metadata.DocumentDB</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="// This script was made using a Typescript source. Don't edit this script directly.&#xD;&#xA;    const documentStoreId = &quot;8b68020c-6652-484b-85e8-6c33e1d8031f&quot;;&#xD;&#xA;    if (!element.getPackage().hasStereotype(documentStoreId)) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    let classes = lookupTypesOf(&quot;Class&quot;).filter(x =&gt; x.getPackage().id === element.id);&#xD;&#xA;    for (let classElement of classes) {&#xD;&#xA;        updatePrimaryKey(classElement);&#xD;&#xA;        updateForeignKeys(classElement);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function updatePrimaryKey(element : MacroApi.Context.IElementApi) {&#xD;&#xA;    const PrimaryKeyStereotypeId = &quot;64f6a994-4909-4a9d-a0a9-afc5adf2ef74&quot;;&#xD;&#xA;    let pk = element.getChildren(&quot;Attribute&quot;)&#xD;&#xA;        .filter(x =&gt; x.hasStereotype(PrimaryKeyStereotypeId) || (x.hasMetadata(&quot;is-managed-key&quot;) &amp;&amp; !x.hasMetadata(&quot;association&quot;)))[0];&#xD;&#xA;    &#xD;&#xA;    let isAggregate = isAggregateRoot(element);&#xD;&#xA;    if (pk &amp;&amp; (pk.hasStereotype(PrimaryKeyStereotypeId) &amp;&amp; !isAggregate)) {&#xD;&#xA;        pk.removeStereotype(PrimaryKeyStereotypeId);&#xD;&#xA;        pk.setMetadata(&quot;is-managed-key&quot;, &quot;false&quot;);&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    if (!isAggregate) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    &#xD;&#xA;    let idAttr = pk || createElement(&quot;Attribute&quot;, &quot;Id&quot;, element.id);&#xD;&#xA;    if (!pk) {&#xD;&#xA;        idAttr.setOrder(0);&#xD;&#xA;        idAttr.typeReference.setType(getDefaultIdType());&#xD;&#xA;    }&#xD;&#xA;    if (idAttr.getMetadata(&quot;is-managed-key&quot;) != &quot;true&quot;) {&#xD;&#xA;        idAttr.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;    }&#xD;&#xA;    if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {&#xD;&#xA;        idAttr.addStereotype(PrimaryKeyStereotypeId);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function updateForeignKeys(element : MacroApi.Context.IElementApi) {&#xD;&#xA;    for (let association of element.getAssociations()) {&#xD;&#xA;        if (!association.isTargetEnd()) {&#xD;&#xA;            continue;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        let sourceType = lookup(association.getOtherEnd().typeReference.typeId);&#xD;&#xA;        let targetType = lookup(association.typeReference.typeId);&#xD;&#xA;        if (!sourceType || !targetType) {&#xD;&#xA;            continue;&#xD;&#xA;        }&#xD;&#xA;        &#xD;&#xA;        if (requiresForeignKey(association)) {&#xD;&#xA;            updateForeignKeyAttribute(sourceType, targetType, association, association.id);&#xD;&#xA;        }&#xD;&#xA;        if (requiresForeignKey(association.getOtherEnd())) {&#xD;&#xA;            updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementApi, destinationEndType : MacroApi.Context.IElementApi, associationEnd : MacroApi.Context.IAssociationApi, associationId: string) {&#xD;&#xA;    const ForeignKeyStereotypeId = &quot;ced3e970-e900-4f99-bd04-b993228fe17d&quot;;&#xD;&#xA;    let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);&#xD;&#xA;    let primaryKeyObjects = Object.values(primaryKeyDict);&#xD;&#xA;    let primaryKeysLen = primaryKeyObjects.length;&#xD;&#xA;    primaryKeyObjects.forEach((pk, index) =&gt; {&#xD;&#xA;        let fk = startingEndType.getChildren()&#xD;&#xA;            .filter(x =&gt; (x.getMetadata(&quot;association&quot;) == associationId) || (x.hasStereotype(ForeignKeyStereotypeId) &amp;&amp; !x.hasMetadata(&quot;association&quot;)))[index] || &#xD;&#xA;                createElement(&quot;Attribute&quot;, &quot;&quot;, startingEndType.id);&#xD;&#xA;        // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.&#xD;&#xA;        let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;&#xD;&#xA;        if (associationEnd.typeReference.isCollection) {&#xD;&#xA;            fkNameToUse = pluralize(fkNameToUse);&#xD;&#xA;        }&#xD;&#xA;        if (fk.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {&#xD;&#xA;            if (!fk.hasMetadata(&quot;fk-original-name&quot;) || (fk.getMetadata(&quot;fk-original-name&quot;) == fk.getName())) {&#xD;&#xA;                if (fkNameToUse != fk.getName()) {&#xD;&#xA;                    fk.setName(fkNameToUse);&#xD;&#xA;                }&#xD;&#xA;                fk.setMetadata(&quot;fk-original-name&quot;, fk.getName());&#xD;&#xA;            }&#xD;&#xA;        }&#xD;&#xA;        fk.setMetadata(&quot;association&quot;, associationId);&#xD;&#xA;        fk.setMetadata(&quot;is-managed-key&quot;, &quot;true&quot;);&#xD;&#xA;        &#xD;&#xA;        let fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);&#xD;&#xA;        if (!fkStereotype) {&#xD;&#xA;            fk.addStereotype(ForeignKeyStereotypeId);&#xD;&#xA;            fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);&#xD;&#xA;        }&#xD;&#xA;        if (fkStereotype.getProperty(&quot;Association&quot;).getValue() != associationId) {&#xD;&#xA;            fkStereotype.getProperty(&quot;Association&quot;).setValue(associationId);&#xD;&#xA;        }&#xD;&#xA;&#xD;&#xA;        if (fk.typeReference.typeId != pk.typeId) {&#xD;&#xA;            fk.typeReference.setType(pk.typeId);&#xD;&#xA;        }&#xD;&#xA;        if (fk.typeReference.isNullable != associationEnd.typeReference.isNullable) {&#xD;&#xA;            fk.typeReference.setIsNullable(associationEnd.typeReference.isNullable);&#xD;&#xA;        }&#xD;&#xA;        if (fk.typeReference.isCollection != associationEnd.typeReference.isCollection) {&#xD;&#xA;            fk.typeReference.setIsCollection(associationEnd.typeReference.isCollection);&#xD;&#xA;        }&#xD;&#xA;    });&#xD;&#xA;    startingEndType.getChildren().filter(x =&gt; x.getMetadata(&quot;association&quot;) == associationId).forEach((attr, index) =&gt; {&#xD;&#xA;        if (index &gt;= primaryKeysLen) {&#xD;&#xA;            attr.delete();&#xD;&#xA;        }&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function requiresForeignKey(associationEnd : MacroApi.Context.IAssociationApi) : boolean {&#xD;&#xA;    return associationEnd.typeReference.isNavigable &amp;&amp; &#xD;&#xA;        isAggregateRelationship(associationEnd);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function isAggregateRelationship(associationEnd : MacroApi.Context.IAssociationApi) : boolean {&#xD;&#xA;    let sourceAssociationEnd = associationEnd;&#xD;&#xA;    if (associationEnd.isTargetEnd()) {&#xD;&#xA;        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();&#xD;&#xA;    }&#xD;&#xA;    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function isAggregateRoot(element : MacroApi.Context.IElementApi) {&#xD;&#xA;    return !element.getAssociations(&quot;Association&quot;)&#xD;&#xA;        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;function getDefaultIdType() : string  {&#xD;&#xA;    const StringTypeId : string = &quot;d384db9c-a279-45e1-801e-e4e8099625f2&quot;;&#xD;&#xA;    const GuidTypeId : string = &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;;&#xD;&#xA;    const IntTypeId : string = &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;;&#xD;&#xA;    const LongTypeId : string = &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;;&#xD;&#xA;    const MongoSettingId : string = &quot;d5581fe8-7385-4bb6-88dc-8940e20ec1d4&quot;;&#xD;&#xA;    &#xD;&#xA;    switch (application.getSettings(MongoSettingId)?.getField(&quot;Id Type&quot;)?.value) {&#xD;&#xA;        default:&#xD;&#xA;            return StringTypeId;&#xD;&#xA;        case &quot;guid&quot;:&#xD;&#xA;            return GuidTypeId;&#xD;&#xA;        case &quot;int&quot;:&#xD;&#xA;            return IntTypeId;&#xD;&#xA;        case &quot;long&quot;:&#xD;&#xA;            return LongTypeId;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;interface IAttributeWithMapPath {&#xD;&#xA;    id: string,&#xD;&#xA;    name: string,&#xD;&#xA;    typeId: string,&#xD;&#xA;    mapPath: string[],&#xD;&#xA;    isNullable: boolean,&#xD;&#xA;    isCollection: boolean&#xD;&#xA;};&#xD;&#xA;&#xD;&#xA;function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {&#xD;&#xA;    let keydict : { [characterName: string]: IAttributeWithMapPath } = Object.create(null);&#xD;&#xA;    let keys = entity.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;    &#xD;&#xA;    let generalizations = entity.getAssociations(&quot;Generalization&quot;).filter(x =&gt; x.isTargetEnd());&#xD;&#xA;    // There is a problem with execution order where this script executes before&#xD;&#xA;    // the generalization script had a chance to potentially remove a PK attribute&#xD;&#xA;    // and so I have to perform an inheritance check and ignore any PKs on derived classes.&#xD;&#xA;    if (generalizations.length == 0) {&#xD;&#xA;        keys.forEach(key =&gt; keydict[key.id] = { &#xD;&#xA;            id: key.id, &#xD;&#xA;            name: key.getName(), &#xD;&#xA;            typeId: key.typeReference.typeId,&#xD;&#xA;            mapPath: [key.id],&#xD;&#xA;            isNullable: false,&#xD;&#xA;            isCollection: false&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);&#xD;&#xA;&#xD;&#xA;    return keydict;&#xD;&#xA;&#xD;&#xA;    function traverseInheritanceHierarchyForPrimaryKeys(&#xD;&#xA;        keydict: { [characterName: string]: IAttributeWithMapPath }, &#xD;&#xA;        curEntity: MacroApi.Context.IElementApi, &#xD;&#xA;        generalizationStack) {&#xD;&#xA;        if (!curEntity) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        let generalizations = curEntity.getAssociations(&quot;Generalization&quot;).filter(x =&gt; x.isTargetEnd());&#xD;&#xA;        if (generalizations.length == 0) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        let generalization = generalizations[0];&#xD;&#xA;        generalizationStack.push(generalization.id);&#xD;&#xA;        let nextEntity = generalization.typeReference.getType();&#xD;&#xA;        let baseKeys = nextEntity.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;        baseKeys.forEach(key =&gt; { &#xD;&#xA;            keydict[key.id] = { &#xD;&#xA;                id: key.id, &#xD;&#xA;                name: key.getName(),&#xD;&#xA;                typeId: key.typeReference.typeId,&#xD;&#xA;                mapPath: generalizationStack.concat([key.id]),&#xD;&#xA;                isNullable: key.typeReference.isNullable,&#xD;&#xA;                isCollection: key.typeReference.isCollection&#xD;&#xA;            };&#xD;&#xA;        });&#xD;&#xA;        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

@@ -208,7 +208,7 @@ if (otherClasses.some(x =&gt; x.getName() == getName())) {
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
-      <visualSettings type="Class">
+      <visualSettings type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
         <display>
@@ -231,7 +231,7 @@ white-space: inherit;`</style>
         </stereotypesVisualSettings>
         <defaultSize width="${x}" height="${y}" />
         <childElementVisualSettings>
-          <childElementVisualSetting type="Attribute">
+          <childElementVisualSetting type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
             <size width="`${parent.w}`" height="18" />
             <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 36}`" />
             <display>
@@ -252,7 +252,7 @@ white-space: inherit;`</style>
             <defaultSize width="`${parent.w}`" height="18" />
             <childElementVisualSettings />
           </childElementVisualSetting>
-          <childElementVisualSetting type="Class Constructor">
+          <childElementVisualSetting type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
             <size width="`${parent.w}`" height="18" />
             <position x="`${parent.x}`" y="${parent.y + (parent.elements['Attribute'].any() ? 12 : 0) + (parent.elements['Attribute'].size.height) + ($index * 18) + 36}" />
             <display>
@@ -273,7 +273,7 @@ white-space: inherit;`</style>
             <defaultSize width="`${parent.w}`" height="18" />
             <childElementVisualSettings />
           </childElementVisualSetting>
-          <childElementVisualSetting type="Operation">
+          <childElementVisualSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
             <size width="`${parent.w}`" height="18" />
             <position x="`${parent.x}`" y="`${parent.y &#xD;&#xA;    + (parent.elements['Attribute'].any() ? 12 : 0) + (parent.elements['Attribute'].size.height) &#xD;&#xA;    + (parent.elements['Class Constructor'].any() ? 12 : 0) + (parent.elements['Class Constructor'].size.height) &#xD;&#xA;    + ($index * 18) + 36}`" />
             <display>
@@ -589,7 +589,7 @@ if (namingConvention == "pascal-case") {
       </creationOptions>
       <scriptOptions />
       <mappingSettings />
-      <visualSettings type="Comment">
+      <visualSettings type="Comment" typeId="c4c0c77f-720b-4e91-9c48-b58d2164d30a">
         <size width="${w}" height="${h}" />
         <position x="${x}" y="${y}" />
         <display>
@@ -789,7 +789,7 @@ if (namingConvention == "pascal-case") {
   <associationSettings>
     <associationSetting type="Association" typeId="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">
       <sourceEnd type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
-        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <allowSorting>false</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -805,7 +805,18 @@ if (namingConvention == "pascal-case") {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
-        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <displayFunction>return `${name}: ${typeReference.display}   [${getCardinality(getOtherEnd())} --&gt; ${getCardinality(getOtherEnd().getOtherEnd())}]`;
+
+function getCardinality(end) {
+    if (end.typeReference.getIsCollection()) {
+        return "*"
+    }
+    if (end.typeReference.getIsNullable()) {
+        return "0..1";
+    }
+    return "1";
+}</displayFunction>
+        <allowSorting>false</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -845,7 +856,7 @@ if (namingConvention == "pascal-case") {
     </associationSetting>
     <associationSetting type="Comment Association" typeId="5264c135-e856-468d-8bd7-154b75842256">
       <sourceEnd type="Comment Source End" typeId="7e98213c-4a9c-4d6f-98fc-f185948cc9e8">
-        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <allowSorting>false</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -861,7 +872,7 @@ if (namingConvention == "pascal-case") {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Comment Target End" typeId="b7edce45-ccf0-47ed-b79f-86d5145c9f62">
-        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <allowSorting>false</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -889,7 +900,7 @@ if (namingConvention == "pascal-case") {
     </associationSetting>
     <associationSetting type="Generalization" typeId="5de35973-3ac7-4e65-b48c-385605aec561">
       <sourceEnd type="Generalization Source End" typeId="8190bf43-222c-4b53-8a44-14626efe3574">
-        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <allowSorting>false</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -905,7 +916,7 @@ if (namingConvention == "pascal-case") {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
-        <allowSorting p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
+        <allowSorting>false</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>

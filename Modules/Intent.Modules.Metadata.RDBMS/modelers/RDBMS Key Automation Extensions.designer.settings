@@ -14,7 +14,8 @@
           <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getParent().getMetadata("auto-manage-keys") == "false") {
     return;
 }
-if (element.getPackage().specialization !== "Domain Package") {
+let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (element.getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 if (element.getName().toLocaleLowerCase() == "id" &amp;&amp;
@@ -34,7 +35,8 @@ if (associationTarget &amp;&amp; element.getMetadata("association") != associati
 }</script>
         </macro>
         <macro trigger="on-loaded">
-          <script>if (element.getPackage().specialization !== "Domain Package") {
+          <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (element.getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
@@ -60,7 +62,8 @@ if (existingAssociation &amp;&amp; !element.getMetadata("fk-original-name")) {
           <script>if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" || element.getMetadata("auto-manage-keys") == "false") {
     return;
 }
-if (element.getPackage().specialization !== "Domain Package") {
+let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (element.getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 let pk = createElement("Attribute", "id", element.id);
@@ -121,9 +124,11 @@ if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("
     return;
 }
 let sourceEnd = association.getOtherEnd().typeReference;
-if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
+
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
 if (sourceType &amp;&amp; targetType) {
@@ -235,7 +240,8 @@ function getPrimaryKeysWithMapPath(entity) {
         </macro>
         <macro trigger="on-deleted">
           <script>let sourceEnd = association.getOtherEnd().typeReference;
-if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
@@ -274,7 +280,8 @@ if (sourceType &amp;&amp; sourceType.getMetadata("auto-manage-keys") != "false")
     return;
 }
 let sourceEnd = association.getOtherEnd().typeReference;
-if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 let sourceType = association.getOtherEnd().typeReference.getType();
@@ -292,7 +299,8 @@ if (sourceType &amp;&amp; targetType) {
     return;
 }
 let sourceEnd = association.getOtherEnd().typeReference;
-if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 let sourceType = association.getOtherEnd().typeReference.getType();

@@ -17,6 +17,11 @@ namespace Intent.Modelers.Domain.Api
                 .ToList();
         }
 
+        public static bool IsDomainPackageModel(this IPackage package)
+        {
+            return package?.SpecializationTypeId == DomainPackageModel.SpecializationTypeId;
+        }
+
 
     }
 }

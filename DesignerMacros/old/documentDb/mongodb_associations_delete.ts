@@ -2,8 +2,8 @@
 // This script was made using a Typescript source. Don't edit this script directly.
 {
     let targetClass = association.typeReference.getType();
-
-    if (targetClass.getPackage().specialization !== "Mongo Domain Package") {
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    if (!targetClass.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
 
@@ -12,7 +12,7 @@
 }
 
 function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
-    const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let pk = element.getChildren("Attribute")
         .filter(x => x.hasStereotype(PrimaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") && !x.hasMetadata("association")))[0];
     
@@ -40,7 +40,7 @@ function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
 }
 
 function removeAssociatedForeignKeys(associationEnd : MacroApi.Context.IAssociationApi) {
-    const ForeignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let targetClass = associationEnd.typeReference.getType();
     let sourceClass = associationEnd.getOtherEnd().typeReference.getType();
     targetClass.getChildren()

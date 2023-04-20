@@ -1,19 +1,19 @@
 (async () => {
+// This script was made using a Typescript source. Don't edit this script directly.
 {
-    // This script was made using a Typescript source. Don't edit this script directly.
-    if (element.specialization !== "Mongo Domain Package") {
+    let targetClass = association.typeReference.getType();
+
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    if (!targetClass.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
 
-    let classes = lookupTypesOf("Class").filter(x => x.getPackage().id === element.id);
-    for (let classElement of classes) {
-        updatePrimaryKey(classElement);
-        updateForeignKeys(classElement);
-    }
+    updatePrimaryKey(targetClass);
+    updateForeignKeys(association);
 }
 
 function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
-    const PrimaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let pk = element.getChildren("Attribute")
         .filter(x => x.hasStereotype(PrimaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") && !x.hasMetadata("association")))[0];
     
@@ -40,29 +40,31 @@ function updatePrimaryKey(element : MacroApi.Context.IElementApi) {
     }
 }
 
-function updateForeignKeys(element : MacroApi.Context.IElementApi) {
-    for (let association of element.getAssociations()) {
-        if (!association.isTargetEnd()) {
-            continue;
-        }
-        
-        let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
-        let targetType = lookup(association.typeReference.typeId);
-        if (!sourceType || !targetType) {
-            continue;
-        }
-        
-        if (requiresForeignKey(association)) {
-            updateForeignKeyAttribute(sourceType, targetType, association, association.id);
-        }
-        if (requiresForeignKey(association.getOtherEnd())) {
-            updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
-        }
+function updateForeignKeys(associationEnd : MacroApi.Context.IAssociationApi) {
+    let sourceType = lookup(associationEnd.getOtherEnd().typeReference.typeId);
+    let targetType = lookup(associationEnd.typeReference.typeId);
+    if (!sourceType || !targetType) {
+        return;
+    }
+    
+    if (requiresForeignKey(associationEnd)) {
+        updateForeignKeyAttribute(sourceType, targetType, associationEnd, associationEnd.id);
+    } else {
+        sourceType.getChildren()
+            .filter(x => x.getMetadata("association") == associationEnd.id)
+            .forEach(x => x.delete());
+    }
+    if (requiresForeignKey(associationEnd.getOtherEnd())) {
+        updateForeignKeyAttribute(targetType, sourceType, associationEnd.getOtherEnd(), associationEnd.id);
+    } else {
+        targetType.getChildren()
+            .filter(x => x.getMetadata("association") == associationEnd.id)
+            .forEach(x => x.delete());
     }
 }
 
 function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementApi, destinationEndType : MacroApi.Context.IElementApi, associationEnd : MacroApi.Context.IAssociationApi, associationId: string) {
-    const ForeignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
