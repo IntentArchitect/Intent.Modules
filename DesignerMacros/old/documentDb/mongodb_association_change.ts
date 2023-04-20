@@ -1,14 +1,14 @@
 (async () => {
 // This script was made using a Typescript source. Don't edit this script directly.
 {
-    let targetClass = association.typeReference.getType();
+    let sourceTarget = association.getOtherEnd().typeReference.getType();
 
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-    if (!targetClass.getPackage().hasStereotype(documentStoreId)) {
+    if (!sourceTarget.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
 
-    updatePrimaryKey(targetClass);
+    updatePrimaryKey(sourceTarget);
     updateForeignKeys(association);
 }
 

@@ -166,7 +166,7 @@ if (useDefaultName &amp;&amp; element.getMapping() != null) {
       <macros>
         <macro trigger="on-created">
           <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
-if (element.getPackage().hasStereotype(relationalDatabaseId)) {
+if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 if ((element.getParent().specialization == "Class" || element.getParent().specialization == "Value Object") &amp;&amp; 
@@ -180,7 +180,7 @@ if ((element.getParent().specialization == "Class" || element.getParent().specia
         </macro>
         <macro trigger="on-type-changed">
           <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
-if (element.getPackage().hasStereotype(relationalDatabaseId)) {
+if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 if ((element.getParent().specialization == "Class" || element.getParent().specialization == "Value Object") &amp;&amp; 

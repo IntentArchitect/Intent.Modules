@@ -2,7 +2,7 @@
 <package>
   <id>Intent.Metadata.RDBMS</id>
   <version>3.5.0-pre.0</version>
-  <supportedClientVersions>[4.0.0-beta.8, 5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.0.0-beta.7, 5.0.0)</supportedClientVersions>
   <summary>Support for describing Entities in Relational DB terms.</summary>
   <description>Support for describing Entities in Relational DB terms.</description>
   <authors>Intent Architect</authors>

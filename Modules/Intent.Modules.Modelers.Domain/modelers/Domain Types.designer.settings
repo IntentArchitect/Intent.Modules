@@ -789,7 +789,7 @@ if (namingConvention == "pascal-case") {
   <associationSettings>
     <associationSetting type="Association" typeId="eaf9ed4e-0b61-4ac1-ba88-09f912c12087">
       <sourceEnd type="Association Source End" typeId="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58">
-        <allowSorting>false</allowSorting>
+        <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -816,7 +816,7 @@ function getCardinality(end) {
     }
     return "1";
 }</displayFunction>
-        <allowSorting>false</allowSorting>
+        <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -832,6 +832,16 @@ function getCardinality(end) {
         </typeReferenceSetting>
       </targetEnd>
       <visualSettings>
+        <lineDashArray>if (!getOtherEnd().typeReference.getIsNullable() &amp;&amp; !getOtherEnd().typeReference.getIsCollection()) {
+    return null;
+}
+
+const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+if (getOtherEnd().typeReference.getType()?.getPackage().hasStereotype(documentStoreId)) {
+    return "5,5";
+}
+console.warn('unable to determine')
+return null;</lineDashArray>
         <sourceEnd>
           <primaryLabel>`${name &amp;&amp; typeReference.isNavigable ? name : ""}`</primaryLabel>
           <secondaryLabel>${typeReference.isCollection ? "*" : typeReference.isNullable ? "0..1" : "1"}</secondaryLabel>
@@ -856,7 +866,7 @@ function getCardinality(end) {
     </associationSetting>
     <associationSetting type="Comment Association" typeId="5264c135-e856-468d-8bd7-154b75842256">
       <sourceEnd type="Comment Source End" typeId="7e98213c-4a9c-4d6f-98fc-f185948cc9e8">
-        <allowSorting>false</allowSorting>
+        <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -872,7 +882,7 @@ function getCardinality(end) {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Comment Target End" typeId="b7edce45-ccf0-47ed-b79f-86d5145c9f62">
-        <allowSorting>false</allowSorting>
+        <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -900,7 +910,7 @@ function getCardinality(end) {
     </associationSetting>
     <associationSetting type="Generalization" typeId="5de35973-3ac7-4e65-b48c-385605aec561">
       <sourceEnd type="Generalization Source End" typeId="8190bf43-222c-4b53-8a44-14626efe3574">
-        <allowSorting>false</allowSorting>
+        <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
@@ -916,7 +926,7 @@ function getCardinality(end) {
         </typeReferenceSetting>
       </sourceEnd>
       <targetEnd type="Generalization Target End" typeId="4686cc1d-b4d8-4b99-b45b-f77bd5496946">
-        <allowSorting>false</allowSorting>
+        <allowSorting>true</allowSorting>
         <sortChildren p5:nil="true" xmlns:p5="http://www.w3.org/2001/XMLSchema-instance" />
         <typeReferenceSetting>
           <isRequired>true</isRequired>
