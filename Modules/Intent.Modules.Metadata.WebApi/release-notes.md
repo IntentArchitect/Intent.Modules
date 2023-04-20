@@ -1,3 +1,7 @@
+### Version 4.0.1
+
+- `IHttpEndpoint` abstraction available from `HttpEndpointModelFactory` which applies implicit rules (like parameter sources, etc) so that logic doesn't need duplicated in different techs and modules.
+
 ### Version 3.3.11
 
 - Added the `Serialization Settings` stereotype, which can be applied to `DTO`s and `DTO-Field`s. This is presently only supported by the `Intent.Application.Dtos` module.

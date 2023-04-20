@@ -1,3 +1,7 @@
+### Version 4.0.0
+
+- Updated to work with `Intent.Metadata.WebApi` version 4+.
+
 ### Version 3.3.4
 
 - Update: Introduced new API queries. Potentially optimized DTO discovery code and prevent circular references from crashing code.
