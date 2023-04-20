@@ -39,7 +39,7 @@ public static class HttpEndpointModelFactory
                 Constants.ElementTypeIds.Query => element.Name.RemoveSuffix("Query"),
                 _ => element.Name
             },
-            verb: httpSettings.Verb ?? element.SpecializationTypeId switch
+            verb: httpSettings!.Verb ?? element.SpecializationTypeId switch
             {
                 Constants.ElementTypeIds.Operation => HttpVerb.Post,
                 Constants.ElementTypeIds.Command => HttpVerb.Post,
@@ -59,7 +59,7 @@ public static class HttpEndpointModelFactory
     private static string? GetBaseRoute(IElement element)
     {
         var baseRoute = element.ParentElement?.TryGetHttpServiceSettings(out var serviceSettings) == true &&
-                        !string.IsNullOrWhiteSpace(serviceSettings.Route)
+                        !string.IsNullOrWhiteSpace(serviceSettings!.Route)
             ? serviceSettings.Route
             : null;
 
@@ -95,7 +95,7 @@ public static class HttpEndpointModelFactory
 
         foreach (var childElement in element.ChildElements)
         {
-            var hasParameterSettings = !childElement.TryGetParameterSettings(out var parameterSettings);
+            var hasParameterSettings = childElement.TryGetParameterSettings(out var parameterSettings);
             var routeContainsParameter = httpSettings.Route?.Contains($"{{{childElement.Name.ToCamelCase()}}}") == true;
 
             if (isForCqrs && !hasParameterSettings && !routeContainsParameter)
@@ -108,8 +108,8 @@ public static class HttpEndpointModelFactory
                 id: childElement.Id,
                 name: childElement.Name.ToCamelCase(),
                 typeReference: childElement.TypeReference,
-                source: parameterSettings.Source ?? GetSource(element, childElement),
-                headerName: parameterSettings.HeaderName,
+                source: parameterSettings?.Source ?? GetSource(element, childElement),
+                headerName: parameterSettings?.HeaderName,
                 mappedPayloadProperty: childElement);
         }
 
@@ -135,12 +135,12 @@ public static class HttpEndpointModelFactory
         element.TryGetHttpSettings(out var httpSettings);
 
         if (childElement.TypeReference.Element.IsTypeDefinitionModel() &&
-            httpSettings.Route?.Contains($"{{{childElement.Name}}}") == true)
+            httpSettings!.Route?.Contains($"{{{childElement.Name}}}") == true)
         {
             return HttpInputSource.FromRoute;
         }
 
-        if (httpSettings.Verb is HttpVerb.Get or HttpVerb.Delete &&
+        if (httpSettings!.Verb is HttpVerb.Get or HttpVerb.Delete &&
             !childElement.TypeReference.Element.IsTypeDefinitionModel())
         {
             return HttpInputSource.FromQuery;

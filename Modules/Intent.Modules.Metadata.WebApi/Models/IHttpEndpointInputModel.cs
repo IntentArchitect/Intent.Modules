@@ -1,4 +1,5 @@
-﻿using Intent.Metadata.Models;
+﻿#nullable enable
+using Intent.Metadata.Models;
 
 namespace Intent.Modules.Metadata.WebApi.Models;
 

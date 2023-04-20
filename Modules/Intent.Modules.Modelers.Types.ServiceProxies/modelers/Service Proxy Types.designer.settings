@@ -199,6 +199,22 @@
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
+    <elementSetting type="Service Proxy Enum" typeId="54ddf4bc-73f5-4c8f-9f29-cf0175b236d4">
+      <icon type="FontAwesome" source="file-o" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>true</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
   </elementSettings>
   <elementExtensions />
   <associationSettings />

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -22,6 +23,12 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         }
 
         [IntentManaged(Mode.Ignore)]
+        public static IList<ServiceProxyEnumModel> GetServiceProxyEnumModels(this IDesigner designer)
+        {
+            throw new InvalidOperationException("Unsupported");
+        }
+
+        [IntentManaged(Mode.Ignore)]
         public static IList<ServiceProxyDTOModel> GetServiceProxyDTOModels(this IDesigner designer)
         {
             return designer.GetServiceProxyModels()
@@ -40,14 +47,11 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         }
 
         [IntentManaged(Mode.Ignore)]
-        public static IReadOnlyCollection<EnumModel> GetProxyMappedEnumModels(this IDesigner designer)
+        public static IReadOnlyCollection<ServiceProxyEnumModel> GetProxyMappedEnumModels(this IDesigner designer)
         {
-            var mappedEndpoints = designer.GetServiceProxyModels()
-                .SelectMany(GetMappedEndpoints);
-
-            return DeepGetDistinctReferencedElements(mappedEndpoints)
-                .Where(x => x.IsEnumModel())
-                .Select(x => x.AsEnumModel())
+            return designer.GetServiceProxyModels()
+                .SelectMany(s => s.GetMappedEnumModels())
+                .Distinct()
                 .ToList();
         }
 
@@ -70,6 +74,15 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         }
 
         [IntentManaged(Mode.Ignore)]
+        public static IEnumerable<ServiceProxyEnumModel> GetMappedEnumModels(this ServiceProxyModel proxy)
+        {
+            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy))
+                .Where(x => x.SpecializationTypeId is EnumModel.SpecializationTypeId)
+                .Select(x => new ServiceProxyEnumModel(x, proxy))
+                .ToList();
+        }
+
+        [IntentManaged(Mode.Ignore)]
         private static ISet<IElement> DeepGetDistinctReferencedElements(IEnumerable<IElement> elements)
         {
             var referencedElements = new HashSet<IElement>();
@@ -78,18 +91,18 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
             while (workingStack.Any())
             {
                 var currentElement = workingStack.Pop();
-                if (currentElement.TypeReference?.Element is IElement referencedElement)
+                if (currentElement.TypeReference?.Element is IElement referencedElement &&
+                    referencedElements.Add(referencedElement)) // Avoid infinite loops due to cyclic references
                 {
-                    if (!referencedElements.Add(referencedElement))
-                    {
-                        // Avoid infinite loops due to cyclic references
-                        continue;
-                    }
-
                     foreach (var childElement in referencedElement.ChildElements)
                     {
                         workingStack.Push(childElement);
                     }
+                }
+
+                if (currentElement.SpecializationType is "DTO" or "Command" or "Query")
+                {
+                    referencedElements.Add(currentElement);
                 }
 
                 foreach (var childElement in currentElement.ChildElements)
@@ -104,7 +117,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         [IntentManaged(Mode.Ignore)]
         private static IEnumerable<IElement> GetMappedEndpoints(ServiceProxyModel model)
         {
-            if (model.MappedService != null)
+            if (model.Mapping?.Element?.IsServiceModel() == true)
             {
                 return model.MappedService.Operations
                     .Select(x => x.InternalElement)

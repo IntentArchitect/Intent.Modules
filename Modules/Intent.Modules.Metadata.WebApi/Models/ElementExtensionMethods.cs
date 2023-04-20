@@ -9,18 +9,19 @@ namespace Intent.Modules.Metadata.WebApi.Models;
 
 public static class ElementExtensionMethods
 {
-    public static bool TryGetHttpSettings(this IElement element, out HttpSettings httpSettings)
+    public static bool TryGetHttpSettings(this IElement element, out HttpSettings? httpSettings)
     {
         var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Http Settings");
         if (stereotype == null)
         {
-            httpSettings = null!;
+            httpSettings = null;
             return false;
         }
 
         var route = stereotype.GetProperty<string>("Route");
         var verb = stereotype.GetProperty<string>("Verb");
-        var returnTypeMediatype = stereotype.GetProperty<string>("Return Type Mediatype")
+        var returnTypeMediatype = stereotype.GetProperty<string>("Return Type Mediatype")?
+            .Replace("default", string.Empty, StringComparison.OrdinalIgnoreCase)
             .Replace("/", string.Empty); // Can have values like "application/json"
 
         httpSettings = new HttpSettings
@@ -32,12 +33,12 @@ public static class ElementExtensionMethods
         return true;
     }
 
-    public static bool TryGetHttpServiceSettings(this IElement element, out HttpServiceSettings httpServiceSettings)
+    public static bool TryGetHttpServiceSettings(this IElement element, out HttpServiceSettings? httpServiceSettings)
     {
         var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Http Service Settings");
         if (stereotype == null)
         {
-            httpServiceSettings = null!;
+            httpServiceSettings = null;
             return false;
         }
 
@@ -49,12 +50,12 @@ public static class ElementExtensionMethods
         return true;
     }
 
-    public static bool TryGetSecured(this IElement element, out Secured secured)
+    public static bool TryGetSecured(this IElement element, out Secured? secured)
     {
         var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Secured");
         if (stereotype == null)
         {
-            secured = null!;
+            secured = null;
             return false;
         }
 
@@ -66,12 +67,12 @@ public static class ElementExtensionMethods
         return true;
     }
 
-    public static bool TryGetUnsecured(this IElement element, out Unsecured unsecured)
+    public static bool TryGetUnsecured(this IElement element, out Unsecured? unsecured)
     {
         var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Unsecured");
         if (stereotype == null)
         {
-            unsecured = null!;
+            unsecured = null;
             return false;
         }
 
@@ -79,12 +80,12 @@ public static class ElementExtensionMethods
         return true;
     }
 
-    public static bool TryGetAuthorize(this IElement element, out Authorize authorize)
+    public static bool TryGetAuthorize(this IElement element, out Authorize? authorize)
     {
         var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Authorize");
         if (stereotype == null)
         {
-            authorize = null!;
+            authorize = null;
             return false;
         }
 
@@ -92,12 +93,12 @@ public static class ElementExtensionMethods
         return true;
     }
 
-    public static bool TryGetParameterSettings(this IElement element, out ParameterSettings parameterSettings)
+    public static bool TryGetParameterSettings(this IElement element, out ParameterSettings? parameterSettings)
     {
         var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Parameter Settings");
         if (stereotype == null)
         {
-            parameterSettings = null!;
+            parameterSettings = null;
             return false;
         }
 
