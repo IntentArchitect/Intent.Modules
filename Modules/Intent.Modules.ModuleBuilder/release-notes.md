@@ -1,5 +1,6 @@
 ### Version 3.6.1
 - Nuget Version bumps to align with `Domain Designer`
+- Fixed : `ModuleSettingsExtensionsTemplate` was missing a Nuget Dependancy on `Intent.Common`.
 
 ### Version 3.6.0
 

@@ -23,6 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public ModuleSettingsExtensionsTemplate(IOutputTarget outputTarget, IntentModuleModel model) : base(TemplateId, outputTarget, model)
         {
+            AddNugetDependency(IntentNugetPackages.IntentModulesCommon);
             foreach (var module in Model.SettingsExtensions.Select(x => x.TypeReference.Element)
                 .Distinct()
                 .Select(x => new IntentModuleModel(x.Package))
