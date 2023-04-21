@@ -1,6 +1,7 @@
 ﻿### Version 3.3.31
 
 - Changed: on `LaunchProfileRegistrationRequest` class, changed `UseSsl` to default to `true`, inline with `launchSettings.json` defaults.
+- Added `CSharpObjectInitKeyValueStatement` and object initialization support to builder for easier instantiation of Dictionaries.
 
 ### Version 3.3.29
 
