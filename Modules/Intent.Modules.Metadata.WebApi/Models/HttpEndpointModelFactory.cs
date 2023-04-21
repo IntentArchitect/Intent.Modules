@@ -74,14 +74,6 @@ public static class HttpEndpointModelFactory
             baseRoute = "api/[controller]";
         }
 
-        // It's a smell that we're applying a C# WebApi convention for this which is intended
-        // to be consumed by any kind of technology, but unlikely to cause an issue since
-        // [controller] convention doesn't seem to be used elsewhere that we're aware of.
-        if (element.ParentElement != null)
-        {
-            baseRoute = baseRoute?.Replace("[controller]", element.ParentElement.Name.RemoveSuffix("Controller", "Service"));
-        }
-
         return baseRoute;
     }
 
