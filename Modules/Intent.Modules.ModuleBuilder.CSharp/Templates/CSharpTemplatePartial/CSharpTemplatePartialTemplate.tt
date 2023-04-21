@@ -12,6 +12,7 @@
 <#@ import namespace="Intent.ModuleBuilder.Api" #>
 <#@ import namespace="Intent.ModuleBuilder.Helpers" #>
 <#@ import namespace="System.Linq" #>
+using System;
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common;
