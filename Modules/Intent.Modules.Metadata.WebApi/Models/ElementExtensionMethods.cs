@@ -109,7 +109,7 @@ public static class ElementExtensionMethods
         {
             Source = string.IsNullOrWhiteSpace(source) || string.Equals(source, "default", StringComparison.OrdinalIgnoreCase)
                 ? null
-                : Enum.Parse<HttpInputSource>(source, ignoreCase: true),
+                : Enum.Parse<HttpInputSource>(source.Replace(" ", ""), ignoreCase: true),
             HeaderName = headerName
         };
         return true;
