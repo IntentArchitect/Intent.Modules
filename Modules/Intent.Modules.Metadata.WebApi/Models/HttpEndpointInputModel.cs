@@ -10,12 +10,12 @@ internal class HttpEndpointInputModel : IHttpEndpointInputModel
         string name,
         ITypeReference typeReference,
         HttpInputSource? source,
-        string? headerName,
+        string? headerName, 
         ICanBeReferencedType? mappedPayloadProperty)
     {
+        Id = id;
         Name = name;
         TypeReference = typeReference;
-        Id = id;
         Source = source;
         HeaderName = headerName;
         MappedPayloadProperty = mappedPayloadProperty;

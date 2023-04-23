@@ -19,7 +19,7 @@
 
     let verb = httpSettings.getProperty("Verb").getValue()?.toString()
     let route = httpSettings.getProperty("Route").getValue()?.toString();
-    if (route.indexOf(`{${element.getName()}}`) !== -1) {
+    if (route.toLowerCase().indexOf(`{${element.getName().toLowerCase()}}`) !== -1) {
         return "[From Route]";
     }
     if ((verb == "POST" || verb == "PUT") &amp;&amp; 

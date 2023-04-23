@@ -3,13 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeResolution;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.Metadata.WebApi.Stereotypes;
 
 namespace Intent.Modules.Metadata.WebApi.Models;
-
 public static class HttpEndpointModelFactory
 {
     public static IHttpEndpointModel? GetEndpoint(IElement element)
@@ -56,6 +56,33 @@ public static class HttpEndpointModelFactory
                 .ToArray());
     }
 
+    public static HttpInputSource? GetHttpInputSource(IElement childElement)
+    {
+        if (!childElement.ParentElement.TryGetHttpSettings(out var httpSettings))
+        {
+            return null;
+        }
+
+        if (childElement.TypeReference.Element.IsTypeDefinitionModel() &&
+                httpSettings!.Route?.ToLower().Contains($"{{{childElement.Name.ToLower()}}}") == true)
+        {
+            return HttpInputSource.FromRoute;
+        }
+
+        if (httpSettings!.Verb is HttpVerb.Get or HttpVerb.Delete)
+        {
+            return HttpInputSource.FromQuery;
+        }
+
+        if (httpSettings.Verb is HttpVerb.Post or HttpVerb.Put &&
+            !childElement.TypeReference.Element.IsTypeDefinitionModel())
+        {
+            return HttpInputSource.FromBody;
+        }
+
+        return null;
+    }
+
     private static string? GetBaseRoute(IElement element)
     {
         var baseRoute = element.ParentElement?.TryGetHttpServiceSettings(out var serviceSettings) == true &&
@@ -81,14 +108,13 @@ public static class HttpEndpointModelFactory
         IElement element,
         HttpSettings httpSettings)
     {
-        var isForCqrs =
-            element.SpecializationTypeId is Constants.ElementTypeIds.Query or Constants.ElementTypeIds.Command;
+        var isForCqrs = element.SpecializationTypeId is Constants.ElementTypeIds.Query or Constants.ElementTypeIds.Command;
         var hasNonRouteParameter = false;
 
         foreach (var childElement in element.ChildElements)
         {
             var hasParameterSettings = childElement.TryGetParameterSettings(out var parameterSettings);
-            var routeContainsParameter = httpSettings.Route?.Contains($"{{{childElement.Name.ToCamelCase()}}}") == true;
+            var routeContainsParameter = httpSettings.Route?.ToLower().Contains($"{{{childElement.Name.ToLower()}}}") == true;
 
             if (isForCqrs && !hasParameterSettings && !routeContainsParameter)
             {
@@ -100,7 +126,7 @@ public static class HttpEndpointModelFactory
                 id: childElement.Id,
                 name: childElement.Name.ToCamelCase(),
                 typeReference: childElement.TypeReference,
-                source: parameterSettings?.Source ?? GetSource(element, childElement),
+                source: parameterSettings?.Source ?? GetHttpInputSource(childElement),
                 headerName: parameterSettings?.HeaderName,
                 mappedPayloadProperty: childElement);
         }
@@ -116,34 +142,9 @@ public static class HttpEndpointModelFactory
                     _ => throw new InvalidOperationException($"Unknown type: \"{element.SpecializationType}\" ({element.SpecializationTypeId})")
                 },
                 typeReference: element.AsTypeReference(),
-                source: HttpInputSource.FromBody,
+                source: Models.HttpInputSource.FromBody,
                 headerName: null,
                 mappedPayloadProperty: null);
         }
-    }
-
-    private static HttpInputSource? GetSource(IElement element, IElement childElement)
-    {
-        element.TryGetHttpSettings(out var httpSettings);
-
-        if (childElement.TypeReference.Element.IsTypeDefinitionModel() &&
-            httpSettings!.Route?.Contains($"{{{childElement.Name}}}") == true)
-        {
-            return HttpInputSource.FromRoute;
-        }
-
-        if (httpSettings!.Verb is HttpVerb.Get or HttpVerb.Delete &&
-            !childElement.TypeReference.Element.IsTypeDefinitionModel())
-        {
-            return HttpInputSource.FromQuery;
-        }
-
-        if (httpSettings.Verb is HttpVerb.Post or HttpVerb.Put &&
-            !childElement.TypeReference.Element.IsTypeDefinitionModel())
-        {
-            return HttpInputSource.FromBody;
-        }
-
-        return null;
     }
 }
