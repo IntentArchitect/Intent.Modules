@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection.Metadata;
 using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -41,6 +42,7 @@ public static class HasCSharpStatementsExtensions
         return parent.AddStatement(new CSharpStatement(statement), configure);
     }
 
+    [Obsolete("Use TParent AddStatement<TParent, TStatement> method")]
     [FixFor_Version4("Remove this overload as 'public static TParent AddStatement<TParent, TStatement>(this TParent parent, TStatement statement, Action<TStatement> configure = null)' can be used instead")]
     public static TParent AddStatement<TParent>(this TParent parent, CSharpStatement statement, Action<CSharpStatement> configure = null)
         where TParent : IHasCSharpStatements

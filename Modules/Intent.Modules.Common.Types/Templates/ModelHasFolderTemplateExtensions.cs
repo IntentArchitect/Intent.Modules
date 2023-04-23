@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
@@ -11,6 +12,15 @@ namespace Intent.Modules.Common
         /// </summary>
         public static string GetFolderPath<TModel>(this IntentTemplateBase<TModel> template, params string[] additionalFolders)
             where TModel : IHasFolder
+        {
+            return string.Join("/", template.Model.GetParentFolderNames().Concat(additionalFolders));
+        }
+
+        /// <summary>
+        /// Creates a folder path based on the parent folders of this template's model as described in the designer.
+        /// </summary>
+        public static string GetFolderPath<TModel>(this IIntentTemplate<TModel> template, params string[] additionalFolders)
+            where TModel : IHasFolder<IFolder>
         {
             return string.Join("/", template.Model.GetParentFolderNames().Concat(additionalFolders));
         }
