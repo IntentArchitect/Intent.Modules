@@ -17,6 +17,11 @@ namespace Intent.Modelers.ServiceProxies.Api
                 .ToList();
         }
 
+        public static bool IsServiceProxiesPackageModel(this IPackage package)
+        {
+            return package?.SpecializationTypeId == ServiceProxiesPackageModel.SpecializationTypeId;
+        }
+
 
     }
 }
