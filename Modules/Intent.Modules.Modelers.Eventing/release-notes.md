@@ -1,3 +1,7 @@
+### Version 4.0.3
+
+- Fixed: Updated package names from `Eventing.${application.name}` and `Eventing.${application.name}.Messages` to `${application.name}.Eventing` and `${application.name}.Eventing.Messages`.
+
 ### Version 4.0.2
 
 - It is now possible to define and use DTOs.

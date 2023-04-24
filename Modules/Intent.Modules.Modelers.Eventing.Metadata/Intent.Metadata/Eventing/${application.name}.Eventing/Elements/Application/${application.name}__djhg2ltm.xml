@@ -7,7 +7,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>bec7b93f-df73-4b64-a2df-76d057608582</parentFolderId>
   <packageId>bec7b93f-df73-4b64-a2df-76d057608582</packageId>
-  <packageName>Eventing.${application.name}</packageName>
+  <packageName>${application.name}.Eventing</packageName>
   <diagram>
     <targetPackageId>7cfffe8e-be9a-411e-bb66-853b2b96b908</targetPackageId>
   </diagram>
