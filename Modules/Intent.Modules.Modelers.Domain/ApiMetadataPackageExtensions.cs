@@ -22,6 +22,14 @@ namespace Intent.Modelers.Domain.Api
             return package?.SpecializationTypeId == DomainPackageModel.SpecializationTypeId;
         }
 
-
+        [IntentManaged(Mode.Ignore)]
+        public static DomainPackageModel AsDomainPackageModel(this IPackage package)
+        {
+            if (package == null)
+            {
+                return null;
+            }
+            return new DomainPackageModel(package);
+        }
     }
 }
