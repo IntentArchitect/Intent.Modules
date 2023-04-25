@@ -6,23 +6,23 @@ class ServicesConstants {
 class ServicesHelper {
     static addDtoFieldsFromDomain(dto : MacroApi.Context.IElementApi, attributes: IAttributeWithMapPath[]) {
         for (let key of attributes) {
-            if (dto && !dto.getChildren("DTO-Field").some(x => x.getName() == this.getFieldFormat(key.name))) {
-                let primaryKeyDtoField = createElement("DTO-Field", this.getFieldFormat(key.name), dto.id);
+            if (dto && !dto.getChildren("DTO-Field").some(x => x.getName() == ServicesHelper.getFieldFormat(key.name))) {
+                let primaryKeyDtoField = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
                 primaryKeyDtoField.typeReference.setType(key.typeId)
-                primaryKeyDtoField.setMapping(key.id);
+                primaryKeyDtoField.setMapping(key.mapPath);
             }
         }
     }
 
-    static getParameterFormat(str) : string {
+    static getParameterFormat(str : string) : string {
         return toCamelCase(str);
     }
     
-    static getRoutingFormat(str) : string {
+    static getRoutingFormat(str : string) : string {
         return pluralize(str);
     }
     
-    static getFieldFormat(str) : string {
+    static getFieldFormat(str : string) : string {
         return toPascalCase(str);
     }
 }
@@ -31,6 +31,7 @@ interface IElementSettings {
     childSpecialization: string;
     childNameFormat?: "camel-case" | "pascal-case";
 }
+
 class ElementManager {
     private mappedElement: MacroApi.Context.IElementApi;
 
@@ -53,8 +54,6 @@ class ElementManager {
         }
         return field;
     }
-
-    
 
     addChildrenFrom(elements: IAttributeWithMapPath[]) {
         elements.forEach(e => {

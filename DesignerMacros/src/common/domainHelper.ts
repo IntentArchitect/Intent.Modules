@@ -1,6 +1,7 @@
 interface IISelectEntityDialogOptions {
     includeOwnedRelationships: boolean;
 }
+
 class DomainHelper {
 
     static async openSelectEntityDialog(options?: IISelectEntityDialogOptions) {
@@ -52,7 +53,7 @@ class DomainHelper {
     }
     
     static ownerIsAggregateRoot(entity) {
-        let result = this.getOwningAggregate(entity);
+        let result = DomainHelper.getOwningAggregate(entity);
         return result ? true : false;
     }
 
@@ -60,15 +61,15 @@ class DomainHelper {
         if (!entity) {
             throw new Error("entity not specified");
         }
-        let primaryKeys = this.getPrimaryKeysMap(entity);
+        let primaryKeys = DomainHelper.getPrimaryKeysMap(entity);
         let keyLen = Object.keys(primaryKeys).length;
 
         if (Object.keys(primaryKeys).length == 0) {
             return [
                 {
                     id: null,
-                    name: this.getAttributeNameFormat("Id"),
-                    typeId: this.getSurrogateKeyType(),
+                    name: DomainHelper.getAttributeNameFormat("Id"),
+                    typeId: DomainHelper.getSurrogateKeyType(),
                     mapPath: null,
                     isNullable: false,
                     isCollection: false
@@ -151,7 +152,7 @@ class DomainHelper {
         
         if (foreignKeys.length > 0) {
             return foreignKeys.map(x => ({
-                name: this.getAttributeNameFormat(x.getName()),
+                name: DomainHelper.getAttributeNameFormat(x.getName()),
                 typeId: x.typeReference.typeId,
                 id: x.id,
                 mapPath: [x.id],
@@ -162,8 +163,8 @@ class DomainHelper {
         
         // Implicit FKs:
         return [{
-            name: this.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
-            typeId: Object.values(this.getPrimaryKeysMap(owningAggregate))[0].typeId,
+            name: DomainHelper.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
+            typeId: Object.values(DomainHelper.getPrimaryKeysMap(owningAggregate))[0].typeId,
             id: null,
             mapPath: null,
             isCollection: false,
@@ -187,7 +188,7 @@ class DomainHelper {
 
     static getAttributesWithMapPath(entity : MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
-        let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !this.legacyPartitionKey(x));
+        let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !DomainHelper.legacyPartitionKey(x));
         attributes.forEach(attr => attrDict[attr.id] = { 
             id: attr.id, 
             name: attr.getName(), 
@@ -204,6 +205,7 @@ class DomainHelper {
         function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath }, 
             curEntity: MacroApi.Context.IElementApi, 
             generalizationStack) {
+                
             if (!curEntity) {
                 return;
             }
@@ -214,7 +216,7 @@ class DomainHelper {
             let generalization = generalizations[0];
             generalizationStack.push(generalization.id);
             let nextEntity = generalization.typeReference.getType();
-            let baseKeys = nextEntity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !this.legacyPartitionKey(x));
+            let baseKeys = nextEntity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !DomainHelper.legacyPartitionKey(x));
             baseKeys.forEach(attr => { 
                 attrDict[attr.id] = { 
                     id: attr.id, 
@@ -229,8 +231,8 @@ class DomainHelper {
         }
     }
 
-    static getAttributeNameFormat(str) : string {
-        let convention = this.getDomainAttributeNamingConvention();
+    static getAttributeNameFormat(str : string) : string {
+        let convention = DomainHelper.getDomainAttributeNamingConvention();
         switch (convention) {
             case "pascal-case":
                 return toPascalCase(str);
@@ -272,12 +274,12 @@ class DomainHelper {
     
     // Just in case someone still uses this convention. Used to filter out those attributes when mapping
     // to domain entities that are within a Cosmos DB paradigm.
-    static legacyPartitionKey(attribute) {
-        return attribute.hasStereotype("Partition Key") && attribute.name === "PartitionKey";
+    static legacyPartitionKey(attribute : MacroApi.Context.IElementApi) {
+        return attribute.hasStereotype("Partition Key") && attribute.getName() === "PartitionKey";
     }
 
     static requiresForeignKey(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
-        return this.isManyToVariantsOfOne(associationEnd) || this.isSelfReferencingZeroToOne(associationEnd);
+        return DomainHelper.isManyToVariantsOfOne(associationEnd) || DomainHelper.isSelfReferencingZeroToOne(associationEnd);
     }
     
     static isManyToVariantsOfOne(associationEnd : MacroApi.Context.IAssociationApi) : boolean {

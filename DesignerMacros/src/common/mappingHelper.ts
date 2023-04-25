@@ -76,7 +76,7 @@ class MappingHelper {
 
     private static isOwnerForeignKey(attributeName: string, domainElement: IElementApi): boolean {
         for (let association of domainElement.getAssociations().filter(x => !x.typeReference.isCollection && !x.typeReference.isNullable)) {
-            if (attributeName.toLowerCase().indexOf(association.name.toLowerCase()) >= 0) {
+            if (attributeName.toLowerCase().indexOf(association.getName().toLowerCase()) >= 0) {
                 return true;
             }
         }
