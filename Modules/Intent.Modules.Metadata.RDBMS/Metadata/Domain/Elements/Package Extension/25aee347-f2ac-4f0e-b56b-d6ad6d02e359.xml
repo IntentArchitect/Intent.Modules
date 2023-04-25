@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="25aee347-f2ac-4f0e-b56b-d6ad6d02e359" type="Package Extension" typeId="ab4152df-3add-4a08-81b6-0fefc7cbb204">
+  <name>Package Extension</name>
+  <display>Package Extension: Domain Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <typeReference id="78a4ed05-d40f-4ba1-a9f9-abe3ebb4e960">
+    <typeId>1a824508-4623-45d9-accc-f572091ade5a</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>ee1b6efd-1cc6-441c-a50e-edc50f5ac6a3</parentFolderId>
+  <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+  <packageName>Intent.Metadata.RDBMS</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements>
+    <childElement id="d856b57e-d6a1-41b9-9596-069b70cfce21" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>25aee347-f2ac-4f0e-b56b-d6ad6d02e359</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="d082a563-d3ae-4f25-b17b-ff81cf205b93" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
+      <name>NewPackageEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>25aee347-f2ac-4f0e-b56b-d6ad6d02e359</parentFolderId>
+      <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+      <packageName>Intent.Metadata.RDBMS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="3ac1f86d-8e57-4ca2-8986-c0c4baff4957" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Loaded</name>
+          <display>On Loaded: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="3dbf60e8-c771-4ee2-8f6d-03d3a2fe2f29">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>d082a563-d3ae-4f25-b17b-ff81cf205b93</parentFolderId>
+          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+          <packageName>Intent.Metadata.RDBMS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let rdbmsDatabaseId = &quot;51a7bcf5-0eb9-4c9a-855e-3ead1048729c&quot;;&#xD;&#xA;if (!element.hasMetadata(&quot;rdbms-version&quot;) &amp;&amp; !element.hasStereotype(rdbmsDatabaseId)) {&#xD;&#xA;    element.addStereotype(rdbmsDatabaseId);&#xD;&#xA;}&#xD;&#xA;element.setMetadata(&quot;rdbms-version&quot;, &quot;3.5.0&quot;);&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

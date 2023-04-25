@@ -4,7 +4,24 @@
   <name>RDBMS Key Automation Extensions</name>
   <designerReferences />
   <packageSettings />
-  <packageExtensions />
+  <packageExtensions>
+    <packageExtension type="Domain Package" typeId="1a824508-4623-45d9-accc-f572091ade5a">
+      <requiredPackages />
+      <creationOptions />
+      <scriptOptions />
+      <typeOrder />
+      <macros>
+        <macro trigger="on-loaded">
+          <script>let rdbmsDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
+if (!element.hasMetadata("rdbms-version") &amp;&amp; !element.hasStereotype(rdbmsDatabaseId)) {
+    element.addStereotype(rdbmsDatabaseId);
+}
+element.setMetadata("rdbms-version", "3.5.0");
+</script>
+        </macro>
+      </macros>
+    </packageExtension>
+  </packageExtensions>
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">

@@ -25,11 +25,7 @@ namespace Intent.Modelers.Domain.Api
         [IntentManaged(Mode.Ignore)]
         public static DomainPackageModel AsDomainPackageModel(this IPackage package)
         {
-            if (package == null)
-            {
-                return null;
-            }
-            return new DomainPackageModel(package);
+            return package.IsDomainPackageModel() ? new DomainPackageModel(package) : null;
         }
     }
 }

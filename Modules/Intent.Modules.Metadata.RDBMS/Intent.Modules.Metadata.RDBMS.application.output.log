@@ -162,6 +162,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#25aee347-f2ac-4f0e-b56b-d6ad6d02e359</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>PackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PackageExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
