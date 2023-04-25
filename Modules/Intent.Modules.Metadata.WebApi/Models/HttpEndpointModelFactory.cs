@@ -25,7 +25,7 @@ public static class HttpEndpointModelFactory
         }
 
         var hasSecured = element.TryGetSecured(out _);
-        var hasUnsecured = element.TryGetSecured(out _);
+        var hasUnsecured = element.TryGetUnsecured(out _);
         var hasAuthorize = element.TryGetAuthorize(out _);
         if ((hasSecured || hasAuthorize) && hasUnsecured)
         {
