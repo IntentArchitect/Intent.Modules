@@ -88,22 +88,31 @@ public class BuilderTests
                 c.AddMethod("void", "TestMethod", method =>
                 {
                     method.AddParameter("int", "value");
-                    method.AddStatement("// If with scope")
-                        .AddStatement(new CSharpStatementBlock("if (value == 0)")
-                            .AddStatement("throw new InvalidArgumentException();"));
-                    method.AddStatement("// New Scope")
-                        .AddStatement(new CSharpStatementBlock());
-                    method.AddStatement("// Object Init")
-                        .AddStatement(new CSharpObjectInitializerBlock("var obj = new SomeObject")
+
+                    method.AddIfStatement("value == 0", c => c
+                        .AddStatement("throw new InvalidArgumentException();"));
+                    method.AddElseIfStatement("value == 1", c => c
+                        .AddStatement("return 1;"));
+                    method.AddElseStatement(c => c
+                        .AddStatement("return 2;"));
+
+                    method.AddStatement("// Object Init", s => s.SeparatedFromPrevious())
+                        .AddObjectInitializerBlock("var obj = new SomeObject", c => c
                             .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
                                 .AddStatement("return x + 1;"))
                             .AddInitStatement("StringProp", "\"My string\"")
                             .WithSemicolon());
-                    method.AddStatement(new CSharpObjectInitializerBlock("new Dictionary<string, string>")
+
+                    method.AddObjectInitializerBlock("var dict = new Dictionary<string, string>", c => c
                         .AddKeyAndValue(@"""key1""", @"""value 1""")
                         .AddKeyAndValue(@"""key2""", @"""value 2""")
-                        .WithSemicolon()
-                    );
+                        .WithSemicolon());
+
+                    method.AddStatement("// New Scope")
+                        .AddStatement(new CSharpStatementBlock());
+
+                    method.AddForEachStatement("i", "Enumerable.Range(1, 10)", c => c
+                        .AddStatement("Console.Write(i);").SeparatedFromPrevious());
                 });
             })
             .CompleteBuild();

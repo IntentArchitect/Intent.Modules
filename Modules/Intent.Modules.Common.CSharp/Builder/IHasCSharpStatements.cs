@@ -100,6 +100,68 @@ public static class HasCSharpStatementsExtensions
     }
 
     /// <summary>
+    /// Adds an if block to the <paramref name="parent"/>.
+    /// <code>
+    /// if (expression)
+    /// {
+    ///     ...
+    /// }
+    /// </code>
+    /// </summary>
+    public static TParent AddIfStatement<TParent>(this TParent parent, string expression, Action<CSharpIfStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(expression), configure);
+    }
+    
+    /// <summary>
+    /// Adds an else if block to the <paramref name="parent"/>.
+    /// <code>
+    /// else if (expression)
+    /// {
+    ///     ...
+    /// }
+    /// </code>
+    /// </summary>
+    public static TParent AddElseIfStatement<TParent>(this TParent parent, string expression, Action<CSharpElseIfStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(expression), configure);
+    }
+    
+    /// <summary>
+    /// Adds an else block to the <paramref name="parent"/>.
+    /// <code>
+    /// else
+    /// {
+    ///     ...
+    /// }
+    /// </code>
+    /// </summary>
+    public static TParent AddElseStatement<TParent>(this TParent parent, Action<CSharpElseStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(), configure);
+    }
+
+    /// <summary>
+    /// Adds a foreach block to the <paramref name="parent"/>.
+    /// <code>
+    /// foreach (var iterationVariable in sourceCollection)
+    /// {
+    ///     ...
+    /// }
+    /// </code>
+    /// </summary>
+    public static TParent AddForEachStatement<TParent>(this TParent parent,
+        string iterationVariable, string sourceCollection,
+        Action<CSharpForEachStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new (iterationVariable, sourceCollection), configure);
+    }
+
+    /// <summary>
     /// Adds a try block to the <paramref name="parent"/>.
     /// <code>
     /// try

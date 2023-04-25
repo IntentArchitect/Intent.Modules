@@ -7,14 +7,19 @@ namespace Testing.Namespace
     {
         public void TestMethod(int value)
         {
-            // If with scope
             if (value == 0)
             {
                 throw new InvalidArgumentException();
             }
-            // New Scope
+            else if (value == 1)
             {
+                return 1;
             }
+            else
+            {
+                return 2;
+            }
+
             // Object Init
 
             var obj = new SomeObject
@@ -26,11 +31,20 @@ namespace Testing.Namespace
                 StringProp = "My string"
             };
 
-            new Dictionary<string, string>
+            var dict = new Dictionary<string, string>
             {
                 { "key1", "value 1" },
                 { "key2", "value 2" }
             };
+
+            // New Scope
+            {
+            }
+
+            foreach (var i in Enumerable.Range(1, 10))
+            {
+                Console.Write(i);
+            }
         }
     }
 }
