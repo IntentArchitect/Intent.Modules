@@ -20,9 +20,11 @@ namespace Intent.Metadata.RDBMS.Api
         }
 
 
+        [IntentManaged(Mode.Ignore)]
         public static bool HasRelationalDatabase(this DomainPackageModel model)
         {
-            return model.HasStereotype("Relational Database");
+            // For backward compatibility with < 3.5.0. Can safely be removed next year (2024) as all users will (almost) certainly have upgraded to the new paradigm by then.
+            return model.HasStereotype("Relational Database") || !model.Stereotypes.Any() || model.HasStereotype("Cosmos DB Container Settings");
         }
 
         public static bool TryGetRelationalDatabase(this DomainPackageModel model, out RelationalDatabase stereotype)

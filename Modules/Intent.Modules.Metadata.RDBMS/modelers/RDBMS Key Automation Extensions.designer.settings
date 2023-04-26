@@ -13,10 +13,14 @@
       <macros>
         <macro trigger="on-loaded">
           <script>let rdbmsDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-if (!element.hasMetadata("rdbms-version") &amp;&amp; !element.hasStereotype(rdbmsDatabaseId)) {
+element.getStereotypes()
+if (!element.hasMetadata("database-paradigm-selected") &amp;&amp; 
+    !element.hasStereotype(rdbmsDatabaseId) &amp;&amp; 
+    !element.hasStereotype("Document Database")) {
+    
     element.addStereotype(rdbmsDatabaseId);
 }
-element.setMetadata("rdbms-version", "3.5.0");
+element.setMetadata("database-paradigm-selected", "true");
 </script>
         </macro>
       </macros>
