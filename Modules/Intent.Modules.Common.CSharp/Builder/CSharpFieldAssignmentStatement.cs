@@ -20,9 +20,11 @@ public class CSharpFieldAssignmentStatement : CSharpStatement
     }
 
     public override string GetText(string indentation)
-
     {
-        return $"{indentation}{(_lhs == _rhs ? "this." : "")}{_lhs} = {_rhs}{AfterAssignment};";
+        var lhs = _lhs.EnsureNotKeyword();
+        var rhs = _rhs.EnsureNotKeyword(defaultKeywordIsAllowed: true);
+
+        return $"{indentation}{(lhs == rhs ? "this." : "")}{lhs} = {rhs}{AfterAssignment};";
     }
 
     public string AfterAssignment { get; set; }

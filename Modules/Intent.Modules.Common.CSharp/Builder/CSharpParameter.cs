@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -50,7 +51,15 @@ public class CSharpParameter
 
     public override string ToString()
     {
-        return $@"{(HasThisModifier ? "this " : string.Empty)}{GetAttributes()}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
+        var name = Name.EnsureNotKeyword();
+        var modifier = HasThisModifier
+            ? "this "
+            : string.Empty;
+        var defaultValue = DefaultValue != null
+            ? $" = {DefaultValue}"
+            : string.Empty;
+
+        return $@"{modifier}{GetAttributes()}{Type} {name}{defaultValue}";
     }
 
     protected string GetAttributes()

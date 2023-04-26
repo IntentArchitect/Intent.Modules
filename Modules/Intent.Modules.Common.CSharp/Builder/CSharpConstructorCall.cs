@@ -33,7 +33,10 @@ public class CSharpConstructorCall
     {
         if (Arguments.Any())
         {
-            return $" : {_type}({string.Join(", ", Arguments)})";
+            var arguments = Arguments
+                .Select(x => x.EnsureNotKeyword(defaultKeywordIsAllowed: true));
+
+            return $" : {_type}({string.Join(", ", arguments)})";
         }
 
         if (_type == "this")

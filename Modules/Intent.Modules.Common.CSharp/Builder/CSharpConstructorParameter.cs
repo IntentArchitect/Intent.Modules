@@ -81,6 +81,11 @@ public class CSharpConstructorParameter
 
     public override string ToString()
     {
-        return $@"{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
+        var name = Name.EnsureNotKeyword();
+        var defaultValue = DefaultValue != null
+            ? $" = {DefaultValue}"
+            : string.Empty;
+
+        return $@"{Type} {name}{defaultValue}";
     }
 }
