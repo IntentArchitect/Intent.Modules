@@ -95,9 +95,9 @@ function getUnconventionalRoute() {
         return "";
     }
     let queryRoute = toKebabCase(removeSuffix(removePrefix(element.getName(), "Get", "Find", "Lookup"), "Query"));
-    console.warn(queryRoute);
-    console.warn(toKebabCase(mappedEntity ?? singularize(folderName)));
-    console.warn(serviceRoute);
+    //console.warn(queryRoute);
+    //console.warn(toKebabCase(mappedEntity ?? singularize(folderName)));
+    //console.warn(serviceRoute);
     return removePrefix(queryRoute, serviceRoute, toKebabCase(mappedEntity ?? singularize(folderName)), "-");
 }
 </script>
