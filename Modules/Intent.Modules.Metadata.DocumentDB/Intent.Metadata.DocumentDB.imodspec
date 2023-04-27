@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.DocumentDB</id>
-  <version>1.0.0-pre.1</version>
+  <version>1.0.0-pre.2</version>
   <supportedClientVersions>[3.4.0,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -12,6 +12,13 @@
   <templates></templates>
   <decorators></decorators>
   <factoryExtensions></factoryExtensions>
+  <interoperability>
+    <detect id="Intent.Metadata.RDBMS">
+      <install>
+        <package id="Intent.Metadata.RDBMS" version="3.5.0-pre.2" />
+      </install>
+    </detect>
+  </interoperability>
   <moduleSettings>
     <group id="d5581fe8-7385-4bb6-88dc-8940e20ec1d4" title="Document Database" externalReference="d5581fe8-7385-4bb6-88dc-8940e20ec1d4">
       <settings>

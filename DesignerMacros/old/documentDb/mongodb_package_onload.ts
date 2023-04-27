@@ -1,7 +1,17 @@
 (async () => {
 {
     // This script was made using a Typescript source. Don't edit this script directly.
+
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    element.getStereotypes()
+    if (!element.hasMetadata("database-paradigm-selected") && 
+        !element.hasStereotype(documentStoreId) && 
+        !element.hasStereotype("Relational Database")) {
+        
+        element.addStereotype(documentStoreId);
+    }
+    element.setMetadata("database-paradigm-selected", "true");
+
     if (!element.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
