@@ -131,6 +131,8 @@ white-space: inherit;`</style>
               <type>Type-Definition</type>
               <type>Enum</type>
               <type>Class</type>
+              <type>Value Object</type>
+              <type>Data Contract</type>
             </targetTypes>
             <allowIsNavigable>true</allowIsNavigable>
             <allowIsNullable>true</allowIsNullable>
