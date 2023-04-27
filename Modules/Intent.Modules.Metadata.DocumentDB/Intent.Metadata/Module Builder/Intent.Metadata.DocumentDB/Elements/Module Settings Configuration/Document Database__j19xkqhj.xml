@@ -65,34 +65,6 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="08bdc291-d0b5-424f-80d3-f058b5d1ac77" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Integer</name>
-          <display>Integer = int</display>
-          <isAbstract>false</isAbstract>
-          <value>int</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>8bcf2b5c-cd35-47d6-8705-7e8e83494083</parentFolderId>
-          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
-          <packageName>Intent.Metadata.DocumentDB</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="b0d065f1-9435-45e2-a4da-4017762dddd4" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
-          <name>Long</name>
-          <display>Long = long</display>
-          <isAbstract>false</isAbstract>
-          <value>long</value>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>8bcf2b5c-cd35-47d6-8705-7e8e83494083</parentFolderId>
-          <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
-          <packageName>Intent.Metadata.DocumentDB</packageName>
-          <stereotypes />
-          <metadata />
-          <childElements />
-        </childElement>
       </childElements>
     </childElement>
   </childElements>

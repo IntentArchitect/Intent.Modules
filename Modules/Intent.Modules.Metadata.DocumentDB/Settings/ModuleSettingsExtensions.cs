@@ -55,8 +55,6 @@ namespace Intent.Modules.Metadata.DocumentDB.Settings
                 {
                     "object-id" => IdTypeOptionsEnum.ObjectId,
                     "guid" => IdTypeOptionsEnum.Guid,
-                    "int" => IdTypeOptionsEnum.Int,
-                    "long" => IdTypeOptionsEnum.Long,
                     _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
                 };
             }
@@ -70,24 +68,12 @@ namespace Intent.Modules.Metadata.DocumentDB.Settings
             {
                 return Value == "guid";
             }
-
-            public bool IsInt()
-            {
-                return Value == "int";
-            }
-
-            public bool IsLong()
-            {
-                return Value == "long";
-            }
         }
 
         public enum IdTypeOptionsEnum
         {
             ObjectId,
             Guid,
-            Int,
-            Long,
         }
     }
 }

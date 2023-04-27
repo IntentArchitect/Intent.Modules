@@ -29,8 +29,6 @@
           <options>
             <option value="object-id" description="Object ID" />
             <option value="guid" description="GUID" />
-            <option value="int" description="Integer" />
-            <option value="long" description="Long" />
           </options>
         </setting>
       </settings>
