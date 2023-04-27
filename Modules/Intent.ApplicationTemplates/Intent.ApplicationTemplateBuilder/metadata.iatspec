@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <applicationTemplate>
   <id>Intent.ApplicationTemplateBuilder</id>
-  <version>3.3.14</version>
+  <version>3.3.15</version>
   <supportedClientVersions>[3.3.0-pre.0, 5.0.0)</supportedClientVersions>
   <displayName>Intent Application Template Builder</displayName>
   <shortDescription>Build application templates for your tech stack.</shortDescription>
@@ -49,5 +49,15 @@
       </components>
     </group>
   </componentGroups>
-  <additionalSettings />
+  <additionalSettings>
+    <group id="eb7e866f-86d9-4fd5-ab7e-e98726a92b47" title="Basic Settings">
+      <settings>
+        <setting id="target-framework" title="Target Framework" type="hidden">
+          <defaultValue>16d99e3e-7b91-42f8-ae3b-2686edde94b7</defaultValue>
+          <isRequired>true</isRequired>
+          <options />
+        </setting>
+      </settings>
+    </group>
+  </additionalSettings>
 </applicationTemplate>

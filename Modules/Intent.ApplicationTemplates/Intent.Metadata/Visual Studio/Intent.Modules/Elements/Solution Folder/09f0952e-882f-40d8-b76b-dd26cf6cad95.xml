@@ -3,7 +3,7 @@
   <name>Application Templates</name>
   <display>Application Templates</display>
   <isAbstract>false</isAbstract>
-  <order>1</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>ac9d8b42-6810-4a6e-b243-2f7e1853ed80</parentFolderId>
