@@ -144,13 +144,9 @@ foreach ($project in $projects) {
     Invoke-Expression "dotnet pack $project --verbosity normal$packOutputParam"
 }
 
-Write-Host "dotnet processes:"
-Get-Process | Where-Object { $_.ProcessName.StartsWith("dotnet", "InvariantCultureIgnoreCase") }
-
-Write-Host "Stopping dotnet processes:"
-Stop-Process -Name "dotnet"
-
-Write-Host "dotnet processes:"
-Get-Process | Where-Object { $_.ProcessName.StartsWith("dotnet", "InvariantCultureIgnoreCase") }
-
-Write-Host "Execution complete"
+# Resolves the following issue which would often get logged and cause this task to in Azure DevOps to become stuck:
+# The STDIO streams did not close within 10 seconds of the exit event from process '/usr/bin/pwsh'. This may indicate a child process inherited the STDIO streams and has not yet exited.
+if ($isOnBuildAgent) {
+    Write-Host "Stopping dotnet processes"
+    Get-Process | Where-Object { $_.ProcessName.StartsWith("dotnet", "InvariantCultureIgnoreCase") } | Foreach-Object { Stop-Process $_ }
+}
