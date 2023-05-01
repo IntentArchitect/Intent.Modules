@@ -37,15 +37,15 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
 
         public IElement InternalElement => _element;
 
-        public GraphQLQueryTypeModel QueryType => _element.ChildElements
+        public IList<GraphQLQueryTypeModel> QueryTypes => _element.ChildElements
             .GetElementsOfType(GraphQLQueryTypeModel.SpecializationTypeId)
             .Select(x => new GraphQLQueryTypeModel(x))
-            .SingleOrDefault();
+            .ToList();
 
-        public GraphQLMutationTypeModel MutationType => _element.ChildElements
+        public IList<GraphQLMutationTypeModel> MutationTypes => _element.ChildElements
             .GetElementsOfType(GraphQLMutationTypeModel.SpecializationTypeId)
             .Select(x => new GraphQLMutationTypeModel(x))
-            .SingleOrDefault();
+            .ToList();
 
         public IList<GraphQLSchemaTypeModel> Types => _element.ChildElements
             .GetElementsOfType(GraphQLSchemaTypeModel.SpecializationTypeId)

@@ -84,14 +84,24 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
             return type.IsGraphQLSchemaTypeModel() ? new GraphQLSchemaTypeModel((IElement)type) : null;
         }
 
-        public static bool HasMapToEntityMapping(this GraphQLSchemaTypeModel type)
+        public static bool HasMapFromDomainMapping(this GraphQLSchemaTypeModel type)
         {
             return type.Mapping?.MappingSettingsId == "637e11b2-b420-415a-af5f-5a63312c1ccc";
         }
 
-        public static IElementMapping GetMapToEntityMapping(this GraphQLSchemaTypeModel type)
+        public static IElementMapping GetMapFromDomainMapping(this GraphQLSchemaTypeModel type)
         {
-            return type.HasMapToEntityMapping() ? type.Mapping : null;
+            return type.HasMapFromDomainMapping() ? type.Mapping : null;
+        }
+
+        public static bool HasMapFromDtoMapping(this GraphQLSchemaTypeModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "67960843-0927-4127-ad4f-e19e3e60cc74";
+        }
+
+        public static IElementMapping GetMapFromDtoMapping(this GraphQLSchemaTypeModel type)
+        {
+            return type.HasMapFromDtoMapping() ? type.Mapping : null;
         }
     }
 }

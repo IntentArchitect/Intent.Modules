@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modules.Modelers.Services.GraphQL</id>
-  <version>1.0.0</version>
+  <version>1.0.0-pre.0</version>
   <supportedClientVersions>[3.4.0,5.0.0)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -24,5 +24,7 @@
   <moduleSettingsExtensions />
   <metadata>
     <install target="Services" src="modelers/GraphQL Types.designer.settings" externalReference="5cd6c2a9-036c-4ab2-b4e0-1400608a2f6f" />
+    <install target="Module Builder" src="Intent.Metadata/Module Builder/Intent.Modules.Modelers.Services.GraphQL/Intent.Modules.Modelers.Services.GraphQL.pkg.config" externalReference="4da68eac-087e-4669-9f37-b6d869e98eda" />
+    <install src="modelers/GraphQL DTO Extensions.designer.settings" externalReference="e8920bed-bd85-4fde-bbb9-fb142fb77364" target="Services" />
   </metadata>
 </package>

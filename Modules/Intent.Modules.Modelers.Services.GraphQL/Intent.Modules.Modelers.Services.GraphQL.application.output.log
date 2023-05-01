@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>64d3295d-fca7-45ca-838c-3a6be45c54e9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#b4b4f505-b846-476e-98c3-db116ff837b7</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DTOExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DTOExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>64d3295d-fca7-45ca-838c-3a6be45c54e9</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c394de2e-9c3b-4633-b6df-702904ad9914</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GraphQLEndpointModel.cs</ApplicationRelativeFilePath>
@@ -94,6 +102,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.imodspec</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>77516a91-4ae7-4148-b07d-1ef52f488cb1</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#e8920bed-bd85-4fde-bbb9-fb142fb77364</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/GraphQL DTO Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQL DTO Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

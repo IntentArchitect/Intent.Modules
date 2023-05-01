@@ -25,6 +25,13 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
                 .ToList();
         }
 
+        public static IList<GraphQLQueryTypeModel> GetGraphQLQueryTypeModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(GraphQLQueryTypeModel.SpecializationTypeId)
+                .Select(x => new GraphQLQueryTypeModel(x))
+                .ToList();
+        }
+
         public static IList<GraphQLSchemaTypeModel> GetGraphQLSchemaTypeModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(GraphQLSchemaTypeModel.SpecializationTypeId)
