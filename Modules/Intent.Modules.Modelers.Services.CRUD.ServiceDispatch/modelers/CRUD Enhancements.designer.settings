@@ -659,6 +659,9 @@ function ensureDtoFields(mappedElement, dto) {
         if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {
             continue;
         }
+        if (dto.getChildren("DTO-Field").some(x =&gt; x.getName() == entry.name)) {
+            continue;
+        }
         let field = createElement("DTO-Field", entry.name, dto.id);
         field.typeReference.setType(entry.typeId);
         field.typeReference.setIsNullable(entry.isNullable);
@@ -679,6 +682,9 @@ function addPrimaryKeys(dto, entityPkDescr) {
         case globals.PKSpecialization.Implicit:
         case globals.PKSpecialization.Explicit:
             {
+                if (dto.getChildren("DTO-Field").some(x =&gt; x.getName() == getFieldFormat(entityPkDescr.name))) {
+                    return;
+                }
                 let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
                 primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
                 if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
@@ -688,6 +694,9 @@ function addPrimaryKeys(dto, entityPkDescr) {
             break;
         case globals.PKSpecialization.ExplicitComposite:
             for (let key of entityPkDescr.compositeKeys) {
+                if (dto.getChildren("DTO-Field").some(x =&gt; x.getName() == getFieldFormat(key.name))) {
+                    continue;
+                }
                 let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
                 primaryKeyDtoField.typeReference.setType(key.typeId);
                 primaryKeyDtoField.setMapping(key.id);
