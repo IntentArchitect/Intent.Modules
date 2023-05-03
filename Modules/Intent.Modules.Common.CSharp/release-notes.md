@@ -1,6 +1,7 @@
 ﻿### Version 3.3.33
 
 - Update: `CSharpFileBuilder` now has a `TypeDeclarations` which is a collection of Record and Classes in the file. This change allows templates to treat Records or classes in a unified manner.
+- Update: `CSharpField` now has a `WithAssignment` method.
 
 ### Version 3.3.32
 
