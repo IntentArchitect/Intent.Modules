@@ -35,6 +35,12 @@ public class CSharpPropertyAccessor
         return this;
     }
 
+    public CSharpPropertyAccessor Internal()
+    {
+        AccessModifier = "internal ";
+        return this;
+    }
+
     public CSharpPropertyAccessor Private()
     {
         AccessModifier = "private ";

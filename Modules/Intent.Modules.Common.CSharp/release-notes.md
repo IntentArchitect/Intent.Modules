@@ -1,4 +1,8 @@
-﻿### Version 3.3.32
+﻿### Version 3.3.33
+
+- Update: `CSharpFileBuilder` now has a `TypeDeclarations` which is a collection of Record and Classes in the file. This change allows templates to treat Records or classes in a unified manner.
+
+### Version 3.3.32
 
 - Update: `CSharpFileBuilder` will now automatically ensure that parameter names for methods and constructors become prefixed with '@' when they would otherwise be a C# language reserved word. This was most commonly an issue when `event` was used for parameter name in an Intent designer.
 

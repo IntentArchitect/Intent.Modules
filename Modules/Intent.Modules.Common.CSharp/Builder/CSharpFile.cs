@@ -14,8 +14,14 @@ public class CSharpFile
     public string RelativeLocation { get; }
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
-    public IList<CSharpClass> Classes { get; } = new List<CSharpClass>();
-    public IList<CSharpRecord> Records { get; } = new List<CSharpRecord>();
+    public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
+    public IList<CSharpClass> Classes => TypeDeclarations
+        .Where(td => td.TypeDefinitionType == CSharpClass.Type.Class)
+        .ToList();
+    public IList<CSharpRecord> Records => TypeDeclarations
+        .Where(td => td.TypeDefinitionType == CSharpClass.Type.Record)
+        .Cast<CSharpRecord>()
+        .ToList();
     public IList<CSharpAssemblyAttribute> AssemblyAttributes { get; } = new List<CSharpAssemblyAttribute>();
 
     public CSharpFile(string @namespace, string relativeLocation)
@@ -33,7 +39,7 @@ public class CSharpFile
     public CSharpFile AddClass(string name, Action<CSharpClass> configure = null)
     {
         var @class = new CSharpClass(name);
-        Classes.Add(@class);
+        TypeDeclarations.Add(@class);
         if (_isBuilt)
         {
             configure?.Invoke(@class);
@@ -48,7 +54,7 @@ public class CSharpFile
     public CSharpFile AddRecord(string name, Action<CSharpRecord> configure = null)
     {
         var record = new CSharpRecord(name);
-        Records.Add(record);
+        TypeDeclarations.Add(record);
         if (_isBuilt)
         {
             configure?.Invoke(record);
