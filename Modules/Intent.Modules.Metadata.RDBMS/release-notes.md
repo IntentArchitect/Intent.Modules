@@ -1,3 +1,7 @@
+### Version 3.5.1
+
+- Fixed: Non Classes will not be affected by automated key management scripts.
+
 ### Version 3.4.2
 
 - New: Support for modelling Sql Views throught the `View` stereotype which can be applied to `Class`s.

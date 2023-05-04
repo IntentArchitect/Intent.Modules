@@ -39,6 +39,9 @@ let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
 if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
+if (!element.getParent().specialization != "Class") {
+    return;
+}
 if (element.getName().toLocaleLowerCase() == "id" &amp;&amp;
     element.hasStereotype("Primary Key") &amp;&amp;
     element.typeReference.getType()) {
@@ -58,6 +61,9 @@ if (associationTarget &amp;&amp; element.getMetadata("association") != associati
         <macro trigger="on-loaded">
           <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
 if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
+    return;
+}
+if (!element.getParent().specialization != "Class") {
     return;
 }
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
@@ -152,6 +158,9 @@ if (!sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
 
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
+if (sourceType.specialization != "Class" || targetType.specialization != "Class") {
+    return;
+}
 if (sourceType &amp;&amp; targetType) {
     if (requiresForeignKey(association) &amp;&amp; sourceType.getMetadata("auto-manage-keys") != "false") {
         updateForeignKeyAttribute(sourceType, targetType, association, association.id);
@@ -267,6 +276,9 @@ if (!sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
 }
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
+if (sourceType.specialization != "Class" || targetType.specialization != "Class") {
+    return;
+}
 if (targetType &amp;&amp; targetType.getMetadata("auto-manage-keys") != "false") {
     targetType.getChildren().filter(x =&gt; x.getMetadata("association") == association.id).forEach(x =&gt; x.delete());
 }
