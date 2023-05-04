@@ -147,7 +147,7 @@ return `${name}${params ? `(${params})` : ""}${displayType(typeReference)}`;</di
                 <isRequired>true</isRequired>
                 <targetTypes>
                   <type>Type-Definition</type>
-                  <type>GraphQL Schema Type</type>
+                  <type>DTO</type>
                 </targetTypes>
                 <allowIsNavigable>true</allowIsNavigable>
                 <allowIsNullable>true</allowIsNullable>
@@ -463,7 +463,7 @@ return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</d
                   <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
                   <optionsSource>elements-of-type</optionsSource>
                   <autoSyncTypeReferences>true</autoSyncTypeReferences>
-                  <symbol>fa-long-arrow-left</symbol>
+                  <symbol>fa-long-arrow-right</symbol>
                   <styleFunction>color: #7782ff;</styleFunction>
                   <targetTypeOptions>
                     <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
@@ -477,8 +477,19 @@ return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</d
                         <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
                       </criteria>
                       <mapTo specializationType="GraphQL Schema Field" childMappingMode="map-to-child" />
-                      <behaviour autoSelectChildren="true" />
-                      <childMappings />
+                      <behaviour autoSelectChildren="false" />
+                      <childMappings>
+                        <mapping id="cf60577e-9cfb-446c-b2e1-0cd41125028f">
+                          <criteria specializationType="Attribute">
+                            <hasTypeReference p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                            <isCollection p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                            <hasChildren p15:nil="true" xmlns:p15="http://www.w3.org/2001/XMLSchema-instance" />
+                          </criteria>
+                          <mapTo specializationType="GraphQL Parameter" childMappingMode="map-to-child" />
+                          <behaviour autoSelectChildren="false" />
+                          <childMappings />
+                        </mapping>
+                      </childMappings>
                     </mapping>
                   </mappings>
                 </mappingSetting>
@@ -488,8 +499,8 @@ return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</d
                   <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
                   <optionsSource>elements-of-type</optionsSource>
                   <autoSyncTypeReferences>true</autoSyncTypeReferences>
-                  <symbol>fa-long-arrow-left</symbol>
-                  <styleFunction>color: #e57d1c;</styleFunction>
+                  <symbol>fa-long-arrow-right</symbol>
+                  <styleFunction>color: #af3088;</styleFunction>
                   <targetTypeOptions>
                     <option specializationType="b16578a5-27b1-4047-a8df-f0b783d706bd" displayText="Service" />
                     <option specializationType="e71b0662-e29d-4db2-868b-8a12464b25d0" displayText="Query" />
