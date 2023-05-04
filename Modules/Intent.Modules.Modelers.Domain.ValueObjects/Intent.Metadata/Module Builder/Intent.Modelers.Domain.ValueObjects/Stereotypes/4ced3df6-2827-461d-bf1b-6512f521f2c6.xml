@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="4ced3df6-2827-461d-bf1b-6512f521f2c6" version="3.1.0">
+  <name>Serialization Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">Value Object</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,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" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>94454582-ba60-4ab4-ae61-6f53b914b76d</parentFolderId>
+  <order>0</order>
+  <packageId>94454582-ba60-4ab4-ae61-6f53b914b76d</packageId>
+  <packageName>Intent.Modelers.Domain.ValueObjects</packageName>
+  <properties>
+    <property id="45b57ef4-d902-4a0d-bdee-08b0deb0cbd5">
+      <name>Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>JSON</defaultValue>
+      <valueOptions>
+        <option>JSON</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>
