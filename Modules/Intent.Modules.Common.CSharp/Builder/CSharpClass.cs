@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -9,6 +10,8 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     private readonly Type _type;
     private CSharpCodeSeparatorType _propertiesSeparator = CSharpCodeSeparatorType.NewLine;
     private CSharpCodeSeparatorType _fieldsSeparator = CSharpCodeSeparatorType.NewLine;
+
+    internal Type TypeDefinitionType => _type;
 
     protected internal CSharpClass(string name, Type type)
     {

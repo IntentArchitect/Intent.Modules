@@ -14,6 +14,10 @@ if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
 
+if (sourceType.specialization != "Class" || targetType.specialization != "Class") {
+    return;
+}
+
 if (sourceType && targetType) {
 
     if (requiresForeignKey(association) && sourceType.getMetadata("auto-manage-keys") != "false") {

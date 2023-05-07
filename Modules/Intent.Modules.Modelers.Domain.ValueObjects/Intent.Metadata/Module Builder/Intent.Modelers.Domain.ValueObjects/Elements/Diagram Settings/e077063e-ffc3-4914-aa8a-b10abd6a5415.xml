@@ -4,7 +4,7 @@
   <display>[diagram]</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
-  <order>1</order>
+  <order>0</order>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>24f8af9d-b010-402b-a7c1-90fcfa39ba1b</parentFolderId>

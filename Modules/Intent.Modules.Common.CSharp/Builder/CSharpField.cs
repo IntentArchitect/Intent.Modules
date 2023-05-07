@@ -10,7 +10,11 @@ public class CSharpField : CSharpMember<CSharpField>
     public string AccessModifier { get; private set; }
     public string Assignment { get; private set; }
 
-    public CSharpField(string type, string name)
+    public CSharpField(string type, string name) : this (type, name, null)
+    {
+    }
+
+    public CSharpField(string type, string name, string value)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -22,6 +26,7 @@ public class CSharpField : CSharpMember<CSharpField>
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        Assignment = value;
         AccessModifier = "private ";
         Type = type;
         Name = name;
@@ -33,9 +38,12 @@ public class CSharpField : CSharpMember<CSharpField>
         return this;
     }
 
-    public CSharpField Private()
+    public CSharpField Private() => Private(null);
+
+    public CSharpField Private(string value)
     {
         AccessModifier = "private ";
+        Assignment = value;
         return this;
     }
 
@@ -56,6 +64,12 @@ public class CSharpField : CSharpMember<CSharpField>
     public CSharpField CanBeNull()
     {
         _canBeNull = true;
+        return this;
+    }
+
+    public CSharpField WithAssignment(string value)
+    {
+        Assignment = value;
         return this;
     }
 
