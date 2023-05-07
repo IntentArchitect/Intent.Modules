@@ -101,5 +101,53 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="50c3388e-3e5f-45fb-8bd9-b75f6a5831ca" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b4b4f505-b846-476e-98c3-db116ff837b7</parentFolderId>
+      <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="7c556b4b-a836-4781-9bb5-0ca47c547a18" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Mapped</name>
+          <display>On Mapped: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="7592f31d-bc2f-4867-823c-ac66043efdc4">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>50c3388e-3e5f-45fb-8bd9-b75f6a5831ca</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getMapping().mappingSettingsId !== &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;) {&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;const graphQLRoot = element.getParent(&quot;GraphQL Endpoint&quot;);&#xD;&#xA;element.getChildren(&quot;GraphQL Schema Field&quot;).forEach(field =&gt; {&#xD;&#xA;    if (!field.isMapped || field.typeReference.isTypeFound()) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    const mappedType = field.getMapping().getElement().typeReference.getType();&#xD;&#xA;&#xD;&#xA;    let schemaType = graphQLRoot.getChildren(&quot;DTO&quot;)&#xD;&#xA;        .filter(x =&gt; x.getName().toLowerCase() == mappedType.getName().toLowerCase())[0];&#xD;&#xA;    if (schemaType == null) {&#xD;&#xA;        schemaType = createElement(&quot;DTO&quot;, mappedType.getName(), graphQLRoot.id);&#xD;&#xA;        schemaType.setMapping(mappedType.id, &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;);&#xD;&#xA;        mappedType.getChildren().forEach(x =&gt; {&#xD;&#xA;            const schemaField = createElement(&quot;DTO-Field&quot;, x.getName(), schemaType.id);&#xD;&#xA;            schemaField.setMapping(x.id, &quot;637e11b2-b420-415a-af5f-5a63312c1ccc&quot;);&#xD;&#xA;        });&#xD;&#xA;    }&#xD;&#xA;&#xD;&#xA;    field.typeReference.setType(schemaType.id);&#xD;&#xA;});&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

@@ -104,8 +104,8 @@
       </childElements>
     </childElement>
     <childElement id="91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
-      <name>Map to Domain</name>
-      <display>[mappings]: Map to Domain</display>
+      <name>Handle with Data Access</name>
+      <display>[mappings]: Handle with Data Access</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
@@ -126,8 +126,8 @@
             <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
             <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
-            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
-            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" value="color: #7782ff;" isActive="true" />
+            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-left" isActive="true" />
+            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" value="" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -179,8 +179,8 @@
       </childElements>
     </childElement>
     <childElement id="96d1ea0d-844c-4d36-a881-16bc0100dfb5" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
-      <name>Map to Service</name>
-      <display>[mappings]: Map to Service</display>
+      <name>Handle with Service</name>
+      <display>[mappings]: Handle with Service</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
@@ -202,7 +202,7 @@
             <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
             <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
-            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" value="color: #e57d1c;" isActive="true" />
+            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" value="color: #30a3af;" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>

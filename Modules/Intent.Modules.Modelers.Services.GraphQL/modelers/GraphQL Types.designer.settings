@@ -173,13 +173,12 @@ return `${name}${params ? `(${params})` : ""}${displayType(typeReference)}`;</di
               <scriptOptions />
               <mappingSettings>
                 <mappingSetting id="91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb">
-                  <name>Map to Domain</name>
+                  <name>Handle with Data Access</name>
                   <shortcut>ctrl + shift + d</shortcut>
                   <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
                   <optionsSource>elements-of-type</optionsSource>
                   <autoSyncTypeReferences>true</autoSyncTypeReferences>
-                  <symbol>fa-long-arrow-right</symbol>
-                  <styleFunction>color: #7782ff;</styleFunction>
+                  <symbol>fa-long-arrow-left</symbol>
                   <targetTypeOptions>
                     <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
                   </targetTypeOptions>
@@ -198,13 +197,13 @@ return `${name}${params ? `(${params})` : ""}${displayType(typeReference)}`;</di
                   </mappings>
                 </mappingSetting>
                 <mappingSetting id="96d1ea0d-844c-4d36-a881-16bc0100dfb5">
-                  <name>Map to Service</name>
+                  <name>Handle with Service</name>
                   <shortcut>ctrl + shift + d</shortcut>
                   <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
                   <optionsSource>elements-of-type</optionsSource>
                   <autoSyncTypeReferences>true</autoSyncTypeReferences>
                   <symbol>fa-long-arrow-right</symbol>
-                  <styleFunction>color: #e57d1c;</styleFunction>
+                  <styleFunction>color: #30a3af;</styleFunction>
                   <targetTypeOptions>
                     <option specializationType="b16578a5-27b1-4047-a8df-f0b783d706bd" displayText="Service" />
                     <option specializationType="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9" displayText="Command" />
@@ -366,6 +365,9 @@ else if (element.getMapping().mappingSettingsId == toEntityMapping) {
           </typeReferenceSetting>
           <mappingSettings />
           <macros>
+            <macro trigger="on-created">
+              <script>element.setName(toCamelCase(element.getName()));</script>
+            </macro>
             <macro trigger="on-name-changed">
               <script>element.setName(toCamelCase(element.getName()));</script>
             </macro>
@@ -458,13 +460,12 @@ return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</d
               <scriptOptions />
               <mappingSettings>
                 <mappingSetting id="79d0e613-7688-4b73-8f84-79eba94b8b46">
-                  <name>Map from Domain</name>
+                  <name>Resolve with Data Access</name>
                   <shortcut>ctrl + shift + d</shortcut>
                   <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
                   <optionsSource>elements-of-type</optionsSource>
                   <autoSyncTypeReferences>true</autoSyncTypeReferences>
-                  <symbol>fa-long-arrow-right</symbol>
-                  <styleFunction>color: #7782ff;</styleFunction>
+                  <symbol>fa-long-arrow-left</symbol>
                   <targetTypeOptions>
                     <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
                   </targetTypeOptions>
@@ -494,13 +495,13 @@ return `${name}${params ? `(${params})`: ""}: ${displayType(typeReference)}`;</d
                   </mappings>
                 </mappingSetting>
                 <mappingSetting id="cf512bcf-7b14-47ee-9c62-cf1b40fd2b7f">
-                  <name>Map from Service</name>
+                  <name>Resolve with Service</name>
                   <shortcut>ctrl + shift + m</shortcut>
                   <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
                   <optionsSource>elements-of-type</optionsSource>
                   <autoSyncTypeReferences>true</autoSyncTypeReferences>
                   <symbol>fa-long-arrow-right</symbol>
-                  <styleFunction>color: #af3088;</styleFunction>
+                  <styleFunction>color: #30a3af;</styleFunction>
                   <targetTypeOptions>
                     <option specializationType="b16578a5-27b1-4047-a8df-f0b783d706bd" displayText="Service" />
                     <option specializationType="e71b0662-e29d-4db2-868b-8a12464b25d0" displayText="Query" />
@@ -814,36 +815,6 @@ else if (element.getMapping().mappingSettingsId == toEntityMapping) {
               </mappings>
             </mappingSetting>
           </mappingSettings>
-          <macros>
-            <macro trigger="on-mapped">
-              <script>if (element.getMapping().mappingSettingsId !== "637e11b2-b420-415a-af5f-5a63312c1ccc") {
-    return;
-}
-
-const graphQLRoot = element.getParent("GraphQL Endpoint");
-element.getChildren("GraphQL Schema Field").forEach(field =&gt; {
-    if (!field.isMapped || field.typeReference.isTypeFound()) {
-        return;
-    }
-
-    const mappedType = field.getMapping().getElement().typeReference.getType();
-
-    let schemaType = graphQLRoot.getChildren("GraphQL Schema Type")
-        .filter(x =&gt; x.getName().toLowerCase() == mappedType.getName().toLowerCase())[0];
-    if (schemaType == null) {
-        schemaType = createElement("GraphQL Schema Type", mappedType.getName(), graphQLRoot.id);
-        schemaType.setMapping(mappedType.id, "637e11b2-b420-415a-af5f-5a63312c1ccc");
-        mappedType.getChildren().forEach(x =&gt; {
-            const schemaField = createElement("GraphQL Schema Field", x.getName(), schemaType.id);
-            schemaField.setMapping(x.id, "637e11b2-b420-415a-af5f-5a63312c1ccc");
-        });
-    }
-
-    field.typeReference.setType(schemaType.id);
-});
-</script>
-            </macro>
-          </macros>
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>
