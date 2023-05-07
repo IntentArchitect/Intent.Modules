@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Kotlin</id>
-  <version>3.3.2</version>
+  <version>3.3.3</version>
   <supportedClientVersions>[3.3.0-pre.0, 5.0.0)</supportedClientVersions>
+  <releaseNotes>release-notes.md</releaseNotes>
   <summary>For the creation of Kotlin Templates in the Intent Module Builder</summary>
   <description>For the creation of Kotlin Templates in the Intent Module Builder</description>
   <authors>Intent Architect</authors>

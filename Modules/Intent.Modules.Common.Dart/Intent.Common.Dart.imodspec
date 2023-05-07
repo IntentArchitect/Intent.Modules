@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Common.Dart</id>
-  <version>1.0.0</version>
-  <supportedClientVersions>[3.2.0,5.0.0)</supportedClientVersions>
+  <version>1.0.1</version>
+  <supportedClientVersions>[3.2.0, 5.0.0)</supportedClientVersions>
+  <releaseNotes>release-notes.md</releaseNotes>
   <summary>Common library support in order to help generate code for the Dart language.</summary>
   <description>Common library support in order to help generate code for the Dart language.</description>
   <authors>Intent Architect</authors>
