@@ -1,3 +1,7 @@
+### Version 3.4.4
+
+- Updated module depenencies to prevent Software Factory warnings of possibly incompatible modules.
+
 ### Version 3.4.3
 
 - It is now possible to specify the following Application Template defaults:

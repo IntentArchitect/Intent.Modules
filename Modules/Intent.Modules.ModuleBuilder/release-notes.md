@@ -1,4 +1,9 @@
+### Version 3.6.2
+
+- Updated module depenencies to prevent Software Factory warnings of possibly incompatible modules.
+
 ### Version 3.6.1
+
 - Nuget Version bumps to align with `Domain Designer`
 - Fixed : `ModuleSettingsExtensionsTemplate` was missing a Nuget Dependancy on `Intent.Common`.
 
