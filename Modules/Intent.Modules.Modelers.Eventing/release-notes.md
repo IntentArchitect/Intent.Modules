@@ -1,3 +1,7 @@
+### Version 4.0.4
+
+- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+
 ### Version 4.0.3
 
 - Fixed: Updated package names from `Eventing.${application.name}` and `Eventing.${application.name}.Messages` to `${application.name}.Eventing` and `${application.name}.Eventing.Messages`.

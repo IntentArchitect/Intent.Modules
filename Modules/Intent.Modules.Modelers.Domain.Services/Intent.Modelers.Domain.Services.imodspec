@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Domain.Services</id>
-  <version>1.0.0</version>
-  <supportedClientVersions>[3.2.0,5.0.0)</supportedClientVersions>
+  <version>1.0.1</version>
+  <supportedClientVersions>[3.2.0, 5.0.0-a)</supportedClientVersions>
+  <releaseNotes>release-notes.md</releaseNotes>
   <summary>Domain Services extension for the Domain designer.</summary>
   <description>Domain Services extension for the Domain designer.</description>
   <authors>Intent Architect</authors>
@@ -12,9 +13,9 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.18" />
-    <dependency id="Intent.Common.Types" version="3.3.7" />
-    <dependency id="Intent.Modelers.Domain" version="3.3.10" />
+    <dependency id="Intent.Common" version="3.4.1" />
+    <dependency id="Intent.Common.Types" version="3.3.9" />
+    <dependency id="Intent.Modelers.Domain" version="3.4.2" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

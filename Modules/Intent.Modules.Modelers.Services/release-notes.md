@@ -1,4 +1,8 @@
-﻿### Version 3.3.9
+### Version 3.4.2
+
+- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+
+### Version 3.3.9
 
 - Fixed: The shortcut keys from `DTO`s and `Type`s weren't working.
 
