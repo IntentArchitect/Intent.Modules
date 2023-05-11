@@ -34,13 +34,13 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
 
             if (!Directory.Exists(Path.GetFullPath(location)))
             {
-                Logging.Log.Warning($"Could not build module because the path was not found: " + Path.GetFullPath(location));
+                Logging.Log.Warning("Could not build module because the path was not found: " + Path.GetFullPath(location));
             }
 
             Logging.Log.Info($"Executing: \"dotnet build\" at location \"{Path.GetFullPath(location)}\"");
             try
             {
-                var cmd = Process.Start(new ProcessStartInfo()
+                var cmd = Process.Start(new ProcessStartInfo
                 {
                     FileName = "dotnet",
                     Arguments = "build",
@@ -49,9 +49,11 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
                     CreateNoWindow = false,
                     UseShellExecute = false,
                     WorkingDirectory = location
-                });
+                })!;
 
-                var output = cmd!.StandardOutput.ReadToEnd();
+                cmd.WaitForExit();
+
+                var output = cmd.StandardOutput.ReadToEnd();
                 if (cmd.ExitCode == 0)
                 {
                     Logging.Log.Info(output);
@@ -63,13 +65,13 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
             }
             catch (Exception e)
             {
-                Logging.Log.Failure($@"Failed to execute: ""dotnet build""
+                Logging.Log.Failure(@"Failed to execute: ""dotnet build""
 Auto-compiling of module failed. If the problem persists, consider disabling this extension. Please see reasons below:");
                 Logging.Log.Failure(e);
             }
         }
 
-        private string GetRootExecutionLocation(IApplication application)
+        private static string GetRootExecutionLocation(IApplication application)
         {
             return application.OutputTargets.FirstOrDefault(x => x.HasTemplateInstances(IModSpecTemplate.TemplateId) || x.IsVSProject())?.Location;
         }

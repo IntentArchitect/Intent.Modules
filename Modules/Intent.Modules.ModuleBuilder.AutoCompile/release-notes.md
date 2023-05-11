@@ -1,3 +1,7 @@
+### Version 3.3.4
+
+- Fix issue when run on macOS.
+
 ### Version 3.3.3
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
