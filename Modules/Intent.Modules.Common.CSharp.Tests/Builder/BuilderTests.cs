@@ -108,6 +108,9 @@ public class BuilderTests
                         .AddKeyAndValue(@"""key2""", @"""value 2""")
                         .WithSemicolon());
 
+                    method.AddUsingBlock("var scope = service.GetScope()", block => block
+                        .AddStatement("scope.Dispose();"));
+
                     method.AddStatement("// New Scope")
                         .AddStatement(new CSharpStatementBlock());
 

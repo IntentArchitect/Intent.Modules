@@ -99,6 +99,13 @@ public static class HasCSharpStatementsExtensions
         return parent.AddStatement(new(lhs, rhs), configure);
     }
 
+    public static TParent AddUsingBlock<TParent>(this TParent parent, string expression,
+        Action<CSharpUsingBlock> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(expression), configure);
+    }
+
     /// <summary>
     /// Adds an if block to the <paramref name="parent"/>.
     /// <code>
