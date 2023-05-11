@@ -215,4 +215,18 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task InterfaceTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Interfaces")
+            .AddUsing("System")
+            .AddInterface("IInterface", @interface => @interface
+                .WithComments("// Comment")
+                .AddMethod("void", "Method")
+            )
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }
