@@ -8,4 +8,5 @@ public interface IHttpEndpointInputModel : IHasName, IHasTypeReference, IMetadat
     HttpInputSource? Source { get; }
     string? HeaderName { get; }
     ICanBeReferencedType? MappedPayloadProperty { get; }
+    string? Value { get; }
 }

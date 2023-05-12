@@ -1,3 +1,7 @@
+﻿### Version 3.4.3
+
+- Parameters can now have default values.
+
 ### Version 3.4.2
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

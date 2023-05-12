@@ -445,7 +445,7 @@ if (namingConvention == "pascal-case") {
             <childElementSetting type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <saveAsOwnFile>false</saveAsOwnFile>
-              <displayFunction>`in : ${this.name}: ${this.typeReference.display}`</displayFunction>
+              <displayFunction>`in : ${this.name}: ${this.typeReference.display}${(this.getValue() ? ` = ${this.getValue()}` : "")}`</displayFunction>
               <allowRename>true</allowRename>
               <allowAbstract>true</allowAbstract>
               <allowGenericTypes>true</allowGenericTypes>
@@ -455,7 +455,7 @@ if (namingConvention == "pascal-case") {
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>true</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowSetValue>false</allowSetValue>
+              <allowSetValue>true</allowSetValue>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>

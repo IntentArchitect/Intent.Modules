@@ -418,7 +418,7 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
               <allowFindInView>false</allowFindInView>
               <allowTypeReference>true</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
-              <allowSetValue>false</allowSetValue>
+              <allowSetValue>true</allowSetValue>
               <typeReferenceSetting>
                 <isRequired>true</isRequired>
                 <targetTypes>
