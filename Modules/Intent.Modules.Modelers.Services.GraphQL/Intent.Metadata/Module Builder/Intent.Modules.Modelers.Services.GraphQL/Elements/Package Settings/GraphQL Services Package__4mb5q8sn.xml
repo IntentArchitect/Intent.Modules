@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="4aeae542-361b-4c38-b575-10f0224b17d5" type="Package Settings" typeId="89333f72-3960-4159-bf61-9c40d4b65088">
+  <name>GraphQL Services Package</name>
+  <display>GraphQL Services Package</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-by-name</sort-children>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>5cd6c2a9-036c-4ab2-b4e0-1400608a2f6f</parentFolderId>
+  <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="0cda9040-7af2-4bb5-8f9d-919455abc878" name="Package Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="fc8c4bc7-d83c-40e7-a85f-35886682d910" display="Default Name Function" value="return `${application.name}.GraphQL`" isActive="true" />
+        <property name="3bdba51b-d9e1-4adb-a0ab-7999c4b4f563" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="c15cbaf3-f83d-4e3f-b489-7bf88a5143c4" display="Sorting" value="By type, then by name" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="ccfc74fa-71b4-4cc4-aaf8-bab315a5b576" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4aeae542-361b-4c38-b575-10f0224b17d5</parentFolderId>
+      <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="164dd858-e55c-4fad-9f30-54a8cb3d99da" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Query Type</name>
+          <display>Add Query Type: GraphQL Query Type</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="f3439f7d-2eec-47e3-ad33-7b47e04f9155">
+            <typeId>4504e87f-d092-46d6-bbb9-2b39c7307d41</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Services.GraphQL</typePackageName>
+            <typePackageId>4da68eac-087e-4669-9f37-b6d869e98eda</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>ccfc74fa-71b4-4cc4-aaf8-bab315a5b576</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + q" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Query" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="d15cbbc0-3904-4b6c-bb11-91e149f3dc98" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Mutation Type</name>
+          <display>Add Mutation Type: GraphQL Mutation Type</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="370b3118-5166-48b4-bcc7-9a0e808be758">
+            <typeId>02864de4-afe0-42a1-a655-1eeb68c8a098</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Services.GraphQL</typePackageName>
+            <typePackageId>4da68eac-087e-4669-9f37-b6d869e98eda</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>ccfc74fa-71b4-4cc4-aaf8-bab315a5b576</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Mutation" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="11197b0a-4c58-4261-bfa0-b13c0cc0070f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Type</name>
+          <display>Add Type: Type-Definition</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="fdbb67e8-59d4-4e4e-9013-d1d0ab030a5d">
+            <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Common.Types</typePackageName>
+            <typePackageId>870ad967-cbd4-4ea9-b86d-9c3a5d55ea67</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>ccfc74fa-71b4-4cc4-aaf8-bab315a5b576</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + t" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

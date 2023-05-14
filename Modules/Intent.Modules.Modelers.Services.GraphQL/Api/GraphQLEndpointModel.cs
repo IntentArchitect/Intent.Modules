@@ -37,21 +37,6 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
 
         public IElement InternalElement => _element;
 
-        public IList<GraphQLQueryTypeModel> QueryTypes => _element.ChildElements
-            .GetElementsOfType(GraphQLQueryTypeModel.SpecializationTypeId)
-            .Select(x => new GraphQLQueryTypeModel(x))
-            .ToList();
-
-        public IList<GraphQLMutationTypeModel> MutationTypes => _element.ChildElements
-            .GetElementsOfType(GraphQLMutationTypeModel.SpecializationTypeId)
-            .Select(x => new GraphQLMutationTypeModel(x))
-            .ToList();
-
-        public IList<GraphQLSchemaTypeModel> Types => _element.ChildElements
-            .GetElementsOfType(GraphQLSchemaTypeModel.SpecializationTypeId)
-            .Select(x => new GraphQLSchemaTypeModel(x))
-            .ToList();
-
         public override string ToString()
         {
             return _element.ToString();
