@@ -18,10 +18,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>64d3295d-fca7-45ca-838c-3a6be45c54e9</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#c394de2e-9c3b-4633-b6df-702904ad9914</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#e68932de-3dcf-4b2f-8796-59ff28a81efa</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/GraphQLEndpointModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>GraphQLEndpointModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/GraphQLEventMessageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLEventMessageModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -66,14 +66,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>64d3295d-fca7-45ca-838c-3a6be45c54e9</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#3f2d13dd-738f-453c-8c30-50953a9b3781</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/GraphQLSchemaTypeModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>GraphQLSchemaTypeModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>64d3295d-fca7-45ca-838c-3a6be45c54e9</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#4aeae542-361b-4c38-b575-10f0224b17d5</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/GraphQLServicesPackageModel.cs</ApplicationRelativeFilePath>
@@ -82,10 +74,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>64d3295d-fca7-45ca-838c-3a6be45c54e9</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#cd51e3b6-445c-473b-8fe7-c4c617f34918</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#37e9cf40-ac8e-4880-9a4a-92b540a4fea7</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServicesPackageExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServicesPackageExtensionModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/GraphQLSubscriptionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLSubscriptionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>64d3295d-fca7-45ca-838c-3a6be45c54e9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#b09d3b7f-63ad-4518-9a6a-5c7401c57c1b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/GraphQLSubscriptionTypeModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>GraphQLSubscriptionTypeModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

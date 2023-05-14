@@ -114,6 +114,45 @@
           <metadata />
           <childElements />
         </childElement>
+        <childElement id="fa7c1180-0945-42be-b721-d49f195bb8c5" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Subscription Type</name>
+          <display>Add Subscription Type: GraphQL Subscription Type</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="54af687e-786e-48c2-9385-160998aaa31f">
+            <typeId>b09d3b7f-63ad-4518-9a6a-5c7401c57c1b</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Services.GraphQL</typePackageName>
+            <typePackageId>4da68eac-087e-4669-9f37-b6d869e98eda</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>ccfc74fa-71b4-4cc4-aaf8-bab315a5b576</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + s" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="Subscription" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
         <childElement id="11197b0a-4c58-4261-bfa0-b13c0cc0070f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
           <name>Add Type</name>
           <display>Add Type: Type-Definition</display>
@@ -147,6 +186,54 @@
                 <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
                 <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="true" isActive="true" />
                 <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="0372937f-778f-4325-a721-bfdc2c9cf589" type="Package Event Settings" typeId="48bcdd5f-690c-425b-8f5e-99097a7188dc">
+      <name>NewPackageEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4aeae542-361b-4c38-b575-10f0224b17d5</parentFolderId>
+      <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="8a4abb75-5cca-4b9e-9380-2c69f481d119" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d6a7dc03-51f3-4714-a30c-56abe7b4bd1b">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>0372937f-778f-4325-a721-bfdc2c9cf589</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="createElement(&quot;GraphQL Query Type&quot;, &quot;Query&quot;, element.id);&#xD;&#xA;createElement(&quot;GraphQL Mutation Type&quot;, &quot;Mutation&quot;, element.id);&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

@@ -44,6 +44,11 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
             .Select(x => new GraphQLMutationTypeModel(x))
             .ToList();
 
+        public IList<GraphQLSubscriptionTypeModel> SubscriptionTypes => UnderlyingPackage.ChildElements
+            .GetElementsOfType(GraphQLSubscriptionTypeModel.SpecializationTypeId)
+            .Select(x => new GraphQLSubscriptionTypeModel(x))
+            .ToList();
+
         public IList<TypeDefinitionModel> Types => UnderlyingPackage.ChildElements
             .GetElementsOfType(TypeDefinitionModel.SpecializationTypeId)
             .Select(x => new TypeDefinitionModel(x))

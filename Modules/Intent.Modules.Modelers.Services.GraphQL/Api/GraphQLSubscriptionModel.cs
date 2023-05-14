@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modules.Modelers.Services.GraphQL.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class GraphQLEndpointModel : IMetadataModel, IHasStereotypes, IHasName
+    public class GraphQLSubscriptionModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
-        public const string SpecializationType = "GraphQL Endpoint";
-        public const string SpecializationTypeId = "c394de2e-9c3b-4633-b6df-702904ad9914";
+        public const string SpecializationType = "GraphQL Subscription";
+        public const string SpecializationTypeId = "37e9cf40-ac8e-4880-9a4a-92b540a4fea7";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public GraphQLEndpointModel(IElement element, string requiredType = SpecializationType)
+        public GraphQLSubscriptionModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -35,14 +35,21 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
 
+        public ITypeReference TypeReference => _element.TypeReference;
+
         public IElement InternalElement => _element;
+
+        public GraphQLEventMessageModel EventMessage => _element.ChildElements
+            .GetElementsOfType(GraphQLEventMessageModel.SpecializationTypeId)
+            .Select(x => new GraphQLEventMessageModel(x))
+            .SingleOrDefault();
 
         public override string ToString()
         {
             return _element.ToString();
         }
 
-        public bool Equals(GraphQLEndpointModel other)
+        public bool Equals(GraphQLSubscriptionModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -52,7 +59,7 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((GraphQLEndpointModel)obj);
+            return Equals((GraphQLSubscriptionModel)obj);
         }
 
         public override int GetHashCode()
@@ -62,17 +69,17 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class GraphQLEndpointModelExtensions
+    public static class GraphQLSubscriptionModelExtensions
     {
 
-        public static bool IsGraphQLEndpointModel(this ICanBeReferencedType type)
+        public static bool IsGraphQLSubscriptionModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == GraphQLEndpointModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == GraphQLSubscriptionModel.SpecializationTypeId;
         }
 
-        public static GraphQLEndpointModel AsGraphQLEndpointModel(this ICanBeReferencedType type)
+        public static GraphQLSubscriptionModel AsGraphQLSubscriptionModel(this ICanBeReferencedType type)
         {
-            return type.IsGraphQLEndpointModel() ? new GraphQLEndpointModel((IElement)type) : null;
+            return type.IsGraphQLSubscriptionModel() ? new GraphQLSubscriptionModel((IElement)type) : null;
         }
     }
 }

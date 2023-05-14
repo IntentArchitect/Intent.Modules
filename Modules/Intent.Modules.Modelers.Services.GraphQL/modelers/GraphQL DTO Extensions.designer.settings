@@ -24,36 +24,6 @@
         <type>GraphQL Schema Field</type>
       </typeOrder>
       <mappingSettings />
-      <macros>
-        <macro trigger="on-mapped">
-          <script>if (element.getMapping().mappingSettingsId !== "637e11b2-b420-415a-af5f-5a63312c1ccc") {
-    return;
-}
-
-const graphQLRoot = element.getParent("GraphQL Endpoint");
-element.getChildren("GraphQL Schema Field").forEach(field =&gt; {
-    if (!field.isMapped || field.typeReference.isTypeFound()) {
-        return;
-    }
-
-    const mappedType = field.getMapping().getElement().typeReference.getType();
-
-    let schemaType = graphQLRoot.getChildren("DTO")
-        .filter(x =&gt; x.getName().toLowerCase() == mappedType.getName().toLowerCase())[0];
-    if (schemaType == null) {
-        schemaType = createElement("DTO", mappedType.getName(), graphQLRoot.id);
-        schemaType.setMapping(mappedType.id, "637e11b2-b420-415a-af5f-5a63312c1ccc");
-        mappedType.getChildren().forEach(x =&gt; {
-            const schemaField = createElement("DTO-Field", x.getName(), schemaType.id);
-            schemaField.setMapping(x.id, "637e11b2-b420-415a-af5f-5a63312c1ccc");
-        });
-    }
-
-    field.typeReference.setType(schemaType.id);
-});
-</script>
-        </macro>
-      </macros>
     </elementExtension>
   </elementExtensions>
   <associationSettings />

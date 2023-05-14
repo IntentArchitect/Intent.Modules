@@ -11,12 +11,6 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<GraphQLEndpointModel> GetGraphQLEndpointModels(this IDesigner designer)
-        {
-            return designer.GetElementsOfType(GraphQLEndpointModel.SpecializationTypeId)
-                .Select(x => new GraphQLEndpointModel(x))
-                .ToList();
-        }
 
         public static IList<GraphQLMutationTypeModel> GetGraphQLMutationTypeModels(this IDesigner designer)
         {
@@ -32,10 +26,10 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
                 .ToList();
         }
 
-        public static IList<GraphQLSchemaTypeModel> GetGraphQLSchemaTypeModels(this IDesigner designer)
+        public static IList<GraphQLSubscriptionTypeModel> GetGraphQLSubscriptionTypeModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(GraphQLSchemaTypeModel.SpecializationTypeId)
-                .Select(x => new GraphQLSchemaTypeModel(x))
+            return designer.GetElementsOfType(GraphQLSubscriptionTypeModel.SpecializationTypeId)
+                .Select(x => new GraphQLSubscriptionTypeModel(x))
                 .ToList();
         }
 
