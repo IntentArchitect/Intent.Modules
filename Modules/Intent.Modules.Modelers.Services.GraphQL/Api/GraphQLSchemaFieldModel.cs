@@ -87,24 +87,24 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
             return type.IsGraphQLSchemaFieldModel() ? new GraphQLSchemaFieldModel((IElement)type) : null;
         }
 
-        public static bool HasResolveWithDataAccessMapping(this GraphQLSchemaFieldModel type)
+        public static bool HasMapToDomainMapping(this GraphQLSchemaFieldModel type)
         {
             return type.Mapping?.MappingSettingsId == "79d0e613-7688-4b73-8f84-79eba94b8b46";
         }
 
-        public static IElementMapping GetResolveWithDataAccessMapping(this GraphQLSchemaFieldModel type)
+        public static IElementMapping GetMapToDomainMapping(this GraphQLSchemaFieldModel type)
         {
-            return type.HasResolveWithDataAccessMapping() ? type.Mapping : null;
+            return type.HasMapToDomainMapping() ? type.Mapping : null;
         }
 
-        public static bool HasResolveWithServiceMapping(this GraphQLSchemaFieldModel type)
+        public static bool HasMapToServiceMapping(this GraphQLSchemaFieldModel type)
         {
             return type.Mapping?.MappingSettingsId == "cf512bcf-7b14-47ee-9c62-cf1b40fd2b7f";
         }
 
-        public static IElementMapping GetResolveWithServiceMapping(this GraphQLSchemaFieldModel type)
+        public static IElementMapping GetMapToServiceMapping(this GraphQLSchemaFieldModel type)
         {
-            return type.HasResolveWithServiceMapping() ? type.Mapping : null;
+            return type.HasMapToServiceMapping() ? type.Mapping : null;
         }
     }
 }

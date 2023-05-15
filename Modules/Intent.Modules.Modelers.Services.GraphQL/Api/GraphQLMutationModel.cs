@@ -87,24 +87,24 @@ namespace Intent.Modules.Modelers.Services.GraphQL.Api
             return type.IsGraphQLMutationModel() ? new GraphQLMutationModel((IElement)type) : null;
         }
 
-        public static bool HasHandleWithDataAccessMapping(this GraphQLMutationModel type)
+        public static bool HasMapToDomainMapping(this GraphQLMutationModel type)
         {
             return type.Mapping?.MappingSettingsId == "91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb";
         }
 
-        public static IElementMapping GetHandleWithDataAccessMapping(this GraphQLMutationModel type)
+        public static IElementMapping GetMapToDomainMapping(this GraphQLMutationModel type)
         {
-            return type.HasHandleWithDataAccessMapping() ? type.Mapping : null;
+            return type.HasMapToDomainMapping() ? type.Mapping : null;
         }
 
-        public static bool HasHandleWithServiceMapping(this GraphQLMutationModel type)
+        public static bool HasMapToServiceMapping(this GraphQLMutationModel type)
         {
             return type.Mapping?.MappingSettingsId == "96d1ea0d-844c-4d36-a881-16bc0100dfb5";
         }
 
-        public static IElementMapping GetHandleWithServiceMapping(this GraphQLMutationModel type)
+        public static IElementMapping GetMapToServiceMapping(this GraphQLMutationModel type)
         {
-            return type.HasHandleWithServiceMapping() ? type.Mapping : null;
+            return type.HasMapToServiceMapping() ? type.Mapping : null;
         }
     }
 }

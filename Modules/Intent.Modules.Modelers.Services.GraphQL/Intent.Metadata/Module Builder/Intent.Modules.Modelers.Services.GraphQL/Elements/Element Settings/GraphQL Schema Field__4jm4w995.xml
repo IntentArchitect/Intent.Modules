@@ -104,8 +104,8 @@
       </childElements>
     </childElement>
     <childElement id="79d0e613-7688-4b73-8f84-79eba94b8b46" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
-      <name>Resolve with Data Access</name>
-      <display>[mappings]: Resolve with Data Access</display>
+      <name>Map to Domain</name>
+      <display>[mappings]: Map to Domain</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
@@ -126,7 +126,7 @@
             <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
             <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
             <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
-            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-left" isActive="true" />
+            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
             <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" value="" isActive="true" />
           </properties>
         </stereotype>
@@ -224,8 +224,8 @@
       </childElements>
     </childElement>
     <childElement id="cf512bcf-7b14-47ee-9c62-cf1b40fd2b7f" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
-      <name>Resolve with Service</name>
-      <display>[mappings]: Resolve with Service</display>
+      <name>Map to Service</name>
+      <display>[mappings]: Map to Service</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
@@ -515,7 +515,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getMapping().getElement()?.specialization == &quot;Class&quot; || element.getMapping().getElement()?.specialization == &quot;Value Object&quot;) {&#xD;&#xA;    element.typeReference.setType(element.getMapping().getElement().id);&#xD;&#xA;    element.typeReference.setIsCollection(true);&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getMapping().getElement()?.specialization == &quot;Class&quot; || element.getMapping().getElement()?.specialization == &quot;Value Object&quot;) {&#xD;&#xA;    element.typeReference.setType(element.getMapping().getElement().id);&#xD;&#xA;    element.typeReference.setIsCollection(element.getChildren().length &gt; 0);&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

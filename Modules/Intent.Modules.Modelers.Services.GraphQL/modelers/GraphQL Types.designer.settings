@@ -142,12 +142,12 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
           <scriptOptions />
           <mappingSettings>
             <mappingSetting id="91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb">
-              <name>Handle with Data Access</name>
+              <name>Map to Domain</name>
               <shortcut>ctrl + shift + d</shortcut>
               <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
               <optionsSource>elements-of-type</optionsSource>
               <autoSyncTypeReferences>true</autoSyncTypeReferences>
-              <symbol>fa-long-arrow-left</symbol>
+              <symbol>fa-long-arrow-right</symbol>
               <targetTypeOptions>
                 <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
               </targetTypeOptions>
@@ -166,8 +166,8 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
               </mappings>
             </mappingSetting>
             <mappingSetting id="96d1ea0d-844c-4d36-a881-16bc0100dfb5">
-              <name>Handle with Service</name>
-              <shortcut>ctrl + shift + d</shortcut>
+              <name>Map to Service</name>
+              <shortcut>ctrl + shift + m</shortcut>
               <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
               <optionsSource>elements-of-type</optionsSource>
               <autoSyncTypeReferences>true</autoSyncTypeReferences>
@@ -179,16 +179,6 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
               </targetTypeOptions>
               <mapFrom>root</mapFrom>
               <mappings>
-                <mapping id="1ab327a0-8e98-494c-8526-8fde4c67b223">
-                  <criteria specializationType="Command">
-                    <hasTypeReference>true</hasTypeReference>
-                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
-                  </criteria>
-                  <mapTo specializationType="GraphQL Mutation" childMappingMode="map-to-child" />
-                  <behaviour autoSelectChildren="true" />
-                  <childMappings />
-                </mapping>
                 <mapping id="87981e65-02a8-44ac-8387-0da319a3151c">
                   <criteria specializationType="Service">
                     <hasTypeReference p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
@@ -221,6 +211,16 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
                     </mapping>
                   </childMappings>
                 </mapping>
+                <mapping id="1ab327a0-8e98-494c-8526-8fde4c67b223">
+                  <criteria specializationType="Command">
+                    <hasTypeReference>true</hasTypeReference>
+                    <isCollection p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                    <hasChildren p11:nil="true" xmlns:p11="http://www.w3.org/2001/XMLSchema-instance" />
+                  </criteria>
+                  <mapTo specializationType="GraphQL Mutation" childMappingMode="map-to-child" />
+                  <behaviour autoSelectChildren="true" />
+                  <childMappings />
+                </mapping>
               </mappings>
             </mappingSetting>
           </mappingSettings>
@@ -228,7 +228,6 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
             <macro trigger="on-mapped">
               <script>if (element.getMapping().getElement()?.specialization == "Class" || element.getMapping().getElement()?.specialization == "Value Object") {
     element.typeReference.setType(element.getMapping().getElement().id);
-    element.typeReference.setIsCollection(true);
 }</script>
             </macro>
           </macros>
@@ -354,12 +353,12 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
           <scriptOptions />
           <mappingSettings>
             <mappingSetting id="79d0e613-7688-4b73-8f84-79eba94b8b46">
-              <name>Resolve with Data Access</name>
+              <name>Map to Domain</name>
               <shortcut>ctrl + shift + d</shortcut>
               <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
               <optionsSource>elements-of-type</optionsSource>
               <autoSyncTypeReferences>true</autoSyncTypeReferences>
-              <symbol>fa-long-arrow-left</symbol>
+              <symbol>fa-long-arrow-right</symbol>
               <targetTypeOptions>
                 <option specializationType="04e12b51-ed12-42a3-9667-a6aa81bb6d10" displayText="Class" />
               </targetTypeOptions>
@@ -389,7 +388,7 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
               </mappings>
             </mappingSetting>
             <mappingSetting id="cf512bcf-7b14-47ee-9c62-cf1b40fd2b7f">
-              <name>Resolve with Service</name>
+              <name>Map to Service</name>
               <shortcut>ctrl + shift + m</shortcut>
               <defaultModeler>81104ae6-2bc5-4bae-b05a-f987b0372d81</defaultModeler>
               <optionsSource>elements-of-type</optionsSource>
@@ -462,7 +461,7 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
             <macro trigger="on-mapped">
               <script>if (element.getMapping().getElement()?.specialization == "Class" || element.getMapping().getElement()?.specialization == "Value Object") {
     element.typeReference.setType(element.getMapping().getElement().id);
-    element.typeReference.setIsCollection(true);
+    element.typeReference.setIsCollection(element.getChildren().length &gt; 0);
 }</script>
             </macro>
           </macros>
