@@ -1,3 +1,7 @@
+### Version 3.3.9
+
+- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+
 ### Version 3.3.7
 
 - New: Added similar extension methods (to the `string` one) to conveniently and safely verify other types.

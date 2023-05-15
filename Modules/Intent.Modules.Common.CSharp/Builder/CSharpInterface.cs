@@ -195,7 +195,7 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
 
     public string ToString(string indentation)
     {
-        return $@"{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetGenericParameters()}{GetBaseTypes()}{GetGenericTypeConstraints(indentation)}
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsPartial ? "partial " : "")}interface {Name}{GetGenericParameters()}{GetBaseTypes()}{GetGenericTypeConstraints(indentation)}
 {indentation}{{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }

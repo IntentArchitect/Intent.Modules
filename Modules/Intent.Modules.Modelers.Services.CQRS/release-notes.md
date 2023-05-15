@@ -1,3 +1,7 @@
+### Version 4.0.1
+
+- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+
 ### Version 3.3.5
 
 * Fixed: No more HTTP Route overwriting when mapping to a Query / Command from an Operation.

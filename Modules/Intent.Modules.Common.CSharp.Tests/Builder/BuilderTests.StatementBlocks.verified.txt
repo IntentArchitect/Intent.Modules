@@ -37,6 +37,10 @@ namespace Testing.Namespace
                 { "key2", "value 2" }
             };
 
+            using (var scope = service.GetScope())
+            {
+                scope.Dispose();
+            }
             // New Scope
             {
             }

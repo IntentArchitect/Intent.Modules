@@ -128,7 +128,8 @@ public static class HttpEndpointModelFactory
                 typeReference: childElement.TypeReference,
                 source: parameterSettings?.Source ?? GetHttpInputSource(childElement),
                 headerName: parameterSettings?.HeaderName,
-                mappedPayloadProperty: childElement);
+                mappedPayloadProperty: childElement,
+                value: childElement.Value);
         }
 
         if (isForCqrs && hasNonRouteParameter)
@@ -144,7 +145,8 @@ public static class HttpEndpointModelFactory
                 typeReference: element.AsTypeReference(),
                 source: Models.HttpInputSource.FromBody,
                 headerName: null,
-                mappedPayloadProperty: null);
+                mappedPayloadProperty: null,
+                value: null);
         }
     }
 }

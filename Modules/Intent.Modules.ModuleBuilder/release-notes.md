@@ -1,4 +1,13 @@
+### Version 3.6.3
+
+- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+
+### Version 3.6.2
+
+- Updated module depenencies to prevent Software Factory warnings of possibly incompatible modules.
+
 ### Version 3.6.1
+
 - Nuget Version bumps to align with `Domain Designer`
 - Fixed : `ModuleSettingsExtensionsTemplate` was missing a Nuget Dependancy on `Intent.Common`.
 

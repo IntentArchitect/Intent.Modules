@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder.Dart</id>
-  <version>1.0.0</version>
-  <supportedClientVersions>[3.2.0,5.0.0)</supportedClientVersions>
+  <version>1.0.2</version>
+  <supportedClientVersions>[3.2.0, 5.0.0-a)</supportedClientVersions>
+  <releaseNotes>release-notes.md</releaseNotes>
   <summary>For the creation of Dart Templates in the Intent Module Builder</summary>
   <description>For the creation of Dart Templates in the Intent Module Builder</description>
   <authors>Intent Architect</authors>
@@ -37,11 +38,11 @@
   <factoryExtensions></factoryExtensions>
   <moduleSettings></moduleSettings>
   <dependencies>
-    <dependency id="Intent.Common" version="3.3.10" />
-    <dependency id="Intent.Common.CSharp" version="3.3.6" />
-    <dependency id="Intent.Common.Types" version="3.3.1" />
-    <dependency id="Intent.ModuleBuilder" version="3.3.14" />
-    <dependency id="Intent.OutputManager.RoslynWeaver" version="3.3.1" />
+    <dependency id="Intent.Common" version="3.4.1" />
+    <dependency id="Intent.Common.CSharp" version="3.3.33" />
+    <dependency id="Intent.Common.Types" version="3.3.9" />
+    <dependency id="Intent.ModuleBuilder" version="3.6.3" />
+    <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />

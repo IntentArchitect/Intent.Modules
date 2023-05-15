@@ -1,4 +1,8 @@
-﻿### Version 3.4.1
+### Version 3.4.3
+
+- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+
+### Version 3.4.1
 
 - Update: JavaComments now properly supports the /* */ format.
 - Update: Free Code Blocks now supported on Interfaces and Classes for cases where only freetext needs to be added a Class / Interface.
