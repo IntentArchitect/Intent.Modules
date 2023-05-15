@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Xunit;
@@ -265,5 +266,47 @@ namespace Intent.Modules.Common.Tests
 
             Assert.Equal("TypeName", result);
         }
+
+        [Fact]
+        public void Scenario11()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "NewApplication32.Domain.Repositories.Sec",
+                fullyQualifiedType: "NewApplication32.Domain.Entities.Sec.Action",
+                knownOtherPaths: Array.Empty<string>(),
+                usingPaths: new string[]
+                {
+                    "System",
+                    "NewApplication32.Domain.Entities.Sec"
+                },
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>() 
+                    { 
+                        [ "System" ] = new HashSet<string>() { "Action" }
+                    });
+
+            Assert.Equal("Entities.Sec.Action", result);
+        }
+
+        [Fact]
+        public void Scenario12()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "Customer1.Domain.Repositories.Mas",
+                fullyQualifiedType: "Customer1.Domain.Entities.Mas.Log",
+                knownOtherPaths: Array.Empty<string>(),
+                usingPaths: new string[]
+                {
+                    "System",
+                    "Customer1.Domain.Entities.Mas",
+                },
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>()
+                {
+                    ["System"] = new HashSet<string>() { "Action" },
+                    ["Customer1.Domain.Repositories.Log"] = new HashSet<string>() { "ILogRepository" }
+                });
+
+            Assert.Equal("Entities.Mas.Log", result);
+        }
+
     }
 }
