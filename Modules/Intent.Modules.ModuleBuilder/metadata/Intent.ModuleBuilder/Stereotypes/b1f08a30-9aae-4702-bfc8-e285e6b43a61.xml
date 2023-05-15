@@ -68,6 +68,7 @@
         <type>ab4152df-3add-4a08-81b6-0fefc7cbb204</type>
         <type>c4c61fdc-464d-41d2-8e0e-5a734d588302</type>
         <type>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</type>
+        <type>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</type>
       </lookupTypes>
       <lookupInternalTargetPropertyId>return properties["Designer"].value;</lookupInternalTargetPropertyId>
       <isActiveFunction>return properties["Source"].value == "Lookup Type";</isActiveFunction>
