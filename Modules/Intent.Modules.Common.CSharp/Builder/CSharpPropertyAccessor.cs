@@ -93,18 +93,17 @@ public class CSharpPropertyAccessor
 
         if (IsExpression)
         {
-            return $"{indentation}{Accessor} => {Implementation};";
+            return $"{indentation}{AccessModifier}{Accessor} => {Implementation};";
         }
-        else if (Implementation.Statements.Count == 1)
+        
+        if (Implementation.Statements.Count == 1)
         {
-            return $"{indentation}{Accessor} {{ {Implementation} }}";
+            return $"{indentation}{AccessModifier}{Accessor} {{ {Implementation} }}";
         }
-        else
-        {
-            return @$"{indentation}{Accessor}
+
+        return @$"{indentation}{AccessModifier}{Accessor}
 {indentation}{{ 
 {Implementation.ToString($"{indentation}    ")} 
 {indentation}}}";
-        }
     }
 }

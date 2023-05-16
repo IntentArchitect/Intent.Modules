@@ -217,6 +217,32 @@ public class BuilderTests
     }
 
     [Fact]
+    public async Task PrivatePropertyTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddField("List<object>", "_backingField");
+
+                @class.AddProperty("IReadOnlyCollection<object>", "Property", property =>
+                {
+                    property.Getter
+                        .WithExpressionImplementation("_backingField.AsReadOnlyCollection()")
+                        ;
+
+                    property.Setter
+                        .WithExpressionImplementation("_backingField = new List<object>(value)")
+                        .Private()
+                        ;
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
     public async Task InterfaceTest()
     {
         var fileBuilder = new CSharpFile("Namespace", "Interfaces")
