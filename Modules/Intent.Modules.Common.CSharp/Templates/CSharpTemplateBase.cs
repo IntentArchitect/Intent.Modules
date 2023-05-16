@@ -243,6 +243,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 .Where(x => !string.IsNullOrWhiteSpace(x))
                 .Concat(_templateUsings ??= GetUsingsFromContent(GenerationEnvironment?.ToString() ?? string.Empty))
                 .Concat(_existingContentUsings ??= GetUsingsFromContent(TryGetExistingFileContent(out var existingContent) ? existingContent : string.Empty))
+                .Concat((this as ICSharpFileBuilderTemplate)?.CSharpFile.Usings.Select(u => u.Namespace) ?? Enumerable.Empty<string>())
                 .Distinct()
                 .ToArray();
             var localNamespace = Namespace;
@@ -296,6 +297,15 @@ namespace Intent.Modules.Common.CSharp.Templates
                 var typeQualifier = string.Join('.', typeParts.Take(typeParts.Length - 1));
                 var typeName = typeParts.Last();
 
+                if (usingPaths.Contains(typeQualifier) &&
+                    AllUsingPathsAreNotForeignType() &&
+                    LocalNamespacePartsDoNotContainType() &&
+                    !ConflictingTypeExists() &&
+                    !ConflictingNamespaceTypeExists())
+                {
+                    return typeName;
+                }
+
                 // It's not immediately clear what scenario this covers, if you know/find out, please
                 // document by adding unit test to cover scenario.
                 bool AllUsingPathsAreNotForeignType() => usingPaths.All(x => x != fullyQualifiedType);
@@ -309,12 +319,23 @@ namespace Intent.Modules.Common.CSharp.Templates
                                       knownTypesByNamespace.TryGetValue(usingPath, out var types) &&
                                       types.Contains(typeName));
 
-                if (usingPaths.Contains(typeQualifier) &&
-                    AllUsingPathsAreNotForeignType() &&
-                    LocalNamespacePartsDoNotContainType() &&
-                    !ConflictingTypeExists())
+                // Check for conflicting namespaces, try all permutations of the local namespace
+                // with the class name of the type we are trying to resolve
+                bool ConflictingNamespaceTypeExists()
                 {
-                    return typeName;
+                    for (int i = 0; i < localNamespaceParts.Length; i++)
+                    {
+                        var partialPathList = localNamespaceParts.Take(i + 1).ToList();
+                        partialPathList.Add(typeName);
+                        var localPartialPotentialConflict = string.Join(".", partialPathList);
+
+                        if (knownTypesByNamespace.ContainsKey(localPartialPotentialConflict))
+                        {
+                            return true;
+                        }
+                    }
+
+                    return false;
                 }
             }
 

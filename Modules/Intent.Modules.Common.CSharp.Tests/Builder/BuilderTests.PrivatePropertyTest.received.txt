@@ -1,0 +1,15 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        private List<object> _backingField;
+        public IReadOnlyCollection<object> Property
+        {
+            get => _backingField.AsReadOnlyCollection();
+                    set => _backingField = new List<object>(value);
+        }
+    }
+}

@@ -2,6 +2,11 @@
 
 - Update: `.Async()` on Class Methods now checks if return type is of type `Task` and adds it if not specified.
 - Fixed: Comments for interfaces themselves would not be generated.
+- New: Support for .Net known type to improve `Type` name normalization, currently supports `System.Attribute`, `System.Action`.
+- Fixed: `Type` name normalization system was unaware of `CSharpFileBuilder` using clauses.
+- Fixed: `Type` name normalization wasn't disambiguating `Type` names and `Namespaces` under certain conditions.
+- Fixed: Under certain circumstances `CSharpFileBuilder`'s setters and getters would generate the requested access modifiers.
+- Added: `TryAddXmlDocComments` extension method to `CSharpDeclaration`s.
 
 ### Version 3.3.33
 
