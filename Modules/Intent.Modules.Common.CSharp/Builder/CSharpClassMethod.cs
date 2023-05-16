@@ -11,7 +11,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     protected string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
     public bool IsAbstract { get; private set; }
-    public string ReturnType { get; }
+    public string ReturnType { get; private set; }
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
@@ -177,6 +177,10 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public CSharpClassMethod Async()
     {
         AsyncMode = "async ";
+        if (!ReturnType.StartsWith("Task"))
+        {
+            ReturnType = ReturnType == "void" ? "Task" : $"Task<{ReturnType}>";
+        }
         return this;
     }
 

@@ -1,3 +1,7 @@
+### Version 3.6.4
+
+- Added support for Templates to target Type-Definition model types. Will respect `C#` stereotype's `Namespace` setting.
+
 ### Version 3.6.3
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

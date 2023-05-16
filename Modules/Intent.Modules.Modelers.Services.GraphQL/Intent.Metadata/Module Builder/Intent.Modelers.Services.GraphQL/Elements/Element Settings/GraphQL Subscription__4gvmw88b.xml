@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="37e9cf40-ac8e-4880-9a4a-92b540a4fea7" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>GraphQL Subscription</name>
+  <display>GraphQL Subscription</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>b09d3b7f-63ad-4518-9a6a-5c7401c57c1b</parentFolderId>
+  <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+  <packageName>Intent.Modelers.Services.GraphQL</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Required" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="true" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="true" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" value="[&quot;d4e577cd-ad05-4180-9a2e-fff4ddea0e1e&quot;,&quot;85fba0e9-9161-4c85-a603-a229ef312beb&quot;,&quot;fee0edca-4aa0-4f77-a524-6bbd84e78734&quot;,&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;,&quot;5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5&quot;]" isActive="true" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="true" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="true" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="true" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="return `${name}${genericTypes}(${children(&quot;GraphQL Event Message&quot;).map(x =&gt; x.name + &quot;: &quot; + x.typeReference.display).join(&quot;, &quot;)}): ${(typeReference.typeId ? typeReference.display : &quot;void&quot;)}`;" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="1b6eeec9-c68d-4811-955f-049b7f3070fb" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>37e9cf40-ac8e-4880-9a4a-92b540a4fea7</parentFolderId>
+      <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="b06d3ece-34b8-4058-b83b-8249c7befb6f" type="Element Creation Option" typeId="5fa12f89-da1e-49c5-b8e9-427b22407f19">
+          <name>Add Event Message</name>
+          <display>Add Event Message: GraphQL Event Message</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="a68f147e-b804-49ce-bd3e-69d08d7effd5">
+            <typeId>e68932de-3dcf-4b2f-8796-59ff28a81efa</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modules.Modelers.Services.GraphQL</typePackageName>
+            <typePackageId>4da68eac-087e-4669-9f37-b6d869e98eda</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>1b6eeec9-c68d-4811-955f-049b7f3070fb</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="9df41a97-0a8b-42c6-9d95-becf3d6d1e0b" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+                <property name="5572d05e-dd37-47f6-944a-73710c07f4f1" display="Shortcut (macOS)" isActive="true" />
+                <property name="ba8a3ecd-0f08-499e-bb5b-929d40f56a45" display="Default Name" value="parameter" isActive="true" />
+                <property name="A43F388B-DAFF-422C-BD8D-FB433EFEC51B" display="Type Order" isActive="true" />
+                <property name="8e092aa6-7d1a-4a06-af82-903e7642cef6" display="Allow Multiple" value="false" isActive="true" />
+                <property name="719e9dff-2b8d-407d-912d-fac99a158721" display="Api Model Name" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="2e0236bb-861c-4851-a423-ed2f29f71584" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>37e9cf40-ac8e-4880-9a4a-92b540a4fea7</parentFolderId>
+      <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="e48366c1-c1fb-4242-afae-d7991329cc47" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Type Changed</name>
+          <display>On Type Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="7fa12509-b3b7-4065-a297-005f6a5306be">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>2e0236bb-861c-4851-a423-ed2f29f71584</parentFolderId>
+          <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getChildren().length == 0 &amp;&amp; element.typeReference.getType() != null) {&#xD;&#xA;    let message = createElement(&quot;GraphQL Event Message&quot;, toCamelCase(element.typeReference.getType().getName()), element.id);&#xD;&#xA;    message.typeReference.setType(element.typeReference.typeId);&#xD;&#xA;    message.typeReference.setIsNullable(element.typeReference.getIsNullable());&#xD;&#xA;    message.typeReference.setIsCollection(element.typeReference.setIsCollection());&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
+  </childElements>
+</class>

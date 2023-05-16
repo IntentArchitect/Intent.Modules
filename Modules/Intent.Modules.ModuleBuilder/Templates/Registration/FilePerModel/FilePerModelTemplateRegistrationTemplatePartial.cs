@@ -68,7 +68,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Registration.FilePerModel
         {
             if (Model.GetModelType() != null)
             {
-                yield return Model.GetModelType().ParentModule.ApiNamespace;
+                yield return Model.GetModelType().Namespace;
             }
 
             if (Model.GetDesigner() != null)

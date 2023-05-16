@@ -1,5 +1,6 @@
 ﻿### Version 3.3.34
 
+- Update: `.Async()` on Class Methods now checks if return type is of type `Task` and adds it if not specified.
 - Fixed: Comments for interfaces themselves would not be generated.
 - New: Support for .Net known type to improve `Type` name normalization, currently supports `System.Attribute`, `System.Action`.
 - Fixed: `Type` name normalization system was unaware of `CSharpFileBuilder` using clauses.
