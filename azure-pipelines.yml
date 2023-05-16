@@ -80,8 +80,8 @@ steps:
     arguments: '--no-build'
 
 - task: PowerShell@2
-  displayName: 'Install Intent.IArchitect.Packager.CommandLine'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  displayName: 'Install Module Packager'
+  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
   inputs:
     targetType: 'inline'
     pwsh: true
@@ -89,19 +89,20 @@ steps:
       dotnet tool install Intent.IArchitect.Packager.CommandLine --global --prerelease --add-source '$(vstsFeedUrl)'
 
 - task: PowerShell@2
-  displayName: 'Remove pre-release modules'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  displayName: 'Filter modules'
+  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
   inputs:
     targetType: inline
     pwsh: true
     script: |
-      $regex = '(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
-      Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { $_.Name -Match $regex } | Remove-Item
-      Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { $_.Name -Match $regex } | Remove-Item
+      $isPreReleaseRegex = '(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
+      $isMaster = '$(Build.SourceBranch)' -eq 'refs/heads/master'
+      Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { If ($isMaster) { $_.Name -Match $isPreReleaseRegex } Else { { $_.Name -NotMatch $isPreReleaseRegex } } } | Remove-Item
+      Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { If ($isMaster) { $_.Name -Match $isPreReleaseRegex } Else { $true } } | Remove-Item
 
 - task: PowerShell@2
-  displayName: 'Publish to official repository'
-  condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+  displayName: 'Publish modules'
+  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
   env:
     DOTNET_NOLOGO: '1'
   inputs:
