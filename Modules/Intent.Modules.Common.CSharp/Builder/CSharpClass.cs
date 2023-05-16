@@ -231,6 +231,13 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
         return this;
     }
 
+    public CSharpClass Unsealed()
+    {
+        IsSealed = false;
+        return this;
+    }
+
+
     public CSharpClass Abstract()
     {
         if (IsStatic)
