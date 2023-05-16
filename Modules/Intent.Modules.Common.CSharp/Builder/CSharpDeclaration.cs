@@ -1,6 +1,8 @@
+using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -47,3 +49,33 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
 " : string.Empty)}";
     }
 }
+
+public static class CSharpDeclarationExtensions
+{ 
+
+    public static bool TryAddXmlDocComments<TImpl>( this CSharpDeclaration<TImpl> item, IElement element) where TImpl : CSharpDeclaration<TImpl>
+    {
+        if (element == null || string.IsNullOrWhiteSpace( element.Comment))
+            return false;
+
+        string comment = element.Comment;
+        string formattedComment;
+
+        if (comment.Contains("<summary>"))
+        {
+            formattedComment = comment;
+        }
+        else
+        {
+            formattedComment = string.Concat(Enumerable.Empty<string>()
+                .Append("<summary>")
+                .Concat(comment.Replace("\r\n", "\n").Split('\n'))
+                .Append("</summary>")
+                .Select(line => $"/// {line}{Environment.NewLine}"));
+        }
+        item.WithComments(formattedComment);
+        return true;
+
+    }
+}
+    

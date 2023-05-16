@@ -5,6 +5,7 @@
 - Fixed: `Type` name normalization system was unaware of `CSharpFileBuilder` using clauses.
 - Fixed: `Type` name normalization wasn't disambiguating `Type` names and `Namespaces` under certain conditions.
 - Fixed: Under certain circumstances `CSharpFileBuilder`'s setters and getters would generate the requested access modifiers.
+- Added: `TryAddXmlDocComments` extension method to `CSharpDeclaration`s.
 
 ### Version 3.3.33
 
