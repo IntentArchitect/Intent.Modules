@@ -8,7 +8,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>4da68eac-087e-4669-9f37-b6d869e98eda</parentFolderId>
   <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+  <packageName>Intent.Modelers.Services.GraphQL</packageName>
   <stereotypes />
   <metadata />
   <childElements />

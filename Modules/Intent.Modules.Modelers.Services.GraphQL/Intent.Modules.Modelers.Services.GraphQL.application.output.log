@@ -106,18 +106,18 @@
     </FileLog>
     <FileLog>
       <ProjectId>7f93839b-96d1-493a-8ed8-d30b3f05a35e</ProjectId>
-      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#7f93839b-96d1-493a-8ed8-d30b3f05a35e</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.csproj</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.csproj</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modelers.Services.GraphQL.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modelers.Services.GraphQL.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>7f93839b-96d1-493a-8ed8-d30b3f05a35e</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
+      <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#7f93839b-96d1-493a-8ed8-d30b3f05a35e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.imodspec</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.imodspec</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.csproj</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.GraphQL.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

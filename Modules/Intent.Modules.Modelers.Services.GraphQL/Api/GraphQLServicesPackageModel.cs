@@ -9,7 +9,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiPackageModel", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Services.GraphQL.Api
+namespace Intent.Modelers.Services.GraphQL.Api
 {
     [IntentManaged(Mode.Fully)]
     public class GraphQLServicesPackageModel : IHasStereotypes, IMetadataModel

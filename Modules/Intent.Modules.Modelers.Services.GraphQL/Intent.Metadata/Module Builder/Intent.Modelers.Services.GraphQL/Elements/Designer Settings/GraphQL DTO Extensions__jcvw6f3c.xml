@@ -8,7 +8,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>53dcd7e0-d417-4b49-9ed3-79476d956e0c</parentFolderId>
   <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+  <packageName>Intent.Modelers.Services.GraphQL</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="81e5637b-05d7-43a4-9619-6ef873be9f47" name="Designer Settings">
       <addedByDefault>true</addedByDefault>

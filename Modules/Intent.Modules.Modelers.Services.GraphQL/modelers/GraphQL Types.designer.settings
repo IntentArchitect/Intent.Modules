@@ -461,7 +461,7 @@ createElement("GraphQL Mutation Type", "Mutation", element.id);
             <macro trigger="on-mapped">
               <script>if (element.getMapping().getElement()?.specialization == "Class" || element.getMapping().getElement()?.specialization == "Value Object") {
     element.typeReference.setType(element.getMapping().getElement().id);
-    element.typeReference.setIsCollection(element.getChildren().length &gt; 0);
+    element.typeReference.setIsCollection(element.getChildren().length == 0);
 }</script>
             </macro>
           </macros>

@@ -9,7 +9,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>4504e87f-d092-46d6-bbb9-2b39c7307d41</parentFolderId>
   <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+  <packageName>Intent.Modelers.Services.GraphQL</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -58,7 +58,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>150aa241-479b-442e-9962-21b79de85648</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes />
       <metadata />
       <childElements>
@@ -81,7 +81,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>946e685d-b274-4d8e-b92b-52d57a90aa34</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -112,7 +112,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>150aa241-479b-442e-9962-21b79de85648</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
@@ -142,7 +142,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>79d0e613-7688-4b73-8f84-79eba94b8b46</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
               <addedByDefault>true</addedByDefault>
@@ -184,7 +184,7 @@
               <isMapped>false</isMapped>
               <parentFolderId>ee3d200c-4374-4035-8387-0bdfba3cf083</parentFolderId>
               <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-              <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+              <packageName>Intent.Modelers.Services.GraphQL</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                   <addedByDefault>true</addedByDefault>
@@ -232,7 +232,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>150aa241-479b-442e-9962-21b79de85648</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
@@ -262,7 +262,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>cf512bcf-7b14-47ee-9c62-cf1b40fd2b7f</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
               <addedByDefault>true</addedByDefault>
@@ -305,7 +305,7 @@
               <isMapped>false</isMapped>
               <parentFolderId>63f75d86-37e3-4d2d-be88-797afbf1c426</parentFolderId>
               <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-              <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+              <packageName>Intent.Modelers.Services.GraphQL</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                   <addedByDefault>true</addedByDefault>
@@ -347,7 +347,7 @@
                   <isMapped>false</isMapped>
                   <parentFolderId>f9111db7-905c-4084-abf5-d461bbed4494</parentFolderId>
                   <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-                  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+                  <packageName>Intent.Modelers.Services.GraphQL</packageName>
                   <stereotypes>
                     <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                       <addedByDefault>true</addedByDefault>
@@ -395,7 +395,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>cf512bcf-7b14-47ee-9c62-cf1b40fd2b7f</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
               <addedByDefault>true</addedByDefault>
@@ -437,7 +437,7 @@
               <isMapped>false</isMapped>
               <parentFolderId>199691a4-a730-4dde-a3b9-8d978520484d</parentFolderId>
               <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-              <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+              <packageName>Intent.Modelers.Services.GraphQL</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                   <addedByDefault>true</addedByDefault>
@@ -485,7 +485,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>150aa241-479b-442e-9962-21b79de85648</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes />
       <metadata />
       <childElements>
@@ -508,14 +508,14 @@
           <isMapped>false</isMapped>
           <parentFolderId>876915bc-c06e-4a18-aef7-b5b16aea15c4</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getMapping().getElement()?.specialization == &quot;Class&quot; || element.getMapping().getElement()?.specialization == &quot;Value Object&quot;) {&#xD;&#xA;    element.typeReference.setType(element.getMapping().getElement().id);&#xD;&#xA;    element.typeReference.setIsCollection(element.getChildren().length &gt; 0);&#xD;&#xA;}" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="if (element.getMapping().getElement()?.specialization == &quot;Class&quot; || element.getMapping().getElement()?.specialization == &quot;Value Object&quot;) {&#xD;&#xA;    element.typeReference.setType(element.getMapping().getElement().id);&#xD;&#xA;    element.typeReference.setIsCollection(element.getChildren().length == 0);&#xD;&#xA;}" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

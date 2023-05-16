@@ -6,7 +6,7 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions", Version = "1.0")]
 
-namespace Intent.Modules.Modelers.Services.GraphQL.Api
+namespace Intent.Modelers.Services.GraphQL.Api
 {
     public static class ApiMetadataPackageExtensions
     {

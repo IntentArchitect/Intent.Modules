@@ -19,7 +19,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>e8920bed-bd85-4fde-bbb9-fb142fb77364</parentFolderId>
   <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+  <packageName>Intent.Modelers.Services.GraphQL</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="159cbc8e-a910-40f7-8e45-3edadbb863c2" name="Type Reference Extension Settings">
       <addedByDefault>true</addedByDefault>
@@ -56,7 +56,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>b4b4f505-b846-476e-98c3-db116ff837b7</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes />
       <metadata />
       <childElements>
@@ -79,7 +79,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>f594739c-bd64-47b0-8a2a-8e7406ab67d7</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />

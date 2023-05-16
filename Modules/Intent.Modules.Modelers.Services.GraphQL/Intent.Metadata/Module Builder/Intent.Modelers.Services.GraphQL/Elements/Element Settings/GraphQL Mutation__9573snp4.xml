@@ -9,7 +9,7 @@
   <isMapped>false</isMapped>
   <parentFolderId>02864de4-afe0-42a1-a655-1eeb68c8a098</parentFolderId>
   <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+  <packageName>Intent.Modelers.Services.GraphQL</packageName>
   <stereotypes>
     <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
       <addedByDefault>true</addedByDefault>
@@ -58,7 +58,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>66cca984-b1dc-445c-9685-e3abb4e5795a</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes />
       <metadata />
       <childElements>
@@ -81,7 +81,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>a0b60b1e-bfee-4041-8b5b-28df598aefa4</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="f4250b35-559d-4c0b-91ee-c3d7aa239814" name="Option Settings">
               <comment />
@@ -112,7 +112,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>66cca984-b1dc-445c-9685-e3abb4e5795a</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
@@ -141,7 +141,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>91a283eb-8cf2-4c5a-9b3f-8ba8724c13cb</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
               <addedByDefault>true</addedByDefault>
@@ -187,7 +187,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>66cca984-b1dc-445c-9685-e3abb4e5795a</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes>
         <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
@@ -217,7 +217,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>96d1ea0d-844c-4d36-a881-16bc0100dfb5</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
               <addedByDefault>true</addedByDefault>
@@ -260,7 +260,7 @@
               <isMapped>false</isMapped>
               <parentFolderId>87981e65-02a8-44ac-8387-0da319a3151c</parentFolderId>
               <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-              <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+              <packageName>Intent.Modelers.Services.GraphQL</packageName>
               <stereotypes>
                 <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                   <addedByDefault>true</addedByDefault>
@@ -302,7 +302,7 @@
                   <isMapped>false</isMapped>
                   <parentFolderId>83c859a3-6807-4d47-a6ed-bf93390233af</parentFolderId>
                   <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-                  <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+                  <packageName>Intent.Modelers.Services.GraphQL</packageName>
                   <stereotypes>
                     <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                       <addedByDefault>true</addedByDefault>
@@ -349,7 +349,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>96d1ea0d-844c-4d36-a881-16bc0100dfb5</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
               <addedByDefault>true</addedByDefault>
@@ -395,7 +395,7 @@
       <isMapped>false</isMapped>
       <parentFolderId>66cca984-b1dc-445c-9685-e3abb4e5795a</parentFolderId>
       <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-      <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+      <packageName>Intent.Modelers.Services.GraphQL</packageName>
       <stereotypes />
       <metadata />
       <childElements>
@@ -418,7 +418,7 @@
           <isMapped>false</isMapped>
           <parentFolderId>0a0514d1-a3be-441d-87eb-46e1e8dd8470</parentFolderId>
           <packageId>4da68eac-087e-4669-9f37-b6d869e98eda</packageId>
-          <packageName>Intent.Modules.Modelers.Services.GraphQL</packageName>
+          <packageName>Intent.Modelers.Services.GraphQL</packageName>
           <stereotypes>
             <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
               <addedByDefault>true</addedByDefault>
