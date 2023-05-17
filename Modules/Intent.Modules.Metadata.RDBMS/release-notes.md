@@ -1,3 +1,7 @@
+### Version 3.5.2
+
+- Fixed: Script errors when creating new associations from the diagram.
+
 ### Version 3.5.1
 
 - Fixed: Non Classes will not be affected by automated key management scripts.

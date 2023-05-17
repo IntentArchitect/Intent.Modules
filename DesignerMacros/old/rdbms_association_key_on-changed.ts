@@ -7,14 +7,15 @@ if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("
 }
 
 let sourceEnd = association.getOtherEnd().typeReference;
-if (sourceEnd.getType().getPackage().specialization !== "Domain Package") {
+let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
+if (!sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
     return;
 }
 
 let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
 let targetType = lookup(association.typeReference.typeId);
 
-if (sourceType.specialization != "Class" || targetType.specialization != "Class") {
+if (sourceType?.specialization != "Class" || targetType?.specialization != "Class") {
     return;
 }
 
