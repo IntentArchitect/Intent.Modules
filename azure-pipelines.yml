@@ -22,7 +22,7 @@ steps:
 - task: CmdLine@2
   inputs:
     script: |
-      git config --system core.longpaths true
+      git config --global core.longpaths true
 
 - checkout: 'self'
   persistCredentials: 'true'
