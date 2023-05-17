@@ -107,15 +107,15 @@ steps:
       $iatFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { $isMaster -Or ($_.Name -Match $isPreReleaseRegex) }
 
       Write-Host "Deleting the following files to prevent them being published:"
-      $imodFilesToRemove
-      $iatFilesToRemove
+      $imodFilesToRemove | Select-Object Name
+      $iatFilesToRemove | Select-Object Name
 
       $imodFilesToRemove | Remove-Item
       $iatFilesToRemove | Remove-Item
 
       Write-Host "Remaining files:"
-      Get-ChildItem "./Modules/Intent.Modules/*.imod"
-      Get-ChildItem "./Modules/Intent.Modules/*.iat"
+      Get-ChildItem "./Modules/Intent.Modules/*.imod" | Select-Object Name
+      Get-ChildItem "./Modules/Intent.Modules/*.iat" | Select-Object Name
 
 - task: PowerShell@2
   displayName: 'publish modules'
