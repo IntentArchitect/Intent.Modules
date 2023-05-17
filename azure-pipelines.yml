@@ -37,20 +37,6 @@ steps:
     filePath: 'dotnet-pack-all.ps1'
     arguments: '-dotnetPackOutputDirectory $(Build.ArtifactStagingDirectory) -vstsFeedUrl $(vstsFeedUrl)'
 
-# Push the NuGet packages so that regardless of whether or not this build succeeds, they are 
-# available to other pipelines.
-- task: NuGetCommand@2
-  displayName: 'nuget push'
-  condition: succeededOrFailed()
-  inputs:
-      command: 'push'
-      feedsToUse: 'select'
-      includeNuGetOrg: false
-      publishVstsFeed: $(vstsFeed)
-      allowPackageConflicts: true
-      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
-      nuGetFeedType: 'internal'
-
 - task: DotNetCoreCLI@2
   displayName: 'dotnet restore'
   env:
@@ -78,6 +64,19 @@ steps:
     command: 'test'
     projects: $(targetsToBuild)
     arguments: '--no-build'
+
+# Push the NuGet packages to the DevOps artifact feed so that it's available to other pipelines
+- task: NuGetCommand@2
+  displayName: 'nuget push'
+  condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
+  inputs:
+      command: 'push'
+      feedsToUse: 'select'
+      includeNuGetOrg: false
+      publishVstsFeed: $(vstsFeed)
+      allowPackageConflicts: true
+      packagesToPush: '$(Build.ArtifactStagingDirectory)/*.nupkg'
+      nuGetFeedType: 'internal'
 
 - task: PowerShell@2
   displayName: 'Install Module Packager'
