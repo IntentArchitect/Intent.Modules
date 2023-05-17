@@ -1,6 +1,7 @@
 ### Version 3.6.4
 
 - Added support for Templates to target Type-Definition model types. Will respect `C#` stereotype's `Namespace` setting.
+- Updated version of `Intent.SoftwareFactory.SDK` NuGet package to install from `3.4.1` to `3.4.2`.
 
 ### Version 3.6.3
 
