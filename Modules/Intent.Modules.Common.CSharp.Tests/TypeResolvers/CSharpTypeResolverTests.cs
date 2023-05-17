@@ -199,12 +199,14 @@ namespace Intent.Modules.Common.CSharp.Tests.TypeResolvers
                 };
             }
 
+            public string DefinitionId { get; }
             public string Name => "C#";
 
             public IEnumerable<IStereotypeProperty> Properties { get; }
 
             private class Property : IStereotypeProperty
             {
+                public string PropertyDefinitionId { get; init; }
                 public string Key { get; init; }
                 public string Value { get; init; }
                 public StereotypePropertyControlType ControlType => default;
