@@ -84,7 +84,7 @@ steps:
       nuGetFeedType: 'internal'
 
 - task: PowerShell@2
-  displayName: 'Install Module Packager'
+  displayName: 'install intent packager'
   condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
   inputs:
     targetType: 'inline'
@@ -93,7 +93,7 @@ steps:
       dotnet tool install Intent.IArchitect.Packager.CommandLine --global --prerelease --add-source '$(vstsFeedUrl)'
 
 - task: PowerShell@2
-  displayName: 'Filter modules'
+  displayName: 'filter modules to publish'
   condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
   inputs:
     targetType: inline
@@ -101,11 +101,19 @@ steps:
     script: |
       $isPreReleaseRegex = '(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
       $isMaster = '$(Build.SourceBranch)' -eq 'refs/heads/master'
-      Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { If ($isMaster) { $_.Name -Match $isPreReleaseRegex } Else { { $_.Name -NotMatch $isPreReleaseRegex } } } | Remove-Item
-      Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { If ($isMaster) { $_.Name -Match $isPreReleaseRegex } Else { $true } } | Remove-Item
+
+      $imodFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { If ($isMaster) { $_.Name -Match $isPreReleaseRegex } Else { { -Not ($_.Name -Match $isPreReleaseRegex) } } }
+      # Client has no way to filter pre-release application templates so they are never published from development
+      $iatFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { $isMaster -Or ($_.Name -Match $isPreReleaseRegex) }
+
+      Write-Host "Deleting the following files to prevent them being published:"
+      $imodFilesToRemove
+      $iatFilesToRemove
+      $imodFilesToRemove | Remove-Item
+      $iatFilesToRemove | Remove-Item
 
 - task: PowerShell@2
-  displayName: 'Publish modules'
+  displayName: 'publish modules'
   condition: and(succeeded(), in(variables['Build.SourceBranch'], 'refs/heads/master', 'refs/heads/development'))
   env:
     DOTNET_NOLOGO: '1'
