@@ -102,25 +102,28 @@ steps:
       $isPreReleaseRegex = '(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(?:-((?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(?:\.(?:0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*))?(?:\+([0-9a-zA-Z-]+(?:\.[0-9a-zA-Z-]+)*))?$'
       $isMaster = '$(Build.SourceBranch)' -eq 'refs/heads/master'
 
-      Write-Host "isMaster: $isMaster"
+      Write-Host
+      Write-Host "Is Master: $isMaster"
 
-      Write-Host "All modules:"
-      Get-ChildItem "./Modules/Intent.Modules/*.imod" | Select-Object Name
+      Write-Host
+      Write-Host "All files:"
+      Get-ChildItem "./Modules/Intent.Modules/" | ForEach-Object { Write-Host $_.Name }
 
       $imodFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { If ($isMaster) { ($_.Name -Match $isPreReleaseRegex) } Else { $_.Name -NotMatch $isPreReleaseRegex } }
       # Client has no way to filter pre-release application templates so they are never published from development
       $iatFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { -Not $isMaster -Or ($_.Name -Match $isPreReleaseRegex) }
 
+      Write-Host
       Write-Host "Deleting the following files to prevent them being published:"
-      $imodFilesToRemove | Select-Object Name
-      $iatFilesToRemove | Select-Object Name
+      $imodFilesToRemove | ForEach-Object { Write-Host $_.Name }
+      $iatFilesToRemove | ForEach-Object { Write-Host $_.Name }
 
       $imodFilesToRemove | Remove-Item
       $iatFilesToRemove | Remove-Item
 
+      Write-Host
       Write-Host "Remaining files:"
-      Get-ChildItem "./Modules/Intent.Modules/*.imod" | Select-Object Name
-      Get-ChildItem "./Modules/Intent.Modules/*.iat" | Select-Object Name
+      Get-ChildItem "./Modules/Intent.Modules/" | ForEach-Object { Write-Host $_.Name }
 
 - task: PowerShell@2
   displayName: 'publish modules'
