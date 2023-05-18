@@ -33,7 +33,17 @@ public class CSharpIntentManagedAttribute : CSharpAttribute
 
     public CSharpIntentManagedAttribute WithSignatureFully()
     {
-        return AddArgument("Signature = Mode.Fully") as CSharpIntentManagedAttribute;
+        return WithSignatureSetTo("Mode.Fully");
+    }
+
+    public CSharpIntentManagedAttribute WithSignatureMerge()
+    {
+        return WithSignatureSetTo("Mode.Merge");
+    }
+
+    public CSharpIntentManagedAttribute WithSignatureIgnore()
+    {
+        return WithSignatureSetTo("Mode.Ignore");
     }
 
     public CSharpIntentManagedAttribute WithBodyIgnored()
@@ -45,10 +55,27 @@ public class CSharpIntentManagedAttribute : CSharpAttribute
     {
         return WithBodySetTo("Mode.Fully");
     }
+    public CSharpIntentManagedAttribute WithBodyMerge()
+    {
+        return WithBodySetTo("Mode.Merge");
+    }
 
     public override string GetText(string indentation)
     {
         return $"{indentation}[{Name}{(Statements.Any() ? $"({string.Join(", ", Statements)})" : string.Empty)}]";
+    }
+
+    private CSharpIntentManagedAttribute WithSignatureSetTo(string mode)
+    {
+        var existing = this.FindStatement(x => x.GetText(string.Empty).StartsWith("Signature = "));
+        if (existing != null)
+            existing.Replace($"Signature = {mode}");
+        else
+        {
+            AddArgument($"Signature = {mode}");
+        }
+
+        return this;
     }
 
     private CSharpIntentManagedAttribute WithBodySetTo(string mode)

@@ -12,7 +12,7 @@ namespace Intent.Modules.Common.Plugins
     {
         public override string Id => "Intent.Common.CSharp.CSharpFileBuilderFactoryExtension";
 
-        public override int Order => int.MaxValue; // always execute last
+        public override int Order => 100000000; // always execute last
 
         protected override void OnAfterTemplateRegistrations(IApplication application)
         {
