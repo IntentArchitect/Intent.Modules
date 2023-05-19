@@ -36,8 +36,8 @@
       <allowAbstract>false</allowAbstract>
       <allowGenericTypes>false</allowGenericTypes>
       <allowMapping>false</allowMapping>
-      <allowSorting>false</allowSorting>
-      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSorting>true</allowSorting>
+      <sortChildren>manually</sortChildren>
       <allowFindInView>true</allowFindInView>
       <allowTypeReference>true</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
