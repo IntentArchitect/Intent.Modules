@@ -51,7 +51,7 @@
     <FileLog>
       <ProjectId>4608b4e9-66a1-47ce-beea-2c155b3e43cc</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#4608b4e9-66a1-47ce-beea-2c155b3e43cc</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Domain.Repositories.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Domain.Repositories.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>

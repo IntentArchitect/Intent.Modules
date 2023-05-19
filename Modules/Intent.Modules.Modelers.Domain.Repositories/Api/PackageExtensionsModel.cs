@@ -19,6 +19,7 @@ namespace Intent.Modelers.Domain.Repositories.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<RepositoryModel> Repositories => UnderlyingPackage.ChildElements
             .GetElementsOfType(RepositoryModel.SpecializationTypeId)
             .Select(x => new RepositoryModel(x))

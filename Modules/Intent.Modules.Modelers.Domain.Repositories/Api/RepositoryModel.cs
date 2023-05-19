@@ -41,6 +41,8 @@ namespace Intent.Modelers.Domain.Repositories.Api
 
         public ITypeReference TypeReference => _element.TypeReference;
 
+        public ITypeReference EntityType => TypeReference?.Element != null ? TypeReference : null;
+
         public IElement InternalElement => _element;
 
         public override string ToString()
