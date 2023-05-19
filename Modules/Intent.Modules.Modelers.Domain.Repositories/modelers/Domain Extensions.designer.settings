@@ -40,7 +40,7 @@
       <allowSetValue>false</allowSetValue>
       <typeReferenceSetting>
         <displayName>Entity Type</displayName>
-        <isRequired>true</isRequired>
+        <isRequired>false</isRequired>
         <targetTypes>
           <type>Class</type>
         </targetTypes>
