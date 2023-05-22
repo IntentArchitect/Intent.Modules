@@ -1,3 +1,7 @@
+### Version 3.4.3
+
+- Support default values parameters for Services, Domain and Http Metadata.
+
 ### Version 3.4.2
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
