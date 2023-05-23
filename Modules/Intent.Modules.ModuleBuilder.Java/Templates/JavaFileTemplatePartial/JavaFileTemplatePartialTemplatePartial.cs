@@ -4,6 +4,7 @@ using Intent.Engine;
 using Intent.ModuleBuilder.Java.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
+using Intent.Modules.Common.Java.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
@@ -63,6 +64,16 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
                     moduleVersion: Model.GetModelType().ParentModule.Version));
             }
         }
+        
+        private string GetAccessModifier()
+        {
+            if (Model.GetJavaTemplateSettings()?.TemplatingMethod()?.IsJavaFileBuilder() == true
+                || Model.GetJavaTemplateSettings()?.TemplatingMethod()?.IsCustom() == true)
+            {
+                return "public partial ";
+            }
+            return "partial ";
+        }
 
         public string TemplateType()
         {
@@ -89,13 +100,21 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             return Model.GetModelName();
         }
 
-        private string GetBaseType()
+        private IEnumerable<string> GetBaseTypes()
         {
             if (Model.DecoratorContract != null)
             {
-                return $"JavaTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+                yield return $"JavaTemplateBase<{Model.GetModelName()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
             }
-            return $"JavaTemplateBase<{Model.GetModelName()}>";
+            else
+            {
+                yield return $"JavaTemplateBase<{Model.GetModelName()}>";
+            }
+
+            if (Model.GetJavaTemplateSettings().TemplatingMethod().IsJavaFileBuilder())
+            {
+                yield return UseType(typeof(IJavaFileBuilderTemplate).FullName);
+            }
         }
     }
 }

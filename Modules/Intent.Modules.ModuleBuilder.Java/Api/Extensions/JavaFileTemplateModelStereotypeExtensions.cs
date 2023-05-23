@@ -70,6 +70,8 @@ namespace Intent.ModuleBuilder.Java.Api
                             return TemplatingMethodOptionsEnum.T4Template;
                         case "String Interpolation":
                             return TemplatingMethodOptionsEnum.StringInterpolation;
+                        case "Java File Builder":
+                            return TemplatingMethodOptionsEnum.JavaFileBuilder;
                         case "Custom":
                             return TemplatingMethodOptionsEnum.Custom;
                         default:
@@ -85,6 +87,10 @@ namespace Intent.ModuleBuilder.Java.Api
                 {
                     return Value == "String Interpolation";
                 }
+                public bool IsJavaFileBuilder()
+                {
+                    return Value == "Java File Builder";
+                }
                 public bool IsCustom()
                 {
                     return Value == "Custom";
@@ -95,6 +101,7 @@ namespace Intent.ModuleBuilder.Java.Api
             {
                 T4Template,
                 StringInterpolation,
+                JavaFileBuilder,
                 Custom
             }
         }

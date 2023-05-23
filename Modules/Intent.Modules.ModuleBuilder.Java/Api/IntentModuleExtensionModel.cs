@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.Java.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<JavaFileTemplateModel> JavaFiles => UnderlyingPackage.ChildElements
             .GetElementsOfType(JavaFileTemplateModel.SpecializationTypeId)
             .Select(x => new JavaFileTemplateModel(x))

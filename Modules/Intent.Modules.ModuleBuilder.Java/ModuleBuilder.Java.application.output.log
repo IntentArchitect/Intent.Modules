@@ -158,7 +158,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplateRegistration.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Templates/JavaFileTemplatePartial/JavaFileTemplatePartialTemplateRegistration.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>0142a744-ee77-4742-9124-58d26ac838c7</ProjectId>

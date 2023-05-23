@@ -22,17 +22,47 @@ using Intent.Templates;
 namespace <#= Namespace #>
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    partial class <#= ClassName #> : <#= GetBaseType() #>
+    <#= GetAccessModifier() #>class <#= ClassName #> : <#= string.Join(", ", GetBaseTypes()) #>
     {
         [IntentManaged(Mode.Fully)]
         public const string TemplateId = "<#= GetTemplateId() #>";
 
-        [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
+<#  if (Model.GetJavaTemplateSettings()?.TemplatingMethod().IsJavaFileBuilder() == true) { #>
+            JavaFile = new JavaFile(this.GetPackage(), this.GetFolderPath())
+                .AddClass($"<#= ClassName #>", @class =>
+                {
+                    @class.AddConstructor(ctor =>
+                    {
+                        ctor.AddParameter("string", "exampleParam", param =>
+                        {
+                            param.IntroduceField();
+                        });
+                    });
+                });
+<#  } #>
+        }
+<#  if (Model.GetJavaTemplateSettings()?.TemplatingMethod().IsJavaFileBuilder() == true) { #>
+
+        [IntentManaged(Mode.Fully)]
+        public <#= UseType("Intent.Modules.Common.Java.Builder.JavaFile") #> JavaFile { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public override ITemplateFileConfig GetTemplateFileConfig()
+        {
+            return JavaFile.GetConfig();
         }
 
-        [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
+        [IntentManaged(Mode.Fully)]
+        public override string TransformText()
+        {
+            return JavaFile.ToString();
+        }
+<#  } else { #>
+
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new JavaFileConfig(
@@ -41,6 +71,14 @@ namespace <#= Namespace #>
                 relativeLocation: this.GetFolderPath()
             );
         }
+<#  } #>
+<#  if (Model.GetJavaTemplateSettings()?.TemplatingMethod().IsCustom() == true) { #>
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override string TransformText()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
+<#  } #>
     }
 }

@@ -46,6 +46,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileT4
                 relativeLocation: $"{FolderPath}");
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             var content = GetExistingTemplateContent();
