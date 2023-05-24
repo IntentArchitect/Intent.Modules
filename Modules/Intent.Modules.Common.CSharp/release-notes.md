@@ -1,4 +1,8 @@
-﻿### Version 3.3.34
+﻿### Version 3.3.35
+
+- Update: `CSharpConstructor` now supports `IHasCSharpStatements`.
+
+### Version 3.3.34
 
 - Update: `.Async()` on Class Methods now checks if return type is of type `Task` and adds it if not specified.
 - Fixed: Comments for interfaces themselves would not be generated.

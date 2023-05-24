@@ -1,3 +1,7 @@
+### Version 4.1.1
+
+- Support default base Path HttpEndpointModelFactory, if you don't want the build in default path.
+
 ### Version 4.1.0
 
 - Support default values parameters for Services, Domain and Http Metadata.

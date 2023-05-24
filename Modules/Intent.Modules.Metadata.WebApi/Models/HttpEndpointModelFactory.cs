@@ -14,6 +14,11 @@ public static class HttpEndpointModelFactory
 {
     public static IHttpEndpointModel? GetEndpoint(IElement element)
     {
+        return GetEndpoint(element, null);
+    }
+
+    public static IHttpEndpointModel? GetEndpoint(IElement element, string? defaultbasePath = null)
+    {
         if (element.Stereotypes.Any(s => s.Name == "Http Settings (Obsolete)"))
         {
             throw new Exception("A migration is outstanding on the services designer. Please open the services designer which will run the migration automatically and be sure to press save regardless afterwards.");
@@ -46,7 +51,7 @@ public static class HttpEndpointModelFactory
                 Constants.ElementTypeIds.Query => HttpVerb.Get,
                 _ => throw new InvalidOperationException($"Unknown type: \"{element.SpecializationType}\" ({element.SpecializationTypeId})")
             },
-            baseRoute: GetBaseRoute(element),
+            baseRoute: GetBaseRoute(element, defaultbasePath),
             subRoute: httpSettings.Route,
             mediaType: httpSettings.ReturnTypeMediatype,
             requiresAuthorization: hasSecured || hasAuthorize,
@@ -83,12 +88,12 @@ public static class HttpEndpointModelFactory
         return null;
     }
 
-    private static string? GetBaseRoute(IElement element)
+    private static string? GetBaseRoute(IElement element, string? defaultbasePath)
     {
         var baseRoute = element.ParentElement?.TryGetHttpServiceSettings(out var serviceSettings) == true &&
                         !string.IsNullOrWhiteSpace(serviceSettings!.Route)
             ? serviceSettings.Route
-            : null;
+            : defaultbasePath;
 
         // At present this is hardcoded to accommodate the default for C# and wouldn't work for
         // other techs like Java which has a fallback convention of kebab-casing the element
