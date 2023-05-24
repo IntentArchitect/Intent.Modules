@@ -1,7 +1,8 @@
 ﻿### Version 3.3.35
 
 - Update: `CSharpConstructor` now supports `IHasCSharpStatements`.
-- Update: CSharpClassMethod can now have an expression body to output the form: `public DateTime GetTime() => DateTime.Now;` 
+- Update: CSharpClassMethod can now have an expression body to output the form: `public DateTime GetTime() => DateTime.Now;`.
+- Update: Added `CSharpFinallyBlock` to complement the `CSharpCatchBlock`.
 
 ### Version 3.3.34
 
