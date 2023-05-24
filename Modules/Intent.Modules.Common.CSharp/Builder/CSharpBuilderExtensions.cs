@@ -43,7 +43,7 @@ public static class CSharpBuilderExtensions
 
         if (s0 == null && s1.BeforeSeparator is CSharpCodeSeparatorType.None)
         {
-            return $"{GetCodeText(s1, string.Empty, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+            return $"{GetCodeText(s1, indentation, codeTextTransformer).TrimStart()}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
         }
 
         if (s0 == null)

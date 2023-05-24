@@ -11,6 +11,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     protected string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
     public bool IsAbstract { get; private set; }
+    public bool HasExpressionBody { get; private set; }
     public string ReturnType { get; private set; }
     public string Name { get; }
     public List<CSharpParameter> Parameters { get; } = new();
@@ -189,12 +190,34 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         Statements.Remove(statement);
     }
 
+    public void WithExpressionBody(CSharpStatement statement)
+    {
+        HasExpressionBody = true;
+        statement.BeforeSeparator = CSharpCodeSeparatorType.None;
+        if (statement is CSharpMethodChainStatement stmt)
+        {
+            stmt.WithoutSemicolon();
+        }
+        Statements.Add(statement);
+    }
+
     public override string GetText(string indentation)
     {
         var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({GetParameters(indentation)}){GetGenericTypeConstraints(indentation)}";
         if (IsAbstract && Statements.Count == 0)
         {
             return $@"{declaration};";
+        }
+
+        if (HasExpressionBody)
+        {
+            var expressionBody = Statements.ConcatCode($"{indentation}    ");
+            if (expressionBody.Contains("\n"))
+            {
+                return $@"{declaration} => 
+{indentation}    {expressionBody};";
+            }
+            return $@"{declaration} => {expressionBody};";
         }
 
         return $@"{declaration}

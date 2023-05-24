@@ -14,9 +14,9 @@ public class BuilderTests
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
             .AddUsing("System")
             .AddUsing("System.Collections.Generic")
-            .AddClass("Vehicle", c =>
+            .AddClass("Vehicle", @class =>
             {
-                c.AddConstructor(ctor => ctor
+                @class.AddConstructor(ctor => ctor
                         .AddParameter("string", "make")
                         .AddParameter("string", "model")
                         .AddParameter("int", "year", param => param.WithDefaultValue("2023"))
@@ -57,9 +57,9 @@ public class BuilderTests
             .AddUsing("Microsoft.EntityFrameworkCore")
             .AddUsing("Microsoft.Extensions.Configuration")
             .AddUsing("Microsoft.Extensions.DependencyInjection")
-            .AddClass("DependencyInjection", c =>
+            .AddClass("DependencyInjection", @class =>
             {
-                c.Static()
+                @class.Static()
                     .AddMethod("IServiceCollection", "AddInfrastructure", method => method
                         .Static()
                         .AddParameter("IServiceCollection", "services", param => param.WithThisModifier())
@@ -83,9 +83,9 @@ public class BuilderTests
     public async Task StatementBlocks()
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", c =>
+            .AddClass("TestClass", @class =>
             {
-                c.AddMethod("void", "TestMethod", method =>
+                @class.AddMethod("void", "TestMethod", method =>
                 {
                     method.AddParameter("int", "value");
 
@@ -126,12 +126,12 @@ public class BuilderTests
     public async Task StaticVariants()
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("StaticClass", c =>
+            .AddClass("StaticClass", @class =>
             {
-                c.Static();
-                c.AddConstructor(ctor => ctor.Static());
-                c.AddMethod("void", "StaticMethod", method => method.Static());
-                c.AddProperty("int", "StaticProperty", prop => prop.Static());
+                @class.Static();
+                @class.AddConstructor(ctor => ctor.Static());
+                @class.AddMethod("void", "StaticMethod", method => method.Static());
+                @class.AddProperty("int", "StaticProperty", prop => prop.Static());
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
@@ -142,17 +142,17 @@ public class BuilderTests
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
             .AddUsing("System")
-            .AddClass("BaseClass", c =>
+            .AddClass("BaseClass", @class =>
             {
-                c.Abstract();
-                c.AddMethod("void", "ImAbstractOverrideMe", method => method.Abstract());
-                c.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Virtual().AddStatement("throw new NotImplementedException();"));
+                @class.Abstract();
+                @class.AddMethod("void", "ImAbstractOverrideMe", method => method.Abstract());
+                @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Virtual().AddStatement("throw new NotImplementedException();"));
             })
-            .AddClass("ConcreteClass", c =>
+            .AddClass("ConcreteClass", @class =>
             {
-                c.WithBaseType("BaseClass");
-                c.AddMethod("void", "ImAbstractOverrideMe", method => method.Override().AddStatement("// Stuff"));
-                c.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Override().AddStatement("// More Stuff"));
+                @class.WithBaseType("BaseClass");
+                @class.AddMethod("void", "ImAbstractOverrideMe", method => method.Override().AddStatement("// Stuff"));
+                @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Override().AddStatement("// More Stuff"));
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
@@ -163,18 +163,18 @@ public class BuilderTests
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
             .AddUsing("System")
-            .AddClass("ConcreteClass", c =>
+            .AddClass("ConcreteClass", @class =>
             {
-                c.WithBaseType("MyBaseClass");
-                c.AddConstructor(ctor => ctor
+                @class.WithBaseType("MyBaseClass");
+                @class.AddConstructor(ctor => ctor
                     .CallsBase());
-                c.AddConstructor(ctor => ctor
+                @class.AddConstructor(ctor => ctor
                     .AddParameter("bool", "enabled")
                     .CallsThis());
-                c.AddConstructor(ctor => ctor
+                @class.AddConstructor(ctor => ctor
                     .AddParameter("string", "value")
                     .CallsThis(t => t.AddArgument("value").AddArgument("1")));
-                c.AddConstructor(ctor => ctor
+                @class.AddConstructor(ctor => ctor
                     .AddParameter("string", "value")
                     .AddParameter("int", "otherValue")
                     .CallsBase(b => b.AddArgument("value").AddArgument("otherValue")));
@@ -188,9 +188,9 @@ public class BuilderTests
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
             .AddUsing("System")
-            .AddClass("TestClass", c =>
+            .AddClass("TestClass", @class =>
             {
-                c.AddMethod("void", "MethodChainTest", method =>
+                @class.AddMethod("void", "MethodChainTest", method =>
                 {
                     method.AddMethodChainStatement("services.AddOpenTelemetry()", main => main
                         .AddChainStatement(new CSharpInvocationStatement("ConfigureResource")
@@ -251,6 +251,34 @@ public class BuilderTests
                 .WithComments("// Comment")
                 .AddMethod("void", "Method")
             )
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task ClassMethodExpressionBodyTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("string", "GetDateNow", method =>
+                {
+                    method.WithExpressionBody("DateTimeOffset.Now");
+                });
+                @class.AddMethod("IHostBuilder", "CreateHostBuilder", method =>
+                {
+                    method.AddParameter("string[]", "args");
+                    method.WithExpressionBody(new CSharpMethodChainStatement("Host.CreateDefaultBuilder(args)")
+                        .AddChainStatement(
+                            new CSharpInvocationStatement("ConfigureWebHostDefaults")
+                                .WithoutSemicolon()
+                                .WithArgumentsOnNewLines()
+                                .AddArgument(new CSharpLambdaBlock("webBuilder")
+                                    .AddStatement("webBuilder.UseStartup<Startup>();"))));
+                });
+            })
             .CompleteBuild();
 
         await Verifier.Verify(fileBuilder.ToString());
