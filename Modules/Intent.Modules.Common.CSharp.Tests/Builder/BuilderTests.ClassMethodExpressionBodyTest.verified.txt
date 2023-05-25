@@ -14,10 +14,9 @@ namespace Namespace
                     .ReadFrom.Services(services)
                     .Enrich.FromLogContext()
                     .WriteTo.Console())
-                .ConfigureWebHostDefaults(
-                    webBuilder =>
-                    {
-                        webBuilder.UseStartup<Startup>();
-                    });
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    webBuilder.UseStartup<Startup>();
+                });
     }
 }

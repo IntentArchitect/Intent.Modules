@@ -295,9 +295,40 @@ public class BuilderTests
                         .AddChainStatement(
                             new CSharpInvocationStatement("ConfigureWebHostDefaults")
                                 .WithoutSemicolon()
-                                .WithArgumentsOnNewLines()
                                 .AddArgument(new CSharpLambdaBlock("webBuilder")
                                     .AddStatement("webBuilder.UseStartup<Startup>();"))));
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task InvocationStatementTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "MethodInvocationTypes", method =>
+                {
+                    method.AddInvocationStatement("TestMethodNoArgs");
+                    method.AddInvocationStatement("TestMethodOneArg", m => m.AddArgument("one"));
+                    method.AddInvocationStatement("TestMethodTwoArgs", m => m.AddArgument("one").AddArgument("two"));
+                    method.AddInvocationStatement("TestMethodMultilineWithOneArg", m => m
+                        .WithArgumentsOnNewLines()
+                        .AddArgument("one"));
+                    method.AddInvocationStatement("TestMethodMultilineArgs", m => m
+                        .WithArgumentsOnNewLines()
+                        .AddArgument("one")
+                        .AddArgument("two")
+                        .AddArgument("three"));
+                    method.AddInvocationStatement("TestMethodWithMethodChainingArg", stmt => stmt
+                        .AddArgument(new CSharpMethodChainStatement("fluentBuilder")
+                            .AddChainStatement("FluentOpOne()")
+                            .AddChainStatement("FluentOpTwo()")
+                            .WithoutSemicolon()));
                 });
             })
             .CompleteBuild();
