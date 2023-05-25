@@ -40,10 +40,12 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
             Logging.Log.Info($"Executing: \"dotnet build\" at location \"{Path.GetFullPath(location)}\"");
             try
             {
+                // "--disable-build-servers" prevents issue where process seems to never end.
+                // See https://github.com/dotnet/sdk/issues/9487#issuecomment-1499126020
                 var cmd = Process.Start(new ProcessStartInfo
                 {
                     FileName = "dotnet",
-                    Arguments = "build",
+                    Arguments = "build --disable-build-servers",
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
                     CreateNoWindow = false,

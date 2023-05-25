@@ -1,3 +1,7 @@
+### Version 3.3.5
+
+- Added `--disable-build-servers` argument to `dotnet build` to prevent issue where the process would sometimes never exit.
+
 ### Version 3.3.4
 
 - Fix issue when run on macOS.
