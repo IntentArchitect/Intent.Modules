@@ -40,8 +40,14 @@ public static class HttpEndpointModelFactory
         return new HttpEndpointModel(
             name: element.SpecializationTypeId switch
             {
-                Constants.ElementTypeIds.Command => element.Name.RemoveSuffix("Command"),
-                Constants.ElementTypeIds.Query => element.Name.RemoveSuffix("Query"),
+                // The `.RemoveSuffix("Request")`s below are not merged and in a specific order
+                // because we do still want names like "SomeRequestCommand" / "SomeRequestQuery".
+                Constants.ElementTypeIds.Command => element.Name
+                    .RemoveSuffix("Request")
+                    .RemoveSuffix("Command"),
+                Constants.ElementTypeIds.Query => element.Name
+                    .RemoveSuffix("Request")
+                    .RemoveSuffix("Query"),
                 _ => element.Name
             },
             verb: httpSettings!.Verb ?? element.SpecializationTypeId switch

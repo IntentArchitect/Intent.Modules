@@ -52,8 +52,11 @@ function getUnconventionalRoute() {
         (serviceRouteIdentifier == "" || serviceRouteIdentifier == `/{id}`)) {
         return "";
     }
-    let queryRoute = toKebabCase(removeSuffix(removePrefix(element.getName(), "Create", "Update", "Delete"), "Command"));
-    return removeSuffix(queryRoute, toKebabCase(mappedEntity ?? singularize(folderName)), serviceRoute, "-");
+
+    const withoutPrefixes = removePrefix(element.getName(), "Create", "Update", "Delete");
+    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request");
+    const withoutCommandSuffix = removeSuffix(withoutRequestSuffix, "Command");
+    return removeSuffix(toKebabCase(withoutCommandSuffix), toKebabCase(mappedEntity ?? singularize(folderName)), serviceRoute, "-");
 }
 </script>
         </option>
@@ -94,11 +97,11 @@ function getUnconventionalRoute() {
         (serviceRouteIdentifier == `/{id}`)) {
         return "";
     }
-    let queryRoute = toKebabCase(removeSuffix(removePrefix(element.getName(), "Get", "Find", "Lookup"), "Query"));
-    //console.warn(queryRoute);
-    //console.warn(toKebabCase(mappedEntity ?? singularize(folderName)));
-    //console.warn(serviceRoute);
-    return removePrefix(queryRoute, serviceRoute, toKebabCase(mappedEntity ?? singularize(folderName)), "-");
+
+    const withoutPrefixes = removePrefix(element.getName(), "Get", "Find", "Lookup");
+    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request");
+    const withoutQuerySuffix = removeSuffix(withoutRequestSuffix, "Query");
+    return removePrefix(toKebabCase(withoutQuerySuffix), serviceRoute, toKebabCase(mappedEntity ?? singularize(folderName)), "-");
 }
 </script>
         </option>

@@ -1,6 +1,7 @@
 ### Version 4.1.1
 
 - Support default base Path HttpEndpointModelFactory, if you don't want the build in default path.
+- `Command`s or `Query`s with the element name in the designer having a `Request` suffix will not include the suffix in the generated controller method name.
 
 ### Version 4.1.0
 
