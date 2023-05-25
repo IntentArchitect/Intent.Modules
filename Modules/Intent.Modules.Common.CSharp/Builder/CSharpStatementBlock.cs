@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -25,7 +26,18 @@ public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return @$"{(Text.Length > 0 ? base.GetText(indentation) + Environment.NewLine : "")}{indentation}{RelativeIndentation}{{{Statements.ConcatCode($"{indentation}{RelativeIndentation}    ")}
+        return @$"{(Text.Length > 0 ? GetFormattedMultilineText(indentation) + Environment.NewLine : "")}{indentation}{RelativeIndentation}{{{Statements.ConcatCode($"{indentation}{RelativeIndentation}    ")}
 {indentation}{RelativeIndentation}}}{(_withSemicolon ? ";" : "")}";
+    }
+
+    // Some expressions may span multiple lines and we still want it to look
+    // nicely indented without putting the burden on the user to do it.
+    private string GetFormattedMultilineText(string indentation)
+    {
+        var text = base.GetText(indentation);
+        text = text.Replace("\r\n", "\n");
+        var lines = text.Split("\n").Select((line, index) => index == 0 ? line : $"{indentation}    " + line.TrimStart());
+        var reformatted = string.Join("\n", lines);
+        return reformatted;
     }
 }

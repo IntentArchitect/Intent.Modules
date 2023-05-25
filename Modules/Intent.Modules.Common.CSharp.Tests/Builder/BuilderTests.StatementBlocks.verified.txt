@@ -66,6 +66,18 @@ namespace Testing.Namespace
             {
                 DoFinallyStuff();
             }
+
+            if (!string.IsNullOrWhiteSpace(configuration["KeyVault:TenantId"]) &&
+                !string.IsNullOrWhiteSpace(configuration["KeyVault:ClientId"]) &&
+                !string.IsNullOrWhiteSpace(configuration["KeyVault:Secret"]))
+            {
+                // If statement body
+            }
+            // block expression line 1
+                // block expression line 2
+                // block expression line 3
+            {
+            }
         }
     }
 }

@@ -2,7 +2,8 @@
 
 - Update: `CSharpConstructor` now supports `IHasCSharpStatements`.
 - Update: CSharpClassMethod can now have an expression body to output the form: `public DateTime GetTime() => DateTime.Now;`.
-- Update: Added `CSharpFinallyBlock` to complement the `CSharpCatchBlock`.
+- Update: Statement block types will now format multi-line expressions so that for example `if()` expressions look better when the expression inside it spans multiple lines.
+- New: Added `CSharpFinallyBlock` to complement the `CSharpCatchBlock`.
 
 ### Version 3.3.34
 

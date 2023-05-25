@@ -4,6 +4,7 @@ public class CSharpUsingBlock : CSharpStatementBlock
 {
     public CSharpUsingBlock(string expression) : base(string.Empty)
     {
-        Text = $"using ({expression})";
+        Text = $"using ({expression?.TrimStart()})";
+        BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 }

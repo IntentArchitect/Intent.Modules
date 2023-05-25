@@ -4,7 +4,8 @@ public class CSharpIfStatement : CSharpStatementBlock
 {
     public CSharpIfStatement(string expression) : base(string.Empty)
     {
-        Text = $"if ({expression})";
+        Text = $"if ({expression?.TrimStart()})";
+        BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
 }
 
@@ -12,7 +13,7 @@ public class CSharpElseIfStatement : CSharpStatementBlock
 {
     public CSharpElseIfStatement(string expression) : base(string.Empty)
     {
-        Text = $"else if ({expression})";
+        Text = $"else if ({expression?.TrimStart()})";
     }
 }
 

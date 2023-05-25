@@ -121,6 +121,15 @@ public class BuilderTests
                     method.AddCatchBlock("OutOfMemoryException", "ex", block => block.AddStatement("// What to do?"));
                     method.AddCatchBlock(block => block.AddStatement("// Catch All"));
                     method.AddFinallyBlock(block => block.AddStatement("DoFinallyStuff();"));
+
+                    method.AddIfStatement(@"
+    !string.IsNullOrWhiteSpace(configuration[""KeyVault:TenantId""]) &&
+	!string.IsNullOrWhiteSpace(configuration[""KeyVault:ClientId""]) &&
+	!string.IsNullOrWhiteSpace(configuration[""KeyVault:Secret""])", block => block.AddStatement("// If statement body"));
+                    
+                    method.AddStatement(new CSharpStatementBlock(@"// block expression line 1
+// block expression line 2
+// block expression line 3"));
                 });
             })
             .CompleteBuild();
