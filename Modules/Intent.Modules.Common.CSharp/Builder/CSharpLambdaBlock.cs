@@ -37,7 +37,7 @@ public class CSharpLambdaBlock : CSharpStatement, IHasCSharpStatements
     {
         if (HasExpressionBody)
         {
-            var expressionBody = Statements.ConcatCode($"{indentation}    ");
+            var expressionBody = Statements.ConcatCode($"{indentation}{RelativeIndentation}");
             return $@"{base.GetText(indentation)} => {expressionBody}{(_withSemicolon ? ";" : string.Empty)}";
         }
         

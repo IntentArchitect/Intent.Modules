@@ -284,6 +284,14 @@ public class BuilderTests
                 {
                     method.AddParameter("string[]", "args");
                     method.WithExpressionBody(new CSharpMethodChainStatement("Host.CreateDefaultBuilder(args)")
+                        .AddChainStatement(new CSharpInvocationStatement("UseSerilog")
+                            .WithoutSemicolon()
+                            .AddArgument(new CSharpLambdaBlock("(context, services, configuration)")
+                                .WithExpressionBody(new CSharpMethodChainStatement("configuration")
+                                    .AddChainStatement("ReadFrom.Configuration(context.Configuration)")
+                                    .AddChainStatement("ReadFrom.Services(services)")
+                                    .AddChainStatement("Enrich.FromLogContext()")
+                                    .AddChainStatement("WriteTo.Console()"))))
                         .AddChainStatement(
                             new CSharpInvocationStatement("ConfigureWebHostDefaults")
                                 .WithoutSemicolon()

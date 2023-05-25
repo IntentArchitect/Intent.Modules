@@ -43,11 +43,19 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return $"{indentation}{RelativeIndentation}{Text}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : "")}";
+        return $"{indentation}{RelativeIndentation}{Text}({GetArgumentsText(indentation)}){(_withSemicolon ? ";" : string.Empty)}";
     }
 
     private string GetArgumentsText(string indentation)
     {
-        return Statements.JoinCode(",", $"{indentation}    ");
+        var additionalIndentation = GetAdditionalIndentationIfArgsOnNewLines();
+        return Statements.JoinCode(",", $"{indentation}{additionalIndentation}");
+    }
+
+    private string GetAdditionalIndentationIfArgsOnNewLines()
+    {
+        return Statements.Count == 1 && Statements[0].BeforeSeparator == CSharpCodeSeparatorType.None 
+            ? string.Empty 
+            : "    ";
     }
 }
