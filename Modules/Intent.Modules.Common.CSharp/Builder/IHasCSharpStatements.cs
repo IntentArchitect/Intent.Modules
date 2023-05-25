@@ -177,10 +177,6 @@ public static class HasCSharpStatementsExtensions
     /// }
     /// </code>
     /// </summary>
-    /// <typeparam name="TParent"></typeparam>
-    /// <param name="parent"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
     public static TParent AddTryBlock<TParent>(this TParent parent, Action<CSharpTryBlock> configure = null)
         where TParent : IHasCSharpStatements
     {
@@ -196,10 +192,6 @@ public static class HasCSharpStatementsExtensions
     /// }
     /// </code>
     /// </summary>
-    /// <typeparam name="TParent"></typeparam>
-    /// <param name="parent"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
     public static TParent AddCatchBlock<TParent>(this TParent parent, Action<CSharpCatchBlock> configure = null)
         where TParent : IHasCSharpStatements
     {
@@ -215,16 +207,25 @@ public static class HasCSharpStatementsExtensions
     /// }
     /// </code>
     /// </summary>
-    /// <typeparam name="TParent"></typeparam>
-    /// <param name="parent"></param>
-    /// <param name="exceptionType"></param>
-    /// <param name="parameterType"></param>
-    /// <param name="configure"></param>
-    /// <returns></returns>
     public static TParent AddCatchBlock<TParent>(this TParent parent, string exceptionType, string parameterType, Action<CSharpCatchBlock> configure = null)
         where TParent : IHasCSharpStatements
     {
         return parent.AddStatement(new(exceptionType, parameterType), configure);
+    }
+
+    /// <summary>
+    /// Adds a finally block to the <paramref name="parent"/>.
+    /// <code>
+    /// finally
+    /// {
+    ///     ...
+    /// }
+    /// </code>
+    /// </summary>
+    public static TParent AddFinallyBlock<TParent>(this TParent parent, Action<CSharpFinallyBlock> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(), configure);
     }
 
     public static TParent AddStatementBlock<TParent>(this TParent parent, Action<CSharpStatementBlock> configure = null)

@@ -116,6 +116,11 @@ public class BuilderTests
 
                     method.AddForEachStatement("i", "Enumerable.Range(1, 10)", c => c
                         .AddStatement("Console.Write(i);").SeparatedFromPrevious());
+
+                    method.AddTryBlock(block => block.AddStatement("DoSomethingRisky();"));
+                    method.AddCatchBlock("OutOfMemoryException", "ex", block => block.AddStatement("// What to do?"));
+                    method.AddCatchBlock(block => block.AddStatement("// Catch All"));
+                    method.AddFinallyBlock(block => block.AddStatement("DoFinallyStuff();"));
                 });
             })
             .CompleteBuild();
