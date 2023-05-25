@@ -71,8 +71,7 @@ public class BuilderTests
                             .WithArgumentsOnNewLines())
                         .AddStatement(new CSharpInvocationStatement(@"services.AddScoped<IUnitOfWork>")
                             .AddArgument(new CSharpLambdaBlock("provider")
-                                .AddStatement(@"provider.GetService<ApplicationDbContext>());"))
-                            .WithArgumentsOnNewLines()));
+                                .WithExpressionBody(@"provider.GetService<ApplicationDbContext>()"))));
 
             })
             .CompleteBuild();

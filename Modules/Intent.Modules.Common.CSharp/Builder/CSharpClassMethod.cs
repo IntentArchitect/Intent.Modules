@@ -190,7 +190,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         Statements.Remove(statement);
     }
 
-    public void WithExpressionBody(CSharpStatement statement)
+    public CSharpClassMethod WithExpressionBody(CSharpStatement statement)
     {
         HasExpressionBody = true;
         statement.BeforeSeparator = CSharpCodeSeparatorType.None;
@@ -199,6 +199,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
             stmt.WithoutSemicolon();
         }
         Statements.Add(statement);
+        return this;
     }
 
     public override string GetText(string indentation)
