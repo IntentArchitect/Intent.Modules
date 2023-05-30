@@ -10,6 +10,7 @@ using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Plugins.FactoryExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Utils;
+using NuGet.Versioning;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.FactoryExtension", Version = "1.0")]
@@ -40,19 +41,30 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
             Logging.Log.Info($"Executing: \"dotnet build\" at location \"{Path.GetFullPath(location)}\"");
             try
             {
-                // "--disable-build-servers" prevents issue where process seems to never end.
+                // "--disable-build-servers" / "-p:UseSharedCompilation=false" and the custom environment
+                // variable is to prevents issue where process seems to never end.
                 // See https://github.com/dotnet/sdk/issues/9487#issuecomment-1499126020
-                var cmd = Process.Start(new ProcessStartInfo
+                var arguments = "build -p:UseSharedCompilation=false -p:UseRazorBuildServer=false";
+                if (GetDotnetVersion().Major >= 7)
+                {
+                    arguments += " --disable-build-servers";
+                }
+                var processStartInfo = new ProcessStartInfo
                 {
                     FileName = "dotnet",
-                    Arguments = "build --disable-build-servers",
+                    Arguments = arguments,
                     RedirectStandardInput = true,
                     RedirectStandardOutput = true,
                     CreateNoWindow = false,
                     UseShellExecute = false,
-                    WorkingDirectory = location
-                })!;
+                    WorkingDirectory = location,
+                    EnvironmentVariables =
+                    {
+                        ["MSBUILDDISABLENODEREUSE"] = "1"
+                    }
+                };
 
+                var cmd = Process.Start(processStartInfo)!;
                 cmd.WaitForExit();
 
                 var output = cmd.StandardOutput.ReadToEnd();
@@ -71,6 +83,30 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
 Auto-compiling of module failed. If the problem persists, consider disabling this extension. Please see reasons below:");
                 Logging.Log.Failure(e);
             }
+        }
+
+        private static NuGetVersion GetDotnetVersion()
+        {
+            var processStartInfo = new ProcessStartInfo
+            {
+                FileName = "dotnet",
+                Arguments = "--version",
+                RedirectStandardInput = true,
+                RedirectStandardOutput = true,
+                CreateNoWindow = false,
+                UseShellExecute = false
+            };
+
+            var cmd = Process.Start(processStartInfo)!;
+            cmd.WaitForExit(5000);
+            if (!cmd.HasExited)
+            {
+                throw new Exception("Timeout exceeded when performing \"dotnet --version\"");
+            }
+
+            var output = cmd.StandardOutput.ReadToEnd();
+
+            return NuGetVersion.Parse(output.Trim());
         }
 
         private static string GetRootExecutionLocation(IApplication application)
