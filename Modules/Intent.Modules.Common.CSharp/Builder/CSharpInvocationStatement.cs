@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -54,8 +55,8 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
 
     private string GetAdditionalIndentationIfArgsOnNewLines()
     {
-        return Statements.Count == 1 && Statements[0].BeforeSeparator == CSharpCodeSeparatorType.None 
-            ? string.Empty 
+        return Statements.All(x => x.BeforeSeparator == CSharpCodeSeparatorType.None)
+            ? string.Empty
             : "    ";
     }
 }

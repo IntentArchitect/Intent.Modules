@@ -208,19 +208,17 @@ public class BuilderTests
                     method.AddMethodChainStatement("services.AddOpenTelemetry()", main => main
                         .AddChainStatement(new CSharpInvocationStatement("ConfigureResource")
                             .AddArgument(new CSharpLambdaBlock("res")
-                                .AddMethodChainStatement("res", res => res
+                                .WithExpressionBody(new CSharpMethodChainStatement("res")
                                     .WithoutSemicolon()
                                     .AddChainStatement($@"AddService(""TestService"")")
                                     .AddChainStatement("AddTelemetrySdk()")
                                     .AddChainStatement("AddEnvironmentVariableDetector()")))
-                            .WithArgumentsOnNewLines()
                             .WithoutSemicolon())
                         .AddChainStatement(new CSharpInvocationStatement("WithTracing")
                             .AddArgument(new CSharpLambdaBlock("trace")
-                                .AddMethodChainStatement("trace", trace => trace
+                                .WithExpressionBody(new CSharpMethodChainStatement("trace")
                                     .WithoutSemicolon()
                                     .AddChainStatement("AddAspNetCoreInstrumentation()")))
-                            .WithArgumentsOnNewLines()
                             .WithoutSemicolon())
                         .AddMetadata("telemetry-config", true));
                 });
@@ -329,6 +327,15 @@ public class BuilderTests
                             .AddChainStatement("FluentOpOne()")
                             .AddChainStatement("FluentOpTwo()")
                             .WithoutSemicolon()));
+                    method.AddStatement(new CSharpMethodChainStatement(@"services.ConfigureComponent()")
+                        .AddChainStatement(new CSharpInvocationStatement("ConfigureFeatures")
+                            .WithoutSemicolon()
+                            .AddArgument(@"""FeatureSet1""")
+                            .AddArgument(new CSharpLambdaBlock("conf")
+                                .WithExpressionBody(new CSharpMethodChainStatement("conf")
+                                    .WithoutSemicolon()
+                                    .AddChainStatement("SwitchFeatureOne(true)")
+                                    .AddChainStatement("SwitchFeatureTwo(false)")))));
                 });
             })
             .CompleteBuild();

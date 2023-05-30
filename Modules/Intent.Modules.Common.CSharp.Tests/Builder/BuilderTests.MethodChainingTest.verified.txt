@@ -8,20 +8,12 @@ namespace Testing.Namespace
         public void MethodChainTest()
         {
             services.AddOpenTelemetry()
-                .ConfigureResource(
-                    res =>
-                    {
-                        res
-                            .AddService("TestService")
-                            .AddTelemetrySdk()
-                            .AddEnvironmentVariableDetector()
-                    })
-                .WithTracing(
-                    trace =>
-                    {
-                        trace
-                            .AddAspNetCoreInstrumentation()
-                    });
+                .ConfigureResource(res => res
+                    .AddService("TestService")
+                    .AddTelemetrySdk()
+                    .AddEnvironmentVariableDetector())
+                .WithTracing(trace => trace
+                    .AddAspNetCoreInstrumentation());
         }
     }
 }

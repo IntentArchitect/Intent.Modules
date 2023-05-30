@@ -19,6 +19,11 @@ namespace Namespace
             TestMethodWithMethodChainingArg(fluentBuilder
                 .FluentOpOne()
                 .FluentOpTwo());
+
+            services.ConfigureComponent()
+                .ConfigureFeatures("FeatureSet1", conf => conf
+                    .SwitchFeatureOne(true)
+                    .SwitchFeatureTwo(false));
         }
     }
 }

@@ -63,7 +63,7 @@ public static class CSharpBuilderExtensions
             return $"{Environment.NewLine}{GetCodeText(s1, indentation, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? separator : string.Empty)}";
         }
 
-        return $"{GetCodeText(s1, string.Empty, codeTextTransformer)}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
+        return $"{GetCodeText(s1, indentation, codeTextTransformer).TrimStart()}{(index < codeBlocksList.Count - 1 ? $"{separator} " : string.Empty)}";
     }
 
     private static string GetCodeText(ICodeBlock codeBlock, string indentation, Func<string, string> codeTextTransformer)
