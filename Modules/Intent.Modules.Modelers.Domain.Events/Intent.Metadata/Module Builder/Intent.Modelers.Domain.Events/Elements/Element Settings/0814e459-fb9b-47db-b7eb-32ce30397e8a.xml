@@ -33,6 +33,7 @@
         <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
         <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
         <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
         <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
         <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
         <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
@@ -40,7 +41,7 @@
         <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
         <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
         <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
-        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="Manually" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" value="By type then manually" isActive="true" />
         <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
       </properties>
     </stereotype>
@@ -139,247 +140,380 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="047d2c97-4681-4a19-8a08-36a7fa2b4294" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
-      <name>[visual]</name>
-      <display>[visual]: Domain Event</display>
+    <childElement id="fe437011-d386-4a35-be0c-21a4180821ba" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+      <name>Map from Class</name>
+      <display>[mappings]: Map from Class</display>
       <isAbstract>false</isAbstract>
-      <sort-children>by-type-then-manually</sort-children>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
-      <typeReference id="f4df5b5f-452e-47c4-8861-f666587e8800">
-        <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
-        <isNavigable>true</isNavigable>
-        <isNullable>false</isNullable>
-        <isCollection>false</isCollection>
-        <isRequired>true</isRequired>
-        <comment />
-        <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
-        <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
-        <stereotypes />
-        <genericTypeParameters />
-      </typeReference>
       <isMapped>false</isMapped>
       <parentFolderId>0814e459-fb9b-47db-b7eb-32ce30397e8a</parentFolderId>
       <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
       <packageName>Intent.Modelers.Domain.Events</packageName>
       <stereotypes>
-        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
           <addedByDefault>true</addedByDefault>
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
-            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
-            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
-            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="120" isActive="true" />
+            <property name="b986d2ea-50ff-4314-afc0-cb14ae7aad71" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="6ab29b31-27af-4f56-a67c-986d82097d63" isActive="true" />
+            <property name="39d623e0-b8c5-4d23-8d78-75a7e2fa0c9d" display="Option Source" value="Elements of Type" isActive="true" />
+            <property name="5bed7f14-ebd8-4055-be29-3a2f8407eb5d" display="Lookup Element Function" isActive="false" />
+            <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;]" isActive="true" />
+            <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
+            <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
+            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" isActive="true" />
+            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
       <metadata />
       <childElements>
-        <childElement id="5087b7a7-4dd3-4c81-94ee-6be860e810dd" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-          <name>Rectangle</name>
-          <display>[draw path]: Rectangle</display>
+        <childElement id="89d970f9-5b17-4eda-aa3e-1ddaf316e3a6" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Class -&gt; [None] (Traverse)</display>
           <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>047d2c97-4681-4a19-8a08-36a7fa2b4294</parentFolderId>
+          <parentFolderId>fe437011-d386-4a35-be0c-21a4180821ba</parentFolderId>
           <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
           <packageName>Intent.Modelers.Domain.Events</packageName>
           <stereotypes>
-            <stereotype stereotypeDefinitionId="a82e406f-efc6-4d9c-86ea-6c28d9509da4" name="Path Settings">
+            <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x + 5},${y} h${w - 10} a5,5 0 0 1 5,5 v${h - 10} a5,5 0 0 1 -5,5 h-${w - 10} a5,5 0 0 1 -5,-5 v-${h - 10} a5,5 0 0 1 5,-5 z`" isActive="true" />
-                <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" isActive="true" />
-                <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
-                <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" value="" isActive="true" />
-                <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
-                <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" value="return theme.isDark ? &quot;#5A2610&quot; : &quot;#F0BB62&quot;" isActive="true" />
+                <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
               </properties>
             </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="768bebc0-22d2-4cac-adb2-2c9077e9bcfc" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-          <name>Display Text</name>
-          <display>[draw text]: Display Text</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>047d2c97-4681-4a19-8a08-36a7fa2b4294</parentFolderId>
-          <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
-          <packageName>Intent.Modelers.Domain.Events</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
-                <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
-                <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;`" isActive="true" />
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
               </properties>
             </stereotype>
-            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
               <addedByDefault>true</addedByDefault>
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 8}" isActive="true" />
-                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="fa190c49-4fc8-4aa0-8aaa-72bf4f0539e5" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
-          <name>Stereotype Icons</name>
-          <display>[stereotypes]: Stereotype Icons</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <isMapped>false</isMapped>
-          <parentFolderId>047d2c97-4681-4a19-8a08-36a7fa2b4294</parentFolderId>
-          <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
-          <packageName>Intent.Modelers.Domain.Events</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
-                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
-        <childElement id="b3c50c83-5249-49f0-8b25-5d319eeab529" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
-          <name>NewElementVisualSettings</name>
-          <display>[visual]: Property</display>
-          <isAbstract>false</isAbstract>
-          <sort-children>by-type-then-manually</sort-children>
-          <genericTypes />
-          <typeReference id="88e585dc-7f38-40a8-8d04-ee737f797cc1">
-            <typeId>b4d69073-5abb-4968-b41b-545b2f7408ed</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
-            <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>047d2c97-4681-4a19-8a08-36a7fa2b4294</parentFolderId>
-          <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
-          <packageName>Intent.Modelers.Domain.Events</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="`${parent.x}`" isActive="true" />
-                <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="`${parent.y + ($index * 18) + 36}`" isActive="true" />
-                <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="`${parent.w}`" isActive="true" />
-                <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="04e12b51-ed12-42a3-9667-a6aa81bb6d10" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="8aaf22e9-bd9e-441c-8415-2e51b4154a58" type="Path Draw Settings" typeId="ac56c1f1-b259-4de8-acc9-ce0030ad4f99">
-              <name>Separator</name>
-              <display>[draw path]: Separator</display>
+            <childElement id="7407c47e-c726-4972-b41c-4cca22d7d8bf" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Class Constructor -&gt; Domain Event (Map to Type)</display>
               <isAbstract>false</isAbstract>
+              <sort-children>by-type-then-by-name</sort-children>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>b3c50c83-5249-49f0-8b25-5d319eeab529</parentFolderId>
+              <parentFolderId>89d970f9-5b17-4eda-aa3e-1ddaf316e3a6</parentFolderId>
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="a82e406f-efc6-4d9c-86ea-6c28d9509da4" name="Path Settings">
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="27138300-900e-4a82-ad06-8abcedf0864a" display="Path" value="`M${x},${y - 6} h${w}`" isActive="true" />
-                    <property name="8996260d-790c-4e7b-8607-65fa2dd4ac24" display="Condition" value="return $firstOfType;" isActive="true" />
-                    <property name="5cd8b8b8-ccb4-4951-819c-4f49d0ad4a24" display="Line Color" value="" isActive="true" />
-                    <property name="d644b3e2-bb71-4d18-8a2a-e222a02da4ae" display="Line Width" isActive="true" />
-                    <property name="30ba379d-6d61-4e6e-b038-81cd322241e6" display="Line Dash Array" isActive="true" />
-                    <property name="4fb316a4-ebee-45c1-96e0-636698f52976" display="Fill Color" isActive="true" />
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="0814e459-fb9b-47db-b7eb-32ce30397e8a" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="dec2bd12-4699-4f45-8ec9-3b62dc692d2b" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements>
+                <childElement id="b5d17837-840a-4e64-83ba-f3f758221b97" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+                  <name>NewElementMapping</name>
+                  <display>[mapping]: Parameter -&gt; Property (Map to Type)</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>7407c47e-c726-4972-b41c-4cca22d7d8bf</parentFolderId>
+                  <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+                  <packageName>Intent.Modelers.Domain.Events</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                        <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="b4d69073-5abb-4968-b41b-545b2f7408ed" isActive="true" />
+                        <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" isActive="true" />
+                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
+              </childElements>
+            </childElement>
+            <childElement id="4fc7f808-ecc5-423c-9b2d-455e1a31a920" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Operation -&gt; Domain Event (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <sort-children>by-type-then-by-name</sort-children>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>89d970f9-5b17-4eda-aa3e-1ddaf316e3a6</parentFolderId>
+              <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+              <packageName>Intent.Modelers.Domain.Events</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="0814e459-fb9b-47db-b7eb-32ce30397e8a" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="e042bb67-a1df-480c-9935-b26210f78591" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements>
+                <childElement id="0e841ad7-6840-4b23-bb23-acffe60c16cb" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+                  <name>NewElementMapping</name>
+                  <display>[mapping]: Parameter -&gt; Property (Map to Type)</display>
+                  <isAbstract>false</isAbstract>
+                  <genericTypes />
+                  <isMapped>false</isMapped>
+                  <parentFolderId>4fc7f808-ecc5-423c-9b2d-455e1a31a920</parentFolderId>
+                  <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+                  <packageName>Intent.Modelers.Domain.Events</packageName>
+                  <stereotypes>
+                    <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                        <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="b4d69073-5abb-4968-b41b-545b2f7408ed" isActive="true" />
+                        <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                      </properties>
+                    </stereotype>
+                    <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                      <addedByDefault>true</addedByDefault>
+                      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                      <properties>
+                        <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b" isActive="true" />
+                        <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                        <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                        <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                      </properties>
+                    </stereotype>
+                  </stereotypes>
+                  <metadata />
+                  <childElements />
+                </childElement>
+              </childElements>
+            </childElement>
+          </childElements>
+        </childElement>
+        <childElement id="6c094ce2-70a9-4e52-be60-c04a269d146b" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Class -&gt; Domain Event (Map to Type)</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-by-name</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>fe437011-d386-4a35-be0c-21a4180821ba</parentFolderId>
+          <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+          <packageName>Intent.Modelers.Domain.Events</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="0814e459-fb9b-47db-b7eb-32ce30397e8a" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="04e12b51-ed12-42a3-9667-a6aa81bb6d10" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements>
+            <childElement id="154ce336-c4bd-4291-bd6f-640637ccb617" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Attribute -&gt; Property (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>6c094ce2-70a9-4e52-be60-c04a269d146b</parentFolderId>
+              <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
+              <packageName>Intent.Modelers.Domain.Events</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="b4d69073-5abb-4968-b41b-545b2f7408ed" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0090fb93-483e-41af-a11d-5ad2dc796adf" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="54439b59-d8bc-43b5-bce6-d9b18c636dc7" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
-              <name>Display Text</name>
-              <display>[draw text]: Display Text</display>
+            <childElement id="7f559330-2e04-4229-aed1-bc4f2b1c0aa6" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Association Destination End Settings -&gt; Property (Map to Type)</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <isMapped>false</isMapped>
-              <parentFolderId>b3c50c83-5249-49f0-8b25-5d319eeab529</parentFolderId>
+              <parentFolderId>6c094ce2-70a9-4e52-be60-c04a269d146b</parentFolderId>
               <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
               <packageName>Intent.Modelers.Domain.Events</packageName>
               <stereotypes>
-                <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="" isActive="true" />
-                    <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" isActive="true" />
-                    <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; font-family: Helvetica; text-align: left; white-space: inherit; padding: 2px 8px;`" isActive="true" />
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
                   </properties>
                 </stereotype>
-                <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-                    <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
-                    <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-                    <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="${h}" isActive="true" />
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="b4d69073-5abb-4968-b41b-545b2f7408ed" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
                   </properties>
                 </stereotype>
-              </stereotypes>
-              <metadata />
-              <childElements />
-            </childElement>
-            <childElement id="9c5ba327-65a1-4908-8ef3-f6fda1a09304" type="Stereotypes Visual Settings" typeId="08620c8b-f6d3-472e-86b6-926fe110d526">
-              <name>Stereotype Icons</name>
-              <display>[stereotypes]: Stereotype Icons</display>
-              <isAbstract>false</isAbstract>
-              <genericTypes />
-              <isMapped>false</isMapped>
-              <parentFolderId>b3c50c83-5249-49f0-8b25-5d319eeab529</parentFolderId>
-              <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
-              <packageName>Intent.Modelers.Domain.Events</packageName>
-              <stereotypes>
-                <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
                   <addedByDefault>true</addedByDefault>
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
-                    <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y}" isActive="true" />
-                    <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
-                    <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="c4c61fdc-464d-41d2-8e0e-5a734d588302" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>

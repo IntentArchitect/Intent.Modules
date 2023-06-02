@@ -38,6 +38,10 @@ namespace Intent.Modelers.Domain.Events.Api
 
         public FolderModel Folder { get; }
 
+        public bool IsMapped => _element.IsMapped;
+
+        public IElementMapping Mapping => _element.MappedElement;
+
         public IElement InternalElement => _element;
 
         public IList<PropertyModel> Properties => _element.ChildElements
@@ -83,6 +87,16 @@ namespace Intent.Modelers.Domain.Events.Api
         public static DomainEventModel AsDomainEventModel(this ICanBeReferencedType type)
         {
             return type.IsDomainEventModel() ? new DomainEventModel((IElement)type) : null;
+        }
+
+        public static bool HasMapFromClassMapping(this DomainEventModel type)
+        {
+            return type.Mapping?.MappingSettingsId == "fe437011-d386-4a35-be0c-21a4180821ba";
+        }
+
+        public static IElementMapping GetMapFromClassMapping(this DomainEventModel type)
+        {
+            return type.HasMapFromClassMapping() ? type.Mapping : null;
         }
     }
 }

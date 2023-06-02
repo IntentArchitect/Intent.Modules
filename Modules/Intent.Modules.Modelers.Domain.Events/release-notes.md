@@ -1,3 +1,7 @@
+### Version 3.5.0
+
+- Supports indicating Domain Events being triggered from Class Constructors and Operations in the diagrams.
+
 ### Version 3.4.2
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

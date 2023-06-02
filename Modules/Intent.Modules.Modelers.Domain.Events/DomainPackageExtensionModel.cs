@@ -19,6 +19,7 @@ namespace Intent.Modelers.Domain.Events.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<DomainEventModel> DomainEvents => UnderlyingPackage.ChildElements
             .GetElementsOfType(DomainEventModel.SpecializationTypeId)
             .Select(x => new DomainEventModel(x))
