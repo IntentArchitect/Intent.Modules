@@ -17,6 +17,11 @@ namespace Intent.Modelers.Services.Api
                 .ToList();
         }
 
+        public static bool IsServicesPackageModel(this IPackage package)
+        {
+            return package?.SpecializationTypeId == ServicesPackageModel.SpecializationTypeId;
+        }
+
 
     }
 }

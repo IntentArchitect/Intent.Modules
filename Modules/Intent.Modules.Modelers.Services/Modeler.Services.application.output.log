@@ -155,7 +155,7 @@
     <FileLog>
       <ProjectId>d1f174a3-f159-4dc9-83c2-d6ef92e11c70</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#d1f174a3-f159-4dc9-83c2-d6ef92e11c70</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
