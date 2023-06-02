@@ -1,5 +1,7 @@
-### Version 1.0.2
+### Version 1.1.0
+
 - Fix: Fixed a bug where the Domain Modeler association change script not managing keys correctly.
+- Cleaned up the internal scripts which now show where to find their TS script equivalents in order to make modifications.
 
 ### Version 1.0.1
 

@@ -1,4 +1,4 @@
-// services-crud script (see ~/DesignerMacros/scr/services-crud folder in Intent.Modules)
+// services-crud script (see ~/DesignerMacros/src/services-crud folder in Intent.Modules)
 async function execute() {
     let package = element.getPackage();
     let entity = await DomainHelper.openSelectEntityDialog({

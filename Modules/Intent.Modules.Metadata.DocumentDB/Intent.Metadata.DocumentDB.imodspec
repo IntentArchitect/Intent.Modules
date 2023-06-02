@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.DocumentDB</id>
-  <version>1.0.2-pre.0</version>
+  <version>1.1.0-pre.0</version>
   <supportedClientVersions>[3.4.0, 5.0.0-a)</supportedClientVersions>
   <summary>A custom module for Intent.Modules.</summary>
   <description>A custom module for Intent.Modules.</description>
@@ -45,7 +45,7 @@
   </files>
   <moduleSettingsExtensions />
   <metadata>
-    <install target="Domain" src="modelers/MongoDb Key Automation Extensions.designer.settings" externalReference="4652d8dc-eea5-49cb-8c08-93ac1972962c" />
+    <install target="Domain" src="modelers/Document Db Key Automation Extensions.designer.settings" externalReference="4652d8dc-eea5-49cb-8c08-93ac1972962c" />
     <install target="Domain" src="Intent.Metadata/Module Builder/Intent.Metadata.DocumentDB/Intent.Metadata.DocumentDB.pkg.config" externalReference="1c7eab18-9482-4b4e-b61b-1fbd2d2427b6" />
   </metadata>
 </package>

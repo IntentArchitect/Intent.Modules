@@ -1,7 +1,11 @@
-(async () => {
-{
-    // This script was made using a Typescript source. Don't edit this script directly.
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/package-on-load/package-on-load.ts
+ */
 
+function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     element.getStereotypes()
     if (!element.hasMetadata("database-paradigm-selected") && 
@@ -221,4 +225,4 @@ function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
     }
 }
 
-})();
+execute();

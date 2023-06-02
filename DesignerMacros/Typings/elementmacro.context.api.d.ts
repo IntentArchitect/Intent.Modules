@@ -6,6 +6,11 @@
 declare let element: MacroApi.Context.IElementApi;
 
 /**
+ * The association that triggered this script's execution.
+ */
+declare let association: MacroApi.Context.IAssociationApi;
+
+/**
  * Returns information about the application and it's settings.
  */
 declare const application: MacroApi.Context.IApplication;

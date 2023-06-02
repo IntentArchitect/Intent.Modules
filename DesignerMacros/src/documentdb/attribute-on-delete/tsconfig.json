@@ -1,0 +1,16 @@
+{
+    "compileOnSave": false,
+    "compilerOptions": {
+      "target": "ES2017",
+      "removeComments": false,
+      "outFile": "./dist/dist.js",
+      "sourceMap": false,
+      "types": []
+    },
+    "include": [
+      "**/*",
+      "../../../typings/**/*"
+    ],
+    "exclude": [
+    ]
+  }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="4652d8dc-eea5-49cb-8c08-93ac1972962c" type="Designer Settings" typeId="7a6411a8-ffef-4209-91c6-8d12755a806a">
-  <name>MongoDb Key Automation Extensions</name>
-  <display>MongoDb Key Automation Extensions</display>
+  <name>Document Db Key Automation Extensions</name>
+  <display>Document Db Key Automation Extensions</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />

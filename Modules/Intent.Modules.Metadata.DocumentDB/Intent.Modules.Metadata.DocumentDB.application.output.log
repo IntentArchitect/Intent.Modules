@@ -60,8 +60,8 @@
       <ProjectId>1873edee-d26f-41d7-87a0-b30c1aabc79c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.DesignerSettings#4652d8dc-eea5-49cb-8c08-93ac1972962c</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/MongoDb Key Automation Extensions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>MongoDb Key Automation Extensions.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/Document Db Key Automation Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Document Db Key Automation Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
