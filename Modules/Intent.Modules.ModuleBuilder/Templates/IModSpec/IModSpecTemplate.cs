@@ -93,6 +93,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 : CreateImodSpecFile();
 
             var doc = XDocument.Parse(content);
+            
+            /*--------------------------------- HEADER METADATA ---------------------------------*/
 
             doc.Element("package").SetElementValue("id", ModuleModel.Name);
 
@@ -113,6 +115,20 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 doc.Element("package").SetElementValue("summary", ExecutionContext.GetApplicationConfig().Description);
                 doc.Element("package").SetElementValue("description", ExecutionContext.GetApplicationConfig().Description);
+            }
+            
+            var tagsElement = doc.Element("package").Element("tags");
+            if (tagsElement == null)
+            {
+                tagsElement = new XElement("tags");
+                doc.Element("package").Add(tagsElement);
+            }
+            
+            var releaseNotesElement = doc.Element("package").Element("releaseNotes");
+            if (releaseNotesElement == null)
+            {
+                releaseNotesElement = new XElement("releaseNotes");
+                doc.Element("package").Add(releaseNotesElement);
             }
 
             var templatesElement = doc.Element("package").Element("templates");
@@ -138,6 +154,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 icon.SetValue(OutputTarget.Application.Icon.Source);
             }
+            
+            /*--------------------------------- DESIGN ELEMENTS ---------------------------------*/
 
             foreach (var template in _templatesToRegister)
             {
@@ -213,26 +231,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentRoslynWeaver.Name, IntentModule.IntentRoslynWeaver.Version));
             }
-
-            var dependencies = doc.XPathSelectElement("package/dependencies");
-            foreach (var moduleDependency in _moduleDependencies)
-            {
-                if (moduleDependency.ModuleId != doc.XPathSelectElement("package/id").Value)
-                {
-                    var existing = doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]");
-                    if (existing == null)
-                    {
-                        existing = CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion));
-                        dependencies.Add(existing);
-                    }
-                    else if (NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion))
-                    {
-                        existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
-                    }
-                }
-            }
-            SortChildElementsByAttribute(dependencies, "id");
-
+            
             foreach (var template in doc.XPathSelectElements($"package/templates/template").ToList())
             {
                 if (template.Attribute("externalReference") != null && _templatesToRegister.All(x => x.ModelId != template.Attribute("externalReference").Value))
@@ -240,6 +239,33 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     template.Remove();
                 }
             }
+            
+            /*--------------------------------- MODULE DEPENDENCIES ---------------------------------*/
+
+            var dependencies = doc.XPathSelectElement("package/dependencies");
+            foreach (var moduleDependency in _moduleDependencies)
+            {
+                if (moduleDependency.ModuleId == doc.XPathSelectElement("package/id").Value)
+                {
+                    continue;
+                }
+                
+                var existing = doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]");
+                if (existing != null)
+                {
+                    continue;
+                }
+                existing = CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion));
+                dependencies.Add(existing);
+                // DJVV - Don't overwrite, only add if missing. Keep prev. versions in tact.
+                // else if (NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion))
+                // {
+                //     existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
+                // }
+            }
+            SortChildElementsByAttribute(dependencies, "id");
+            
+            /*--------------------------------- DECORATORS ---------------------------------*/
 
             var decoratorsElement = doc.Element("package").Element("decorators");
             if (_decoratorsToRegister.Any())
