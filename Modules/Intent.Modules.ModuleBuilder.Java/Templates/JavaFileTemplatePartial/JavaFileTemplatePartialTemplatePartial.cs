@@ -27,7 +27,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public JavaFileTemplatePartialTemplate(IOutputTarget outputTarget, JavaFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            AddNugetDependency("Intent.Modules.Common.Java", "3.3.11");
+            AddNugetDependency("Intent.Modules.Common.Java", "3.4.3");
             AddNugetDependency("Intent.Modules.Java.Weaving.Annotations", "3.3.1");
 
             if (Model.GetModelType() != null)
@@ -56,7 +56,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             ExecutionContext.EventDispatcher.Publish(new TemplateRegistrationRequiredEvent(this));
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.Java",
-                moduleVersion: "3.3.11"));
+                moduleVersion: "3.4.3"));
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
