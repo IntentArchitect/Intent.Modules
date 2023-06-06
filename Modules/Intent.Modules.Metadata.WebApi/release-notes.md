@@ -1,3 +1,6 @@
+### Version 4.1.2
+- Fix: Fixed issue around Rest route generation by convention not working for attributes ending in `ID`.
+
 ### Version 4.1.1
 
 - Support default base Path HttpEndpointModelFactory, if you don't want the build in default path.

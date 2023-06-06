@@ -24,11 +24,13 @@ let folderName = element.getParent().getName();
 let mappedEntity = element.getMapping().getPath()[0]?.getElement()?.getName();
 
 let serviceRoute = toKebabCase(folderName);
-let serviceRouteIdentifier = element.getChildren().some(x =&gt; x.getName().toLowerCase() == `${singularize(folderName.toLowerCase())}id`) 
-    ? `/{${toCamelCase(singularize(folderName))}Id}`
-    : element.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "";
+let conventionIdAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == `${singularize(folderName.toLowerCase())}id`);
+let idAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == "id");
+let serviceRouteIdentifier = conventionIdAttribute 
+    ? `/{${toCamelCase(conventionIdAttribute.getName()) }}`
+    : idAttribute ? `/{${toCamelCase(idAttribute.getName())}}` : "";
 let subRoute = mappedEntity &amp;&amp; mappedEntity != singularize(folderName) &amp;&amp; serviceRouteIdentifier != `/{id}` 
-    ? `/${toKebabCase(pluralize(mappedEntity))}${element.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : ""}` 
+    ? `/${toKebabCase(pluralize(mappedEntity))}${idAttribute ? `/{${toCamelCase(idAttribute.getName())}}` : ""}` 
     : getUnconventionalRoute() != "" ? `/${getUnconventionalRoute()}` : "";
 
 if (element.getName().startsWith("Create") || element.getName().startsWith("Add")) {
@@ -80,11 +82,13 @@ let folderName = element.getParent().getName();
 let mappedEntity = element.getMapping()?.getElement()?.getName();
 
 let serviceRoute = toKebabCase(folderName);
-let serviceRouteIdentifier = element.getChildren().some(x =&gt; x.getName().toLowerCase() == `${singularize(folderName.toLowerCase())}id`) 
-    ? `/{${toCamelCase(singularize(folderName))}Id}`
-    : element.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : "";
+let conventionIdAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == `${singularize(folderName.toLowerCase())}id`);
+let idAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == "id");
+let serviceRouteIdentifier = conventionIdAttribute 
+    ? `/{${toCamelCase(conventionIdAttribute.getName()) }}`
+    : idAttribute ? `/{${toCamelCase(idAttribute.getName())}}` : "";
 let subRoute = mappedEntity &amp;&amp; mappedEntity != singularize(folderName) &amp;&amp; serviceRouteIdentifier != `/{id}` 
-    ? `/${toKebabCase(pluralize(mappedEntity))}${element.getChildren().some(x =&gt; x.getName().toLowerCase() == "id") ? `/{id}` : ""}` 
+    ? `/${toKebabCase(pluralize(mappedEntity))}${idAttribute ? `/{${toCamelCase(idAttribute.getName())}}` : ""}` 
     : getUnconventionalRoute() != "" ? `/${getUnconventionalRoute()}` : "";
 
 httpSettings.getProperty("Verb").setValue("GET");
