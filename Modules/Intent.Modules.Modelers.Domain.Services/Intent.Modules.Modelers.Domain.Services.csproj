@@ -33,7 +33,7 @@
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.0.1" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.4.2" />
-  
+
   </ItemGroup>
 
 </Project>
