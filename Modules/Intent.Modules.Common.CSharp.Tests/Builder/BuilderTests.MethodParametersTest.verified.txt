@@ -1,0 +1,36 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public void NoParamMethod()
+        {
+        }
+
+        public void SingleParamMethod(string parm1)
+        {
+            // Expect parameters on same line
+        }
+
+        public void DoubleParamsMethod(string parm1, string parm2)
+        {
+            // Expect parameters on same line
+        }
+
+        public void TripleParamsMethod(string parm1, string parm2, string parm3)
+        {
+            // Expect parameters on same line
+        }
+
+        public void LongAndManyParamsMethod(
+            string firstParameter,
+            string secondParameter,
+            string thirdParameter,
+            string fourthParameter)
+        {
+            // Expect parameters to span over multiple lines
+        }
+    }
+}

@@ -342,4 +342,36 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task MethodParametersTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "NoParamMethod");
+                @class.AddMethod("void", "SingleParamMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "DoubleParamsMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddParameter("string", "parm2")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "TripleParamsMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddParameter("string", "parm2")
+                    .AddParameter("string", "parm3")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "LongAndManyParamsMethod", method => method
+                    .AddParameter("string", "firstParameter")
+                    .AddParameter("string", "secondParameter")
+                    .AddParameter("string", "thirdParameter")
+                    .AddParameter("string", "fourthParameter")
+                    .AddStatement("// Expect parameters to span over multiple lines"));
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }
