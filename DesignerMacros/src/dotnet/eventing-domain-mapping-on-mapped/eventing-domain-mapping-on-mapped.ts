@@ -10,7 +10,7 @@
 
 const mappingSettingId = "e437007c-33fd-46d5-9293-d4529b4b82e6";
 
-let properties = element.getChildren("Property")
+let properties = element.getChildren()
     .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
 
 for (const property of properties) {
