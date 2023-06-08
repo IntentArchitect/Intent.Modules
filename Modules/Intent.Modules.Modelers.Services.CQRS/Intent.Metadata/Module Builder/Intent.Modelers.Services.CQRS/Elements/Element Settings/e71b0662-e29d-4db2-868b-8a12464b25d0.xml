@@ -351,5 +351,53 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="9e6d99b2-8b74-4ffc-829c-efb2b914d24a" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>e71b0662-e29d-4db2-868b-8a12464b25d0</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="572de75a-fc90-4246-a459-f85451fbef11" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Mapped</name>
+          <display>On Mapped: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="52826197-ac61-4b9a-b0d9-d5b21b700171">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>9e6d99b2-8b74-4ffc-829c-efb2b914d24a</parentFolderId>
+          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+          <packageName>Intent.Modelers.Services.CQRS</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="var namingConvention = application.getSettings(&quot;c4d1e35c-7c0d-4926-afe0-18f17563ce17&quot;)?.getField(&quot;c3789138-6649-47e4-901b-5f6469583cb7&quot;)?.value;&#xD;&#xA;&#xD;&#xA;element.getChildren(&quot;DTO-Field&quot;).forEach(x =&gt; {&#xD;&#xA;    if (namingConvention == &quot;pascal-case&quot;) {&#xD;&#xA;        x.setName(toPascalCase(x.getName()))&#xD;&#xA;    } else if (namingConvention == &quot;camel-case&quot;) {&#xD;&#xA;        x.setName(toCamelCase(x.getName()))&#xD;&#xA;    }&#xD;&#xA;})" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

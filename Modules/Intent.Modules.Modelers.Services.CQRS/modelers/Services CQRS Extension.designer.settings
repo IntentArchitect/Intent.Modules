@@ -211,6 +211,19 @@
           </mappings>
         </mappingSetting>
       </mappingSettings>
+      <macros>
+        <macro trigger="on-mapped">
+          <script>var namingConvention = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("c3789138-6649-47e4-901b-5f6469583cb7")?.value;
+
+element.getChildren("DTO-Field").forEach(x =&gt; {
+    if (namingConvention == "pascal-case") {
+        x.setName(toPascalCase(x.getName()))
+    } else if (namingConvention == "camel-case") {
+        x.setName(toCamelCase(x.getName()))
+    }
+})</script>
+        </macro>
+      </macros>
       <childElementSettings />
     </elementSetting>
     <elementSetting type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
@@ -323,6 +336,19 @@
           </mappings>
         </mappingSetting>
       </mappingSettings>
+      <macros>
+        <macro trigger="on-mapped">
+          <script>var namingConvention = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("c3789138-6649-47e4-901b-5f6469583cb7")?.value;
+
+element.getChildren("DTO-Field").forEach(x =&gt; {
+    if (namingConvention == "pascal-case") {
+        x.setName(toPascalCase(x.getName()))
+    } else if (namingConvention == "camel-case") {
+        x.setName(toCamelCase(x.getName()))
+    }
+})</script>
+        </macro>
+      </macros>
       <childElementSettings />
     </elementSetting>
   </elementSettings>
