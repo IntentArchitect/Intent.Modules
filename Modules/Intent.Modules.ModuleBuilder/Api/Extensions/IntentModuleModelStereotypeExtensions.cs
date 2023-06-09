@@ -87,6 +87,16 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IElement[]>("Reference in Designer") ?? new IElement[0];
             }
 
+            public bool IncludeReleaseNotes()
+            {
+                return _stereotype.GetProperty<bool>("Include Release Notes");
+            }
+
+            public bool AlwaysOverrideDependencyVersions()
+            {
+                return _stereotype.GetProperty<bool>("Always override dependency versions");
+            }
+
             public class ReferenceInOptions
             {
                 public readonly string Value;

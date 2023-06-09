@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
   <version>3.6.7-pre.0</version>
@@ -167,6 +167,10 @@
     <template id="Intent.ModuleBuilder.Templates.FileTemplateT4" externalReference="b33044cb-5352-40c7-97a8-a1109b7dfd59">
       <role>Templates</role>
       <location>Templates</location>
+    </template>
+    <template id="Intent.ModuleBuilder.Templates.ReleaseNotes" externalReference="b6551a9e-4c88-40d1-9b15-bcee1fc6ebb4">
+      <role>IModSpec</role>
+      <location></location>
     </template>
     <template id="Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions" externalReference="af184995-dba3-463f-8b63-7c38190595f0">
       <config>

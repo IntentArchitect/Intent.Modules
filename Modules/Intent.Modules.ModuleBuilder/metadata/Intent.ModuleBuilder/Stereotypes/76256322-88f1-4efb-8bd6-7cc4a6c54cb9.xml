@@ -110,5 +110,25 @@
       </lookupTypes>
       <isActiveFunction>return properties["Reference in"].value === "Selected Designers";</isActiveFunction>
     </property>
+    <property id="2e0e1191-139f-4d1d-8ad5-d6b5751f2555">
+      <name>Include Release Notes</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+    <property id="8a5e6f84-c978-4138-9ecc-97776be7ccf8">
+      <name>Always override dependency versions</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

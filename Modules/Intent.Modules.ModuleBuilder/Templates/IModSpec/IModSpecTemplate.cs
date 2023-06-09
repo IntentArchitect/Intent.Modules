@@ -37,20 +37,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             _nugetPackages.Add(IntentNugetPackages.IntentSdk);
             _nugetPackages.Add(IntentNugetPackages.IntentPackager);
             ModuleModel = model;
-            ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event =>
-            {
-                _templatesToRegister.Add(@event);
-            });
+            ExecutionContext.EventDispatcher.Subscribe<TemplateRegistrationRequiredEvent>(@event => { _templatesToRegister.Add(@event); });
 
-            ExecutionContext.EventDispatcher.Subscribe<DecoratorRegistrationRequiredEvent>(@event =>
-            {
-                _decoratorsToRegister.Add(@event);
-            });
+            ExecutionContext.EventDispatcher.Subscribe<DecoratorRegistrationRequiredEvent>(@event => { _decoratorsToRegister.Add(@event); });
 
-            ExecutionContext.EventDispatcher.Subscribe<FactoryExtensionRegistrationRequiredEvent>(@event =>
-            {
-                _extensionsToRegister.Add(@event);
-            });
+            ExecutionContext.EventDispatcher.Subscribe<FactoryExtensionRegistrationRequiredEvent>(@event => { _extensionsToRegister.Add(@event); });
 
             _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommon.Name, IntentModule.IntentCommon.Version));
             _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentCommonTypes.Name, IntentModule.IntentCommonTypes.Version));
@@ -67,13 +58,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     return;
                 }
+
                 _moduleDependencies.Add(@event);
             });
 
-            ExecutionContext.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event =>
-            {
-                _metadataToRegister.Add(@event);
-            });
+            ExecutionContext.EventDispatcher.Subscribe<MetadataRegistrationRequiredEvent>(@event => { _metadataToRegister.Add(@event); });
         }
 
         public IntentModuleModel ModuleModel { get; }
@@ -93,7 +82,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 : CreateImodSpecFile();
 
             var doc = XDocument.Parse(content);
-            
+
             /*--------------------------------- HEADER METADATA ---------------------------------*/
 
             doc.Element("package").SetElementValue("id", ModuleModel.Name);
@@ -116,18 +105,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 doc.Element("package").SetElementValue("summary", ExecutionContext.GetApplicationConfig().Description);
                 doc.Element("package").SetElementValue("description", ExecutionContext.GetApplicationConfig().Description);
             }
-            
+
             var tagsElement = doc.Element("package").Element("tags");
             if (tagsElement == null)
             {
                 tagsElement = new XElement("tags");
                 doc.Element("package").Add(tagsElement);
             }
-            
+
             var releaseNotesElement = doc.Element("package").Element("releaseNotes");
-            if (releaseNotesElement == null)
+            if (releaseNotesElement == null && ModuleModel.GetModuleSettings().IncludeReleaseNotes())
             {
-                releaseNotesElement = new XElement("releaseNotes");
+                releaseNotesElement = new XElement("releaseNotes", "release-notes.md");
                 doc.Element("package").Add(releaseNotesElement);
             }
 
@@ -144,8 +133,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 icon = new XElement("iconUrl");
                 doc.Element("package").Add(icon);
             }
-            //icon.SetAttributeValue("type", ModuleModel.GetModuleSettings().Icon()?.Type.ToString());
-            //icon.SetAttributeValue("source", ModuleModel.GetModuleSettings().Icon()?.Source);
+
             if (!string.IsNullOrWhiteSpace(ModuleModel.GetModuleSettings().Icon()?.Source))
             {
                 icon.SetValue(ModuleModel.GetModuleSettings().Icon()?.Source ?? "");
@@ -154,7 +142,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 icon.SetValue(OutputTarget.Application.Icon.Source);
             }
-            
+
             /*--------------------------------- DESIGN ELEMENTS ---------------------------------*/
 
             foreach (var template in _templatesToRegister)
@@ -188,10 +176,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     specificTemplate.Add(new XAttribute("externalReference", template.ModelId));
                 }
-                
+
                 specificTemplate.SetElementValue("role", template.Role ?? string.Empty);
                 specificTemplate.SetElementValue("location", template.Location ?? string.Empty);
             }
+
             SortChildElementsByAttribute(templatesElement, "id");
 
             var factoryExtensions = doc.Element("package").Element("factoryExtensions");
@@ -200,6 +189,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 factoryExtensions = new XElement("factoryExtensions");
                 doc.Element("package").Add(factoryExtensions);
             }
+
             foreach (var extension in _extensionsToRegister)
             {
                 var specificExtension = doc.XPathSelectElement($"package/factoryExtensions/factoryExtension[@externalReference=\"{extension.ModelId}\"]");
@@ -217,6 +207,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     specificExtension.Add(new XAttribute("externalReference", extension.ModelId));
                 }
             }
+
             SortChildElementsByAttribute(factoryExtensions, "id");
 
             foreach (var extension in doc.XPathSelectElements($"package/factoryExtensions/factoryExtension").ToList())
@@ -231,7 +222,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 _moduleDependencies.Add(new ModuleDependencyRequiredEvent(IntentModule.IntentRoslynWeaver.Name, IntentModule.IntentRoslynWeaver.Version));
             }
-            
+
             foreach (var template in doc.XPathSelectElements($"package/templates/template").ToList())
             {
                 if (template.Attribute("externalReference") != null && _templatesToRegister.All(x => x.ModelId != template.Attribute("externalReference").Value))
@@ -239,7 +230,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     template.Remove();
                 }
             }
-            
+
             /*--------------------------------- MODULE DEPENDENCIES ---------------------------------*/
 
             var dependencies = doc.XPathSelectElement("package/dependencies");
@@ -249,22 +240,27 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     continue;
                 }
-                
+
                 var existing = doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]");
                 if (existing != null)
                 {
+                    if (string.IsNullOrWhiteSpace(existing.Attribute("version").Value) ||
+                        ModuleModel.GetModuleSettings().AlwaysOverrideDependencyVersions())
+                    {
+                        existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
+                    }
+
                     continue;
                 }
+
                 existing = CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion));
                 dependencies.Add(existing);
-                // DJVV - Don't overwrite, only add if missing. Keep prev. versions in tact.
-                // else if (NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion))
-                // {
-                //     existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
-                // }
+
+                existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
             }
+
             SortChildElementsByAttribute(dependencies, "id");
-            
+
             /*--------------------------------- DECORATORS ---------------------------------*/
 
             var decoratorsElement = doc.Element("package").Element("decorators");
@@ -284,9 +280,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         specificDecorator = new XElement("decorator", new XAttribute("id", decorator.DecoratorId), new XAttribute("externalReference", decorator.ModelId));
                         decoratorsElement.Add(specificDecorator);
                     }
+
                     specificDecorator.SetAttributeValue("id", decorator.DecoratorId);
                 }
             }
+
             SortChildElementsByAttribute(decoratorsElement, "id");
 
             foreach (var decorator in doc.XPathSelectElements($"package/decorators/decorator").ToList())
@@ -305,14 +303,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 moduleSettings = new XElement("moduleSettings");
                 doc.XPathSelectElement("package").Add(moduleSettings);
             }
+
             foreach (var settingsGroup in ModuleModel.SettingsGroups)
             {
                 var existing = doc.XPathSelectElement($"package/moduleSettings/group[@id=\"{settingsGroup.Id}\"]");
                 if (existing == null)
                 {
-                    existing = new XElement("group", new XAttribute("id", settingsGroup.Id), new XAttribute("title", settingsGroup.Name), new XAttribute("externalReference", settingsGroup.Id));
+                    existing = new XElement("group", new XAttribute("id", settingsGroup.Id), new XAttribute("title", settingsGroup.Name),
+                        new XAttribute("externalReference", settingsGroup.Id));
                     moduleSettings.Add(existing);
                 }
+
                 existing.SetAttributeValue("title", settingsGroup.Name);
 
                 var settings = new XElement("settings");
@@ -327,6 +328,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     {
                         fieldXml.Add(new XElement("hint", new XText(settingsField.GetFieldConfiguration().Hint())));
                     }
+
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
                     {
                         fieldXml.Add(new XElement("defaultValue", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
@@ -340,8 +342,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         {
                             options.Add(new XElement("option", new XAttribute("value", fieldOption.Value ?? fieldOption.Name), new XAttribute("description", fieldOption.Name)));
                         }
+
                         fieldXml.Add(options);
                     }
+
                     settings.Add(fieldXml);
                 }
 
@@ -349,13 +353,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     existing.RemoveNodes();
                 }
+
                 existing.Add(settings);
             }
+
             SortChildElementsByAttribute(moduleSettings, "id");
 
             foreach (var installedSettingsGroup in doc.XPathSelectElements($"package/moduleSettings/group"))
             {
-                if (installedSettingsGroup.Attribute("externalReference") != null && ModuleModel.SettingsGroups.All(x => x.Id != installedSettingsGroup.Attribute("externalReference").Value))
+                if (installedSettingsGroup.Attribute("externalReference") != null &&
+                    ModuleModel.SettingsGroups.All(x => x.Id != installedSettingsGroup.Attribute("externalReference").Value))
                 {
                     installedSettingsGroup.Remove();
                 }
@@ -369,14 +376,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 moduleSettingsExtensions = new XElement("moduleSettingsExtensions");
                 doc.XPathSelectElement("package").Add(moduleSettingsExtensions);
             }
+
             foreach (var groupExtension in ModuleModel.SettingsExtensions)
             {
                 var existing = doc.XPathSelectElement($"package/moduleSettingsExtensions/groupExtension[@id=\"{groupExtension.Id}\"]");
                 if (existing == null)
                 {
-                    existing = new XElement("groupExtension", new XAttribute("id", groupExtension.Id), new XAttribute("groupId", groupExtension.TypeReference.Element.Id), new XAttribute("externalReference", groupExtension.Id));
+                    existing = new XElement("groupExtension", new XAttribute("id", groupExtension.Id), new XAttribute("groupId", groupExtension.TypeReference.Element.Id),
+                        new XAttribute("externalReference", groupExtension.Id));
                     moduleSettingsExtensions.Add(existing);
                 }
+
                 existing.SetAttributeValue("groupId", groupExtension.TypeReference.Element.Id);
 
                 var settings = new XElement("settings");
@@ -391,6 +401,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     {
                         fieldXml.Add(new XElement("hint", new XText(settingsField.GetFieldConfiguration().Hint())));
                     }
+
                     if (!string.IsNullOrWhiteSpace(settingsField.GetFieldConfiguration().DefaultValue()))
                     {
                         fieldXml.Add(new XElement("defaultValue", new XText(settingsField.GetFieldConfiguration().DefaultValue())));
@@ -404,8 +415,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                         {
                             options.Add(new XElement("option", new XAttribute("value", fieldOption.Value ?? fieldOption.Name), new XAttribute("description", fieldOption.Name)));
                         }
+
                         fieldXml.Add(options);
                     }
+
                     settings.Add(fieldXml);
                 }
 
@@ -413,13 +426,16 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 {
                     existing.RemoveNodes();
                 }
+
                 existing.Add(settings);
             }
+
             SortChildElementsByAttribute(moduleSettingsExtensions, "id");
 
             foreach (var installedExtension in doc.XPathSelectElements($"package/moduleSettingsExtensions/groupExtension"))
             {
-                if (installedExtension.Attribute("externalReference") != null && ModuleModel.SettingsExtensions.All(x => x.Id != installedExtension.Attribute("externalReference").Value))
+                if (installedExtension.Attribute("externalReference") != null &&
+                    ModuleModel.SettingsExtensions.All(x => x.Id != installedExtension.Attribute("externalReference").Value))
                 {
                     installedExtension.Remove();
                 }
@@ -436,15 +452,17 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 
             foreach (var metadataRegistration in _metadataToRegister)
             {
-                var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{metadataRegistration.Id}\"]");
+                var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{metadataRegistration.Path}\"]") ??
+                               doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{metadataRegistration.Id}\"]");
                 if (existing == null)
                 {
                     existing = new XElement("install");
                     metadataRegistrations.Add(existing);
                 }
+
                 existing.SetAttributeValue("target", metadataRegistration.Targets.Any()
-                        ? string.Join(";", metadataRegistration.Targets.Select(x => x.Name))
-                        : null);
+                    ? string.Join(";", metadataRegistration.Targets.Select(x => x.Name))
+                    : null);
 
                 existing.SetAttributeValue("src", PathHelper.GetRelativePath(GetMetadata().GetFullLocationPath(), metadataRegistration.Path).NormalizePath());
                 existing.SetAttributeValue("externalReference", metadataRegistration.Id);
@@ -458,7 +476,8 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 .ToList();
             foreach (var notIncludedModule in notIncludedModules)
             {
-                Logging.Log.Warning($"Intent Module [{notIncludedModule.Name}] package has Stereotype Definitions but is not set to be included. Check your Module Settings in the Module Builder designer.");
+                Logging.Log.Warning(
+                    $"Intent Module [{notIncludedModule.Name}] package has Stereotype Definitions but is not set to be included. Check your Module Settings in the Module Builder designer.");
             }
 
             var packagesToInclude = _metadataManager.ModuleBuilder(OutputTarget.Application).GetIntentModuleModels()
@@ -469,11 +488,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 if (package.GetModuleSettings().ReferenceIn()?.IsAllDesigners() != true &&
                     package.GetModuleSettings().ReferenceInDesigner()?.Any() != true)
                 {
-                    Logging.Log.Warning($"Intent Module [{package.Name}] package is included but not set to be automatically referenced in a designer. Check your Module Settings in the Module Builder designer.");
+                    Logging.Log.Warning(
+                        $"Intent Module [{package.Name}] package is included but not set to be automatically referenced in a designer. Check your Module Settings in the Module Builder designer.");
                 }
 
                 var path = PathHelper.GetRelativePath(GetMetadata().GetFullLocationPath(), package.FileLocation).NormalizePath();
-                var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ?? doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
+                var existing = doc.XPathSelectElement($"package/metadata/install[@src=\"{path}\"]") ??
+                               doc.XPathSelectElement($"package/metadata/install[@externalReference=\"{package.Id}\"]");
                 if (existing == null)
                 {
                     existing = new XElement("install");
@@ -560,26 +581,32 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             {
                 return "text";
             }
+
             if (settingsField.GetFieldConfiguration().ControlType().IsNumber())
             {
                 return "number";
             }
+
             if (settingsField.GetFieldConfiguration().ControlType().IsCheckbox())
             {
                 return "checkbox";
             }
+
             if (settingsField.GetFieldConfiguration().ControlType().IsSwitch())
             {
                 return "switch";
             }
+
             if (settingsField.GetFieldConfiguration().ControlType().IsTextArea())
             {
                 return "textarea";
             }
+
             if (settingsField.GetFieldConfiguration().ControlType().IsSelect())
             {
                 return "select";
             }
+
             if (settingsField.GetFieldConfiguration().ControlType().IsMultiSelect())
             {
                 return "multi-select";
