@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="95f4362b-8193-41cb-bd65-c17d6be3f96b" type="Element Settings" typeId="727577aa-3e07-4b41-be7d-7359bb1e48c8">
+  <name>Version</name>
+  <display>Version</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <order>1</order>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>0ec760ae-98d8-4e8e-953c-d00691ff7e28</parentFolderId>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d8f6f331-d4f0-4c75-aa91-f2e715cd9591" name="Type Reference Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="8da796ff-e5b8-4a53-9c18-9176bfff8fbc" display="Mode" value="Disabled" isActive="true" />
+        <property name="07613cf6-d1bf-411c-96db-65daad7d07f4" display="Display Name" isActive="false" />
+        <property name="3941cc0b-503e-495a-bef3-9923a6554cee" display="Hint" isActive="false" />
+        <property name="b94f760c-0ce7-4176-bbae-97e26914b39c" display="Target Types" isActive="false" />
+        <property name="eedd06e4-e2b8-42f2-b882-c8ae9cecabb8" display="Represents" value="Reference" isActive="false" />
+        <property name="ff4b18c5-397b-4639-ba79-89939deb9834" display="Default Type Id" isActive="false" />
+        <property name="229dcbe7-f000-4ee9-a06a-febad727f7e1" display="Allow Nullable" value="true" isActive="false" />
+        <property name="d04ec558-6f6a-462b-b16a-9da1d7b4e9db" display="Allow Collection" value="true" isActive="false" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="f406222b-31a8-435e-80f6-6a08f9108649" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="5a9277a9-b808-4ade-bb57-840b51b0da3a" display="Save Mode" value="Default" isActive="true" />
+        <property name="736b1337-6f35-4e38-85a8-69ff5d69fb7d" display="Icon" value="{&quot;source&quot;:&quot;data:image/png;base64,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&quot;,&quot;type&quot;:0,&quot;absolutePathRelativeTo&quot;:null}" isActive="true" />
+        <property name="32086823-bd72-4be0-a765-2d9530f4ce06" display="Expanded Icon" isActive="true" />
+        <property name="b966a8e9-f298-4741-8397-fe49f29c248b" display="Icon Function" isActive="true" />
+        <property name="0632053a-6b40-47a0-857f-6840e322344c" display="Display Text Function" value="" isActive="true" />
+        <property name="1e5a5798-220b-4a92-993d-c4ebd4123e53" display="Validate Function" value="" isActive="true" />
+        <property name="c48d9593-c1f4-4610-9cb3-54de9c2f0c06" display="Allow Rename" value="true" isActive="true" />
+        <property name="4b17e907-bd58-4f70-b376-383c6046ad8a" display="Allow Abstract" value="false" isActive="true" />
+        <property name="0eb8bcd6-4120-47c5-ac74-9a9e4a7d4536" display="Allow Set Value" value="false" isActive="true" />
+        <property name="8ad604ab-7edf-4a6c-86a5-e27f0f95dfac" display="Allow Generic Types" value="false" isActive="true" />
+        <property name="ad5ce0fc-72ab-4aa3-92e9-238954c2aedb" display="Allow Sorting" value="true" isActive="true" />
+        <property name="3a68e3cb-8014-4c43-9965-f6fc35589d37" display="Sort Children" isActive="true" />
+        <property name="46180320-9a7e-4fe3-8351-f7524612a52c" display="Allow Find in View" value="false" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="56381514-b357-424d-b066-7acc50b693b2" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+      <name>[context menu]</name>
+      <display>[context menu]</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>95f4362b-8193-41cb-bd65-c17d6be3f96b</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

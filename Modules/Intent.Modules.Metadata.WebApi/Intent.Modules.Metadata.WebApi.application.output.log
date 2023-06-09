@@ -82,6 +82,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#5b78e00d-e532-4c04-9c51-93da258db648</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/OpenAPIPackageModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>OpenAPIPackageModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#77253e5b-e752-424c-b2c7-1707996f810f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/OperationExtensionModel.cs</ApplicationRelativeFilePath>
@@ -113,6 +121,38 @@
       <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0ec760ae-98d8-4e8e-953c-d00691ff7e28</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/VersionDefinitionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>VersionDefinitionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#95f4362b-8193-41cb-bd65-c17d6be3f96b</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/VersionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>VersionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
       <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
@@ -134,6 +174,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/WebApi CQRS Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>WebApi CQRS Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbbe3c09-70f6-47d7-af27-c18d9712d6a7</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#ffcc65bb-8e84-43f2-a025-777a000d245d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/WebApi OpenApi Extensions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>WebApi OpenApi Extensions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

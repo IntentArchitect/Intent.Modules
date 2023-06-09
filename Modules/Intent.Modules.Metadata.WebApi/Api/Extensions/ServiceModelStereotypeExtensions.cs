@@ -13,6 +13,29 @@ namespace Intent.Metadata.WebApi.Api
 {
     public static class ServiceModelStereotypeExtensions
     {
+        public static ApiVersion GetApiVersion(this ServiceModel model)
+        {
+            var stereotype = model.GetStereotype("Api Version");
+            return stereotype != null ? new ApiVersion(stereotype) : null;
+        }
+
+
+        public static bool HasApiVersion(this ServiceModel model)
+        {
+            return model.HasStereotype("Api Version");
+        }
+
+        public static bool TryGetApiVersion(this ServiceModel model, out ApiVersion stereotype)
+        {
+            if (!HasApiVersion(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ApiVersion(model.GetStereotype("Api Version"));
+            return true;
+        }
         public static HttpServiceSettings GetHttpServiceSettings(this ServiceModel model)
         {
             var stereotype = model.GetStereotype("Http Service Settings");
@@ -80,6 +103,24 @@ namespace Intent.Metadata.WebApi.Api
 
             stereotype = new Unsecured(model.GetStereotype("Unsecured"));
             return true;
+        }
+
+        public class ApiVersion
+        {
+            private IStereotype _stereotype;
+
+            public ApiVersion(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public IElement[] ApplicableVersions()
+            {
+                return _stereotype.GetProperty<IElement[]>("Applicable Versions") ?? new IElement[0];
+            }
+
         }
 
 
