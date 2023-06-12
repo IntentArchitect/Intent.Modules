@@ -37,6 +37,12 @@ namespace Intent.Metadata.WebApi.Api
 
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)]
+        public VersionDefinitionModel VersionDefinition
+        {
+            get { return new VersionDefinitionModel(_element); }
+        }
+
         public override string ToString()
         {
             return _element.ToString();
