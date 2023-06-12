@@ -92,9 +92,9 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Include Release Notes");
             }
 
-            public bool AlwaysOverrideDependencyVersions()
+            public DependencyVersionManagementOptions DependencyVersionManagement()
             {
-                return _stereotype.GetProperty<bool>("Always override dependency versions");
+                return new DependencyVersionManagementOptions(_stereotype.GetProperty<string>("Dependency Version Management"));
             }
 
             public class ReferenceInOptions
@@ -133,6 +133,50 @@ namespace Intent.ModuleBuilder.Api
             {
                 AllDesigners,
                 SelectedDesigners
+            }
+            public class DependencyVersionManagementOptions
+            {
+                public readonly string Value;
+
+                public DependencyVersionManagementOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public DependencyVersionManagementOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Only if missing":
+                            return DependencyVersionManagementOptionsEnum.OnlyIfMissing;
+                        case "Only if newer":
+                            return DependencyVersionManagementOptionsEnum.OnlyIfNewer;
+                        case "Always overwrite":
+                            return DependencyVersionManagementOptionsEnum.AlwaysOverwrite;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsOnlyIfMissing()
+                {
+                    return Value == "Only if missing";
+                }
+                public bool IsOnlyIfNewer()
+                {
+                    return Value == "Only if newer";
+                }
+                public bool IsAlwaysOverwrite()
+                {
+                    return Value == "Always overwrite";
+                }
+            }
+
+            public enum DependencyVersionManagementOptionsEnum
+            {
+                OnlyIfMissing,
+                OnlyIfNewer,
+                AlwaysOverwrite
             }
 
         }

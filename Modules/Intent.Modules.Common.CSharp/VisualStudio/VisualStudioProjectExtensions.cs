@@ -14,6 +14,9 @@ namespace Intent.Modules.Common.VisualStudio
         private const string NUGET_PACKAGES = "VS.NugetPackages";
         private const string REFERENCES = "VS.References";
         private const string FRAMEWORK_DEPENDENCY = "VS.FrameworkReferences";
+        private const string DEPENDENCY_VERSION_MANAGEMENT = "VS.DependencyVersionManagement";
+        
+        private const DependencyVersionManagement DefaultDependencyVersionManagementOption = DependencyVersionManagement.OnlyIfNewer;
 
         public static void InitializeVSMetadata(this IOutputTarget outputTarget)
         {
@@ -21,6 +24,11 @@ namespace Intent.Modules.Common.VisualStudio
             outputTarget.Metadata[DEPENDENCIES] = new List<IOutputTarget>();
             outputTarget.Metadata[REFERENCES] = new List<IAssemblyReference>();
             outputTarget.Metadata[FRAMEWORK_DEPENDENCY] = new HashSet<string>();
+
+            if (!outputTarget.Metadata.ContainsKey(DEPENDENCY_VERSION_MANAGEMENT))
+            {
+                outputTarget.Metadata[DEPENDENCY_VERSION_MANAGEMENT] = DefaultDependencyVersionManagementOption.ToString();
+            }
         }
 
         public static void AddFrameworkDependency(this IOutputTarget outputTarget, string frameworkDependency)
@@ -133,5 +141,32 @@ namespace Intent.Modules.Common.VisualStudio
             var startsWith = $"net{version:D}";
             return outputTarget.GetSupportedFrameworks().Any(x => x.StartsWith(startsWith));
         }
+
+        public static DependencyVersionManagement GetDependencyVersionManagement(this IOutputTarget outputTarget)
+        {
+            if (!outputTarget.Metadata.TryGetValue(DEPENDENCY_VERSION_MANAGEMENT, out var value))
+            {
+                return DefaultDependencyVersionManagementOption;
+            }
+
+            if (value is not string valueStr || !Enum.TryParse(valueStr, out DependencyVersionManagement option))
+            {
+                throw new InvalidOperationException($"Value for {DEPENDENCY_VERSION_MANAGEMENT} is invalid: {value}");
+            }
+
+            return option;
+        }
+
+        public static void SetDependencyVersionManagement(this IOutputTarget outputTarget, DependencyVersionManagement option)
+        {
+            outputTarget.Metadata[DEPENDENCY_VERSION_MANAGEMENT] = option.ToString();
+        }
+    }
+    
+    public enum DependencyVersionManagement
+    {
+        OnlyIfMissing = 1,
+        OnlyIfNewer = 2,
+        AlwaysOverwrite = 3
     }
 }

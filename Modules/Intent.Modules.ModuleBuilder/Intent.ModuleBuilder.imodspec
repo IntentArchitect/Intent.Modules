@@ -12,6 +12,7 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <factoryExtensions>
     <factoryExtension id="Intent.ModuleBuilder.AutoCompile" enabled="false" />
+    <factoryExtension id="Intent.ModuleBuilder.NugetVersionSetterExtension" externalReference="486b51dc-de85-4204-a5cb-8e0a24bb0104" />
   </factoryExtensions>
   <templates>
     <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
@@ -228,7 +229,7 @@
   <decorators></decorators>
   <dependencies>
     <dependency id="Intent.Common" version="3.4.1" />
-    <dependency id="Intent.Common.CSharp" version="3.3.33" />
+    <dependency id="Intent.Common.CSharp" version="3.3.36-pre.0" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />
   </dependencies>

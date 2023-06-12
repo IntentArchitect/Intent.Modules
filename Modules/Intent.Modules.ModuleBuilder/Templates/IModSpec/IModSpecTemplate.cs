@@ -242,21 +242,23 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 }
 
                 var existing = doc.XPathSelectElement($"package/dependencies/dependency[@id=\"{moduleDependency.ModuleId}\"]");
-                if (existing != null)
+                if (existing == null)
                 {
-                    if (string.IsNullOrWhiteSpace(existing.Attribute("version").Value) ||
-                        ModuleModel.GetModuleSettings().AlwaysOverrideDependencyVersions())
-                    {
-                        existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
-                    }
+                    existing = CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion));
+                    dependencies.Add(existing);
 
+                    existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
                     continue;
                 }
-
-                existing = CreateDependency(new IntentModule(moduleDependency.ModuleId, moduleDependency.ModuleVersion));
-                dependencies.Add(existing);
-
-                existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
+                
+                if (string.IsNullOrWhiteSpace(existing.Attribute("version").Value) ||
+                    ModuleModel.GetModuleSettings().DependencyVersionManagement() == null ||
+                    ModuleModel.GetModuleSettings().DependencyVersionManagement().IsAlwaysOverwrite() ||
+                    (ModuleModel.GetModuleSettings().DependencyVersionManagement().IsOnlyIfNewer() && 
+                     NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion)))
+                {
+                    existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
+                }
             }
 
             SortChildElementsByAttribute(dependencies, "id");
