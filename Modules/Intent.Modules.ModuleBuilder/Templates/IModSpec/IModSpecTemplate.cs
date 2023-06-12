@@ -11,6 +11,7 @@ using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.VisualStudio;
 using Intent.ModuleBuilder.Api;
 using Intent.Modules.Common.CSharp;
+using Intent.Modules.ModuleBuilder.Settings;
 using Intent.Modules.ModuleBuilder.Templates.DesignerSettings;
 using Intent.Templates;
 using Intent.Utils;
@@ -250,12 +251,14 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                     existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
                     continue;
                 }
-                
+
                 if (string.IsNullOrWhiteSpace(existing.Attribute("version").Value) ||
-                    ModuleModel.GetModuleSettings().DependencyVersionManagement() == null ||
-                    ModuleModel.GetModuleSettings().DependencyVersionManagement().IsAlwaysOverwrite() ||
-                    (ModuleModel.GetModuleSettings().DependencyVersionManagement().IsOnlyIfNewer() && 
-                     NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion)))
+                    ExecutionContext.Settings.GetModuleBuilderSettings()?.DependencyVersionOverwriteBehavior()?.IsAlways() == true ||
+                    (
+                        (ExecutionContext.Settings.GetModuleBuilderSettings()?.DependencyVersionOverwriteBehavior() == null ||
+                         ExecutionContext.Settings.GetModuleBuilderSettings().DependencyVersionOverwriteBehavior().IsIfNewer()) &&
+                        NuGetVersion.TryParse(existing.Attribute("version").Value, out var version) && version < NuGetVersion.Parse(moduleDependency.ModuleVersion)
+                    ))
                 {
                     existing.SetAttributeValue("version", moduleDependency.ModuleVersion);
                 }

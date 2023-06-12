@@ -40,5 +40,49 @@ namespace Intent.Modules.ModuleBuilder.Settings
         }
 
         public bool CreatePartialAPIModels() => bool.TryParse(_groupSettings.GetSetting("b06c3926-23e5-49dd-a59d-93ef16b9777e")?.Value.ToPascalCase(), out var result) && result;
+        public DependencyVersionOverwriteBehaviorOptions DependencyVersionOverwriteBehavior() => new DependencyVersionOverwriteBehaviorOptions(_groupSettings.GetSetting("9c8e6982-e036-4d35-bab1-9bb02382d7c3")?.Value);
+
+        public class DependencyVersionOverwriteBehaviorOptions
+        {
+            public readonly string Value;
+
+            public DependencyVersionOverwriteBehaviorOptions(string value)
+            {
+                Value = value;
+            }
+
+            public DependencyVersionOverwriteBehaviorOptionsEnum AsEnum()
+            {
+                return Value switch
+                {
+                    "always" => DependencyVersionOverwriteBehaviorOptionsEnum.Always,
+                    "if-newer" => DependencyVersionOverwriteBehaviorOptionsEnum.IfNewer,
+                    "never" => DependencyVersionOverwriteBehaviorOptionsEnum.Never,
+                    _ => throw new ArgumentOutOfRangeException(nameof(Value), $"{Value} is out of range")
+                };
+            }
+
+            public bool IsAlways()
+            {
+                return Value == "always";
+            }
+
+            public bool IsIfNewer()
+            {
+                return Value == "if-newer";
+            }
+
+            public bool IsNever()
+            {
+                return Value == "never";
+            }
+        }
+
+        public enum DependencyVersionOverwriteBehaviorOptionsEnum
+        {
+            Always,
+            IfNewer,
+            Never,
+        }
     }
 }

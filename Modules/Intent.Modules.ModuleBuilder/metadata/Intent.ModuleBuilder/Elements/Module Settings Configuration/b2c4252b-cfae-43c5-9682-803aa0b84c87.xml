@@ -37,5 +37,75 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="9c8e6982-e036-4d35-bab1-9bb02382d7c3" type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
+      <comment>Keep in mind that this is duplicated in the VS Proj Module</comment>
+      <name>Dependency version overwrite behavior</name>
+      <display>Dependency version overwrite behavior</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>manually</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>b2c4252b-cfae-43c5-9682-803aa0b84c87</parentFolderId>
+      <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+      <packageName>Intent.ModuleBuilder</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="4805c791-5be3-4049-b929-6046d7be9944" name="Field Configuration">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="e33ce4e3-a3c5-4a3c-a6b8-96418be03de0" display="Control Type" value="Select" isActive="true" />
+            <property name="7070a9ce-ff31-422e-9cff-d82876c5efdf" display="Is Required" value="true" isActive="true" />
+            <property name="01489021-8311-43d5-b41b-e7628a512c1d" display="Hint" value="The version update behavior for managed Module and Nuget dependencies" isActive="true" />
+            <property name="653d889c-626f-45c5-a6e6-72b74a2f805c" display="Default Value" value="if-newer" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="5fda96ce-f80b-486b-8d80-3a50b691adfb" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Always</name>
+          <display>Always = always</display>
+          <isAbstract>false</isAbstract>
+          <value>always</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>9c8e6982-e036-4d35-bab1-9bb02382d7c3</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="5d369281-6211-4451-b9bb-6e550ab84638" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>If newer</name>
+          <display>If newer = if-newer</display>
+          <isAbstract>false</isAbstract>
+          <value>if-newer</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>9c8e6982-e036-4d35-bab1-9bb02382d7c3</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="15f6412a-d57a-4f1e-bb42-7aac8a3e03a5" type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
+          <name>Never</name>
+          <display>Never = never</display>
+          <isAbstract>false</isAbstract>
+          <value>never</value>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>9c8e6982-e036-4d35-bab1-9bb02382d7c3</parentFolderId>
+          <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+          <packageName>Intent.ModuleBuilder</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

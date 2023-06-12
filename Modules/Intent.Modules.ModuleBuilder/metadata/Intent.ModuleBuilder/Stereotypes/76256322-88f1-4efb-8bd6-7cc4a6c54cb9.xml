@@ -120,19 +120,5 @@
       <valueOptions />
       <lookupTypes />
     </property>
-    <property id="8a5e6f84-c978-4138-9ecc-97776be7ccf8">
-      <name>Dependency Version Management</name>
-      <type>string</type>
-      <controlType>select</controlType>
-      <optionsSource>options</optionsSource>
-      <placeholder />
-      <defaultValue>Only if newer version</defaultValue>
-      <valueOptions>
-        <option>Only if missing</option>
-        <option>Only if newer</option>
-        <option>Always overwrite</option>
-      </valueOptions>
-      <lookupTypes />
-    </property>
   </properties>
 </stereotypeDefinition>

@@ -12,7 +12,6 @@
   <releaseNotes>release-notes.md</releaseNotes>
   <factoryExtensions>
     <factoryExtension id="Intent.ModuleBuilder.AutoCompile" enabled="false" />
-    <factoryExtension id="Intent.ModuleBuilder.NugetVersionSetterExtension" externalReference="486b51dc-de85-4204-a5cb-8e0a24bb0104" />
   </factoryExtensions>
   <templates>
     <template id="Intent.ModuleBuilder.DecoratorRegistration.Template">
@@ -229,7 +228,7 @@
   <decorators></decorators>
   <dependencies>
     <dependency id="Intent.Common" version="3.4.1" />
-    <dependency id="Intent.Common.CSharp" version="3.3.36-pre.0" />
+    <dependency id="Intent.Common.CSharp" version="3.3.35" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />
   </dependencies>
@@ -273,6 +272,16 @@
         <setting id="b06c3926-23e5-49dd-a59d-93ef16b9777e" title="Create partial API models" type="switch">
           <isRequired>false</isRequired>
           <hint>Creates an ignored partial class for each API model which can be used for custom logic.</hint>
+        </setting>
+        <setting id="9c8e6982-e036-4d35-bab1-9bb02382d7c3" title="Dependency version overwrite behavior" type="select">
+          <isRequired>true</isRequired>
+          <hint>The version update behavior for managed Module and Nuget dependencies</hint>
+          <defaultValue>if-newer</defaultValue>
+          <options>
+            <option value="always" description="Always" />
+            <option value="if-newer" description="If newer" />
+            <option value="never" description="Never" />
+          </options>
         </setting>
       </settings>
     </group>
