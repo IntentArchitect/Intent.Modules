@@ -30,6 +30,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(
@@ -43,6 +44,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
 
         public override string TransformText()
         {
+            throw new NotImplementedException("Implement custom template here");
             if (TryGetExistingFileContent(out var content))
             {
                 return TemplateHelper.ReplaceTemplateInheritsTag(content, $"{GetBaseType()}");

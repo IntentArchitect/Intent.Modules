@@ -26,9 +26,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
 
         public override string TemplateId => ApiPackageModelTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, PackageSettingsModel model)
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, PackageSettingsModel model)
         {
-            return new ApiPackageModelTemplate(project, model);
+            return new ApiPackageModelTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

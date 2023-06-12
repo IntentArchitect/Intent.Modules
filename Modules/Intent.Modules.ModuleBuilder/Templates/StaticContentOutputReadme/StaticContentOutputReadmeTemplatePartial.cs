@@ -25,6 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentOutputReadme
         {
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
         {
             return new TemplateFileConfig(

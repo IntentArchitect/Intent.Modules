@@ -26,12 +26,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public override string TemplateId => ApiElementModelTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, ElementSettingsModel model)
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ElementSettingsModel model)
         {
-            var associationSettings = _metadataManager.ModuleBuilder(project.Application).GetAssociationSettingsModels()
+            var associationSettings = _metadataManager.ModuleBuilder(outputTarget.Application).GetAssociationSettingsModels()
                 .Where(x => x.TargetEnd.TargetsType(model.Id) || x.SourceEnd.TargetsType(model.Id))
                 .ToList();
-            return new ApiElementModelTemplate(project, model, associationSettings);
+            return new ApiElementModelTemplate(outputTarget, model, associationSettings);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

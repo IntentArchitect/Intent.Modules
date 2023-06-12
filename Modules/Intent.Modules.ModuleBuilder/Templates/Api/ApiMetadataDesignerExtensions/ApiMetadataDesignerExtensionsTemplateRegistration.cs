@@ -26,9 +26,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensio
 
         public override string TemplateId => ApiMetadataDesignerExtensionsTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, IList<DesignerModel> model)
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, IList<DesignerModel> model)
         {
-            return new ApiMetadataDesignerExtensionsTemplate(project, model);
+            return new ApiMetadataDesignerExtensionsTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

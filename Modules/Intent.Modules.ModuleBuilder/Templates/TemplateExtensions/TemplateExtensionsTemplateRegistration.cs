@@ -27,9 +27,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateExtensions
 
         public override string TemplateId => TemplateExtensionsTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project)
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget)
         {
-            return new TemplateExtensionsTemplate(project);
+            return new TemplateExtensionsTemplate(outputTarget);
         }
     }
 }
