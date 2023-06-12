@@ -26,9 +26,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
 
         public override string TemplateId => ApiAssociationModelTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, AssociationSettingsModel model)
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, AssociationSettingsModel model)
         {
-            return new ApiAssociationModelTemplate(project, model);
+            return new ApiAssociationModelTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]

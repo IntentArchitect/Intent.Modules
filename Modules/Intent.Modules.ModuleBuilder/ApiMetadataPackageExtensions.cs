@@ -18,6 +18,11 @@ namespace Intent.ModuleBuilder.Api
                 .ToList();
         }
 
+        public static bool IsIntentModuleModel(this IPackage package)
+        {
+            return package?.SpecializationTypeId == IntentModuleModel.SpecializationTypeId;
+        }
+
 
     }
 }

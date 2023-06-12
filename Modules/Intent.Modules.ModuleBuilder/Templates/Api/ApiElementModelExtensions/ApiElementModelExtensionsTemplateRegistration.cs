@@ -28,9 +28,10 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelExtensions
 
         public override string TemplateId => ApiElementModelExtensionsTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, ExtensionModel model)
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ExtensionModel model)
         {
-            return new ApiElementModelExtensionsTemplate(project, model);
+            return new ApiElementModelExtensionsTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
