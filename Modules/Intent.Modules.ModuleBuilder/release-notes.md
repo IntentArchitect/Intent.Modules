@@ -1,3 +1,6 @@
+### Version 3.6.6
+- Fixed : Fixed an issue around `File Template`s crashing the Software Factory.
+
 ### Version 3.6.4
 
 - Added support for Templates to target Type-Definition model types. Will respect `C#` stereotype's `Namespace` setting.
