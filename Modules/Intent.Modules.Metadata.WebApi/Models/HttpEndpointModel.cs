@@ -9,6 +9,7 @@ internal class HttpEndpointModel : IHttpEndpointModel
     public HttpEndpointModel(
         string? name,
         HttpVerb verb,
+        string route,
         string? baseRoute,
         string? subRoute,
         HttpMediaType? mediaType,
@@ -19,6 +20,7 @@ internal class HttpEndpointModel : IHttpEndpointModel
     {
         Name = name;
         Verb = verb;
+        Route = route;
         BaseRoute = baseRoute;
         SubRoute = subRoute;
         MediaType = mediaType;
@@ -32,6 +34,7 @@ internal class HttpEndpointModel : IHttpEndpointModel
     public string? Name { get; }
     public ITypeReference? TypeReference => InternalElement.TypeReference;
     public HttpVerb Verb { get; }
+    public string Route { get; }
     public string? BaseRoute { get; }
     public string? SubRoute { get; }
     public HttpMediaType? MediaType { get; }

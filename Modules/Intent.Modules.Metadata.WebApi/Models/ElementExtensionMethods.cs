@@ -2,6 +2,7 @@
 using System;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Metadata.WebApi.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Metadata.WebApi.Stereotypes;
 
@@ -111,6 +112,40 @@ public static class ElementExtensionMethods
                 ? null
                 : Enum.Parse<HttpInputSource>(source.Replace(" ", ""), ignoreCase: true),
             HeaderName = headerName
+        };
+        return true;
+    }
+
+    public static bool TryGetApiVersion(this IElement element, out ApiVersion? apiVersion)
+    {
+        var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Api Version");
+        if (stereotype == null)
+        {
+            apiVersion = null;
+            return false;
+        }
+
+        var applicableVersionElements = stereotype.GetProperty<IElement[]>("Applicable Versions") 
+                                        ?? Array.Empty<IElement>();
+        var versions = applicableVersionElements
+            .Select(s => s.AsVersionModel())
+            .Where(p => p is not null)
+            .ToArray();
+
+        if (versions.Length == 0)
+        {
+            apiVersion = null;
+            return false;
+        }
+
+        apiVersion = new ApiVersion
+        {
+            ApplicableVersions = versions.Select(s => new ApiApplicableVersion
+            {
+                DefinitionName = s.VersionDefinition?.Name,
+                Version = s.Name,
+                IsDeprecated = s.GetVersionSettings()?.IsDeprecated() == true
+            }).ToList()
         };
         return true;
     }

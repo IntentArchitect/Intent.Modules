@@ -17,7 +17,7 @@ public static class HttpEndpointModelFactory
         return GetEndpoint(element, null);
     }
 
-    public static IHttpEndpointModel? GetEndpoint(IElement element, string? defaultbasePath = null)
+    public static IHttpEndpointModel? GetEndpoint(IElement element, string? defaultBasePath)
     {
         if (element.Stereotypes.Any(s => s.Name == "Http Settings (Obsolete)"))
         {
@@ -37,6 +37,9 @@ public static class HttpEndpointModelFactory
             throw new Exception($"{element.Name} [{element.Id}] cannot require authorization and allow-anonymous at the same time");
         }
 
+        var baseRoute = GetBaseRoute(element, defaultBasePath);
+        var subRoute = httpSettings!.Route;
+        
         return new HttpEndpointModel(
             name: element.SpecializationTypeId switch
             {
@@ -50,21 +53,49 @@ public static class HttpEndpointModelFactory
                     .RemoveSuffix("Query"),
                 _ => element.Name
             },
-            verb: httpSettings!.Verb ?? element.SpecializationTypeId switch
+            verb: httpSettings.Verb ?? element.SpecializationTypeId switch
             {
                 Constants.ElementTypeIds.Operation => HttpVerb.Post,
                 Constants.ElementTypeIds.Command => HttpVerb.Post,
                 Constants.ElementTypeIds.Query => HttpVerb.Get,
                 _ => throw new InvalidOperationException($"Unknown type: \"{element.SpecializationType}\" ({element.SpecializationTypeId})")
             },
-            baseRoute: GetBaseRoute(element, defaultbasePath),
-            subRoute: httpSettings.Route,
+            route: GetRoute(element, baseRoute, subRoute),
+            baseRoute: baseRoute,
+            subRoute: subRoute,
             mediaType: httpSettings.ReturnTypeMediatype,
             requiresAuthorization: hasSecured || hasAuthorize,
             allowAnonymous: hasUnsecured,
             internalElement: element,
-            inputs: GetParameters(element, httpSettings)
-                .ToArray());
+            inputs: GetParameters(element, httpSettings).ToArray());
+    }
+
+    private static string GetRoute(IElement element, string? baseRoute, string? subRoute)
+    {
+        // It's a smell that we're applying a C# WebApi convention for this which is intended
+        // to be consumed by any kind of technology, but unlikely to cause an issue since
+        // [controller]/[action] convention doesn't seem to be used elsewhere that we're aware of.
+        var serviceName = (element.ParentElement?.Name ?? "Default").RemoveSuffix("Controller", "Service");
+        var actionName = element.Name;
+        var routeConstruction = $"{baseRoute?.Trim('/')}/{subRoute?.Trim('/')}"
+            .Trim('/')
+            .Replace("[controller]", serviceName)
+            .Replace("[action]", actionName);
+        
+        if (element.TryGetApiVersion(out var apiVersion))
+        {
+            var version = apiVersion!.ApplicableVersions.Max(x => x.Version);
+            if(version is not null && !version.StartsWith("v", StringComparison.OrdinalIgnoreCase)) { version = "v" + version; }
+            routeConstruction = routeConstruction.Replace("{version}", version);
+        }
+        else if (element.ParentElement?.TryGetApiVersion(out var parentApiVersion) == true)
+        {
+            var version = parentApiVersion!.ApplicableVersions.Max(x => x.Version);
+            if(version is not null && !version.StartsWith("v", StringComparison.OrdinalIgnoreCase)) { version = "v" + version; }
+            routeConstruction = routeConstruction.Replace("{version}", version);
+        }
+
+        return routeConstruction.ToLowerInvariant();
     }
 
     public static HttpInputSource? GetHttpInputSource(IElement childElement)
@@ -94,12 +125,12 @@ public static class HttpEndpointModelFactory
         return null;
     }
 
-    private static string? GetBaseRoute(IElement element, string? defaultbasePath)
+    private static string? GetBaseRoute(IElement element, string? defaultBasePath)
     {
         var baseRoute = element.ParentElement?.TryGetHttpServiceSettings(out var serviceSettings) == true &&
                         !string.IsNullOrWhiteSpace(serviceSettings!.Route)
             ? serviceSettings.Route
-            : defaultbasePath;
+            : defaultBasePath;
 
         // At present this is hardcoded to accommodate the default for C# and wouldn't work for
         // other techs like Java which has a fallback convention of kebab-casing the element
