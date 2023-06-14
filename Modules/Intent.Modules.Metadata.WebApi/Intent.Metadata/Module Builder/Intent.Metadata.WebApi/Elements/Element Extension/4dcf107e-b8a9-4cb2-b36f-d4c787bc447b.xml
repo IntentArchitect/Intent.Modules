@@ -107,5 +107,53 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="c43629bd-2576-465a-8086-4eb291b69028" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4dcf107e-b8a9-4cb2-b36f-d4c787bc447b</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="df0d4d73-c3e2-41aa-98cd-456bef731887" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Changed</name>
+          <display>On Changed: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="c9a3d61f-e2da-4526-9c20-5e0e60b461df">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>c43629bd-2576-465a-8086-4eb291b69028</parentFolderId>
+          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+          <packageName>Intent.Metadata.WebApi</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const apiVersionStereotypeId = &quot;20855f03-c663-4ec6-b106-de06be98f1fe&quot;;&#xD;&#xA;const httpSettingsStereotypeId = &quot;b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6&quot;;&#xD;&#xA;&#xD;&#xA;let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty(&quot;Route&quot;)?.getValue();&#xD;&#xA;&#xD;&#xA;if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf(&quot;{version}&quot;) &gt;= 0) {&#xD;&#xA;    // Api version Stereotype removed&#xD;&#xA;    route = route.replace(&quot;{version}/&quot;, &quot;&quot;);&#xD;&#xA;    element.getStereotype(httpSettingsStereotypeId).getProperty(&quot;Route&quot;).setValue(route);&#xD;&#xA;    return;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf(&quot;{version}&quot;) &lt; 0) {&#xD;&#xA;    // Api version Stereotype added&#xD;&#xA;    let startIndex = route.indexOf(&quot;api/&quot;);&#xD;&#xA;    if (startIndex == 0) {&#xD;&#xA;        route = `api/{version}/${(route.substring(4))}`;&#xD;&#xA;    } else {&#xD;&#xA;        route = `{version}/${(route)}`;&#xD;&#xA;    }&#xD;&#xA;    element.getStereotype(httpSettingsStereotypeId).getProperty(&quot;Route&quot;).setValue(route);&#xD;&#xA;    return;&#xD;&#xA;}" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

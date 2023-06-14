@@ -65,6 +65,33 @@ function getUnconventionalRoute() {
       </scriptOptions>
       <typeOrder />
       <mappingSettings />
+      <macros>
+        <macro trigger="on-changed">
+          <script>const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+
+let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
+
+if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &gt;= 0) {
+    // Api version Stereotype removed
+    route = route.replace("{version}/", "");
+    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+    return;
+}
+
+if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &lt; 0) {
+    // Api version Stereotype added
+    let startIndex = route.indexOf("api/");
+    if (startIndex == 0) {
+        route = `api/{version}/${(route.substring(4))}`;
+    } else {
+        route = `{version}/${(route)}`;
+    }
+    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+    return;
+}</script>
+        </macro>
+      </macros>
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
       <creationOptions />
@@ -112,6 +139,33 @@ function getUnconventionalRoute() {
       </scriptOptions>
       <typeOrder />
       <mappingSettings />
+      <macros>
+        <macro trigger="on-changed">
+          <script>const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+
+let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
+
+if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &gt;= 0) {
+    // Api version Stereotype removed
+    route = route.replace("{version}/", "");
+    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+    return;
+}
+
+if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &lt; 0) {
+    // Api version Stereotype added
+    let startIndex = route.indexOf("api/");
+    if (startIndex == 0) {
+        route = `api/{version}/${(route.substring(4))}`;
+    } else {
+        route = `{version}/${(route)}`;
+    }
+    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+    return;
+}</script>
+        </macro>
+      </macros>
     </elementExtension>
   </elementExtensions>
   <associationSettings />

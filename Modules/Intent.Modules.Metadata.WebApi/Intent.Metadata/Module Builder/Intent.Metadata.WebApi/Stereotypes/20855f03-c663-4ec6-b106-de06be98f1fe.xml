@@ -19,8 +19,9 @@ let versions = "";
 
 for (let id of versionItems) {
     id = id.replace("\"", "").replace("\"", "");
-    let element = lookup(id);
-    versions += (versions.length == 0 ? "" : ", ") + element.getName();
+    let curItem = lookup(id);
+    let description = curItem.getName();
+    versions += (versions.length == 0 ? "" : ", ") + description;
 }
 
 return versions;</displayFunction>

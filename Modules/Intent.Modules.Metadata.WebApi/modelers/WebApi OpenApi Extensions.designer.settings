@@ -79,6 +79,12 @@ return `V${ver}.0`;</defaultName>
           <creationOptions />
           <scriptOptions />
           <mappingSettings />
+          <macros>
+            <macro trigger="on-created">
+              <script>const versionSettingsStereotypeId = "1cefa0f4-0fce-4a35-9f8d-389ecfd66b56";
+element.addStereotype(versionSettingsStereotypeId);</script>
+            </macro>
+          </macros>
           <childElementSettings />
         </childElementSetting>
       </childElementSettings>

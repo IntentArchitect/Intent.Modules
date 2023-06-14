@@ -62,5 +62,53 @@
       <metadata />
       <childElements />
     </childElement>
+    <childElement id="ac51d260-e13e-4efd-87d0-1ebb4d194b49" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>95f4362b-8193-41cb-bd65-c17d6be3f96b</parentFolderId>
+      <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+      <packageName>Intent.Metadata.WebApi</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="ab62ee92-4cc5-4879-bb63-7802cb49f9ae" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Created</name>
+          <display>On Created: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="4d889641-10ac-4940-b56e-3c5e5f48f7f6">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>ac51d260-e13e-4efd-87d0-1ebb4d194b49</parentFolderId>
+          <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+          <packageName>Intent.Metadata.WebApi</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const versionSettingsStereotypeId = &quot;1cefa0f4-0fce-4a35-9f8d-389ecfd66b56&quot;;&#xD;&#xA;element.addStereotype(versionSettingsStereotypeId);" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

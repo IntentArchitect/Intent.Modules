@@ -1,7 +1,7 @@
 ### Version 3.6.7
 
 - Added `<tags></tags>` and `<releaseNotes></releaseNotes>` to `imodspec` files by default.
-- Don't overwrite module dependency versions, only add if missing.
+- Manage Dependency Versions for Intent Architect Modules and nuget packages in C# projects used to build Modules.
 
 ### Version 3.6.6
 - Fixed : Fixed an issue around `File Template`s crashing the Software Factory.

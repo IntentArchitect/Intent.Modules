@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="1cefa0f4-0fce-4a35-9f8d-389ecfd66b56" version="3.1.0">
+  <name>Version Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="95f4362b-8193-41cb-bd65-c17d6be3f96b">Version</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>if (IsDeprecated) { return "[Deprecated]"; }
+return "";</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>0011387a-b122-45d7-9cdb-8e21b315ab9f</parentFolderId>
+  <order>0</order>
+  <packageId>0011387a-b122-45d7-9cdb-8e21b315ab9f</packageId>
+  <packageName>Intent.Metadata.WebApi</packageName>
+  <properties>
+    <property id="7248493f-2e26-4f51-99b0-ed0e2ae6b511">
+      <hint>Flag a version to be deprecated.</hint>
+      <name>Is Deprecated</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>

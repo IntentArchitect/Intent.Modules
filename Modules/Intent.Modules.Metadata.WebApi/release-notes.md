@@ -1,3 +1,7 @@
+### Version 4.2.0
+
+- Added OpenAPI concept for specifying Versions to Services, Commands and Queries.
+
 ### Version 4.1.2
 - Fix: Fixed issue around Rest route generation by convention not working for attributes ending in `ID`.
 

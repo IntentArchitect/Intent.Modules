@@ -40,7 +40,7 @@ namespace Intent.Metadata.WebApi.Api
         [IntentManaged(Mode.Ignore)]
         public VersionDefinitionModel VersionDefinition
         {
-            get { return new VersionDefinitionModel(_element); }
+            get { return new VersionDefinitionModel(_element.ParentElement); }
         }
 
         public override string ToString()
