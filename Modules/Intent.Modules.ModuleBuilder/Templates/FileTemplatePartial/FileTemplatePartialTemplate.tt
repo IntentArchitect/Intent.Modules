@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using System.Linq;
 <#= Model.GetModelType() != null ? string.Format("using {0};", Model.GetModelType().ParentModule.ApiNamespace) : "" #>
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 
 namespace <#= Namespace #>
 {
@@ -41,6 +41,7 @@ namespace <#= Namespace #>
         }
 <#  if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { #>
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             throw new NotImplementedException("Implement custom template here");
