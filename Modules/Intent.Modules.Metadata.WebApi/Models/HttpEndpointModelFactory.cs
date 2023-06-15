@@ -85,17 +85,51 @@ public static class HttpEndpointModelFactory
         if (element.TryGetApiVersion(out var apiVersion))
         {
             var version = apiVersion!.ApplicableVersions.Max(x => x.Version);
-            if(version is not null && !version.StartsWith("v", StringComparison.OrdinalIgnoreCase)) { version = "v" + version; }
+            version = FormatVersion(version);
             routeConstruction = routeConstruction.Replace("{version}", version);
         }
         else if (element.ParentElement?.TryGetApiVersion(out var parentApiVersion) == true)
         {
             var version = parentApiVersion!.ApplicableVersions.Max(x => x.Version);
-            if(version is not null && !version.StartsWith("v", StringComparison.OrdinalIgnoreCase)) { version = "v" + version; }
+            version = FormatVersion(version);
             routeConstruction = routeConstruction.Replace("{version}", version);
         }
 
         return routeConstruction.ToLowerInvariant();
+    }
+
+    private static string FormatVersion(string version)
+    {
+        if (string.IsNullOrEmpty(version))
+        {
+            return version;
+        }
+
+        if (!version.StartsWith("v", StringComparison.OrdinalIgnoreCase))
+        {
+            version = "v" + version;
+        }
+
+        var components = version.Split('.', StringSplitOptions.RemoveEmptyEntries);
+        if (components.Length <= 1)
+        {
+            return version;
+        }
+        
+        var mutableComponents = components.ToList();
+        for (var index = components.Length - 1; index > 0; index--)
+        {
+            if (components[index] == "0")
+            {
+                mutableComponents.RemoveAt(index);
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        return string.Join(".", mutableComponents);
     }
 
     public static HttpInputSource? GetHttpInputSource(IElement childElement)
