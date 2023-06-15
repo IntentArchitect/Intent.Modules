@@ -19,6 +19,7 @@ let versions = "";
 
 for (let id of versionItems) {
     id = id.replace("\"", "").replace("\"", "");
+    if (!id) { continue; }
     let curItem = lookup(id);
     let description = curItem.getName();
     versions += (versions.length == 0 ? "" : ", ") + description;
@@ -44,6 +45,7 @@ return versions;</displayFunction>
       <lookupTypes>
         <type>95f4362b-8193-41cb-bd65-c17d6be3f96b</type>
       </lookupTypes>
+      <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>
