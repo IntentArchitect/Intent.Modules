@@ -228,6 +228,12 @@ public static class HasCSharpStatementsExtensions
         return parent.AddStatement(new(), configure);
     }
 
+    public static TParent AddSwitchStatement<TParent>(this TParent parent, string expression, Action<CSharpSwitchStatement> configure = null)
+        where TParent : IHasCSharpStatements
+    {
+        return parent.AddStatement(new(expression), configure);
+    }
+
     public static TParent AddStatementBlock<TParent>(this TParent parent, Action<CSharpStatementBlock> configure = null)
         where TParent : IHasCSharpStatements
     {

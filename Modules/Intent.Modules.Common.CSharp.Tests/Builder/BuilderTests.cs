@@ -374,4 +374,57 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task SwitchStatementTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "SwitchBreakStatements",
+                    method =>
+                    {
+                        method.AddParameter("Exception", "exception");
+                        method.AddSwitchStatement("exception", stmt => stmt
+                            .AddCase("ArgumentNullException")
+                            .AddCase("NullReferenceException", block => block
+                                .AddStatement(@"Console.WriteLine(""Null detected"");")
+                                .WithBreak())
+                            .AddCase("OutOfMemoryException", block => block
+                                .AddStatement(@"Console.WriteLine(""No memory"");")
+                                .WithBreak())
+                            .AddDefault(block => block
+                                .AddStatement(@"Console.WriteLine(exception.GetType().Name);")
+                                .WithBreak()));
+                    });
+                @class.AddMethod("void", "SwitchContinueStatements",
+                    method =>
+                    {
+                        method.AddParameter("IEnumerable<string>", "collection");
+                        method.AddForEachStatement("item", "collection", stmt => stmt
+                            .AddSwitchStatement("item", swtch => swtch
+                                .AddCase(@"""Item1""", cs => cs.AddStatement(@"Console.WriteLine(""Item1"");")
+                                    .WithContinue())
+                                .AddCase(@"""Item2""", cs => cs.AddStatement(@"Console.WriteLine(""Item2"");")
+                                    .WithContinue())));
+                        method.AddStatement(@"Console.WriteLine(""Item X"");");
+                    });
+                @class.AddMethod("string", "SwitchReturnStatements",
+                    method =>
+                    {
+                        method.AddParameter("IEnumerable<string>", "collection");
+                        method.AddForEachStatement("item", "collection", stmt => stmt
+                            .AddSwitchStatement("item", swtch => swtch
+                                .AddCase(@"""Item1""", cs => cs
+                                    .WithReturn(@"""Item1"""))
+                                .AddCase(@"""Item2""", cs => cs
+                                    .WithReturn(@"""Item2"""))));
+                        method.AddStatement(@"return ""Item X"";");
+                    });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }
