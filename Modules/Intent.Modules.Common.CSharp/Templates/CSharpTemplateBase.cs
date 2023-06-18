@@ -793,5 +793,94 @@ namespace Intent.Modules.Common.CSharp.Templates
         }
 
         #endregion
+
+        #region Nullable Reference Type Nullability Checking
+
+        /// <summary>
+        /// Determine if this template's <i>Template Output</i> is placed in a C# project with
+        /// <i>Nullable</i> enabled and that the provided <paramref name="typeReference"/> is for a
+        /// <b>non-</b><see href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/nullable-reference-types">nullable
+        /// reference type</see>.
+        /// </summary>
+        /// <remarks>
+        /// The check for this template's <i>Template Output</i> being placed in a C# project with
+        /// <i>Nullable</i> enabled can be skipped by setting <paramref name="forceNullableEnabled"/>
+        /// to <see langword="true"/>.
+        /// </remarks>
+        /// <param name="typeReference">
+        /// The <see cref="ITypeReference"/> to check.
+        /// </param>
+        /// <param name="forceNullableEnabled">
+        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether or not this template's
+        /// <i>Template Output</i> is in a project with <i>Nullable</i> enabled.
+        /// </param>
+        // ReSharper disable once UnusedMember.Global
+        public bool IsNonNullableReferenceType(
+            ITypeReference typeReference,
+            bool forceNullableEnabled = false)
+            => IsReferenceTypeWithNullability(typeReference, false, forceNullableEnabled);
+
+        /// <summary>
+        /// Determine if this template's <i>Template Output</i> is placed in a C# project with
+        /// <i>Nullable</i> enabled and that the provided <paramref name="typeReference"/> is for a
+        /// <see href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/nullable-reference-types">nullable
+        /// reference type</see>.
+        /// </summary>
+        /// <remarks>
+        /// The check for this template's <i>Template Output</i> being placed in a C# project with
+        /// <i>Nullable</i> enabled can be skipped by setting <paramref name="forceNullableEnabled"/>
+        /// to <see langword="true"/>.
+        /// </remarks>
+        /// <param name="typeReference">
+        /// The <see cref="ITypeReference"/> to check.
+        /// </param>
+        /// <param name="forceNullableEnabled">
+        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether or not this template's
+        /// <i>Template Output</i> is in a project with <i>Nullable</i> enabled.
+        /// </param>
+        public bool IsNullableReferenceType(
+            ITypeReference typeReference,
+            bool forceNullableEnabled = false)
+            => IsReferenceTypeWithNullability(typeReference, true, forceNullableEnabled);
+
+        /// <summary>
+        /// Determine if this template's <i>Template Output</i> is placed in a C# project with
+        /// <i>Nullable</i> enabled, that the provided <paramref name="typeReference"/> is a
+        /// reference type and based on <paramref name="isNullable"/> whether or not it is
+        /// <see href="https://learn.microsoft.com/dotnet/csharp/language-reference/builtin-types/nullable-reference-types">nullable</see>.
+        /// </summary>
+        /// <remarks>
+        /// The check for this template's <i>Template Output</i> being placed in a C# project with
+        /// <i>Nullable</i> enabled can be skipped by setting <paramref name="forceNullableEnabled"/>
+        /// to <see langword="true"/>.
+        /// </remarks>
+        /// <param name="typeReference">
+        /// The <see cref="ITypeReference"/> to check.
+        /// </param>
+        /// <param name="isNullable">
+        /// The nullability value to test against.
+        /// </param>
+        /// <param name="forceNullableEnabled">
+        /// Force C# nullable reference type checking to be regarded as enabled regardless of whether or not this template's
+        /// <i>Template Output</i> is in a project with <i>Nullable</i> enabled.
+        /// </param>
+        public bool IsReferenceTypeWithNullability(
+            ITypeReference typeReference,
+            bool isNullable,
+            bool forceNullableEnabled = false)
+        {
+            var typeInfo = GetTypeInfo(typeReference);
+
+            if (typeInfo.IsPrimitive ||
+                typeInfo.TypeReference?.Element.SpecializationType.EndsWith("Enum", StringComparison.OrdinalIgnoreCase) == true)
+            {
+                return false;
+            }
+
+            return isNullable == typeInfo.IsNullable &&
+                   (forceNullableEnabled || OutputTarget.GetProject().IsNullableAwareContext());
+        }
+
+        #endregion
     }
 }

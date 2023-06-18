@@ -1,4 +1,13 @@
-﻿### Version 3.3.35
+﻿### Version 3.3.36
+
+- Update: Added the following methods to `CSharpTemplateBase<T>` for determining nullable reference type statuses for an `ITypeReference`:
+  - `public bool IsNonNullableReferenceType(ITypeReference typeReference, bool forceNullableEnabled = false)`
+  - `public bool IsNullableReferenceType(ITypeReference typeReference, bool forceNullableEnabled = false)`
+  - `IsReferenceTypeWithNullability(ITypeReference typeReference, bool isNullable, bool forceNullableEnabled = false)`
+
+  For all these methods they will normally only return `true` if their template's _Template Output_ has been placed in a C# project with _Nullable_ enabled, but this can be skipped by setting `forceNullableEnabled` to `true`.
+
+### Version 3.3.35
 
 - Update: `CSharpConstructor` now supports `IHasCSharpStatements`.
 - Update: CSharpClassMethod can now have an expression body to output the form: `public DateTime GetTime() => DateTime.Now;`.
