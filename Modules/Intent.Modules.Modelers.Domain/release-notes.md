@@ -1,4 +1,8 @@
-﻿### Version 3.4.3
+﻿### Version 3.4.4
+
+- Added creation option for `Enum`s to `Diagram`s as it only existed in the tree view before.
+
+### Version 3.4.3
 
 - Parameters can now have default values.
 
