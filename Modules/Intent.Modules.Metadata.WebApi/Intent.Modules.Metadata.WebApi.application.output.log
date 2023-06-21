@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0ec760ae-98d8-4e8e-953c-d00691ff7e28</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ApiVersionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiVersionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#4dcf107e-b8a9-4cb2-b36f-d4c787bc447b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/CommandExtensionModel.cs</ApplicationRelativeFilePath>
@@ -90,10 +98,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageModel#5b78e00d-e532-4c04-9c51-93da258db648</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#8b9e6867-0973-42c9-9314-f2755ef7a853</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/OpenAPIPackageModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>OpenAPIPackageModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -130,26 +138,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#0ec760ae-98d8-4e8e-953c-d00691ff7e28</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/VersionDefinitionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>VersionDefinitionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>fbde00d1-ec0f-4fbb-b2df-0164f70a7aef</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#95f4362b-8193-41cb-bd65-c17d6be3f96b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/VersionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>VersionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataPackageExtensions</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>ApiMetadataPackageExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataPackageExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -198,6 +190,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/WebApi Services Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>WebApi Services Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>9b26c297-0062-4303-b90a-752da4b75de6</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#3dda4a3e-fc58-4953-9916-3720ea64f80d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>PackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>PackageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

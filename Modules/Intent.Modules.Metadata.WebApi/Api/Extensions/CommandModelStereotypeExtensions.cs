@@ -13,27 +13,27 @@ namespace Intent.Metadata.WebApi.Api
 {
     public static class CommandModelStereotypeExtensions
     {
-        public static ApiVersion GetApiVersion(this CommandModel model)
+        public static ApiVersionSettings GetApiVersionSettings(this CommandModel model)
         {
-            var stereotype = model.GetStereotype("Api Version");
-            return stereotype != null ? new ApiVersion(stereotype) : null;
+            var stereotype = model.GetStereotype("Api Version Settings");
+            return stereotype != null ? new ApiVersionSettings(stereotype) : null;
         }
 
 
-        public static bool HasApiVersion(this CommandModel model)
+        public static bool HasApiVersionSettings(this CommandModel model)
         {
-            return model.HasStereotype("Api Version");
+            return model.HasStereotype("Api Version Settings");
         }
 
-        public static bool TryGetApiVersion(this CommandModel model, out ApiVersion stereotype)
+        public static bool TryGetApiVersionSettings(this CommandModel model, out ApiVersionSettings stereotype)
         {
-            if (!HasApiVersion(model))
+            if (!HasApiVersionSettings(model))
             {
                 stereotype = null;
                 return false;
             }
 
-            stereotype = new ApiVersion(model.GetStereotype("Api Version"));
+            stereotype = new ApiVersionSettings(model.GetStereotype("Api Version Settings"));
             return true;
         }
         public static HttpSettings GetHttpSettings(this CommandModel model)
@@ -108,11 +108,11 @@ namespace Intent.Metadata.WebApi.Api
             return true;
         }
 
-        public class ApiVersion
+        public class ApiVersionSettings
         {
             private IStereotype _stereotype;
 
-            public ApiVersion(IStereotype stereotype)
+            public ApiVersionSettings(IStereotype stereotype)
             {
                 _stereotype = stereotype;
             }

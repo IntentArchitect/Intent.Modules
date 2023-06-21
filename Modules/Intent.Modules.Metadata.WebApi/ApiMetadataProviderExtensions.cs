@@ -11,10 +11,10 @@ namespace Intent.Metadata.WebApi.Api
 {
     public static class ApiMetadataProviderExtensions
     {
-        public static IList<VersionDefinitionModel> GetVersionDefinitionModels(this IDesigner designer)
+        public static IList<ApiVersionModel> GetApiVersionModels(this IDesigner designer)
         {
-            return designer.GetElementsOfType(VersionDefinitionModel.SpecializationTypeId)
-                .Select(x => new VersionDefinitionModel(x))
+            return designer.GetElementsOfType(ApiVersionModel.SpecializationTypeId)
+                .Select(x => new ApiVersionModel(x))
                 .ToList();
         }
 

@@ -29,5 +29,5 @@ internal class HttpEndpointInputModel : IHttpEndpointInputModel
     public HttpInputSource? Source { get; }
     public string? HeaderName { get; }
     public ICanBeReferencedType? MappedPayloadProperty { get; }
-    public string Value { get; }
+    public string? Value { get; }
 }

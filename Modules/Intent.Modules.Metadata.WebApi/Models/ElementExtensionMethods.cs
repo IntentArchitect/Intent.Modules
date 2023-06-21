@@ -118,7 +118,7 @@ public static class ElementExtensionMethods
 
     public static bool TryGetApiVersion(this IElement element, out ApiVersion? apiVersion)
     {
-        var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Api Version");
+        var stereotype = element.Stereotypes.SingleOrDefault(x => x.Name == "Api Version Settings");
         if (stereotype == null)
         {
             apiVersion = null;
@@ -142,7 +142,7 @@ public static class ElementExtensionMethods
         {
             ApplicableVersions = versions.Select(s => new ApiApplicableVersion
             {
-                DefinitionName = s.VersionDefinition?.Name,
+                DefinitionName = s.ApiVersion?.Name,
                 Version = s.Name,
                 IsDeprecated = s.GetVersionSettings()?.IsDeprecated() == true
             }).ToList()
