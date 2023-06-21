@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Metadata.WebApi.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ApiVersionModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class ApiVersionModel : IMetadataModel, IHasStereotypes, IHasName
     {
         public const string SpecializationType = "Api Version";
         public const string SpecializationTypeId = "0ec760ae-98d8-4e8e-953c-d00691ff7e28";
@@ -26,7 +26,6 @@ namespace Intent.Metadata.WebApi.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
-            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
@@ -36,8 +35,6 @@ namespace Intent.Metadata.WebApi.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-
-        public FolderModel Folder { get; }
 
         public IElement InternalElement => _element;
 
