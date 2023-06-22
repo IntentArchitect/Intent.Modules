@@ -1,3 +1,7 @@
+### Version 4.2.1
+
+- Fixed: Applying the Api Version Settings stereotype on a Service / Command / Query without a route would cause an error to be thrown.
+
 ### Version 4.2.0
 
 - Added OpenAPI concept for specifying Versions to Services, Commands and Queries.

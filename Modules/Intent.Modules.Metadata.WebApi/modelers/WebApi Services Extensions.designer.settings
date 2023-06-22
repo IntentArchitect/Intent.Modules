@@ -158,13 +158,13 @@ const httpServiceSettingsStereotypeId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
 let route = element.getStereotype(httpServiceSettingsStereotypeId)?.getProperty("Route")?.getValue();
 let hasVersionedOperations = element.getChildren("Operation").some(x =&gt; x.hasStereotype(apiVersionStereotypeId));
 
-if ((!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; !hasVersionedOperations) &amp;&amp; route.indexOf("{version}") &gt;= 0) {
+if ((!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; !hasVersionedOperations) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
     route = route.replace("{version}/", "");
     element.getStereotype(httpServiceSettingsStereotypeId).getProperty("Route").setValue(route);
     return;
 }
 
-if ((element.hasStereotype(apiVersionStereotypeId) || hasVersionedOperations) &amp;&amp; route.indexOf("{version}") &lt; 0) {
+if ((element.hasStereotype(apiVersionStereotypeId) || hasVersionedOperations) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
     let startIndex = route.indexOf("api/");
     if (startIndex == 0) {
         route = `api/{version}/${(route.substring(4))}`;

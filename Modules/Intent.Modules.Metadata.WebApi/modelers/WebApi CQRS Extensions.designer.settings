@@ -72,14 +72,14 @@ const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
 let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
 
-if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &gt;= 0) {
+if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
     // Api version Stereotype removed
     route = route.replace("{version}/", "");
     element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
     return;
 }
 
-if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &lt; 0) {
+if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
     // Api version Stereotype added
     let startIndex = route.indexOf("api/");
     if (startIndex == 0) {
@@ -146,14 +146,14 @@ const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
 let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
 
-if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &gt;= 0) {
+if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
     // Api version Stereotype removed
     route = route.replace("{version}/", "");
     element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
     return;
 }
 
-if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route.indexOf("{version}") &lt; 0) {
+if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
     // Api version Stereotype added
     let startIndex = route.indexOf("api/");
     if (startIndex == 0) {
