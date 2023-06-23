@@ -427,4 +427,22 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task GenericsTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddGenericParameter("T", out var t);
+                @class.AddMethod("void", "GenericMethod", method => method
+                    .AddGenericParameter(t)
+                    .AddGenericParameter("U", out var u)
+                    .AddGenericTypeConstraint(u, c => c.AddType("class")));
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

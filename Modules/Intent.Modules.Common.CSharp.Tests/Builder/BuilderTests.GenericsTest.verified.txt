@@ -1,0 +1,13 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class<T>
+    {
+        public void GenericMethod<T, U>()
+            where U : class
+        {
+        }
+    }
+}
