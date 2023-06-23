@@ -16,9 +16,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Intent.Code.Weaving.Java" Version="1.0.12">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Intent.Code.Weaving.Java" Version="1.0.12" />
     <PackageReference Include="Intent.Modules.Common" Version="3.3.19" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.7" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">

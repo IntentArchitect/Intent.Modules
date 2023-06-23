@@ -189,7 +189,7 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     private string GetBaseTypes()
     {
 
-        return $"{(BaseType != null ? $" extends {BaseType.Name}" : "")}{(Interfaces.Any() ? $" implements {string.Join(", ", Interfaces)}" : "")}";
+        return $"{(GenericType != null ? $"<{GenericType.Name}>" : "")}{(BaseType != null ? $" extends {BaseType.Name}" : "")}{(Interfaces.Any() ? $" implements {string.Join(", ", Interfaces)}" : "")}";
     }
 
     private string GetMembers(string indentation)

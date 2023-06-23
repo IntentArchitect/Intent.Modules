@@ -1,4 +1,4 @@
-﻿package com.spring_petclinic.spring_petclinic_rest.application.services.impl;
+﻿package com.spring_petclinic.spring_petclinic.application.services.impl;
 
 import lombok.AllArgsConstructor;
 import java.util.List;
@@ -17,5 +17,4 @@ public class OwnerGenericServiceImpl<T> implements OwnerRestService {
         var owners = ownerRepository.findAll();
         return T.mapFromOwners(owners, mapper);
     }
-
 }
