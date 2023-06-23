@@ -1,3 +1,7 @@
+### Version 3.4.2
+
+- Fixed: The execution order of template `AfterTemplateRegistration` and `BeforeTemplateExecution` methods could vary between different operating systems resulting in event based generation having a different order on different operating systems. 
+
 ### Version 3.4.1
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
