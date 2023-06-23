@@ -25,6 +25,7 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
     public JavaClass BaseType { get; set; }
+    public JavaClass GenericType { get; set; }
     public IList<string> Interfaces { get; } = new List<string>();
     public IList<JavaField> Fields { get; } = new List<JavaField>();
     public IList<JavaConstructor> Constructors { get; } = new List<JavaConstructor>();
@@ -33,7 +34,28 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     
     public bool IsFinal { get; set; }
     public bool IsAbstract { get; set; }
-    
+
+    public JavaClass WithGenericType(string type)
+    {
+        return GenericClass(type);
+    }
+
+    public JavaClass WithGenericType(JavaClass type)
+    {
+        return GenericClass(type);
+    }
+    public JavaClass GenericClass(string type)
+    {
+        GenericType = new JavaClass(type);
+        return this;
+    }
+
+    public JavaClass GenericClass(JavaClass @class)
+    {
+        GenericType = @class;
+        return this;
+    }
+
     public JavaClass WithBaseType(string type)
     {
         return ExtendsClass(type);

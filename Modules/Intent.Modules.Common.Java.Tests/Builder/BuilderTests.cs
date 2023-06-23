@@ -46,6 +46,32 @@ public class BuilderTests
     }
 
     [Fact]
+    public async Task BuildGenericServiceImplementationTest()
+    {
+        var fileBuilder = new JavaFile("com.spring_petclinic.spring_petclinic.application.services.impl", "")
+            .AddImport("lombok.AllArgsConstructor")
+            .AddImport("java.util.List")
+            .AddClass("OwnerGenericServiceImpl", c =>
+            {
+                c.WithGenericType("T");
+                c.AddAnnotation("Service")
+                    .AddAnnotation("AllArgsConstructor")
+                    .AddAnnotation("IntentMerge");
+                c.ImplementsInterface("OwnerRestService");
+                c.AddField("OwnerRepository", "ownerRepository", field => field.Private())
+                    .AddField("ModelMapper", "mapper", field => field.Private());
+                c.AddMethod("List<T>", "getOwner", method => method
+                    .AddAnnotation("Override")
+                    .AddAnnotation("Transactional", ann => ann.AddArgument("readOnly = true"))
+                    .AddAnnotation("IntentIgnoreBody")
+                    .AddStatement("var owners = ownerRepository.findAll();")
+                    .AddStatement("return T.mapFromOwners(owners, mapper);"));              
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
     public async Task BuildModifiers()
     {
         var fileBuilder = new JavaFile("com.test", "")
