@@ -15,6 +15,7 @@ function updateForeignKeysForAssociation(associationEnd: MacroApi.Context.IAssoc
             .filter(x => x.getMetadata("association") == associationEnd.id)
             .forEach(x => x.delete());
     }
+
     if (requiresForeignKey(associationEnd.getOtherEnd())) {
         updateForeignKeyAttribute(targetType, sourceType, associationEnd.getOtherEnd(), associationEnd.id);
     } else {

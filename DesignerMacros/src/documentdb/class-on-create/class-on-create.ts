@@ -12,12 +12,12 @@ function execute() {
         return;
     }
 
-    const PrimaryKeyStereotypeId: string = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const primaryKeyStereotypeId: string = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
 
     let idAttr = createElement("Attribute", "Id", element.id);
     idAttr.typeReference.setType(getDefaultIdType());
     idAttr.addMetadata("is-managed-key", "true");
-    idAttr.addStereotype(PrimaryKeyStereotypeId);
+    idAttr.addStereotype(primaryKeyStereotypeId);
 }
 
 execute();

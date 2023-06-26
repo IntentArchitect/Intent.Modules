@@ -20,7 +20,7 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi) {
     if (generalizations.length == 0) {
         keys.forEach(key => {
             if (key.typeReference == null) throw new Error("typeReference is undefined")
-        
+
             return keyDict[key.id] = {
                 id: key.id,
                 name: key.getName(),
@@ -39,7 +39,8 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi) {
     function traverseInheritanceHierarchyForPrimaryKeys(
         keyDict: { [characterName: string]: IAttributeWithMapPath },
         curEntity: MacroApi.Context.IElementApi,
-        generalizationStack) {
+        generalizationStack: string[]
+    ) {
         if (!curEntity) {
             return;
         }

@@ -1,14 +1,15 @@
 /// <reference path="../common/getPrimaryKeysWithMapPath.ts" />
 
-function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementApi, destinationEndType : MacroApi.Context.IElementApi, associationEnd : MacroApi.Context.IAssociationApi, associationId: string) {
+function updateForeignKeyAttribute(startingEndType: MacroApi.Context.IElementApi, destinationEndType: MacroApi.Context.IElementApi, associationEnd: MacroApi.Context.IAssociationApi, associationId: string) {
     const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
     primaryKeyObjects.forEach((pk, index) => {
         let fk = startingEndType.getChildren()
-            .filter(x => (x.getMetadata("association") == associationId) || (x.hasStereotype(ForeignKeyStereotypeId) && !x.hasMetadata("association")))[index] || 
-                createElement("Attribute", "", startingEndType.id);
+            .filter(x =>
+                (x.getMetadata("association") == associationId) ||
+                (x.hasStereotype(ForeignKeyStereotypeId) && !x.hasMetadata("association")))[index] ?? createElement("Attribute", "", startingEndType.id);
         // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
         let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
         if (associationEnd.typeReference.isCollection) {
@@ -24,7 +25,7 @@ function updateForeignKeyAttribute(startingEndType : MacroApi.Context.IElementAp
         }
         fk.setMetadata("association", associationId);
         fk.setMetadata("is-managed-key", "true");
-        
+
         let fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
         if (!fkStereotype) {
             fk.addStereotype(ForeignKeyStereotypeId);

@@ -13,81 +13,160 @@
       <macros>
         <macro trigger="on-loaded">
           <script>/**
- * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ * Will run code against a package as needed based on the current (which is stored in metadata on the package) and a target version.
  *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/package-on-load/package-on-load.ts
+ * If the package is already at the {@link targetVersion}, {@link action} is not executed. After execution of {@link targetVersion} is recorded
+ * in metadata on the package under the {@link metadataKeyName} key.
+ *
+ * @param package The package to ensure is at the latest version and on which the version will be stored as metadata.
+ * @param metadataKeyName The name of the metadata key in which to store the version.
+ * @param targetVersion The version that should be saved in the metadata this method is complete.
+ * @param action A delegate which is called if the current version in the metadata is unspecified or less than the {@link targetVersion}.
+ * The delegate is passed the current version as specified in the metadata, or if there is no version yet it is passed -1.
  */
-function execute() {
-    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-    element.getStereotypes();
-    if (!element.hasMetadata("database-paradigm-selected") &amp;&amp;
-        !element.hasStereotype(documentStoreId) &amp;&amp;
-        !element.hasStereotype("Relational Database")) {
-        element.addStereotype(documentStoreId);
+function ensureIsAtTargetVersion(package, metadataKeyName, targetVersion, action) {
+    if (!Number.isInteger(targetVersion)) {
+        throw new Error("targetVersion must be an integer");
     }
-    element.setMetadata("database-paradigm-selected", "true");
-    if (!element.getPackage().hasStereotype(documentStoreId)) {
+    var currentVersion = package.hasMetadata(metadataKeyName) &amp;&amp;
+        Number.isInteger(Number.parseInt(package.getMetadata(metadataKeyName)))
+        ? Number.parseInt(package.getMetadata(metadataKeyName))
+        : -1;
+    if (currentVersion &gt;= targetVersion) {
         return;
     }
-    let classes = lookupTypesOf("Class").filter(x =&gt; x.getPackage().id === element.id);
-    for (let classElement of classes) {
-        updatePrimaryKey(classElement);
-        updateForeignKeys(classElement);
+    action(currentVersion);
+    package.removeMetadata(metadataKeyName);
+    package.addMetadata(metadataKeyName, targetVersion.toString());
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRoot(element) {
+    return !element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getDefaultIdType() {
+    var _a, _b;
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    const guidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
+    const intTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
+    const longTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
+    const documentDbSettingsId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
+    switch ((_b = (_a = application.getSettings(documentDbSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
+        default:
+            return stringTypeId;
+        case "guid":
+            return guidTypeId;
+        case "int":
+            return intTypeId;
+        case "long":
+            return longTypeId;
     }
 }
+/// &lt;reference path="isAggregateRoot.ts" /&gt;
+/// &lt;reference path="getDefaultIdType.ts" /&gt;
 function updatePrimaryKey(element) {
-    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    if (element.specialization !== "Class") {
+        return;
+    }
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let pk = element.getChildren("Attribute")
-        .filter(x =&gt; x.hasStereotype(PrimaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
-    let isAggregate = isAggregateRoot(element);
-    if (pk &amp;&amp; (pk.hasStereotype(PrimaryKeyStereotypeId) &amp;&amp; !isAggregate)) {
-        pk.removeStereotype(PrimaryKeyStereotypeId);
-        pk.setMetadata("is-managed-key", "false");
-        return;
+        .filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
+    let idAttr = pk;
+    if (idAttr == null) {
+        idAttr = element.getChildren("Attribute").find(x =&gt; x.getName().toLowerCase() === "id");
     }
-    if (!isAggregate) {
-        return;
-    }
-    let idAttr = pk || createElement("Attribute", "Id", element.id);
-    if (!pk) {
+    if (idAttr == null) {
+        idAttr = createElement("Attribute", "Id", element.id);
         idAttr.setOrder(0);
+        if (idAttr.typeReference == null)
+            throw new Error("typeReference is not defined");
         idAttr.typeReference.setType(getDefaultIdType());
     }
     if (idAttr.getMetadata("is-managed-key") != "true") {
         idAttr.setMetadata("is-managed-key", "true");
     }
-    if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {
-        idAttr.addStereotype(PrimaryKeyStereotypeId);
+    if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
+        idAttr.addStereotype(primaryKeyStereotypeId);
     }
 }
-function updateForeignKeys(element) {
-    for (let association of element.getAssociations()) {
-        if (!association.isTargetEnd()) {
-            continue;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRelationship(associationEnd) {
+    let sourceAssociationEnd = associationEnd;
+    if (associationEnd.isTargetEnd()) {
+        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();
+    }
+    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../common/isAggregateRelationship.ts" /&gt;
+function requiresForeignKey(associationEnd) {
+    return associationEnd.typeReference.isNavigable &amp;&amp;
+        isAggregateRelationship(associationEnd);
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+;
+function getPrimaryKeysWithMapPath(entity) {
+    let keyDict = Object.create(null);
+    let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+    let generalizations = entity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+    // There is a problem with execution order where this script executes before
+    // the generalization script had a chance to potentially remove a PK attribute
+    // and so I have to perform an inheritance check and ignore any PKs on derived classes.
+    if (generalizations.length == 0) {
+        keys.forEach(key =&gt; {
+            if (key.typeReference == null)
+                throw new Error("typeReference is undefined");
+            return keyDict[key.id] = {
+                id: key.id,
+                name: key.getName(),
+                typeId: key.typeReference.typeId,
+                mapPath: [key.id],
+                isNullable: false,
+                isCollection: false
+            };
+        });
+    }
+    traverseInheritanceHierarchyForPrimaryKeys(keyDict, entity, []);
+    return keyDict;
+    function traverseInheritanceHierarchyForPrimaryKeys(keyDict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
         }
-        let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
-        let targetType = lookup(association.typeReference.typeId);
-        if (!sourceType || !targetType) {
-            continue;
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
         }
-        if (requiresForeignKey(association)) {
-            updateForeignKeyAttribute(sourceType, targetType, association, association.id);
-        }
-        if (requiresForeignKey(association.getOtherEnd())) {
-            updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
-        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        baseKeys.forEach(key =&gt; {
+            if (key.typeReference == null)
+                throw new Error("typeReference is undefined");
+            keyDict[key.id] = {
+                id: key.id,
+                name: key.getName(),
+                typeId: key.typeReference.typeId,
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForPrimaryKeys(keyDict, nextEntity, generalizationStack);
     }
 }
+/// &lt;reference path="../common/getPrimaryKeysWithMapPath.ts" /&gt;
 function updateForeignKeyAttribute(startingEndType, destinationEndType, associationEnd, associationId) {
     const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
     primaryKeyObjects.forEach((pk, index) =&gt; {
-        let fk = startingEndType.getChildren()
-            .filter(x =&gt; (x.getMetadata("association") == associationId) || (x.hasStereotype(ForeignKeyStereotypeId) &amp;&amp; !x.hasMetadata("association")))[index] ||
-            createElement("Attribute", "", startingEndType.id);
+        var _a;
+        let fk = (_a = startingEndType.getChildren()
+            .filter(x =&gt; (x.getMetadata("association") == associationId) ||
+            (x.hasStereotype(ForeignKeyStereotypeId) &amp;&amp; !x.hasMetadata("association")))[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", startingEndType.id);
         // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
         let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
         if (associationEnd.typeReference.isCollection) {
@@ -111,6 +190,8 @@ function updateForeignKeyAttribute(startingEndType, destinationEndType, associat
         if (fkStereotype.getProperty("Association").getValue() != associationId) {
             fkStereotype.getProperty("Association").setValue(associationId);
         }
+        if (fk.typeReference == null)
+            throw new Error("typeReference is undefined");
         if (fk.typeReference.typeId != pk.typeId) {
             fk.typeReference.setType(pk.typeId);
         }
@@ -127,85 +208,54 @@ function updateForeignKeyAttribute(startingEndType, destinationEndType, associat
         }
     });
 }
-function requiresForeignKey(associationEnd) {
-    return associationEnd.typeReference.isNavigable &amp;&amp;
-        isAggregateRelationship(associationEnd);
-}
-function isAggregateRelationship(associationEnd) {
-    let sourceAssociationEnd = associationEnd;
-    if (associationEnd.isTargetEnd()) {
-        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();
-    }
-    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
-}
-function isAggregateRoot(element) {
-    return !element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-}
-function getDefaultIdType() {
-    var _a, _b;
-    const StringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-    const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
-    const IntTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
-    const LongTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
-    const MongoSettingId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
-    switch ((_b = (_a = application.getSettings(MongoSettingId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
-        default:
-            return StringTypeId;
-        case "guid":
-            return GuidTypeId;
-        case "int":
-            return IntTypeId;
-        case "long":
-            return LongTypeId;
-    }
-}
-;
-function getPrimaryKeysWithMapPath(entity) {
-    let keydict = Object.create(null);
-    let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-    let generalizations = entity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-    // There is a problem with execution order where this script executes before
-    // the generalization script had a chance to potentially remove a PK attribute
-    // and so I have to perform an inheritance check and ignore any PKs on derived classes.
-    if (generalizations.length == 0) {
-        keys.forEach(key =&gt; keydict[key.id] = {
-            id: key.id,
-            name: key.getName(),
-            typeId: key.typeReference.typeId,
-            mapPath: [key.id],
-            isNullable: false,
-            isCollection: false
-        });
-    }
-    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
-    return keydict;
-    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
-        if (!curEntity) {
-            return;
+/// &lt;reference path="../common/requiresForeignKey.ts" /&gt;
+/// &lt;reference path="../common/updateForeignKeyAttribute.ts" /&gt;
+function updateForeignKeysForElement(element) {
+    for (let association of element.getAssociations()) {
+        if (!association.isTargetEnd()) {
+            continue;
         }
-        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-        if (generalizations.length == 0) {
-            return;
+        let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
+        let targetType = lookup(association.typeReference.typeId);
+        if (!sourceType || !targetType) {
+            continue;
         }
-        let generalization = generalizations[0];
-        generalizationStack.push(generalization.id);
-        let nextEntity = generalization.typeReference.getType();
-        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-        baseKeys.forEach(key =&gt; {
-            keydict[key.id] = {
-                id: key.id,
-                name: key.getName(),
-                typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id]),
-                isNullable: key.typeReference.isNullable,
-                isCollection: key.typeReference.isCollection
-            };
-        });
-        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+        if (requiresForeignKey(association)) {
+            updateForeignKeyAttribute(sourceType, targetType, association, association.id);
+        }
+        if (requiresForeignKey(association.getOtherEnd())) {
+            updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
+        }
     }
 }
-execute();
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/package-on-load/package-on-load.ts
+ */
+/// &lt;reference path="../../common/ensureIsAtTargetVersion.ts" /&gt;
+/// &lt;reference path="../common/updatePrimaryKey.ts" /&gt;
+/// &lt;reference path="../common/updateForeignKeys.ts" /&gt;
+const package = element.getPackage();
+ensureIsAtTargetVersion(package, "document-db-on-package-load-applied-version", 1, () =&gt; {
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    package.getStereotypes();
+    if (!package.hasMetadata("database-paradigm-selected") &amp;&amp;
+        !package.hasStereotype(documentStoreId) &amp;&amp;
+        !package.hasStereotype("Relational Database")) {
+        package.addStereotype(documentStoreId);
+    }
+    package.setMetadata("database-paradigm-selected", "true");
+    if (!package.hasStereotype(documentStoreId)) {
+        return;
+    }
+    let classes = lookupTypesOf("Class").filter(x =&gt; x.getPackage().id === package.id);
+    for (let classElement of classes) {
+        updatePrimaryKey(classElement);
+        updateForeignKeysForElement(classElement);
+    }
+});
 </script>
         </macro>
       </macros>
@@ -221,41 +271,186 @@ execute();
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
- * https://github.com/IntentSoftware/Intent.Modules/blob/master/DesignerMacros/src/documentdb/attribute-on-change/attribute-on-change.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/attribute-on-change/attribute-on-change.ts
  */
 function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     if (!element.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
-    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
-    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const foreignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     if (element.getMetadata("is-managed-key") != "true") {
-        if (element.hasStereotype(PrimaryKeyStereotypeId)) {
-            element.removeStereotype(PrimaryKeyStereotypeId);
+        if (element.hasStereotype(primaryKeyStereotypeId)) {
+            element.removeStereotype(primaryKeyStereotypeId);
         }
-        if (element.hasStereotype(ForeignKeyStereotypeId)) {
-            element.removeStereotype(ForeignKeyStereotypeId);
+        if (element.hasStereotype(foreignKeyStereotypeId)) {
+            element.removeStereotype(foreignKeyStereotypeId);
         }
         return;
     }
-    if (!element.hasMetadata("association") &amp;&amp; !element.hasStereotype(PrimaryKeyStereotypeId)) {
-        element.addStereotype(PrimaryKeyStereotypeId);
+    if (!element.hasMetadata("association") &amp;&amp; !element.hasStereotype(primaryKeyStereotypeId)) {
+        element.addStereotype(primaryKeyStereotypeId);
     }
-    if (element.hasMetadata("association") &amp;&amp; !element.hasStereotype(ForeignKeyStereotypeId)) {
-        element.addStereotype(ForeignKeyStereotypeId);
+    if (element.hasMetadata("association") &amp;&amp; !element.hasStereotype(foreignKeyStereotypeId)) {
+        element.addStereotype(foreignKeyStereotypeId);
     }
 }
 execute();
 </script>
         </macro>
         <macro trigger="on-deleted">
-          <script>/**
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRoot(element) {
+    return !element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRelationship(associationEnd) {
+    let sourceAssociationEnd = associationEnd;
+    if (associationEnd.isTargetEnd()) {
+        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();
+    }
+    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../common/isAggregateRelationship.ts" /&gt;
+function requiresForeignKey(associationEnd) {
+    return associationEnd.typeReference.isNavigable &amp;&amp;
+        isAggregateRelationship(associationEnd);
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+;
+function getPrimaryKeysWithMapPath(entity) {
+    let keyDict = Object.create(null);
+    let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+    let generalizations = entity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+    // There is a problem with execution order where this script executes before
+    // the generalization script had a chance to potentially remove a PK attribute
+    // and so I have to perform an inheritance check and ignore any PKs on derived classes.
+    if (generalizations.length == 0) {
+        keys.forEach(key =&gt; {
+            if (key.typeReference == null)
+                throw new Error("typeReference is undefined");
+            return keyDict[key.id] = {
+                id: key.id,
+                name: key.getName(),
+                typeId: key.typeReference.typeId,
+                mapPath: [key.id],
+                isNullable: false,
+                isCollection: false
+            };
+        });
+    }
+    traverseInheritanceHierarchyForPrimaryKeys(keyDict, entity, []);
+    return keyDict;
+    function traverseInheritanceHierarchyForPrimaryKeys(keyDict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        baseKeys.forEach(key =&gt; {
+            if (key.typeReference == null)
+                throw new Error("typeReference is undefined");
+            keyDict[key.id] = {
+                id: key.id,
+                name: key.getName(),
+                typeId: key.typeReference.typeId,
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForPrimaryKeys(keyDict, nextEntity, generalizationStack);
+    }
+}
+/// &lt;reference path="../common/getPrimaryKeysWithMapPath.ts" /&gt;
+function updateForeignKeyAttribute(startingEndType, destinationEndType, associationEnd, associationId) {
+    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
+    let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
+    let primaryKeyObjects = Object.values(primaryKeyDict);
+    let primaryKeysLen = primaryKeyObjects.length;
+    primaryKeyObjects.forEach((pk, index) =&gt; {
+        var _a;
+        let fk = (_a = startingEndType.getChildren()
+            .filter(x =&gt; (x.getMetadata("association") == associationId) ||
+            (x.hasStereotype(ForeignKeyStereotypeId) &amp;&amp; !x.hasMetadata("association")))[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", startingEndType.id);
+        // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
+        let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
+        if (associationEnd.typeReference.isCollection) {
+            fkNameToUse = pluralize(fkNameToUse);
+        }
+        if (fk.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+            if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
+                if (fkNameToUse != fk.getName()) {
+                    fk.setName(fkNameToUse);
+                }
+                fk.setMetadata("fk-original-name", fk.getName());
+            }
+        }
+        fk.setMetadata("association", associationId);
+        fk.setMetadata("is-managed-key", "true");
+        let fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
+        if (!fkStereotype) {
+            fk.addStereotype(ForeignKeyStereotypeId);
+            fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
+        }
+        if (fkStereotype.getProperty("Association").getValue() != associationId) {
+            fkStereotype.getProperty("Association").setValue(associationId);
+        }
+        if (fk.typeReference == null)
+            throw new Error("typeReference is undefined");
+        if (fk.typeReference.typeId != pk.typeId) {
+            fk.typeReference.setType(pk.typeId);
+        }
+        if (fk.typeReference.isNullable != associationEnd.typeReference.isNullable) {
+            fk.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
+        }
+        if (fk.typeReference.isCollection != associationEnd.typeReference.isCollection) {
+            fk.typeReference.setIsCollection(associationEnd.typeReference.isCollection);
+        }
+    });
+    startingEndType.getChildren().filter(x =&gt; x.getMetadata("association") == associationId).forEach((attr, index) =&gt; {
+        if (index &gt;= primaryKeysLen) {
+            attr.delete();
+        }
+    });
+}
+/// &lt;reference path="../common/requiresForeignKey.ts" /&gt;
+/// &lt;reference path="../common/updateForeignKeyAttribute.ts" /&gt;
+function updateForeignKeysForElement(element) {
+    for (let association of element.getAssociations()) {
+        if (!association.isTargetEnd()) {
+            continue;
+        }
+        let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
+        let targetType = lookup(association.typeReference.typeId);
+        if (!sourceType || !targetType) {
+            continue;
+        }
+        if (requiresForeignKey(association)) {
+            updateForeignKeyAttribute(sourceType, targetType, association, association.id);
+        }
+        if (requiresForeignKey(association.getOtherEnd())) {
+            updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
+        }
+    }
+}
+/**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/attribute-on-delete/attribute-on-delete.ts
  */
+/// &lt;reference path="../common/isAggregateRoot.ts" /&gt;
+/// &lt;reference path="../common/updateForeignKeys.ts" /&gt;
 function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     if (!element.getPackage().hasStereotype(documentStoreId)) {
@@ -273,151 +468,7 @@ function execute() {
         idAttr.addStereotype(PrimaryKeyStereotypeId);
         return;
     }
-    updateForeignKeys(element.getParent());
-}
-function updateForeignKeys(element) {
-    for (let association of element.getAssociations()) {
-        if (!association.isTargetEnd()) {
-            continue;
-        }
-        let sourceType = lookup(association.getOtherEnd().typeReference.typeId);
-        let targetType = lookup(association.typeReference.typeId);
-        if (!sourceType || !targetType) {
-            continue;
-        }
-        if (requiresForeignKey(association)) {
-            updateForeignKeyAttribute(sourceType, targetType, association, association.id);
-        }
-        if (requiresForeignKey(association.getOtherEnd())) {
-            updateForeignKeyAttribute(targetType, sourceType, association.getOtherEnd(), association.id);
-        }
-    }
-}
-function updateForeignKeyAttribute(startingEndType, destinationEndType, associationEnd, associationId) {
-    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
-    let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
-    let primaryKeyObjects = Object.values(primaryKeyDict);
-    let primaryKeysLen = primaryKeyObjects.length;
-    primaryKeyObjects.forEach((pk, index) =&gt; {
-        let fk = startingEndType.getChildren()
-            .filter(x =&gt; (x.getMetadata("association") == associationId) || (x.hasStereotype(ForeignKeyStereotypeId) &amp;&amp; !x.hasMetadata("association")))[index] ||
-            createElement("Attribute", "", startingEndType.id);
-        // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-        let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
-        if (associationEnd.typeReference.isCollection) {
-            fkNameToUse = pluralize(fkNameToUse);
-        }
-        if (fk.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-            if (!fk.hasMetadata("fk-original-name") || (fk.getMetadata("fk-original-name") == fk.getName())) {
-                if (fkNameToUse != fk.getName()) {
-                    fk.setName(fkNameToUse);
-                }
-                fk.setMetadata("fk-original-name", fk.getName());
-            }
-        }
-        fk.setMetadata("association", associationId);
-        fk.setMetadata("is-managed-key", "true");
-        let fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
-        if (!fkStereotype) {
-            fk.addStereotype(ForeignKeyStereotypeId);
-            fkStereotype = fk.getStereotype(ForeignKeyStereotypeId);
-        }
-        if (fkStereotype.getProperty("Association").getValue() != associationId) {
-            fkStereotype.getProperty("Association").setValue(associationId);
-        }
-        if (fk.typeReference.typeId != pk.typeId) {
-            fk.typeReference.setType(pk.typeId);
-        }
-        if (fk.typeReference.isNullable != associationEnd.typeReference.isNullable) {
-            fk.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
-        }
-        if (fk.typeReference.isCollection != associationEnd.typeReference.isCollection) {
-            fk.typeReference.setIsCollection(associationEnd.typeReference.isCollection);
-        }
-    });
-    startingEndType.getChildren().filter(x =&gt; x.getMetadata("association") == associationId).forEach((attr, index) =&gt; {
-        if (index &gt;= primaryKeysLen) {
-            attr.delete();
-        }
-    });
-}
-function requiresForeignKey(associationEnd) {
-    return associationEnd.typeReference.isNavigable &amp;&amp;
-        isAggregateRelationship(associationEnd);
-}
-function isAggregateRelationship(associationEnd) {
-    let sourceAssociationEnd = associationEnd;
-    if (associationEnd.isTargetEnd()) {
-        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();
-    }
-    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
-}
-function isAggregateRoot(element) {
-    return !element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-}
-function getDefaultIdType() {
-    var _a, _b;
-    const StringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-    const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
-    const IntTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
-    const LongTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
-    const MongoSettingId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
-    switch ((_b = (_a = application.getSettings(MongoSettingId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
-        default:
-            return StringTypeId;
-        case "guid":
-            return GuidTypeId;
-        case "int":
-            return IntTypeId;
-        case "long":
-            return LongTypeId;
-    }
-}
-;
-function getPrimaryKeysWithMapPath(entity) {
-    let keydict = Object.create(null);
-    let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-    let generalizations = entity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-    // There is a problem with execution order where this script executes before
-    // the generalization script had a chance to potentially remove a PK attribute
-    // and so I have to perform an inheritance check and ignore any PKs on derived classes.
-    if (generalizations.length == 0) {
-        keys.forEach(key =&gt; keydict[key.id] = {
-            id: key.id,
-            name: key.getName(),
-            typeId: key.typeReference.typeId,
-            mapPath: [key.id],
-            isNullable: false,
-            isCollection: false
-        });
-    }
-    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
-    return keydict;
-    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
-        if (!curEntity) {
-            return;
-        }
-        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-        if (generalizations.length == 0) {
-            return;
-        }
-        let generalization = generalizations[0];
-        generalizationStack.push(generalization.id);
-        let nextEntity = generalization.typeReference.getType();
-        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-        baseKeys.forEach(key =&gt; {
-            keydict[key.id] = {
-                id: key.id,
-                name: key.getName(),
-                typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id]),
-                isNullable: key.typeReference.isNullable,
-                isCollection: key.typeReference.isCollection
-            };
-        });
-        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
-    }
+    updateForeignKeysForElement(element.getParent());
 }
 execute();
 </script>
@@ -428,40 +479,42 @@ execute();
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
-          <script>/**
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getDefaultIdType() {
+    var _a, _b;
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    const guidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
+    const intTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
+    const longTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
+    const documentDbSettingsId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
+    switch ((_b = (_a = application.getSettings(documentDbSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
+        default:
+            return stringTypeId;
+        case "guid":
+            return guidTypeId;
+        case "int":
+            return intTypeId;
+        case "long":
+            return longTypeId;
+    }
+}
+/**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/class-on-create/class-on-create.ts
  */
+/// &lt;reference path="../common/getDefaultIdType.ts" /&gt;
 function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     if (!element.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
-    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let idAttr = createElement("Attribute", "Id", element.id);
     idAttr.typeReference.setType(getDefaultIdType());
     idAttr.addMetadata("is-managed-key", "true");
-    idAttr.addStereotype(PrimaryKeyStereotypeId);
-    function getDefaultIdType() {
-        var _a, _b;
-        const StringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-        const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
-        const IntTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
-        const LongTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
-        const MongoSettingId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
-        switch ((_b = (_a = application.getSettings(MongoSettingId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
-            default:
-                return StringTypeId;
-            case "guid":
-                return GuidTypeId;
-            case "int":
-                return IntTypeId;
-            case "long":
-                return LongTypeId;
-        }
-    }
+    idAttr.addStereotype(primaryKeyStereotypeId);
 }
 execute();
 </script>
@@ -492,82 +545,134 @@ execute();
       </targetEndExtension>
       <macros>
         <macro trigger="on-changed">
-          <script>/**
- * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-change/association-on-change.ts
- */
-function execute() {
-    //This happens while linking the association i.e. only 1 end attached.
-    if (!association.typeReference.getType()) {
-        return;
-    }
-    let sourceTarget = association.getOtherEnd().typeReference.getType();
-    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-    if (!sourceTarget.getPackage().hasStereotype(documentStoreId)) {
-        return;
-    }
-    updatePrimaryKey(association.typeReference.getType());
-    updateForeignKeys(association);
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRoot(element) {
+    return !element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getDefaultIdType() {
+    var _a, _b;
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    const guidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
+    const intTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
+    const longTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
+    const documentDbSettingsId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
+    switch ((_b = (_a = application.getSettings(documentDbSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
+        default:
+            return stringTypeId;
+        case "guid":
+            return guidTypeId;
+        case "int":
+            return intTypeId;
+        case "long":
+            return longTypeId;
+    }
+}
+/// &lt;reference path="isAggregateRoot.ts" /&gt;
+/// &lt;reference path="getDefaultIdType.ts" /&gt;
 function updatePrimaryKey(element) {
-    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    if (element.specialization !== "Class") {
+        return;
+    }
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let pk = element.getChildren("Attribute")
-        .filter(x =&gt; x.hasStereotype(PrimaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
-    let isAggregate = isAggregateRoot(element);
-    if (pk &amp;&amp; (pk.hasStereotype(PrimaryKeyStereotypeId) &amp;&amp; !isAggregate)) {
-        pk.removeStereotype(PrimaryKeyStereotypeId);
-        pk.setMetadata("is-managed-key", "false");
-        return;
+        .filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
+    let idAttr = pk;
+    if (idAttr == null) {
+        idAttr = element.getChildren("Attribute").find(x =&gt; x.getName().toLowerCase() === "id");
     }
-    if (!isAggregate) {
-        return;
-    }
-    let idAttr = pk || createElement("Attribute", "Id", element.id);
-    if (!pk) {
+    if (idAttr == null) {
+        idAttr = createElement("Attribute", "Id", element.id);
         idAttr.setOrder(0);
+        if (idAttr.typeReference == null)
+            throw new Error("typeReference is not defined");
         idAttr.typeReference.setType(getDefaultIdType());
     }
     if (idAttr.getMetadata("is-managed-key") != "true") {
         idAttr.setMetadata("is-managed-key", "true");
     }
-    if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {
-        idAttr.addStereotype(PrimaryKeyStereotypeId);
+    if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
+        idAttr.addStereotype(primaryKeyStereotypeId);
     }
 }
-function updateForeignKeys(associationEnd) {
-    let sourceType = lookup(associationEnd.getOtherEnd().typeReference.typeId);
-    let targetType = lookup(associationEnd.typeReference.typeId);
-    if (!sourceType || !targetType) {
-        return;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRelationship(associationEnd) {
+    let sourceAssociationEnd = associationEnd;
+    if (associationEnd.isTargetEnd()) {
+        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();
     }
-    if (requiresForeignKey(associationEnd)) {
-        updateForeignKeyAttribute(sourceType, targetType, associationEnd, associationEnd.id);
+    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../common/isAggregateRelationship.ts" /&gt;
+function requiresForeignKey(associationEnd) {
+    return associationEnd.typeReference.isNavigable &amp;&amp;
+        isAggregateRelationship(associationEnd);
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+;
+function getPrimaryKeysWithMapPath(entity) {
+    let keyDict = Object.create(null);
+    let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+    let generalizations = entity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+    // There is a problem with execution order where this script executes before
+    // the generalization script had a chance to potentially remove a PK attribute
+    // and so I have to perform an inheritance check and ignore any PKs on derived classes.
+    if (generalizations.length == 0) {
+        keys.forEach(key =&gt; {
+            if (key.typeReference == null)
+                throw new Error("typeReference is undefined");
+            return keyDict[key.id] = {
+                id: key.id,
+                name: key.getName(),
+                typeId: key.typeReference.typeId,
+                mapPath: [key.id],
+                isNullable: false,
+                isCollection: false
+            };
+        });
     }
-    else {
-        sourceType.getChildren()
-            .filter(x =&gt; x.getMetadata("association") == associationEnd.id)
-            .forEach(x =&gt; x.delete());
-    }
-    if (requiresForeignKey(associationEnd.getOtherEnd())) {
-        updateForeignKeyAttribute(targetType, sourceType, associationEnd.getOtherEnd(), associationEnd.id);
-    }
-    else {
-        targetType.getChildren()
-            .filter(x =&gt; x.getMetadata("association") == associationEnd.id)
-            .forEach(x =&gt; x.delete());
+    traverseInheritanceHierarchyForPrimaryKeys(keyDict, entity, []);
+    return keyDict;
+    function traverseInheritanceHierarchyForPrimaryKeys(keyDict, curEntity, generalizationStack) {
+        if (!curEntity) {
+            return;
+        }
+        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
+        if (generalizations.length == 0) {
+            return;
+        }
+        let generalization = generalizations[0];
+        generalizationStack.push(generalization.id);
+        let nextEntity = generalization.typeReference.getType();
+        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
+        baseKeys.forEach(key =&gt; {
+            if (key.typeReference == null)
+                throw new Error("typeReference is undefined");
+            keyDict[key.id] = {
+                id: key.id,
+                name: key.getName(),
+                typeId: key.typeReference.typeId,
+                mapPath: generalizationStack.concat([key.id]),
+                isNullable: key.typeReference.isNullable,
+                isCollection: key.typeReference.isCollection
+            };
+        });
+        traverseInheritanceHierarchyForPrimaryKeys(keyDict, nextEntity, generalizationStack);
     }
 }
+/// &lt;reference path="../common/getPrimaryKeysWithMapPath.ts" /&gt;
 function updateForeignKeyAttribute(startingEndType, destinationEndType, associationEnd, associationId) {
     const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let primaryKeyDict = getPrimaryKeysWithMapPath(destinationEndType);
     let primaryKeyObjects = Object.values(primaryKeyDict);
     let primaryKeysLen = primaryKeyObjects.length;
     primaryKeyObjects.forEach((pk, index) =&gt; {
-        let fk = startingEndType.getChildren()
-            .filter(x =&gt; (x.getMetadata("association") == associationId) || (x.hasStereotype(ForeignKeyStereotypeId) &amp;&amp; !x.hasMetadata("association")))[index] ||
-            createElement("Attribute", "", startingEndType.id);
+        var _a;
+        let fk = (_a = startingEndType.getChildren()
+            .filter(x =&gt; (x.getMetadata("association") == associationId) ||
+            (x.hasStereotype(ForeignKeyStereotypeId) &amp;&amp; !x.hasMetadata("association")))[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", startingEndType.id);
         // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
         let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
         if (associationEnd.typeReference.isCollection) {
@@ -591,6 +696,8 @@ function updateForeignKeyAttribute(startingEndType, destinationEndType, associat
         if (fkStereotype.getProperty("Association").getValue() != associationId) {
             fkStereotype.getProperty("Association").setValue(associationId);
         }
+        if (fk.typeReference == null)
+            throw new Error("typeReference is undefined");
         if (fk.typeReference.typeId != pk.typeId) {
             fk.typeReference.setType(pk.typeId);
         }
@@ -607,83 +714,51 @@ function updateForeignKeyAttribute(startingEndType, destinationEndType, associat
         }
     });
 }
-function requiresForeignKey(associationEnd) {
-    return associationEnd.typeReference.isNavigable &amp;&amp;
-        isAggregateRelationship(associationEnd);
-}
-function isAggregateRelationship(associationEnd) {
-    let sourceAssociationEnd = associationEnd;
-    if (associationEnd.isTargetEnd()) {
-        sourceAssociationEnd = sourceAssociationEnd.getOtherEnd();
+/// &lt;reference path="requiresForeignKey.ts" /&gt;
+/// &lt;reference path="updateForeignKeyAttribute.ts" /&gt;
+function updateForeignKeysForAssociation(associationEnd) {
+    let sourceType = lookup(associationEnd.getOtherEnd().typeReference.typeId);
+    let targetType = lookup(associationEnd.typeReference.typeId);
+    if (!sourceType || !targetType) {
+        return;
     }
-    return sourceAssociationEnd.typeReference.isNullable || sourceAssociationEnd.typeReference.isCollection;
-}
-function isAggregateRoot(element) {
-    return !element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-}
-function getDefaultIdType() {
-    var _a, _b;
-    const StringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-    const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
-    const IntTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
-    const LongTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
-    const MongoSettingId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
-    switch ((_b = (_a = application.getSettings(MongoSettingId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
-        default:
-            return StringTypeId;
-        case "guid":
-            return GuidTypeId;
-        case "int":
-            return IntTypeId;
-        case "long":
-            return LongTypeId;
+    if (requiresForeignKey(associationEnd)) {
+        updateForeignKeyAttribute(sourceType, targetType, associationEnd, associationEnd.id);
+    }
+    else {
+        sourceType.getChildren()
+            .filter(x =&gt; x.getMetadata("association") == associationEnd.id)
+            .forEach(x =&gt; x.delete());
+    }
+    if (requiresForeignKey(associationEnd.getOtherEnd())) {
+        updateForeignKeyAttribute(targetType, sourceType, associationEnd.getOtherEnd(), associationEnd.id);
+    }
+    else {
+        targetType.getChildren()
+            .filter(x =&gt; x.getMetadata("association") == associationEnd.id)
+            .forEach(x =&gt; x.delete());
     }
 }
-;
-function getPrimaryKeysWithMapPath(entity) {
-    let keydict = Object.create(null);
-    let keys = entity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-    let generalizations = entity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-    // There is a problem with execution order where this script executes before
-    // the generalization script had a chance to potentially remove a PK attribute
-    // and so I have to perform an inheritance check and ignore any PKs on derived classes.
-    if (generalizations.length == 0) {
-        keys.forEach(key =&gt; keydict[key.id] = {
-            id: key.id,
-            name: key.getName(),
-            typeId: key.typeReference.typeId,
-            mapPath: [key.id],
-            isNullable: false,
-            isCollection: false
-        });
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-change/association-on-change.ts
+ */
+/// &lt;reference path="../common/updatePrimaryKey.ts" /&gt;
+/// &lt;reference path="../common/updateForeignKeysForAssociation.ts" /&gt;
+function execute() {
+    //This happens while linking the association i.e. only 1 end attached.
+    if (!association.typeReference.getType()) {
+        return;
     }
-    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);
-    return keydict;
-    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {
-        if (!curEntity) {
-            return;
-        }
-        let generalizations = curEntity.getAssociations("Generalization").filter(x =&gt; x.isTargetEnd());
-        if (generalizations.length == 0) {
-            return;
-        }
-        let generalization = generalizations[0];
-        generalizationStack.push(generalization.id);
-        let nextEntity = generalization.typeReference.getType();
-        let baseKeys = nextEntity.getChildren("Attribute").filter(x =&gt; x.hasStereotype("Primary Key"));
-        baseKeys.forEach(key =&gt; {
-            keydict[key.id] = {
-                id: key.id,
-                name: key.getName(),
-                typeId: key.typeReference.typeId,
-                mapPath: generalizationStack.concat([key.id]),
-                isNullable: key.typeReference.isNullable,
-                isCollection: key.typeReference.isCollection
-            };
-        });
-        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);
+    let sourceTarget = association.getOtherEnd().typeReference.getType();
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    if (!sourceTarget.getPackage().hasStereotype(documentStoreId)) {
+        return;
     }
+    updatePrimaryKey(association.typeReference.getType());
+    updateForeignKeysForAssociation(association);
 }
 execute();
 </script>
@@ -711,48 +786,59 @@ execute();
 </script>
         </macro>
         <macro trigger="on-deleted">
-          <script>/**
- * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-delete/association-on-delete.ts
- */
-function execute() {
-    let targetClass = association.typeReference.getType();
-    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
-    if (!targetClass.getPackage().hasStereotype(documentStoreId)) {
-        return;
-    }
-    updatePrimaryKey(targetClass);
-    removeAssociatedForeignKeys(association);
+          <script>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function isAggregateRoot(element) {
+    return !element.getAssociations("Association")
+        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function getDefaultIdType() {
+    var _a, _b;
+    const stringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
+    const guidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
+    const intTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
+    const longTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
+    const documentDbSettingsId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
+    switch ((_b = (_a = application.getSettings(documentDbSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
+        default:
+            return stringTypeId;
+        case "guid":
+            return guidTypeId;
+        case "int":
+            return intTypeId;
+        case "long":
+            return longTypeId;
+    }
+}
+/// &lt;reference path="isAggregateRoot.ts" /&gt;
+/// &lt;reference path="getDefaultIdType.ts" /&gt;
 function updatePrimaryKey(element) {
-    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    if (element.specialization !== "Class") {
+        return;
+    }
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
     let pk = element.getChildren("Attribute")
-        .filter(x =&gt; x.hasStereotype(PrimaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
-    let isAggregate = isAggregateRoot(element);
-    if (pk &amp;&amp; (pk.hasStereotype(PrimaryKeyStereotypeId) &amp;&amp; !isAggregate)) {
-        pk.removeStereotype(PrimaryKeyStereotypeId);
-        pk.setMetadata("is-managed-key", "false");
-        return;
+        .filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
+    let idAttr = pk;
+    if (idAttr == null) {
+        idAttr = element.getChildren("Attribute").find(x =&gt; x.getName().toLowerCase() === "id");
     }
-    if (!isAggregate) {
-        return;
-    }
-    let idAttr = pk || createElement("Attribute", "Id", element.id);
-    if (!pk) {
+    if (idAttr == null) {
+        idAttr = createElement("Attribute", "Id", element.id);
         idAttr.setOrder(0);
+        if (idAttr.typeReference == null)
+            throw new Error("typeReference is not defined");
         idAttr.typeReference.setType(getDefaultIdType());
     }
     if (idAttr.getMetadata("is-managed-key") != "true") {
         idAttr.setMetadata("is-managed-key", "true");
     }
-    if (!idAttr.hasStereotype(PrimaryKeyStereotypeId)) {
-        idAttr.addStereotype(PrimaryKeyStereotypeId);
+    if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
+        idAttr.addStereotype(primaryKeyStereotypeId);
     }
 }
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
 function removeAssociatedForeignKeys(associationEnd) {
-    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
     let targetClass = associationEnd.typeReference.getType();
     let sourceClass = associationEnd.getOtherEnd().typeReference.getType();
     targetClass.getChildren()
@@ -762,27 +848,22 @@ function removeAssociatedForeignKeys(associationEnd) {
         .filter(x =&gt; x.getMetadata("association") == associationEnd.id)
         .forEach(x =&gt; x.delete());
 }
-function isAggregateRoot(element) {
-    return !element.getAssociations("Association")
-        .some(x =&gt; x.isSourceEnd() &amp;&amp; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable);
-}
-function getDefaultIdType() {
-    var _a, _b;
-    const StringTypeId = "d384db9c-a279-45e1-801e-e4e8099625f2";
-    const GuidTypeId = "6b649125-18ea-48fd-a6ba-0bfff0d8f488";
-    const IntTypeId = "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74";
-    const LongTypeId = "33013006-E404-48C2-AC46-24EF5A5774FD";
-    const MongoSettingId = "d5581fe8-7385-4bb6-88dc-8940e20ec1d4";
-    switch ((_b = (_a = application.getSettings(MongoSettingId)) === null || _a === void 0 ? void 0 : _a.getField("Id Type")) === null || _b === void 0 ? void 0 : _b.value) {
-        default:
-            return StringTypeId;
-        case "guid":
-            return GuidTypeId;
-        case "int":
-            return IntTypeId;
-        case "long":
-            return LongTypeId;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-delete/association-on-delete.ts
+ */
+/// &lt;reference path="../common/updatePrimaryKey.ts" /&gt;
+/// &lt;reference path="../common/removeAssociatedForeignKeys.ts" /&gt;
+function execute() {
+    let targetClass = association.typeReference.getType();
+    const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
+    if (!targetClass.getPackage().hasStereotype(documentStoreId)) {
+        return;
     }
+    updatePrimaryKey(targetClass);
+    removeAssociatedForeignKeys(association);
 }
 execute();
 </script>
