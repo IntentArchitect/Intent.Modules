@@ -10,26 +10,26 @@ function execute() {
     if (!element.getPackage().hasStereotype(documentStoreId)) {
         return;
     }
-    const PrimaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
-    const ForeignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
+    const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
+    const foreignKeyStereotypeId = "ced3e970-e900-4f99-bd04-b993228fe17d";
 
     if (element.getMetadata("is-managed-key") != "true") {
-        if (element.hasStereotype(PrimaryKeyStereotypeId)) {
-            element.removeStereotype(PrimaryKeyStereotypeId);
+        if (element.hasStereotype(primaryKeyStereotypeId)) {
+            element.removeStereotype(primaryKeyStereotypeId);
         }
-        if (element.hasStereotype(ForeignKeyStereotypeId)) {
-            element.removeStereotype(ForeignKeyStereotypeId);
+        if (element.hasStereotype(foreignKeyStereotypeId)) {
+            element.removeStereotype(foreignKeyStereotypeId);
         }
         
         return;
     }
 
-    if (!element.hasMetadata("association") && !element.hasStereotype(PrimaryKeyStereotypeId)) {
-        element.addStereotype(PrimaryKeyStereotypeId);
+    if (!element.hasMetadata("association") && !element.hasStereotype(primaryKeyStereotypeId)) {
+        element.addStereotype(primaryKeyStereotypeId);
     }
 
-    if (element.hasMetadata("association") && !element.hasStereotype(ForeignKeyStereotypeId)) {
-        element.addStereotype(ForeignKeyStereotypeId);
+    if (element.hasMetadata("association") && !element.hasStereotype(foreignKeyStereotypeId)) {
+        element.addStereotype(foreignKeyStereotypeId);
     }
 }
 
