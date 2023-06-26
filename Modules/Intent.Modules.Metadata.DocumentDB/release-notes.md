@@ -1,3 +1,7 @@
+### Version 1.1.1
+
+- Update: Primary keys are now also managed for composite entities. If you require not having a primary key on class then use a `Value Object`.
+
 ### Version 1.1.0
 
 - Fix: Fixed a bug where the Domain Modeler association change script not managing keys correctly.
