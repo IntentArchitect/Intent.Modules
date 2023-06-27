@@ -8,10 +8,7 @@
     "types": []
   },
   "include": [
-    "**/*",
-    "../common/domainHelper.ts",
-    "../common/servicesHelper.ts",
-    "../../typings/**/*"
+    "**/*"
   ],
   "exclude": [
   ]

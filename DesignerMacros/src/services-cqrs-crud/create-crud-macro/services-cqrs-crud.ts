@@ -1,3 +1,6 @@
+/// <reference path="../common/command-on-map.ts" />
+/// <reference path="../../common/domainHelper.ts" />
+/// <reference path="../../common/servicesHelper.ts" />
 
 // services-cqrs-crud script (see ~/DesignerMacros/src/services-cqrs-crud folder in Intent.Modules)
 async function execute() { 
