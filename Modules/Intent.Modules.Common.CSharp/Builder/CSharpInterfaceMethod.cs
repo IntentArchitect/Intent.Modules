@@ -4,10 +4,14 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
+public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCSharpStatements
 {
     public string ReturnType { get; }
     public string Name { get; }
+    public bool IsAbstract { get; set; } = true;
+    public bool IsStatic { get; set; }
+    public bool HasExpressionBody { get; private set; }
+    public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
@@ -28,6 +32,20 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
+    }
+
+    public CSharpInterfaceMethod WithDefaultImplementation()
+    {
+        IsAbstract = false;
+
+        return this;
+    }
+
+    public CSharpInterfaceMethod Static()
+    {
+        IsStatic = true;
+
+        return this;
     }
 
     public CSharpInterfaceMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
@@ -60,11 +78,69 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>
         return this;
     }
 
+    public CSharpInterfaceMethod AddStatement(string statement, Action<CSharpStatement> configure = null)
+    {
+        return AddStatement(new CSharpStatement(statement), configure);
+    }
+
+    public CSharpInterfaceMethod AddStatement<TStatement>(TStatement statement, Action<TStatement> configure = null)
+        where TStatement : CSharpStatement
+    {
+        Statements.Add(statement);
+        statement.Parent = this;
+        configure?.Invoke(statement);
+        return this;
+    }
+
+    public CSharpInterfaceMethod WithExpressionBody(string statement, Action<CSharpStatement> configure = null)
+    {
+        return WithExpressionBody(new CSharpStatement(statement), configure);
+    }
+
+    public CSharpInterfaceMethod WithExpressionBody<TStatement>(TStatement statement, Action<TStatement> configure = null)
+        where TStatement : CSharpStatement
+    {
+        HasExpressionBody = true;
+        statement.BeforeSeparator = CSharpCodeSeparatorType.None;
+        if (statement is CSharpMethodChainStatement stmt)
+        {
+            stmt.WithoutSemicolon();
+        }
+        Statements.Add(statement);
+
+        configure?.Invoke(statement);
+
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)};";
+        var @static = IsStatic
+            ? $"static {(IsAbstract ? "abstract " : string.Empty)}"
+            : string.Empty;
+
+        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{@static}{ReturnType} {Name}{GetGenericParameters()}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetGenericTypeConstraints(indentation)}";
+        if (IsAbstract && Statements.Count == 0)
+        {
+            return $@"{declaration};";
+        }
+
+        if (HasExpressionBody)
+        {
+            var expressionBody = Statements.ConcatCode($"{indentation}    ");
+            if (expressionBody.Contains("\n"))
+            {
+                return $@"{declaration} => 
+{indentation}    {expressionBody};";
+            }
+            return $@"{declaration} => {expressionBody};";
+        }
+
+        return $@"{declaration}
+{indentation}{{{Statements.ConcatCode($"{indentation}    ")}
+{indentation}}}";
     }
-    
+
     private string GetGenericTypeConstraints(string indentation)
     {
         if (!GenericTypeConstraints.Any())

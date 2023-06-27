@@ -51,6 +51,14 @@ public class CSharpInterface : CSharpDeclaration<CSharpInterface>
         return this;
     }
 
+    public CSharpInterface ImplementsInterfaces(params string[] types)
+    {
+        foreach (var type in types)
+            Interfaces.Add(type);
+
+        return this;
+    }
+
     public CSharpInterface AddField(string type, string name, Action<CSharpInterfaceField> configure = null)
     {
         var field = new CSharpInterfaceField(type, name)

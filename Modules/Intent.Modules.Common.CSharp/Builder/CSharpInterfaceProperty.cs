@@ -15,11 +15,13 @@ public class CSharpInterfaceProperty : CSharpProperty
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
+
+        AccessModifier = string.Empty;
     }
 
-    public override string GetText(string indentation)
+    public CSharpInterfaceProperty Public()
     {
-        return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
-" : string.Empty)}{indentation}{Type} {Name} {{ {Getter}{(!IsReadOnly ? $" {Setter}" : string.Empty)} }}{(InitialValue != null ? $" = {InitialValue};" : string.Empty)}";
+        AccessModifier = "public ";
+        return this;
     }
 }

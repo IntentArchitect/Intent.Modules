@@ -261,6 +261,15 @@ public class BuilderTests
             .AddInterface("IInterface", @interface => @interface
                 .WithComments("// Comment")
                 .AddMethod("void", "Method")
+                .AddMethod("void", "Static", method =>
+                {
+                    method.Static();
+                })
+                .AddProperty("object", "GetterExpression", property =>
+                {
+                    property.WithoutSetter()
+                        .Getter.WithExpressionImplementation("new object()");
+                })
             )
             .CompleteBuild();
 

@@ -6,7 +6,7 @@ namespace Intent.Modules.Common.CSharp.Builder;
 public class CSharpProperty : CSharpMember<CSharpProperty>
 {
     private readonly CSharpClass _class;
-    public string AccessModifier { get; private set; } = "public ";
+    public string AccessModifier { get; protected set; } = "public ";
     public string OverrideModifier { get; private set; } = "";
     public string Type { get; }
     public string Name { get; }

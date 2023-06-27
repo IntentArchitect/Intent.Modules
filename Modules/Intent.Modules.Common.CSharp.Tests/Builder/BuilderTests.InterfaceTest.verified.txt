@@ -6,6 +6,8 @@ namespace Namespace
     // Comment
     public interface IInterface
     {
+        object GetterExpression => new object();
         void Method();
+        static abstract void Static();
     }
 }

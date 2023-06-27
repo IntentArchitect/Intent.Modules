@@ -1,4 +1,9 @@
-﻿### Version 3.3.36
+﻿### Version 3.3.37
+
+- Update: It is now possible to specify `static` modifiers for interface methods for the `CSharpFile` builder.
+- Update: It is now possible to declare default implementations for interface methods for the `CSharpFile` builder.
+
+### Version 3.3.36
 
 - Update: Added the following methods to `CSharpTemplateBase<T>` for determining nullable reference type statuses for an `ITypeReference`:
   - `public bool IsNonNullableReferenceType(ITypeReference typeReference, bool forceNullableEnabled = false)`
