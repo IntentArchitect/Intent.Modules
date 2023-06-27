@@ -230,8 +230,8 @@ function createCqrsResultTypeDto(entity, folder: MacroApi.Context.IElementApi) {
     }
 
     let dto = createElement("DTO", expectedDtoName, folder.id);
-    dto.setMapping(entity.id);
     dto.setMetadata("baseName", baseName);
+    dto.setMapping(entity.id);
 
     let primaryKeys = DomainHelper.getPrimaryKeys(entity);
 
@@ -252,6 +252,7 @@ function createCqrsResultTypeDto(entity, folder: MacroApi.Context.IElementApi) {
     for (var attr of attributesWithMapPaths) {
         if (dto.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == attr.id)) { continue; }
         let field = createElement("DTO-Field", attr.name, dto.id);
+        console.warn("Adding field Name:" + field.getName() + " type:"  + attr.typeId + " path:" + attr.mapPath);
         field.typeReference.setType(attr.typeId)
         field.setMapping(attr.mapPath);
     }

@@ -1,36 +1,65 @@
 declare var globals;
 (async () => {
+// crud_mediatr_command_mapper (see ~/DesignerMacros/old/ folder in Intent.Modules)
 //let element = lookup("29a81107-c71c-45b4-ba7b-982be63277a1")
 
 const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
+const mapFromDomainMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 
 var globals = initGlobals();
+
+var complexTypes: Array<string> = ["Data Contract", "Value Object"];
+let isOperationMappedCommand = element.getMapping() && element.getMapping().getElement().specialization === "Operation";
+
+if (isOperationMappedCommand)
+{
+    //Add the entity PK for the repo lookup to invoke the operation
+    let entityPkDescr = getPrimaryKeyDescriptor(element);
+    addPrimaryKeys(element, entityPkDescr);
+    //check for return type
+    if (complexTypes.includes(element.getMapping()?.getElement()?.typeReference?.getType()?.specialization))
+    {
+        getOrCreateCrudDto(element, element, false, mapFromDomainMappingSettingId );    
+    }
+}
 
 let fields = element.getChildren("DTO-Field")
     .filter(x => x.typeReference.getType() == null && x.getMapping().getElement().specialization === "Association");
 
 fields.forEach(f => {
-    let mappedElement = f.getMapping().getElement();
-
-    let originalVerb = (element.getName().split(/(?=[A-Z])/))[0];
-
-    let domainName = mappedElement.typeReference.getType().getName();
-    let baseName = element.getMetadata("baseName") 
-        ? `${element.getMetadata("baseName")}${domainName}`
-        : domainName;
-    let dtoName =  `${originalVerb}${baseName}`;
-    let dto = getOrCreateDto(dtoName, element.getParent());
-    dto.setMetadata("originalVerb", originalVerb);
-    dto.setMetadata("baseName", baseName);
-    dto.setMapping(mappedElement.typeReference.getTypeId(), projectMappingSettingId);
-
-    ensureDtoFields(mappedElement, dto);
-    
-    f.typeReference.setType(dto.id);
+    getOrCreateCrudDto(element, f, true, projectMappingSettingId );
 });
+
+let complexFields = element.getChildren("DTO-Field")
+        .filter(x => x.typeReference.getType() == null 
+            //&& x.getMapping()?.getElement()?.specialization === "Parameter"
+            && (complexTypes.includes(x.getMapping()?.getElement()?.typeReference?.getType()?.specialization)
+                ));
+
+complexFields.forEach(cf => {
+    getOrCreateCrudDto(element, cf, false, projectMappingSettingId );
+}); 
 
 function getFieldFormat(str) : string {
     return toPascalCase(str);
+}
+
+function getOrCreateCrudDto(command : MacroApi.Context.IElementApi, dtoField : MacroApi.Context.IElementApi, autoAddPrimaryKey : boolean, mappingTypeSettingId : string)
+{
+    let mappedElement = dtoField.getMapping().getElement();
+    let originalVerb = (command.getName().split(/(?=[A-Z])/))[0];
+    let domainName = mappedElement.typeReference.getType().getName();
+    let baseName = command.getMetadata("baseName")
+        ? `${command.getMetadata("baseName")}${domainName}`
+        : domainName;
+    let dtoName = `${originalVerb}${baseName}`;
+    console.warn("adding" + dtoName + " to " + command.getName());
+    let dto = getOrCreateDto(dtoName, command.getParent());
+    dto.setMetadata("originalVerb", originalVerb);
+    dto.setMetadata("baseName", baseName);
+    dto.setMapping(mappedElement.typeReference.getTypeId(), mappingTypeSettingId);
+    ensureDtoFields(autoAddPrimaryKey, mappedElement, dto);
+    dtoField.typeReference.setType(dto.id);
 }
 
 function getDomainAttributeNameFormat(str) : string {
@@ -70,13 +99,13 @@ function getOrCreateDto(elementName : string, parentElement : MacroApi.Context.I
     return dto;
 }
 
-function ensureDtoFields(mappedElement : MacroApi.Context.IElementApi, dto : MacroApi.Context.IElementApi) {
+function ensureDtoFields(autoAddPrimaryKey : boolean, mappedElement : MacroApi.Context.IElementApi, dto : MacroApi.Context.IElementApi) {
     let dtoUpdated = false;
     let domainElement = mappedElement
         .typeReference
         .getType();
-    let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
     let attributesWithMapPaths = getAttributesWithMapPath(domainElement);
+    let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true; 
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
         if (isCreateMode && entry.name?.toLowerCase() === "id") {
@@ -96,7 +125,7 @@ function ensureDtoFields(mappedElement : MacroApi.Context.IElementApi, dto : Mac
         dtoUpdated = true;
     }
 
-    if (!isCreateMode) {
+    if (autoAddPrimaryKey && !isCreateMode) {
         let entityPkDescr = getPrimaryKeyDescriptor(domainElement);
         addPrimaryKeys(dto, entityPkDescr);
     }
