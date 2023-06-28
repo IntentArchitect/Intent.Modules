@@ -16,6 +16,7 @@ namespace Intent.Modules.Common.Plugins
         protected override void OnAfterTemplateRegistrations(IApplication application)
         {
             var templates = application.Projects.SelectMany(x => x.TemplateInstances)
+                .Where(x => x.CanRunTemplate())
                 .OrderBy(x => x.Id)
                 .ThenBy(x => x.GetMetadata().GetFullLocationPath())
                 .OfType<IAfterTemplateRegistrationExecutionHook>()
@@ -27,6 +28,7 @@ namespace Intent.Modules.Common.Plugins
         protected override void OnBeforeTemplateExecution(IApplication application)
         {
             var templates = application.Projects.SelectMany(x => x.TemplateInstances)
+                .Where(x => x.CanRunTemplate())
                 .OrderBy(x => x.Id)
                 .ThenBy(x => x.GetMetadata().GetFullLocationPath())
                 .OfType<ITemplateBeforeExecutionHook>()

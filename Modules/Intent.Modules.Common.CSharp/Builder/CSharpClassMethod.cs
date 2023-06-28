@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -43,7 +44,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         configure?.Invoke(param);
         return this;
     }
-    
+
+    public CSharpClassMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
+        AddParameter(
+            $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
+            parameter => parameter.WithDefaultValue("default"));
+
     public CSharpClassMethod AddGenericParameter(string typeName)
     {
         var param = new CSharpGenericParameter(typeName);

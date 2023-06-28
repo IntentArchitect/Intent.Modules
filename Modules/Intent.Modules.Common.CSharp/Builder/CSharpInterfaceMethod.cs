@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -112,6 +113,11 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
 
         return this;
     }
+
+    public CSharpInterfaceMethod AddOptionalCancellationTokenParameter<T>(CSharpTemplateBase<T> template) =>
+        AddParameter(
+            $"{template.UseType("System.Threading.CancellationToken")}", "cancellationToken",
+            parameter => parameter.WithDefaultValue("default"));
 
     public override string GetText(string indentation)
     {

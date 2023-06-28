@@ -1,6 +1,7 @@
 ### Version 3.4.2
 
-- Fixed: The execution order of template `AfterTemplateRegistration` and `BeforeTemplateExecution` methods could vary between different operating systems resulting in event based generation having a different order on different operating systems. 
+- Fixed: The execution order of template `AfterTemplateRegistration` and `BeforeTemplateExecution` methods could vary between different operating systems resulting in event based generation having a different order on different operating systems.
+- Fixed: `AfterTemplateRegistration` and `BeforeTemplateExecution` were being called for templates even if their `CanRunTemplate()` was returning `false`.
 
 ### Version 3.4.1
 

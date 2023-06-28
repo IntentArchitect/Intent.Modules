@@ -17,6 +17,7 @@ namespace Intent.Modules.Common.Plugins
         protected override void OnAfterTemplateRegistrations(IApplication application)
         {
             var templates = application.OutputTargets.SelectMany(x => x.TemplateInstances)
+                .Where(x => x.CanRunTemplate())
                 .OfType<ICSharpFileBuilderTemplate>()
                 .ToList();
 
@@ -27,11 +28,11 @@ namespace Intent.Modules.Common.Plugins
         protected override void OnBeforeTemplateExecution(IApplication application)
         {
             var templates = application.OutputTargets.SelectMany(x => x.TemplateInstances)
+                .Where(x => x.CanRunTemplate())
                 .OfType<ICSharpFileBuilderTemplate>()
                 .ToList();
 
             templates.ForEach(x => x.CSharpFile.AfterBuild());
-            templates.ForEach(x => x.CSharpFile.AfterBuild()); // TODO JL: Why is this being called twice?
         }
     }
 }
