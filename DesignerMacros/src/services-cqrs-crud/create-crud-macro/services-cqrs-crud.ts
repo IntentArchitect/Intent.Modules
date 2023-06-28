@@ -192,6 +192,7 @@ function createCqrsCallOperationCommand(entity : MacroApi.Context.IElementApi, o
 
     command.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter"));
 
+    onMapCommand(command.getElement());
     command.collapse();
 }
 
