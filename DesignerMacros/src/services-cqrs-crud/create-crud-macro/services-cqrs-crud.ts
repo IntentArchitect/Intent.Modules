@@ -1,6 +1,8 @@
-/// <reference path="../common/command-on-map.ts" />
 /// <reference path="../../common/domainHelper.ts" />
 /// <reference path="../../common/servicesHelper.ts" />
+/// <reference path="../common/command-on-map.ts" />
+/// <reference path="../common/dto-on-map.ts" />
+/// <reference path="../common/query-on-map.ts" />
 
 // services-cqrs-crud script (see ~/DesignerMacros/src/services-cqrs-crud folder in Intent.Modules)
 async function execute() { 
@@ -67,6 +69,7 @@ function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: M
         command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
     }
 
+    onMapCommand(command.getElement());
     command.collapse();
 }
 
@@ -98,6 +101,7 @@ function createCqrsFindByIdQuery(entity: MacroApi.Context.IElementApi, folder: M
     let primaryKeys = DomainHelper.getPrimaryKeys(entity);
     ServicesHelper.addDtoFieldsFromDomain(query, primaryKeys);
 
+    onMapQuery(query);
     query.collapse();
 }
 
@@ -154,6 +158,7 @@ function createCqrsUpdateCommand(entity : MacroApi.Context.IElementApi, folder: 
 
     command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
 
+    onMapCommand(command.getElement());
     command.collapse();
 }
 
@@ -218,6 +223,7 @@ function createCqrsDeleteCommand(entity: MacroApi.Context.IElementApi, folder: M
     let primaryKeys = DomainHelper.getPrimaryKeys(entity);
     ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
 
+    onMapCommand(command);
     command.collapse();
 }
 
@@ -255,11 +261,11 @@ function createCqrsResultTypeDto(entity, folder: MacroApi.Context.IElementApi) {
     for (var attr of attributesWithMapPaths) {
         if (dto.getChildren("DTO-Field").some(x => x.getMapping()?.getElement()?.id == attr.id)) { continue; }
         let field = createElement("DTO-Field", attr.name, dto.id);
-        console.warn("Adding field Name:" + field.getName() + " type:"  + attr.typeId + " path:" + attr.mapPath);
         field.typeReference.setType(attr.typeId)
         field.setMapping(attr.mapPath);
     }
 
+    onMapDto(dto);
     dto.collapse();
     return dto;
 }
@@ -269,3 +275,4 @@ function getBaseNameForElement(owningAggregate, entity, entityIsMany) : string {
     let entityName = entityIsMany ? toPascalCase(pluralize(entity.name)) : toPascalCase(entity.name);
     return owningAggregate ? `${toPascalCase(owningAggregate.name)}${entityName}` : entityName;
 }
+//await execute();

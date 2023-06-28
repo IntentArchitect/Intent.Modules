@@ -1,71 +1,24 @@
-declare var globals;
-(async () => {
-// crud_mediatr_dto_mapper (see ~/DesignerMacros/old/ folder in Intent.Modules)
-//let element = lookup("29a81107-c71c-45b4-ba7b-982be63277a1")
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
-const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
-const originalDtoMappingSettingId = "1f747d14-681c-4a20-8c68-34223f41b825";
 
-var globals = initGlobals();
-var complexTypes: Array<string> = ["Data Contract", "Value Object"];
+const constants = {
+    PKSpecialization: {
+        Implicit: "implicit",
+        Explicit: "explicit",
+        ExplicitComposite: "explicit_composite",
+        Unknown: "unknown"
+    },
+    FKSpecialization: {
+        Implicit: "implicit",
+        Explicit: "explicit",
+    }
+};
 
-let fields = element.getChildren("DTO-Field")
-    .filter(x => x.typeReference.getType() == null && x.getMapping()?.getElement()?.specialization === "Association");
-
-fields.forEach(f => {
-    getOrCreateCrudDto(element, f, true);
-});
-
-let complexAttributes = element.getChildren("DTO-Field")
-        .filter(x => x.typeReference.getType() == null 
-            && (complexTypes.includes(x.getMapping()?.getElement()?.typeReference?.getType()?.specialization)
-                ));
-
-complexAttributes.forEach(f => {
-    getOrCreateCrudDto(element, f, false);
-}); 
-
-function getFieldFormat(str) : string {
+function getFieldFormat(str): string {
     return toPascalCase(str);
 }
 
-function getOrCreateCrudDto(element : MacroApi.Context.IElementApi, dtoField : MacroApi.Context.IElementApi, autoAddPrimaryKey : boolean)
-{
-    let mappedElement = dtoField.getMapping().getElement();
-
-    let originalVerb = "";
-    if (element.hasMetadata("originalVerb")) {
-        originalVerb = element.getMetadata("originalVerb");
-        // In the event that the prefix is no longer the same as the
-        // originally called verb, then don't propagate this any further
-        // as end users might get confused.
-        if (element.getName().indexOf(originalVerb) < 0) {
-            originalVerb = "";
-        }
-    }
-
-    let targetMappingSettingId = (!originalVerb || originalVerb === "") 
-        ? originalDtoMappingSettingId 
-        : projectMappingSettingId;
-
-    let domainName = mappedElement.typeReference.getType().getName();
-    let baseName = element.getMetadata("baseName") 
-        ? `${element.getMetadata("baseName")}${domainName}`
-        : domainName;
-    let dtoName =  `${originalVerb}${baseName}`;
-    let dto = getOrCreateDto(dtoName, element.getParent());
-    dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);
-    if (originalVerb !== "") {
-        dto.setMetadata("originalVerb", originalVerb);
-    }
-    dto.setMetadata("baseName", baseName);
-    ensureDtoFields(autoAddPrimaryKey, mappedElement, dto);
-    
-    dtoField.typeReference.setType(dto.id);
-
-}
-
-function getDomainAttributeNameFormat(str) : string {
+function getDomainAttributeNameFormat(str): string {
     let convention = getDomainAttributeNamingConvention();
     switch (convention) {
         case "pascal-case":
@@ -76,22 +29,7 @@ function getDomainAttributeNameFormat(str) : string {
     return str;
 }
 
-function initGlobals() {
-    return {
-        PKSpecialization: {
-            Implicit: "implicit",
-            Explicit: "explicit",
-            ExplicitComposite: "explicit_composite",
-            Unknown: "unknown"
-        },
-        FKSpecialization: {
-            Implicit: "implicit",
-            Explicit: "explicit",
-        }
-    };
-}
-
-function getOrCreateDto(elementName : string, parentElement : MacroApi.Context.IElementApi) : MacroApi.Context.IElementApi {
+function getOrCreateDto(elementName: string, parentElement: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
     const expectedDtoName = `${elementName}Dto`;
     let existingDto = parentElement.getChildren("DTO").filter(x => x.getName() === expectedDtoName)[0];
     if (existingDto) {
@@ -107,8 +45,8 @@ function ensureDtoFields(autoAddPrimaryKey : boolean, mappedElement : MacroApi.C
     let domainElement = mappedElement
         .typeReference
         .getType();
-        let attributesWithMapPaths = getAttributesWithMapPath(domainElement);
-        let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
+    let attributesWithMapPaths = getAttributesWithMapPath(domainElement);
+    let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true; 
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
         if (isCreateMode && entry.name?.toLowerCase() === "id") {
@@ -138,20 +76,20 @@ function ensureDtoFields(autoAddPrimaryKey : boolean, mappedElement : MacroApi.C
     }
 }
 
-function addPrimaryKeys(dto : MacroApi.Context.IElementApi, entityPkDescr) {
+function addPrimaryKeys(dto: MacroApi.Context.IElementApi, entityPkDescr) {
     switch (entityPkDescr.specialization) {
-        case globals.PKSpecialization.Implicit:
-        case globals.PKSpecialization.Explicit:
+        case constants.PKSpecialization.Implicit:
+        case constants.PKSpecialization.Explicit:
             {
                 if (dto.getChildren("DTO-Field").some(x => x.getName() == getFieldFormat(entityPkDescr.name))) { return; }
                 let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(entityPkDescr.name), dto.id);
                 primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);
-                if (entityPkDescr.specialization == globals.PKSpecialization.Explicit) {
+                if (entityPkDescr.specialization == constants.PKSpecialization.Explicit) {
                     primaryKeyDtoField.setMapping(entityPkDescr.mapPath);
                 }
             }
             break;
-        case globals.PKSpecialization.ExplicitComposite:
+        case constants.PKSpecialization.ExplicitComposite:
             for (let key of entityPkDescr.compositeKeys) {
                 if (dto.getChildren("DTO-Field").some(x => x.getName() == getFieldFormat(key.name))) { continue; }
                 let primaryKeyDtoField = createElement("DTO-Field", getFieldFormat(key.name), dto.id);
@@ -196,7 +134,7 @@ function isOwnerForeignKey(attributeName, domainElement) {
 }
 
 // Returns a dictionary instead of element to help deal with explicit vs implicit keys
-function getPrimaryKeyDescriptor(entity : MacroApi.Context.IElementApi) {
+function getPrimaryKeyDescriptor(entity: MacroApi.Context.IElementApi) {
     if (!entity) {
         throw new Error("entity not specified");
     }
@@ -209,7 +147,7 @@ function getPrimaryKeyDescriptor(entity : MacroApi.Context.IElementApi) {
                 id: null,
                 name: getDomainAttributeNameFormat("Id"),
                 typeId: getSurrogateKeyType(),
-                specialization: globals.PKSpecialization.Implicit,
+                specialization: constants.PKSpecialization.Implicit,
                 compositeKeys: null,
                 mapPath: null
             };
@@ -219,7 +157,7 @@ function getPrimaryKeyDescriptor(entity : MacroApi.Context.IElementApi) {
                 id: pkAttr.id,
                 name: getDomainAttributeNameFormat(pkAttr.name),
                 typeId: pkAttr.typeId,
-                specialization: globals.PKSpecialization.Explicit,
+                specialization: constants.PKSpecialization.Explicit,
                 compositeKeys: null,
                 mapPath: pkAttr.mapPath
             };
@@ -228,14 +166,14 @@ function getPrimaryKeyDescriptor(entity : MacroApi.Context.IElementApi) {
                 id: null,
                 name: null,
                 typeId: null,
-                specialization: globals.PKSpecialization.ExplicitComposite,
-                compositeKeys: Object.values(primaryKeys).map((v) => { 
+                specialization: constants.PKSpecialization.ExplicitComposite,
+                compositeKeys: Object.values(primaryKeys).map((v) => {
                     return {
                         id: v.id,
                         name: getDomainAttributeNameFormat(v.name),
                         typeId: v.typeId,
                         mapPath: v.mapPath
-                    }; 
+                    };
                 }),
                 mapPath: null
             };
@@ -244,7 +182,7 @@ function getPrimaryKeyDescriptor(entity : MacroApi.Context.IElementApi) {
                 id: null,
                 name: null,
                 typeId: null,
-                specialization: globals.PKSpecialization.Unknown,
+                specialization: constants.PKSpecialization.Unknown,
                 compositeKeys: null,
                 mapPath: null
             };
@@ -260,12 +198,12 @@ interface IAttributeWithMapPath {
     isCollection: boolean
 };
 
-function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
-    let keydict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi) {
+    let keydict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
     let keys = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
-    keys.forEach(key => keydict[key.id] = { 
-        id: key.id, 
-        name: key.getName(), 
+    keys.forEach(key => keydict[key.id] = {
+        id: key.id,
+        name: key.getName(),
         typeId: key.typeReference.typeId,
         mapPath: [key.id],
         isNullable: false,
@@ -277,8 +215,8 @@ function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
     return keydict;
 
     function traverseInheritanceHierarchyForPrimaryKeys(
-        keydict: { [characterName: string]: IAttributeWithMapPath }, 
-        curEntity: MacroApi.Context.IElementApi, 
+        keydict: { [characterName: string]: IAttributeWithMapPath },
+        curEntity: MacroApi.Context.IElementApi,
         generalizationStack) {
         if (!curEntity) {
             return;
@@ -291,9 +229,9 @@ function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
         generalizationStack.push(generalization.id);
         let nextEntity = generalization.typeReference.getType();
         let baseKeys = nextEntity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
-        baseKeys.forEach(key => { 
-            keydict[key.id] = { 
-                id: key.id, 
+        baseKeys.forEach(key => {
+            keydict[key.id] = {
+                id: key.id,
                 name: key.getName(),
                 typeId: key.typeReference.typeId,
                 mapPath: generalizationStack.concat([key.id]),
@@ -305,12 +243,12 @@ function getPrimaryKeysWithMapPath(entity : MacroApi.Context.IElementApi) {
     }
 }
 
-function getAttributesWithMapPath(entity : MacroApi.Context.IElementApi) {
-    let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi) {
+    let attrDict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
     let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !legacyPartitionKey(x));
-    attributes.forEach(attr => attrDict[attr.id] = { 
-        id: attr.id, 
-        name: attr.getName(), 
+    attributes.forEach(attr => attrDict[attr.id] = {
+        id: attr.id,
+        name: attr.getName(),
         typeId: attr.typeReference.typeId,
         mapPath: [attr.id],
         isNullable: false,
@@ -321,8 +259,8 @@ function getAttributesWithMapPath(entity : MacroApi.Context.IElementApi) {
 
     return attrDict;
 
-    function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath }, 
-        curEntity: MacroApi.Context.IElementApi, 
+    function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath },
+        curEntity: MacroApi.Context.IElementApi,
         generalizationStack) {
         if (!curEntity) {
             return;
@@ -335,9 +273,9 @@ function getAttributesWithMapPath(entity : MacroApi.Context.IElementApi) {
         generalizationStack.push(generalization.id);
         let nextEntity = generalization.typeReference.getType();
         let baseKeys = nextEntity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !legacyPartitionKey(x));
-        baseKeys.forEach(attr => { 
-            attrDict[attr.id] = { 
-                id: attr.id, 
+        baseKeys.forEach(attr => {
+            attrDict[attr.id] = {
+                id: attr.id,
                 name: attr.getName(),
                 typeId: attr.typeReference.typeId,
                 mapPath: generalizationStack.concat([attr.id]),
@@ -360,4 +298,3 @@ function getDomainAttributeNamingConvention() {
 function legacyPartitionKey(attribute) {
     return attribute.hasStereotype("Partition Key") && attribute.name === "PartitionKey";
 }
-})();
