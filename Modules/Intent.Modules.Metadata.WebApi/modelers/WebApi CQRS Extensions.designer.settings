@@ -21,7 +21,7 @@ element.addStereotype(httpSettingsId);
 let httpSettings = element.getStereotype(httpSettingsId);
 
 let folderName = element.getParent().getName();
-let mappedEntity = element.getMapping().getPath()[0]?.getElement()?.getName();
+let mappedEntity = element.getMapping()?.getPath()[0]?.getElement()?.getName();
 
 let serviceRoute = toKebabCase(folderName);
 let conventionIdAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == `${singularize(folderName.toLowerCase())}id`);

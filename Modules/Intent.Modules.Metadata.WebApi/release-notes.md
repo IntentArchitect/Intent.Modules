@@ -1,3 +1,6 @@
+### Version 4.2.3
+- Fixed: `Expose as Http Endpoint` script didn't work correctly for `Command`s which were not mapped.
+
 ### Version 4.2.1
 
 - Fixed: Applying the Api Version Settings stereotype on a Service / Command / Query without a route would cause an error to be thrown.
