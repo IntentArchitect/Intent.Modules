@@ -69,12 +69,23 @@ function updatePrimaryKey(element) {
     if (element.specialization !== "Class") {
         return;
     }
+    const isManagedKey = "is-managed-key";
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
-    let pk = element.getChildren("Attribute")
-        .filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
-    let idAttr = pk;
+    let idAttr = element.getChildren("Attribute")
+        .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata(isManagedKey) &amp;&amp; !x.hasMetadata("association")));
+    const isToOneRelationshipTarget = () =&gt; element.getAssociations("Association").some(x =&gt; x.isSourceEnd() &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
+    if (!isAggregateRoot(element) &amp;&amp; isToOneRelationshipTarget()) {
+        if (idAttr != null) {
+            idAttr.delete();
+        }
+        return;
+    }
     if (idAttr == null) {
-        idAttr = element.getChildren("Attribute").find(x =&gt; x.getName().toLowerCase() === "id");
+        const classNameWithId = `${element.getName()}Id`.toLowerCase();
+        idAttr = element.getChildren("Attribute").find(attribute =&gt; {
+            const attributeName = attribute.getName().toLowerCase();
+            return attributeName === "id" || attributeName === classNameWithId;
+        });
     }
     if (idAttr == null) {
         idAttr = createElement("Attribute", "Id", element.id);
@@ -83,9 +94,7 @@ function updatePrimaryKey(element) {
             throw new Error("typeReference is not defined");
         idAttr.typeReference.setType(getDefaultIdType());
     }
-    if (idAttr.getMetadata("is-managed-key") != "true") {
-        idAttr.setMetadata("is-managed-key", "true");
-    }
+    idAttr.setMetadata(isManagedKey, "true");
     if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
         idAttr.addStereotype(primaryKeyStereotypeId);
     }
@@ -575,12 +584,23 @@ function updatePrimaryKey(element) {
     if (element.specialization !== "Class") {
         return;
     }
+    const isManagedKey = "is-managed-key";
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
-    let pk = element.getChildren("Attribute")
-        .filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
-    let idAttr = pk;
+    let idAttr = element.getChildren("Attribute")
+        .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata(isManagedKey) &amp;&amp; !x.hasMetadata("association")));
+    const isToOneRelationshipTarget = () =&gt; element.getAssociations("Association").some(x =&gt; x.isSourceEnd() &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
+    if (!isAggregateRoot(element) &amp;&amp; isToOneRelationshipTarget()) {
+        if (idAttr != null) {
+            idAttr.delete();
+        }
+        return;
+    }
     if (idAttr == null) {
-        idAttr = element.getChildren("Attribute").find(x =&gt; x.getName().toLowerCase() === "id");
+        const classNameWithId = `${element.getName()}Id`.toLowerCase();
+        idAttr = element.getChildren("Attribute").find(attribute =&gt; {
+            const attributeName = attribute.getName().toLowerCase();
+            return attributeName === "id" || attributeName === classNameWithId;
+        });
     }
     if (idAttr == null) {
         idAttr = createElement("Attribute", "Id", element.id);
@@ -589,9 +609,7 @@ function updatePrimaryKey(element) {
             throw new Error("typeReference is not defined");
         idAttr.typeReference.setType(getDefaultIdType());
     }
-    if (idAttr.getMetadata("is-managed-key") != "true") {
-        idAttr.setMetadata("is-managed-key", "true");
-    }
+    idAttr.setMetadata(isManagedKey, "true");
     if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
         idAttr.addStereotype(primaryKeyStereotypeId);
     }
@@ -816,12 +834,23 @@ function updatePrimaryKey(element) {
     if (element.specialization !== "Class") {
         return;
     }
+    const isManagedKey = "is-managed-key";
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
-    let pk = element.getChildren("Attribute")
-        .filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") &amp;&amp; !x.hasMetadata("association")))[0];
-    let idAttr = pk;
+    let idAttr = element.getChildren("Attribute")
+        .find(x =&gt; x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata(isManagedKey) &amp;&amp; !x.hasMetadata("association")));
+    const isToOneRelationshipTarget = () =&gt; element.getAssociations("Association").some(x =&gt; x.isSourceEnd() &amp;&amp; !x.getOtherEnd().typeReference.isCollection);
+    if (!isAggregateRoot(element) &amp;&amp; isToOneRelationshipTarget()) {
+        if (idAttr != null) {
+            idAttr.delete();
+        }
+        return;
+    }
     if (idAttr == null) {
-        idAttr = element.getChildren("Attribute").find(x =&gt; x.getName().toLowerCase() === "id");
+        const classNameWithId = `${element.getName()}Id`.toLowerCase();
+        idAttr = element.getChildren("Attribute").find(attribute =&gt; {
+            const attributeName = attribute.getName().toLowerCase();
+            return attributeName === "id" || attributeName === classNameWithId;
+        });
     }
     if (idAttr == null) {
         idAttr = createElement("Attribute", "Id", element.id);
@@ -830,9 +859,7 @@ function updatePrimaryKey(element) {
             throw new Error("typeReference is not defined");
         idAttr.typeReference.setType(getDefaultIdType());
     }
-    if (idAttr.getMetadata("is-managed-key") != "true") {
-        idAttr.setMetadata("is-managed-key", "true");
-    }
+    idAttr.setMetadata(isManagedKey, "true");
     if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
         idAttr.addStereotype(primaryKeyStereotypeId);
     }

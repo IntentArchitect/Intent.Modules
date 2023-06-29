@@ -1,18 +1,33 @@
 /// <reference path="isAggregateRoot.ts" />
 /// <reference path="getDefaultIdType.ts" />
 
-function updatePrimaryKey(element: MacroApi.Context.IElementApi) {
+function updatePrimaryKey(element: MacroApi.Context.IElementApi): void {
     if (element.specialization !== "Class") {
         return;
     }
 
+    const isManagedKey = "is-managed-key";
     const primaryKeyStereotypeId = "64f6a994-4909-4a9d-a0a9-afc5adf2ef74";
-    let pk = element.getChildren("Attribute")
-        .filter(x => x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata("is-managed-key") && !x.hasMetadata("association")))[0];
+    let idAttr = element.getChildren("Attribute")
+        .find(x => x.hasStereotype(primaryKeyStereotypeId) || (x.hasMetadata(isManagedKey) && !x.hasMetadata("association")));
 
-    let idAttr = pk;
+    const isToOneRelationshipTarget = () => element.getAssociations("Association").some(x => x.isSourceEnd() && !x.getOtherEnd().typeReference.isCollection);
+    if (!isAggregateRoot(element) && isToOneRelationshipTarget()) {
+        if (idAttr != null) {
+            idAttr.delete();
+        }
+
+        return;
+    }
+
     if (idAttr == null) {
-        idAttr = element.getChildren("Attribute").find(x => x.getName().toLowerCase() === "id");
+        const classNameWithId = `${element.getName()}Id`.toLowerCase();
+
+        idAttr = element.getChildren("Attribute").find(attribute => {
+            const attributeName = attribute.getName().toLowerCase();
+            
+            return attributeName === "id" || attributeName === classNameWithId;
+        });
     }
 
     if (idAttr == null) {
@@ -22,9 +37,7 @@ function updatePrimaryKey(element: MacroApi.Context.IElementApi) {
         idAttr.typeReference.setType(getDefaultIdType());
     }
 
-    if (idAttr.getMetadata("is-managed-key") != "true") {
-        idAttr.setMetadata("is-managed-key", "true");
-    }
+    idAttr.setMetadata(isManagedKey, "true");
 
     if (!idAttr.hasStereotype(primaryKeyStereotypeId)) {
         idAttr.addStereotype(primaryKeyStereotypeId);
