@@ -1,5 +1,7 @@
 ﻿#nullable enable
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using Intent.Metadata.Models;
 
 namespace Intent.Modules.Metadata.WebApi.Models;
@@ -18,6 +20,15 @@ internal class HttpEndpointModel : IHttpEndpointModel
         IElement internalElement,
         IReadOnlyCollection<IHttpEndpointInputModel> inputs)
     {
+        if (verb is not (HttpVerb.Patch or HttpVerb.Post or HttpVerb.Put) &&
+            inputs.Any(x => x.Source == HttpInputSource.FromBody))
+        {
+            throw new InvalidOperationException(
+                $"One ore more inputs have a source of body for an endpoint with verb " +
+                $"{verb.ToString().ToUpperInvariant()}. Source element: " +
+                $"\"{internalElement.Name}\" [{internalElement.Id}]");
+        }
+
         Name = name;
         Verb = verb;
         Route = route;

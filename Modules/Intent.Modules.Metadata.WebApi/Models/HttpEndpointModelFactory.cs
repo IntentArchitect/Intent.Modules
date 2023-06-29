@@ -185,16 +185,17 @@ public static class HttpEndpointModelFactory
         HttpSettings httpSettings)
     {
         var isForCqrs = element.SpecializationTypeId is Constants.ElementTypeIds.Query or Constants.ElementTypeIds.Command;
-        var hasNonRouteParameter = false;
+        var verbAllowsBody = httpSettings.Verb is HttpVerb.Put or HttpVerb.Patch or HttpVerb.Post;
+        var requiresBody = false;
 
         foreach (var childElement in element.ChildElements)
         {
             var hasParameterSettings = childElement.TryGetParameterSettings(out var parameterSettings);
             var routeContainsParameter = httpSettings.Route?.ToLower().Contains($"{{{childElement.Name.ToLower()}}}") == true;
 
-            if (isForCqrs && !hasParameterSettings && !routeContainsParameter)
+            if (isForCqrs && !hasParameterSettings && !routeContainsParameter && verbAllowsBody)
             {
-                hasNonRouteParameter = true;
+                requiresBody = true;
                 continue;
             }
 
@@ -208,7 +209,7 @@ public static class HttpEndpointModelFactory
                 value: childElement.Value);
         }
 
-        if (isForCqrs && hasNonRouteParameter)
+        if (isForCqrs && requiresBody)
         {
             yield return new HttpEndpointInputModel(
                 id: element.Id,
