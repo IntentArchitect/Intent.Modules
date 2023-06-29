@@ -9,8 +9,8 @@ public class JavaParameter
     public string Type { get; }
     public string Name { get; }
     public string DefaultValue { get; private set; }
+    public bool IsFinal { get; private set; }
     public IList<JavaAnnotation> Annotations { get; } = new List<JavaAnnotation>();
-    public bool HasThisModifier { get; private set; }
 
     public JavaParameter(string type, string name)
     {
@@ -28,7 +28,7 @@ public class JavaParameter
         Name = name;
     }
 
-    public JavaParameter AddAttribute(string name, Action<JavaAnnotation> configure = null)
+    public JavaParameter AddAnnotation(string name, Action<JavaAnnotation> configure = null)
     {
         var param = new JavaAnnotation(name);
         Annotations.Add(param);
@@ -42,15 +42,15 @@ public class JavaParameter
         return this;
     }
 
-    public JavaParameter WithThisModifier()
+    public JavaParameter Final()
     {
-        HasThisModifier = true;
+        IsFinal = true;
         return this;
     }
 
     public override string ToString()
     {
-        return $@"{(HasThisModifier ? "this " : string.Empty)}{GetAttributes()}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
+        return $@"{(IsFinal ? "final " : string.Empty)}{GetAttributes()}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
     }
 
     protected string GetAttributes()

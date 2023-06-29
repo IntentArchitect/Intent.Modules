@@ -1,0 +1,8 @@
+﻿package com.test;
+
+
+
+public class TestClass<S, T> {
+    public <U, V> void isMethodWithType(S paramS, T paramT, U paramU, V paramV) {
+    }
+}

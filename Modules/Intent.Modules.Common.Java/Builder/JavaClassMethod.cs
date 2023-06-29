@@ -13,8 +13,7 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
     public string ReturnType { get; }
     public string Name { get; }
     public List<JavaParameter> Parameters { get; } = new();
-    // public IList<JavaGenericParameter> GenericParameters { get; } = new List<JavaGenericParameter>();
-    // public IList<JavaGenericTypeConstraint> GenericTypeConstraints { get; } = new List<JavaGenericTypeConstraint>();
+    public IList<JavaGenericParameter> GenericParameters { get; } = new List<JavaGenericParameter>();
     
     public JavaClassMethod(string returnType, string name)
     {
@@ -42,27 +41,19 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
         return this;
     }
     
-    // public JavaClassMethod AddGenericParameter(string typeName)
-    // {
-    //     var param = new JavaGenericParameter(typeName);
-    //     GenericParameters.Add(param);
-    //     return this;
-    // }
-    //
-    // public JavaClassMethod AddGenericParameter(string typeName, out JavaGenericParameter param)
-    // {
-    //     param = new JavaGenericParameter(typeName);
-    //     GenericParameters.Add(param);
-    //     return this;
-    // }
-    //
-    // public JavaClassMethod AddGenericTypeConstraint(string genericParameterName, Action<JavaGenericTypeConstraint> configure)
-    // {
-    //     var param = new JavaGenericTypeConstraint(genericParameterName);
-    //     configure(param);
-    //     GenericTypeConstraints.Add(param);
-    //     return this;
-    // }
+    public JavaClassMethod AddGenericParameter(string typeName)
+    {
+        var param = new JavaGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
+    
+    public JavaClassMethod AddGenericParameter(string typeName, out JavaGenericParameter param)
+    {
+        param = new JavaGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public JavaClassMethod AddStatement(string statement, Action<JavaStatement> configure = null)
     {
@@ -159,6 +150,12 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
         OverrideModifier = "static ";
         return this;
     }
+    
+    public JavaClassMethod Final()
+    {
+        OverrideModifier = "final ";
+        return this;
+    }
 
     public void RemoveStatement(JavaStatement statement)
     {
@@ -167,29 +164,18 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {{{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{GetGenericParameters()}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
     
-//     private string GetGenericTypeConstraints(string indentation)
-//     {
-//         if (!GenericTypeConstraints.Any())
-//         {
-//             return string.Empty;
-//         }
-//
-//         string newLine = $@"
-// {indentation}    ";
-//         return newLine + string.Join(newLine, GenericTypeConstraints);
-//     }
-//     
-//     private string GetGenericParameters()
-//     {
-//         if (!GenericParameters.Any())
-//         {
-//             return string.Empty;
-//         }
-//
-//         return $"<{string.Join(", ", GenericParameters)}>";
-//     }
+     private string GetGenericParameters()
+     {
+         if (!GenericParameters.Any())
+         {
+             return string.Empty;
+         }
+
+         return $"<{string.Join(", ", GenericParameters)}> ";
+     }
+
 }

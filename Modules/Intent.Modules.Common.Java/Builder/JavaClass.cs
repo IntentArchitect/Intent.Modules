@@ -24,15 +24,16 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
-    public JavaClass BaseType { get; set; }
+    public JavaClass BaseType { get; private set; }
     public IList<string> Interfaces { get; } = new List<string>();
     public IList<JavaField> Fields { get; } = new List<JavaField>();
     public IList<JavaConstructor> Constructors { get; } = new List<JavaConstructor>();
     public IList<JavaClassMethod> Methods { get; } = new List<JavaClassMethod>();
+    public IList<JavaGenericParameter> GenericParameters { get; } = new List<JavaGenericParameter>();
     public IList<JavaCodeBlock> CodeBlocks { get; } = new List<JavaCodeBlock>();
     
-    public bool IsFinal { get; set; }
-    public bool IsAbstract { get; set; }
+    public bool IsFinal { get; private set; }
+    public bool IsAbstract { get; private set; }
     
     public JavaClass WithBaseType(string type)
     {
@@ -101,6 +102,20 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
         return this;
     }
     
+    public JavaClass AddGenericParameter(string typeName)
+    {
+        var param = new JavaGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
+
+    public JavaClass AddGenericParameter(string typeName, out JavaGenericParameter param)
+    {
+        param = new JavaGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
+    
     public JavaClass InsertMethod(int index, string returnType, string name, Action<JavaClassMethod> configure = null)
     {
         var method = new JavaClassMethod(returnType, name);
@@ -166,7 +181,6 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
 
     private string GetBaseTypes()
     {
-
         return $"{(BaseType != null ? $" extends {BaseType.Name}" : "")}{(Interfaces.Any() ? $" implements {string.Join(", ", Interfaces)}" : "")}";
     }
 
@@ -189,12 +203,22 @@ public class JavaClass : JavaDeclaration<JavaClass>, ICodeBlock
     
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{(IsFinal ? "final " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{(IsFinal ? "final " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetGenericParameters()}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
     
     public string GetText(string indentation)
     {
         return ToString(indentation);
+    }
+    
+    private string GetGenericParameters()
+    {
+        if (!GenericParameters.Any())
+        {
+            return string.Empty;
+        }
+
+        return $"<{string.Join(", ", GenericParameters)}>";
     }
 }

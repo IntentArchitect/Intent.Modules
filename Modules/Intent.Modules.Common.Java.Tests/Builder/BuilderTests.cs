@@ -140,4 +140,49 @@ void TestMethod();");
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task Finals()
+    {
+        var fileBuilder = new JavaFile("com.test", "")
+            .AddClass("TestClass", c =>
+            {
+                c.Final();
+                c.AddField("String", "someName", param => param.Final());
+                c.AddField("String", "someOtherName", param => param.PrivateFinal());
+                c.AddMethod("void", "testMethod", method =>
+                {
+                    method.Final();
+                    method.AddParameter("String", "message", param => param.Final());
+                });
+                c.AddMethod("void", "testMethodTwo", method =>
+                {
+                    method.Final();
+                    method.AddParameter("String", "message",
+                        param => param.Final().AddAnnotation("Value", a => a.AddArgument(@"""value""")));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task Generics()
+    {
+        var fileBuilder = new JavaFile("com.test", "")
+            .AddClass("TestClass", c =>
+            {
+                c.AddGenericParameter("S", out var s);
+                c.AddGenericParameter("T", out var t);
+                c.AddMethod("void", "isMethodWithType", method => method
+                    .AddGenericParameter("U", out var u)
+                    .AddGenericParameter("V", out var v)
+                    .AddParameter(s, "paramS")
+                    .AddParameter(t, "paramT")
+                    .AddParameter(u, "paramU")
+                    .AddParameter(v, "paramV"));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

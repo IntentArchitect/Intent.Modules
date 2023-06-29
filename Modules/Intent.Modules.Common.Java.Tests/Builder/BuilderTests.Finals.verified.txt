@@ -1,0 +1,14 @@
+﻿package com.test;
+
+
+
+public final class TestClass {
+    final String someName;
+    private final String someOtherName;
+
+    public final void testMethod(final String message) {
+    }
+
+    public final void testMethodTwo(final @Value("value") String message) {
+    }
+}

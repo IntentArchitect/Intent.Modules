@@ -1,3 +1,9 @@
+### Version 3.4.4
+
+- Updated Java File Builder in order for `final` to be applied in fields and parameters.
+- Made minor corrections in the naming of certain Java concepts in the File Builder.
+- Added Generic Type parameter support for Classes and Methods (no constraint support yet).
+
 ### Version 3.4.3
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

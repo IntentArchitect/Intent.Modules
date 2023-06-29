@@ -31,6 +31,18 @@ public class JavaField : JavaMember<JavaField>
         return this;
     }
 
+    public JavaField Final()
+    {
+        AccessModifier = "final ";
+        return this;
+    }
+    
+    public JavaField PrivateFinal()
+    {
+        AccessModifier = "private final ";
+        return this;
+    }
+
     public override string GetText(string indentation)
     {
         return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{Type} {Name};";
