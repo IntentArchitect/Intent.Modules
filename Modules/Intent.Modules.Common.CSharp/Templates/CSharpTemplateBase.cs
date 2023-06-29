@@ -314,7 +314,7 @@ namespace Intent.Modules.Common.CSharp.Templates
                 bool LocalNamespacePartsDoNotContainType() => !localNamespaceParts.Contains(typeName);
 
                 // Ensure there are no other known types in usings with the same name:
-                bool ConflictingTypeExists() => usingPaths
+                bool ConflictingTypeExists() => usingPaths.Append(localNamespace)
                     .Any(usingPath => usingPath != typeQualifier &&
                                       knownTypesByNamespace.TryGetValue(usingPath, out var types) &&
                                       types.Contains(typeName));

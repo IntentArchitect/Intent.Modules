@@ -308,5 +308,26 @@ namespace Intent.Modules.Common.Tests
             Assert.Equal("Entities.Mas.Log", result);
         }
 
+        [Fact]
+        public void Scenario13()
+        {
+            var result = CSharpTemplateBase.NormalizeNamespace(
+                localNamespace: "Customer1.Api",
+                fullyQualifiedType: "Customer1.Domain.Conflict",
+                knownOtherPaths: Array.Empty<string>(),
+                usingPaths: new string[]
+                {
+                    "System",
+                    "Customer1.Domain",
+                },
+                knownTypesByNamespace: new Dictionary<string, ISet<string>>()
+                {
+                    ["Customer1.Api"] = new HashSet<string>() { "Conflict" }
+                });
+
+            Assert.Equal("Domain.Conflict", result);
+        }
+
+
     }
 }
