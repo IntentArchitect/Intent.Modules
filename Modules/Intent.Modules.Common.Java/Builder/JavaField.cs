@@ -32,6 +32,12 @@ public class JavaField : JavaMember<JavaField>
         return this;
     }
 
+    public JavaField Private()
+    {
+        AccessModifier = "private ";
+        return this;
+    }
+
     public JavaField Final()
     {
         AccessModifier = "final ";
