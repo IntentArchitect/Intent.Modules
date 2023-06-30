@@ -79,7 +79,7 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task JavadocComments()
     {
@@ -210,6 +210,21 @@ void TestMethod();");
                 c.AddField("String", "publicField", f => f.Public());
                 c.AddField("String", "publicFinalField", f => f.PublicFinal());
                 c.AddField("String", "fieldWithValue", f => f.WithDefaultValue(@"""test value"""));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task InterfaceMethods()
+    {
+        var fileBuilder = new JavaFile("com.test", "")
+            .AddInterface("TestInterface", i =>
+            {
+                i.AddMethod("void", "normalMethod",
+                    method => method.AddParameter("String", "value").AddAnnotation("@TestAnnotation"));
+                i.AddMethod("String", "methodWithBody",
+                    method => method.AddStatement(@"return """";").AddAnnotation("@TestAnnotation"));
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());

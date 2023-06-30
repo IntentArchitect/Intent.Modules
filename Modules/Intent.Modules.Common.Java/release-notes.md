@@ -4,6 +4,7 @@
 - Made minor corrections in the naming of certain Java concepts in the File Builder.
 - Added Generic Type parameter support for Classes and Methods (no constraint support yet).
 - Modified the Java Fields and Interface Fields with appropriate defaults and with additional access modifier methods. Fields can also have default values.
+- Java Interfaces can now have method bodies as per the `default` keyword.
 
 ### Version 3.4.3
 
