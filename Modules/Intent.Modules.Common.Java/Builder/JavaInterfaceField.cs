@@ -4,5 +4,6 @@ public class JavaInterfaceField : JavaField
 {
     public JavaInterfaceField(string type, string name) : base(type, name)
     {
+        WithoutAccessModifier();
     }
 }

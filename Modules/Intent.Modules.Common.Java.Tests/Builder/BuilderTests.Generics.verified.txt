@@ -2,7 +2,11 @@
 
 
 
-public class TestClass<S, T> {
+public interface TestInterface<S, T> {
+    <U, V>void isMethodWithType(S paramS, T paramT, U paramU, V paramV);
+}
+
+public class TestClass<S, T> extends TestInterface<S, T> {
     public <U, V> void isMethodWithType(S paramS, T paramT, U paramU, V paramV) {
     }
 }

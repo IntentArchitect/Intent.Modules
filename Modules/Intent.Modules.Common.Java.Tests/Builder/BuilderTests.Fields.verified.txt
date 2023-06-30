@@ -1,0 +1,11 @@
+﻿package com.test;
+
+
+
+public class TestClass {
+    private String normalField;
+    private final String privateFinalField;
+    public String publicField;
+    public final String publicFinalField;
+    private String fieldWithValue = "test value";
+}

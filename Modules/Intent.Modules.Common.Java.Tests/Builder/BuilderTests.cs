@@ -20,8 +20,8 @@ public class BuilderTests
                     .AddAnnotation("AllArgsConstructor")
                     .AddAnnotation("IntentMerge");
                 c.ImplementsInterface("OwnerRestService");
-                c.AddField("OwnerRepository", "ownerRepository", field => field.Private())
-                    .AddField("ModelMapper", "mapper", field => field.Private());
+                c.AddField("OwnerRepository", "ownerRepository")
+                    .AddField("ModelMapper", "mapper");
                 c.AddMethod("List<OwnerDTO>", "getOwner", method => method
                     .AddAnnotation("Override")
                     .AddAnnotation("Transactional", ann => ann.AddArgument("readOnly = true"))
@@ -170,10 +170,23 @@ void TestMethod();");
     public async Task Generics()
     {
         var fileBuilder = new JavaFile("com.test", "")
+            .AddInterface("TestInterface", i =>
+            {
+                i.AddGenericParameter("S", out var s);
+                i.AddGenericParameter("T", out var t);
+                i.AddMethod("void", "isMethodWithType", method => method
+                    .AddGenericParameter("U", out var u)
+                    .AddGenericParameter("V", out var v)
+                    .AddParameter(s, "paramS")
+                    .AddParameter(t, "paramT")
+                    .AddParameter(u, "paramU")
+                    .AddParameter(v, "paramV"));
+            })
             .AddClass("TestClass", c =>
             {
                 c.AddGenericParameter("S", out var s);
                 c.AddGenericParameter("T", out var t);
+                c.WithBaseType($"TestInterface<{s}, {t}>");
                 c.AddMethod("void", "isMethodWithType", method => method
                     .AddGenericParameter("U", out var u)
                     .AddGenericParameter("V", out var v)
@@ -181,6 +194,22 @@ void TestMethod();");
                     .AddParameter(t, "paramT")
                     .AddParameter(u, "paramU")
                     .AddParameter(v, "paramV"));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task Fields()
+    {
+        var fileBuilder = new JavaFile("com.test", "")
+            .AddClass("TestClass", c =>
+            {
+                c.AddField("String", "normalField");
+                c.AddField("String", "privateFinalField", f => f.PrivateFinal());
+                c.AddField("String", "publicField", f => f.Public());
+                c.AddField("String", "publicFinalField", f => f.PublicFinal());
+                c.AddField("String", "fieldWithValue", f => f.WithDefaultValue(@"""test value"""));
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());

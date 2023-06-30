@@ -7,7 +7,6 @@ namespace Intent.Modules.Common.Java.Builder;
 public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
 {
     public IList<JavaStatement> Statements { get; } = new List<JavaStatement>();
-    protected string AsyncMode { get; private set; } = string.Empty;
     protected string AccessModifier { get; private set; } = "public ";
     protected string OverrideModifier { get; private set; } = string.Empty;
     public string ReturnType { get; }
@@ -164,7 +163,7 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{GetGenericParameters()}{OverrideModifier}{AsyncMode}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {{{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{GetGenericParameters()}{OverrideModifier}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
     

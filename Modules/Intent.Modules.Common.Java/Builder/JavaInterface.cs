@@ -28,8 +28,7 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
     public IList<JavaInterfaceMethod> Methods { get; } = new List<JavaInterfaceMethod>();
 
     public IList<JavaCodeBlock> CodeBlocks { get; } = new List<JavaCodeBlock>();
-    // public IList<JavaInterfaceGenericParameter> GenericParameters { get; } = new List<JavaInterfaceGenericParameter>();
-    // public IList<JavaGenericTypeConstraint> GenericTypeConstraints { get; } = new List<JavaGenericTypeConstraint>();
+    public IList<JavaInterfaceGenericParameter> GenericParameters { get; } = new List<JavaInterfaceGenericParameter>();
 
     public JavaInterface ExtendsInterface(string type)
     {
@@ -73,29 +72,21 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
         return this;
     }
 
-    // public JavaInterface AddGenericParameter(string typeName, Action<JavaInterfaceGenericParameter> configure = null)
-    // {
-    //     var param = new JavaInterfaceGenericParameter(typeName);
-    //     configure?.Invoke(param);
-    //     GenericParameters.Add(param);
-    //     return this;
-    // }
-    //
-    // public JavaInterface AddGenericParameter(string typeName, out JavaInterfaceGenericParameter param, Action<JavaInterfaceGenericParameter> configure = null)
-    // {
-    //     param = new JavaInterfaceGenericParameter(typeName);
-    //     configure?.Invoke(param);
-    //     GenericParameters.Add(param);
-    //     return this;
-    // }
+    public JavaInterface AddGenericParameter(string typeName, Action<JavaInterfaceGenericParameter> configure = null)
+    {
+        var param = new JavaInterfaceGenericParameter(typeName);
+        configure?.Invoke(param);
+        GenericParameters.Add(param);
+        return this;
+    }
     
-    // public JavaInterface AddGenericTypeConstraint(string genericParameterName, Action<JavaGenericTypeConstraint> configure)
-    // {
-    //     var param = new JavaGenericTypeConstraint(genericParameterName);
-    //     configure(param);
-    //     GenericTypeConstraints.Add(param);
-    //     return this;
-    // }
+    public JavaInterface AddGenericParameter(string typeName, out JavaInterfaceGenericParameter param, Action<JavaInterfaceGenericParameter> configure = null)
+    {
+        param = new JavaInterfaceGenericParameter(typeName);
+        configure?.Invoke(param);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public JavaInterface InsertMethod(int index, string returnType, string name, Action<JavaInterfaceMethod> configure = null)
     {
@@ -153,31 +144,19 @@ public class JavaInterface : JavaDeclaration<JavaInterface>
 
     public string ToString(string indentation)
     {
-        return $@"{GetAnnotations(indentation)}{indentation}{AccessModifier}interface {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
+        return $@"{GetAnnotations(indentation)}{indentation}{AccessModifier}interface {Name}{GetGenericParameters()}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
 {indentation}}}";
     }
     
-//     private string GetGenericTypeConstraints(string indentation)
-//     {
-//         if (!GenericTypeConstraints.Any())
-//         {
-//             return string.Empty;
-//         }
-//
-//         string newLine = $@"
-// {indentation}    ";
-//         return newLine + string.Join(newLine, GenericTypeConstraints);
-//     }
-//
-//     private string GetGenericParameters()
-//     {
-//         if (!GenericParameters.Any())
-//         {
-//             return string.Empty;
-//         }
-//
-//         return $"<{string.Join(", ", GenericParameters.Select(s => s.GetText()))}>";
-//     }
+     private string GetGenericParameters()
+     {
+         if (!GenericParameters.Any())
+         {
+             return string.Empty;
+         }
+
+         return $"<{string.Join(", ", GenericParameters.Select(s => s.GetText()))}>";
+     }
 
     private string GetBaseTypes()
     {

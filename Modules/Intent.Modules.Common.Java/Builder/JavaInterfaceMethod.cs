@@ -9,8 +9,7 @@ public class JavaInterfaceMethod: JavaMember<JavaInterfaceMethod>
     public string ReturnType { get; }
     public string Name { get; }
     public IList<JavaParameter> Parameters { get; } = new List<JavaParameter>();
-    // public IList<JavaGenericParameter> GenericParameters { get; } = new List<JavaGenericParameter>();
-    // public IList<JavaGenericTypeConstraint> GenericTypeConstraints { get; } = new List<JavaGenericTypeConstraint>();
+    public IList<JavaGenericParameter> GenericParameters { get; } = new List<JavaGenericParameter>();
 
     public JavaInterfaceMethod(string returnType, string name)
     {
@@ -38,52 +37,32 @@ public class JavaInterfaceMethod: JavaMember<JavaInterfaceMethod>
         return this;
     }
     
-    // public JavaInterfaceMethod AddGenericParameter(string typeName)
-    // {
-    //     var param = new JavaGenericParameter(typeName);
-    //     GenericParameters.Add(param);
-    //     return this;
-    // }
-    //
-    // public JavaInterfaceMethod AddGenericParameter(string typeName, out JavaGenericParameter param)
-    // {
-    //     param = new JavaGenericParameter(typeName);
-    //     GenericParameters.Add(param);
-    //     return this;
-    // }
-    //
-    // public JavaInterfaceMethod AddGenericTypeConstraint(string genericParameterName, Action<JavaGenericTypeConstraint> configure)
-    // {
-    //     var param = new JavaGenericTypeConstraint(genericParameterName);
-    //     configure(param);
-    //     GenericTypeConstraints.Add(param);
-    //     return this;
-    // }
+    public JavaInterfaceMethod AddGenericParameter(string typeName)
+    {
+        var param = new JavaGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
+    
+    public JavaInterfaceMethod AddGenericParameter(string typeName, out JavaGenericParameter param)
+    {
+        param = new JavaGenericParameter(typeName);
+        GenericParameters.Add(param);
+        return this;
+    }
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))});";
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{GetGenericParameters()}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))});";
     }
     
-//     private string GetGenericTypeConstraints(string indentation)
-//     {
-//         if (!GenericTypeConstraints.Any())
-//         {
-//             return string.Empty;
-//         }
-//
-//         string newLine = $@"
-// {indentation}    ";
-//         return newLine + string.Join(newLine, GenericTypeConstraints);
-//     }
-//     
-//     private string GetGenericParameters()
-//     {
-//         if (!GenericParameters.Any())
-//         {
-//             return string.Empty;
-//         }
-//
-//         return $"<{string.Join(", ", GenericParameters)}>";
-//     }
+     private string GetGenericParameters()
+     {
+         if (!GenericParameters.Any())
+         {
+             return string.Empty;
+         }
+
+         return $"<{string.Join(", ", GenericParameters)}>";
+     }
 }
