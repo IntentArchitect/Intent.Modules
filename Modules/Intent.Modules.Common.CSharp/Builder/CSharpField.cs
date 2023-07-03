@@ -8,7 +8,7 @@ public class CSharpField : CSharpMember<CSharpField>
     public string Type { get; }
     public string Name { get; }
     public string AccessModifier { get; private set; }
-    public string Assignment { get; private set; }
+    public CSharpStatement Assignment { get; private set; }
     public bool IsStatic { get; private set; }
 
     public CSharpField(string type, string name) : this (type, name, null)
@@ -74,7 +74,14 @@ public class CSharpField : CSharpMember<CSharpField>
         return this;
     }
 
+    [Obsolete("Make use of WithAssignment(CSharpStatement value)")]
     public CSharpField WithAssignment(string value)
+    {
+        Assignment = value;
+        return this;
+    }
+    
+    public CSharpField WithAssignment(CSharpStatement value)
     {
         Assignment = value;
         return this;
@@ -82,9 +89,15 @@ public class CSharpField : CSharpMember<CSharpField>
 
     public override string GetText(string indentation)
     {
-        var assignment = !string.IsNullOrWhiteSpace(Assignment)
-            ? $" = {Assignment}"
-            : string.Empty;
+        string assignment = string.Empty;
+        if (Assignment is not null)
+        {
+            var result = Assignment.GetText(indentation).TrimStart();
+            if (!string.IsNullOrWhiteSpace(result))
+            {
+                assignment = $" = {result}";
+            }
+        }
 
         return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
     }
