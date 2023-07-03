@@ -99,7 +99,7 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
             this.Write("            JavaFile = new JavaFile(this.GetPackage(), this.GetFolderPath())\r\n                .AddClass($\"");
             
             #line 35 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.Java\Templates\JavaFileTemplatePartial\JavaFileTemplatePartialTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName()));
             
             #line default
             #line hidden

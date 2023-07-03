@@ -116,5 +116,10 @@ namespace Intent.Modules.ModuleBuilder.Java.Templates.JavaFileTemplatePartial
                 yield return UseType(typeof(IJavaFileBuilderTemplate).FullName);
             }
         }
+        
+        private string GetClassName()
+        {
+            return $"{(Model.IsFilePerModelTemplateRegistration() ? $"{{Model.Name}}" : Model.Name.RemoveSuffix("Template"))}";
+        }
     }
 }

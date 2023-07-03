@@ -32,7 +32,7 @@ namespace <#= Namespace #>
         {
 <#  if (Model.GetJavaTemplateSettings()?.TemplatingMethod().IsJavaFileBuilder() == true) { #>
             JavaFile = new JavaFile(this.GetPackage(), this.GetFolderPath())
-                .AddClass($"<#= ClassName #>", @class =>
+                .AddClass($"<#= GetClassName() #>", @class =>
                 {
                     @class.AddConstructor(ctor =>
                     {
