@@ -9,6 +9,7 @@ public class CSharpField : CSharpMember<CSharpField>
     public string Name { get; }
     public string AccessModifier { get; private set; }
     public string Assignment { get; private set; }
+    public bool IsStatic { get; private set; }
 
     public CSharpField(string type, string name) : this (type, name, null)
     {
@@ -60,6 +61,12 @@ public class CSharpField : CSharpMember<CSharpField>
         Assignment = value;
         return this;
     }
+    
+    public CSharpField Static()
+    {
+        IsStatic = true;
+        return this;
+    }
 
     public CSharpField CanBeNull()
     {
@@ -79,6 +86,6 @@ public class CSharpField : CSharpMember<CSharpField>
             ? $" = {Assignment}"
             : string.Empty;
 
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
+        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{Type}{(_canBeNull ? "?" : "")} {Name}{assignment};";
     }
 }

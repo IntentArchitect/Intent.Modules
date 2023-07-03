@@ -5,6 +5,8 @@ namespace Testing.Namespace
 {
     public static class StaticClass
     {
+        private static string _staticField = "123";
+
         static StaticClass()
         {
         }

@@ -2,6 +2,7 @@
 
 - Update: It is now possible to specify `static` modifiers for interface methods for the `CSharpFile` builder.
 - Update: It is now possible to declare default implementations for interface methods for the `CSharpFile` builder.
+- Update: It is now possible to specify `static` modifiers for Class Fields.
 - Fix: Namespace resolution wasn't taking the current template namespace into account, occasionally resulting in ambiguous type references in code.
 - Fixed: `CSharpFile`'s `StartBuild()`, `CompleteBuild()` and `AfterBuild()` were being called for templates even if their `CanRunTemplate()` was returning `false`.
 
