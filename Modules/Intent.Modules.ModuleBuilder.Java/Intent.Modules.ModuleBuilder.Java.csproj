@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -8,7 +8,7 @@
     <PackageReference Include="Intent.Modules.Common" Version="3.4.1" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.36" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />
-    <PackageReference Include="Intent.Modules.Common.Java" Version="3.4.4-pre.3" />
+    <PackageReference Include="Intent.Modules.Common.Java" Version="3.4.4" />
     <PackageReference Include="Intent.Modules.ModuleBuilder" Version="3.6.3" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
