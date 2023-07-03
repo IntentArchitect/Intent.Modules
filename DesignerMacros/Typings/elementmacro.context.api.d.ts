@@ -56,6 +56,14 @@ declare function lookup(id: string): MacroApi.Context.IElementApi;
 declare function lookupTypesOf(type: string): MacroApi.Context.IElementApi[];
 
 /**
+ * Removes specified prefixes from the provided string.
+ * @param string The string from which the suffixes should be removed.
+ * @param prefixes An array of suffix strings to remove.
+ */
+declare function removePrefix(string: string, ...prefixes: string[]): string;
+
+
+/**
  * Removes specified suffixes from the provided string.
  * @param string The string from which the suffixes should be removed.
  * @param suffixes An array of suffix strings to remove.
