@@ -36,8 +36,8 @@
   </templates>
   <dependencies>
     <dependency id="Intent.Common" version="3.4.1" />
-    <dependency id="Intent.Common.CSharp" version="3.3.33" />
-    <dependency id="Intent.Common.Java" version="3.4.3" />
+    <dependency id="Intent.Common.CSharp" version="3.3.36" />
+    <dependency id="Intent.Common.Java" version="3.4.4-pre.3" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.ModuleBuilder" version="3.6.3" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />
