@@ -16,17 +16,23 @@ function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void{
     let httpSettings = element.getStereotype(httpSettingsId);
 
     let folderName = element.getParent().getName();
-    let mappedEntity = element.getMapping()?.getPath()[0]?.getElement()?.getName();
+    let mappedEntity = element.getMapping()?.getElement();
 
     let serviceRoute = getServiceRoute(element);
-    let conventionIdAttribute = element.getChildren().find(x => x.getName().toLowerCase() == `${singularize(folderName.toLowerCase())}id`);
-    let idAttribute = element.getChildren().find(x => x.getName().toLowerCase() == "id");
-    let serviceRouteIdentifier = conventionIdAttribute 
-        ? `/{${toCamelCase(conventionIdAttribute.getName()) }}`
-        : idAttribute ? `/{${toCamelCase(idAttribute.getName())}}` : "";
-    let subRoute = mappedEntity && mappedEntity != singularize(folderName) && serviceRouteIdentifier != `/{id}` 
-        ? `/${toKebabCase(pluralize(mappedEntity))}${idAttribute ? `/{${toCamelCase(idAttribute.getName())}}` : ""}` 
-        : getUnconventionalRoute(serviceRouteIdentifier, mappedEntity, folderName, serviceRoute) != "" ? `/${getUnconventionalRoute(serviceRouteIdentifier, mappedEntity, folderName, serviceRoute)}` : "";
+    let primaryDomainEntity = getDomainEntity(folderName);
+    let serviceRouteIdentifier = getServiceRouteIdentifier(element, primaryDomainEntity, folderName);
+
+    let subRoute = "";
+    if (mappedEntity && singularize(mappedEntity.getName()) != singularize(folderName) && serviceRouteIdentifier != `/{id}` ){
+        subRoute = getConventionalSubRoute(element, mappedEntity );
+    }
+    else{
+        let optionalSubRoute = getUnconventionalRoute(serviceRouteIdentifier, mappedEntity?.getName(), folderName);
+        if (optionalSubRoute != "")
+        {
+            subRoute = `/${optionalSubRoute}`;
+        }
+    }
 
     if (element.getName().startsWith("Create") || element.getName().startsWith("Add")) {
         httpSettings.getProperty("Verb").setValue("POST");
@@ -43,7 +49,7 @@ function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void{
     }
 }
 
-function getUnconventionalRoute(serviceRouteIdentifier : string, mappedEntity : string, folderName : string, serviceRoute : string) : string {
+function getUnconventionalRoute(serviceRouteIdentifier : string, mappedEntityName : string, folderName : string) : string {
     if ((element.getName().startsWith("Create") ||
         element.getName().startsWith("Update") ||
         element.getName().startsWith("Delete")) && 
@@ -54,7 +60,7 @@ function getUnconventionalRoute(serviceRouteIdentifier : string, mappedEntity : 
     const withoutPrefixes = removePrefix(element.getName(), "Create", "Update", "Delete");
     const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request");
     const withoutCommandSuffix = removeSuffix(withoutRequestSuffix, "Command");
-    return removeSuffix(toKebabCase(withoutCommandSuffix), toKebabCase(mappedEntity ?? singularize(folderName)), serviceRoute, "-");
+    return removeSuffix(toKebabCase(withoutCommandSuffix), toKebabCase(mappedEntityName ?? singularize(folderName)), toKebabCase(folderName), "-");
 }
 
 exposeAsHttpEndPoint(element);
