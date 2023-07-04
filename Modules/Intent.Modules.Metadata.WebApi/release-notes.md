@@ -1,4 +1,7 @@
 ### Version 4.2.3
+- Update: `Expose as Http Endpoint` to have a better default behaviour for composite keys.
+
+### Version 4.2.3
 - Fixed: `Expose as Http Endpoint` script didn't work correctly for `Command`s which were not mapped.
 - Fixed: Parameters without their source specified on `GET` and `DELETE` operations would sometimes implicitly have the source set to `From Body`.
 
