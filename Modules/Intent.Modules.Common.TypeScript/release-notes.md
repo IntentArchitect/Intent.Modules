@@ -1,3 +1,8 @@
+### Version 3.4.3
+
+- Fixed: An exception would be thrown when the same decorator was applied more than once to a syntax node.
+- Show additional information when a TypeScript weaving error occur.
+
 ### Version 3.4.2
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

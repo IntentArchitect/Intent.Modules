@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using Intent.Code.Weaving.TypeScript;
 using Intent.Code.Weaving.TypeScript.Editor;
 using Intent.Engine;
@@ -27,17 +26,38 @@ namespace Intent.Modules.Common.TypeScript.Weaving
                 throw new InvalidOperationException($"Cannot transform outputs where the template does not derive from {nameof(ITypeScriptMerged)}");
             }
 
+            if (!output.PreviousFilePathExists())
+            {
+                return;
+            }
+
+            var existingContent = output.GetPreviousFilePathContent();
+
+            TypeScriptFile existingFile;
             try
             {
-                var existingFile = output.PreviousFilePathExists()
-                    ? new TypeScriptFileEditor(output.GetPreviousFilePathContent()).File
-                    : null;
+                existingFile = new TypeScriptFileEditor(existingContent).File;
+            }
+            catch (Exception e)
+            {
+                Logging.Log.Failure($"An exception occurred when trying to parse the TypeScript file at [{output.PreviousFilePath}]: " +
+                                    $"{Environment.NewLine}" +
+                                    $"Template Id: {output.Template.Id}{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- EXISTING CONTENT START ---------------------{Environment.NewLine}" +
+                                    $"{existingContent.TrimStart()}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- EXISTING CONTENT FINISH --------------------{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- EXCEPTION DETAILS --------------------------{Environment.NewLine}" +
+                                    $"{e}");
+                output.ChangeContent(existingContent); // don't change output
+                return;
+            }
 
-                if (existingFile == null)
-                {
-                    return;
-                }
-
+            try
+            {
                 var merger = new TypeScriptWeavingMerger();
 
                 var newContent = merger.Merge(existingFile, output.Content);
@@ -46,12 +66,25 @@ namespace Intent.Modules.Common.TypeScript.Weaving
             }
             catch (Exception e)
             {
-                var metadata = output.FileMetadata;
-                var fullFileName = Path.Combine(metadata.GetFullLocationPath(), metadata.FileNameWithExtension());
-                output.ChangeContent(File.ReadAllText(fullFileName)); // don't change output
-
-                Logging.Log.Failure($"Error while weaving TypeScript file: {output.FileMetadata.GetRelativeFilePath()}");
-                Logging.Log.Failure(e.ToString());
+                Logging.Log.Failure($"An exception occurred when trying to weave the TypeScript file [{output.FileMetadata.GetFullLocationPath()}/{output.FileMetadata.FileNameWithExtension()}]: " +
+                                    $"{Environment.NewLine}" +
+                                    $"Template Id: {output.Template.Id}{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- EXISTING CONTENT START ---------------------{Environment.NewLine}" +
+                                    $"{existingContent.TrimStart()}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- EXISTING CONTENT FINISH --------------------{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- GENERATED CONTENT START --------------------{Environment.NewLine}" +
+                                    $"{output.Content}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- GENERATED CONTENT FINISH -------------------{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"{Environment.NewLine}" +
+                                    $"--------------------- EXCEPTION DETAILS --------------------------{Environment.NewLine}" +
+                                    $"{e}");
+                output.ChangeContent(existingContent); // don't change output
             }
         }
     }
