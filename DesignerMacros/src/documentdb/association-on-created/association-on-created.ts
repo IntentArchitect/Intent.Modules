@@ -2,7 +2,7 @@
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-create/association-on-create.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-created/association-on-created.ts
  */
 
 function execute() {

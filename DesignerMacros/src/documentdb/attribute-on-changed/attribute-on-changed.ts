@@ -2,7 +2,7 @@
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/attribute-on-change/attribute-on-change.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/attribute-on-changed/attribute-on-changed.ts
  */
 
 function execute() {

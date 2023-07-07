@@ -2,7 +2,7 @@
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/package-on-load/package-on-load.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/package-on-loaded/package-on-loaded.ts
  */
 
 /// <reference path="../../common/ensureIsAtTargetVersion.ts" />

@@ -2,7 +2,7 @@
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/attribute-on-delete/attribute-on-delete.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/attribute-on-deleted/attribute-on-deleted.ts
  */
 /// <reference path="../common/isAggregateRoot.ts" />
 /// <reference path="../common/updateForeignKeys.ts" />

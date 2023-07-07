@@ -2,7 +2,7 @@
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-delete/association-on-delete.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-deleted/association-on-deleted.ts
  */
 /// <reference path="../common/updatePrimaryKey.ts" />
 /// <reference path="../common/removeAssociatedForeignKeys.ts" />
