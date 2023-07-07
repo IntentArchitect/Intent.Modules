@@ -7,15 +7,15 @@
 
 /// <reference path="../../common/ensureIsAtTargetVersion.ts" />
 /// <reference path="../common/updatePrimaryKey.ts" />
-/// <reference path="../common/updateForeignKeys.ts" />
+/// <reference path="../common/updateForeignKeysForElement.ts" />
 
 const package = element.getPackage();
 
-ensureIsAtTargetVersion(package, "document-db-on-package-load-applied-version", 1, () => {
+function execute() {
     const documentStoreId = "8b68020c-6652-484b-85e8-6c33e1d8031f";
     package.getStereotypes()
-    if (!package.hasMetadata("database-paradigm-selected") && 
-        !package.hasStereotype(documentStoreId) && 
+    if (!package.hasStereotype(documentStoreId) && 
+        !package.hasMetadata("database-paradigm-selected") && 
         !package.hasStereotype("Relational Database")
     ) {
         package.addStereotype(documentStoreId);
@@ -32,4 +32,6 @@ ensureIsAtTargetVersion(package, "document-db-on-package-load-applied-version", 
         updatePrimaryKey(classElement);
         updateForeignKeysForElement(classElement);
     }
-});
+}
+
+execute();

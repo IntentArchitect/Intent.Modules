@@ -1,3 +1,7 @@
+### Version 1.1.2
+
+- Update: Primary Keys are now updated on generalization changes.
+
 ### Version 1.1.1
 
 - Update: Primary keys are now also managed for composite entities. If you require not having a primary key on class then use a `Value Object`.

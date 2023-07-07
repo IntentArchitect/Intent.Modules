@@ -4,6 +4,7 @@
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/association-on-created/association-on-created.ts
  */
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 function execute() {
     if (!association) { return; }
@@ -17,4 +18,5 @@ function execute() {
     sourceEnd.setIsCollection(false);
     sourceEnd.setIsNullable(false);
 }
+
 execute();

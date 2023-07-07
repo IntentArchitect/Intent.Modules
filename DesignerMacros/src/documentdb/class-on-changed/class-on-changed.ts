@@ -2,7 +2,7 @@
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/class-on-created/class-on-created.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/documentdb/class-on-changed/class-on-changed.ts
  */
 /// <reference path="../common/updatePrimaryKey.ts" />
 /// <reference path="../common/updateForeignKeysForElement.ts" />
