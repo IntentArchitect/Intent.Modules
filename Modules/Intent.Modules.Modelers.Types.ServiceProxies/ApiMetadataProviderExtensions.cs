@@ -100,6 +100,19 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
                     }
                 }
 
+                foreach (var genericArgument in currentElement.TypeReference?.GenericTypeParameters ?? new List<ITypeReference>())
+                {
+                    if (genericArgument?.Element is IElement genericArgumentType &&
+                        referencedElements.Add(genericArgumentType)) // Avoid infinite loops due to cyclic references
+                    {
+                        foreach (var childElement in genericArgumentType.ChildElements)
+                        {
+                            workingStack.Push(childElement);
+                        }
+                    }
+                }
+
+
                 if (currentElement.SpecializationType is "DTO" or "Command" or "Query")
                 {
                     referencedElements.Add(currentElement);

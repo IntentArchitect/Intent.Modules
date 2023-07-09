@@ -1,3 +1,7 @@
+### Version 4.0.2
+
+- Fixed: DTO Model discovery ignoring generic argument types.
+
 ### Version 4.0.1
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
