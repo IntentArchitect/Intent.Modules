@@ -53,7 +53,8 @@ function getRouteEntityIds(element: MacroApi.Context.IElementApi, domainClass : 
         if (!(keys.length == 1 && keys[0].name.toLowerCase() == 'id')){
             let children = element.getChildren();
             children.forEach(field => {
-                if (keys.find(pk => pk.name == field.getName())){
+                if (keys.find(pk => pk.name.toLowerCase() == field.getName().toLowerCase() 
+                                    || singularize(defaultEntityName.toLowerCase()) + pk.name.toLowerCase() == field.getName().toLowerCase())){
                     result.push(field);
                 }
             });

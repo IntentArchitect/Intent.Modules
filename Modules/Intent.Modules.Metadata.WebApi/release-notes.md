@@ -1,5 +1,5 @@
 ### Version 4.2.3
-- Update: `Expose as Http Endpoint` to have a better default behaviour for composite keys.
+- Update: `Expose as Http Endpoint` to have a better default behavior for composite keys.
 
 ### Version 4.2.3
 - Fixed: `Expose as Http Endpoint` script didn't work correctly for `Command`s which were not mapped.

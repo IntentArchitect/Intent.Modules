@@ -311,7 +311,8 @@ function getRouteEntityIds(element, domainClass, defaultEntityName) {
         if (!(keys.length == 1 &amp;&amp; keys[0].name.toLowerCase() == 'id')) {
             let children = element.getChildren();
             children.forEach(field =&gt; {
-                if (keys.find(pk =&gt; pk.name == field.getName())) {
+                if (keys.find(pk =&gt; pk.name.toLowerCase() == field.getName().toLowerCase()
+                    || singularize(defaultEntityName.toLowerCase()) + pk.name.toLowerCase() == field.getName().toLowerCase())) {
                     result.push(field);
                 }
             });
@@ -721,7 +722,8 @@ function getRouteEntityIds(element, domainClass, defaultEntityName) {
         if (!(keys.length == 1 &amp;&amp; keys[0].name.toLowerCase() == 'id')) {
             let children = element.getChildren();
             children.forEach(field =&gt; {
-                if (keys.find(pk =&gt; pk.name == field.getName())) {
+                if (keys.find(pk =&gt; pk.name.toLowerCase() == field.getName().toLowerCase()
+                    || singularize(defaultEntityName.toLowerCase()) + pk.name.toLowerCase() == field.getName().toLowerCase())) {
                     result.push(field);
                 }
             });
