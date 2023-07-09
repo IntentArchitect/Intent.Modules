@@ -35,8 +35,20 @@ namespace Intent.Modules.Common.TypeScript.TypeResolvers
 
             protected override IResolvedTypeInfo ResolveType(ITypeReference typeReference, INullableFormatter nullableFormatter)
             {
+                if (typeReference.Element == null)
+                {
+                    return ResolvedTypeInfo.Create(
+                        name: "void",
+                        isPrimitive: true,
+                        isNullable: false,
+                        isCollection: false,
+                        typeReference: typeReference,
+                        nullableFormatter: nullableFormatter,
+                        template: null);
+                }
                 string name = null;
                 bool isPrimitive = false;
+
                 if (typeReference.Element.HasStereotype("TypeScript"))
                 {
                     name = typeReference.Element.GetStereotypeProperty<string>("TypeScript", "Type");

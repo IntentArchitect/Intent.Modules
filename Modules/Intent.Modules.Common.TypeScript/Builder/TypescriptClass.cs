@@ -132,7 +132,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public TypescriptClass AddConstructor(Action<TypescriptConstructor> configure = null)
     {
-        var ctor = new TypescriptConstructor(this);
+        var ctor = new TypescriptConstructor(this, File);
         Constructors.Add(ctor);
         configure?.Invoke(ctor);
         return this;
@@ -145,7 +145,7 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public TypescriptClass InsertMethod(int index, string name, string returnType, Action<TypescriptMethod> configure = null)
     {
-        var method = new TypescriptMethod(name, returnType);
+        var method = new TypescriptMethod(name, returnType, File);
         Methods.Insert(index, method);
         configure?.Invoke(method);
         return this;
@@ -222,12 +222,12 @@ public class TypescriptClass : TypescriptDeclaration<TypescriptClass>
 
     public override string ToString()
     {
-        return ToString("");
+        return GetText("");
     }
 
-    public string ToString(string indentation)
+    public string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{(IsExported ? "export " : string.Empty)}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}class {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}{File.Indentation}")}
 {indentation}}}";
     }
 

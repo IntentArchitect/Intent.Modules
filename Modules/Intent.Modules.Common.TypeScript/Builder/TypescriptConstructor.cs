@@ -7,16 +7,18 @@ namespace Intent.Modules.Common.TypeScript.Builder;
 public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
 {
     public TypescriptClass Class { get; }
+    public TypescriptFile File { get; }
     public string AccessModifier { get; private set; } = string.Empty;
     public TypescriptConstructorSuperCall SuperCall { get; private set; }
     public IList<TypescriptConstructorParameter> Parameters { get; } = new List<TypescriptConstructorParameter>();
     public List<TypescriptStatement> Statements { get; } = new();
 
-    public TypescriptConstructor(TypescriptClass @class)
+    public TypescriptConstructor(TypescriptClass @class, TypescriptFile file)
     {
         BeforeSeparator = TypescriptCodeSeparatorType.EmptyLines;
         AfterSeparator = TypescriptCodeSeparatorType.EmptyLines;
         Class = @class;
+        File = file;
     }
 
     public TypescriptConstructor AddParameter(string name, string type, Action<TypescriptConstructorParameter> configure = null)
@@ -94,7 +96,7 @@ public class TypescriptConstructor : TypescriptMember<TypescriptConstructor>
                 .ToArray();
         }
 
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}) {{{statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}constructor({ToStringParameters(indentation)}) {{{statements.ConcatCode($"{indentation}{File.Indentation}")}
 {indentation}}}";
     }
 

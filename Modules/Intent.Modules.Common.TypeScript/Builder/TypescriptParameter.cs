@@ -43,11 +43,11 @@ public class TypescriptParameter
 
     public override string ToString()
     {
-        return $@"{GetDecorators()} {Name}: {Type}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
+        return $"{GetDecorators()}{Name}: {Type}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)}";
     }
 
     protected string GetDecorators()
     {
-        return $@"{(Decorators.Any() ? $@"{string.Join(@" ", Decorators)} " : string.Empty)}";
+        return $"{(Decorators.Any() ? $"{string.Join(" ", Decorators)} " : string.Empty)}";
     }
 }

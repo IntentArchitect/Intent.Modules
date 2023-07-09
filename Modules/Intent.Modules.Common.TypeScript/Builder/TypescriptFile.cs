@@ -20,6 +20,14 @@ public class TypescriptFile
         RelativeLocation = relativeLocation;
     }
 
+    public string Indentation { get; private set; } = "  ";
+
+    public TypescriptFile SetIndentation(int indent)
+    {
+        Indentation = new string(' ', indent);
+        return this;
+    }
+
     public TypescriptFile AddImport(string name, string source)
     {
         return AddImport(name, null, source);
@@ -102,7 +110,7 @@ public class TypescriptFile
 
     public TypescriptFile AddInterface(string name, Action<TypescriptInterface> configure = null)
     {
-        var @interface = new TypescriptInterface(name);
+        var @interface = new TypescriptInterface(name, this);
         Interfaces.Add(@interface);
         if (_isBuilt)
         {

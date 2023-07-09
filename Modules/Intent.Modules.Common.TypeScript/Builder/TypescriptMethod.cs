@@ -11,9 +11,10 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
     protected string AccessModifier { get; private set; } = string.Empty;
     protected string OverrideModifier { get; private set; } = string.Empty;
     public string ReturnType { get; }
+    public TypescriptFile File { get; }
     public string Name { get; }
     public List<TypescriptParameter> Parameters { get; } = new();
-    public TypescriptMethod(string name, string returnType)
+    public TypescriptMethod(string name, string returnType, TypescriptFile file)
     {
         if (string.IsNullOrWhiteSpace(returnType))
         {
@@ -26,6 +27,7 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
         }
 
         ReturnType = returnType;
+        File = file;
         Name = name;
         BeforeSeparator = TypescriptCodeSeparatorType.EmptyLines;
         AfterSeparator = TypescriptCodeSeparatorType.EmptyLines;
@@ -100,11 +102,18 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
         return this;
     }
 
+    public TypescriptMethod Public()
+    {
+        AccessModifier = "public ";
+        return this;
+    }
+
     public TypescriptMethod Protected()
     {
         AccessModifier = "protected ";
         return this;
     }
+
     public TypescriptMethod Private()
     {
         AccessModifier = "private ";
@@ -148,7 +157,7 @@ public class TypescriptMethod : TypescriptMember<TypescriptMethod>, IHasTypescri
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}): {ReturnType} {{{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetDecorators(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}): {ReturnType} {{{Statements.ConcatCode($"{indentation}{File.Indentation}")}
 {indentation}}}";
     }
 }

@@ -44,7 +44,7 @@ public class TypescriptDecorator : TypescriptMetadataBase<TypescriptDecorator>, 
 
     public virtual string GetText(string indentation)
     {
-        return $"{indentation}@{Name}{(Statements.Any() ? $"({string.Join(", ", Statements.Select(x => x.ToString()))})" : string.Empty)}";
+        return $"{indentation}@{Name}{(Statements.Any() ? $"({string.Join(", ", Statements.Select(x => x.ToString()))})" : "()")}";
     }
 
     public override string ToString()

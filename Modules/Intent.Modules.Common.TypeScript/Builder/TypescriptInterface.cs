@@ -9,16 +9,18 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
     private TypescriptCodeSeparatorType _fieldsSeparator = TypescriptCodeSeparatorType.NewLine;
     private TypescriptCodeSeparatorType _methodsSeparator = TypescriptCodeSeparatorType.NewLine;
 
-    public TypescriptInterface(string name)
+    public TypescriptInterface(string name, TypescriptFile file)
     {
         if (string.IsNullOrWhiteSpace(name))
         {
             throw new ArgumentException("Cannot be null or empty", nameof(name));
         }
 
+        File = file;
         Name = name;
     }
 
+    public TypescriptFile File { get; }
     public string Name { get; }
     public bool IsExported { get; private set; }
     public List<string> Interfaces { get; set; } = new();
@@ -99,12 +101,12 @@ public class TypescriptInterface : TypescriptDeclaration<TypescriptInterface>
 
     public override string ToString()
     {
-        return ToString("");
+        return GetText("");
     }
 
-    public string ToString(string indentation)
+    public string GetText(string indentation)
     {
-        return $@"{indentation}{(IsExported ? "export " : string.Empty)}interface {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}    ")}
+        return $@"{indentation}{(IsExported ? "export " : string.Empty)}interface {Name}{GetBaseTypes()} {{{GetMembers($"{indentation}{File.Indentation}")}
 {indentation}}}";
     }
 
