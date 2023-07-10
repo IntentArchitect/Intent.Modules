@@ -1,4 +1,8 @@
-﻿### Version 3.3.37
+﻿### Version 3.3.38
+
+- Fixed: `IntroduceProperty` wasn't handling C# reserved words correctly.
+
+### Version 3.3.37
 
 - Update: It is now possible to specify `static` modifiers for interface methods for the `CSharpFile` builder.
 - Update: It is now possible to declare default implementations for interface methods for the `CSharpFile` builder.

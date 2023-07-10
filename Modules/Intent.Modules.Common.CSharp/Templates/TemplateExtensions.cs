@@ -99,6 +99,16 @@ namespace Intent.Modules.Common.CSharp.Templates
         /// Applies <see cref="ToCSharpIdentifier(string,CapitalizationBehaviour)"/> to
         /// <paramref name="identifier"/> with <see cref="CapitalizationBehaviour.MakeFirstLetterLower"/>.
         /// </summary>
+        public static string ToPropertyName(this string identifier)
+        {
+            return identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterUpper);
+        }
+
+
+        /// <summary>
+        /// Applies <see cref="ToCSharpIdentifier(string,CapitalizationBehaviour)"/> to
+        /// <paramref name="identifier"/> with <see cref="CapitalizationBehaviour.MakeFirstLetterLower"/>.
+        /// </summary>
         public static string ToParameterName(this string identifier)
         {
             return identifier.ToCSharpIdentifier(CapitalizationBehaviour.MakeFirstLetterLower);

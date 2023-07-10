@@ -64,7 +64,7 @@ public class CSharpConstructorParameter
 
     public CSharpConstructorParameter IntroduceProperty(Action<CSharpProperty, CSharpFieldAssignmentStatement> configure)
     {
-        _constructor.Class.AddProperty(Type, Name.ToPascalCase(), property =>
+        _constructor.Class.AddProperty(Type, Name.ToPropertyName(), property =>
         {
             var statement = new CSharpFieldAssignmentStatement(property.Name, Name);
             _constructor.AddStatement(statement);
