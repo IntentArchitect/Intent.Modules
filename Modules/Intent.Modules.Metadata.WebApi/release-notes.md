@@ -1,4 +1,5 @@
-### Version 4.2.3
+### Version 4.2.4
+
 - Update: `Expose as Http Endpoint` to have a better default behavior for composite keys.
 
 ### Version 4.2.3
