@@ -1,3 +1,8 @@
+### Version 3.5.3
+
+- Fixed: Primary key attributes would be added/removed without taking fully into account whether or not derived types had a primary key attribute.
+- New: An `Auto Manage Keys` context menu option has been added to `Class` elements. Using this option will ensure that keys are being managed automatically by the designer, this is useful for scenarios where a key was manually deleted from a `Class` in the past which put it into an "unmanaged" state preventing keys from being automatically managed going forward.
+
 ### Version 3.5.2
 
 - Fixed: Script errors when creating new associations from the diagram.
