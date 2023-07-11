@@ -1,3 +1,5 @@
+/// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
+
 (async () => {
 
 let sourceEnd = association.getOtherEnd().typeReference;

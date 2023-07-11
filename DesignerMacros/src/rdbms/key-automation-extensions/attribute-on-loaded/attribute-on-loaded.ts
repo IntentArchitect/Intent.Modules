@@ -1,3 +1,5 @@
+/// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
+
 (async () => {
 
 if (element.getPackage().specialization !== "Domain Package") {

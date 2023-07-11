@@ -1,3 +1,5 @@
+/// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
+
 (async () => {
 // This script was made using a Typescript source. Don't edit this script directly.
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";

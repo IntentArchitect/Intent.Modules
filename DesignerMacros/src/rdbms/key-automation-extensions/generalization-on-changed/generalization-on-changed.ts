@@ -1,3 +1,5 @@
+/// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
+
 (async () => {
 
 if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit"){
