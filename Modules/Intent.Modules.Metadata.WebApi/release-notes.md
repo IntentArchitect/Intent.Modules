@@ -1,6 +1,7 @@
 ### Version 4.2.4
 
 - Update: `Expose as Http Endpoint` to have a better default behavior for composite keys.
+- Update: `Azure Function Parameter` are now valid targets for `Parameter Settings` stereotypes.
 
 ### Version 4.2.3
 - Fixed: `Expose as Http Endpoint` script didn't work correctly for `Command`s which were not mapped.
