@@ -694,5 +694,390 @@
         </childElement>
       </childElements>
     </childElement>
+    <childElement id="9cac00fe-b5a9-424e-8f49-90df0e5f0595" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+      <name>Project to Domain</name>
+      <display>[mappings]: Project to Domain</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>fee0edca-4aa0-4f77-a524-6bbd84e78734</parentFolderId>
+      <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+      <packageName>Intent.Modelers.Services</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c7683de8-a27a-45ac-b81f-8ac2966a29d9" name="Mapping Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="b986d2ea-50ff-4314-afc0-cb14ae7aad71" display="Shortcut" value="ctrl + shift + p" isActive="true" />
+            <property name="d233d3f9-934a-4690-a476-778e0c4927ef" display="Default Designer" value="6ab29b31-27af-4f56-a67c-986d82097d63" isActive="true" />
+            <property name="39d623e0-b8c5-4d23-8d78-75a7e2fa0c9d" display="Option Source" value="Elements of Type" isActive="true" />
+            <property name="5bed7f14-ebd8-4055-be29-3a2f8407eb5d" display="Lookup Element Function" isActive="false" />
+            <property name="8e840576-890b-4f3a-8733-058c3a1d545f" display="Lookup Types" value="[&quot;04e12b51-ed12-42a3-9667-a6aa81bb6d10&quot;,&quot;5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5&quot;]" isActive="true" />
+            <property name="53ea4519-611c-47ee-8be7-bffb616a52fd" display="Map From" value="Root Element" isActive="true" />
+            <property name="02e7f455-ba13-4e99-ac6c-a46490980134" display="Auto-sync Type References" value="true" isActive="true" />
+            <property name="d881ebc8-282a-4d04-91af-4aba9f040804" display="Symbol" value="fa-long-arrow-right" isActive="true" />
+            <property name="5ced3423-774f-427e-b93e-67b5a16bdf7d" display="Style" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements>
+        <childElement id="40d1cbba-635e-4bd0-a8db-10876ea756bd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Class -&gt; DTO (Map to Type)</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-by-name</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>9cac00fe-b5a9-424e-8f49-90df0e5f0595</parentFolderId>
+          <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+          <packageName>Intent.Modelers.Services</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="fee0edca-4aa0-4f77-a524-6bbd84e78734" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="04e12b51-ed12-42a3-9667-a6aa81bb6d10" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements>
+            <childElement id="3aaf50d0-80e1-4c6a-890d-936be9f7c678" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>40d1cbba-635e-4bd0-a8db-10876ea756bd</parentFolderId>
+              <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+              <packageName>Intent.Modelers.Services</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0090fb93-483e-41af-a11d-5ad2dc796adf" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="a04cbd98-ecbf-4635-a815-d5c9592f4688" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Association Target End -&gt; DTO-Field (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>40d1cbba-635e-4bd0-a8db-10876ea756bd</parentFolderId>
+              <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+              <packageName>Intent.Modelers.Services</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0a66489f-30aa-417b-a75d-b945863366fd" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="e109d7f1-e2c0-4404-a0f5-c761f0f20a9f" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Association Source End -&gt; DTO-Field (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>40d1cbba-635e-4bd0-a8db-10876ea756bd</parentFolderId>
+              <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+              <packageName>Intent.Modelers.Services</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="8d9d2e5b-bd55-4f36-9ae4-2b9e84fd4e58" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+            <childElement id="80db94cb-ec11-412a-835d-b057615c75df" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Generalization Target End -&gt; [None] (Traverse)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>40d1cbba-635e-4bd0-a8db-10876ea756bd</parentFolderId>
+              <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+              <packageName>Intent.Modelers.Services</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Traverse" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" value="40d1cbba-635e-4bd0-a8db-10876ea756bd" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="4686cc1d-b4d8-4b99-b45b-f77bd5496946" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="No" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+        <childElement id="6dbab0ce-42d9-4523-9a4b-b351021d7a11" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+          <name>NewElementMapping</name>
+          <display>[mapping]: Value Object -&gt; DTO (Map to Type)</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-by-name</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>9cac00fe-b5a9-424e-8f49-90df0e5f0595</parentFolderId>
+          <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+          <packageName>Intent.Modelers.Services</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="true" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="fee0edca-4aa0-4f77-a524-6bbd84e78734" isActive="true" />
+                <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+              </properties>
+            </stereotype>
+            <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5" isActive="true" />
+                <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements>
+            <childElement id="4d84c2c6-914b-4807-8627-f6c3505bbaa6" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Attribute -&gt; DTO-Field (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>6dbab0ce-42d9-4523-9a4b-b351021d7a11</parentFolderId>
+              <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+              <packageName>Intent.Modelers.Services</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="7baed1fd-469b-4980-8fd9-4cefb8331eb2" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="0090fb93-483e-41af-a11d-5ad2dc796adf" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Yes" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="No" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
+    </childElement>
+    <childElement id="9e888ba6-4f4e-402b-9f73-106ab0289813" type="Element Event Settings" typeId="3c628ab0-2407-4fb0-8507-ddde986cff2e">
+      <name>NewElementEventSettings</name>
+      <display>[events]</display>
+      <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>fee0edca-4aa0-4f77-a524-6bbd84e78734</parentFolderId>
+      <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+      <packageName>Intent.Modelers.Services</packageName>
+      <stereotypes />
+      <metadata />
+      <childElements>
+        <childElement id="14e5347d-188c-4e5a-91a2-0d135d7e0b4b" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
+          <name>On Mapped</name>
+          <display>On Mapped: Script</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="1c02d064-1b0a-4eaa-8ff4-03829d24aa95">
+            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.ModuleBuilder</typePackageName>
+            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>9e888ba6-4f4e-402b-9f73-106ab0289813</parentFolderId>
+          <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
+          <packageName>Intent.Modelers.Services</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;const constants = {&#xD;&#xA;    PKSpecialization: {&#xD;&#xA;        Implicit: &quot;implicit&quot;,&#xD;&#xA;        Explicit: &quot;explicit&quot;,&#xD;&#xA;        ExplicitComposite: &quot;explicit_composite&quot;,&#xD;&#xA;        Unknown: &quot;unknown&quot;&#xD;&#xA;    },&#xD;&#xA;    FKSpecialization: {&#xD;&#xA;        Implicit: &quot;implicit&quot;,&#xD;&#xA;        Explicit: &quot;explicit&quot;,&#xD;&#xA;    }&#xD;&#xA;};&#xD;&#xA;function getFieldFormat(str) {&#xD;&#xA;    return toPascalCase(str);&#xD;&#xA;}&#xD;&#xA;function getDomainAttributeNameFormat(str) {&#xD;&#xA;    let convention = getDomainAttributeNamingConvention();&#xD;&#xA;    switch (convention) {&#xD;&#xA;        case &quot;pascal-case&quot;:&#xD;&#xA;            return toPascalCase(str);&#xD;&#xA;        case &quot;camel-case&quot;:&#xD;&#xA;            return toCamelCase(str);&#xD;&#xA;    }&#xD;&#xA;    return str;&#xD;&#xA;}&#xD;&#xA;function getOrCreateDto(elementName, parentElement) {&#xD;&#xA;    const expectedDtoName = `${elementName}Dto`;&#xD;&#xA;    let existingDto = parentElement.getChildren(&quot;DTO&quot;).filter(x =&gt; x.getName() === expectedDtoName)[0];&#xD;&#xA;    if (existingDto) {&#xD;&#xA;        return existingDto;&#xD;&#xA;    }&#xD;&#xA;    let dto = createElement(&quot;DTO&quot;, expectedDtoName, parentElement.id);&#xD;&#xA;    return dto;&#xD;&#xA;}&#xD;&#xA;function ensureDtoFields(autoAddPrimaryKey, mappedElement, dto) {&#xD;&#xA;    var _a, _b, _c;&#xD;&#xA;    let dtoUpdated = false;&#xD;&#xA;    let domainElement = mappedElement&#xD;&#xA;        .typeReference&#xD;&#xA;        .getType();&#xD;&#xA;    let attributesWithMapPaths = getAttributesWithMapPath(domainElement);&#xD;&#xA;    let isCreateMode = ((_b = (_a = dto.getMetadata(&quot;originalVerb&quot;)) === null || _a === void 0 ? void 0 : _a.toLowerCase()) === null || _b === void 0 ? void 0 : _b.startsWith(&quot;create&quot;)) == true;&#xD;&#xA;    for (var keyName of Object.keys(attributesWithMapPaths)) {&#xD;&#xA;        let entry = attributesWithMapPaths[keyName];&#xD;&#xA;        if (isCreateMode &amp;&amp; ((_c = entry.name) === null || _c === void 0 ? void 0 : _c.toLowerCase()) === &quot;id&quot;) {&#xD;&#xA;            continue;&#xD;&#xA;        }&#xD;&#xA;        if (isCreateMode &amp;&amp; isOwnerForeignKey(entry.name, domainElement)) {&#xD;&#xA;            continue;&#xD;&#xA;        }&#xD;&#xA;        if (dto.getChildren(&quot;DTO-Field&quot;).some(x =&gt; x.getName() == entry.name)) {&#xD;&#xA;            continue;&#xD;&#xA;        }&#xD;&#xA;        let field = createElement(&quot;DTO-Field&quot;, entry.name, dto.id);&#xD;&#xA;        field.typeReference.setType(entry.typeId);&#xD;&#xA;        field.typeReference.setIsNullable(entry.isNullable);&#xD;&#xA;        field.typeReference.setIsCollection(entry.isCollection);&#xD;&#xA;        field.setMapping(entry.mapPath);&#xD;&#xA;        dtoUpdated = true;&#xD;&#xA;    }&#xD;&#xA;    if (autoAddPrimaryKey &amp;&amp; !isCreateMode) {&#xD;&#xA;        let entityPkDescr = getPrimaryKeyDescriptor(domainElement);&#xD;&#xA;        addPrimaryKeys(dto, entityPkDescr);&#xD;&#xA;    }&#xD;&#xA;    if (dtoUpdated) {&#xD;&#xA;        dto.collapse();&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;function addPrimaryKeys(dto, entityPkDescr) {&#xD;&#xA;    switch (entityPkDescr.specialization) {&#xD;&#xA;        case constants.PKSpecialization.Implicit:&#xD;&#xA;        case constants.PKSpecialization.Explicit:&#xD;&#xA;            {&#xD;&#xA;                if (dto.getChildren(&quot;DTO-Field&quot;).some(x =&gt; x.getName() == getFieldFormat(entityPkDescr.name))) {&#xD;&#xA;                    return;&#xD;&#xA;                }&#xD;&#xA;                let primaryKeyDtoField = createElement(&quot;DTO-Field&quot;, getFieldFormat(entityPkDescr.name), dto.id);&#xD;&#xA;                primaryKeyDtoField.typeReference.setType(entityPkDescr.typeId);&#xD;&#xA;                if (entityPkDescr.specialization == constants.PKSpecialization.Explicit) {&#xD;&#xA;                    primaryKeyDtoField.setMapping(entityPkDescr.mapPath);&#xD;&#xA;                }&#xD;&#xA;            }&#xD;&#xA;            break;&#xD;&#xA;        case constants.PKSpecialization.ExplicitComposite:&#xD;&#xA;            for (let key of entityPkDescr.compositeKeys) {&#xD;&#xA;                if (dto.getChildren(&quot;DTO-Field&quot;).some(x =&gt; x.getName() == getFieldFormat(key.name))) {&#xD;&#xA;                    continue;&#xD;&#xA;                }&#xD;&#xA;                let primaryKeyDtoField = createElement(&quot;DTO-Field&quot;, getFieldFormat(key.name), dto.id);&#xD;&#xA;                primaryKeyDtoField.typeReference.setType(key.typeId);&#xD;&#xA;                primaryKeyDtoField.setMapping(key.id);&#xD;&#xA;            }&#xD;&#xA;            break;&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;function getSurrogateKeyType() {&#xD;&#xA;    var _a, _b, _c;&#xD;&#xA;    const commonTypes = {&#xD;&#xA;        guid: &quot;6b649125-18ea-48fd-a6ba-0bfff0d8f488&quot;,&#xD;&#xA;        long: &quot;33013006-E404-48C2-AC46-24EF5A5774FD&quot;,&#xD;&#xA;        int: &quot;fb0a362d-e9e2-40de-b6ff-5ce8167cbe74&quot;&#xD;&#xA;    };&#xD;&#xA;    const javaTypes = {&#xD;&#xA;        long: &quot;e9e575eb-f8de-4ce4-9838-2d09665a752d&quot;,&#xD;&#xA;        int: &quot;b3e5cb3b-8a26-4346-810b-9789afa25a82&quot;&#xD;&#xA;    };&#xD;&#xA;    const typeNameToIdMap = new Map();&#xD;&#xA;    typeNameToIdMap.set(&quot;guid&quot;, commonTypes.guid);&#xD;&#xA;    typeNameToIdMap.set(&quot;int&quot;, lookup(javaTypes.int) != null ? javaTypes.int : commonTypes.int);&#xD;&#xA;    typeNameToIdMap.set(&quot;long&quot;, lookup(javaTypes.long) != null ? javaTypes.long : commonTypes.long);&#xD;&#xA;    let typeName = (_c = (_b = (_a = application.getSettings(&quot;ac0a788e-d8b3-4eea-b56d-538608f1ded9&quot;)) === null || _a === void 0 ? void 0 : _a.getField(&quot;Key Type&quot;)) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : &quot;int&quot;;&#xD;&#xA;    if (typeNameToIdMap.has(typeName)) {&#xD;&#xA;        return typeNameToIdMap.get(typeName);&#xD;&#xA;    }&#xD;&#xA;    return typeNameToIdMap.get(&quot;guid&quot;);&#xD;&#xA;}&#xD;&#xA;function isOwnerForeignKey(attributeName, domainElement) {&#xD;&#xA;    for (let association of domainElement.getAssociations().filter(x =&gt; !x.typeReference.isCollection &amp;&amp; !x.typeReference.isNullable)) {&#xD;&#xA;        if (attributeName.toLowerCase().indexOf(association.name.toLowerCase()) &gt;= 0) {&#xD;&#xA;            return true;&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;    return false;&#xD;&#xA;}&#xD;&#xA;// Returns a dictionary instead of element to help deal with explicit vs implicit keys&#xD;&#xA;function getPrimaryKeyDescriptor(entity) {&#xD;&#xA;    if (!entity) {&#xD;&#xA;        throw new Error(&quot;entity not specified&quot;);&#xD;&#xA;    }&#xD;&#xA;    let primaryKeys = getPrimaryKeysWithMapPath(entity);&#xD;&#xA;    let keyLen = Object.keys(primaryKeys).length;&#xD;&#xA;    switch (true) {&#xD;&#xA;        case keyLen == 0:&#xD;&#xA;            return {&#xD;&#xA;                id: null,&#xD;&#xA;                name: getDomainAttributeNameFormat(&quot;Id&quot;),&#xD;&#xA;                typeId: getSurrogateKeyType(),&#xD;&#xA;                specialization: constants.PKSpecialization.Implicit,&#xD;&#xA;                compositeKeys: null,&#xD;&#xA;                mapPath: null&#xD;&#xA;            };&#xD;&#xA;        case keyLen == 1:&#xD;&#xA;            let pkAttr = primaryKeys[Object.keys(primaryKeys)[0]];&#xD;&#xA;            return {&#xD;&#xA;                id: pkAttr.id,&#xD;&#xA;                name: getDomainAttributeNameFormat(pkAttr.name),&#xD;&#xA;                typeId: pkAttr.typeId,&#xD;&#xA;                specialization: constants.PKSpecialization.Explicit,&#xD;&#xA;                compositeKeys: null,&#xD;&#xA;                mapPath: pkAttr.mapPath&#xD;&#xA;            };&#xD;&#xA;        case keyLen &gt; 1:&#xD;&#xA;            return {&#xD;&#xA;                id: null,&#xD;&#xA;                name: null,&#xD;&#xA;                typeId: null,&#xD;&#xA;                specialization: constants.PKSpecialization.ExplicitComposite,&#xD;&#xA;                compositeKeys: Object.values(primaryKeys).map((v) =&gt; {&#xD;&#xA;                    return {&#xD;&#xA;                        id: v.id,&#xD;&#xA;                        name: getDomainAttributeNameFormat(v.name),&#xD;&#xA;                        typeId: v.typeId,&#xD;&#xA;                        mapPath: v.mapPath&#xD;&#xA;                    };&#xD;&#xA;                }),&#xD;&#xA;                mapPath: null&#xD;&#xA;            };&#xD;&#xA;        default:&#xD;&#xA;            return {&#xD;&#xA;                id: null,&#xD;&#xA;                name: null,&#xD;&#xA;                typeId: null,&#xD;&#xA;                specialization: constants.PKSpecialization.Unknown,&#xD;&#xA;                compositeKeys: null,&#xD;&#xA;                mapPath: null&#xD;&#xA;            };&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;;&#xD;&#xA;function getPrimaryKeysWithMapPath(entity) {&#xD;&#xA;    let keydict = Object.create(null);&#xD;&#xA;    let keys = entity.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;    keys.forEach(key =&gt; keydict[key.id] = {&#xD;&#xA;        id: key.id,&#xD;&#xA;        name: key.getName(),&#xD;&#xA;        typeId: key.typeReference.typeId,&#xD;&#xA;        mapPath: [key.id],&#xD;&#xA;        isNullable: false,&#xD;&#xA;        isCollection: false&#xD;&#xA;    });&#xD;&#xA;    traverseInheritanceHierarchyForPrimaryKeys(keydict, entity, []);&#xD;&#xA;    return keydict;&#xD;&#xA;    function traverseInheritanceHierarchyForPrimaryKeys(keydict, curEntity, generalizationStack) {&#xD;&#xA;        if (!curEntity) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        let generalizations = curEntity.getAssociations(&quot;Generalization&quot;).filter(x =&gt; x.isTargetEnd());&#xD;&#xA;        if (generalizations.length == 0) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        let generalization = generalizations[0];&#xD;&#xA;        generalizationStack.push(generalization.id);&#xD;&#xA;        let nextEntity = generalization.typeReference.getType();&#xD;&#xA;        let baseKeys = nextEntity.getChildren(&quot;Attribute&quot;).filter(x =&gt; x.hasStereotype(&quot;Primary Key&quot;));&#xD;&#xA;        baseKeys.forEach(key =&gt; {&#xD;&#xA;            keydict[key.id] = {&#xD;&#xA;                id: key.id,&#xD;&#xA;                name: key.getName(),&#xD;&#xA;                typeId: key.typeReference.typeId,&#xD;&#xA;                mapPath: generalizationStack.concat([key.id]),&#xD;&#xA;                isNullable: key.typeReference.isNullable,&#xD;&#xA;                isCollection: key.typeReference.isCollection&#xD;&#xA;            };&#xD;&#xA;        });&#xD;&#xA;        traverseInheritanceHierarchyForPrimaryKeys(keydict, nextEntity, generalizationStack);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;function getAttributesWithMapPath(entity) {&#xD;&#xA;    let attrDict = Object.create(null);&#xD;&#xA;    let attributes = entity.getChildren(&quot;Attribute&quot;).filter(x =&gt; !x.hasStereotype(&quot;Primary Key&quot;) &amp;&amp; !legacyPartitionKey(x));&#xD;&#xA;    attributes.forEach(attr =&gt; attrDict[attr.id] = {&#xD;&#xA;        id: attr.id,&#xD;&#xA;        name: attr.getName(),&#xD;&#xA;        typeId: attr.typeReference.typeId,&#xD;&#xA;        mapPath: [attr.id],&#xD;&#xA;        isNullable: false,&#xD;&#xA;        isCollection: false&#xD;&#xA;    });&#xD;&#xA;    traverseInheritanceHierarchyForAttributes(attrDict, entity, []);&#xD;&#xA;    return attrDict;&#xD;&#xA;    function traverseInheritanceHierarchyForAttributes(attrDict, curEntity, generalizationStack) {&#xD;&#xA;        if (!curEntity) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        let generalizations = curEntity.getAssociations(&quot;Generalization&quot;).filter(x =&gt; x.isTargetEnd());&#xD;&#xA;        if (generalizations.length == 0) {&#xD;&#xA;            return;&#xD;&#xA;        }&#xD;&#xA;        let generalization = generalizations[0];&#xD;&#xA;        generalizationStack.push(generalization.id);&#xD;&#xA;        let nextEntity = generalization.typeReference.getType();&#xD;&#xA;        let baseKeys = nextEntity.getChildren(&quot;Attribute&quot;).filter(x =&gt; !x.hasStereotype(&quot;Primary Key&quot;) &amp;&amp; !legacyPartitionKey(x));&#xD;&#xA;        baseKeys.forEach(attr =&gt; {&#xD;&#xA;            attrDict[attr.id] = {&#xD;&#xA;                id: attr.id,&#xD;&#xA;                name: attr.getName(),&#xD;&#xA;                typeId: attr.typeReference.typeId,&#xD;&#xA;                mapPath: generalizationStack.concat([attr.id]),&#xD;&#xA;                isNullable: attr.typeReference.isNullable,&#xD;&#xA;                isCollection: attr.typeReference.isCollection&#xD;&#xA;            };&#xD;&#xA;        });&#xD;&#xA;        traverseInheritanceHierarchyForAttributes(attrDict, nextEntity, generalizationStack);&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;function getDomainAttributeNamingConvention() {&#xD;&#xA;    var _a, _b, _c;&#xD;&#xA;    const domainSettingsId = &quot;c4d1e35c-7c0d-4926-afe0-18f17563ce17&quot;;&#xD;&#xA;    return (_c = (_b = (_a = application.getSettings(domainSettingsId)) === null || _a === void 0 ? void 0 : _a.getField(&quot;Attribute Naming Convention&quot;)) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : &quot;pascal-case&quot;;&#xD;&#xA;}&#xD;&#xA;// Just in case someone still uses this convention. Used to filter out those attributes when mapping&#xD;&#xA;// to domain entities that are within a Cosmos DB paradigm.&#xD;&#xA;function legacyPartitionKey(attribute) {&#xD;&#xA;    return attribute.hasStereotype(&quot;Partition Key&quot;) &amp;&amp; attribute.name === &quot;PartitionKey&quot;;&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../common/on-map-functions.ts&quot; /&gt;&#xD;&#xA;function onMapDto(element) {&#xD;&#xA;    var complexTypes = [&quot;Data Contract&quot;, &quot;Value Object&quot;];&#xD;&#xA;    let fields = element.getChildren(&quot;DTO-Field&quot;)&#xD;&#xA;        .filter(x =&gt; { var _a, _b; return x.typeReference.getType() == null &amp;&amp; ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.specialization) === &quot;Association&quot;; });&#xD;&#xA;    fields.forEach(f =&gt; {&#xD;&#xA;        getOrCreateDtoCrudDto(element, f, true);&#xD;&#xA;    });&#xD;&#xA;    let complexAttributes = element.getChildren(&quot;DTO-Field&quot;)&#xD;&#xA;        .filter(x =&gt; {&#xD;&#xA;        var _a, _b, _c, _d;&#xD;&#xA;        return x.typeReference.getType() == null&#xD;&#xA;            &amp;&amp; (complexTypes.includes((_d = (_c = (_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.typeReference) === null || _c === void 0 ? void 0 : _c.getType()) === null || _d === void 0 ? void 0 : _d.specialization));&#xD;&#xA;    });&#xD;&#xA;    complexAttributes.forEach(f =&gt; {&#xD;&#xA;        getOrCreateDtoCrudDto(element, f, false);&#xD;&#xA;    });&#xD;&#xA;}&#xD;&#xA;function getOrCreateDtoCrudDto(element, dtoField, autoAddPrimaryKey) {&#xD;&#xA;    const projectMappingSettingId = &quot;942eae46-49f1-450e-9274-a92d40ac35fa&quot;;&#xD;&#xA;    const originalDtoMappingSettingId = &quot;1f747d14-681c-4a20-8c68-34223f41b825&quot;;&#xD;&#xA;    let mappedElement = dtoField.getMapping().getElement();&#xD;&#xA;    let originalVerb = &quot;&quot;;&#xD;&#xA;    if (element.hasMetadata(&quot;originalVerb&quot;)) {&#xD;&#xA;        originalVerb = element.getMetadata(&quot;originalVerb&quot;);&#xD;&#xA;        // In the event that the prefix is no longer the same as the&#xD;&#xA;        // originally called verb, then don't propagate this any further&#xD;&#xA;        // as end users might get confused.&#xD;&#xA;        if (element.getName().indexOf(originalVerb) &lt; 0) {&#xD;&#xA;            originalVerb = &quot;&quot;;&#xD;&#xA;        }&#xD;&#xA;    }&#xD;&#xA;    let targetMappingSettingId = dtoField.getParent().getMapping().mappingSettingsId;&#xD;&#xA;    let domainName = mappedElement.typeReference.getType().getName();&#xD;&#xA;    let baseName = element.getMetadata(&quot;baseName&quot;)&#xD;&#xA;        ? `${element.getMetadata(&quot;baseName&quot;)}${domainName}`&#xD;&#xA;        : domainName;&#xD;&#xA;    let dtoName = `${originalVerb}${baseName}`;&#xD;&#xA;    let dto = getOrCreateDto(dtoName, element.getParent());&#xD;&#xA;    dto.setMapping(mappedElement.typeReference.getTypeId(), targetMappingSettingId);&#xD;&#xA;    if (originalVerb !== &quot;&quot;) {&#xD;&#xA;        dto.setMetadata(&quot;originalVerb&quot;, originalVerb);&#xD;&#xA;    }&#xD;&#xA;    dto.setMetadata(&quot;baseName&quot;, baseName);&#xD;&#xA;    ensureDtoFields(autoAddPrimaryKey, mappedElement, dto);&#xD;&#xA;    dtoField.typeReference.setType(dto.id);&#xD;&#xA;}&#xD;&#xA;/// &lt;reference path=&quot;../common/dto-on-map.ts&quot; /&gt;&#xD;&#xA;/**&#xD;&#xA; * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB&#xD;&#xA; *&#xD;&#xA; * Source code here:&#xD;&#xA; * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/serivces-cqrs-crud/command-on-map/dto-on-map.ts&#xD;&#xA; */&#xD;&#xA;onMapDto(element);&#xD;&#xA;" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+      </childElements>
+    </childElement>
   </childElements>
 </class>

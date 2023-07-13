@@ -1,3 +1,7 @@
+### Version 4.0.5
+
+- Updated moved `Project to Domain` to `Services Designer` to standardize scripts.
+
 ### Version 4.0.4
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

@@ -1,3 +1,8 @@
+### Version 3.4.5
+
+- Update: Moved `Project to Domain` script into `Services Designer` and out of the individual CRUD modules.
+
+
 ### Version 3.4.3
 
 - Support default values parameters for Services, Domain and Http Metadata.

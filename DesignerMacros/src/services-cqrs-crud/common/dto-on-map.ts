@@ -38,9 +38,7 @@ function getOrCreateDtoCrudDto(element : MacroApi.Context.IElementApi, dtoField 
         }
     }
 
-    let targetMappingSettingId = (!originalVerb || originalVerb === "") 
-        ? originalDtoMappingSettingId 
-        : projectMappingSettingId;
+    let targetMappingSettingId = dtoField.getParent().getMapping().mappingSettingsId;
 
     let domainName = mappedElement.typeReference.getType().getName();
     let baseName = element.getMetadata("baseName") 
