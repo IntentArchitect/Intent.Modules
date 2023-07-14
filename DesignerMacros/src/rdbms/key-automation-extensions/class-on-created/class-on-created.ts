@@ -1,5 +1,5 @@
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.RDBMS
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/rdbms/key-automation-extensions/class-on-created/class-on-created.ts

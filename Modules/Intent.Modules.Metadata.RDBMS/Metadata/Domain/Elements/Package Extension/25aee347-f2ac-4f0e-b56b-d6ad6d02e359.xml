@@ -75,7 +75,7 @@
               <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
               <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
               <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="let rdbmsDatabaseId = &quot;51a7bcf5-0eb9-4c9a-855e-3ead1048729c&quot;;&#xD;&#xA;element.getStereotypes()&#xD;&#xA;if (!element.hasMetadata(&quot;database-paradigm-selected&quot;) &amp;&amp; &#xD;&#xA;    !element.hasStereotype(rdbmsDatabaseId) &amp;&amp; &#xD;&#xA;    !element.hasStereotype(&quot;Document Database&quot;)) {&#xD;&#xA;    &#xD;&#xA;    element.addStereotype(rdbmsDatabaseId);&#xD;&#xA;}&#xD;&#xA;element.setMetadata(&quot;database-paradigm-selected&quot;, &quot;true&quot;);&#xD;&#xA;" isActive="true" />
+                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="/// &lt;reference path=&quot;../../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;let rdbmsDatabaseId = &quot;51a7bcf5-0eb9-4c9a-855e-3ead1048729c&quot;;&#xD;&#xA;element.getStereotypes();&#xD;&#xA;if (!element.hasMetadata(&quot;database-paradigm-selected&quot;) &amp;&amp;&#xD;&#xA;    !element.hasStereotype(rdbmsDatabaseId) &amp;&amp;&#xD;&#xA;    !element.hasStereotype(&quot;Document Database&quot;)) {&#xD;&#xA;    element.addStereotype(rdbmsDatabaseId);&#xD;&#xA;}&#xD;&#xA;element.setMetadata(&quot;database-paradigm-selected&quot;, &quot;true&quot;);&#xD;&#xA;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

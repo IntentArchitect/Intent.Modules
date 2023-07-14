@@ -1,8 +1,8 @@
 /**
- * Used by Intent.Modules\Modules\Intent.Modules.Metadata.DocumentDB
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.RDBMS
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/rdbms/key-automation-extensions/class-auto-manage-keys.ts/class-auto-manage-keys.ts.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/rdbms/key-automation-extensions/class-auto-manage-keys.ts/class-auto-manage-keys.ts
  */
 /// <reference path="../_common/updatePrimaryKeys.ts" />
 

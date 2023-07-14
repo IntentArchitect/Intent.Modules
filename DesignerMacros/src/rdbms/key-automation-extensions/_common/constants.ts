@@ -3,3 +3,4 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const isManagedKey = "is-managed-key";
 const autoManageKeys = "auto-manage-keys";
 const isBeingDeletedByScript = "is-being-deleted-by-script";
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";

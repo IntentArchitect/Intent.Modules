@@ -64,7 +64,7 @@ function updatePrimaryKey(element: IElementApi): void {
     }
 
     function updateDerivedTypePks(element: IElementApi) {
-        var derivedTypes = element.getAssociations("Generalization")
+        const derivedTypes = element.getAssociations("Generalization")
             .filter(generalization => generalization.isSourceEnd())
             .map(generalization => generalization.typeReference.getType());
     
