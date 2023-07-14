@@ -1,7 +1,7 @@
 ### Version 3.4.5
 
 - Update: Moved `Project to Domain` script into `Services Designer` and out of the individual CRUD modules.
-
+- Update: DTOs will ignore mapping certain Class Attributes that are internally marked as `set-by-infrastructure` so as to not exposing them to the public unintentionally.
 
 ### Version 3.4.3
 

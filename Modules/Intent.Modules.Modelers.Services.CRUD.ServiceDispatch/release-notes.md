@@ -1,6 +1,7 @@
 ### Version 4.0.5
 
 - Updated moved `Project to Domain` to `Services Designer` to standardize scripts.
+- Update: DTOs will ignore mapping certain Class Attributes that are internally marked as `set-by-infrastructure` so as to not exposing them to the public unintentionally.
 
 ### Version 4.0.4
 

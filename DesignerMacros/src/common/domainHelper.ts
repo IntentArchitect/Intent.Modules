@@ -188,7 +188,11 @@ class DomainHelper {
 
     static getAttributesWithMapPath(entity : MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
-        let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !DomainHelper.legacyPartitionKey(x));
+        let attributes = entity
+            .getChildren("Attribute")
+            .filter(x => !x.hasStereotype("Primary Key") && 
+                !DomainHelper.legacyPartitionKey(x) &&
+                (x["hasMetadata"] && (!x.hasMetadata("set-by-infrastructure") || x.getMetadata("set-by-infrastructure")?.toLocaleLowerCase() != "true")));
         attributes.forEach(attr => attrDict[attr.id] = { 
             id: attr.id, 
             name: attr.getName(), 

@@ -245,7 +245,10 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi) {
 
 function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi) {
     let attrDict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
-    let attributes = entity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !legacyPartitionKey(x));
+    let attributes = entity.getChildren("Attribute")
+    .filter(x => !x.hasStereotype("Primary Key") &&
+        !legacyPartitionKey(x) &&
+        (x["hasMetadata"] && (!x.hasMetadata("set-by-infrastructure") || x.getMetadata("set-by-infrastructure")?.toLocaleLowerCase() != "true")));
     attributes.forEach(attr => attrDict[attr.id] = {
         id: attr.id,
         name: attr.getName(),

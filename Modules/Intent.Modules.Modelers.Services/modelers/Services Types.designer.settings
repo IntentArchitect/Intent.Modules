@@ -593,7 +593,13 @@ function getPrimaryKeysWithMapPath(entity) {
 }
 function getAttributesWithMapPath(entity) {
     let attrDict = Object.create(null);
-    let attributes = entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !legacyPartitionKey(x));
+    let attributes = entity.getChildren("Attribute")
+        .filter(x =&gt; {
+        var _a;
+        return !x.hasStereotype("Primary Key") &amp;&amp;
+            !legacyPartitionKey(x) &amp;&amp;
+            (x["hasMetadata"] &amp;&amp; (!x.hasMetadata("set-by-infrastructure") || ((_a = x.getMetadata("set-by-infrastructure")) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) != "true"));
+    });
     attributes.forEach(attr =&gt; attrDict[attr.id] = {
         id: attr.id,
         name: attr.getName(),
