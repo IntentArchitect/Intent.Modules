@@ -18,6 +18,13 @@ namespace Intent.Modelers.Services.CQRS.Api
                 .ToList();
         }
 
+        public static IList<DiagramModel> GetDiagramModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(DiagramModel.SpecializationTypeId)
+                .Select(x => new DiagramModel(x))
+                .ToList();
+        }
+
         public static IList<QueryModel> GetQueryModels(this IDesigner designer)
         {
             return designer.GetElementsOfType(QueryModel.SpecializationTypeId)

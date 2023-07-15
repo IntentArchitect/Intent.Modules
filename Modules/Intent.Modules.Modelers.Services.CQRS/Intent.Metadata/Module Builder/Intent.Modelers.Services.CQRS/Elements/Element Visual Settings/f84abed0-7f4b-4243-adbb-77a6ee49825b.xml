@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="f84abed0-7f4b-4243-adbb-77a6ee49825b" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+  <name>[element visual]</name>
+  <display>[visual]: Class</display>
+  <isAbstract>false</isAbstract>
+  <sort-children>by-type-then-manually</sort-children>
+  <genericTypes />
+  <typeReference id="5504ce95-51c1-4283-8396-e2a473292afa">
+    <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain</typePackageName>
+    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>aa58a1e0-7c42-4150-84cb-573307da83a6</parentFolderId>
+  <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+  <packageName>Intent.Modelers.Services.CQRS</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
+        <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
+        <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
+        <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="70" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements>
+    <childElement id="c07762dd-ff06-4f5d-8452-a3fad24bffc2" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Display Label  for Symbol</name>
+      <display>[draw text]: Display Label  for Symbol</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>f84abed0-7f4b-4243-adbb-77a6ee49825b</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return getName();" isActive="true" />
+            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="" isActive="true" />
+            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 48}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="271fa05d-e6da-4405-a448-a32b26362806" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+      <name>Domain Event Symbol</name>
+      <display>[draw svg]: Domain Event Symbol</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>f84abed0-7f4b-4243-adbb-77a6ee49825b</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="5dc1fff8-3fe7-4bb3-be4b-b6a26fa7b082" name="SVG Resource Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="lightning.svg" isActive="true" />
+            <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 6}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="40" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+  </childElements>
+</class>

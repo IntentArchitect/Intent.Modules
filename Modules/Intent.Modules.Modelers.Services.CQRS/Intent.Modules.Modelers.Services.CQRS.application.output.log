@@ -18,6 +18,30 @@
     </FileLog>
     <FileLog>
       <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#1f0777dc-4647-408c-b313-ab1bb0a659cf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/CQRSMappingModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CQRSMappingModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#73a2f34b-0d45-4a9a-b4d6-096f6c34b9e9</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DiagramModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>6b293dea-1143-48cc-bb48-c162a5d0cd6c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#1f0777dc-4647-408c-b313-ab1bb0a659cf</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/CQRSMappingModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CQRSMappingModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#efbd1131-2db2-4eb7-8ef6-3b5a32f5267d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderExtensionModel.cs</ApplicationRelativeFilePath>
@@ -70,7 +94,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modelers.Services.CQRS.imodspec</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modelers.Services.CQRS.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>ffbf27c5-a296-4dbc-9af5-acf0bff187a2</ProjectId>
@@ -78,7 +102,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.CQRS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.CQRS.csproj</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>e6b22230-24fd-4b6c-8ad3-acb527181cd3</ProjectId>
