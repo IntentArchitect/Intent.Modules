@@ -108,10 +108,34 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             
             #line default
             #line hidden
+            
+            #line 37 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+      if (IsForInterface()) { 
+            
+            #line default
+            #line hidden
+            this.Write("            CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath()" +
+                    ")\r\n                .AddInterface($\"");
+            
+            #line 39 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName()));
+            
+            #line default
+            #line hidden
+            this.Write("\", @class =>\r\n                {\r\n                    @class.AddMethod(\"bool\", \"Ex" +
+                    "ampleMethod\", method =>\r\n                    {\r\n                        method.A" +
+                    "ddParameter(\"string\", \"exampleParam\");\r\n                    });\r\n               " +
+                    " });\r\n");
+            
+            #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+      } else { 
+            
+            #line default
+            #line hidden
             this.Write("            CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath()" +
                     ")\r\n                .AddClass($\"");
             
-            #line 38 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName()));
             
             #line default
@@ -128,21 +152,27 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                 });
 ");
             
-            #line 48 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 58 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+      } 
+            
+            #line default
+            #line hidden
+            
+            #line 59 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
   } 
             
             #line default
             #line hidden
             this.Write("        }\r\n");
             
-            #line 50 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 61 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
   if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCSharpFileBuilder() == true) { 
             
             #line default
             #line hidden
             this.Write("\r\n        [IntentManaged(Mode.Fully)]\r\n        public ");
             
-            #line 53 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 64 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(UseType("Intent.Modules.Common.CSharp.Builder.CSharpFile")));
             
             #line default
@@ -162,7 +192,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
         }
 ");
             
-            #line 66 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
   } else { 
             
             #line default
@@ -171,7 +201,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                     "ride CSharpFileConfig DefineFileConfig()\r\n        {\r\n            return new CSha" +
                     "rpFileConfig(\r\n                className: $\"");
             
-            #line 72 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 83 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetClassName()));
             
             #line default
@@ -179,13 +209,13 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             this.Write("\",\r\n                @namespace: $\"{this.GetNamespace()}\",\r\n                relati" +
                     "veLocation: $\"{this.GetFolderPath()}\");\r\n        }\r\n");
             
-            #line 76 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 87 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
   } 
             
             #line default
             #line hidden
             
-            #line 77 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 88 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
   if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCustom() == true) { 
             
             #line default
@@ -194,7 +224,7 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
                     "e string TransformText()\r\n        {\r\n            throw new NotImplementedExcepti" +
                     "on(\"Implement custom template here\");\r\n        }\r\n");
             
-            #line 84 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
+            #line 95 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
   } 
             
             #line default

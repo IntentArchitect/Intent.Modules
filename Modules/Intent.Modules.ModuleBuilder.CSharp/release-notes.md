@@ -1,3 +1,7 @@
+### Version 3.4.5
+
+- Implements a default interface implementation for CSharp Templates that's name is suffixed with `Interface`.
+
 ### Version 3.4.4
 
 - Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.

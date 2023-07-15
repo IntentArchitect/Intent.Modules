@@ -34,6 +34,16 @@ namespace <#= Namespace #>
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
 <#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCSharpFileBuilder() == true) { #>
+<#      if (IsForInterface()) { #>
+            CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
+                .AddInterface($"<#= GetClassName() #>", @class =>
+                {
+                    @class.AddMethod("bool", "ExampleMethod", method =>
+                    {
+                        method.AddParameter("string", "exampleParam");
+                    });
+                });
+<#      } else { #>
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
                 .AddClass($"<#= GetClassName() #>", @class =>
                 {
@@ -45,6 +55,7 @@ namespace <#= Namespace #>
                         });
                     });
                 });
+<#      } #>
 <#  } #>
         }
 <#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCSharpFileBuilder() == true) { #>
