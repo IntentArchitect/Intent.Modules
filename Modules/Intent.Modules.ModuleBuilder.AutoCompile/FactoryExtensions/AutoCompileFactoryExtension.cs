@@ -41,6 +41,14 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
             Logging.Log.Info($"Executing: \"dotnet build\" at location \"{Path.GetFullPath(location)}\"");
             try
             {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = "dotnet",
+                    Arguments = "build-server shutdown",
+                    CreateNoWindow = false,
+                    UseShellExecute = false,
+                })!.WaitForExit();
+
                 // "--disable-build-servers" / "-p:UseSharedCompilation=false" and the custom environment
                 // variable is to prevents issue where process seems to never end.
                 // See https://github.com/dotnet/sdk/issues/9487#issuecomment-1499126020

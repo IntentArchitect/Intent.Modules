@@ -1,3 +1,7 @@
+### Version 3.3.6
+
+- Now calls `dotnet build-server shutdown` before calling `dotnet build` in case of pre-existing build servers which may cause the process to not exit.
+
 ### Version 3.3.5
 
 - Added `--disable-build-servers` argument to `dotnet build` to prevent issue where the process would sometimes never exit.
