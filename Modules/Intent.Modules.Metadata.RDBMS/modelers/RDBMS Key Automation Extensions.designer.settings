@@ -12,13 +12,19 @@
       <typeOrder />
       <macros>
         <macro trigger="on-loaded">
-          <script>/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
-let rdbmsDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
+          <script>const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
+const isManagedKey = "is-managed-key";
+const autoManageKeys = "auto-manage-keys";
+const isBeingDeletedByScript = "is-being-deleted-by-script";
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/constants.ts" /&gt;
 element.getStereotypes();
 if (!element.hasMetadata("database-paradigm-selected") &amp;&amp;
-    !element.hasStereotype(rdbmsDatabaseId) &amp;&amp;
+    !element.hasStereotype(relationalDatabaseId) &amp;&amp;
     !element.hasStereotype("Document Database")) {
-    element.addStereotype(rdbmsDatabaseId);
+    element.addStereotype(relationalDatabaseId);
 }
 element.setMetadata("database-paradigm-selected", "true");
 </script>
@@ -32,14 +38,20 @@ element.setMetadata("database-paradigm-selected", "true");
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
-(async () =&gt; {
+          <script>const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
+const isManagedKey = "is-managed-key";
+const autoManageKeys = "auto-manage-keys";
+const isBeingDeletedByScript = "is-being-deleted-by-script";
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/constants.ts" /&gt;
+function execute() {
     var _a, _b, _c, _d, _e, _f, _g;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit" ||
-        element.getParent().getMetadata("auto-manage-keys") == "false") {
-        return;
-    }
-    if (element.getPackage().specialization !== "Domain Package") {
+        element.getParent().getMetadata("auto-manage-keys") === "false" ||
+        element.getPackage().specialization !== "Domain Package" ||
+        !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
     if (element.getName().toLocaleLowerCase() == "id" &amp;&amp;
@@ -57,7 +69,8 @@ element.setMetadata("database-paradigm-selected", "true");
     if (associationTarget &amp;&amp; element.getMetadata("association") != associationTarget.id) {
         element.setMetadata("association", associationTarget.id);
     }
-})();
+}
+execute();
 </script>
         </macro>
         <macro trigger="on-deleted">
@@ -173,7 +186,8 @@ function updateForeignKeys(association) {
 /// &lt;reference path="../_common/updateForeignKeys.ts" /&gt;
 function execute() {
     if (element.hasMetadata(isBeingDeletedByScript) ||
-        !element.hasMetadata(isManagedKey)) {
+        !element.hasMetadata(isManagedKey) ||
+        !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
     const classElement = element.getParent();
@@ -186,10 +200,18 @@ execute();
 </script>
         </macro>
         <macro trigger="on-loaded">
-          <script>/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
-(async () =&gt; {
+          <script>const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
+const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
+const isManagedKey = "is-managed-key";
+const autoManageKeys = "auto-manage-keys";
+const isBeingDeletedByScript = "is-being-deleted-by-script";
+const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../_common/constants.ts" /&gt;
+function execute() {
     var _a, _b;
-    if (element.getPackage().specialization !== "Domain Package") {
+    if (element.getPackage().specialization !== "Domain Package" ||
+        !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
     const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
@@ -205,7 +227,8 @@ execute();
     if (existingAssociation &amp;&amp; !element.getMetadata("fk-original-name")) {
         element.setMetadata("fk-original-name", element.getName());
     }
-})();
+}
+execute();
 </script>
         </macro>
       </macros>
@@ -301,6 +324,9 @@ function updatePrimaryKeys(element) {
 /// &lt;reference path="../_common/updatePrimaryKeys.ts" /&gt;
 function execute() {
     var _a, _b;
+    if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
+        return;
+    }
     element.removeMetadata(autoManageKeys);
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
@@ -502,7 +528,8 @@ function updateForeignKeys(association) {
 /// &lt;reference path="../_common/updateForeignKeys.ts" /&gt;
 function execute() {
     var _a, _b;
-    if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
+    if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit" ||
+        !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
     updatePrimaryKeys(element);
@@ -621,7 +648,8 @@ function updatePrimaryKeys(element) {
 /// &lt;reference path="../_common/updatePrimaryKeys.ts" /&gt;
 function execute() {
     var _a, _b;
-    if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
+    if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit" ||
+        !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
     updatePrimaryKeys(element);

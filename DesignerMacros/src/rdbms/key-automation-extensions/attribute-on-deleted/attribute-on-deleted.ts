@@ -5,7 +5,8 @@ type IElementApi = MacroApi.Context.IElementApi;
 
 function execute(): void {
     if (element.hasMetadata(isBeingDeletedByScript) ||
-        !element.hasMetadata(isManagedKey)
+        !element.hasMetadata(isManagedKey) ||
+        !element.getPackage().hasStereotype(relationalDatabaseId)
     ) {
         return;
     }
