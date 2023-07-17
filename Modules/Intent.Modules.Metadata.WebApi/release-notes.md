@@ -1,5 +1,9 @@
 ### Version 4.2.4
 
+- Update: `Expose as Http Endpoint` to have a better default behavior for `Operation`s and `Class Constructors`.
+
+### Version 4.2.4
+
 - Update: `Expose as Http Endpoint` to have a better default behavior for composite keys.
 - Update: `Azure Function Parameter` are now valid targets for `Parameter Settings` stereotypes.
 

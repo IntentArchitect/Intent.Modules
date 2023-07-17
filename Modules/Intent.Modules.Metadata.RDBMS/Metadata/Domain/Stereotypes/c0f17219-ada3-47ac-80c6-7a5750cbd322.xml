@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="c0f17219-ada3-47ac-80c6-7a5750cbd322" version="3.1.0">
+  <name>Schema</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="4d95d53a-8855-4f35-aa82-e312643f5c5f">Folder</type>
+    <type id="04e12b51-ed12-42a3-9667-a6aa81bb6d10">Class</type>
+    <type id="1a824508-4623-45d9-accc-f572091ade5a">Domain Package</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAANpJREFUOE+tk0ESgjAMRX9mdC9cRG4ALPA8ehI8jyzAG8AJHC8A7mUmTklbgRFt1a4IbV9/8hOCWWW3wR1bG6uPNRqkwW3ybxaQjYsuAbic7lOKLKj8AFko0KJl4BsAYF5M/ACnLgLxEUCkJddg2mMX1G4pmFNFKwqyMHl30ey5FVGg8QSoa/UCQKkcHBxR8pWNEQjXIaUhRc6xCGAS6cQVCA1YA4CLBahaLSsYC9U2OqXwcxHFxnxm48Hdxmcrn7WY2K+RDOAPrTyqos8sqHHubRsLZIX60zg/AOCebhHZxIffAAAAAElFTkSuQmCC" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return true;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>7C81DE70-0B90-44F4-9B18-F648B5976FC3</parentFolderId>
+  <order>0</order>
+  <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
+  <packageName>Intent.Metadata.RDBMS</packageName>
+  <properties>
+    <property id="981470a5-f1b3-4781-a709-ea7500975ff5">
+      <name>Name</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+  </properties>
+</stereotypeDefinition>

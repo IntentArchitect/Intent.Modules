@@ -177,7 +177,14 @@
     }
     static getAttributesWithMapPath(entity) {
         let attrDict = Object.create(null);
-        let attributes = entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !DomainHelper.legacyPartitionKey(x));
+        let attributes = entity
+            .getChildren("Attribute")
+            .filter(x =&gt; {
+            var _a;
+            return !x.hasStereotype("Primary Key") &amp;&amp;
+                !DomainHelper.legacyPartitionKey(x) &amp;&amp;
+                (x["hasMetadata"] &amp;&amp; (!x.hasMetadata("set-by-infrastructure") || ((_a = x.getMetadata("set-by-infrastructure")) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) != "true"));
+        });
         attributes.forEach(attr =&gt; attrDict[attr.id] = {
             id: attr.id,
             name: attr.getName(),
@@ -289,6 +296,12 @@ function getServiceRouteIdentifier(element, domainClass, defaultEntityName) {
     }
     return serviceRouteIdentifier;
 }
+function getOperationRoute(serviceRouteIdentifier, operationName, entityName, ...prefixes) {
+    const withoutPrefixes = removePrefix(operationName, ...prefixes);
+    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request", "Query");
+    const withoutCommandSuffix = removeSuffix(withoutRequestSuffix, "Command");
+    return removePrefix(toKebabCase(withoutCommandSuffix), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-");
+}
 function getConventionalSubRoute(element, mappedEntity) {
     let subRoute = `/${toKebabCase(pluralize(mappedEntity.getName()))}`;
     let mappedDomainEntity = getDomainEntity(mappedEntity.getName());
@@ -349,7 +362,13 @@ function exposeAsHttpEndPoint(element) {
     let primaryDomainEntity = getDomainEntity(folderName);
     let serviceRouteIdentifier = getServiceRouteIdentifier(element, primaryDomainEntity, folderName);
     let subRoute = "";
-    if (mappedEntity &amp;&amp; singularize(mappedEntity.getName()) != singularize(folderName) &amp;&amp; serviceRouteIdentifier != `/{id}`) {
+    if (mappedEntity != null &amp;&amp; mappedEntity.specialization === "Operation") {
+        subRoute = `/${getOperationRoute(serviceRouteIdentifier, mappedEntity === null || mappedEntity === void 0 ? void 0 : mappedEntity.getName(), folderName, "Create", "Update", "Delete", "Add", "Remove")}`;
+    }
+    else if (mappedEntity != null &amp;&amp; mappedEntity.specialization === "Class Constructor") {
+        // no subroute
+    }
+    else if (mappedEntity &amp;&amp; singularize(mappedEntity.getName()) != singularize(folderName) &amp;&amp; serviceRouteIdentifier != `/{id}`) {
         subRoute = getConventionalSubRoute(element, mappedEntity);
     }
     else {

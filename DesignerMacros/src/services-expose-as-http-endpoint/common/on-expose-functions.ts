@@ -27,6 +27,14 @@ function getServiceRouteIdentifier(element: MacroApi.Context.IElementApi, domain
     return serviceRouteIdentifier;
 }
 
+function getOperationRoute(serviceRouteIdentifier : string, operationName : string, entityName : string, ...prefixes : string[]) : string {    
+    const withoutPrefixes = removePrefix(operationName, ...prefixes);
+    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request", "Query");
+    const withoutCommandSuffix = removeSuffix(withoutRequestSuffix, "Command");
+    return removePrefix(toKebabCase(withoutCommandSuffix), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-");
+}
+
+
 function getConventionalSubRoute(element: MacroApi.Context.IElementApi, mappedEntity: MacroApi.Context.IElementApi ) : string{
     let subRoute = `/${toKebabCase(pluralize(mappedEntity.getName()))}`;
     let mappedDomainEntity = getDomainEntity(mappedEntity.getName());

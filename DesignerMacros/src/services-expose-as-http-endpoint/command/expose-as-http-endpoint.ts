@@ -23,10 +23,13 @@ function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void{
     let serviceRouteIdentifier = getServiceRouteIdentifier(element, primaryDomainEntity, folderName);
 
     let subRoute = "";
-    if (mappedEntity && singularize(mappedEntity.getName()) != singularize(folderName) && serviceRouteIdentifier != `/{id}` ){
+    if (mappedEntity != null && mappedEntity.specialization === "Operation"){
+        subRoute = `/${getOperationRoute(serviceRouteIdentifier, mappedEntity?.getName(), folderName, "Create", "Update", "Delete", "Add", "Remove")}`;            
+    } else if (mappedEntity != null && mappedEntity.specialization === "Class Constructor"){
+        // no subroute
+    }else if (mappedEntity && singularize(mappedEntity.getName()) != singularize(folderName) && serviceRouteIdentifier != `/{id}` ){
         subRoute = getConventionalSubRoute(element, mappedEntity );
-    }
-    else{
+    }else{        
         let optionalSubRoute = getUnconventionalRoute(serviceRouteIdentifier, mappedEntity?.getName(), folderName);
         if (optionalSubRoute != "")
         {
