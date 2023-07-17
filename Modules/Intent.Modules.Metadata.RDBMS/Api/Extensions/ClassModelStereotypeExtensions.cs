@@ -52,6 +52,30 @@ namespace Intent.Metadata.RDBMS.Api
             stereotype = new CheckConstraint(model.GetStereotype("Check Constraint"));
             return true;
         }
+
+        public static Schema GetSchema(this ClassModel model)
+        {
+            var stereotype = model.GetStereotype("Schema");
+            return stereotype != null ? new Schema(stereotype) : null;
+        }
+
+
+        public static bool HasSchema(this ClassModel model)
+        {
+            return model.HasStereotype("Schema");
+        }
+
+        public static bool TryGetSchema(this ClassModel model, out Schema stereotype)
+        {
+            if (!HasSchema(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Schema(model.GetStereotype("Schema"));
+            return true;
+        }
         public static Table GetTable(this ClassModel model)
         {
             var stereotype = model.GetStereotype("Table");
@@ -133,6 +157,24 @@ namespace Intent.Metadata.RDBMS.Api
             public string SQL()
             {
                 return _stereotype.GetProperty<string>("SQL");
+            }
+
+        }
+
+        public class Schema
+        {
+            private IStereotype _stereotype;
+
+            public Schema(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
             }
 
         }

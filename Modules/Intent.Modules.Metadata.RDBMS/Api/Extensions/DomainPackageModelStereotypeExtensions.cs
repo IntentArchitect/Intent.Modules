@@ -39,6 +39,30 @@ namespace Intent.Metadata.RDBMS.Api
             return true;
         }
 
+        public static Schema GetSchema(this DomainPackageModel model)
+        {
+            var stereotype = model.GetStereotype("Schema");
+            return stereotype != null ? new Schema(stereotype) : null;
+        }
+
+
+        public static bool HasSchema(this DomainPackageModel model)
+        {
+            return model.HasStereotype("Schema");
+        }
+
+        public static bool TryGetSchema(this DomainPackageModel model, out Schema stereotype)
+        {
+            if (!HasSchema(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Schema(model.GetStereotype("Schema"));
+            return true;
+        }
+
         public class RelationalDatabase
         {
             private IStereotype _stereotype;
@@ -49,6 +73,24 @@ namespace Intent.Metadata.RDBMS.Api
             }
 
             public string Name => _stereotype.Name;
+
+        }
+
+        public class Schema
+        {
+            private IStereotype _stereotype;
+
+            public Schema(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string StereotypeName => _stereotype.Name;
+
+            public string Name()
+            {
+                return _stereotype.GetProperty<string>("Name");
+            }
 
         }
 

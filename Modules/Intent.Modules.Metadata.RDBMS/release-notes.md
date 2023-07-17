@@ -1,3 +1,6 @@
+### Version 3.5.4
+- New: Added `Schema` stereotype to modeling SQL Schema's simpler and more intuitive.
+
 ### Version 3.5.3
 
 - Fixed: Primary and foreign keys would sometimes not update themselves correctly for inherited class scenarios.

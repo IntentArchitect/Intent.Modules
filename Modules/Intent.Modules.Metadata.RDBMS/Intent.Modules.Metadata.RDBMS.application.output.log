@@ -82,6 +82,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/Extensions/FolderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FolderModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>8a3cfb30-6525-40fa-b07e-d734b362f444</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#c5ba925d-5c08-4809-a848-585a0cd4ddd3</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/IndexColumnModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
@@ -139,7 +147,7 @@
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
       <CorrelationId>Intent.VisualStudio.Projects.CoreLibrary.CSProject#c84fa137-4d52-451f-aba4-8ec00d1525f6</CorrelationId>
-      <OverwriteBehaviour>once-off</OverwriteBehaviour>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Metadata.RDBMS.csproj</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
@@ -159,14 +167,6 @@
       <ApplicationRelativeFilePath>modelers/RDBMS Types.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>RDBMS Types.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#25aee347-f2ac-4f0e-b56b-d6ad6d02e359</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>PackageExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>PackageExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>c84fa137-4d52-451f-aba4-8ec00d1525f6</ProjectId>
