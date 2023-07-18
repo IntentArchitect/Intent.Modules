@@ -13,7 +13,9 @@ function execute(): void {
 
     const classElement = element.getParent();
 
-    classElement.setMetadata(autoManageKeys, "false");
+    if (element.hasStereotype(primaryKeyStereotypeId)) {
+        classElement.setMetadata(autoManageKeys, "false");
+    }
 
     for (const association of classElement.getAssociations("Association")) {
         updateForeignKeys(association.getOtherEnd());
