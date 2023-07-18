@@ -283,7 +283,7 @@ return `${name}${genericTypes}${derivedFrom}`;</displayFunction>
             </mapping>
           </mappings>
         </mappingSetting>
-        <mappingSetting id="9cac00fe-b5a9-424e-8f49-90df0e5f0595">
+        <mappingSetting id="942eae46-49f1-450e-9274-a92d40ac35fa">
           <name>Project to Domain</name>
           <shortcut>ctrl + shift + p</shortcut>
           <defaultModeler>6ab29b31-27af-4f56-a67c-986d82097d63</defaultModeler>
