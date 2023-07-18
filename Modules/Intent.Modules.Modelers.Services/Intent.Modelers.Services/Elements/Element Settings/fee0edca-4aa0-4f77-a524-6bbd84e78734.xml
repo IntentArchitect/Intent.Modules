@@ -694,7 +694,7 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="9cac00fe-b5a9-424e-8f49-90df0e5f0595" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
+    <childElement id="942eae46-49f1-450e-9274-a92d40ac35fa" type="Mapping Settings" typeId="178c2f55-9ca1-484d-be43-a91bdd5554dc">
       <name>Project to Domain</name>
       <display>[mappings]: Project to Domain</display>
       <isAbstract>false</isAbstract>
@@ -731,7 +731,7 @@
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>9cac00fe-b5a9-424e-8f49-90df0e5f0595</parentFolderId>
+          <parentFolderId>942eae46-49f1-450e-9274-a92d40ac35fa</parentFolderId>
           <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
           <packageName>Intent.Modelers.Services</packageName>
           <stereotypes>
@@ -948,7 +948,7 @@
           <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
-          <parentFolderId>9cac00fe-b5a9-424e-8f49-90df0e5f0595</parentFolderId>
+          <parentFolderId>942eae46-49f1-450e-9274-a92d40ac35fa</parentFolderId>
           <packageId>4ba53041-59f9-4446-a207-6da4fbdf86fe</packageId>
           <packageName>Intent.Modelers.Services</packageName>
           <stereotypes>

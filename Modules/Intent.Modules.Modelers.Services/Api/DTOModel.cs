@@ -111,7 +111,7 @@ To fix this, open and re-save your Services designer. If this warning persists t
 
         public static bool HasProjectToDomainMapping(this DTOModel type)
         {
-            return type.Mapping?.MappingSettingsId == "9cac00fe-b5a9-424e-8f49-90df0e5f0595";
+            return type.Mapping?.MappingSettingsId == "942eae46-49f1-450e-9274-a92d40ac35fa";
         }
 
         public static IElementMapping GetProjectToDomainMapping(this DTOModel type)
