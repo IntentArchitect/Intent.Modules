@@ -1,4 +1,6 @@
 /// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../../common/getSurrogateKeyType.ts" />
+/// <reference path="../../../common/applyAttributeNamingConvention.ts" />
 /// <reference path="../_common/constants.ts" />
 
 function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void {
@@ -18,19 +20,17 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
         return;
     }
 
-    if (requiresForeignKey(association) && sourceType.getMetadata("auto-manage-keys") != "false") {
+    if (requiresForeignKey(association)) {
         updateForeignKeyAttribute(sourceType, targetType, association, association.id);
         return;
     }
 
-    if (sourceType.getMetadata("auto-manage-keys") != "false") {
-        sourceType.getChildren()
-            .filter(x => x.getMetadata("association") == association.id)
-            .forEach(x => {
-                x.setMetadata(isBeingDeletedByScript, "true");
-                x.delete();
-            });
-    }
+    sourceType.getChildren()
+        .filter(x => x.getMetadata("association") == association.id)
+        .forEach(x => {
+            x.setMetadata(isBeingDeletedByScript, "true");
+            x.delete();
+        });
 
     function updateForeignKeyAttribute(
         startingEndType: MacroApi.Context.IElementApi,
@@ -38,14 +38,14 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
         associationEnd: MacroApi.Context.IAssociationApi,
         associationId: string
     ): void {
-        const pkAttributes = getPkAttributes(destinationEndType);
+        const pkAttributes = getPrimaryKeys(destinationEndType);
 
         pkAttributes.forEach((pk, index) => {
             let fkAttribute = startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId)[index] ??
                 createElement("Attribute", "", startingEndType.id);
 
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.getName())}`;
+            let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
                 if (!fkAttribute.hasMetadata("fk-original-name") || (fkAttribute.getMetadata("fk-original-name") == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse);
@@ -54,7 +54,7 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
             }
 
             fkAttribute.setMetadata("association", associationId);
-            fkAttribute.setMetadata("is-managed-key", "true");
+            fkAttribute.setMetadata(isManagedKey, "true");
 
             let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
@@ -63,7 +63,7 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
             }
             fkStereotype.getProperty("Association").setValue(association.isTargetEnd() ? association.id : association.getOtherEnd().id);
 
-            fkAttribute.typeReference.setType(pk.typeReference.getTypeId());
+            fkAttribute.typeReference.setType(pk.typeId);
             fkAttribute.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
         });
 
@@ -74,7 +74,7 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
             }
         });
 
-        if (destinationEndType.id !== startingEndType.id && destinationEndType.getMetadata("auto-manage-keys") != "false") {
+        if (destinationEndType.id !== startingEndType.id) {
             destinationEndType.getChildren()
                 .filter(x => x.getMetadata("association") == associationId)
                 .forEach(x => {
@@ -97,12 +97,12 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 
-    function getPkAttributes(element: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi[] {
+    function getPrimaryKeys(element: MacroApi.Context.IElementApi): { name: string, typeId: string }[] {
         let currentClass = element;
         while (currentClass?.specialization === "Class") {
             const pkAttributes = currentClass.getChildren("Attribute").filter(x => x.hasStereotype(primaryKeyStereotypeId));
             if (pkAttributes.length > 0) {
-                return pkAttributes;
+                return pkAttributes.map(x => ({ name: x.getName(), typeId: x.typeReference.getTypeId() }));
             }
 
             const derivedTypes = currentClass
@@ -111,16 +111,23 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
                 .map(generalization => generalization.typeReference.getType());
             if (derivedTypes.length > 1) {
                 console.error(`Could not compute possible foreign keys as "${currentClass.getName()}" [${currentClass.id}] is derived from more than one class.`);
-                return [];
+                return [createImplicitPrimaryKey()];
             }
 
             currentClass = derivedTypes[0];
             if (currentClass?.id === element?.id) {
                 console.error(`Could not compute possible foreign keys as "${element.getName()}" [${element.id}] has cyclic inheritance.`);
-                return [];
+                return [createImplicitPrimaryKey()];
             }
         }
 
-        return [];
+        return [createImplicitPrimaryKey()];
+
+        function createImplicitPrimaryKey(): { name: string, typeId: string } {
+            return {
+                name: applyAttributeNamingConvention("Id"),
+                typeId: getSurrogateKeyType()
+            };
+        }
     }
 }

@@ -1,3 +1,7 @@
+### Version 3.5.4
+
+- Fixed: Designer management of foreign keys would be "opted out" when deleting a foreign/primary key attribute.
+
 ### Version 3.5.3
 
 - Fixed: Primary and foreign keys would sometimes not update themselves correctly for inherited class scenarios.

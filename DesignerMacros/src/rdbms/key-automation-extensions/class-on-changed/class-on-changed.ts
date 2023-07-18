@@ -18,23 +18,21 @@ function execute(): void {
     updateForeignKeysAndForDerived(element);
 
     function updateForeignKeysAndForDerived(forElement: IElementApi): void {
-        if (forElement.getMetadata(autoManageKeys) !== "false") {
-            for (const association of forElement.getAssociations("Association")) {
-                updateForeignKeys(association);
-                updateForeignKeys(association.getOtherEnd());
-            }
+        for (const association of forElement.getAssociations("Association")) {
+            updateForeignKeys(association);
+            updateForeignKeys(association.getOtherEnd());
+        }
 
-            var associationIds = forElement.getAssociations("Association")
-                .map(x => x.id);
-            var fkAttributesToDelete = forElement.getChildren("Attribute")
-                .filter(association =>
-                    association.hasStereotype(foreignKeyStereotypeId) &&
-                    association.hasMetadata("association") &&
-                    !associationIds.some(id => id === association.getMetadata("association")))
-            for (const fkAttribute of fkAttributesToDelete) {
-                fkAttribute.setMetadata(isBeingDeletedByScript, "true");
-                fkAttribute.delete();
-            }
+        var associationIds = forElement.getAssociations("Association")
+            .map(x => x.id);
+        var fkAttributesToDelete = forElement.getChildren("Attribute")
+            .filter(association =>
+                association.hasStereotype(foreignKeyStereotypeId) &&
+                association.hasMetadata("association") &&
+                !associationIds.some(id => id === association.getMetadata("association")))
+        for (const fkAttribute of fkAttributesToDelete) {
+            fkAttribute.setMetadata(isBeingDeletedByScript, "true");
+            fkAttribute.delete();
         }
 
         var derivedTypes = forElement.getAssociations("Generalization")
