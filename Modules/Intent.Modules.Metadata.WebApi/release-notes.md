@@ -1,6 +1,7 @@
 ### Version 4.2.4
 
 - Update: `Expose as Http Endpoint` to have a better default behavior for `Operation`s and `Class Constructors`.
+- Update: Duplicate validation for `Command`s and `Query`s on Http route / verb combination.
 
 ### Version 4.2.4
 

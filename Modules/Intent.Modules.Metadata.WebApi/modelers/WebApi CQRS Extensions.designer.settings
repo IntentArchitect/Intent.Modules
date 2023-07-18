@@ -8,6 +8,58 @@
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+      <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function validateRestRoutes(element) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = element.getStereotype(httpSettingsId);
+    if (httpSettings == null) {
+        return "";
+    }
+    let myId = element.id;
+    let commands = lookupTypesOf("Command");
+    let duplicate = FindDuplicate(commands, myId, httpSettings);
+    if (duplicate) {
+        let myRoute = httpSettings.getProperty("Route").getValue();
+        return `Duplicate rest route ${element.getName()} with ${duplicate.getName()} - ${myRoute}`;
+    }
+    let queries = lookupTypesOf("Query");
+    duplicate = FindDuplicate(queries, myId, httpSettings);
+    if (duplicate) {
+        let myRoute = httpSettings.getProperty("Route").getValue();
+        return `Duplicate rest route ${element.getName()} with ${duplicate.getName()} - ${myRoute}`;
+    }
+    return "";
+}
+function FindDuplicate(elements, elementId, httpSettings) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let routeToCheck = httpSettings.getProperty("Route").getValue();
+    let verbToCheck = httpSettings.getProperty("Verb").getValue();
+    let result = null;
+    elements.forEach(e =&gt; {
+        if (result != null)
+            return;
+        if (e.id == elementId)
+            return;
+        let currentHttpSettings = e.getStereotype(httpSettingsId);
+        if (currentHttpSettings == null) {
+            return;
+        }
+        if (routeToCheck == currentHttpSettings.getProperty("Route").getValue() &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").getValue()) {
+            result = e;
+        }
+    });
+    return result;
+}
+/// &lt;reference path="../common/common-rest-route-validation.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/command/command-rest-route-validation.ts
+ */
+//validateRestRoutes(element);
+return validateRestRoutes(lookup(id));
+</validateFunctionOverride>
       <creationOptions />
       <scriptOptions>
         <option>
@@ -438,6 +490,58 @@ if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{ve
       </macros>
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
+      <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function validateRestRoutes(element) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = element.getStereotype(httpSettingsId);
+    if (httpSettings == null) {
+        return "";
+    }
+    let myId = element.id;
+    let commands = lookupTypesOf("Command");
+    let duplicate = FindDuplicate(commands, myId, httpSettings);
+    if (duplicate) {
+        let myRoute = httpSettings.getProperty("Route").getValue();
+        return `Duplicate rest route ${element.getName()} with ${duplicate.getName()} - ${myRoute}`;
+    }
+    let queries = lookupTypesOf("Query");
+    duplicate = FindDuplicate(queries, myId, httpSettings);
+    if (duplicate) {
+        let myRoute = httpSettings.getProperty("Route").getValue();
+        return `Duplicate rest route ${element.getName()} with ${duplicate.getName()} - ${myRoute}`;
+    }
+    return "";
+}
+function FindDuplicate(elements, elementId, httpSettings) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let routeToCheck = httpSettings.getProperty("Route").getValue();
+    let verbToCheck = httpSettings.getProperty("Verb").getValue();
+    let result = null;
+    elements.forEach(e =&gt; {
+        if (result != null)
+            return;
+        if (e.id == elementId)
+            return;
+        let currentHttpSettings = e.getStereotype(httpSettingsId);
+        if (currentHttpSettings == null) {
+            return;
+        }
+        if (routeToCheck == currentHttpSettings.getProperty("Route").getValue() &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").getValue()) {
+            result = e;
+        }
+    });
+    return result;
+}
+/// &lt;reference path="../common/common-rest-route-validation.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/command/query-rest-route-validation.ts
+ */
+//validateRestRoutes(element);
+return validateRestRoutes(lookup(id));
+</validateFunctionOverride>
       <creationOptions />
       <scriptOptions>
         <option>
