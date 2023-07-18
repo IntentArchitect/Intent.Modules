@@ -5,7 +5,7 @@
 type IElementApi = MacroApi.Context.IElementApi;
 
 function updatePrimaryKeys(element: IElementApi): void {
-    if (element.getMetadata(autoManageKeys) === "false" ||
+    if (element.getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)
     ) {
@@ -16,8 +16,8 @@ function updatePrimaryKeys(element: IElementApi): void {
     const pkAttributes = element.getChildren("Attribute").filter(x => x.hasStereotype(primaryKeyStereotypeId));
 
     if (derivedFromTypeHasPk(element)) {
-        for (const pkAttribute of pkAttributes.filter(x => x.getMetadata(isManagedKey) === "true")) {
-            pkAttribute.setMetadata(isBeingDeletedByScript, "true");
+        for (const pkAttribute of pkAttributes.filter(x => x.getMetadata(metadataKey.isManagedKey) === "true")) {
+            pkAttribute.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             pkAttribute.delete();
         }
 
@@ -34,7 +34,7 @@ function updatePrimaryKeys(element: IElementApi): void {
     pkAttribute.setOrder(0);
     pkAttribute.typeReference.setType(getSurrogateKeyType());
     pkAttribute.addStereotype(primaryKeyStereotypeId);
-    pkAttribute.setMetadata(isManagedKey, "true");
+    pkAttribute.setMetadata(metadataKey.isManagedKey, "true");
 
     function derivedFromTypeHasPk(element: IElementApi): boolean {
         return element.getAssociations("Generalization")

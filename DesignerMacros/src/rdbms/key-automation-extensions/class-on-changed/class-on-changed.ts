@@ -24,14 +24,14 @@ function execute(): void {
         }
 
         var associationIds = forElement.getAssociations("Association")
-            .map(x => x.id);
+            .map(thisEnd => thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
         var fkAttributesToDelete = forElement.getChildren("Attribute")
             .filter(association =>
                 association.hasStereotype(foreignKeyStereotypeId) &&
-                association.hasMetadata("association") &&
-                !associationIds.some(id => id === association.getMetadata("association")))
+                association.hasMetadata(metadataKey.association) &&
+                !associationIds.some(id => id === association.getMetadata(metadataKey.association)))
         for (const fkAttribute of fkAttributesToDelete) {
-            fkAttribute.setMetadata(isBeingDeletedByScript, "true");
+            fkAttribute.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             fkAttribute.delete();
         }
 

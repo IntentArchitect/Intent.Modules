@@ -14,10 +14,14 @@
         <macro trigger="on-loaded">
           <script>const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-const isManagedKey = "is-managed-key";
-const autoManageKeys = "auto-manage-keys";
-const isBeingDeletedByScript = "is-being-deleted-by-script";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    isManagedKey: "is-managed-key",
+    autoManageKeys: "auto-manage-keys",
+    association: "association",
+    isBeingDeletedByScript: "is-being-deleted-by-script"
+};
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
 element.getStereotypes();
@@ -61,17 +65,21 @@ element.setMetadata("database-paradigm-selected", "true");
 }
 const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-const isManagedKey = "is-managed-key";
-const autoManageKeys = "auto-manage-keys";
-const isBeingDeletedByScript = "is-being-deleted-by-script";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    isManagedKey: "is-managed-key",
+    autoManageKeys: "auto-manage-keys",
+    association: "association",
+    isBeingDeletedByScript: "is-being-deleted-by-script"
+};
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
 function execute() {
     var _a, _b, _c, _d, _e;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit" ||
-        element.getParent().getMetadata(autoManageKeys) === "false" ||
+        element.getParent().getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
@@ -80,15 +88,15 @@ function execute() {
         element.hasStereotype("Primary Key") &amp;&amp;
         element.typeReference.getType()) {
         if (((_c = element.typeReference.getType()) === null || _c === void 0 ? void 0 : _c.id) != getSurrogateKeyType()) {
-            element.setMetadata(isManagedKey, "false");
+            element.setMetadata(metadataKey.isManagedKey, "false");
         }
         else {
-            element.setMetadata(isManagedKey, "true");
+            element.setMetadata(metadataKey.isManagedKey, "true");
         }
     }
-    let associationTarget = (_e = (_d = element.getStereotype(foreignKeyStereotypeId)) === null || _d === void 0 ? void 0 : _d.getProperty("Association")) === null || _e === void 0 ? void 0 : _e.getValue();
-    if (associationTarget &amp;&amp; element.getMetadata("association") != associationTarget.id) {
-        element.setMetadata("association", associationTarget.id);
+    let associationTarget = (_e = (_d = element.getStereotype(foreignKeyStereotypeId)) === null || _d === void 0 ? void 0 : _d.getProperty(foreignKeyStereotypeAssociationProperty)) === null || _e === void 0 ? void 0 : _e.getValue();
+    if (associationTarget &amp;&amp; element.getMetadata(metadataKey.association) != associationTarget.id) {
+        element.setMetadata(metadataKey.association, associationTarget.id);
     }
 }
 execute();
@@ -97,10 +105,14 @@ execute();
         <macro trigger="on-deleted">
           <script>const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-const isManagedKey = "is-managed-key";
-const autoManageKeys = "auto-manage-keys";
-const isBeingDeletedByScript = "is-being-deleted-by-script";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    isManagedKey: "is-managed-key",
+    autoManageKeys: "auto-manage-keys",
+    association: "association",
+    isBeingDeletedByScript: "is-being-deleted-by-script"
+};
 function getSurrogateKeyType() {
     var _a, _b, _c;
     const commonTypes = {
@@ -140,65 +152,66 @@ function applyAttributeNamingConvention(str) {
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="../../../common/applyAttributeNamingConvention.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-function updateForeignKeys(association) {
+function updateForeignKeys(thisEnd) {
     var _a, _b;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
     }
-    let sourceEnd = association.getOtherEnd().typeReference;
-    if (!sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let otherEnd = thisEnd.getOtherEnd();
+    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    let sourceType = association.getOtherEnd().typeReference.getType();
-    let targetType = association.typeReference.getType();
-    if ((sourceType === null || sourceType === void 0 ? void 0 : sourceType.specialization) !== "Class" || (targetType === null || targetType === void 0 ? void 0 : targetType.specialization) !== "Class") {
+    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
+    let otherEndType = thisEnd.typeReference.getType();
+    if ((thisEndType === null || thisEndType === void 0 ? void 0 : thisEndType.specialization) !== "Class" || (otherEndType === null || otherEndType === void 0 ? void 0 : otherEndType.specialization) !== "Class") {
         return;
     }
-    if (requiresForeignKey(association)) {
-        updateForeignKeyAttribute(sourceType, targetType, association, association.id);
+    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
+    if (requiresForeignKey(thisEnd)) {
+        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
         return;
     }
-    sourceType.getChildren()
-        .filter(x =&gt; x.getMetadata("association") == association.id)
+    thisEndType.getChildren()
+        .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x =&gt; {
-        x.setMetadata(isBeingDeletedByScript, "true");
+        x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
         x.delete();
     });
-    function updateForeignKeyAttribute(startingEndType, destinationEndType, associationEnd, associationId) {
-        const pkAttributes = getPrimaryKeys(destinationEndType);
+    function updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId) {
+        const pkAttributes = getPrimaryKeys(otherEndType);
         pkAttributes.forEach((pk, index) =&gt; {
             var _a;
-            let fkAttribute = (_a = startingEndType.getChildren().filter(x =&gt; x.getMetadata("association") == associationId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", startingEndType.id);
+            let fkAttribute = (_a = thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", thisEndType.id);
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
+            let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
                 if (!fkAttribute.hasMetadata("fk-original-name") || (fkAttribute.getMetadata("fk-original-name") == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse);
                     fkAttribute.setMetadata("fk-original-name", fkAttribute.getName());
                 }
             }
-            fkAttribute.setMetadata("association", associationId);
-            fkAttribute.setMetadata(isManagedKey, "true");
+            fkAttribute.setMetadata(metadataKey.association, targetEndId);
+            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
             let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
                 fkAttribute.addStereotype(foreignKeyStereotypeId);
                 fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty("Association").setValue(association.isTargetEnd() ? association.id : association.getOtherEnd().id);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
             fkAttribute.typeReference.setType(pk.typeId);
-            fkAttribute.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
+            fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
         });
-        startingEndType.getChildren().filter(x =&gt; x.getMetadata("association") == associationId).forEach((attr, index) =&gt; {
+        thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
             if (index &gt;= pkAttributes.length) {
-                attr.setMetadata(isBeingDeletedByScript, "true");
+                attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
-        if (destinationEndType.id !== startingEndType.id) {
-            destinationEndType.getChildren()
-                .filter(x =&gt; x.getMetadata("association") == associationId)
+        if (otherEndType.id !== thisEndType.id) {
+            otherEndType.getChildren()
+                .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x =&gt; {
-                x.setMetadata(isBeingDeletedByScript, "true");
+                x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 x.delete();
             });
         }
@@ -247,14 +260,14 @@ function updateForeignKeys(association) {
 /// &lt;reference path="../_common/constants.ts" /&gt;
 /// &lt;reference path="../_common/updateForeignKeys.ts" /&gt;
 function execute() {
-    if (element.hasMetadata(isBeingDeletedByScript) ||
-        !element.hasMetadata(isManagedKey) ||
+    if (element.hasMetadata(metadataKey.isBeingDeletedByScript) ||
+        !element.hasMetadata(metadataKey.isManagedKey) ||
         !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
     const classElement = element.getParent();
     if (element.hasStereotype(primaryKeyStereotypeId)) {
-        classElement.setMetadata(autoManageKeys, "false");
+        classElement.setMetadata(metadataKey.autoManageKeys, "false");
     }
     for (const association of classElement.getAssociations("Association")) {
         updateForeignKeys(association.getOtherEnd());
@@ -266,10 +279,14 @@ execute();
         <macro trigger="on-loaded">
           <script>const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-const isManagedKey = "is-managed-key";
-const autoManageKeys = "auto-manage-keys";
-const isBeingDeletedByScript = "is-being-deleted-by-script";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    isManagedKey: "is-managed-key",
+    autoManageKeys: "auto-manage-keys",
+    association: "association",
+    isBeingDeletedByScript: "is-being-deleted-by-script"
+};
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
 function execute() {
@@ -278,14 +295,16 @@ function execute() {
         !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    let associationTarget = (_b = (_a = element.getStereotype(foreignKeyStereotypeId)) === null || _a === void 0 ? void 0 : _a.getProperty("Association Target")) === null || _b === void 0 ? void 0 : _b.getValue();
-    let existingAssociation = element.getMetadata("association");
-    if (!associationTarget &amp;&amp; existingAssociation) {
+    const associationTarget = (_b = (_a = element.getStereotype(foreignKeyStereotypeId)) === null || _a === void 0 ? void 0 : _a.getProperty(foreignKeyStereotypeAssociationProperty)) === null || _b === void 0 ? void 0 : _b.getValue();
+    associationTarget.isSourceEnd();
+    associationTarget.getOtherEnd().id;
+    const existingAssociation = element.getMetadata(metadataKey.association);
+    if (associationTarget == null &amp;&amp; existingAssociation != null) {
         if (!element.hasStereotype(foreignKeyStereotypeId)) {
             element.addStereotype(foreignKeyStereotypeId);
         }
-        let stereotype = element.getStereotype(foreignKeyStereotypeId);
-        stereotype.getProperty("Association").setValue(existingAssociation);
+        const stereotype = element.getStereotype(foreignKeyStereotypeId);
+        stereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(existingAssociation);
     }
     if (existingAssociation &amp;&amp; !element.getMetadata("fk-original-name")) {
         element.setMetadata("fk-original-name", element.getName());
@@ -325,15 +344,19 @@ execute();
 }
 const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-const isManagedKey = "is-managed-key";
-const autoManageKeys = "auto-manage-keys";
-const isBeingDeletedByScript = "is-being-deleted-by-script";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    isManagedKey: "is-managed-key",
+    autoManageKeys: "auto-manage-keys",
+    association: "association",
+    isBeingDeletedByScript: "is-being-deleted-by-script"
+};
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="constants.ts" /&gt;
 function updatePrimaryKeys(element) {
-    if (element.getMetadata(autoManageKeys) === "false" ||
+    if (element.getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)) {
         updateDerivedTypePks(element);
@@ -341,8 +364,8 @@ function updatePrimaryKeys(element) {
     }
     const pkAttributes = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
     if (derivedFromTypeHasPk(element)) {
-        for (const pkAttribute of pkAttributes.filter(x =&gt; x.getMetadata(isManagedKey) === "true")) {
-            pkAttribute.setMetadata(isBeingDeletedByScript, "true");
+        for (const pkAttribute of pkAttributes.filter(x =&gt; x.getMetadata(metadataKey.isManagedKey) === "true")) {
+            pkAttribute.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             pkAttribute.delete();
         }
         updateDerivedTypePks(element);
@@ -356,7 +379,7 @@ function updatePrimaryKeys(element) {
     pkAttribute.setOrder(0);
     pkAttribute.typeReference.setType(getSurrogateKeyType());
     pkAttribute.addStereotype(primaryKeyStereotypeId);
-    pkAttribute.setMetadata(isManagedKey, "true");
+    pkAttribute.setMetadata(metadataKey.isManagedKey, "true");
     function derivedFromTypeHasPk(element) {
         return element.getAssociations("Generalization")
             .some(generalization =&gt; {
@@ -391,7 +414,7 @@ function execute() {
     if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    element.removeMetadata(autoManageKeys);
+    element.removeMetadata(metadataKey.autoManageKeys);
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
     }
@@ -428,15 +451,19 @@ execute();
 }
 const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-const isManagedKey = "is-managed-key";
-const autoManageKeys = "auto-manage-keys";
-const isBeingDeletedByScript = "is-being-deleted-by-script";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    isManagedKey: "is-managed-key",
+    autoManageKeys: "auto-manage-keys",
+    association: "association",
+    isBeingDeletedByScript: "is-being-deleted-by-script"
+};
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="constants.ts" /&gt;
 function updatePrimaryKeys(element) {
-    if (element.getMetadata(autoManageKeys) === "false" ||
+    if (element.getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)) {
         updateDerivedTypePks(element);
@@ -444,8 +471,8 @@ function updatePrimaryKeys(element) {
     }
     const pkAttributes = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
     if (derivedFromTypeHasPk(element)) {
-        for (const pkAttribute of pkAttributes.filter(x =&gt; x.getMetadata(isManagedKey) === "true")) {
-            pkAttribute.setMetadata(isBeingDeletedByScript, "true");
+        for (const pkAttribute of pkAttributes.filter(x =&gt; x.getMetadata(metadataKey.isManagedKey) === "true")) {
+            pkAttribute.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             pkAttribute.delete();
         }
         updateDerivedTypePks(element);
@@ -459,7 +486,7 @@ function updatePrimaryKeys(element) {
     pkAttribute.setOrder(0);
     pkAttribute.typeReference.setType(getSurrogateKeyType());
     pkAttribute.addStereotype(primaryKeyStereotypeId);
-    pkAttribute.setMetadata(isManagedKey, "true");
+    pkAttribute.setMetadata(metadataKey.isManagedKey, "true");
     function derivedFromTypeHasPk(element) {
         return element.getAssociations("Generalization")
             .some(generalization =&gt; {
@@ -500,65 +527,66 @@ function applyAttributeNamingConvention(str) {
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="../../../common/applyAttributeNamingConvention.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-function updateForeignKeys(association) {
+function updateForeignKeys(thisEnd) {
     var _a, _b;
     if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
         return;
     }
-    let sourceEnd = association.getOtherEnd().typeReference;
-    if (!sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let otherEnd = thisEnd.getOtherEnd();
+    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
-    let sourceType = association.getOtherEnd().typeReference.getType();
-    let targetType = association.typeReference.getType();
-    if ((sourceType === null || sourceType === void 0 ? void 0 : sourceType.specialization) !== "Class" || (targetType === null || targetType === void 0 ? void 0 : targetType.specialization) !== "Class") {
+    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
+    let otherEndType = thisEnd.typeReference.getType();
+    if ((thisEndType === null || thisEndType === void 0 ? void 0 : thisEndType.specialization) !== "Class" || (otherEndType === null || otherEndType === void 0 ? void 0 : otherEndType.specialization) !== "Class") {
         return;
     }
-    if (requiresForeignKey(association)) {
-        updateForeignKeyAttribute(sourceType, targetType, association, association.id);
+    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
+    if (requiresForeignKey(thisEnd)) {
+        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
         return;
     }
-    sourceType.getChildren()
-        .filter(x =&gt; x.getMetadata("association") == association.id)
+    thisEndType.getChildren()
+        .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x =&gt; {
-        x.setMetadata(isBeingDeletedByScript, "true");
+        x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
         x.delete();
     });
-    function updateForeignKeyAttribute(startingEndType, destinationEndType, associationEnd, associationId) {
-        const pkAttributes = getPrimaryKeys(destinationEndType);
+    function updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId) {
+        const pkAttributes = getPrimaryKeys(otherEndType);
         pkAttributes.forEach((pk, index) =&gt; {
             var _a;
-            let fkAttribute = (_a = startingEndType.getChildren().filter(x =&gt; x.getMetadata("association") == associationId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", startingEndType.id);
+            let fkAttribute = (_a = thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", thisEndType.id);
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
+            let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
                 if (!fkAttribute.hasMetadata("fk-original-name") || (fkAttribute.getMetadata("fk-original-name") == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse);
                     fkAttribute.setMetadata("fk-original-name", fkAttribute.getName());
                 }
             }
-            fkAttribute.setMetadata("association", associationId);
-            fkAttribute.setMetadata(isManagedKey, "true");
+            fkAttribute.setMetadata(metadataKey.association, targetEndId);
+            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
             let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
                 fkAttribute.addStereotype(foreignKeyStereotypeId);
                 fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty("Association").setValue(association.isTargetEnd() ? association.id : association.getOtherEnd().id);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
             fkAttribute.typeReference.setType(pk.typeId);
-            fkAttribute.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
+            fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
         });
-        startingEndType.getChildren().filter(x =&gt; x.getMetadata("association") == associationId).forEach((attr, index) =&gt; {
+        thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
             if (index &gt;= pkAttributes.length) {
-                attr.setMetadata(isBeingDeletedByScript, "true");
+                attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
-        if (destinationEndType.id !== startingEndType.id) {
-            destinationEndType.getChildren()
-                .filter(x =&gt; x.getMetadata("association") == associationId)
+        if (otherEndType.id !== thisEndType.id) {
+            otherEndType.getChildren()
+                .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x =&gt; {
-                x.setMetadata(isBeingDeletedByScript, "true");
+                x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 x.delete();
             });
         }
@@ -625,13 +653,13 @@ function execute() {
             updateForeignKeys(association.getOtherEnd());
         }
         var associationIds = forElement.getAssociations("Association")
-            .map(x =&gt; x.id);
+            .map(thisEnd =&gt; thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
         var fkAttributesToDelete = forElement.getChildren("Attribute")
             .filter(association =&gt; association.hasStereotype(foreignKeyStereotypeId) &amp;&amp;
-            association.hasMetadata("association") &amp;&amp;
-            !associationIds.some(id =&gt; id === association.getMetadata("association")));
+            association.hasMetadata(metadataKey.association) &amp;&amp;
+            !associationIds.some(id =&gt; id === association.getMetadata(metadataKey.association)));
         for (const fkAttribute of fkAttributesToDelete) {
-            fkAttribute.setMetadata(isBeingDeletedByScript, "true");
+            fkAttribute.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             fkAttribute.delete();
         }
         var derivedTypes = forElement.getAssociations("Generalization")
@@ -669,15 +697,19 @@ execute();
 }
 const primaryKeyStereotypeId = "b99aac21-9ca4-467f-a3a6-046255a9eed6";
 const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
-const isManagedKey = "is-managed-key";
-const autoManageKeys = "auto-manage-keys";
-const isBeingDeletedByScript = "is-being-deleted-by-script";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
+const foreignKeyStereotypeAssociationProperty = "Association";
+const metadataKey = {
+    isManagedKey: "is-managed-key",
+    autoManageKeys: "auto-manage-keys",
+    association: "association",
+    isBeingDeletedByScript: "is-being-deleted-by-script"
+};
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
 /// &lt;reference path="constants.ts" /&gt;
 function updatePrimaryKeys(element) {
-    if (element.getMetadata(autoManageKeys) === "false" ||
+    if (element.getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)) {
         updateDerivedTypePks(element);
@@ -685,8 +717,8 @@ function updatePrimaryKeys(element) {
     }
     const pkAttributes = element.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
     if (derivedFromTypeHasPk(element)) {
-        for (const pkAttribute of pkAttributes.filter(x =&gt; x.getMetadata(isManagedKey) === "true")) {
-            pkAttribute.setMetadata(isBeingDeletedByScript, "true");
+        for (const pkAttribute of pkAttributes.filter(x =&gt; x.getMetadata(metadataKey.isManagedKey) === "true")) {
+            pkAttribute.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             pkAttribute.delete();
         }
         updateDerivedTypePks(element);
@@ -700,7 +732,7 @@ function updatePrimaryKeys(element) {
     pkAttribute.setOrder(0);
     pkAttribute.typeReference.setType(getSurrogateKeyType());
     pkAttribute.addStereotype(primaryKeyStereotypeId);
-    pkAttribute.setMetadata(isManagedKey, "true");
+    pkAttribute.setMetadata(metadataKey.isManagedKey, "true");
     function derivedFromTypeHasPk(element) {
         return element.getAssociations("Generalization")
             .some(generalization =&gt; {

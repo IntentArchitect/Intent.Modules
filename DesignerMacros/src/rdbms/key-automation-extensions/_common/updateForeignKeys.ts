@@ -3,49 +3,51 @@
 /// <reference path="../../../common/applyAttributeNamingConvention.ts" />
 /// <reference path="../_common/constants.ts" />
 
-function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void {
+function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
     if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit") {
         return;
     }
 
-    let sourceEnd = association.getOtherEnd().typeReference;
-    if (!sourceEnd.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+    let otherEnd = thisEnd.getOtherEnd();
+    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
 
-    let sourceType = association.getOtherEnd().typeReference.getType();
-    let targetType = association.typeReference.getType();
+    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
+    let otherEndType = thisEnd.typeReference.getType();
 
-    if (sourceType?.specialization !== "Class" || targetType?.specialization !== "Class") {
+    if (thisEndType?.specialization !== "Class" || otherEndType?.specialization !== "Class") {
         return;
     }
 
-    if (requiresForeignKey(association)) {
-        updateForeignKeyAttribute(sourceType, targetType, association, association.id);
+    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
+
+    if (requiresForeignKey(thisEnd)) {
+        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
         return;
     }
 
-    sourceType.getChildren()
-        .filter(x => x.getMetadata("association") == association.id)
+    thisEndType.getChildren()
+        .filter(x => x.getMetadata(metadataKey.association) == targetEndId)
         .forEach(x => {
-            x.setMetadata(isBeingDeletedByScript, "true");
+            x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
             x.delete();
         });
 
     function updateForeignKeyAttribute(
-        startingEndType: MacroApi.Context.IElementApi,
-        destinationEndType: MacroApi.Context.IElementApi,
-        associationEnd: MacroApi.Context.IAssociationApi,
-        associationId: string
+        thisEnd: MacroApi.Context.IAssociationApi,
+        thisEndType: MacroApi.Context.IElementApi,
+        otherEndType: MacroApi.Context.IElementApi,
+        targetEndId: string
     ): void {
-        const pkAttributes = getPrimaryKeys(destinationEndType);
+        const pkAttributes = getPrimaryKeys(otherEndType);
 
         pkAttributes.forEach((pk, index) => {
-            let fkAttribute = startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId)[index] ??
-                createElement("Attribute", "", startingEndType.id);
+            let fkAttribute = thisEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId)[index] ??
+                createElement("Attribute", "", thisEndType.id);
 
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
-            let fkNameToUse = `${toCamelCase(associationEnd.getName())}${toPascalCase(pk.name)}`;
+            let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
                 if (!fkAttribute.hasMetadata("fk-original-name") || (fkAttribute.getMetadata("fk-original-name") == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse);
@@ -53,32 +55,32 @@ function updateForeignKeys(association: MacroApi.Context.IAssociationApi): void 
                 }
             }
 
-            fkAttribute.setMetadata("association", associationId);
-            fkAttribute.setMetadata(isManagedKey, "true");
+            fkAttribute.setMetadata(metadataKey.association, targetEndId);
+            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
 
             let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             if (fkStereotype == null) {
                 fkAttribute.addStereotype(foreignKeyStereotypeId);
                 fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
             }
-            fkStereotype.getProperty("Association").setValue(association.isTargetEnd() ? association.id : association.getOtherEnd().id);
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
 
             fkAttribute.typeReference.setType(pk.typeId);
-            fkAttribute.typeReference.setIsNullable(associationEnd.typeReference.isNullable);
+            fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
         });
 
-        startingEndType.getChildren().filter(x => x.getMetadata("association") == associationId).forEach((attr, index) => {
+        thisEndType.getChildren().filter(x => x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) => {
             if (index >= pkAttributes.length) {
-                attr.setMetadata(isBeingDeletedByScript, "true");
+                attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                 attr.delete();
             }
         });
 
-        if (destinationEndType.id !== startingEndType.id) {
-            destinationEndType.getChildren()
-                .filter(x => x.getMetadata("association") == associationId)
+        if (otherEndType.id !== thisEndType.id) {
+            otherEndType.getChildren()
+                .filter(x => x.getMetadata(metadataKey.association) == targetEndId)
                 .forEach(x => {
-                    x.setMetadata(isBeingDeletedByScript, "true");
+                    x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
                     x.delete();
                 });
         }

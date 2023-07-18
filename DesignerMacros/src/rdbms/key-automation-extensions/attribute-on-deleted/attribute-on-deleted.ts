@@ -4,8 +4,8 @@
 type IElementApi = MacroApi.Context.IElementApi;
 
 function execute(): void {
-    if (element.hasMetadata(isBeingDeletedByScript) ||
-        !element.hasMetadata(isManagedKey) ||
+    if (element.hasMetadata(metadataKey.isBeingDeletedByScript) ||
+        !element.hasMetadata(metadataKey.isManagedKey) ||
         !element.getPackage().hasStereotype(relationalDatabaseId)
     ) {
         return;
@@ -14,7 +14,7 @@ function execute(): void {
     const classElement = element.getParent();
 
     if (element.hasStereotype(primaryKeyStereotypeId)) {
-        classElement.setMetadata(autoManageKeys, "false");
+        classElement.setMetadata(metadataKey.autoManageKeys, "false");
     }
 
     for (const association of classElement.getAssociations("Association")) {
