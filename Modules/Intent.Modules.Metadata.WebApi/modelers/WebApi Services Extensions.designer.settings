@@ -8,11 +8,92 @@
   <elementSettings />
   <elementExtensions>
     <elementExtension type="Operation" typeId="e030c97a-e066-40a7-8188-808c275df3cb">
-      <validateFunctionOverride>if (typeReference.typeId == null &amp;&amp; getStereotype("Http Settings")?.getProperty("Verb").value === "GET") {
-    return "Return Type required for HTTP GET Verb";
+      <validateFunctionOverride>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function validateRestRoutes(element) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = element.getStereotype(httpSettingsId);
+    if (httpSettings == null) {
+        return "";
+    }
+    let absoluteRouteToCheck = httpSettings.getProperty("Route").value;
+    if (element.specialization == "Operation") {
+        absoluteRouteToCheck = getOperationPath(element);
+    }
+    let verbToCheck = httpSettings.getProperty("Verb").value;
+    let commands = lookupTypesOf("Command");
+    let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
+    if (message != null)
+        return message;
+    let queries = lookupTypesOf("Query");
+    message = checkForDuplicates(queries, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
+    if (message != null)
+        return message;
+    let operations = lookupTypesOf("Operation");
+    message = checkForDuplicates(operations, element, absoluteRouteToCheck, verbToCheck, matchOperation);
+    if (message != null)
+        return message;
+    return "";
 }
-
-return "";</validateFunctionOverride>
+function getOperationPath(operation) {
+    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let httpSettings = operation.getStereotype(httpSettingsId);
+    if (httpSettings == null) {
+        return "";
+    }
+    let operationPath = httpSettings.getProperty("Route").getValue();
+    let servicePath = operation.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").value;
+    return `${servicePath}/${operationPath}`;
+}
+function matchCommandOrQuery(possibleDuplicate, routeToCheck, verbToCheck) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
+    if (currentHttpSettings == null) {
+        return false;
+    }
+    return routeToCheck == currentHttpSettings.getProperty("Route").value &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
+}
+function matchOperation(possibleDuplicate, routeToCheck, verbToCheck) {
+    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
+    if (currentHttpSettings == null) {
+        return false;
+    }
+    return routeToCheck == getOperationPath(possibleDuplicate) &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
+}
+function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
+    let duplicate = null;
+    elements.forEach(e =&gt; {
+        if (duplicate != null)
+            return;
+        if (e.id == element.id)
+            return;
+        if (match(e, routeToCheck, verbToCheck)) {
+            duplicate = e;
+        }
+    });
+    if (duplicate) {
+        return `Duplicate rest route ${element.getName()}(${element.specialization}) with ${duplicate.getName()}(${duplicate.specialization}) - ${routeToCheck}`;
+    }
+    return null;
+}
+/// &lt;reference path="../common/common-rest-route-validation.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-rest-route-validation/operation/operation-rest-route-validation.ts
+ */
+function validateRestRoutesOperation(element) {
+    var _a;
+    if (element.typeReference.typeId == null &amp;&amp; ((_a = element.getStereotype("Http Settings")) === null || _a === void 0 ? void 0 : _a.getProperty("Verb").value) === "GET") {
+        return "Return Type required for HTTP GET Verb";
+    }
+    return validateRestRoutes(element);
+}
+//validateRestRoutesOperation(element);
+return validateRestRoutesOperation(lookup(id));
+</validateFunctionOverride>
       <creationOptions />
       <scriptOptions>
         <option>
