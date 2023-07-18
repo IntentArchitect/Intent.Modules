@@ -136,6 +136,7 @@
           <name>NewElementMapping</name>
           <display>[mapping]: Service -&gt; Service Proxy (Map to Type)</display>
           <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-by-name</sort-children>
           <genericTypes />
           <isMapped>false</isMapped>
           <parentFolderId>df491bea-8a85-4bc9-a93d-41b7abb80ffb</parentFolderId>
@@ -173,7 +174,51 @@
             </stereotype>
           </stereotypes>
           <metadata />
-          <childElements />
+          <childElements>
+            <childElement id="b0b8c2c6-b3b2-4580-9a44-b3cf72f027bd" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+              <name>NewElementMapping</name>
+              <display>[mapping]: Operation -&gt; Operation (Map to Type)</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <isMapped>false</isMapped>
+              <parentFolderId>ae3e8569-4f13-41f5-b15f-1c9144b9d482</parentFolderId>
+              <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
+              <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="47ec6487-1f69-4691-9c8c-031e2da08c07" name="Behaviour Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="c4b2b450-dc7a-4cdc-a526-1ec3eb2f921a" display="Auto-select Children" value="false" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="740ed66f-c70d-45b0-80d5-6f663da53ed5" name="Output Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="d87242ea-697e-4ab6-b9f9-f48e9af2d3af" display="Child Mapping Mode" value="Map to Type" isActive="true" />
+                    <property name="0b8166de-1c91-41d3-ae3f-155687be6220" display="To Type" value="aee6811e-b2f6-4562-a8eb-502029f63bc8" isActive="true" />
+                    <property name="f87c0289-fb95-46aa-a06d-3599e312324a" display="Use Mapping Settings" isActive="true" />
+                  </properties>
+                </stereotype>
+                <stereotype stereotypeDefinitionId="c677f491-8290-47ee-9e98-4c26bc76b592" name="Criteria Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="e71ee41d-362b-4fe3-8791-53f139726674" display="From Type" value="e030c97a-e066-40a7-8188-808c275df3cb" isActive="true" />
+                    <property name="a272509a-3819-4631-b27c-a4680055efa4" display="Has Type-Reference" value="Not Applicable" isActive="true" />
+                    <property name="315a6b58-efa4-421c-8345-1cde99ba7262" display="Has Children" value="Not Applicable" isActive="true" />
+                    <property name="60dbe07e-26ee-4ffd-98c2-0d4f4ee29912" display="Is Collection" value="Not Applicable" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
         </childElement>
         <childElement id="be57ff66-f953-48da-8e7f-6cb9a7b33332" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
           <name>NewElementMapping</name>
@@ -218,7 +263,7 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="a2232f3f-469e-4452-b248-040feb616a4a" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+            <childElement id="cc28eb62-9cd7-45f3-ac20-343fdcb67ee7" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
               <name>NewElementMapping</name>
               <display>[mapping]: Folder -&gt; Service Proxy (Map to Type)</display>
               <isAbstract>false</isAbstract>
@@ -261,13 +306,13 @@
               </stereotypes>
               <metadata />
               <childElements>
-                <childElement id="6e50fae3-902f-4afc-a762-bd075e91d75d" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+                <childElement id="545184fb-bcc6-4b21-9997-516cec1d6802" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: Command -&gt; Operation (Map to Type)</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <isMapped>false</isMapped>
-                  <parentFolderId>a2232f3f-469e-4452-b248-040feb616a4a</parentFolderId>
+                  <parentFolderId>cc28eb62-9cd7-45f3-ac20-343fdcb67ee7</parentFolderId>
                   <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
                   <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
                   <stereotypes>
@@ -304,13 +349,13 @@
                   <metadata />
                   <childElements />
                 </childElement>
-                <childElement id="add60bf9-75ed-4ba3-a616-8af1c8890358" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
+                <childElement id="7da67a2a-ec31-4942-95eb-7d362e989ed1" type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
                   <name>NewElementMapping</name>
                   <display>[mapping]: Query -&gt; Operation (Map to Type)</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
                   <isMapped>false</isMapped>
-                  <parentFolderId>a2232f3f-469e-4452-b248-040feb616a4a</parentFolderId>
+                  <parentFolderId>cc28eb62-9cd7-45f3-ac20-343fdcb67ee7</parentFolderId>
                   <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
                   <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
                   <stereotypes>

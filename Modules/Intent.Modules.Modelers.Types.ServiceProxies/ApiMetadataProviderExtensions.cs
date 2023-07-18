@@ -58,7 +58,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         [IntentManaged(Mode.Ignore)]
         public static IEnumerable<ServiceProxyDTOModel> GetDTOModels(this ServiceProxyModel proxy)
         {
-            return DeepGetDistinctReferencedElements(proxy.Operations.Select(x => x.InternalElement))
+            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy))
                 .Where(x => x.SpecializationTypeId is not (TypeDefinitionModel.SpecializationTypeId or EnumModel.SpecializationTypeId))
                 .Select(x => new ServiceProxyDTOModel(x, proxy))
                 .ToList();
@@ -128,16 +128,25 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         }
 
         [IntentManaged(Mode.Ignore)]
-        private static IEnumerable<IElement> GetMappedEndpoints(ServiceProxyModel model)
+        private static IEnumerable<IElement> GetMappedEndpoints(ServiceProxyModel proxyModel)
         {
-            if (model.Mapping?.Element?.IsServiceModel() == true)
+            if (proxyModel.Mapping?.Element?.IsServiceModel() == true)
             {
-                return model.MappedService.Operations
+                IEnumerable<Services.Api.OperationModel> mappedOperations = proxyModel.MappedService.Operations;
+                // Filter when proxy operations are present.
+                // Backwards compatibility - when we didn't have operations on service proxies.
+                if (proxyModel.Operations.Any())
+                {
+                    mappedOperations = mappedOperations
+                        .Where(mappedOperation => proxyModel.Operations
+                            .Any(proxyOperation => proxyOperation.Mapping?.ElementId == mappedOperation.Id));
+                }
+                return mappedOperations
                     .Select(x => x.InternalElement)
                     .Where(x => x.Stereotypes.Any(s => s.Name == "Http Settings"));
             }
 
-            return model.Operations
+            return proxyModel.Operations
                 .Select(x => x.Mapping?.Element)
                 .Cast<IElement>()
                 .Where(x => x.Stereotypes.Any(s => s.Name == "Http Settings"));
