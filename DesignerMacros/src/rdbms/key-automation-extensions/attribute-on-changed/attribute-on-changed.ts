@@ -4,7 +4,7 @@
 
 function execute(): void {
     if (application?.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")?.getField("Key Creation Mode")?.value != "explicit" ||
-        element.getParent().getMetadata(autoManageKeys) === "false" ||
+        element.getParent().getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)
     ) {
@@ -16,16 +16,16 @@ function execute(): void {
         element.typeReference.getType()) {
 
         if (element.typeReference.getType()?.id != getSurrogateKeyType()) {
-            element.setMetadata(isManagedKey, "false");
+            element.setMetadata(metadataKey.isManagedKey, "false");
         } else {
-            element.setMetadata(isManagedKey, "true");
+            element.setMetadata(metadataKey.isManagedKey, "true");
         }
     }
 
-    let associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty("Association")?.getValue() as MacroApi.Context.IElementApi;
+    let associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty(foreignKeyStereotypeAssociationProperty)?.getValue() as MacroApi.Context.IElementApi;
 
-    if (associationTarget && element.getMetadata("association") != associationTarget.id) {
-        element.setMetadata("association", associationTarget.id);
+    if (associationTarget && element.getMetadata(metadataKey.association) != associationTarget.id) {
+        element.setMetadata(metadataKey.association, associationTarget.id);
     }
 }
 

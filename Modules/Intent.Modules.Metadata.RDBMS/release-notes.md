@@ -1,6 +1,10 @@
-### Version 3.5.4
+### Version 3.5.5
 
 - New: Added `Schema` stereotype to modeling SQL Schema's simpler and more intuitive.
+
+### Version 3.5.4
+
+- Fixed: Designer management of foreign keys would be "opted out" when deleting a foreign/primary key attribute.
 
 ### Version 3.5.3
 

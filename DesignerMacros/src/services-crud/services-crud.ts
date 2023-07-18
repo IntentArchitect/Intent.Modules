@@ -204,3 +204,5 @@ function getBaseNameForElement(owningAggregate, entity, entityIsMany) : string {
     let entityName = entityIsMany ? toPascalCase(pluralize(entity.name)) : toPascalCase(entity.name);
     return owningAggregate ? `${toPascalCase(owningAggregate.name)}${entityName}` : entityName;
 }
+
+//await execute();

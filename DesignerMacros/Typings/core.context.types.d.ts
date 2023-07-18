@@ -85,7 +85,7 @@ declare namespace MacroApi.Context {
 
     interface IStereotypePropertyApi {
         value: string;
-        getValue(): string | boolean | IElementApi;
+        getValue(): string | boolean | IElementApi | IAssociationApi;
         setValue(value: any): void;
         getSelected(): IElementApi;
     }

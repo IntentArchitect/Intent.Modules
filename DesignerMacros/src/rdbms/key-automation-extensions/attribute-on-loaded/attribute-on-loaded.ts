@@ -8,15 +8,19 @@ function execute(): void {
         return;
     }
 
-    let associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty("Association Target")?.getValue() as MacroApi.Context.IElementApi;
-    let existingAssociation = element.getMetadata("association");
+    const associationTarget = element.getStereotype(foreignKeyStereotypeId)?.getProperty(foreignKeyStereotypeAssociationProperty)?.getValue() as MacroApi.Context.IAssociationApi;
+    associationTarget.isSourceEnd();
+    associationTarget.getOtherEnd().id
 
-    if (!associationTarget && existingAssociation) {
+    const existingAssociation = element.getMetadata(metadataKey.association);
+
+    if (associationTarget == null && existingAssociation != null) {
         if (!element.hasStereotype(foreignKeyStereotypeId)) {
             element.addStereotype(foreignKeyStereotypeId);
         }
-        let stereotype = element.getStereotype(foreignKeyStereotypeId);
-        stereotype.getProperty("Association").setValue(existingAssociation);
+
+        const stereotype = element.getStereotype(foreignKeyStereotypeId);
+        stereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(existingAssociation);
     }
 
     if (existingAssociation && !element.getMetadata("fk-original-name")) {

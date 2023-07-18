@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Metadata.RDBMS</id>
-  <version>3.5.4-pre.1</version>
+  <version>3.5.5-pre.0</version>
   <supportedClientVersions>[4.0.0-beta.7, 5.0.0-a)</supportedClientVersions>
   <summary>Support for describing Entities in Relational DB terms.</summary>
   <description>Support for describing Entities in Relational DB terms.</description>
