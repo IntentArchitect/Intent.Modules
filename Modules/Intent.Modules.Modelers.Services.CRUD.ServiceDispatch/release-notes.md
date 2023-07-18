@@ -1,3 +1,7 @@
+### Version 4.0.6
+
+- Fix: `Project to Domain` change patch for updating internal Id's.
+
 ### Version 4.0.5
 
 - Updated moved `Project to Domain` to `Services Designer` to standardize scripts.
