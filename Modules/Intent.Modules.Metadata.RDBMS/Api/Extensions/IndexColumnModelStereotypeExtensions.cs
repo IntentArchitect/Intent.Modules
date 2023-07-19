@@ -52,6 +52,11 @@ namespace Intent.Metadata.RDBMS.Api
                 return new TypeOptions(_stereotype.GetProperty<string>("Type"));
             }
 
+            public SortDirectionOptions SortDirection()
+            {
+                return new SortDirectionOptions(_stereotype.GetProperty<string>("Sort Direction"));
+            }
+
             public class TypeOptions
             {
                 public readonly string Value;
@@ -88,6 +93,43 @@ namespace Intent.Metadata.RDBMS.Api
             {
                 Key,
                 Included
+            }
+            public class SortDirectionOptions
+            {
+                public readonly string Value;
+
+                public SortDirectionOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public SortDirectionOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Ascending":
+                            return SortDirectionOptionsEnum.Ascending;
+                        case "Descending":
+                            return SortDirectionOptionsEnum.Descending;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsAscending()
+                {
+                    return Value == "Ascending";
+                }
+                public bool IsDescending()
+                {
+                    return Value == "Descending";
+                }
+            }
+
+            public enum SortDirectionOptionsEnum
+            {
+                Ascending,
+                Descending
             }
         }
 

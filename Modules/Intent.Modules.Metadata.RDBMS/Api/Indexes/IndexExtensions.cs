@@ -49,13 +49,7 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
                     UseDefaultName = true,
                     FilterOption = FilterOption.Default,
                     Filter = null,
-                    KeyColumns = new[] {
-                        new IndexColumn
-                        {
-                            Name = index.Name,
-                            SourceType = index.InternalElement
-                        }
-                    },
+                    KeyColumns = new[] { GetIndexColumn(index) },
                     IncludedColumns = Array.Empty<IndexColumn>()
                 }));
 
@@ -72,11 +66,7 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
                     Filter = null,
                     KeyColumns = index
                         .OrderBy(x => x.GetIndex().Order() ?? 0)
-                        .Select(x => new IndexColumn
-                        {
-                            Name = x.Name,
-                            SourceType = x.InternalElement
-                        })
+                        .Select(x => GetIndexColumn(x))
                         .ToArray(),
                     IncludedColumns = Array.Empty<IndexColumn>()
                 }));
@@ -84,13 +74,51 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
             return results;
         }
 
+        private static IndexColumn GetIndexColumn(AttributeModel model)
+        {
+            return new IndexColumn
+            {
+                Name = model.Name,
+                SortDirection = GetSortDirection(model.GetIndex().SortDirection().AsEnum()),
+                SourceType = model.InternalElement
+            };
+        }
+
+
         private static IndexColumn GetIndexColumn(IndexColumnModel model)
         {
             return new IndexColumn
             {
                 Name = model.Name,
+                SortDirection = GetSortDirection(model.GetSettings().SortDirection().AsEnum()),
                 SourceType = model.InternalElement.MappedElement?.Element,
             };
+        }
+
+        private static SortDirection GetSortDirection(IndexColumnModelStereotypeExtensions.Settings.SortDirectionOptionsEnum sortDirection)
+        {
+            switch (sortDirection)
+            {
+                case IndexColumnModelStereotypeExtensions.Settings.SortDirectionOptionsEnum.Ascending:
+                    return SortDirection.Ascending;
+                case IndexColumnModelStereotypeExtensions.Settings.SortDirectionOptionsEnum.Descending:
+                    return SortDirection.Descending;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(sortDirection), sortDirection, null);
+            }
+        }
+
+        private static SortDirection GetSortDirection(AttributeModelStereotypeExtensions.Index.SortDirectionOptionsEnum sortDirection)
+        {
+            switch (sortDirection)
+            {
+                case AttributeModelStereotypeExtensions.Index.SortDirectionOptionsEnum.Ascending:
+                    return SortDirection.Ascending;
+                case AttributeModelStereotypeExtensions.Index.SortDirectionOptionsEnum.Descending:
+                    return SortDirection.Descending;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(sortDirection), sortDirection, null);
+            }
         }
 
         private static FilterOption GetFilterOption(IndexModelStereotypeExtensions.Settings.FilterOptionsEnum filter)

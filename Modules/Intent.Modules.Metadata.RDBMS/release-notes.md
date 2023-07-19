@@ -1,6 +1,7 @@
 ### Version 3.5.5
 
 - New: Added `Schema` stereotype to modeling SQL Schema's simpler and more intuitive.
+- New: Added the ability to specify sort direction on Index columns .
 
 ### Version 3.5.4
 
@@ -21,7 +22,7 @@
 
 ### Version 3.4.2
 
-- New: Support for modelling Sql Views throught the `View` stereotype which can be applied to `Class`s.
+- New: Support for modeling Sql Views through the `View` stereotype which can be applied to `Class`s.
 
 ### Version 3.4.1
 
@@ -31,7 +32,7 @@
 
 - New: Foreign Keys now have an explicit link with an Association Target End so that Attributes that act as Foreign Keys can be renamed independently from the Association.
 - Update: Compute stereotype icon visible on diagram.
-- Update: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checbox.
+- Update: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checkbox.
 - Update: Fill Factor property on Indexes in order for some database providers to configure it accordingly.
 
 ### Version 3.3.12

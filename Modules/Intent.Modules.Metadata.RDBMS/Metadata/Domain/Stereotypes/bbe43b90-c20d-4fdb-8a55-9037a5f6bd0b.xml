@@ -48,5 +48,18 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="ab0cf6c6-9589-44cb-98fb-507e554c2d9b">
+      <name>Sort Direction</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Ascending</defaultValue>
+      <valueOptions>
+        <option>Ascending</option>
+        <option>Descending</option>
+      </valueOptions>
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

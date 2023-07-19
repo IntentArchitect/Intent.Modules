@@ -13,6 +13,11 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
         public string Name { get; set; }
 
         /// <summary>
+        /// The Sort Direction of the column.
+        /// </summary>
+        public SortDirection SortDirection { get; set; }
+
+        /// <summary>
         /// The element to which the index column is mapped to in Intent Architect.
         /// </summary>
         public ICanBeReferencedType SourceType { get; set; }
