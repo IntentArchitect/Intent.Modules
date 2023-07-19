@@ -84,6 +84,12 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
         return this;
     }
 
+    public CSharpProperty ProtectedSetter()
+    {
+        Setter.Protected();
+        return this;
+    }
+
     public CSharpProperty Init()
     {
         Setter.Init();

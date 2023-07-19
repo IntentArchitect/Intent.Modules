@@ -1,4 +1,8 @@
-﻿### Version 3.3.38
+﻿### Version 3.3.39
+
+- Added: `ProtectedSetter` added to `CSharpProperty`.
+
+### Version 3.3.38
 
 - Fixed: `IntroduceProperty` wasn't handling C# reserved words correctly.
 
