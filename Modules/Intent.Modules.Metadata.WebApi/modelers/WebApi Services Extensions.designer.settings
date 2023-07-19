@@ -19,6 +19,10 @@ function validateRestRoutes(element) {
     if (element.specialization == "Operation") {
         absoluteRouteToCheck = getOperationPath(element);
     }
+    //again need to resolve paths for this to work
+    if (absoluteRouteToCheck.toLocaleLowerCase().includes("[action]")) {
+        return "";
+    }
     let verbToCheck = httpSettings.getProperty("Verb").value;
     let commands = lookupTypesOf("Command");
     let message = checkForDuplicates(commands, element, absoluteRouteToCheck, verbToCheck, matchCommandOrQuery);
@@ -37,38 +41,70 @@ function validateRestRoutes(element) {
 function getOperationPath(operation) {
     let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
     let httpSettings = operation.getStereotype(httpSettingsId);
     if (httpSettings == null) {
         return "";
     }
-    let operationPath = httpSettings.getProperty("Route").getValue();
-    let servicePath = operation.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").value;
-    return `${servicePath}/${operationPath}`;
+    let operationPath = httpSettings.getProperty("Route").value;
+    if (operation.getParent().getStereotype(serviceHttpServiceSettingsId)) {
+        let servicePath = operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value;
+        return `${servicePath}/${operationPath}`;
+    }
+    return `[${operation.getParent().getName()}]/${operationPath}`;
 }
-function matchCommandOrQuery(possibleDuplicate, routeToCheck, verbToCheck) {
+function matchCommandOrQuery(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
     let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
     if (currentHttpSettings == null) {
         return false;
     }
-    return routeToCheck == currentHttpSettings.getProperty("Route").value &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
+    let result = routeToCheck == currentHttpSettings.getProperty("Route").value &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
+    if (result &amp;&amp; changingElement.getStereotype(apiVersionSettingId)) {
+        let changingVersions = JSON.parse(changingElement.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
+        let duplicateVersions = JSON.parse(possibleDuplicate.getStereotype(apiVersionSettingId).getProperty("Applicable Versions").value);
+        let intersection = changingVersions.filter(value =&gt; duplicateVersions.includes(value));
+        return intersection.length &gt; 0;
+    }
+    return result;
 }
-function matchOperation(possibleDuplicate, routeToCheck, verbToCheck) {
+function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbToCheck) {
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    let apiVersionSettingId = "20855f03-c663-4ec6-b106-de06be98f1fe"; //Api Version Setting
     let currentHttpSettings = possibleDuplicate.getStereotype(httpSettingsId);
     if (currentHttpSettings == null) {
         return false;
     }
-    return routeToCheck == getOperationPath(possibleDuplicate) &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
+    let result = routeToCheck == getOperationPath(possibleDuplicate) &amp;&amp; verbToCheck == currentHttpSettings.getProperty("Verb").value;
+    if (result &amp;&amp; (changingElement.getStereotype(apiVersionSettingId) || changingElement.getParent().getStereotype(apiVersionSettingId))) {
+        let changingVersions;
+        let duplicateVersions;
+        let changeStereoType;
+        let possibleDuplicateStereoType;
+        if (changingElement.getParent().getStereotype(apiVersionSettingId))
+            changeStereoType = changingElement.getParent().getStereotype(apiVersionSettingId);
+        if (changingElement.getStereotype(apiVersionSettingId))
+            changeStereoType = changingElement.getStereotype(apiVersionSettingId);
+        if (possibleDuplicate.getParent().getStereotype(apiVersionSettingId))
+            possibleDuplicateStereoType = possibleDuplicate.getParent().getStereotype(apiVersionSettingId);
+        if (possibleDuplicate.getStereotype(apiVersionSettingId))
+            possibleDuplicateStereoType = possibleDuplicate.getStereotype(apiVersionSettingId);
+        changingVersions = JSON.parse(changeStereoType.getProperty("Applicable Versions").value);
+        duplicateVersions = JSON.parse(possibleDuplicateStereoType.getProperty("Applicable Versions").value);
+        let intersection = changingVersions.filter(value =&gt; duplicateVersions.includes(value));
+        return intersection.length &gt; 0;
+    }
+    return result;
 }
 function checkForDuplicates(elements, element, routeToCheck, verbToCheck, match) {
-    let duplicate = null;
+    let duplicate;
     elements.forEach(e =&gt; {
         if (duplicate != null)
             return;
         if (e.id == element.id)
             return;
-        if (match(e, routeToCheck, verbToCheck)) {
+        if (match(e, element, routeToCheck, verbToCheck)) {
             duplicate = e;
         }
     });
