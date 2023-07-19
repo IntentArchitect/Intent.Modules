@@ -436,6 +436,16 @@ if (namingConvention == "pascal-case") {
                       <behaviour autoSelectChildren="false" />
                       <childMappings />
                     </mapping>
+                    <mapping id="0148afc9-d327-4b53-8985-695d6689276e">
+                      <criteria specializationType="Generalization Target End">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection>false</isCollection>
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo childMappingMode="traverse" useMappingSettings="f8730104-973b-46a2-b03d-050983a8808c" />
+                      <behaviour autoSelectChildren="true" />
+                      <childMappings />
+                    </mapping>
                   </childMappings>
                 </mapping>
               </mappings>
@@ -549,6 +559,16 @@ if (namingConvention == "pascal-case") {
                       </criteria>
                       <mapTo specializationType="Parameter" childMappingMode="map-to-child" />
                       <behaviour autoSelectChildren="false" />
+                      <childMappings />
+                    </mapping>
+                    <mapping id="d9dfe7c1-266d-451e-be30-236f1d6c0283">
+                      <criteria specializationType="Generalization Target End">
+                        <hasTypeReference>true</hasTypeReference>
+                        <isCollection>false</isCollection>
+                        <hasChildren p13:nil="true" xmlns:p13="http://www.w3.org/2001/XMLSchema-instance" />
+                      </criteria>
+                      <mapTo childMappingMode="traverse" useMappingSettings="54ccf3b2-5609-4b9d-ae43-4a0b52d20f6a" />
+                      <behaviour autoSelectChildren="true" />
                       <childMappings />
                     </mapping>
                   </childMappings>

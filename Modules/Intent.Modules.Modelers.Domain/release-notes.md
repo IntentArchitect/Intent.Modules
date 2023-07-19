@@ -1,4 +1,8 @@
-﻿### Version 3.4.4
+﻿### Version 3.4.5
+
+- Update : Ability to map from base classes for `Constructor` and `Operation` mappings.
+
+### Version 3.4.4
 
 - Added creation option for `Enum`s to `Diagram`s as it only existed in the tree view before.
 
