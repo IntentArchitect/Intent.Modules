@@ -1,3 +1,7 @@
+### Version 3.4.7
+
+- New : Duplicate `Operation` validation check added.
+
 ### Version 3.4.5
 
 - Update: Moved `Project to Domain` script into `Services Designer` and out of the individual CRUD modules.

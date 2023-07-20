@@ -775,6 +775,47 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
           <icon type="UrlImagePath" source="./img/icons/services/Operation_256x.png" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <displayFunction>${name}${genericTypes}(${children("Parameter").map(x =&gt; x.name + ": " + x.typeReference.display).join(", ")}): ${(typeReference.typeId ? typeReference.display : "void")}</displayFunction>
+          <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function validateDuplicateOperation(operation) {
+    var possibleDuplicates = findPeerOperations(operation);
+    let operationSignature = calculateSignature(operation);
+    let duplicate;
+    possibleDuplicates.forEach(possibleDuplicate =&gt; {
+        if (duplicate != null)
+            return;
+        if (operationSignature == calculateSignature(possibleDuplicate)) {
+            duplicate = possibleDuplicate;
+        }
+    });
+    if (duplicate) {
+        return `Duplicate operation ${operation.getName()} - ${operationSignature}`;
+    }
+    return "";
+}
+function calculateSignature(operation) {
+    let result = `${operation.getName()}(`;
+    let params = operation.getChildren("Parameter");
+    result += params.map((p) =&gt; p.typeReference.getType().getName()).join(', ');
+    result += ")";
+    return result;
+}
+function findPeerOperations(operation) {
+    return operation.getParent().getChildren("Operation").filter(x =&gt; x.id != operation.id);
+}
+/// &lt;reference path="../common/operation-validation.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Modelers.Services
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-operation-validation/operation/operation-validation.ts
+ */
+function validateOperation(element) {
+    return validateDuplicateOperation(element);
+}
+//Comment / UnComment below when you publish
+//validateOperation(element);
+return validateOperation(lookup(id));
+</validateFunction>
           <allowRename>true</allowRename>
           <allowAbstract>true</allowAbstract>
           <allowGenericTypes>true</allowGenericTypes>
@@ -828,6 +869,48 @@ if (otherAttributes.some(x =&gt; x.getName() == getName())) {
               <icon type="UrlImagePath" source="./img/icons/uml/Parameter_256x.png" />
               <saveAsOwnFile>false</saveAsOwnFile>
               <displayFunction>`in : ${this.name}: ${this.typeReference.display}${(this.getValue() ? ` = ${this.getValue()}` : "")}`</displayFunction>
+              <validateFunction>/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+function validateDuplicateOperation(operation) {
+    var possibleDuplicates = findPeerOperations(operation);
+    let operationSignature = calculateSignature(operation);
+    let duplicate;
+    possibleDuplicates.forEach(possibleDuplicate =&gt; {
+        if (duplicate != null)
+            return;
+        if (operationSignature == calculateSignature(possibleDuplicate)) {
+            duplicate = possibleDuplicate;
+        }
+    });
+    if (duplicate) {
+        return `Duplicate operation ${operation.getName()} - ${operationSignature}`;
+    }
+    return "";
+}
+function calculateSignature(operation) {
+    let result = `${operation.getName()}(`;
+    let params = operation.getChildren("Parameter");
+    result += params.map((p) =&gt; p.typeReference.getType().getName()).join(', ');
+    result += ")";
+    return result;
+}
+function findPeerOperations(operation) {
+    return operation.getParent().getChildren("Operation").filter(x =&gt; x.id != operation.id);
+}
+/// &lt;reference path="../common/operation-validation.ts" /&gt;
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Modelers.Services
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-operation-validation/operation-parameter/operation-validation.ts
+ */
+function validateOperationParameter(element) {
+    let operation = element.getParent();
+    return validateDuplicateOperation(operation);
+}
+//Comment / UnComment below when you publish
+//validateOperationParameter(element);
+return validateOperationParameter(lookup(id));
+</validateFunction>
               <allowRename>true</allowRename>
               <allowAbstract>false</allowAbstract>
               <allowGenericTypes>false</allowGenericTypes>
