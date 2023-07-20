@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -18,7 +19,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public List<CSharpParameter> Parameters { get; } = new();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
-    
+    public string ExplicitImplementationFor { get; private set; }
+
     public CSharpClassMethod(string returnType, string name)
     {
         if (string.IsNullOrWhiteSpace(returnType))
@@ -35,6 +37,12 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         Name = name;
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
+    }
+
+    public CSharpClassMethod IsExplicitImplementationFor(string @interface)
+    {
+        ExplicitImplementationFor = @interface;
+        return this;
     }
 
     public CSharpClassMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
@@ -210,7 +218,34 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public override string GetText(string indentation)
     {
-        var declaration = $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{OverrideModifier}{AsyncMode}{ReturnType} {Name}{GetGenericParameters()}({GetParameters(indentation)}){GetGenericTypeConstraints(indentation)}";
+        var declaration = new StringBuilder();
+
+        declaration.Append(GetComments(indentation));
+        declaration.Append(GetAttributes(indentation));
+        declaration.Append(indentation);
+
+        if (string.IsNullOrWhiteSpace(ExplicitImplementationFor))
+        {
+            declaration.Append(AccessModifier);
+        }
+
+        declaration.Append(OverrideModifier);
+        declaration.Append(AsyncMode);
+        declaration.Append(ReturnType);
+        declaration.Append(' ');
+
+        if (!string.IsNullOrWhiteSpace(ExplicitImplementationFor))
+        {
+            declaration.Append(ExplicitImplementationFor);
+            declaration.Append('.');
+        }
+
+        declaration.Append(Name);
+        declaration.Append(GetGenericParameters());
+        declaration.Append($"({GetParameters(indentation)})");
+        declaration.Append(GetGenericTypeConstraints(indentation));
+
+
         if (IsAbstract && Statements.Count == 0)
         {
             return $@"{declaration};";

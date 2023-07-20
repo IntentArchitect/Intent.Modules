@@ -1,6 +1,7 @@
 ﻿### Version 3.3.39
 
 - Added: `ProtectedSetter` added to `CSharpProperty`.
+- Added: `IsExplicitImplementationFor(string @interface)` added to `CSharpMethod` for being able to make a method explicitly implement an interface's method.
 
 ### Version 3.3.38
 

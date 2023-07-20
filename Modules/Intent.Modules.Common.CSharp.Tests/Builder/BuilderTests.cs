@@ -198,6 +198,22 @@ public class BuilderTests
     }
 
     [Fact]
+    public async Task MethodExplicitlyImplementingForInterface()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "Method", method =>
+                {
+                    method.IsExplicitImplementationFor("IInterface");
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
     public async Task MethodChainingTest()
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
