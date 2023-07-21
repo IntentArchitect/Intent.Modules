@@ -18,6 +18,12 @@ public class CSharpStatementBlock : CSharpStatement, IHasCSharpStatements
 
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
+    public CSharpStatement SeparatedFromPrevious(bool setting)
+    {
+        BeforeSeparator = setting ? CSharpCodeSeparatorType.EmptyLines : CSharpCodeSeparatorType.NewLine;
+        return this;
+    }
+
     public CSharpStatementBlock WithSemicolon()
     {
         _withSemicolon = true;
