@@ -3,8 +3,9 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };

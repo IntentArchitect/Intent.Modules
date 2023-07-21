@@ -1,3 +1,7 @@
+### Version 3.5.5
+
+- Fixed: Scripting errors to the effect of `on-loaded [RDBMS Key Automation Extensions] on element "<element name>" [Attribute]` would sometimes show in the Task Output Console on loading of the domain designer.
+
 ### Version 3.5.4
 
 - Fixed: Designer management of foreign keys would be "opted out" when deleting a foreign/primary key attribute.
