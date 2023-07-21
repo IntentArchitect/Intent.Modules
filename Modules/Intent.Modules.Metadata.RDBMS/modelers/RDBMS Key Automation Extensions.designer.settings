@@ -17,14 +17,14 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
-element.getStereotypes();
 if (!element.hasMetadata("database-paradigm-selected") &amp;&amp;
     !element.hasStereotype(relationalDatabaseId) &amp;&amp;
     !element.hasStereotype("Document Database")) {
@@ -68,10 +68,11 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
@@ -108,10 +109,11 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };
 function getSurrogateKeyType() {
     var _a, _b, _c;
@@ -185,9 +187,9 @@ function updateForeignKeys(thisEnd) {
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
             let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata("fk-original-name") || (fkAttribute.getMetadata("fk-original-name") == fkAttribute.getName())) {
+                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse);
-                    fkAttribute.setMetadata("fk-original-name", fkAttribute.getName());
+                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
                 }
             }
             fkAttribute.setMetadata(metadataKey.association, targetEndId);
@@ -282,32 +284,34 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../_common/constants.ts" /&gt;
 function execute() {
     var _a, _b;
-    if (element.getPackage().specialization !== "Domain Package" ||
+    if (!element.hasMetadata(metadataKey.association) ||
+        element.getPackage().specialization !== "Domain Package" ||
         !element.getPackage().hasStereotype(relationalDatabaseId)) {
         return;
     }
     const associationTarget = (_b = (_a = element.getStereotype(foreignKeyStereotypeId)) === null || _a === void 0 ? void 0 : _a.getProperty(foreignKeyStereotypeAssociationProperty)) === null || _b === void 0 ? void 0 : _b.getValue();
-    associationTarget.isSourceEnd();
-    associationTarget.getOtherEnd().id;
-    const existingAssociation = element.getMetadata(metadataKey.association);
-    if (associationTarget == null &amp;&amp; existingAssociation != null) {
+    if (associationTarget == null) {
         if (!element.hasStereotype(foreignKeyStereotypeId)) {
             element.addStereotype(foreignKeyStereotypeId);
         }
-        const stereotype = element.getStereotype(foreignKeyStereotypeId);
-        stereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(existingAssociation);
+        const associationId = element.getMetadata(metadataKey.association);
+        element
+            .getStereotype(foreignKeyStereotypeId)
+            .getProperty(foreignKeyStereotypeAssociationProperty)
+            .setValue(associationId);
     }
-    if (existingAssociation &amp;&amp; !element.getMetadata("fk-original-name")) {
-        element.setMetadata("fk-original-name", element.getName());
+    if (!element.hasMetadata(metadataKey.fkOriginalName)) {
+        element.setMetadata(metadataKey.fkOriginalName, element.getName());
     }
 }
 execute();
@@ -347,10 +351,11 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
@@ -454,10 +459,11 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
@@ -560,9 +566,9 @@ function updateForeignKeys(thisEnd) {
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
             let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata("fk-original-name") || (fkAttribute.getMetadata("fk-original-name") == fkAttribute.getName())) {
+                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse);
-                    fkAttribute.setMetadata("fk-original-name", fkAttribute.getName());
+                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
                 }
             }
             fkAttribute.setMetadata(metadataKey.association, targetEndId);
@@ -700,10 +706,11 @@ const relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c";
 const foreignKeyStereotypeId = "793a5128-57a1-440b-a206-af5722b752a6";
 const foreignKeyStereotypeAssociationProperty = "Association";
 const metadataKey = {
-    isManagedKey: "is-managed-key",
-    autoManageKeys: "auto-manage-keys",
     association: "association",
-    isBeingDeletedByScript: "is-being-deleted-by-script"
+    autoManageKeys: "auto-manage-keys",
+    fkOriginalName: "fk-original-name",
+    isBeingDeletedByScript: "is-being-deleted-by-script",
+    isManagedKey: "is-managed-key",
 };
 /// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
 /// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;

@@ -49,9 +49,9 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
             // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
             let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
             if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
-                if (!fkAttribute.hasMetadata("fk-original-name") || (fkAttribute.getMetadata("fk-original-name") == fkAttribute.getName())) {
+                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
                     fkAttribute.setName(fkNameToUse);
-                    fkAttribute.setMetadata("fk-original-name", fkAttribute.getName());
+                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
                 }
             }
 

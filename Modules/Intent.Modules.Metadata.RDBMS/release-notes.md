@@ -1,7 +1,11 @@
-### Version 3.5.5
+### Version 3.5.6
 
 - New: Added `Schema` stereotype to modeling SQL Schema's simpler and more intuitive.
 - New: Added the ability to specify sort direction on Index columns .
+
+### Version 3.5.5
+
+- Fixed: Scripting errors to the effect of `on-loaded [RDBMS Key Automation Extensions] on element "<element name>" [Attribute]` would sometimes show in the Task Output Console on loading of the domain designer.
 
 ### Version 3.5.4
 
