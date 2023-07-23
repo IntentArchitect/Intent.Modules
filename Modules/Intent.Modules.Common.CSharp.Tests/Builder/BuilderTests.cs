@@ -125,7 +125,7 @@ public class BuilderTests
     !string.IsNullOrWhiteSpace(configuration[""KeyVault:TenantId""]) &&
 	!string.IsNullOrWhiteSpace(configuration[""KeyVault:ClientId""]) &&
 	!string.IsNullOrWhiteSpace(configuration[""KeyVault:Secret""])", block => block.AddStatement("// If statement body"));
-                    
+
                     method.AddStatement(new CSharpStatementBlock(@"// block expression line 1
 // block expression line 2
 // block expression line 3"));
@@ -169,6 +169,20 @@ public class BuilderTests
                 @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Override().AddStatement("// More Stuff"));
             })
             .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task BaseTypeWithGenericParameters()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Class")
+            .AddClass("Class", @class =>
+            {
+                @class.WithBaseType("BaseType", new[] { "GenericTypeParameter1", "GenericTypeParameter2" });
+                @class.AddConstructor();
+            })
+            .CompleteBuild();
+
         await Verifier.Verify(fileBuilder.ToString());
     }
 
@@ -368,7 +382,7 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task MethodParametersTest()
     {
@@ -453,7 +467,7 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task GenericsTest()
     {

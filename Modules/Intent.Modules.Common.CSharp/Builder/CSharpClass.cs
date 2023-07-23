@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Text;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
@@ -34,6 +35,7 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
     public string Name { get; }
     protected string AccessModifier { get; private set; } = "public ";
     public CSharpClass BaseType { get; set; }
+    public IList<string> BaseTypeTypeParameters { get; } = new List<string>();
     public IList<string> Interfaces { get; } = new List<string>();
     public IList<CSharpField> Fields { get; } = new List<CSharpField>();
     public IList<CSharpConstructor> Constructors { get; } = new List<CSharpConstructor>();
@@ -46,23 +48,47 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 
     public CSharpClass WithBaseType(string type)
     {
-        return ExtendsClass(type);
+        return ExtendsClass(type, Enumerable.Empty<string>());
+    }
+
+    public CSharpClass WithBaseType(string type, IEnumerable<string> genericTypeParameters)
+    {
+        return ExtendsClass(type, genericTypeParameters);
     }
 
     public CSharpClass WithBaseType(CSharpClass type)
     {
-        return ExtendsClass(type);
+        return ExtendsClass(type, Enumerable.Empty<string>());
+    }
+
+    public CSharpClass WithBaseType(CSharpClass type, IEnumerable<string> genericTypeParameters)
+    {
+        return ExtendsClass(type, genericTypeParameters);
     }
 
     public CSharpClass ExtendsClass(string type)
     {
-        BaseType = new CSharpClass(type);
-        return this;
+        return ExtendsClass(new CSharpClass(type), Enumerable.Empty<string>());
+    }
+
+    public CSharpClass ExtendsClass(string type, IEnumerable<string> genericTypeParameters)
+    {
+        return ExtendsClass(new CSharpClass(type), genericTypeParameters);
     }
 
     public CSharpClass ExtendsClass(CSharpClass @class)
     {
+        return ExtendsClass(@class, Enumerable.Empty<string>());
+    }
+
+    public CSharpClass ExtendsClass(CSharpClass @class, IEnumerable<string> genericTypeParameters)
+    {
         BaseType = @class;
+        foreach (var genericTypeParameter in genericTypeParameters)
+        {
+            BaseTypeTypeParameters.Add(genericTypeParameter);
+        }
+
         return this;
     }
 
@@ -289,9 +315,49 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
 
     public string ToString(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAttributes(indentation)}{indentation}{AccessModifier}{(IsSealed ? "sealed " : "")}{(IsStatic ? "static " : "")}{(IsAbstract ? "abstract " : "")}{(IsPartial ? "partial " : "")}{_type.ToString().ToLowerInvariant()} {Name}{GetGenericParameters()}{GetBaseTypes()}{GetGenericTypeConstraints(indentation)}
-{indentation}{{{GetMembers($"{indentation}    ")}
-{indentation}}}";
+        var sb = new StringBuilder();
+
+        sb.Append(GetComments(indentation));
+        sb.Append(GetAttributes(indentation));
+        sb.Append(indentation);
+        sb.Append(AccessModifier);
+
+        if (IsSealed)
+        {
+            sb.Append("sealed ");
+        }
+
+        if (IsStatic)
+        {
+            sb.Append("static ");
+        }
+
+        if (IsAbstract)
+        {
+            sb.Append("abstract ");
+        }
+
+        if (IsPartial)
+        {
+            sb.Append("partial ");
+        }
+
+
+        sb.Append(_type.ToString().ToLowerInvariant());
+        sb.Append(' ');
+        sb.Append(Name);
+        sb.Append(GetGenericParameters());
+        sb.Append(GetBaseTypes());
+        sb.Append(GetGenericTypeConstraints(indentation));
+        sb.AppendLine();
+        sb.Append(indentation);
+        sb.Append("{");
+        sb.Append(GetMembers($"{indentation}    "));
+        sb.AppendLine();
+        sb.Append(indentation);
+        sb.Append("}");
+
+        return sb.ToString();
     }
 
     public string GetText(string indentation)
@@ -326,7 +392,11 @@ public class CSharpClass : CSharpDeclaration<CSharpClass>, ICodeBlock
         var types = new List<string>();
         if (BaseType != null)
         {
-            types.Add(BaseType.Name);
+            var baseType = BaseTypeTypeParameters.Any()
+                ? $"{BaseType.Name}<{string.Join(", ", BaseTypeTypeParameters)}>"
+                : BaseType.Name;
+
+            types.Add(baseType);
         }
 
         types.AddRange(Interfaces);
