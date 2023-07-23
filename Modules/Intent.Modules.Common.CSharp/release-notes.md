@@ -2,6 +2,7 @@
 
 - Added: `ProtectedSetter` added to `CSharpProperty`.
 - Added: `IsExplicitImplementationFor(string @interface)` added to `CSharpMethod` for being able to make a method explicitly implement an interface's method.
+- Added: It is now possible to specify that `CSharpStatementBlock`s and derived types are *not* `SeparatedFromPrevious` by using the the `.SeparatedFromPrevious(false)` method.
 
 ### Version 3.3.38
 
