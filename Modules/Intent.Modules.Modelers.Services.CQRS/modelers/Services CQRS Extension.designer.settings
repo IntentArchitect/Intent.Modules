@@ -280,6 +280,30 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 48}" />
               </drawText>
               <drawSvgResource>
+                <path>process-on-vm-line.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="70" />
+            <childElementVisualSettings />
+          </visualSettings>
+          <visualSettings type="Domain Event" typeId="0814e459-fb9b-47db-b7eb-32ce30397e8a">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
                 <path>lightning.svg</path>
                 <size width="${w}" height="40" />
                 <position x="${x}" y="${y + 6}" />
@@ -312,6 +336,30 @@ vertical-align: center`</style>
             <defaultSize width="${x}" height="70" />
             <childElementVisualSettings />
           </visualSettings>
+          <visualSettings type="Message" typeId="cbe970af-5bad-4d92-a3ed-a24b9fdaa23e">
+            <size width="${w}" height="70" />
+            <position x="${x}" y="${y}" />
+            <display>
+              <drawText>
+                <text>return getName();</text>
+                <style>`font-size: 12px; 
+font-family: Helvetica; 
+font-weight: bold; 
+text-align: center; 
+white-space: inherit;
+vertical-align: center`</style>
+                <size width="${w}" height="18" />
+                <position x="${x}" y="${y + 48}" />
+              </drawText>
+              <drawSvgResource>
+                <path>message.svg</path>
+                <size width="${w}" height="40" />
+                <position x="${x}" y="${y + 6}" />
+              </drawSvgResource>
+            </display>
+            <defaultSize width="${x}" height="70" />
+            <childElementVisualSettings />
+          </visualSettings>
           <visualSettings type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
             <size width="${w}" height="70" />
             <position x="${x}" y="${y}" />
@@ -328,7 +376,7 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 48}" />
               </drawText>
               <drawSvgResource>
-                <path>lightning.svg</path>
+                <path>dynamodb-table.svg</path>
                 <size width="${w}" height="40" />
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
@@ -590,6 +638,7 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
           <targetTypes>
             <type>Command</type>
             <type>Query</type>
+            <type>Domain Event</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -608,6 +657,7 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
           <isRequired>true</isRequired>
           <targetTypes>
             <type>Class</type>
+            <type>Message</type>
           </targetTypes>
           <allowIsNavigable>false</allowIsNavigable>
           <allowIsNullable>false</allowIsNullable>
@@ -618,6 +668,7 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
         </typeReferenceSetting>
       </targetEnd>
       <visualSettings>
+        <lineType>Curved</lineType>
         <lineDashArray>return "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>

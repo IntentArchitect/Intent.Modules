@@ -38,7 +38,7 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/Extensions/CQRSMappingModelAssociationExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>CQRSMappingModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>

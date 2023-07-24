@@ -32,6 +32,14 @@
         <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="70" isActive="true" />
       </properties>
     </stereotype>
+    <stereotype stereotypeDefinitionId="96a4fa17-6283-4626-835e-a8f013d98b19" name="Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="838dcc53-b73e-4381-a3d2-db0afaf230b2" display="Anchor Points" isActive="true" />
+      </properties>
+    </stereotype>
   </stereotypes>
   <metadata />
   <childElements>
@@ -85,7 +93,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="lightning.svg" isActive="true" />
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="process-on-vm-line.svg" isActive="true" />
             <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="" isActive="true" />
           </properties>
         </stereotype>

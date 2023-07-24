@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="f84abed0-7f4b-4243-adbb-77a6ee49825b" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+<class id="3e313e56-6626-435f-ad74-b2eaa9f8db16" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[element visual]</name>
-  <display>[visual]: Class</display>
+  <display>[visual]: Domain Event</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="5504ce95-51c1-4283-8396-e2a473292afa">
-    <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+  <typeReference id="2da1d9ce-a941-43e2-a3f6-6edf5dd6921b">
+    <typeId>0814e459-fb9b-47db-b7eb-32ce30397e8a</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.Domain</typePackageName>
-    <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+    <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
+    <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
@@ -43,13 +43,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="c07762dd-ff06-4f5d-8452-a3fad24bffc2" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+    <childElement id="77ab48c8-516b-45cc-95e4-eae0f80a66a5" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Display Label  for Symbol</name>
       <display>[draw text]: Display Label  for Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>f84abed0-7f4b-4243-adbb-77a6ee49825b</parentFolderId>
+      <parentFolderId>3e313e56-6626-435f-ad74-b2eaa9f8db16</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -78,13 +78,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="271fa05d-e6da-4405-a448-a32b26362806" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+    <childElement id="66628e18-1a59-4de5-abba-fe48e34c9b93" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
       <name>Domain Event Symbol</name>
       <display>[draw svg]: Domain Event Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>f84abed0-7f4b-4243-adbb-77a6ee49825b</parentFolderId>
+      <parentFolderId>3e313e56-6626-435f-ad74-b2eaa9f8db16</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -93,7 +93,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="dynamodb-table.svg" isActive="true" />
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="lightning.svg" isActive="true" />
             <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="" isActive="true" />
           </properties>
         </stereotype>
