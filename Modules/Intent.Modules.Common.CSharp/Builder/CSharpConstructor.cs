@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStatements
+public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStatements, IHasICSharpParameters
 {
     public CSharpClass Class { get; }
     public string AccessModifier { get; private set; } = "public ";
@@ -13,6 +13,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
     public List<CSharpStatement> Statements { get; } = new();
 
     IList<CSharpStatement> IHasCSharpStatements.Statements => this.Statements;
+    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
 
     public CSharpConstructor(CSharpClass @class)
     {

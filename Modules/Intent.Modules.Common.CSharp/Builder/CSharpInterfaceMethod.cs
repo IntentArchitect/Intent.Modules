@@ -5,7 +5,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCSharpStatements
+public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCSharpStatements, IHasICSharpParameters
 {
     public string ReturnType { get; }
     public string Name { get; }
@@ -16,6 +16,8 @@ public class CSharpInterfaceMethod : CSharpMember<CSharpInterfaceMethod>, IHasCS
     public IList<CSharpParameter> Parameters { get; } = new List<CSharpParameter>();
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
+
+    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
 
     public CSharpInterfaceMethod(string returnType, string name)
     {

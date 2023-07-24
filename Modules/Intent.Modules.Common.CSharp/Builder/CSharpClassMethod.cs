@@ -6,7 +6,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements
+public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStatements, IHasICSharpParameters
 {
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
     protected string AsyncMode { get; private set; } = string.Empty;
@@ -20,6 +20,8 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
     public IList<CSharpGenericParameter> GenericParameters { get; } = new List<CSharpGenericParameter>();
     public IList<CSharpGenericTypeConstraint> GenericTypeConstraints { get; } = new List<CSharpGenericTypeConstraint>();
     public string ExplicitImplementationFor { get; private set; }
+    IEnumerable<ICSharpParameter> IHasICSharpParameters.Parameters => this.Parameters;
+
 
     public CSharpClassMethod(string returnType, string name)
     {

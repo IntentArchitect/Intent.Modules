@@ -2,6 +2,7 @@ using Intent.Metadata.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -43,10 +44,25 @@ public abstract class CSharpDeclaration<TImpl> : CSharpMetadataBase<TImpl>
 " : string.Empty)}";
     }
 
-    protected string GetComments(string indentation)
+    protected virtual string GetComments(string indentation)
     {
-        return $@"{(!XmlComments.IsEmpty() ? $@"{XmlComments.ToString(indentation)}
-" : string.Empty)}";
+        StringBuilder result = new StringBuilder();
+        if (!XmlComments.IsEmpty())
+        {
+            result.AppendLine(XmlComments.ToString(indentation));
+        }
+        if (this is IHasICSharpParameters withParameter)
+        {
+            foreach (var parameter in withParameter.Parameters)
+            {
+                if (string.IsNullOrEmpty(parameter.XmlDocComment))
+                {
+                    continue;
+                }
+                result.AppendLine($"{indentation}/// <param name=\"{parameter.Name}\">>{parameter.XmlDocComment}</param>");
+            }
+        }
+        return result.ToString();
     }
 }
 

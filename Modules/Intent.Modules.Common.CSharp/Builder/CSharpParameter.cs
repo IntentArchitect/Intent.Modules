@@ -1,17 +1,21 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Reflection.Metadata;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpParameter
+public class CSharpParameter : ICSharpParameter
 {
     public string Type { get; }
     public string Name { get; }
     public string DefaultValue { get; private set; }
     public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
     public bool HasThisModifier { get; private set; }
+    public string XmlDocComment { get; private set; }
 
     public CSharpParameter(string type, string name)
     {
@@ -34,6 +38,18 @@ public class CSharpParameter
         var param = new CSharpAttribute(name);
         Attributes.Add(param);
         configure?.Invoke(param);
+        return this;
+    }
+
+    public CSharpParameter WithXmlDocComment(IElement parameter)
+    {
+        return WithXmlDocComment(parameter?.Comment);
+    }
+
+    public CSharpParameter WithXmlDocComment(string comment)
+    {
+        if (!string.IsNullOrWhiteSpace(comment))
+            XmlDocComment = comment;
         return this;
     }
 

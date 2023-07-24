@@ -1,15 +1,17 @@
 using System;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpConstructorParameter
+public class CSharpConstructorParameter : ICSharpParameter
 {
     private readonly CSharpConstructor _constructor;
     public string Type { get; }
     public string Name { get; }
     public string DefaultValue { get; private set; }
+    public string XmlDocComment { get; private set; }
 
     public CSharpConstructorParameter(string type, string name, CSharpConstructor constructor)
     {
@@ -27,6 +29,19 @@ public class CSharpConstructorParameter
         Type = type;
         Name = name;
     }
+
+    public CSharpConstructorParameter WithXmlDocComment(IElement parameter)
+    {
+        return WithXmlDocComment(parameter?.Comment);
+    }
+
+    public CSharpConstructorParameter WithXmlDocComment(string comment)
+    {
+        if (!string.IsNullOrWhiteSpace(comment))
+            XmlDocComment = comment;
+        return this;
+    }
+
     public CSharpConstructorParameter IntroduceField(Action<CSharpField> configure = null)
     {
         return IntroduceField((field, _) => configure?.Invoke(field));
