@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="96a4fa17-6283-4626-835e-a8f013d98b19" version="3.1.0">
+  <name>Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="5eea5fba-15df-4971-8541-6f19bad4297d">Element Visual Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction />
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>9cd801bb-6b69-4eac-8d08-23c4e6ade03c</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="838dcc53-b73e-4381-a3d2-db0afaf230b2">
+      <hint>Limits where associations can connect. Returns an array of points (i.e. {x,y}[]).</hint>
+      <name>Anchor Points</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(optional)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-visual-api</apiTypeDefinition>
+      <isRequiredFunction />
+    </property>
+  </properties>
+</stereotypeDefinition>

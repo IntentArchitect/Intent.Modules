@@ -35,6 +35,30 @@ namespace Intent.ModuleBuilder.Api
             return true;
         }
 
+        public static Settings GetSettings(this ElementVisualSettingsModel model)
+        {
+            var stereotype = model.GetStereotype("Settings");
+            return stereotype != null ? new Settings(stereotype) : null;
+        }
+
+
+        public static bool HasSettings(this ElementVisualSettingsModel model)
+        {
+            return model.HasStereotype("Settings");
+        }
+
+        public static bool TryGetSettings(this ElementVisualSettingsModel model, out Settings stereotype)
+        {
+            if (!HasSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new Settings(model.GetStereotype("Settings"));
+            return true;
+        }
+
 
         public class PositionSettings
         {
@@ -65,6 +89,24 @@ namespace Intent.ModuleBuilder.Api
             public string Height()
             {
                 return _stereotype.GetProperty<string>("Height");
+            }
+
+        }
+
+        public class Settings
+        {
+            private IStereotype _stereotype;
+
+            public Settings(IStereotype stereotype)
+            {
+                _stereotype = stereotype;
+            }
+
+            public string Name => _stereotype.Name;
+
+            public string AnchorPoints()
+            {
+                return _stereotype.GetProperty<string>("Anchor Points");
             }
 
         }

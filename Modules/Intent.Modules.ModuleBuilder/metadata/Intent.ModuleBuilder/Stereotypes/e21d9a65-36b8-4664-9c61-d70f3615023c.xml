@@ -20,6 +20,20 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
+    <property id="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21">
+      <name>Line Type</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Elbow Connector</defaultValue>
+      <valueOptions>
+        <option>Elbow Connector</option>
+        <option>Curved</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
     <property id="4d46ba5f-c4c5-4160-989e-1e76128d3efa">
       <name>Line Color</name>
       <type>string</type>

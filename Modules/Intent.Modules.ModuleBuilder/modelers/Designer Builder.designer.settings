@@ -202,7 +202,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         <childElementSetting type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
           <icon type="CharacterBox" source="V|#AB47BC" />
           <saveAsOwnFile>true</saveAsOwnFile>
-          <displayFunction>[visual]</displayFunction>
+          <displayFunction>return `[visual]${(hasType ? ": " + typeReference.display : "")}`;</displayFunction>
           <allowRename>false</allowRename>
           <allowAbstract>false</allowAbstract>
           <allowGenericTypes>false</allowGenericTypes>
@@ -210,9 +210,21 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <allowSorting>true</allowSorting>
           <sortChildren p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowFindInView>false</allowFindInView>
-          <allowTypeReference>false</allowTypeReference>
+          <allowTypeReference>true</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <typeReferenceSetting>
+            <isRequired>false</isRequired>
+            <targetTypes>
+              <type>Association Settings</type>
+            </targetTypes>
+            <allowIsNavigable>true</allowIsNavigable>
+            <allowIsNullable>true</allowIsNullable>
+            <allowIsCollection>true</allowIsCollection>
+            <isNavigableDefault>true</isNavigableDefault>
+            <isNullableDefault>false</isNullableDefault>
+            <isCollectionDefault>false</isCollectionDefault>
+          </typeReferenceSetting>
           <typeOrder>
             <type order="0">Association Source End Visual Settings</type>
             <type order="1">Association Destination End Visual Settings</type>

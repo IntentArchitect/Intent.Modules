@@ -12,7 +12,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class AssociationVisualSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class AssociationVisualSettingsModel : IMetadataModel, IHasStereotypes, IHasName, IHasTypeReference
     {
         public const string SpecializationType = "Association Visual Settings";
         protected readonly IElement _element;
@@ -35,6 +35,8 @@ namespace Intent.ModuleBuilder.Api
 
         [IntentManaged(Mode.Fully)]
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public ITypeReference TypeReference => _element.TypeReference;
 
         [IntentManaged(Mode.Fully)]
         public IElement InternalElement => _element;
@@ -82,8 +84,9 @@ namespace Intent.ModuleBuilder.Api
         {
             return new AssociationVisualSettingsPersistable()
             {
-                //SpecializationType = this.TypeReference.Element.Id, // TODO: GCB - this is already respected by IA in V3.4.1
-                //SpecializationTypeId = this.TypeReference.Element.Id, // TODO: GCB - this is already respected by IA in V3.4.1
+                SpecializationType = this.TypeReference.Element?.Name,
+                SpecializationTypeId = this.TypeReference.Element?.Id,
+                LineType = this.GetSetting().LineType().IsCurved() ? AssociationVisualLineType.Curved : AssociationVisualLineType.ElbowConnector,
                 LineColor = this.GetSetting().LineColor(),
                 LineWidth = this.GetSetting().LineWidth(),
                 LineDashArray = this.GetSetting().LineDashArray(),

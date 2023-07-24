@@ -47,6 +47,11 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
+            public LineTypeOptions LineType()
+            {
+                return new LineTypeOptions(_stereotype.GetProperty<string>("Line Type"));
+            }
+
             public string LineColor()
             {
                 return _stereotype.GetProperty<string>("Line Color");
@@ -60,6 +65,44 @@ namespace Intent.ModuleBuilder.Api
             public string LineDashArray()
             {
                 return _stereotype.GetProperty<string>("Line Dash Array");
+            }
+
+            public class LineTypeOptions
+            {
+                public readonly string Value;
+
+                public LineTypeOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public LineTypeOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Elbow Connector":
+                            return LineTypeOptionsEnum.ElbowConnector;
+                        case "Curved":
+                            return LineTypeOptionsEnum.Curved;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsElbowConnector()
+                {
+                    return Value == "Elbow Connector";
+                }
+                public bool IsCurved()
+                {
+                    return Value == "Curved";
+                }
+            }
+
+            public enum LineTypeOptionsEnum
+            {
+                ElbowConnector,
+                Curved
             }
 
         }
