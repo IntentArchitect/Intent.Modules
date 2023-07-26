@@ -46,4 +46,9 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
             return _element.ToString();
         }
     }
+
+    [IntentManaged(Mode.Ignore)]
+    public static class ServiceProxyDTOModelExtensions
+    {
+    }
 }
