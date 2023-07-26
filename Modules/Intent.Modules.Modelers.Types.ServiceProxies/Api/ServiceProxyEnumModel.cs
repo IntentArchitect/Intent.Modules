@@ -13,9 +13,8 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 {
     public class ServiceProxyEnumModel : EnumModel, IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "Service Proxy Enum";
-        public const string SpecializationTypeId = "54ddf4bc-73f5-4c8f-9f29-cf0175b236d4";
-        protected readonly IElement _element;
+        public new const string SpecializationType = "Service Proxy Enum";
+        public new const string SpecializationTypeId = "54ddf4bc-73f5-4c8f-9f29-cf0175b236d4";
 
         public ServiceProxyEnumModel(IElement element, ServiceProxyModel serviceProxy) : base(element)
         {
@@ -33,18 +32,18 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
+            if (obj.GetType() != GetType()) return false;
             return Equals((ServiceProxyEnumModel)obj);
         }
 
         public override int GetHashCode()
         {
-            return (_element != null ? _element.GetHashCode() : 0);
+            return _element != null ? _element.GetHashCode() : 0;
         }
-    }
 
-    [IntentManaged(Mode.Ignore)]
-    public static class ServiceProxyEnumModelExtensions
-    {
+        public override string ToString()
+        {
+            return _element.ToString();
+        }
     }
 }

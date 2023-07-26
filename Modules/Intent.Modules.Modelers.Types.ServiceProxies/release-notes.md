@@ -1,6 +1,7 @@
 ### Version 4.1.0
 
 - Service references will allow operation selection for generating proxy clients.
+- Fixed issue where only ever a single enum would be generated per service proxy.
 
 ### Version 4.0.2
 
