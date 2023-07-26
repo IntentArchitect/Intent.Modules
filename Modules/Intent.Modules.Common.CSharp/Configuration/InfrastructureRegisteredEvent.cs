@@ -2,31 +2,39 @@
 
 namespace Intent.Modules.Common.CSharp.Configuration;
 
-public class InfrastructureRegisteredEvent : IForProjectWithRoleRequest
+public class InfrastructureRegisteredEvent
 {
+    /// <summary>
+    /// Creates a new instance of <see cref="InfrastructureRegisteredEvent" />.
+    /// </summary>
+    /// <remarks>
+    /// Modules such as <see href="(URL to healthcheck module readme)">Intent.AspNetCore.HealthChecks</see>
+    /// may listen to these events and generate appropriate code in response.
+    /// </remarks>
     public InfrastructureRegisteredEvent(
         string infrastructureComponent,
-        IDictionary<string, string> connectionDetails = null)
+        Dictionary<string, string> properties = null)
     {
         InfrastructureComponent = infrastructureComponent;
-        ConnectionDetails = connectionDetails ?? new Dictionary<string, string>();
+        Properties = properties ?? new Dictionary<string, string>();
     }
 
+    /// <summary>
+    /// The type of infrastructural component, e.g. SqlServer, MongoDb, Redis, etc.
+    /// </summary>
     public string InfrastructureComponent { get; }
-    public IDictionary<string, string> ConnectionDetails { get; }
+    
+    /// <summary>
+    /// Properties of the infrastructure, e.g. connection strings.
+    /// </summary>
+    public Dictionary<string, string> Properties { get; }
 
-    public InfrastructureRegisteredEvent AddConnectionDetial(string key, string value)
+    /// <summary>
+    /// Convenience method for adding an item to <see cref="Properties" />.
+    /// </summary>
+    public InfrastructureRegisteredEvent WithProperty(string key, string value)
     {
-        ConnectionDetails.Add(key, value);
+        Properties.Add(key, value);
         return this;
     }
-    
-    /// <inheritdoc />
-    public string ForProjectWithRole { get; }
-
-    /// <inheritdoc />
-    public bool WasHandled { get; private set; }
-
-    /// <inheritdoc />
-    public void MarkHandled() => WasHandled = true;
 }
