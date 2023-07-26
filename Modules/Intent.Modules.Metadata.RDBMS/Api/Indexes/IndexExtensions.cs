@@ -76,10 +76,13 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
 
         private static IndexColumn GetIndexColumn(AttributeModel model)
         {
+            AttributeModelStereotypeExtensions.Index.SortDirectionOptionsEnum sortDirection = model.GetIndex().SortDirection().Value == null ?
+                AttributeModelStereotypeExtensions.Index.SortDirectionOptionsEnum.Ascending :
+                model.GetIndex().SortDirection().AsEnum();
             return new IndexColumn
             {
                 Name = model.Name,
-                SortDirection = GetSortDirection(model.GetIndex().SortDirection().AsEnum()),
+                SortDirection = GetSortDirection( sortDirection ),
                 SourceType = model.InternalElement
             };
         }
@@ -87,10 +90,13 @@ namespace Intent.Modules.Metadata.RDBMS.Api.Indexes
 
         private static IndexColumn GetIndexColumn(IndexColumnModel model)
         {
+            IndexColumnModelStereotypeExtensions.Settings.SortDirectionOptionsEnum sortDirection = model.GetSettings().SortDirection().Value == null ?
+                IndexColumnModelStereotypeExtensions.Settings.SortDirectionOptionsEnum.Ascending :
+                model.GetSettings().SortDirection().AsEnum();
             return new IndexColumn
             {
                 Name = model.Name,
-                SortDirection = GetSortDirection(model.GetSettings().SortDirection().AsEnum()),
+                SortDirection = GetSortDirection(sortDirection),
                 SourceType = model.InternalElement.MappedElement?.Element,
             };
         }
