@@ -1,4 +1,4 @@
-/// <reference path="../common/on-map-functions.ts" />
+/// <reference path="./on-map-functions.ts" />
 
 function onMapCommand(element: MacroApi.Context.IElementApi): void{
 

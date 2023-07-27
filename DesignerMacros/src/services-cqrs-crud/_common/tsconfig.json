@@ -7,9 +7,6 @@
     "sourceMap": false,
     "types": []
   },
-  "include": [
-    "**/*"
-  ],
   "exclude": [
   ]
 }

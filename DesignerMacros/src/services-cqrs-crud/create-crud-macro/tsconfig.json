@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "ES2017",
     "removeComments": false,
-    "outFile": "./dist/dist.js",
+    "outFile": "./_dist.js",
     "sourceMap": false,
     "types": []
   },

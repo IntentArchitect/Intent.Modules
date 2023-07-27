@@ -1,4 +1,4 @@
-/// <reference path="../common/on-map-functions.ts" />
+/// <reference path="./on-map-functions.ts" />
 
 function onMapDto(element: MacroApi.Context.IElementApi): void{    
     var complexTypes: Array<string> = ["Data Contract", "Value Object"];
