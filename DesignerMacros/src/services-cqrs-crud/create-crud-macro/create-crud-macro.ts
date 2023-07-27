@@ -11,8 +11,7 @@
 /// <reference path="../_common/dto-on-map.ts" />
 /// <reference path="../_common/query-on-map.ts" />
 
-// services-cqrs-crud script (see ~/DesignerMacros/src/services-cqrs-crud folder in Intent.Modules)
-async function execute() { 
+async function execute() {
     let entity = await DomainHelper.openSelectEntityDialog();
     if (!entity) { return; }
 
@@ -30,7 +29,7 @@ async function execute() {
         operations.forEach(operation => {
             createCqrsCallOperationCommand(entity, operation, folder);
         })
-    } else{
+    } else {
         createCqrsUpdateCommand(entity, folder);
     }
     createCqrsDeleteCommand(entity, folder);
@@ -40,7 +39,7 @@ function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: M
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let expectedCommandName = `Create${baseName}Command`;
-    
+
     let primaryKeys = DomainHelper.getPrimaryKeys(entity);
 
     if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
@@ -84,7 +83,7 @@ function createCqrsFindByIdQuery(entity: MacroApi.Context.IElementApi, folder: M
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let expectedQueryName = `Get${baseName}ByIdQuery`;
-    
+
     if (folder.getChildren().some(x => x.getName() == expectedQueryName)) {
         return;
     }
@@ -116,7 +115,7 @@ function createCqrsFindAllQuery(entity: MacroApi.Context.IElementApi, folder: Ma
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, true);
     let expectedQueryName = `Get${baseName}Query`;
-    
+
     if (folder.getChildren().some(x => x.getName() == expectedQueryName)) {
         return;
     }
@@ -137,12 +136,12 @@ function createCqrsFindAllQuery(entity: MacroApi.Context.IElementApi, folder: Ma
             }
         })
     }
-    
+
     query.collapse();
 }
 
 
-function createCqrsUpdateCommand(entity : MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+function createCqrsUpdateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = getBaseNameForElement(owningAggregate, entity, false);
     let expectedCommandName = `Update${baseName}Command`;
@@ -169,7 +168,7 @@ function createCqrsUpdateCommand(entity : MacroApi.Context.IElementApi, folder: 
     command.collapse();
 }
 
-function createCqrsCallOperationCommand(entity : MacroApi.Context.IElementApi, operation : MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
+function createCqrsCallOperationCommand(entity: MacroApi.Context.IElementApi, operation: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
     let baseName = owningAggregate ? owningAggregate.getName() : "";
     let expectedCommandName = `${toPascalCase(operation.getName())}${baseName}Command`;
@@ -279,7 +278,7 @@ function createCqrsResultTypeDto(entity, folder: MacroApi.Context.IElementApi) {
 }
 
 
-function getBaseNameForElement(owningAggregate, entity, entityIsMany) : string {
+function getBaseNameForElement(owningAggregate, entity, entityIsMany): string {
     let entityName = entityIsMany ? toPascalCase(pluralize(entity.name)) : toPascalCase(entity.name);
     return owningAggregate ? `${toPascalCase(owningAggregate.name)}${entityName}` : entityName;
 }

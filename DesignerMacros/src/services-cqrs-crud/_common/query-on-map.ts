@@ -1,6 +1,6 @@
 /// <reference path="./on-map-functions.ts" />
 
-function onMapQuery(element: MacroApi.Context.IElementApi): void{    
+function onMapQuery(element: MacroApi.Context.IElementApi): void {
     var complexTypes: Array<string> = ["Data Contract", "Value Object"];
 
     let fields = element.getChildren("DTO-Field")
@@ -11,26 +11,25 @@ function onMapQuery(element: MacroApi.Context.IElementApi): void{
     });
 
     let complexAttributes = element.getChildren("DTO-Field")
-        .filter(x => x.typeReference.getType() == null 
+        .filter(x => x.typeReference.getType() == null
             && (complexTypes.includes(x.getMapping()?.getElement()?.typeReference?.getType()?.specialization)
-                ));
+            ));
 
     complexAttributes.forEach(f => {
         getOrCreateQueryCrudDto(element, f);
-});     
-
+    });
 }
 
-function getOrCreateQueryCrudDto(element : MacroApi.Context.IElementApi, dtoField : MacroApi.Context.IElementApi){
+function getOrCreateQueryCrudDto(element: MacroApi.Context.IElementApi, dtoField: MacroApi.Context.IElementApi) {
     const projectMappingSettingId = "942eae46-49f1-450e-9274-a92d40ac35fa";
 
     let mappedElement = dtoField.getMapping().getElement();
 
     let domainName = mappedElement.typeReference.getType().getName();
-    let baseName = element.getMetadata("baseName") 
+    let baseName = element.getMetadata("baseName")
         ? `${element.getMetadata("baseName")}${domainName}`
         : `${domainName}`;
-    let dtoName =  baseName;
+    let dtoName = baseName;
     let dto = getOrCreateDto(dtoName, element.getParent());
     dto.setMapping(mappedElement.typeReference.getTypeId(), projectMappingSettingId);
     dto.setMetadata("baseName", baseName);
@@ -40,15 +39,14 @@ function getOrCreateQueryCrudDto(element : MacroApi.Context.IElementApi, dtoFiel
     dtoField.typeReference.setType(dto.id);
 }
 
-
-function ensureDtoFieldsQuery(mappedElement : MacroApi.Context.IElementApi, dto : MacroApi.Context.IElementApi) {
+function ensureDtoFieldsQuery(mappedElement: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi) {
     let dtoUpdated = false;
     let mappedElementAttributes = mappedElement
         .typeReference
         .getType()
         .getChildren("Attribute");
     let dtoFields = dto.getChildren("DTO-Field");
-    for (let attribute of mappedElementAttributes.filter(x => ! dtoFields.some(y => x.getName() === y.getName()))) {
+    for (let attribute of mappedElementAttributes.filter(x => !dtoFields.some(y => x.getName() === y.getName()))) {
         if (dto.getChildren("DTO-Field").some(x => x.getName() == attribute.getName())) {
             continue;
         }
@@ -64,4 +62,3 @@ function ensureDtoFieldsQuery(mappedElement : MacroApi.Context.IElementApi, dto 
         dto.collapse();
     }
 }
-

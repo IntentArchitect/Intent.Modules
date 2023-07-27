@@ -40,13 +40,13 @@ function getOrCreateDto(elementName: string, parentElement: MacroApi.Context.IEl
     return dto;
 }
 
-function ensureDtoFields(autoAddPrimaryKey : boolean, mappedElement : MacroApi.Context.IElementApi, dto : MacroApi.Context.IElementApi) {
+function ensureDtoFields(autoAddPrimaryKey: boolean, mappedElement: MacroApi.Context.IElementApi, dto: MacroApi.Context.IElementApi) {
     let dtoUpdated = false;
     let domainElement = mappedElement
         .typeReference
         .getType();
     let attributesWithMapPaths = getAttributesWithMapPath(domainElement);
-    let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true; 
+    let isCreateMode = dto.getMetadata("originalVerb")?.toLowerCase()?.startsWith("create") == true;
     for (var keyName of Object.keys(attributesWithMapPaths)) {
         let entry = attributesWithMapPaths[keyName];
         if (isCreateMode && entry.name?.toLowerCase() === "id") {
@@ -222,9 +222,9 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi) {
 function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi) {
     let attrDict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
     let attributes = entity.getChildren("Attribute")
-    .filter(x => !x.hasStereotype("Primary Key") &&
-        !legacyPartitionKey(x) &&
-        (x["hasMetadata"] && (!x.hasMetadata("set-by-infrastructure") || x.getMetadata("set-by-infrastructure")?.toLocaleLowerCase() != "true")));
+        .filter(x => !x.hasStereotype("Primary Key") &&
+            !legacyPartitionKey(x) &&
+            (x["hasMetadata"] && (!x.hasMetadata("set-by-infrastructure") || x.getMetadata("set-by-infrastructure")?.toLocaleLowerCase() != "true")));
     attributes.forEach(attr => attrDict[attr.id] = {
         id: attr.id,
         name: attr.getName(),
