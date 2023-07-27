@@ -24,6 +24,7 @@ namespace <#= Namespace #>
     {
         public override string TemplateId =>  <#= GetTemplateNameForTemplateId() #>.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget)
         {
 			return new <#= GetTemplateNameForTemplateId() #>(outputTarget);

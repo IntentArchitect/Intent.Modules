@@ -1,3 +1,7 @@
+### Version 3.6.8
+
+- Templates' template will now be under full management in certain areas.
+
 ### Version 3.6.7
 
 - Added `<tags></tags>` and `<releaseNotes></releaseNotes>` to `imodspec` files by default.
@@ -17,7 +21,7 @@
 
 ### Version 3.6.2
 
-- Updated module depenencies to prevent Software Factory warnings of possibly incompatible modules.
+- Updated module dependencies to prevent Software Factory warnings of possibly incompatible modules.
 
 ### Version 3.6.1
 
