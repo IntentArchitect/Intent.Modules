@@ -1,6 +1,6 @@
 ### Version 3.6.8
 
-- Templates' template will now be under full management in certain areas.
+- Templates and Decorators will now be under full management in certain areas.
 
 ### Version 3.6.7
 

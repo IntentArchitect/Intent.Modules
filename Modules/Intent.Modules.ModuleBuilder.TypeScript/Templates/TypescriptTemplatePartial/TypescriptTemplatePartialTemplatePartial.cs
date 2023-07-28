@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Engine;
@@ -11,6 +12,7 @@ using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
+using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -60,13 +62,31 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             }
         }
 
-        private string GetBaseType()
+        private string GetAccessModifier()
+        {
+            if (Model.GetTypeScriptTemplateSettings()?.TemplatingMethod()?.IsTypeScriptFileBuilder() == true
+                || Model.GetTypeScriptTemplateSettings()?.TemplatingMethod()?.IsCustom() == true)
+            {
+                return "public partial ";
+            }
+            return "partial ";
+        }
+
+        private IEnumerable<string> GetBaseTypes()
         {
             if (Model.DecoratorContract != null)
             {
-                return $"TypeScriptTemplateBase<{GetModelType()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
+                yield return $"TypeScriptTemplateBase<{GetModelType()}, {GetTypeName(TemplateDecoratorContractTemplate.TemplateId, Model.DecoratorContract)}>";
             }
-            return $"TypeScriptTemplateBase<{GetModelType()}>";
+            else
+            {
+                yield return $"TypeScriptTemplateBase<{GetModelType()}>";
+            }
+
+            if (Model.GetTypeScriptTemplateSettings().TemplatingMethod().IsTypeScriptFileBuilder())
+            {
+                yield return nameof(ITypescriptFileBuilderTemplate);
+            }
         }
 
         public string GetRole() => Model.GetRole();

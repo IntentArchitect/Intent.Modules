@@ -69,6 +69,8 @@ namespace Intent.ModuleBuilder.TypeScript.Api
                             return TemplatingMethodOptionsEnum.T4Template;
                         case "String Interpolation":
                             return TemplatingMethodOptionsEnum.StringInterpolation;
+                        case "Type Script File Builder":
+                            return TemplatingMethodOptionsEnum.TypeScriptFileBuilder;
                         case "Custom":
                             return TemplatingMethodOptionsEnum.Custom;
                         default:
@@ -84,6 +86,10 @@ namespace Intent.ModuleBuilder.TypeScript.Api
                 {
                     return Value == "String Interpolation";
                 }
+                public bool IsTypeScriptFileBuilder()
+                {
+                    return Value == "Type Script File Builder";
+                }
                 public bool IsCustom()
                 {
                     return Value == "Custom";
@@ -94,6 +100,7 @@ namespace Intent.ModuleBuilder.TypeScript.Api
             {
                 T4Template,
                 StringInterpolation,
+                TypeScriptFileBuilder,
                 Custom
             }
         }

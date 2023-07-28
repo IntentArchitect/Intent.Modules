@@ -12,22 +12,22 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates
 {
     public static class TemplateExtensions
     {
-        public static string GetTypescriptTemplatePartialName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel
+        public static string GetTypescriptTemplatePartialName<T>(this IIntentTemplate<T> template) where T : Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel
         {
             return template.GetTypeName(TypescriptTemplatePartialTemplate.TemplateId, template.Model);
         }
 
-        public static string GetTypescriptTemplatePartialName(this IntentTemplateBase template, Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel model)
+        public static string GetTypescriptTemplatePartialName(this IIntentTemplate template, Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel model)
         {
             return template.GetTypeName(TypescriptTemplatePartialTemplate.TemplateId, model);
         }
 
-        public static string GetTypescriptTemplateStringInterpolationName<T>(this IntentTemplateBase<T> template) where T : Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel
+        public static string GetTypescriptTemplateStringInterpolationName<T>(this IIntentTemplate<T> template) where T : Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel
         {
             return template.GetTypeName(TypescriptTemplateStringInterpolationTemplate.TemplateId, template.Model);
         }
 
-        public static string GetTypescriptTemplateStringInterpolationName(this IntentTemplateBase template, Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel model)
+        public static string GetTypescriptTemplateStringInterpolationName(this IIntentTemplate template, Intent.ModuleBuilder.TypeScript.Api.TypescriptFileTemplateModel model)
         {
             return template.GetTypeName(TypescriptTemplateStringInterpolationTemplate.TemplateId, model);
         }

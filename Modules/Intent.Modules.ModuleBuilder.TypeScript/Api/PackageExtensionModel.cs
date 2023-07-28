@@ -19,6 +19,7 @@ namespace Intent.ModuleBuilder.TypeScript.Api
         {
         }
 
+        [IntentManaged(Mode.Fully)]
         public IList<TypescriptFileTemplateModel> TypescriptTemplates => UnderlyingPackage.ChildElements
             .GetElementsOfType(TypescriptFileTemplateModel.SpecializationTypeId)
             .Select(x => new TypescriptFileTemplateModel(x))

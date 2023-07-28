@@ -9,6 +9,7 @@
   <applyMode>always</applyMode>
   <icon type="FontAwesome" source="file" />
   <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
   <displayFunction />
   <displayAsAnnotation>false</displayAsAnnotation>
   <displayAsText>true</displayAsText>
@@ -29,6 +30,7 @@
       <valueOptions>
         <option>T4 Template</option>
         <option>String Interpolation</option>
+        <option>Type Script File Builder</option>
         <option>Custom</option>
       </valueOptions>
       <lookupTypes />

@@ -17,6 +17,7 @@ namespace <#= Namespace #>
     [Description(<#= GetDecoratorTypeName() #>.DecoratorId)]
     public class <#= ClassName #> : DecoratorRegistration<<#= GetTemplateTypeName() #>, <#= GetDecoratorContractTypeName() #>>
     {
+        [IntentManaged(Mode.Fully)]
         public override <#= GetDecoratorContractTypeName() #> CreateDecoratorInstance(<#= GetTemplateTypeName() #> template, IApplication application)
         {
             return new <#= GetDecoratorTypeName() #>(template, application);

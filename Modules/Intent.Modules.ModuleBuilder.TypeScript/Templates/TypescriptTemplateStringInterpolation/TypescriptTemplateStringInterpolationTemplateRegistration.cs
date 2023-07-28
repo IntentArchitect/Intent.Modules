@@ -27,6 +27,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplateSt
 
         public override string TemplateId => TypescriptTemplateStringInterpolationTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, TypescriptFileTemplateModel model)
         {
             return new TypescriptTemplateStringInterpolationTemplate(outputTarget, model);

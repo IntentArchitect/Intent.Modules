@@ -27,9 +27,10 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
         public override string TemplateId => TypescriptTemplatePartialTemplate.TemplateId;
 
-        public override ITemplate CreateTemplateInstance(IOutputTarget project, TypescriptFileTemplateModel model)
+        [IntentManaged(Mode.Fully)]
+        public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, TypescriptFileTemplateModel model)
         {
-            return new TypescriptTemplatePartialTemplate(project, model);
+            return new TypescriptTemplatePartialTemplate(outputTarget, model);
         }
 
         [IntentManaged(Mode.Merge, Body = Mode.Ignore, Signature = Mode.Fully)]
