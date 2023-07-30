@@ -1,10 +1,3 @@
-/**
- * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
- */
-
 /// <reference path="../../common/domainHelper.ts" />
 /// <reference path="../../common/servicesHelper.ts" />
 /// <reference path="../_common/command-on-map.ts" />
@@ -61,10 +54,6 @@ function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: M
     }
     command.getElement().setMetadata("baseName", baseName);
 
-    if (owningAggregate) {
-        command.addChildrenFrom(DomainHelper.getForeignKeys(entity, owningAggregate));
-    }
-
     if (primaryKeys[0].typeId) {
         command.setReturnType(primaryKeys[0].typeId);
     }
@@ -75,7 +64,7 @@ function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: M
         command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
     }
 
-    onMapCommand(command.getElement());
+    onMapCommand(command.getElement(), true);
     command.collapse();
 }
 
@@ -156,15 +145,9 @@ function createCqrsUpdateCommand(entity: MacroApi.Context.IElementApi, folder: M
     command.mapToElement(entity);
     command.getElement().setMetadata("baseName", baseName);
 
-    if (owningAggregate) {
-        command.addChildrenFrom(DomainHelper.getForeignKeys(entity, owningAggregate));
-    }
-
-    command.addChildrenFrom(DomainHelper.getPrimaryKeys(entity));
-
     command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
 
-    onMapCommand(command.getElement());
+    onMapCommand(command.getElement(), true);
     command.collapse();
 }
 
@@ -184,21 +167,9 @@ function createCqrsCallOperationCommand(entity: MacroApi.Context.IElementApi, op
     command.getElement().setMapping([entity.id, operation.id], "7c31c459-6229-4f10-bf13-507348cd8828") // Map to Domain Operation
     command.getElement().setMetadata("baseName", baseName);
 
-    if (owningAggregate) {
-        command.addChildrenFrom(DomainHelper.getForeignKeys(entity, owningAggregate).map(x => {
-            x.mapPath = null;
-            return x;
-        }));
-    }
-
-    command.addChildrenFrom(DomainHelper.getPrimaryKeys(entity).map(x => {
-        x.mapPath = null;
-        return x;
-    }));
-
     command.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter"));
 
-    onMapCommand(command.getElement());
+    onMapCommand(command.getElement(), true);
     command.collapse();
 }
 
@@ -230,7 +201,7 @@ function createCqrsDeleteCommand(entity: MacroApi.Context.IElementApi, folder: M
     let primaryKeys = DomainHelper.getPrimaryKeys(entity);
     ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
 
-    onMapCommand(command);
+    onMapCommand(command, true);
     command.collapse();
 }
 
@@ -282,4 +253,12 @@ function getBaseNameForElement(owningAggregate, entity, entityIsMany): string {
     let entityName = entityIsMany ? toPascalCase(pluralize(entity.name)) : toPascalCase(entity.name);
     return owningAggregate ? `${toPascalCase(owningAggregate.name)}${entityName}` : entityName;
 }
+
+/**
+ * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
+ */
+
 //await execute();

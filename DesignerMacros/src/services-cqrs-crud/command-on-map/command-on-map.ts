@@ -7,4 +7,4 @@
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/command-on-map/command-on-map.ts
  */
 
-onMapCommand(element);
+onMapCommand(element, false);

@@ -4,7 +4,7 @@ class ServicesConstants {
 }
 
 class ServicesHelper {
-    static addDtoFieldsFromDomain(dto : MacroApi.Context.IElementApi, attributes: IAttributeWithMapPath[]) {
+    static addDtoFieldsFromDomain(dto: MacroApi.Context.IElementApi, attributes: IAttributeWithMapPath[]) {
         for (let key of attributes) {
             if (dto && !dto.getChildren("DTO-Field").some(x => x.getName() == ServicesHelper.getFieldFormat(key.name))) {
                 let primaryKeyDtoField = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
@@ -14,15 +14,15 @@ class ServicesHelper {
         }
     }
 
-    static getParameterFormat(str : string) : string {
+    static getParameterFormat(str: string): string {
         return toCamelCase(str);
     }
-    
-    static getRoutingFormat(str : string) : string {
+
+    static getRoutingFormat(str: string): string {
         return pluralize(str);
     }
-    
-    static getFieldFormat(str : string) : string {
+
+    static getFieldFormat(str: string): string {
         return toPascalCase(str);
     }
 }
@@ -35,8 +35,10 @@ interface IElementSettings {
 class ElementManager {
     private mappedElement: MacroApi.Context.IElementApi;
 
-    constructor(private command: MacroApi.Context.IElementApi, private settings: IElementSettings){}
-    
+    constructor(private command: MacroApi.Context.IElementApi, private settings: IElementSettings) {
+        this.mappedElement = command.getMapping()?.getElement();
+    }
+
     get id(): string { return this.command.id; };
 
     setReturnType(typeId: string, isCollection?: boolean): ElementManager {
@@ -57,14 +59,23 @@ class ElementManager {
 
     addChildrenFrom(elements: IAttributeWithMapPath[]) {
         elements.forEach(e => {
-            if (this.command.getChildren(this.settings.childSpecialization).some(x => x.getMapping()?.getElement()?.id == e.id)) { 
+            if (e.mapPath != null) {
+                if (this.command.getChildren(this.settings.childSpecialization).some(x => x.getMapping()?.getElement()?.id == e.id)) {
+                    return;
+                }
+            }
+            else if (this.command.getChildren(this.settings.childSpecialization).some(x => x.getName().toLowerCase() === e.name.toLowerCase())) {
                 return;
             }
+
             let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
             if (this.mappedElement != null && e.mapPath) {
                 field.setMapping(e.mapPath);
+                debugConsole.log("did it");
+            } else {
+                debugConsole.log("did not");
             }
         });
         return this;
