@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Intent.Engine;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
@@ -57,32 +58,52 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
                 {
                     arguments += " --disable-build-servers";
                 }
-                var processStartInfo = new ProcessStartInfo
+
+                var process = new Process
                 {
-                    FileName = "dotnet",
-                    Arguments = arguments,
-                    RedirectStandardInput = true,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = false,
-                    UseShellExecute = false,
-                    WorkingDirectory = location,
-                    EnvironmentVariables =
+                    StartInfo = new ProcessStartInfo
                     {
-                        ["MSBUILDDISABLENODEREUSE"] = "1"
+                        FileName = "dotnet",
+                        Arguments = arguments,
+                        RedirectStandardInput = true,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = false,
+                        UseShellExecute = false,
+                        WorkingDirectory = location,
+                        EnvironmentVariables =
+                        {
+                            ["MSBUILDDISABLENODEREUSE"] = "1"
+                        }
                     }
                 };
 
-                var cmd = Process.Start(processStartInfo)!;
-                cmd.WaitForExit();
-
-                var output = cmd.StandardOutput.ReadToEnd();
-                if (cmd.ExitCode == 0)
+                var succeeded = false;
+                var output = new StringBuilder();
+                process.OutputDataReceived += (_, args) =>
                 {
-                    Logging.Log.Info(output);
+                    if (args.Data?.Trim().StartsWith("Build succeeded.") == true)
+                    {
+                        succeeded = true;
+                    }
+                    else if (args.Data?.Trim().StartsWith("Time Elapsed ") == true)
+                    {
+                        process.Kill(true);
+                    }
+
+                    output.AppendLine(args.Data);
+                };
+
+                process.Start();
+                process.BeginOutputReadLine();
+                process.WaitForExit();
+
+                if (succeeded)
+                {
+                    Logging.Log.Info(output.ToString());
                 }
                 else
                 {
-                    Logging.Log.Failure(output);
+                    Logging.Log.Failure(output.ToString());
                 }
             }
             catch (Exception e)

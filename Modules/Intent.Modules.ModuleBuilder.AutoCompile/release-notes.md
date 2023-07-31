@@ -1,6 +1,6 @@
 ### Version 3.3.6
 
-- Now calls `dotnet build-server shutdown` before calling `dotnet build` in case of pre-existing build servers which may cause the process to not exit.
+- Now calls `dotnet build-server shutdown` before calling `dotnet build` in case of pre-existing build servers which may cause the process to not exit. Additionally, will force exit the process when "Time Elapsed " is detected.
 
 ### Version 3.3.5
 
