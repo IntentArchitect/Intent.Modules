@@ -39,7 +39,6 @@ function validateRestRoutes(element) {
     return "";
 }
 function getOperationPath(operation) {
-    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
     let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
     let serviceHttpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd";
     let httpSettings = operation.getStereotype(httpSettingsId);
@@ -47,7 +46,7 @@ function getOperationPath(operation) {
         return "";
     }
     let operationPath = httpSettings.getProperty("Route").value;
-    if (operation.getParent().getStereotype(serviceHttpServiceSettingsId)) {
+    if (operation.getParent().getStereotype(serviceHttpServiceSettingsId) &amp;&amp; operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value != "") {
         let servicePath = operation.getParent().getStereotype(serviceHttpServiceSettingsId).getProperty("Route").value;
         return `${servicePath}/${operationPath}`;
     }
@@ -82,14 +81,24 @@ function matchOperation(possibleDuplicate, changingElement, routeToCheck, verbTo
         let duplicateVersions;
         let changeStereoType;
         let possibleDuplicateStereoType;
-        if (changingElement.getParent().getStereotype(apiVersionSettingId))
-            changeStereoType = changingElement.getParent().getStereotype(apiVersionSettingId);
-        if (changingElement.getStereotype(apiVersionSettingId))
+        if (changingElement.getStereotype(apiVersionSettingId)) {
             changeStereoType = changingElement.getStereotype(apiVersionSettingId);
-        if (possibleDuplicate.getParent().getStereotype(apiVersionSettingId))
-            possibleDuplicateStereoType = possibleDuplicate.getParent().getStereotype(apiVersionSettingId);
-        if (possibleDuplicate.getStereotype(apiVersionSettingId))
+        }
+        else if (changingElement.getParent().getStereotype(apiVersionSettingId)) {
+            changeStereoType = changingElement.getParent().getStereotype(apiVersionSettingId);
+        }
+        else {
+            return result;
+        }
+        if (possibleDuplicate.getStereotype(apiVersionSettingId)) {
             possibleDuplicateStereoType = possibleDuplicate.getStereotype(apiVersionSettingId);
+        }
+        else if (possibleDuplicate.getParent().getStereotype(apiVersionSettingId)) {
+            possibleDuplicateStereoType = possibleDuplicate.getParent().getStereotype(apiVersionSettingId);
+        }
+        else {
+            return result;
+        }
         changingVersions = JSON.parse(changeStereoType.getProperty("Applicable Versions").value);
         duplicateVersions = JSON.parse(possibleDuplicateStereoType.getProperty("Applicable Versions").value);
         let intersection = changingVersions.filter(value =&gt; duplicateVersions.includes(value));
@@ -127,6 +136,7 @@ function validateRestRoutesOperation(element) {
     }
     return validateRestRoutes(element);
 }
+//Comment / UnComment below when you publish
 //validateRestRoutesOperation(element);
 return validateRestRoutesOperation(lookup(id));
 </validateFunctionOverride>
