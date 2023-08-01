@@ -6,7 +6,7 @@
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
-  <parentFolderId>6ac83417-e6d5-4699-b88c-aa1d7f894326</parentFolderId>
+  <parentFolderId>a542c9e9-9e5d-42a3-9bc7-3e9a5837222a</parentFolderId>
   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
   <packageName>Intent.Modelers.Services.CQRS</packageName>
   <stereotypes>

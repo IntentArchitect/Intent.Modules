@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="124421d3-1ae5-493c-a33b-4d22d186f1b7" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+<class id="325e65bc-eab5-40f4-a32a-807e895bc775" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
-  <display>[visual]: void</display>
+  <display>[visual]: Domain Event Origin Association</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="da7d0d71-c176-452b-9b31-2c4fafaba54a">
+  <typeReference id="e0fcb4b9-bd07-4b6b-8da3-923c7071c608">
+    <typeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
+    <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
+    <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>1f0777dc-4647-408c-b313-ab1bb0a659cf</parentFolderId>
+  <parentFolderId>aa58a1e0-7c42-4150-84cb-573307da83a6</parentFolderId>
   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
   <packageName>Intent.Modelers.Services.CQRS</packageName>
   <stereotypes>
@@ -32,13 +35,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="0f9bc5e0-5683-4eab-a133-2da7914cf5db" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+    <childElement id="4eff6c15-0ea9-4746-ab7b-d9b33719d3e0" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>124421d3-1ae5-493c-a33b-4d22d186f1b7</parentFolderId>
+      <parentFolderId>325e65bc-eab5-40f4-a32a-807e895bc775</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -79,13 +82,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="1b8b334f-b490-4510-9e90-97ee8feaa0ce" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+    <childElement id="2cfba43f-a886-45e4-b2b0-657091ebb36f" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
       <name>[desintation]</name>
       <display>[destination]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>124421d3-1ae5-493c-a33b-4d22d186f1b7</parentFolderId>
+      <parentFolderId>325e65bc-eab5-40f4-a32a-807e895bc775</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>

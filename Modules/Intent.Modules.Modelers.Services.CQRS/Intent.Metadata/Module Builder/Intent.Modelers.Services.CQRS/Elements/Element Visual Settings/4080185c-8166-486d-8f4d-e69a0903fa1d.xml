@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="58b63e6d-7ef5-44b7-9494-ce9c3922abd1" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
+<class id="4080185c-8166-486d-8f4d-e69a0903fa1d" type="Element Visual Settings" typeId="5eea5fba-15df-4971-8541-6f19bad4297d">
   <name>[element visual]</name>
-  <display>[visual]: Query</display>
+  <display>[visual]: Message Subscription</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="e0e76199-69f0-48e8-a623-994668696b2c">
-    <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+  <typeReference id="735b5aab-08c4-4f58-93aa-a3135f987670">
+    <typeId>0e3b0956-ba2e-47a2-9fe7-a26bfe7061cb</typeId>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -29,7 +29,7 @@
         <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" isActive="true" />
         <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" isActive="true" />
         <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" isActive="true" />
-        <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="70" isActive="true" />
+        <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="80" isActive="true" />
       </properties>
     </stereotype>
     <stereotype stereotypeDefinitionId="96a4fa17-6283-4626-835e-a8f013d98b19" name="Settings">
@@ -43,13 +43,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="6ba3ae81-1541-47ae-bed7-ad688d9feec5" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+    <childElement id="e285fe39-6e1b-47e5-a178-2d52947a2911" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
       <name>Display Label  for Symbol</name>
       <display>[draw text]: Display Label  for Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>58b63e6d-7ef5-44b7-9494-ce9c3922abd1</parentFolderId>
+      <parentFolderId>4080185c-8166-486d-8f4d-e69a0903fa1d</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -58,7 +58,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return getName();" isActive="true" />
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return element.typeReference.display;" isActive="true" />
             <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="" isActive="true" />
             <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: bold; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
           </properties>
@@ -78,13 +78,48 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="88379d7e-d5d4-46f0-95ec-2e995692625d" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
+    <childElement id="b27a90f6-80b3-4865-9968-5f8c4a5d4118" type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
+      <name>Display Label  for Symbol</name>
+      <display>[draw text]: Display Label  for Symbol</display>
+      <isAbstract>false</isAbstract>
+      <genericTypes />
+      <isMapped>false</isMapped>
+      <parentFolderId>4080185c-8166-486d-8f4d-e69a0903fa1d</parentFolderId>
+      <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+      <packageName>Intent.Modelers.Services.CQRS</packageName>
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="1cb12b3c-f000-4331-b3fc-4250a5ced3fa" name="Text Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="30a84702-a35a-415d-bd8f-66a20d4c858b" display="Text" value="return `subscription`;" isActive="true" />
+            <property name="3b7f711f-8a28-42c0-903d-c683a2eea56e" display="Condition" value="" isActive="true" />
+            <property name="9d47b9f2-f715-4762-b276-1dc702dad067" display="Style" value="`font-size: 12px; &#xD;&#xA;font-family: Helvetica; &#xD;&#xA;font-weight: normal; &#xD;&#xA;text-align: center; &#xD;&#xA;white-space: inherit;&#xD;&#xA;vertical-align: center`" isActive="true" />
+          </properties>
+        </stereotype>
+        <stereotype stereotypeDefinitionId="fc50924a-9e51-40b9-88b6-c7556febdaea" name="Position Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="39117662-2823-4915-865e-4a0a178f1507" display="X" value="${x}" isActive="true" />
+            <property name="7cb647b7-bf50-4f9e-9f7b-8e01206d95c0" display="Y" value="${y + 68}" isActive="true" />
+            <property name="b26180c1-e60a-4640-8284-51e760290a17" display="Width" value="${w}" isActive="true" />
+            <property name="51148847-9d8b-4294-9aba-f84211ba82d0" display="Height" value="18" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
+      <metadata />
+      <childElements />
+    </childElement>
+    <childElement id="442d2723-11a8-4866-bf07-ab7a9dfab538" type="SVG Resource Draw Settings" typeId="b5566ace-3353-4009-9370-475b561451a0">
       <name>Domain Event Symbol</name>
       <display>[draw svg]: Domain Event Symbol</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>58b63e6d-7ef5-44b7-9494-ce9c3922abd1</parentFolderId>
+      <parentFolderId>4080185c-8166-486d-8f4d-e69a0903fa1d</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -93,7 +128,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="sql-query.svg" isActive="true" />
+            <property name="8b60333a-8d5a-4ada-a498-2662a43d1c03" display="Resource Path" value="message.svg" isActive="true" />
             <property name="6addd9b9-6f48-4054-b74c-f670e3b5f847" display="Condition" value="" isActive="true" />
           </properties>
         </stereotype>

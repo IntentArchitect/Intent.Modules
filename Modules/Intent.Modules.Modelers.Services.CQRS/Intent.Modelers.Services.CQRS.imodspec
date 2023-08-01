@@ -14,8 +14,8 @@
   <dependencies>
     <dependency id="Intent.Common" version="3.4.1" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
-    <dependency id="Intent.Modelers.Domain" version="3.4.3" />
-    <dependency id="Intent.Modelers.Services" version="3.4.3" />
+    <dependency id="Intent.Modelers.Domain" version="3.4.4" />
+    <dependency id="Intent.Modelers.Services" version="3.4.4" />
   </dependencies>
   <files>
     <file src="$outDir$/$id$.dll" />
@@ -24,7 +24,9 @@
   <metadata>
     <install target="Services" src="modelers/Services CQRS Extension.designer.settings" externalReference="6ac83417-e6d5-4699-b88c-aa1d7f894326" />
     <install target="Services;Module Builder" src="Intent.Metadata/Module Builder/Intent.Modelers.Services.CQRS/Intent.Modelers.Services.CQRS.pkg.config" externalReference="45fb22e9-f493-4de5-9fe0-845f783aa9d4" />
+    <install target="Services" src="modelers/Testing Mapping Systems CQRS Extension.designer.settings" externalReference="a542c9e9-9e5d-42a3-9bc7-3e9a5837222a" />
   </metadata>
   <moduleSettings />
   <moduleSettingsExtensions />
+  <tags />
 </package>

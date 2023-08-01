@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="124421d3-1ae5-493c-a33b-4d22d186f1b7" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+<class id="2e47cc1b-fb07-4358-9111-3cc10e495c91" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
   <display>[visual]: void</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="da7d0d71-c176-452b-9b31-2c4fafaba54a">
+  <typeReference id="4c7e8ddb-5dd3-4cdf-ad51-064cb51294ac">
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -14,7 +14,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>1f0777dc-4647-408c-b313-ab1bb0a659cf</parentFolderId>
+  <parentFolderId>70bf1bcd-bdcd-4f85-a975-4b266a1bdc0c</parentFolderId>
   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
   <packageName>Intent.Modelers.Services.CQRS</packageName>
   <stereotypes>
@@ -32,13 +32,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="0f9bc5e0-5683-4eab-a133-2da7914cf5db" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+    <childElement id="2f539532-300a-4846-b29f-2d44785d0a1e" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>124421d3-1ae5-493c-a33b-4d22d186f1b7</parentFolderId>
+      <parentFolderId>2e47cc1b-fb07-4358-9111-3cc10e495c91</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -47,7 +47,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `a 4,4 0 1,0 4,4 &#xD;&#xA;        a 4,4 0 1,0 -4,4`;" isActive="true" />
+            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `l 4 8 l -8 0 l 4 -8 Z`" isActive="true" />
             <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" isActive="true" />
             <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
             <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
@@ -79,13 +79,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="1b8b334f-b490-4510-9e90-97ee8feaa0ce" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+    <childElement id="cf18ce25-25e5-4e61-866a-d720f1dc61f6" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
       <name>[desintation]</name>
       <display>[destination]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>124421d3-1ae5-493c-a33b-4d22d186f1b7</parentFolderId>
+      <parentFolderId>2e47cc1b-fb07-4358-9111-3cc10e495c91</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -94,7 +94,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `l 4 8 l -8 0 l 4 -8 Z`" isActive="true" />
+            <property name="74cdd678-5dfb-4cb5-95ce-ae1c7efd3b27" display="Path" value="return `a 4,4 0 1,0 4,4         a 4,4 0 1,0 -4,4`;" isActive="true" />
             <property name="39eb4c46-204c-4f3d-9cf9-348f137f43dc" display="Line Color" value="" isActive="true" />
             <property name="6fbe8f9a-3820-47c8-9cd6-03426ad0f7df" display="Line Width" isActive="true" />
             <property name="33bc633b-e627-49df-b105-398e32e080ee" display="Line Dash Array" isActive="true" />
