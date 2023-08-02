@@ -36,9 +36,9 @@ namespace <#= Namespace #>
 <#  if (Model.GetCSharpTemplateSettings()?.TemplatingMethod().IsCSharpFileBuilder() == true) { #>
 <#      if (IsForInterface()) { #>
             CSharpFile = new CSharpFile(this.GetNamespace(), this.GetFolderPath())
-                .AddInterface($"<#= GetClassName() #>", @class =>
+                .AddInterface($"<#= GetClassName() #>", @interface =>
                 {
-                    @class.AddMethod("bool", "ExampleMethod", method =>
+                    @interface.AddMethod("bool", "ExampleMethod", method =>
                     {
                         method.AddParameter("string", "exampleParam");
                     });

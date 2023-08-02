@@ -23,7 +23,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "C:\Dev\Intent.Modules.Alt\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
+    #line 1 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "17.0.0.0")]
     public partial class FactoryExtensionTemplate : CSharpTemplateBase<Intent.ModuleBuilder.Api.FactoryExtensionModel>
     {
@@ -37,21 +37,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
                     "FactoryExtensions;\r\n\r\n[assembly: DefaultIntentManaged(Mode.Fully)]\r\n\r\nnamespace " +
                     "");
             
-            #line 17 "C:\Dev\Intent.Modules.Alt\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
+            #line 17 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
             this.Write("\r\n{\r\n    [IntentManaged(Mode.Fully, Body = Mode.Merge)]\r\n    public class ");
             
-            #line 20 "C:\Dev\Intent.Modules.Alt\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
+            #line 20 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(ClassName));
             
             #line default
             #line hidden
             this.Write(" : FactoryExtensionBase\r\n    {\r\n        public override string Id => \"");
             
-            #line 22 "C:\Dev\Intent.Modules.Alt\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
+            #line 22 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\FactoryExtension\FactoryExtensionTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(GetId()));
             
             #line default
@@ -63,7 +63,21 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
 
         /// <summary>
         /// This is an example override which would extend the
-        /// <see cref=""ExecutionLifeCycleSteps.Start""/> phase of the Software Factory execution.
+        /// <see cref=""ExecutionLifeCycleSteps.AfterTemplateRegistrations""/> phase of the Software Factory execution.
+        /// See <see cref=""FactoryExtensionBase""/> for all available overrides.
+        /// </summary>
+        /// <remarks>
+        /// It is safe to update or delete this method.
+        /// </remarks>
+        [IntentInitialGen]
+        protected override void OnAfterTemplateRegistrations(IApplication application)
+        {
+            // Your custom logic here.
+        }
+
+        /// <summary>
+        /// This is an example override which would extend the
+        /// <see cref=""ExecutionLifeCycleSteps.BeforeTemplateExecution""/> phase of the Software Factory execution.
         /// See <see cref=""FactoryExtensionBase""/> for all available overrides.
         /// </summary>
         /// <remarks>

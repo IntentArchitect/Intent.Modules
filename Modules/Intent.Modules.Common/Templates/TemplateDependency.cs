@@ -47,11 +47,11 @@ namespace Intent.Modules.Common.Templates
 
         /// <summary>
         /// Returns a <see cref="ITemplateDependency"/> which finds templates which have the
-        /// provided <paramref name="templateIdOrName"/>.
+        /// provided <paramref name="templateIdOrRole"/>.
         /// </summary>
-        public static ITemplateDependency OnTemplate(string templateIdOrName)
+        public static ITemplateDependency OnTemplate(string templateIdOrRole)
         {
-            return TemplateIdTemplateDependency.Create(templateIdOrName);
+            return TemplateIdTemplateDependency.Create(templateIdOrRole);
         }
 
         /// <summary>

@@ -1,3 +1,7 @@
+### Version 3.6.9
+
+- Added a default `OnAfterTemplateRegistrations` overload method to the factory extensions.
+
 ### Version 3.6.8
 
 - Templates and Decorators will now be under full management in certain areas.

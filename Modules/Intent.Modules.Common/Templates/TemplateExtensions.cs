@@ -20,6 +20,12 @@ namespace Intent.Modules.Common.Templates
             return template.GetAll<IHasAdditionalHeaderInformation, string>(i => i.GetAdditionalHeaderInformation());
         }
 
+        public static bool TryGetModel<TModel>(this ITemplate template, out TModel model) where TModel : class
+        {
+            model = (template as ITemplateWithModel)?.Model as TModel;
+            return model != null;
+        }
+
         public static IEnumerable<TResult> GetAll<TInterface, TResult>(this ITemplate template, Func<TInterface, IEnumerable<TResult>> invoke)
         {
             if (template == null)

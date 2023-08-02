@@ -1,3 +1,7 @@
+### Version 3.4.3
+
+- Offers a useful extension method overload for finding templates: `IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole)`
+
 ### Version 3.4.2
 
 - Fixed: The execution order of template `AfterTemplateRegistration` and `BeforeTemplateExecution` methods could vary between different operating systems resulting in event based generation having a different order on different operating systems.

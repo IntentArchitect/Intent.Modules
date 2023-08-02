@@ -48,7 +48,7 @@ namespace Intent.Modules.Common
 
         /// <summary>
         /// Finds a template instance which matches the provided <paramref name="templateDependency"/>
-        /// and casts the result to the specified <typeparamref name="TTemplate"/>.<br/>
+        /// and casts the result to <typeparamref name="TTemplate"/>.<br/>
         /// <br/>
         /// If more than once instance is found an exception is thrown.
         /// </summary>
@@ -58,38 +58,38 @@ namespace Intent.Modules.Common
         }
 
         /// <summary>
-        /// Finds the template with <see cref="ITemplate.Id" /> of <paramref name="templateId" />
-        /// and casts the result to the specified <typeparamref name="TTemplate"/>.
+        /// Finds the template with <see cref="ITemplate.Id" /> of <paramref name="templateIdOrRole" />
+        /// and casts the result to <typeparamref name="TTemplate"/>.
         /// </summary>
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole) where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateId);
+            return (TTemplate)executionContext.FindTemplateInstance(templateIdOrRole);
         }
 
         /// <summary>
-        /// Finds the template with <see cref="ITemplate.Id" /> of <paramref name="templateId" />
+        /// Finds the template with <see cref="ITemplate.Id" /> of <paramref name="templateIdOrRole" />
         /// which is also a <see cref="ITemplateWithModel" /> whose
         /// <see cref="ITemplateWithModel.Model" />'s reference matches that of the provided
-        /// <paramref name="model" /> and casts the result to the specified <typeparamref name="TTemplate"/>.
+        /// <paramref name="model" /> and casts the result to <typeparamref name="TTemplate"/>.
         /// </summary>
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, object model) where TTemplate : class
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole, object model) where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateId, model);
+            return (TTemplate)executionContext.FindTemplateInstance(templateIdOrRole, model);
         }
 
         /// <summary>
-        /// Finds a template instance which has the provided <paramref name="templateId"/> and
-        /// <paramref name="className"/> and casts the result to the specified <typeparamref name="TTemplate"/>.
+        /// Finds a template instance which has the provided <paramref name="templateIdOrRole"/> and
+        /// <paramref name="modelId"/> and casts the result to <typeparamref name="TTemplate"/>.
         /// </summary>
-        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateId, string className)
+        public static TTemplate FindTemplateInstance<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole, string modelId)
             where TTemplate : class
         {
-            return (TTemplate)executionContext.FindTemplateInstance(templateId, className);
+            return (TTemplate)executionContext.FindTemplateInstance(templateIdOrRole, modelId);
         }
 
         /// <summary>
         /// Finds all template instances which match the provided <paramref name="templateDependency"/>
-        /// and casts the results to the specified <typeparamref name="TTemplate"/>.
+        /// and casts the results to <typeparamref name="TTemplate"/>.
         /// </summary>
         public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, ITemplateDependency templateDependency)
             where TTemplate : class
@@ -99,6 +99,17 @@ namespace Intent.Modules.Common
                 : executionContext.FindTemplateInstances(templateDependency.TemplateId, templateDependency.IsMatch);
 
             return templateInstances.Cast<TTemplate>();
+        }
+
+
+        /// <summary>
+        /// Finds all template instances which match the provided <paramref name="templateIdOrRole"/>
+        /// and casts the results to <typeparamref name="TTemplate"/>.
+        /// </summary>
+        public static IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole)
+            where TTemplate : class
+        {
+            return executionContext.FindTemplateInstances<TTemplate>(TemplateDependency.OnTemplate(templateIdOrRole));
         }
     }
 }

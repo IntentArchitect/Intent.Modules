@@ -1,3 +1,7 @@
+### Version 3.4.6
+
+- Improved default implementation of interfaces.
+
 ### Version 3.4.5
 
 - Implements a default interface implementation for CSharp Templates that's name is suffixed with `Interface`.

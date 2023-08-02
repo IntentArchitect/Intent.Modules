@@ -122,10 +122,10 @@ namespace Intent.Modules.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial
             
             #line default
             #line hidden
-            this.Write("\", @class =>\r\n                {\r\n                    @class.AddMethod(\"bool\", \"Ex" +
-                    "ampleMethod\", method =>\r\n                    {\r\n                        method.A" +
-                    "ddParameter(\"string\", \"exampleParam\");\r\n                    });\r\n               " +
-                    " });\r\n");
+            this.Write("\", @interface =>\r\n                {\r\n                    @interface.AddMethod(\"bo" +
+                    "ol\", \"ExampleMethod\", method =>\r\n                    {\r\n                        " +
+                    "method.AddParameter(\"string\", \"exampleParam\");\r\n                    });\r\n       " +
+                    "         });\r\n");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder.CSharp\Templates\CSharpTemplatePartial\CSharpTemplatePartialTemplate.tt"
       } else { 
