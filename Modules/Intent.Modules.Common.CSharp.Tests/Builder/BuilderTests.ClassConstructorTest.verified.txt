@@ -1,0 +1,34 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        private string _field1;
+        private string _field2;
+        private readonly string _field3;
+
+        static TestClass()
+        {
+        }
+
+        private TestClass()
+        {
+        }
+
+        protected TestClass(string field1)
+        {
+            _field1 = field1;
+        }
+
+        public TestClass(string field2, string field3, string property)
+        {
+            _field2 = field2;
+            _field3 = field3;
+            Property = property;
+        }
+
+        public string Property { get; }
+    }
+}

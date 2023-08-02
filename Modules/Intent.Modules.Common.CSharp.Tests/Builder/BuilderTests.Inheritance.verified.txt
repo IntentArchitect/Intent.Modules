@@ -3,6 +3,10 @@
 
 namespace Testing.Namespace
 {
+    public interface ISomeInterface : ISomeOtherInterface
+    {
+    }
+
     public abstract class BaseClass
     {
         public abstract void ImAbstractOverrideMe();

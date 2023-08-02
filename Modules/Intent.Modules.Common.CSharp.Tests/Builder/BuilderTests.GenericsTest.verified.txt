@@ -3,10 +3,23 @@
 
 namespace Namespace
 {
+    public interface Interface<T>
+    {
+        void GenericMethod<T, U>()
+            where U : class;
+    }
+
     public class Class<T>
     {
         public void GenericMethod<T, U>()
             where U : class
+        {
+        }
+    }
+
+    public class DerivedClass : BaseType<GenericTypeParameter1, GenericTypeParameter2>
+    {
+        public DerivedClass()
         {
         }
     }
