@@ -191,6 +191,22 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
         return this;
     }
 
+    public CSharpClassMethod Sync()
+    {
+        AsyncMode = string.Empty;
+        if (ReturnType.StartsWith("Task"))
+        {
+            ReturnType = ReturnType == "Task" ? "void" : StripTask();
+        }
+        return this;
+    }
+
+    private string StripTask()
+    {   
+        //Task<X> => X
+        return ReturnType.Substring(5, ReturnType.Length - 6);
+    }
+
     public CSharpClassMethod Async()
     {
         AsyncMode = "async ";

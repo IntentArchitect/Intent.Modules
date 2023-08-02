@@ -16,6 +16,7 @@ public class CSharpParameter : ICSharpParameter
     public IList<CSharpAttribute> Attributes { get; } = new List<CSharpAttribute>();
     public bool HasThisModifier { get; private set; }
     public string XmlDocComment { get; private set; }
+    public string ParameterModifier { get; private set; } = "";
 
     public CSharpParameter(string type, string name)
     {
@@ -65,6 +66,24 @@ public class CSharpParameter : ICSharpParameter
         return this;
     }
 
+    public CSharpParameter WithOutParameterModifier()
+    {
+        ParameterModifier = "out ";
+        return this;
+    }
+
+    public CSharpParameter WithInParameterModifier()
+    {
+        ParameterModifier = "";
+        return this;
+    }
+
+    public CSharpParameter WithRefParameterModifier()
+    {
+        ParameterModifier = "ref ";
+        return this;
+    }
+
     public override string ToString()
     {
         var name = Name.EnsureNotKeyword();
@@ -75,7 +94,7 @@ public class CSharpParameter : ICSharpParameter
             ? $" = {DefaultValue}"
             : string.Empty;
 
-        return $@"{modifier}{GetAttributes()}{Type} {name}{defaultValue}";
+        return $@"{modifier}{GetAttributes()}{ParameterModifier}{Type} {name}{defaultValue}";
     }
 
     protected string GetAttributes()

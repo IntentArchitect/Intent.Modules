@@ -1,4 +1,8 @@
-﻿### Version 3.3.39
+﻿### Version 3.3.40
+
+- Added : Support for Parameter Modifiers (out, ref, [in])
+
+### Version 3.3.39
 
 - Added: `RemoveNugetPackageEvent` to support removal of deprecated and or unused Nuget packages.
 - Added: Added support for XMLDocComments on `Method` and `Constructor` `Parameter`s.
