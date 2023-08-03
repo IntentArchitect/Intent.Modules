@@ -1,3 +1,7 @@
+### Version 3.5.7
+
+- Fixed: When modelling `0..1 --> 1` or `0..1 --> 0..1` (aggregrational) associations, foreign keys would not be added on the source `Class`, resulting in an incorrect requirement of the primary keys of each `Class` needing to match at the time of committing to the database.
+
 ### Version 3.5.6
 
 - New: Added `Schema` stereotype to modeling SQL Schema's simpler and more intuitive.

@@ -5,6 +5,7 @@
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/rdbms/key-automation-extensions/class-auto-manage-keys.ts/class-auto-manage-keys.ts
  */
 /// <reference path="../_common/updatePrimaryKeys.ts" />
+/// <reference path="../_common/updateForeignKeys.ts" />
 
 function execute(): void {
     if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
@@ -18,6 +19,10 @@ function execute(): void {
     }
 
     updatePrimaryKeys(element);
+    for (const association of element.getAssociations("Association")) {
+        updateForeignKeys(association);
+        updateForeignKeys(association.getOtherEnd());
+    }
 }
 
 execute();

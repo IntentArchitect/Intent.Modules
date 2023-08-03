@@ -219,14 +219,16 @@ function updateForeignKeys(thisEnd) {
         }
     }
     function requiresForeignKey(associationEnd) {
-        return isManyToVariantsOfOne(associationEnd) || isSelfReferencingZeroToOne(associationEnd);
-    }
-    function isManyToVariantsOfOne(associationEnd) {
-        return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.getOtherEnd().typeReference.isCollection;
-    }
-    function isSelfReferencingZeroToOne(associationEnd) {
-        return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.typeReference.isNullable &amp;&amp;
+        const isManyToVariantsOfOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
+            associationEnd.getOtherEnd().typeReference.isCollection;
+        const isSelfReferencingZeroToOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
+            associationEnd.typeReference.isNullable &amp;&amp;
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+        const isAggregationalOneToOne = () =&gt; associationEnd.isTargetEnd() &amp;&amp;
+            !associationEnd.typeReference.isCollection &amp;&amp;
+            !associationEnd.getOtherEnd().typeReference.isCollection &amp;&amp;
+            associationEnd.getOtherEnd().typeReference.isNullable;
+        return isManyToVariantsOfOne() || isSelfReferencingZeroToOne() || isAggregationalOneToOne();
     }
     function getPrimaryKeys(element) {
         let currentClass = element;
@@ -408,12 +410,137 @@ function updatePrimaryKeys(element) {
     }
 }
 /**
+ * Applies camelCasing or PascalCasing naming convention according to the setting configured for the current application.
+ */
+function applyAttributeNamingConvention(str) {
+    var _a, _b, _c;
+    let convention = (_c = (_b = (_a = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")) === null || _a === void 0 ? void 0 : _a.getField("Attribute Naming Convention")) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : "pascal-case";
+    switch (convention) {
+        case "pascal-case":
+            return toPascalCase(str);
+        case "camel-case":
+            return toCamelCase(str);
+    }
+    return str;
+}
+/// &lt;reference path="../../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../../common/getSurrogateKeyType.ts" /&gt;
+/// &lt;reference path="../../../common/applyAttributeNamingConvention.ts" /&gt;
+/// &lt;reference path="../_common/constants.ts" /&gt;
+function updateForeignKeys(thisEnd) {
+    var _a, _b;
+    if (((_b = (_a = application === null || application === void 0 ? void 0 : application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Creation Mode")) === null || _b === void 0 ? void 0 : _b.value) != "explicit") {
+        return;
+    }
+    let otherEnd = thisEnd.getOtherEnd();
+    if (!otherEnd.typeReference.getType().getPackage().hasStereotype(relationalDatabaseId)) {
+        return;
+    }
+    let thisEndType = thisEnd.getOtherEnd().typeReference.getType();
+    let otherEndType = thisEnd.typeReference.getType();
+    if ((thisEndType === null || thisEndType === void 0 ? void 0 : thisEndType.specialization) !== "Class" || (otherEndType === null || otherEndType === void 0 ? void 0 : otherEndType.specialization) !== "Class") {
+        return;
+    }
+    const targetEndId = thisEnd.isTargetEnd() ? thisEnd.id : otherEnd.id;
+    if (requiresForeignKey(thisEnd)) {
+        updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId);
+        return;
+    }
+    thisEndType.getChildren()
+        .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
+        .forEach(x =&gt; {
+        x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
+        x.delete();
+    });
+    function updateForeignKeyAttribute(thisEnd, thisEndType, otherEndType, targetEndId) {
+        const pkAttributes = getPrimaryKeys(otherEndType);
+        pkAttributes.forEach((pk, index) =&gt; {
+            var _a;
+            let fkAttribute = (_a = thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)[index]) !== null &amp;&amp; _a !== void 0 ? _a : createElement("Attribute", "", thisEndType.id);
+            // This check to avoid a loop where the Domain script is updating the conventions and this keeps renaming it back.
+            let fkNameToUse = `${toCamelCase(thisEnd.getName())}${toPascalCase(pk.name)}`;
+            if (fkAttribute.getName().toLocaleLowerCase() !== fkNameToUse.toLocaleLowerCase()) {
+                if (!fkAttribute.hasMetadata(metadataKey.fkOriginalName) || (fkAttribute.getMetadata(metadataKey.fkOriginalName) == fkAttribute.getName())) {
+                    fkAttribute.setName(fkNameToUse);
+                    fkAttribute.setMetadata(metadataKey.fkOriginalName, fkAttribute.getName());
+                }
+            }
+            fkAttribute.setMetadata(metadataKey.association, targetEndId);
+            fkAttribute.setMetadata(metadataKey.isManagedKey, "true");
+            let fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+            if (fkStereotype == null) {
+                fkAttribute.addStereotype(foreignKeyStereotypeId);
+                fkStereotype = fkAttribute.getStereotype(foreignKeyStereotypeId);
+            }
+            fkStereotype.getProperty(foreignKeyStereotypeAssociationProperty).setValue(thisEnd.isTargetEnd() ? thisEnd.id : thisEnd.getOtherEnd().id);
+            fkAttribute.typeReference.setType(pk.typeId);
+            fkAttribute.typeReference.setIsNullable(thisEnd.typeReference.isNullable);
+        });
+        thisEndType.getChildren().filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId).forEach((attr, index) =&gt; {
+            if (index &gt;= pkAttributes.length) {
+                attr.setMetadata(metadataKey.isBeingDeletedByScript, "true");
+                attr.delete();
+            }
+        });
+        if (otherEndType.id !== thisEndType.id) {
+            otherEndType.getChildren()
+                .filter(x =&gt; x.getMetadata(metadataKey.association) == targetEndId)
+                .forEach(x =&gt; {
+                x.setMetadata(metadataKey.isBeingDeletedByScript, "true");
+                x.delete();
+            });
+        }
+    }
+    function requiresForeignKey(associationEnd) {
+        const isManyToVariantsOfOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
+            associationEnd.getOtherEnd().typeReference.isCollection;
+        const isSelfReferencingZeroToOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
+            associationEnd.typeReference.isNullable &amp;&amp;
+            associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+        const isAggregationalOneToOne = () =&gt; associationEnd.isTargetEnd() &amp;&amp;
+            !associationEnd.typeReference.isCollection &amp;&amp;
+            !associationEnd.getOtherEnd().typeReference.isCollection &amp;&amp;
+            associationEnd.getOtherEnd().typeReference.isNullable;
+        return isManyToVariantsOfOne() || isSelfReferencingZeroToOne() || isAggregationalOneToOne();
+    }
+    function getPrimaryKeys(element) {
+        let currentClass = element;
+        while ((currentClass === null || currentClass === void 0 ? void 0 : currentClass.specialization) === "Class") {
+            const pkAttributes = currentClass.getChildren("Attribute").filter(x =&gt; x.hasStereotype(primaryKeyStereotypeId));
+            if (pkAttributes.length &gt; 0) {
+                return pkAttributes.map(x =&gt; ({ name: x.getName(), typeId: x.typeReference.getTypeId() }));
+            }
+            const derivedTypes = currentClass
+                .getAssociations("Generalization")
+                .filter(generalization =&gt; generalization.isTargetEnd())
+                .map(generalization =&gt; generalization.typeReference.getType());
+            if (derivedTypes.length &gt; 1) {
+                console.error(`Could not compute possible foreign keys as "${currentClass.getName()}" [${currentClass.id}] is derived from more than one class.`);
+                return [createImplicitPrimaryKey()];
+            }
+            currentClass = derivedTypes[0];
+            if ((currentClass === null || currentClass === void 0 ? void 0 : currentClass.id) === (element === null || element === void 0 ? void 0 : element.id)) {
+                console.error(`Could not compute possible foreign keys as "${element.getName()}" [${element.id}] has cyclic inheritance.`);
+                return [createImplicitPrimaryKey()];
+            }
+        }
+        return [createImplicitPrimaryKey()];
+        function createImplicitPrimaryKey() {
+            return {
+                name: applyAttributeNamingConvention("Id"),
+                typeId: getSurrogateKeyType()
+            };
+        }
+    }
+}
+/**
  * Used by Intent.Modules\Modules\Intent.Modules.Metadata.RDBMS
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/rdbms/key-automation-extensions/class-auto-manage-keys.ts/class-auto-manage-keys.ts
  */
 /// &lt;reference path="../_common/updatePrimaryKeys.ts" /&gt;
+/// &lt;reference path="../_common/updateForeignKeys.ts" /&gt;
 function execute() {
     var _a, _b;
     if (!element.getPackage().hasStereotype(relationalDatabaseId)) {
@@ -424,6 +551,10 @@ function execute() {
         return;
     }
     updatePrimaryKeys(element);
+    for (const association of element.getAssociations("Association")) {
+        updateForeignKeys(association);
+        updateForeignKeys(association.getOtherEnd());
+    }
 }
 execute();
 </script>
@@ -598,14 +729,16 @@ function updateForeignKeys(thisEnd) {
         }
     }
     function requiresForeignKey(associationEnd) {
-        return isManyToVariantsOfOne(associationEnd) || isSelfReferencingZeroToOne(associationEnd);
-    }
-    function isManyToVariantsOfOne(associationEnd) {
-        return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.getOtherEnd().typeReference.isCollection;
-    }
-    function isSelfReferencingZeroToOne(associationEnd) {
-        return !associationEnd.typeReference.isCollection &amp;&amp; associationEnd.typeReference.isNullable &amp;&amp;
+        const isManyToVariantsOfOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
+            associationEnd.getOtherEnd().typeReference.isCollection;
+        const isSelfReferencingZeroToOne = () =&gt; !associationEnd.typeReference.isCollection &amp;&amp;
+            associationEnd.typeReference.isNullable &amp;&amp;
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+        const isAggregationalOneToOne = () =&gt; associationEnd.isTargetEnd() &amp;&amp;
+            !associationEnd.typeReference.isCollection &amp;&amp;
+            !associationEnd.getOtherEnd().typeReference.isCollection &amp;&amp;
+            associationEnd.getOtherEnd().typeReference.isNullable;
+        return isManyToVariantsOfOne() || isSelfReferencingZeroToOne() || isAggregationalOneToOne();
     }
     function getPrimaryKeys(element) {
         let currentClass = element;

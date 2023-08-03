@@ -87,16 +87,20 @@ function updateForeignKeys(thisEnd: MacroApi.Context.IAssociationApi): void {
     }
 
     function requiresForeignKey(associationEnd: MacroApi.Context.IAssociationApi): boolean {
-        return isManyToVariantsOfOne(associationEnd) || isSelfReferencingZeroToOne(associationEnd);
-    }
-
-    function isManyToVariantsOfOne(associationEnd: MacroApi.Context.IAssociationApi): boolean {
-        return !associationEnd.typeReference.isCollection && associationEnd.getOtherEnd().typeReference.isCollection;
-    }
-
-    function isSelfReferencingZeroToOne(associationEnd: MacroApi.Context.IAssociationApi): boolean {
-        return !associationEnd.typeReference.isCollection && associationEnd.typeReference.isNullable &&
+        const isManyToVariantsOfOne = () =>
+            !associationEnd.typeReference.isCollection &&
+            associationEnd.getOtherEnd().typeReference.isCollection;
+        const isSelfReferencingZeroToOne = () =>
+            !associationEnd.typeReference.isCollection &&
+            associationEnd.typeReference.isNullable &&
             associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+        const isAggregationalOneToOne = () =>
+            associationEnd.isTargetEnd() &&
+            !associationEnd.typeReference.isCollection &&
+            !associationEnd.getOtherEnd().typeReference.isCollection &&
+            associationEnd.getOtherEnd().typeReference.isNullable;
+
+        return isManyToVariantsOfOne() || isSelfReferencingZeroToOne() || isAggregationalOneToOne();
     }
 
     function getPrimaryKeys(element: MacroApi.Context.IElementApi): { name: string, typeId: string }[] {
