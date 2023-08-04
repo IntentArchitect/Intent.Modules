@@ -4,6 +4,7 @@ using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modelers.Services.Api;
 using Intent.Modules.Common;
+using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -11,14 +12,14 @@ using Intent.RoslynWeaver.Attributes;
 
 namespace Intent.Modelers.Types.ServiceProxies.Api
 {
-    [IntentManaged(Mode.Merge)]
-    public class ServiceProxyModel : IMetadataModel, IHasStereotypes, IHasName
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
+    public class ServiceProxyModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
     {
         public const string SpecializationType = "Service Proxy";
         public const string SpecializationTypeId = "07d8d1a9-6b9f-4676-b7d3-8db06299e35c";
         protected readonly IElement _element;
 
-        [IntentManaged(Mode.Ignore)]
+        [IntentManaged(Mode.Fully)]
         public ServiceProxyModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
@@ -26,13 +27,18 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
                 throw new Exception($"Cannot create a '{GetType().Name}' from element with specialization type '{element.SpecializationType}'. Must be of type '{SpecializationType}'");
             }
             _element = element;
+            Folder = _element.ParentElement?.SpecializationTypeId == FolderModel.SpecializationTypeId ? new FolderModel(_element.ParentElement) : null;
         }
 
         public string Id => _element.Id;
 
         public string Name => _element.Name;
 
+        public string Comment => _element.Comment;
+
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
+
+        public FolderModel Folder { get; }
 
         public bool IsMapped => _element.IsMapped;
 
@@ -40,6 +46,7 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
 
         public IElement InternalElement => _element;
 
+        [IntentManaged(Mode.Ignore)]
         public ServiceModel MappedService => Mapping != null ? new ServiceModel((IElement)Mapping.Element) : null;
 
         public IList<OperationModel> Operations => _element.ChildElements
@@ -69,8 +76,6 @@ namespace Intent.Modelers.Types.ServiceProxies.Api
         {
             return (_element != null ? _element.GetHashCode() : 0);
         }
-
-        public string Comment => _element.Comment;
     }
 
     [IntentManaged(Mode.Fully)]

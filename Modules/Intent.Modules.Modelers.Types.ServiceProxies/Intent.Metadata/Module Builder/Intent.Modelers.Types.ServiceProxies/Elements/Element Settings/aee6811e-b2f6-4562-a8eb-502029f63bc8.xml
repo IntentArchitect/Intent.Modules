@@ -48,19 +48,5 @@
     </stereotype>
   </stereotypes>
   <metadata />
-  <childElements>
-    <childElement id="4e05c53c-0caa-41ff-a169-a6be196a512b" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
-      <name>[context menu]</name>
-      <display>[context menu]</display>
-      <isAbstract>false</isAbstract>
-      <genericTypes />
-      <isMapped>false</isMapped>
-      <parentFolderId>aee6811e-b2f6-4562-a8eb-502029f63bc8</parentFolderId>
-      <packageId>b58a9e76-55b8-45ec-a22b-bcdfcb6fd833</packageId>
-      <packageName>Intent.Modelers.Types.ServiceProxies</packageName>
-      <stereotypes />
-      <metadata />
-      <childElements />
-    </childElement>
-  </childElements>
+  <childElements />
 </class>

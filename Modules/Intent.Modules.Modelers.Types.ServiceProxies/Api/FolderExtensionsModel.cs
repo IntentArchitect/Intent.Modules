@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modelers.Types.ServiceProxies.Api;
 using Intent.Modules.Common;
 using Intent.Modules.Common.Types.Api;
 using Intent.RoslynWeaver.Attributes;
@@ -10,13 +9,13 @@ using Intent.RoslynWeaver.Attributes;
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel", Version = "1.0")]
 
-namespace Intent.Modelers.ServiceProxies.Api
+namespace Intent.Modelers.Types.ServiceProxies.Api
 {
-    [IntentManaged(Mode.Merge)]
-    public class FolderExtensionModel : FolderModel
+    [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
+    public class FolderExtensionsModel : FolderModel
     {
-        [IntentManaged(Mode.Ignore)]
-        public FolderExtensionModel(IElement element) : base(element)
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public FolderExtensionsModel(IElement element) : base(element)
         {
         }
 

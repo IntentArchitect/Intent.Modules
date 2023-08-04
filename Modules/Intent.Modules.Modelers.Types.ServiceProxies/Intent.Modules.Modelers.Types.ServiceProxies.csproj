@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <Version>4.1.0</Version>
+    <Version>4.1.1-pre.0</Version>
     <Authors>Intent Architect</Authors>
     <Company>Intent Architect</Company>
     <Product>Intent - Modules Service Proxy Types</Product>
@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Modules.Common" Version="3.3.19" />
+    <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />
     <PackageReference Include="Intent.Modules.Modelers.Services" Version="3.3.9" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
