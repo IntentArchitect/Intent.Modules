@@ -5,11 +5,33 @@ namespace Testing.Namespace
 {
     public abstract class BaseClass
     {
+        public virtual void OnTest()
+        {
+        }
     }
 
     public class ConcreteClass : BaseClass, ISomeService
     {
+        private string _test;
+
         void ISomeService.Method()
+        {
+        }
+
+        public override void OnTest()
+        {
+            // Do something
+        }
+
+        public async Task MethodAsync()
+        {
+        }
+
+        private void PrivateMethod()
+        {
+        }
+
+        protected void ProtectedMethod()
         {
         }
     }

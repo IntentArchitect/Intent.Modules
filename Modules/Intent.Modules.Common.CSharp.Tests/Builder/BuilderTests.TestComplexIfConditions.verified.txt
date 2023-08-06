@@ -1,0 +1,18 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void TestMethod()
+        {
+            if (!string.IsNullOrWhiteSpace(configuration["KeyVault:TenantId"]) &&
+                !string.IsNullOrWhiteSpace(configuration["KeyVault:ClientId"]) &&
+                !string.IsNullOrWhiteSpace(configuration["KeyVault:Secret"]))
+            {
+                // If statement body
+            }
+        }
+    }
+}

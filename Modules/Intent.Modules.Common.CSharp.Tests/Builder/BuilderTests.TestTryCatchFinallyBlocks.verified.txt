@@ -1,0 +1,28 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void TestMethod()
+        {
+            try
+            {
+                DoSomethingRisky();
+            }
+            catch (OutOfMemoryException ex)
+            {
+                // What to do?
+            }
+            catch
+            {
+                // Catch All
+            }
+            finally
+            {
+                DoFinallyStuff();
+            }
+        }
+    }
+}

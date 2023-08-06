@@ -1,0 +1,16 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void TestMethod()
+        {
+            foreach (var i in Enumerable.Range(1, 10))
+            {
+                Console.Write(i);
+            }
+        }
+    }
+}

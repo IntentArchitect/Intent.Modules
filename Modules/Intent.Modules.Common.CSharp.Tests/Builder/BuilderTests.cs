@@ -32,7 +32,7 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task ConstructorCalls()
     {
@@ -66,20 +66,27 @@ public class BuilderTests
             .AddClass("BaseClass", @class =>
             {
                 @class.Abstract();
+                @class.AddMethod("void", "OnTest", method => { method.Virtual(); });
             })
             .AddClass("ConcreteClass", @class =>
             {
                 @class.ImplementsInterface("ISomeService");
                 @class.WithBaseType("BaseClass");
-                @class.AddMethod("void", "Method", method =>
+                @class.AddMethod("void", "Method", method => { method.IsExplicitImplementationFor("ISomeService"); });
+                @class.AddMethod("void", "OnTest", method =>
                 {
-                    method.IsExplicitImplementationFor("ISomeService");
+                    method.Override();
+                    method.AddStatement("// Do something");
                 });
+                @class.AddMethod("Task", "MethodAsync", method => { method.Async(); });
+                @class.AddMethod("void", "PrivateMethod", method => { method.Private(); });
+                @class.AddMethod("void", "ProtectedMethod", method => { method.Protected(); });
+                @class.AddField("string", "_test", field => field.Private());
             })
             .AddClass("StaticClass", @class =>
             {
                 @class.Static();
-                
+
                 @class.AddMethod("void", "StaticMethod", method => method.Static());
                 @class.AddProperty("int", "StaticProperty", prop => prop.Static());
                 @class.AddField("string", "_staticField", field => field.Static().WithAssignment(@"""123"""));
@@ -96,16 +103,30 @@ public class BuilderTests
             .AddInterface("IInterface", @interface => @interface
                 .WithComments("// Comment")
                 .AddMethod("void", "Method")
-                .AddMethod("void", "Static", method =>
-                {
-                    method.Static();
-                })
+                .AddMethod("void", "Static", method => { method.Static(); })
                 .AddProperty("object", "GetterExpression", property =>
                 {
                     property.WithoutSetter()
                         .Getter.WithExpressionImplementation("new object()");
                 })
             )
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task RecordTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "Records")
+            .AddUsing("System")
+            .AddRecord("TestRecord", rec =>
+            {
+                rec.AddConstructor();
+                rec.AddConstructor(ctor => ctor.AddParameter("string", "param1"));
+                rec.AddProperty("string", "Prop1", prop => prop.Init());
+                rec.AddMethod("string", "TestMethod", stmt => stmt.AddStatement(@"return """";"));
+            })
             .CompleteBuild();
 
         await Verifier.Verify(fileBuilder.ToString());
@@ -143,7 +164,7 @@ public class BuilderTests
     }
 
     [Fact]
-    public async Task StatementBlocks()
+    public async Task TestIfElseElseIfStatements()
     {
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
             .AddClass("TestClass", @class =>
@@ -151,65 +172,140 @@ public class BuilderTests
                 @class.AddMethod("void", "TestMethod", method =>
                 {
                     method.AddParameter("int", "value");
-
-                    // GPT: These "IfStatement" lines is how you implement "if" statements.
                     method.AddIfStatement("value == 0", c => c
                         .AddStatement("throw new InvalidArgumentException();"));
                     method.AddElseIfStatement("value == 1", c => c
                         .AddStatement("return 1;"));
                     method.AddElseStatement(c => c
                         .AddStatement("return 2;"));
-
-                    // GPT: This statement is how you would instantiate an object "SomeObject" using
-                    // property initializers.
-                    method.AddStatement("// Object Init", s => s.SeparatedFromPrevious())
-                        .AddObjectInitializerBlock("var obj = new SomeObject", c => c
-                            .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
-                                .AddStatement("return x + 1;"))
-                            .AddInitStatement("StringProp", "\"My string\"")
-                            .WithSemicolon());
-
-                    // GPT: This statement is how you would instantiate an object "Dictionary<string, string>" using
-                    // its key-value pair initialization.
-                    method.AddObjectInitializerBlock("var dict = new Dictionary<string, string>", c => c
-                        .AddKeyAndValue(@"""key1""", @"""value 1""")
-                        .AddKeyAndValue(@"""key2""", @"""value 2""")
-                        .WithSemicolon());
-
-                    // GPT: This statement is how you make a "using" scope.
-                    method.AddUsingBlock("var scope = service.GetScope()", block => block
-                        .AddStatement("scope.Dispose();"));
-
-                    // GPT: Normally you do not have to use this but please take note that it is possible.
-                    method.AddStatement("// New Scope")
-                        .AddStatement(new CSharpStatementBlock());
-
-                    // GPT: This statement is how you would use a "foreach" statement.
-                    method.AddForEachStatement("i", "Enumerable.Range(1, 10)", c => c
-                        .AddStatement("Console.Write(i);").SeparatedFromPrevious());
-
-                    // GPT: The next few statements are for try/catch statements.
-                    method.AddTryBlock(block => block.AddStatement("DoSomethingRisky();"));
-                    method.AddCatchBlock("OutOfMemoryException", "ex", block => block.AddStatement("// What to do?"));
-                    method.AddCatchBlock(block => block.AddStatement("// Catch All"));
-                    method.AddFinallyBlock(block => block.AddStatement("DoFinallyStuff();"));
-
-                    // GPT: This is a more advanced example where you want to span an "if" condition expression
-                    // across multiple lines in a neat way.
-                    method.AddIfStatement(@"
-    !string.IsNullOrWhiteSpace(configuration[""KeyVault:TenantId""]) &&
-	!string.IsNullOrWhiteSpace(configuration[""KeyVault:ClientId""]) &&
-	!string.IsNullOrWhiteSpace(configuration[""KeyVault:Secret""])", block => block.AddStatement("// If statement body"));
-
-                    // GPT: This statement allows you to write out comments across multiple lines.
-                    method.AddStatement(new CSharpStatementBlock(@"// block expression line 1
-// block expression line 2
-// block expression line 3"));
                 });
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task TestObjectInitializers()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddObjectInitializerBlock("var obj = new SomeObject", c => c
+                        .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
+                            .AddStatement("return x + 1;"))
+                        .AddInitStatement("StringProp", "\"My string\"")
+                        .WithSemicolon());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TestDictionaryInitializers()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddObjectInitializerBlock("var dict = new Dictionary<string, string>", c => c
+                        .AddKeyAndValue(@"""key1""", @"""value 1""")
+                        .AddKeyAndValue(@"""key2""", @"""value 2""")
+                        .WithSemicolon());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TestUsingBlocks()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddUsingBlock("var scope = service.GetScope()", block => block
+                        .AddStatement("scope.Dispose();"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TestForEachLoops()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddForEachStatement("i", "Enumerable.Range(1, 10)", c => c
+                        .AddStatement("Console.Write(i);").SeparatedFromPrevious());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TestTryCatchFinallyBlocks()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddTryBlock(block => block.AddStatement("DoSomethingRisky();"));
+                    method.AddCatchBlock("OutOfMemoryException", "ex", block => block.AddStatement("// What to do?"));
+                    method.AddCatchBlock(block => block.AddStatement("// Catch All"));
+                    method.AddFinallyBlock(block => block.AddStatement("DoFinallyStuff();"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TestComplexIfConditions()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddIfStatement(@"
+    !string.IsNullOrWhiteSpace(configuration[""KeyVault:TenantId""]) &&
+    !string.IsNullOrWhiteSpace(configuration[""KeyVault:ClientId""]) &&
+    !string.IsNullOrWhiteSpace(configuration[""KeyVault:Secret""])", block => block.AddStatement("// If statement body"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TestStatementBlocks()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddStatement(new CSharpStatementBlock(@"// block expression line 1
+    // block expression line 2
+    // block expression line 3"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
 
     [Fact]
     public async Task Inheritance()
@@ -228,10 +324,7 @@ public class BuilderTests
                 @class.AddMethod("void", "ImAbstractOverrideMe", method => method.Override().AddStatement("// Stuff"));
                 @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Override().AddStatement("// More Stuff"));
             })
-            .AddInterface("ISomeInterface", @interface =>
-            {
-                @interface.ImplementsInterfaces("ISomeOtherInterface");
-            })
+            .AddInterface("ISomeInterface", @interface => { @interface.ImplementsInterfaces("ISomeOtherInterface"); })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
@@ -239,7 +332,6 @@ public class BuilderTests
     [Fact]
     public async Task MethodChainingTest()
     {
-        // GPT: This is used for Fluent Interfaces.
         var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
             .AddUsing("System")
             .AddClass("TestClass", @class =>
@@ -271,8 +363,6 @@ public class BuilderTests
     [Fact]
     public async Task PrivateBackingPropertyWithBodyExpressionTest()
     {
-        // GPT: Only use this way of declaring fields and properties when you want to make use
-        // if there is a body lambda expression in the property with a backing field.
         var fileBuilder = new CSharpFile("Namespace", "Class")
             .AddUsing("System")
             .AddClass("Class", @class =>
@@ -303,10 +393,7 @@ public class BuilderTests
             .AddUsing("System")
             .AddClass("Class", @class =>
             {
-                @class.AddMethod("string", "GetDateNow", method =>
-                {
-                    method.WithExpressionBody("DateTimeOffset.Now");
-                });
+                @class.AddMethod("string", "GetDateNow", method => { method.WithExpressionBody("DateTimeOffset.Now"); });
                 @class.AddMethod("IHostBuilder", "CreateHostBuilder", method =>
                 {
                     method.AddParameter("string[]", "args");
@@ -456,7 +543,7 @@ public class BuilderTests
 
         await Verifier.Verify(fileBuilder.ToString());
     }
-    
+
     [Fact]
     public async Task StaticConfigureStyleFileBuilderTest()
     {
@@ -483,7 +570,6 @@ public class BuilderTests
                         .AddStatement(new CSharpInvocationStatement(@"services.AddScoped<IUnitOfWork>")
                             .AddArgument(new CSharpLambdaBlock("provider")
                                 .WithExpressionBody(@"provider.GetService<ApplicationDbContext>()"))));
-
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());

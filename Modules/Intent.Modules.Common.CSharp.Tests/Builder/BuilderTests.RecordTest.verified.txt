@@ -1,0 +1,23 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public record TestRecord
+    {
+        public TestRecord()
+        {
+        }
+
+        public TestRecord(string param1)
+        {
+        }
+
+        public string Prop1 { get; init; }
+
+        public string TestMethod()
+        {
+            return "";
+        }
+    }
+}

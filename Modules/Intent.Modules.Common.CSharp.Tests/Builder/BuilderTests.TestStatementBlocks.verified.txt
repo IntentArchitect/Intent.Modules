@@ -1,0 +1,17 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void TestMethod()
+        {
+            // block expression line 1
+                // block expression line 2
+                // block expression line 3
+            {
+            }
+        }
+    }
+}
