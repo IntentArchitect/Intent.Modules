@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Modules.Common.CSharp.Templates;
@@ -15,13 +16,17 @@ public class CSharpFile
     public string DefaultIntentManaged { get; private set; } = "Mode.Fully";
     public IList<CSharpInterface> Interfaces { get; } = new List<CSharpInterface>();
     public IList<CSharpClass> TypeDeclarations { get; } = new List<CSharpClass>();
+
     public IList<CSharpClass> Classes => TypeDeclarations
         .Where(td => td.TypeDefinitionType == CSharpClass.Type.Class)
         .ToList();
+
     public IList<CSharpRecord> Records => TypeDeclarations
         .Where(td => td.TypeDefinitionType == CSharpClass.Type.Record)
         .Cast<CSharpRecord>()
         .ToList();
+
+    public IList<CSharpEnum> Enums { get; } = new List<CSharpEnum>();
     public IList<CSharpAssemblyAttribute> AssemblyAttributes { get; } = new List<CSharpAssemblyAttribute>();
 
     public CSharpFile(string @namespace, string relativeLocation)
@@ -48,6 +53,7 @@ public class CSharpFile
         {
             _configurations.Add((() => configure(@class), 0));
         }
+
         return this;
     }
 
@@ -79,6 +85,23 @@ public class CSharpFile
         {
             _configurations.Add((() => configure(@interface), 0));
         }
+
+        return this;
+    }
+
+    public CSharpFile AddEnum(string name, Action<CSharpEnum> configure = null)
+    {
+        var @enum = new CSharpEnum(name);
+        Enums.Add(@enum);
+        if (_isBuilt)
+        {
+            configure?.Invoke(@enum);
+        }
+        else if (configure != null)
+        {
+            _configurations.Add((() => configure(@enum), 0));
+        }
+
         return this;
     }
 
@@ -107,6 +130,7 @@ public class CSharpFile
                            .Select(s => s.Name)
                            .Concat(Classes.Select(s => s.Name))
                            .Concat(Records.Select(s => s.Name))
+                           .Concat(Enums.Select(s => s.Name))
                            .FirstOrDefault()
                        ?? throw new Exception("At least one type must be specified for C# file"),
             @namespace: Namespace,
@@ -135,6 +159,7 @@ public class CSharpFile
             throw new Exception("This file has already been built. " +
                                 "Consider registering your configuration in the AfterBuild(...) method.");
         }
+
         _configurations.Add((() => configure(this), order));
         return this;
     }
@@ -145,6 +170,7 @@ public class CSharpFile
         {
             throw new Exception("The AfterBuild step has already been run for this file.");
         }
+
         _configurationsAfter.Add((() => configure(this), order));
         return this;
     }
@@ -169,6 +195,7 @@ public class CSharpFile
             toExecute.Action.Invoke();
             _configurations.Remove(toExecute);
         }
+
         _isBuilt = true;
 
         return this;
@@ -197,7 +224,8 @@ public class CSharpFile
     {
         if (!_isBuilt)
         {
-            throw new Exception("Build() needs to be called before ToString(). Check that your template implements ICSharpFileBuilderTemplate, or ensure that Build() is called manually.");
+            throw new Exception(
+                "Build() needs to be called before ToString(). Check that your template implements ICSharpFileBuilderTemplate, or ensure that Build() is called manually.");
         }
 
         return $@"{string.Join(@"
@@ -211,7 +239,8 @@ namespace {Namespace}
 ", Interfaces
     .Select(x => x.ToString("    "))
     .Concat(Classes.Select(x => x.ToString("    ")))
-    .Concat(Records.Select(x => x.ToString("    "))))}
+    .Concat(Records.Select(x => x.ToString("    ")))
+    .Concat(Enums.Select(x => x.ToString("    "))))}
 }}";
     }
 }

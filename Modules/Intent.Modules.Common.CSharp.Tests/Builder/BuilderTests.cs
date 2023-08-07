@@ -574,4 +574,47 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+
+    [Fact]
+    public async Task EnumTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "Enums")
+            .AddUsing("System")
+            .AddEnum("PrivateEnum", e =>
+            {
+                e.Private();
+                e.AddLiteral("Literal1");
+            })
+            .AddEnum("ProtectedEnum", e =>
+            {
+                e.Protected();
+                e.AddLiteral("Literal1");
+            })
+            .AddEnum("InternalEnum", e =>
+            {
+                e.Internal();
+                e.AddLiteral("Literal1");
+            })
+            .AddEnum("InternalProtectedEnum", e =>
+            {
+                e.InternalProtected();
+                e.AddLiteral("Literal1");
+            })
+            .AddEnum("EnumWithoutValues", e =>
+            {
+                e.WithComments("// Enum without values");
+                e.AddLiteral("Literal1", configure: lit => lit.AddAttribute("[SomeAttribute]"));
+                e.AddLiteral("Literal2", configure: lit => lit.WithComments("// Some Comment"));
+                e.AddLiteral("Literal3");
+            })
+            .AddEnum("EnumWithValues", e =>
+            {
+                e.AddAttribute("[ComprehensiveEnum]");
+                e.AddLiteral("Literal1", "1");
+                e.AddLiteral("Literal2", "10");
+                e.AddLiteral("Literal3", "5000");
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 }

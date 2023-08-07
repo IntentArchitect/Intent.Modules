@@ -1,0 +1,47 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    private enum PrivateEnum
+    {
+        Literal1
+    }
+
+    protected enum ProtectedEnum
+    {
+        Literal1
+    }
+
+    internal enum InternalEnum
+    {
+        Literal1
+    }
+
+    internal protected enum InternalProtectedEnum
+    {
+        Literal1
+    }
+
+    // Enum without values
+    public enum EnumWithoutValues
+    {
+        [SomeAttribute]
+        Literal1,
+
+        // Some Comment
+        Literal2,
+
+        Literal3
+    }
+
+    [ComprehensiveEnum]
+    public enum EnumWithValues
+    {
+        Literal1 = 1,
+
+        Literal2 = 10,
+
+        Literal3 = 5000
+    }
+}
