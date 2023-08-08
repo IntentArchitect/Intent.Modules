@@ -1,3 +1,12 @@
+﻿### Version 5.0.0
+
+> ⚠️ NOTE
+>
+> Major version update, ensure all Service Proxy related modules are also updated.
+
+- Fixed shortcut keys.
+- Updated dependencies to latest version.
+
 ### Version 4.1.0
 
 - Service references will allow operation selection for generating proxy clients.

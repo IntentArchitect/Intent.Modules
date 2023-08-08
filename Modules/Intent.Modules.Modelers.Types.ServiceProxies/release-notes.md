@@ -1,3 +1,15 @@
+﻿### Version 5.0.0
+
+> ⚠️ NOTE
+>
+> Major version update, ensure all Service Proxy related modules are also updated.
+
+- Removed `Service Proxy DTO` and `Service Proxy Enum` element types (these were used for "wrappers" for `DTO` and `Enum` element types).
+- Removed now obsolete extension methods.
+- Designer Setting to create a `Service Proxy` within a `Folder` has now been moved to this module.
+- When creating a `Service Proxy`, the mapping dialogue is now automatically launched.
+- After mapping a `Service Proxy` if it was still default name, then it's name is automatically changed to `<Mapped Service Name>Proxy`.
+
 ### Version 4.1.0
 
 - Service references will allow operation selection for generating proxy clients.
