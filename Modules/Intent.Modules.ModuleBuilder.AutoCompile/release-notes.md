@@ -1,3 +1,7 @@
+### Version 3.3.7
+
+- Now sets `DOTNET_CLI_UI_LANGUAGE` environment variable to `en` for `dotnet build` to ensure it is using the English UI language so that fallback strategy of looking for `Time Elapsed` in the output still works.
+
 ### Version 3.3.6
 
 - Now calls `dotnet build-server shutdown` before calling `dotnet build` in case of pre-existing build servers which may cause the process to not exit. Additionally, will force exit the process when "Time Elapsed " is detected.

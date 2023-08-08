@@ -72,7 +72,8 @@ namespace Intent.Modules.ModuleBuilder.AutoCompile.FactoryExtensions
                         WorkingDirectory = location,
                         EnvironmentVariables =
                         {
-                            ["MSBUILDDISABLENODEREUSE"] = "1"
+                            ["MSBUILDDISABLENODEREUSE"] = "1",
+                            ["DOTNET_CLI_UI_LANGUAGE"] = "en"
                         }
                     }
                 };
