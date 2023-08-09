@@ -42,14 +42,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataDesignerExtensions</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>ApiMetadataDesignerExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataDesignerExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>5d8691be-86ed-4521-861f-d0045712fb9a</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
@@ -70,14 +62,6 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Intent.Modules.Modelers.Types.ServiceProxies.csproj</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Intent.Modules.Modelers.Types.ServiceProxies.csproj</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>00c285fd-668c-4d5e-b67f-99b8c76032d1</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerConfig#2a32a6be-6524-445d-8d5d-54783b4bc7d3</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/Service Proxies.designer.config</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Service Proxies.designer.config</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
