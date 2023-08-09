@@ -1,0 +1,21 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public void MethodInvocationTypes()
+        {
+            TestMethodNoArgs();
+            TestMethodOneArg(one);
+            TestMethodTwoArgs(one, two);
+            TestMethodMultilineWithOneArg(
+                one);
+            TestMethodMultilineArgs(
+                one,
+                two,
+                three);
+        }
+    }
+}

@@ -1,0 +1,24 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void TestMethod(int value)
+        {
+            if (value == 0)
+            {
+                throw new InvalidArgumentException();
+            }
+            else if (value == 1)
+            {
+                return 1;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+    }
+}

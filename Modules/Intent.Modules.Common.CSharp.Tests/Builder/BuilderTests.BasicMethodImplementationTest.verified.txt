@@ -1,0 +1,16 @@
+﻿
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public class TestClass
+    {
+        public void TestMethod()
+        {
+            var stringVariable = "String value";
+            var intVariable = 42;
+            const string StringConstant = "Constant Value";
+            const int IntConstant = 77;
+        }
+    }
+}

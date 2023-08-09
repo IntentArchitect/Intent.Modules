@@ -1,0 +1,21 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Namespace
+{
+    public class Class
+    {
+        public string SwitchReturnStatements(string item)
+        {
+            switch (item)
+            {
+                case "Item1":
+                    return "Item1";
+                case "Item2":
+                    return "Item2";
+                default:
+                    return "Item X";
+            }
+        }
+    }
+}

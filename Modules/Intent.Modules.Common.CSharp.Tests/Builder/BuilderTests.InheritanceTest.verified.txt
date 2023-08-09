@@ -1,0 +1,32 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public interface ISomeInterface : ISomeOtherInterface
+    {
+    }
+
+    public abstract class BaseClass
+    {
+        public abstract void ImAbstractOverrideMe();
+
+        public virtual void ImVirtualOverrideIsOptional()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+    public class ConcreteClass : BaseClass
+    {
+        public override void ImAbstractOverrideMe()
+        {
+            // Stuff
+        }
+
+        public override void ImVirtualOverrideIsOptional()
+        {
+            // More Stuff
+        }
+    }
+}

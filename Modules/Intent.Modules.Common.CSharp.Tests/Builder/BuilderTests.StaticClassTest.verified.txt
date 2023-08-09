@@ -1,0 +1,15 @@
+﻿using System;
+[assembly: DefaultIntentManaged(Mode.Fully)]
+
+namespace Testing.Namespace
+{
+    public static class StaticClass
+    {
+        private static string _staticField = "123";
+        public static int StaticProperty { get; set; }
+
+        public static void StaticMethod()
+        {
+        }
+    }
+}

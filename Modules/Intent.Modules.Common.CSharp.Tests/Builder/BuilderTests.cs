@@ -11,7 +11,7 @@ public class BuilderTests
     [Fact]
     public async Task ClassConstructorTest()
     {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddClass("TestClass", @class =>
             {
@@ -36,7 +36,7 @@ public class BuilderTests
     [Fact]
     public async Task ConstructorCalls()
     {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddClass("ConcreteClass", @class =>
             {
@@ -59,15 +59,24 @@ public class BuilderTests
     }
 
     [Fact]
-    public async Task ClassTest()
+    public async Task BaseClassTest()
     {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddClass("BaseClass", @class =>
             {
                 @class.Abstract();
                 @class.AddMethod("void", "OnTest", method => { method.Virtual(); });
             })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task ConcreteClassTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
             .AddClass("ConcreteClass", @class =>
             {
                 @class.ImplementsInterface("ISomeService");
@@ -83,6 +92,15 @@ public class BuilderTests
                 @class.AddMethod("void", "ProtectedMethod", method => { method.Protected(); });
                 @class.AddField("string", "_test", field => field.Private());
             })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task StaticClassTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
             .AddClass("StaticClass", @class =>
             {
                 @class.Static();
@@ -118,7 +136,7 @@ public class BuilderTests
     [Fact]
     public async Task RecordTest()
     {
-        var fileBuilder = new CSharpFile("Namespace", "Records")
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddRecord("TestRecord", rec =>
             {
@@ -135,7 +153,7 @@ public class BuilderTests
     [Fact]
     public async Task GenericsTest()
     {
-        var fileBuilder = new CSharpFile("Namespace", "Class")
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddClass("Class", @class =>
             {
@@ -164,421 +182,9 @@ public class BuilderTests
     }
 
     [Fact]
-    public async Task TestIfElseElseIfStatements()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddParameter("int", "value");
-                    method.AddIfStatement("value == 0", c => c
-                        .AddStatement("throw new InvalidArgumentException();"));
-                    method.AddElseIfStatement("value == 1", c => c
-                        .AddStatement("return 1;"));
-                    method.AddElseStatement(c => c
-                        .AddStatement("return 2;"));
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task TestObjectInitializers()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddObjectInitializerBlock("var obj = new SomeObject", c => c
-                        .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
-                            .AddStatement("return x + 1;"))
-                        .AddInitStatement("StringProp", "\"My string\"")
-                        .WithSemicolon());
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task TestDictionaryInitializers()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddObjectInitializerBlock("var dict = new Dictionary<string, string>", c => c
-                        .AddKeyAndValue(@"""key1""", @"""value 1""")
-                        .AddKeyAndValue(@"""key2""", @"""value 2""")
-                        .WithSemicolon());
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task TestUsingBlocks()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddUsingBlock("var scope = service.GetScope()", block => block
-                        .AddStatement("scope.Dispose();"));
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task TestForEachLoops()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddForEachStatement("i", "Enumerable.Range(1, 10)", c => c
-                        .AddStatement("Console.Write(i);").SeparatedFromPrevious());
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task TestTryCatchFinallyBlocks()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddTryBlock(block => block.AddStatement("DoSomethingRisky();"));
-                    method.AddCatchBlock("OutOfMemoryException", "ex", block => block.AddStatement("// What to do?"));
-                    method.AddCatchBlock(block => block.AddStatement("// Catch All"));
-                    method.AddFinallyBlock(block => block.AddStatement("DoFinallyStuff();"));
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task TestComplexIfConditions()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddIfStatement(@"
-    !string.IsNullOrWhiteSpace(configuration[""KeyVault:TenantId""]) &&
-    !string.IsNullOrWhiteSpace(configuration[""KeyVault:ClientId""]) &&
-    !string.IsNullOrWhiteSpace(configuration[""KeyVault:Secret""])", block => block.AddStatement("// If statement body"));
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task TestStatementBlocks()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "TestMethod", method =>
-                {
-                    method.AddStatement(new CSharpStatementBlock(@"// block expression line 1
-    // block expression line 2
-    // block expression line 3"));
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-
-    [Fact]
-    public async Task Inheritance()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddUsing("System")
-            .AddClass("BaseClass", @class =>
-            {
-                @class.Abstract();
-                @class.AddMethod("void", "ImAbstractOverrideMe", method => method.Abstract());
-                @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Virtual().AddStatement("throw new NotImplementedException();"));
-            })
-            .AddClass("ConcreteClass", @class =>
-            {
-                @class.WithBaseType("BaseClass");
-                @class.AddMethod("void", "ImAbstractOverrideMe", method => method.Override().AddStatement("// Stuff"));
-                @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Override().AddStatement("// More Stuff"));
-            })
-            .AddInterface("ISomeInterface", @interface => { @interface.ImplementsInterfaces("ISomeOtherInterface"); })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task MethodChainingTest()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddUsing("System")
-            .AddClass("TestClass", @class =>
-            {
-                @class.AddMethod("void", "MethodChainTest", method =>
-                {
-                    method.AddMethodChainStatement("services.AddOpenTelemetry()", main => main
-                        .AddChainStatement(new CSharpInvocationStatement("ConfigureResource")
-                            .AddArgument(new CSharpLambdaBlock("res")
-                                .WithExpressionBody(new CSharpMethodChainStatement("res")
-                                    .WithoutSemicolon()
-                                    .AddChainStatement($@"AddService(""TestService"")")
-                                    .AddChainStatement("AddTelemetrySdk()")
-                                    .AddChainStatement("AddEnvironmentVariableDetector()")))
-                            .WithoutSemicolon())
-                        .AddChainStatement(new CSharpInvocationStatement("WithTracing")
-                            .AddArgument(new CSharpLambdaBlock("trace")
-                                .WithExpressionBody(new CSharpMethodChainStatement("trace")
-                                    .WithoutSemicolon()
-                                    .AddChainStatement("AddAspNetCoreInstrumentation()")))
-                            .WithoutSemicolon())
-                        .AddMetadata("telemetry-config", true));
-                });
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task PrivateBackingPropertyWithBodyExpressionTest()
-    {
-        var fileBuilder = new CSharpFile("Namespace", "Class")
-            .AddUsing("System")
-            .AddClass("Class", @class =>
-            {
-                @class.AddField("List<object>", "_backingField");
-
-                @class.AddProperty("IReadOnlyCollection<object>", "Property", property =>
-                {
-                    property.Getter
-                        .WithExpressionImplementation("_backingField.AsReadOnlyCollection()")
-                        ;
-
-                    property.Setter
-                        .WithExpressionImplementation("_backingField = new List<object>(value)")
-                        .Private()
-                        ;
-                });
-            })
-            .CompleteBuild();
-
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task ClassMethodExpressionBodyTest()
-    {
-        var fileBuilder = new CSharpFile("Namespace", "Class")
-            .AddUsing("System")
-            .AddClass("Class", @class =>
-            {
-                @class.AddMethod("string", "GetDateNow", method => { method.WithExpressionBody("DateTimeOffset.Now"); });
-                @class.AddMethod("IHostBuilder", "CreateHostBuilder", method =>
-                {
-                    method.AddParameter("string[]", "args");
-                    method.WithExpressionBody(new CSharpMethodChainStatement("Host.CreateDefaultBuilder(args)")
-                        .AddChainStatement(new CSharpInvocationStatement("UseSerilog")
-                            .WithoutSemicolon()
-                            .AddArgument(new CSharpLambdaBlock("(context, services, configuration)")
-                                .WithExpressionBody(new CSharpMethodChainStatement("configuration")
-                                    .AddChainStatement("ReadFrom.Configuration(context.Configuration)")
-                                    .AddChainStatement("ReadFrom.Services(services)")
-                                    .AddChainStatement("Enrich.FromLogContext()")
-                                    .AddChainStatement("WriteTo.Console()"))))
-                        .AddChainStatement(
-                            new CSharpInvocationStatement("ConfigureWebHostDefaults")
-                                .WithoutSemicolon()
-                                .AddArgument(new CSharpLambdaBlock("webBuilder")
-                                    .AddStatement("webBuilder.UseStartup<Startup>();"))));
-                });
-            })
-            .CompleteBuild();
-
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task InvocationStatementTest()
-    {
-        var fileBuilder = new CSharpFile("Namespace", "Class")
-            .AddUsing("System")
-            .AddClass("Class", @class =>
-            {
-                @class.AddMethod("void", "MethodInvocationTypes", method =>
-                {
-                    method.AddInvocationStatement("TestMethodNoArgs");
-                    method.AddInvocationStatement("TestMethodOneArg", m => m.AddArgument("one"));
-                    method.AddInvocationStatement("TestMethodTwoArgs", m => m.AddArgument("one").AddArgument("two"));
-                    method.AddInvocationStatement("TestMethodMultilineWithOneArg", m => m
-                        .WithArgumentsOnNewLines()
-                        .AddArgument("one"));
-                    method.AddInvocationStatement("TestMethodMultilineArgs", m => m
-                        .WithArgumentsOnNewLines()
-                        .AddArgument("one")
-                        .AddArgument("two")
-                        .AddArgument("three"));
-                    method.AddInvocationStatement("TestMethodWithMethodChainingArg", stmt => stmt
-                        .AddArgument(new CSharpMethodChainStatement("fluentBuilder")
-                            .AddChainStatement("FluentOpOne()")
-                            .AddChainStatement("FluentOpTwo()")
-                            .WithoutSemicolon()));
-                    method.AddStatement(new CSharpMethodChainStatement(@"services.ConfigureComponent()")
-                        .AddChainStatement(new CSharpInvocationStatement("ConfigureFeatures")
-                            .WithoutSemicolon()
-                            .AddArgument(@"""FeatureSet1""")
-                            .AddArgument(new CSharpLambdaBlock("conf")
-                                .WithExpressionBody(new CSharpMethodChainStatement("conf")
-                                    .WithoutSemicolon()
-                                    .AddChainStatement("SwitchFeatureOne(true)")
-                                    .AddChainStatement("SwitchFeatureTwo(false)")))));
-                });
-            })
-            .CompleteBuild();
-
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task MethodParametersTest()
-    {
-        var fileBuilder = new CSharpFile("Namespace", "Class")
-            .AddUsing("System")
-            .AddClass("Class", @class =>
-            {
-                @class.AddMethod("void", "NoParamMethod");
-                @class.AddMethod("void", "SingleParamMethod", method => method
-                    .AddParameter("string", "parm1")
-                    .AddStatement("// Expect parameters on same line"));
-                @class.AddMethod("void", "DoubleParamsMethod", method => method
-                    .AddParameter("string", "parm1")
-                    .AddParameter("string", "parm2")
-                    .AddStatement("// Expect parameters on same line"));
-                @class.AddMethod("void", "TripleParamsMethod", method => method
-                    .AddParameter("string", "parm1")
-                    .AddParameter("string", "parm2")
-                    .AddParameter("string", "parm3")
-                    .AddStatement("// Expect parameters on same line"));
-                @class.AddMethod("void", "LongAndManyParamsMethod", method => method
-                    .AddParameter("string", "firstParameter")
-                    .AddParameter("string", "secondParameter")
-                    .AddParameter("string", "thirdParameter")
-                    .AddParameter("string", "fourthParameter")
-                    .AddStatement("// Expect parameters to span over multiple lines"));
-            })
-            .CompleteBuild();
-
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task SwitchStatementTest()
-    {
-        var fileBuilder = new CSharpFile("Namespace", "Class")
-            .AddUsing("System")
-            .AddClass("Class", @class =>
-            {
-                @class.AddMethod("void", "SwitchBreakStatements",
-                    method =>
-                    {
-                        method.AddParameter("Exception", "exception");
-                        method.AddSwitchStatement("exception", stmt => stmt
-                            .AddCase("ArgumentNullException")
-                            .AddCase("NullReferenceException", block => block
-                                .AddStatement(@"Console.WriteLine(""Null detected"");")
-                                .WithBreak())
-                            .AddCase("OutOfMemoryException", block => block
-                                .AddStatement(@"Console.WriteLine(""No memory"");")
-                                .WithBreak())
-                            .AddDefault(block => block
-                                .AddStatement(@"Console.WriteLine(exception.GetType().Name);")
-                                .WithBreak()));
-                    });
-                @class.AddMethod("void", "SwitchContinueStatements",
-                    method =>
-                    {
-                        method.AddParameter("IEnumerable<string>", "collection");
-                        method.AddForEachStatement("item", "collection", stmt => stmt
-                            .AddSwitchStatement("item", swtch => swtch
-                                .AddCase(@"""Item1""", cs => cs.AddStatement(@"Console.WriteLine(""Item1"");")
-                                    .WithContinue())
-                                .AddCase(@"""Item2""", cs => cs.AddStatement(@"Console.WriteLine(""Item2"");")
-                                    .WithContinue())));
-                        method.AddStatement(@"Console.WriteLine(""Item X"");");
-                    });
-                @class.AddMethod("string", "SwitchReturnStatements",
-                    method =>
-                    {
-                        method.AddParameter("IEnumerable<string>", "collection");
-                        method.AddForEachStatement("item", "collection", stmt => stmt
-                            .AddSwitchStatement("item", swtch => swtch
-                                .AddCase(@"""Item1""", cs => cs
-                                    .WithReturn(@"""Item1"""))
-                                .AddCase(@"""Item2""", cs => cs
-                                    .WithReturn(@"""Item2"""))));
-                        method.AddStatement(@"return ""Item X"";");
-                    });
-            })
-            .CompleteBuild();
-
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
-    public async Task StaticConfigureStyleFileBuilderTest()
-    {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Classes")
-            .AddUsing("System")
-            .AddUsing("Azure")
-            .AddUsing("Azure.Messaging.EventGrid")
-            .AddUsing("Azure.Messaging.ServiceBus")
-            .AddUsing("Microsoft.EntityFrameworkCore")
-            .AddUsing("Microsoft.Extensions.Configuration")
-            .AddUsing("Microsoft.Extensions.DependencyInjection")
-            .AddClass("DependencyInjection", @class =>
-            {
-                @class.Static()
-                    .AddMethod("IServiceCollection", "AddInfrastructure", method => method
-                        .Static()
-                        .AddParameter("IServiceCollection", "services", param => param.WithThisModifier())
-                        .AddParameter("IConfiguration", "configuration")
-                        .AddStatement(new CSharpInvocationStatement("services.AddDbContext<ApplicationDbContext>")
-                            .AddArgument(new CSharpLambdaBlock("(sp, options)")
-                                .AddStatement(@"options.UseInMemoryDatabase(""DefaultConnection"");")
-                                .AddStatement(@"options.UseLazyLoadingProxies();"))
-                            .WithArgumentsOnNewLines())
-                        .AddStatement(new CSharpInvocationStatement(@"services.AddScoped<IUnitOfWork>")
-                            .AddArgument(new CSharpLambdaBlock("provider")
-                                .WithExpressionBody(@"provider.GetService<ApplicationDbContext>()"))));
-            })
-            .CompleteBuild();
-        await Verifier.Verify(fileBuilder.ToString());
-    }
-
-    [Fact]
     public async Task EnumTest()
     {
-        var fileBuilder = new CSharpFile("Testing.Namespace", "Enums")
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
             .AddUsing("System")
             .AddEnum("PrivateEnum", e =>
             {
@@ -615,6 +221,514 @@ public class BuilderTests
                 e.AddLiteral("Literal3", "5000");
             })
             .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task AllIfVariantStatementsTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddParameter("int", "value");
+                    method.AddIfStatement("value == 0", c => c
+                        .AddStatement("throw new InvalidArgumentException();"));
+                    method.AddElseIfStatement("value == 1", c => c
+                        .AddStatement("return 1;"));
+                    method.AddElseStatement(c => c
+                        .AddStatement("return 2;"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task ObjectInitializersTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddObjectInitializerBlock("var obj = new SomeObject", c => c
+                        .AddInitStatement("LambdaProp", new CSharpLambdaBlock("x")
+                            .AddStatement("return x + 1;"))
+                        .AddInitStatement("StringProp", "\"My string\"")
+                        .AddInitStatement("IntProp", "5")
+                        .WithSemicolon());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task DictionaryInitializersTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddObjectInitializerBlock("var dict = new Dictionary<string, string>", c => c
+                        .AddKeyAndValue(@"""key1""", @"""value 1""")
+                        .AddKeyAndValue(@"""key2""", @"""value 2""")
+                        .WithSemicolon());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task UsingBlocksTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddUsingBlock("var scope = service.GetScope()", block => block
+                        .AddStatement("scope.Dispose();"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task ForEachLoopsTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddForEachStatement("i", "Enumerable.Range(1, 10)", c => c
+                        .AddStatement("Console.Write(i);").SeparatedFromPrevious());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TryCatchFinallyBlocksTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddTryBlock(block => block.AddStatement("DoSomethingRisky();"));
+                    method.AddCatchBlock("OutOfMemoryException", "ex", block => block.AddStatement("// What to do?"));
+                    method.AddCatchBlock(block => block.AddStatement("// Catch All"));
+                    method.AddFinallyBlock(block => block.AddStatement("DoFinallyStuff();"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task ComplexIfConditionsTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddIfStatement(@"
+    !string.IsNullOrWhiteSpace(configuration[""KeyVault:TenantId""]) &&
+    !string.IsNullOrWhiteSpace(configuration[""KeyVault:ClientId""]) &&
+    !string.IsNullOrWhiteSpace(configuration[""KeyVault:Secret""])", block => block.AddStatement("// If statement body"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task TestStatementBlocks()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddStatement(new CSharpStatementBlock(@"// block expression line 1
+    // block expression line 2
+    // block expression line 3"));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task BasicMethodImplementationTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "TestMethod", method =>
+                {
+                    method.AddStatement(@"var stringVariable = ""String value"";");
+                    method.AddStatement(@"var intVariable = 42;");
+                    method.AddStatement(@"const string StringConstant = ""Constant Value"";");
+                    method.AddStatement(@"const int IntConstant = 77;");
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+
+    [Fact]
+    public async Task InheritanceTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("BaseClass", @class =>
+            {
+                @class.Abstract();
+                @class.AddMethod("void", "ImAbstractOverrideMe", method => method.Abstract());
+                @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Virtual().AddStatement("throw new NotImplementedException();"));
+            })
+            .AddClass("ConcreteClass", @class =>
+            {
+                @class.WithBaseType("BaseClass");
+                @class.AddMethod("void", "ImAbstractOverrideMe", method => method.Override().AddStatement("// Stuff"));
+                @class.AddMethod("void", "ImVirtualOverrideIsOptional", method => method.Override().AddStatement("// More Stuff"));
+            })
+            .AddInterface("ISomeInterface", @interface => { @interface.ImplementsInterfaces("ISomeOtherInterface"); })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task MethodChainingTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddMethod("void", "MethodChainTest", method =>
+                {
+                    method.AddMethodChainStatement("services.AddOpenTelemetry()", main => main
+                        .AddChainStatement(new CSharpInvocationStatement("ConfigureResource")
+                            .AddArgument(new CSharpLambdaBlock("res")
+                                .WithExpressionBody(new CSharpMethodChainStatement("res")
+                                    .WithoutSemicolon()
+                                    .AddChainStatement($@"AddService(""TestService"")")
+                                    .AddChainStatement("AddTelemetrySdk()")
+                                    .AddChainStatement("AddEnvironmentVariableDetector()")))
+                            .WithoutSemicolon())
+                        .AddChainStatement(new CSharpInvocationStatement("WithTracing")
+                            .AddArgument(new CSharpLambdaBlock("trace")
+                                .WithExpressionBody(new CSharpMethodChainStatement("trace")
+                                    .WithoutSemicolon()
+                                    .AddChainStatement("AddAspNetCoreInstrumentation()")))
+                            .WithoutSemicolon())
+                        .AddMetadata("telemetry-config", true));
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task PrivateBackingPropertyWithBodyExpressionTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddField("List<object>", "_backingField");
+
+                @class.AddProperty("IReadOnlyCollection<object>", "Property", property =>
+                {
+                    property.Getter
+                        .WithExpressionImplementation("_backingField.AsReadOnlyCollection()")
+                        ;
+
+                    property.Setter
+                        .WithExpressionImplementation("_backingField = new List<object>(value)")
+                        .Private()
+                        ;
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task InvocationWithMultipleArgsStatementTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "MethodInvocationTypes", method =>
+                {
+                    method.AddInvocationStatement("TestMethodNoArgs");
+                    method.AddInvocationStatement("TestMethodOneArg", m => m.AddArgument("one"));
+                    method.AddInvocationStatement("TestMethodTwoArgs", m => m.AddArgument("one").AddArgument("two"));
+                    method.AddInvocationStatement("TestMethodMultilineWithOneArg", m => m
+                        .WithArgumentsOnNewLines()
+                        .AddArgument("one"));
+                    method.AddInvocationStatement("TestMethodMultilineArgs", m => m
+                        .WithArgumentsOnNewLines()
+                        .AddArgument("one")
+                        .AddArgument("two")
+                        .AddArgument("three"));
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task InvocationWithMethodChainingStatementTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "MethodInvocationTypes", method =>
+                {
+                    method.AddInvocationStatement("TestMethodWithMethodChainingArg", stmt => stmt
+                        .AddArgument(new CSharpMethodChainStatement("fluentBuilder")
+                            .AddChainStatement("FluentOpOne()")
+                            .AddChainStatement("FluentOpTwo()")
+                            .WithoutSemicolon()));
+                    method.AddStatement(new CSharpMethodChainStatement(@"services.ConfigureComponent()")
+                        .AddChainStatement(new CSharpInvocationStatement("ConfigureFeatures")
+                            .WithoutSemicolon()
+                            .AddArgument(@"""FeatureSet1""")
+                            .AddArgument(new CSharpLambdaBlock("conf")
+                                .WithExpressionBody(new CSharpMethodChainStatement("conf")
+                                    .WithoutSemicolon()
+                                    .AddChainStatement("SwitchFeatureOne(true)")
+                                    .AddChainStatement("SwitchFeatureTwo(false)")))));
+                });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task MethodParametersTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "NoParamMethod");
+                @class.AddMethod("void", "SingleParamMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "DoubleParamsMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddParameter("string", "parm2")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "TripleParamsMethod", method => method
+                    .AddParameter("string", "parm1")
+                    .AddParameter("string", "parm2")
+                    .AddParameter("string", "parm3")
+                    .AddStatement("// Expect parameters on same line"));
+                @class.AddMethod("void", "LongAndManyParamsMethod", method => method
+                    .AddParameter("string", "firstParameter")
+                    .AddParameter("string", "secondParameter")
+                    .AddParameter("string", "thirdParameter")
+                    .AddParameter("string", "fourthParameter")
+                    .AddStatement("// Expect parameters to span over multiple lines"));
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task SwitchBreakStatementsTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "SwitchBreakStatements",
+                    method =>
+                    {
+                        method.AddParameter("Exception", "exception");
+                        method.AddSwitchStatement("exception", stmt => stmt
+                            .AddCase("ArgumentNullException")
+                            .AddCase("NullReferenceException", block => block
+                                .AddStatement(@"Console.WriteLine(""Null detected"");")
+                                .WithBreak())
+                            .AddCase("OutOfMemoryException", block => block
+                                .AddStatement(@"Console.WriteLine(""No memory"");")
+                                .WithBreak())
+                            .AddDefault(block => block
+                                .AddStatement(@"Console.WriteLine(exception.GetType().Name);")
+                                .WithBreak()));
+                    });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task SwitchContinueStatementsTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("void", "SwitchContinueStatements",
+                    method =>
+                    {
+                        method.AddParameter("IEnumerable<string>", "collection");
+                        method.AddForEachStatement("item", "collection", stmt => stmt
+                            .AddSwitchStatement("item", swtch => swtch
+                                .AddCase(@"""Item1""", cs => cs.AddStatement(@"Console.WriteLine(""Item1"");")
+                                    .WithContinue())
+                                .AddCase(@"""Item2""", cs => cs.AddStatement(@"Console.WriteLine(""Item2"");")
+                                    .WithContinue())));
+                        method.AddStatement(@"Console.WriteLine(""Item X"");");
+                    });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task NormalSwitchReturnStatementsTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("string", "SwitchReturnStatements",
+                    method =>
+                    {
+                        method.AddParameter("string", "item");
+                        method.AddSwitchStatement("item", swtch => swtch
+                            .AddCase(@"""Item1""", cs => cs
+                                .WithReturn(@"""Item1"""))
+                            .AddCase(@"""Item2""", cs => cs
+                                .WithReturn(@"""Item2"""))
+                            .AddDefault(cs => cs
+                                .WithReturn(@"""Item X""")));
+                    });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task NestedSwitchReturnStatementsTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("string", "SwitchReturnStatements",
+                    method =>
+                    {
+                        method.AddParameter("IEnumerable<string>", "collection");
+                        method.AddForEachStatement("item", "collection", stmt => stmt
+                            .AddSwitchStatement("item", swtch => swtch
+                                .AddCase(@"""Item1""", cs => cs
+                                    .WithReturn(@"""Item1"""))
+                                .AddCase(@"""Item2""", cs => cs
+                                    .WithReturn(@"""Item2"""))));
+                        method.AddStatement(@"return ""Item X"";");
+                    });
+            })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task StaticConfigureStyleFileBuilderTest()
+    {
+        var fileBuilder = new CSharpFile("Testing.Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddUsing("Azure")
+            .AddUsing("Azure.Messaging.EventGrid")
+            .AddUsing("Azure.Messaging.ServiceBus")
+            .AddUsing("Microsoft.EntityFrameworkCore")
+            .AddUsing("Microsoft.Extensions.Configuration")
+            .AddUsing("Microsoft.Extensions.DependencyInjection")
+            .AddClass("DependencyInjection", @class =>
+            {
+                @class.Static()
+                    .AddMethod("IServiceCollection", "AddInfrastructure", method => method
+                        .Static()
+                        .AddParameter("IServiceCollection", "services", param => param.WithThisModifier())
+                        .AddParameter("IConfiguration", "configuration")
+                        .AddStatement(new CSharpInvocationStatement("services.AddDbContext<ApplicationDbContext>")
+                            .AddArgument(new CSharpLambdaBlock("(sp, options)")
+                                .AddStatement(@"options.UseInMemoryDatabase(""DefaultConnection"");")
+                                .AddStatement(@"options.UseLazyLoadingProxies();"))
+                            .WithArgumentsOnNewLines())
+                        .AddStatement(new CSharpInvocationStatement(@"services.AddScoped<IUnitOfWork>")
+                            .AddArgument(new CSharpLambdaBlock("provider")
+                                .WithExpressionBody(@"provider.GetService<ApplicationDbContext>()"))));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task ClassMethodExpressionBodySimpleTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class => { @class.AddMethod("string", "GetDateNow", method => { method.WithExpressionBody("DateTimeOffset.Now"); }); })
+            .CompleteBuild();
+
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+
+    [Fact]
+    public async Task ClassMethodExpressionBodyComprehensiveTest()
+    {
+        var fileBuilder = new CSharpFile("Namespace", "RelativeLocation")
+            .AddUsing("System")
+            .AddClass("Class", @class =>
+            {
+                @class.AddMethod("IHostBuilder", "CreateHostBuilder", method =>
+                {
+                    method.AddParameter("string[]", "args");
+                    method.WithExpressionBody(new CSharpMethodChainStatement("Host.CreateDefaultBuilder(args)")
+                        .AddChainStatement(new CSharpInvocationStatement("UseSerilog")
+                            .WithoutSemicolon()
+                            .AddArgument(new CSharpLambdaBlock("(context, services, configuration)")
+                                .WithExpressionBody(new CSharpMethodChainStatement("configuration")
+                                    .AddChainStatement("ReadFrom.Configuration(context.Configuration)")
+                                    .AddChainStatement("ReadFrom.Services(services)")
+                                    .AddChainStatement("Enrich.FromLogContext()")
+                                    .AddChainStatement("WriteTo.Console()"))))
+                        .AddChainStatement(
+                            new CSharpInvocationStatement("ConfigureWebHostDefaults")
+                                .WithoutSemicolon()
+                                .AddArgument(new CSharpLambdaBlock("webBuilder")
+                                    .AddStatement("webBuilder.UseStartup<Startup>();"))));
+                });
+            })
+            .CompleteBuild();
+
         await Verifier.Verify(fileBuilder.ToString());
     }
 }
