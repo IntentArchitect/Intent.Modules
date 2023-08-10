@@ -1,10 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <class id="df1ddb61-d013-4651-adf0-50a2fc8711ae" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
-  <display>[visual]</display>
+  <display>[visual]: void</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
+  <typeReference id="d18249ea-a37e-42a8-b886-5683e2827394">
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
   <isMapped>false</isMapped>
   <parentFolderId>90831494-f069-44eb-b488-ab2dba7518ea</parentFolderId>
   <packageId>31710880-215c-4fed-9c79-a129a4b9cdb1</packageId>
@@ -15,6 +23,7 @@
       <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
+        <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Elbow Connector" isActive="true" />
         <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="" isActive="true" />
         <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
         <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="return typeReference.getIsNullable() ? &quot;3,8&quot; : null;" isActive="true" />

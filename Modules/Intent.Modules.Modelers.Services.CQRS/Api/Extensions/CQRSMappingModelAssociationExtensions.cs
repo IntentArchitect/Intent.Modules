@@ -10,7 +10,7 @@ namespace Intent.Modelers.Services.CQRS.Api
     public static class CQRSMappingModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<CQRSMappingTargetEndModel> PublishedDomainEvents(this CommandModel model)
+        public static IList<CQRSMappingTargetEndModel> CqrsMappedTo(this CommandModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CQRSMappingModel.SpecializationType && x.IsTargetEnd())
@@ -19,18 +19,30 @@ namespace Intent.Modelers.Services.CQRS.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<CQRSMappingTargetEndModel> PublishedDomainEvents(this QueryModel model)
+        public static IList<CQRSMappingTargetEndModel> CqrsMappedTo(this QueryModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CQRSMappingModel.SpecializationType && x.IsTargetEnd())
                 .Select(x => CQRSMappingModel.CreateFromEnd(x).TargetEnd)
                 .ToList();
         }
+        
+        [IntentManaged(Mode.Fully)]
+        public static IList<CQRSMappingSourceEndModel> CQRSMappedFrom(this CommandModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == CQRSMappingModel.SpecializationType && x.IsSourceEnd())
+                .Select(x => CQRSMappingModel.CreateFromEnd(x).SourceEnd)
+                .ToList();
+        }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<CQRSMappingSourceEndModel> DomainEventSources()
+        public static IList<CQRSMappingEndModel> CQRSMappingEnds(this CommandModel model)
         {
-            return new List<CQRSMappingSourceEndModel>(); // switch off
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.IsCQRSMappingEndModel())
+                .Select(CQRSMappingEndModel.Create)
+                .ToList();
         }
 
     }

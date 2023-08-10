@@ -384,6 +384,7 @@ vertical-align: center`</style>
         </typeReferenceSetting>
       </targetEnd>
       <visualSettings>
+        <lineType>Curved</lineType>
         <lineDashArray>3,8</lineDashArray>
         <sourceEnd />
         <targetEnd>
@@ -432,6 +433,7 @@ vertical-align: center`</style>
         </typeReferenceSetting>
       </targetEnd>
       <visualSettings>
+        <lineType>Curved</lineType>
         <lineDashArray>return "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>

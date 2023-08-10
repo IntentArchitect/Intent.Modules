@@ -10,7 +10,7 @@ namespace Intent.Modelers.Services.CQRS.Api
     public static class CQRSSubscriptionModelAssociationExtensions
     {
         [IntentManaged(Mode.Fully)]
-        public static IList<CQRSSubscriptionTargetEndModel> PublishedDomainEvents(this CommandModel model)
+        public static IList<CQRSSubscriptionTargetEndModel> CqrsSubscriptions(this CommandModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CQRSSubscriptionModel.SpecializationType && x.IsTargetEnd())

@@ -63,6 +63,7 @@
         </typeReferenceSetting>
       </targetEnd>
       <visualSettings>
+        <lineType>Elbow-Connector</lineType>
         <lineDashArray>return typeReference.getIsNullable() ? "3,8" : null;</lineDashArray>
         <sourceEnd>
           <pointIndicator>
