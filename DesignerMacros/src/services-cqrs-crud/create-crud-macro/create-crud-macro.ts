@@ -16,17 +16,19 @@ async function execute() {
     createCqrsCreateCommand(entity, folder);
     createCqrsFindByIdQuery(entity, folder, dto);
     createCqrsFindAllQuery(entity, folder, dto);
+
     const privateSetters = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value == "true";
-    if (privateSetters) {
-        let operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
-        operations.forEach(operation => {
-            createCqrsCallOperationCommand(entity, operation, folder);
-        })
-    } else {
+    if (!privateSetters) {
         createCqrsUpdateCommand(entity, folder);
     }
+
+    const operations = entity.getChildren("Operation").filter(x => x.typeReference.getType() == null);
+    for (const operation of operations) {
+        createCqrsCallOperationCommand(entity, operation, folder);
+    }
+
     createCqrsDeleteCommand(entity, folder);
-};
+}
 
 function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
     let owningAggregate = DomainHelper.getOwningAggregate(entity);
@@ -152,22 +154,30 @@ function createCqrsUpdateCommand(entity: MacroApi.Context.IElementApi, folder: M
 }
 
 function createCqrsCallOperationCommand(entity: MacroApi.Context.IElementApi, operation: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
-    let owningAggregate = DomainHelper.getOwningAggregate(entity);
-    let baseName = owningAggregate ? owningAggregate.getName() : "";
-    let expectedCommandName = `${toPascalCase(operation.getName())}${baseName}Command`;
+    const owningAggregate = DomainHelper.getOwningAggregate(entity);
+    const baseName = owningAggregate ? owningAggregate.getName() : "";
+    
+    let operationName = operation.getName();
+    operationName = removeSuffix(operationName, "Async");
+    operationName = toPascalCase(operationName);
 
-    if (folder.getChildren().some(x => x.getName() == expectedCommandName)) {
+    const commandName = `${operationName}${baseName}Command`;
+
+    if (folder.getChildren().some(
+            x => x.getName() == commandName ||
+            x.getMapping()?.getElement()?.id === operation.id)) {
         return;
     }
 
-    let command = new ElementManager(createElement("Command", expectedCommandName, folder.id), {
+    let command = new ElementManager(createElement("Command", commandName, folder.id), {
         childSpecialization: "DTO-Field"
     });
     command.mapToElement(operation);
     command.getElement().setMapping([entity.id, operation.id], "7c31c459-6229-4f10-bf13-507348cd8828") // Map to Domain Operation
     command.getElement().setMetadata("baseName", baseName);
 
-    command.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter"));
+    command.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
+        .filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service"));
 
     onMapCommand(command.getElement(), true);
     command.collapse();
