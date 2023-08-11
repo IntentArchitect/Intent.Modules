@@ -1,5 +1,6 @@
 ﻿### Version 3.3.40
 
+- Added : Description Stereotype for usage with Enum literals
 - Added : Support for Parameter Modifiers (out, ref, [in])
 - Added : Enum support for File Builder added.
 
