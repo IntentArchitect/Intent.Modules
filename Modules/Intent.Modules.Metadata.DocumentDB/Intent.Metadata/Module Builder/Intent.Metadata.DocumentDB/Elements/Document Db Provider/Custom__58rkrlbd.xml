@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="3b436f4c-554e-4d97-8968-5167a725e5cb" type="Document Db Provider" typeId="fcfbd83f-a3eb-4eff-b341-5a812b016d31">
+  <name>Custom</name>
+  <display>Custom</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <isMapped>false</isMapped>
+  <parentFolderId>a893fe1f-2a70-4c85-a0bb-8122adce383b</parentFolderId>
+  <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
+  <packageName>Intent.Metadata.DocumentDB</packageName>
+  <stereotypes />
+  <metadata />
+  <childElements />
+</class>

@@ -48,6 +48,11 @@ namespace Intent.Metadata.DocumentDB.Api
 
             public string Name => _stereotype.Name;
 
+            public IElement Provider()
+            {
+                return _stereotype.GetProperty<IElement>("Provider");
+            }
+
         }
 
     }
