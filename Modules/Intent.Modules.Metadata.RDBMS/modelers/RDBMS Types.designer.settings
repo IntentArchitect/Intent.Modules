@@ -176,7 +176,18 @@ if ((element.getParent().specialization == "Class" || element.getParent().specia
     }
 } else {
     element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
-}</script>
+}
+
+if ((element.getParent().specialization == "Class" || element.getParent().specialization == "Value Object") &amp;&amp; 
+    element.typeReference.typeId == "675c7b84-997a-44e0-82b9-cd724c07c9e6" /*decimal*/) {
+    if (!element.hasStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87")) {
+        element.addStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87"); // Decimal Contraint
+    }
+} else {
+    element.removeStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87")
+}
+
+</script>
         </macro>
         <macro trigger="on-type-changed">
           <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
@@ -190,6 +201,14 @@ if ((element.getParent().specialization == "Class" || element.getParent().specia
     }
 } else {
     element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
+}
+if ((element.getParent().specialization == "Class" || element.getParent().specialization == "Value Object") &amp;&amp; 
+    element.typeReference.typeId == "675c7b84-997a-44e0-82b9-cd724c07c9e6" /*decimal*/) {
+    if (!element.hasStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87")) {
+        element.addStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87"); // Decimal Contraint
+    }
+} else {
+    element.removeStereotype("8775f4d0-7ffd-4678-a6a8-fd7e0c6fbc87")
 }</script>
         </macro>
       </macros>
