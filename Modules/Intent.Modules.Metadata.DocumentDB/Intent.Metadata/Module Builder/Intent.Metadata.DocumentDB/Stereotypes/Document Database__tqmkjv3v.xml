@@ -25,12 +25,12 @@
       <type>string</type>
       <controlType>select</controlType>
       <optionsSource>lookup-element</optionsSource>
-      <placeholder />
+      <placeholder>Default</placeholder>
       <valueOptions />
       <lookupTypes>
         <type>fcfbd83f-a3eb-4eff-b341-5a812b016d31</type>
       </lookupTypes>
-      <isRequiredFunction />
+      <isRequiredFunction>return lookupTypesOf("Document Db Provider").length &gt; 2;</isRequiredFunction>
     </property>
   </properties>
 </stereotypeDefinition>

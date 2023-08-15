@@ -13,7 +13,7 @@
           <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
           <text>New Document Db Provider</text>
           <defaultName>NewDocumentDbProvider</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="FontAwesome" source="database" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -25,7 +25,7 @@
   </packageExtensions>
   <elementSettings>
     <elementSetting type="Document Db Provider" typeId="fcfbd83f-a3eb-4eff-b341-5a812b016d31">
-      <icon type="FontAwesome" source="file-o" />
+      <icon type="FontAwesome" source="database" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
@@ -52,7 +52,7 @@
           <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
           <text>New Document Db Provider</text>
           <defaultName>NewDocumentDbProvider</defaultName>
-          <icon type="FontAwesome" source="file-o" />
+          <icon type="FontAwesome" source="database" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
