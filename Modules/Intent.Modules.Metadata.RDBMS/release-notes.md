@@ -1,6 +1,6 @@
 ### Version 3.5.8
 
-- Improvement: Decimal Constraints are now always added to `decimal` `Attribute`s in the `Domain Designer`. 
+- Improvement: `Decimal precision and scale` setting added to configure the default decimal precision and scale for your database technology. 
 
 ### Version 3.5.7
 
