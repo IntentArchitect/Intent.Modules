@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="124421d3-1ae5-493c-a33b-4d22d186f1b7" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+<class id="0228af72-519b-4bf7-a495-c6c95f1c9258" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
   <name>[visual]</name>
   <display>[visual]: void</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="da7d0d71-c176-452b-9b31-2c4fafaba54a">
+  <typeReference id="34886539-0f6c-4b10-ace6-b62b0f1bfecd">
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -14,7 +14,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>1f0777dc-4647-408c-b313-ab1bb0a659cf</parentFolderId>
+  <parentFolderId>efbe6193-5d1e-40a9-b98d-fb15ca9e547b</parentFolderId>
   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
   <packageName>Intent.Modelers.Services.CQRS</packageName>
   <stereotypes>
@@ -24,7 +24,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Curved" isActive="true" />
-        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="return &quot;lawngreen&quot;" isActive="true" />
+        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="return &quot;yellow&quot;" isActive="true" />
         <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
         <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="return &quot;3,7&quot;;" isActive="true" />
       </properties>
@@ -32,13 +32,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="0f9bc5e0-5683-4eab-a133-2da7914cf5db" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+    <childElement id="901a2373-dba4-43ef-b897-3e4ae7b518ed" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>124421d3-1ae5-493c-a33b-4d22d186f1b7</parentFolderId>
+      <parentFolderId>0228af72-519b-4bf7-a495-c6c95f1c9258</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>
@@ -79,13 +79,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="1b8b334f-b490-4510-9e90-97ee8feaa0ce" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+    <childElement id="7cf8fb2b-294a-4bc1-a52a-28b61d975a73" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
       <name>[desintation]</name>
       <display>[destination]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>124421d3-1ae5-493c-a33b-4d22d186f1b7</parentFolderId>
+      <parentFolderId>0228af72-519b-4bf7-a495-c6c95f1c9258</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes>

@@ -62,7 +62,7 @@
       <childElements>
         <childElement id="7e9eed36-76ed-40c4-a426-66856eb0dcae" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
           <name>New Mapping</name>
-          <display>New Mapping: CQRS Mapping</display>
+          <display>New Mapping: Create Action Mapping</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="b3d1dc4f-7d27-46b8-a1a0-2b432364cd8a">

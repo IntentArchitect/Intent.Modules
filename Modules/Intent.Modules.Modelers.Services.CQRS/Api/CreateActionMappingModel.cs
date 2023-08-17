@@ -10,15 +10,15 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.CQRS.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class CQRSMappingModel : IMetadataModel
+    public class CreateActionMappingModel : IMetadataModel
     {
-        public const string SpecializationType = "CQRS Mapping";
+        public const string SpecializationType = "Create Action Mapping";
         public const string SpecializationTypeId = "1f0777dc-4647-408c-b313-ab1bb0a659cf";
         protected readonly IAssociation _association;
-        protected CQRSMappingSourceEndModel _sourceEnd;
-        protected CQRSMappingTargetEndModel _targetEnd;
+        protected CreateActionMappingSourceEndModel _sourceEnd;
+        protected CreateActionMappingTargetEndModel _targetEnd;
 
-        public CQRSMappingModel(IAssociation association, string requiredType = SpecializationType)
+        public CreateActionMappingModel(IAssociation association, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(association.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -27,17 +27,17 @@ namespace Intent.Modelers.Services.CQRS.Api
             _association = association;
         }
 
-        public static CQRSMappingModel CreateFromEnd(IAssociationEnd associationEnd)
+        public static CreateActionMappingModel CreateFromEnd(IAssociationEnd associationEnd)
         {
-            var association = new CQRSMappingModel(associationEnd.Association);
+            var association = new CreateActionMappingModel(associationEnd.Association);
             return association;
         }
 
         public string Id => _association.Id;
 
-        public CQRSMappingSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new CQRSMappingSourceEndModel(_association.SourceEnd, this));
+        public CreateActionMappingSourceEndModel SourceEnd => _sourceEnd ?? (_sourceEnd = new CreateActionMappingSourceEndModel(_association.SourceEnd, this));
 
-        public CQRSMappingTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new CQRSMappingTargetEndModel(_association.TargetEnd, this));
+        public CreateActionMappingTargetEndModel TargetEnd => _targetEnd ?? (_targetEnd = new CreateActionMappingTargetEndModel(_association.TargetEnd, this));
 
         public IAssociation InternalAssociation => _association;
 
@@ -46,7 +46,7 @@ namespace Intent.Modelers.Services.CQRS.Api
             return _association.ToString();
         }
 
-        public bool Equals(CQRSMappingModel other)
+        public bool Equals(CreateActionMappingModel other)
         {
             return Equals(_association, other?._association);
         }
@@ -56,7 +56,7 @@ namespace Intent.Modelers.Services.CQRS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CQRSMappingModel)obj);
+            return Equals((CreateActionMappingModel)obj);
         }
 
         public override int GetHashCode()
@@ -66,48 +66,48 @@ namespace Intent.Modelers.Services.CQRS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class CQRSMappingSourceEndModel : CQRSMappingEndModel
+    public class CreateActionMappingSourceEndModel : CreateActionMappingEndModel
     {
         public const string SpecializationTypeId = "8561dd59-d363-49f6-a9e1-333d7c1c7ae0";
 
-        public CQRSMappingSourceEndModel(IAssociationEnd associationEnd, CQRSMappingModel association) : base(associationEnd, association)
+        public CreateActionMappingSourceEndModel(IAssociationEnd associationEnd, CreateActionMappingModel association) : base(associationEnd, association)
         {
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public class CQRSMappingTargetEndModel : CQRSMappingEndModel
+    public class CreateActionMappingTargetEndModel : CreateActionMappingEndModel
     {
         public const string SpecializationTypeId = "b4782cd3-7532-43d3-a759-4efa1920aa65";
 
-        public CQRSMappingTargetEndModel(IAssociationEnd associationEnd, CQRSMappingModel association) : base(associationEnd, association)
+        public CreateActionMappingTargetEndModel(IAssociationEnd associationEnd, CreateActionMappingModel association) : base(associationEnd, association)
         {
         }
     }
 
     [IntentManaged(Mode.Fully)]
-    public class CQRSMappingEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class CreateActionMappingEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
     {
         protected readonly IAssociationEnd _associationEnd;
-        private readonly CQRSMappingModel _association;
+        private readonly CreateActionMappingModel _association;
 
-        public CQRSMappingEndModel(IAssociationEnd associationEnd, CQRSMappingModel association)
+        public CreateActionMappingEndModel(IAssociationEnd associationEnd, CreateActionMappingModel association)
         {
             _associationEnd = associationEnd;
             _association = association;
         }
 
-        public static CQRSMappingEndModel Create(IAssociationEnd associationEnd)
+        public static CreateActionMappingEndModel Create(IAssociationEnd associationEnd)
         {
-            var association = new CQRSMappingModel(associationEnd.Association);
-            return association.TargetEnd.Id == associationEnd.Id ? (CQRSMappingEndModel)association.TargetEnd : association.SourceEnd;
+            var association = new CreateActionMappingModel(associationEnd.Association);
+            return association.TargetEnd.Id == associationEnd.Id ? (CreateActionMappingEndModel)association.TargetEnd : association.SourceEnd;
         }
 
         public string Id => _associationEnd.Id;
         public string SpecializationType => _associationEnd.SpecializationType;
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
-        public CQRSMappingModel Association => _association;
+        public CreateActionMappingModel Association => _association;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;
@@ -120,9 +120,9 @@ namespace Intent.Modelers.Services.CQRS.Api
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
 
-        public CQRSMappingEndModel OtherEnd()
+        public CreateActionMappingEndModel OtherEnd()
         {
-            return this.Equals(_association.SourceEnd) ? (CQRSMappingEndModel)_association.TargetEnd : (CQRSMappingEndModel)_association.SourceEnd;
+            return this.Equals(_association.SourceEnd) ? (CreateActionMappingEndModel)_association.TargetEnd : (CreateActionMappingEndModel)_association.SourceEnd;
         }
 
         public bool IsTargetEnd()
@@ -140,7 +140,7 @@ namespace Intent.Modelers.Services.CQRS.Api
             return _associationEnd.ToString();
         }
 
-        public bool Equals(CQRSMappingEndModel other)
+        public bool Equals(CreateActionMappingEndModel other)
         {
             return Equals(_associationEnd, other._associationEnd);
         }
@@ -150,7 +150,7 @@ namespace Intent.Modelers.Services.CQRS.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((CQRSMappingEndModel)obj);
+            return Equals((CreateActionMappingEndModel)obj);
         }
 
         public override int GetHashCode()
@@ -160,36 +160,36 @@ namespace Intent.Modelers.Services.CQRS.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class CQRSMappingEndModelExtensions
+    public static class CreateActionMappingEndModelExtensions
     {
-        public static bool IsCQRSMappingEndModel(this ICanBeReferencedType type)
+        public static bool IsCreateActionMappingEndModel(this ICanBeReferencedType type)
         {
-            return IsCQRSMappingTargetEndModel(type) || IsCQRSMappingSourceEndModel(type);
+            return IsCreateActionMappingTargetEndModel(type) || IsCreateActionMappingSourceEndModel(type);
         }
 
-        public static CQRSMappingEndModel AsCQRSMappingEndModel(this ICanBeReferencedType type)
+        public static CreateActionMappingEndModel AsCreateActionMappingEndModel(this ICanBeReferencedType type)
         {
-            return (CQRSMappingEndModel)type.AsCQRSMappingTargetEndModel() ?? (CQRSMappingEndModel)type.AsCQRSMappingSourceEndModel();
+            return (CreateActionMappingEndModel)type.AsCreateActionMappingTargetEndModel() ?? (CreateActionMappingEndModel)type.AsCreateActionMappingSourceEndModel();
         }
 
-        public static bool IsCQRSMappingTargetEndModel(this ICanBeReferencedType type)
+        public static bool IsCreateActionMappingTargetEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == CQRSMappingTargetEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == CreateActionMappingTargetEndModel.SpecializationTypeId;
         }
 
-        public static CQRSMappingTargetEndModel AsCQRSMappingTargetEndModel(this ICanBeReferencedType type)
+        public static CreateActionMappingTargetEndModel AsCreateActionMappingTargetEndModel(this ICanBeReferencedType type)
         {
-            return type.IsCQRSMappingTargetEndModel() ? new CQRSMappingModel(((IAssociationEnd)type).Association).TargetEnd : null;
+            return type.IsCreateActionMappingTargetEndModel() ? new CreateActionMappingModel(((IAssociationEnd)type).Association).TargetEnd : null;
         }
 
-        public static bool IsCQRSMappingSourceEndModel(this ICanBeReferencedType type)
+        public static bool IsCreateActionMappingSourceEndModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == CQRSMappingSourceEndModel.SpecializationTypeId;
+            return type != null && type is IAssociationEnd associationEnd && associationEnd.SpecializationTypeId == CreateActionMappingSourceEndModel.SpecializationTypeId;
         }
 
-        public static CQRSMappingSourceEndModel AsCQRSMappingSourceEndModel(this ICanBeReferencedType type)
+        public static CreateActionMappingSourceEndModel AsCreateActionMappingSourceEndModel(this ICanBeReferencedType type)
         {
-            return type.IsCQRSMappingSourceEndModel() ? new CQRSMappingModel(((IAssociationEnd)type).Association).SourceEnd : null;
+            return type.IsCreateActionMappingSourceEndModel() ? new CreateActionMappingModel(((IAssociationEnd)type).Association).SourceEnd : null;
         }
     }
 }
