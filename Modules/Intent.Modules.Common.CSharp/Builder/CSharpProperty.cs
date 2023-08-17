@@ -3,7 +3,7 @@ using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
 
-public class CSharpProperty : CSharpMember<CSharpProperty>
+public class CSharpProperty : CSharpMember<CSharpProperty>, IHasCSharpName
 {
     private readonly CSharpClass _class;
     public string AccessModifier { get; protected set; } = "public ";
@@ -34,6 +34,12 @@ public class CSharpProperty : CSharpMember<CSharpProperty>
         BeforeSeparator = CSharpCodeSeparatorType.NewLine;
         AfterSeparator = CSharpCodeSeparatorType.NewLine;
         _class = @class;
+        File = @class?.File; // can be null because of CSharpInterfaceProperty :(
+    }
+
+    public string GetReferenceName()
+    {
+        return Name;
     }
 
     public CSharpProperty Protected()

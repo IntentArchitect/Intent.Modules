@@ -1,7 +1,11 @@
-﻿### Version 3.3.40
+﻿### Version 3.4.0
 
-- Added : Support for Parameter Modifiers (out, ref, [in])
-- Added : Enum support for File Builder added.
+- New: Added `CSharpAssignmentStatement` which takes in a left-hand and right-hand set of statements for standard variable and property assignements.
+
+### Version 3.3.40
+
+- Added: Support for Parameter Modifiers (out, ref, [in])
+- Added: Enum support for File Builder added.
 
 ### Version 3.3.39
 
