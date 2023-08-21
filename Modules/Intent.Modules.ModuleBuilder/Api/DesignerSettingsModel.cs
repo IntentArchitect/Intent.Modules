@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -128,6 +130,11 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new PackageExtensionModel(x))
             .ToList();
 
+        public IList<MappingTypeSettingsModel> MappingTypes => _element.ChildElements
+            .GetElementsOfType(MappingTypeSettingsModel.SpecializationTypeId)
+            .Select(x => new MappingTypeSettingsModel(x))
+            .ToList();
+
         [IntentManaged(Mode.Fully)]
         public IList<PackageSettingsModel> PackageTypes => _element.ChildElements
             .GetElementsOfType(PackageSettingsModel.SpecializationTypeId)
@@ -141,6 +148,24 @@ namespace Intent.ModuleBuilder.Api
             .ToList();
 
         public string Comment => _element.Comment;
+
+        public DesignerSettingsPersistable ToPersistable()
+        {
+            var modelerSettings = new DesignerSettingsPersistable
+            {
+                Id = Id,
+                Name = Name,
+                DesignerReferences = DesignerReferences.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                PackageSettings = PackageTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                PackageExtensions = PackageExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                ElementSettings = ElementTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                ElementExtensions = ElementExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                AssociationSettings = AssociationTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                AssociationExtensions = AssociationExtensions.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList(),
+                MappingSettings = MappingTypes.OrderBy(x => x.Name).Select(x => x.ToPersistable()).ToList()
+            };
+            return modelerSettings;
+        }
     }
 
     public class TypeOrder : IEquatable<TypeOrder>

@@ -11,7 +11,7 @@ using Intent.Modules.Common.Templates;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial
@@ -28,6 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial
 
         public override string TemplateId => ApiElementModelPartialTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ElementSettingsModel model)
         {
             return new ApiElementModelPartialTemplate(outputTarget, model);

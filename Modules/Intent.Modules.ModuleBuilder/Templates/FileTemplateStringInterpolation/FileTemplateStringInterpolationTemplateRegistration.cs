@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateStringInterpolation
 
         public override string TemplateId => FileTemplateStringInterpolationTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, FileTemplateModel model)
         {
             return new FileTemplateStringInterpolationTemplate(outputTarget, model);

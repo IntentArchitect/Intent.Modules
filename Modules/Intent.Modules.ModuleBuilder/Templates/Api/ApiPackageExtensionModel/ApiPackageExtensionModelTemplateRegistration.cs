@@ -9,7 +9,7 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageExtensionModel
@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageExtensionModel
 
         public override string TemplateId => ApiPackageExtensionModelTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, PackageExtensionModel model)
         {
             return new ApiPackageExtensionModelTemplate(outputTarget, model);

@@ -100,6 +100,11 @@ namespace Intent.ModuleBuilder.Api
             .GetElementsOfType(RunScriptOptionModel.SpecializationTypeId)
             .Select(x => new RunScriptOptionModel(x))
             .ToList();
+
+        public IList<MappingOptionModel> MappingOptions => _element.ChildElements
+            .GetElementsOfType(MappingOptionModel.SpecializationTypeId)
+            .Select(x => new MappingOptionModel(x))
+            .ToList();
     }
 
     [IntentManaged(Mode.Fully)]

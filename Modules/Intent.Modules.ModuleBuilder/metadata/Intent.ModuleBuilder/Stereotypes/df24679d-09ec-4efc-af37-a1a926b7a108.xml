@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="df24679d-09ec-4efc-af37-a1a926b7a108" version="3.1.0">
+  <name>Mapping Settings</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="62e5b1a9-0d36-4969-9d22-ce748155afbf">Element Mapping Settings</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>always</applyMode>
+  <icon type="FontAwesome" source="cogs" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>return ``;</displayFunction>
+  <displayAsAnnotation>false</displayAsAnnotation>
+  <displayAsText>true</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>1a876b1f-5811-45e9-9568-b0f8c6c938d6</parentFolderId>
+  <order>0</order>
+  <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
+  <packageName>Intent.ModuleBuilder</packageName>
+  <properties>
+    <property id="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41">
+      <name>Filter Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction />
+      <isRequiredFunction>return false</isRequiredFunction>
+    </property>
+    <property id="9b689fcf-4060-4bff-b23e-6f150ecadd65">
+      <name>Is Required Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction />
+      <isRequiredFunction>return false</isRequiredFunction>
+    </property>
+    <property id="fe1fd512-566d-427a-a9a8-ed16c6ae8f98">
+      <name>Is Mappable Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <defaultValue>return true;</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction />
+      <isRequiredFunction>return false</isRequiredFunction>
+    </property>
+    <property id="8729cf25-6468-4ad0-aed2-2f7c854c2438">
+      <name>Allow Multiple Mappings</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <defaultValue>true</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-api</apiTypeDefinition>
+      <isActiveFunction />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
+    <property id="3f279b0b-8772-4dd5-bf54-1fde024420e7">
+      <name>Traversable Types</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+      </lookupTypes>
+    </property>
+    <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
+      <name>Is Traversable Function</name>
+      <type>string</type>
+      <controlType>function</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder>(Default)</placeholder>
+      <valueOptions />
+      <lookupTypes />
+      <apiTypeDefinition>element-macro-api</apiTypeDefinition>
+      <isActiveFunction />
+      <isRequiredFunction>return false</isRequiredFunction>
+    </property>
+    <property id="54dec827-b00b-4045-850d-c5d49c5777b2">
+      <name>Maps To</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+      </lookupTypes>
+    </property>
+    <property id="51aec36f-cc2d-489e-ba6b-816aca340502">
+      <name>Use Child Mappings From</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+      </lookupTypes>
+    </property>
+  </properties>
+</stereotypeDefinition>

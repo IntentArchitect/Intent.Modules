@@ -9,7 +9,7 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions
@@ -25,6 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             _metadataManager = metadataManager;
         }
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, IntentModuleModel model)
         {
             return new ModuleSettingsExtensionsTemplate(outputTarget, model);

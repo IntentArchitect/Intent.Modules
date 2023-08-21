@@ -9,7 +9,7 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecorator
 
         public override string TemplateId => TemplateDecoratorTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, TemplateDecoratorModel model)
         {
             return new TemplateDecoratorTemplate(outputTarget, model);

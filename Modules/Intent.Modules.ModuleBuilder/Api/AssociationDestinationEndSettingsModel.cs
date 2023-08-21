@@ -78,6 +78,7 @@ namespace Intent.ModuleBuilder.Api
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : Array.Empty<ElementCreationOption>())
                     .ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
+                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList()
             };
         }
 
@@ -115,6 +116,11 @@ namespace Intent.ModuleBuilder.Api
             .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
+
+        public IList<MappingTypeSettingsModel> MappingOptions => _element.ChildElements
+            .GetElementsOfType(MappingTypeSettingsModel.SpecializationTypeId)
+            .Select(x => new MappingTypeSettingsModel(x))
+            .ToList();
 
         public const string SpecializationTypeId = "c4c61fdc-464d-41d2-8e0e-5a734d588302";
 
