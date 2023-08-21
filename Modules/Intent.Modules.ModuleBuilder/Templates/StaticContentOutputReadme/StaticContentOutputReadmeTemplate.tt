@@ -1,0 +1,12 @@
+<#@ template language="C#" inherits="IntentTemplateBase<Intent.ModuleBuilder.Api.StaticContentTemplateModel>" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="Intent.Modules.Common" #>
+<#@ import namespace="Intent.Modules.Common.Templates" #>
+<#@ import namespace="Intent.Metadata.Models" #>
+<#@ import namespace="Intent.ModuleBuilder.Api" #>
+
+This file is needed to create the content folders.
+Supply this folder with all the static content needed.
+Delete if not needed.

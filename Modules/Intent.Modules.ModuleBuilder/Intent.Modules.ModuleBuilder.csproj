@@ -1,9 +1,9 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.6.10-pre.0</Version>
+    <Version>3.6.10-pre.1</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
@@ -231,6 +231,15 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>StaticContentTemplateRegistrationTemplate.tt</DependentUpon>
     </Compile>
+    <None Update="Templates\StaticContentOutputReadme\StaticContentOutputReadmeTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>StaticContentOutputReadmeTemplate.cs</LastGenOutput>
+    </None>
+    <Compile Update="Templates\StaticContentOutputReadme\StaticContentOutputReadmeTemplate.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>StaticContentOutputReadmeTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Update="Templates\FileTemplateT4Interpolation\FileTemplateT4InterpolationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -275,11 +284,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>FileTemplatePartialTemplate.tt</DependentUpon>
     </Compile>
-    <Compile Update="Templates\ReadMe\ReadMeTemplate.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>ReadMeTemplate.tt</DependentUpon>
-    </Compile>
     <Compile Update="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -310,10 +314,6 @@
     <None Update="Templates\FileTemplatePartial\FileTemplatePartialTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>FileTemplatePartialTemplate.cs</LastGenOutput>
-    </None>
-    <None Update="Templates\ReadMe\ReadMeTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>ReadMeTemplate.cs</LastGenOutput>
     </None>
     <None Update="Templates\Registration\Custom\CustomTemplateRegistrationTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
