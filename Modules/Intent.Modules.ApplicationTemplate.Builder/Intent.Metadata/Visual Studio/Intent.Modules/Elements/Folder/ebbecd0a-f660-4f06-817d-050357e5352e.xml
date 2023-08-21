@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="01341eea-1e2d-4095-9bc6-ced118e2f09d" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
+<class id="ebbecd0a-f660-4f06-817d-050357e5352e" type="Folder" typeId="3407a825-1331-4f3f-89a4-901903ed97ce">
   <name>Settings</name>
   <display>Settings</display>
   <isAbstract>false</isAbstract>
-  <order>5</order>
+  <sort-children>by-type-then-by-name</sort-children>
   <genericTypes />
   <isMapped>false</isMapped>
   <parentFolderId>653969db-6597-4b32-a1f6-029c69da6903</parentFolderId>
@@ -21,19 +21,20 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="abe7464f-0cf1-4d71-9bff-54954d734fe7" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
+    <childElement id="2f5d61ed-5314-4739-bc4a-fb7e10053f16" type="Template Output" typeId="d421c322-7a51-4094-89fa-e5d8a0a97b27">
       <name>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</name>
       <display>Intent.ModuleBuilder.Templates.Settings.ModuleSettingsExtensions</display>
       <externalReference>Intent.ModuleBuilder</externalReference>
       <isAbstract>false</isAbstract>
-      <order>0</order>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>01341eea-1e2d-4095-9bc6-ced118e2f09d</parentFolderId>
+      <parentFolderId>ebbecd0a-f660-4f06-817d-050357e5352e</parentFolderId>
       <packageId>f917caa4-f97b-43a2-9853-5c5dfa533768</packageId>
       <packageName>Intent.Modules</packageName>
       <stereotypes />
-      <metadata />
+      <metadata>
+        <entry key="status" value="assigned" />
+      </metadata>
       <childElements />
     </childElement>
   </childElements>

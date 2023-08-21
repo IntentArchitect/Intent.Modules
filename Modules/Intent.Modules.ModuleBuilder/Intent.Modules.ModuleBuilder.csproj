@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Architect.Persistence" Version="3.4.3" />
-    <PackageReference Include="Intent.Modules.Common" Version="3.4.1" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.4.3" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.35" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">

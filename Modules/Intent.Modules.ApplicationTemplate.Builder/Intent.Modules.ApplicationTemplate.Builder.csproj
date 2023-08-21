@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -6,25 +6,28 @@
 
   <ItemGroup>
     <PackageReference Include="Intent.Architect.Persistence" Version="3.4.2" />
-    <PackageReference Include="Intent.Modules.Common" Version="3.4.0" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.4.3" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.30" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.0.1" />
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.0" />
     <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.4.2" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.tt">
-      <Generator>TextTemplatingFilePreprocessor</Generator>
-      <LastGenOutput>InstallationSettingsFileTemplate.cs</LastGenOutput>
-    </None>
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.cs">
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>InstallationSettingsFileTemplate.tt</DependentUpon>
@@ -32,7 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+    <None Update="Templates\Templates\InstallationSettingsFile\InstallationSettingsFileTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>InstallationSettingsFileTemplate.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>

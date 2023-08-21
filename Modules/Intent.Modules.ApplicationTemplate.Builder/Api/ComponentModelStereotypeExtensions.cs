@@ -23,6 +23,18 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
             return model.HasStereotype("Component Settings");
         }
 
+        public static bool TryGetComponentSettings(this ComponentModel model, out ComponentSettings stereotype)
+        {
+            if (!HasComponentSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ComponentSettings(model.GetStereotype("Component Settings"));
+            return true;
+        }
+
 
         public class ComponentSettings
         {

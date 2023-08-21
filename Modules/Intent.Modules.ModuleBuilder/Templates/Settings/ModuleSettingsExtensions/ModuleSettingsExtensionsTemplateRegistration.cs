@@ -25,6 +25,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Settings.ModuleSettingsExtensio
             _metadataManager = metadataManager;
         }
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, IntentModuleModel model)
         {
             return new ModuleSettingsExtensionsTemplate(outputTarget, model);

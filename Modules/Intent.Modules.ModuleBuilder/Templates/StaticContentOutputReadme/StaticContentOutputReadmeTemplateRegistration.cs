@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentOutputReadme
 
         public override string TemplateId => StaticContentOutputReadmeTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, StaticContentTemplateModel model)
         {
             return new StaticContentOutputReadmeTemplate(outputTarget, model);

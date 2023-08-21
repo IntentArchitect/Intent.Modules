@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
 
         public override string TemplateId => FileTemplateT4Template.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, FileTemplateModel model)
         {
             return new FileTemplateT4Template(outputTarget, model);

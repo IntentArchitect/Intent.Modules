@@ -12,7 +12,7 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ApplicationTemplate.Builder.Templates.InstallationSettingsFile
+namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.InstallationSettingsFile
 {
     [IntentManaged(Mode.Merge)]
     partial class InstallationSettingsFileTemplate : IntentTemplateBase<InstallationSettingsModel>

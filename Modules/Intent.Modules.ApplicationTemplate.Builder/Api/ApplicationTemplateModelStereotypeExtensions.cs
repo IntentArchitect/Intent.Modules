@@ -23,6 +23,18 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         {
             return model.HasStereotype("Application Template Defaults");
         }
+
+        public static bool TryGetApplicationTemplateDefaults(this ApplicationTemplateModel model, out ApplicationTemplateDefaults stereotype)
+        {
+            if (!HasApplicationTemplateDefaults(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ApplicationTemplateDefaults(model.GetStereotype("Application Template Defaults"));
+            return true;
+        }
         public static ApplicationTemplateSettings GetApplicationTemplateSettings(this ApplicationTemplateModel model)
         {
             var stereotype = model.GetStereotype("Application Template Settings");
@@ -32,6 +44,18 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
         public static bool HasApplicationTemplateSettings(this ApplicationTemplateModel model)
         {
             return model.HasStereotype("Application Template Settings");
+        }
+
+        public static bool TryGetApplicationTemplateSettings(this ApplicationTemplateModel model, out ApplicationTemplateSettings stereotype)
+        {
+            if (!HasApplicationTemplateSettings(model))
+            {
+                stereotype = null;
+                return false;
+            }
+
+            stereotype = new ApplicationTemplateSettings(model.GetStereotype("Application Template Settings"));
+            return true;
         }
 
 

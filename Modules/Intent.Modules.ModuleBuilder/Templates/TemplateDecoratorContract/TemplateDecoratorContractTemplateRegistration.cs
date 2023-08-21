@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract
 
         public override string TemplateId => TemplateDecoratorContractTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, TemplateDecoratorContractModel model)
         {
             return new TemplateDecoratorContractTemplate(outputTarget, model);

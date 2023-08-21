@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentTemplateRegistrati
 
         public override string TemplateId => StaticContentTemplateRegistrationTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, StaticContentTemplateModel model)
         {
             return new StaticContentTemplateRegistrationTemplate(outputTarget, model);

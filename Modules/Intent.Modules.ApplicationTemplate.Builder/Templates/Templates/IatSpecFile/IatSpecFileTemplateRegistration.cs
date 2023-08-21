@@ -12,13 +12,14 @@ using Intent.Templates;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
-namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
+namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpecFile
 {
     [IntentManaged(Mode.Merge, Body = Mode.Merge, Signature = Mode.Fully)]
     public class IatSpecFileTemplateRegistration : FilePerModelTemplateRegistration<ApplicationTemplateModel>
     {
         public override string TemplateId => IatSpecFileTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ApplicationTemplateModel model)
         {
             return new IatSpecFileTemplate(outputTarget, model);
