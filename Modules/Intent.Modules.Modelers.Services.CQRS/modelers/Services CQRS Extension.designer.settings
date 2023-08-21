@@ -474,4 +474,5 @@ function setIfEmpty(stereotype, propertyName, defaultValue) {
   </elementExtensions>
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
 </settings>

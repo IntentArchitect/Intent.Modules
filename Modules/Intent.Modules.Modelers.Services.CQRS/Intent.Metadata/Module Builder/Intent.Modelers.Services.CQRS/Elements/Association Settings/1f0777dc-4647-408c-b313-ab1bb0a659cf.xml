@@ -50,6 +50,7 @@
       <name>Create Action Mapping Target End</name>
       <display>Create Action Mapping Target End</display>
       <isAbstract>false</isAbstract>
+      <sort-children>by-type-then-by-name</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
       <parentFolderId>1f0777dc-4647-408c-b313-ab1bb0a659cf</parentFolderId>
@@ -78,7 +79,47 @@
         </stereotype>
       </stereotypes>
       <metadata />
-      <childElements />
+      <childElements>
+        <childElement id="83e09d02-e4bf-45e4-8fbe-6f188a8640ff" type="Context Menu" typeId="d45e383d-90ba-4b64-aca7-34ca100cea21">
+          <name>[context menu]</name>
+          <display>[context menu]</display>
+          <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-manually</sort-children>
+          <genericTypes />
+          <isMapped>false</isMapped>
+          <parentFolderId>b4782cd3-7532-43d3-a759-4efa1920aa65</parentFolderId>
+          <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+          <packageName>Intent.Modelers.Services.CQRS</packageName>
+          <stereotypes />
+          <metadata />
+          <childElements>
+            <childElement id="f421a15b-f35c-4367-b65b-62ac2f5f768d" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+              <name>Map Entity Creation</name>
+              <display>Map Entity Creation: Command to Class Creation Mapping</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="04e3143c-8d73-400e-bb79-40c1c68eefd2">
+                <typeId>48ebf732-c6d9-4589-810d-d2a4f05a6c4d</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Services.CQRS</typePackageName>
+                <typePackageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>83e09d02-e4bf-45e4-8fbe-6f188a8640ff</parentFolderId>
+              <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+              <packageName>Intent.Modelers.Services.CQRS</packageName>
+              <stereotypes />
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
+        </childElement>
+      </childElements>
     </childElement>
   </childElements>
 </class>

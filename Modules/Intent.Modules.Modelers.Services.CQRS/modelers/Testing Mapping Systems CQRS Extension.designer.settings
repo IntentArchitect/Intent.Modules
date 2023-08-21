@@ -428,6 +428,16 @@ vertical-align: center`</style>
           <isNullableDefault>false</isNullableDefault>
           <isCollectionDefault>false</isCollectionDefault>
         </typeReferenceSetting>
+        <typeOrder />
+        <creationOptions />
+        <scriptOptions />
+        <mappingOptions>
+          <option>
+            <text>Map Entity Creation</text>
+            <mappingType>Command to Class Creation Mapping</mappingType>
+            <mappingTypeId>48ebf732-c6d9-4589-810d-d2a4f05a6c4d</mappingTypeId>
+          </option>
+        </mappingOptions>
       </targetEnd>
       <visualSettings>
         <lineType>Curved</lineType>
@@ -505,4 +515,112 @@ vertical-align: center`</style>
     </associationSetting>
   </associationSettings>
   <associationExtensions />
+  <mappingSettings>
+    <mappingSetting type="Command to Class Creation Mapping" typeId="48ebf732-c6d9-4589-810d-d2a4f05a6c4d">
+      <title>TODO</title>
+      <fromMappings>
+        <mapping id="9e769ef6-a663-4d1b-9f9e-f4d877f5dd9f" type="Command" typeId="ccf14eb6-3a55-4d81-b5b9-d27311c70cb9">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <isReadOnly p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <mapsTo />
+          <childSettings>
+            <childSetting id="3afc2497-3577-4f3d-ac37-5900b5a52310" type="DTO-Field" typeId="7baed1fd-469b-4980-8fd9-4cefb8331eb2">
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>42eced07-6d53-41b0-bdf9-982899c806f6</mappingId>
+              </traversableTypes>
+              <isReadOnly p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <mapsTo>
+                <mappingId>14ebc4c3-25c5-4745-8eeb-c989ad05b4b1</mappingId>
+                <mappingId>e0453f4f-6e4b-46f3-8d27-abeae41b05b7</mappingId>
+                <mappingId>efa758e5-131d-4a03-8b59-f9857784654e</mappingId>
+              </mapsTo>
+              <childSettings />
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="42eced07-6d53-41b0-bdf9-982899c806f6" type="DTO" typeId="fee0edca-4aa0-4f77-a524-6bbd84e78734">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <isReadOnly p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <mapsTo />
+          <useChildSettingsFrom>9e769ef6-a663-4d1b-9f9e-f4d877f5dd9f</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+      </fromMappings>
+      <toMappings>
+        <mapping id="ec2d3bc9-4e67-4a87-91bf-9ab294679b91" type="Class" typeId="04e12b51-ed12-42a3-9667-a6aa81bb6d10">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <isReadOnly p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <mapsTo />
+          <childSettings>
+            <childSetting id="14ebc4c3-25c5-4745-8eeb-c989ad05b4b1" type="Attribute" typeId="0090fb93-483e-41af-a11d-5ad2dc796adf">
+              <filterFunction>return !element.hasStereotype('Primary Key');</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>b19a2199-a648-4642-897f-be37954324b7</mappingId>
+              </traversableTypes>
+              <isReadOnly p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <mapsTo />
+              <childSettings />
+            </childSetting>
+            <childSetting id="efa758e5-131d-4a03-8b59-f9857784654e" type="Association Target End" typeId="0a66489f-30aa-417b-a75d-b945863366fd">
+              <filterFunction>return element.getOtherEnd().typeReference.getIsCollection() == false</filterFunction>
+              <isRequiredFunction>return !element.typeReference.getIsNullable() &amp;&amp; 
+    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return true;</isMappableFunction>
+              <traversableTypes>
+                <mappingId>ec2d3bc9-4e67-4a87-91bf-9ab294679b91</mappingId>
+                <mappingId>b19a2199-a648-4642-897f-be37954324b7</mappingId>
+              </traversableTypes>
+              <isReadOnly p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <mapsTo />
+              <useChildSettingsFrom>ec2d3bc9-4e67-4a87-91bf-9ab294679b91</useChildSettingsFrom>
+              <childSettings />
+            </childSetting>
+            <childSetting id="4ecd27b4-6b0f-450f-9837-34c5e5500b9c" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
+              <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
+              <allowMultipleMappings>true</allowMultipleMappings>
+              <isMappableFunction>return false;</isMappableFunction>
+              <traversableTypes />
+              <isReadOnly p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
+              <mapsTo />
+              <childSettings>
+                <childSetting id="e0453f4f-6e4b-46f3-8d27-abeae41b05b7" type="Parameter" typeId="c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b">
+                  <isRequiredFunction>return true;</isRequiredFunction>
+                  <allowMultipleMappings>true</allowMultipleMappings>
+                  <isMappableFunction>return true;</isMappableFunction>
+                  <traversableTypes>
+                    <mappingId>b19a2199-a648-4642-897f-be37954324b7</mappingId>
+                  </traversableTypes>
+                  <isReadOnly p10:nil="true" xmlns:p10="http://www.w3.org/2001/XMLSchema-instance" />
+                  <mapsTo />
+                  <childSettings />
+                </childSetting>
+              </childSettings>
+            </childSetting>
+          </childSettings>
+        </mapping>
+        <mapping id="b19a2199-a648-4642-897f-be37954324b7" type="Value Object" typeId="5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5">
+          <allowMultipleMappings>true</allowMultipleMappings>
+          <isMappableFunction>return true;</isMappableFunction>
+          <traversableTypes />
+          <isReadOnly p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
+          <mapsTo />
+          <useChildSettingsFrom>ec2d3bc9-4e67-4a87-91bf-9ab294679b91</useChildSettingsFrom>
+          <childSettings />
+        </mapping>
+      </toMappings>
+    </mappingSetting>
+  </mappingSettings>
 </settings>
