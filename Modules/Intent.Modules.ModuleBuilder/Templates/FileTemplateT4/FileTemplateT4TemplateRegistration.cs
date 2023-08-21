@@ -9,8 +9,8 @@ using Intent.Modules.Common.Registrations;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Fully)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.TemplateRegistration.FilePerModel", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
 {
@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
 
         public override string TemplateId => FileTemplateT4Template.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, FileTemplateModel model)
         {
             return new FileTemplateT4Template(outputTarget, model);

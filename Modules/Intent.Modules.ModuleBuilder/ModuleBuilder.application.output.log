@@ -1226,38 +1226,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.T4Template.PreProcessed#ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplate.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplate.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.FileTemplateT4#ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplate.tt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplate.tt</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ProjectItemTemplate.Partial#ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplatePartial.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplatePartial.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.TemplateRegistration.FilePerModel#ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplateRegistration.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Templates/StaticContentOutputReadme/StaticContentOutputReadmeTemplateRegistration.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3ddeeeb6-7c66-4593-a646-73501400102b</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.CSharp.Templates.CSharpTemplate.T4Template.PreProcessed#b8c74c43-2d73-483f-b938-f20a986f7acf</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Templates/StaticContentTemplateRegistration/StaticContentTemplateRegistrationTemplate.cs</ApplicationRelativeFilePath>

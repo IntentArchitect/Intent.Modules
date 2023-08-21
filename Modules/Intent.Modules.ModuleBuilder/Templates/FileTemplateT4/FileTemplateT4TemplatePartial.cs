@@ -12,8 +12,8 @@ using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
 
-[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 [assembly: DefaultIntentManaged(Mode.Merge)]
+[assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
 namespace Intent.Modules.ModuleBuilder.Templates.FileTemplateT4
 {

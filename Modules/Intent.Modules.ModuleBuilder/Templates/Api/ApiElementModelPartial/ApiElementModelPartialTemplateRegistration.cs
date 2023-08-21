@@ -28,6 +28,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModelPartial
 
         public override string TemplateId => ApiElementModelPartialTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, ElementSettingsModel model)
         {
             return new ApiElementModelPartialTemplate(outputTarget, model);

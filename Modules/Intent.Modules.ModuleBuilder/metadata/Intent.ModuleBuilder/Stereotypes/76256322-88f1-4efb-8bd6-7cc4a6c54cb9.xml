@@ -120,5 +120,15 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="8f423f80-4722-41bd-9060-2273c723cb2c">
+      <name>Project URL</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue />
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

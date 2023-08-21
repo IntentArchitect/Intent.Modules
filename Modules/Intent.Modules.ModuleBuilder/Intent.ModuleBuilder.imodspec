@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.ModuleBuilder</id>
-  <version>3.6.9</version>
+  <version>3.6.10-pre.0</version>
   <supportedClientVersions>[4.0.0-beta.2, 5.0.0-a)</supportedClientVersions>
   <summary>For the creation of Intent Architect Modules</summary>
   <description>For the creation of Intent Architect Modules</description>
@@ -180,10 +180,6 @@
       <role>Templates</role>
       <location>Settings</location>
     </template>
-    <template id="Intent.ModuleBuilder.Templates.StaticContentOutputReadme" externalReference="ed76c3f8-f5e0-4af2-b71c-8014dbd9fecf">
-      <role>Templates</role>
-      <location></location>
-    </template>
     <template id="Intent.ModuleBuilder.Templates.StaticContentTemplateRegistration" externalReference="b8c74c43-2d73-483f-b938-f20a986f7acf">
       <config>
         <add key="ClassName" description="Class name formula override (e.g. '${Model.Name}')" />
@@ -227,7 +223,7 @@
   </templates>
   <decorators></decorators>
   <dependencies>
-    <dependency id="Intent.Common" version="3.4.1" />
+    <dependency id="Intent.Common" version="3.4.3-pre.0" />
     <dependency id="Intent.Common.CSharp" version="3.3.35" />
     <dependency id="Intent.Common.Types" version="3.3.9" />
     <dependency id="Intent.OutputManager.RoslynWeaver" version="4.1.1" />

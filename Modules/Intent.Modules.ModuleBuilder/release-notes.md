@@ -1,6 +1,8 @@
 ### Version 3.6.9
 
-- Added a default `OnAfterTemplateRegistrations` overload method to the factory extensions.
+- Improvement: Added a default `OnAfterTemplateRegistrations` overload method to the factory extensions.
+- Improvement: Added `Project URL` property to `Module Settings` stereotype.
+- Removed template which generates `README.txt` file.
 
 ### Version 3.6.8
 

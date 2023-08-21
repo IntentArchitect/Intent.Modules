@@ -26,6 +26,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.FactoryExtension
 
         public override string TemplateId => FactoryExtensionTemplate.TemplateId;
 
+        [IntentManaged(Mode.Fully)]
         public override ITemplate CreateTemplateInstance(IOutputTarget outputTarget, FactoryExtensionModel model)
         {
             return new FactoryExtensionTemplate(outputTarget, model);

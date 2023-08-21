@@ -92,6 +92,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Include Release Notes");
             }
 
+            public string ProjectURL()
+            {
+                return _stereotype.GetProperty<string>("Project URL");
+            }
+
             public class ReferenceInOptions
             {
                 public readonly string Value;
