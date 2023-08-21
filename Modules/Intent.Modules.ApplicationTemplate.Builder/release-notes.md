@@ -1,10 +1,14 @@
+### Version 3.4.6
+
+- Fixed: Packages will now assign the supported client version to include Intent Architect v5.
+
 ### Version 3.4.5
 
-- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+- Fixed: Dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
 
 ### Version 3.4.4
 
-- Updated module depenencies to prevent Software Factory warnings of possibly incompatible modules.
+- Fixed: Module dependencies supported client versions update to prevent Software Factory warnings of possibly incompatible modules.
 
 ### Version 3.4.3
 

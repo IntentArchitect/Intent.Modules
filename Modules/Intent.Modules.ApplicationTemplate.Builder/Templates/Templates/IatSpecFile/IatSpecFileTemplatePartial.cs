@@ -22,7 +22,7 @@ using IconType = Intent.IArchitect.Common.Types.IconType;
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.ProjectItemTemplate.Partial", Version = "1.0")]
 
-namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
+namespace Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpecFile
 {
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
     partial class IatSpecFileTemplate : IntentTemplateBase<ApplicationTemplateModel>, IHasNugetDependencies
@@ -47,6 +47,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile
             );
         }
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()
         {
             var result = new ApplicationTemplatePersistable()

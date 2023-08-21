@@ -17,6 +17,11 @@ namespace Intent.Modules.ApplicationTemplate.Builder.Api
                 .ToList();
         }
 
+        public static bool IsApplicationTemplateModel(this IPackage package)
+        {
+            return package?.SpecializationTypeId == ApplicationTemplateModel.SpecializationTypeId;
+        }
+
 
     }
 }

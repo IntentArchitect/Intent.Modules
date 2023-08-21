@@ -1,3 +1,11 @@
+### Version 3.6.11
+
+- Fixed: Internal module dependency updates to be on the latest versions.
+
+### Version 3.6.10
+
+- Fixed: Nuget package version that gets automatically installed is no longer `pre`-release.
+
 ### Version 3.6.9
 
 - Improvement: Added a default `OnAfterTemplateRegistrations` overload method to the factory extensions.
