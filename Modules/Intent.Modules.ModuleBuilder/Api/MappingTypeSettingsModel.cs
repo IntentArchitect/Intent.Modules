@@ -80,7 +80,7 @@ namespace Intent.ModuleBuilder.Api
                 MappingTypeId = Id,
                 MappingType = Name,
                 FromRootElementFunction = null,
-                Title = "TODO",
+                Title = Name,
                 FromMappings = FromMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
                 ToMappings = ToMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
             };

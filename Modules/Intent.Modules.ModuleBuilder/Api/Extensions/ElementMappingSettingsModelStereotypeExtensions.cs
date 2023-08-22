@@ -47,6 +47,16 @@ namespace Intent.ModuleBuilder.Api
 
             public string Name => _stereotype.Name;
 
+            public bool CanBeModified()
+            {
+                return _stereotype.GetProperty<bool>("Can Be Modified");
+            }
+
+            public string CreateNameFunction()
+            {
+                return _stereotype.GetProperty<string>("Create Name Function");
+            }
+
             public string FilterFunction()
             {
                 return _stereotype.GetProperty<string>("Filter Function");

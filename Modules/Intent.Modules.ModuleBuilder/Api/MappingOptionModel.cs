@@ -6,6 +6,7 @@ using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.RoslynWeaver.Attributes;
+using IconType = Intent.IArchitect.Common.Types.IconType;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.Templates.Api.ApiElementModel", Version = "1.0")]
@@ -70,13 +71,13 @@ namespace Intent.ModuleBuilder.Api
         {
             return new MappingOption()
             {
-                //Order = this.GetOptionSettings().TypeOrder()?.ToString(),
+                Order = this.GetOptionSettings().TypeOrder()?.ToString(),
                 MappingTypeId = _element.TypeReference.Element.Id,
                 MappingType = _element.TypeReference.Element.Name,
                 Text = this.Name,
-                //Shortcut = this.GetOptionSettings().Shortcut(),
-                //MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
-                //Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "file-o" },
+                Shortcut = this.GetOptionSettings().Shortcut(),
+                MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
+                Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "arrow-circle-right" },
             };
         }
     }

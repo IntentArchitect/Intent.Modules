@@ -76,6 +76,7 @@ namespace Intent.ModuleBuilder.Api
             return new MappingElementSettingPersistable()
             {
                 Id = Id,
+                Name = Name,
                 SpecializationType = TargetType.Element.Name,
                 SpecializationTypeId = TargetType.Element.Id,
                 FilterFunction = this.GetMappingSettings().FilterFunction(),
@@ -86,7 +87,9 @@ namespace Intent.ModuleBuilder.Api
                 IsTraversableFunction = this.GetMappingSettings().IsTraversableFunction(),
                 MapsTo = this.GetMappingSettings().MapsTo().Select(x => x.Id).ToList(),
                 UseChildSettingsFrom = this.GetMappingSettings().UseChildMappingsFrom()?.Id,
-                ChildSettings = ElementMappings.Select(x => x.ToPersistable()).ToList()
+                ChildSettings = ElementMappings.Select(x => x.ToPersistable()).ToList(),
+                CanBeModified = this.GetMappingSettings().CanBeModified(),
+                CreateNameFunction = this.GetMappingSettings().CreateNameFunction(),
             };
         }
     }
