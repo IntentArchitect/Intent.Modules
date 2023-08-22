@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="48ebf732-c6d9-4589-810d-d2a4f05a6c4d" type="Mapping Type Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4">
-  <name>Command to Class Creation Mapping</name>
-  <display>Command to Class Creation Mapping</display>
+<class id="c20a335d-b890-4ebf-85d7-296a56901831" type="Mapping Type Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4">
+  <name>Command to Class Update Mapping</name>
+  <display>Command to Class Update Mapping</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
@@ -12,26 +12,26 @@
   <stereotypes />
   <metadata />
   <childElements>
-    <childElement id="367f07c8-7b55-424b-814b-c4dc36478d1e" type="From Mapping Settings" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
+    <childElement id="75243eb8-8f08-4272-96be-7d2b76a1160d" type="From Mapping Settings" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
       <name>From</name>
       <display>From</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>48ebf732-c6d9-4589-810d-d2a4f05a6c4d</parentFolderId>
+      <parentFolderId>c20a335d-b890-4ebf-85d7-296a56901831</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="9e769ef6-a663-4d1b-9f9e-f4d877f5dd9f" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Create Command</name>
-          <display>Create Command: Command</display>
+        <childElement id="f09bf43f-dd29-43ab-bb35-7d7dad73e63f" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Update Command</name>
+          <display>Update Command: Command</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
-          <typeReference id="9f0bb7e3-476c-409b-845b-d78880aaa0bd">
+          <typeReference id="82f44fce-3847-494d-a095-41bf9b238c0d">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -43,7 +43,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>367f07c8-7b55-424b-814b-c4dc36478d1e</parentFolderId>
+          <parentFolderId>75243eb8-8f08-4272-96be-7d2b76a1160d</parentFolderId>
           <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
           <packageName>Intent.Modelers.Services.CQRS</packageName>
           <stereotypes>
@@ -67,12 +67,12 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="3afc2497-3577-4f3d-ac37-5900b5a52310" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Create Field</name>
-              <display>Create Field: DTO-Field</display>
+            <childElement id="f410dd2d-2be4-4072-87b9-fc2026a9ab6d" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+              <name>Update Field</name>
+              <display>Update Field: DTO-Field</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="0828e0bb-8987-4f7a-8952-91aa32adf02f">
+              <typeReference id="d4b557d5-ab59-43cc-b6e9-56eda6636f8b">
                 <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -84,7 +84,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>9e769ef6-a663-4d1b-9f9e-f4d877f5dd9f</parentFolderId>
+              <parentFolderId>f09bf43f-dd29-43ab-bb35-7d7dad73e63f</parentFolderId>
               <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
               <packageName>Intent.Modelers.Services.CQRS</packageName>
               <stereotypes>
@@ -97,9 +97,9 @@
                     <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;42eced07-6d53-41b0-bdf9-982899c806f6&quot;]" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;8f139ab3-3d4d-4006-a8cb-bf3f9b0e2836&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
-                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;14ebc4c3-25c5-4745-8eeb-c989ad05b4b1&quot;,&quot;e0453f4f-6e4b-46f3-8d27-abeae41b05b7&quot;,&quot;efa758e5-131d-4a03-8b59-f9857784654e&quot;]" isActive="true" />
+                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" value="[&quot;7a48cb86-1025-42f1-95eb-019e1e3fb26d&quot;,&quot;885b6e22-c39d-4f4a-8ff5-ef5904cbc8f1&quot;,&quot;95148142-a9f4-4761-a004-00fe2ae805f6&quot;,&quot;f4a1efeb-b9e2-4f6b-afec-5231713d1d7a&quot;]" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="true" />
                     <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
@@ -111,12 +111,12 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="42eced07-6d53-41b0-bdf9-982899c806f6" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Create DTO</name>
-          <display>Create DTO: DTO</display>
+        <childElement id="8f139ab3-3d4d-4006-a8cb-bf3f9b0e2836" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Update DTO</name>
+          <display>Update DTO: DTO</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="51957a94-1d10-43bf-a8a4-21f01e3d9f66">
+          <typeReference id="74561d03-d987-4a42-859e-b3b28b1c7cd8">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -128,7 +128,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>367f07c8-7b55-424b-814b-c4dc36478d1e</parentFolderId>
+          <parentFolderId>75243eb8-8f08-4272-96be-7d2b76a1160d</parentFolderId>
           <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
           <packageName>Intent.Modelers.Services.CQRS</packageName>
           <stereotypes>
@@ -146,7 +146,7 @@
                 <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="true" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="return element.getParent('Command').getName() + element.getName() + 'Dto'" isActive="true" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" value="9e769ef6-a663-4d1b-9f9e-f4d877f5dd9f" isActive="true" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" value="f09bf43f-dd29-43ab-bb35-7d7dad73e63f" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
@@ -155,26 +155,26 @@
         </childElement>
       </childElements>
     </childElement>
-    <childElement id="837e61c3-0941-4f7d-b1fe-36dac23f1acd" type="To Mapping Settings" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
+    <childElement id="9dde757d-54ff-4db4-a3d5-655f489d51d7" type="To Mapping Settings" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
       <name>To</name>
       <display>To</display>
       <isAbstract>false</isAbstract>
       <sort-children>by-type-then-manually</sort-children>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>48ebf732-c6d9-4589-810d-d2a4f05a6c4d</parentFolderId>
+      <parentFolderId>c20a335d-b890-4ebf-85d7-296a56901831</parentFolderId>
       <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
       <packageName>Intent.Modelers.Services.CQRS</packageName>
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="ec2d3bc9-4e67-4a87-91bf-9ab294679b91" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Create Class</name>
-          <display>Create Class: Class</display>
+        <childElement id="ec27fde6-c516-4f6f-8bfc-f54b13def5dd" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Update Class</name>
+          <display>Update Class: Class</display>
           <isAbstract>false</isAbstract>
           <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
-          <typeReference id="0a05274c-e0ee-462a-81b7-846ad22c16cd">
+          <typeReference id="e810c4ca-5764-4911-b025-ce04fb73069f">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -186,7 +186,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>837e61c3-0941-4f7d-b1fe-36dac23f1acd</parentFolderId>
+          <parentFolderId>9dde757d-54ff-4db4-a3d5-655f489d51d7</parentFolderId>
           <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
           <packageName>Intent.Modelers.Services.CQRS</packageName>
           <stereotypes>
@@ -210,12 +210,12 @@
           </stereotypes>
           <metadata />
           <childElements>
-            <childElement id="14ebc4c3-25c5-4745-8eeb-c989ad05b4b1" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Set Attribute</name>
-              <display>Set Attribute: Attribute</display>
+            <childElement id="7a48cb86-1025-42f1-95eb-019e1e3fb26d" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+              <name>Update Attribute</name>
+              <display>Update Attribute: Attribute</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="b8289327-5c7c-4327-ae4b-5ba01dc878e0">
+              <typeReference id="67fb0d12-7929-4903-91f5-3465cd605031">
                 <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -227,7 +227,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>ec2d3bc9-4e67-4a87-91bf-9ab294679b91</parentFolderId>
+              <parentFolderId>ec27fde6-c516-4f6f-8bfc-f54b13def5dd</parentFolderId>
               <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
               <packageName>Intent.Modelers.Services.CQRS</packageName>
               <stereotypes>
@@ -236,11 +236,11 @@
                   <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
-                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="return !element.hasStereotype('Primary Key');" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return !element.typeReference.getIsNullable() &amp;&amp; &#xD;&#xA;    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());" isActive="true" />
+                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="" isActive="true" />
+                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return element.hasStereotype(&quot;Primary Key&quot;);" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;b19a2199-a648-4642-897f-be37954324b7&quot;]" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;3353fd5d-0851-4e3c-a3b9-9f67b0b020d6&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
                     <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
@@ -252,12 +252,12 @@
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="efa758e5-131d-4a03-8b59-f9857784654e" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Set Association Target End</name>
-              <display>Set Association Target End: Association Target End</display>
+            <childElement id="885b6e22-c39d-4f4a-8ff5-ef5904cbc8f1" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+              <name>Update Association Target End</name>
+              <display>Update Association Target End: Association Target End</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
-              <typeReference id="8003d82f-7cf4-4afd-987a-808e99f83cfb">
+              <typeReference id="1ede5e27-003a-47d7-befc-da309c8ee558">
                 <typeId>0a66489f-30aa-417b-a75d-b945863366fd</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
@@ -269,7 +269,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>ec2d3bc9-4e67-4a87-91bf-9ab294679b91</parentFolderId>
+              <parentFolderId>ec27fde6-c516-4f6f-8bfc-f54b13def5dd</parentFolderId>
               <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
               <packageName>Intent.Modelers.Services.CQRS</packageName>
               <stereotypes>
@@ -279,29 +279,29 @@
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="return element.getOtherEnd().typeReference.getIsCollection() == false" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return !element.typeReference.getIsNullable() &amp;&amp; &#xD;&#xA;    element.getParent().getChildren('Class Constructor').every(x =&gt; !x.getIsMapped());" isActive="true" />
+                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return false;" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;ec2d3bc9-4e67-4a87-91bf-9ab294679b91&quot;,&quot;b19a2199-a648-4642-897f-be37954324b7&quot;]" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;ec27fde6-c516-4f6f-8bfc-f54b13def5dd&quot;,&quot;3353fd5d-0851-4e3c-a3b9-9f67b0b020d6&quot;]" isActive="true" />
                     <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
                     <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
                     <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                     <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" value="ec2d3bc9-4e67-4a87-91bf-9ab294679b91" isActive="true" />
+                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" value="ec27fde6-c516-4f6f-8bfc-f54b13def5dd" isActive="true" />
                   </properties>
                 </stereotype>
               </stereotypes>
               <metadata />
               <childElements />
             </childElement>
-            <childElement id="4ecd27b4-6b0f-450f-9837-34c5e5500b9c" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-              <name>Invoke Constructor</name>
-              <display>Invoke Constructor: Class Constructor</display>
+            <childElement id="968ba009-7a4d-4b4b-8b20-65bc2a592bb0" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+              <name>Invoke Operation</name>
+              <display>Invoke Operation: Operation</display>
               <isAbstract>false</isAbstract>
               <sort-children>by-type-then-manually</sort-children>
               <genericTypes />
-              <typeReference id="083aa323-48b9-4a6f-aeb7-292a258abbed">
-                <typeId>dec2bd12-4699-4f45-8ec9-3b62dc692d2b</typeId>
+              <typeReference id="751c3992-bbd0-41af-9bf9-e4ce8571291e">
+                <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -312,7 +312,7 @@
                 <genericTypeParameters />
               </typeReference>
               <isMapped>false</isMapped>
-              <parentFolderId>ec2d3bc9-4e67-4a87-91bf-9ab294679b91</parentFolderId>
+              <parentFolderId>ec27fde6-c516-4f6f-8bfc-f54b13def5dd</parentFolderId>
               <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
               <packageName>Intent.Modelers.Services.CQRS</packageName>
               <stereotypes>
@@ -322,7 +322,7 @@
                   <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
                   <properties>
                     <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" isActive="true" />
-                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)" isActive="true" />
+                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" isActive="true" />
                     <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return false;" isActive="true" />
                     <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
                     <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" isActive="true" />
@@ -336,12 +336,12 @@
               </stereotypes>
               <metadata />
               <childElements>
-                <childElement id="e0453f4f-6e4b-46f3-8d27-abeae41b05b7" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-                  <name>Constructor Parameter</name>
-                  <display>Constructor Parameter: Parameter</display>
+                <childElement id="95148142-a9f4-4761-a004-00fe2ae805f6" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+                  <name>Operation Parameter</name>
+                  <display>Operation Parameter: Parameter</display>
                   <isAbstract>false</isAbstract>
                   <genericTypes />
-                  <typeReference id="6acaeac3-7771-45cd-9973-12cc3bb104df">
+                  <typeReference id="57811e29-40c0-4411-a722-4c25a1eefcc3">
                     <typeId>c26d8d0a-a26b-4b5f-b449-e9bdb60b3a4b</typeId>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
@@ -353,7 +353,7 @@
                     <genericTypeParameters />
                   </typeReference>
                   <isMapped>false</isMapped>
-                  <parentFolderId>4ecd27b4-6b0f-450f-9837-34c5e5500b9c</parentFolderId>
+                  <parentFolderId>968ba009-7a4d-4b4b-8b20-65bc2a592bb0</parentFolderId>
                   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
                   <packageName>Intent.Modelers.Services.CQRS</packageName>
                   <stereotypes>
@@ -366,8 +366,8 @@
                         <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return true;" isActive="true" />
                         <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
                         <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
-                        <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;b19a2199-a648-4642-897f-be37954324b7&quot;]" isActive="true" />
-                        <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" value="" isActive="true" />
+                        <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;3353fd5d-0851-4e3c-a3b9-9f67b0b020d6&quot;]" isActive="true" />
+                        <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
                         <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
                         <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                         <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
@@ -382,12 +382,13 @@
             </childElement>
           </childElements>
         </childElement>
-        <childElement id="b19a2199-a648-4642-897f-be37954324b7" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <name>Create Value Object</name>
-          <display>Create Value Object: Value Object</display>
+        <childElement id="3353fd5d-0851-4e3c-a3b9-9f67b0b020d6" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+          <name>Update Value Object</name>
+          <display>Update Value Object: Value Object</display>
           <isAbstract>false</isAbstract>
+          <sort-children>by-type-then-manually</sort-children>
           <genericTypes />
-          <typeReference id="ea73934b-f57d-4184-8c0e-2bed3b9e1830">
+          <typeReference id="c7b36804-cd59-4844-bac9-b95351d3fbdc">
             <typeId>5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
@@ -399,7 +400,7 @@
             <genericTypeParameters />
           </typeReference>
           <isMapped>false</isMapped>
-          <parentFolderId>837e61c3-0941-4f7d-b1fe-36dac23f1acd</parentFolderId>
+          <parentFolderId>9dde757d-54ff-4db4-a3d5-655f489d51d7</parentFolderId>
           <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
           <packageName>Intent.Modelers.Services.CQRS</packageName>
           <stereotypes>
@@ -417,12 +418,55 @@
                 <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
                 <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
                 <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
-                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" value="ec2d3bc9-4e67-4a87-91bf-9ab294679b91" isActive="true" />
+                <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>
           <metadata />
-          <childElements />
+          <childElements>
+            <childElement id="f4a1efeb-b9e2-4f6b-afec-5231713d1d7a" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
+              <name>Value Object Attribute</name>
+              <display>Value Object Attribute: Attribute</display>
+              <isAbstract>false</isAbstract>
+              <genericTypes />
+              <typeReference id="dde1b37f-20c8-4bfb-80b6-4a3c691c31f8">
+                <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
+                <isNavigable>true</isNavigable>
+                <isNullable>false</isNullable>
+                <isCollection>false</isCollection>
+                <isRequired>true</isRequired>
+                <typePackageName>Intent.Modelers.Domain</typePackageName>
+                <typePackageId>6572b98d-5e13-4d4b-9ffc-820057da974e</typePackageId>
+                <stereotypes />
+                <genericTypeParameters />
+              </typeReference>
+              <isMapped>false</isMapped>
+              <parentFolderId>3353fd5d-0851-4e3c-a3b9-9f67b0b020d6</parentFolderId>
+              <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
+              <packageName>Intent.Modelers.Services.CQRS</packageName>
+              <stereotypes>
+                <stereotype stereotypeDefinitionId="df24679d-09ec-4efc-af37-a1a926b7a108" name="Mapping Settings">
+                  <addedByDefault>true</addedByDefault>
+                  <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+                  <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+                  <properties>
+                    <property name="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41" display="Filter Function" value="" isActive="true" />
+                    <property name="9b689fcf-4060-4bff-b23e-6f150ecadd65" display="Is Required Function" value="return true;" isActive="true" />
+                    <property name="fe1fd512-566d-427a-a9a8-ed16c6ae8f98" display="Is Mappable Function" value="return true;" isActive="true" />
+                    <property name="8729cf25-6468-4ad0-aed2-2f7c854c2438" display="Allow Multiple Mappings" value="true" isActive="true" />
+                    <property name="3f279b0b-8772-4dd5-bf54-1fde024420e7" display="Traversable Types" value="[&quot;3353fd5d-0851-4e3c-a3b9-9f67b0b020d6&quot;]" isActive="true" />
+                    <property name="a6ec44d7-f928-4221-bed6-8589176a94c7" display="Is Traversable Function" isActive="true" />
+                    <property name="54dec827-b00b-4045-850d-c5d49c5777b2" display="Maps To" isActive="true" />
+                    <property name="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3" display="Can Be Modified" value="false" isActive="true" />
+                    <property name="2782bc72-02b8-4e25-9fd7-b625bf8a11d2" display="Create Name Function" value="" isActive="false" />
+                    <property name="51aec36f-cc2d-489e-ba6b-816aca340502" display="Use Child Mappings From" isActive="true" />
+                  </properties>
+                </stereotype>
+              </stereotypes>
+              <metadata />
+              <childElements />
+            </childElement>
+          </childElements>
         </childElement>
       </childElements>
     </childElement>
