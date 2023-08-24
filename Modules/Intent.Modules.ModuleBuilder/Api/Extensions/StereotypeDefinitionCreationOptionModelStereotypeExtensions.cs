@@ -77,6 +77,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Api Model Name");
             }
 
+            public string IsOptionVisibleFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Option Visible Function");
+            }
+
         }
 
     }

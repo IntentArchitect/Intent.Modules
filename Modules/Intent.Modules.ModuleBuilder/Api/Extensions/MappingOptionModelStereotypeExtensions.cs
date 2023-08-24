@@ -67,6 +67,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<IIconModel>("Icon");
             }
 
+            public string IsOptionVisibleFunction()
+            {
+                return _stereotype.GetProperty<string>("Is Option Visible Function");
+            }
+
         }
 
     }

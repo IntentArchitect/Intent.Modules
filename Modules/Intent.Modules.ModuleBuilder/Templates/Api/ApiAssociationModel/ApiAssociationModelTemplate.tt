@@ -82,6 +82,10 @@ namespace <#= Namespace #>
         public <#=AssociationSourceEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
         }
+<# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() != true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() == true) { #>
+        
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
+<# } #>
     }
 
     [IntentManaged(Mode.Fully)]
@@ -92,6 +96,10 @@ namespace <#= Namespace #>
         public <#=AssociationTargetEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
         }
+<# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() == true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() != true) { #>
+        
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
+<# } #>
     }
 
     [IntentManaged(Mode.Fully)]
@@ -128,6 +136,9 @@ namespace <#= Namespace #>
         public IPackage Package => Element?.Package;
         public string Comment => _associationEnd.Comment;
         public IEnumerable<IStereotype> Stereotypes => _associationEnd.Stereotypes;
+<# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() == true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() == true) { #>
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
+<# } #>
 
         public <#=AssociationEndClassName #> OtherEnd()
         {

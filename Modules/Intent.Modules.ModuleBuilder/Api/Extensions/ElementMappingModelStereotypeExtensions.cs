@@ -175,6 +175,11 @@ namespace Intent.ModuleBuilder.Api
                 return new IsCollectionOptions(_stereotype.GetProperty<string>("Is Collection"));
             }
 
+            public string FilterFunction()
+            {
+                return _stereotype.GetProperty<string>("Filter Function");
+            }
+
             public class HasTypeReferenceOptions
             {
                 public readonly string Value;

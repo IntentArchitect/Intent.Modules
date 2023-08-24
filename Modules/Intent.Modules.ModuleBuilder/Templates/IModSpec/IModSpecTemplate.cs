@@ -98,7 +98,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
             if (doc.Element("package").Element("supportedClientVersions") != null)
             {
                 // update 4.0.0 constraint to 5.0.0 because SDK (and V4) is essentially backward compatible
-                doc.Element("package").SetElementValue("supportedClientVersions", doc.Element("package").Element("supportedClientVersions").Value.Replace("4.0.0)", "5.0.0)"));
+                doc.Element("package").SetElementValue("supportedClientVersions", doc.Element("package").Element("supportedClientVersions").Value.Replace("[3.3.0", "[4.1.0").Replace("[3.4.0", "[4.1.0").Replace("4.0.0)", "5.0.0)"));
             }
 
             if (ExecutionContext.GetApplicationConfig().Description != null)
@@ -558,7 +558,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
 <package>
   <id>{ModuleModel.Name}</id>
   <version>{ModuleModel.GetModuleSettings().Version()}</version>
-  <supportedClientVersions>[3.4.0,5.0.0)</supportedClientVersions>
+  <supportedClientVersions>[4.1.0-a,5.0.0)</supportedClientVersions>
   <summary>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</summary>
   <description>{ExecutionContext.GetApplicationConfig().Description ?? $"A custom module for {OutputTarget.Application.SolutionName}"}.</description>
   <authors>{OutputTarget.Application.SolutionName}</authors>

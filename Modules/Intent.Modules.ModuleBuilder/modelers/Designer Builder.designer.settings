@@ -9,11 +9,11 @@
       <requiredPackages />
       <creationOptions>
         <option order="-1" type="element">
+          <text>Add Designers Folder</text>
+          <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
           <specializationType>Designers Folder</specializationType>
           <specializationTypeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</specializationTypeId>
-          <text>Add Designers Folder</text>
           <defaultName>designers</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/uml/Folder_03_256x.png" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -56,27 +56,27 @@
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>Add Source End</text>
+          <icon type="CharacterBox" source="S|#00f7ff" />
           <specializationType>Association Source End Extension</specializationType>
           <specializationTypeId>66ec1dcd-a0c3-45ac-ad62-f2d9d7064bb3</specializationTypeId>
-          <text>Add Source End</text>
           <defaultName>${name} Source End</defaultName>
-          <icon type="CharacterBox" source="S|#00f7ff" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Target End</text>
+          <icon type="CharacterBox" source="D|#00f7ff" />
           <specializationType>Association Target End Extension</specializationType>
           <specializationTypeId>1cc6c731-af5f-41a0-9e82-44486f45b903</specializationTypeId>
-          <text>Add Target End</text>
           <defaultName>[target end extension]</defaultName>
-          <icon type="CharacterBox" source="D|#00f7ff" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Association Event Settings</specializationType>
           <specializationTypeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewAssociationEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -147,38 +147,38 @@ createElement("Association Event Settings", "[events]", element.id);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Association Source End Settings</specializationType>
-          <specializationTypeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</specializationTypeId>
           <text>Add Source End</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>${name} Source End</defaultName>
           <icon type="CharacterBox" source="S|#00f7ff" />
+          <specializationType>Association Source End Settings</specializationType>
+          <specializationTypeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</specializationTypeId>
+          <defaultName>${name} Source End</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Association Destination End Settings</specializationType>
-          <specializationTypeId>c4c61fdc-464d-41d2-8e0e-5a734d588302</specializationTypeId>
           <text>Add Target End</text>
           <shortcut>ctrl + shift + d</shortcut>
-          <defaultName>${name} Target End</defaultName>
           <icon type="CharacterBox" source="D|#00f7ff" />
+          <specializationType>Association Destination End Settings</specializationType>
+          <specializationTypeId>c4c61fdc-464d-41d2-8e0e-5a734d588302</specializationTypeId>
+          <defaultName>${name} Target End</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Association Visual Settings</specializationType>
-          <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
           <text>Add Visual Settings</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>[visual]</defaultName>
           <icon type="CharacterBox" source="V|#AB47BC" />
+          <specializationType>Association Visual Settings</specializationType>
+          <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
+          <defaultName>[visual]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Association Event Settings</specializationType>
           <specializationTypeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewAssociationEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -231,19 +231,19 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           </typeOrder>
           <creationOptions>
             <option type="element">
+              <text>Add Source Visual</text>
+              <icon type="CharacterBox" source="S|#BA68C8" />
               <specializationType>Association Source End Visual Settings</specializationType>
               <specializationTypeId>77fdd377-950a-46e4-8d25-ab3c962d6105</specializationTypeId>
-              <text>Add Source Visual</text>
               <defaultName>[source]</defaultName>
-              <icon type="CharacterBox" source="S|#BA68C8" />
               <allowMultiple>false</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Destination Visual</text>
+              <icon type="CharacterBox" source="D|#BA68C8" />
               <specializationType>Association Destination End Visual Settings</specializationType>
               <specializationTypeId>b59113a4-209c-45d6-b395-352362864fd1</specializationTypeId>
-              <text>Add Destination Visual</text>
               <defaultName>[desintation]</defaultName>
-              <icon type="CharacterBox" source="D|#BA68C8" />
               <allowMultiple>false</allowMultiple>
             </option>
           </creationOptions>
@@ -304,12 +304,12 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Context Menu</specializationType>
-              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
               <text>Add Menu Options</text>
               <shortcut>ctrl + shift + c</shortcut>
-              <defaultName>[context menu]</defaultName>
               <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
               <allowMultiple>false</allowMultiple>
             </option>
           </creationOptions>
@@ -335,12 +335,12 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Context Menu</specializationType>
-              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
               <text>Add Menu Options</text>
               <shortcut>ctrl + shift + c</shortcut>
-              <defaultName>[context menu]</defaultName>
               <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
               <allowMultiple>false</allowMultiple>
             </option>
           </creationOptions>
@@ -367,51 +367,51 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Loaded Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Loaded</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Created Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Created</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Name Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <defaultName>On Name Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Association Event Handler</specializationType>
-              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
               <text>On Type Changed Event</text>
-              <defaultName>On Type Changed</defaultName>
               <icon type="FontAwesome" source="code" />
+              <specializationType>Association Event Handler</specializationType>
+              <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
+              <defaultName>On Type Changed</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>On Deleted</text>
+              <icon type="FontAwesome" source="code" />
               <specializationType>Association Event Handler</specializationType>
               <specializationTypeId>f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c</specializationTypeId>
-              <text>On Deleted</text>
               <defaultName>On Deleted</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -474,47 +474,47 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Element Creation Option</specializationType>
-          <specializationTypeId>5fa12f89-da1e-49c5-b8e9-427b22407f19</specializationTypeId>
           <text>Add Element Creation</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>New Element</defaultName>
           <icon type="CharacterBox" source="E|#04007a" />
+          <specializationType>Element Creation Option</specializationType>
+          <specializationTypeId>5fa12f89-da1e-49c5-b8e9-427b22407f19</specializationTypeId>
+          <defaultName>New Element</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Association Creation Option</specializationType>
-          <specializationTypeId>3dcfa78b-17ee-45b6-be03-8407d089ce76</specializationTypeId>
           <text>Add Association Creation</text>
           <shortcut>ctrl + shift + a</shortcut>
-          <defaultName>New Association</defaultName>
           <icon type="CharacterBox" source="A|#04007a" />
+          <specializationType>Association Creation Option</specializationType>
+          <specializationTypeId>3dcfa78b-17ee-45b6-be03-8407d089ce76</specializationTypeId>
+          <defaultName>New Association</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Stereotype-Definition Creation Option</specializationType>
-          <specializationTypeId>0c721d5d-7721-414c-adaf-4c9f5c5531a9</specializationTypeId>
           <text>Add Stereotype-Definition Creation</text>
           <shortcut>ctrl + shift + s</shortcut>
-          <defaultName>New Stereotype-Definition</defaultName>
           <icon type="CharacterBox" source="S|#04007a" />
+          <specializationType>Stereotype-Definition Creation Option</specializationType>
+          <specializationTypeId>0c721d5d-7721-414c-adaf-4c9f5c5531a9</specializationTypeId>
+          <defaultName>New Stereotype-Definition</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Run Script Option</text>
+          <icon type="FontAwesome" source="code" />
           <specializationType>Run Script Option</specializationType>
           <specializationTypeId>345d46fb-c500-409a-88c7-26720572c9af</specializationTypeId>
-          <text>Add Run Script Option</text>
           <defaultName>NewRunScriptOption</defaultName>
-          <icon type="FontAwesome" source="code" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Mapping Option</specializationType>
-          <specializationTypeId>00a1eb98-1fc4-4421-9d1c-8733f6bc2111</specializationTypeId>
           <text>Add Mapping Option</text>
           <shortcut>ctrl + shift + m</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
+          <specializationType>Mapping Option</specializationType>
+          <specializationTypeId>00a1eb98-1fc4-4421-9d1c-8733f6bc2111</specializationTypeId>
           <defaultName>NewMappingOption</defaultName>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -641,7 +641,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
@@ -704,11 +704,11 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>Add Designer Reference</text>
+          <icon type="CharacterBox" source="R|#00BFA5" />
           <specializationType>Designer Reference</specializationType>
           <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
-          <text>Add Designer Reference</text>
           <defaultName>reference</defaultName>
-          <icon type="CharacterBox" source="R|#00BFA5" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -775,87 +775,87 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>Add Designer Reference</text>
+          <icon type="CharacterBox" source="R|#00BFA5" />
           <specializationType>Designer Reference</specializationType>
           <specializationTypeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</specializationTypeId>
-          <text>Add Designer Reference</text>
           <defaultName>reference</defaultName>
-          <icon type="CharacterBox" source="R|#00BFA5" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Element Settings</specializationType>
-          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
           <text>New Element Type</text>
           <shortcut>ctrl + shift + e</shortcut>
-          <defaultName>New Element Type</defaultName>
           <icon type="CharacterBox" source="E|#095c00" />
+          <specializationType>Element Settings</specializationType>
+          <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
+          <defaultName>New Element Type</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Element Extension</specializationType>
-          <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
           <text>New Element Extension</text>
           <shortcut>ctrl + shift + x</shortcut>
-          <defaultName>New Element Extension</defaultName>
           <icon type="CharacterBox" source="X|#095c00" />
+          <specializationType>Element Extension</specializationType>
+          <specializationTypeId>e3c7b1ca-f080-45c1-b56f-8d44226c8e20</specializationTypeId>
+          <defaultName>New Element Extension</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Association Type</text>
+          <icon type="CharacterBox" source="A|#ff8000" />
           <specializationType>Association Settings</specializationType>
           <specializationTypeId>16d21684-d5ea-4fde-b648-f88d292fa272</specializationTypeId>
-          <text>New Association Type</text>
           <defaultName>NewAssociationType</defaultName>
-          <icon type="CharacterBox" source="A|#ff8000" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Association Extension</text>
+          <icon type="CharacterBox" source="X|#ff8000" />
           <specializationType>Association Extension</specializationType>
           <specializationTypeId>41cb9c1a-063e-4ff4-889a-7501235351eb</specializationTypeId>
-          <text>New Association Extension</text>
           <defaultName>NewAssociationExtension</defaultName>
-          <icon type="CharacterBox" source="X|#ff8000" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Package Settings</specializationType>
-          <specializationTypeId>89333f72-3960-4159-bf61-9c40d4b65088</specializationTypeId>
           <text>New Package Type</text>
           <shortcut>ctrl + shift + p</shortcut>
-          <defaultName>Package</defaultName>
           <icon type="CharacterBox" source="P|#7d7d7d" />
+          <specializationType>Package Settings</specializationType>
+          <specializationTypeId>89333f72-3960-4159-bf61-9c40d4b65088</specializationTypeId>
+          <defaultName>Package</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Package Extension</text>
+          <icon type="CharacterBox" source="X|#7d7d7d" />
           <specializationType>Package Extension</specializationType>
           <specializationTypeId>ab4152df-3add-4a08-81b6-0fefc7cbb204</specializationTypeId>
-          <text>New Package Extension</text>
           <defaultName>Package Extension</defaultName>
-          <icon type="CharacterBox" source="X|#7d7d7d" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Mapping Type Settings</specializationType>
-          <specializationTypeId>a901c634-6482-4993-ae3c-bd1b637f78d4</specializationTypeId>
           <text>New Mapping Type</text>
           <shortcut>ctrl + shift + m</shortcut>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
+          <specializationType>Mapping Type Settings</specializationType>
+          <specializationTypeId>a901c634-6482-4993-ae3c-bd1b637f78d4</specializationTypeId>
           <defaultName>Package</defaultName>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Core Type</text>
+          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <specializationType>Core Type</specializationType>
           <specializationTypeId>dc79fd61-7e57-44c8-ad40-14a7643b89c8</specializationTypeId>
-          <text>New Core Type</text>
           <defaultName>NewCoreType</defaultName>
-          <icon type="UrlImagePath" source="./img/icons/common/StereotypeDef_256x.png" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Script Type</text>
+          <icon type="FontAwesome" source="file-code-o" />
           <specializationType>Script</specializationType>
           <specializationTypeId>101fd5b6-3159-4810-9490-a103ef323e9c</specializationTypeId>
-          <text>New Script Type</text>
           <defaultName>NewScript</defaultName>
-          <icon type="FontAwesome" source="file-code-o" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -883,19 +883,19 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>New Designer</text>
+          <icon type="CharacterBox" source="D|#00ffc8" />
           <specializationType>Designer</specializationType>
           <specializationTypeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</specializationTypeId>
-          <text>New Designer</text>
           <defaultName>NewDesigner</defaultName>
-          <icon type="CharacterBox" source="D|#00ffc8" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>New Designer Settings</text>
+          <icon type="CharacterBox" source="S|#00ffc8" />
           <specializationType>Designer Settings</specializationType>
           <specializationTypeId>7a6411a8-ffef-4209-91c6-8d12755a806a</specializationTypeId>
-          <text>New Designer Settings</text>
           <defaultName>NewDesignerSettings</defaultName>
-          <icon type="CharacterBox" source="S|#00ffc8" />
           <allowMultiple>true</allowMultiple>
         </option>
       </creationOptions>
@@ -936,37 +936,37 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Diagram Settings</text>
+          <icon type="CharacterBox" source="D|#21abad" />
           <specializationType>Diagram Settings</specializationType>
           <specializationTypeId>67d711dd-3918-4b28-b2a0-4d845884e17a</specializationTypeId>
-          <text>Add Diagram Settings</text>
           <defaultName>NewDiagramSettings</defaultName>
-          <icon type="CharacterBox" source="D|#21abad" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Mapping Settings</specializationType>
-          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
           <text>Add Mapping Settings</text>
           <shortcut>ctrl + shift + m</shortcut>
-          <defaultName>NewMappingSettings</defaultName>
           <icon type="CharacterBox" source="M|#1A237E" />
+          <specializationType>Mapping Settings</specializationType>
+          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
+          <defaultName>NewMappingSettings</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Element Event Settings</specializationType>
           <specializationTypeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewElementEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -1006,54 +1006,54 @@ return null;</iconFunction>
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Element Settings</text>
+          <icon type="CharacterBox" source="E|#095c00" />
           <specializationType>Element Settings</specializationType>
           <specializationTypeId>727577aa-3e07-4b41-be7d-7359bb1e48c8</specializationTypeId>
-          <text>Add Element Settings</text>
           <defaultName>NewElementSettings</defaultName>
-          <icon type="CharacterBox" source="E|#095c00" />
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Mapping Settings</specializationType>
-          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
           <text>Add Mapping Settings</text>
           <shortcut>ctrl + shift + m</shortcut>
-          <defaultName>NewMappingSettings</defaultName>
           <icon type="CharacterBox" source="M|#1A237E" />
+          <specializationType>Mapping Settings</specializationType>
+          <specializationTypeId>178c2f55-9ca1-484d-be43-a91bdd5554dc</specializationTypeId>
+          <defaultName>NewMappingSettings</defaultName>
           <allowMultiple>true</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Diagram Settings</text>
+          <icon type="CharacterBox" source="D|#21abad" />
           <specializationType>Diagram Settings</specializationType>
           <specializationTypeId>67d711dd-3918-4b28-b2a0-4d845884e17a</specializationTypeId>
-          <text>Add Diagram Settings</text>
           <defaultName>[diagram]</defaultName>
-          <icon type="CharacterBox" source="D|#21abad" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
-          <specializationType>Element Visual Settings</specializationType>
-          <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
           <text>Add Visual Settings</text>
           <shortcut>ctrl + shift + v</shortcut>
-          <defaultName>[visual]</defaultName>
           <icon type="CharacterBox" source="V|#FFEE58" />
+          <specializationType>Element Visual Settings</specializationType>
+          <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
+          <defaultName>[visual]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Element Event Settings</specializationType>
           <specializationTypeId>3c628ab0-2407-4fb0-8507-ddde986cff2e</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewElementEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -1084,12 +1084,12 @@ return null;</iconFunction>
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Element Mapping</specializationType>
-              <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
               <text>Add Mapping</text>
               <shortcut>ctrl + shift + m</shortcut>
-              <defaultName>NewElementMapping</defaultName>
               <icon type="CharacterBox" source="M|#095cff" />
+              <specializationType>Element Mapping</specializationType>
+              <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
+              <defaultName>NewElementMapping</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1122,12 +1122,12 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               </typeOrder>
               <creationOptions>
                 <option type="element">
-                  <specializationType>Element Mapping</specializationType>
-                  <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
                   <text>Add Child Mapping</text>
                   <shortcut>ctrl + shift + m</shortcut>
-                  <defaultName>NewElementMapping</defaultName>
                   <icon type="CharacterBox" source="M|#095cff" />
+                  <specializationType>Element Mapping</specializationType>
+                  <specializationTypeId>4a16943b-702c-4fb0-bfcc-2afd98b8814c</specializationTypeId>
+                  <defaultName>NewElementMapping</defaultName>
                   <allowMultiple>true</allowMultiple>
                 </option>
               </creationOptions>
@@ -1156,59 +1156,59 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Loaded Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Loaded</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Created Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Created</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Name Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Name Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Type Changed Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Type Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Mapped Event</text>
-              <defaultName>On Mapped</defaultName>
               <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <defaultName>On Mapped</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>On Deleted</text>
+              <icon type="FontAwesome" source="code" />
               <specializationType>Element Event Handler</specializationType>
               <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
-              <text>On Deleted</text>
               <defaultName>On Deleted</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1282,43 +1282,43 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
+              <text>Add Path</text>
+              <icon type="CharacterBox" source="D|#FBC02D" />
               <specializationType>Path Draw Settings</specializationType>
               <specializationTypeId>ac56c1f1-b259-4de8-acc9-ce0030ad4f99</specializationTypeId>
-              <text>Add Path</text>
               <defaultName>NewPathDrawSettings</defaultName>
-              <icon type="CharacterBox" source="D|#FBC02D" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Text</text>
+              <icon type="CharacterBox" source="T|#FBC02D" />
               <specializationType>Text Draw Settings</specializationType>
               <specializationTypeId>0250c934-455b-4bb6-b5d9-077c6e1ce72c</specializationTypeId>
-              <text>Add Text</text>
               <defaultName>Text</defaultName>
-              <icon type="CharacterBox" source="T|#FBC02D" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add SVG Visual</text>
+              <icon type="CharacterBox" source="M|#FBC02D" />
               <specializationType>SVG Resource Draw Settings</specializationType>
               <specializationTypeId>b5566ace-3353-4009-9370-475b561451a0</specializationTypeId>
-              <text>Add SVG Visual</text>
               <defaultName>Symbol</defaultName>
-              <icon type="CharacterBox" source="M|#FBC02D" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Stereotypes Visual</text>
+              <icon type="CharacterBox" source="S|#FBC02D" />
               <specializationType>Stereotypes Visual Settings</specializationType>
               <specializationTypeId>08620c8b-f6d3-472e-86b6-926fe110d526</specializationTypeId>
-              <text>Add Stereotypes Visual</text>
               <defaultName>NewStereotypesVisualSettings</defaultName>
-              <icon type="CharacterBox" source="S|#FBC02D" />
               <allowMultiple>false</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Child Visual</text>
+              <icon type="CharacterBox" source="V|#FFEE58" />
               <specializationType>Element Visual Settings</specializationType>
               <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
-              <text>Add Child Visual</text>
               <defaultName>NewElementVisualSettings</defaultName>
-              <icon type="CharacterBox" source="V|#FFEE58" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1416,28 +1416,28 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Context Menu</specializationType>
-              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
               <text>Add Menu Options</text>
               <shortcut>ctrl + shift + c</shortcut>
-              <defaultName>[context menu]</defaultName>
               <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
               <allowMultiple>false</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Element Visual Settings</text>
+              <icon type="CharacterBox" source="V|#FFEE58" />
               <specializationType>Element Visual Settings</specializationType>
               <specializationTypeId>5eea5fba-15df-4971-8541-6f19bad4297d</specializationTypeId>
-              <text>Add Element Visual Settings</text>
               <defaultName>[element visual]</defaultName>
-              <icon type="CharacterBox" source="V|#FFEE58" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>Add Association Visual Settings</text>
+              <icon type="CharacterBox" source="V|#AB47BC" />
               <specializationType>Association Visual Settings</specializationType>
               <specializationTypeId>153a4063-82a1-4515-87f1-44c189004fad</specializationTypeId>
-              <text>Add Association Visual Settings</text>
               <defaultName>[association visual]</defaultName>
-              <icon type="CharacterBox" source="V|#AB47BC" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1448,7 +1448,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       </childElementSettings>
     </elementSetting>
     <elementSetting type="Mapping Type Settings" typeId="a901c634-6482-4993-ae3c-bd1b637f78d4">
-      <icon type="UrlImagePath" source="data:image/png;base64,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" />
+      <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAE4AAABQCAYAAAC3dkP2AAAAAXNSR0IArs4c6QAAA5JJREFUeF7t299LU2EYB/Dvs5mFM0OTSLP0JpQyrOgiyssCwcAldBt010V3kY7ovhKJoH+gu+4iiRTKLkKy1CbFXGZphc7jTAXtF5Tb3njVreUvzp6z0cb7vNfn+5x3n/O8Zzs/RpDBEqDmsDquYshjpQ0OkddS8wB2GGzA+ugCx2IDBE7gmALMmHScwDEFmDHpOC5cff/3aRAVMvPGxgi+oQUARcYKMD+4wAkcU4AZM6LjiAClmEIbxIyA21legF2VhRh+8SVtekbAlVZ4cPJsJd71zWCkfyYteMbA1TdXAQoI9k5jdHDW8dI1C26l14Z6whh7PecIz0g47ecUz1g4jfe2dxrvX82yznm24fYfK2XtIBtCnqJ8VNUWrzsVDacBUx224MhFaLp0INXaObG9/n2nvyyCz1PDMx5OH10OnsCtrAuN98Fvf9kK3ApcNBLDQGcI4c/fbJ1iBA5AdDEG/5NJWKNfbaHpjYyHi0YU/I9DKaHZhyNC48Ua20cj2zYkIrjzaM20VExhoCsEa8x+p8WL2Oq4JWHX2h1nG9BG8ynds3yRv3q8fDiO8Cd757TVWdtwuYK03jz13ZGli/yk4QTN9lLNZTQ999VwTtGMg1NKof/RBKY+8pZncgMZs1RPNFVisHsSoRH9UM/5MAKuZHcBPMX5mBjWb7SlZxgBlx6qf6sIHFNV4ASOKcCMEXyBK1C0lZk3Npa711H/+ZAJHPMACBwbrnXoPAj5zDxAFMD1g32JfMubCrjcDex6OhiJ3kN73Y94Da+lvEqB/5jNBaujjDrj9c4p5f5t4YKTORJ8wQVA8V8sVLiFm7WXE5PwBRsA1eVkUohF96KtLpQE5wdwlF2T8PRBGZ1KwE2okkU35tj1lu8ACxwHUOA4atJxTDWBE7jNBeTLgdkhAidwmwvI7zhmhwicwG0sIJdczO4QOIFLRUCuVVPRStpWP+WyAGxn5vUbtHdw49DVv/fjAqfhovv8egBiedVoq9HzWhpeS/UAOMytqYBnHeV0Jp5vnFfFW35inFtP5+QOMFNP4ASOKcCMScex4VqD3SB4mPnMxCKRJrTXJf6V67XUXUWozszOeFWz892RdF+r8mw2TQkcE1XgBI4pwIxJxwkcU4AZk44TOKYAMyYdJ3BMAWZMOk7gmALMmHScwDEFmDHpODZcS6AdRNuY+czEfi1ew+0jib/6eadUi4phX2Z2xqv6B9/8BuKJJ4dXAAAAAElFTkSuQmCC" />
       <saveAsOwnFile>true</saveAsOwnFile>
       <allowRename>true</allowRename>
       <allowAbstract>false</allowAbstract>
@@ -1466,19 +1466,19 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       </typeOrder>
       <creationOptions>
         <option type="element">
+          <text>Add From Mapping</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABC1JREFUeF7t3T1oE2EYB/D/c21pgkM3C63iB0S0ia2Furiog4OC1Bah4KYoHRQHUazocEXEpIoKHUSrLg7ioFYFdVDEQRAXP6lVUKzSKrQEv5s0TR65S6yxTe4jb1Ja78kSLn2e93353XN37+XuUto4wMGyCqyDvKYIaGW4cbWa3lnRUMsgb2PCefGbKpBkbLpZS9cFsMDqEMAC4f6kCaAAKgoopksFCqCigGK6owps/sRbiXHBoq84E54ojmVGphNjJYCyfINzBOhgHjjQW0MLZ6SA4qA2DfEXAFUWzbT01lCv6jxQAC0EnZyJCKAA5haQTVj2gYoCiulSgQKoKKCYXpQKbB7krUSWE+n/9ijcMsTLoOWfSMe+48PtAH2TeaBipQqgAJZQQLFp75yJHOxbgERqMbpC9xXN/kn3DuCBp0vAFX3g5E5E6s8UC9FjgOWv03Csw3flMHQ9pQrpUUAARN2oxF7owTEVRO8CptUuYTy5A8cbfhaK6HVAY3N+AI43I9L0tRBEATTVaADxr8twctWoW0QB/CPGiMI/pxb6opgbxNIA7n/eDiJyM5CSx7I2F8SdNv18R6p8JbqWZo7W9qMqDWDHyyQAzb77GRkxhiQ141jwjpPRCWAuJQYDaEck1GOHKICWQtyJcKgTIAM050sA7UqM6TT8dbuh03iuUAG0A0yf+t3CT18rugPxyeEC6AjQDHqFaKwBZ5sS2SkC6BwQYIzgV+W87EoUQDeA5taMKMp5BY4s/2iew5Tk5qLZPQ+0J2V8AWvr0VX3SADtuXJHMI+CeYsAFgoIxAABLJTvGwgbcDT0UCrQLaGx/6NEI8KN7+Ug4haPEEXlcC30tRNfeUkFOkVkfgu/Vjf5GooAOgEk3EOsaiNOzp/yjbUA2gLyRfi07fmu3gmgFSDjBPzBfdAp7/VjAcwP2IFwKGJXoAI4VShlTJARXn7ZDq+E05gXPWDMrItK4CqQttkahWJIYTW6go+d4JUO0Gnv0xl3qC+A8dQbiy5/IEkBHAt+djOs0mzCbkYwXbHWgCOIJQI41Wg8+uXqJYBAH6hyDY4Ghl3JZYI9Dkh34UMb9GC0EDyP7wPpMnwwJsg/CsXzLiCjB37apXpvoAcBuR9IdcN3ZU8x7k71GGD/IiTG2hCpD6tsspNzvXMQKaZaVlsCqAgrgAKoKKCY7ukKtHvclYHW6zV0zcpYAC1+9kQAbTZPqUDF/ZcACqCigGK6VKAAKgoophelAuXn7/L/akexpjGK63n2pgug4roTQAFUFFBMlwoUQEUBxXSpwOkAtPt3GEwo11Ig4/Fpzn43BqcBGpvPgv79e3rQ5o1FlHkHpZfNuMy7+TS20V7WMmfizNSs/ow4I36if+PGJSOTMp9ntTvRZqatzFPf5hIZeZPazdu/0byGc9eq6ZnVevgNfhZ+sqhAvz8AAAAASUVORK5CYII=" />
           <specializationType>From Mapping Settings</specializationType>
           <specializationTypeId>1536425c-35f4-48e1-abe4-1f8f56533545</specializationTypeId>
-          <text>Add From Mapping</text>
           <defaultName>NewFromMappingSettings</defaultName>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add To Mapping</text>
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA0xJREFUeF7t28tu01AQBuBxmqoqFbBCrIBKvANsEIINrBBIVSXYsWDDE4DEO7BkTdrmAoUXIE3TNu8AYhHHqRBsSmnS3BxfDhpLRggBcTTJ8RxrvK3nxP78n4svtWAe24vP18BTl+fRNKs2LeVaczmg559KAPBoLm1zalTBkQBSLogAUvQAQAAFkChALJcECiBRgFguCRRAogCxXBIogEQBYrkkUACJAsRySaAAEgWI5ZJAASQKEMslgQJIFCCWSwIzAri0nIdc3oLhqUc8I83lXBJ45twi3Hq4CrulFox6vmYFws9xArzz+Cp44xDqpRYMuoYkkRsgZiHwQ6iXHej9GBOioamUI2CMuFdx4PSYOSJXQGOSyBkwRqxtMR4TuQMiYjSxFFsw4LjEMQEQEcejAPbKDj9EUwDZIiLgelOdd8/ChVlO/AdF56XnhveStrm8kocba5O/hvOxO5cd6HeYzM4I+OCbegoKXiU92bT3w3UimyWOiYDx7Lz/pg3d726619NUQDaLbZMBY8TdYgv6nZTunU0HREScWBAxlXViFgBTXeJkBfAXYsXR+ygsS4BRd/bC6I6ld6JpnZg1QETsHrtQLzmgQjX/JU7WAHE2rhVtCH0NeHh5sgSIt3fVDRtPSt+WFUB8h1ItNEHpxMtKAhGvtmVDoKvb/p5v0xPYPxnD/nYbxsNAX7fNCiCOeY33h+m+RzY1gf2uB4137XTx4jHw/ld1N2fBk1n2gaMvg+vuMLiUtM2FfA4urq4k2h0//6hXnPS67Z9dONFRT7vTlP8vjJ924JcJk7Zhz4edzSYEnu7p9h9HZtI7EUxetWBDqOMOY9KVjP9uCiAmr/q6yQsvHgOTYk+13wy78Kjvw86GHT0oYLdxT+Cw5wG++0BElhtnQMRrbB+m86Q56dXiCoiJO3jb5o3HdQx0B360zjPiS1VuCRwNfKht2uC5DCeMv3VrToA316/Ah0JT38PQpOPc//bjAri4tBA9gme5VDEBcBZhSKUNLglM5eRn8aMCSFQUQAEkChDLJYECSBQglksCBZAoQCyXBAogUYBYLgkUQKIAsVwSKIBEAWK5JFAAiQLEckmgABIFiOXzS+DHZ6Cs28TDM6BcdX4CKKm+Xscy3A0AAAAASUVORK5CYII=" />
           <specializationType>To Mapping Settings</specializationType>
           <specializationTypeId>a812bff7-017a-4692-8ec7-1caad0a1dd88</specializationTypeId>
-          <text>Add To Mapping</text>
           <defaultName>NewToMappingSettings</defaultName>
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -1486,7 +1486,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <icon type="UrlImagePath" source="data:image/png;base64,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" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
@@ -1518,11 +1518,11 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
+              <text>Add Element Mapping</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
               <specializationType>Element Mapping Settings</specializationType>
               <specializationTypeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</specializationTypeId>
-              <text>Add Element Mapping</text>
               <defaultName>NewElementMappingSettings</defaultName>
-              <icon type="UrlImagePath" source="data:image/png;base64,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" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1531,7 +1531,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="From Mapping Settings" typeId="1536425c-35f4-48e1-abe4-1f8f56533545">
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAABC1JREFUeF7t3T1oE2EYB/D/c21pgkM3C63iB0S0ia2Furiog4OC1Bah4KYoHRQHUazocEXEpIoKHUSrLg7ioFYFdVDEQRAXP6lVUKzSKrQEv5s0TR65S6yxTe4jb1Ja78kSLn2e93353XN37+XuUto4wMGyCqyDvKYIaGW4cbWa3lnRUMsgb2PCefGbKpBkbLpZS9cFsMDqEMAC4f6kCaAAKgoopksFCqCigGK6owps/sRbiXHBoq84E54ojmVGphNjJYCyfINzBOhgHjjQW0MLZ6SA4qA2DfEXAFUWzbT01lCv6jxQAC0EnZyJCKAA5haQTVj2gYoCiulSgQKoKKCYXpQKbB7krUSWE+n/9ijcMsTLoOWfSMe+48PtAH2TeaBipQqgAJZQQLFp75yJHOxbgERqMbpC9xXN/kn3DuCBp0vAFX3g5E5E6s8UC9FjgOWv03Csw3flMHQ9pQrpUUAARN2oxF7owTEVRO8CptUuYTy5A8cbfhaK6HVAY3N+AI43I9L0tRBEATTVaADxr8twctWoW0QB/CPGiMI/pxb6opgbxNIA7n/eDiJyM5CSx7I2F8SdNv18R6p8JbqWZo7W9qMqDWDHyyQAzb77GRkxhiQ141jwjpPRCWAuJQYDaEck1GOHKICWQtyJcKgTIAM050sA7UqM6TT8dbuh03iuUAG0A0yf+t3CT18rugPxyeEC6AjQDHqFaKwBZ5sS2SkC6BwQYIzgV+W87EoUQDeA5taMKMp5BY4s/2iew5Tk5qLZPQ+0J2V8AWvr0VX3SADtuXJHMI+CeYsAFgoIxAABLJTvGwgbcDT0UCrQLaGx/6NEI8KN7+Ug4haPEEXlcC30tRNfeUkFOkVkfgu/Vjf5GooAOgEk3EOsaiNOzp/yjbUA2gLyRfi07fmu3gmgFSDjBPzBfdAp7/VjAcwP2IFwKGJXoAI4VShlTJARXn7ZDq+E05gXPWDMrItK4CqQttkahWJIYTW6go+d4JUO0Gnv0xl3qC+A8dQbiy5/IEkBHAt+djOs0mzCbkYwXbHWgCOIJQI41Wg8+uXqJYBAH6hyDY4Ghl3JZYI9Dkh34UMb9GC0EDyP7wPpMnwwJsg/CsXzLiCjB37apXpvoAcBuR9IdcN3ZU8x7k71GGD/IiTG2hCpD6tsspNzvXMQKaZaVlsCqAgrgAKoKKCY7ukKtHvclYHW6zV0zcpYAC1+9kQAbTZPqUDF/ZcACqCigGK6VKAAKgoophelAuXn7/L/akexpjGK63n2pgug4roTQAFUFFBMlwoUQEUBxXSpwOkAtPt3GEwo11Ig4/Fpzn43BqcBGpvPgv79e3rQ5o1FlHkHpZfNuMy7+TS20V7WMmfizNSs/ow4I36if+PGJSOTMp9ntTvRZqatzFPf5hIZeZPazdu/0byGc9eq6ZnVevgNfhZ+sqhAvz8AAAAASUVORK5CYII=" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
@@ -1548,11 +1548,11 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
+              <text>Add Element Mapping</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
               <specializationType>Element Mapping Settings</specializationType>
               <specializationTypeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</specializationTypeId>
-              <text>Add Element Mapping</text>
               <defaultName>NewElementMappingSettings</defaultName>
-              <icon type="UrlImagePath" source="data:image/png;base64,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" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1561,7 +1561,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           <childElementSettings />
         </childElementSetting>
         <childElementSetting type="To Mapping Settings" typeId="a812bff7-017a-4692-8ec7-1caad0a1dd88">
-          <icon type="UrlImagePath" source="data:image/png;base64,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" />
+          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFAAAABQCAYAAACOEfKtAAAAAXNSR0IArs4c6QAAA0xJREFUeF7t28tu01AQBuBxmqoqFbBCrIBKvANsEIINrBBIVSXYsWDDE4DEO7BkTdrmAoUXIE3TNu8AYhHHqRBsSmnS3BxfDhpLRggBcTTJ8RxrvK3nxP78n4svtWAe24vP18BTl+fRNKs2LeVaczmg559KAPBoLm1zalTBkQBSLogAUvQAQAAFkChALJcECiBRgFguCRRAogCxXBIogEQBYrkkUACJAsRySaAAEgWI5ZJAASQKEMslgQJIFCCWSwIzAri0nIdc3oLhqUc8I83lXBJ45twi3Hq4CrulFox6vmYFws9xArzz+Cp44xDqpRYMuoYkkRsgZiHwQ6iXHej9GBOioamUI2CMuFdx4PSYOSJXQGOSyBkwRqxtMR4TuQMiYjSxFFsw4LjEMQEQEcejAPbKDj9EUwDZIiLgelOdd8/ChVlO/AdF56XnhveStrm8kocba5O/hvOxO5cd6HeYzM4I+OCbegoKXiU92bT3w3UimyWOiYDx7Lz/pg3d726619NUQDaLbZMBY8TdYgv6nZTunU0HREScWBAxlXViFgBTXeJkBfAXYsXR+ygsS4BRd/bC6I6ld6JpnZg1QETsHrtQLzmgQjX/JU7WAHE2rhVtCH0NeHh5sgSIt3fVDRtPSt+WFUB8h1ItNEHpxMtKAhGvtmVDoKvb/p5v0xPYPxnD/nYbxsNAX7fNCiCOeY33h+m+RzY1gf2uB4137XTx4jHw/ld1N2fBk1n2gaMvg+vuMLiUtM2FfA4urq4k2h0//6hXnPS67Z9dONFRT7vTlP8vjJ924JcJk7Zhz4edzSYEnu7p9h9HZtI7EUxetWBDqOMOY9KVjP9uCiAmr/q6yQsvHgOTYk+13wy78Kjvw86GHT0oYLdxT+Cw5wG++0BElhtnQMRrbB+m86Q56dXiCoiJO3jb5o3HdQx0B360zjPiS1VuCRwNfKht2uC5DCeMv3VrToA316/Ah0JT38PQpOPc//bjAri4tBA9gme5VDEBcBZhSKUNLglM5eRn8aMCSFQUQAEkChDLJYECSBQglksCBZAoQCyXBAogUYBYLgkUQKIAsVwSKIBEAWK5JFAAiQLEckmgABIFiOXzS+DHZ6Cs28TDM6BcdX4CKKm+Xscy3A0AAAAASUVORK5CYII=" />
           <saveAsOwnFile>false</saveAsOwnFile>
           <allowRename>true</allowRename>
           <allowAbstract>false</allowAbstract>
@@ -1578,11 +1578,11 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
+              <text>Add Element Mapping</text>
+              <icon type="UrlImagePath" source="data:image/png;base64,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" />
               <specializationType>Element Mapping Settings</specializationType>
               <specializationTypeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</specializationTypeId>
-              <text>Add Element Mapping</text>
               <defaultName>NewElementMappingSettings</defaultName>
-              <icon type="UrlImagePath" source="data:image/png;base64,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" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>
@@ -1623,20 +1623,20 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Package Event Settings</specializationType>
           <specializationTypeId>48bcdd5f-690c-425b-8f5e-99097a7188dc</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewPackageEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -1668,20 +1668,20 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       </typeOrder>
       <creationOptions>
         <option type="element">
-          <specializationType>Context Menu</specializationType>
-          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
           <text>Add Menu Options</text>
           <shortcut>ctrl + shift + c</shortcut>
-          <defaultName>[context menu]</defaultName>
           <icon type="CharacterBox" source="C|#ad2121" />
+          <specializationType>Context Menu</specializationType>
+          <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+          <defaultName>[context menu]</defaultName>
           <allowMultiple>false</allowMultiple>
         </option>
         <option type="element">
+          <text>Add Event Settings</text>
+          <icon type="FontAwesome" source="bolt" />
           <specializationType>Package Event Settings</specializationType>
           <specializationTypeId>48bcdd5f-690c-425b-8f5e-99097a7188dc</specializationTypeId>
-          <text>Add Event Settings</text>
           <defaultName>NewPackageEventSettings</defaultName>
-          <icon type="FontAwesome" source="bolt" />
           <allowMultiple>false</allowMultiple>
         </option>
       </creationOptions>
@@ -1712,27 +1712,27 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
           </typeOrder>
           <creationOptions>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Loaded Event</text>
+              <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <defaultName>On Loaded</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
-              <specializationType>Element Event Handler</specializationType>
-              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
               <text>On Created Event</text>
-              <defaultName>On Created</defaultName>
               <icon type="FontAwesome" source="code" />
+              <specializationType>Element Event Handler</specializationType>
+              <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
+              <defaultName>On Created</defaultName>
               <allowMultiple>true</allowMultiple>
             </option>
             <option type="element">
+              <text>On Changed Event</text>
+              <icon type="FontAwesome" source="code" />
               <specializationType>Element Event Handler</specializationType>
               <specializationTypeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</specializationTypeId>
-              <text>On Changed Event</text>
               <defaultName>On Changed</defaultName>
-              <icon type="FontAwesome" source="code" />
               <allowMultiple>true</allowMultiple>
             </option>
           </creationOptions>

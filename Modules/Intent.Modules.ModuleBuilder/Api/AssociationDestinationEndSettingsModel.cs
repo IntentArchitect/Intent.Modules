@@ -117,11 +117,6 @@ namespace Intent.ModuleBuilder.Api
             .Select(x => new ContextMenuModel(x))
             .SingleOrDefault();
 
-        public IList<MappingTypeSettingsModel> MappingOptions => _element.ChildElements
-            .GetElementsOfType(MappingTypeSettingsModel.SpecializationTypeId)
-            .Select(x => new MappingTypeSettingsModel(x))
-            .ToList();
-
         public const string SpecializationTypeId = "c4c61fdc-464d-41d2-8e0e-5a734d588302";
 
         public string Comment => _element.Comment;

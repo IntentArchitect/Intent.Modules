@@ -106,7 +106,10 @@ return element.getParent(mappingTypeSettingsId).id;</lookupInternalTargetPropert
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
       <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
-return element.getParent(mappingTypeSettingsId).id;</lookupInternalTargetPropertyId>
+let toMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
+return element.getParent(mappingTypeSettingsId).getChildren(toMappingSettingsId)[0].id;</lookupInternalTargetPropertyId>
+      <isActiveFunction>let fromMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+return element.getParent(fromMappingSettingsId) != null</isActiveFunction>
     </property>
     <property id="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3">
       <name>Can Be Modified</name>
@@ -134,12 +137,14 @@ return element.getParent(mappingTypeSettingsId).id;</lookupInternalTargetPropert
       <name>Use Child Mappings From</name>
       <type>string</type>
       <controlType>select</controlType>
-      <optionsSource>lookup-element</optionsSource>
+      <optionsSource>lookup-children</optionsSource>
       <placeholder />
       <valueOptions />
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
+      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
+return element.getParent(mappingTypeSettingsId).id;</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

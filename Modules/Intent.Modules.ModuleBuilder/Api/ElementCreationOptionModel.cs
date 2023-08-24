@@ -66,7 +66,8 @@ namespace Intent.ModuleBuilder.Api
                 MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
                 DefaultName = this.GetOptionSettings().DefaultName() ?? $"New{_element.TypeReference.Element.Name.ToCSharpIdentifier()}",
                 Icon = Icon?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "file-o" },
-                AllowMultiple = this.GetOptionSettings().AllowMultiple()
+                AllowMultiple = this.GetOptionSettings().AllowMultiple(),
+                IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
             };
         }
 
