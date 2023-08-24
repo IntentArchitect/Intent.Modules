@@ -1,4 +1,8 @@
-﻿### Version 5.0.0
+﻿### Version 5.1.0
+
+- Fixed: Mapping system not able to traverse into nested folders when mapping to Commands and Queries (required Intent Architect 4.1.x)
+
+### Version 5.0.0
 
 > ⚠️ NOTE
 >
@@ -13,7 +17,7 @@
 ### Version 4.1.0
 
 - Service references will allow operation selection for generating proxy clients.
-- Fixed issue where only ever a single enum would be generated per service proxy.
+- Fixed: Issue where only ever a single enum would be generated per service proxy.
 
 ### Version 4.0.2
 
@@ -25,7 +29,7 @@
 
 ### Version 4.0.0
 
-- Updated to work with `Intent.Metadata.WebApi` version 4+.
+- Updated to work with `Intent.Metadata.WebApi` version 4.x.
 
 ### Version 3.3.4
 
