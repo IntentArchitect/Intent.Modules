@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package>
   <id>Intent.Modelers.Types.ServiceProxies</id>
-  <version>5.0.0-pre.1</version>
-  <supportedClientVersions>[3.3.0-pre.0, 5.0.0-a)</supportedClientVersions>
+  <version>5.1.0-pre.0</version>
+  <supportedClientVersions>[4.1.0-a, 5.0.0-a)</supportedClientVersions>
   <summary>Additional support for describing proxies in the Proxies designer.</summary>
   <description>Additional support for describing proxies in the Proxies designer.</description>
   <authors>Intent.Modules.Net</authors>
