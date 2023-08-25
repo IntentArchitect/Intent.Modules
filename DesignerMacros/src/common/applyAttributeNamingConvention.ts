@@ -1,3 +1,5 @@
+/// <reference path="../../typings/elementmacro.context.api.d.ts" />
+
 /**
  * Applies camelCasing or PascalCasing naming convention according to the setting configured for the current application.
  */

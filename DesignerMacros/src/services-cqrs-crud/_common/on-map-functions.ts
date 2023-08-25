@@ -14,19 +14,21 @@ const constants = {
     }
 };
 
-function getFieldFormat(str): string {
+function getFieldFormat(str: string): string {
     return toPascalCase(str);
 }
 
-function getDomainAttributeNameFormat(str): string {
+function getDomainAttributeNameFormat(str: string): string {
     let convention = getDomainAttributeNamingConvention();
+
     switch (convention) {
         case "pascal-case":
             return toPascalCase(str);
         case "camel-case":
             return toCamelCase(str);
+        default:
+            return str;
     }
-    return str;
 }
 
 function getOrCreateDto(elementName: string, parentElement: MacroApi.Context.IElementApi): MacroApi.Context.IElementApi {
@@ -143,7 +145,7 @@ function getPrimaryKeysWithMapPath(entity: MacroApi.Context.IElementApi): IAttri
     function traverseInheritanceHierarchyForPrimaryKeys(
         keydict: { [index: string]: IAttributeWithMapPath },
         curEntity: MacroApi.Context.IElementApi,
-        generalizationStack
+        generalizationStack: string[]
     ): void {
         if (!curEntity) {
             return;
@@ -191,7 +193,7 @@ function getAttributesWithMapPath(entity: MacroApi.Context.IElementApi): { [inde
 
     function traverseInheritanceHierarchyForAttributes(attrDict: { [index: string]: IAttributeWithMapPath },
         curEntity: MacroApi.Context.IElementApi,
-        generalizationStack
+        generalizationStack: string[]
     ): void {
         if (!curEntity) {
             return;
@@ -226,6 +228,6 @@ function getDomainAttributeNamingConvention(): "pascal-case" | "camel-case" {
 
 // Just in case someone still uses this convention. Used to filter out those attributes when mapping
 // to domain entities that are within a Cosmos DB paradigm.
-function legacyPartitionKey(attribute): boolean {
-    return attribute.hasStereotype("Partition Key") && attribute.name === "PartitionKey";
+function legacyPartitionKey(attribute: MacroApi.Context.IElementApi): boolean {
+    return attribute.hasStereotype("Partition Key") && attribute.getName() === "PartitionKey";
 }

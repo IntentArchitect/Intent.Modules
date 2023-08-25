@@ -102,13 +102,13 @@ declare namespace MacroApi.Context {
         hasStereotype(nameOrDefinitionId: string): boolean;
         getStereotypes(): IStereotypeApi[];
         getStereotype(nameOrDefinitionId: string): IStereotypeApi;
-        addStereotype(stereotypeDefinitionId: string): void;
+        addStereotype(stereotypeDefinitionId: string): IStereotypeApi;
         removeStereotype(nameOrDefinitionId: string): void;
         getMetadata(key: string): string;
         hasMetadata(key: string): boolean;
-        addMetadata(key: string, value: string);
-        setMetadata(key: string, value: string);
-        removeMetadata(key: string);
+        addMetadata(key: string, value: string): void;
+        setMetadata(key: string, value: string): void;
+        removeMetadata(key: string): void;
         getPackage(): IPackageApi;
         /**
          * Expands this package in the designer model.
@@ -263,7 +263,7 @@ declare namespace MacroApi.Context {
         /**
          * Sets this element's parent.
          */
-        setParent(parentId: string);
+        setParent(parentId: string): void;
         /**
          * Returns the owning package for this element.
          */
@@ -311,7 +311,7 @@ declare namespace MacroApi.Context {
         /**
          * Applies the stereotype with definition id of stereotypeDefinitionId to this element.
          */
-        addStereotype(stereotypeDefinitionId: string): void;
+        addStereotype(stereotypeDefinitionId: string): IStereotypeApi;
         /**
          * Removes the stereotype that matches the specified name or definition identifier from this element.
          */
@@ -358,15 +358,15 @@ declare namespace MacroApi.Context {
         /**
          * Add the metadata value for the specified key. Throws an error if metadata already exists for the specified key.
          */
-        addMetadata(key: string, value: string);
+        addMetadata(key: string, value: string): void;
         /**
          * Sets the metadata value for the specified key. Adds the metadata if it does not exist.
          */
-        setMetadata(key: string, value: string);
+        setMetadata(key: string, value: string): void;
         /**
          * Removes the metadata value for the specified key.
          */
-        removeMetadata(key: string);
+        removeMetadata(key: string): void;
     }
 
     interface IBackwardCompatibleIAssociationApi extends IAssociationApi {
@@ -407,6 +407,10 @@ declare namespace MacroApi.Context {
          */
         getOtherEnd(): IAssociationApi;
         /**
+         * Returns the owning package for this element.
+         */
+        getPackage(): IPackageApi;
+        /**
          * Returns all stereotypes currently applied to the element.
          */
         getStereotypes(): IStereotypeApi[];
@@ -430,15 +434,15 @@ declare namespace MacroApi.Context {
         /**
          * Add the metadata value for the specified key. Throws an error if metadata already exists for the specified key.
          */
-        addMetadata(key: string, value: string);
+        addMetadata(key: string, value: string): void;
         /**
          * Sets the metadata value for the specified key. Adds the metadata if it does not exist.
          */
-        setMetadata(key: string, value: string);
+        setMetadata(key: string, value: string): void;
         /**
          * Removes the metadata value for the specified key.
          */
-        removeMetadata(key: string);
+        removeMetadata(key: string): void;
         /**
          * Deletes this association.
          */

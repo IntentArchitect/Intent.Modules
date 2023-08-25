@@ -6,11 +6,11 @@ interface IISelectEntityDialogOptions {
 
 class DomainHelper {
 
-    static async openSelectEntityDialog(options?: IISelectEntityDialogOptions) {
+    static async openSelectEntityDialog(options?: IISelectEntityDialogOptions): Promise<MacroApi.Context.IElementApi> {
         let classes = lookupTypesOf("Class").filter(x => DomainHelper.isAggregateRoot(x) || (options?.includeOwnedRelationships != false && DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return;
+            return null;
         }
     
         let classId = await dialogService.lookupFromOptions(classes.map((x)=>({
@@ -27,7 +27,7 @@ class DomainHelper {
         return foundEntity;
     }
 
-    private static getFriendlyDisplayNameForClassSelection(element) {
+    private static getFriendlyDisplayNameForClassSelection(element: MacroApi.Context.IElementApi): string {
         let found = DomainHelper.getOwningAggregate(element);
         return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
     }
@@ -47,24 +47,24 @@ class DomainHelper {
                 x.getOtherEnd().typeReference.isCollection)[0]?.typeReference.getType();
         return result;
     
-        function isOwnedBy(association) {
+        function isOwnedBy(association: MacroApi.Context.IAssociationApi) {
             return association.isSourceEnd() && 
                 !association.typeReference.isNullable && 
                 !association.typeReference.isCollection;
         }
     }
     
-    static ownerIsAggregateRoot(entity) {
+    static ownerIsAggregateRoot(entity: MacroApi.Context.IElementApi): boolean {
         let result = DomainHelper.getOwningAggregate(entity);
         return result ? true : false;
     }
 
-    static getPrimaryKeys(entity): IAttributeWithMapPath[] {
+    static getPrimaryKeys(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         if (!entity) {
             throw new Error("entity not specified");
         }
+
         let primaryKeys = DomainHelper.getPrimaryKeysMap(entity);
-        let keyLen = Object.keys(primaryKeys).length;
 
         if (Object.keys(primaryKeys).length == 0) {
             return [
@@ -100,7 +100,8 @@ class DomainHelper {
         function traverseInheritanceHierarchyForPrimaryKeys(
             keydict: { [characterName: string]: IAttributeWithMapPath }, 
             curEntity: MacroApi.Context.IElementApi, 
-            generalizationStack) {
+            generalizationStack: string[]
+        ) {
             if (!curEntity) {
                 return;
             }
@@ -210,7 +211,7 @@ class DomainHelper {
     
         function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath }, 
             curEntity: MacroApi.Context.IElementApi, 
-            generalizationStack) {
+            generalizationStack: string[]) {
                 
             if (!curEntity) {
                 return;

@@ -1,3 +1,5 @@
+/// <reference path="../../typings/elementmacro.context.api.d.ts" />
+
 function getSurrogateKeyType(): string {
     const commonTypes = {
         guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
