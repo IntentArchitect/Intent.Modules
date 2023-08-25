@@ -26,14 +26,6 @@
     </FileLog>
     <FileLog>
       <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#70bf1bcd-bdcd-4f85-a975-4b266a1bdc0c</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CQRSSubscriptionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CQRSSubscriptionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#1f0777dc-4647-408c-b313-ab1bb0a659cf</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/CreateActionMappingModel.cs</ApplicationRelativeFilePath>
@@ -47,14 +39,6 @@
       <ApplicationRelativeFilePath>Api/DiagramModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DiagramModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
-      <ProjectId>6b293dea-1143-48cc-bb48-c162a5d0cd6c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#70bf1bcd-bdcd-4f85-a975-4b266a1bdc0c</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/Extensions/CQRSSubscriptionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CQRSSubscriptionModelAssociationExtensions.cs</ProjectRelativeFilePath>
-      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>6b293dea-1143-48cc-bb48-c162a5d0cd6c</ProjectId>
@@ -126,6 +110,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/ServiceExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>ServiceExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3259a0db-6077-4d70-a7f2-fa1b77d73aaf</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#fcb042d2-fc4b-408b-868d-902bdaa932e8</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/TestElementModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>TestElementModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

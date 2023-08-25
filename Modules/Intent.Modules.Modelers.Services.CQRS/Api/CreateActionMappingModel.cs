@@ -83,6 +83,8 @@ namespace Intent.Modelers.Services.CQRS.Api
         public CreateActionMappingTargetEndModel(IAssociationEnd associationEnd, CreateActionMappingModel association) : base(associationEnd, association)
         {
         }
+
+        public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
     }
 
     [IntentManaged(Mode.Fully)]
