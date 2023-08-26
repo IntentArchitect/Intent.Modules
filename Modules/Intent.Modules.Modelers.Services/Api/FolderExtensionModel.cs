@@ -39,5 +39,10 @@ namespace Intent.Modelers.Services.Api
             .Select(x => new EnumModel(x))
             .ToList();
 
+        public IList<DiagramModel> Diagrams => _element.ChildElements
+            .GetElementsOfType(DiagramModel.SpecializationTypeId)
+            .Select(x => new DiagramModel(x))
+            .ToList();
+
     }
 }

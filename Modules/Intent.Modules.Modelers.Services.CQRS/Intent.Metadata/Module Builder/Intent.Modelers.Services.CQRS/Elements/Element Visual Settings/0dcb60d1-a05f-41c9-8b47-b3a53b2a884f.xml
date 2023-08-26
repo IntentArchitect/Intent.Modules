@@ -17,7 +17,7 @@
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>aa58a1e0-7c42-4150-84cb-573307da83a6</parentFolderId>
+  <parentFolderId>82432a2d-a836-429a-8f68-4ce1fed69c95</parentFolderId>
   <packageId>45fb22e9-f493-4de5-9fe0-845f783aa9d4</packageId>
   <packageName>Intent.Modelers.Services.CQRS</packageName>
   <stereotypes>

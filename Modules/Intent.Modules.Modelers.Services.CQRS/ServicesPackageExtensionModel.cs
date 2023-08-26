@@ -32,11 +32,5 @@ namespace Intent.Modelers.Services.CQRS.Api
             .Select(x => new QueryModel(x))
             .ToList();
 
-        [IntentManaged(Mode.Fully)]
-        public IList<DiagramModel> Diagrams => UnderlyingPackage.ChildElements
-            .GetElementsOfType(DiagramModel.SpecializationTypeId)
-            .Select(x => new DiagramModel(x))
-            .ToList();
-
     }
 }

@@ -10,7 +10,7 @@
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#60409092-3941-4286-b51a-76c6f8d569e7</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#058e6046-75fc-4d9f-92ff-a27306f61db7</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/CommandExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>CommandExtensionModel.cs</ProjectRelativeFilePath>
@@ -18,31 +18,31 @@
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#4147b194-bbaf-489e-a314-34948d186997</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#7a3f0474-3cf8-4249-baac-8c07c49465e0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CreateActionMappingModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CreateActionMappingModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/CreateEntityActionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CreateEntityActionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#4147b194-bbaf-489e-a314-34948d186997</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#7a3f0474-3cf8-4249-baac-8c07c49465e0</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/CreateActionMappingModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CreateActionMappingModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/CreateEntityActionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>CreateEntityActionModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#acd76ada-3ea6-4011-89f1-4320605dc78a</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#41e7ccc5-c192-4ecf-9d72-5675578e7918</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DiagramModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DiagramModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <ApplicationRelativeFilePath>Api/DiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DiagramExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#0103459d-b08d-4d52-b15a-7c0befbe0858</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#6e296dff-c5b2-447e-9a38-062ceb3e1a46</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/QueryExtensionModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>QueryExtensionModel.cs</ProjectRelativeFilePath>
@@ -50,26 +50,26 @@
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#a47dadd1-9c18-42e9-935d-278355e85982</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#9ea0382a-4617-412a-a8c8-af987bbce226</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/UpdateActionMappingModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>UpdateActionMappingModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/UpdateEntityActionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>UpdateEntityActionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#a47dadd1-9c18-42e9-935d-278355e85982</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#9ea0382a-4617-412a-a8c8-af987bbce226</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/UpdateActionMappingModelAssociationExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>UpdateActionMappingModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/UpdateEntityActionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>UpdateEntityActionModelAssociationExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>eaecf732-6a98-4d4f-9e18-02bd112c6e8e</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Intent.Modelers.Services.DomainInteractions.imodspec</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Intent.Modelers.Services.DomainInteractions.imodspec</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -81,19 +81,11 @@
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
-      <ProjectId>eaecf732-6a98-4d4f-9e18-02bd112c6e8e</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.IModSpecFile</CorrelationId>
-      <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Intent.Modules.Modelers.Services.DomainInteractions.imodspec</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>Intent.Modules.Modelers.Services.DomainInteractions.imodspec</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
-    </FileLog>
-    <FileLog>
       <ProjectId>9b946305-94cd-455c-a9f0-c6c5c6be8d69</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#c6f89538-ada2-43d7-aa2b-a7b2cd18c9dc</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#f36cb21a-faf9-46ff-85e7-41f38345253d</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>modelers/CQRS Domain Interactions.designer.settings</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>CQRS Domain Interactions.designer.settings</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>modelers/Services CQRS Domain Interactions.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Services CQRS Domain Interactions.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
