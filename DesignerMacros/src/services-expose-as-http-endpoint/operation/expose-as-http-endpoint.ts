@@ -1,14 +1,6 @@
-/// <reference path="../common/on-expose-functions.ts" />
+/// <reference path="../_common/on-expose-functions.ts" />
 
-/**
- * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
- *
- * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/operation/expose-as-http-endpoint.ts
- */
-
-function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void{
-
+function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void {
     let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
 
     if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
@@ -21,14 +13,15 @@ function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void{
     applyHttpSettingsToOperations(element);
 }
 
-function applyHttpSettingsToOperations(operation) {
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
-    let parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
+function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi) {
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
+    const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
 
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
-    let httpSettings = operation.getStereotype(httpSettingsId);
+
+    const httpSettings = operation.getStereotype(httpSettingsId);
     if (operation.getName().startsWith("Create")) {
         httpSettings.getProperty("Verb").setValue("POST");
         httpSettings.getProperty("Route").setValue(``)
@@ -56,4 +49,10 @@ function applyHttpSettingsToOperations(operation) {
     });
 }
 
+/**
+ * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
+ *
+ * Source code here:
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/operation/expose-as-http-endpoint.ts
+ */
 exposeAsHttpEndPoint(element);
