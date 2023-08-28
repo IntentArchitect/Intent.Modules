@@ -1,4 +1,4 @@
-/// <reference path="../_common/on-expose-functions.ts" />
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void {
     let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module

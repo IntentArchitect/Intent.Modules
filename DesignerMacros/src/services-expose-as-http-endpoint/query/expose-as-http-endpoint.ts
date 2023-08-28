@@ -1,47 +1,26 @@
-/// <reference path="../_common/on-expose-functions.ts" />
+/// <reference path="../_common/getFolderParts.ts" />
+/// <reference path="../_common/getRouteParts.ts" />
+/// <reference path="../../common/getMappedRequestDetails.ts" />
 
-function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void {
+function exposeAsHttpEndPoint(query: MacroApi.Context.IElementApi): void {
+    const mappedDetails = getMappedRequestDetails(query);
+
+    // Add the folder parts
+    const routeParts: string[] = ["api"];
+    routeParts.push(...getFolderParts(query, mappedDetails));
+
+    if (mappedDetails != null) {
+        routeParts.push(...getRouteParts(query, mappedDetails));
+    }
+    else if (!["Get", "Find", "Lookup"].some(x => query.getName().startsWith(x))) {
+        routeParts.push(toKebabCase(removeSuffix(query.getName(), "Request", "Query")));
+    }
+
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    element.addStereotype(httpSettingsId);
-
-    const httpSettings = element.getStereotype(httpSettingsId);
-
-    const folderName = element.getParent().getName();
-    const mappedEntity = element.getMapping()?.getElement();
-
-    const serviceRoute = getServiceRoute(element);
-    const primaryDomainEntity = getDomainEntity(folderName);
-    const serviceRouteIdentifier = getServiceRouteIdentifier(element, primaryDomainEntity, folderName);
-
-    let subRoute = "";
-    if (mappedEntity && singularize(mappedEntity.getName()) != singularize(folderName) && serviceRouteIdentifier != `/{id}`) {
-        subRoute = getConventionalSubRoute(element, mappedEntity);
-    }
-    else {
-        const optionalSubRoute = getUnconventionalRoute(serviceRouteIdentifier, mappedEntity?.getName(), folderName);
-        if (optionalSubRoute != "") {
-            subRoute = `/${optionalSubRoute}`;
-        }
-    }
+    const httpSettings = query.getStereotype(httpSettingsId) ?? query.addStereotype(httpSettingsId);
 
     httpSettings.getProperty("Verb").setValue("GET");
-    httpSettings.getProperty("Route").setValue(`api/${serviceRoute}${serviceRouteIdentifier}${subRoute}`);
-}
-
-function getUnconventionalRoute(serviceRouteIdentifier: string, mappedEntityName: string, folderName: string): string {
-    if ((element.getName().startsWith("Get") ||
-        element.getName().startsWith("Find") ||
-        element.getName().startsWith("Lookup")) &&
-        (serviceRouteIdentifier == `/{id}`)
-    ) {
-        return "";
-    }
-
-    const withoutPrefixes = removePrefix(element.getName(), "Get", "Find", "Lookup");
-    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request");
-    const withoutQuerySuffix = removeSuffix(withoutRequestSuffix, "Query");
-
-    return removePrefix(toKebabCase(withoutQuerySuffix), toKebabCase(folderName), toKebabCase(mappedEntityName ?? singularize(folderName)), "-");
+    httpSettings.getProperty("Route").setValue(routeParts.join("/"))
 }
 
 /**

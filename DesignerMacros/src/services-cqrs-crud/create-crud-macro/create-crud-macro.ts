@@ -1,23 +1,24 @@
 /// <reference path="../../common/domainHelper.ts" />
 /// <reference path="../../common/servicesHelper.ts" />
-/// <reference path="../_common/command-on-map.ts" />
-/// <reference path="../_common/dto-on-map.ts" />
-/// <reference path="../_common/query-on-map.ts" />
+/// <reference path="../_common/onMapCommand.ts" />
+/// <reference path="../_common/onMapDto.ts" />
+/// <reference path="../_common/onMapQuery.ts" />
 const privateSettersOnly = application.getSettings("c4d1e35c-7c0d-4926-afe0-18f17563ce17")?.getField("0cf704e1-9a61-499a-bb91-b20717e334f5")?.value == "true";
 const mapToDomainOperationSettingId = "7c31c459-6229-4f10-bf13-507348cd8828";
 
-async function execute() {
+async function execute(element: IElementApi) {
     let entity = await DomainHelper.openSelectEntityDialog();
-    if (!entity) { return; }
+    if (entity == null) {
+        return;
+    }
 
-    let folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
-    var existing = element.getChildren().find(x => x.getName() == pluralize(folderName));
-    var folder = existing || createElement("Folder", pluralize(folderName), element.id);
+    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+    const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
 
-    let dto = createCqrsResultTypeDto(entity, folder);
+    const resultDto = createCqrsResultTypeDto(entity, folder);
     createCqrsCreateCommand(entity, folder);
-    createCqrsFindByIdQuery(entity, folder, dto);
-    createCqrsFindAllQuery(entity, folder, dto);
+    createCqrsFindByIdQuery(entity, folder, resultDto);
+    createCqrsFindAllQuery(entity, folder, resultDto);
 
     if (!privateSettersOnly) {
         createCqrsUpdateCommand(entity, folder);
@@ -72,7 +73,7 @@ async function execute() {
             command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
         }
 
-        onMapCommand(command.getElement(), true);
+        onMapCommand(command.getElement(), true, true);
         command.collapse();
     }
 
@@ -137,7 +138,6 @@ async function execute() {
         query.collapse();
     }
 
-
     function createCqrsUpdateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
         let baseName = getBaseNameForElement(owningAggregate, entity, false);
@@ -161,32 +161,36 @@ async function execute() {
 
     function createCqrsCallOperationCommand(entity: MacroApi.Context.IElementApi, operation: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
         const owningAggregate = DomainHelper.getOwningAggregate(entity);
-        const baseName = owningAggregate ? owningAggregate.getName() : "";
-        
+        const baseName = owningAggregate?.getName() ?? "";
+
         let operationName = operation.getName();
         operationName = removeSuffix(operationName, "Async");
         operationName = toPascalCase(operationName);
 
-        const commandName = `${operationName}${baseName}Command`;
+        const commandName = `${operationName}${entity.getName()}Command`;
 
         if (folder.getChildren().some(
-                x => x.getName() == commandName ||
+            x => x.getName() == commandName ||
                 x.getMapping()?.getElement()?.id === operation.id)) {
             return;
         }
 
-        let command = new ElementManager(createElement("Command", commandName, folder.id), {
-            childSpecialization: "DTO-Field"
-        });
-        command.mapToElement(operation);
-        command.getElement().setMapping([entity.id, operation.id], mapToDomainOperationSettingId);
-        command.getElement().setMetadata("baseName", baseName);
+        const commandElement = createElement("Command", commandName, folder.id);
+        commandElement.setMetadata("baseName", baseName);
 
-        command.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
+        const commandManager = new ElementManager(commandElement, { childSpecialization: "DTO-Field" });
+        commandManager.mapToElement([entity.id, operation.id], mapToDomainOperationSettingId);
+
+        const primaryKeys = DomainHelper.getPrimaryKeys(entity);
+        for (const key of primaryKeys) {
+            commandManager.addChild(key.name, lookup(key.id).typeReference);
+        }
+
+        commandManager.addChildrenFrom(DomainHelper.getChildrenOfType(operation, "Parameter")
             .filter(x => x.typeId != null && lookup(x.typeId).specialization !== "Domain Service"));
 
-        onMapCommand(command.getElement(), true);
-        command.collapse();
+        onMapCommand(commandElement, true);
+        commandManager.collapse();
     }
 
     function createCqrsDeleteCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
@@ -212,7 +216,6 @@ async function execute() {
                 }
             })
         }
-
 
         let primaryKeys = DomainHelper.getPrimaryKeys(entity);
         ServicesHelper.addDtoFieldsFromDomain(command, primaryKeys);
@@ -276,5 +279,4 @@ function getBaseNameForElement(owningAggregate: MacroApi.Context.IElementApi, en
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/development/DesignerMacros/src/services-cqrs-crud/create-crud-macro/create-crud-macro.ts
  */
-
-//await execute();
+//await execute(element);

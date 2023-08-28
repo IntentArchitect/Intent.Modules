@@ -1,4 +1,4 @@
-/// <reference path="./on-map-functions.ts" />
+/// <reference path="./onMapFunctions.ts" />
 
 function onMapQuery(element: MacroApi.Context.IElementApi): void {
     var complexTypes: Array<string> = ["Data Contract", "Value Object"];

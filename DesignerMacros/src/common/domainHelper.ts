@@ -167,7 +167,7 @@ class DomainHelper {
         // Implicit FKs:
         return [{
             name: DomainHelper.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
-            typeId: Object.values(DomainHelper.getPrimaryKeysMap(owningAggregate))[0].typeId,
+            typeId: DomainHelper.getPrimaryKeys(owningAggregate)[0].typeId,
             id: null,
             mapPath: null,
             isCollection: false,
