@@ -1,4 +1,4 @@
-/// <reference path="../../../Typings/elementmacro.context.api.d.ts" />
+/// <reference path="../../../typings/elementmacro.context.api.d.ts" />
 
 /**
  * Used by Intent.Modules.NET\Modules\Intent.Modules.Dapr.AspNetCore.Binding.Cron

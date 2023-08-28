@@ -2,6 +2,8 @@
 // but also be available to rest of the TypeScript project so that we can ensure the types match.
 
 declare let debugConsole: Console;
+type IElementApi = MacroApi.Context.IElementApi;
+type IAssociationApi = MacroApi.Context.IAssociationApi;
 
 declare namespace MacroApi.Context {
     interface IDialogService {
@@ -199,6 +201,10 @@ declare namespace MacroApi.Context {
          * The human-readable specialization type (e.g. "Class", "Attribute", etc.)
          */
         specialization: string;
+        /**
+         * The specialization type identifier. This is a more robust way to check the type of the element.
+         */
+        specializationId: string;
         /**
          * The unique identifier for the element.
          */
@@ -406,6 +412,10 @@ declare namespace MacroApi.Context {
          * Returns the other-end of the association.
          */
         getOtherEnd(): IAssociationApi;
+        /**
+         * Returns this element's parent
+         */
+        getParent(type?: string): IElementApi;
         /**
          * Returns the owning package for this element.
          */
