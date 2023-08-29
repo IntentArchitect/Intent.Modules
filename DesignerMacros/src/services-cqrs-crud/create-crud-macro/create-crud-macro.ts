@@ -12,11 +12,16 @@ async function execute(element: IElementApi) {
         return;
     }
 
-    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? DomainHelper.getOwningAggregate(entity).getName() : entity.getName());
+    const owningEntity = DomainHelper.getOwningAggregate(entity);
+    const folderName = pluralize(DomainHelper.ownerIsAggregateRoot(entity) ? owningEntity.getName() : entity.getName());
     const folder = element.getChildren().find(x => x.getName() == pluralize(folderName)) ?? createElement("Folder", pluralize(folderName), element.id);
 
     const resultDto = createCqrsResultTypeDto(entity, folder);
-    createCqrsCreateCommand(entity, folder);
+
+    if (owningEntity == null || !privateSettersOnly) {
+        createCqrsCreateCommand(entity, folder);
+    }
+
     createCqrsFindByIdQuery(entity, folder, resultDto);
     createCqrsFindAllQuery(entity, folder, resultDto);
 
@@ -29,7 +34,9 @@ async function execute(element: IElementApi) {
         createCqrsCallOperationCommand(entity, operation, folder);
     }
 
-    createCqrsDeleteCommand(entity, folder);
+    if (owningEntity == null || !privateSettersOnly) {
+        createCqrsDeleteCommand(entity, folder);
+    }
 
     function createCqrsCreateCommand(entity: MacroApi.Context.IElementApi, folder: MacroApi.Context.IElementApi) {
         let owningAggregate = DomainHelper.getOwningAggregate(entity);
@@ -71,6 +78,7 @@ async function execute(element: IElementApi) {
             command.addChildrenFrom(DomainHelper.getChildrenOfType(entityCtor, "Parameter"));
         } else {
             command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+            command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
         }
 
         onMapCommand(command.getElement(), true, true);
@@ -154,6 +162,7 @@ async function execute(element: IElementApi) {
         command.getElement().setMetadata("baseName", baseName);
 
         command.addChildrenFrom(DomainHelper.getAttributesWithMapPath(entity));
+        command.addChildrenFrom(getMandatoryAssociationsWithMapPath(entity));
 
         onMapCommand(command.getElement(), true);
         command.collapse();
@@ -265,6 +274,42 @@ async function execute(element: IElementApi) {
         onMapDto(dto);
         dto.collapse();
         return dto;
+    }
+
+    function getMandatoryAssociationsWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
+        return traverseInheritanceHierarchy(entity, [], []);
+
+        function traverseInheritanceHierarchy(
+            entity: MacroApi.Context.IElementApi,
+            results: IAttributeWithMapPath[],
+            generalizationStack: string[]
+        ): IAttributeWithMapPath[] {
+            entity
+                .getAssociations("Association")
+                .filter(x => !x.typeReference.isCollection && !x.typeReference.isNullable && x.typeReference.isNavigable &&
+                    !x.getOtherEnd().typeReference.isCollection && !x.getOtherEnd().typeReference.isNullable)
+                .forEach(association => {
+                    return results.push({
+                        id: association.id,
+                        name: association.getName(),
+                        typeId: null,
+                        mapPath: generalizationStack.concat([association.id]),
+                        isNullable: false,
+                        isCollection: false
+                    });
+                });
+
+
+            let generalizations = entity.getAssociations("Generalization").filter(x => x.isTargetEnd());
+            if (generalizations.length == 0) {
+                return results;
+            }
+
+            let generalization = generalizations[0];
+            generalizationStack.push(generalization.id);
+
+            return traverseInheritanceHierarchy(generalization.typeReference.getType(), results, generalizationStack);
+        }
     }
 }
 

@@ -139,7 +139,8 @@ return validateRestRoutes(lookup(id));
           <text>Expose as Http Endpoint</text>
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <script>function getSurrogateKeyType() {
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+function getSurrogateKeyType() {
     var _a, _b, _c;
     const commonTypes = {
         guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
@@ -166,7 +167,7 @@ class DomainHelper {
         let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return;
+            return null;
         }
         let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
             id: x.id,
@@ -212,7 +213,6 @@ class DomainHelper {
             throw new Error("entity not specified");
         }
         let primaryKeys = DomainHelper.getPrimaryKeysMap(entity);
-        let keyLen = Object.keys(primaryKeys).length;
         if (Object.keys(primaryKeys).length == 0) {
             return [
                 {
@@ -302,7 +302,7 @@ class DomainHelper {
         // Implicit FKs:
         return [{
                 name: DomainHelper.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
-                typeId: Object.values(DomainHelper.getPrimaryKeysMap(owningAggregate))[0].typeId,
+                typeId: DomainHelper.getPrimaryKeys(owningAggregate)[0].typeId,
                 id: null,
                 mapPath: null,
                 isCollection: false,
@@ -402,136 +402,311 @@ class DomainHelper {
     }
 }
 ;
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-/// &lt;reference path="../../common/domainHelper.ts" /&gt;
-function getServiceRoute(element) {
-    let folder = element.getParent();
-    let folderName = folder.getName();
-    let serviceRoute = toKebabCase(folderName);
-    while (folder.getParent().specialization === "Folder") {
-        folder = folder.getParent();
-        folderName = folder.getName();
-        serviceRoute = `${toKebabCase(folderName)}/${serviceRoute}`;
-    }
-    return serviceRoute;
+class ServicesConstants {
 }
-function getServiceRouteIdentifier(element, domainClass, defaultEntityName) {
-    let domainMappedPks = getRouteEntityIds(element, domainClass, defaultEntityName);
-    let serviceRouteIdentifier = "";
-    if (domainMappedPks.length &gt; 0) {
-        domainMappedPks.forEach(dmpk =&gt; {
-            serviceRouteIdentifier += `/{${toCamelCase(dmpk.getName())}}`;
-        });
-    }
-    return serviceRouteIdentifier;
-}
-function getOperationRoute(serviceRouteIdentifier, operationName, entityName, ...prefixes) {
-    const withoutPrefixes = removePrefix(operationName, ...prefixes);
-    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request", "Query");
-    const withoutCommandSuffix = removeSuffix(withoutRequestSuffix, "Command");
-    return removePrefix(toKebabCase(withoutCommandSuffix), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-");
-}
-function getConventionalSubRoute(element, mappedEntity) {
-    let subRoute = `/${toKebabCase(pluralize(mappedEntity.getName()))}`;
-    let mappedDomainEntity = getDomainEntity(mappedEntity.getName());
-    let mappedPks = getRouteEntityIds(element, mappedDomainEntity, mappedEntity.getName());
-    if (mappedPks.length &gt; 0) {
-        mappedPks.forEach(mpk =&gt; {
-            subRoute += `/{${toCamelCase(mpk.getName())}}`;
-        });
-    }
-    return subRoute;
-}
-function getDomainEntity(possibleName) {
-    let possibleNames = [singularize(possibleName), pluralize(possibleName)];
-    return lookupTypesOf("Class").find(x =&gt; possibleNames.includes(x.getName()));
-}
-function getRouteEntityIds(element, domainClass, defaultEntityName) {
-    let result = [];
-    if (domainClass != null) {
-        let keys = DomainHelper.getPrimaryKeys(domainClass);
-        if (!(keys.length == 1 &amp;&amp; keys[0].name.toLowerCase() == 'id')) {
-            let children = element.getChildren();
-            children.forEach(field =&gt; {
-                if (keys.find(pk =&gt; pk.name.toLowerCase() == field.getName().toLowerCase()
-                    || singularize(defaultEntityName.toLowerCase()) + pk.name.toLowerCase() == field.getName().toLowerCase())) {
-                    result.push(field);
+ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+class ServicesHelper {
+    static addDtoFieldsFromDomain(dto, attributes) {
+        var _a;
+        for (let key of attributes) {
+            if (dto &amp;&amp; !dto.getChildren("DTO-Field").some(x =&gt; x.getName() == ServicesHelper.getFieldFormat(key.name))) {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
+                field.typeReference.setType(key.typeId);
+                if (((_a = key.mapPath) !== null &amp;&amp; _a !== void 0 ? _a : []).length &gt; 0) {
+                    field.setMapping(key.mapPath);
                 }
-            });
+            }
         }
     }
-    if (result.length == 0) {
-        let conventionIdAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == `${singularize(defaultEntityName.toLowerCase())}id`);
-        let idAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == "id");
-        if (conventionIdAttribute != null) {
-            result.push(conventionIdAttribute);
+    static getParameterFormat(str) {
+        return toCamelCase(str);
+    }
+    static getRoutingFormat(str) {
+        return pluralize(str);
+    }
+    static getFieldFormat(str) {
+        return toPascalCase(str);
+    }
+}
+class ElementManager {
+    constructor(command, settings) {
+        var _a;
+        this.command = command;
+        this.settings = settings;
+        this.mappedElement = (_a = command.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    }
+    get id() { return this.command.id; }
+    ;
+    setReturnType(typeId, isCollection) {
+        this.command.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.command.typeReference.setIsCollection(isCollection);
         }
-        else if (idAttribute != null) {
-            result.push(idAttribute);
+        return this;
+    }
+    addChild(name, type) {
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
         }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
+                    return;
+                }
+            }
+            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options === null || options === void 0 ? void 0 : options.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.command.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.command;
+    }
+    collapse() {
+        this.command.collapse();
+    }
+}
+/**
+ * Workaround for element's from referenced packages not having getParent()
+ * @param element The element whose parent should be searched for
+ * @param parentSpecializationType The specialization type of the parent
+ */
+function getParent(element, parentSpecializationType) {
+    const elements = lookupTypesOf(parentSpecializationType);
+    const parent = elements
+        .find(x =&gt; x.getChildren(element.specialization)
+        .some(child =&gt; child.id === element.id));
+    if (parent == null) {
+        throw new Error("Could not find parent");
+    }
+    return parent;
+}
+/// &lt;reference path="../common/domainHelper.ts" /&gt;
+/// &lt;reference path="../common/servicesHelper.ts" /&gt;
+/// &lt;reference path="../common/getParent.ts" /&gt;
+/**
+ * Gets select details of a mapped Command/Query. Intended for centralized logic of working out
+ * things like keys (including implicit ones) for both the entity and owning entity if applicable.
+ *
+ * If the Command is for entity creation (either due to being mapped to a constructor or being
+ * prefixed with "Create"), then primary keys for the entity are not populated.
+ * @param request The Command or Query that has been mapped
+ */
+function getMappedRequestDetails(request) {
+    var _a;
+    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    if (mappedElement == null) {
+        return null;
+    }
+    let entity = mappedElement;
+    if (entity.specialization !== "Class") {
+        entity = getParent(entity, "Class");
+    }
+    const result = {
+        entity: entity,
+        mappingTargetType: mappedElement.specialization,
+        entityKeyFields: [],
+        ownerKeyFields: []
+    };
+    result.owningEntity = DomainHelper.getOwningAggregate(entity);
+    // As long as it's not for creation, populate the PKs of the entity:
+    if (result.mappingTargetType !== "Class Constructor" &amp;&amp;
+        !request.getName().toLowerCase().startsWith("Create")) {
+        result.entityKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity)
+            : getKeysForOperationMapping(request, entity);
+    }
+    // If the entity is owned, populate its fields:
+    if (result.owningEntity != null) {
+        result.ownerKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity, result.owningEntity)
+            : getKeysForOperationMapping(request, entity, result.owningEntity);
     }
     return result;
+    /**
+     * Return field details for primary keys. As requests mapped to operations and constructors can
+     * never possibly map the attributes, these fields can only ever be matched by name.
+     * @param request The CQRS Command or Query entity
+     * @param owningEntity The Owning Aggregate Class
+     */
+    function getKeysForOperationMapping(request, entity, owningEntity) {
+        const pks = DomainHelper.getPrimaryKeys(owningEntity !== null &amp;&amp; owningEntity !== void 0 ? owningEntity : entity);
+        return pks.map(pk =&gt; {
+            let fieldName = toPascalCase(pk.name);
+            if (owningEntity != null) {
+                fieldName = removePrefix(fieldName, toPascalCase(owningEntity.getName()));
+                fieldName = `${owningEntity.getName()}${toCamelCase(fieldName)}`;
+            }
+            fieldName = ServicesHelper.getFieldFormat(fieldName);
+            const existingField = request.getChildren("DTO-Field").find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase());
+            return {
+                existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
+                mappingPath: [],
+                name: fieldName,
+                typeId: pk.typeId,
+                isCollection: pk.isCollection,
+                isNullable: pk.isNullable
+            };
+        });
+    }
+    function getKeysForClassMapping(request, entity, owningEntity) {
+        const keys = owningEntity != null
+            ? DomainHelper.getForeignKeys(entity, owningEntity)
+            : DomainHelper.getPrimaryKeys(entity);
+        return keys.map(pk =&gt; {
+            const existingField = request.getChildren("DTO-Field").find(field =&gt; {
+                if (field.getMapping() != null) {
+                    return field.getMapping().getPath().some(x =&gt; x.id == pk.id);
+                }
+                return (pk.name.toLowerCase() === field.getName().toLowerCase());
+            });
+            return {
+                existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
+                mappingPath: pk.mapPath,
+                name: pk.name,
+                typeId: pk.typeId,
+                isCollection: pk.isCollection,
+                isNullable: pk.isNullable
+            };
+        });
+    }
 }
-/// &lt;reference path="../common/on-expose-functions.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+function getFolderParts(request, mappedDetails) {
+    var _a;
+    let depth = 0;
+    let currentElement = request.getParent();
+    let folderParts = [];
+    while (currentElement.specialization === "Folder") {
+        let folderName = currentElement.getName();
+        const singularizedFolderName = singularize(folderName);
+        const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
+        if (depth === 0 &amp;&amp; singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
+            folderName = singularizedFolderName;
+        }
+        folderParts.unshift(toKebabCase(folderName));
+        currentElement = currentElement.getParent();
+        depth++;
+    }
+    return folderParts;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+function getRouteParts(request, mappedDetails) {
+    var _a;
+    if (mappedDetails == null) {
+        throw new Error("mappedDetails is required");
+    }
+    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    const routeParts = [];
+    // Add the owning entity's ids as parts surrounded with curly braces
+    if (mappedDetails.owningEntity != null) {
+        routeParts.push(...mappedDetails.ownerKeyFields
+            .filter(x =&gt; x.existingId != null)
+            .map(x =&gt; {
+            const field = request
+                .getChildren("DTO-Field")
+                .find(field =&gt; field.id === x.existingId);
+            return `{${toCamelCase(field.getName())}}`;
+        }));
+        // Add a part for name of the owned entity
+        routeParts.push(toKebabCase(singularize(mappedDetails.entity.getName())));
+    }
+    // Add the entity's ids as parts surrounded with curly braces
+    routeParts.push(...mappedDetails.entityKeyFields
+        .filter(x =&gt; x.existingId != null)
+        .map(x =&gt; {
+        const field = request
+            .getChildren("DTO-Field")
+            .find(field =&gt; field.id === x.existingId);
+        return `{${toCamelCase(field.getName())}}`;
+    }));
+    // Add the operation's name:
+    if (mappedDetails.mappingTargetType === "Operation") {
+        const entityName = mappedDetails.entity.getName();
+        let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
+        routePart = removeSuffix(routePart, "Request", "Query", "Command");
+        routeParts.push(removePrefix(toKebabCase(routePart), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-"));
+    }
+    return routeParts;
+}
+/// &lt;reference path="../_common/getFolderParts.ts" /&gt;
+/// &lt;reference path="../_common/getRouteParts.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+function exposeAsHttpEndPoint(command) {
+    var _a, _b;
+    const mappedDetails = getMappedRequestDetails(command);
+    // Add the folder parts
+    const routeParts = ["api"];
+    routeParts.push(...getFolderParts(command, mappedDetails));
+    if (mappedDetails != null) {
+        routeParts.push(...getRouteParts(command, mappedDetails));
+    }
+    else if (!["Create", "Update", "Delete"].some(x =&gt; command.getName().startsWith(x))) {
+        routeParts.push(toKebabCase(removeSuffix(command.getName(), "Request", "Command")));
+    }
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
+    const httpSettings = (_a = command.getStereotype(httpSettingsId)) !== null &amp;&amp; _a !== void 0 ? _a : command.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Route").setValue(routeParts.join("/"));
+    if (["Create", "Add"].some(x =&gt; command.getName().startsWith(x))) {
+        httpSettings.getProperty("Verb").setValue("POST");
+    }
+    else if (["Delete", "Remove"].some(x =&gt; command.getName().startsWith(x))) {
+        httpSettings.getProperty("Verb").setValue("DELETE");
+    }
+    else {
+        httpSettings.getProperty("Verb").setValue("PUT");
+    }
+    if (((_b = command.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "Type-Definition") {
+        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
+    }
+}
 /**
  * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/command/expose-as-http-endpoint.ts
  */
-function exposeAsHttpEndPoint(element) {
-    var _a, _b;
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    let httpSettingsMediatypeId = "4490e212-1e99-43ce-b3dd-048ed2a6bae8";
-    element.addStereotype(httpSettingsId);
-    let httpSettings = element.getStereotype(httpSettingsId);
-    let folderName = element.getParent().getName();
-    let mappedEntity = (_a = element.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    let serviceRoute = getServiceRoute(element);
-    let primaryDomainEntity = getDomainEntity(folderName);
-    let serviceRouteIdentifier = getServiceRouteIdentifier(element, primaryDomainEntity, folderName);
-    let subRoute = "";
-    if (mappedEntity != null &amp;&amp; mappedEntity.specialization === "Operation") {
-        subRoute = `/${getOperationRoute(serviceRouteIdentifier, mappedEntity === null || mappedEntity === void 0 ? void 0 : mappedEntity.getName(), folderName, "Create", "Update", "Delete", "Add", "Remove")}`;
-    }
-    else if (mappedEntity != null &amp;&amp; mappedEntity.specialization === "Class Constructor") {
-        // no subroute
-    }
-    else if (mappedEntity &amp;&amp; singularize(mappedEntity.getName()) != singularize(folderName) &amp;&amp; serviceRouteIdentifier != `/{id}`) {
-        subRoute = getConventionalSubRoute(element, mappedEntity);
-    }
-    else {
-        let optionalSubRoute = getUnconventionalRoute(serviceRouteIdentifier, mappedEntity === null || mappedEntity === void 0 ? void 0 : mappedEntity.getName(), folderName);
-        if (optionalSubRoute != "") {
-            subRoute = `/${optionalSubRoute}`;
-        }
-    }
-    if (element.getName().startsWith("Create") || element.getName().startsWith("Add")) {
-        httpSettings.getProperty("Verb").setValue("POST");
-    }
-    else if (element.getName().startsWith("Delete") || element.getName().startsWith("Remove")) {
-        httpSettings.getProperty("Verb").setValue("DELETE");
-    }
-    else {
-        httpSettings.getProperty("Verb").setValue("PUT");
-    }
-    httpSettings.getProperty("Route").setValue(`api/${serviceRoute}${serviceRouteIdentifier}${subRoute}`);
-    if (((_b = element.typeReference.getType()) === null || _b === void 0 ? void 0 : _b.specialization) == "Type-Definition") {
-        httpSettings.getProperty(httpSettingsMediatypeId).setValue("application/json");
-    }
-}
-function getUnconventionalRoute(serviceRouteIdentifier, mappedEntityName, folderName) {
-    if ((element.getName().startsWith("Create") ||
-        element.getName().startsWith("Update") ||
-        element.getName().startsWith("Delete")) &amp;&amp;
-        (serviceRouteIdentifier == "" || serviceRouteIdentifier == `/{id}`)) {
-        return "";
-    }
-    const withoutPrefixes = removePrefix(element.getName(), "Create", "Update", "Delete");
-    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request");
-    const withoutCommandSuffix = removeSuffix(withoutRequestSuffix, "Command");
-    return removeSuffix(toKebabCase(withoutCommandSuffix), toKebabCase(mappedEntityName !== null &amp;&amp; mappedEntityName !== void 0 ? mappedEntityName : singularize(folderName)), toKebabCase(folderName), "-");
-}
 exposeAsHttpEndPoint(element);
 </script>
         </option>
@@ -698,12 +873,35 @@ return validateRestRoutes(lookup(id));
           <text>Expose as Http Endpoint</text>
           <shortcut>ctrl + shift + e</shortcut>
           <icon type="UrlImagePath" source="data:image/png;base64,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" />
-          <script>class DomainHelper {
+          <script>/// &lt;reference path="../../typings/elementmacro.context.api.d.ts" /&gt;
+function getSurrogateKeyType() {
+    var _a, _b, _c;
+    const commonTypes = {
+        guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
+        long: "33013006-E404-48C2-AC46-24EF5A5774FD",
+        int: "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"
+    };
+    const javaTypes = {
+        long: "e9e575eb-f8de-4ce4-9838-2d09665a752d",
+        int: "b3e5cb3b-8a26-4346-810b-9789afa25a82"
+    };
+    const typeNameToIdMap = new Map();
+    typeNameToIdMap.set("guid", commonTypes.guid);
+    typeNameToIdMap.set("int", lookup(javaTypes.int) != null ? javaTypes.int : commonTypes.int);
+    typeNameToIdMap.set("long", lookup(javaTypes.long) != null ? javaTypes.long : commonTypes.long);
+    let typeName = (_c = (_b = (_a = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Type")) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : "int";
+    if (typeNameToIdMap.has(typeName)) {
+        return typeNameToIdMap.get(typeName);
+    }
+    return typeNameToIdMap.get("guid");
+}
+/// &lt;reference path="getSurrogateKeyType.ts"/&gt;
+class DomainHelper {
     static async openSelectEntityDialog(options) {
         let classes = lookupTypesOf("Class").filter(x =&gt; DomainHelper.isAggregateRoot(x) || ((options === null || options === void 0 ? void 0 : options.includeOwnedRelationships) != false &amp;&amp; DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return;
+            return null;
         }
         let classId = await dialogService.lookupFromOptions(classes.map((x) =&gt; ({
             id: x.id,
@@ -749,7 +947,6 @@ return validateRestRoutes(lookup(id));
             throw new Error("entity not specified");
         }
         let primaryKeys = DomainHelper.getPrimaryKeysMap(entity);
-        let keyLen = Object.keys(primaryKeys).length;
         if (Object.keys(primaryKeys).length == 0) {
             return [
                 {
@@ -839,7 +1036,7 @@ return validateRestRoutes(lookup(id));
         // Implicit FKs:
         return [{
                 name: DomainHelper.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
-                typeId: Object.values(DomainHelper.getPrimaryKeysMap(owningAggregate))[0].typeId,
+                typeId: DomainHelper.getPrimaryKeys(owningAggregate)[0].typeId,
                 id: null,
                 mapPath: null,
                 isCollection: false,
@@ -861,7 +1058,14 @@ return validateRestRoutes(lookup(id));
     }
     static getAttributesWithMapPath(entity) {
         let attrDict = Object.create(null);
-        let attributes = entity.getChildren("Attribute").filter(x =&gt; !x.hasStereotype("Primary Key") &amp;&amp; !DomainHelper.legacyPartitionKey(x));
+        let attributes = entity
+            .getChildren("Attribute")
+            .filter(x =&gt; {
+            var _a;
+            return !x.hasStereotype("Primary Key") &amp;&amp;
+                !DomainHelper.legacyPartitionKey(x) &amp;&amp;
+                (x["hasMetadata"] &amp;&amp; (!x.hasMetadata("set-by-infrastructure") || ((_a = x.getMetadata("set-by-infrastructure")) === null || _a === void 0 ? void 0 : _a.toLocaleLowerCase()) != "true"));
+        });
         attributes.forEach(attr =&gt; attrDict[attr.id] = {
             id: attr.id,
             name: attr.getName(),
@@ -913,25 +1117,7 @@ return validateRestRoutes(lookup(id));
         return (_c = (_b = (_a = application.getSettings(domainSettingsId)) === null || _a === void 0 ? void 0 : _a.getField("Attribute Naming Convention")) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : "pascal-case";
     }
     static getSurrogateKeyType() {
-        var _a, _b, _c;
-        const commonTypes = {
-            guid: "6b649125-18ea-48fd-a6ba-0bfff0d8f488",
-            long: "33013006-E404-48C2-AC46-24EF5A5774FD",
-            int: "fb0a362d-e9e2-40de-b6ff-5ce8167cbe74"
-        };
-        const javaTypes = {
-            long: "e9e575eb-f8de-4ce4-9838-2d09665a752d",
-            int: "b3e5cb3b-8a26-4346-810b-9789afa25a82"
-        };
-        const typeNameToIdMap = new Map();
-        typeNameToIdMap.set("guid", commonTypes.guid);
-        typeNameToIdMap.set("int", lookup(javaTypes.int) != null ? javaTypes.int : commonTypes.int);
-        typeNameToIdMap.set("long", lookup(javaTypes.long) != null ? javaTypes.long : commonTypes.long);
-        let typeName = (_c = (_b = (_a = application.getSettings("ac0a788e-d8b3-4eea-b56d-538608f1ded9")) === null || _a === void 0 ? void 0 : _a.getField("Key Type")) === null || _b === void 0 ? void 0 : _b.value) !== null &amp;&amp; _c !== void 0 ? _c : "int";
-        if (typeNameToIdMap.has(typeName)) {
-            return typeNameToIdMap.get(typeName);
-        }
-        return typeNameToIdMap.get("guid");
+        return getSurrogateKeyType();
     }
     // Just in case someone still uses this convention. Used to filter out those attributes when mapping
     // to domain entities that are within a Cosmos DB paradigm.
@@ -950,112 +1136,299 @@ return validateRestRoutes(lookup(id));
     }
 }
 ;
-/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
-/// &lt;reference path="../../common/domainHelper.ts" /&gt;
-function getServiceRoute(element) {
-    let folder = element.getParent();
-    let folderName = folder.getName();
-    let serviceRoute = toKebabCase(folderName);
-    while (folder.getParent().specialization === "Folder") {
-        folder = folder.getParent();
-        folderName = folder.getName();
-        serviceRoute = `${toKebabCase(folderName)}/${serviceRoute}`;
-    }
-    return serviceRoute;
+class ServicesConstants {
 }
-function getServiceRouteIdentifier(element, domainClass, defaultEntityName) {
-    let domainMappedPks = getRouteEntityIds(element, domainClass, defaultEntityName);
-    let serviceRouteIdentifier = "";
-    if (domainMappedPks.length &gt; 0) {
-        domainMappedPks.forEach(dmpk =&gt; {
-            serviceRouteIdentifier += `/{${toCamelCase(dmpk.getName())}}`;
-        });
-    }
-    return serviceRouteIdentifier;
-}
-function getConventionalSubRoute(element, mappedEntity) {
-    let subRoute = `/${toKebabCase(pluralize(mappedEntity.getName()))}`;
-    let mappedDomainEntity = getDomainEntity(mappedEntity.getName());
-    let mappedPks = getRouteEntityIds(element, mappedDomainEntity, mappedEntity.getName());
-    if (mappedPks.length &gt; 0) {
-        mappedPks.forEach(mpk =&gt; {
-            subRoute += `/{${toCamelCase(mpk.getName())}}`;
-        });
-    }
-    return subRoute;
-}
-function getDomainEntity(possibleName) {
-    let possibleNames = [singularize(possibleName), pluralize(possibleName)];
-    return lookupTypesOf("Class").find(x =&gt; possibleNames.includes(x.getName()));
-}
-function getRouteEntityIds(element, domainClass, defaultEntityName) {
-    let result = [];
-    if (domainClass != null) {
-        let keys = DomainHelper.getPrimaryKeys(domainClass);
-        if (!(keys.length == 1 &amp;&amp; keys[0].name.toLowerCase() == 'id')) {
-            let children = element.getChildren();
-            children.forEach(field =&gt; {
-                if (keys.find(pk =&gt; pk.name.toLowerCase() == field.getName().toLowerCase()
-                    || singularize(defaultEntityName.toLowerCase()) + pk.name.toLowerCase() == field.getName().toLowerCase())) {
-                    result.push(field);
+ServicesConstants.dtoToEntityMappingId = "942eae46-49f1-450e-9274-a92d40ac35fa"; //"01d74d4f-e478-4fde-a2f0-9ea92255f3c5";
+ServicesConstants.dtoFromEntityMappingId = "1f747d14-681c-4a20-8c68-34223f41b825";
+class ServicesHelper {
+    static addDtoFieldsFromDomain(dto, attributes) {
+        var _a;
+        for (let key of attributes) {
+            if (dto &amp;&amp; !dto.getChildren("DTO-Field").some(x =&gt; x.getName() == ServicesHelper.getFieldFormat(key.name))) {
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
+                field.typeReference.setType(key.typeId);
+                if (((_a = key.mapPath) !== null &amp;&amp; _a !== void 0 ? _a : []).length &gt; 0) {
+                    field.setMapping(key.mapPath);
                 }
-            });
+            }
         }
     }
-    if (result.length == 0) {
-        let conventionIdAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == `${singularize(defaultEntityName.toLowerCase())}id`);
-        let idAttribute = element.getChildren().find(x =&gt; x.getName().toLowerCase() == "id");
-        if (conventionIdAttribute != null) {
-            result.push(conventionIdAttribute);
+    static getParameterFormat(str) {
+        return toCamelCase(str);
+    }
+    static getRoutingFormat(str) {
+        return pluralize(str);
+    }
+    static getFieldFormat(str) {
+        return toPascalCase(str);
+    }
+}
+class ElementManager {
+    constructor(command, settings) {
+        var _a;
+        this.command = command;
+        this.settings = settings;
+        this.mappedElement = (_a = command.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    }
+    get id() { return this.command.id; }
+    ;
+    setReturnType(typeId, isCollection) {
+        this.command.typeReference.setType(typeId);
+        if (isCollection != null) {
+            this.command.typeReference.setIsCollection(isCollection);
         }
-        else if (idAttribute != null) {
-            result.push(idAttribute);
+        return this;
+    }
+    addChild(name, type) {
+        let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
         }
+        return field;
+    }
+    addChildrenFrom(elements, options) {
+        let order = 0;
+        elements.forEach(e =&gt; {
+            if (e.mapPath != null) {
+                if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; { var _a, _b; return ((_b = (_a = x.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement()) === null || _b === void 0 ? void 0 : _b.id) == e.id; })) {
+                    return;
+                }
+            }
+            else if (this.command.getChildren(this.settings.childSpecialization).some(x =&gt; x.getName().toLowerCase() === e.name.toLowerCase())) {
+                return;
+            }
+            let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
+            field.typeReference.setIsCollection(e.isCollection);
+            field.typeReference.setIsNullable(e.isNullable);
+            if (options === null || options === void 0 ? void 0 : options.addToTop) {
+                field.setOrder(order++);
+            }
+            if (this.mappedElement != null &amp;&amp; e.mapPath) {
+                field.setMapping(e.mapPath);
+            }
+        });
+        return this;
+    }
+    mapToElement(param1, mappingSettingsId) {
+        let elementIds;
+        let element;
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+        this.mappedElement = element;
+        this.command.setMapping(elementIds, mappingSettingsId);
+        return this;
+    }
+    getElement() {
+        return this.command;
+    }
+    collapse() {
+        this.command.collapse();
+    }
+}
+/**
+ * Workaround for element's from referenced packages not having getParent()
+ * @param element The element whose parent should be searched for
+ * @param parentSpecializationType The specialization type of the parent
+ */
+function getParent(element, parentSpecializationType) {
+    const elements = lookupTypesOf(parentSpecializationType);
+    const parent = elements
+        .find(x =&gt; x.getChildren(element.specialization)
+        .some(child =&gt; child.id === element.id));
+    if (parent == null) {
+        throw new Error("Could not find parent");
+    }
+    return parent;
+}
+/// &lt;reference path="../common/domainHelper.ts" /&gt;
+/// &lt;reference path="../common/servicesHelper.ts" /&gt;
+/// &lt;reference path="../common/getParent.ts" /&gt;
+/**
+ * Gets select details of a mapped Command/Query. Intended for centralized logic of working out
+ * things like keys (including implicit ones) for both the entity and owning entity if applicable.
+ *
+ * If the Command is for entity creation (either due to being mapped to a constructor or being
+ * prefixed with "Create"), then primary keys for the entity are not populated.
+ * @param request The Command or Query that has been mapped
+ */
+function getMappedRequestDetails(request) {
+    var _a;
+    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    if (mappedElement == null) {
+        return null;
+    }
+    let entity = mappedElement;
+    if (entity.specialization !== "Class") {
+        entity = getParent(entity, "Class");
+    }
+    const result = {
+        entity: entity,
+        mappingTargetType: mappedElement.specialization,
+        entityKeyFields: [],
+        ownerKeyFields: []
+    };
+    result.owningEntity = DomainHelper.getOwningAggregate(entity);
+    // As long as it's not for creation, populate the PKs of the entity:
+    if (result.mappingTargetType !== "Class Constructor" &amp;&amp;
+        !request.getName().toLowerCase().startsWith("Create")) {
+        result.entityKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity)
+            : getKeysForOperationMapping(request, entity);
+    }
+    // If the entity is owned, populate its fields:
+    if (result.owningEntity != null) {
+        result.ownerKeyFields = result.mappingTargetType === "Class"
+            ? getKeysForClassMapping(request, entity, result.owningEntity)
+            : getKeysForOperationMapping(request, entity, result.owningEntity);
     }
     return result;
+    /**
+     * Return field details for primary keys. As requests mapped to operations and constructors can
+     * never possibly map the attributes, these fields can only ever be matched by name.
+     * @param request The CQRS Command or Query entity
+     * @param owningEntity The Owning Aggregate Class
+     */
+    function getKeysForOperationMapping(request, entity, owningEntity) {
+        const pks = DomainHelper.getPrimaryKeys(owningEntity !== null &amp;&amp; owningEntity !== void 0 ? owningEntity : entity);
+        return pks.map(pk =&gt; {
+            let fieldName = toPascalCase(pk.name);
+            if (owningEntity != null) {
+                fieldName = removePrefix(fieldName, toPascalCase(owningEntity.getName()));
+                fieldName = `${owningEntity.getName()}${toCamelCase(fieldName)}`;
+            }
+            fieldName = ServicesHelper.getFieldFormat(fieldName);
+            const existingField = request.getChildren("DTO-Field").find(field =&gt; field.getName().toLowerCase() == fieldName.toLowerCase());
+            return {
+                existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
+                mappingPath: [],
+                name: fieldName,
+                typeId: pk.typeId,
+                isCollection: pk.isCollection,
+                isNullable: pk.isNullable
+            };
+        });
+    }
+    function getKeysForClassMapping(request, entity, owningEntity) {
+        const keys = owningEntity != null
+            ? DomainHelper.getForeignKeys(entity, owningEntity)
+            : DomainHelper.getPrimaryKeys(entity);
+        return keys.map(pk =&gt; {
+            const existingField = request.getChildren("DTO-Field").find(field =&gt; {
+                if (field.getMapping() != null) {
+                    return field.getMapping().getPath().some(x =&gt; x.id == pk.id);
+                }
+                return (pk.name.toLowerCase() === field.getName().toLowerCase());
+            });
+            return {
+                existingId: existingField === null || existingField === void 0 ? void 0 : existingField.id,
+                mappingPath: pk.mapPath,
+                name: pk.name,
+                typeId: pk.typeId,
+                isCollection: pk.isCollection,
+                isNullable: pk.isNullable
+            };
+        });
+    }
 }
-/// &lt;reference path="../common/on-expose-functions.ts" /&gt;
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+function getFolderParts(request, mappedDetails) {
+    var _a;
+    let depth = 0;
+    let currentElement = request.getParent();
+    let folderParts = [];
+    while (currentElement.specialization === "Folder") {
+        let folderName = currentElement.getName();
+        const singularizedFolderName = singularize(folderName);
+        const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
+        if (depth === 0 &amp;&amp; singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
+            folderName = singularizedFolderName;
+        }
+        folderParts.unshift(toKebabCase(folderName));
+        currentElement = currentElement.getParent();
+        depth++;
+    }
+    return folderParts;
+}
+/// &lt;reference path="../../../typings/elementmacro.context.api.d.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+function getRouteParts(request, mappedDetails) {
+    var _a;
+    if (mappedDetails == null) {
+        throw new Error("mappedDetails is required");
+    }
+    const mappedElement = (_a = request.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
+    const routeParts = [];
+    // Add the owning entity's ids as parts surrounded with curly braces
+    if (mappedDetails.owningEntity != null) {
+        routeParts.push(...mappedDetails.ownerKeyFields
+            .filter(x =&gt; x.existingId != null)
+            .map(x =&gt; {
+            const field = request
+                .getChildren("DTO-Field")
+                .find(field =&gt; field.id === x.existingId);
+            return `{${toCamelCase(field.getName())}}`;
+        }));
+        // Add a part for name of the owned entity
+        routeParts.push(toKebabCase(singularize(mappedDetails.entity.getName())));
+    }
+    // Add the entity's ids as parts surrounded with curly braces
+    routeParts.push(...mappedDetails.entityKeyFields
+        .filter(x =&gt; x.existingId != null)
+        .map(x =&gt; {
+        const field = request
+            .getChildren("DTO-Field")
+            .find(field =&gt; field.id === x.existingId);
+        return `{${toCamelCase(field.getName())}}`;
+    }));
+    // Add the operation's name:
+    if (mappedDetails.mappingTargetType === "Operation") {
+        const entityName = mappedDetails.entity.getName();
+        let routePart = removePrefix(mappedElement.getName(), "Create", "Update", "Delete", "Add", "Remove");
+        routePart = removeSuffix(routePart, "Request", "Query", "Command");
+        routeParts.push(removePrefix(toKebabCase(routePart), toKebabCase(singularize(entityName)), toKebabCase(entityName), "-"));
+    }
+    return routeParts;
+}
+/// &lt;reference path="../_common/getFolderParts.ts" /&gt;
+/// &lt;reference path="../_common/getRouteParts.ts" /&gt;
+/// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+function exposeAsHttpEndPoint(query) {
+    var _a;
+    const mappedDetails = getMappedRequestDetails(query);
+    // Add the folder parts
+    const routeParts = ["api"];
+    routeParts.push(...getFolderParts(query, mappedDetails));
+    if (mappedDetails != null) {
+        routeParts.push(...getRouteParts(query, mappedDetails));
+    }
+    else if (!["Get", "Find", "Lookup"].some(x =&gt; query.getName().startsWith(x))) {
+        routeParts.push(toKebabCase(removeSuffix(query.getName(), "Request", "Query")));
+    }
+    const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+    const httpSettings = (_a = query.getStereotype(httpSettingsId)) !== null &amp;&amp; _a !== void 0 ? _a : query.addStereotype(httpSettingsId);
+    httpSettings.getProperty("Verb").setValue("GET");
+    httpSettings.getProperty("Route").setValue(routeParts.join("/"));
+}
 /**
  * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
  *
  * Source code here:
  * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/query/expose-as-http-endpoint.ts
  */
-function exposeAsHttpEndPoint(element) {
-    var _a;
-    let httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
-    element.addStereotype(httpSettingsId);
-    let httpSettings = element.getStereotype(httpSettingsId);
-    let folderName = element.getParent().getName();
-    let mappedEntity = (_a = element.getMapping()) === null || _a === void 0 ? void 0 : _a.getElement();
-    let serviceRoute = getServiceRoute(element);
-    let primaryDomainEntity = getDomainEntity(folderName);
-    let serviceRouteIdentifier = getServiceRouteIdentifier(element, primaryDomainEntity, folderName);
-    let subRoute = "";
-    if (mappedEntity &amp;&amp; singularize(mappedEntity.getName()) != singularize(folderName) &amp;&amp; serviceRouteIdentifier != `/{id}`) {
-        subRoute = getConventionalSubRoute(element, mappedEntity);
-    }
-    else {
-        let optionalSubRoute = getUnconventionalRoute(serviceRouteIdentifier, mappedEntity === null || mappedEntity === void 0 ? void 0 : mappedEntity.getName(), folderName);
-        if (optionalSubRoute != "") {
-            subRoute = `/${optionalSubRoute}`;
-        }
-    }
-    httpSettings.getProperty("Verb").setValue("GET");
-    httpSettings.getProperty("Route").setValue(`api/${serviceRoute}${serviceRouteIdentifier}${subRoute}`);
-}
-function getUnconventionalRoute(serviceRouteIdentifier, mappedEntityName, folderName) {
-    if ((element.getName().startsWith("Get") ||
-        element.getName().startsWith("Find") ||
-        element.getName().startsWith("Lookup")) &amp;&amp;
-        (serviceRouteIdentifier == `/{id}`)) {
-        return "";
-    }
-    const withoutPrefixes = removePrefix(element.getName(), "Get", "Find", "Lookup");
-    const withoutRequestSuffix = removeSuffix(withoutPrefixes, "Request");
-    const withoutQuerySuffix = removeSuffix(withoutRequestSuffix, "Query");
-    return removePrefix(toKebabCase(withoutQuerySuffix), toKebabCase(folderName), toKebabCase(mappedEntityName !== null &amp;&amp; mappedEntityName !== void 0 ? mappedEntityName : singularize(folderName)), "-");
-}
 exposeAsHttpEndPoint(element);
 </script>
         </option>
