@@ -1,24 +1,28 @@
+### Version 3.4.5
+
+- Improvement: `Type` and `Scope` properties have been added to `JavaDependency` so that it now covers all [available options](https://maven.apache.org/pom.html#dependencies).
+
 ### Version 3.4.4
 
-- Updated Java File Builder in order for `final` to be applied in fields and parameters.
-- Made minor corrections in the naming of certain Java concepts in the File Builder.
-- Added Generic Type parameter support for Classes and Methods (no constraint support yet).
-- Modified the Java Fields and Interface Fields with appropriate defaults and with additional access modifier methods. Fields can also have default values.
-- Java Interfaces can now have method bodies as per the `default` keyword.
+- Improvement: Updated Java File Builder in order for `final` to be applied in fields and parameters.
+- Improvement: Made minor corrections in the naming of certain Java concepts in the File Builder.
+- Improvement: Added Generic Type parameter support for Classes and Methods (no constraint support yet).
+- Improvement: Modified the Java Fields and Interface Fields with appropriate defaults and with additional access modifier methods. Fields can also have default values.
+- Improvement: Java Interfaces can now have method bodies as per the `default` keyword.
 
 ### Version 3.4.3
 
-- Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
+- Improvement: Updated dependencies and supported client versions to prevent warnings when used with Intent Architect 4.x.
 
 ### Version 3.4.1
 
-- Update: JavaComments now properly supports the /* */ format.
-- Update: Free Code Blocks now supported on Interfaces and Classes for cases where only freetext needs to be added a Class / Interface.
+- Improvement: JavaComments now properly supports the /* */ format.
+- Improvement: Free Code Blocks now supported on Interfaces and Classes for cases where only freetext needs to be added a Class / Interface.
 - Fixed: Interface generated wrong code for extending other interfaces.
 
 ### Version 3.4.0
 
-- New: Introducing the Java File Builder Pattern.
+- New Feature: Introducing the Java File Builder Pattern.
 
 ### Version 3.3.18
 
@@ -26,13 +30,13 @@
 
 ### Version 3.3.17
 
-- Added `ApplicationPropertyRequiredEvent` and convenience `.ApplyApplicationProperty(...)` extension method for setting default application properties.
+- Improvement: Added `ApplicationPropertyRequiredEvent` and convenience `.ApplyApplicationProperty(...)` extension method for setting default application properties.
 
 ### Version 3.3.16
 
-- Improved the logic of `.ToJavaIdentifier()` to exhaustively conform to the Java identifier specification. For more information review the XML documentation comments for `Intent.Modules.Common.Java.Templates.JavaIdentifierExtensionMethods.ToJavaIdentifier(string,CapitalizationBehaviour)`.
-- Improved the robustness of `.GetPackage()` to more accurately detect "root" `java` folders.
+- Improvement: Improved the logic of `.ToJavaIdentifier()` to exhaustively conform to the Java identifier specification. For more information review the XML documentation comments for `Intent.Modules.Common.Java.Templates.JavaIdentifierExtensionMethods.ToJavaIdentifier(string,CapitalizationBehaviour)`.
+- Improvement: Improved the robustness of `.GetPackage()` to more accurately detect "root" `java` folders.
 
 ### Version 3.3.14
 
-- Improved the logic of the `JavaResolvedTypeInfo.Create` method.
+- Improvement: Improved the logic of the `JavaResolvedTypeInfo.Create` method.

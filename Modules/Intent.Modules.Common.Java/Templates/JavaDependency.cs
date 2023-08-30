@@ -3,34 +3,92 @@
 namespace Intent.Modules.Common.Java.Templates
 {
     /// <summary>
-    /// Details of a Java Maven dependency.
+    /// Details of a Java Maven dependency. See <see href="https://maven.apache.org/pom.html#dependencies"/> for details on various properties.
     /// </summary>
     public class JavaDependency
     {
         /// <summary>
         /// Creates a new instance of <see cref="JavaDependency"/>.
         /// </summary>
-        public JavaDependency(string groupId, string artifactId, string version, bool optional)
+        [FixFor_Version4("Make the \"version\" parameter have a default value of null and remove other constructors.")]
+        public JavaDependency(
+            string groupId,
+            string artifactId,
+            string version,
+            string type = null,
+            JavaDependencyScope? scope = null,
+            bool optional = false)
         {
             GroupId = groupId;
             ArtifactId = artifactId;
             Version = version;
+            Type = type;
+            Scope = scope;
             Optional = optional;
         }
 
         /// <summary>
         /// Creates a new instance of <see cref="JavaDependency"/>.
         /// </summary>
-        [FixFor_Version4("Make a single constructor where version has a default value of null and optional has a default value of false")]
-        public JavaDependency(string groupId, string artifactId, string version = null) : this(groupId, artifactId, version, false)
+        [FixFor_Version4("Remove this constructor overload")]
+        public JavaDependency(string groupId, string artifactId, string version, bool optional)
+            : this(
+                groupId: groupId,
+                artifactId: artifactId,
+                version: version,
+                type: null,
+                scope: null,
+                optional: optional)
         {
         }
 
         /// <summary>
         /// Creates a new instance of <see cref="JavaDependency"/>.
         /// </summary>
-        [FixFor_Version4("Make a single constructor where version has a default value of null and optional has a default value of false")]
-        public JavaDependency(string groupId, string artifactId, bool optional) : this(groupId, artifactId, null, optional)
+        [FixFor_Version4("Remove this constructor overload")]
+        public JavaDependency(string groupId, string artifactId, string version = null)
+            : this(
+                groupId: groupId,
+                artifactId: artifactId,
+                version: version,
+                type: null,
+                scope: null,
+                optional: false)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="JavaDependency"/>.
+        /// </summary>
+        [FixFor_Version4("Remove this constructor overload")]
+        public JavaDependency(
+            string groupId,
+            string artifactId,
+            string version,
+            string type = null,
+            JavaDependencyScope? scope = null)
+            : this(
+                groupId: groupId,
+                artifactId: artifactId,
+                version: version,
+                type: type,
+                scope: scope,
+                optional: false)
+        {
+        }
+
+        /// <summary>
+        /// Creates a new instance of <see cref="JavaDependency"/>.
+        /// </summary>
+        [FixFor_Version4("Remove this constructor overload")]
+        public JavaDependency(string groupId, string artifactId, bool optional)
+            : this(
+                groupId: groupId,
+                artifactId: artifactId,
+                version: null,
+                type: null,
+                scope: null,
+                optional: optional)
         {
         }
 
@@ -48,6 +106,16 @@ namespace Intent.Modules.Common.Java.Templates
         /// The version of the dependency.
         /// </summary>
         public string Version { get; set; }
+
+        /// <summary>
+        /// The type of the dependency.
+        /// </summary>
+        public string Type { get; set; }
+
+        /// <summary>
+        /// The scope of the dependency.
+        /// </summary>
+        public JavaDependencyScope? Scope { get; set; }
 
         /// <summary>
         /// Whether or not the dependency is optional.
