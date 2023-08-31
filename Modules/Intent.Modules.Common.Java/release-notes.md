@@ -1,6 +1,9 @@
 ### Version 3.4.5
 
 - Improvement: `Exclusions`, `Type` and `Scope` properties have been added to `JavaDependency` so that it now covers all [available dependency options](https://maven.apache.org/pom.html#dependencies).
+- Improvement: Class and Interface methods and now indicate that they `throws` one or more checked Exceptions.
+- Improvement: Constructor parameters can have parameters be automatically assigned (and create) private (final) fields.
+- Improvement: Java Fields can now be marked as Static.
 
 ### Version 3.4.4
 

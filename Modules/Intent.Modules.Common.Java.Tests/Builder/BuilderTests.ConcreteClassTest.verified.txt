@@ -1,0 +1,18 @@
+﻿package test.namespace;
+
+
+
+public class ConcreteClass extends BaseClass implements SomeService {
+    private string test;
+
+    @Override
+    public void onTest() {
+        // Do something
+    }
+
+    private void privateMethod() {
+    }
+
+    protected void protectedMethod() {
+    }
+}

@@ -11,6 +11,7 @@ public class JavaInterfaceMethod : JavaMember<JavaInterfaceMethod>, IHasJavaStat
     public string Name { get; }
     public IList<JavaParameter> Parameters { get; } = new List<JavaParameter>();
     public IList<JavaGenericParameter> GenericParameters { get; } = new List<JavaGenericParameter>();
+    public IList<string> CheckedExceptions { get; } = new List<string>();
 
     public JavaInterfaceMethod(string returnType, string name)
     {
@@ -51,10 +52,16 @@ public class JavaInterfaceMethod : JavaMember<JavaInterfaceMethod>, IHasJavaStat
         GenericParameters.Add(param);
         return this;
     }
+    
+    public JavaInterfaceMethod Throws(string exceptionType)
+    {
+        CheckedExceptions.Add(exceptionType);
+        return this;
+    }
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{GetDefaultKeyword()}{GetGenericParameters()}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetMethodBody(indentation)};";
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{GetDefaultKeyword()}{GetGenericParameters()}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}){GetCheckedExceptions()}{GetMethodBody(indentation)};";
     }
 
     private string GetDefaultKeyword()
@@ -62,24 +69,25 @@ public class JavaInterfaceMethod : JavaMember<JavaInterfaceMethod>, IHasJavaStat
         return Statements.Any() ? "default " : string.Empty;
     }
     
+    private string GetCheckedExceptions()
+    {
+        return !CheckedExceptions.Any() 
+            ? string.Empty 
+            : $" throws {string.Join(", ", CheckedExceptions)} ";
+    }
+    
     private string GetMethodBody(string indentation)
     {
-        if (!Statements.Any())
-        {
-            return string.Empty;
-        }
-
-        return $@"{{{Statements.ConcatCode($"{indentation}    ")}
+        return !Statements.Any() 
+            ? string.Empty 
+            : $@" {{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
 
     private string GetGenericParameters()
     {
-        if (!GenericParameters.Any())
-        {
-            return string.Empty;
-        }
-
-        return $"<{string.Join(", ", GenericParameters)}>";
+        return !GenericParameters.Any() 
+            ? string.Empty 
+            : $"<{string.Join(", ", GenericParameters)}>";
     }
 }

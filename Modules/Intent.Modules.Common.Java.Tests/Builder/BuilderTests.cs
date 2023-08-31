@@ -11,7 +11,7 @@ public class BuilderTests
     [Fact]
     public async Task BuildRestServiceImplementationTest()
     {
-        var fileBuilder = new JavaFile("com.spring_petclinic.spring_petclinic_rest.application.services.impl", "")
+        var fileBuilder = new JavaFile("com.spring_petclinic.spring_petclinic_rest.application.services.impl", "RelativeLocation")
             .AddImport("lombok.AllArgsConstructor")
             .AddImport("java.util.List")
             .AddClass("OwnerRestServiceImpl", c =>
@@ -46,11 +46,11 @@ public class BuilderTests
     }
 
     [Fact]
-    public async Task BuildModifiers()
+    public async Task ApplicationClass()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddImport("java.util.List")
-            .AddClass("TestClass", c =>
+            .AddClass("Application", c =>
             {
                 c.Final();
                 c.AddMethod("void", "main", method => method
@@ -60,11 +60,80 @@ public class BuilderTests
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
     }
+    
+    [Fact]
+    public async Task ClassConstructorTest()
+    {
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
+            .AddClass("TestClass", @class =>
+            {
+                @class.AddConstructor(ctor => ctor.Private());
+                @class.AddConstructor(ctor =>
+                {
+                    ctor.Protected();
+                    ctor.AddParameter("String", "field1", param => param.IntroduceField());
+                });
+                @class.AddConstructor(ctor =>
+                {
+                    ctor.AddParameter("String", "field2", param => param.IntroduceField());
+                    ctor.AddParameter("String", "field3", param => param.IntroduceReadonlyField());
+                });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+    
+    [Fact]
+    public async Task BaseClassTest()
+    {
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
+            .AddClass("BaseClass", @class =>
+            {
+                @class.Abstract();
+                @class.AddMethod("void", "onTest", method => {  });
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+    
+    [Fact]
+    public async Task ConcreteClassTest()
+    {
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
+            .AddClass("ConcreteClass", @class =>
+            {
+                @class.ImplementsInterface("SomeService");
+                @class.WithBaseType("BaseClass");
+                @class.AddMethod("void", "onTest", method =>
+                {
+                    method.Override();
+                    method.AddStatement("// Do something");
+                });
+                @class.AddMethod("void", "privateMethod", method => { method.Private(); });
+                @class.AddMethod("void", "protectedMethod", method => { method.Protected(); });
+                @class.AddField("string", "test", field => field.Private());
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
+    
+    [Fact]
+    public async Task StaticMemberTest()
+    {
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
+            .AddClass("ClassWithStaticMembers", @class =>
+            {
+                @class.AddMethod("void", "staticMethod", method => method.Static());
+                @class.AddField("string", "staticField", field => field.Static().WithDefaultValue(@"""123"""));
+            })
+            .CompleteBuild();
+        await Verifier.Verify(fileBuilder.ToString());
+    }
 
     [Fact]
     public async Task StatementBlocks()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddClass("TestClass", c =>
             {
                 c.Final();
@@ -83,7 +152,7 @@ public class BuilderTests
     [Fact]
     public async Task JavadocComments()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddClass("TestClass", c =>
             {
                 c.AddMethod("Image", "getImage", method =>
@@ -124,7 +193,7 @@ that draw the image will incrementally paint on the screen.
     [Fact]
     public async Task CodeBlocks()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddClass("TestClass", c =>
             {
                 c.AddCodeBlock($@"// This is a free flow code block
@@ -144,7 +213,7 @@ void TestMethod();");
     [Fact]
     public async Task Finals()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddClass("TestClass", c =>
             {
                 c.Final();
@@ -169,7 +238,7 @@ void TestMethod();");
     [Fact]
     public async Task Generics()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddInterface("TestInterface", i =>
             {
                 i.AddGenericParameter("S", out var s);
@@ -202,7 +271,7 @@ void TestMethod();");
     [Fact]
     public async Task Fields()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddClass("TestClass", c =>
             {
                 c.AddField("String", "normalField");
@@ -218,13 +287,12 @@ void TestMethod();");
     [Fact]
     public async Task InterfaceMethods()
     {
-        var fileBuilder = new JavaFile("com.test", "")
+        var fileBuilder = new JavaFile("test.namespace", "RelativeLocation")
             .AddInterface("TestInterface", i =>
             {
-                i.AddMethod("void", "normalMethod",
-                    method => method.AddParameter("String", "value").AddAnnotation("@TestAnnotation"));
-                i.AddMethod("String", "methodWithBody",
-                    method => method.AddStatement(@"return """";").AddAnnotation("@TestAnnotation"));
+                i.AddMethod("void", "normalMethod", method => method.AddParameter("String", "value").AddAnnotation("@TestAnnotation"));
+                i.AddMethod("String", "methodWithBody", method => method.AddStatement(@"return """";").AddAnnotation("@TestAnnotation"));
+                i.AddMethod("void", "methodWithException", method => method.Throws("IOException").Throws("ClassNotFoundException"));
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());
