@@ -1,4 +1,5 @@
-﻿using Intent.SdkEvolutionHelpers;
+﻿using System.Collections.Generic;
+using Intent.SdkEvolutionHelpers;
 
 namespace Intent.Modules.Common.Java.Templates
 {
@@ -15,6 +16,7 @@ namespace Intent.Modules.Common.Java.Templates
             string groupId,
             string artifactId,
             string version,
+            List<JavaDependencyExclusion> exclusions = null,
             string type = null,
             JavaDependencyScope? scope = null,
             bool optional = false)
@@ -22,6 +24,7 @@ namespace Intent.Modules.Common.Java.Templates
             GroupId = groupId;
             ArtifactId = artifactId;
             Version = version;
+            Exclusions = exclusions ?? new List<JavaDependencyExclusion>();
             Type = type;
             Scope = scope;
             Optional = optional;
@@ -36,6 +39,7 @@ namespace Intent.Modules.Common.Java.Templates
                 groupId: groupId,
                 artifactId: artifactId,
                 version: version,
+                exclusions: null,
                 type: null,
                 scope: null,
                 optional: optional)
@@ -51,6 +55,7 @@ namespace Intent.Modules.Common.Java.Templates
                 groupId: groupId,
                 artifactId: artifactId,
                 version: version,
+                exclusions: null,
                 type: null,
                 scope: null,
                 optional: false)
@@ -71,6 +76,7 @@ namespace Intent.Modules.Common.Java.Templates
                 groupId: groupId,
                 artifactId: artifactId,
                 version: version,
+                exclusions: null,
                 type: type,
                 scope: scope,
                 optional: false)
@@ -86,6 +92,7 @@ namespace Intent.Modules.Common.Java.Templates
                 groupId: groupId,
                 artifactId: artifactId,
                 version: null,
+                exclusions: null,
                 type: null,
                 scope: null,
                 optional: optional)
@@ -106,6 +113,11 @@ namespace Intent.Modules.Common.Java.Templates
         /// The version of the dependency.
         /// </summary>
         public string Version { get; set; }
+
+        /// <summary>
+        /// The exclusions of the dependency.
+        /// </summary>
+        public List<JavaDependencyExclusion> Exclusions { get; set; }
 
         /// <summary>
         /// The type of the dependency.

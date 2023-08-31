@@ -1,6 +1,6 @@
 ### Version 3.4.5
 
-- Improvement: `Type` and `Scope` properties have been added to `JavaDependency` so that it now covers all [available options](https://maven.apache.org/pom.html#dependencies).
+- Improvement: `Exclusions`, `Type` and `Scope` properties have been added to `JavaDependency` so that it now covers all [available dependency options](https://maven.apache.org/pom.html#dependencies).
 
 ### Version 3.4.4
 
