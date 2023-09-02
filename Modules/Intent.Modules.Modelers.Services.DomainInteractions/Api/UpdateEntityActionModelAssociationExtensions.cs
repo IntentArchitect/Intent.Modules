@@ -29,5 +29,14 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
                 .ToList();
         }
 
+        [IntentManaged(Mode.Fully)]
+        public static IList<UpdateEntityActionEndModel> UpdateEntityActionEnds(this CommandModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.IsUpdateEntityActionEndModel())
+                .Select(UpdateEntityActionEndModel.Create)
+                .ToList();
+        }
+
     }
 }
