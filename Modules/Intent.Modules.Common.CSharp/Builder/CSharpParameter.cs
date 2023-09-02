@@ -19,7 +19,7 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
     public string XmlDocComment { get; private set; }
     public string ParameterModifier { get; private set; } = "";
 
-    public CSharpParameter(string type, string name)
+    public CSharpParameter(string type, string name, CSharpClassMethod method)
     {
         if (string.IsNullOrWhiteSpace(type))
         {
@@ -33,6 +33,7 @@ public class CSharpParameter : CSharpMetadataBase<CSharpParameter>, ICSharpParam
 
         Type = type;
         Name = name;
+        File = method?.File;
     }
 
     public string GetReferenceName()

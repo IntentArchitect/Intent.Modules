@@ -34,6 +34,8 @@ public class ImplicitConstructorMapping : CSharpMappingBase
                 i.AddArgument(child.GetFromStatement());
             }
 
+            i.WithArgumentsOnNewLines();
+
             return i;
         }
         var init = (Model.TypeReference != null)

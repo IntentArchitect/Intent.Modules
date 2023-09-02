@@ -18,6 +18,6 @@ public class CSharpAssignmentStatement : CSharpStatement, IHasCSharpStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{indentation}{RelativeIndentation}{_lhs.GetText(indentation).TrimEnd()} = {_rhs.GetText(indentation).TrimStart()}{TrailingCharacter?.ToString() ?? ""}";
+        return $@"{RelativeIndentation}{_lhs.GetText(indentation).TrimEnd()} = {_rhs.GetText(indentation).TrimStart()}{TrailingCharacter?.ToString() ?? ""}";
     }
 }

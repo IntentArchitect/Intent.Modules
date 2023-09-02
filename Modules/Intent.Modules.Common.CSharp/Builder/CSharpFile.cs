@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Templates;
 
 namespace Intent.Modules.Common.CSharp.Builder;
@@ -126,6 +127,11 @@ public class CSharpFile
     public IHasCSharpName GetReferenceForModel(string modelId)
     {
         return _modelReferenceRegistry.ContainsKey(modelId) ? _modelReferenceRegistry[modelId] : null;
+    }
+
+    public IHasCSharpName GetReferenceForModel(IMetadataModel model)
+    {
+        return _modelReferenceRegistry.ContainsKey(model.Id) ? _modelReferenceRegistry[model.Id] : null;
     }
 
     public CSharpFile IntentManagedFully()

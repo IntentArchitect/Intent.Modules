@@ -106,7 +106,7 @@ public class CSharpClassMethod : CSharpMember<CSharpClassMethod>, IHasCSharpStat
 
     public CSharpClassMethod AddParameter(string type, string name, Action<CSharpParameter> configure = null)
     {
-        var param = new CSharpParameter(type, name);
+        var param = new CSharpParameter(type, name, this);
         Parameters.Add(param);
         configure?.Invoke(param);
         return this;
