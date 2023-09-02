@@ -10,6 +10,14 @@
     </FileLog>
     <FileLog>
       <ProjectId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4215f417-25d2-4509-9309-5076a1452eaa</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/EnumLiteralModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>EnumLiteralModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>4802c3fe-db17-4969-86e0-e8ae6b73a83c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#4d95d53a-8855-4f35-aa82-e312643f5c5f</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/FolderModelStereotypeExtensions.cs</ApplicationRelativeFilePath>

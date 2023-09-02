@@ -7,9 +7,12 @@ class ServicesHelper {
     static addDtoFieldsFromDomain(dto: MacroApi.Context.IElementApi, attributes: IAttributeWithMapPath[]) {
         for (let key of attributes) {
             if (dto && !dto.getChildren("DTO-Field").some(x => x.getName() == ServicesHelper.getFieldFormat(key.name))) {
-                let primaryKeyDtoField = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
-                primaryKeyDtoField.typeReference.setType(key.typeId)
-                primaryKeyDtoField.setMapping(key.mapPath);
+                let field = createElement("DTO-Field", ServicesHelper.getFieldFormat(key.name), dto.id);
+                field.typeReference.setType(key.typeId);
+
+                if ((key.mapPath ?? []).length > 0) {
+                    field.setMapping(key.mapPath);
+                }
             }
         }
     }
@@ -49,15 +52,26 @@ class ElementManager {
         return this;
     }
 
-    addChild(name: string, typeId?: string): MacroApi.Context.IElementApi {
+    addChild(name: string, type?: string | MacroApi.Context.ITypeReference): MacroApi.Context.IElementApi {
         let field = createElement(this.settings.childSpecialization, ServicesHelper.getFieldFormat(name), this.command.id);
-        if (typeId) {
-            field.typeReference.setType(typeId)
+        const typeReferenceDetails = type == null
+            ? null
+            : typeof (type) === "string"
+                ? { id: type as string, isNullable: false, isCollection: false }
+                : { id: type.typeId, isNullable: type.isNullable, isCollection: type.isCollection };
+
+        if (typeReferenceDetails != null) {
+            field.typeReference.setType(typeReferenceDetails.id);
+            field.typeReference.setIsCollection(typeReferenceDetails.isCollection);
+            field.typeReference.setIsNullable(typeReferenceDetails.isNullable);
         }
+
         return field;
     }
 
-    addChildrenFrom(elements: IAttributeWithMapPath[]) {
+    addChildrenFrom(elements: IAttributeWithMapPath[], options?: { addToTop: boolean }): ElementManager {
+        let order = 0;
+
         elements.forEach(e => {
             if (e.mapPath != null) {
                 if (this.command.getChildren(this.settings.childSpecialization).some(x => x.getMapping()?.getElement()?.id == e.id)) {
@@ -71,19 +85,36 @@ class ElementManager {
             let field = this.addChild(ServicesHelper.getFieldFormat(e.name), e.typeId);
             field.typeReference.setIsCollection(e.isCollection);
             field.typeReference.setIsNullable(e.isNullable);
+
+            if (options?.addToTop) {
+                field.setOrder(order++);
+            }
+
             if (this.mappedElement != null && e.mapPath) {
                 field.setMapping(e.mapPath);
-                debugConsole.log("did it");
-            } else {
-                debugConsole.log("did not");
             }
         });
+
         return this;
     }
 
-    mapToElement(entity: MacroApi.Context.IElementApi, mappingSettingsId?: string): ElementManager {
-        this.mappedElement = entity;
-        this.command.setMapping(entity.id, mappingSettingsId);
+    mapToElement(elementIds: string[], mappingSettingsId?: string): ElementManager;
+    mapToElement(element: MacroApi.Context.IElementApi, mappingSettingsId?: string): ElementManager;
+    mapToElement(param1: string[] | MacroApi.Context.IElementApi, mappingSettingsId?: string): ElementManager {
+        let elementIds: string[];
+        let element: MacroApi.Context.IElementApi;
+
+        if (Array.isArray(param1)) {
+            elementIds = param1;
+            element = lookup(elementIds[elementIds.length - 1]);
+        }
+        else {
+            elementIds = [param1.id];
+            element = param1;
+        }
+
+        this.mappedElement = element;
+        this.command.setMapping(elementIds, mappingSettingsId);
         return this;
     }
 

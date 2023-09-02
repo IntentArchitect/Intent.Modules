@@ -8,7 +8,8 @@ public class JavaField : JavaMember<JavaField>
     public string Name { get; }
     public string AccessModifier { get; private set; }
     public string DefaultValue { get; private set; }
-
+    public bool IsStatic { get; private set; }
+    
     public JavaField(string type, string name)
     {
         if (string.IsNullOrWhiteSpace(type))
@@ -55,6 +56,12 @@ public class JavaField : JavaMember<JavaField>
         AccessModifier = "public final ";
         return this;
     }
+    
+    public JavaField Static()
+    {
+        IsStatic = true;
+        return this;
+    }
 
     public JavaField WithoutAccessModifier()
     {
@@ -70,6 +77,6 @@ public class JavaField : JavaMember<JavaField>
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)};";
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{(IsStatic ? "static " : "")}{Type} {Name}{(DefaultValue != null ? $" = {DefaultValue}" : string.Empty)};";
     }
 }

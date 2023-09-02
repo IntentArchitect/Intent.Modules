@@ -176,7 +176,9 @@ if ((element.getParent().specialization == "Class" || element.getParent().specia
     }
 } else {
     element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
-}</script>
+}
+
+</script>
         </macro>
         <macro trigger="on-type-changed">
           <script>let relationalDatabaseId = "51a7bcf5-0eb9-4c9a-855e-3ead1048729c"
@@ -190,7 +192,8 @@ if ((element.getParent().specialization == "Class" || element.getParent().specia
     }
 } else {
     element.removeStereotype("6347286E-A637-44D6-A5D7-D9BE5789CA7A")
-}</script>
+}
+</script>
         </macro>
       </macros>
     </elementExtension>

@@ -1,8 +1,0 @@
-﻿package com.test;
-
-import java.util.List;
-
-public final class TestClass {
-    public static void main(String args[]) {
-    }
-}

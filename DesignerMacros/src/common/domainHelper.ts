@@ -6,35 +6,35 @@ interface IISelectEntityDialogOptions {
 
 class DomainHelper {
 
-    static async openSelectEntityDialog(options?: IISelectEntityDialogOptions) {
+    static async openSelectEntityDialog(options?: IISelectEntityDialogOptions): Promise<MacroApi.Context.IElementApi> {
         let classes = lookupTypesOf("Class").filter(x => DomainHelper.isAggregateRoot(x) || (options?.includeOwnedRelationships != false && DomainHelper.ownerIsAggregateRoot(x)) || x.hasStereotype("Repository"));
         if (classes.length == 0) {
             await dialogService.info("No Domain types could be found. Please ensure that you have a reference to the Domain package and that at least one class exists in it.");
-            return;
+            return null;
         }
-    
-        let classId = await dialogService.lookupFromOptions(classes.map((x)=>({
-            id: x.id, 
+
+        let classId = await dialogService.lookupFromOptions(classes.map((x) => ({
+            id: x.id,
             name: this.getFriendlyDisplayNameForClassSelection(x)
-            })));
-    
+        })));
+
         if (classId == null) {
             await dialogService.error(`No class found with id "${classId}".`);
             return null;
         }
-    
+
         let foundEntity = lookup(classId);
         return foundEntity;
     }
 
-    private static getFriendlyDisplayNameForClassSelection(element) {
+    private static getFriendlyDisplayNameForClassSelection(element: MacroApi.Context.IElementApi): string {
         let found = DomainHelper.getOwningAggregate(element);
         return !found ? element.getName() : `${element.getName()} (${found.getName()})`;
     }
 
     static isAggregateRoot(element: MacroApi.Context.IElementApi): boolean {
         let result = !element.getAssociations("Association")
-                .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable);
+            .some(x => x.isSourceEnd() && !x.typeReference.isCollection && !x.typeReference.isNullable);
         return result;
     }
 
@@ -46,25 +46,25 @@ class DomainHelper {
                 // be needed.
                 x.getOtherEnd().typeReference.isCollection)[0]?.typeReference.getType();
         return result;
-    
-        function isOwnedBy(association) {
-            return association.isSourceEnd() && 
-                !association.typeReference.isNullable && 
+
+        function isOwnedBy(association: MacroApi.Context.IAssociationApi) {
+            return association.isSourceEnd() &&
+                !association.typeReference.isNullable &&
                 !association.typeReference.isCollection;
         }
     }
-    
-    static ownerIsAggregateRoot(entity) {
+
+    static ownerIsAggregateRoot(entity: MacroApi.Context.IElementApi): boolean {
         let result = DomainHelper.getOwningAggregate(entity);
         return result ? true : false;
     }
 
-    static getPrimaryKeys(entity): IAttributeWithMapPath[] {
+    static getPrimaryKeys(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         if (!entity) {
             throw new Error("entity not specified");
         }
+
         let primaryKeys = DomainHelper.getPrimaryKeysMap(entity);
-        let keyLen = Object.keys(primaryKeys).length;
 
         if (Object.keys(primaryKeys).length == 0) {
             return [
@@ -81,12 +81,12 @@ class DomainHelper {
         return Object.values(primaryKeys);
     }
 
-    static getPrimaryKeysMap(entity : MacroApi.Context.IElementApi): { [characterName: string]: IAttributeWithMapPath } {
-        let keydict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+    static getPrimaryKeysMap(entity: MacroApi.Context.IElementApi): { [characterName: string]: IAttributeWithMapPath } {
+        let keydict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
         let keys = entity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
-        keys.forEach(key => keydict[key.id] = { 
-            id: key.id, 
-            name: key.getName(), 
+        keys.forEach(key => keydict[key.id] = {
+            id: key.id,
+            name: key.getName(),
             typeId: key.typeReference.typeId,
             mapPath: [key.id],
             isNullable: false,
@@ -98,9 +98,10 @@ class DomainHelper {
         return keydict;
 
         function traverseInheritanceHierarchyForPrimaryKeys(
-            keydict: { [characterName: string]: IAttributeWithMapPath }, 
-            curEntity: MacroApi.Context.IElementApi, 
-            generalizationStack) {
+            keydict: { [characterName: string]: IAttributeWithMapPath },
+            curEntity: MacroApi.Context.IElementApi,
+            generalizationStack: string[]
+        ) {
             if (!curEntity) {
                 return;
             }
@@ -112,9 +113,9 @@ class DomainHelper {
             generalizationStack.push(generalization.id);
             let nextEntity = generalization.typeReference.getType();
             let baseKeys = nextEntity.getChildren("Attribute").filter(x => x.hasStereotype("Primary Key"));
-            baseKeys.forEach(key => { 
-                keydict[key.id] = { 
-                    id: key.id, 
+            baseKeys.forEach(key => {
+                keydict[key.id] = {
+                    id: key.id,
                     name: key.getName(),
                     typeId: key.typeReference.typeId,
                     mapPath: generalizationStack.concat([key.id]),
@@ -126,7 +127,7 @@ class DomainHelper {
         }
     }
 
-    static getForeignKeys(entity : MacroApi.Context.IElementApi, owningAggregate : MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
+    static getForeignKeys(entity: MacroApi.Context.IElementApi, owningAggregate: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
         if (!entity) {
             throw new Error("entity not specified");
         }
@@ -135,7 +136,7 @@ class DomainHelper {
         }
 
         // Use the new Associated property on the FK stereotype method for FK Attribute lookup
-        let foreignKeys : MacroApi.Context.IElementApi[] = [];
+        let foreignKeys: MacroApi.Context.IElementApi[] = [];
         for (let attr of entity.getChildren("Attribute").filter(x => x.hasStereotype("Foreign Key"))) {
             let associationId = attr.getStereotype("Foreign Key").getProperty("Association")?.getValue() as string;
             if (owningAggregate.getAssociations("Association").some(x => x.id == associationId)) {
@@ -146,12 +147,12 @@ class DomainHelper {
         // Backward compatible lookup method
         if (foreignKeys.length == 0) {
             let foundFk = entity.getChildren("Attribute")
-            .filter(x => x.getName().toLowerCase().indexOf(owningAggregate.getName().toLowerCase()) >= 0 && x.hasStereotype("Foreign Key"))[0];
+                .filter(x => x.getName().toLowerCase().indexOf(owningAggregate.getName().toLowerCase()) >= 0 && x.hasStereotype("Foreign Key"))[0];
             if (foundFk) {
                 foreignKeys.push(foundFk);
             }
         }
-        
+
         if (foreignKeys.length > 0) {
             return foreignKeys.map(x => ({
                 name: DomainHelper.getAttributeNameFormat(x.getName()),
@@ -162,11 +163,11 @@ class DomainHelper {
                 isNullable: x.typeReference.isNullable
             }));
         }
-        
+
         // Implicit FKs:
         return [{
             name: DomainHelper.getAttributeNameFormat(`${owningAggregate.getName()}Id`),
-            typeId: Object.values(DomainHelper.getPrimaryKeysMap(owningAggregate))[0].typeId,
+            typeId: DomainHelper.getPrimaryKeys(owningAggregate)[0].typeId,
             id: null,
             mapPath: null,
             isCollection: false,
@@ -174,12 +175,12 @@ class DomainHelper {
         }];
     }
 
-    static getChildrenOfType(entity : MacroApi.Context.IElementApi, type: string): IAttributeWithMapPath[] {
-        let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+    static getChildrenOfType(entity: MacroApi.Context.IElementApi, type: string): IAttributeWithMapPath[] {
+        let attrDict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
         let attributes = entity.getChildren(type)
-        attributes.forEach(attr => attrDict[attr.id] = { 
-            id: attr.id, 
-            name: attr.getName(), 
+        attributes.forEach(attr => attrDict[attr.id] = {
+            id: attr.id,
+            name: attr.getName(),
             typeId: attr.typeReference.typeId,
             mapPath: [attr.id],
             isNullable: false,
@@ -188,44 +189,47 @@ class DomainHelper {
         return Object.values(attrDict);
     }
 
-    static getAttributesWithMapPath(entity : MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
-        let attrDict : { [characterName: string]: IAttributeWithMapPath} = Object.create(null);
+    static getAttributesWithMapPath(entity: MacroApi.Context.IElementApi): IAttributeWithMapPath[] {
+        let attrDict: { [characterName: string]: IAttributeWithMapPath } = Object.create(null);
         let attributes = entity
             .getChildren("Attribute")
-            .filter(x => !x.hasStereotype("Primary Key") && 
+            .filter(x => !x.hasStereotype("Primary Key") &&
                 !DomainHelper.legacyPartitionKey(x) &&
                 (x["hasMetadata"] && (!x.hasMetadata("set-by-infrastructure") || x.getMetadata("set-by-infrastructure")?.toLocaleLowerCase() != "true")));
-        attributes.forEach(attr => attrDict[attr.id] = { 
-            id: attr.id, 
-            name: attr.getName(), 
+        attributes.forEach(attr => attrDict[attr.id] = {
+            id: attr.id,
+            name: attr.getName(),
             typeId: attr.typeReference.typeId,
             mapPath: [attr.id],
             isNullable: false,
             isCollection: false
         });
-    
+
         traverseInheritanceHierarchyForAttributes(attrDict, entity, []);
-    
+
         return Object.values(attrDict);
-    
-        function traverseInheritanceHierarchyForAttributes(attrDict: { [characterName: string]: IAttributeWithMapPath }, 
-            curEntity: MacroApi.Context.IElementApi, 
-            generalizationStack) {
-                
+
+        function traverseInheritanceHierarchyForAttributes(
+            attrDict: { [characterName: string]: IAttributeWithMapPath },
+            curEntity: MacroApi.Context.IElementApi,
+            generalizationStack: string[]
+        ) {
             if (!curEntity) {
                 return;
             }
+
             let generalizations = curEntity.getAssociations("Generalization").filter(x => x.isTargetEnd());
             if (generalizations.length == 0) {
                 return;
             }
+            
             let generalization = generalizations[0];
             generalizationStack.push(generalization.id);
             let nextEntity = generalization.typeReference.getType();
             let baseKeys = nextEntity.getChildren("Attribute").filter(x => !x.hasStereotype("Primary Key") && !DomainHelper.legacyPartitionKey(x));
-            baseKeys.forEach(attr => { 
-                attrDict[attr.id] = { 
-                    id: attr.id, 
+            baseKeys.forEach(attr => {
+                attrDict[attr.id] = {
+                    id: attr.id,
                     name: attr.getName(),
                     typeId: attr.typeReference.typeId,
                     mapPath: generalizationStack.concat([attr.id]),
@@ -237,7 +241,7 @@ class DomainHelper {
         }
     }
 
-    static getAttributeNameFormat(str : string) : string {
+    static getAttributeNameFormat(str: string): string {
         let convention = DomainHelper.getDomainAttributeNamingConvention();
         switch (convention) {
             case "pascal-case":
@@ -257,24 +261,24 @@ class DomainHelper {
     static getSurrogateKeyType(): string {
         return getSurrogateKeyType();
     }
-    
+
     // Just in case someone still uses this convention. Used to filter out those attributes when mapping
     // to domain entities that are within a Cosmos DB paradigm.
-    static legacyPartitionKey(attribute : MacroApi.Context.IElementApi) {
+    static legacyPartitionKey(attribute: MacroApi.Context.IElementApi) {
         return attribute.hasStereotype("Partition Key") && attribute.getName() === "PartitionKey";
     }
 
-    static requiresForeignKey(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
+    static requiresForeignKey(associationEnd: MacroApi.Context.IAssociationApi): boolean {
         return DomainHelper.isManyToVariantsOfOne(associationEnd) || DomainHelper.isSelfReferencingZeroToOne(associationEnd);
     }
-    
-    static isManyToVariantsOfOne(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
+
+    static isManyToVariantsOfOne(associationEnd: MacroApi.Context.IAssociationApi): boolean {
         return !associationEnd.typeReference.isCollection && associationEnd.getOtherEnd().typeReference.isCollection;
     }
-    
-    static isSelfReferencingZeroToOne(associationEnd : MacroApi.Context.IAssociationApi) : boolean {
-        return !associationEnd.typeReference.isCollection && associationEnd.typeReference.isNullable && 
-                associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
+
+    static isSelfReferencingZeroToOne(associationEnd: MacroApi.Context.IAssociationApi): boolean {
+        return !associationEnd.typeReference.isCollection && associationEnd.typeReference.isNullable &&
+            associationEnd.typeReference.typeId == associationEnd.getOtherEnd().typeReference.typeId;
     }
 }
 

@@ -1,0 +1,10 @@
+﻿package test.namespace;
+
+
+
+public class ClassWithStaticMembers {
+    private static string staticField = "123";
+
+    public static void staticMethod() {
+    }
+}

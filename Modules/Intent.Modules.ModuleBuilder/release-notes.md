@@ -1,6 +1,16 @@
+### Version 3.6.11
+
+- Fixed: Internal module dependency updates to be on the latest versions.
+
+### Version 3.6.10
+
+- Fixed: Nuget package version that gets automatically installed is no longer `pre`-release.
+
 ### Version 3.6.9
 
-- Added a default `OnAfterTemplateRegistrations` overload method to the factory extensions.
+- Improvement: Added a default `OnAfterTemplateRegistrations` overload method to the factory extensions.
+- Improvement: Added `Project URL` property to `Module Settings` stereotype.
+- Removed template which generates `README.txt` file.
 
 ### Version 3.6.8
 

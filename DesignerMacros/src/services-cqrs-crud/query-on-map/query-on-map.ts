@@ -1,4 +1,4 @@
-/// <reference path="../_common/query-on-map.ts" />
+/// <reference path="../_common/onMapQuery.ts" />
 
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD

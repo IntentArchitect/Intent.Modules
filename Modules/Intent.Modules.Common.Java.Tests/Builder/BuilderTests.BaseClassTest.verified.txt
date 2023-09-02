@@ -1,0 +1,8 @@
+﻿package test.namespace;
+
+
+
+public abstract class BaseClass {
+    public void onTest() {
+    }
+}

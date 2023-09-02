@@ -3,7 +3,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Intent.Engine;
-using Intent.Modules.ApplicationTemplate.Builder.Templates.IatSpecFile;
+using Intent.Modules.ApplicationTemplate.Builder.Templates.Templates.IatSpecFile;
 using Intent.Modules.Common.Plugins;
 using Intent.Modules.Common.VisualStudio;
 using Intent.Plugins.FactoryExtensions;
@@ -44,7 +44,7 @@ namespace Intent.Modules.ApplicationTemplate.Builder.FactoryExtensions
             {
                 Logging.Log.Warning($"Could not build module because the path was not found: " + Path.GetFullPath(location));
             }
-            Logging.Log.Info($"Executing: \"dotnet build\" at location \"{ Path.GetFullPath(location) }\"");
+            Logging.Log.Info($"Executing: \"dotnet build\" at location \"{Path.GetFullPath(location)}\"");
             try
             {
                 var cmd = Process.Start(new ProcessStartInfo()

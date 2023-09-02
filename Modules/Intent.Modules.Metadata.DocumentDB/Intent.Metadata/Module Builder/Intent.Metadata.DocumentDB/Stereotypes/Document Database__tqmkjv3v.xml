@@ -19,5 +19,18 @@
   <order>0</order>
   <packageId>1c7eab18-9482-4b4e-b61b-1fbd2d2427b6</packageId>
   <packageName>Intent.Metadata.DocumentDB</packageName>
-  <properties />
+  <properties>
+    <property id="85ea3708-f41a-4cd5-a23c-1126d9ddd4e1">
+      <name>Provider</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>lookup-element</optionsSource>
+      <placeholder>Default</placeholder>
+      <valueOptions />
+      <lookupTypes>
+        <type>fcfbd83f-a3eb-4eff-b341-5a812b016d31</type>
+      </lookupTypes>
+      <isRequiredFunction>return lookupTypesOf("Document Db Provider").length &gt; 2;</isRequiredFunction>
+    </property>
+  </properties>
 </stereotypeDefinition>

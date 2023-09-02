@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<settings version="3.1.1">
+  <id>9a392e6c-361e-450b-b543-43e34059fd2d</id>
+  <name>Document Db Providers</name>
+  <designerReferences />
+  <packageSettings />
+  <packageExtensions>
+    <packageExtension type="Intent Module" typeId="d2e543c7-174a-45b4-aebe-a13f9ee90214">
+      <requiredPackages />
+      <creationOptions>
+        <option type="element">
+          <specializationType>Document Db Provider</specializationType>
+          <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
+          <text>New Document Db Provider</text>
+          <defaultName>NewDocumentDbProvider</defaultName>
+          <icon type="FontAwesome" source="database" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Document Db Provider</type>
+      </typeOrder>
+    </packageExtension>
+  </packageExtensions>
+  <elementSettings>
+    <elementSetting type="Document Db Provider" typeId="fcfbd83f-a3eb-4eff-b341-5a812b016d31">
+      <icon type="FontAwesome" source="database" />
+      <saveAsOwnFile>true</saveAsOwnFile>
+      <allowRename>true</allowRename>
+      <allowAbstract>false</allowAbstract>
+      <allowGenericTypes>false</allowGenericTypes>
+      <allowMapping>false</allowMapping>
+      <allowSorting>false</allowSorting>
+      <sortChildren p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowFindInView>false</allowFindInView>
+      <allowTypeReference>false</allowTypeReference>
+      <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
+      <allowSetValue>false</allowSetValue>
+      <typeOrder />
+      <creationOptions />
+      <scriptOptions />
+      <mappingSettings />
+      <childElementSettings />
+    </elementSetting>
+  </elementSettings>
+  <elementExtensions>
+    <elementExtension type="Folder" typeId="4d95d53a-8855-4f35-aa82-e312643f5c5f">
+      <creationOptions>
+        <option type="element">
+          <specializationType>Document Db Provider</specializationType>
+          <specializationTypeId>fcfbd83f-a3eb-4eff-b341-5a812b016d31</specializationTypeId>
+          <text>New Document Db Provider</text>
+          <defaultName>NewDocumentDbProvider</defaultName>
+          <icon type="FontAwesome" source="database" />
+          <allowMultiple>true</allowMultiple>
+        </option>
+      </creationOptions>
+      <scriptOptions />
+      <typeOrder>
+        <type>Document Db Provider</type>
+      </typeOrder>
+      <mappingSettings />
+    </elementExtension>
+  </elementExtensions>
+  <associationSettings />
+  <associationExtensions />
+</settings>

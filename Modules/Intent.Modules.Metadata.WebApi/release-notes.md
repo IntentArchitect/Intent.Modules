@@ -1,3 +1,7 @@
+### Version 4.2.6
+
+- Fixed: Under certain circumstances the `Expose as Http Endpoint` scripts would generate incorrect routes.
+
 ### Version 4.2.5
 
 - Update: `Expose as Http Endpoint` to have a better default behavior for `Operation`s and `Class Constructors`.

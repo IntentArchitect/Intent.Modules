@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <Version>3.3.5</Version>
+    <Version>3.3.6</Version>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
     <Authors>Intent Architect</Authors>
     <Description>Base classes and weaving capabilities for modules that output HTML files for Intent Architect.</Description>
@@ -23,6 +23,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="HtmlAgilityPack" Version="1.11.24" />
   </ItemGroup>
 
   <ItemGroup>

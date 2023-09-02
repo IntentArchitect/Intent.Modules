@@ -107,7 +107,7 @@ public class BuilderTests
 
                 @class.AddMethod("void", "StaticMethod", method => method.Static());
                 @class.AddProperty("int", "StaticProperty", prop => prop.Static());
-                @class.AddField("string", "_staticField", field => field.Static().WithAssignment(@"""123"""));
+                @class.AddField("string", "staticField", field => field.Static().WithAssignment(@"""123"""));
             })
             .CompleteBuild();
         await Verifier.Verify(fileBuilder.ToString());

@@ -1,4 +1,4 @@
-/// <reference path="../_common/dto-on-map.ts" />
+/// <reference path="../_common/onMapDto.ts" />
 
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD

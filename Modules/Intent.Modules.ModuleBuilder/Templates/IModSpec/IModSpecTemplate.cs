@@ -121,6 +121,13 @@ namespace Intent.Modules.ModuleBuilder.Templates.IModSpec
                 doc.Element("package").Add(releaseNotesElement);
             }
 
+            var projectUrlElement = doc.Element("package").Element("projectUrl");
+            if (projectUrlElement == null && !string.IsNullOrWhiteSpace(ModuleModel.GetModuleSettings().ProjectURL()))
+            {
+                projectUrlElement = new XElement("projectUrl", ModuleModel.GetModuleSettings().ProjectURL());
+                doc.Element("package").Add(projectUrlElement);
+            }
+
             var templatesElement = doc.Element("package").Element("templates");
             if (templatesElement == null)
             {

@@ -26,10 +26,42 @@
     </FileLog>
     <FileLog>
       <ProjectId>44057e52-d484-47f2-a541-707bb9df48a9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#fcfbd83f-a3eb-4eff-b341-5a812b016d31</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DocumentDbProviderModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DocumentDbProviderModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>44057e52-d484-47f2-a541-707bb9df48a9</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModelExtensions#1a824508-4623-45d9-accc-f572091ade5a</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DomainPackageModelStereotypeExtensions.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DomainPackageModelStereotypeExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>44057e52-d484-47f2-a541-707bb9df48a9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#19ca8955-0076-4f0a-9287-0ae6f1bcf72c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/FolderExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>FolderExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>44057e52-d484-47f2-a541-707bb9df48a9</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#f6730f7a-4ff0-49e4-a334-d7ade76b7ab1</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/ModuleBuilderExtensionsModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ModuleBuilderExtensionsModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>3e1907e5-d07b-4803-9c2c-7c8904d02f00</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiMetadataProviderExtensions</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>ApiMetadataProviderExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ApiMetadataProviderExtensions.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -54,6 +86,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>modelers/Document Db Key Automation Extensions.designer.settings</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>Document Db Key Automation Extensions.designer.settings</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1873edee-d26f-41d7-87a0-b30c1aabc79c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.DesignerSettings#9a392e6c-361e-450b-b543-43e34059fd2d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>modelers/Document Db Providers.designer.settings</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>Document Db Providers.designer.settings</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>

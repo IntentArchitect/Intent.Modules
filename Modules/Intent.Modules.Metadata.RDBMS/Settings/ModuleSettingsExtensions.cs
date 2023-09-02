@@ -128,5 +128,7 @@ namespace Intent.Modules.Metadata.RDBMS.Settings
             Implicit,
             Explicit,
         }
+
+        public string DecimalPrecisionAndScale() => _groupSettings.GetSetting("684582e0-125a-4ddd-a950-714e2af41f15")?.Value;
     }
 }

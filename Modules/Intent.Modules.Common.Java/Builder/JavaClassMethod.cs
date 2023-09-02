@@ -13,6 +13,7 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
     public string Name { get; }
     public List<JavaParameter> Parameters { get; } = new();
     public IList<JavaGenericParameter> GenericParameters { get; } = new List<JavaGenericParameter>();
+    public IList<string> CheckedExceptions { get; } = new List<string>();
     
     public JavaClassMethod(string returnType, string name)
     {
@@ -156,6 +157,12 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
         return this;
     }
 
+    public JavaClassMethod Throws(string exceptionType)
+    {
+        CheckedExceptions.Add(exceptionType);
+        return this;
+    }
+
     public void RemoveStatement(JavaStatement statement)
     {
         Statements.Remove(statement);
@@ -163,18 +170,22 @@ public class JavaClassMethod: JavaMember<JavaClassMethod>, IHasJavaStatements
 
     public override string GetText(string indentation)
     {
-        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{GetGenericParameters()}{OverrideModifier}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {{{Statements.ConcatCode($"{indentation}    ")}
+        return $@"{GetComments(indentation)}{GetAnnotations(indentation)}{indentation}{AccessModifier}{GetGenericParameters()}{OverrideModifier}{ReturnType} {Name}({string.Join(", ", Parameters.Select(x => x.ToString()))}) {GetCheckedExceptions()}{{{Statements.ConcatCode($"{indentation}    ")}
 {indentation}}}";
     }
-    
-     private string GetGenericParameters()
-     {
-         if (!GenericParameters.Any())
-         {
-             return string.Empty;
-         }
 
-         return $"<{string.Join(", ", GenericParameters)}> ";
-     }
+    private string GetCheckedExceptions()
+    {
+        return !CheckedExceptions.Any() 
+            ? string.Empty 
+            : $"throws {string.Join(", ", CheckedExceptions)} ";
+    }
+
+    private string GetGenericParameters()
+    {
+        return !GenericParameters.Any() 
+            ? string.Empty 
+            : $"<{string.Join(", ", GenericParameters)}> ";
+    }
 
 }

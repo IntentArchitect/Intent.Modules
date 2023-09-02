@@ -1,4 +1,4 @@
-/// <reference path="../_common/command-on-map.ts" />
+/// <reference path="../_common/onMapCommand.ts" />
 
 /**
  * Used by Intent.Modules\Modules\Intent.Modules.Application.MediatR.CRUD

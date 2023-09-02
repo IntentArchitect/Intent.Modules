@@ -1,11 +1,15 @@
+### Version 3.5.8
+
+- Improvement: `Decimal precision and scale` setting added to configure the default decimal precision and scale for your database technology. 
+
 ### Version 3.5.7
 
-- Fixed: When modelling `0..1 --> 1` or `0..1 --> 0..1` (aggregrational) associations, foreign keys would not be added on the source `Class`, resulting in an incorrect requirement of the primary keys of each `Class` needing to match at the time of committing to the database.
+- Fixed: When modeling `0..1 --> 1` or `0..1 --> 0..1` (aggregrational) associations, foreign keys would not be added on the source `Class`, resulting in an incorrect requirement of the primary keys of each `Class` needing to match at the time of committing to the database.
 
 ### Version 3.5.6
 
-- New: Added `Schema` stereotype to modeling SQL Schema's simpler and more intuitive.
-- New: Added the ability to specify sort direction on Index columns .
+- New Feature: Added `Schema` stereotype to modeling SQL Schema's simpler and more intuitive.
+- New Feature: Added the ability to specify sort direction on Index columns .
 
 ### Version 3.5.5
 
@@ -18,7 +22,7 @@
 ### Version 3.5.3
 
 - Fixed: Primary and foreign keys would sometimes not update themselves correctly for inherited class scenarios.
-- New: An `Auto Manage Keys` context menu option has been added to `Class` elements. Using this option will ensure that keys are being managed automatically by the designer, this is useful for scenarios where a key was manually deleted from a `Class` in the past which put it into an "unmanaged" state preventing keys from being automatically managed going forward.
+- New Feature: An `Auto Manage Keys` context menu option has been added to `Class` elements. Using this option will ensure that keys are being managed automatically by the designer, this is useful for scenarios where a key was manually deleted from a `Class` in the past which put it into an "unmanaged" state preventing keys from being automatically managed going forward.
 
 ### Version 3.5.2
 
@@ -30,7 +34,7 @@
 
 ### Version 3.4.2
 
-- New: Support for modeling Sql Views through the `View` stereotype which can be applied to `Class`s.
+- New Feature: Support for modeling Sql Views through the `View` stereotype which can be applied to `Class`s.
 
 ### Version 3.4.1
 
@@ -39,9 +43,9 @@
 ### Version 3.4.0
 
 - New: Foreign Keys now have an explicit link with an Association Target End so that Attributes that act as Foreign Keys can be renamed independently from the Association.
-- Update: Compute stereotype icon visible on diagram.
-- Update: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checkbox.
-- Update: Fill Factor property on Indexes in order for some database providers to configure it accordingly.
+- Improvement: Compute stereotype icon visible on diagram.
+- Improvement: Default Constraint Stereotype has added hint for `Treat as SQL Expression` checkbox.
+- Improvement: Fill Factor property on Indexes in order for some database providers to configure it accordingly.
 
 ### Version 3.3.12
 
@@ -57,11 +61,11 @@
 
 ### Version 3.3.9
 
-- Update: Changed default `Key Creation Mode` from `Manually add PKs and FKs` to `Explicitly add PKs and FKs automatically`.
+- Improvement: Changed default `Key Creation Mode` from `Manually add PKs and FKs` to `Explicitly add PKs and FKs automatically`.
 
 ### Version 3.3.7
 
-- Update: Attribute naming conventions (i.e. pascal-case vs camel-case) moved to Domain Settings (see settings panel).
+- Improvement: Attribute naming conventions (i.e. pascal-case vs camel-case) moved to Domain Settings (see settings panel).
 
 ### Version 3.3.6
 

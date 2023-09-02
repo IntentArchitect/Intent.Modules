@@ -32,7 +32,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.StaticContentOutputReadme
         public override string TransformText()
         {
             this.Write("\r\nThis file is needed to create the content folders.\r\nSupply this folder with all" +
-                    " the static content needed.  \r\nDelete if not needed.\r\n");
+                    " the static content needed.\r\nDelete if not needed.\r\n");
             return this.GenerationEnvironment.ToString();
         }
     }

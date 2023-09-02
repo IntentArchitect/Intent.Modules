@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<stereotypeDefinition id="6d95bcb3-896e-49b2-89e4-82cf71141777" version="3.1.0">
+  <name>Description</name>
+  <targetMode>of-type</targetMode>
+  <targetTypes>
+    <type id="4215f417-25d2-4509-9309-5076a1452eaa">Enum-Literal</type>
+  </targetTypes>
+  <targetReferenceTypes />
+  <applyMode>manually</applyMode>
+  <icon type="FontAwesome" source="book-open" />
+  <displayIcon>false</displayIcon>
+  <displayIconFunction>return false;</displayIconFunction>
+  <displayFunction>return `[${Value}]`;</displayFunction>
+  <displayAsAnnotation>true</displayAsAnnotation>
+  <displayAsText>false</displayAsText>
+  <autoAdd>false</autoAdd>
+  <allowMultipleApplies>false</allowMultipleApplies>
+  <parentFolderId>730e1275-0c32-44f7-991a-9619d07ca68d</parentFolderId>
+  <order>0</order>
+  <packageId>730e1275-0c32-44f7-991a-9619d07ca68d</packageId>
+  <packageName>Intent.Common.CSharp</packageName>
+  <properties>
+    <property id="f58aec6a-90a4-4993-961e-08dc45d1cf90">
+      <name>Value</name>
+      <type>string</type>
+      <controlType>text</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes />
+    </property>
+  </properties>
+</stereotypeDefinition>
