@@ -7,7 +7,7 @@
   <iconType>UrlImagePath</iconType>
   <metadataRelativePath>Intent.Metadata</metadataRelativePath>
   <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
-  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.34" />
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.36" />
   <applications>
     <application id="a415ef85-982f-4a87-a356-ddcb8ef34446" relativePath="Intent.Modules.ModuleBuilder\ModuleBuilder.application.config" />
     <application id="89b15292-077f-46aa-8f8b-76072be30ccc" relativePath="Intent.Modules.ModuleBuilder.CSharp\ModuleBuilder.CSharp.application.config" />
@@ -57,5 +57,6 @@
     <application id="f87115d4-a7b2-4b55-9e86-7a6e86548703" name="Intent.Modules.Metadata.DocumentDB" relativePath="Intent.Modules.Metadata.DocumentDB/Intent.Modules.Metadata.DocumentDB.application.config" />
     <application id="ff9288ff-0806-4d3d-9084-5c5ab8eebcaa" name="Intent.Modules.Modelers.Services.GraphQL" relativePath="Intent.Modules.Modelers.Services.GraphQL/Intent.Modules.Modelers.Services.GraphQL.application.config" />
     <application id="298790da-18e6-4f3a-9b63-1edaa8606bc8" name="Intent.Modules.Modelers.Services.DomainInteractions" relativePath="Intent.Modules.Modelers.Services.DomainInteractions/Intent.Modules.Modelers.Services.DomainInteractions.application.config" />
+    <application id="ec72e814-e39a-47e3-9570-17eab35420ce" name="Intent.Modules.Modelers.Services.EventInteractions" relativePath="Intent.Modules.Modelers.Services.EventInteractions/Intent.Modules.Modelers.Services.EventInteractions.application.config" />
   </applications>
 </solution>

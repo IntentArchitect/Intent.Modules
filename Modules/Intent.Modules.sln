@@ -126,6 +126,8 @@ Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Ser
 EndProject
 Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.DomainInteractions", "Intent.Modules.Modelers.Services.DomainInteractions\Intent.Modules.Modelers.Services.DomainInteractions.csproj", "{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}"
 EndProject
+Project("{52B49DB5-3EA9-4095-B1A7-DF1AC22D7DAE}") = "Intent.Modules.Modelers.Services.EventInteractions", "Intent.Modules.Modelers.Services.EventInteractions\Intent.Modules.Modelers.Services.EventInteractions.csproj", "{9BCD766F-1590-471F-AE5C-9F958ACA7130}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -348,6 +350,10 @@ Global
 		{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EAECF732-6A98-4D4F-9E18-02BD112C6E8E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BCD766F-1590-471F-AE5C-9F958ACA7130}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BCD766F-1590-471F-AE5C-9F958ACA7130}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BCD766F-1590-471F-AE5C-9F958ACA7130}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BCD766F-1590-471F-AE5C-9F958ACA7130}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -412,6 +418,7 @@ Global
 		{3E1907E5-D07B-4803-9C2C-7C8904D02F00} = {E684E1EF-92C6-4A31-B7AF-DC0AA39C95C4}
 		{7F93839B-96D1-493A-8ED8-D30B3F05A35E} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 		{EAECF732-6A98-4D4F-9E18-02BD112C6E8E} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
+		{9BCD766F-1590-471F-AE5C-9F958ACA7130} = {C643FF80-0938-4E5C-81AD-E9FDFE6D9654}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A00AF88A-EA58-4AEA-B65F-92354533E2CA}
