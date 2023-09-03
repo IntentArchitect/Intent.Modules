@@ -38,9 +38,9 @@ public class ImplicitConstructorMapping : CSharpMappingBase
 
             return i;
         }
-        var init = (Model.TypeReference != null)
+        var init = Model.TypeReference != null
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
-            : new CSharpInvocationStatement($"new {_template.GetTypeName(((IElement)Model))}").WithoutSemicolon();
+            : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();
 
         foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
         {
@@ -55,7 +55,7 @@ public class ImplicitConstructorMapping : CSharpMappingBase
         return GetPathText(Children.First(x => x.Mapping != null).Mapping.ToPath.SkipLast(1).ToList(), _toReplacements);
     }
 
-    public override IEnumerable<CSharpStatement> GetMappingStatement()
+    public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return new CSharpAssignmentStatement(GetToStatement(), GetFromStatement());
     }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
-using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
@@ -48,14 +47,14 @@ public class ObjectUpdateMapping : CSharpMappingBase
         return null;
     }
 
-    public override IEnumerable<CSharpStatement> GetMappingStatement()
+    public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
         if (Mapping == null) // is traversal
         {
-          
+
             if (Model.TypeReference == null)
             {
-                foreach (var statement in Children.SelectMany(x => x.GetMappingStatement()))
+                foreach (var statement in Children.SelectMany(x => x.GetMappingStatements()))
                 {
                     yield return statement.WithSemicolon();
                 }
@@ -107,7 +106,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
 
                 SetFromReplacement(GetFromPath().Last().Element, "dto");
                 SetToReplacement(GetToPath().Last().Element, "entity");
-                method.AddStatements(Children.SelectMany(x => x.GetMappingStatement()).Select(x => x.WithSemicolon()));
+                method.AddStatements(Children.SelectMany(x => x.GetMappingStatements()).Select(x => x.WithSemicolon()));
 
                 method.AddStatement("return entity;");
             });

@@ -18,6 +18,15 @@ public class DefaultCSharpMapping : CSharpMappingBase
     public DefaultCSharpMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
     {
     }
+
+    public override CSharpStatement GetFromStatement()
+    {
+        if (Mapping.ToPath.Last().Element.TypeReference?.HasStringType() == true && Mapping.FromPath.Last().Element.TypeReference.HasStringType() == false)
+        {
+            return new CSharpInvocationStatement(base.GetFromStatement(), "ToString").WithoutSemicolon();
+        }
+        return base.GetFromStatement();
+    }
 }
 
 public abstract class CSharpMappingBase : ICSharpMapping
@@ -54,7 +63,7 @@ public abstract class CSharpMappingBase : ICSharpMapping
     //    Children = mappingModel.GetChildMappings(template);
     //}
 
-    public virtual IEnumerable<CSharpStatement> GetMappingStatement()
+    public virtual IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return new CSharpAssignmentStatement(GetToPathText(), GetFromPathText());
     }

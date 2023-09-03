@@ -76,10 +76,10 @@ public abstract class MappingManagerBase
         //ApplyReplacements(mapping);
 
         var mappingModel = new MappingModel(model, this);
-        var mapping = ResolveMappings(mappingModel, new ObjectUpdateMapping(mappingModel, _template));
+        var mapping = ResolveMappings(mappingModel);//, new ObjectUpdateMapping(mappingModel, _template));
         ApplyReplacements(mapping);
 
-        return mapping.GetMappingStatement().ToList();
+        return mapping.GetMappingStatements().ToList();
     }
 
     public void SetFromReplacement(IMetadataModel type, string replacement)

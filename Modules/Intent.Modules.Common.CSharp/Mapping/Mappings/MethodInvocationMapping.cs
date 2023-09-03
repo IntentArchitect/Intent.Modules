@@ -29,6 +29,11 @@ public class MethodInvocationMapping : CSharpMappingBase
             invocation.AddArgument(child.GetFromStatement());
         }
 
+        if (Children.Count > 3)
+        {
+            invocation.WithArgumentsOnNewLines();
+        }
+
         return invocation;
     }
 
@@ -37,7 +42,7 @@ public class MethodInvocationMapping : CSharpMappingBase
         return GetPathText(Children.First(x => x.Mapping != null).Mapping.ToPath.SkipLast(1).ToList(), _toReplacements);
     }
 
-    public override IEnumerable<CSharpStatement> GetMappingStatement()
+    public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
         yield return GetFromStatement();
     }

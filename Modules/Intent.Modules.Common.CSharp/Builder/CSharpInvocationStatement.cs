@@ -13,6 +13,10 @@ public class CSharpInvocationStatement : CSharpStatement, IHasCSharpStatements
     {
     }
 
+    public CSharpInvocationStatement(CSharpStatement reference, string methodName) : base($"{reference.ToString().TrimEnd()}.{methodName}")
+    {
+    }
+
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public CSharpInvocationStatement AddArgument(CSharpStatement argument, Action<CSharpStatement> configure = null)

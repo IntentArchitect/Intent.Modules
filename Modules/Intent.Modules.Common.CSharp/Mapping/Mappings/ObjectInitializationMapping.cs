@@ -90,7 +90,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
             else
             {
-                var init = (Model.TypeReference != null)
+                var init = Model.TypeReference != null
                     ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}")
                     : new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model)}");
                 init.AddStatements(Children.Select(x => new CSharpObjectInitStatement(x.GetToStatement().GetText(""), x.GetFromStatement())));
