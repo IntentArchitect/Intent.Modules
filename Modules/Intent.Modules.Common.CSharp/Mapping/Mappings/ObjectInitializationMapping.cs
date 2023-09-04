@@ -52,6 +52,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 }
                 if (Model.TypeReference.IsCollection)
                 {
+                    Template.CSharpFile.AddUsing("System.Linq");
                     var chain = new CSharpMethodChainStatement($"{GetFromPathText()}{(Mapping.FromPath.Last().Element.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
                     var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 
@@ -90,10 +91,14 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
             else
             {
-                var init = Model.TypeReference != null
+                var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
                     ? new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}")
                     : new CSharpObjectInitializerBlock($"new {_template.GetTypeName((IElement)Model)}");
-                init.AddStatements(Children.Select(x => new CSharpObjectInitStatement(x.GetToStatement().GetText(""), x.GetFromStatement())));
+                foreach (var child in Children)
+                {
+                    init.AddStatements(child.GetMappingStatements());
+                }
+                //init.AddStatements(Children.Select(x => new CSharpObjectInitStatement(x.GetToStatement().GetText(""), x.GetFromStatement())));
                 return init;
             }
         }

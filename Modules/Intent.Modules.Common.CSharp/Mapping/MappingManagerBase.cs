@@ -64,7 +64,7 @@ public abstract class MappingManagerBase
     {
         //var mapping = CreateMapping(new MappingModel(model), GetCreateMappingType);
         var mappingModel = new MappingModel(model, this);
-        var mapping = ResolveMappings(mappingModel, new ObjectInitializationMapping(mappingModel, _template));
+        var mapping = ResolveMappings(mappingModel);
         ApplyReplacements(mapping);
 
         return mapping.GetFromStatement();

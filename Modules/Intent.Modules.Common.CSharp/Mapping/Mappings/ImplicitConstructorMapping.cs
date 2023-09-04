@@ -38,13 +38,18 @@ public class ImplicitConstructorMapping : CSharpMappingBase
 
             return i;
         }
-        var init = Model.TypeReference != null
+        var init = !((IElement)Model).ChildElements.Any() && Model.TypeReference != null
             ? new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model.TypeReference.Element)}").WithoutSemicolon()
             : new CSharpInvocationStatement($"new {_template.GetTypeName((IElement)Model)}").WithoutSemicolon();
 
         foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
         {
             init.AddArgument(child.GetFromStatement());
+        }
+
+        if (Children.Count > 3)
+        {
+            init.WithArgumentsOnNewLines();
         }
 
         return init;

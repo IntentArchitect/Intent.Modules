@@ -22,6 +22,10 @@ public class DefaultCSharpMapping : CSharpMappingBase
         {
             return new CSharpInvocationStatement(base.GetFromStatement(), "ToString").WithoutSemicolon();
         }
+        if (Mapping.ToPath.Last().Element.TypeReference?.Element.SpecializationType == "Enum" && Mapping.FromPath.Last().Element.TypeReference.HasIntType())
+        {
+            return $"({Template.GetTypeName((IElement)Mapping.ToPath.Last().Element.TypeReference.Element)}){base.GetFromStatement()}";
+        }
         return base.GetFromStatement();
     }
 }
