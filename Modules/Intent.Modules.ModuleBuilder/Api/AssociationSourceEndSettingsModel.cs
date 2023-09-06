@@ -47,9 +47,9 @@ namespace Intent.ModuleBuilder.Api
             return this.GetSettings().TargetTypes().Any(t => t.Id == elementSettingsId);
         }
 
-        public List<ElementSettingsModel> TargetTypes()
+        public List<IElement> TargetTypes()
         {
-            return this.GetSettings().TargetTypes().Select(x => new ElementSettingsModel(x)).ToList();
+            return this.GetSettings().TargetTypes().ToList();
         }
 
         public AssociationEndSettingsPersistable ToPersistable()

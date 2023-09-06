@@ -19,7 +19,7 @@ namespace <#= Namespace #>
     {
 <#  foreach(var targetType in Model.SourceEnd.TargetTypes()) {  #>
         [IntentManaged(Mode.Fully)]
-        public static IList<<#= Model.TargetEnd.ApiModelName #>> <#= Model.TargetEnd.ApiPropertyName #>(this <#= targetType.ApiModelName #> model)
+        public static IList<<#= Model.TargetEnd.ApiModelName #>> <#= Model.TargetEnd.ApiPropertyName #>(this <#= targetType.GetApiModelName() #> model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == <#= Model.ApiModelName #>.SpecializationType && x.IsTargetEnd())
@@ -30,7 +30,7 @@ namespace <#= Namespace #>
 <#  }  #>
 <#  foreach(var targetType in Model.TargetEnd.TargetTypes()) {  #>
         [IntentManaged(Mode.Fully)]
-        public static IList<<#= Model.SourceEnd.ApiModelName #>> <#= Model.SourceEnd.ApiPropertyName #>(this <#= targetType.ApiModelName #> model)
+        public static IList<<#= Model.SourceEnd.ApiModelName #>> <#= Model.SourceEnd.ApiPropertyName #>(this <#= targetType.GetApiModelName() #> model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == <#= Model.ApiModelName #>.SpecializationType && x.IsSourceEnd())
@@ -41,7 +41,7 @@ namespace <#= Namespace #>
 <#  }  #>
 <#  foreach(var targetType in Model.TargetEnd.TargetTypes().Intersect(Model.SourceEnd.TargetTypes())) {  #>
         [IntentManaged(Mode.Fully)]
-        public static IList<<#= Model.Name.ToCSharpIdentifier() #>EndModel> <#= Model.Name.ToCSharpIdentifier() #>Ends(this <#= targetType.ApiModelName #> model)
+        public static IList<<#= Model.Name.ToCSharpIdentifier() #>EndModel> <#= Model.Name.ToCSharpIdentifier() #>Ends(this <#= targetType.GetApiModelName() #> model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Is<#= Model.Name.ToCSharpIdentifier() #>EndModel())

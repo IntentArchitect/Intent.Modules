@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
 
@@ -103,7 +104,7 @@ namespace <#= Namespace #>
     }
 
     [IntentManaged(Mode.Fully)]
-    public class <#=AssociationEndClassName #> : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class <#=AssociationEndClassName #> : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly <#= ClassName #> _association;
@@ -125,6 +126,7 @@ namespace <#= Namespace #>
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public <#= ClassName #> Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;

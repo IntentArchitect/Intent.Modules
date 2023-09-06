@@ -61,7 +61,7 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
 
         public string GetInterfaces()
         {
-            var interfaces = new List<string> { "IMetadataModel", "IHasStereotypes", "IHasName" };
+            var interfaces = new List<string> { "IMetadataModel", "IHasStereotypes", "IHasName", "IElementWrapper" };
             if (!Model.GetTypeReferenceSettings().Mode().IsDisabled() && Model.GetTypeReferenceSettings().Represents().IsReference())
             {
                 interfaces.Add("IHasTypeReference");

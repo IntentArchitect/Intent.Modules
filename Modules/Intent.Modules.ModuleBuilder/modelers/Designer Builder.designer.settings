@@ -104,6 +104,21 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Context Menu</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Menu Options</text>
+              <shortcut>ctrl + shift + c</shortcut>
+              <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -121,6 +136,21 @@ createElement("Association Event Settings", "[events]", element.id);</script>
           <allowTypeReference>false</allowTypeReference>
           <allowConvertToType p6:nil="true" xmlns:p6="http://www.w3.org/2001/XMLSchema-instance" />
           <allowSetValue>false</allowSetValue>
+          <typeOrder>
+            <type order="0">Context Menu</type>
+          </typeOrder>
+          <creationOptions>
+            <option type="element">
+              <text>Add Menu Options</text>
+              <shortcut>ctrl + shift + c</shortcut>
+              <icon type="CharacterBox" source="C|#ad2121" />
+              <specializationType>Context Menu</specializationType>
+              <specializationTypeId>d45e383d-90ba-4b64-aca7-34ca100cea21</specializationTypeId>
+              <defaultName>[context menu]</defaultName>
+              <allowMultiple>false</allowMultiple>
+            </option>
+          </creationOptions>
+          <scriptOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>

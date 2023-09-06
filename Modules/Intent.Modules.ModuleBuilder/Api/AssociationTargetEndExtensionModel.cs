@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.IArchitect.Agent.Persistence.Model.Common;
 using Intent.Metadata.Models;
 using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
@@ -37,6 +38,11 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
+        public ContextMenuModel MenuOptions => _element.ChildElements
+            .GetElementsOfType(ContextMenuModel.SpecializationTypeId)
+            .Select(x => new ContextMenuModel(x))
+            .SingleOrDefault();
+
         public override string ToString()
         {
             return _element.ToString();
@@ -58,6 +64,28 @@ namespace Intent.ModuleBuilder.Api
         public override int GetHashCode()
         {
             return (_element != null ? _element.GetHashCode() : 0);
+        }
+
+        public AssociationEndSettingExtensionPersistable ToPersistable()
+        {
+            return new AssociationEndSettingExtensionPersistable
+            {
+                TypeReferenceExtension = new TypeReferenceExtensionSettingPersistable()
+                {
+                    IsRequired = true,
+                    TargetTypes = this.GetAssociationEndExtensionSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
+                    DefaultTypeId = string.IsNullOrWhiteSpace(this.GetAssociationEndExtensionSettings().DefaultTypeId()) ? this.GetAssociationEndExtensionSettings().DefaultTypeId() : null,
+                    AllowIsNavigable = Enum.TryParse<BooleanExtensionOptions>(this.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowTargetIsNavigable) ? allowTargetIsNavigable : BooleanExtensionOptions.Inherit,
+                    AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowTargetIsNullable) ? allowTargetIsNullable : BooleanExtensionOptions.Inherit,
+                    AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.GetAssociationEndExtensionSettings().AllowCollection().Value, out var allowTargetIsCollection) ? allowTargetIsCollection : BooleanExtensionOptions.Inherit,
+                    DisplayName = this.GetAssociationEndExtensionSettings().DisplayName(),
+                    Hint = this.GetAssociationEndExtensionSettings().Hint()
+                },
+                CreationOptions = this.MenuOptions?.ElementCreations.Select(x => x.ToPersistable())
+                    .Concat(this.MenuOptions.AssociationCreations.Select(x => x.ToPersistable()))
+                    .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
+                    .ToList(),
+            };
         }
     }
 

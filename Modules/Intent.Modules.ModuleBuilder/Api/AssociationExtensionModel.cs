@@ -72,34 +72,8 @@ namespace Intent.ModuleBuilder.Api
             {
                 SpecializationTypeId = this.TypeReference.Element.Id,
                 SpecializationType = this.TypeReference.Element.Name,
-                SourceEndExtension = new AssociationEndSettingExtensionPersistable
-                {
-                    TypeReferenceExtension = new TypeReferenceExtensionSettingPersistable()
-                    {
-                        IsRequired = true,
-                        TargetTypes = this.SourceEnd.GetAssociationEndExtensionSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
-                        DefaultTypeId = string.IsNullOrWhiteSpace(this.SourceEnd.GetAssociationEndExtensionSettings().DefaultTypeId()) ? this.SourceEnd.GetAssociationEndExtensionSettings().DefaultTypeId() : null,
-                        AllowIsNavigable = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowSourceIsNavigable) ? allowSourceIsNavigable : BooleanExtensionOptions.Inherit,
-                        AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowSourceIsNullable) ? allowSourceIsNullable : BooleanExtensionOptions.Inherit,
-                        AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.SourceEnd.GetAssociationEndExtensionSettings().AllowCollection().Value, out var allowSourceIsCollection) ? allowSourceIsCollection : BooleanExtensionOptions.Inherit,
-                        DisplayName = this.SourceEnd.GetAssociationEndExtensionSettings().DisplayName(),
-                        Hint = this.SourceEnd.GetAssociationEndExtensionSettings().Hint()
-                    },
-                },
-                TargetEndExtension = new AssociationEndSettingExtensionPersistable
-                {
-                    TypeReferenceExtension = new TypeReferenceExtensionSettingPersistable()
-                    {
-                        IsRequired = true,
-                        TargetTypes = this.TargetEnd.GetAssociationEndExtensionSettings().TargetTypes()?.Select(e => e.Name).ToArray(),
-                        DefaultTypeId = string.IsNullOrWhiteSpace(this.TargetEnd.GetAssociationEndExtensionSettings().DefaultTypeId()) ? this.TargetEnd.GetAssociationEndExtensionSettings().DefaultTypeId() : null,
-                        AllowIsNavigable = Enum.TryParse<BooleanExtensionOptions>(this.TargetEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowTargetIsNavigable) ? allowTargetIsNavigable : BooleanExtensionOptions.Inherit,
-                        AllowIsNullable = Enum.TryParse<BooleanExtensionOptions>(this.TargetEnd.GetAssociationEndExtensionSettings().AllowNullable().Value, out var allowTargetIsNullable) ? allowTargetIsNullable : BooleanExtensionOptions.Inherit,
-                        AllowIsCollection = Enum.TryParse<BooleanExtensionOptions>(this.TargetEnd.GetAssociationEndExtensionSettings().AllowCollection().Value, out var allowTargetIsCollection) ? allowTargetIsCollection : BooleanExtensionOptions.Inherit,
-                        DisplayName = this.TargetEnd.GetAssociationEndExtensionSettings().DisplayName(),
-                        Hint = this.TargetEnd.GetAssociationEndExtensionSettings().Hint()
-                    },
-                },
+                SourceEndExtension = this.SourceEnd.ToPersistable(),
+                TargetEndExtension = this.TargetEnd.ToPersistable(),
                 Macros = this.EventSettings?.ToPersistable()
             };
         }
