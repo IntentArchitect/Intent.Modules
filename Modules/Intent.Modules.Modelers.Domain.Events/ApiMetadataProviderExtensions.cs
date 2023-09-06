@@ -18,5 +18,12 @@ namespace Intent.Modelers.Domain.Events.Api
                 .ToList();
         }
 
+        public static IList<DomainEventHandlerModel> GetDomainEventHandlerModels(this IDesigner designer)
+        {
+            return designer.GetElementsOfType(DomainEventHandlerModel.SpecializationTypeId)
+                .Select(x => new DomainEventHandlerModel(x))
+                .ToList();
+        }
+
     }
 }

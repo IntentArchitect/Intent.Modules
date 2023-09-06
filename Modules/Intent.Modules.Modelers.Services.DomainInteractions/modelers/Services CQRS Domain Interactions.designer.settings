@@ -118,16 +118,43 @@ vertical-align: center`</style>
                 <childElementVisualSettings />
               </childElementVisualSetting>
               <childElementVisualSetting type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
-                <size width="${w}" height="${h}" />
-                <position x="${x}" y="${y}" />
-                <display />
-                <defaultSize width="${x}" height="${y}" />
+                <size width="`${parent.w}`" height="18" />
+                <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 66}`" />
+                <display>
+                  <drawText>
+                    <text>return label;</text>
+                    <size width="${w - 26}" height="${h}" />
+                    <position x="${x + 24}" y="${y}" />
+                  </drawText>
+                  <drawSvgResource>
+                    <path>method.svg</path>
+                    <size width="20" height="20" />
+                    <position x="${x}" y="${y}" />
+                  </drawSvgResource>
+                </display>
+                <defaultSize width="`${parent.w}`" height="18" />
                 <childElementVisualSettings />
               </childElementVisualSetting>
             </childElementVisualSettings>
           </visualSettings>
         </elementVisualSettings>
-        <associationVisualSettings />
+        <associationVisualSettings>
+          <visualSettings type="Domain Event Origin Association" typeId="4c0cc50b-8a9d-43cd-b731-9f354f69f3c9">
+            <lineType>Curved</lineType>
+            <lineDashArray>return "3,7";</lineDashArray>
+            <sourceEnd>
+              <pointIndicator>
+                <path>return `a 4,4 0 1,0 4,4 
+        a 4,4 0 1,0 -4,4`;</path>
+              </pointIndicator>
+            </sourceEnd>
+            <targetEnd>
+              <pointIndicator>
+                <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
+              </pointIndicator>
+            </targetEnd>
+          </visualSettings>
+        </associationVisualSettings>
       </diagramSettings>
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">

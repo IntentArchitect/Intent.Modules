@@ -12,10 +12,10 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Events.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class DiagramExtensionModel : DiagramModel
+    public class DomainDiagramExtensionModel : DiagramModel
     {
         [IntentManaged(Mode.Ignore)]
-        public DiagramExtensionModel(IElement element) : base(element)
+        public DomainDiagramExtensionModel(IElement element) : base(element)
         {
         }
 

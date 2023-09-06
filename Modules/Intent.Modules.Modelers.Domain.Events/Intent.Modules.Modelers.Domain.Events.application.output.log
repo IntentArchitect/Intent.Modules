@@ -20,8 +20,8 @@
       <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#fe52fa70-a8f4-4ecb-974f-122d1bd3cb8e</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/DiagramExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>DiagramExtensionModel.cs</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>Api/DomainDiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainDiagramExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -38,6 +38,14 @@
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DomainEventHandlerAssociationModel.cs</ApplicationRelativeFilePath>
       <ProjectRelativeFilePath>DomainEventHandlerAssociationModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementModel#d80e61c5-7e4c-4175-9df1-0413f664824c</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DomainEventHandlerModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DomainEventHandlerModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
     <FileLog>
@@ -106,11 +114,11 @@
     </FileLog>
     <FileLog>
       <ProjectId>1cc97c8d-4e22-4123-9868-664e60bbe27d</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#53628254-cfc4-4427-a763-bae03fa1cd61</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#fa160bd4-a0e3-4035-806f-009106231c7b</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>Api/ServiceExtensionModel.cs</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>ServiceExtensionModel.cs</ProjectRelativeFilePath>
-      <IsIgnored>false</IsIgnored>
+      <ApplicationRelativeFilePath>Api/ServicesDiagramExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicesDiagramExtensionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>true</IsIgnored>
     </FileLog>
     <FileLog>
       <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
@@ -162,10 +170,10 @@
     </FileLog>
     <FileLog>
       <ProjectId>54740661-e598-4671-ade3-d2f798401653</ProjectId>
-      <CorrelationId>Intent.ModuleBuilder.ReadMe</CorrelationId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiPackageExtensionModel#fb341b11-cf32-4c12-aba3-30f1a86c1281</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
-      <ApplicationRelativeFilePath>README.txt</ApplicationRelativeFilePath>
-      <ProjectRelativeFilePath>README.txt</ProjectRelativeFilePath>
+      <ApplicationRelativeFilePath>ServicesPackageExtensionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>ServicesPackageExtensionModel.cs</ProjectRelativeFilePath>
       <IsIgnored>false</IsIgnored>
     </FileLog>
   </FileLogs>

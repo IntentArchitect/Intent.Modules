@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -88,7 +89,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class CreateEntityActionEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class CreateEntityActionEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly CreateEntityActionModel _association;
@@ -110,6 +111,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public CreateEntityActionModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public IAssociationEnd InternalAssociationEnd => _associationEnd;
         public IAssociation InternalAssociation => _association.InternalAssociation;
         public bool IsNavigable => _associationEnd.IsNavigable;

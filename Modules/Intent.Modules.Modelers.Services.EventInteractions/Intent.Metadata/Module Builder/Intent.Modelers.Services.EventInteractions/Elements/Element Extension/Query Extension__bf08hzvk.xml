@@ -71,7 +71,7 @@
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
             <isRequired>true</isRequired>
-            <typePackageName>Intent.Modules.Modelers.Services.EventInteractions</typePackageName>
+            <typePackageName>Intent.Modelers.Services.EventInteractions</typePackageName>
             <typePackageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</typePackageId>
             <stereotypes />
             <genericTypeParameters />
