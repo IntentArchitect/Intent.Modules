@@ -2,16 +2,18 @@
 /// <reference path="../_common/getDefaultRoutePrefix.ts" />
 
 function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void {
-    let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
+    const httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
 
-    if (!element.getParent().hasStereotype(httpServiceSettingsId)) {
-        element.getParent().addStereotype(httpServiceSettingsId);
+    if (!element.hasStereotype(httpServiceSettingsId)) {
+        element.addStereotype(httpServiceSettingsId);
 
-        let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
-        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
+        let serviceBaseName = removeSuffix(element.getName(), "Service");
+        element.getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
     }
 
-    applyHttpSettingsToOperations(element);
+    element.getChildren("Operation").forEach(x => {
+        applyHttpSettingsToOperations(x);
+    })
 }
 
 function getRoute(serviceBaseName: string): string {
@@ -25,8 +27,7 @@ function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi):
     if (!operation.hasStereotype(httpSettingsId)) {
         operation.addStereotype(httpSettingsId);
     }
-
-    const httpSettings = operation.getStereotype(httpSettingsId);
+    let httpSettings = operation.getStereotype(httpSettingsId);
     if (operation.getName().startsWith("Create")) {
         httpSettings.getProperty("Verb").setValue("POST");
         httpSettings.getProperty("Route").setValue(``)
@@ -54,10 +55,11 @@ function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi):
     });
 }
 
+
 /**
  * Used by Intent.Modules\Modules\Intent.Metadata.WebApi
  *
  * Source code here:
- * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/operation/expose-as-http-endpoint.ts
+ * https://github.com/IntentArchitect/Intent.Modules/blob/master/DesignerMacros/src/services-expose-as-http-endpoint/service/expose-as-http-endpoint.ts
  */
 exposeAsHttpEndPoint(element);

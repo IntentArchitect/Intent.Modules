@@ -669,14 +669,38 @@ function getRouteParts(request, mappedDetails) {
     }
     return routeParts;
 }
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
 /// &lt;reference path="../_common/getFolderParts.ts" /&gt;
 /// &lt;reference path="../_common/getRouteParts.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
 function exposeAsHttpEndPoint(command) {
     var _a, _b;
     const mappedDetails = getMappedRequestDetails(command);
     // Add the folder parts
-    const routeParts = ["api"];
+    const routeParts = [];
+    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
+    routeParts.push(...defaultRoutePrefixParts);
     routeParts.push(...getFolderParts(command, mappedDetails));
     if (mappedDetails != null) {
         routeParts.push(...getRouteParts(command, mappedDetails));
@@ -1403,14 +1427,38 @@ function getRouteParts(request, mappedDetails) {
     }
     return routeParts;
 }
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
 /// &lt;reference path="../_common/getFolderParts.ts" /&gt;
 /// &lt;reference path="../_common/getRouteParts.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
 function exposeAsHttpEndPoint(query) {
     var _a;
     const mappedDetails = getMappedRequestDetails(query);
     // Add the folder parts
-    const routeParts = ["api"];
+    const routeParts = [];
+    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
+    routeParts.push(...defaultRoutePrefixParts);
     routeParts.push(...getFolderParts(query, mappedDetails));
     if (mappedDetails != null) {
         routeParts.push(...getRouteParts(query, mappedDetails));

@@ -1,3 +1,7 @@
+### Version 4.3.0
+
+- Improvement: Scripts updated to cater for Default Route Prefix for API Services.
+
 ### Version 4.2.6
 
 - Fixed: Under certain circumstances the `Expose as Http Endpoint` scripts would generate incorrect routes.

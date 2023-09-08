@@ -1,0 +1,16 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "outFile": "./_dist.js",
+    "removeComments": false,
+    "sourceMap": false,
+    "target": "ES2017",
+    "types": []
+  },
+  "include": [
+    "**/*"
+  ],
+  "exclude": []
+}
