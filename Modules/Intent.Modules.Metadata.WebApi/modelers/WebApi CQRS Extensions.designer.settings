@@ -739,29 +739,55 @@ exposeAsHttpEndPoint(element);
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
-const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+          <script>function execute() {
+    const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
+    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
 
-if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
-    // Api version Stereotype removed
-    route = route.replace("{version}/", "");
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
+    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
+        // Api version Stereotype removed
+        route = route.replace("{version}/", "");
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
+
+    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
+        // Api version Stereotype added
+        let defaultRoutePrefix = getDefaultRoutePrefix(false);
+        let startIndex = route.indexOf(defaultRoutePrefix);
+        if (startIndex == 0) {
+            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
+        } else {
+            route = `{version}/${(route)}`;
+        }
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
 }
 
-if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
-    // Api version Stereotype added
-    let startIndex = route.indexOf("api/");
-    if (startIndex == 0) {
-        route = `api/{version}/${(route.substring(4))}`;
-    } else {
-        route = `{version}/${(route)}`;
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) { return defaultApiRoutePrefix; }
+    
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) { return defaultApiRoutePrefix; }
+    
+    let route = field.value ?? "";
+
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
     }
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
-}</script>
+
+    return route;
+}
+
+execute();</script>
         </macro>
       </macros>
     </elementExtension>
@@ -1485,29 +1511,55 @@ exposeAsHttpEndPoint(element);
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
-const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+          <script>function execute() {
+    const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
+    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
 
-if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
-    // Api version Stereotype removed
-    route = route.replace("{version}/", "");
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
+    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
+        // Api version Stereotype removed
+        route = route.replace("{version}/", "");
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
+
+    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
+        // Api version Stereotype added
+        let defaultRoutePrefix = getDefaultRoutePrefix(false);
+        let startIndex = route.indexOf(defaultRoutePrefix);
+        if (startIndex == 0) {
+            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
+        } else {
+            route = `{version}/${(route)}`;
+        }
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
 }
 
-if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
-    // Api version Stereotype added
-    let startIndex = route.indexOf("api/");
-    if (startIndex == 0) {
-        route = `api/{version}/${(route.substring(4))}`;
-    } else {
-        route = `{version}/${(route)}`;
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) { return defaultApiRoutePrefix; }
+    
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) { return defaultApiRoutePrefix; }
+    
+    let route = field.value ?? "";
+
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
     }
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
-}</script>
+
+    return route;
+}
+
+execute();</script>
         </macro>
       </macros>
     </elementExtension>
