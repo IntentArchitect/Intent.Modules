@@ -109,6 +109,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Anchor Points");
             }
 
+            public bool AutoResizeDefault()
+            {
+                return _stereotype.GetProperty<bool>("Auto-Resize Default");
+            }
+
         }
 
     }

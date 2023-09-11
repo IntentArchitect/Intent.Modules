@@ -87,6 +87,19 @@ namespace <#= Namespace #>
         
         public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;
 <# } #>
+<#  if (Model.SourceEnd.MenuOptions != null) {
+        foreach(var creationOption in Model.SourceEnd.MenuOptions.ElementCreations) { #>
+        public <#= creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple()) #> <#= creationOption.GetCreationOptionName() #> => InternalElement.ChildElements
+            .GetElementsOfType(<#= creationOption.ApiModelName #>.SpecializationTypeId)
+            .Select(x => new <#= creationOption.ApiModelName #>(x))
+<#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>
+            .ToList();
+<#          } else { #>
+            .SingleOrDefault();
+<#          } #>
+
+<#      } #>
+<#  } #>
     }
 
     [IntentManaged(Mode.Fully)]
@@ -97,6 +110,19 @@ namespace <#= Namespace #>
         public <#=AssociationTargetEndClassName #>(IAssociationEnd associationEnd, <#= ClassName #> association) : base(associationEnd, association)
         {
         }
+<#  if (Model.TargetEnd.MenuOptions != null) {
+        foreach(var creationOption in Model.TargetEnd.MenuOptions.ElementCreations) { #>
+        public <#= creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple()) #> <#= creationOption.GetCreationOptionName() #> => InternalElement.ChildElements
+            .GetElementsOfType(<#= creationOption.ApiModelName #>.SpecializationTypeId)
+            .Select(x => new <#= creationOption.ApiModelName #>(x))
+<#          if (creationOption.GetOptionSettings().AllowMultiple()) { #>
+            .ToList();
+<#          } else { #>
+            .SingleOrDefault();
+<#          } #>
+
+<#      } #>
+<#  } #>
 <# if (Model.TargetEnd.MenuOptions?.MappingOptions.Any() == true && Model.SourceEnd.MenuOptions?.MappingOptions.Any() != true) { #>
         
         public IEnumerable<IElementToElementMapping> Mappings => _associationEnd.Mappings;

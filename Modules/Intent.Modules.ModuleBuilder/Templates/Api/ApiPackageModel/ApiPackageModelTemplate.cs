@@ -98,18 +98,18 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiPackageModel
             this.Write("        public ");
             
             #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(FormatForCollection(creationOption.ApiModelName, creationOption.AllowMultiple())));
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName.FormatForCollection(creationOption.AllowMultiple())));
             
             #line default
             #line hidden
             this.Write(" ");
             
             #line 45 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(GetCreationOptionName(creationOption)));
+            this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.GetCreationOptionName()));
             
             #line default
             #line hidden
-            this.Write(" => UnderlyingPackage.ChildElements\r\n            .GetElementsOfType(");
+            this.Write(" => _element.ChildElements\r\n            .GetElementsOfType(");
             
             #line 46 "C:\Dev\Intent.Modules\Modules\Intent.Modules.ModuleBuilder\Templates\Api\ApiPackageModel\ApiPackageModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(creationOption.ApiModelName));

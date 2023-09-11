@@ -75,21 +75,6 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiElementModel
             return string.Join(", ", interfaces);
         }
 
-        private static string FormatForCollection(string name, bool asCollection)
-        {
-            return asCollection ? $"IList<{name}>" : name;
-        }
-
-        private static string GetCreationOptionName(ElementCreationOptionModel option)
-        {
-            if (option.GetOptionSettings().ApiModelName() != null)
-            {
-                return option.GetOptionSettings().ApiModelName();
-            }
-            var name = option.Name.Replace("Add ", "").Replace("New ", "").ToCSharpIdentifier();
-            return option.GetOptionSettings().AllowMultiple() ? name.ToPluralName() : name;
-        }
-
         private bool ExistsInBase(ElementCreationOptionModel creationOption)
         {
             return Model.GetInheritedType()?.MenuOptions?.ElementCreations.Any(x => x.Type.Id == creationOption.Type.Id) ??

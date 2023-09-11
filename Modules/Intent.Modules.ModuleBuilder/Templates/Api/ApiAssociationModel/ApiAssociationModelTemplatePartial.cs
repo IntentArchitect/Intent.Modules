@@ -29,6 +29,11 @@ namespace Intent.Modules.ModuleBuilder.Templates.Api.ApiAssociationModel
         public string AssociationSourceEndClassName => $"{Model.SourceEnd.Name.ToCSharpIdentifier()}Model";
         public string AssociationTargetEndClassName => $"{Model.TargetEnd.Name.ToCSharpIdentifier()}Model";
 
+        private static string FormatForCollection(string name, bool asCollection)
+        {
+            return asCollection ? $"IList<{name}>" : name;
+        }
+
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         protected override CSharpFileConfig DefineFileConfig()
         {
