@@ -13,7 +13,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
     {
         private readonly ICSharpFileBuilderTemplate _template;
 
-        public ClassConstructionMapping(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+        public ClassConstructionMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
         {
             _template = template;
         }
@@ -28,7 +28,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
     {
         private readonly ICSharpFileBuilderTemplate _template;
 
-        public ObjectInitializationMapping(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+        public ObjectInitializationMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
         {
             _template = template;
         }
@@ -37,28 +37,28 @@ namespace Intent.Modules.Common.CSharp.Mapping
             _template = template;
         }
 
-        public override CSharpStatement GetFromStatement()
+        public override CSharpStatement GetSourceStatement()
         {
             if (Mapping == null)
             {
-                SetToReplacement(Model, null);
+                SetTargetReplacement(Model, null);
                 return GetConstructorStatement();
             }
             else
             {
                 if (Children.Count == 0)
                 {
-                    return $"{GetFromPathText()}";
+                    return $"{GetSourcePathText()}";
                 }
                 if (Model.TypeReference.IsCollection)
                 {
                     Template.CSharpFile.AddUsing("System.Linq");
-                    var chain = new CSharpMethodChainStatement($"{GetFromPathText()}{(Mapping.FromPath.Last().Element.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
+                    var chain = new CSharpMethodChainStatement($"{GetSourcePathText()}{(Mapping.SourceElement.TypeReference.IsNullable ? "?" : "")}").WithoutSemicolon();
                     var select = new CSharpInvocationStatement($"Select").WithoutSemicolon();
 
                     var variableName = string.Join("", Model.Name.Where(char.IsUpper).Select(char.ToLower));
-                    SetFromReplacement(GetFromPath().Last().Element, variableName);
-                    SetToReplacement(GetToPath().Last().Element, null);
+                    SetSourceReplacement(GetSourcePath().Last().Element, variableName);
+                    SetTargetReplacement(GetTargetPath().Last().Element, null);
 
                     select.AddArgument(new CSharpLambdaBlock(variableName).WithExpressionBody(GetConstructorStatement()));
 
@@ -69,7 +69,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 }
                 else
                 {
-                    return GetFromPathText();
+                    return GetSourcePathText();
                 }
             }
         }
@@ -82,11 +82,11 @@ namespace Intent.Modules.Common.CSharp.Mapping
                 var children = Children.Where(x => x is not ImplicitConstructorMapping || x.Model.TypeReference != null).ToList();
                 if (!children.Any())
                 {
-                    return ctor.GetFromStatement();
+                    return ctor.GetSourceStatement();
                 }
 
-                var init = new CSharpObjectInitializerBlock(ctor.GetFromStatement().GetText(""));
-                init.AddStatements(children.Select(x => new CSharpObjectInitStatement(x.GetToStatement().GetText(""), x.GetFromStatement())));
+                var init = new CSharpObjectInitializerBlock(ctor.GetSourceStatement().GetText(""));
+                init.AddStatements(children.Select(x => new CSharpObjectInitStatement(x.GetTargetStatement().GetText(""), x.GetSourceStatement())));
                 return init;
             }
             else
@@ -103,7 +103,7 @@ namespace Intent.Modules.Common.CSharp.Mapping
             }
         }
 
-        public override CSharpStatement GetToStatement()
+        public override CSharpStatement GetTargetStatement()
         {
             return Model.Name.ToPascalCase();
         }

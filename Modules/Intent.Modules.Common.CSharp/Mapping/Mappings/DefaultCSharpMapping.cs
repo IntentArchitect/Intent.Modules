@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class DefaultCSharpMapping : CSharpMappingBase
 {
-    public DefaultCSharpMapping(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public DefaultCSharpMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
     {
     }
 
@@ -16,16 +16,28 @@ public class DefaultCSharpMapping : CSharpMappingBase
     {
     }
 
-    public override CSharpStatement GetFromStatement()
+    public override CSharpStatement GetSourceStatement()
     {
-        if (Mapping.ToPath.Last().Element.TypeReference?.HasStringType() == true && Mapping.FromPath.Last().Element.TypeReference.HasStringType() == false)
+        if (Mapping.IsOneToOne() &&
+            Mapping.TargetElement.TypeReference?.HasStringType() == true &&
+            Mapping.SourceElement.TypeReference.HasStringType() == false)
         {
-            return new CSharpInvocationStatement(base.GetFromStatement(), "ToString").WithoutSemicolon();
+            return new CSharpInvocationStatement(base.GetSourceStatement(), "ToString").WithoutSemicolon();
         }
-        if (Mapping.ToPath.Last().Element.TypeReference?.Element.SpecializationType == "Enum" && Mapping.FromPath.Last().Element.TypeReference.HasIntType())
+        if (Mapping.IsOneToOne() &&
+            Mapping.TargetElement.TypeReference?.Element?.SpecializationType == "Enum" && 
+            Mapping.SourceElement.TypeReference.HasIntType())
         {
-            return $"({Template.GetTypeName((IElement)Mapping.ToPath.Last().Element.TypeReference.Element)}){base.GetFromStatement()}";
+            return $"({Template.GetTypeName((IElement)Mapping.TargetElement.TypeReference.Element)}){base.GetSourceStatement()}";
         }
-        return base.GetFromStatement();
+        return base.GetSourceStatement();
+    }
+}
+
+public static class ElementToElementMappedEndExtensions
+{
+    public static bool IsOneToOne(this IElementToElementMappedEnd model)
+    {
+        return model.Sources.Count() == 1 && model.MappingExpression.Trim() == $"{{{model.Sources.Single().ExpressionIdentifier}}}";
     }
 }

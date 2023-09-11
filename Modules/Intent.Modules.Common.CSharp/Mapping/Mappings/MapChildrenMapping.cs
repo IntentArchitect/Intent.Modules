@@ -8,7 +8,7 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class MapChildrenMapping : CSharpMappingBase
 {
-    public MapChildrenMapping(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public MapChildrenMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
     {
     }
 

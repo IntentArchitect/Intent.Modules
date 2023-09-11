@@ -8,12 +8,12 @@ public interface ICSharpMapping
 {
     public ICanBeReferencedType Model { get; }
     public IList<ICSharpMapping> Children { get; }
-    public IElementToElementMappingConnection Mapping { get; set; }
+    public IElementToElementMappedEnd Mapping { get; set; }
     IEnumerable<CSharpStatement> GetMappingStatements();
 
-    CSharpStatement GetFromStatement();
-    CSharpStatement GetToStatement();
+    CSharpStatement GetSourceStatement();
+    CSharpStatement GetTargetStatement();
 
-    void SetFromReplacement(IMetadataModel type, string replacement);
-    void SetToReplacement(IMetadataModel type, string replacement);
+    void SetSourceReplacement(IMetadataModel type, string replacement);
+    void SetTargetReplacement(IMetadataModel type, string replacement);
 }

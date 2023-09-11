@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
@@ -9,8 +10,12 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public class ForLoopMethodInvocationMapping : MethodInvocationMapping
 {
-    public ForLoopMethodInvocationMapping(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public ForLoopMethodInvocationMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
     {
+        if (mapping == null)
+        {
+            throw new ArgumentException("An explicit mapping is required", nameof(mapping));
+        }
     }
 
     public ForLoopMethodInvocationMapping(MappingModel model, ICSharpFileBuilderTemplate template) : base(model, template)
@@ -19,9 +24,9 @@ public class ForLoopMethodInvocationMapping : MethodInvocationMapping
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
-        var variableName = GetFromPath().Last().Name.Singularize().ToLocalVariableName();
-        var forLoop = new CSharpStatementBlock($"foreach(var {variableName} in {GetFromPathText()})");
-        SetFromReplacement(GetFromPath().Last().Element, variableName);
+        var variableName = GetSourcePath().Last().Name.Singularize().ToLocalVariableName();
+        var forLoop = new CSharpStatementBlock($"foreach(var {variableName} in {GetSourcePathText()})");
+        SetSourceReplacement(GetSourcePath().Last().Element, variableName);
         forLoop.AddStatements(base.GetMappingStatements());
 
         yield return forLoop;

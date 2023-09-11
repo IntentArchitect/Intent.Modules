@@ -13,7 +13,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
 {
     private readonly ICSharpFileBuilderTemplate _template;
 
-    public ObjectUpdateMapping(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public ObjectUpdateMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
     {
         _template = template;
     }
@@ -22,21 +22,21 @@ public class ObjectUpdateMapping : CSharpMappingBase
         _template = template;
     }
 
-    public override CSharpStatement GetFromStatement()
+    public override CSharpStatement GetSourceStatement()
     {
         if (Mapping == null) // is traversal
         {
-            return GetPathText(GetFromPath(), _fromReplacements);
+            return GetPathText(GetSourcePath(), _sourceReplacements);
         }
         else
         {
             if (Children.Count == 0)
             {
-                return $"{GetFromPathText()}";
+                return $"{GetSourcePathText()}";
             }
             else if (Model.TypeReference.IsCollection)
             {
-                var from = $"UpdateHelper.CreateOrUpdateCollection({GetToPathText()}, {GetFromPathText()}, (e, d) => e.Id == d.Id, CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
+                var from = $"UpdateHelper.CreateOrUpdateCollection({GetTargetPathText()}, {GetSourcePathText()}, (e, d) => e.Id == d.Id, CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()})";
 
                 CreateUpdateMethod($"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}");
 
@@ -61,21 +61,21 @@ public class ObjectUpdateMapping : CSharpMappingBase
             }
             else
             {
-                yield return new CSharpAssignmentStatement(GetToStatement(), $"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}({GetToStatement()}, {GetFromStatement()})");
+                yield return new CSharpAssignmentStatement(GetTargetStatement(), $"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}({GetTargetStatement()}, {GetSourceStatement()})");
 
                 CreateUpdateMethod($"CreateOrUpdate{Model.TypeReference.Element.Name.ToPascalCase()}");
             }
         }
         else
         {
-            yield return new CSharpAssignmentStatement(GetToStatement(), GetFromStatement());
+            yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
         }
     }
 
     private void CreateUpdateMethod(string updateMethodName)
     {
         var domainTypeName = _template.GetTypeName((IElement)Model.TypeReference.Element);
-        var fromField = GetFromPath().Last().Element;
+        var fromField = GetSourcePath().Last().Element;
         var fieldIsNullable = fromField.TypeReference.IsNullable;
 
         var @class = _template.CSharpFile.Classes.First();
@@ -94,7 +94,7 @@ public class ObjectUpdateMapping : CSharpMappingBase
                 method.AddAttribute(CSharpIntentManagedAttribute.Fully());
                 method.Private().Static();
                 method.AddParameter(_template.GetTypeName(Model.TypeReference.Element.AsTypeReference(true, false)), "entity");
-                method.AddParameter(_template.GetTypeName((IElement)GetFromPath().Last().Element.TypeReference.Element), "dto");
+                method.AddParameter(_template.GetTypeName((IElement)GetSourcePath().Last().Element.TypeReference.Element), "dto");
 
                 if (fieldIsNullable)
                 {
@@ -104,8 +104,8 @@ public class ObjectUpdateMapping : CSharpMappingBase
 
                 method.AddStatement($"entity ??= new {_template.GetTypeName((IElement)Model.TypeReference.Element)}();");
 
-                SetFromReplacement(GetFromPath().Last().Element, "dto");
-                SetToReplacement(GetToPath().Last().Element, "entity");
+                SetSourceReplacement(GetSourcePath().Last().Element, "dto");
+                SetTargetReplacement(GetTargetPath().Last().Element, "entity");
                 method.AddStatements(Children.SelectMany(x => x.GetMappingStatements()).Select(x => x.WithSemicolon()));
 
                 method.AddStatement("return entity;");

@@ -13,7 +13,7 @@ public class ImplicitConstructorMapping : CSharpMappingBase
 {
     private readonly ICSharpFileBuilderTemplate _template;
 
-    public ImplicitConstructorMapping(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
+    public ImplicitConstructorMapping(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template) : base(model, mapping, children, template)
     {
         _template = template;
     }
@@ -23,7 +23,7 @@ public class ImplicitConstructorMapping : CSharpMappingBase
         _template = template;
     }
 
-    public override CSharpStatement GetFromStatement()
+    public override CSharpStatement GetSourceStatement()
     {
         var typeTemplate = _template.GetTypeInfo(((IElement)Model).ParentElement.AsTypeReference())?.Template as ICSharpFileBuilderTemplate;
         if (typeTemplate?.CSharpFile.GetReferenceForModel(Model.Id) is CSharpConstructor)
@@ -31,7 +31,7 @@ public class ImplicitConstructorMapping : CSharpMappingBase
             var i = new CSharpInvocationStatement($"new {_template.GetTypeName(((IElement)Model).ParentElement)}").WithoutSemicolon();
             foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
             {
-                i.AddArgument(child.GetFromStatement());
+                i.AddArgument(child.GetSourceStatement());
             }
 
             i.WithArgumentsOnNewLines();
@@ -44,7 +44,7 @@ public class ImplicitConstructorMapping : CSharpMappingBase
 
         foreach (var child in Children.OrderBy(x => ((IElement)x.Model).Order))
         {
-            init.AddArgument(child.GetFromStatement());
+            init.AddArgument(child.GetSourceStatement());
         }
 
         if (Children.Count > 3)
@@ -55,13 +55,13 @@ public class ImplicitConstructorMapping : CSharpMappingBase
         return init;
     }
 
-    public override CSharpStatement GetToStatement()
+    public override CSharpStatement GetTargetStatement()
     {
-        return GetPathText(Children.First(x => x.Mapping != null).Mapping.ToPath.SkipLast(1).ToList(), _toReplacements);
+        return GetPathText(Children.First(x => x.Mapping != null).Mapping.TargetPath.SkipLast(1).ToList(), _targetReplacements);
     }
 
     public override IEnumerable<CSharpStatement> GetMappingStatements()
     {
-        yield return new CSharpAssignmentStatement(GetToStatement(), GetFromStatement());
+        yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
 }

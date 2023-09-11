@@ -13,14 +13,14 @@ public class MappingModel
 {
     private readonly MappingManagerBase _manager;
 
-    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager) : this(mapping.MappingType, mapping.MappingTypeId, mapping.ToElement, mapping.Connections, manager)
+    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager) : this(mapping.MappingType, mapping.MappingTypeId, mapping.ToElement, mapping.MappedEnds, manager)
     {
     }
 
     private MappingModel(string mappingType,
         string mappingTypeId, 
         ICanBeReferencedType model, 
-        IList<IElementToElementMappingConnection> mappings, 
+        IReadOnlyList<IElementToElementMappedEnd> mappings, 
         MappingManagerBase manager, 
         int level = 1)
     {
@@ -28,9 +28,9 @@ public class MappingModel
         MappingTypeId = mappingTypeId;
         _manager = manager;
         Model = model;
-        Mapping = mappings.SingleOrDefault(x => x.ToPath.Last().Element == model);
-        Children = mappings.Where(x => x.ToPath.Count > level)
-            .GroupBy(x => x.ToPath.Skip(level).First(), x => x)
+        Mapping = mappings.SingleOrDefault(x => x.TargetPath.Last().Element == model);
+        Children = mappings.Where(x => x.TargetPath.Count > level)
+            .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
             .Select(x => new MappingModel(mappingType, mappingTypeId, x.Key.Element, x.ToList(), manager, level + 1))
             .OrderBy(x => ((IElement)x.Model).Order)
             .ToList();
@@ -39,7 +39,7 @@ public class MappingModel
     public string MappingType { get; }
     public string MappingTypeId { get; }
     public ICanBeReferencedType Model { get; set; }
-    public IElementToElementMappingConnection Mapping { get; set; }
+    public IElementToElementMappedEnd Mapping { get; set; }
     public IList<MappingModel> Children { get; set; }
 
     public ICSharpMapping GetMapping()
@@ -67,7 +67,7 @@ public abstract class MappingManagerBase
         var mapping = ResolveMappings(mappingModel);
         ApplyReplacements(mapping);
 
-        return mapping.GetFromStatement();
+        return mapping.GetSourceStatement();
     }
 
     public IList<CSharpStatement> GenerateUpdateStatements(IElementToElementMapping model)
@@ -158,7 +158,7 @@ public abstract class MappingManagerBase
         _mappingResolvers.Add(resolver);
     }
 
-    //private ICSharpMapping CreateMapping(MappingModel model, Func<ICanBeReferencedType, IElementToElementMappingConnection, List<ICSharpMapping>, ICSharpMapping> mappingResolver)
+    //private ICSharpMapping CreateMapping(MappingModel model, Func<ICanBeReferencedType, IElementToElementMappedEnd, List<ICSharpMapping>, ICSharpMapping> mappingResolver)
     //{
     //    var children = model.Children
     //        .Select(x => mappingResolver(x.Model, x.Mapping, x.Children.Select(c => CreateMapping(c, mappingResolver)).ToList()))
@@ -168,13 +168,13 @@ public abstract class MappingManagerBase
 
     private ICSharpMapping CreateMapping(
         ICanBeReferencedType model,
-        IList<IElementToElementMappingConnection> mappings,
-        Func<ICanBeReferencedType, IElementToElementMappingConnection, List<ICSharpMapping>, ICSharpMapping> mappingResolver,
+        IList<IElementToElementMappedEnd> mappings,
+        Func<ICanBeReferencedType, IElementToElementMappedEnd, List<ICSharpMapping>, ICSharpMapping> mappingResolver,
         int level = 1)
     {
-        var mapping = mappings.SingleOrDefault(x => x.ToPath.Last().Element == model);
-        var children = mappings.Where(x => x.ToPath.Count > level)
-            .GroupBy(x => x.ToPath.Skip(level).First(), x => x)
+        var mapping = mappings.SingleOrDefault(x => x.TargetPath.Last().Element == model);
+        var children = mappings.Where(x => x.TargetPath.Count > level)
+            .GroupBy(x => x.TargetPath.Skip(level).First(), x => x)
             .Select(x => CreateMapping(x.Key.Element, x.ToList(), mappingResolver, level + 1))
             .OrderBy(x => ((IElement)x.Model).Order)
             .ToList();
@@ -185,12 +185,12 @@ public abstract class MappingManagerBase
     {
         foreach (var fromReplacement in _fromReplacements)
         {
-            mapping.SetFromReplacement(fromReplacement.Key, fromReplacement.Value);
+            mapping.SetSourceReplacement(fromReplacement.Key, fromReplacement.Value);
         }
 
         foreach (var toReplacement in _toReplacements)
         {
-            mapping.SetToReplacement(toReplacement.Key, toReplacement.Value);
+            mapping.SetTargetReplacement(toReplacement.Key, toReplacement.Value);
         }
     }
 

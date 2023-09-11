@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Intent.Exceptions;
 using Intent.Metadata.Models;
 using Intent.Modules.Common.CSharp.Builder;
 using Intent.Modules.Common.CSharp.Templates;
@@ -11,15 +12,15 @@ namespace Intent.Modules.Common.CSharp.Mapping;
 
 public abstract class CSharpMappingBase : ICSharpMapping
 {
-    protected Dictionary<string, string> _fromReplacements = new();
-    protected Dictionary<string, string> _toReplacements = new();
+    protected Dictionary<string, string> _sourceReplacements = new();
+    protected Dictionary<string, string> _targetReplacements = new();
 
     public ICanBeReferencedType Model { get; }
     public IList<ICSharpMapping> Children { get; }
-    public IElementToElementMappingConnection Mapping { get; set; }
+    public IElementToElementMappedEnd Mapping { get; set; }
     protected readonly ICSharpFileBuilderTemplate Template;
 
-    protected CSharpMappingBase(ICanBeReferencedType model, IElementToElementMappingConnection mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template)
+    protected CSharpMappingBase(ICanBeReferencedType model, IElementToElementMappedEnd mapping, IList<MappingModel> children, ICSharpFileBuilderTemplate template)
     {
         Template = template;
         Model = model;
@@ -45,46 +46,47 @@ public abstract class CSharpMappingBase : ICSharpMapping
 
     public virtual IEnumerable<CSharpStatement> GetMappingStatements()
     {
-        yield return new CSharpAssignmentStatement(GetToStatement(), GetFromStatement());
+        yield return new CSharpAssignmentStatement(GetTargetStatement(), GetSourceStatement());
     }
 
-    public virtual CSharpStatement GetFromStatement()
+    public virtual CSharpStatement GetSourceStatement()
     {
-        return GetFromPathText();
+        return GetSourcePathText();
     }
 
-    public virtual CSharpStatement GetToStatement()
+    public virtual CSharpStatement GetTargetStatement()
     {
-        return GetToPathText();
+        return GetTargetPathText();
     }
 
-    protected IList<IElementMappingPathTarget> GetFromPath()
+    protected IList<IElementMappingPathTarget> GetSourcePath()
     {
         if (Mapping != null)
         {
-            return Mapping.FromPath;
+            return Mapping.SourcePath;
         }
 
-        var mapping = GetAllChildren().First(x => x.Mapping != null).Mapping;
-        if (GetAllChildren().Count(x => x.Mapping != null) == 1)
+        var childMappings = GetAllChildren().Where(c => c.Mapping != null).ToList();
+        var mapping = childMappings.First().Mapping;
+        if (childMappings.Count == 1)
         {
-            return mapping.FromPath.Take(mapping.FromPath.Count - 1).ToList();
+            return mapping.SourcePath.Take(mapping.SourcePath.Count - 1).ToList();
         }
-        var toPath = mapping.FromPath.Take(mapping.FromPath.IndexOf(mapping.FromPath
-            .Last(x => GetAllChildren().Where(c => c.Mapping != null).All(c => c.Mapping.FromPath.Contains(x)))) + 1)
+        var toPath = mapping.SourcePath.Take(mapping.SourcePath.IndexOf(
+                mapping.SourcePath.Last(x => childMappings.All(c => c.Mapping.SourcePath.Contains(x)))) + 1) // + 1 (inclusive)
             .ToList();
         return toPath;
     }
 
-    protected IList<IElementMappingPathTarget> GetToPath()
+    protected IList<IElementMappingPathTarget> GetTargetPath()
     {
         if (Mapping != null)
         {
-            return Mapping.ToPath;
+            return Mapping.TargetPath;
         }
         var mapping = GetAllChildren().First(x => x.Mapping != null).Mapping;
-        var toPath = mapping.ToPath.Take(mapping.ToPath.IndexOf(mapping.ToPath.Single(x => x.Element == Model)) + 1).ToList();
-        return toPath;
+        var targetPath = mapping.TargetPath.Take(mapping.TargetPath.IndexOf(mapping.TargetPath.Single(x => x.Element == Model)) + 1).ToList();
+        return targetPath;
     }
 
     private IEnumerable<ICSharpMapping> GetAllChildren()
@@ -92,40 +94,55 @@ public abstract class CSharpMappingBase : ICSharpMapping
         return Children.Concat(Children.SelectMany(x => ((CSharpMappingBase)x).GetAllChildren()).ToList());
     }
 
-    public void SetFromReplacement(IMetadataModel type, string replacement)
+    public void SetSourceReplacement(IMetadataModel type, string replacement)
     {
-        if (_fromReplacements.ContainsKey(type.Id))
+        if (_sourceReplacements.ContainsKey(type.Id))
         {
-            _fromReplacements.Remove(type.Id);
+            _sourceReplacements.Remove(type.Id);
         }
-        _fromReplacements.Add(type.Id, replacement);
+        _sourceReplacements.Add(type.Id, replacement);
         foreach (var child in Children)
         {
-            child.SetFromReplacement(type, replacement);
+            child.SetSourceReplacement(type, replacement);
         }
     }
 
-    public void SetToReplacement(IMetadataModel type, string replacement)
+    public void SetTargetReplacement(IMetadataModel type, string replacement)
     {
-        if (_toReplacements.ContainsKey(type.Id))
+        if (_targetReplacements.ContainsKey(type.Id))
         {
-            _toReplacements.Remove(type.Id);
+            _targetReplacements.Remove(type.Id);
         }
-        _toReplacements.Add(type.Id, replacement);
+        _targetReplacements.Add(type.Id, replacement);
         foreach (var child in Children)
         {
-            child.SetToReplacement(type, replacement);
+            child.SetTargetReplacement(type, replacement);
         }
     }
 
-    protected string GetFromPathText()
+    protected string GetSourcePathText()
     {
-        return GetPathText(GetFromPath(), _fromReplacements);
+        var text = Mapping.MappingExpression;
+        var paths = ExtractPaths(Mapping.MappingExpression);
+        foreach (var path in paths)
+        {
+            text = text.Replace($"{{{path}}}", GetPathText(Mapping.GetSource(path).Path, _sourceReplacements));
+        }
+        return text;
     }
 
-    protected string GetToPathText()
+    private IEnumerable<string> ExtractPaths(string str){
+        var results = new List<string>();
+        while (str.IndexOf("{", StringComparison.Ordinal) != -1 && str.IndexOf("}", StringComparison.Ordinal) != -1) {
+            results.Add(str[(str.IndexOf("{", StringComparison.Ordinal) + 1)..str.IndexOf("}", StringComparison.Ordinal)]);
+            str = str[(str.IndexOf("}", StringComparison.Ordinal) + 1)..];
+        }
+        return results;
+    }
+
+    protected string GetTargetPathText()
     {
-        return GetPathText(GetToPath(), _toReplacements);
+        return GetPathText(GetTargetPath(), _targetReplacements);
     }
 
     protected string GetPathText(IList<IElementMappingPathTarget> mappingPath, IDictionary<string, string> replacements)
