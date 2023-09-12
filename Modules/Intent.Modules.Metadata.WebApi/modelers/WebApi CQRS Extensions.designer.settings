@@ -618,10 +618,12 @@ function getFolderParts(request, mappedDetails) {
     let folderParts = [];
     while (currentElement.specialization === "Folder") {
         let folderName = currentElement.getName();
-        const singularizedFolderName = singularize(folderName);
-        const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
-        if (depth === 0 &amp;&amp; singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
-            folderName = singularizedFolderName;
+        if (depth === 0 &amp;&amp; mappedDetails != null) {
+            const singularizedFolderName = singularize(folderName);
+            const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
+            if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
+                folderName = singularizedFolderName;
+            }
         }
         folderParts.unshift(toKebabCase(folderName));
         currentElement = currentElement.getParent();
@@ -1402,10 +1404,12 @@ function getFolderParts(request, mappedDetails) {
     let folderParts = [];
     while (currentElement.specialization === "Folder") {
         let folderName = currentElement.getName();
-        const singularizedFolderName = singularize(folderName);
-        const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
-        if (depth === 0 &amp;&amp; singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
-            folderName = singularizedFolderName;
+        if (depth === 0 &amp;&amp; mappedDetails != null) {
+            const singularizedFolderName = singularize(folderName);
+            const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
+            if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
+                folderName = singularizedFolderName;
+            }
         }
         folderParts.unshift(toKebabCase(folderName));
         currentElement = currentElement.getParent();
