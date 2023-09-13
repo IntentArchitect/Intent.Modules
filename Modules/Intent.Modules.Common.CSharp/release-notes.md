@@ -1,4 +1,8 @@
-﻿### Version 3.3.40
+﻿### Version 3.3.4
+
+- Improvement : Added Blazor WebAssembly configuration options for `launchsettings.json`.
+
+### Version 3.3.4
 
 - Added : Description Stereotype for usage with Enum literals
 - Added : Support for Parameter Modifiers (out, ref, [in])
