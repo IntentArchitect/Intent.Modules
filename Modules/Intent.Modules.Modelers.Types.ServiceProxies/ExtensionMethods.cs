@@ -22,6 +22,14 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
                 .ToList();
         }
 
+        public static IList<DTOModel> GetMappedServiceProxyInboundDTOModels(this IDesigner designer)
+        {
+            return designer.GetServiceProxyModels()
+                .SelectMany(model => GetReferencedDTOModels(model, includeReturnTypes: false))
+                .Distinct()
+                .ToList();
+        }
+
         public static IReadOnlyCollection<EnumModel> GetMappedServiceProxyEnumModels(this IDesigner designer)
         {
             return designer.GetServiceProxyModels()
@@ -32,7 +40,12 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
 
         internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy)
         {
-            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy))
+            return GetReferencedDTOModels(proxy, includeReturnTypes: true);
+        }
+
+        internal static IEnumerable<DTOModel> GetReferencedDTOModels(this ServiceProxyModel proxy, bool includeReturnTypes)
+        {
+            return DeepGetDistinctReferencedElements(GetMappedEndpoints(proxy), includeReturnTypes)
                 .Where(x => x.SpecializationTypeId is not (TypeDefinitionModel.SpecializationTypeId or EnumModel.SpecializationTypeId))
                 .Select(x => new DTOModel(x))
                 .ToList();
@@ -46,7 +59,9 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
                 .ToList();
         }
 
-        private static ISet<IElement> DeepGetDistinctReferencedElements(IEnumerable<IElement> elements)
+        private static ISet<IElement> DeepGetDistinctReferencedElements(
+            IEnumerable<IElement> elements,
+            bool includeReturnTypes = true)
         {
             var referencedElements = new HashSet<IElement>();
             var workingStack = new Stack<IElement>(elements);
@@ -54,7 +69,10 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
             while (workingStack.Any())
             {
                 var currentElement = workingStack.Pop();
-                if (currentElement.TypeReference?.Element is IElement referencedElement &&
+                var isDataContract = currentElement.SpecializationType is "DTO" or "Command" or "Query";
+
+                if ((includeReturnTypes || !isDataContract) &&
+                    currentElement.TypeReference?.Element is IElement referencedElement &&
                     referencedElements.Add(referencedElement)) // Avoid infinite loops due to cyclic references
                 {
                     foreach (var childElement in referencedElement.ChildElements)
@@ -78,7 +96,7 @@ namespace Intent.Modules.Modelers.Types.ServiceProxies
                 }
 
 
-                if (currentElement.SpecializationType is "DTO" or "Command" or "Query")
+                if (isDataContract)
                 {
                     referencedElements.Add(currentElement);
                 }
