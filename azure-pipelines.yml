@@ -118,7 +118,7 @@ steps:
       Write-Host "All files:"
       Get-ChildItem "./Modules/Intent.Modules/" | ForEach-Object { Write-Host $_.Name }
 
-      $imodFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { If ($isMaster) { ($_.Name -Match $isPreReleaseRegex) } Else { $_.Name -NotMatch $isPreReleaseRegex } }
+      $imodFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.imod" | Where-Object { -Not $isMaster -And ($_.Name -NotMatch $isPreReleaseRegex) }
       # Client has no way to filter pre-release application templates so they are never published from development
       $iatFilesToRemove = Get-ChildItem "./Modules/Intent.Modules/*.iat" | Where-Object { -Not $isMaster -Or ($_.Name -Match $isPreReleaseRegex) }
 
