@@ -1,3 +1,7 @@
+### Version 3.5.9
+
+- Improvement: Moving the on-load script from Attributes to a package level can have drastically faster load times.
+
 ### Version 3.5.8
 
 - Improvement: `Decimal precision and scale` setting added to configure the default decimal precision and scale for your database technology. 

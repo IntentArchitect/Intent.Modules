@@ -1,7 +1,6 @@
 /// <reference path="../../../../typings/elementmacro.context.api.d.ts" />
 /// <reference path="../_common/constants.ts" />
 /// <reference path="../_common/updateForeignKeys.ts" />
-type IElementApi = MacroApi.Context.IElementApi;
 
 function execute(): void {
     if (element.hasMetadata(metadataKey.isBeingDeletedByScript) ||
