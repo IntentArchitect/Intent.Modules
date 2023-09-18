@@ -1,3 +1,7 @@
+### Version 3.3.10
+
+- Fixed: Support for `ITypescriptFileBuilderTemplate` added and File Builder is now default option.
+
 ### Version 3.3.9
 
 - Update: Partial Class Access modifier will now be `public` when `Custom` is used as Templating method.

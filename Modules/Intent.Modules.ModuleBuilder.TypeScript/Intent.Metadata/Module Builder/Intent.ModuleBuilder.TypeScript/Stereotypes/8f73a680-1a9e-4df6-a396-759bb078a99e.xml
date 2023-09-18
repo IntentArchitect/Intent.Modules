@@ -26,7 +26,7 @@
       <controlType>select</controlType>
       <optionsSource>options</optionsSource>
       <placeholder>(required)</placeholder>
-      <defaultValue>String Interpolation</defaultValue>
+      <defaultValue>Type Script File Builder</defaultValue>
       <valueOptions>
         <option>T4 Template</option>
         <option>String Interpolation</option>
