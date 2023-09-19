@@ -22,6 +22,10 @@ variables:
 - name: 'targetsToBuild'
   value: '**/*.sln'
 - group: 'Intent Architect Credentials'
+- name: 'warning-logging-command'
+  value: '##vso[task.logissue type=warning;]{@m} {@x}\n'
+- name: 'error-logging-command'
+  value: '##vso[task.logissue type=error;]{@m} {@x}\n'
 
 pool:
   vmImage: 'ubuntu-latest'
@@ -111,6 +115,19 @@ steps:
     vstsFeed: $(vstsFeed)
     projects: $(targetsToBuild)
 
+- task: PowerShell@2
+  displayName: 'Update Project URLs in imodspecs'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      $isMaster = '$(Build.SourceBranch)' -eq 'refs/heads/master'
+      if ($isMaster -eq $true) {
+        Get-ChildItem -Recurse -Filter "*.imodspec" | ForEach-Object {
+          (Get-Content $_.FullName) -replace '/development/', '/master/' | Set-Content $_.FullName
+        }
+      }
+
 - task: DotNetCoreCLI@2
   displayName: 'dotnet build'
   env:
@@ -128,6 +145,26 @@ steps:
     command: 'test'
     projects: $(targetsToBuild)
     arguments: '--no-build'
+
+- task: PowerShell@2
+  displayName: 'Install Intent CLI'
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: dotnet tool install Intent.SoftwareFactory.CLI --global --version 4.0.5-pre.1
+
+- task: PowerShell@2
+  displayName: 'Template Testing'
+  env:
+    INTENT_USER: $(intent-architect-user)
+    INTENT_PASS: $(intent-architect-password)
+    INTENT_SOLUTION_PATH: $(intent-solution)
+  inputs:
+    targetType: 'inline'
+    pwsh: true
+    script: |
+      ./prepare-intent-testing.ps1
+      intent-cli ensure-no-outstanding-changes "$Env:INTENT_USER" "$Env:INTENT_PASS" "$Env:INTENT_SOLUTION_PATH"
 
 # Push the NuGet packages to the DevOps artifact feed so that it's available to other pipelines
 - task: NuGetCommand@2

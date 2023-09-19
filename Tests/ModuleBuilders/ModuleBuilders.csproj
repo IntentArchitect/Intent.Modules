@@ -1,0 +1,280 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Update="Templates\Standard\SingleFileT4\SingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\FileTemplate\CustomT4\CustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\FileTemplate\FilePerModelT4\FilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\FileTemplate\SingleFileT4\SingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharp\CustomT4\CustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharp\FilePerModelT4\FilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharp\SingleFileT4\SingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Java\CustomT4\CustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Java\FilePerModelT4\FilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Java\SingleFileT4\SingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\File\CustomT4\CustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\File\FilePerModelT4\FilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\File\SingleFileT4\SingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TypeScript\CustomT4\CustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TypeScript\FilePerModelT4\FilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TypeScript\SingleFileT4\SingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>SingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharp\CSharpCustomT4\CSharpCustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CSharpCustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharp\CSharpFilePerModelT4\CSharpFilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CSharpFilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\CSharp\CSharpSingleFileT4\CSharpSingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CSharpSingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Java\JavaCustomT4\JavaCustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>JavaCustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Java\JavaFilePerModelT4\JavaFilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>JavaFilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\Java\JavaSingleFileT4\JavaSingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>JavaSingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\File\FileCustomT4\FileCustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FileCustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\File\FileFilePerModelT4\FileFilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FileFilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\File\FileSingleFileT4\FileSingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FileSingleFileT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TypeScript\TypeScriptCustomT4\TypeScriptCustomT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypeScriptCustomT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TypeScript\TypeScriptFilePerModelT4\TypeScriptFilePerModelT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypeScriptFilePerModelT4Template.tt</DependentUpon>
+    </Compile>
+    <Compile Update="Templates\TypeScript\TypeScriptSingleFileT4\TypeScriptSingleFileT4Template.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>TypeScriptSingleFileT4Template.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Templates\Standard\SingleFileT4\SingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\FileTemplate\CustomT4\CustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\FileTemplate\FilePerModelT4\FilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\FileTemplate\SingleFileT4\SingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\CSharp\CustomT4\CustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\CSharp\FilePerModelT4\FilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\CSharp\SingleFileT4\SingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Java\CustomT4\CustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Java\FilePerModelT4\FilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Java\SingleFileT4\SingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\File\CustomT4\CustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\File\FilePerModelT4\FilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\File\SingleFileT4\SingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypeScript\CustomT4\CustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypeScript\FilePerModelT4\FilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypeScript\SingleFileT4\SingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>SingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\CSharp\CSharpCustomT4\CSharpCustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CSharpCustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\CSharp\CSharpFilePerModelT4\CSharpFilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CSharpFilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\CSharp\CSharpSingleFileT4\CSharpSingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>CSharpSingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Java\JavaCustomT4\JavaCustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaCustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Java\JavaFilePerModelT4\JavaFilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaFilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\Java\JavaSingleFileT4\JavaSingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>JavaSingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\File\FileCustomT4\FileCustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FileCustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\File\FileFilePerModelT4\FileFilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FileFilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\File\FileSingleFileT4\FileSingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>FileSingleFileT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypeScript\TypeScriptCustomT4\TypeScriptCustomT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypeScriptCustomT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypeScript\TypeScriptFilePerModelT4\TypeScriptFilePerModelT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypeScriptFilePerModelT4Template.cs</LastGenOutput>
+    </None>
+    <None Update="Templates\TypeScript\TypeScriptSingleFileT4\TypeScriptSingleFileT4Template.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>TypeScriptSingleFileT4Template.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Intent.Modules.Common" Version="3.4.3" />
+    <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.27" />
+    <PackageReference Include="Intent.Modules.Common.Java" Version="3.4.3" />
+    <PackageReference Include="Intent.Modules.Common.TypeScript" Version="3.4.3" />
+    <PackageReference Include="Intent.Modules.Java.Weaving.Annotations" Version="3.3.1" />
+    <PackageReference Include="Intent.Modules.Modelers.Domain" Version="3.4.6" />
+    <PackageReference Include="Intent.Packager" Version="3.4.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.1" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.4.2" />
+  </ItemGroup>
+
+</Project>

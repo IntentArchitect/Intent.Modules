@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<solution id="b527adc6-4619-4f85-9eef-b2082ee64d72">
+  <name>Intent.Modules.Tests</name>
+  <description>Test Applications for the Common Intent Architect Modules</description>
+  <version>3.3.0</version>
+  <icon>vial</icon>
+  <iconType>FontAwesome</iconType>
+  <metadataRelativePath>Intent.Metadata</metadataRelativePath>
+  <modulesCacheRelativePath>.intent/modules</modulesCacheRelativePath>
+  <lastUsedApplicationTemplate id="Intent.ApplicationTemplate.ModuleBuilder" version="3.3.36" />
+  <applications>
+    <application id="7c157446-328d-42e6-9233-f62d633cb7ff" name="ModuleBuilders" relativePath="ModuleBuilders/ModuleBuilders.application.config" />
+  </applications>
+</solution>
