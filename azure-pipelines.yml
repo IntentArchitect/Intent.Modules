@@ -22,6 +22,8 @@ variables:
 - name: 'targetsToBuild'
   value: '**/*.sln'
 - group: 'Intent Architect Credentials'
+- name: 'intent-solution'
+  value: 'Tests/Intent.Modules.Tests.isln'
 - name: 'warning-logging-command'
   value: '##vso[task.logissue type=warning;]{@m} {@x}\n'
 - name: 'error-logging-command'
