@@ -8,6 +8,7 @@
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.ModuleBuilder.TypeScript.Api" #>
+using System;
 using System.Collections.Generic;
 using Intent.Engine;
 using Intent.Modules.Common;

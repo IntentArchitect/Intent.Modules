@@ -70,7 +70,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
             }
             return "partial ";
         }
-        
+
         private string GetClassName()
         {
             return $"{(Model.IsFilePerModelTemplateRegistration() ? $"{{Model.Name}}" : Model.Name.RemoveSuffix("Template"))}";
