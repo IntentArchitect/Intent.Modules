@@ -1,6 +1,7 @@
 ﻿### Version 3.3.4
 
 - Improvement : Added Blazor WebAssembly configuration options for `launchsettings.json`.
+- Fixed: Adding statements on a constructor will assign the parent on the element receiving those statements.
 
 ### Version 3.3.4
 

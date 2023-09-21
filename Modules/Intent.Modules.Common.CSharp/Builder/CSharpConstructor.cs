@@ -32,6 +32,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
 
     public CSharpConstructor AddStatement(CSharpStatement statement, Action<CSharpStatement> configure = null)
     {
+        statement.Parent = this;
         Statements.Add(statement);
         configure?.Invoke(statement);
         return this;
@@ -40,6 +41,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
     public CSharpConstructor InsertStatement(int index, string statement, Action<CSharpStatement> configure = null)
     {
         var s = new CSharpStatement(statement);
+        s.Parent = this;
         Statements.Insert(index, s);
         configure?.Invoke(s);
         return this;
@@ -60,6 +62,7 @@ public class CSharpConstructor : CSharpMember<CSharpConstructor>, IHasCSharpStat
         var arrayed = statements.ToArray();
         foreach (var statement in arrayed)
         {
+            statement.Parent = this;
             Statements.Add(statement);
         }
         configure?.Invoke(arrayed);
