@@ -31,7 +31,7 @@
       <lookupTypes />
     </property>
     <property id="52e01775-62a6-4b04-86ee-9d36efe20f70">
-      <hint>File Glob patterns to identify binary files.</hint>
+      <hint>[File Glob patterns ](https://learn.microsoft.com/en-us/dotnet/core/extensions/file-globbing) to identify binary files.</hint>
       <name>Binary File Globbing Patterns</name>
       <type>string</type>
       <controlType>textarea</controlType>
