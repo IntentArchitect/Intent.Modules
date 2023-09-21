@@ -26,6 +26,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="329d0550-b81b-4db6-a99b-05d90360d432" display="File Extension" value="tt" isActive="true" />
+        <property name="db83691e-fc21-467b-a004-427b23f9ed9b" display="Output File Content" value="Text" isActive="true" />
         <property name="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe" display="Templating Method" value="Custom" isActive="true" />
       </properties>
     </stereotype>

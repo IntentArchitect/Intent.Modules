@@ -57,6 +57,11 @@ namespace Intent.ModuleBuilder.Api
                 return new TemplatingMethodOptions(_stereotype.GetProperty<string>("Templating Method"));
             }
 
+            public OutputFileContentOptions OutputFileContent()
+            {
+                return new OutputFileContentOptions(_stereotype.GetProperty<string>("Output File Content"));
+            }
+
             public class TemplatingMethodOptions
             {
                 public readonly string Value;
@@ -100,6 +105,43 @@ namespace Intent.ModuleBuilder.Api
                 T4Template,
                 StringInterpolation,
                 Custom
+            }
+            public class OutputFileContentOptions
+            {
+                public readonly string Value;
+
+                public OutputFileContentOptions(string value)
+                {
+                    Value = value;
+                }
+
+                public OutputFileContentOptionsEnum AsEnum()
+                {
+                    switch (Value)
+                    {
+                        case "Text":
+                            return OutputFileContentOptionsEnum.Text;
+                        case "Binary":
+                            return OutputFileContentOptionsEnum.Binary;
+                        default:
+                            throw new ArgumentOutOfRangeException();
+                    }
+                }
+
+                public bool IsText()
+                {
+                    return Value == "Text";
+                }
+                public bool IsBinary()
+                {
+                    return Value == "Binary";
+                }
+            }
+
+            public enum OutputFileContentOptionsEnum
+            {
+                Text,
+                Binary
             }
         }
 

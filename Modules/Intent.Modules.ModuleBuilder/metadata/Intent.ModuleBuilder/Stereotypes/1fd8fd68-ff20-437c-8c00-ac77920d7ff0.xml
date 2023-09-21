@@ -30,6 +30,21 @@
       <valueOptions />
       <lookupTypes />
     </property>
+    <property id="52e01775-62a6-4b04-86ee-9d36efe20f70">
+      <hint>File Glob patterns to identify binary files.</hint>
+      <name>Binary File Globbing Patterns</name>
+      <type>string</type>
+      <controlType>textarea</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>*.jpg
+*.png
+*.xlsx
+*.ico
+*.pdf</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
     <property id="db0f79b6-2905-4771-9400-ed2bc024d1e1">
       <name>Role</name>
       <type>string</type>

@@ -3,14 +3,14 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-    <Version>3.6.12</Version>
+    <Version>3.6.13-pre.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageIcon>logo.png</PackageIcon>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Intent.Architect.Persistence" Version="3.4.3" />
-    <PackageReference Include="Intent.Modules.Common" Version="3.4.3" />
+    <PackageReference Include="Intent.Modules.Common" Version="3.4.4-pre.1" />
     <PackageReference Include="Intent.Modules.Common.CSharp" Version="3.3.35" />
     <PackageReference Include="Intent.Modules.Common.Types" Version="3.3.9" />
     <PackageReference Include="Intent.Packager" Version="3.4.0">
@@ -18,7 +18,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Intent.RoslynWeaver.Attributes" Version="2.1.0" />
-    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.4.2" />
+    <PackageReference Include="Intent.SoftwareFactory.SDK" Version="3.4.3-pre.2" />
     <PackageReference Include="Mono.TextTemplating" Version="2.2.1" />
     <PackageReference Include="NuGet.Versioning" Version="6.1.0" />
   </ItemGroup>

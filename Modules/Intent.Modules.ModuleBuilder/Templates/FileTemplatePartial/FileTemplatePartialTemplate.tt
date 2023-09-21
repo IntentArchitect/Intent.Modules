@@ -40,7 +40,14 @@ namespace <#= Namespace #>
                 fileExtension: "<#= Model.GetFileSettings().FileExtension() #>"
             );
         }
-<#  if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { #>
+<#  if (Model.GetFileSettings().OutputFileContent().IsBinary()) { #>
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override byte[] RunBinaryTemplate()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
+
+<#  } else if (Model.GetFileSettings().TemplatingMethod().IsCustom()) { #>
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override string TransformText()

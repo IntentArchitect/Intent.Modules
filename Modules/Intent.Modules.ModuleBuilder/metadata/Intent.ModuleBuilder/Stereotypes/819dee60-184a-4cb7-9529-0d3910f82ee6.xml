@@ -31,6 +31,20 @@
       <lookupTypes />
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
+    <property id="db83691e-fc21-467b-a004-427b23f9ed9b">
+      <name>Output File Content</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Text</defaultValue>
+      <valueOptions>
+        <option>Text</option>
+        <option>Binary</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
     <property id="c22d63a0-a3ad-4fe0-a956-7ac74bb6c2fe">
       <name>Templating Method</name>
       <type>string</type>
@@ -44,6 +58,7 @@
         <option>Custom</option>
       </valueOptions>
       <lookupTypes />
+      <isActiveFunction>return OutputFileContent === "Text";</isActiveFunction>
       <isRequiredFunction>return true;</isRequiredFunction>
     </property>
   </properties>

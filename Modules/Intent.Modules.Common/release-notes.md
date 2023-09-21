@@ -1,3 +1,7 @@
+### Version 3.4.4
+
+- New Feature: Support for binary based templates, including `File Template` and `Static Content Template` being enhanced to support binary files.
+
 ### Version 3.4.3
 
 - Offers a useful extension method overload for finding templates: `IEnumerable<TTemplate> FindTemplateInstances<TTemplate>(this ISoftwareFactoryExecutionContext executionContext, string templateIdOrRole)`
