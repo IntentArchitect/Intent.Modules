@@ -402,7 +402,12 @@ vertical-align: center`</style>
                 <position x="${x}" y="${y + 6}" />
               </drawSvgResource>
             </display>
+            <stereotypesVisualSettings>
+              <size width="${w}" height="18" />
+              <position x="${x}" y="${y}" />
+            </stereotypesVisualSettings>
             <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </visualSettings>
           <visualSettings type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
@@ -427,6 +432,7 @@ vertical-align: center`</style>
               </drawSvgResource>
             </display>
             <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </visualSettings>
         </elementVisualSettings>

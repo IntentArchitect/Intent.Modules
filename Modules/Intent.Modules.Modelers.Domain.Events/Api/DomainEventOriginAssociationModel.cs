@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -88,7 +89,7 @@ namespace Intent.Modelers.Domain.Events.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public class DomainEventOriginAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class DomainEventOriginAssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly DomainEventOriginAssociationModel _association;

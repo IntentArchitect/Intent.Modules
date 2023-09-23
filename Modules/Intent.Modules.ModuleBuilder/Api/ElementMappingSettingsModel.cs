@@ -79,6 +79,7 @@ namespace Intent.ModuleBuilder.Api
                 Name = Name,
                 SpecializationType = TargetType.Element.Name,
                 SpecializationTypeId = TargetType.Element.Id,
+                Represents = Enum.TryParse<ElementMappingRepresentation>(this.GetMappingSettings().Represents().Value, out var represents) ? represents : ElementMappingRepresentation.Unknown,
                 FilterFunction = this.GetMappingSettings().FilterFunction(),
                 IsMappableFunction = this.GetMappingSettings().IsMappableFunction(),
                 AllowMultipleMappings = this.GetMappingSettings().AllowMultipleMappings(),

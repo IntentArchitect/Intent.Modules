@@ -28,5 +28,14 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
                 .Select(x => CreateEntityActionModel.CreateFromEnd(x).SourceEnd)
                 .ToList();
         }
+
+        [IntentManaged(Mode.Fully)]
+        public static IList<CreateEntityActionSourceEndModel> CreateEntityActions(this ClassConstructorModel model)
+        {
+            return model.InternalElement.AssociatedElements
+                .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsSourceEnd())
+                .Select(x => CreateEntityActionModel.CreateFromEnd(x).SourceEnd)
+                .ToList();
+        }
     }
 }

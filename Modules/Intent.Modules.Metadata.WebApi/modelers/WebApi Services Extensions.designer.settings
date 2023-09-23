@@ -330,4 +330,5 @@ if ((element.hasStereotype(apiVersionStereotypeId) || hasVersionedOperations) &a
   </elementExtensions>
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
 </settings>

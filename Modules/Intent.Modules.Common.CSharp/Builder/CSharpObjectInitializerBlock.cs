@@ -6,14 +6,22 @@ namespace Intent.Modules.Common.CSharp.Builder;
 
 public class CSharpObjectInitializerBlock : CSharpStatement, IHasCSharpStatements
 {
+    private readonly CSharpStatement _initialization;
     private bool _withSemicolon;
     
-    public CSharpObjectInitializerBlock(string invocation) : base(invocation)
+    public CSharpObjectInitializerBlock(string initialization) : base(initialization)
     {
         BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
         AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
     }
-    
+
+    public CSharpObjectInitializerBlock(CSharpStatement initialization) : base("")
+    {
+        _initialization = initialization;
+        BeforeSeparator = CSharpCodeSeparatorType.EmptyLines;
+        AfterSeparator = CSharpCodeSeparatorType.EmptyLines;
+    }
+
     public IList<CSharpStatement> Statements { get; } = new List<CSharpStatement>();
 
     public new CSharpObjectInitializerBlock WithSemicolon()
@@ -38,7 +46,8 @@ public class CSharpObjectInitializerBlock : CSharpStatement, IHasCSharpStatement
 
     public override string GetText(string indentation)
     {
-        return @$"{(Text.Length > 0 ? base.GetText(indentation) + Environment.NewLine : "")}{indentation}{RelativeIndentation}{{{Statements.JoinCode(",", $"{indentation}{RelativeIndentation}    ")}
+        var initialization = _initialization?.GetText(indentation) ?? base.GetText(indentation);
+        return @$"{initialization + Environment.NewLine}{indentation}{RelativeIndentation}{{{Statements.JoinCode(",", $"{indentation}{RelativeIndentation}    ")}
 {indentation}{RelativeIndentation}}}{(_withSemicolon ? ";" : "")}";
     }
 }

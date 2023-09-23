@@ -19,10 +19,5 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         {
         }
 
-        public IList<ProcessingActionModel> ProcessingActions => _element.ChildElements
-            .GetElementsOfType(ProcessingActionModel.SpecializationTypeId)
-            .Select(x => new ProcessingActionModel(x))
-            .ToList();
-
     }
 }

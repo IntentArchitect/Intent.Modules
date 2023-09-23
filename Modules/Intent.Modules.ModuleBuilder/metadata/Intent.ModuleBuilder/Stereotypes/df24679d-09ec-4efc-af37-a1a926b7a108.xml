@@ -20,6 +20,20 @@
   <packageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</packageId>
   <packageName>Intent.ModuleBuilder</packageName>
   <properties>
+    <property id="6ee5b3e3-628e-4996-87b5-08649e101887">
+      <name>Represents</name>
+      <type>string</type>
+      <controlType>select</controlType>
+      <optionsSource>options</optionsSource>
+      <placeholder />
+      <defaultValue>Data</defaultValue>
+      <valueOptions>
+        <option>Data</option>
+        <option>Invokable</option>
+      </valueOptions>
+      <lookupTypes />
+      <isRequiredFunction>return true;</isRequiredFunction>
+    </property>
     <property id="36dbf36f-e7f8-4698-9ead-dc0e1de3ed41">
       <name>Filter Function</name>
       <type>string</type>
@@ -57,7 +71,24 @@
       <isActiveFunction />
       <isRequiredFunction>return false</isRequiredFunction>
     </property>
+    <property id="54dec827-b00b-4045-850d-c5d49c5777b2">
+      <name>Maps To</name>
+      <type>string</type>
+      <controlType>multi-select</controlType>
+      <optionsSource>lookup-children</optionsSource>
+      <placeholder />
+      <valueOptions />
+      <lookupTypes>
+        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
+      </lookupTypes>
+      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
+let toMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
+return element.getParent(mappingTypeSettingsId).getChildren(toMappingSettingsId)[0].id;</lookupInternalTargetPropertyId>
+      <isActiveFunction>let fromMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+return element.getParent(fromMappingSettingsId) != null</isActiveFunction>
+    </property>
     <property id="8729cf25-6468-4ad0-aed2-2f7c854c2438">
+      <hint>Whether this type can be mapped multiple times</hint>
       <name>Allow Multiple Mappings</name>
       <type>string</type>
       <controlType>checkbox</controlType>
@@ -80,8 +111,10 @@
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
-return element.getParent(mappingTypeSettingsId).id;</lookupInternalTargetPropertyId>
+      <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
+
+return element.getParent(sourceMappingSettingsId)?.id ?? element.getParent(targetMappingSettingsId).id;</lookupInternalTargetPropertyId>
     </property>
     <property id="a6ec44d7-f928-4221-bed6-8589176a94c7">
       <name>Is Traversable Function</name>
@@ -94,22 +127,6 @@ return element.getParent(mappingTypeSettingsId).id;</lookupInternalTargetPropert
       <apiTypeDefinition>element-macro-api</apiTypeDefinition>
       <isActiveFunction />
       <isRequiredFunction>return false</isRequiredFunction>
-    </property>
-    <property id="54dec827-b00b-4045-850d-c5d49c5777b2">
-      <name>Maps To</name>
-      <type>string</type>
-      <controlType>multi-select</controlType>
-      <optionsSource>lookup-children</optionsSource>
-      <placeholder />
-      <valueOptions />
-      <lookupTypes>
-        <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
-      </lookupTypes>
-      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
-let toMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
-return element.getParent(mappingTypeSettingsId).getChildren(toMappingSettingsId)[0].id;</lookupInternalTargetPropertyId>
-      <isActiveFunction>let fromMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
-return element.getParent(fromMappingSettingsId) != null</isActiveFunction>
     </property>
     <property id="c2f9befb-4ce0-4f0b-afb1-22bbfd58f0a3">
       <name>Can Be Modified</name>
@@ -143,8 +160,10 @@ return element.getParent(fromMappingSettingsId) != null</isActiveFunction>
       <lookupTypes>
         <type>62e5b1a9-0d36-4969-9d22-ce748155afbf</type>
       </lookupTypes>
-      <lookupInternalTargetPropertyId>let mappingTypeSettingsId = "a901c634-6482-4993-ae3c-bd1b637f78d4";
-return element.getParent(mappingTypeSettingsId).id;</lookupInternalTargetPropertyId>
+      <lookupInternalTargetPropertyId>let sourceMappingSettingsId = "1536425c-35f4-48e1-abe4-1f8f56533545";
+let targetMappingSettingsId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
+
+return element.getParent(sourceMappingSettingsId)?.id ?? element.getParent(targetMappingSettingsId).id;</lookupInternalTargetPropertyId>
     </property>
   </properties>
 </stereotypeDefinition>

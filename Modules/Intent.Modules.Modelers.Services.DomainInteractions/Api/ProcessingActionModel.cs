@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Services.DomainInteractions.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ProcessingActionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper, IHasTypeReference
+    public class ProcessingActionModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Processing Action";
         public const string SpecializationTypeId = "405a2857-b911-431f-8142-719a0e9f15f3";
@@ -34,8 +34,6 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         public string Comment => _element.Comment;
 
         public IEnumerable<IStereotype> Stereotypes => _element.Stereotypes;
-
-        public ITypeReference TypeReference => _element.TypeReference;
 
 
         public IElement InternalElement => _element;

@@ -39,14 +39,14 @@ namespace Intent.ModuleBuilder.Api
 
         public IElement InternalElement => _element;
 
-        public FromMappingSettingsModel FromMapping => _element.ChildElements
-            .GetElementsOfType(FromMappingSettingsModel.SpecializationTypeId)
-            .Select(x => new FromMappingSettingsModel(x))
+        public SourceMappingSettingsModel SourceMapping => _element.ChildElements
+            .GetElementsOfType(SourceMappingSettingsModel.SpecializationTypeId)
+            .Select(x => new SourceMappingSettingsModel(x))
             .SingleOrDefault();
 
-        public ToMappingSettingsModel ToMapping => _element.ChildElements
-            .GetElementsOfType(ToMappingSettingsModel.SpecializationTypeId)
-            .Select(x => new ToMappingSettingsModel(x))
+        public TargetMappingSettingsModel TargetMapping => _element.ChildElements
+            .GetElementsOfType(TargetMappingSettingsModel.SpecializationTypeId)
+            .Select(x => new TargetMappingSettingsModel(x))
             .SingleOrDefault();
 
         public override string ToString()
@@ -79,10 +79,10 @@ namespace Intent.ModuleBuilder.Api
             {
                 MappingTypeId = Id,
                 MappingType = Name,
-                FromRootElementFunction = FromMapping.GetMappingTypeSettings().RootElementFunction(),
+                SourceRootElementFunction = SourceMapping.GetMappingTypeSettings().RootElementFunction(),
                 Title = Name,
-                FromMappings = FromMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
-                ToMappings = ToMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
+                SourceMappings = SourceMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
+                TargetMappings = TargetMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
             };
         }
     }

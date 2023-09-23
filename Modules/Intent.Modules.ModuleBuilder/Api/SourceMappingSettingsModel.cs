@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class FromMappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class SourceMappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "From Mapping Settings";
+        public const string SpecializationType = "Source Mapping Settings";
         public const string SpecializationTypeId = "1536425c-35f4-48e1-abe4-1f8f56533545";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public FromMappingSettingsModel(IElement element, string requiredType = SpecializationType)
+        public SourceMappingSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -47,7 +47,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(FromMappingSettingsModel other)
+        public bool Equals(SourceMappingSettingsModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,7 +57,7 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((FromMappingSettingsModel)obj);
+            return Equals((SourceMappingSettingsModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,17 +67,17 @@ namespace Intent.ModuleBuilder.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class FromMappingSettingsModelExtensions
+    public static class SourceMappingSettingsModelExtensions
     {
 
-        public static bool IsFromMappingSettingsModel(this ICanBeReferencedType type)
+        public static bool IsSourceMappingSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == FromMappingSettingsModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == SourceMappingSettingsModel.SpecializationTypeId;
         }
 
-        public static FromMappingSettingsModel AsFromMappingSettingsModel(this ICanBeReferencedType type)
+        public static SourceMappingSettingsModel AsSourceMappingSettingsModel(this ICanBeReferencedType type)
         {
-            return type.IsFromMappingSettingsModel() ? new FromMappingSettingsModel((IElement)type) : null;
+            return type.IsSourceMappingSettingsModel() ? new SourceMappingSettingsModel((IElement)type) : null;
         }
     }
 }

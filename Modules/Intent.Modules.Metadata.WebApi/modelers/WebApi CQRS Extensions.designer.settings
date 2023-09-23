@@ -1466,4 +1466,5 @@ if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{ve
   </elementExtensions>
   <associationSettings />
   <associationExtensions />
+  <mappingSettings />
 </settings>

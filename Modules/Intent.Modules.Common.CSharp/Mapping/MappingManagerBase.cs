@@ -13,14 +13,14 @@ public class MappingModel
 {
     private readonly MappingManagerBase _manager;
 
-    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager) : this(mapping.MappingType, mapping.MappingTypeId, mapping.ToElement, mapping.MappedEnds, manager)
+    public MappingModel(IElementToElementMapping mapping, MappingManagerBase manager) : this(mapping.MappingType, mapping.MappingTypeId, mapping.TargetElement, mapping.MappedEnds, manager)
     {
     }
 
     private MappingModel(string mappingType,
         string mappingTypeId, 
         ICanBeReferencedType model, 
-        IReadOnlyList<IElementToElementMappedEnd> mappings, 
+        IList<IElementToElementMappedEnd> mappings, 
         MappingManagerBase manager, 
         int level = 1)
     {

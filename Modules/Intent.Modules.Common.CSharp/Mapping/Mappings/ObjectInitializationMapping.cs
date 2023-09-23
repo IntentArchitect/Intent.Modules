@@ -85,8 +85,8 @@ namespace Intent.Modules.Common.CSharp.Mapping
                     return ctor.GetSourceStatement();
                 }
 
-                var init = new CSharpObjectInitializerBlock(ctor.GetSourceStatement().GetText(""));
-                init.AddStatements(children.Select(x => new CSharpObjectInitStatement(x.GetTargetStatement().GetText(""), x.GetSourceStatement())));
+                var init = new CSharpObjectInitializerBlock(ctor.GetSourceStatement());
+                init.AddStatements(children.Select(x => new CSharpAssignmentStatement(x.GetTargetStatement(), x.GetSourceStatement())));
                 return init;
             }
             else

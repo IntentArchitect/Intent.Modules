@@ -95,6 +95,7 @@ vertical-align: center`</style>
               </drawSvgResource>
             </display>
             <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings />
           </visualSettings>
           <visualSettings type="Domain Event Handler" typeId="d80e61c5-7e4c-4175-9df1-0413f664824c">
@@ -119,10 +120,12 @@ vertical-align: center`</style>
               </drawSvgResource>
             </display>
             <defaultSize width="${x}" height="70" />
+            <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
             <childElementVisualSettings>
               <childElementVisualSetting type="Domain Event Handler Association Target End" typeId="f45dfee9-f62b-45ac-bfce-a3878e04b73f">
                 <size width="`${parent.w}`" height="18" />
                 <position x="`${parent.x}`" y="`${parent.y + ($index * 18) + 66}`" />
+                <anchorPointsFunction>return [getDimensions().getCenterLeft(), getDimensions().getCenterRight()];</anchorPointsFunction>
                 <display>
                   <drawText>
                     <text>return `handles: ${typeReference.display}`</text>
@@ -136,6 +139,7 @@ vertical-align: center`</style>
                   </drawSvgResource>
                 </display>
                 <defaultSize width="`${parent.w}`" height="18" />
+                <autoResizeEnabledByDefault>true</autoResizeEnabledByDefault>
                 <childElementVisualSettings />
               </childElementVisualSetting>
             </childElementVisualSettings>
@@ -184,7 +188,6 @@ vertical-align: center`</style>
       </targetEnd>
       <visualSettings type="Domain Event Handler Association" typeId="90831494-f069-44eb-b488-ab2dba7518ea">
         <lineType>Curved</lineType>
-        <lineDashArray>return "3,7";</lineDashArray>
         <sourceEnd>
           <pointIndicator>
             <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>

@@ -30,11 +30,11 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<UpdateEntityActionEndModel> UpdateEntityActionEnds(this CommandModel model)
+        public static IList<UpdateEntityActionSourceEndModel> UpdateEntityActions(this OperationModel model)
         {
             return model.InternalElement.AssociatedElements
-                .Where(x => x.IsUpdateEntityActionEndModel())
-                .Select(UpdateEntityActionEndModel.Create)
+                .Where(x => x.Association.SpecializationType == UpdateEntityActionModel.SpecializationType && x.IsSourceEnd())
+                .Select(x => UpdateEntityActionModel.CreateFromEnd(x).SourceEnd)
                 .ToList();
         }
 

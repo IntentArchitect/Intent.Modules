@@ -13,7 +13,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Events.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class DomainEventModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder
+    public class DomainEventModel : IMetadataModel, IHasStereotypes, IHasName, IHasFolder, IElementWrapper
     {
         public const string SpecializationType = "Domain Event";
         public const string SpecializationTypeId = "0814e459-fb9b-47db-b7eb-32ce30397e8a";

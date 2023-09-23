@@ -11,14 +11,14 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.ModuleBuilder.Api
 {
     [IntentManaged(Mode.Fully, Signature = Mode.Fully)]
-    public class ToMappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName
+    public class TargetMappingSettingsModel : IMetadataModel, IHasStereotypes, IHasName
     {
-        public const string SpecializationType = "To Mapping Settings";
+        public const string SpecializationType = "Target Mapping Settings";
         public const string SpecializationTypeId = "a812bff7-017a-4692-8ec7-1caad0a1dd88";
         protected readonly IElement _element;
 
         [IntentManaged(Mode.Fully)]
-        public ToMappingSettingsModel(IElement element, string requiredType = SpecializationType)
+        public TargetMappingSettingsModel(IElement element, string requiredType = SpecializationType)
         {
             if (!requiredType.Equals(element.SpecializationType, StringComparison.InvariantCultureIgnoreCase))
             {
@@ -47,7 +47,7 @@ namespace Intent.ModuleBuilder.Api
             return _element.ToString();
         }
 
-        public bool Equals(ToMappingSettingsModel other)
+        public bool Equals(TargetMappingSettingsModel other)
         {
             return Equals(_element, other?._element);
         }
@@ -57,7 +57,7 @@ namespace Intent.ModuleBuilder.Api
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             if (obj.GetType() != this.GetType()) return false;
-            return Equals((ToMappingSettingsModel)obj);
+            return Equals((TargetMappingSettingsModel)obj);
         }
 
         public override int GetHashCode()
@@ -67,17 +67,17 @@ namespace Intent.ModuleBuilder.Api
     }
 
     [IntentManaged(Mode.Fully)]
-    public static class ToMappingSettingsModelExtensions
+    public static class TargetMappingSettingsModelExtensions
     {
 
-        public static bool IsToMappingSettingsModel(this ICanBeReferencedType type)
+        public static bool IsTargetMappingSettingsModel(this ICanBeReferencedType type)
         {
-            return type != null && type is IElement element && element.SpecializationTypeId == ToMappingSettingsModel.SpecializationTypeId;
+            return type != null && type is IElement element && element.SpecializationTypeId == TargetMappingSettingsModel.SpecializationTypeId;
         }
 
-        public static ToMappingSettingsModel AsToMappingSettingsModel(this ICanBeReferencedType type)
+        public static TargetMappingSettingsModel AsTargetMappingSettingsModel(this ICanBeReferencedType type)
         {
-            return type.IsToMappingSettingsModel() ? new ToMappingSettingsModel((IElement)type) : null;
+            return type.IsTargetMappingSettingsModel() ? new TargetMappingSettingsModel((IElement)type) : null;
         }
     }
 }
