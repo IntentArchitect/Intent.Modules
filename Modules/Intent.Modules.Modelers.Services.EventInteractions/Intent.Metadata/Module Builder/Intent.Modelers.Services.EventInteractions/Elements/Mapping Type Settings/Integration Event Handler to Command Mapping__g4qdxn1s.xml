@@ -265,7 +265,16 @@
       <parentFolderId>a4c4c5cc-76df-48ed-9d4e-c35caf44b567</parentFolderId>
       <packageId>014c4929-4a23-47d6-89d1-8dd4cb3a879c</packageId>
       <packageName>Intent.Modelers.Services.EventInteractions</packageName>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c5fe657f-bf6f-4027-8bec-67290cc6dde2" name="Mapping Type Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <metadata />
       <childElements>
         <childElement id="7f5d49dd-fd48-4f29-8126-b1b0c881a99c" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">

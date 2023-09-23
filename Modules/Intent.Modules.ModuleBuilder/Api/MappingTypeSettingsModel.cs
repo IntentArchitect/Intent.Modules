@@ -80,6 +80,7 @@ namespace Intent.ModuleBuilder.Api
                 MappingTypeId = Id,
                 MappingType = Name,
                 SourceRootElementFunction = SourceMapping.GetMappingTypeSettings().RootElementFunction(),
+                TargetRootElementFunction = TargetMapping.GetMappingTypeSettings().RootElementFunction(),
                 Title = Name,
                 SourceMappings = SourceMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),
                 TargetMappings = TargetMapping?.ElementMappings.Select(x => x.ToPersistable()).ToList(),

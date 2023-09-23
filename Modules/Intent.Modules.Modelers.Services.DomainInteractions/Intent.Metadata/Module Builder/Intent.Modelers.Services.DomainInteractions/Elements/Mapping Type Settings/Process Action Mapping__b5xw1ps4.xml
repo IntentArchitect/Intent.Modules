@@ -28,7 +28,7 @@
           <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
           <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
           <properties>
-            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.getParent().id;" isActive="true" />
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="return element.getParent(&quot;Command&quot;).id;" isActive="true" />
           </properties>
         </stereotype>
       </stereotypes>
@@ -220,7 +220,16 @@
       <parentFolderId>01bc7593-a6a2-45aa-8497-b4b6a269ab68</parentFolderId>
       <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
       <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
-      <stereotypes />
+      <stereotypes>
+        <stereotype stereotypeDefinitionId="c5fe657f-bf6f-4027-8bec-67290cc6dde2" name="Mapping Type Settings">
+          <addedByDefault>true</addedByDefault>
+          <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+          <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+          <properties>
+            <property name="a43f67e1-742f-46c7-b6eb-e73c3d7232dd" display="Root Element Function" value="let updateType = element.getParent().typeReference.getType();&#xD;&#xA;return updateType.getParent(&quot;Class&quot;)?.id ?? updateType.id;" isActive="true" />
+          </properties>
+        </stereotype>
+      </stereotypes>
       <metadata />
       <childElements>
         <childElement id="56ece450-cd72-4cc3-8f26-8507df74789e" type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">

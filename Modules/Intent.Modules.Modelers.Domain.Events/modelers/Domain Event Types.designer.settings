@@ -287,6 +287,7 @@ vertical-align: center`</style>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Domain Event Origin Association</type>
       </typeOrder>
@@ -325,6 +326,7 @@ vertical-align: center`</style>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Domain Event</type>
       </typeOrder>
@@ -343,6 +345,7 @@ vertical-align: center`</style>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Domain Event Origin Association</type>
       </typeOrder>
@@ -509,7 +512,7 @@ vertical-align: center`</style>
             </childSetting>
             <childSetting id="d68afc8d-bac5-41bf-9f90-0c439803c0b6" name="Constructor" type="Class Constructor" typeId="dec2bd12-4699-4f45-8ec9-3b62dc692d2b">
               <represents>data</represents>
-              <filterFunction>return element.id == mappingContext.fromElementId</filterFunction>
+              <filterFunction>return element.id == mappingContext.sourceElementId</filterFunction>
               <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>
@@ -535,7 +538,7 @@ vertical-align: center`</style>
             </childSetting>
             <childSetting id="a8510cb4-4dc7-4567-9bb5-5b8eb7e1e5e3" name="Operation" type="Operation" typeId="e042bb67-a1df-480c-9935-b26210f78591">
               <represents>data</represents>
-              <filterFunction>return element.id == mappingContext.fromElementId</filterFunction>
+              <filterFunction>return element.id == mappingContext.sourceElementId</filterFunction>
               <isRequiredFunction>return element.getParent().getChildren('Class Constructor').every(x =&gt; x.getChildren().length &gt; 0)</isRequiredFunction>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return false;</isMappableFunction>

@@ -135,7 +135,7 @@
             </childElement>
             <childElement id="0ce836f5-21f6-4147-a2f2-3f89a3390c1a" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
               <name>Map Entity Update</name>
-              <display>Map Entity Update: Command to Class Update Mapping</display>
+              <display>Map Entity Update: Update Entity Mapping</display>
               <isAbstract>false</isAbstract>
               <genericTypes />
               <typeReference id="6eebfa90-235a-4038-a8ce-f4e057d25459">
