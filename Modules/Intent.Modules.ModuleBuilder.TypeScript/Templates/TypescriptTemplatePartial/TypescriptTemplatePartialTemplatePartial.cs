@@ -7,12 +7,12 @@ using Intent.Modules.Common;
 using Intent.Modules.Common.CSharp.Templates;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.Types.Api;
+using Intent.Modules.Common.TypeScript.Templates;
 using Intent.Modules.ModuleBuilder.Templates.IModSpec;
 using Intent.Modules.ModuleBuilder.Templates.TemplateDecoratorContract;
 using Intent.Modules.ModuleBuilder.Templates.TemplateExtensions;
 using Intent.RoslynWeaver.Attributes;
 using Intent.Templates;
-using Intent.Modules.Common.TypeScript.Templates;
 
 [assembly: DefaultIntentManaged(Mode.Merge)]
 [assembly: IntentTemplate("Intent.ModuleBuilder.CSharp.Templates.CSharpTemplatePartial", Version = "1.0")]
@@ -28,8 +28,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public TypescriptTemplatePartialTemplate(IOutputTarget outputTarget, TypescriptFileTemplateModel model) : base(TemplateId, outputTarget, model)
         {
-            // whichever his higher:
-            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.3.2");
+            AddNugetDependency("Intent.Modules.Common.TypeScript", "3.4.3");
         }
 
         public string TemplateName => $"{Model.Name.ToCSharpIdentifier().RemoveSuffix("Template")}Template";
@@ -53,7 +52,7 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
 
             ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
                 moduleId: "Intent.Common.TypeScript",
-                moduleVersion: "3.3.2"));
+                moduleVersion: "3.4.3"));
             if (Model.GetModelType() != null)
             {
                 ExecutionContext.EventDispatcher.Publish(new ModuleDependencyRequiredEvent(
@@ -70,6 +69,11 @@ namespace Intent.Modules.ModuleBuilder.TypeScript.Templates.TypescriptTemplatePa
                 return "public partial ";
             }
             return "partial ";
+        }
+
+        private string GetClassName()
+        {
+            return $"{(Model.IsFilePerModelTemplateRegistration() ? $"{{Model.Name}}" : Model.Name.RemoveSuffix("Template"))}";
         }
 
         private IEnumerable<string> GetBaseTypes()

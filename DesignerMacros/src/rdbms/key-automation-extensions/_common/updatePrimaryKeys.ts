@@ -2,8 +2,6 @@
 /// <reference path="../../../common/getSurrogateKeyType.ts" />
 /// <reference path="constants.ts" />
 
-type IElementApi = MacroApi.Context.IElementApi;
-
 function updatePrimaryKeys(element: IElementApi): void {
     if (element.getMetadata(metadataKey.autoManageKeys) === "false" ||
         element.getPackage().specialization !== "Domain Package" ||

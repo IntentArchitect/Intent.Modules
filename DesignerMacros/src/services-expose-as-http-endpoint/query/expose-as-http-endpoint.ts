@@ -1,12 +1,15 @@
 /// <reference path="../_common/getFolderParts.ts" />
 /// <reference path="../_common/getRouteParts.ts" />
 /// <reference path="../../common/getMappedRequestDetails.ts" />
+/// <reference path="../_common/getDefaultRoutePrefix.ts" />
 
 function exposeAsHttpEndPoint(query: MacroApi.Context.IElementApi): void {
     const mappedDetails = getMappedRequestDetails(query);
 
     // Add the folder parts
-    const routeParts: string[] = ["api"];
+    const routeParts: string[] = [];
+    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
+    routeParts.push(...defaultRoutePrefixParts);
     routeParts.push(...getFolderParts(query, mappedDetails));
 
     if (mappedDetails != null) {

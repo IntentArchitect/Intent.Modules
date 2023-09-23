@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="0bb8cbf7-ca57-44ef-abe6-82dd3a02e7f6" type="Typescript File Template" typeId="e6e41d88-2829-41b6-a791-065d2bb44eb3">
+  <name>TypeScriptSingleFileT4Template</name>
+  <display>TypeScriptSingleFileT4Template: Single File</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="fc5e8532-4596-4ee3-9fe6-a779af0e7589">
+    <typeId>f65d2904-88c9-4501-873a-a4eec8303b1d</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.ModuleBuilder</typePackageName>
+    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>7f689c5d-70ac-4294-8459-96421c5168b7</parentFolderId>
+  <packageId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</packageId>
+  <packageName>ModuleBuilders</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="8f73a680-1a9e-4df6-a396-759bb078a99e" name="TypeScript Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder.TypeScript</definitionPackageName>
+      <definitionPackageId>4d484b1d-09d8-49e6-8e65-6811e4d28af9</definitionPackageId>
+      <properties>
+        <property name="902563d1-bd9c-406c-9781-88d5c6b48101" display="Templating Method" value="T4 Template" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
+        <property name="00d3537c-f71f-4450-8cc8-d9e87c12baee" display="Designer" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="" isActive="true" />
+        <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
+        <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="Default" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

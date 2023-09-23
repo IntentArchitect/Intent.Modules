@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<class id="1d6b5558-fe3b-46f3-ac76-907c425aa317" type="Java File Template" typeId="e27af6dd-e69e-4e80-a2e1-0bbe9493cf7a">
+  <name>JavaCustomStringInterTemplate</name>
+  <display>JavaCustomStringInterTemplate: Custom</display>
+  <isAbstract>false</isAbstract>
+  <genericTypes />
+  <typeReference id="4a641187-8b97-4ff2-aec8-c55cdabc3603">
+    <typeId>d2931361-7cf0-4c79-9847-621c60886ef9</typeId>
+    <isNavigable>true</isNavigable>
+    <isNullable>false</isNullable>
+    <isCollection>false</isCollection>
+    <isRequired>true</isRequired>
+    <typePackageName>Intent.ModuleBuilder</typePackageName>
+    <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
+    <stereotypes />
+    <genericTypeParameters />
+  </typeReference>
+  <isMapped>false</isMapped>
+  <parentFolderId>adbc505d-1d23-4c55-9b0d-6663e284735f</parentFolderId>
+  <packageId>bcabc001-5d8a-4759-81ad-3b1316fe73f2</packageId>
+  <packageName>ModuleBuilders</packageName>
+  <stereotypes>
+    <stereotype stereotypeDefinitionId="d9a52e8e-dfa4-4604-9c04-8e023f2f7418" name="Java Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder.Java</definitionPackageName>
+      <definitionPackageId>b6978589-6e21-40a6-88b3-0854c11f4388</definitionPackageId>
+      <properties>
+        <property name="aa8ff690-2b59-4466-b522-31d6c74d081c" display="Templating Method" value="String Interpolation" isActive="true" />
+      </properties>
+    </stereotype>
+    <stereotype stereotypeDefinitionId="b1f08a30-9aae-4702-bfc8-e285e6b43a61" name="Template Settings">
+      <addedByDefault>true</addedByDefault>
+      <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+      <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+      <properties>
+        <property name="a9de6cf5-6d4f-4ae1-aa60-5ca85e458709" display="Source" value="Lookup Type" isActive="true" />
+        <property name="00d3537c-f71f-4450-8cc8-d9e87c12baee" display="Designer" isActive="true" />
+        <property name="75b89367-1808-43f8-9f18-785915ec1630" display="Model Type" value="" isActive="true" />
+        <property name="d1e89313-0647-48bd-81da-b04b644db475" display="Model Name" value="object" isActive="false" />
+        <property name="f1d88e59-1ca6-426e-b52d-42f3467e6bd5" display="Role" value="Default" isActive="true" />
+        <property name="1ac0fa39-ecea-48f8-92e4-41616a639586" display="Default Location" isActive="true" />
+      </properties>
+    </stereotype>
+  </stereotypes>
+  <metadata />
+  <childElements />
+</class>

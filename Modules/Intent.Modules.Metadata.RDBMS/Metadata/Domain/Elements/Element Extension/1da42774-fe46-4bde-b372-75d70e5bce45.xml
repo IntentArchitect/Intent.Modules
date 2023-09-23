@@ -126,39 +126,6 @@
           <metadata />
           <childElements />
         </childElement>
-        <childElement id="04920764-3513-43fe-aed8-ffc4a1271f56" type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
-          <name>On Loaded</name>
-          <display>On Loaded: Script</display>
-          <isAbstract>false</isAbstract>
-          <genericTypes />
-          <typeReference id="aab57f1f-03de-4b2f-aa84-c54f62367199">
-            <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
-            <isNavigable>true</isNavigable>
-            <isNullable>false</isNullable>
-            <isCollection>false</isCollection>
-            <isRequired>true</isRequired>
-            <typePackageName>Intent.ModuleBuilder</typePackageName>
-            <typePackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</typePackageId>
-            <stereotypes />
-            <genericTypeParameters />
-          </typeReference>
-          <isMapped>false</isMapped>
-          <parentFolderId>73a27efb-3700-4bbb-a0b6-9e77da44c472</parentFolderId>
-          <packageId>AF8F3810-745C-42A2-93C8-798860DC45B1</packageId>
-          <packageName>Intent.Metadata.RDBMS</packageName>
-          <stereotypes>
-            <stereotype stereotypeDefinitionId="56bc0465-c1fe-4bca-9493-2a3ce88a4047" name="Script Settings">
-              <addedByDefault>true</addedByDefault>
-              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
-              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
-              <properties>
-                <property name="73a4088f-626e-4d31-b0b2-113167f015b2" display="Script" value="const primaryKeyStereotypeId = &quot;b99aac21-9ca4-467f-a3a6-046255a9eed6&quot;;&#xD;&#xA;const relationalDatabaseId = &quot;51a7bcf5-0eb9-4c9a-855e-3ead1048729c&quot;;&#xD;&#xA;const foreignKeyStereotypeId = &quot;793a5128-57a1-440b-a206-af5722b752a6&quot;;&#xD;&#xA;const foreignKeyStereotypeAssociationProperty = &quot;Association&quot;;&#xD;&#xA;const metadataKey = {&#xD;&#xA;    association: &quot;association&quot;,&#xD;&#xA;    autoManageKeys: &quot;auto-manage-keys&quot;,&#xD;&#xA;    fkOriginalName: &quot;fk-original-name&quot;,&#xD;&#xA;    isBeingDeletedByScript: &quot;is-being-deleted-by-script&quot;,&#xD;&#xA;    isManagedKey: &quot;is-managed-key&quot;,&#xD;&#xA;};&#xD;&#xA;/// &lt;reference path=&quot;../../../../typings/elementmacro.context.api.d.ts&quot; /&gt;&#xD;&#xA;/// &lt;reference path=&quot;../_common/constants.ts&quot; /&gt;&#xD;&#xA;function execute() {&#xD;&#xA;    var _a, _b;&#xD;&#xA;    if (!element.hasMetadata(metadataKey.association) ||&#xD;&#xA;        element.getPackage().specialization !== &quot;Domain Package&quot; ||&#xD;&#xA;        !element.getPackage().hasStereotype(relationalDatabaseId)) {&#xD;&#xA;        return;&#xD;&#xA;    }&#xD;&#xA;    const associationTarget = (_b = (_a = element.getStereotype(foreignKeyStereotypeId)) === null || _a === void 0 ? void 0 : _a.getProperty(foreignKeyStereotypeAssociationProperty)) === null || _b === void 0 ? void 0 : _b.getValue();&#xD;&#xA;    if (associationTarget == null) {&#xD;&#xA;        if (!element.hasStereotype(foreignKeyStereotypeId)) {&#xD;&#xA;            element.addStereotype(foreignKeyStereotypeId);&#xD;&#xA;        }&#xD;&#xA;        const associationId = element.getMetadata(metadataKey.association);&#xD;&#xA;        element&#xD;&#xA;            .getStereotype(foreignKeyStereotypeId)&#xD;&#xA;            .getProperty(foreignKeyStereotypeAssociationProperty)&#xD;&#xA;            .setValue(associationId);&#xD;&#xA;    }&#xD;&#xA;    if (!element.hasMetadata(metadataKey.fkOriginalName)) {&#xD;&#xA;        element.setMetadata(metadataKey.fkOriginalName, element.getName());&#xD;&#xA;    }&#xD;&#xA;}&#xD;&#xA;execute();&#xD;&#xA;" isActive="true" />
-              </properties>
-            </stereotype>
-          </stereotypes>
-          <metadata />
-          <childElements />
-        </childElement>
       </childElements>
     </childElement>
   </childElements>

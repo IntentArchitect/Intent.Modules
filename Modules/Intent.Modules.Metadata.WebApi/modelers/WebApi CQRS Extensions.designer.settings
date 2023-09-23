@@ -618,10 +618,12 @@ function getFolderParts(request, mappedDetails) {
     let folderParts = [];
     while (currentElement.specialization === "Folder") {
         let folderName = currentElement.getName();
-        const singularizedFolderName = singularize(folderName);
-        const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
-        if (depth === 0 &amp;&amp; singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
-            folderName = singularizedFolderName;
+        if (depth === 0 &amp;&amp; mappedDetails != null) {
+            const singularizedFolderName = singularize(folderName);
+            const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
+            if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
+                folderName = singularizedFolderName;
+            }
         }
         folderParts.unshift(toKebabCase(folderName));
         currentElement = currentElement.getParent();
@@ -669,14 +671,38 @@ function getRouteParts(request, mappedDetails) {
     }
     return routeParts;
 }
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
 /// &lt;reference path="../_common/getFolderParts.ts" /&gt;
 /// &lt;reference path="../_common/getRouteParts.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
 function exposeAsHttpEndPoint(command) {
     var _a, _b;
     const mappedDetails = getMappedRequestDetails(command);
     // Add the folder parts
-    const routeParts = ["api"];
+    const routeParts = [];
+    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
+    routeParts.push(...defaultRoutePrefixParts);
     routeParts.push(...getFolderParts(command, mappedDetails));
     if (mappedDetails != null) {
         routeParts.push(...getRouteParts(command, mappedDetails));
@@ -715,29 +741,55 @@ exposeAsHttpEndPoint(element);
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
-const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+          <script>function execute() {
+    const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
+    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
 
-if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
-    // Api version Stereotype removed
-    route = route.replace("{version}/", "");
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
+    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
+        // Api version Stereotype removed
+        route = route.replace("{version}/", "");
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
+
+    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
+        // Api version Stereotype added
+        let defaultRoutePrefix = getDefaultRoutePrefix(false);
+        let startIndex = route.indexOf(defaultRoutePrefix);
+        if (startIndex == 0) {
+            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
+        } else {
+            route = `{version}/${(route)}`;
+        }
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
 }
 
-if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
-    // Api version Stereotype added
-    let startIndex = route.indexOf("api/");
-    if (startIndex == 0) {
-        route = `api/{version}/${(route.substring(4))}`;
-    } else {
-        route = `{version}/${(route)}`;
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) { return defaultApiRoutePrefix; }
+    
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) { return defaultApiRoutePrefix; }
+    
+    let route = field.value ?? "";
+
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
     }
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
-}</script>
+
+    return route;
+}
+
+execute();</script>
         </macro>
       </macros>
     </elementExtension>
@@ -1352,10 +1404,12 @@ function getFolderParts(request, mappedDetails) {
     let folderParts = [];
     while (currentElement.specialization === "Folder") {
         let folderName = currentElement.getName();
-        const singularizedFolderName = singularize(folderName);
-        const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
-        if (depth === 0 &amp;&amp; singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
-            folderName = singularizedFolderName;
+        if (depth === 0 &amp;&amp; mappedDetails != null) {
+            const singularizedFolderName = singularize(folderName);
+            const singularizedAggregateRootName = singularize(((_a = mappedDetails.owningEntity) !== null &amp;&amp; _a !== void 0 ? _a : mappedDetails.entity).getName());
+            if (singularizedFolderName.toLowerCase() === singularizedAggregateRootName.toLowerCase()) {
+                folderName = singularizedFolderName;
+            }
         }
         folderParts.unshift(toKebabCase(folderName));
         currentElement = currentElement.getParent();
@@ -1403,14 +1457,38 @@ function getRouteParts(request, mappedDetails) {
     }
     return routeParts;
 }
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    var _a;
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) {
+        return defaultApiRoutePrefix;
+    }
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) {
+        return defaultApiRoutePrefix;
+    }
+    let route = (_a = field.value) !== null &amp;&amp; _a !== void 0 ? _a : "";
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    }
+    else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
+    }
+    return route;
+}
 /// &lt;reference path="../_common/getFolderParts.ts" /&gt;
 /// &lt;reference path="../_common/getRouteParts.ts" /&gt;
 /// &lt;reference path="../../common/getMappedRequestDetails.ts" /&gt;
+/// &lt;reference path="../_common/getDefaultRoutePrefix.ts" /&gt;
 function exposeAsHttpEndPoint(query) {
     var _a;
     const mappedDetails = getMappedRequestDetails(query);
     // Add the folder parts
-    const routeParts = ["api"];
+    const routeParts = [];
+    const defaultRoutePrefixParts = getDefaultRoutePrefix(false).split("/");
+    routeParts.push(...defaultRoutePrefixParts);
     routeParts.push(...getFolderParts(query, mappedDetails));
     if (mappedDetails != null) {
         routeParts.push(...getRouteParts(query, mappedDetails));
@@ -1437,29 +1515,55 @@ exposeAsHttpEndPoint(element);
       <mappingSettings />
       <macros>
         <macro trigger="on-changed">
-          <script>const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
-const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
+          <script>function execute() {
+    const apiVersionStereotypeId = "20855f03-c663-4ec6-b106-de06be98f1fe";
+    const httpSettingsStereotypeId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6";
 
-let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
+    let route = element.getStereotype(httpSettingsStereotypeId)?.getProperty("Route")?.getValue();
 
-if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
-    // Api version Stereotype removed
-    route = route.replace("{version}/", "");
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
+    if (!element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &gt;= 0) {
+        // Api version Stereotype removed
+        route = route.replace("{version}/", "");
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
+
+    if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
+        // Api version Stereotype added
+        let defaultRoutePrefix = getDefaultRoutePrefix(false);
+        let startIndex = route.indexOf(defaultRoutePrefix);
+        if (startIndex == 0) {
+            route = `${defaultRoutePrefix}/{version}/${(route.substring(defaultRoutePrefix.length+1))}`;
+        } else {
+            route = `{version}/${(route)}`;
+        }
+        element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
+        return;
+    }
 }
 
-if (element.hasStereotype(apiVersionStereotypeId) &amp;&amp; route?.indexOf("{version}") &lt; 0) {
-    // Api version Stereotype added
-    let startIndex = route.indexOf("api/");
-    if (startIndex == 0) {
-        route = `api/{version}/${(route.substring(4))}`;
-    } else {
-        route = `{version}/${(route)}`;
+function getDefaultRoutePrefix(includeLastPathSeparator) {
+    const defaultApiRoutePrefix = "api/";
+    const apiSettingsId = "4bd0b4e9-7b53-42a9-bb4a-277abb92a0eb";
+
+    let settingsGroup = application.getSettings(apiSettingsId);
+    if (!settingsGroup) { return defaultApiRoutePrefix; }
+    
+    let field = settingsGroup.getField("Default API Route Prefix");
+    if (!field) { return defaultApiRoutePrefix; }
+    
+    let route = field.value ?? "";
+
+    if (includeLastPathSeparator &amp;&amp; !route.endsWith("/")) {
+        route += "/";
+    } else if (!includeLastPathSeparator &amp;&amp; route.endsWith("/")) {
+        route = removeSuffix(route, "/");
     }
-    element.getStereotype(httpSettingsStereotypeId).getProperty("Route").setValue(route);
-    return;
-}</script>
+
+    return route;
+}
+
+execute();</script>
         </macro>
       </macros>
     </elementExtension>

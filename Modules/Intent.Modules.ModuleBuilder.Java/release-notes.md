@@ -1,3 +1,7 @@
+### Version 3.4.2
+
+- Fixed: Custom templates had a missing System using for NotImplementedException code.
+
 ### Version 3.4.1
 
 - Fixed: Adding a new template that is Single File in nature with a name containing a suffix `Template` will no longer add `Template` as part of the Class name.

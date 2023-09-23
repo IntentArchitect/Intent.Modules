@@ -47,6 +47,16 @@ namespace Intent.Modules.Common.CSharp.Configuration
         public bool UseSsl { get; set; } = true;
 
         /// <summary>
+        /// Set to true to display a message when the project is building.
+        /// </summary>
+        public bool? DotnetRunMessages { get; set; }
+
+        /// <summary>
+        /// The url to enable debugging on a Blazor WebAssembly application.
+        /// </summary>
+        public string InspectUri { get; set; }
+
+        /// <summary>
         /// Key/value pairs of environment variables to be added to profile.
         /// </summary>
         public Dictionary<string, string> EnvironmentVariables { get; set; }

@@ -1,4 +1,5 @@
 /// <reference path="../../../typings/elementmacro.context.api.d.ts" />
+/// <reference path="../_common/getDefaultRoutePrefix.ts" />
 
 function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void {
     let httpServiceSettingsId = "c29224ec-d473-4b95-ad4a-ec55c676c4fd"; // from WebApi module
@@ -7,13 +8,17 @@ function exposeAsHttpEndPoint(element: MacroApi.Context.IElementApi): void {
         element.getParent().addStereotype(httpServiceSettingsId);
 
         let serviceBaseName = removeSuffix(element.getParent().getName(), "Service");
-        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(`api/${toKebabCase(serviceBaseName)}`)
+        element.getParent().getStereotype(httpServiceSettingsId).getProperty("Route").setValue(getRoute(serviceBaseName));
     }
 
     applyHttpSettingsToOperations(element);
 }
 
-function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi) {
+function getRoute(serviceBaseName: string): string {
+    return `${getDefaultRoutePrefix(true)}${toKebabCase(serviceBaseName)}`;
+}
+
+function applyHttpSettingsToOperations(operation: MacroApi.Context.IElementApi): void {
     const httpSettingsId = "b4581ed2-42ec-4ae2-83dd-dcdd5f0837b6"; // from WebApi module
     const parameterSettingsId = "d01df110-1208-4af8-a913-92a49d219552"; // from WebApi module
 

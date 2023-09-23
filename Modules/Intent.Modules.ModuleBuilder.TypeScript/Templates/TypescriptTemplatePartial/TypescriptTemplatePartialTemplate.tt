@@ -8,8 +8,10 @@
 <#@ import namespace="Intent.Templates" #>
 <#@ import namespace="Intent.Metadata.Models" #>
 <#@ import namespace="Intent.ModuleBuilder.TypeScript.Api" #>
+using System;
 using System.Collections.Generic;
 using Intent.Engine;
+using Intent.Modules.Common;
 using Intent.Modules.Common.Templates;
 using Intent.Modules.Common.TypeScript.Templates;
 using Intent.RoslynWeaver.Attributes;
@@ -29,7 +31,37 @@ namespace <#= Namespace #>
         [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
         public <#= ClassName #>(IOutputTarget outputTarget, <#= GetModelType() #> model<#= Model.GetModelType() == null ? " = null" : ""#>) : base(TemplateId, outputTarget, model)
         {
+<#  if (Model.GetTypeScriptTemplateSettings()?.TemplatingMethod().IsTypeScriptFileBuilder() == true) { #>
+            TypescriptFile = new TypescriptFile(this.GetFolderPath())
+                .AddClass($"<#= GetClassName() #>", @class =>
+                {
+                    @class.AddConstructor(ctor =>
+                    {
+                        ctor.AddParameter("string", "exampleParam", param =>
+                        {
+                            param.WithPrivateReadonlyFieldAssignment();
+                        });
+                    });
+                });
+<#  } #>
         }
+<#  if (Model.GetTypeScriptTemplateSettings()?.TemplatingMethod().IsTypeScriptFileBuilder() == true) { #>
+
+        [IntentManaged(Mode.Fully)]
+        public <#= UseType("Intent.Modules.Common.TypeScript.Builder.TypescriptFile") #> TypescriptFile { get; }
+
+        [IntentManaged(Mode.Fully)]
+        public override ITemplateFileConfig GetTemplateFileConfig()
+        {
+            return TypescriptFile.GetConfig($"<#= GetClassName() #>");
+        }
+
+        [IntentManaged(Mode.Fully)]
+        public override string TransformText()
+        {
+            return TypescriptFile.ToString();
+        }
+<#  } else { #>
 
         [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
         public override ITemplateFileConfig GetTemplateFileConfig()
@@ -39,6 +71,14 @@ namespace <#= Namespace #>
                 fileName: $"<#= Model.IsFilePerModelTemplateRegistration() ? "{Model.Name.ToKebabCase()}" : Model.Name.Replace("Template", "").ToKebabCase() #>"
             );
         }
+<#  } #>
+<#  if (Model.GetTypeScriptTemplateSettings()?.TemplatingMethod().IsCustom() == true) { #>
 
+        [IntentManaged(Mode.Fully, Body = Mode.Ignore)]
+        public override string TransformText()
+        {
+            throw new NotImplementedException("Implement custom template here");
+        }
+<#  } #>
     }
 }
