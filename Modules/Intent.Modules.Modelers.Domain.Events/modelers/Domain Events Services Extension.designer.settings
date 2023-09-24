@@ -188,6 +188,7 @@ vertical-align: center`</style>
       </targetEnd>
       <visualSettings type="Domain Event Handler Association" typeId="90831494-f069-44eb-b488-ab2dba7518ea">
         <lineType>Curved</lineType>
+        <flowDirectionReversed>true</flowDirectionReversed>
         <sourceEnd>
           <pointIndicator>
             <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>

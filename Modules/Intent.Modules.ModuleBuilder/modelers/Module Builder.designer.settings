@@ -131,6 +131,7 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -173,6 +174,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -204,6 +206,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Module Settings Field Configuration" typeId="88e29cab-1342-40c7-b052-5fcd68ffafec">
@@ -233,6 +236,7 @@
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Module Settings Field Option" typeId="1592709a-89b1-4cb0-9801-ce9d3b94545a">
@@ -251,6 +255,7 @@
               <typeOrder />
               <creationOptions />
               <scriptOptions />
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -298,6 +303,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -317,6 +323,7 @@
       <typeOrder />
       <creationOptions />
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -345,6 +352,7 @@
         <isNullableDefault>false</isNullableDefault>
         <isCollectionDefault>false</isCollectionDefault>
       </typeReferenceSetting>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -361,6 +369,7 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -377,6 +386,7 @@
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>

@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<class id="2ecbafc9-a094-4c2f-aa6d-166fd06c20e1" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
-  <name>[association visual]</name>
-  <display>[visual]: Domain Event Origin Association</display>
+<class id="1e51a8ae-5954-4fb7-933c-d6a40b656545" type="Association Visual Settings" typeId="153a4063-82a1-4515-87f1-44c189004fad">
+  <name>[visual]</name>
+  <display>[visual]: void</display>
   <isAbstract>false</isAbstract>
   <sort-children>by-type-then-manually</sort-children>
   <genericTypes />
-  <typeReference id="78b2ef61-e542-4050-8205-8f2f1f584c2a">
-    <typeId>4c0cc50b-8a9d-43cd-b731-9f354f69f3c9</typeId>
+  <typeReference id="dd8f556f-778f-4d29-ae53-16e0d9da250c">
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
     <isRequired>true</isRequired>
-    <typePackageName>Intent.Modelers.Domain.Events</typePackageName>
-    <typePackageId>31710880-215c-4fed-9c79-a129a4b9cdb1</typePackageId>
     <stereotypes />
     <genericTypeParameters />
   </typeReference>
   <isMapped>false</isMapped>
-  <parentFolderId>d0b49a83-9c9d-405b-9cdd-08000fa32ca7</parentFolderId>
+  <parentFolderId>47ab5888-a258-4bec-a9fc-a83de69eb79d</parentFolderId>
   <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
   <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
   <stereotypes>
@@ -27,7 +24,7 @@
       <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
       <properties>
         <property name="3ff8fe05-f379-4b5e-a965-cc6f6cab4c21" display="Line Type" value="Curved" isActive="true" />
-        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" isActive="true" />
+        <property name="4d46ba5f-c4c5-4160-989e-1e76128d3efa" display="Line Color" value="" isActive="true" />
         <property name="f248a382-66c9-4107-aa92-5ee83dd3d08c" display="Line Width" isActive="true" />
         <property name="93499f0b-8590-42ea-bdbf-e943597e8e1e" display="Line Dash Array" value="return &quot;3,7&quot;;" isActive="true" />
         <property name="85aa1be2-62f1-45d1-84d0-acb5bb5d1752" display="Reverse Flow Direction" value="false" isActive="true" />
@@ -36,13 +33,13 @@
   </stereotypes>
   <metadata />
   <childElements>
-    <childElement id="23352e54-10d2-4445-85ef-43acc8374a18" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
+    <childElement id="5341dd71-970e-4d53-9aa5-a373af743bcc" type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
       <name>[source]</name>
       <display>[source]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>2ecbafc9-a094-4c2f-aa6d-166fd06c20e1</parentFolderId>
+      <parentFolderId>1e51a8ae-5954-4fb7-933c-d6a40b656545</parentFolderId>
       <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
       <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
       <stereotypes>
@@ -83,13 +80,13 @@
       <metadata />
       <childElements />
     </childElement>
-    <childElement id="0f822487-cd42-481f-90c6-82369662e277" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
+    <childElement id="aa6e078a-6b7d-4f2e-94cb-3bfe93dcc8df" type="Association Destination End Visual Settings" typeId="b59113a4-209c-45d6-b395-352362864fd1">
       <name>[desintation]</name>
       <display>[destination]</display>
       <isAbstract>false</isAbstract>
       <genericTypes />
       <isMapped>false</isMapped>
-      <parentFolderId>2ecbafc9-a094-4c2f-aa6d-166fd06c20e1</parentFolderId>
+      <parentFolderId>1e51a8ae-5954-4fb7-933c-d6a40b656545</parentFolderId>
       <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
       <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
       <stereotypes>

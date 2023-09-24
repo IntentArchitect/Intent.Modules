@@ -60,13 +60,13 @@
       <stereotypes />
       <metadata />
       <childElements>
-        <childElement id="ceb03bfe-b503-4465-87a0-312e65355abe" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>New Mapping</name>
-          <display>New Mapping: Create Entity Action</display>
+        <childElement id="85a46bec-c433-4542-adb4-f48a1296e2eb" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
+          <name>Add Query Entity Action</name>
+          <display>Add Query Entity Action: Query Entity Action</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
-          <typeReference id="94c039a6-33d1-4e9c-9c58-4f4e39a76bb0">
-            <typeId>7a3f0474-3cf8-4249-baac-8c07c49465e0</typeId>
+          <typeReference id="e0ed8143-fd9a-43af-be51-a40a5a38687a">
+            <typeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</typeId>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -93,6 +93,44 @@
                 <property name="eb46bd10-e8b6-4852-8e6b-659f42c82797" display="Type Order" isActive="true" />
                 <property name="aa9aed36-437b-4f74-896d-5cffef1817a2" display="Allow Multiple" value="true" isActive="true" />
                 <property name="f0268cd4-f075-4743-9d04-9dd4e7752c73" display="Is Option Visible Function" isActive="true" />
+              </properties>
+            </stereotype>
+          </stereotypes>
+          <metadata />
+          <childElements />
+        </childElement>
+        <childElement id="0087236d-2b1c-44e9-9d1e-6a798ec2c0b0" type="Mapping Option" typeId="00a1eb98-1fc4-4421-9d1c-8733f6bc2111">
+          <name>Map Return Type</name>
+          <display>Map Return Type: Map Return Type</display>
+          <isAbstract>false</isAbstract>
+          <genericTypes />
+          <typeReference id="d9a869de-5c55-44af-b27f-6d52c3f2ed7c">
+            <typeId>b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4</typeId>
+            <isNavigable>true</isNavigable>
+            <isNullable>false</isNullable>
+            <isCollection>false</isCollection>
+            <isRequired>true</isRequired>
+            <typePackageName>Intent.Modelers.Services.DomainInteractions</typePackageName>
+            <typePackageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</typePackageId>
+            <stereotypes />
+            <genericTypeParameters />
+          </typeReference>
+          <isMapped>false</isMapped>
+          <parentFolderId>79675729-f303-4f17-a19f-35d1656f601e</parentFolderId>
+          <packageId>bff48d8d-9246-4ad7-9dda-9703b7139b86</packageId>
+          <packageName>Intent.Modelers.Services.DomainInteractions</packageName>
+          <stereotypes>
+            <stereotype stereotypeDefinitionId="6c209f86-87f6-4fc3-802e-e6e553dfbeca" name="Option Settings">
+              <comment />
+              <addedByDefault>true</addedByDefault>
+              <definitionPackageName>Intent.ModuleBuilder</definitionPackageName>
+              <definitionPackageId>9972b2a9-b749-4bba-b5c8-824bf694c6ef</definitionPackageId>
+              <properties>
+                <property name="69d929bc-dcd7-4c2d-aabc-6f05ab6d83b3" display="Shortcut" value="ctrl + shift + m" isActive="true" />
+                <property name="36d5eeba-2483-450e-b51b-b156836f6d3a" display="Shortcut (macOS)" isActive="true" />
+                <property name="08fac0bc-4cf9-45ec-8362-e452a185efee" display="Type Order" isActive="true" />
+                <property name="5e97216b-6c99-4fa2-971d-575a27f212cc" display="Icon" isActive="true" />
+                <property name="63039244-aaad-49eb-84bf-0396a6dd0fe9" display="Is Option Visible Function" value="return typeReference?.isTypeFound() || true;" isActive="true" />
               </properties>
             </stereotype>
           </stereotypes>

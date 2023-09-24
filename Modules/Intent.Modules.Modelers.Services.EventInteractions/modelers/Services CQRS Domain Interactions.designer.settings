@@ -71,6 +71,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Publish Integration Event</type>
       </typeOrder>
@@ -187,6 +188,7 @@ vertical-align: center`</style>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <typeOrder>
         <type>Subscribe Integration Event Source End</type>
         <type>Send Command Target End</type>
@@ -194,20 +196,10 @@ vertical-align: center`</style>
       <mappingSettings />
     </elementExtension>
     <elementExtension type="Query" typeId="e71b0662-e29d-4db2-868b-8a12464b25d0">
-      <creationOptions>
-        <option type="association">
-          <text>New Mapping</text>
-          <icon type="UrlImagePath" source="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAABYhJREFUeF7tWU1sVFUU/s6rRqiR9g1bFZdGjSaQCJtWKkIhYd6w0Cb+b/1ZQZz3KgGZEtHOa9XEaKJbQReDC2cGf6kiwgJd0EQxxhWi686bokES6D3mtjP0zevceb84k/Td7bv3O+d85zv3nnsfYZUPWuXxIyUgVcAqZyAtgVUugHQTTEsgLYFVzkBaAqtcAOkpkJZA7BIolfoGL942TJq2Hcx3NfD+ZOaZ+r+zp1EoiFg2SqW+gYtrt2oaS/w7l7DoL0E4Ob/h6mmMjS3EwY+lgMzkiVHWxNsA7lM48SuB9tXM7DdRnNSnK7sgIPHvVaz/jcD7ambuqyj4i1RGXajbZROgNwFoPhgCTOOOlZ0KY0u3K+MAjgTDx37HMoph8JtzIxGQKZYLTHQolEFC0ckbMijfkbErEwy85juxZQLZjpm1wq2JoID2wdM1QJRAdGbRAeYhQBsD+Fa3Q8Q8UbNyhU5Otg8+ID5wuGYaoRITSgGKzM9DYLczbpx1B6bbJ4YAUQUwEJQERebD4YckITABquA1ph1zVvandlldX6w+LIjlBuhLwj2FU2vm+/8+BWCLC6uuMY2Gxg9BQiAClMGTGJ3L7/mxk6QH7MpGDTgJINNasiv3hMy7X6zjq9e/bpAwryWM385PXwKiZN5rKIwSGiQc15gOqjK/An/qs82CNUlcq9ICKKEjAXEy73UyjBLC7uRyflR8JQFJBt8MKKqTQQmJgt+WAL1YsUCY9BgOVJN+zq5XyBVgyzFztt96v+9h8VcQkLHLOxn0uacDSyT4pvMKJwWBdkVtm93EhMFvJaBU6tP/WPOzp7dPNHifcvjduXLHAyiMXPfLtN/3gekTmzQh5Omju+auwG8hYLBYHiGi75YX0DUIftTb5PgZD/q90SxJe7c01zDRSD2f/T4oRqd5g9PlYRL0bSf8FgL0qeobYH7VBXrMMY1nk3BGhaHblY8BPHXjO+OIYxkHkrLph99KgF0+BtDTN4wTXnDyxodJOdMORy9WXgLhfZfNo07eeC4pm374HgIqRwE8s5wNetGxsh8k5UxbAuzqywC/t/yNP3LM3PNJ2dR98L0EyPv3/v+5BD4B8GTTJoFfr5m5g8kRUOmI37oJTlW3ErO8kDSGvIbSNsfcvXTNTXgM2pVHCJhp2aSArXXTOJ2EqSD4rcdgoaDp/RtnATzocuDmHIPtj6kLzpXzD8V+R5StcUD8No1QdQeDv7yZjVCmWNnCBHl5WeciWjRuf1IRsYaiEVrQSOycy+9pwW/fCi+993nf2BJRgiJ4+TiZr5nGdKzIAahaYRW+8jKkug8QY2fNMs5FcVQhSzBRoZ7PTkTBdK9R4gOH6qZxuB1+x+twkiT0YvCSkMgPImGUoJJ9u8zrk6UB1tZ+2kcLB/xem5oZVcmeO2R++dgNoDuFEi4TY9SvHMJkXgYPbY3cHDcDmA9CchTZu0P2VUBzsuqBpJOTYTLfeBSVlyAZfHN03HjjZD6UAnxIuMyA4W1eBpeaqrLnqOu44alIZo2N+iu5H9yZazQ5Er/lHTCI7CMpwIcEeX8/Dkbj3wANgfhxd4cn1wfZ7RUkLOGDGx0pDQF4YgV+gJr3VnzgEnAvVOwJHXeTIME3ASLhRwg+0CmgikovVvMglu+Gvj9HCbDCNjkh8BeI2apZubcC7OcrpkRSwI1ysBfbZvn7+n6F8Qsaib3e9jOoo5lieTsTvaPGp18EY++8lZWvPpFGLAIWLRYK2uDtm4ZJ8GPQcPeirJgvCdBM/cr5M7EvNhK/f+OQxrSNSWxYwtcuiT4xU/9n9mxc/PgEROK9dxalBPROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjSaqA7vDeO1ZTBfROLrrjyX+Fpw5umCJAIAAAAABJRU5ErkJggg==" />
-          <specializationType>Publish Integration Event</specializationType>
-          <specializationTypeId>580b6b26-eab5-4602-a408-e76e2d292d2c</specializationTypeId>
-          <defaultName>NewPublishIntegrationEvent</defaultName>
-          <allowMultiple>true</allowMultiple>
-        </option>
-      </creationOptions>
+      <creationOptions />
       <scriptOptions />
-      <typeOrder>
-        <type>Publish Integration Event</type>
-      </typeOrder>
+      <mappingOptions />
+      <typeOrder />
       <mappingSettings />
     </elementExtension>
   </elementExtensions>
@@ -395,6 +387,7 @@ vertical-align: center`</style>
       </targetEnd>
       <visualSettings type="Subscribe Integration Event" typeId="80aa7f6d-64e5-4d24-a81e-6bc212925ca7">
         <lineType>Curved</lineType>
+        <flowDirectionReversed>true</flowDirectionReversed>
         <sourceEnd>
           <pointIndicator>
             <path>return `l 4 8 l -8 0 l 4 -8 Z`</path>
@@ -437,6 +430,8 @@ vertical-align: center`</style>
             <allowMultiple>true</allowMultiple>
           </option>
         </creationOptions>
+        <scriptOptions />
+        <mappingOptions />
       </targetEndExtension>
       <macros />
     </associationExtension>
@@ -770,7 +765,7 @@ vertical-align: center`</style>
               <allowMultipleMappings>true</allowMultipleMappings>
               <isMappableFunction>return true;</isMappableFunction>
               <traversableTypes>
-                <mappingId>fec56eb6-de77-4180-84f8-5578f0f908c4</mappingId>
+                <mappingId>4bebd0c2-e53b-41a9-9d18-68f7fc4bec81</mappingId>
               </traversableTypes>
               <canBeModified>true</canBeModified>
               <mapsTo />

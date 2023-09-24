@@ -67,6 +67,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<string>("Line Dash Array");
             }
 
+            public bool ReverseFlowDirection()
+            {
+                return _stereotype.GetProperty<bool>("Reverse Flow Direction");
+            }
+
             public class LineTypeOptions
             {
                 public readonly string Value;

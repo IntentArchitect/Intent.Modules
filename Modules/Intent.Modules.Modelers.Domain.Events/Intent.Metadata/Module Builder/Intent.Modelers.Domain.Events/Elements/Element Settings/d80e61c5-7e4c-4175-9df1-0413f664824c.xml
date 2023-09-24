@@ -62,8 +62,8 @@
       <metadata />
       <childElements>
         <childElement id="cbedcef2-d135-4704-93c0-4a35bc8bc4ef" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Handler Operation</name>
-          <display>Add Handler Operation: Domain Event Handler Association</display>
+          <name>Handle Domain Event</name>
+          <display>Handle Domain Event: Domain Event Handler Association</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="259825b3-ef62-458c-b690-bd59d304ba0b">

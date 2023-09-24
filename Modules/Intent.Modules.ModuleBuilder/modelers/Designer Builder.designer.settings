@@ -81,6 +81,7 @@
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -119,6 +120,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -151,6 +153,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -213,6 +216,7 @@ createElement("Association Event Settings", "[events]", element.id);</script>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -278,6 +282,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Association Source End Visual Settings" typeId="77fdd377-950a-46e4-8d25-ab3c962d6105">
@@ -294,6 +299,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -311,6 +317,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -344,6 +351,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -375,6 +383,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -446,6 +455,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Association Event Handler" typeId="f9b3e6fd-3c51-4ed9-b214-cb7f5fc1cf7c">
@@ -474,6 +484,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -549,6 +560,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Stereotype-Definition Creation Option" typeId="0c721d5d-7721-414c-adaf-4c9f5c5531a9">
@@ -577,6 +589,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -607,6 +620,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -635,6 +649,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -667,6 +682,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -695,6 +711,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
             <isNullableDefault>false</isNullableDefault>
             <isCollectionDefault>false</isCollectionDefault>
           </typeReferenceSetting>
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -713,6 +730,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -743,6 +761,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Designer Reference" typeId="ace8c966-1a7f-487e-b21b-dd601e57f13f">
@@ -773,6 +792,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
           <typeOrder />
           <creationOptions />
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -890,6 +910,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -930,6 +951,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -1001,6 +1023,7 @@ sourceEnd.setName(`${element.getName()} Target End`);</script>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>
@@ -1088,6 +1111,7 @@ return null;</iconFunction>
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -1124,6 +1148,7 @@ return null;</iconFunction>
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Element Mapping" typeId="4a16943b-702c-4fb0-bfcc-2afd98b8814c">
@@ -1162,6 +1187,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 </option>
               </creationOptions>
               <scriptOptions />
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1243,6 +1269,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Element Event Handler" typeId="0ef412e3-d15a-45d3-bcd3-f646165f2eb6">
@@ -1271,6 +1298,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1353,6 +1381,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Text Draw Settings" typeId="0250c934-455b-4bb6-b5d9-077c6e1ce72c">
@@ -1369,6 +1398,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1386,6 +1416,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1403,6 +1434,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1420,6 +1452,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
               <allowTypeReference>false</allowTypeReference>
               <allowConvertToType p8:nil="true" xmlns:p8="http://www.w3.org/2001/XMLSchema-instance" />
               <allowSetValue>false</allowSetValue>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1472,6 +1505,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -1513,6 +1547,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings>
         <childElementSetting type="Element Mapping Settings" typeId="62e5b1a9-0d36-4969-9d22-ce748155afbf">
@@ -1557,6 +1592,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -1587,6 +1623,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -1617,6 +1654,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings />
         </childElementSetting>
@@ -1671,6 +1709,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -1716,6 +1755,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
         </option>
       </creationOptions>
       <scriptOptions />
+      <mappingOptions />
       <mappingSettings />
       <macros>
         <macro trigger="on-created">
@@ -1767,6 +1807,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
             </option>
           </creationOptions>
           <scriptOptions />
+          <mappingOptions />
           <mappingSettings />
           <childElementSettings>
             <childElementSetting type="Package Event Handler" typeId="e59f6c30-69ba-427c-9a73-33d69e44f765">
@@ -1795,6 +1836,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
                 <isNullableDefault>false</isNullableDefault>
                 <isCollectionDefault>false</isCollectionDefault>
               </typeReferenceSetting>
+              <mappingOptions />
               <mappingSettings />
               <childElementSettings />
             </childElementSetting>
@@ -1815,6 +1857,7 @@ return `[mapping]: ${getTypeName("Criteria Settings", "From Type")} -&gt; ${getT
       <allowTypeReference>false</allowTypeReference>
       <allowConvertToType p4:nil="true" xmlns:p4="http://www.w3.org/2001/XMLSchema-instance" />
       <allowSetValue>false</allowSetValue>
+      <mappingOptions />
       <mappingSettings />
       <childElementSettings />
     </elementSetting>

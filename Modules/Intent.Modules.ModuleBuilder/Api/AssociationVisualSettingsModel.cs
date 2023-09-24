@@ -90,6 +90,7 @@ namespace Intent.ModuleBuilder.Api
                 LineColor = this.GetSetting().LineColor(),
                 LineWidth = this.GetSetting().LineWidth(),
                 LineDashArray = this.GetSetting().LineDashArray(),
+                FlowDirectionReversed = this.GetSetting().ReverseFlowDirection(),
                 SourceEnd = SourceVisual != null ? new AssociationEndVisualSettings()
                 {
                     PrimaryLabel = SourceVisual.GetLabelSettings().PrimaryLabel(),

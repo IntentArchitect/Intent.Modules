@@ -50,6 +50,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#47ab5888-a258-4bec-a9fc-a83de69eb79d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/QueryEntityActionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>QueryEntityActionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#47ab5888-a258-4bec-a9fc-a83de69eb79d</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/QueryEntityActionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>QueryEntityActionModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#6e296dff-c5b2-447e-9a38-062ceb3e1a46</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/QueryExtensionModel.cs</ApplicationRelativeFilePath>

@@ -61,8 +61,8 @@
       <metadata />
       <childElements>
         <childElement id="313a5399-18d5-4f40-b67c-594ddeccf107" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Create Action</name>
-          <display>Add Create Action: Create Entity Action</display>
+          <name>Add Create Entity Action</name>
+          <display>Add Create Entity Action: Create Entity Action</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="1054ed92-0bce-4b5c-a4d8-bb04b59366c8">
@@ -100,8 +100,8 @@
           <childElements />
         </childElement>
         <childElement id="c38e2afd-3d0a-438a-ab89-16fa0db9c8f6" type="Association Creation Option" typeId="3dcfa78b-17ee-45b6-be03-8407d089ce76">
-          <name>Add Update Action</name>
-          <display>Add Update Action: Update Entity Action</display>
+          <name>Add Update Entity Action</name>
+          <display>Add Update Entity Action: Update Entity Action</display>
           <isAbstract>false</isAbstract>
           <genericTypes />
           <typeReference id="8ba1c529-0a1c-4a15-a309-4899e0074b54">

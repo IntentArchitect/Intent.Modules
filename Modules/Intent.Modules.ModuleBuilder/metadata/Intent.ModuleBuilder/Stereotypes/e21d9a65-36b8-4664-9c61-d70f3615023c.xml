@@ -64,5 +64,16 @@
       <lookupTypes />
       <apiTypeDefinition>association-api</apiTypeDefinition>
     </property>
+    <property id="85aa1be2-62f1-45d1-84d0-acb5bb5d1752">
+      <hint>Affects whether this association is treated from left-to-right (false) or right-to-left (true) when added to a diagram</hint>
+      <name>Reverse Flow Direction</name>
+      <type>string</type>
+      <controlType>checkbox</controlType>
+      <optionsSource>n/a</optionsSource>
+      <placeholder />
+      <defaultValue>false</defaultValue>
+      <valueOptions />
+      <lookupTypes />
+    </property>
   </properties>
 </stereotypeDefinition>

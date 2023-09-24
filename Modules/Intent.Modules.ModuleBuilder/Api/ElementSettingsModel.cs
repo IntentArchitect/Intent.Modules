@@ -66,6 +66,7 @@ namespace Intent.ModuleBuilder.Api
                 IconFunction = this.GetSettings().IconFunction(),
                 AllowRename = this.GetSettings().AllowRename(),
                 AllowAbstract = this.GetSettings().AllowAbstract(),
+                AllowStatic = this.GetSettings().AllowStatic(),
                 AllowSetValue = this.GetSettings().AllowSetValue(),
                 AllowGenericTypes = this.GetSettings().AllowGenericTypes(),
                 AllowMapping = this.MappingSettings.Any(),

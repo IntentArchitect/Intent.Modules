@@ -87,6 +87,11 @@ namespace Intent.ModuleBuilder.Api
                 return _stereotype.GetProperty<bool>("Allow Abstract");
             }
 
+            public bool AllowStatic()
+            {
+                return _stereotype.GetProperty<bool>("Allow Static");
+            }
+
             public bool AllowSetValue()
             {
                 return _stereotype.GetProperty<bool>("Allow Set Value");
