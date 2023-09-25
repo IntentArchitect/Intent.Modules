@@ -1,13 +1,14 @@
-﻿### Version 3.3.4
+﻿### Version 3.3.41
 
-- Improvement : Added Blazor WebAssembly configuration options for `launchsettings.json`.
+- Improvement: Added Blazor WebAssembly configuration options for `launchsettings.json`.
+- Improvement: CSharpConstructorParameter now has ability to store metadata.
 - Fixed: Adding statements on a constructor will assign the parent on the element receiving those statements.
 
-### Version 3.3.4
+### Version 3.3.40
 
-- Added : Description Stereotype for usage with Enum literals
-- Added : Support for Parameter Modifiers (out, ref, [in])
-- Added : Enum support for File Builder added.
+- Added: Description Stereotype for usage with Enum literals
+- Added: Support for Parameter Modifiers (out, ref, [in])
+- Added: Enum support for File Builder added.
 
 ### Version 3.3.39
 
