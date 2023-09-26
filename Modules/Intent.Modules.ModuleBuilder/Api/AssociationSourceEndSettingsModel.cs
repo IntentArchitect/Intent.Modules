@@ -59,6 +59,8 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
+                NameAccessibilityMode = Enum.Parse<FieldAccessibilityMode>(this.GetSettings().NameAccessibility().Value),
+                DefaultNameFunction = this.GetSettings().DefaultNameFunction(),
                 Icon = this.GetSettings().Icon().ToPersistable(),
                 TypeReferenceSetting = new TypeReferenceSettingPersistable()
                 {
@@ -78,7 +80,7 @@ namespace Intent.ModuleBuilder.Api
                     .Concat(MenuOptions.StereotypeDefinitionCreation != null ? new[] { MenuOptions.StereotypeDefinitionCreation.ToPersistable() } : new ElementCreationOption[0])
                     .ToList(),
                 ScriptOptions = MenuOptions?.RunScriptOptions.Select(x => x.ToPersistable()).ToList(),
-                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList()
+                MappingOptions = MenuOptions?.MappingOptions.Select(x => x.ToPersistable()).ToList(),
             };
         }
 

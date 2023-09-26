@@ -69,6 +69,7 @@
           <genericTypes />
           <typeReference id="0dea1d48-7b02-4b8b-906f-6a8731396a6a">
             <typeId>32aac8b7-3eac-4a15-87cb-7fb98fdfdf37</typeId>
+            <typeName>Association Source End Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -109,6 +110,7 @@
           <genericTypes />
           <typeReference id="657efec7-1047-4982-8620-42a287926ac7">
             <typeId>c4c61fdc-464d-41d2-8e0e-5a734d588302</typeId>
+            <typeName>Association Destination End Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -149,6 +151,7 @@
           <genericTypes />
           <typeReference id="b5fff5c5-cf4c-47c5-9800-95782825a1bb">
             <typeId>153a4063-82a1-4515-87f1-44c189004fad</typeId>
+            <typeName>Association Visual Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -189,6 +192,7 @@
           <genericTypes />
           <typeReference id="6ed2e194-5760-4dea-851f-92d959fc99c4">
             <typeId>1bdee938-8569-4fbf-84b4-8522d2cbee32</typeId>
+            <typeName>Association Event Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -244,6 +248,7 @@
           <genericTypes />
           <typeReference id="0ec3bf0b-6233-4897-93e0-756f9882ab7d">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -277,6 +282,7 @@
           <genericTypes />
           <typeReference id="bb5c30fe-4751-4582-87ba-6b9e5e807390">
             <typeId>043eee26-1591-42ac-9f2c-fc911b070eb1</typeId>
+            <typeName>Script</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

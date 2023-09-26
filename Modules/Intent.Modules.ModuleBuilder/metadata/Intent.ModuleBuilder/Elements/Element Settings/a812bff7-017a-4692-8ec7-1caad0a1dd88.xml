@@ -70,6 +70,7 @@
           <genericTypes />
           <typeReference id="31652d58-d173-4b2d-a778-7c690260ec04">
             <typeId>62e5b1a9-0d36-4969-9d22-ce748155afbf</typeId>
+            <typeName>Element Mapping Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

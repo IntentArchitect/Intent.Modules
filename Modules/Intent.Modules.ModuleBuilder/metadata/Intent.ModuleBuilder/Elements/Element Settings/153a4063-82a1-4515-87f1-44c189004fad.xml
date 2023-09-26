@@ -70,6 +70,7 @@
           <genericTypes />
           <typeReference id="f5b598ba-4eef-4bd4-9671-e3ee43faba7b">
             <typeId>77fdd377-950a-46e4-8d25-ab3c962d6105</typeId>
+            <typeName>Association Source End Visual Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -110,6 +111,7 @@
           <genericTypes />
           <typeReference id="5f2bb1e3-8cde-465b-91ee-c7511582c3c5">
             <typeId>b59113a4-209c-45d6-b395-352362864fd1</typeId>
+            <typeName>Association Destination End Visual Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

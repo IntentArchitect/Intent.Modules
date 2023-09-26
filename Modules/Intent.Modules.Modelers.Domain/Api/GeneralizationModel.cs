@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 
 [assembly: DefaultIntentManaged(Mode.Fully)]
@@ -66,7 +67,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Fully)]
-    public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class GeneralizationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
 
@@ -100,6 +101,7 @@ namespace Intent.Modelers.Domain.Api
 
         private readonly GeneralizationModel _association;
         public GeneralizationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public string Comment => _associationEnd.Comment;
         public ICanBeReferencedType Element => _associationEnd.TypeReference.Element;
         public IEnumerable<ITypeReference> GenericTypeParameters => _associationEnd.TypeReference.GenericTypeParameters;

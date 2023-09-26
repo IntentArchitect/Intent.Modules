@@ -69,6 +69,7 @@
           <genericTypes />
           <typeReference id="47d8db34-9485-4ede-9618-72c0ab318e61">
             <typeId>ace8c966-1a7f-487e-b21b-dd601e57f13f</typeId>
+            <typeName>Designer Reference</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

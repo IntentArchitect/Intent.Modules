@@ -34,6 +34,22 @@
     </FileLog>
     <FileLog>
       <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModel#bfc823fb-60ab-451d-ba62-12671fe7e28e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DeleteEntityActionModel.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DeleteEntityActionModel.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
+      <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiAssociationModelExtensions#bfc823fb-60ab-451d-ba62-12671fe7e28e</CorrelationId>
+      <OverwriteBehaviour>always</OverwriteBehaviour>
+      <ApplicationRelativeFilePath>Api/DeleteEntityActionModelAssociationExtensions.cs</ApplicationRelativeFilePath>
+      <ProjectRelativeFilePath>DeleteEntityActionModelAssociationExtensions.cs</ProjectRelativeFilePath>
+      <IsIgnored>false</IsIgnored>
+    </FileLog>
+    <FileLog>
+      <ProjectId>87ad83a3-6c6a-46d4-979e-75d4f34b144c</ProjectId>
       <CorrelationId>Intent.ModuleBuilder.Templates.Api.ApiElementExtensionModel#41e7ccc5-c192-4ecf-9d72-5675578e7918</CorrelationId>
       <OverwriteBehaviour>always</OverwriteBehaviour>
       <ApplicationRelativeFilePath>Api/DiagramExtensionModel.cs</ApplicationRelativeFilePath>

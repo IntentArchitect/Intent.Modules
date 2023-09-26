@@ -59,6 +59,8 @@ namespace Intent.ModuleBuilder.Api
                 SpecializationTypeId = this.Id,
                 SpecializationType = this.Name,
                 DisplayFunction = this.GetSettings().DisplayTextFunction(),
+                NameAccessibilityMode = Enum.Parse<FieldAccessibilityMode>(this.GetSettings().NameAccessibility().Value),
+                DefaultNameFunction = this.GetSettings().DefaultNameFunction(),
                 Icon = this.GetSettings().Icon().ToPersistable(),
                 TypeReferenceSetting = new TypeReferenceSettingPersistable()
                 {

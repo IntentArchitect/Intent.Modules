@@ -70,6 +70,7 @@
           <genericTypes />
           <typeReference id="d6b8233f-8247-4de0-98ee-905994430834">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
+            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -110,6 +111,7 @@
           <genericTypes />
           <typeReference id="bf9abd64-346e-465e-905d-962e5e7949ec">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
+            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -150,6 +152,7 @@
           <genericTypes />
           <typeReference id="e33c3898-6e10-4b2b-90fc-6eedf2a50d43">
             <typeId>0ef412e3-d15a-45d3-bcd3-f646165f2eb6</typeId>
+            <typeName>Element Event Handler</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

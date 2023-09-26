@@ -69,6 +69,7 @@
           <genericTypes />
           <typeReference id="7a6b8bff-1090-4c1e-a34f-1192be9829aa">
             <typeId>7f5fcc9f-c721-4a31-bfe2-7909f4289420</typeId>
+            <typeName>Designer</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -109,6 +110,7 @@
           <genericTypes />
           <typeReference id="31274192-00ab-4c20-82a4-0f5ba82a1dc5">
             <typeId>7a6411a8-ffef-4209-91c6-8d12755a806a</typeId>
+            <typeName>Designer Settings</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

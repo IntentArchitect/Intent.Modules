@@ -1,10 +1,6 @@
 // By having these in a separate file, it can still be referred to manually by the .api.d.ts file
 // but also be available to rest of the TypeScript project so that we can ensure the types match.
 
-declare let debugConsole: Console;
-type IElementApi = MacroApi.Context.IElementApi;
-type IAssociationApi = MacroApi.Context.IAssociationApi;
-
 declare namespace MacroApi.Context {
     interface IDialogService {
         /**
@@ -61,6 +57,14 @@ declare namespace MacroApi.Context {
         isNullable: boolean;
         isCollection: boolean;
         display: string;
+    }
+
+    interface IElementToElementMappingApi {
+        mappingTypeId: string;
+        mappingType: string;
+        getSourceElement(): IElementApi;
+        getTargetElement(): IElementApi;
+        addMappedEnd(sourcePath: string[], targetPath: string[], mappingExpression?: string): void;
     }
     
     interface IElementMappingApi {
@@ -166,8 +170,22 @@ declare namespace MacroApi.Context {
     }
 
     interface IElementVisualApi {
-        getPosition: () => IPoint;
-        getSize: () => ISize;
+        getPosition(): IPoint;
+        getSize(): ISize;
+        getDimensions(): MacroApi.Context.IDimensions;
+        isAutoResizeEnabled(): boolean;
+    }
+
+    interface IDimensions {
+        left: number;
+        right: number;
+        top: number;
+        bottom: number;
+        getCenterTop(): IPoint;
+        getCenterBottom(): IPoint;
+        getCenterLeft(): IPoint;
+        getCenterRight(): IPoint;
+        getCenter(): IPoint;
     }
 
     interface IPoint {
@@ -233,6 +251,22 @@ declare namespace MacroApi.Context {
          * Sets the name of the element.
          */
         setValue(value: string): void;
+        /**
+         * Returns true if the element has been indicated 'Is Abstract'.
+         */
+        getIsAbstract(): boolean;
+        /**
+         * Sets the 'Is Abstract' status of the element.
+         */
+        setIsAbstract(value: boolean): void;
+        /**
+         * Returns true if the element has been indicated 'Is Static'.
+         */
+        getIsStatic(): boolean;
+        /**
+         * Sets the 'Is Static' status of the element.
+         */
+        setIsStatic(value: boolean): void;
         /**
          * Returns the value of the element.
          */
@@ -434,8 +468,20 @@ declare namespace MacroApi.Context {
          */
         getChildren(type: string): IElementApi[];
         /**
-        * Gets the metadata value for the specified key.
-        */
+         * Returns true if there are mappings associated with this association end.
+         * */
+        hasMappings(): boolean;
+        /**
+         * Creates a new element-to-element mapping and returns its API. If the sourceId and/or targetId are not provided,
+         * then the mapping will by default be between the sourceEnd and targetEnd elements of this association. 
+         * 
+         * If the mappingTypeId is not provided and there is only one mapping type configured, then that mapping type will
+         * be used. Otherwise, an error will be thrown.
+         * */
+        createMapping(sourceId?: string, targetId?: string, mappingTypeId?: string): IElementToElementMappingApi;
+        /**
+         * Gets the metadata value for the specified key.
+         */
         getMetadata(key: string): string;
         /**
          * Returns true if a metadata value exists for the specified key.

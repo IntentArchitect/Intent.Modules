@@ -69,6 +69,7 @@
           <genericTypes />
           <typeReference id="94575591-ab71-43fe-9331-8c36ce470136">
             <typeId>ac1da322-377e-45cf-a2d9-d147a4d91457</typeId>
+            <typeName>Template Decorator Contract</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

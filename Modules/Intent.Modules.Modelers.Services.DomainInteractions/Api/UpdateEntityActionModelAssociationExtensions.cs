@@ -21,7 +21,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<UpdateEntityActionSourceEndModel> UpdateEntityActions(this ClassModel model)
+        public static IList<UpdateEntityActionSourceEndModel> UpdateEntityCommands(this ClassModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == UpdateEntityActionModel.SpecializationType && x.IsSourceEnd())
@@ -30,7 +30,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<UpdateEntityActionSourceEndModel> UpdateEntityActions(this OperationModel model)
+        public static IList<UpdateEntityActionSourceEndModel> UpdateEntityCommands(this OperationModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == UpdateEntityActionModel.SpecializationType && x.IsSourceEnd())

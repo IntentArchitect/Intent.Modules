@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Intent.Metadata.Models;
+using Intent.Modules.Common;
 using Intent.RoslynWeaver.Attributes;
 using Intent.SdkEvolutionHelpers;
 
@@ -71,7 +72,7 @@ namespace Intent.Modelers.Domain.Api
 
     [FixFor_Version4("Should implement IHasTypeReference and NOT ITypeReference")]
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes
+    public class AssociationEndModel : ITypeReference, IMetadataModel, IHasName, IHasStereotypes, IElementWrapper
     {
         protected readonly IAssociationEnd _associationEnd;
         private readonly AssociationModel _association;
@@ -88,6 +89,7 @@ namespace Intent.Modelers.Domain.Api
         public string SpecializationTypeId => _associationEnd.SpecializationTypeId;
         public string Name => _associationEnd.Name;
         public AssociationModel Association => _association;
+        public IElement InternalElement => _associationEnd;
         public bool IsNavigable => _associationEnd.IsNavigable;
         public bool IsNullable => _associationEnd.TypeReference.IsNullable;
         public bool IsCollection => _associationEnd.TypeReference.IsCollection;

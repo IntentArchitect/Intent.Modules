@@ -21,7 +21,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<CreateEntityActionSourceEndModel> CreateEntityActions(this ClassModel model)
+        public static IList<CreateEntityActionSourceEndModel> CreateEntityCommands(this ClassModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsSourceEnd())
@@ -30,7 +30,7 @@ namespace Intent.Modelers.Services.DomainInteractions.Api
         }
 
         [IntentManaged(Mode.Fully)]
-        public static IList<CreateEntityActionSourceEndModel> CreateEntityActions(this ClassConstructorModel model)
+        public static IList<CreateEntityActionSourceEndModel> CreateEntityCommands(this ClassConstructorModel model)
         {
             return model.InternalElement.AssociatedElements
                 .Where(x => x.Association.SpecializationType == CreateEntityActionModel.SpecializationType && x.IsSourceEnd())

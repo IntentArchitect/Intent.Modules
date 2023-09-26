@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="dda738b4-48c6-4611-b3a8-83dbe6ef1184">
     <typeId>d2e543c7-174a-45b4-aebe-a13f9ee90214</typeId>
+    <typeName>Intent Module</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -43,6 +44,7 @@
           <genericTypes />
           <typeReference id="557467f0-2346-4502-bf78-45de351c0888">
             <typeId>dbb71aa5-0db2-4a2a-97a9-501950f36f99</typeId>
+            <typeName>Designers Folder</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

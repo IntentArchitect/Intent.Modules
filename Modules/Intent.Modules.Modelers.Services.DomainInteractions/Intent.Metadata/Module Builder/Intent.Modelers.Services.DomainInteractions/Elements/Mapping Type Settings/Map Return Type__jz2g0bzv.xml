@@ -42,6 +42,7 @@
           <genericTypes />
           <typeReference id="462b78cd-8472-4c1a-8b7e-84e077b83502">
             <typeId>04e12b51-ed12-42a3-9667-a6aa81bb6d10</typeId>
+            <typeName>Class</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -84,6 +85,7 @@
               <genericTypes />
               <typeReference id="0d5d0996-fc96-494a-ac77-9cef6050c9d0">
                 <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
+                <typeName>Attribute</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -127,6 +129,7 @@
               <genericTypes />
               <typeReference id="13406ea8-8587-4980-bcb2-e60b0efa1f8f">
                 <typeId>0a66489f-30aa-417b-a75d-b945863366fd</typeId>
+                <typeName>Association Target End</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -170,6 +173,7 @@
               <genericTypes />
               <typeReference id="403bde5e-aa86-4f77-97fc-2dee9a4c79d2">
                 <typeId>e042bb67-a1df-480c-9935-b26210f78591</typeId>
+                <typeName>Operation</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -216,6 +220,7 @@
           <genericTypes />
           <typeReference id="3eeebab5-1599-4151-a9d1-0f57e5763e26">
             <typeId>ccf14eb6-3a55-4d81-b5b9-d27311c70cb9</typeId>
+            <typeName>Command</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -258,6 +263,7 @@
               <genericTypes />
               <typeReference id="dc153b01-a4aa-4347-890e-bb8f64933bd9">
                 <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+                <typeName>DTO-Field</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -302,6 +308,7 @@
               <genericTypes />
               <typeReference id="d50891dc-1c18-4079-aaa8-4eca533d905f">
                 <typeId>328f54e5-7bad-4b5f-90ca-03ce3105d016</typeId>
+                <typeName>Create Entity Action Target End</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -344,6 +351,7 @@
                   <genericTypes />
                   <typeReference id="1838213e-00bb-4baa-8b0c-94d7019154d6">
                     <typeId>328f54e5-7bad-4b5f-90ca-03ce3105d016</typeId>
+                    <typeName>Create Entity Action Target End</typeName>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
@@ -390,6 +398,7 @@
               <genericTypes />
               <typeReference id="a0de98a6-21f8-4c2c-94cd-7a984c8972a5">
                 <typeId>516069f6-09cc-4de8-8e31-3c71ca823452</typeId>
+                <typeName>Update Entity Action Target End</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -432,6 +441,7 @@
                   <genericTypes />
                   <typeReference id="bbb7b190-4219-4c4b-aaca-2c2ffcda90b8">
                     <typeId>328f54e5-7bad-4b5f-90ca-03ce3105d016</typeId>
+                    <typeName>Create Entity Action Target End</typeName>
                     <isNavigable>true</isNavigable>
                     <isNullable>false</isNullable>
                     <isCollection>false</isCollection>
@@ -479,6 +489,7 @@
           <genericTypes />
           <typeReference id="cba4d030-9049-4328-b226-d160570c7e24">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
+            <typeName>DTO</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -523,6 +534,7 @@
           <genericTypes />
           <typeReference id="1f9a625f-cb76-4b37-8bd4-faf7ae7c7f6c">
             <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+            <typeName>Query</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -565,6 +577,7 @@
               <genericTypes />
               <typeReference id="2981b320-1259-43b4-bfd0-9de9f641b501">
                 <typeId>93ef6675-cba4-4998-adff-cb22d5343ed4</typeId>
+                <typeName>Query Entity Action Target End</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -608,6 +621,7 @@
               <genericTypes />
               <typeReference id="ce1acdb2-651a-4b9c-8c3c-aac69fa8ea9f">
                 <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+                <typeName>DTO-Field</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -654,6 +668,7 @@
           <genericTypes />
           <typeReference id="1c651d0d-7b44-4227-bca6-e94050067408">
             <typeId>5fe6bb0a-7fc3-42ae-a351-d9188f5b8bc5</typeId>
+            <typeName>Value Object</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -696,6 +711,7 @@
               <genericTypes />
               <typeReference id="3d6b6f05-c1f3-4d82-9721-a5d10648c68f">
                 <typeId>0090fb93-483e-41af-a11d-5ad2dc796adf</typeId>
+                <typeName>Attribute</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -766,6 +782,7 @@
           <genericTypes />
           <typeReference id="6590b733-4dd3-4e85-a191-6429bdbc4771">
             <typeId>fee0edca-4aa0-4f77-a524-6bbd84e78734</typeId>
+            <typeName>DTO</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -808,6 +825,7 @@
               <genericTypes />
               <typeReference id="75544ff4-59b6-4654-967f-a2643dfb59a6">
                 <typeId>7baed1fd-469b-4980-8fd9-4cefb8331eb2</typeId>
+                <typeName>DTO-Field</typeName>
                 <isNavigable>true</isNavigable>
                 <isNullable>false</isNullable>
                 <isCollection>false</isCollection>
@@ -853,6 +871,7 @@
           <genericTypes />
           <typeReference id="cbe6ec22-a2da-44a0-b688-5ec138e3d084">
             <typeId>d4e577cd-ad05-4180-9a2e-fff4ddea0e1e</typeId>
+            <typeName>Type-Definition</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

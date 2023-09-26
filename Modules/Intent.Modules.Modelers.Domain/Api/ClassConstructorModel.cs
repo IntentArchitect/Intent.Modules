@@ -11,7 +11,7 @@ using Intent.RoslynWeaver.Attributes;
 namespace Intent.Modelers.Domain.Api
 {
     [IntentManaged(Mode.Merge)]
-    public class ClassConstructorModel : IMetadataModel, IHasStereotypes, IHasName
+    public class ClassConstructorModel : IMetadataModel, IHasStereotypes, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Class Constructor";
         public const string SpecializationTypeId = "dec2bd12-4699-4f45-8ec9-3b62dc692d2b";

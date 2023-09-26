@@ -17,7 +17,7 @@ namespace Intent.Modelers.Domain.Api
     }
 
     [IntentManaged(Mode.Merge, Signature = Mode.Merge)]
-    public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName
+    public class ClassModel : IHasStereotypes, IMetadataModel, IHasFolder, IHasFolder<IFolder>, IHasName, IElementWrapper
     {
         public const string SpecializationType = "Class";
         public const string SpecializationTypeId = "04e12b51-ed12-42a3-9667-a6aa81bb6d10";

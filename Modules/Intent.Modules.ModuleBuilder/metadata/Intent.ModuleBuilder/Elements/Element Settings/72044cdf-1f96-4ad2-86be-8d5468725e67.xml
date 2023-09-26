@@ -69,6 +69,7 @@
           <genericTypes />
           <typeReference id="638deed7-8626-483e-89f7-9f944dc21aba">
             <typeId>88e29cab-1342-40c7-b052-5fcd68ffafec</typeId>
+            <typeName>Module Settings Field Configuration</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>

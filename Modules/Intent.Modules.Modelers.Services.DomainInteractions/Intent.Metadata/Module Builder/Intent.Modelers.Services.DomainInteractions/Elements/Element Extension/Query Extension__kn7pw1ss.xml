@@ -7,6 +7,7 @@
   <genericTypes />
   <typeReference id="cd218c21-47ae-45c8-a553-20c050d2b06e">
     <typeId>e71b0662-e29d-4db2-868b-8a12464b25d0</typeId>
+    <typeName>Query</typeName>
     <isNavigable>true</isNavigable>
     <isNullable>false</isNullable>
     <isCollection>false</isCollection>
@@ -67,6 +68,7 @@
           <genericTypes />
           <typeReference id="e0ed8143-fd9a-43af-be51-a40a5a38687a">
             <typeId>47ab5888-a258-4bec-a9fc-a83de69eb79d</typeId>
+            <typeName>Query Entity Action</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
@@ -106,6 +108,7 @@
           <genericTypes />
           <typeReference id="d9a869de-5c55-44af-b27f-6d52c3f2ed7c">
             <typeId>b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4</typeId>
+            <typeName>Map Return Type</typeName>
             <isNavigable>true</isNavigable>
             <isNullable>false</isNullable>
             <isCollection>false</isCollection>
