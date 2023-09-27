@@ -77,7 +77,7 @@ namespace Intent.ModuleBuilder.Api
                 Text = this.Name,
                 Shortcut = this.GetOptionSettings().Shortcut(),
                 MacShortcut = this.GetOptionSettings().ShortcutMacOS(),
-                Icon = this.GetOptionSettings().Icon()?.ToPersistable() ?? new IconModelPersistable() { Type = IconType.FontAwesome, Source = "arrow-circle-right" },
+                Icon = this.GetOptionSettings().Icon()?.ToPersistable(),
                 IsOptionVisibleFunction = this.GetOptionSettings().IsOptionVisibleFunction(),
             };
         }

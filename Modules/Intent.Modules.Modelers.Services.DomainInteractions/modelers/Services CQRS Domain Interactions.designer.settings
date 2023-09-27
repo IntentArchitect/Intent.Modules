@@ -27,7 +27,6 @@
         <option mappingType="Process Action Mapping" mappingTypeId="01bc7593-a6a2-45aa-8497-b4b6a269ab68">
           <text>Map Update</text>
           <shortcut>ctrl + shift + m</shortcut>
-          <icon type="FontAwesome" source="arrow-circle-right" />
         </option>
       </mappingOptions>
       <mappingSettings />
@@ -70,7 +69,6 @@
         <option mappingType="Map Return Type" mappingTypeId="b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4">
           <text>Map Return Type</text>
           <shortcut>ctrl + shift + m</shortcut>
-          <icon type="FontAwesome" source="arrow-circle-right" />
           <isOptionVisibleFunction>return typeReference?.isTypeFound() || true;</isOptionVisibleFunction>
         </option>
       </mappingOptions>
@@ -187,7 +185,6 @@ vertical-align: center`</style>
         <option mappingType="Map Return Type" mappingTypeId="b7ae8bf5-f2fd-4a5c-b57e-05410687bfc4">
           <text>Map Return Type</text>
           <shortcut>ctrl + shift + m</shortcut>
-          <icon type="FontAwesome" source="arrow-circle-right" />
           <isOptionVisibleFunction>return typeReference?.isTypeFound() || true;</isOptionVisibleFunction>
         </option>
       </mappingOptions>
@@ -255,7 +252,6 @@ vertical-align: center`</style>
           <option mappingType="Create Entity Mapping" mappingTypeId="5f172141-fdba-426b-980e-163e782ff53e">
             <text>Map Entity Creation</text>
             <shortcut>ctrl + shift + m</shortcut>
-            <icon type="FontAwesome" source="arrow-circle-right" />
           </option>
         </mappingOptions>
       </targetEnd>
@@ -320,7 +316,6 @@ vertical-align: center`</style>
           <option mappingType="Query Entity Mapping" mappingTypeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
             <text>Map Entity Filter</text>
             <shortcut>ctrl + shift + m</shortcut>
-            <icon type="FontAwesome" source="arrow-circle-right" />
           </option>
         </mappingOptions>
       </targetEnd>
@@ -393,7 +388,6 @@ vertical-align: center`</style>
           <option mappingType="Query Entity Mapping" mappingTypeId="25f25af9-c38b-4053-9474-b0fabe9d7ea7">
             <text>Map Entity Query</text>
             <shortcut>ctrl + shift + m</shortcut>
-            <icon type="FontAwesome" source="arrow-circle-right" />
           </option>
         </mappingOptions>
       </targetEnd>
@@ -471,7 +465,6 @@ vertical-align: center`</style>
           <option mappingType="Update Entity Mapping" mappingTypeId="01721b1a-a85d-4320-a5cd-8bd39247196a">
             <text>Map Entity Update</text>
             <shortcut>ctrl + shift + m</shortcut>
-            <icon type="FontAwesome" source="arrow-circle-right" />
           </option>
         </mappingOptions>
       </targetEnd>
